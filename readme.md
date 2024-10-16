@@ -27,7 +27,7 @@ Faites des ```pull``` et des ```push``` REGULIER pour reduire au maximum les con
 Résolvez les conflits localement avant de faire des ```push```.
 
 
-## Enfin de travail quand on devra merge notre travail sur la branche master
+## En fin de travail quand on devra merge notre travail sur la branche master
 
 Les Pull Requests permettent aux autres membres de l'équipe de relire et vérifier le code avant qu'il ne soit fusionné. Voici comment le faire :
 
