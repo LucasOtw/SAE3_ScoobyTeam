@@ -7,7 +7,7 @@ Branche master : Cette branche est la version stable de notre application. Rien 
 
 Branche (nom des pages de chacuns) : Dans ces differentes branches vous enregistrez la progression de vos travaux REGULIEREMENT, pas en juste en fin de journée sinon il y aura pleins de conflits.
 
-Branches de fonctionnalité (feature branches) : Chaque fois que quelqu'un travaille sur une fonctionnalité, il crée une nouvelle branche à partir de develop. Exemples de branches :
+Branches de fonctionnalité (feature branches) : Chaque fois que quelqu'un travaille sur une fonctionnalité, il crée une nouvelle branche.
 
 ## Les commandes pour versionner son code correctement
 
