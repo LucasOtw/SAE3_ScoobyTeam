@@ -11,13 +11,13 @@ Branches de fonctionnalité (feature branches) : Chaque fois que quelqu'un trava
 
 ## Les commandes pour versionner son code correctement
 
-```git checkout develop``` (Pour aller sur votre branche, nom de votre page)  
+```git checkout <nom_de_votre_branche>``` (Pour aller sur votre branche, nom de votre page)  
 
 ```git add .``` (Pour selectionner tout les fichiers que vous voulez importer)  
 
 ```git commit -m "votre commentaire"``` (Pour ajouter un commentaire à votre commit, mettez quelque chose de precis et qui a du sens pas juste "Enregistrement modif")  
 
-```git push origin <nom_de_la_branche``` (Pour push vos modifs locales sur la branche de votre page)  
+```git push origin <nom_de_votre_branche``` (Pour push vos modifs locales sur la branche de votre page)  
 
 
 ## Les bonnes pratiques
