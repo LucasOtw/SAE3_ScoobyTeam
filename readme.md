@@ -31,7 +31,7 @@ Résolvez les conflits localement avant de faire des ```push```.
 
 Les Pull Requests permettent aux autres membres de l'équipe de relire et vérifier le code avant qu'il ne soit fusionné. Voici comment le faire :
 
-- Créez une Pull Request (PR) depuis la branche sur la quelle vous travailez vers master.
+- Créez une Pull Request (PR) depuis la branche sur la quelle vous travaillez vers master.
   
 - Demandez à un ou deux coéquipiers de relire la PR.
   
