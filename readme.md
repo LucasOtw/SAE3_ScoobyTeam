@@ -16,7 +16,7 @@
 
 
 
-##Tableau des différentes commandes principales pour GIT
+## Tableau des différentes commandes principales pour GIT
 
 | **Commande Git**         | **Fonctionnalité**                                           | **Options courantes**                                |
 |--------------------------|-------------------------------------------------------------|------------------------------------------------------|
