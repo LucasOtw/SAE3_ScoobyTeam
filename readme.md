@@ -22,7 +22,8 @@ Branches de fonctionnalité (feature branches) : Chaque fois que quelqu'un trava
 
 ## Les bonnes pratiques
 
-Faites des ```pull``` et des ```push``` REGULIER pour reduire au maximum les conflits et ne pas abimer le travail des autres
+Faites des ```pull``` et des ```push``` REGULIER pour reduire au maximum les conflits et ne pas abimer le travail des autres.
+
 Résolvez les conflits localement avant de faire des ```push```.
 
 
