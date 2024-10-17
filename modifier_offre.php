@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,7 +14,7 @@
     <!-- Header -->
     <header class="header_modif_offre">
         <div class="logo_modif_offre">
-            <img src="images/logoBlanc.png" alt="PAVCT Logo">
+            <img src="Images/logoBlanc.png" alt="PAVCT Logo">
         </div>
         <nav class="nav_modif_offre">
             <ul>
@@ -232,9 +233,11 @@
                 <!-- Options supplémentaires -->
                 <div class="form-group_modif_offre">
                     <label>Options supplémentaires :</label>
-                    <input type="radio" name="booster"> Ne pas booster mon offre
-                    <input type="radio" name="en-relief"> Mettre mon offre "en Relief"
-                    <input type="radio" name="a-la-une"> Mettre mon offre "À la Une"
+                    <div>
+                        <label><input type="radio" name="booster"> Ne pas booster mon offre</label>
+                        <label><input type="radio" name="en-relief"> Mettre mon offre "en Relief"</label>
+                        <label><input type="radio" name="a-la-une"> Mettre mon offre "À la Une"</label>
+                    </div>
                 </div>
 
                 <!-- Durée -->
@@ -268,13 +271,13 @@
                 </form>
             </div>
             <div class="newsletter-image_modif_offre">
-                <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
+                <img src="Images/Boiteauxlettres.png" alt="Boîte aux lettres">
             </div>
         </div>
         
         <div class="footer-links_modif_offre">
             <div class="logo">
-                <img src="images/logoBlanc.png" alt="Logo PAVCT">
+                <img src="Images/logoBlanc.png" alt="Logo PAVCT">
             </div>
             <div class="link-group_modif_offre">
                 <ul>
@@ -309,10 +312,10 @@
 
         <div class="footer-bottom_modif_offre">
             <div class="social-icons">
-                <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
-                <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
-                <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
-                <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="Images/Vector.png" alt="Facebook"></a>
+                <a href="#"><img src="Images/Vector2.png" alt="Instagram"></a>
+                <a href="#"><img src="Images/youtube.png" alt="YouTube"></a>
+                <a href="#"><img src="Images/twitter.png" alt="Twitter"></a>
             </div>
         </div>
     </footer>
