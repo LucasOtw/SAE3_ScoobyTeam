@@ -1,0 +1,1150 @@
+                                        /*****************************************************
+                                                   * Code général pour les pages *
+                                        *****************************************************/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --orange : #F28322;
+    --vert-clair : #BDC426;
+    --vert-fonce : #668C3F;
+    --gris : #E8E8E8;
+}
+
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+html, body {
+    height: 100%; /* Important pour que le footer se positionne en bas */
+}
+
+
+
+
+                                        /*****************************************************
+                                                 * Code pour la page header/footer *
+                                        *****************************************************/
+
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "K2D", sans-serif;
+    min-height: 100vh; /*Pour occuper toute la page*/
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 20px;
+    color: white;
+}
+
+.logo img {
+    height: 60px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 70px; /*Espace pour les éléments */
+    margin-right: 4em;
+}
+
+nav ul li a {
+    position: relative; /* Ajout pour que ::before fonctionne */
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 5px 10px;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+nav ul li a.active {
+    color: var(--vert-clair);
+}
+
+nav ul li a:hover {
+    color: var(--vert-clair);
+}
+
+.header_pro nav ul li a.active {
+    color: var(--orange);
+}
+
+.header_pro nav ul li a:hover {
+    color: var(--orange);
+}
+
+nav ul li a::before {
+    content: ""; /* Contenu vide pour l'effet de soulignement */
+    position: absolute; /* Positionnement absolu */
+    width: 0; /* Largeur initiale de la ligne de soulignement */
+    height: 2.5px; /* Hauteur de la ligne de soulignement */
+    bottom: -2px; /* Positionnement sous le texte */
+    background-color: var(--vert-clair); /* Couleur du soulignement */
+    transition: width 0.3s ease; /* Transition fluide */
+}
+
+.header_pro nav ul li a::before {
+    background-color: var(--orange); /* Couleur du soulignement pro */
+}
+
+nav ul li a:hover::before {
+    width: 90%; /* Élargissement du soulignement au survol */
+}
+
+footer {
+    background-color: #000;
+    color: rgb(0, 0, 0);
+    padding: 0 20px 40px 20px;
+    text-align: left;
+    width: 100%;
+    margin-top: auto; /* Positionne le footer en bas */
+}
+
+.newsletter {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--vert-clair); 
+    padding: 20px;
+    border-radius: 20px;
+    position: relative; /* Permet de le positionner */
+    margin-top: -130px; /* Ajuste cette valeur pour chevaucher les sections */
+    z-index: 1; /* Assure que le bloc soit au-dessus de la section noire */
+    width: 90%; /* Ajuste la largeur si nécessaire */
+    height: 65%;
+    margin-left: auto;
+    margin-right: auto;
+}  
+
+
+.newsletter-content {
+    text-align: left;
+    max-width: 60%;
+}
+
+.newsletter h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+
+.newsletter-form button {
+    /* padding: 10px 20px; */
+    background-color: #112211;
+    height: auto;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+} 
+
+.newsletter-form input, .newsletter-form button {
+    padding: 10px;
+    height: 100%; /* Assure la même hauteur pour les deux */
+    border: none;
+    border-radius: 5px;
+}
+
+.newsletter-form input {
+    flex-grow: 1; /* Laisse l'input s'étendre à la largeur restante */
+}
+
+.newsletter-form button {
+    padding: 0 20px; /* Réduit le padding vertical pour que le bouton reste aligné */
+    background-color: #112211;
+    color: white;
+    cursor: pointer;
+}
+
+
+.newsletter-image img {
+    max-height: 100px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    margin-top: 50px;
+    margin-right: 89px;
+}
+
+.link-group ul {
+    list-style: none;
+}
+
+.link-group ul li {
+    margin-bottom: 10px;
+}
+
+.link-group ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.link-group ul li a:hover {
+    color: var(--vert-clair);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-icons a img {
+    width: 24px;
+    margin: 0 10px;
+}
+
+                                        /*****************************************************
+                                                   * Code pour la page création offre *
+                                        *****************************************************/
+
+/* Main container centré verticalement et horizontalement */
+.main-creation-offre {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Formulaire centré avec une boîte */
+.main-creation-offre .form-container {
+    background-color: white;
+    padding: 40px;
+    margin-bottom: 3em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column; /* Alignement vertical des enfants */
+    justify-content: space-between; /* Espace entre les éléments */
+    height: 350px;
+}
+
+
+.main-creation-offre .form-container h1{
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+#etapes {
+    margin: 20px;
+    width: 500px;
+}
+
+.main-creation-offre label {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    color: #555;
+}
+
+.main-creation-offre select {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    border-color: var(--orange);
+}
+
+.main-creation-offre #button_continuer {
+    background-color: var(--orange);
+    color: white;
+    padding: 10px 20px;
+    margin-top: 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    align-self: flex-end; /* Positionne le bouton à droite */
+    display: inline-flex;
+    align-items: center;
+}
+
+.main-creation-offre #button_continuer img {
+    margin-left: 10px; /* Espacement entre le texte et la flèche */
+}
+
+.main-creation-offre button:hover {
+    background-color: var(--orange);
+}
+
+                                        /*****************************************************
+                                                   * Code pour la page création offre 2 *
+                                        *****************************************************/
+
+/* Main Container */
+.main-creation-offre2 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+
+/* Form Container */
+.form-container2 {
+    background-color: white;
+    padding: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.form-container h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Form Elements */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.col {
+    flex: 1;
+    padding: 10px;
+}
+
+.col input, .col select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.add-photo, .add-link {
+    color: var(--orange);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Price Options */
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Submit Button */
+#button_valider {
+    background-color: var(--orange);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+#button_valider img {
+    margin-left: 10px;
+}
+
+/* Conteneur pour l'image et le toggle */
+.header-controls {
+    display: flex;
+    align-items: center; /* Aligne verticalement au centre */
+    justify-content: space-between; /* Espacement entre l'image et le toggle */
+    padding: 20px; /* Optionnel : espacement autour du conteneur */
+}
+
+/* Styles pour l'image des étapes */
+#etapes {
+    max-width: 100%; /* Pour s'assurer que l'image est responsive */
+    height: auto; /* Conserve le ratio d'aspect */
+}
+
+/* Toggle container styling */
+.toggle-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Hide the actual checkbox */
+.toggle-button {
+    display: none;
+}
+
+/* Label styling for toggle */
+.toggle-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #555; /* Couleur du texte */
+}
+
+/* Switch design */
+.toggle-switch {
+    width: 40px;
+    height: 24px; /* Augmenter la hauteur pour éloigner le rond des bords */
+    background-color: white; /* Couleur de fond désactivée (blanche) */
+    border: 2px solid var(--orange); /* Bordure orange */
+    border-radius: 25px;
+    position: relative;
+    transition: background-color 0.3s, border-color 0.3s; /* Transition pour l'état activé */
+}
+
+/* Circle inside the switch */
+.toggle-switch::before {
+    content: "";
+    position: absolute;
+    top: 50%; /* Positionner au centre verticalement */
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background-color: white; /* Rond blanc dans l'état désactivé */
+    border: 2px solid var(--orange); /* Bordure orange pour le rond */
+    border-radius: 50%; /* Rond parfait */
+    transition: transform 0.3s, background-color 0.3s; /* Transition pour le mouvement */
+    transform: translateY(-50%); /* Ajuste la position verticale pour centrer */
+}
+
+/* Text beside the toggle */
+.toggle-text {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Checkbox checked state (when the toggle is "on") */
+.toggle-button:checked + .toggle-label .toggle-switch {
+    background-color: var(--orange); /* Fond orange lorsque activé */
+    border-color: var(--orange); /* Bordure orange lorsque activé */
+}
+
+/* Checkbox checked state (when the toggle is "on") */
+.toggle-button:checked + .toggle-label .toggle-switch::before {
+    transform: translate(20px, -50%); /* Déplace le rond vers la droite tout en le centrant */
+    background-color: white; /* Rond blanc lorsqu'activé */
+    border-color: var(--orange); /* Bordure orange pour le rond lorsqu'activé */
+}
+
+
+
+
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+}
+
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        /*****************************************************
+                                                   * Code page connexion Pro * 
+                                        *****************************************************/
+
+main.connexion_pro_main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 40px); /* Ajuster la hauteur en fonction de celle du header */
+}
+
+.connexion_pro_container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+}
+
+.connexion_pro_main fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-top: 0; /* Enlève le padding en haut */
+}
+.connexion_pro_main fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-top: 0; /* Enlève le padding en haut */
+}
+
+
+.connexion_pro_main legend {
+    font-size: 14px;
+    padding: 0 10px;
+    color: #333;
+    background-color: white;
+    position: absolute;
+    top: -10px; 
+    left: 10px; 
+
+    display: none;
+
+}
+.connexion_pro_main fieldset:focus-within legend {
+    display:inline;
+    transition: ease-out 0.3s;
+
+} 
+
+.connexion_pro_main fieldset input::placeholder {
+    padding-left: 10px;
+} 
+.connexion_pro_main fieldset input:focus::placeholder {
+    color: rgba(0, 0, 0, 0);
+} 
+
+.connexion_pro_main #remember{
+    accent-color: #df7519;
+}
+
+main.connexion_pro_main > div > div.connexion_pro_form-container > form > div.connexion_pro_remember-group > div {
+    display: flex;
+    flex-direction: row;
+}
+
+.connexion_pro_main input[type="email"],
+.connexion_pro_main input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+
+.connexion_pro_main button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--orange);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.connexion_pro_main button:hover {
+    background-color: #e65c00;
+}
+
+
+.connexion_pro_main h2 {
+    margin-bottom: 10px;
+}
+
+.connexion_pro_main p {
+    margin-bottom: 30px;
+}
+
+
+.connexion_pro_input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.connexion_pro_remember-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.connexion_pro_lab_enreg {
+    margin: 0;
+}
+
+.connexion_pro_form-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.connexion_pro_remember-group input {
+    margin-right: 5px;
+}
+
+
+.connexion_pro_additional-links {
+    /* margin-top: 20px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.connexion_pro_additional-links p {
+    width: 150%;
+    padding: 0;
+}
+
+.connexion_pro_main .pas_de_compte{
+    text-align: left;
+}
+.connexion_pro_main .compte_membre{
+    text-align: right;
+}
+
+.connexion_pro_form-container > form > div.connexion_pro_remember-group > a {
+    color : var(--orange);
+    text-decoration: none;
+}
+
+.connexion_pro_additional-links a {
+    text-decoration: none;
+    color: var(--orange);
+    margin-left: 5px;
+    
+}
+
+.connexion_pro_image-container {
+    width: 400px;
+    height: auto;
+}
+
+.connexion_pro_image-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+                                        /*****************************************************
+                                                   * Code page détail d'une offre *
+                                        *****************************************************/
+
+
+
+.hotel-detail {
+    max-width: 1200px;
+    margin: 0 3em;
+    padding: 20px;
+}
+
+.hotel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4em;
+    margin-top : 4em;
+}
+
+.rating{
+    color : #727272;
+}
+
+.hotel-info h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+
+}
+
+.hotel-info p {
+    font-size: 1.2em;
+    color : #727272;
+}
+
+
+.price-button {
+    text-align: right;
+}
+
+.price {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #2DD7A4;
+    margin-bottom: 10px;
+    margin-right: -17em;
+}
+
+.visit-button_detailoffre {
+    padding: 10px 20px;
+    background-color: var(--vert-clair);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    width: 223px;
+    height: 52px;
+    margin-right: -37em;
+}
+
+.gallery {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.main-image {
+    width: 47%;
+    height: 550px;
+    
+}
+/* Ajout d'un conteneur pour réunir thumbnail 2 et thumbnail 3 */
+.thumbnail-container {
+    display: flex; /* Pour aligner les deux sections en ligne */
+    gap: 10px; /* Espacement entre les deux sections */
+    width: 100%; /* S'étend sur toute la largeur */
+}
+
+/* Thumbnail 2 */
+.thumnail-grid2{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 40%; /* Ajuste la taille selon tes besoins */
+}
+
+.thumnail-grid2 img {
+    height: 49%;
+    border-radius: 10px;
+}
+
+/* Thumbnail 3 */
+.thumnail-grid3{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 40%; /* Même taille que le thumbnail 2 */
+}
+
+.thumnail-grid3 img {
+    height: 49%;
+    border-radius: 10px;
+}
+
+
+.description {
+    margin-bottom: 20px;
+}
+
+.description h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.description p {
+    font-size: 1.1em;
+    color: #727272;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.icon {
+    text-align: center;
+    font-size: 1.1em;
+    margin-top : 3em;
+    margin-right: 6em;
+    
+}
+
+.footer_detail_avis{
+    margin-top: 78em;
+
+}
+
+.icon{
+    border : 1px none ;
+    background-color : rgba(23, 111, 242, 0.05);
+    padding : 20px;
+    width : 120px;
+    height : 109px;
+    border-radius : 29px;
+    box-shadow: 5px 5px 10px 0px rgba(166, 158, 158, 0.5);
+    
+}
+
+.iconify {
+    color: black;
+    font-size: 45px;
+}
+
+.bx--handicap {
+    display: inline-block;
+    width: 90px;
+    height: 50px;
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='9' cy='4' r='2' fill='%23000'/%3E%3Cpath fill='%23000' d='M16.98 14.804A1 1 0 0 0 16 14h-4.133l-.429-3H16V9h-4.847l-.163-1.142A1 1 0 0 0 10 7H9a1.003 1.003 0 0 0-.99 1.142l.877 6.142A2.01 2.01 0 0 0 10.867 16h4.313l.839 4.196c.094.467.504.804.981.804h3v-2h-2.181z'/%3E%3Cpath fill='%23000' d='M12.51 17.5c-.739 1.476-2.25 2.5-4.01 2.5A4.505 4.505 0 0 1 4 15.5a4.5 4.5 0 0 1 2.817-4.167l-.289-2.025C3.905 10.145 2 12.604 2 15.5C2 19.084 4.916 22 8.5 22a6.5 6.5 0 0 0 5.545-3.126l-.274-1.374z'/%3E%3C/svg%3E");
+    background-color: currentColor;
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+  }
+
+  .mdi--dog {
+    display: inline-block;
+    width: 80px;
+    height: 50px;
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M18 4c-1.71 0-2.75.33-3.35.61C13.88 4.23 13 4 12 4s-1.88.23-2.65.61C8.75 4.33 7.71 4 6 4c-3 0-5 8-5 10c0 .83 1.32 1.59 3.14 1.9c.64 2.24 3.66 3.95 7.36 4.1v-4.28c-.59-.37-1.5-1.04-1.5-1.72c0-1 2-1 2-1s2 0 2 1c0 .68-.91 1.35-1.5 1.72V20c3.7-.15 6.72-1.86 7.36-4.1C21.68 15.59 23 14.83 23 14c0-2-2-10-5-10M4.15 13.87c-.5-.12-.89-.26-1.15-.37c.25-2.77 2.2-7.1 3.05-7.5c.54 0 .95.06 1.32.11c-2.1 2.31-2.93 5.93-3.22 7.76M9 12a1 1 0 0 1-1-1c0-.54.45-1 1-1a1 1 0 0 1 1 1c0 .56-.45 1-1 1m6 0a1 1 0 0 1-1-1c0-.54.45-1 1-1a1 1 0 0 1 1 1c0 .56-.45 1-1 1m4.85 1.87c-.29-1.83-1.12-5.45-3.22-7.76c.37-.05.78-.11 1.32-.11c.85.4 2.8 4.73 3.05 7.5c-.25.11-.64.25-1.15.37'/%3E%3C/svg%3E");
+    background-color: currentColor;
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+  }
+
+  .ph--cigarette-slash-bold {
+    display: inline-block;
+    width: 80px;
+    height: 50px;
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%23000' d='M201.67 55.89c7.53-12.71 7.12-19.63 5.07-21.1A12 12 0 0 1 216.67 13a25.9 25.9 0 0 1 13.8 15.79c3.6 10.92.86 24.17-8.14 39.38c-7.53 12.7-7.12 19.63-5.07 21.1a12 12 0 0 1-9.93 21.84a26 26 0 0 1-13.8-15.79c-3.6-10.98-.86-24.23 8.14-39.43m-56.14 39.38a26 26 0 0 0 13.8 15.79a12 12 0 0 0 9.93-21.84c-2-1.47-2.46-8.4 5.07-21.1c9-15.21 11.74-28.46 8.14-39.38A25.9 25.9 0 0 0 168.67 13a12 12 0 0 0-9.93 21.84c2 1.47 2.46 8.39-5.07 21.1c-9 15.15-11.74 28.4-8.14 39.33m71.35 112.66a12 12 0 1 1-17.76 16.14L173.6 196H32a20 20 0 0 1-20-20v-32a20 20 0 0 1 20-20h76.15l-69-75.93a12 12 0 1 1 17.73-16.14ZM36 172h40v-24H36Zm115.78 0L130 148h-30v24ZM224 124h-34.67a12 12 0 0 0 0 24H220v34.94a12 12 0 0 0 24 0V144a20 20 0 0 0-20-20'/%3E%3C/svg%3E");
+    background-color: currentColor;
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+  }
+
+  .icones{
+    margin-top: 3em;
+    margin-right: 13em;
+  }
+
+  .detail_offre_localisation h2 {
+    font-size: 1.8em;
+    margin-bottom: 60px;
+    margin-left : 2em;
+    margin-top: 2em;
+  }
+
+  .map-frame {
+    margin-left: 60px; /* Ajoute une marge à gauche */
+    max-width: 100%;   /* S'assure que l'iframe est responsive */
+  
+}
+
+.detail_offre_avis h2 {
+    font-size: 1.8em;
+    margin-bottom: 60px;
+    margin-left : 2em;
+    margin-top: 2em;
+  }
+
+  .detail_offre_voir-plus-bouton {
+    background-color: #28a745; /* Couleur verte */
+    color: white; /* Texte en blanc */
+    padding: 10px 20px; /* Espacement interne */
+    border: none; /* Pas de bordure */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur en forme de main */
+    margin-top: 10px; /* Espace entre le bouton et l'image */
+    font-size: 14px; /* Taille du texte */
+    transition: background-color 0.3s ease; /* Animation au survol */
+}
+
+.detail_offre_voir-plus-bouton:hover {
+    background-color: #218838; /* Couleur plus foncée au survol */
+}
+
+
+                                        /*****************************************************
+                                                        * Code page  Mes offres *
+                                        *****************************************************/
+
+
+/* Profile Section */
+.profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+
+.banner img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.profile-info {
+    margin-top: -50px;
+    text-align: center;
+}
+
+.profile-info img.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+}
+
+.profile-info h1 {
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+.profile-info p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Tabs Section */
+.tabs {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.tabs ul {
+    display: inline-block;
+    padding: 0;
+    list-style: none;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tabs ul li {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.tabs ul li a {
+    font-size: 16px;
+    padding: 10px 20px;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+    color: #333;
+}
+
+.tabs ul li a.active {
+    border-color: #ff6600;
+}
+
+/* Carte d'offre */
+.offer-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 15px;
+    width: 260px; /* Ajuste selon ton besoin */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+}
+
+/* Image */
+.offer-image {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.offer-image img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.offers {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;  /* Pour que les cartes aillent à la ligne si nécessaire */
+    gap: 20px;        /* Ajoute un espacement entre les cartes */
+    justify-content: space-around;  /* Aligne les cartes de manière équitable */
+    margin: 20px;
+}
+
+.offres {
+    display: flex;
+    flex-wrap: wrap;  /* Pour que les cartes aillent à la ligne si nécessaire */
+    gap: 20px;        /* Ajoute un espacement entre les cartes */
+    justify-content: space-around;  /* Aligne les cartes de manière équitable */
+    margin: 20px;
+}
+
+.offer-card {
+    width: 260px;  /* Assure une largeur fixe pour chaque carte */
+    margin-bottom: 20px;  /* Ajoute un espace en bas au cas où elles iraient à la ligne */
+}
+
+
+/* Note */
+.offer-rating {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.star {
+    color: #ffcc00;
+    margin-right: 5px;
+}
+
+/*.rating {
+    color: #333;
+}*/
+
+/* Statut */
+.offer-status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #ff4d4f;
+    display: flex;
+    align-items: center;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ff4d4f;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* Information de l'offre */
+.offer-info {
+    padding: 10px 0;
+}
+
+.offer-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.offer-info .category {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.offer-info .update {
+    font-size: 12px;
+    color: #ff6600;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.update-icon {
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.offer-info .last-update {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.offer-info .offer-type {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.offer-info .price {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Bouton d'ajout */
+.add-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: #ff6600;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-btn:hover {
+    background-color: #e65a00;
+}
+
+.image-button {
+    background-image: url('images/PublierAnnonce.png'); /* Chemin de l'image */
+    background-size: cover; /* L'image couvrira tout le bouton */
+    background-position: center; /* Centrer l'image */
+    width: 300px; /* Remplace par la largeur de tes cases offres */
+    height: 200px; /* Remplace par la hauteur de tes cases offres */
+    border: none; /* Pas de bordure */
+    cursor: pointer; /* Curseur au survol */
+    display: flex; /* Pour centrer le texte */
+    align-items: center; /* Centre le texte verticalement */
+    justify-content: center; /* Centre le texte horizontalement */
+    border-radius: 15px; /* Ajuste ce chiffre pour arrondir les angles comme tes cases offres */
+    position: relative; /* Pour bien positionner le texte */
+    margin: 10px; /* Optionnel, pour espacer le bouton des autres éléments */
+}
+
+.button-text {
+    color: white; /* Couleur du texte */
+    font-size: 18px; /* Taille du texte */
+    font-weight: bold; /* Rendre le texte plus visible */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour rendre le texte plus lisible */
+}
+
+.image-button:hover {
+    opacity: 0.8; /* Effet visuel lors du survol (optionnel) */
+}
