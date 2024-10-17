@@ -45,10 +45,7 @@
             
             <!-- Nouvelle structure pour les miniatures -->
             <div class="detail_offre_thumbnail-container">
-                <div class="detail_offre_thumbnail-grid2">
-                    <img src="images/tiallannec6.png" alt="Jardin">
-                    <img src="images/tiallannec7.png" alt="Piscine">
-                </div>
+                
                 <div class="detail_offre_thumbnail-grid3">
                     <img src="images/tiallannec8.png" alt="Chambre">
                     <img src="images/tiallannec9.png" alt="Vue sur la mer">
