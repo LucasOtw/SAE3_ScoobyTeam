@@ -167,7 +167,6 @@ footer {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    width: 100%; /* Pleine largeur pour petits écrans */
 }
 
 .newsletter-form input {
@@ -315,10 +314,14 @@ footer {
     margin-right: -37em;
 }
 
+.visit-button_detailoffre:hover {
+    transition: ease-in-out 0.2s;
+}
+
 .detail_offre_gallery {
     display: flex;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 47px;
     justify-content: center;
     align-content: center;
 }
@@ -367,7 +370,7 @@ footer {
 
 .detail_offre_description h2 {
     font-size: 1.8em;
-    margin-bottom: 10px;
+    margin-bottom: 24px;
 }
 
 .detail_offre_description p {
@@ -377,7 +380,7 @@ footer {
 
 .detail_offre_icons {
     display: flex;
-    justify-content: space-around;
+    
     margin-bottom: 20px;
 }
 
