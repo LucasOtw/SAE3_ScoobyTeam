@@ -1,0 +1,171 @@
+.body_info_bancaire {
+    display: flex;
+    flex-direction: column; /* Dispose les enfants en colonne */
+    min-height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    padding: 20px; /* Espace autour du contenu principal */
+    padding-bottom: 100px; /* Ajout d'un espace supplémentaire en bas pour le footer */
+    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
+}
+.header_info_bancaire {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 20px;
+    color: white;
+}
+
+.logo_info_bancaire img {
+    height: 60px;
+}
+
+.nav_info_bancaire ul {
+    list-style: none;
+    display: flex;
+    gap: 70px; /* Espace pour les éléments */
+    margin-right: 4em;
+}
+
+.nav_info_bancaire ul li a {
+    position: relative; /* Ajout pour que ::before fonctionne */
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 5px 10px;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+.nav_info_bancaire ul li a.active {
+    color: var(--orange);
+}
+
+.nav_info_bancaire ul li a:hover {
+    color: var(--orange);
+}
+
+.footer_info_bancaire .newsletter {
+    background-color: var(--orange); 
+}
+
+.nav_info_bancaire ul li a::before {
+    content: ""; /* Contenu vide pour l'effet de soulignement */
+    position: absolute; /* Positionnement absolu */
+    width: 0; /* Largeur initiale de la ligne de soulignement */
+    height: 2.5px; /* Hauteur de la ligne de soulignement */
+    bottom: -2px; /* Positionnement sous le texte */
+    background-color: var(--orange); /* Couleur du soulignement */
+    transition: width 0.3s ease; /* Transition fluide */
+}
+
+.nav_info_bancaire ul li a:hover::before {
+    width: 90%; /* Élargissement du soulignement au survol */
+}
+
+.footer_info_bancaire {
+    background-color: #000;
+    color: rgb(0, 0, 0);
+    padding: 40px 20px;
+    text-align: left;
+    width: 100%;
+    margin-top: auto; /* Positionne le footer en bas */
+    clear: both; /* Assure que le footer n'est pas chevauché par d'autres éléments */
+    margin-top: 20px; /* Espace au-dessus du footer */
+}
+
+.newsletter_info_bancaire {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--orange); 
+    padding: 20px;
+    border-radius: 20px;
+    position: relative; /* Permet de le positionner */
+    margin-top: -130px; /* Ajuste cette valeur pour chevaucher les sections */
+    z-index: 1; /* Assure que le bloc soit au-dessus de la section noire */
+    width: 90%; /* Ajuste la largeur si nécessaire */
+    height: 65%;
+    margin-left: auto;
+    margin-right: auto;
+}  
+
+.newsletter-content_info_bancaire {
+    text-align: left;
+    max-width: 60%;
+}
+
+.newsletter_info_bancaire h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.newsletter-form_info_bancaire {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.newsletter-form_info_bancaire button {
+    background-color: #112211;
+    height: auto;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+} 
+
+.newsletter-form_info_bancaire input, .newsletter-form button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.newsletter-form_info_bancaire input {
+    flex-grow: 1; /* Laisse l'input s'étendre à la largeur restante */
+}
+
+.newsletter-form_info_bancaire button {
+    padding: 0 20px; /* Réduit le padding vertical pour que le bouton reste aligné */
+    background-color: #112211;
+    color: white;
+    cursor: pointer;
+}
+
+.newsletter-image_info_bancaire img {
+    max-height: 100px;
+}
+
+.footer-links_info_bancaire {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    margin-right: 89px;
+}
+
+.link-group_info_bancaire ul {
+    list-style: none;
+}
+
+.link-group_info_bancaire ul li {
+    margin-bottom: 10px;
+}
+
+.link-group_info_bancaire ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.link-group_info_bancaire ul li a:hover {
+    color: var(--vert-clair);
+}
+
+.footer-bottom_info_bancaire {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-icons_info_bancaire a img {
+    width: 24px;
+    margin: 0 10px;
+}
