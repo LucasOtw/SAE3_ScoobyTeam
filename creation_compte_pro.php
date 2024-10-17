@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Se connecter</title>
     <link rel="icon" type="image/png" href="images/logoPin.png" width="16px" height="32px">
-    <link rel="stylesheet" href="styleCreaPro.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="header_footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -33,16 +34,17 @@
                 <h1>S’inscrire</h1>
                 <p>Créer un compte pour profiter de l’expérience PACT</p>
                 <form action="#" method="POST">
-                    <fieldset>
-                        <legend>Raison sociale *</legend>
-                        <input type="text" id="raison-sociale" name="raison-sociale" placeholder="Raison sociale *" required>
-                    </fieldset>
+                    <div class="crea_pro_raison_sociale_num_siren">
+                        <fieldset>
+                            <legend>Raison sociale *</legend>
+                            <input type="text" id="raison-sociale" name="raison-sociale" placeholder="Raison sociale *" required>
+                        </fieldset>
 
-                    <fieldset>
-                        <legend>N° de Siren *</legend>
-                        <input type="text" id="siren" name="siren" placeholder="N° de Siren *" required>
-                    </fieldset>
-
+                        <fieldset>
+                            <legend>N° de Siren *</legend>
+                            <input type="text" id="siren" name="siren" placeholder="N° de Siren *" required>
+                        </fieldset>
+                    </div>
                     <fieldset>
                         <legend>Email *</legend>
                         <input type="email" id="email" name="email" placeholder="Email *" required>
