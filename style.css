@@ -262,7 +262,7 @@ footer {
 
 
 .detail_offre_hotel-detail {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 3em;
     padding: 20px;
 }
@@ -319,6 +319,8 @@ footer {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
+    justify-content: center;
+    align-content: center;
 }
 
 .main-image {
@@ -341,16 +343,22 @@ footer {
     width: 40%; /* Ajuste la taille selon tes besoins */
 }
 
-.detail_offre_thumbnail-grid2 img, .detail_offre_thumbnail-grid3 img {
-    height: 200px; /* Ajuste selon les besoins */
+.detail_offre_thumbnail-grid3 img {
+    height: 49%;
+    border-radius: 10px;
     object-fit: cover; /* Pour s'assurer que les images restent proportionnées */
 }
 
 
-.detail_offre_thumbnail-grid3 img {
-    height: 49%;
-    border-radius: 10px;
+.detail_offre_thumbnail-grid3, .thumbnail-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+
+
+
 
 
 .detail_offre_description {
@@ -474,7 +482,7 @@ footer {
 }
 
 .visit-button_detailoffre {
-    margin-right: -117px; /* Supprime la marge négative */
+    margin-right: 0px; /* Supprime la marge négative */
     display: inline-block;
    
 }

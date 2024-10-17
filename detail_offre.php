@@ -44,13 +44,13 @@
             </div>
             
             <!-- Nouvelle structure pour les miniatures -->
-            <div class="detail_offre_thumbnail-container">
+            
                 
                 <div class="detail_offre_thumbnail-grid3">
                     <img src="images/tiallannec8.png" alt="Chambre">
                     <img src="images/tiallannec9.png" alt="Vue sur la mer">
                 </div>
-            </div>
+
         </div>
 
         <div class="detail_offre_description">
