@@ -19,6 +19,11 @@
             </ul>
         </nav>
     </header>
+    <main class="modif_compte_membre">
+        <div class="modifier_compte_membre_imageconnexion">
+        <img src="images/Rectangle 3.png" alt="Rectangle de connexion">
+        </div>
+    </main>
     <footer class="footer_detail_avis">
         <div class="newsletter">
             <div class="newsletter-content">

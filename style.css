@@ -252,3 +252,16 @@ footer {
         padding: 40px 80px;
     }
 }
+
+.modifier_compte_membre_imageconnexion img {
+    max-width: 100%; /* Assure que l'image s'adapte à la taille de l'écran */
+    height: auto;
+ }
+
+.modifier_compte_membre_imageconnexion {
+    display: flex;
+    justify-content: center; /* Centre l'image horizontalement */
+    align-items: center; /* Centre l'image verticalement */
+    margin-top: 0px; /* Espace en haut */
+    height: 100vh; /* Ajuste en fonction de la taille de la zone visible */
+ }
