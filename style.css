@@ -1,290 +1,289 @@
 /*****************************************************
-                                            * Code modifier offre *
-                                        *****************************************************/
+    * Code modifier offre *
+*****************************************************/
 
-                                        .modifier_offre_corps {
-                                            display: flex;
-                                            flex-direction: column; /* Aligne les éléments en colonne */
-                                            justify-content: flex-start; /* Aligne les éléments au début */
-                                            align-items: stretch; /* Assure que tous les éléments prennent la largeur complète */
-                                            flex-grow: 1; /* Permet à cette section de prendre plus d'espace */
-                                            width: 100%; /* Assure que le contenu prend toute la largeur disponible */
-                                        }
+.modifier_offre_corps {
+    display: flex;
+    flex-direction: column; /* Aligne les éléments en colonne */
+    justify-content: flex-start; /* Aligne les éléments au début */
+    align-items: stretch; /* Assure que tous les éléments prennent la largeur complète */
+    flex-grow: 1; /* Permet à cette section de prendre plus d'espace */
+    width: 100%; /* Assure que le contenu prend toute la largeur disponible */
+}
 
-                                        .body_modif_offre {
-                                            display: flex;
-                                            flex-direction: column; /* Dispose les enfants en colonne */
-                                            min-height: 100vh; /* Prend toute la hauteur de la fenêtre */
-                                            padding: 20px; /* Espace autour du contenu principal */
-                                            padding-bottom: 100px; /* Ajout d'un espace supplémentaire en bas pour le footer */
-                                            box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
-                                        }
-                                        
+.body_modif_offre {
+    display: flex;
+    flex-direction: column; /* Dispose les enfants en colonne */
+    min-height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    padding: 20px; /* Espace autour du contenu principal */
+    padding-bottom: 100px; /* Ajout d'un espace supplémentaire en bas pour le footer */
+    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
+}
 
-                                        .header_modif_offre {
-                                            display: flex;
-                                            justify-content: space-between;
-                                            align-items: center;
-                                            background-color: #000;
-                                            padding: 20px;
-                                            color: white;
-                                        }
 
-                                        .logo_modif_offre img {
-                                            height: 60px;
-                                        }
+.header_modif_offre {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 20px;
+    color: white;
+}
 
-                                        .nav_modif_offre ul {
-                                            list-style: none;
-                                            display: flex;
-                                            gap: 70px; /* Espace pour les éléments */
-                                            margin-right: 4em;
-                                        }
+.logo_modif_offre img {
+    height: 60px;
+}
 
-                                        .nav_modif_offre ul li a {
-                                            position: relative; /* Ajout pour que ::before fonctionne */
-                                            text-decoration: none;
-                                            color: white;
-                                            font-size: 18px;
-                                            padding: 5px 10px;
-                                            transition: color 0.3s, border-bottom 0.3s;
-                                        }
+.nav_modif_offre ul {
+    list-style: none;
+    display: flex;
+    gap: 70px; /* Espace pour les éléments */
+    margin-right: 4em;
+}
 
-                                        .nav_modif_offre ul li a.active {
-                                            color: var(--orange);
-                                        }
+.nav_modif_offre ul li a {
+    position: relative; /* Ajout pour que ::before fonctionne */
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 5px 10px;
+    transition: color 0.3s, border-bottom 0.3s;
+}
 
-                                        .nav_modif_offre ul li a:hover {
-                                            color: var(--orange);
-                                        }
+.nav_modif_offre ul li a.active {
+    color: var(--orange);
+}
 
-                                        .footer_modif_offre .newsletter {
-                                            background-color: var(--orange); 
-                                        }
+.nav_modif_offre ul li a:hover {
+    color: var(--orange);
+}
 
-                                        .nav_modif_offre ul li a::before {
-                                            content: ""; /* Contenu vide pour l'effet de soulignement */
-                                            position: absolute; /* Positionnement absolu */
-                                            width: 0; /* Largeur initiale de la ligne de soulignement */
-                                            height: 2.5px; /* Hauteur de la ligne de soulignement */
-                                            bottom: -2px; /* Positionnement sous le texte */
-                                            background-color: var(--orange); /* Couleur du soulignement */
-                                            transition: width 0.3s ease; /* Transition fluide */
-                                        }
+.footer_modif_offre .newsletter {
+    background-color: var(--orange); 
+}
 
-                                        .nav_modif_offre ul li a:hover::before {
-                                            width: 90%; /* Élargissement du soulignement au survol */
-                                        }
+.nav_modif_offre ul li a::before {
+    content: ""; /* Contenu vide pour l'effet de soulignement */
+    position: absolute; /* Positionnement absolu */
+    width: 0; /* Largeur initiale de la ligne de soulignement */
+    height: 2.5px; /* Hauteur de la ligne de soulignement */
+    bottom: -2px; /* Positionnement sous le texte */
+    background-color: var(--orange); /* Couleur du soulignement */
+    transition: width 0.3s ease; /* Transition fluide */
+}
 
-                                        .footer_modif_offre {
-                                            background-color: #000;
-                                            color: rgb(0, 0, 0);
-                                            padding: 40px 20px;
-                                            text-align: left;
-                                            width: 100%;
-                                            margin-top: auto; /* Positionne le footer en bas */
-                                            clear: both; /* Assure que le footer n'est pas chevauché par d'autres éléments */
-                                            margin-top: 20px; /* Espace au-dessus du footer */
-                                        }
+.nav_modif_offre ul li a:hover::before {
+    width: 90%; /* Élargissement du soulignement au survol */
+}
 
-                                        .newsletter_modif_offre {
-                                            display: flex;
-                                            justify-content: space-between;
-                                            background-color: var(--orange); 
-                                            padding: 20px;
-                                            border-radius: 20px;
-                                            position: relative; /* Permet de le positionner */
-                                            margin-top: -130px; /* Ajuste cette valeur pour chevaucher les sections */
-                                            z-index: 1; /* Assure que le bloc soit au-dessus de la section noire */
-                                            width: 90%; /* Ajuste la largeur si nécessaire */
-                                            height: 65%;
-                                            margin-left: auto;
-                                            margin-right: auto;
-                                        }  
+.footer_modif_offre {
+    background-color: #000;
+    color: rgb(0, 0, 0);
+    padding: 40px 20px;
+    text-align: left;
+    width: 100%;
+    margin-top: auto; /* Positionne le footer en bas */
+    clear: both; /* Assure que le footer n'est pas chevauché par d'autres éléments */
+    margin-top: 20px; /* Espace au-dessus du footer */
+}
 
-                                        .newsletter-content_modif_offre {
-                                            text-align: left;
-                                            max-width: 60%;
-                                        }
+.newsletter_modif_offre {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--orange); 
+    padding: 20px;
+    border-radius: 20px;
+    position: relative; /* Permet de le positionner */
+    margin-top: -130px; /* Ajuste cette valeur pour chevaucher les sections */
+    z-index: 1; /* Assure que le bloc soit au-dessus de la section noire */
+    width: 90%; /* Ajuste la largeur si nécessaire */
+    height: 65%;
+    margin-left: auto;
+    margin-right: auto;
+}  
 
-                                        .newsletter_modif_offre h2 {
-                                            font-size: 24px;
-                                            margin-bottom: 10px;
-                                        }
+.newsletter-content_modif_offre {
+    text-align: left;
+    max-width: 60%;
+}
 
-                                        .newsletter-form_modif_offre {
-                                            display: flex;
-                                            gap: 10px;
-                                            margin-top: 10px;
-                                        }
+.newsletter_modif_offre h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
 
-                                        .newsletter-form_modif_offre button {
-                                            background-color: #112211;
-                                            height: auto;
-                                            color: white;
-                                            border: none;
-                                            border-radius: 5px;
-                                            cursor: pointer;
-                                        } 
+.newsletter-form_modif_offre {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
 
-                                        .newsletter-form_modif_offre input, .newsletter-form button {
-                                            padding: 10px;
-                                            border: none;
-                                            border-radius: 5px;
-                                        }
+.newsletter-form_modif_offre button {
+    background-color: #112211;
+    height: auto;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+} 
 
-                                        .newsletter-form_modif_offre input {
-                                            flex-grow: 1; /* Laisse l'input s'étendre à la largeur restante */
-                                        }
+.newsletter-form_modif_offre input, .newsletter-form button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
 
-                                        .newsletter-form_modif_offre button {
-                                            padding: 0 20px; /* Réduit le padding vertical pour que le bouton reste aligné */
-                                            background-color: #112211;
-                                            color: white;
-                                            cursor: pointer;
-                                        }
+.newsletter-form_modif_offre input {
+    flex-grow: 1; /* Laisse l'input s'étendre à la largeur restante */
+}
 
-                                        .newsletter-image_modif_offre img {
-                                            max-height: 100px;
-                                        }
+.newsletter-form_modif_offre button {
+    padding: 0 20px; /* Réduit le padding vertical pour que le bouton reste aligné */
+    background-color: #112211;
+    color: white;
+    cursor: pointer;
+}
 
-                                        .footer-links_modif_offre {
-                                            display: flex;
-                                            justify-content: space-between;
-                                            margin-bottom: 40px;
-                                            margin-top: 20px;
-                                            margin-right: 89px;
-                                        }
+.newsletter-image_modif_offre img {
+    max-height: 100px;
+}
 
-                                        .link-group_modif_offre ul {
-                                            list-style: none;
-                                        }
+.footer-links_modif_offre {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    margin-right: 89px;
+}
 
-                                        .link-group_modif_offre ul li {
-                                            margin-bottom: 10px;
-                                        }
+.link-group_modif_offre ul {
+    list-style: none;
+}
 
-                                        .link-group_modif_offre ul li a {
-                                            color: white;
-                                            text-decoration: none;
-                                            transition: color 0.3s ease;
-                                        }
+.link-group_modif_offre ul li {
+    margin-bottom: 10px;
+}
 
-                                        .link-group_modif_offre ul li a:hover {
-                                            color: var(--vert-clair);
-                                        }
+.link-group_modif_offre ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
 
-                                        .footer-bottom_modif_offre {
-                                            display: flex;
-                                            justify-content: space-between;
-                                            align-items: center;
-                                        }
+.link-group_modif_offre ul li a:hover {
+    color: var(--vert-clair);
+}
 
-                                        .social-icons_modif_offre a img {
-                                            width: 24px;
-                                            margin: 0 10px;
-                                        }
+.footer-bottom_modif_offre {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-                                        .horaires_table_modif_offre {
-                                            width: 100%;
-                                            border-collapse: collapse; /* Fusionne les bordures */
-                                            margin-top: 20px; /* Espace au-dessus du tableau */
-                                        }
+.social-icons_modif_offre a img {
+    width: 24px;
+    margin: 0 10px;
+}
 
-                                        .horaires_table_modif_offre th,
-                                        .horaires_table_modif_offre td {
-                                            border: 1px solid #ccc; /* Bordure autour des cellules */
-                                            padding: 10px; /* Espacement à l'intérieur des cellules */
-                                            text-align: center; /* Centre le texte */
-                                        }
+.horaires_table_modif_offre {
+    width: 100%;
+    border-collapse: collapse; /* Fusionne les bordures */
+    margin-top: 20px; /* Espace au-dessus du tableau */
+}
 
-                                        .horaires_table_modif_offre th {
-                                            background-color: var(--orange); /* Couleur de fond des en-têtes */
-                                            color: white; /* Couleur du texte des en-têtes */
-                                        }
+.horaires_table_modif_offre th,
+.horaires_table_modif_offre td {
+    border: 1px solid #ccc; /* Bordure autour des cellules */
+    padding: 10px; /* Espacement à l'intérieur des cellules */
+    text-align: center; /* Centre le texte */
+}
 
-                                        .horaires_table_modif_offre td input[type="text"] {
-                                            width: 80%; /* Largeur des champs de texte */
-                                        }
+.horaires_table_modif_offre th {
+    background-color: var(--orange); /* Couleur de fond des en-têtes */
+    color: white; /* Couleur du texte des en-têtes */
+}
 
-                                        .switch_modif_offre {
-                                            position: relative;
-                                            display: inline-block;
-                                            width: 60px; /* Largeur du switch */
-                                            height: 34px; /* Hauteur du switch */
-                                        }
+.horaires_table_modif_offre td input[type="text"] {
+    width: 80%; /* Largeur des champs de texte */
+}
 
-                                        .switch_modif_offre input {
-                                            opacity: 0; /* Cache le checkbox */
-                                            width: 0;
-                                            height: 0;
-                                        }
+.switch_modif_offre {
+    position: relative;
+    display: inline-block;
+    width: 60px; /* Largeur du switch */
+    height: 34px; /* Hauteur du switch */
+}
 
-                                        .slider_modif_offre {
-                                            position: absolute;
-                                            cursor: pointer;
-                                            top: 0;
-                                            left: 0;
-                                            right: 0;
-                                            bottom: 0;
-                                            background-color: #ccc; /* Couleur de fond du switch */
-                                            transition: .4s; /* Transition fluide */
-                                            border-radius: 34px; /* Arrondi du switch */
-                                        }
+.switch_modif_offre input {
+    opacity: 0; /* Cache le checkbox */
+    width: 0;
+    height: 0;
+}
 
-                                        .slider_modif_offre:before {
-                                            position: absolute;
-                                            content: "";
-                                            height: 26px; /* Hauteur du cercle du switch */
-                                            width: 26px; /* Largeur du cercle du switch */
-                                            left: 4px; /* Espace à gauche */
-                                            bottom: 4px; /* Espace en bas */
-                                            background-color: white; /* Couleur du cercle */
-                                            transition: .4s; /* Transition fluide */
-                                            border-radius: 50%; /* Arrondi du cercle */
-                                        }
+.slider_modif_offre {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc; /* Couleur de fond du switch */
+    transition: .4s; /* Transition fluide */
+    border-radius: 34px; /* Arrondi du switch */
+}
 
-                                        input:checked + .slider_modif_offre {
-                                            background-color: var(--orange); /* Couleur de fond lorsque c'est activé */
-                                        }
+.slider_modif_offre:before {
+    position: absolute;
+    content: "";
+    height: 26px; /* Hauteur du cercle du switch */
+    width: 26px; /* Largeur du cercle du switch */
+    left: 4px; /* Espace à gauche */
+    bottom: 4px; /* Espace en bas */
+    background-color: white; /* Couleur du cercle */
+    transition: .4s; /* Transition fluide */
+    border-radius: 50%; /* Arrondi du cercle */
+}
 
-                                        input:checked + .slider_modif_offre:before {
-                                            transform: translateX(26px); /* Déplacement du cercle vers la droite */
-                                        }
+input:checked + .slider_modif_offre {
+    background-color: var(--orange); /* Couleur de fond lorsque c'est activé */
+}
 
-                                        .info_etablissement_modif_offre {
-                                            display: flex; /* Active le flexbox pour aligner les éléments */
-                                            justify-content: space-between; /* Espace entre les éléments, si nécessaire */
-                                            align-items: center; /* Centre les éléments verticalement */
-                                            margin-bottom: 20px; /* Espace sous cette section */
-                                        }
+input:checked + .slider_modif_offre:before {
+    transform: translateX(26px); /* Déplacement du cercle vers la droite */
+}
 
-                                        .form-group_modif_offre {
-                                            border: 1px solid #ccc; /* Bordure grise */
-                                            border-radius: 10px; /* Rayon des coins */
-                                            padding: 15px; /* Espacement interne */
-                                            margin-bottom: 20px; /* Espace entre les éléments */
-                                            background-color: #f9f9f9; /* Couleur de fond légère */
-                                            flex: 1 1 calc(50% - 10px); /* Prend 50% de la largeur moins un espace */
-                                            box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
-                                        }
-                                        .bouton_valider_modif_offre {
-                                            align-self: flex-end; /* Aligne le bouton à droite */
-                                            padding: 10px 100px; /* Espace autour du texte */
-                                            background-color: var(--orange); /* Couleur de fond */
-                                            color: white; /* Couleur du texte */
-                                            border: none; /* Supprime la bordure par défaut */
-                                            border-radius: 5px; /* Arrondi des coins */
-                                            cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
-                                            margin-top: 20px; /* Optionnel : espace au-dessus du bouton */
-                                            margin-left : 1600px;
-                                            margin-bottom: 150px;
-                                        }
-                                        .form-group_modif_offre input[type="radio"] {
-                                            margin-right: 5px; /* Espace entre le bouton et le texte */
-                                        }
-                                        
-                                        .form-group_modif_offre label {
-                                            margin-right: 50px; /* Espace entre les labels */
-                                        }
-                                        
+.info_etablissement_modif_offre {
+    display: flex; /* Active le flexbox pour aligner les éléments */
+    justify-content: space-between; /* Espace entre les éléments, si nécessaire */
+    align-items: center; /* Centre les éléments verticalement */
+    margin-bottom: 20px; /* Espace sous cette section */
+}
+
+.form-group_modif_offre {
+    border: 1px solid #ccc; /* Bordure grise */
+    border-radius: 10px; /* Rayon des coins */
+    padding: 15px; /* Espacement interne */
+    margin-bottom: 20px; /* Espace entre les éléments */
+    background-color: #f9f9f9; /* Couleur de fond légère */
+    flex: 1 1 calc(50% - 10px); /* Prend 50% de la largeur moins un espace */
+    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
+}
+.bouton_valider_modif_offre {
+    align-self: flex-end; /* Aligne le bouton à droite */
+    padding: 10px 100px; /* Espace autour du texte */
+    background-color: var(--orange); /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    border: none; /* Supprime la bordure par défaut */
+    border-radius: 5px; /* Arrondi des coins */
+    cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
+    margin-top: 20px; /* Optionnel : espace au-dessus du bouton */
+    margin-left : 1600px;
+    margin-bottom: 150px;
+}
+.form-group_modif_offre input[type="radio"] {
+    margin-right: 5px; /* Espace entre le bouton et le texte */
+}
+
+.form-group_modif_offre label {
+    margin-right: 50px; /* Espace entre les labels */
+}
