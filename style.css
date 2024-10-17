@@ -108,18 +108,17 @@ html, body {
     background-color: var(--orange);
 }
 
-
-                                        /*****************************************************
-                                                    * Code pour la page header/footer *
-                                        *****************************************************/
-
-
+/*****************************************************
+        * Code pour la page header/footer responsive *
+*****************************************************/
 
 body {
     display: flex;
     flex-direction: column;
     font-family: "K2D", sans-serif;
-    min-height: 100vh; /*Pour occuper toute la page*/
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 header {
@@ -133,20 +132,22 @@ header {
 
 .logo img {
     height: 60px;
+    max-width: 100%; /* Pour s'assurer que l'image ne dépasse pas */
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 70px; /*Espace pour les éléments */
-    margin-right: 4em;
+    gap: 3vw; /* Espace adaptable selon la largeur de l'écran */
+    margin-right: 4vw;
+    flex-wrap: wrap; /* Permet de passer sur plusieurs lignes si nécessaire */
 }
 
 nav ul li a {
-    position: relative; /* Ajout pour que ::before fonctionne */
+    position: relative;
     text-decoration: none;
     color: white;
-    font-size: 18px;
+    font-size: 1.2rem; /* Utilise des unités relatives */
     padding: 5px 10px;
     transition: color 0.3s, border-bottom 0.3s;
 }
@@ -167,26 +168,22 @@ nav ul li a:hover {
     color: var(--orange);
 }
 
-.footer_pro .newsletter{
-    background-color: var(--orange); 
-}
-
 nav ul li a::before {
-    content: ""; /* Contenu vide pour l'effet de soulignement */
-    position: absolute; /* Positionnement absolu */
-    width: 0; /* Largeur initiale de la ligne de soulignement */
-    height: 2.5px; /* Hauteur de la ligne de soulignement */
-    bottom: -2px; /* Positionnement sous le texte */
-    background-color: var(--vert-clair); /* Couleur du soulignement */
-    transition: width 0.3s ease; /* Transition fluide */
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2.5px;
+    bottom: -2px;
+    background-color: var(--vert-clair);
+    transition: width 0.3s ease;
 }
 
 .header_pro nav ul li a::before {
-    background-color: var(--orange); /* Couleur du soulignement pro */
+    background-color: var(--orange);
 }
 
 nav ul li a:hover::before {
-    width: 90%; /* Élargissement du soulignement au survol */
+    width: 90%;
 }
 
 footer {
@@ -195,81 +192,71 @@ footer {
     padding: 40px 20px;
     text-align: left;
     width: 100%;
-    margin-top: auto; /* Positionne le footer en bas */
-
+    margin-top: auto;
 }
 
 .newsletter {
     display: flex;
+    flex-direction: column; /* Stack les éléments sur petits écrans */
     justify-content: space-between;
-    background-color: var(--vert-clair); 
+    background-color: var(--vert-clair);
     padding: 20px;
     border-radius: 20px;
-    position: relative; /* Permet de le positionner */
-    margin-top: -130px; /* Ajuste cette valeur pour chevaucher les sections */
-    z-index: 1; /* Assure que le bloc soit au-dessus de la section noire */
-    width: 90%; /* Ajuste la largeur si nécessaire */
-    height: 65%;
+    position: relative;
+    margin-top: -130px;
+    z-index: 1;
+    width: 90%;
+    max-width: 1200px; /* Limite la largeur sur grands écrans */
     margin-left: auto;
     margin-right: auto;
-}  
-
+}
 
 .newsletter-content {
     text-align: left;
-    max-width: 60%;
+    max-width: 100%; /* Ajuste pour petits écrans */
 }
 
 .newsletter h2 {
-    font-size: 24px;
+    font-size: 2rem; /* Taille adaptable */
     margin-bottom: 10px;
 }
 
 .newsletter-form {
     display: flex;
+    flex-direction: column; /* Colonne sur petits écrans */
     gap: 10px;
     margin-top: 10px;
 }
 
-
 .newsletter-form button {
-    /* padding: 10px 20px; */
     background-color: #112211;
-    height: auto;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-} 
+}
 
 .newsletter-form input, .newsletter-form button {
     padding: 10px;
     border: none;
     border-radius: 5px;
+    width: 100%; /* Pleine largeur pour petits écrans */
 }
 
 .newsletter-form input {
-    flex-grow: 1; /* Laisse l'input s'étendre à la largeur restante */
+    flex-grow: 1;
 }
-
-.newsletter-form button {
-    padding: 0 20px; /* Réduit le padding vertical pour que le bouton reste aligné */
-    background-color: #112211;
-    color: white;
-    cursor: pointer;
-}
-
 
 .newsletter-image img {
     max-height: 100px;
+    width: auto; /* Maintien du ratio de l'image */
 }
 
 .footer-links {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    margin-top: 20px;
-    margin-right: 89px;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 0;
 }
 
 .link-group ul {
@@ -292,8 +279,9 @@ footer {
 
 .footer-bottom {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    gap: 10px;
 }
 
 .social-icons a img {
@@ -301,236 +289,46 @@ footer {
     margin: 0 10px;
 }
 
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        /*****************************************************
-                                                    * Code page connexion Pro * 
-                                        *****************************************************/
+/* Media queries pour l'adaptabilité */
 
-main.connexion_pro_main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 40px); /* Ajuster la hauteur en fonction de celle du header */
-}
-
-.connexion_pro_container {
-    display: flex;
-    justify-content: space-evenly;
-    width: 150%;
-}
-
-main.connexion_pro_main > div > div.connexion_pro_form-container {
-    width: 33vw;
-}
-
-
-.connexion_pro_main fieldset {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    position: relative;
-    padding-top: 0; /* Enlève le padding en haut */
-}
-.connexion_pro_main fieldset {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    position: relative;
-    padding-top: 0; /* Enlève le padding en haut */
-}
-
-
-
-
-
-.connexion_pro_main legend {
-    font-size: 14px;
-    padding: 0 10px;
-    color: #333;
-    background-color: white;
-    position: absolute;
-    top: -10px; 
-    left: 10px; 
-
-    display: none;
-
-}
-.connexion_pro_main fieldset:focus-within legend {
-    display:inline;
-    transition: ease-out 0.3s;
-
-} 
-
-.connexion_pro_main fieldset input::placeholder {
-    padding-left: 10px;
-} 
-.connexion_pro_main fieldset input:focus::placeholder {
-    color: rgba(0, 0, 0, 0);
-} 
-
-.connexion_pro_main #remember{
-    accent-color: #df7519;
-}
-
-main.connexion_pro_main > div > div.connexion_pro_form-container > form > div.connexion_pro_remember-group > div {
-    display: flex;
-    flex-direction: row;
-}
-
-.connexion_pro_main input[type="email"],
-.connexion_pro_main input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 0px;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-
-.connexion_pro_main button {
-    width: 100%;
-    padding: 12px;
-    background-color: var(--orange);
-    border: none;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-.connexion_pro_main button:hover {
-    background-color: #e65c00;
-}
-
-
-.connexion_pro_main h2 {
-    margin-bottom: 10px;
-}
-
-.connexion_pro_main p {
-    margin-bottom: 30px;
-}
-
-
-.connexion_pro_input-group label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.connexion_pro_remember-group {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.connexion_pro_lab_enreg {
-    margin: 0;
-}
-
-.connexion_pro_form-container form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.connexion_pro_remember-group input {
-    margin-right: 5px;
-}
-
-
-.connexion_pro_additional-links {
-    /* margin-top: 20px; */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.connexion_pro_additional-links p {
-    /* width: 150%;
-    padding: 0; */
-}
-
-.connexion_pro_main .pas_de_compte{
-    text-align: left;
-}
-.connexion_pro_main .compte_membre{
-    text-align: right;
-}
-
-.connexion_pro_form-container > form > div.connexion_pro_remember-group > a {
-    color : var(--orange);
-    text-decoration: none;
-}
-
-.connexion_pro_additional-links a {
-    text-decoration: none;
-    color: var(--orange);
-    margin-left: 5px;
-    
-}
-
-.connexion_pro_image-container {
-    width: 400px;
-    height: auto;
-}
-
-.connexion_pro_image-container img {
-    width: 20em;
-    height: auto;
-    object-fit: cover;
-}
-
-/* Empêche l'image de dépasser sur les grands écrans */
-.connexion_pro_image-container {
-    width: 30%; /* Ajustez selon vos besoins */
-    height: auto;
-    max-width: 400px; /* Limite la taille maximale de l'image */
-    flex-shrink: 0; /* Empêche l'image de rétrécir sous un certain seuil */
-}
-
-.connexion_pro_image-container img {
-    width: 100%;
-    height: auto;
-    object-fit: cover; /* Garde les proportions de l'image */
-    max-height: 100%; /* Évite que l'image ne devienne trop haute */
-}
-
-/* Media query pour masquer l'image sur les petits écrans */
-@media (max-width: 768px) {
-    .connexion_pro_image-container {
-        display: none; /* Cache l'image sur les petits écrans */
-    }
-
-    .connexion_pro_container {
-        justify-content: center; /* Centre le formulaire quand l'image est cachée */
-    }
-
-    main.connexion_pro_main {
-        height: auto; /* Ajuste la hauteur sur les petits écrans */
-    }
-
-    .connexion_pro_form-container {
-        width: 100%; /* Le formulaire prend toute la largeur sur petits écrans */
-    }
-}
-
-/* Autres media queries possibles pour encore plus de réactivité */
-@media (max-width: 480px) {
-    .connexion_pro_main button {
-        font-size: 14px; /* Ajuste la taille des boutons sur très petits écrans */
+@media (min-width: 768px) {
+    .newsletter {
+        flex-direction: row;
+        justify-content: space-between;
     }
     
-    .connexion_pro_main h2 {
-        font-size: 20px; /* Ajuste la taille des titres */
+    .newsletter-content {
+        max-width: 60%;
+    }
+    
+    .newsletter-form {
+        flex-direction: row;
+    }
+    
+    .footer-links {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+@media (min-width: 1024px) {
+    nav ul {
+        gap: 50px; /* Réduit l'espace entre les éléments sur grands écrans */
+    }
+
+    footer {
+        padding: 40px 80px;
     }
 }
 
 
+                                        
                                         /*****************************************************
                                                     * Code page détail d'une offre *
                                         *****************************************************/
@@ -764,399 +562,4 @@ main.connexion_pro_main > div > div.connexion_pro_form-container > form > div.co
     box-shadow: 0 0 15px 5px #12d889; /* Lumière fluo verte */
     background-color: #12d889;
 }
-
-
-
-                                        /*****************************************************
-                                                        * Code page  Mes offres *
-                                        *****************************************************/
-
-
-/* Profile Section */
-.profile {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-
-
-.banner img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.profile-info {
-    margin-top: -50px;
-    text-align: center;
-}
-
-.profile-info img.profile-picture {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 4px solid #fff;
-}
-
-.profile-info h1 {
-    font-size: 28px;
-    margin: 10px 0;
-}
-
-.profile-info p {
-    font-size: 16px;
-    color: #666;
-}
-
-/* Tabs Section */
-.tabs {
-    margin: 30px 0;
-    text-align: center;
-}
-
-.tabs ul {
-    display: inline-block;
-    padding: 0;
-    list-style: none;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.tabs ul li {
-    display: inline-block;
-    margin: 0 20px;
-}
-
-.tabs ul li a {
-    font-size: 16px;
-    padding: 10px 20px;
-    display: inline-block;
-    border-bottom: 2px solid transparent;
-    transition: border-color 0.3s;
-    color: #333;
-}
-
-.tabs ul li a.active {
-    border-color: #ff6600;
-}
-
-/* Carte d'offre */
-.offer-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    padding: 15px;
-    width: 260px; /* Ajuste selon ton besoin */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative;
-    overflow: hidden;
-    text-align: left;
-}
-
-/* Image */
-.offer-image {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 10px;
-}
-
-.offer-image img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 12px;
-}
-
-.offers {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;  /* Pour que les cartes aillent à la ligne si nécessaire */
-    gap: 20px;        /* Ajoute un espacement entre les cartes */
-    justify-content: space-around;  /* Aligne les cartes de manière équitable */
-    margin: 20px;
-}
-
-.offres {
-    display: flex;
-    flex-wrap: wrap;  /* Pour que les cartes aillent à la ligne si nécessaire */
-    gap: 20px;        /* Ajoute un espacement entre les cartes */
-    justify-content: space-around;  /* Aligne les cartes de manière équitable */
-    margin: 20px;
-}
-
-.offer-card {
-    width: 260px;  /* Assure une largeur fixe pour chaque carte */
-    margin-bottom: 20px;  /* Ajoute un espace en bas au cas où elles iraient à la ligne */
-}
-
-
-/* Note */
-.offer-rating {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 5px 10px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-}
-
-.star {
-    color: #ffcc00;
-    margin-right: 5px;
-}
-
-/*.rating {
-    color: #333;
-}*/
-
-/* Statut */
-.offer-status {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 5px 10px;
-    border-radius: 12px;
-    font-size: 12px;
-    color: #ff4d4f;
-    display: flex;
-    align-items: center;
-}
-
-.status-dot {
-    width: 8px;
-    height: 8px;
-    background-color: #ff4d4f;
-    border-radius: 50%;
-    margin-right: 5px;
-}
-
-/* Information de l'offre */
-.offer-info {
-    padding: 10px 0;
-}
-
-.offer-info h3 {
-    font-size: 18px;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.offer-info .category {
-    font-size: 14px;
-    color: #888;
-    margin-bottom: 5px;
-}
-
-.offer-info .update {
-    font-size: 12px;
-    color: #ff6600;
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-}
-
-.update-icon {
-    font-size: 14px;
-    margin-right: 5px;
-}
-
-.offer-info .last-update {
-    font-size: 12px;
-    color: #999;
-    margin-bottom: 10px;
-}
-
-.offer-info .offer-type {
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.offer-info .price {
-    font-size: 18px;
-    color: #333;
-    font-weight: bold;
-}
-
-/* Bouton d'ajout */
-.add-btn {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    background-color: #ff6600;
-    color: #fff;
-    font-size: 18px;
-    padding: 10px;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.add-btn:hover {
-    background-color: #e65a00;
-}
-
-.image-button {
-    background-image: url('images/PublierAnnonce.png'); /* Chemin de l'image */
-    background-size: cover; /* L'image couvrira tout le bouton */
-    background-position: center; /* Centrer l'image */
-    width: 300px; /* Remplace par la largeur de tes cases offres */
-    height: 200px; /* Remplace par la hauteur de tes cases offres */
-    border: none; /* Pas de bordure */
-    cursor: pointer; /* Curseur au survol */
-    display: flex; /* Pour centrer le texte */
-    align-items: center; /* Centre le texte verticalement */
-    justify-content: center; /* Centre le texte horizontalement */
-    border-radius: 15px; /* Ajuste ce chiffre pour arrondir les angles comme tes cases offres */
-    position: relative; /* Pour bien positionner le texte */
-    margin: 10px; /* Optionnel, pour espacer le bouton des autres éléments */
-}
-
-.button-text {
-    color: white; /* Couleur du texte */
-    font-size: 18px; /* Taille du texte */
-    font-weight: bold; /* Rendre le texte plus visible */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour rendre le texte plus lisible */
-}
-
-.image-button:hover {
-    opacity: 0.8; /* Effet visuel lors du survol (optionnel) */
-}
-
-
-                                        /*****************************************************
-                                                    * Code page affichage des offres *
-                                        *****************************************************/
-#offre_main{
-    margin-bottom: 9em;
-}
-
-#offre_main > header {
-    all: unset;
-    display: flex;
-    align-items: center;
-    margin-top: 5vh;
-}
-
-#offre_main > header > h2 {
-    margin: 1vh 2vw;
-    margin-right: auto;
-    margin-left: 5vw;
-}
-
-#filter {
-    display: flex;
-    margin-left: auto;
-    margin-right: 5vw;
-}
-
-#filter button {
-    background-color: #dadada;
-    color: #000000;
-    font-size: medium;
-    width: 100%;
-    padding: 1vh 1.5vw;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#filter button img {
-    margin: 0 0.5vw 0 0;
-}
-
-.offer {
-    display: flex;
-    background-color: #f3feff;
-    border-radius: 10px;
-    overflow:hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.5s ease-in-out;
-    margin: 1vh 5vw;
-}
-
-.offer:hover {
-    transform: translateY(-5px);
-    transform:scale(0.90);
-}
-
-.offer img {
-    width: 200px;
-    height: auto;
-    object-fit: cover;
-    margin: 0.5vw 1vw;
-}
-
-.offer-details {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.offer-details h2 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 0;
-}
-
-.offer-details p:first-of-type {
-    font-size: 1.25rem;
-    color: #666;
-    margin-left: 0;
-}
-
-.offer-details p:last-of-type{
-    margin: 0 0.5vw;
-}
-
-.offer-details span:first-of-type{
-    position: relative;
-    left: 95%;
-    bottom: 6vh;
-    color:#666;
-}
-
-.offer-details span:last-of-type{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content:start;
-}
-
-.offer-details img{
-    image-rendering: pixelated;
-    width: 1.5vw;
-    height: auto;
-    margin: 0;
-}
-
-.offer-details button {
-    background-color: #a4d500;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    align-self: flex-start;
-    transition: background-color 0.2s ease-in-out;
-    align-self:flex-end;
-}
-
-.offer-details button:hover {
-    background-color: #88b900;
-}
-
-                                        /*****************************************************
-                                                    * Code Creation compte Pro *
-                                        *****************************************************/
 
