@@ -16,9 +16,9 @@
 </head>
 
 <body>
-    <header class="header_pro">
+    <header class="header_membre">
         <div class="logo">
-            <img src="images/logo_blanc_pro.png" alt="PACT Logo">
+            <img src="images/logo_blanc_membre.png" alt="PACT Logo">
         </div>
         <nav>
             <ul>
@@ -28,24 +28,28 @@
             </ul>
         </nav>
     </header>
-    <main class="creation_compte_pro">
-        <div class="creation_compte_pro_container">
-            <div class="creation_compte_pro_form-section">
+    <main class="creation_compte_membre">
+        <div class="creation_compte_membre_container">
+            <div class="creation_compte_membre_form-section">
                 <h1>S’inscrire</h1>
-                <p>Créer un compte pour profiter de l’expérience PACT</p>
+                <p>Créer un compte pour membrefiter de l’expérience PACT</p>
                 <form action="#" method="POST">
-                    <div class="crea_pro_raison_sociale_num_siren">
+                    <div class="crea_membre_raison_sociale_num_siren">
                         <fieldset>
-                            <legend>Raison sociale *</legend>
-                            <input type="text" id="raison-sociale" name="raison-sociale" placeholder="Raison sociale *" required>
+                            <legend>Prénom *</legend>
+                            <input type="text" id="raison-sociale" name="raison-sociale" placeholder="Prénom *" required>
                         </fieldset>
 
                         <fieldset>
-                            <legend>N° de Siren *</legend>
-                            <input type="text" id="siren" name="siren" placeholder="N° de Siren *" required>
+                            <legend>Nom *</legend>
+                            <input type="text" id="siren" name="siren" placeholder="Nom *" required>
                         </fieldset>
                     </div>
-                    <div class="crea_pro_mail_tel">
+                    <fieldset>
+                        <legend>Pseudo *</legend>
+                        <input type="text" id="adresse" name="adresse" placeholder="Pseudo *" required>
+                    </fieldset>
+                    <div class="crea_membre_mail_tel">
                         <fieldset>
                             <legend>Email *</legend>
                             <input type="email" id="email" name="email" placeholder="Email *" required>
@@ -91,9 +95,9 @@
 
                     <button type="submit" class="submit-btn">Créer mon compte <img src="images/flecheBlancheDroite.png" alt="fleche vers la droite"></button>
                 </form>
-                <div class="creation_compte_pro_other-links">
-                    <p>Déjà un compte ? <a href="connexion_pro.php">Connexion</a></p>
-                    <p>S’inscrire avec un compte <a href="#">Membre</a></p>
+                <div class="creation_compte_membre_other-links">
+                    <p>Déjà un compte ? <a href="connexion_membre.php" class="connexion_membre">Connexion</a></p>
+                    <p>S’inscrire avec un compte <a href="creation_compte_pro" class="inscription_pro">Pro</a></p>
                 </div>
             </div>
             <div class="image-section">
