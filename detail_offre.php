@@ -21,22 +21,22 @@
         </nav>
     </header>
 
-    <div class="hotel-detail">
-        <div class="hotel-header">
-            <div class="hotel-info">
+    <div class="detail_offre_hotel-detail">
+        <div class="detail_offre_hotel-header">
+            <div class="detail_offre_hotel-info">
                 <h1>Ti Al Lannec – Hôtel & Restaurant</h1>
                 <p>📍 Trébeurden, Bretagne 22300</p>
-                <div class="rating">
+                <div class="detail_offre_rating">
                     ⭐ 5.0 (255 avis)
                 </div>
             </div>
-            <div class="price-button">
-                <p class="price">50€</p>
+            <div class="detail_offre_price-button">
+                <p class="detail_offre_price">50€</p>
                 <button class="visit-button_detailoffre">Voir le site ➔</button>
             </div>
         </div>
 
-        <div class="gallery">
+        <div class="detail_offre_gallery">
             <img src="images/tiallannec1.png" alt="Hôtel extérieur" class="main-image">
             <div class="thumbnail-grid">
                 <img src="images/Tiallannec2.png" alt="Hôtel de nuit">
@@ -44,19 +44,19 @@
             </div>
             
             <!-- Nouvelle structure pour les miniatures -->
-            <div class="thumbnail-container">
-                <div class="thumbnail-grid2">
+            <div class="detail_offre_thumbnail-container">
+                <div class="detail_offre_thumbnail-grid2">
                     <img src="images/tiallannec6.png" alt="Jardin">
                     <img src="images/tiallannec7.png" alt="Piscine">
                 </div>
-                <div class="thumbnail-grid3">
+                <div class="detail_offre_thumbnail-grid3">
                     <img src="images/tiallannec8.png" alt="Chambre">
                     <img src="images/tiallannec9.png" alt="Vue sur la mer">
                 </div>
             </div>
         </div>
 
-        <div class="description">
+        <div class="detail_offre_description">
             <h2>Description</h2>
             <p>
                 Équipées des dernières technologies, tout a été pensé pour votre confort. Côté jardin, on apprécie le calme de la verdure, le chant des oiseaux et le ruissellement mélodieux de la fontaine. Côté mer, des balcons et terrasses, on est saisi par la force et la beauté du panorama à perte de vue.
@@ -67,23 +67,23 @@
             <p>27 chambres et 6 suites au décor raffiné et cosy.</p>
         </div>
 
-        <div class="icons">
-            <div class="icon">
+        <div class="detail_offre_icons">
+            <div class="detail_offre_icon">
                 <p>5.0</p> 
                 <p>Très bien</p>
                 <p>255 avis</p>
             </div>
-            <div class="icon">
+            <div class="detail_offre_icon">
                 <p><span class="bx--handicap"></span>Adapté</p>
             </div>
-            <div class="icon">
+            <div class="detail_offre_icon">
                 <p><span class="iconify" data-icon="mdi:wifi" data-inline="false"></span></p>
                 <p>Wifi</p>
             </div>
-            <div class="icon">
+            <div class="detail_offre_icon">
                 <p><span class="mdi--dog"></span>Autorisés</p>
             </div>
-            <div class="icon">
+            <div class="detail_offre_icon">
                 <p><span class="ph--cigarette-slash-bold"></span>Interdit</p>
             </div>
         </div>

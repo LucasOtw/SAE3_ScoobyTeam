@@ -27,87 +27,8 @@
 }
 
 html, body {
-    height: 100%; /* Important pour que le footer se positionne en bas */
+    height: 100%;
 }
-
-                                        /*****************************************************
-                                                    * Code pour la page création offre *
-                                        *****************************************************/
-
-/* Main container centré verticalement et horizontalement */
-.main-creation-offre {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-/* Formulaire centré avec une boîte */
-.main-creation-offre .form-container {
-    background-color: white;
-    padding: 40px;
-    margin-bottom: 3em;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    width: 100%;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column; /* Alignement vertical des enfants */
-    justify-content: space-between; /* Espace entre les éléments */
-    height: 350px;
-}
-
-
-.main-creation-offre .form-container h1{
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 30px;
-}
-
-#etapes {
-    margin: 20px;
-    width: 500px;
-}
-
-.main-creation-offre label {
-    display: block;
-    margin-bottom: 10px;
-    margin-top: 30px;
-    color: #555;
-}
-
-.main-creation-offre select {
-    width: 100%;
-    max-width: 300px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    border-color: var(--orange);
-}
-
-.main-creation-offre #button_continuer {
-    background-color: var(--orange);
-    color: white;
-    padding: 10px 20px;
-    margin-top: 30px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    align-self: flex-end; /* Positionne le bouton à droite */
-    display: inline-flex;
-    align-items: center;
-}
-
-.main-creation-offre #button_continuer img {
-    margin-left: 10px; /* Espacement entre le texte et la flèche */
-}
-
-.main-creation-offre button:hover {
-    background-color: var(--orange);
-}
-
 /*****************************************************
         * Code pour la page header/footer responsive *
 *****************************************************/
@@ -327,21 +248,20 @@ footer {
     }
 }
 
-
-                                        
+                                      
                                         /*****************************************************
                                                     * Code page détail d'une offre *
                                         *****************************************************/
 
 
 
-.hotel-detail {
+.detail_offre_hotel-detail {
     max-width: 1200px;
     margin: 0 3em;
     padding: 20px;
 }
 
-.hotel-header {
+.detail_offre_hotel-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -349,27 +269,27 @@ footer {
     margin-top : 4em;
 }
 
-.rating{
+.detail_offre_rating{
     color : #727272;
 }
 
-.hotel-info h1 {
+.detail_offre_hotel-info h1 {
     font-size: 2em;
     margin-bottom: 10px;
 
 }
 
-.hotel-info p {
+.detail_offre_hotel-info p {
     font-size: 1.2em;
     color : #727272;
 }
 
 
-.price-button {
+.detail_offre_price-button {
     text-align: right;
 }
 
-.price {
+.detail_offre_price {
     font-size: 1.8em;
     font-weight: bold;
     color: #2DD7A4;
@@ -389,7 +309,7 @@ footer {
     margin-right: -37em;
 }
 
-.gallery {
+.detail_offre_gallery {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
@@ -401,60 +321,60 @@ footer {
     
 }
 /* Ajout d'un conteneur pour réunir thumbnail 2 et thumbnail 3 */
-.thumbnail-container {
+.detail_offre_thumbnail-container {
     display: flex; /* Pour aligner les deux sections en ligne */
     gap: 10px; /* Espacement entre les deux sections */
     width: 100%; /* S'étend sur toute la largeur */
 }
 
 /* Thumbnail 2 */
-.thumnail-grid2{
+.detail_offre_thumbnail-grid2{
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     width: 40%; /* Ajuste la taille selon tes besoins */
 }
 
-.thumnail-grid2 img {
+.detail_offre_thumbnail-grid2 img {
     height: 49%;
     border-radius: 10px;
 }
 
 /* Thumbnail 3 */
-.thumnail-grid3{
+.detail_offre_thumbnail-grid3{
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     width: 40%; /* Même taille que le thumbnail 2 */
 }
 
-.thumnail-grid3 img {
+.detail_offre_thumbnail-grid3 img {
     height: 49%;
     border-radius: 10px;
 }
 
 
-.description {
+.detail_offre_description {
     margin-bottom: 20px;
 }
 
-.description h2 {
+.detail_offre_description h2 {
     font-size: 1.8em;
     margin-bottom: 10px;
 }
 
-.description p {
+.detail_offre_description p {
     font-size: 1.1em;
     color: #727272;
 }
 
-.icons {
+.detail_offre_icons {
     display: flex;
     justify-content: space-around;
     margin-bottom: 20px;
 }
 
-.icon {
+.detail_offre_icon {
     text-align: center;
     font-size: 1.1em;
     margin-top : 3em;
@@ -467,7 +387,7 @@ footer {
 
 }
 
-.icon{
+.detail_offre_icon{
     border : 1px none ;
     background-color : rgba(23, 111, 242, 0.05);
     padding : 20px;
