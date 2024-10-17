@@ -1,226 +1,3 @@
-/*****************************************************
-* Code général pour les pages *
-*****************************************************/
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    --orange : #F28322;
-    --vert-clair : #BDC426;
-    --vert-fonce : #668C3F;
-    --gris : #E8E8E8;
-}
-
-@font-face {
-    font-family: 'K2D';
-    src: url('./polices/K2D/K2D-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'K2D';
-    src: url('./polices/K2D/K2D-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-
-html, body {
-    height: 100%; /* Important pour que le footer se positionne en bas */
-}
-/*****************************************************
-            * Code pour la page header/footer *
-*****************************************************/
-
-
-
-body {
-    display: flex;
-    flex-direction: column;
-    font-family: "K2D", sans-serif;
-    min-height: 100vh; /*Pour occuper toute la page*/
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #000;
-    padding: 20px;
-    color: white;
-}
-
-.logo img {
-    height: 60px;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 70px; /*Espace pour les éléments */
-    margin-right: 4em;
-}
-
-nav ul li a {
-    position: relative; /* Ajout pour que ::before fonctionne */
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    padding: 5px 10px;
-    transition: color 0.3s, border-bottom 0.3s;
-}
-
-nav ul li a.active {
-    color: var(--vert-clair);
-}
-
-nav ul li a:hover {
-    color: var(--vert-clair);
-}
-
-.header_pro nav ul li a.active {
-    color: var(--orange);
-}
-
-.header_pro nav ul li a:hover {
-    color: var(--orange);
-}
-
-.footer_pro .newsletter{
-    background-color: var(--orange); 
-}
-
-nav ul li a::before {
-    content: ""; /* Contenu vide pour l'effet de soulignement */
-    position: absolute; /* Positionnement absolu */
-    width: 0; /* Largeur initiale de la ligne de soulignement */
-    height: 2.5px; /* Hauteur de la ligne de soulignement */
-    bottom: -2px; /* Positionnement sous le texte */
-    background-color: var(--vert-clair); /* Couleur du soulignement */
-    transition: width 0.3s ease; /* Transition fluide */
-}
-
-.header_pro nav ul li a::before {
-    background-color: var(--orange); /* Couleur du soulignement pro */
-}
-
-nav ul li a:hover::before {
-    width: 90%; /* Élargissement du soulignement au survol */
-}
-
-footer {
-    background-color: #000;
-    color: rgb(0, 0, 0);
-    padding: 40px 20px;
-    text-align: left;
-    width: 100%;
-    margin-top: auto; /* Positionne le footer en bas */
-
-}
-
-.newsletter {
-    display: flex;
-    justify-content: space-between;
-    background-color: var(--vert-clair); 
-    padding: 20px;
-    border-radius: 20px;
-    position: relative; /* Permet de le positionner */
-    margin-top: -130px; /* Ajuste cette valeur pour chevaucher les sections */
-    z-index: 1; /* Assure que le bloc soit au-dessus de la section noire */
-    width: 90%; /* Ajuste la largeur si nécessaire */
-    height: 65%;
-    margin-left: auto;
-    margin-right: auto;
-}  
-
-
-.newsletter-content {
-    text-align: left;
-    max-width: 60%;
-}
-
-.newsletter h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.newsletter-form {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-
-.newsletter-form button {
-    /* padding: 10px 20px; */
-    background-color: #112211;
-    height: auto;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-} 
-
-.newsletter-form input, .newsletter-form button {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-}
-
-.newsletter-form input {
-    flex-grow: 1; /* Laisse l'input s'étendre à la largeur restante */
-}
-
-.newsletter-form button {
-    padding: 0 20px; /* Réduit le padding vertical pour que le bouton reste aligné */
-    background-color: #112211;
-    color: white;
-    cursor: pointer;
-}
-
-
-.newsletter-image img {
-    max-height: 100px;
-}
-
-.footer-links {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    margin-top: 20px;
-    margin-right: 89px;
-}
-
-.link-group ul {
-    list-style: none;
-}
-
-.link-group ul li {
-    margin-bottom: 10px;
-}
-
-.link-group ul li a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.link-group ul li a:hover {
-    color: var(--vert-clair);
-}
-
-.footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.social-icons a img {
-    width: 24px;
-    margin: 0 10px;
-}
-                                        
 .creation_compte_pro body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -258,7 +35,7 @@ footer {
     border-bottom: 2px solid var(--orange);
 }
 
-.creation_compte_pro .container {
+.creation_compte_pro .creation_compte_pro_container {
     display: flex;
     justify-content: space-between;
     padding: 40px;
@@ -268,16 +45,34 @@ footer {
     border-radius: 10px;
 }
 
-.creation_compte_pro .form-section {
+.creation_compte_pro .creation_compte_pro_form-section {
     width: 50%;
 }
 
-.creation_compte_pro .form-section h1 {
+.crea_pro_raison_sociale_num_siren,
+.crea_pro_mail_tel {
+    display: flex;
+    justify-content: space-between;
+}
+
+body > main > div > div.creation_compte_pro_form-section > form > div.crea_pro_mail_tel > fieldset:nth-child(1),
+body > main > div > div.creation_compte_pro_form-section > form > div.crea_pro_mail_tel > fieldset:nth-child(2),
+body > main > div > div.creation_compte_pro_form-section > form > div.crea_pro_raison_sociale_num_siren > fieldset:nth-child(1), 
+body > main > div > div.creation_compte_pro_form-section > form > div.crea_pro_raison_sociale_num_siren > fieldset:nth-child(2) {
+    width: 48%;
+}
+
+.creation_compte_pro .crea_pro_raison_sociale_num_siren.creation_compte_pro_form-section,
+.creation_compte_pro .crea_pro_mail_tel .creation_compte_pro_form-section {
+    width: 50%;
+}
+
+.creation_compte_pro .creation_compte_pro_form-section h1 {
     font-size: 28px;
     margin-bottom: 10px;
 }
 
-.creation_compte_pro .form-section p {
+.creation_compte_pro .creation_compte_pro_form-section p {
     margin-bottom: 20px;
 }
 
@@ -302,7 +97,10 @@ footer {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-bottom: 20px;
 }
+
+
 
 .creation_compte_pro .checkbox label a {
     color: var(--orange);
@@ -316,9 +114,9 @@ footer {
 .creation_compte_pro .submit-btn {
     background-color: var(--orange);
     color: white;
-    padding: 10px 20px;
+    padding: 14px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 18px;
 }
@@ -327,11 +125,13 @@ footer {
     background-color: darkorange;
 }
 
-.creation_compte_pro .other-links {
-    margin-top: 20px;
+.creation_compte_pro .creation_compte_pro_other-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
 }
 
-.creation_compte_pro .other-links a {
+.creation_compte_pro .creation_compte_pro_other-links a {
     color: var(--orange);
     text-decoration: none;
 }
@@ -356,14 +156,6 @@ footer {
     position: relative;
     padding-top: 0; /* Enlève le padding en haut */
 }
-.creation_compte_pro fieldset {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    position: relative;
-    padding-top: 0; /* Enlève le padding en haut */
-}
-
 
 
 
@@ -397,16 +189,27 @@ footer {
     accent-color: #df7519;
 }
 
-main.creation_compte_pro > div > div.connexion_pro_form-container > form > div.connexion_pro_remember-group > div {
+main.creation_compte_pro > div > div.connexion_pro_form-creation_compte_pro_container > form > div.connexion_pro_remember-group > div {
     display: flex;
     flex-direction: row;
 }
 
-.creation_compte_pro input[type="email"],
-.creation_compte_pro input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 0px;
-    border-radius: 5px;
-    font-size: 14px;
+
+/* Media query pour masquer l'image sur les petits écrans */
+@media (max-width: 768px) {
+    .image-section {
+        display: none; /* Cache l'image sur les petits écrans */
+    }
+
+    .creation_compte_pro_form-section {
+        justify-content: center; /* Centre le formulaire quand l'image est cachée */
+    }
+
+    main.creation_pro_main {
+        height: auto; /* Ajuste la hauteur sur les petits écrans */
+    }
+
+    .creation_compte_pro .creation_compte_pro_form-section {
+        width: 100%; /* Le formulaire prend toute la largeur sur petits écrans */
+    }
 }

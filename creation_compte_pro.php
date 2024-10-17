@@ -29,8 +29,8 @@
         </nav>
     </header>
     <main class="creation_compte_pro">
-        <div class="container">
-            <div class="form-section">
+        <div class="creation_compte_pro_container">
+            <div class="creation_compte_pro_form-section">
                 <h1>S’inscrire</h1>
                 <p>Créer un compte pour profiter de l’expérience PACT</p>
                 <form action="#" method="POST">
@@ -45,15 +45,18 @@
                             <input type="text" id="siren" name="siren" placeholder="N° de Siren *" required>
                         </fieldset>
                     </div>
-                    <fieldset>
-                        <legend>Email *</legend>
-                        <input type="email" id="email" name="email" placeholder="Email *" required>
-                    </fieldset>
+                    <div class="crea_pro_mail_tel">
+                        <fieldset>
+                            <legend>Email *</legend>
+                            <input type="email" id="email" name="email" placeholder="Email *" required>
+                        </fieldset>
 
-                    <fieldset>
-                        <legend>Téléphone *</legend>
-                        <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *" required>
-                    </fieldset>
+                        <fieldset>
+                            <legend>Téléphone *</legend>
+                            <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *" required>
+                        </fieldset>
+                    </div>
+
 
                     <fieldset>
                         <legend>Adresse Postale *</legend>
@@ -82,14 +85,14 @@
 
                     
                         <div class="checkbox">
-                            <input type="checkbox" id="cgu" name="cgu" required >
+                            <input type="checkbox" id="cgu" name="cgu" required>
                             <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
                         </div>
 
-                    <button type="submit" class="submit-btn">Créer mon compte</button>
+                    <button type="submit" class="submit-btn">Créer mon compte <img src="images/flecheBlancheDroite.png" alt="fleche vers la droite"></button>
                 </form>
-                <div class="other-links">
-                    <p>Déjà un compte ? <a href="#">Connexion</a></p>
+                <div class="creation_compte_pro_other-links">
+                    <p>Déjà un compte ? <a href="connexion_pro.php">Connexion</a></p>
                     <p>S’inscrire avec un compte <a href="#">Membre</a></p>
                 </div>
             </div>
