@@ -19,14 +19,71 @@
             </ul>
         </nav>
     </header>
-    <main class="modif_compte_membre">
-        <div class="modifier_compte_membre_imageconnexion">
-        <img src="images/Rectangle 3.png" alt="Rectangle de connexion">
+    <div class="container">
+        <div class="header">
+            <img src="images/Rectangle 3.png" alt="Bannière" class="header-img">
         </div>
-        <div class="modif_compte_membre_pp">
-        <img src="images/Photo_de_profil.png" alt="Rectangle de connexion">
+
+        <div class="profile-section">
+            <img src="images/Photo_de_Profil.png" alt="Photo de profil" class="profile-img">
+            <h1>Juliette Martin</h1>
+            <p>juliettemartin@gmail.com | 07.98.76.54.12</p>
         </div>
-    </main>
+
+        <div class="tabs">
+            <div class="tab active">Informations</div>
+            <div class="tab">Mot de passe et sécurité</div>
+            <div class="tab">Historique</div>
+        </div>
+    </div>
+                    <form action="#" method="POST">
+                    <div class="crea_pro_raison_sociale_num_siren">
+                        <fieldset>
+                            <legend>Nom</legend>
+                            <input type="text" id="raison-sociale" name="raison-sociale" placeholder="Nom" required>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Prenom</legend>
+                            <input type="text" id="siren" name="siren" placeholder="Prenom" required>
+                        </fieldset>
+                    </div>
+                    <div class="crea_pro_mail_tel">
+                        <fieldset>
+                            <legend>Email</legend>
+                            <input type="email" id="email" name="email" placeholder="Email " required>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Téléphone *</legend>
+                            <input type="tel" id="telephone" name="telephone" placeholder="Téléphone " required>
+                        </fieldset>
+                    </div>
+
+
+                    <fieldset>
+                        <legend>Adresse Postale *</legend>
+                        <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale " required>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Code Postal *</legend>
+                        <input type="text" id="code-postal" name="code-postal" placeholder="Code Postal " required>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Ville *</legend>
+                        <input type="text" id="ville" name="ville" placeholder="Ville " required>
+                    </fieldset>        
+                        <div class="checkbox">
+                            <input type="checkbox" id="cgu" name="cgu" required>
+                            <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
+                        </div>
+
+                    <button type="submit" class="submit-btn1">Enregistrer</button>
+                    <button type="submit" class="submit-btn2">Supprimer mon compte <img src="images/Arrow_Right.png" alt="fleche vers la droite"></button>
+                </form>
+
     <footer class="footer_detail_avis">
         <div class="newsletter">
             <div class="newsletter-content">
