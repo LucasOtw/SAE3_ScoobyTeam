@@ -16,18 +16,19 @@
 </head>
 
 <body>
-    <header class="header_membre">
+<header>
         <div class="logo">
-            <img src="images/logo_blanc_membre.png" alt="PACT Logo">
+            <img src="images/logoBlanc.png" alt="PACT Logo">
         </div>
         <nav>
             <ul>
-                <li><a href="#">Accueil</a></li>
+                <li><a href="#" class="active">Accueil</a></li>
                 <li><a href="#">Publier</a></li>
-                <li><a href="#" class="active">Mon Compte</a></li>
+                <li><a href="#">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
+    
     <main class="creation_compte_membre">
         <div class="creation_compte_membre_container">
             <div class="creation_compte_membre_form-section">
