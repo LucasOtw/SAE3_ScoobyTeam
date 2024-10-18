@@ -23,24 +23,53 @@
             </ul>
         </nav>
     </header>
-
-
+    <main class="main_info_bancaire">    
+        <div class="tabs">
+            <div class="tab active">Informations</div>
+            <div class="tab">Mot de passe et sécurité</div>
+            <div class="tab">Historique</div>
+            <div class="tab">Informations Bancaires</div>
+        </div>
+        <section class="payment-section_info_bancaire">
+            <h2>Modifier vos informations bancaires</h2>
+            <form class="payment-form_info_bancaire">
+                <label for="iban">IBAN</label>
+                <input type="text" id="iban" name="iban" placeholder="FR76 3000 6000 1111 2222 3333 444" value="FR76 3000 6000 1111 2222 3333 444">
+    
+                <label for="bic">BIC / SWIFT</label>
+                <input type="text" id="bic" name="bic" placeholder="AGRIFRPPXXX" value="AGRIFRPPXXX">
+    
+                <label for="bank-name">Nom de la banque</label>
+                <input type="text" id="bank-name" name="bank-name" placeholder="Crédit Agricole" value="Crédit Agricole">
+    
+                <label for="card-number">Numéro de carte</label>
+                <input type="text" id="card-number" name="card-number" placeholder="4321 4321 4321 4321" value="4321 4321 4321 4321">
+    
+                <div class="card-details_info_bancaire">
+                    <div>
+                        <label for="expiry-date">Date d'expiration</label>
+                        <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/AA" value="02/27">
+                    </div>
+                    <div>
+                        <label for="cvc">CVC</label>
+                        <input type="text" id="cvc" name="cvc" placeholder="123" value="123">
+                    </div>
+                </div>
+    
+                <div class="save-info_info_bancaire">
+                    <input type="checkbox" id="save-info" name="save-info" checked>
+                    <label for="save-info">Sauvegarder mes informations bancaires</label>
+                </div>
+    
+                <button type="submit" class="submit-btn_info_bancaire">Enregistrer</button>
+            </form>
+        </section>
+    </main>
+    
+    
     <!-- Footer -->
     <footer>
-        <div class="newsletter_info_bancaire">
-            <div class="newsletter-content_info_bancaire">
-                <h2>Inscrivez-vous à notre Newsletter</h2>
-                <p>PACT</p>
-                <p>Redécouvrez la Bretagne !</p>
-                <form class="newsletter-form_info_bancaire">
-                    <input type="email" placeholder="Votre adresse mail" required>
-                    <button type="submit">S'inscrire</button>
-                </form>
-            </div>
-            <div class="newsletter-image_info_bancaire">
-                <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
-            </div>
-        </div>
+        
         
         <div class="footer-links_info_bancaire">
             <div class="logo">
