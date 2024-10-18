@@ -510,4 +510,25 @@ input:checked + .slider_modif_offre:before {
 
 .tab:not(.active):hover {
     border-bottom: 2px solid #ccc;
+}.payment-section_info_bancaire {
+    display: flex; /* Utilise flexbox pour aligner les éléments côte à côte */
+    justify-content: space-between; /* Espace entre l'image et le formulaire */
+    gap: 20px; /* Espace entre l'image et le formulaire */
+}
+
+.payment-form_info_bancaire {
+    flex: 1; /* Prend tout l'espace disponible */
+}
+
+.payment-image_info_bancaire {
+    flex: 1; /* Prend tout l'espace disponible */
+    display: flex; /* Pour centrer l'image verticalement */
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+}
+
+.payment-image_info_bancaire img {
+    max-width: 100%; /* S'assure que l'image ne dépasse pas la largeur du conteneur */
+    height: auto; /* Maintient le ratio de l'image */
+    border-radius: 10px; /* Optionnel : arrondir les coins de l'image */
 }
