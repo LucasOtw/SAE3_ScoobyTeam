@@ -80,11 +80,11 @@ nav ul li a {
 }
 
 nav ul li a.active {
-    color: var(--vert-clair);
+    color: var(--orange);
 }
 
 nav ul li a:hover {
-    color: var(--vert-clair);
+    color: var(--orange);
 }
 
 .header_pro nav ul li a.active {
@@ -101,7 +101,7 @@ nav ul li a::before {
     width: 0;
     height: 2.5px;
     bottom: -2px;
-    background-color: var(--vert-clair);
+    background-color: var(--or);
     transition: width 0.3s ease;
 }
 
@@ -126,7 +126,7 @@ footer {
     display: flex;
     flex-direction: column; /* Stack les éléments sur petits écrans */
     justify-content: space-between;
-    background-color: var(--vert-clair);
+    background-color: var(--orange);
     padding: 20px;
     border-radius: 20px;
     position: relative;
@@ -200,7 +200,7 @@ footer {
 }
 
 .link-group ul li a:hover {
-    color: var(--vert-clair);
+    color: var(--orange);
 }
 
 .footer-bottom {
@@ -315,7 +315,7 @@ p {
 
 .tab.active {
     color: #2e2e2e;
-    border-bottom: 2px solid #6b8e23; /* Couleur vert olive */
+    border-bottom: 2px solid --orange; /* Couleur vert olive */
 }
 
 .tab:not(.active):hover {
@@ -418,7 +418,7 @@ input[type="password"]::placeholder {
 }
 
 .checkbox label a {
-    color: var(--vert-clair);
+    color: var(--orange);
     text-decoration: none;
 }
 
@@ -437,7 +437,7 @@ button.submit-btn2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--vert-clair);
+    background-color: var(--orange);
     color: #fff;
     border: none;
     padding: 12px 20px;
@@ -454,20 +454,20 @@ button.submit-btn2 {
 
 button.submit-btn1{
     background-color: white;
-    border: 1.5px solid var(--vert-clair);
+    border: 1.5px solid var(--orange);
     color: black;
 }
 
 button.submit-btn1:hover,
 button.submit-btn2:hover {
-    background-color: var(--vert-clair-hover); /* Ajoute une couleur de survol pour les deux boutons */
+    background-color: var(--orange); /* Ajoute une couleur de survol pour les deux boutons */
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Ombre plus forte au survol */
     transition: 0.3s;
 
 }
 
 button.submit-btn2:hover{
-    background-color: var(--vert-fonce);
+    background-color: var(--orange);
 
 }
 

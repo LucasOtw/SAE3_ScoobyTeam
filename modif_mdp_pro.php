@@ -21,7 +21,7 @@
     </header>
     <div class="container">
         <div class="header">
-            <img src="images/Rectangle 3.png" alt="Bannière" class="header-img">
+            <img src="images/Rectangle_3.png" alt="Bannière" class="header-img">
         </div>
 
         <div class="profile-section">
