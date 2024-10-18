@@ -33,7 +33,8 @@
         <div class="tabs">
             <div class="tab">Informations</div>
             <div class="tab active">Mot de passe et sécurité</div>
-            <div class="tab">Historique</div>
+            <div class="tab">Offres</div>
+            <div class="tab">Paiement</div>
         </div>
     </div>
     <form action="#" method="POST">
