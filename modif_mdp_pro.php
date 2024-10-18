@@ -31,26 +31,36 @@
         </div>
 
         <div class="tabs">
-            <div class="tab">Informations</div>
-            <div class="tab active">Mot de passe et sécurité</div>
-            <div class="tab">Historique</div>
+            <div class="tab active">Informations</div>
+            <div class="tab">Mot de passe et sécurité</div>
+            <div class="tab">Offres</div>
+            <div class="tab">Paiement</div>
         </div>
     </div>
     <form action="#" method="POST">
-    <fieldset>
-        <legend>Entrez votre mot de passe actuel</legend>
-        <input type="password" id="adresse" name="adresse" placeholder="Entrez votre mot de passe actuel" required>
-    </fieldset>
+    <div class="crea_pro_raison_sociale_num_siren">
+        <fieldset>
+            <legend>Raison Sociale</legend>
+            <input type="text" id="raison-sociale" name="raison-sociale" placeholder="Raison Sociale" required>
+        </fieldset>
 
-    <fieldset>
-        <legend>Definissez votre nouveau mot de passe</legend>
-        <input type="password" id="code-postal" name="code-postal" placeholder="Definissez votre nouveau mot de passe" required>
-    </fieldset>
-    <fieldset>
+        <fieldset>
+            <legend>N° de Siren</legend>
+            <input type="text" id="siren" name="siren" placeholder="N° de Siren" required>
+        </fieldset>
+    </div>
 
-        <legend>Re-tapez votre nouveau mot de passe</legend>
-        <input type="password" id="code-postal" name="code-postal" placeholder="Re-tapez votre nouveau mot de passe" required>
-    </fieldset>
+    <div class="crea_pro_mail_tel">
+        <fieldset>
+            <legend>Email</legend>
+            <input type="email" id="email" name="email" placeholder="Email " required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Téléphone</legend>
+            <input type="tel" id="telephone" name="telephone" placeholder="Téléphone" required>
+        </fieldset>
+    </div>
     <div class="compte_membre_save_delete">
     <button type="submit" class="submit-btn1">Supprimer mon compte</button>
     <button type="submit" class="submit-btn2">Déconnexion</button>
