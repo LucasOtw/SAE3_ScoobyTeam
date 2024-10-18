@@ -266,8 +266,9 @@ footer {
 }
 
 .header-img {
-    width: 100%;
+    width: 152%;
     border-radius: 10px;
+    margin-left: -14em;
 }
 
 .profile-section {
@@ -334,7 +335,7 @@ p {
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     font-size: 14px;
     color: #555;
 }
@@ -354,36 +355,8 @@ input[type="email"] {
     margin-top: 20px;
 }
 
-.delete-btn {
-    background-color: white;
-    border: 2px solid #ccc;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
-.save-btn {
-    background-color: #6b8e23;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-}
 
-.save-btn span {
-    margin-left: 10px;
-}
-
-.save-btn:hover {
-    background-color: #5a7d1b;
-}
-
-.delete-btn:hover {
-    border-color: #888;
-}
 
 form {
     width: 885px;
@@ -452,8 +425,15 @@ input[type="password"]::placeholder {
 .checkbox label a:hover {
     text-decoration: underline;
 }
+.compte_membre_save_delete {
+    display: flex;
+    justify-content: right; /* Aligne les boutons au centre */
+    gap: 20px; /* Espacement entre les boutons */
+    margin-bottom: 11em;
+}
 
-button.submit-btn1 {
+button.submit-btn1, 
+button.submit-btn2 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -462,50 +442,105 @@ button.submit-btn1 {
     border: none;
     padding: 12px 20px;
     font-size: 1em;
-    border-radius: 4px;
+    border-radius: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-bottom: 10em;
+    width: 28%;
+    height: 8%;
+    padding : 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ajout de l'ombre */
+
 }
 
-button.submit-btn1:hover {
-    background-color: var(--vert-clair);
+button.submit-btn1{
+    background-color: white;
+    border: 1.5px solid var(--vert-clair);
+    color: black;
 }
 
-button.submit-btn1 img {
-    margin-left: 10px;
-    width: 20px;
+button.submit-btn1:hover,
+button.submit-btn2:hover {
+    background-color: var(--vert-clair-hover); /* Ajoute une couleur de survol pour les deux boutons */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Ombre plus forte au survol */
+    transition: 0.3s;
+
 }
 
-@media (max-width: 600px) {
-    .crea_pro_raison_sociale_num_siren,
-    .crea_pro_mail_tel {
-        flex-direction: column;
-    }
+button.submit-btn2:hover{
+    background-color: var(--vert-fonce);
 
-    button.submit-btn1 img {
-        display: none;
-    }
 }
-.submit-btn2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+
+
+
+
+/* Style général pour tous les fieldsets */
+.crea_pro_mail_tel fieldset, 
+.crea_pro_raison_sociale_num_siren fieldset,
+form fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-top: 0;
+}
+
+/* Style pour les légendes */
+.crea_pro_mail_tel legend, 
+.crea_pro_raison_sociale_num_siren legend,
+form legend {
+    font-size: 14px;
+    padding: 0 10px;
+    color: #333;
+    background-color: white;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    display: none;
+}
+
+/* Légende visible au focus */
+.crea_pro_mail_tel fieldset:focus-within legend, 
+.crea_pro_raison_sociale_num_siren fieldset:focus-within legend,
+form fieldset:focus-within legend {
+    display: inline-block;
+    transition: ease-out 0.3s;
+}
+
+/* Placeholder style pour tous les champs de formulaire */
+.crea_pro_mail_tel input::placeholder, 
+.crea_pro_raison_sociale_num_siren input::placeholder,
+form input::placeholder {
+    padding-left: 10px;
+}
+
+/* Placeholder masqué au focus */
+.crea_pro_mail_tel input:focus::placeholder, 
+.crea_pro_raison_sociale_num_siren input:focus::placeholder,
+form input:focus::placeholder {
+    color: rgba(0, 0, 0, 0);
+}
+
+/* Style pour la case à cocher */
+#remember, #cgu {
+    accent-color: var(--vert-fonce);
+}
+
+/* Styles pour les boutons */
+.submit-btn1, .submit-btn2 {
+    background-color: var(--vert-fonce);
+    color: white;
     padding: 10px 20px;
-    background-color: #007bff; /* Couleur de fond du bouton */
-    color: white; /* Couleur du texte */
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
 }
 
-
-
+.submit-btn1 {
+    margin-right: 10px;
+}
 
 .submit-btn2 img {
-    margin-left: 10px; /* Espace entre le texte et l'image */
-    width: 20px; /* Largeur de l'image */
-    height: auto; /* Maintient le ratio de l'image */
+    margin-left: 5px;
 }
-

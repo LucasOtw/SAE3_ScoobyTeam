@@ -36,53 +36,56 @@
             <div class="tab">Historique</div>
         </div>
     </div>
-                    <form action="#" method="POST">
-                    <div class="crea_pro_raison_sociale_num_siren">
-                        <fieldset>
-                            <legend>Nom</legend>
-                            <input type="text" id="raison-sociale" name="raison-sociale" placeholder="Nom" required>
-                        </fieldset>
+    <form action="#" method="POST">
+    <div class="crea_pro_raison_sociale_num_siren">
+        <fieldset>
+            <legend>Nom</legend>
+            <input type="text" id="raison-sociale" name="raison-sociale" placeholder="Nom" required>
+        </fieldset>
 
-                        <fieldset>
-                            <legend>Prenom</legend>
-                            <input type="text" id="siren" name="siren" placeholder="Prenom" required>
-                        </fieldset>
-                    </div>
-                    <div class="crea_pro_mail_tel">
-                        <fieldset>
-                            <legend>Email</legend>
-                            <input type="email" id="email" name="email" placeholder="Email " required>
-                        </fieldset>
+        <fieldset>
+            <legend>Prenom</legend>
+            <input type="text" id="siren" name="siren" placeholder="Prenom" required>
+        </fieldset>
+    </div>
 
-                        <fieldset>
-                            <legend>Téléphone *</legend>
-                            <input type="tel" id="telephone" name="telephone" placeholder="Téléphone " required>
-                        </fieldset>
-                    </div>
+    <div class="crea_pro_mail_tel">
+        <fieldset>
+            <legend>Email</legend>
+            <input type="email" id="email" name="email" placeholder="Email " required>
+        </fieldset>
 
+        <fieldset>
+            <legend>Téléphone *</legend>
+            <input type="tel" id="telephone" name="telephone" placeholder="Téléphone " required>
+        </fieldset>
+    </div>
 
-                    <fieldset>
-                        <legend>Adresse Postale *</legend>
-                        <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale " required>
-                    </fieldset>
+    <fieldset>
+        <legend>Adresse Postale *</legend>
+        <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale" required>
+    </fieldset>
 
-                    <fieldset>
-                        <legend>Code Postal *</legend>
-                        <input type="text" id="code-postal" name="code-postal" placeholder="Code Postal " required>
-                    </fieldset>
+    <fieldset>
+        <legend>Code Postal *</legend>
+        <input type="text" id="code-postal" name="code-postal" placeholder="Code Postal" required>
+    </fieldset>
 
-                    <fieldset>
-                        <legend>Ville *</legend>
-                        <input type="text" id="ville" name="ville" placeholder="Ville " required>
-                    </fieldset>        
-                        <div class="checkbox">
-                            <input type="checkbox" id="cgu" name="cgu" required>
-                            <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
-                        </div>
+    <fieldset>
+        <legend>Ville *</legend>
+        <input type="text" id="ville" name="ville" placeholder="Ville" required>
+    </fieldset>
 
-                    <button type="submit" class="submit-btn1">Enregistrer</button>
-                    <button type="submit" class="submit-btn2">Supprimer mon compte <img src="images/Arrow_Right.png" alt="fleche vers la droite"></button>
-                </form>
+    <div class="checkbox">
+        <input type="checkbox" id="cgu" name="cgu" required>
+        <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
+    </div>
+    <div class="compte_membre_save_delete">
+    <button type="submit" class="submit-btn1">Supprimer mon compte</button>
+    <button type="submit" class="submit-btn2">Enregistrer</button>
+</div>
+
+</form>
 
     <footer class="footer_detail_avis">
         <div class="newsletter">
