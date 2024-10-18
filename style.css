@@ -2,26 +2,53 @@
     * Code modifier offre *
 *****************************************************/
 
-.modifier_offre_corps {
-    display: flex;
-    flex-direction: column; /* Aligne les éléments en colonne */
-    justify-content: flex-start; /* Aligne les éléments au début */
-    align-items: stretch; /* Assure que tous les éléments prennent la largeur complète */
-    flex-grow: 1; /* Permet à cette section de prendre plus d'espace */
-    width: 100%; /* Assure que le contenu prend toute la largeur disponible */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --orange : #F28322;
+    --vert-clair : #BDC426;
+    --vert-fonce : #668C3F;
+    --gris : #E8E8E8;
 }
 
-.body_modif_offre {
-    display: flex;
-    flex-direction: column; /* Dispose les enfants en colonne */
-    min-height: 100vh; /* Prend toute la hauteur de la fenêtre */
-    padding: 20px; /* Espace autour du contenu principal */
-    padding-bottom: 100px; /* Ajout d'un espace supplémentaire en bas pour le footer */
-    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
 
-.header_modif_offre {
+html, body {
+    height: 100%;
+
+}
+
+body{
+    overflow-x: hidden;
+
+}
+/*****************************************************
+        * Code pour la page header/footer responsive *
+*****************************************************/
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "K2D", sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,160 +57,202 @@
     color: white;
 }
 
-.logo_modif_offre img {
+.logo img {
     height: 60px;
+    max-width: 100%; /* Pour s'assurer que l'image ne dépasse pas */
 }
 
-.nav_modif_offre ul {
+nav ul {
     list-style: none;
     display: flex;
-    gap: 70px; /* Espace pour les éléments */
-    margin-right: 4em;
+    gap: 3vw; /* Espace adaptable selon la largeur de l'écran */
+    margin-right: 4vw;
+    flex-wrap: wrap; /* Permet de passer sur plusieurs lignes si nécessaire */
 }
 
-.nav_modif_offre ul li a {
-    position: relative; /* Ajout pour que ::before fonctionne */
+nav ul li a {
+    position: relative;
     text-decoration: none;
     color: white;
-    font-size: 18px;
+    font-size: 1.2rem; /* Utilise des unités relatives */
     padding: 5px 10px;
     transition: color 0.3s, border-bottom 0.3s;
 }
 
-.nav_modif_offre ul li a.active {
+nav ul li a.active {
     color: var(--orange);
 }
 
-.nav_modif_offre ul li a:hover {
+nav ul li a:hover {
     color: var(--orange);
 }
 
-.footer_modif_offre .newsletter {
-    background-color: var(--orange); 
+.header_pro nav ul li a.active {
+    color: var(--orange);
 }
 
-.nav_modif_offre ul li a::before {
-    content: ""; /* Contenu vide pour l'effet de soulignement */
-    position: absolute; /* Positionnement absolu */
-    width: 0; /* Largeur initiale de la ligne de soulignement */
-    height: 2.5px; /* Hauteur de la ligne de soulignement */
-    bottom: -2px; /* Positionnement sous le texte */
-    background-color: var(--orange); /* Couleur du soulignement */
-    transition: width 0.3s ease; /* Transition fluide */
+.header_pro nav ul li a:hover {
+    color: var(--orange);
 }
 
-.nav_modif_offre ul li a:hover::before {
-    width: 90%; /* Élargissement du soulignement au survol */
+nav ul li a::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2.5px;
+    bottom: -2px;
+    background-color: var(--orange);
+    transition: width 0.3s ease;
 }
 
-.footer_modif_offre {
+.header_pro nav ul li a::before {
+    background-color: var(--orange);
+}
+
+nav ul li a:hover::before {
+    width: 90%;
+}
+
+footer {
     background-color: #000;
     color: rgb(0, 0, 0);
     padding: 40px 20px;
     text-align: left;
     width: 100%;
-    margin-top: auto; /* Positionne le footer en bas */
-    clear: both; /* Assure que le footer n'est pas chevauché par d'autres éléments */
-    margin-top: 20px; /* Espace au-dessus du footer */
+    margin-top: auto;
 }
 
-.newsletter_modif_offre {
+.newsletter {
     display: flex;
+    flex-direction: column; /* Stack les éléments sur petits écrans */
     justify-content: space-between;
-    background-color: var(--orange); 
+    background-color: var(--orange);
     padding: 20px;
     border-radius: 20px;
-    position: relative; /* Permet de le positionner */
-    margin-top: -130px; /* Ajuste cette valeur pour chevaucher les sections */
-    z-index: 1; /* Assure que le bloc soit au-dessus de la section noire */
-    width: 90%; /* Ajuste la largeur si nécessaire */
-    height: 65%;
+    position: relative;
+    margin-top: -130px;
+    z-index: 1;
+    width: 90%;
+    max-width: 1200px; /* Limite la largeur sur grands écrans */
     margin-left: auto;
     margin-right: auto;
-}  
-
-.newsletter-content_modif_offre {
-    text-align: left;
-    max-width: 60%;
 }
 
-.newsletter_modif_offre h2 {
-    font-size: 24px;
+.newsletter-content {
+    text-align: left;
+    max-width: 100%; /* Ajuste pour petits écrans */
+}
+
+.newsletter h2 {
+    font-size: 2rem; /* Taille adaptable */
     margin-bottom: 10px;
 }
 
-.newsletter-form_modif_offre {
+.newsletter-form {
     display: flex;
+    flex-direction: column; /* Colonne sur petits écrans */
     gap: 10px;
     margin-top: 10px;
 }
 
-.newsletter-form_modif_offre button {
+.newsletter-form button {
     background-color: #112211;
-    height: auto;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-} 
+}
 
-.newsletter-form_modif_offre input, .newsletter-form button {
+.newsletter-form input, .newsletter-form button {
     padding: 10px;
     border: none;
     border-radius: 5px;
 }
 
-.newsletter-form_modif_offre input {
-    flex-grow: 1; /* Laisse l'input s'étendre à la largeur restante */
+.newsletter-form input {
+    flex-grow: 1;
 }
 
-.newsletter-form_modif_offre button {
-    padding: 0 20px; /* Réduit le padding vertical pour que le bouton reste aligné */
-    background-color: #112211;
-    color: white;
-    cursor: pointer;
-}
-
-.newsletter-image_modif_offre img {
+.newsletter-image img {
     max-height: 100px;
+    width: auto; /* Maintien du ratio de l'image */
 }
 
-.footer-links_modif_offre {
+.footer-links {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    margin-top: 20px;
-    margin-right: 89px;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 0;
 }
 
-.link-group_modif_offre ul {
+.link-group ul {
     list-style: none;
 }
 
-.link-group_modif_offre ul li {
+.link-group ul li {
     margin-bottom: 10px;
 }
 
-.link-group_modif_offre ul li a {
+.link-group ul li a {
     color: white;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.link-group_modif_offre ul li a:hover {
+.link-group ul li a:hover {
     color: var(--vert-clair);
 }
 
-.footer-bottom_modif_offre {
+.footer-bottom {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    gap: 10px;
 }
 
-.social-icons_modif_offre a img {
+.social-icons a img {
     width: 24px;
     margin: 0 10px;
 }
+
+/* Media queries pour l'adaptabilité */
+
+@media (min-width: 768px) {
+    .newsletter {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .newsletter-content {
+        max-width: 60%;
+    }
+    
+    .newsletter-form {
+        flex-direction: row;
+    }
+    
+    .footer-links {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+@media (min-width: 1024px) {
+    nav ul {
+        gap: 50px; /* Réduit l'espace entre les éléments sur grands écrans */
+    }
+
+    footer {
+        padding: 40px 80px;
+    }
+}
+
 
 .horaires_table_modif_offre {
     width: 100%;
