@@ -256,6 +256,7 @@ footer {
 .modifier_compte_membre_imageconnexion img {
     max-width: 100%; /* Assure que l'image s'adapte à la taille de l'écran */
     height: auto;
+    margin-bottom: 30em;
  }
 
 .modifier_compte_membre_imageconnexion {
@@ -265,3 +266,18 @@ footer {
     margin-top: 0px; /* Espace en haut */
     height: 100vh; /* Ajuste en fonction de la taille de la zone visible */
  }
+ .modif_compte_membre_pp {
+    display: flex;
+    justify-content: center; /* Centre l'image horizontalement */
+    align-items: center; /* Centre l'image verticalement */
+    height: 100vh; /* Hauteur de la section */
+    text-align: center; /* Centre le texte à l'intérieur de la section */
+}
+
+.modif_compte_membre_pp img {
+    max-width: 100%; /* Assure que l'image s'adapte à la taille de l'écran */
+    height: auto; /* Maintient le ratio de l'image */
+    margin: 0 auto; /* Centre l'image horizontalement */
+    display: block; /* Nécessaire pour que margin auto fonctionne */
+    margin-bottom: 128em; /* Ajustez la marge inférieure selon vos besoins */
+}

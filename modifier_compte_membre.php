@@ -23,6 +23,9 @@
         <div class="modifier_compte_membre_imageconnexion">
         <img src="images/Rectangle 3.png" alt="Rectangle de connexion">
         </div>
+        <div class="modif_compte_membre_pp">
+        <img src="images/Photo_de_profil.png" alt="Rectangle de connexion">
+        </div>
     </main>
     <footer class="footer_detail_avis">
         <div class="newsletter">
