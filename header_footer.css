@@ -11,13 +11,16 @@ body {
     padding: 0;
 }
 
-header {
+header.header-pc {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #000;
     padding: 20px;
     color: white;
+}
+header.header-tel {
+    display: none
 }
 
 .logo img {

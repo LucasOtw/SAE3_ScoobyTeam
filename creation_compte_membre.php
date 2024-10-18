@@ -16,10 +16,11 @@
 </head>
 
 <body>
-<header>
-        <div class="logo">
+<header class="header-pc">
+        <div class="logo-pc">
             <img src="images/logoBlanc.png" alt="PACT Logo">
         </div>
+        
         <nav>
             <ul>
                 <li><a href="#" class="active">Accueil</a></li>
@@ -28,8 +29,15 @@
             </ul>
         </nav>
     </header>
+<header class="header-tel">
+        <div class="logo-tel">
+            <img src="images/LogoCouleur.png" alt="PACT Logo">
+        </div>
+        
+    </header>
     
     <main class="creation_compte_membre">
+        <h3 class="creation_compte_membre_bienvenue">Bienvenue !</h3>
         <div class="creation_compte_membre_container">
             <div class="creation_compte_membre_form-section">
                 <h1>S’inscrire</h1>
@@ -38,54 +46,96 @@
                     <div class="crea_membre_raison_sociale_num_siren">
                         <fieldset>
                             <legend>Prénom *</legend>
-                            <input type="text" id="raison-sociale" name="raison-sociale" placeholder="Prénom *" required>
+                            <div class="input-icon">
+                                <input type="text" id="prenom" name="prenom" placeholder="Prénom *" required>
+                                <img src="images/icones/personne.png" alt="icones silhouette d'une personne" class="input-icon-img">
+                            </div>
                         </fieldset>
 
                         <fieldset>
                             <legend>Nom *</legend>
-                            <input type="text" id="siren" name="siren" placeholder="Nom *" required>
+                            <div class="input-icon">
+                                <input type="text" id="nom" name="nom" placeholder="Nom *" required>
+                                <img src="images/icones/personne.png" alt="icones silhouette d'une personne" class="input-icon-img">
+                            </div>
                         </fieldset>
                     </div>
                     <fieldset>
                         <legend>Pseudo *</legend>
-                        <input type="text" id="adresse" name="adresse" placeholder="Pseudo *" required>
+                            <div class="input-icon">
+                                <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo *" required>
+                                <img src="images/icones/personne.png" alt="icones silhouette d'une personne" class="input-icon-img">
+                            </div>
                     </fieldset>
                     <div class="crea_membre_mail_tel">
                         <fieldset>
                             <legend>Email *</legend>
-                            <input type="email" id="email" name="email" placeholder="Email *" required>
+                            
+                            <div class="input-icon">
+                                <input type="email" id="email" name="email" placeholder="Email *" required>
+                                <img src="images/icones/enveloppe.png" alt="icones de téléphone" class="input-icon-img">
+                            </div>
+
                         </fieldset>
 
                         <fieldset>
                             <legend>Téléphone *</legend>
-                            <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *" required>
+                            <div class="input-icon">
+                                <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *" required>
+                                <img src="images/icones/telephone.png" alt="icones de téléphone" class="input-icon-img">
+                            </div>
                         </fieldset>
                     </div>
 
 
                     <fieldset>
                         <legend>Adresse Postale *</legend>
-                        <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" required>
+                            <div class="input-icon">
+                                <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" required>
+                                <img src="images/icones/journal.png" alt="icones de journal" class="input-icon-img">
+                            </div>
                     </fieldset>
 
                     <fieldset>
                         <legend>Code Postal *</legend>
-                        <input type="text" id="code-postal" name="code-postal" placeholder="Code Postal *" required>
+                            <div class="input-icon">
+                                <input type="text" id="code-postal" name="code-postal" placeholder="Code Postal *" required>
+                                <img src="images/icones/pin.png" alt="icones de pin" class="input-icon-img">
+                            </div>
+
+                    </fieldset>
+                    <fieldset>
+                        <legend>Complément d'adresse</legend>
+                            <div class="input-icon">
+                                <input type="text" id="complement-adresse" name="complement-adresse" placeholder="Complément d'adresse">
+                                <img src="images/icones/pin.png" alt="icones de pin" class="input-icon-img">
+                            </div>
+
                     </fieldset>
 
                     <fieldset>
                         <legend>Ville *</legend>
-                        <input type="text" id="ville" name="ville" placeholder="Ville *" required>
-                    </fieldset>
+                        <div class="input-icon">
+                            <input type="text" id="ville" name="ville" placeholder="Ville *" required>
+                            <img src="images/icones/batiment.png" alt="icones de batiment" class="input-icon-img">
+                        </div>
+                </fieldset>
 
                     <fieldset>
                         <legend>Mot de passe *</legend>
-                        <input type="password" id="password" name="password" placeholder="Mot de passe *" required>
-                    </fieldset>
-
+                            <div class="input-icon">
+                                <input type="password" id="password" name="password" placeholder="Mot de passe *" required>
+                                <img src="images/icones/cadenas.png" alt="icones de cadenas" class="input-icon-img">
+                            </div>
+                        </fieldset>
+                        
                     <fieldset>
-                        <legend>Confirmer le mot de passe *</legend>
-                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe *" required>
+                            <legend>Confirmer le mot de passe *</legend>
+                            <div class="input-icon">
+                                <img src="images/icones/cadenas.png" alt="icones de cadenas" class="input-icon-img">
+                                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe *" required>
+                            </div>
+
                     </fieldset>
 
                     
@@ -93,7 +143,9 @@
                             <input type="checkbox" id="cgu" name="cgu" required>
                             <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
                         </div>
-
+                        <div class="creation_compte_membre_deja_compte">
+                            <a href="#">Déjà un compte ?</a>
+                        </div>
                     <button type="submit" class="submit-btn">Créer mon compte <img src="images/flecheBlancheDroite.png" alt="fleche vers la droite"></button>
                 </form>
                 <div class="creation_compte_membre_other-links">
