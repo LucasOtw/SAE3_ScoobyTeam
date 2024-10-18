@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script> <!-- Pour les icones -->
 </head>
-<body>
+<body id="body_offre_desktop">
     <header>
         <div class="logo">
             <img src="images/logoBlanc.png" alt="PACT Logo">

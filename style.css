@@ -510,4 +510,8 @@ footer {
         width: 100%;
         height: auto;
     }
+
+    #body_offre_desktop{
+        display: none;
+    }
 }
