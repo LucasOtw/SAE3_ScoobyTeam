@@ -241,11 +241,13 @@ footer {
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
 }
 
 .tabs ul li {
     display: inline-block;
     margin: 0 20px;
+    text-decoration: none;
 }
 
 .tabs ul li a {
@@ -255,10 +257,12 @@ footer {
     border-bottom: 2px solid transparent;
     transition: border-color 0.3s;
     color: #333;
+    text-decoration: none;
 }
 
 .tabs ul li a.active {
     border-color: #ff6600;
+    text-decoration: none;
 }
 
 /* Carte d'offre */
@@ -296,6 +300,7 @@ footer {
     gap: 20px;        /* Ajoute un espacement entre les cartes */
     justify-content: space-around;  /* Aligne les cartes de manière équitable */
     margin: 20px;
+    margin-bottom: 20px;
 }
 
 .offres {
@@ -304,6 +309,7 @@ footer {
     gap: 20px;        /* Ajoute un espacement entre les cartes */
     justify-content: space-around;  /* Aligne les cartes de manière équitable */
     margin: 20px;
+    margin-bottom: 100px;
 }
 
 .offer-card {

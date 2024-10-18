@@ -46,12 +46,6 @@
     
         <section class="offers">
             <h2>Vos offres</h2>
-            <div class="offers-container">
-                <div class="status-buttons">
-                    <button class="status-button">Hors ligne</button>
-                    <button class="status-button">En ligne</button>
-                </div>
-            </div>
             <section class="offres">
                 <div class="offer-card">
                     <div class="offer-image">
@@ -184,13 +178,10 @@
                     </div>
                     <button class="add-btn">+</button>
                 </div>
-            </section>    
-        
-            <button class="image-button">
+                <button class="image-button">
                 <span class="button-text">Publier une offre</span>
-            </button>
-        </section>
-        
+                </button>
+        </section>    
     </main>
     
     <footer>
