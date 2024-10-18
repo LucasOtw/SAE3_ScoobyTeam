@@ -465,6 +465,7 @@ button.submit-btn1 {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-bottom: 10em;
 }
 
 button.submit-btn1:hover {
@@ -486,7 +487,25 @@ button.submit-btn1 img {
         display: none;
     }
 }
+.submit-btn2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #007bff; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
 
 
 
+
+.submit-btn2 img {
+    margin-left: 10px; /* Espace entre le texte et l'image */
+    width: 20px; /* Largeur de l'image */
+    height: auto; /* Maintient le ratio de l'image */
+}
 
