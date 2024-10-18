@@ -40,7 +40,7 @@
                 <li><a href="#">Informations</a></li>
                 <li><a href="#">Mot de passe et sécurité</a></li>
                 <li><a href="#" class="active">Offres</a></li>
-                <li><a href="#">Paiement</a></li>
+                <li><a href="#">Compte bancaire</a></li>
             </ul>
         </section>
     
