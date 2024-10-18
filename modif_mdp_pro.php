@@ -53,27 +53,13 @@
     </fieldset>
     <div class="compte_membre_save_delete">
     <button type="submit" class="submit-btn1">Supprimer mon compte</button>
-    <button type="submit" class="submit-btn2">Enregistrer</button>
+    <button type="submit" class="submit-btn2">Déconnexion</button>
+    <button type="submit" class="submit-btn3">Enregistrer</button>
 </div>
 
 </form>
 
     <footer class="footer_detail_avis">
-        <div class="newsletter">
-            <div class="newsletter-content">
-                <h2>Inscrivez-vous à notre Newsletter</h2>
-                <p>PACT</p>
-                <p>Redécouvrez la Bretagne !</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Votre adresse mail" required>
-                    <button type="submit">S'inscrire</button>
-                </form>
-            </div>
-            <div class="newsletter-image">
-                <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
-            </div>
-        </div>
-        
         <div class="footer-links">
             <div class="logo">
                 <img src="images/logoBlanc.png" alt="Logo PACT">

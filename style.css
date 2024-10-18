@@ -315,7 +315,7 @@ p {
 
 .tab.active {
     color: #2e2e2e;
-    border-bottom: 2px solid --orange; /* Couleur vert olive */
+    border-bottom: 2px solid var(--orange); 
 }
 
 .tab:not(.active):hover {
@@ -433,7 +433,8 @@ input[type="password"]::placeholder {
 }
 
 button.submit-btn1, 
-button.submit-btn2 {
+button.submit-btn2,
+button.submit-btn3 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -452,14 +453,16 @@ button.submit-btn2 {
 
 }
 
-button.submit-btn1{
+button.submit-btn1,
+button.submit-btn2{
     background-color: white;
     border: 1.5px solid var(--orange);
     color: black;
 }
 
 button.submit-btn1:hover,
-button.submit-btn2:hover {
+button.submit-btn2:hover,
+button.submit-btn3 {
     background-color: var(--orange); /* Ajoute une couleur de survol pour les deux boutons */
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Ombre plus forte au survol */
     transition: 0.3s;
