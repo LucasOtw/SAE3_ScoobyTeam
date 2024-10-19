@@ -15,9 +15,9 @@
 </head>
 
 <body>
-    <header class="header_pro">
+    <header class="header_membre">
         <div class="logo">
-            <img src="images/logo_blanc_pro.png" alt="PACT Logo">
+            <img src="images/logo_blanc_membre.png" alt="PACT Logo">
         </div>
         <nav>
             <ul>
@@ -27,46 +27,46 @@
             </ul>
         </nav>
     </header>
-    <main class="connexion_pro_main">
-        <div class="connexion_pro_container">
-            <div class="connexion_pro_form-container">
-                <div class="connexion_pro_h2_p">
+    <main class="connexion_membre_main">
+        <div class="connexion_membre_container">
+            <div class="connexion_membre_form-container">
+                <div class="connexion_membre_h2_p">
                     <h2>Se connecter</h2>
                     <p>Se connecter pour accéder à vos favoris</p>
                 </div>
                 <form action="#">
                     <fieldset>
                         <legend>E-mail</legend>
-                        <div class="connexion_pro_input-group">
+                        <div class="connexion_membre_input-group">
                             <input type="email" id="email" placeholder="E-mail" required>
                         </div>
                     </fieldset>
 
                     <fieldset>
                         <legend>Mot de passe</legend>
-                        <div class="connexion_pro_input-group">
+                        <div class="connexion_membre_input-group">
                             <input type="password" id="password" placeholder="Mot de passe" required>
                         </div>
                     </fieldset>
                 <!--
-                    <div class="connexion_pro_remember-group">
+                    <div class="connexion_membre_remember-group">
                         <div>
                             <input type="checkbox" id="remember" checked>
-                            <label class="connexion_pro_lab_enreg" for="remember">Enregistrer</label>
+                            <label class="connexion_membre_lab_enreg" for="remember">Enregistrer</label>
                         </div>
                         <a href="#">Mot de passe oublié ?</a>
                     </div>
                 -->
                     <button type="submit">Se connecter</button>
-                    <div class="connexion_pro_additional-links">
+                    <div class="connexion_membre_additional-links">
                         <p><span class="pas_de_compte">Pas de compte ?<a href="#">Inscription</a></p>
 
-                        <p class="compte_membre"><a href="#">Un compte Membre&nbsp?</a></p>
+                        <p class="compte_membre"><a href="#">Un compte Pro&nbsp?</a></p>
                     </div>
                 </form>
 
             </div>
-            <div class="connexion_pro_image-container">
+            <div class="connexion_membre_image-container">
                 <img src="images/imageConnexionProEau.png" alt="Image de maison en pierre avec de l'eau">
             </div>
         </div>
