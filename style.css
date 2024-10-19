@@ -22,19 +22,7 @@
     font-style: normal;
 }
 
-html,
-body {
-    height: 100%;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    font-family: "K2D", sans-serif;
-    min-height: 100vh;
-}
-
-header {
+header.header-pc {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,22 +31,43 @@ header {
     color: white;
 }
 
+header.header-tel {
+    display: none;
+}
+
+.creation_compte_membre_bienvenue {
+    display: none;
+    text-align: center;
+}
+
+.logo-tel {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+}
+
 .logo img {
     height: 60px;
+    max-width: 100%;
+    /* Pour s'assurer que l'image ne dépasse pas */
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 70px;
-    margin-right: 4em;
+    gap: 3vw;
+    /* Espace adaptable selon la largeur de l'écran */
+    margin-right: 4vw;
+    flex-wrap: wrap;
+    /* Permet de passer sur plusieurs lignes si nécessaire */
 }
 
 nav ul li a {
     position: relative;
     text-decoration: none;
     color: white;
-    font-size: 18px;
+    font-size: 1.2rem;
+    /* Utilise des unités relatives */
     padding: 5px 10px;
     transition: color 0.3s, border-bottom 0.3s;
 }
@@ -71,8 +80,12 @@ nav ul li a:hover {
     color: var(--vert-clair);
 }
 
-.footer_membre .newsletter {
-    background-color: var(--vert-clair);
+.header_pro nav ul li a.active {
+    color: var(--orange);
+}
+
+.header_pro nav ul li a:hover {
+    color: var(--orange);
 }
 
 nav ul li a::before {
@@ -83,6 +96,10 @@ nav ul li a::before {
     bottom: -2px;
     background-color: var(--vert-clair);
     transition: width 0.3s ease;
+}
+
+.header_pro nav ul li a::before {
+    background-color: var(--orange);
 }
 
 nav ul li a:hover::before {
@@ -100,6 +117,8 @@ footer {
 
 .newsletter {
     display: flex;
+    flex-direction: column;
+    /* Stack les éléments sur petits écrans */
     justify-content: space-between;
     background-color: var(--vert-clair);
     padding: 20px;
@@ -108,25 +127,38 @@ footer {
     margin-top: -130px;
     z-index: 1;
     width: 90%;
-    height: 65%;
+    max-width: 1200px;
+    /* Limite la largeur sur grands écrans */
     margin-left: auto;
     margin-right: auto;
 }
 
 .newsletter-content {
     text-align: left;
-    max-width: 60%;
+    max-width: 100%;
+    /* Ajuste pour petits écrans */
 }
 
 .newsletter h2 {
-    font-size: 24px;
+    font-size: 2rem;
+    /* Taille adaptable */
     margin-bottom: 10px;
 }
 
 .newsletter-form {
     display: flex;
+    flex-direction: column;
+    /* Colonne sur petits écrans */
     gap: 10px;
     margin-top: 10px;
+}
+
+.newsletter-form button {
+    background-color: #112211;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .newsletter-form input,
@@ -140,22 +172,17 @@ footer {
     flex-grow: 1;
 }
 
-.newsletter-form button {
-    padding: 0 20px;
-    background-color: #112211;
-    color: white;
-    cursor: pointer;
-}
-
 .newsletter-image img {
     max-height: 100px;
+    width: auto;
+    /* Maintien du ratio de l'image */
 }
 
 .footer-links {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    margin-top: 20px;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 0;
 }
 
 .link-group ul {
@@ -178,8 +205,9 @@ footer {
 
 .footer-bottom {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    gap: 10px;
 }
 
 .social-icons a img {
@@ -187,21 +215,60 @@ footer {
     margin: 0 10px;
 }
 
-/*****************************************************
-                                                    * Code page connexion membre * 
-                                        *****************************************************/
+/* Media queries pour l'adaptabilité */
+
+@media (min-width: 768px) {
+    .newsletter {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .newsletter-content {
+        max-width: 60%;
+    }
+
+    .newsletter-form {
+        flex-direction: row;
+    }
+
+    .footer-links {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+@media (min-width: 1024px) {
+    nav ul {
+        gap: 50px;
+        /* Réduit l'espace entre les éléments sur grands écrans */
+    }
+
+    footer {
+        padding: 40px 80px;
+    }
+}
+
+.connexion_membre_ravi {
+    display: none;
+}
 
 main.connexion_membre_main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 40px);
 }
 
 .connexion_membre_container {
     display: flex;
     justify-content: space-evenly;
     width: 150%;
+    margin-top: 15vh;
 }
 
 .connexion_membre_form-container {
@@ -238,6 +305,10 @@ main.connexion_membre_main {
 
 .connexion_membre_main fieldset input:focus::placeholder {
     color: rgba(0, 0, 0, 0);
+}
+
+.connexion_membre_main hr {
+    display: none;
 }
 
 .connexion_membre_main #remember {
@@ -278,8 +349,14 @@ main.connexion_membre_main {
     margin-bottom: 10px;
 }
 
-.connexion_membre_main p {
+.connexion_membre_main .connexion_membre_h2_p p {
     margin-bottom: 30px;
+}
+
+.connexion_membre_main .connexion_membre_btn_connecter_pas_de_compte .pas_de_compte a {
+    text-decoration: none;
+    color: var(--vert-clair);
+    margin-left: 5px;
 }
 
 .connexion_membre_input-group label {
@@ -331,11 +408,7 @@ main.connexion_membre_main {
     text-decoration: none;
 }
 
-.connexion_membre_additional-links a {
-    text-decoration: none;
-    color: var(--vert-clair);
-    margin-left: 5px;
-}
+
 
 .connexion_membre_image-container {
     width: 30%;
@@ -351,6 +424,11 @@ main.connexion_membre_main {
     max-height: 100%;
 }
 
+.connexion_membre_main .connexion_membre_btn_connecter_pas_de_compte {
+    display: flex;
+    flex-direction: column;
+}
+
 /* Empêche l'image de dépasser sur les grands écrans */
 @media (max-width: 768px) {
     .connexion_membre_image-container {
@@ -360,6 +438,7 @@ main.connexion_membre_main {
 
     .connexion_membre_container {
         justify-content: center;
+        margin-top: auto;
         /* Centre le formulaire quand l'image est cachée */
     }
 
@@ -387,16 +466,47 @@ main.connexion_membre_main {
     }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 431px) {
+    header.header-pc {
+        display: none;
+    }
+
+    header.header-tel {
+        display: block;
+    }
+
+    .connexion_membre_h2_p {
+        display: none;
+    }
 
     .input-icon-img {
         display: inline-block;
     }
 
+    .connexion_membre_ravi {
+        display: block;
+
+        text-align: center;
+        margin: 5vh auto;
+    }
+
+    .connexion_membre_main legend {
+        left: 25px;
+        ;
+    }
 
     .connexion_membre_main input[type="email"],
     .connexion_membre_main input[type="password"] {
         border-radius: 100px;
+        height: 7vh;
+    }
+
+
+    .connexion_membre_main button {
+        border-radius: 100px;
+        position: absolute;
+        bottom: 30px;
+        width: 65vw;
     }
 
     .connexion_membre_main fieldset {
@@ -411,5 +521,26 @@ main.connexion_membre_main {
 
     body>main>div>div.connexion_membre_form-section>form>fieldset:nth-child(9) {
         margin-bottom: 0;
+    }
+
+    .connexion_membre_main fieldset:nth-child(2) {
+        margin-bottom: 15vh;
+    }
+
+    .connexion_membre_main .connexion_membre_btn_connecter_pas_de_compte {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .connexion_membre_main .connexion_membre_btn_connecter_pas_de_compte p {
+        margin-bottom: 10px;
+    }
+
+    .connexion_membre_main .connexion_membre_btn_connecter_pas_de_compte {
+        flex-direction: column-reverse;
+    }
+
+    .connexion_membre_main hr {
+        display: block;
     }
 }

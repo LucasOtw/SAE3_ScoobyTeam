@@ -15,18 +15,26 @@
 </head>
 
 <body>
-    <header class="header_membre">
-        <div class="logo">
-            <img src="images/logo_blanc_membre.png" alt="PACT Logo">
+    <header class="header-pc">
+        <div class="logo-pc">
+            <img src="images/logoBlanc.png" alt="PACT Logo">
         </div>
+        
         <nav>
             <ul>
-                <li><a href="#">Accueil</a></li>
+                <li><a href="#" class="active">Accueil</a></li>
                 <li><a href="#">Publier</a></li>
-                <li><a href="#" class="active">Mon Compte</a></li>
+                <li><a href="#">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
+    <header class="header-tel">
+        <div class="logo-tel">
+            <img src="images/LogoCouleur.png" alt="PACT Logo">
+        </div>
+        
+    </header>
+        <h3 class="connexion_membre_ravi">Ravi de vous revoir !</h3>
     <main class="connexion_membre_main">
         <div class="connexion_membre_container">
             <div class="connexion_membre_form-container">
@@ -48,7 +56,8 @@
                             <input type="password" id="password" placeholder="Mot de passe" required>
                         </div>
                     </fieldset>
-                <!--
+                    
+                    <!--
                     <div class="connexion_membre_remember-group">
                         <div>
                             <input type="checkbox" id="remember" checked>
@@ -56,13 +65,14 @@
                         </div>
                         <a href="#">Mot de passe oublié ?</a>
                     </div>
+                
                 -->
-                    <button type="submit">Se connecter</button>
-                    <div class="connexion_membre_additional-links">
+                    <div class="connexion_membre_btn_connecter_pas_de_compte">
+                        <button type="submit">Se connecter</button>
+                        <hr>
                         <p><span class="pas_de_compte">Pas de compte ?<a href="#">Inscription</a></p>
-
-                        <p class="compte_membre"><a href="#">Un compte Pro&nbsp?</a></p>
                     </div>
+                    
                 </form>
 
             </div>
