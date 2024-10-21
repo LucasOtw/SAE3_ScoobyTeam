@@ -1,125 +1,262 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+                                        /*****************************************************
+                                                   * Code pour la page création offre 2 *
+                                        *****************************************************/
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-}
-
-.container {
-    width: 90%;
-    max-width: 900px;
-    margin: 50px auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.step-bar {
+/* Main Container */
+.main-creation-offre2 {
+    flex: 1;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+
+/* Form Container */
+.form-container2 {
+    background-color: white;
+    padding: 40px;
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+    border-radius: 8px;
+    width: 100%;
+    /* max-width: 1000px; */
+    
+}
+
+.form-container2 h1 {
+    font-size: 24px;
+    color: #000000;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+/* Form Elements */
+.row {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.step {
-    font-weight: bold;
-    color: gray;
+.col {
+    flex: 1;
+    padding: 10px;
 }
 
-.step.active {
-    color: orange;
-}
-
-h2 {
-    margin-bottom: 20px;
-    color: #333;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin: 10px 0 5px;
-    font-weight: bold;
-    color: #333;
-}
-
-input[type="text"], input[type="email"], input[type="tel"], input[type="url"], textarea, .file-input input[type="file"] {
+.col input, .col select {
     width: 100%;
     padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.main-creation-offre2 label {
+    font-weight: bold;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    display: block;
 }
 
-textarea {
-    height: 80px;
+.main-creation-offre2 .label-check {
+    margin-bottom: 0;
+    font-weight: lighter;
 }
 
-.file-input {
-    margin-bottom: 15px;
+.price-options, .meal-options, .boost-options, .offre-options, .duration-options {
+    margin-bottom: 20px;
+    padding: 10px;
 }
 
-.tarification, .services, .offer-type, .publish-duration {
-    margin-bottom: 15px;
-}
-
-.day {
+.radio-group, .checkbox-group {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
 }
 
-.hour-group {
+.radio-group div, .checkbox-group div {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+}
+
+input[type="radio"], input[type="checkbox"] {
     margin-right: 10px;
 }
 
-button {
-    width: 100%;
-    padding: 15px;
-    background-color: orange;
-    border: none;
+/* Submit Button */
+#button_valider {
+    background-color: var(--orange);
     color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
     font-size: 16px;
-    border-radius: 4px;
     cursor: pointer;
-    margin-top: 20px;
-}
-
-button:hover {
-    background-color: darkorange;
-}
-
-.form-row {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
 }
 
-.form-group {
-    flex: 1;
+#button_valider img {
+    margin-left: 10px;
+}
+
+/* Conteneur pour l'image et le toggle */
+.header-controls {
+    display: flex;
+    align-items: center; /* Aligne verticalement au centre */
+    justify-content: space-between; /* Espacement entre l'image et le toggle */
+    padding: 20px; /* Optionnel : espacement autour du conteneur */
+}
+
+/* Styles pour l'image des étapes */
+#etapes {
+    max-width: 100%; /* Pour s'assurer que l'image est responsive */
+    height: auto; /* Conserve le ratio d'aspect */
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
+    height: 26px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #ffa500;
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px); /* Ajusté pour ajouter un espace de 4px à droite */
+    background-color: white;
 }
 
 
-/*****************************************************
-        * Code pour la page header/footer responsive *
-*****************************************************/
+
+
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+}
+
+
+
+.main-creation-offre2 fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-top: 0; /* Enlève le padding en haut */
+}
+
+.main-creation-offre2 legend {
+    font-size: 14px;
+    padding: 0 10px;
+    color: #333;
+    background-color: white;
+    position: absolute;
+    top: -10px; 
+    left: 10px; 
+    z-index: 2;
+    display: none;
+
+}
+.main-creation-offre2 fieldset:focus-within legend {
+    display:inline;
+    transition: ease-out 0.3s;
+} 
+
+.main-creation-offre2 fieldset input::placeholder {
+    padding-left: 10px;
+} 
+.main-creation-offre2 fieldset input:focus::placeholder {
+    color: rgba(0, 0, 0, 0);
+} 
+
+
+
+                                        /*****************************************************
+                                                   * Code général pour les pages *
+                                        *****************************************************/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --orange : #F28322;
+    --vert-clair : #BDC426;
+    --vert-fonce : #668C3F;
+    --gris : #E8E8E8;
+}
+
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+html, body {
+    height: 100%; /* Important pour que le footer se positionne en bas */
+}
+
+
+
+
+                                        /*****************************************************
+                                                    * Code pour la page header/footer *
+                                        *****************************************************/
+
+
 
 body {
     display: flex;
     flex-direction: column;
     font-family: "K2D", sans-serif;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
+    min-height: 100vh; /*Pour occuper toute la page*/
 }
 
 header {
@@ -133,22 +270,20 @@ header {
 
 .logo img {
     height: 60px;
-    max-width: 100%; /* Pour s'assurer que l'image ne dépasse pas */
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 3vw; /* Espace adaptable selon la largeur de l'écran */
-    margin-right: 4vw;
-    flex-wrap: wrap; /* Permet de passer sur plusieurs lignes si nécessaire */
+    gap: 70px; /*Espace pour les éléments */
+    margin-right: 4em;
 }
 
 nav ul li a {
-    position: relative;
+    position: relative; /* Ajout pour que ::before fonctionne */
     text-decoration: none;
     color: white;
-    font-size: 1.2rem; /* Utilise des unités relatives */
+    font-size: 18px;
     padding: 5px 10px;
     transition: color 0.3s, border-bottom 0.3s;
 }
@@ -170,93 +305,104 @@ nav ul li a:hover {
 }
 
 nav ul li a::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2.5px;
-    bottom: -2px;
-    background-color: var(--vert-clair);
-    transition: width 0.3s ease;
+    content: ""; /* Contenu vide pour l'effet de soulignement */
+    position: absolute; /* Positionnement absolu */
+    width: 0; /* Largeur initiale de la ligne de soulignement */
+    height: 2.5px; /* Hauteur de la ligne de soulignement */
+    bottom: -2px; /* Positionnement sous le texte */
+    background-color: var(--vert-clair); /* Couleur du soulignement */
+    transition: width 0.3s ease; /* Transition fluide */
 }
 
 .header_pro nav ul li a::before {
-    background-color: var(--orange);
+    background-color: var(--orange); /* Couleur du soulignement pro */
 }
 
 nav ul li a:hover::before {
-    width: 90%;
+    width: 90%; /* Élargissement du soulignement au survol */
 }
 
 footer {
     background-color: #000;
     color: rgb(0, 0, 0);
-    padding: 40px 20px;
+    padding: 0 20px 40px 20px;
     text-align: left;
     width: 100%;
-    margin-top: auto;
+    margin-top: auto; /* Positionne le footer en bas */
 }
 
 .newsletter {
     display: flex;
-    flex-direction: column; /* Stack les éléments sur petits écrans */
     justify-content: space-between;
-    background-color: var(--vert-clair);
+    background-color: var(--vert-clair); 
     padding: 20px;
     border-radius: 20px;
-    position: relative;
-    margin-top: -130px;
-    z-index: 1;
-    width: 90%;
-    max-width: 1200px; /* Limite la largeur sur grands écrans */
+    position: relative; /* Permet de le positionner */
+    margin-top: -130px; /* Ajuste cette valeur pour chevaucher les sections */
+    z-index: 1; /* Assure que le bloc soit au-dessus de la section noire */
+    width: 90%; /* Ajuste la largeur si nécessaire */
+    height: 65%;
     margin-left: auto;
     margin-right: auto;
-}
+}  
+
 
 .newsletter-content {
     text-align: left;
-    max-width: 100%; /* Ajuste pour petits écrans */
+    max-width: 60%;
 }
 
 .newsletter h2 {
-    font-size: 2rem; /* Taille adaptable */
+    font-size: 24px;
     margin-bottom: 10px;
 }
 
 .newsletter-form {
     display: flex;
-    flex-direction: column; /* Colonne sur petits écrans */
     gap: 10px;
     margin-top: 10px;
 }
 
+
 .newsletter-form button {
+    /* padding: 10px 20px; */
     background-color: #112211;
+    height: auto;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
+} 
 
 .newsletter-form input, .newsletter-form button {
     padding: 10px;
+    height: 100%; /* Assure la même hauteur pour les deux */
     border: none;
     border-radius: 5px;
 }
 
 .newsletter-form input {
-    flex-grow: 1;
+    flex-grow: 1; /* Laisse l'input s'étendre à la largeur restante */
 }
+
+.newsletter-form button {
+    padding: 0 20px; /* Réduit le padding vertical pour que le bouton reste aligné */
+    background-color: #112211;
+    color: white;
+    cursor: pointer;
+}
+
 
 .newsletter-image img {
     max-height: 100px;
-    width: auto; /* Maintien du ratio de l'image */
 }
 
 .footer-links {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin: 20px 0;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    margin-top: 50px;
+    margin-right: 89px;
 }
 
 .link-group ul {
@@ -279,50 +425,11 @@ footer {
 
 .footer-bottom {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
 }
 
 .social-icons a img {
     width: 24px;
     margin: 0 10px;
-}
-
-/* Media queries pour l'adaptabilité */
-
-@media (min-width: 768px) {
-    .newsletter {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    
-    .newsletter-content {
-        max-width: 60%;
-    }
-    
-    .newsletter-form {
-        flex-direction: row;
-    }
-    
-    .footer-links {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .footer-bottom {
-        flex-direction: row;
-        justify-content: space-between;
-        width: 100%;
-    }
-}
-
-@media (min-width: 1024px) {
-    nav ul {
-        gap: 50px; /* Réduit l'espace entre les éléments sur grands écrans */
-    }
-
-    footer {
-        padding: 40px 80px;
-    }
 }
