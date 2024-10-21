@@ -535,4 +535,71 @@ footer {
         width: 3vw;
     }
 
+    span#titre{
+        display: flex;
+        align-items:last baseline;
+        justify-content: space-between;
+    }
+
+    span#titre > p{
+        color: #BDC426
+    }
+
+    #body_offre_mobile > div > div.details > p{
+        color:#727272;
+    }
+
+    #body_offre_mobile > div > div.details > div.rating > span:nth-child(2){
+        color:#727272;
+    }
+
+    #body_offre_mobile > div > div.details > section{
+        margin: 3vh 0;
+    }
+
+    #body_offre_mobile > div > div.details > section > article{
+        margin: 2vh 0 2vh 1vw;
+    }
+
+    /* "Services" mobile */
+
+    .services{
+        display: flex;
+        justify-content: space-around;
+        margin: 2vh 0;
+    }
+
+    .services > span.service{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #f4f8ff;
+        border-radius: 2vw;
+        box-shadow: 0 5px 10px -5px black;
+        aspect-ratio: 1 / 1;
+        width: 15vw;
+        color:#727272;
+    }
+
+    .services > span.service > img{
+        width: 40%;
+    }
+
+    #body_offre_mobile > div > div.details > ul{
+        line-height: 200%;
+    }
+    #body_offre_mobile > div > div.details > ul > li > span{
+        font-weight: bolder;
+    }
+    #body_offre_mobile > div > article{
+        display: flex;
+        justify-content: space-between;
+    }
+    #body_offre_mobile > div > article > span{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
 }

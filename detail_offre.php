@@ -187,67 +187,73 @@
 
         <!-- Détails de l'offre -->
         <div class="details">
-            <h1>Ti Al Lannec</h1>
+            <span id="titre">
+                <h1>Ti Al Lannec</h1>
+                <p>Direction</p>
+            </span>
             <div class="rating">
                 <span>
-                    <img class="icone" src="images/etoile.png"></img>
+                    <img class="icone" src="images/etoile.png">
                 </span>
                 <span>
                     4.7 (2 avis)
                 </span>
             </div>
             <p class="address">
-                <img class="icone" src="images/icones/pin.png"></img>
-                3 rue du Général de Gaulle, 22300 Lannion</p>
-            <article>
-                <h2>Résumé</h2>
-                <p class="summary">Choix des derniers technologies, tout y a été pensé pour votre confort.</p>
-            </article>
-            <article>
-                <h2>Description</h2>
-                <p>C'est très décontracté en terrasse, on sait tout par la force et la beauté du panorama à perte de vue.</p>
-            </article>
+                <img class="icone" src="images/icones/pin.png">
+                34 Av. du Général de Gaulle, 22300 Lannion</p>
+            <section>
+                <article>
+                    <h3>Résumé</h3>
+                    <p class="summary">Choix des derniers technologies, tout y a été pensé pour votre confort.</p>
+                </article>
+                <article>
+                    <h3>Description</h3>
+                    <p>C'est très décontracté en terrasse, on sait tout par la force et la beauté du panorama à perte de vue.</p>
+                </article>
+            </section>
 
             <h2>Services</h2>
             <div class="services">
-                <div class="service">🍽️</div>
-                <div class="service">🚶‍♀️</div>
-                <div class="service">♿</div>
-                <div class="service">☕</div>
+                <span class="service">
+                    <img src="images/icones/wifi.png">
+                    <p>Wifi</p>
+                </span>
+                <span class="service">
+                    <img src="images/icones/food.png">
+                    <p>Repas</p>
+                </span>
+                <span class="service">
+                    <img src="images/icones/drink.png">
+                    <p>Bar</p>
+                </span>
+                <span class="service">
+                    <img src="images/icones/pool.png">
+                    <p>Piscine</p>
+                </span>
             </div>
 
             <h2>Horaires d'ouverture</h2>
             <ul class="hours">
-                <li>Lundi: 19h30 - 21h30</li>
-                <li>Mardi: 19h30 - 21h30</li>
-                <li>Mercredi: 19h30 - 21h30</li>
-                <li>Jeudi: 19h30 - 21h30</li>
-                <li>Vendredi: 19h30 - 21h30</li>
-                <li>Samedi: 12h30 - 13h30, 19h30 - 21h30</li>
-                <li>Dimanche: 12h30 - 13h30, 19h30 - 21h30</li>
+                <li><span>Lundi</span>: 19h30 - 21h30</li>
+                <li><span>Mardi</span>: 19h30 - 21h30</li>
+                <li><span>Mercredi</span>: 19h30 - 21h30</li>
+                <li><span>Jeudi</span>: 19h30 - 21h30</li>
+                <li><span>Vendredi</span>: 19h30 - 21h30</li>
+                <li><span>Samedi</span>: 12h30 - 13h30, 19h30 - 21h30</li>
+                <li><span>Dimanche</span>: 12h30 - 13h30, 19h30 - 21h30</li>
             </ul>
-
-            <h2>Ce que les utilisateurs ont pensé</h2>
-            <div class="reviews">
-                <div class="review">
-                    <p><strong>Irane Bonny</strong> - <span>5.0 ★</span></p>
-                    <p>Déjeuner dimanche dernier dans ce lieu sublime.</p>
-                </div>
-                <div class="review">
-                    <p><strong>Hubert Sellier</strong> - <span>4.3 ★</span></p>
-                    <p>Restaurant avec une carte des menus assez complète.</p>
-                </div>
-            </div>
         </div>
 
         <!-- Bouton publier un avis -->
-        <div class="bottom-bar">
-            <div class="price">70€</div>
-            <button class="review-btn">Publier un avis</button>
-        </div>
-
-        </div>
-    
+        <article class="publier_avis">
+            <span>
+                <p>Tarif minimal</p>
+                <p id="prix">70€</p>
+            </span>
+            <button id="bouton_publier">Publier un avis</button>
+        </article>
+    </div>
 </body>
 
 <!-- SwiperJS pour le carrousel -->
