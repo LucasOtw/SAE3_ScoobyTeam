@@ -535,3 +535,22 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
         margin-bottom: 0;
     }
 }
+
+
+.erreurP {
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text */
+    border: 1px solid #f5c6cb; /* Light red border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding inside the error box */
+    margin-top: 10px; /* Space above the error message */
+    font-family: 'K2D', sans-serif; /* Use the same font as your form */
+    font-size: 16px; /* Adjust font size */
+    transition: opacity 0.3s; /* Transition for fading in/out */
+}
+
+/* Optional: To fade out after a few seconds */
+.fade-out {
+    opacity: 0; /* Invisible */
+    transition: opacity 2s ease-out; /* Transition for fading out */
+}
