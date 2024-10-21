@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(!isset($_SESSION['user_id'])) {
+    header("Location: connexion_pro"); // Redirection vers la page de connexion si non connecté
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,7 +71,7 @@
     </div>
     <div class="compte_membre_save_delete">
     <button type="submit" class="submit-btn1">Supprimer mon compte</button>
-    <button type="submit" class="submit-btn2">Déconnexion</button>
+    <a href="deconnexion_compte_pro.php" class="submit-btn2">Déconnexion</a>
     <button type="submit" class="submit-btn3">Enregistrer</button>
 </div>
 
