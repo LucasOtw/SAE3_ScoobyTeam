@@ -21,11 +21,11 @@
     </header>
     <div class="container">
         <div class="header">
-            <img src="images/Fond.png" alt="Bannière" class="header-img">
+            <img src="Images/Fond.png" alt="Bannière" class="header-img">
         </div>
 
         <div class="profile-section">
-            <img src="images/PhotodeProfil.png" alt="Photo de profil" class="profile-img">
+            <img src="Images/PhotodeProfil.png" alt="Photo de profil" class="profile-img">
             <h1>Ti al Lannec</h1>
             <p>ti.al.lannec@gmail.com | 07.98.76.54.12</p>
         </div>
