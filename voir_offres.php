@@ -1,19 +1,21 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>En-tête PAVCT</title>
-    <link rel="stylesheet" href="style.css?">
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="images/logoBlanc.png" alt="PAVCT Logo">
+<header class="header-pc">
+        <div class="logo-pc">
+            <img src="images/logoBlanc.png" alt="PACT Logo">
         </div>
+        
         <nav>
             <ul>
                 <li><a href="#" class="active">Accueil</a></li>
@@ -21,6 +23,12 @@
                 <li><a href="#">Mon Compte</a></li>
             </ul>
         </nav>
+    </header>
+    <header class="header-tel">
+        <div class="logo-tel">
+            <img src="images/LogoCouleur.png" alt="PACT Logo">
+        </div>
+        
     </header>
     <main class="offre_main">
         <header>
@@ -37,7 +45,7 @@
                     <p>Plœmeur Bodou</p>
                     <span>1 mois</span>
                     <span>
-                        <img src="images/etoile.png">
+                        <img src="images/etoile.png" class="img-etoile">
                         <p>4.6 (355 avis)</p>
                     </span>
                     <button>Voir l'offre →</button>
@@ -51,7 +59,7 @@
                     <p>Lannion</p>
                     <span>3 mois</span>
                     <span>
-                        <img src="images/etoile.png">
+                        <img src="images/etoile.png" class="img-etoile">
                         <p>4 (50 avis)</p>
                     </span>
                     <button>Voir l'offre →</button>
@@ -65,7 +73,7 @@
                     <p>Lannion</p>
                     <span>6 mois</span>
                     <span>
-                        <img src="images/etoile.png">
+                        <img src="images/etoile.png" class="img-etoile">
                         <p>3.8 (300 avis)</p>
                     </span>
                     <button>Voir l'offre →</button>
@@ -73,6 +81,12 @@
             </article>
         </section>
     </main>
+    <nav class="nav-bar">
+    <a href="#"><img src="images/icones/House.png" alt="image de maison"></a>
+    <a href="#"><img src="images/icones/recent.png" alt="image d'horloge"></a>
+    <a href="#"><img src="images/icones/Croix.png" alt="image de PLUS"></a>
+    <a href="#"><img src="images/icones/User.png" alt="image de Personne"></a>
+</nav>
     <footer>
         <div class="newsletter">
             <div class="newsletter-content">
@@ -133,5 +147,6 @@
             </div>
         </div>
     </footer>
+
 </body>
 </html>
