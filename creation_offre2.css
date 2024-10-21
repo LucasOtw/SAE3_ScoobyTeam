@@ -17,17 +17,20 @@
 .form-container2 {
     background-color: white;
     padding: 40px;
-    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
     border-radius: 8px;
     width: 100%;
-    /* max-width: 1000px; */
+    position: relative;
     
 }
 
 .form-container2 h1 {
     font-size: 24px;
     color: #000000;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.main-creation-offre2 h2{
     padding: 10px;
 }
 
@@ -87,7 +90,7 @@ input[type="radio"], input[type="checkbox"] {
 #button_valider {
     background-color: var(--orange);
     color: white;
-    padding: 10px 20px;
+    padding: 10px 50px;
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -95,7 +98,10 @@ input[type="radio"], input[type="checkbox"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 30px;
+    position: absolute; /* Positionnement absolu */
+    bottom: 20px;
+    right: 20px;
+    z-index: 10; /* Assure que le bouton est au-dessus si nécessaire */
 }
 
 #button_valider img {
@@ -110,6 +116,11 @@ input[type="radio"], input[type="checkbox"] {
     padding: 20px; /* Optionnel : espacement autour du conteneur */
 }
 
+.ferme{
+    display: flex;
+    align-items: center;
+}
+
 /* Styles pour l'image des étapes */
 #etapes {
     max-width: 100%; /* Pour s'assurer que l'image est responsive */
@@ -121,7 +132,8 @@ input[type="radio"], input[type="checkbox"] {
     display: inline-block;
     width: 50px;
     height: 24px;
-    margin-right: 10px;
+    margin: 10px;
+    margin-left: 30px;
 }
 
 .switch input {
@@ -165,18 +177,6 @@ input:checked + .slider:before {
 }
 
 
-
-
-
-/* Media Queries for Mobile Responsiveness */
-@media (max-width: 768px) {
-    .row {
-        flex-direction: column;
-    }
-}
-
-
-
 .main-creation-offre2 fieldset {
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -197,6 +197,13 @@ input:checked + .slider:before {
     display: none;
 
 }
+
+#jour, .main-creation-offre2 input{
+    background-color: white;
+    height: 42px;
+}
+
+
 .main-creation-offre2 fieldset:focus-within legend {
     display:inline;
     transition: ease-out 0.3s;
@@ -209,6 +216,15 @@ input:checked + .slider:before {
     color: rgba(0, 0, 0, 0);
 } 
 
+
+
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+}
 
 
                                         /*****************************************************

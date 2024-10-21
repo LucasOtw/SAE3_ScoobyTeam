@@ -25,13 +25,13 @@
             <img id="etapes" src="images/FilArianne2.png" alt="Étapes">
         </div>
 
-    <div>
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label>
-        <span>Hors Ligne/En Ligne</span>
-    </div>
+        <div>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+            <span>Hors Ligne/En Ligne</span>
+        </div>
     </div>
 
 
@@ -46,24 +46,30 @@
                 <!-- Establishment Name & Type -->
                 <div class="row">
                     <div class="col">
-                        <label for="nom_etablissement">Nom de l'établissement</label>
-                        <input type="text" id="nom_etablissement" name="nom_etablissement">
+                        <fieldset>
+                            <legend>Nom de l'offre *</legend>
+                            <input type="text" id="nom_offre" name="nom_offre" placeholder="Nom de l'offre *">
+                        </fieldset>
                     </div>
                     <div class="col">
-                        <label for="type_etablissement">Type d'établissement</label>
-                        <input type="text" id="type_etablissement" name="type_etablissement" value="Restauration">
+                        <fieldset>
+                            <legend style="display:block;">Type de l'offre</legend>
+                            <input type="text" id="type_offre" name="type_offre" placeholder="Restauration" disabled>
+                        </fieldset>
                     </div>
                 </div>
 
                 <!-- Email & Phone -->
                 <div class="row">
                     <div class="col">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email">
+                        <fieldset>
+                            <legend>Email *</legend>
+                            <input type="email" id="email" name="email" placeholder="Email *">
+                        </fieldset>            
                     </div>
                     <div class="col">                     
                         <fieldset>
-                            <legend>Telephone *</legend>
+                            <legend>Téléphone *</legend>
                             <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *">
                         </fieldset>
                     </div>
@@ -72,8 +78,10 @@
                 <!-- Localisation -->
                 <div class="row">
                     <div class="col">
-                        <label for="location">Où se trouve l’offre ?</label>
-                        <input type="text" id="location" name="location">
+                        <fieldset>
+                            <legend>Où se trouve l’offre ? *</legend>
+                            <input type="text" id="location" name="location" placeholder="Où se trouve l’offre ? *">
+                        </fieldset>
                     </div>
                 </div>
 
@@ -81,15 +89,21 @@
                 <div class="row">
                     <div class="col">
                         <label for="tags">Tags</label>
-                        <input type="text" id="tags" name="tags" placeholder="Restaurant, côte">
+                        <select id="tags" name="tags">
+                            <option value="restaurant">Restaurant</option>
+                            <option value="plage">Plage</option>
+                            <option value="hotel">Hôtel</option>
+                            <option value="musee">Musée</option>
+                        </select>
                     </div>
                 </div>
+
 
                 <!-- Photos -->
                 <div class="row">
                     <div class="col">
                         <label for="photos">Photos (facultatif)</label>
-                        <input type="file" id="photos" name="photos" multiple>
+                        <input type="file" id="photos" name="photos" multiple class="custom-file-input">
                     </div>
                 </div>
 
@@ -97,15 +111,17 @@
                 <div class="row">
                     <div class="col">
                         <label for="carte">Ajouter la carte du restaurant (facultatif)</label>
-                        <input type="file" id="carte" name="carte">
+                        <input type="file" id="carte" name="carte" multiple class="custom-file-input">
                     </div>
                 </div>
 
                 <!-- Lien du site -->
                 <div class="row">
                     <div class="col">
-                        <label for="lien">Ajouter un lien (facultatif)</label>
-                        <input type="url" id="lien" name="lien" placeholder="https://">
+                        <fieldset>
+                            <legend>Ajouter le lien du restaurant(facultatif)</legend>
+                            <input type="text" id="lien" name="lien" placeholder="Ajouter le lien du restaurant (facultatif)">
+                        </fieldset>
                     </div>  
                 </div>
 
@@ -158,19 +174,243 @@
                 <!-- Résumé -->
                 <div class="row">
                     <div class="col">
-                        <label for="resume">Résumé (facultatif)</label>
-                        <input type="text" id="resume" name="resume">
+                        <fieldset>
+                            <legend>Résumé (facultatif)</legend>
+                            <input type="text" id="resume" name="resume" placeholder="Résumé (facultatif)">
+                        </fieldset>
                     </div>
                 </div>
 
                 <!-- Description -->
                 <div class="row">
                     <div class="col">
-                        <label for="description">Description (facultatif)</label>
-                        <input type="text" id="description" name="description">
+                        <fieldset>
+                            <legend>Description (facultatif)</legend>
+                            <input type="text" id="description" name="description" placeholder="Description (facultatif)">
+                        </fieldset>
                     </div>
                 </div>
 
+
+                 <!-- Offer Times -->
+                <h2>Horaires</h2>
+                <div class="container">
+                <!-- Lundi -->
+                <div class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend style="display:block;">Jour</legend>
+                            <input type="text" id="jour" name="jour" placeholder="Lundi" disabled>
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset>
+                            <legend>Matin</legend>
+                            <input type="time" id="matin" name="matin" placeholder="Matin">
+                        </fieldset>
+                    </div >
+                    <div class="col">
+                        <fieldset>
+                            <legend>Soir</legend>
+                            <input type="time" id="soir" name="soir" placeholder="Soir">
+                        </fieldset>
+                    </div >
+                    <div class="col">
+                        <div class="ferme">
+                            <span>Fermé</span>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mardi -->
+                <div class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend style="display:block;">Jour</legend>
+                            <input type="text" id="jour" name="jour" placeholder="Mardi" disabled>
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset>
+                            <legend>Matin</legend>
+                            <input type="time" id="matin" name="matin" placeholder="Matin">
+                        </fieldset>
+                    </div >
+                    <div class="col">
+                        <fieldset>
+                            <legend>Soir</legend>
+                            <input type="time" id="soir" name="soir" placeholder="Soir">
+                        </fieldset>
+                    </div >
+                    <div class="col">
+                        <div class="ferme">
+                            <span>Fermé</span>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mercredi -->
+                <div class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend style="display:block;">Jour</legend>
+                            <input type="text" id="jour" name="jour" placeholder="Mercredi" disabled>
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset>
+                            <legend>Matin</legend>
+                            <input type="time" id="matin" name="matin" placeholder="Matin">
+                        </fieldset>
+                    </div >
+                    <div class="col">
+                        <fieldset>
+                            <legend>Soir</legend>
+                            <input type="time" id="soir" name="soir" placeholder="Soir">
+                        </fieldset>
+                    </div >
+                    <div class="col">
+                        <div class="ferme">
+                            <span>Fermé</span>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jeudi -->
+                <div class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend style="display:block;">Jour</legend>
+                            <input type="text" id="jour" name="jour" placeholder="Jeudi" disabled>
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset>
+                            <legend>Matin</legend>
+                            <input type="time" id="matin" name="matin" placeholder="Matin">
+                        </fieldset>
+                    </div >
+                    <div class="col">
+                        <fieldset>
+                            <legend>Soir</legend>
+                            <input type="time" id="soir" name="soir" placeholder="Soir">
+                        </fieldset>
+                    </div >
+                    <div class="col">
+                        <div class="ferme">
+                            <span>Fermé</span>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vendredi -->
+                <div class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend style="display:block;">Jour</legend>
+                            <input type="text" id="jour" name="jour" placeholder="Vendredi" disabled>
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset>
+                            <legend>Matin</legend>
+                            <input type="time" id="matin" name="matin" placeholder="Matin">
+                        </fieldset>
+                    </div >
+                    <div class="col">
+                        <fieldset>
+                            <legend>Soir</legend>
+                            <input type="time" id="soir" name="soir" placeholder="Soir">
+                        </fieldset>
+                    </div >
+                    <div class="col">
+                        <div class="ferme">
+                            <span>Fermé</span>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Samedi -->
+                <div class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend style="display:block;">Jour</legend>
+                            <input type="text" id="jour" name="jour" placeholder="Samedi" disabled>
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset>
+                            <legend>Matin</legend>
+                            <input type="time" id="matin" name="matin" placeholder="Matin">
+                        </fieldset>
+                    </div >
+                    <div class="col">
+                        <fieldset>
+                            <legend>Soir</legend>
+                            <input type="time" id="soir" name="soir" placeholder="Soir">
+                        </fieldset>
+                    </div >
+                    <div class="col">
+                        <div class="ferme">
+                            <span>Fermé</span>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dimanche -->
+                <div class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend style="display:block;">Jour</legend>
+                            <input type="text" id="jour" name="jour" placeholder="Dimanche" disabled>
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset>
+                            <legend>Matin</legend>
+                            <input type="time" id="matin" name="matin" placeholder="Matin">
+                        </fieldset>
+                    </div >
+                    <div class="col">
+                        <fieldset>
+                            <legend>Soir</legend>
+                            <input type="time" id="soir" name="soir" placeholder="Soir">
+                        </fieldset>
+                    </div >
+                    <div class="col">
+                        <div class="ferme">
+                            <span>Fermé</span>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Offre Options -->
                 <div class="offre-options">
@@ -188,16 +428,12 @@
                             <input type="radio" id="offre_premium" name="offre" value="premium" checked>
                             <label class="label-check" for="offre_premium">Offre Premium</label>
                         </div>
-                        <div class="info-icon">
-                            <span>i</span>
-                            <label>Plus d'informations sur les offres</label>
-                        </div>
                     </div>
                 </div>
 
                 <!-- Boost Options -->
                 <div class="boost-options">
-                    <label>Options de boost</label>
+                    <label>Options de boost (lorsque l'offre sera en ligne)</label>
                     <div class="radio-group">
                         <div>
                             <input type="radio" id="no_boost" name="boost" value="no_boost">
@@ -210,10 +446,6 @@
                         <div>
                             <input type="radio" id="a_la_une" name="boost" value="a_la_une" checked>
                             <label class="label-check" for="a_la_une">Mettre mon offre "À la Une"</label>
-                        </div>
-                        <div class="info-icon">
-                            <span>i</span>
-                            <label>Plus d'informations sur les offres</label>
                         </div>
                     </div>
                 </div>
@@ -238,40 +470,16 @@
                             <input type="radio" id="4_semaines" name="duree" value="4_semaines">
                             <label class="label-check" for="4_semaines">4 semaines</label>
                         </div>
-                        <div class="info-icon">
-                            <span>i</span>
-                            <label>Plus d'informations sur les offres</label>
-                        </div>
                     </div>
                 </div>
             
 
-            
-
-
-
-                <!-- Offer Times -->
-                <h2>Horaires</h2>
-                <div class="row">
-                    <!-- Repeat this structure for each day (Monday to Sunday) -->
-                    <div class="col day">
-                        <label for="lundi_matin">Lundi Matin</label>
-                        <input type="text" id="lundi_matin" name="lundi_matin" value="Fermé">
-                    </div>
-                    <div class="col day">
-                        <label for="lundi_aprem">Lundi Après-midi</label>
-                        <input type="text" id="lundi_aprem" name="lundi_aprem" value="Fermé">
-                    </div>
-                    <div class="col switch">
-                        <label for="lundi_switch">Ouvert</label>
-                        <input type="checkbox" id="lundi_switch" name="lundi_switch">
-                    </div>
-                </div>
+               
 
                 <!-- Final Submit Button -->
                 <button type="submit" id="button_valider">
                     Valider
-                    <img src="images/fleche.png" alt="Fleche">
+                    <img src="images/fleche.png" alt="Fleche" width="25px" height="25px">
                 </button>
             </form>
 
