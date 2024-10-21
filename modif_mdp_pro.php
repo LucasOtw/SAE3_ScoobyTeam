@@ -25,9 +25,9 @@
         </div>
 
         <div class="profile-section">
-            <img src="images/Photo_de_Profil.png" alt="Photo de profil" class="profile-img">
-            <h1>Juliette Martin</h1>
-            <p>juliettemartin@gmail.com | 07.98.76.54.12</p>
+            <img src="images/pppro.png" alt="Photo de profil" class="profile-img">
+            <h1>Ti Al Lannec</h1>
+            <p>tiallannec@gmail.com | 07.98.76.54.12</p>
         </div>
 
         <div class="tabs">
