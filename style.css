@@ -219,9 +219,7 @@ footer {
 .social-icons a img {
     width: 24px;
     margin: 0 10px;
-}
-
-/* Media queries pour l'adaptabilité */
+} /* Media queries pour l'adaptabilité */
 
 @media (min-width: 768px) {
     .newsletter {
@@ -258,37 +256,36 @@ footer {
     footer {
         padding: 40px 80px;
     }
-}
-
-         
+}        
 
                                         /*****************************************************
                                                         * Code page  Mes offres *
                                         *****************************************************/
 
-.offre_main{
+.toute_les_offres_main{
     margin-bottom: 9em;
     padding: auto 8vh;
 }
 
-.offre_main > header {
+.toute_les_offres_main .toute_les_offres_main > header {
     all: unset;
     display: flex;
     align-items: center;
     margin-top: 5vh;
 }
 
-.offre_main > header > h2 {
+.toute_les_offres_main > header > h2 {
+    margin-top : 2vh;
     margin-left: 8vw;
 }
 
-#filter {
+.toute_les_offres_main #filter {
     display: flex;
     margin-left: auto;
     margin-right: 5vw;
 }
 
-#filter button {
+.toute_les_offres_main #filter button {
     background-color: #dadada;
     color: #000000;
     font-size: medium;
@@ -299,11 +296,11 @@ footer {
     cursor: pointer;
 }
 
-#filter button img {
+.toute_les_offres_main #filter button img {
     margin: 0 0.5vw 0 0;
 }
 
-.offer {
+.toute_les_offres_main .offer {
     display: flex;
     background-color: #f3feff;
     border-radius: 10px;
@@ -312,15 +309,14 @@ footer {
     margin: 3vh 8vw;
 }
 
-
-.offer img {
+.toute_les_offres_main .offer img {
     width: 200px;
     height: auto;
     object-fit: cover;
     margin: 0.5vw 1vw;
 }
 
-.offer-details {
+.toute_les_offres_main .offer-details {
     padding: 15px;
     display: flex;
     flex-direction: column;
@@ -328,44 +324,44 @@ footer {
     width: 100%;
 }
 
-.offer-details h2 {
+.toute_les_offres_main .offer-details h2 {
     font-size: 1.5rem;
     color: #333;
     margin-bottom: 0;
 }
 
-.offer-details p:first-of-type {
+.toute_les_offres_main .offer-details p:first-of-type {
     font-size: 1.25rem;
     color: #666;
     margin-left: 0;
 }
 
-.offer-details p:last-of-type{
+.toute_les_offres_main .offer-details p:last-of-type{
     margin: 0 0.5vw;
 }
 
-.offer-details span:first-of-type{
+.toute_les_offres_main .offer-details span:first-of-type{
     position: relative;
     left: 95%;
     bottom: 6vh;
     color:#666;
 }
 
-.offer-details span:last-of-type{
+.toute_les_offres_main .offer-details span:last-of-type{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content:start;
 }
 
-.offer-details img{
+.toute_les_offres_main .offer-details img{
     image-rendering: pixelated;
     width: 1.5vw;
     height: auto;
     margin: 0;
 }
 
-#offers-list > article > div > button {
+.toute_les_offres_main #offers-list > article > div > button {
     background-color: var(--vert-clair);
     color: #fff;
     padding: 1.25vh 1.75vw;
@@ -378,49 +374,49 @@ footer {
     transition: ease-in-out 0.25s;
 }
 
-#offers-list > article > div > button:hover {
+.toute_les_offres_main #offers-list > article > div > button:hover {
     background-color: var(--vert-fonce);
     transform: scale(1.05);
     transition: ease-in-out 0.25s;
 }
-
 
 @media (max-width: 430px) {
     header.header-pc {
         display: none;
     }
 
-    header.header-tel {
+    .toute_les_offres_main header.header-tel {
         display: block;
     }
     
-    .offer {
+    .toute_les_offres_main .offer {
         border-radius: 30px;
     }
     .offer-details{
         padding:5px;
     }
 
-    .offer img {
+    .toute_les_offres_main .offer img {
         width: auto;
         height: 10rem;
         object-fit: cover;
         margin: 1vh 1vh;
         border-radius: calc(30px - 1vh);
     }
-    .offer .img-etoile {
+    .toute_les_offres_main .offer .img-etoile {
         width: 20px;
         height: auto;
+        border-radius: 0;
     }
 
-    #offers-list > article > div > button {
+    .toute_les_offres_main #offers-list > article > div > button {
         display: block;
         align-self: normal;
         border-radius: 30px;
         margin-right: 1rem;
     }
 
-    #offers-list > article > div > span:nth-child(3){
+    .toute_les_offres_main #offers-list > article > div > span:nth-child(3){
         display: none;
     }
     

@@ -30,7 +30,7 @@
         </div>
         
     </header>
-    <main class="offre_main">
+    <main class="toute_les_offres_main">
         <header>
             <h2>Les offres</h2>
             <!-- <span id="filter">
