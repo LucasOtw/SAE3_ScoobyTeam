@@ -415,7 +415,7 @@ body > main > div > div.creation_compte_membre_form-section > form > div.crea_me
     position: absolute;
     top: -10px; 
     left: 10px; 
-
+    z-index: 2;
     display: none;
 
 }
