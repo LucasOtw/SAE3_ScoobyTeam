@@ -25,7 +25,7 @@
         </div>
 
         <div class="profile-section">
-            <img src="Images/PhotodeProfil" alt="Photo de profil" class="profile-img">
+            <img src="Images/Profil" alt="Photo de profil" class="profile-img">
             <h1>Ti al Lannec</h1>
             <p>ti.al.lannec@gmail.com | 07.98.76.54.12</p>
         </div>
