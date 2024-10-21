@@ -523,8 +523,8 @@ footer {
         display: block !important;
         font-family: 'Arial', sans-serif;
         margin: 0;
-        padding: 0;
-        background-color: #f4f4f4;
+        padding: 0 1vw;
+        background-color: #ffffff;
     }
 
     #body_offre_mobile > div > div.swiper-container > div.swiper-wrapper > div > img{
@@ -595,11 +595,33 @@ footer {
     #body_offre_mobile > div > article{
         display: flex;
         justify-content: space-between;
+        margin: 2vh 0;
     }
+    
     #body_offre_mobile > div > article > span{
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    #body_offre_mobile > div > article > button#bouton_publier{
+        background-color:#BDC426;
+        color: white;
+        position: relative;
+        right: 10%;
+        border: none;
+        padding: 2vh 7vw;
+        transition: 0.1s ease;
+        border-radius: 1vw;
+    }
+
+    #body_offre_mobile > div > article > button#bouton_publier:active{
+        box-shadow: inset 2px 2px 10px -2px black;
+    }
+
+    #prix{
+        color:#2DD7A4;
+        font-size: x-large;
     }
 
 }

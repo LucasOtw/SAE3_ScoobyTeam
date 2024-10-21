@@ -216,19 +216,15 @@
             <h2>Services</h2>
             <div class="services">
                 <span class="service">
-                    <img src="images/icones/wifi.png">
                     <p>Wifi</p>
                 </span>
                 <span class="service">
-                    <img src="images/icones/food.png">
                     <p>Repas</p>
                 </span>
                 <span class="service">
-                    <img src="images/icones/drink.png">
                     <p>Bar</p>
                 </span>
                 <span class="service">
-                    <img src="images/icones/pool.png">
                     <p>Piscine</p>
                 </span>
             </div>
@@ -251,7 +247,7 @@
                 <p>Tarif minimal</p>
                 <p id="prix">70€</p>
             </span>
-            <button id="bouton_publier">Publier un avis</button>
+            <button id="bouton_publier">Publier un avis →</button>
         </article>
     </div>
 </body>
