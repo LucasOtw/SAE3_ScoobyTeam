@@ -36,44 +36,44 @@
             <div class="tab">Historique</div>
         </div>
     </div>
-    <form action="traitement_formulaire.php" method="POST">
+    <form action="traitement_formulaire.php?id=<?php echo $user_id; ?>" method="POST">
     <div class="crea_pro_raison_sociale_num_siren">
         <fieldset>
             <legend>Nom</legend>
-            <input type="text" id="nom" name="nom" placeholder="Nom" required>
+            <input type="text" id="nom" name="nom" value="<?php echo isset($nom) ? $nom : ''; ?>" required>
         </fieldset>
 
         <fieldset>
             <legend>Prenom</legend>
-            <input type="text" id="prenom" name="prenom" placeholder="Prenom" required>
+            <input type="text" id="prenom" name="prenom" value="<?php echo isset($prenom) ? $prenom : ''; ?>" required>
         </fieldset>
     </div>
 
     <div class="crea_pro_mail_tel">
         <fieldset>
             <legend>Email</legend>
-            <input type="email" id="email" name="email" placeholder="Email " required>
+            <input type="email" id="email" name="email" value="<?php echo isset($email) ? $email : ''; ?>" required>
         </fieldset>
 
         <fieldset>
             <legend>Téléphone *</legend>
-            <input type="tel" id="telephone" name="telephone" placeholder="Téléphone " required>
+            <input type="tel" id="telephone" name="telephone" value="<?php echo isset($telephone) ? $telephone : ''; ?>" required>
         </fieldset>
     </div>
 
     <fieldset>
         <legend>Adresse Postale *</legend>
-        <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale" required>
+        <input type="text" id="adresse" name="adresse" value="<?php echo isset($adresse) ? $adresse : ''; ?>" required>
     </fieldset>
 
     <fieldset>
         <legend>Code Postal *</legend>
-        <input type="text" id="code-postal" name="code-postal" placeholder="Code Postal" required>
+        <input type="text" id="code-postal" name="code-postal" value="<?php echo isset($code_postal) ? $code_postal : ''; ?>" required>
     </fieldset>
 
     <fieldset>
         <legend>Ville *</legend>
-        <input type="text" id="ville" name="ville" placeholder="Ville" required>
+        <input type="text" id="ville" name="ville" value="<?php echo isset($ville) ? $ville : ''; ?>" required>
     </fieldset>
 
     <div class="checkbox">
@@ -87,6 +87,7 @@
         <button type="submit" class="submit-btn2">Enregistrer</button>
     </div>
 </form>
+
     <footer class="footer_detail_avis">
         <div class="newsletter">
             <div class="newsletter-content">
