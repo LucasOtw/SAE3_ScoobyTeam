@@ -20,64 +20,52 @@
         </nav>
     </header>
     <div class="container">
-        
-
-
         <div class="tabs">
             <div class="tab">Informations</div>
             <div class="tab">Mot de passe et sécurité</div>
-            <div class="tab">Historique</div>
+            <div class="tab">Mes Offres</div>
             <div class="tab active">Compte Bancaire</div>
         </div>
     </div>
+    
     <form action="#" method="POST">
-    <div class="IBAN">
-        <fieldset>
-            <legend>IBAN</legend>
-            <input type="text" id="IBAN" name="IBAN" placeholder="IBAN  (obligatoire)" required>
-        </fieldset>
+        <div class="form-image-container">
+            <div class="form-section">
+                <div class="IBAN">
+                    <fieldset>
+                        <legend>IBAN</legend>
+                        <input type="text" id="IBAN" name="IBAN" placeholder="IBAN  (obligatoire)" required>
+                    </fieldset>
+                </div>
+                <div class="BIC">
+                    <fieldset>
+                        <legend>BIC</legend>
+                        <input type="text" id="BIC" name="BIC" placeholder="veuillez entrer votre BIC" required>
+                    </fieldset>
+                </div>
+                <div class="nom-du-proprietaire">
+                    <fieldset>
+                        <legend>Nom</legend>
+                        <input type="text" id="nom" name="nom" placeholder="Nom" required 
+                            title="Veuillez entrer le nom du propriétaire du compte">
+                    </fieldset>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="images/carte_bancaire.png" alt="image carte bancaire" class="image">
+            </div>
+        </div>
 
-    </div>
-
-    <div class="date_et_CVC">
-        <fieldset>
-            <legend>Date</legend>
-            <input type="text" id="date" name="date" placeholder="JJ/MM/AAAA" required 
-                pattern="\d{2}/\d{2}/\d{4}" title="Veuillez entrer une date au format JJ/MM/AAAA">
-            </fieldset>
-
-
-    </div>
-
-    <fieldset>
-        <legend>Adresse Postale *</legend>
-        <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale" required>
-    </fieldset>
-
-    <fieldset>
-        <legend>Code Postal *</legend>
-        <input type="text" id="code-postal" name="code-postal" placeholder="Code Postal" required>
-    </fieldset>
-
-    <fieldset>
-        <legend>Ville *</legend>
-        <input type="text" id="ville" name="ville" placeholder="Ville" required>
-    </fieldset>
-
-    <div class="checkbox">
-        <input type="checkbox" id="cgu" name="cgu" required>
-        <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
-    </div>
-    <div class="compte_membre_save_delete">
-    <button type="submit" class="submit-btn1">Supprimer mon compte</button>
-    <button type="submit" class="submit-btn2">Enregistrer</button>
-</div>
-
-</form>
+        <div class="checkbox">
+            <input type="checkbox" id="cgu" name="cgu" required>
+            <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
+        </div>
+        <div class="compte_membre_save_delete">
+            <button type="submit" class="submit-btn2">Enregistrer</button>
+        </div>
+    </form>
 
     <footer class="footer_detail_avis">
-        
-        
         <div class="footer-links">
             <div class="logo">
                 <img src="images/logoBlanc.png" alt="Logo PACT">
