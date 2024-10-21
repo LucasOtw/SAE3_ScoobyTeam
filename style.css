@@ -363,7 +363,9 @@ footer {
     display: none;
 }
 
-
+#body_offre_mobile > header{
+    all: unset;
+}
 
 .detail_offre_description {
     margin-bottom: 20px;
@@ -523,6 +525,14 @@ footer {
         margin: 0;
         padding: 0;
         background-color: #f4f4f4;
+    }
+
+    #body_offre_mobile > div > div.swiper-container > div.swiper-wrapper > div > img{
+        width: 50%;
+    }
+
+    .icone{
+        width: 3vw;
     }
 
 }

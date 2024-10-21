@@ -155,25 +155,30 @@
     </div>
     </div>
     <div id="body_offre_mobile">
+        <header>
+            <h1>
+                Détails
+            </h1>
+        </header>
         <div class="container">
 
         <!-- Carrousel d'images -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img src="images/tiallannec1.png" alt="Image 1">
+                    <img src="images/Tiallannec1.png" alt="Image 1">
                 </div>
                 <div class="swiper-slide">
                     <img src="images/Tiallannec2.png" alt="Image 2">
                 </div>
                 <div class="swiper-slide">
-                    <img src="images/Tiallannec3.png" alt="Image 2">
+                    <img src="images/tiallannec3.png" alt="Image 3">
                 </div>
                 <div class="swiper-slide">
-                    <img src="images/tiallannec8.png" alt="Image 2">
+                    <img src="images/tiallannec8.png" alt="Image 4">
                 </div>
                 <div class="swiper-slide">
-                    <img src="images/tiallannec9.png" alt="Image 2">
+                    <img src="images/tiallannec9.png" alt="Image 5">
                 </div>
             </div>
             <!-- Pagination (points de navigation) -->
@@ -184,14 +189,24 @@
         <div class="details">
             <h1>Ti Al Lannec</h1>
             <div class="rating">
-                <span>4.4 ★</span>
-                <span>189 avis</span>
+                <span>
+                    <img class="icone" src="images/etoile.png"></img>
+                </span>
+                <span>
+                    4.7 (2 avis)
+                </span>
             </div>
-            <p class="address">3 rue du Général de Gaulle, 22300 Lannion</p>
-            <p class="summary">Choix des derniers technologies, tout y a été pensé pour votre confort.</p>
-
-            <h2>Description</h2>
-            <p>C'est très décontracté en terrasse, on sait tout par la force et la beauté du panorama à perte de vue.</p>
+            <p class="address">
+                <img class="icone" src="images/icones/pin.png"></img>
+                3 rue du Général de Gaulle, 22300 Lannion</p>
+            <article>
+                <h2>Résumé</h2>
+                <p class="summary">Choix des derniers technologies, tout y a été pensé pour votre confort.</p>
+            </article>
+            <article>
+                <h2>Description</h2>
+                <p>C'est très décontracté en terrasse, on sait tout par la force et la beauté du panorama à perte de vue.</p>
+            </article>
 
             <h2>Services</h2>
             <div class="services">
