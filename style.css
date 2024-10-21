@@ -1084,8 +1084,8 @@ main.connexion_pro_main > div > div.connexion_pro_form-container > form > div.co
 }
 
 .offer:hover {
-    transform: translateY(-5px);
-    transform:scale(0.95);
+    transform: translateY(-2px);
+    transform:scale(1.02);
 }
 
 .offer img {
@@ -1140,10 +1140,10 @@ main.connexion_pro_main > div > div.connexion_pro_form-container > form > div.co
     margin: 0;
 }
 
-.offer-details button {
+#offers-list > article > div > button {
     background-color: #a4d500;
     color: #fff;
-    padding: 10px;
+    padding: 1.25vh 1.75vw;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -1152,6 +1152,6 @@ main.connexion_pro_main > div > div.connexion_pro_form-container > form > div.co
     align-self:flex-end;
 }
 
-.offer-details button:hover {
+#offers-list > article > div > button:hover {
     background-color: #88b900;
 }

@@ -25,9 +25,9 @@
     <main class="offre_main">
         <header>
             <h2>Les offres</h2>
-            <span id="filter">
+            <!-- <span id="filter">
                 <button><img src="images/tri.png">Filtrer</button>
-            </span>
+            </span> -->
         </header>
         <section id="offers-list">
             <article class="offer">
@@ -40,7 +40,7 @@
                         <img src="images/etoile.png">
                         <p>4.6 (355 avis)</p>
                     </span>
-                    <button>Voir l'offre --&gt;</button>
+                    <button>Voir l'offre →</button>
                 </div>
             </article>
 
@@ -54,7 +54,7 @@
                         <img src="images/etoile.png">
                         <p>4 (50 avis)</p>
                     </span>
-                    <button>Voir l'offre --&gt;</button>
+                    <button>Voir l'offre →</button>
                 </div>
             </article>
 
@@ -68,7 +68,7 @@
                         <img src="images/etoile.png">
                         <p>3.8 (300 avis)</p>
                     </span>
-                    <button>Voir l'offre --&gt;</button>
+                    <button>Voir l'offre →</button>
                 </div>
             </article>
         </section>
