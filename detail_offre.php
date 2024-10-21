@@ -156,33 +156,29 @@
     </div>
     <div id="body_offre_mobile">
         <header>
+            <button>LOL</button>
             <h1>
                 Détails
             </h1>
         </header>
-        <div class="container">
 
         <!-- Carrousel d'images -->
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="images/Tiallannec1.png" alt="Image 1">
-                </div>
-                <div class="swiper-slide">
-                    <img src="images/Tiallannec2.png" alt="Image 2">
-                </div>
-                <div class="swiper-slide">
-                    <img src="images/tiallannec3.png" alt="Image 3">
-                </div>
-                <div class="swiper-slide">
-                    <img src="images/tiallannec8.png" alt="Image 4">
-                </div>
-                <div class="swiper-slide">
-                    <img src="images/tiallannec9.png" alt="Image 5">
-                </div>
+        <div class="carousel">
+            <div class="carousel-slide">
+                <img src="images/Tiallannec1.png" alt="Image 1">
             </div>
-            <!-- Pagination (points de navigation) -->
-            <div class="swiper-pagination"></div>
+            <div class="carousel-slide">
+                <img src="images/Tiallannec2.png" alt="Image 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/tiallannec3.png" alt="Image 3">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/tiallannec8.png" alt="Image 4">
+            </div>
+            <div class="carousel-slide">
+                <img src="images/tiallannec9.png" alt="Image 5">
+            </div>
         </div>
 
         <!-- Détails de l'offre -->

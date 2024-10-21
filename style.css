@@ -523,13 +523,20 @@ footer {
         display: block !important;
         font-family: 'Arial', sans-serif;
         margin: 0;
-        padding: 0 1vw;
+        padding: 0 2vw;
         background-color: #ffffff;
+        width: 100%;
     }
 
     #body_offre_mobile > div > div.swiper-container > div.swiper-wrapper > div > img{
         width: 50%;
     }
+
+    #body_offre_mobile > header{
+        display: flex;
+        margin: 5vh 0;
+    }
+
 
     .icone{
         width: 3vw;
@@ -589,6 +596,10 @@ footer {
     #body_offre_mobile > div > div.details > ul{
         line-height: 200%;
     }
+    #body_offre_mobile > div > div.details > ul > li{
+        list-style: none;
+    }
+    
     #body_offre_mobile > div > div.details > ul > li > span{
         font-weight: bolder;
     }
@@ -602,6 +613,8 @@ footer {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: space-between;
+        height: 7vh;
     }
 
     #body_offre_mobile > div > article > button#bouton_publier{
@@ -610,9 +623,10 @@ footer {
         position: relative;
         right: 10%;
         border: none;
-        padding: 2vh 7vw;
-        transition: 0.1s ease;
+        padding: 2vh 9vw;
+        transition: ease;
         border-radius: 1vw;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.600);
     }
 
     #body_offre_mobile > div > article > button#bouton_publier:active{
@@ -622,6 +636,39 @@ footer {
     #prix{
         color:#2DD7A4;
         font-size: x-large;
+    }
+
+    .carousel {
+        display: flex;
+        position: relative;
+        left: 5%;
+        border:1px solid black;
+        border-radius: 5vw;
+        overflow-x: scroll;  /* Activer le défilement horizontal */
+        scroll-snap-type: x mandatory;  /* Snap au prochain élément horizontalement */
+        -webkit-overflow-scrolling: touch;  /* Pour activer le scroll fluide sur iOS */
+        scroll-behavior: smooth;  /* Smooth scrolling entre les images */
+        width: 90%;
+    }
+
+    /* Chaque slide (image) */
+    .carousel-slide {
+        min-width: 100%;  /* Chaque image occupe 100% de la largeur du conteneur */
+        scroll-snap-align: center;  /* Aligner au centre lors du snap */
+    }
+
+    /* Style des images pour qu'elles s'adaptent */
+    .carousel img {
+        width: 100%;
+        height: auto;
+        image-rendering: pixelated;
+        aspect-ratio: 2 / 1;
+        display: block;
+    }
+
+    /* Style pour une meilleure expérience de scroll */
+    .carousel::-webkit-scrollbar {
+        display: none;  /* Masquer la barre de défilement pour une apparence propre */
     }
 
 }
