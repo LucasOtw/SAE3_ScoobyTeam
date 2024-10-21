@@ -1,12 +1,3 @@
-<?php 
-session_start();
-if(!isset($_SESSION['user_id'])) {
-    header("Location: connexion_membre.php"); // Redirection vers la page de connexion si non connecté
-    exit();
-}
-?>
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,16 +36,16 @@ if(!isset($_SESSION['user_id'])) {
             <div class="tab">Historique</div>
         </div>
     </div>
-    <form action="#" method="POST">
+    <form action="traitement_formulaire.php" method="POST">
     <div class="crea_pro_raison_sociale_num_siren">
         <fieldset>
             <legend>Nom</legend>
-            <input type="text" id="raison-sociale" name="raison-sociale" placeholder="Nom" required>
+            <input type="text" id="nom" name="nom" placeholder="Nom" required>
         </fieldset>
 
         <fieldset>
             <legend>Prenom</legend>
-            <input type="text" id="siren" name="siren" placeholder="Prenom" required>
+            <input type="text" id="prenom" name="prenom" placeholder="Prenom" required>
         </fieldset>
     </div>
 
@@ -89,14 +80,13 @@ if(!isset($_SESSION['user_id'])) {
         <input type="checkbox" id="cgu" name="cgu" required>
         <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
     </div>
+    
     <div class="compte_membre_save_delete">
-    <button type="submit" class="submit-btn1">Supprimer mon compte</button>
-    <button type="button" class="submit-btn3" onclick="window.location.href='deconnexion.php'">Déconnexion</button>
-    <button type="submit" class="submit-btn2">Enregistrer</button>
-</div>
-
+        <button type="submit" class="submit-btn1">Supprimer mon compte</button>
+        <button type="button" class="submit-btn3" onclick="window.location.href='deconnexion.php'">Déconnexion</button>
+        <button type="submit" class="submit-btn2">Enregistrer</button>
+    </div>
 </form>
-
     <footer class="footer_detail_avis">
         <div class="newsletter">
             <div class="newsletter-content">
