@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script> <!-- Pour les icones -->
 </head>
-<body id="body_offre_desktop">
+<body>
     <div id="body_offre_desktop">
         <header>
             <div class="logo">
@@ -153,6 +153,7 @@
             </div>
         </footer>
     </div>
+    </div>
     <div id="body_offre_mobile">
         <div class="container">
 
@@ -231,16 +232,8 @@
         </div>
 
         </div>
-    </div>
+    
 </body>
 
 <!-- SwiperJS pour le carrousel -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script>
-    var swiper = new Swiper('.swiper-container', {
-        pagination: {
-            el: '.swiper-pagination',
-        },
-    });
-</script>
 </html>
