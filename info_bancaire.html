@@ -1,83 +1,88 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saisir les informations Bancaires - PACT</title>
+    <title>Modifier coordonnées bancaires</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@100;300;400;500;700&display=swap" rel="stylesheet">
 </head>
-<body class="body_info_bancaire">
-    <!-- Header -->
-    <header class="header_info_bancaire">
-        <div class="logo_info_bancaire">
-            <img src="images/logoBlanc.png" alt="PAVCT Logo">
+<body>
+<header>
+        <div class="logo">
+            <img src="images/logoBlanc.png" alt="PACT Logo">
         </div>
-        <nav class="nav_info_bancaire">
+        <nav>
             <ul>
-                <li><a href="#" class="active">Accueil</a></li>
+                <li><a href="#">Accueil</a></li>
                 <li><a href="#">Publier</a></li>
-                <li><a href="#">Mon Compte</a></li>
+                <li><a href="#" class="active">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
-    <main class="main_info_bancaire">    
+    <div class="container">
+        
+
+
         <div class="tabs">
             <div class="tab">Informations</div>
             <div class="tab">Mot de passe et sécurité</div>
             <div class="tab">Historique</div>
-            <div class="tab active">Informations Bancaires</div>
+            <div class="tab active">Compte Bancaire</div>
         </div>
-        <section class="payment-section_info_bancaire">
-            <div class="payment-form_info_bancaire">
-                <h2>Informations Bancaires</h2>
-                <label for="iban">IBAN</label>
-                <input type="text" id="iban" name="iban" placeholder="Votre IBAN">
+    </div>
+    <form action="#" method="POST">
+    <div class="IBAN">
+        <fieldset>
+            <legend>IBAN</legend>
+            <input type="text" id="IBAN" name="IBAN" placeholder="IBAN  (obligatoire)" required>
+        </fieldset>
+
+    </div>
+
+    <div class="date_et_CVC">
+        <fieldset>
+            <legend>Date</legend>
+            <input type="text" id="date" name="date" placeholder="JJ/MM/AAAA" required 
+                pattern="\d{2}/\d{2}/\d{4}" title="Veuillez entrer une date au format JJ/MM/AAAA">
+            </fieldset>
+
+
+    </div>
+
+    <fieldset>
+        <legend>Adresse Postale *</legend>
+        <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale" required>
+    </fieldset>
+
+    <fieldset>
+        <legend>Code Postal *</legend>
+        <input type="text" id="code-postal" name="code-postal" placeholder="Code Postal" required>
+    </fieldset>
+
+    <fieldset>
+        <legend>Ville *</legend>
+        <input type="text" id="ville" name="ville" placeholder="Ville" required>
+    </fieldset>
+
+    <div class="checkbox">
+        <input type="checkbox" id="cgu" name="cgu" required>
+        <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
+    </div>
+    <div class="compte_membre_save_delete">
+    <button type="submit" class="submit-btn1">Supprimer mon compte</button>
+    <button type="submit" class="submit-btn2">Enregistrer</button>
+</div>
+
+</form>
+
+    <footer class="footer_detail_avis">
         
-                <label for="nom">Nom du titulaire</label>
-                <input type="text" id="nom" name="nom" placeholder="Nom">
         
-                <label for="banque">Banque</label>
-                <input type="text" id="banque" name="banque" placeholder="Nom de la banque">
-        
-                <div class="card-details_info_bancaire">
-                    <div>
-                        <label for="num-carte">Numéro de carte</label>
-                        <input type="text" id="num-carte" name="num-carte" placeholder="Numéro de carte">
-                    </div>
-                    <div>
-                        <label for="date-exp">Date d'expiration</label>
-                        <input type="text" id="date-exp" name="date-exp" placeholder="MM/AA">
-                    </div>
-                </div>
-        
-                <div class="save-info_info_bancaire">
-                    <input type="checkbox" id="save-info">
-                    <label for="save-info">Sauvegarder les informations</label>
-                </div>
-        
-                <button class="submit-btn_info_bancaire">Soumettre</button>
-            </div>
-        
-            <div class="payment-image_info_bancaire">
-                <img src="images/carte_bancaire.png" alt="Image illustrative des informations bancaires">
-            </div>
-        </section>
-               
-    </main>
-    
-    
-    <!-- Footer -->
-    <footer>
-        
-        
-        <div class="footer-links_info_bancaire">
+        <div class="footer-links">
             <div class="logo">
-                <img src="images/logoBlanc.png" alt="Logo PAVCT">
+                <img src="images/logoBlanc.png" alt="Logo PACT">
             </div>
-            <div class="link-group_info_bancaire">
+            <div class="link-group">
                 <ul>
                     <li><a href="#">Mentions Légales</a></li>
                     <li><a href="#">RGPD</a></li>
@@ -85,21 +90,21 @@
                     <li><a href="#">Nos partenaires</a></li>
                 </ul>
             </div>
-            <div class="link-group_info_bancaire">
+            <div class="link-group">
                 <ul>
                     <li><a href="#">Accueil</a></li>
                     <li><a href="#">Publier</a></li>
                     <li><a href="#">Historique</a></li>
                 </ul>
             </div>
-            <div class="link-group_info_bancaire">
+            <div class="link-group">
                 <ul>
                     <li><a href="#">CGU</a></li>
                     <li><a href="#">Signaler un problème</a></li>
                     <li><a href="#">Nous contacter</a></li>
                 </ul>
             </div>
-            <div class="link-group_info_bancaire">
+            <div class="link-group">
                 <ul>
                     <li><a href="#">Presse</a></li>
                     <li><a href="#">Newsletter</a></li>
@@ -108,7 +113,7 @@
             </div>
         </div>
 
-        <div class="footer-bottom_info_bancaire">
+        <div class="footer-bottom">
             <div class="social-icons">
                 <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
                 <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
