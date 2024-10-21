@@ -585,3 +585,5 @@ form input:focus::placeholder {
     max-width: 100%; /* L'image ne dépasse jamais la largeur de son conteneur */
     height: auto; /* Maintient le ratio d'aspect de l'image */
 }
+
+
