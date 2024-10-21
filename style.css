@@ -433,7 +433,8 @@ input[type="password"]::placeholder {
 }
 
 button.submit-btn1, 
-button.submit-btn2 {
+button.submit-btn2,
+button.submit-btn3 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -459,14 +460,16 @@ button.submit-btn1{
 }
 
 button.submit-btn1:hover,
-button.submit-btn2:hover {
+button.submit-btn2:hover,
+button.submit-btn3:hover {
     background-color: var(--vert-clair-hover); /* Ajoute une couleur de survol pour les deux boutons */
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Ombre plus forte au survol */
     transition: 0.3s;
 
 }
 
-button.submit-btn2:hover{
+button.submit-btn2:hover,
+button.submit-btn3:hover{
     background-color: var(--vert-fonce);
 
 }
