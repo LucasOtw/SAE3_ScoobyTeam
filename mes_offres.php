@@ -4,13 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En-tête PAVCT</title>
+    <title>Mes offres</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <?php
+    try {
+        $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass);
+        $stmt = $dbh->prepare('SELECT * FROM _offre WHERE professionnel = :professionnel');
+        $stmt->execute(['professionnel' => $_SESSION["compte"]]);
+        
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            ?>
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="images/hotel.jpg" alt="<?php echo htmlspecialchars($row['titre_offre']); ?>">
+                        <div class="offer-rating">
+                            <span class="star">★</span>
+                            <span class="rating"><?php echo round($row['note_moyenne'], 1); ?></span>
+                        </div>
+                        <div class="offer-status">
+                            <?php echo $row['en_ligne'] ? '<span class="status-dot"></span> En Ligne' : '<span class="status-dot"></span> Hors Ligne'; ?>
+                        </div>
+                    </div>
+                    <div class="offer-info">
+                        <h3><?php echo htmlspecialchars($row['titre_offre']); ?></h3>
+                        <p class="category"><?php echo htmlspecialchars($row['type_offre']); ?></p>
+                        <p class="update"><span class="update-icon">⟳</span> Update <?php echo date_diff(date_create($row['date_derniere_modif']), date_create('today'))->days; ?>j</p>
+                        <p class="last-update">Mis à jour le <?php echo date_format(date_create($row['date_derniere_modif']), 'd/m/Y'); ?></p>
+                        <p class="offer-type">Offre Standard</p>
+                        <p class="price"><?php echo $row['tarif']?>€</p>
+                    </div>
+                    <button class="add-btn">+</button>
+                </div>
+            <?php
+        }
+        
+        $dbh = null;
+    } catch (PDOException $e) {
+        print "Erreur!: ". $e->getMessage(). "<br/>";
+        die();
+    }
+    ?>
+
     <header>
         <div class="logo">
             <img src="images/logoBlanc.png" alt="PAVCT Logo">
@@ -46,141 +85,9 @@
     
         <section class="offers">
             <h2>Vos offres</h2>
-            <section class="offres">
-                <div class="offer-card">
-                    <div class="offer-image">
-                        <img src="images/hotel.jpg" alt="Offre Ti Al Lannec">
-                        <div class="offer-rating">
-                            <span class="star">★</span>
-                            <span class="rating">5.0</span>
-                        </div>
-                        <div class="offer-status">
-                            <span class="status-dot"></span> Hors Ligne
-                        </div>
-                    </div>
-                    <div class="offer-info">
-                        <h3>Ti Al Lannec</h3>
-                        <p class="category">Restaurant Gastronomique</p>
-                        <p class="update"><span class="update-icon">⟳</span> Update 2j</p>
-                        <p class="last-update">Mis à jour il y a 2 semaines</p>
-                        <p class="offer-type">Offre Standard</p>
-                        <p class="price">40-500€</p>
-                    </div>
-                    <button class="add-btn">+</button>
-                </div>
-            
-                <div class="offer-card">
-                    <div class="offer-image">
-                        <img src="images/hotel.jpg" alt="Offre Ti Al Lannec">
-                        <div class="offer-rating">
-                            <span class="star">★</span>
-                            <span class="rating">5.0</span>
-                        </div>
-                        <div class="offer-status">
-                            <span class="status-dot"></span> Hors Ligne
-                        </div>
-                    </div>
-                    <div class="offer-info">
-                        <h3>Ti Al Lannec</h3>
-                        <p class="category">Restaurant Gastronomique</p>
-                        <p class="update"><span class="update-icon">⟳</span> Update 2j</p>
-                        <p class="last-update">Mis à jour il y a 2 semaines</p>
-                        <p class="offer-type">Offre Standard</p>
-                        <p class="price">40-500€</p>
-                    </div>
-                    <button class="add-btn">+</button>
-                </div>
-            
-                <div class="offer-card">
-                    <div class="offer-image">
-                        <img src="images/hotel.jpg" alt="Offre Ti Al Lannec">
-                        <div class="offer-rating">
-                            <span class="star">★</span>
-                            <span class="rating">5.0</span>
-                        </div>
-                        <div class="offer-status">
-                            <span class="status-dot"></span> Hors Ligne
-                        </div>
-                    </div>
-                    <div class="offer-info">
-                        <h3>Ti Al Lannec</h3>
-                        <p class="category">Restaurant Gastronomique</p>
-                        <p class="update"><span class="update-icon">⟳</span> Update 2j</p>
-                        <p class="last-update">Mis à jour il y a 2 semaines</p>
-                        <p class="offer-type">Offre Standard</p>
-                        <p class="price">40-500€</p>
-                    </div>
-                    <button class="add-btn">+</button>
-                </div>
-            
-                <div class="offer-card">
-                    <div class="offer-image">
-                        <img src="images/hotel.jpg" alt="Offre Ti Al Lannec">
-                        <div class="offer-rating">
-                            <span class="star">★</span>
-                            <span class="rating">5.0</span>
-                        </div>
-                        <div class="offer-status">
-                            <span class="status-dot"></span> Hors Ligne
-                        </div>
-                    </div>
-                    <div class="offer-info">
-                        <h3>Ti Al Lannec</h3>
-                        <p class="category">Restaurant Gastronomique</p>
-                        <p class="update"><span class="update-icon">⟳</span> Update 2j</p>
-                        <p class="last-update">Mis à jour il y a 2 semaines</p>
-                        <p class="offer-type">Offre Standard</p>
-                        <p class="price">40-500€</p>
-                    </div>
-                    <button class="add-btn">+</button>
-                </div>
-            
-                <div class="offer-card">
-                    <div class="offer-image">
-                        <img src="images/hotel.jpg" alt="Offre Ti Al Lannec">
-                        <div class="offer-rating">
-                            <span class="star">★</span>
-                            <span class="rating">5.0</span>
-                        </div>
-                        <div class="offer-status">
-                            <span class="status-dot"></span> Hors Ligne
-                        </div>
-                    </div>
-                    <div class="offer-info">
-                        <h3>Ti Al Lannec</h3>
-                        <p class="category">Restaurant Gastronomique</p>
-                        <p class="update"><span class="update-icon">⟳</span> Update 2j</p>
-                        <p class="last-update">Mis à jour il y a 2 semaines</p>
-                        <p class="offer-type">Offre Standard</p>
-                        <p class="price">40-500€</p>
-                    </div>
-                    <button class="add-btn">+</button>
-                </div>
-            
-                <div class="offer-card">
-                    <div class="offer-image">
-                        <img src="images/hotel.jpg" alt="Offre Ti Al Lannec">
-                        <div class="offer-rating">
-                            <span class="star">★</span>
-                            <span class="rating">5.0</span>
-                        </div>
-                        <div class="offer-status">
-                            <span class="status-dot"></span> Hors Ligne
-                        </div>
-                    </div>
-                    <div class="offer-info">
-                        <h3>Ti Al Lannec</h3>
-                        <p class="category">Restaurant Gastronomique</p>
-                        <p class="update"><span class="update-icon">⟳</span> Update 2j</p>
-                        <p class="last-update">Mis à jour il y a 2 semaines</p>
-                        <p class="offer-type">Offre Standard</p>
-                        <p class="price">40-500€</p>
-                    </div>
-                    <button class="add-btn">+</button>
-                </div>
-                <button class="image-button">
-                <span class="button-text">Publier une offre</span>
-                </button>
+            <button class="image-button">
+            <span class="button-text">Publier une offre</span>
+            </button>
         </section>    
     </main>
     
