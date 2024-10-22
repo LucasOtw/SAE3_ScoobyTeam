@@ -1,4 +1,0 @@
-Nom: Mulliez
-IBAN: FR76ADIf69181610
-BIC: BICDETEST
----
