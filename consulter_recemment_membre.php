@@ -2,7 +2,11 @@
 
 // Connexion à la BDD
 
-$bdd = new PDO("$driver:host=scooby-team.ventsdouest.dev;$dbname=sae;charset=utf-8","sae","field-biDe-v3ndr4-bahut");
+$dbh = new PDO('mysql:host=postgresql;port=5432;dbname=sae', 'sae', 'field-biDe-v3ndr4-bahut');
+
+// Récupération des offres déjà consultées
+
+$reqOffresCons = $bdd->query("SELECT * FROM tripenarvor._consulte WHERE code_compte = ".$_SESSION["compte"]." AND consulte = 1");
 
 ?>
 
@@ -46,6 +50,25 @@ $bdd = new PDO("$driver:host=scooby-team.ventsdouest.dev;$dbname=sae;charset=utf
         </div>
     </div>
     <div class="reviews-container">
+        <?php
+        
+            if(count($reqOffresCons) > 0){
+                // si l'utilisateur a déjà des offres consultées
+                foreach($reqOffresCons as $offres_cons){
+                    // on récupère l'image associée à l'offre
+                    $image_offre = $bdd->query('SELECT url_image FROM _image WHERE code_image =
+                                                (SELECT code_image FROM son_image WHERE code_offre = '.$offres_cons["code_offre"].';');
+                    $infos_offre = $bdd->query('SELECT * FROM _offre WHERE code_offre = '.$offres_cons["code_offre"].';');
+                    
+                    ?>
+                    <div class="card">
+
+                    </div>
+                    <?php
+                }
+            }
+
+        ?>
         <div class="card">
             <img src="images/golf.png" alt="Golf de St-Samson">
             <div class="content">
