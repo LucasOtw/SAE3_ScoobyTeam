@@ -4,7 +4,7 @@ session_start();
 
 $bdd = new PDO("mysql:host=localhost;dbname=test;user=sae;password=DB_ROOT_PASSWORD");
 
-if(!isset($_POST["code_offre"])){
+/* if(!isset($_POST["code_offre"])){
     echo "Erreur : aucune offre";
 } else {
     // si le formulaire est bien récupéré
@@ -15,7 +15,7 @@ if(!isset($_POST["code_offre"])){
     if(!empty($existeOffre)){ // si l'offre existe
         $details_offre = $existeOffre->fetch();
     }
-}
+} */
 
 ?>
 <!DOCTYPE html>
