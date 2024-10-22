@@ -1,11 +1,10 @@
-<?php
-/*
+<!--<?php/*
 
 session_start();
 
 $bdd = new PDO("mysql:host=localhost;dbname=test;user=sae;password=DB_ROOT_PASSWORD");
 
-/* if(!isset($_POST["code_offre"])){
+if(!isset($_POST["code_offre"])){
     echo "Erreur : aucune offre";
 } else {
     // si le formulaire est bien récupéré
@@ -16,10 +15,9 @@ $bdd = new PDO("mysql:host=localhost;dbname=test;user=sae;password=DB_ROOT_PASSW
     if(!empty($existeOffre)){ // si l'offre existe
         $details_offre = $existeOffre->fetch();
     }
-<<<<<<< HEAD
+}
 */
-?>
->>>>>>> eed49852ccc99d8a210b682e1131be1e8caa02a9
+?>-->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -95,6 +93,7 @@ $bdd = new PDO("mysql:host=localhost;dbname=test;user=sae;password=DB_ROOT_PASSW
             </div>
 
             <div class="detail_offre_icons">
+               
                 <div class="detail_offre_icon">
                     <p>Adapté handicap</p>
                 </div>
