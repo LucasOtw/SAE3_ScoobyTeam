@@ -69,9 +69,6 @@ if(!isset($_POST["code_offre"])){
                 <div class="detail_offre_hotel-info">
                     <h1>Ti Al Lannec – Hôtel & Restaurant</h1>
                     <p>📍 Trébeurden, Bretagne 22300</p>
-                    <div class="detail_offre_rating">
-                        ⭐ 5.0 (255 avis)
-                    </div>
                 </div>
                 <div class="detail_offre_price-button">
                     <p class="detail_offre_price">50€</p>
@@ -232,14 +229,6 @@ if(!isset($_POST["code_offre"])){
                 <h1>Ti Al Lannec</h1>
                 <a href="https://www.tiallannec.com/FR/index.php" class="description-link"><h3>Direction</h3></a>
     </div>
-            <div class="rating">
-                <span>
-                    <img class="icone" src="images/etoile.png">
-                </span>
-                <span>
-                    4.7 (2 avis)
-                </span>
-            </div>
             <p class="address">
                 <img class="icone" src="images/icones/pin.png">
                 34 Av. du Général de Gaulle, 22300 Lannion</p>
