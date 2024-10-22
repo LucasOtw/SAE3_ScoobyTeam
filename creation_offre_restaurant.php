@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>En-tête PACT</title>
     <link rel="stylesheet" href="creation_offre2.css">
+
+
 </head>
 <body>
     <header class="header_pro">
@@ -22,15 +24,7 @@
 
     <div class="header-controls">
         <div>
-            <img id="etapes" src="images/FilArianne2.png" alt="Étapes">
-        </div>
-
-        <div>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider"></span>
-            </label>
-            <span>Hors Ligne/En Ligne</span>
+            <img id="etapes" src="images/FilArianne2.png" alt="Étapes" width="80%" height="80%">
         </div>
     </div>
 
@@ -89,14 +83,49 @@
                 <div class="row">
                     <div class="col">
                         <label for="tags">Tags</label>
-                        <select id="tags" name="tags">
-                            <option value="restaurant">Restaurant</option>
-                            <option value="plage">Plage</option>
-                            <option value="hotel">Hôtel</option>
-                            <option value="musee">Musée</option>
-                        </select>
+                        <div class="dropdown-container">
+                            <button type="button" class="dropdown-button">Sélectionner des tags</button>
+                            <div class="dropdown-content">
+                                <label class="tag">
+                                    <input type="checkbox" name="tags" value="restaurant">
+                                    Restaurant
+                                </label>
+                                <label class="tag">
+                                    <input type="checkbox" name="tags" value="plage">
+                                    Plage
+                                </label>
+                                <label class="tag">
+                                    <input type="checkbox" name="tags" value="hotel">
+                                    Hôtel
+                                </label>
+                                <label class="tag">
+                                    <input type="checkbox" name="tags" value="musee">
+                                    Musée
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <script>
+                    document.querySelector('.dropdown-button').addEventListener('click', function() {
+                        document.querySelector('.dropdown-content').classList.toggle('show');
+                    });
+
+                    // Close the dropdown if clicked outside
+                    window.onclick = function(event) {
+                        if (!event.target.matches('.dropdown-button')) {
+                            var dropdowns = document.getElementsByClassName("dropdown-content");
+                            for (var i = 0; i < dropdowns.length; i++) {
+                                var openDropdown = dropdowns[i];
+                                if (openDropdown.classList.contains('show')) {
+                                    openDropdown.classList.remove('show');
+                                }
+                            }
+                        }
+                    };
+                </script>
+
 
 
                 <!-- Photos -->

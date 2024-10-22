@@ -217,6 +217,65 @@ input:checked + .slider:before {
 } 
 
 
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.dropdown-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 16px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-content label {
+    display: flex; /* Flexbox pour aligner les items */
+    align-items: center; /* Aligne verticalement le texte et la checkbox */
+    padding: 8px 10px; /* Ajustement du padding */
+    cursor: pointer;
+}
+
+.dropdown-content label:hover {
+    background-color: #f0f0f0;
+}
+
+.dropdown-content input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(0.8); /* Diminue la taille de la checkbox */
+    cursor: pointer; /* Ajoute un curseur pointer pour la checkbox */
+}
+
+
+.show {
+    display: flex;
+
+}
+
+.main-creation-offre2 .tag{
+    margin-bottom: 0;
+    font-weight: lighter;
+}
+
+
 
 
 /* Media Queries for Mobile Responsiveness */
