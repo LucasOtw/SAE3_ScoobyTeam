@@ -36,7 +36,7 @@
             <h1>Publier une offre</h1>
 
             <!-- Form Fields -->
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
                 <!-- Establishment Name & Type -->
                 <div class="row">
                     <div class="col">
@@ -523,15 +523,15 @@
                     <label>Options de boost (lorsque l'offre sera en ligne)</label>
                     <div class="radio-group">
                         <div>
-                            <input type="radio" id="no_boost" name="boost" value="no_boost">
+                            <input type="radio" id="no_boost" name="option" value="">
                             <label class="label-check" for="no_boost">Ne pas booster mon offre</label>
                         </div>
                         <div>
-                            <input type="radio" id="relief" name="boost" value="relief">
+                            <input type="radio" id="en_relief" name="option" value="en_relief">
                             <label class="label-check" for="relief">Mettre mon offre "en Relief"</label>
                         </div>
                         <div>
-                            <input type="radio" id="a_la_une" name="boost" value="a_la_une" checked>
+                            <input type="radio" id="a_la_une" name="option" value="a_la_une" checked>
                             <label class="label-check" for="a_la_une">Mettre mon offre "À la Une"</label>
                         </div>
                     </div>
@@ -542,19 +542,19 @@
                     <label>Durée du boost</label>
                     <div class="radio-group">
                         <div>
-                            <input type="radio" id="1_semaine" name="duree" value="1_semaine">
+                            <input type="radio" id="1_semaine" name="duree_option" value="1">
                             <label class="label-check" for="1_semaine">1 semaine</label>
                         </div>
                         <div>
-                            <input type="radio" id="2_semaines" name="duree" value="2_semaines">
+                            <input type="radio" id="2_semaines" name="duree_option" value="2">
                             <label class="label-check" for="2_semaines">2 semaines</label>
                         </div>
                         <div>
-                            <input type="radio" id="3_semaines" name="duree" value="3_semaines" checked>
+                            <input type="radio" id="3_semaines" name="duree_option" value="3" checked>
                             <label class="label-check" for="3_semaines">3 semaines</label>
                         </div>
                         <div>
-                            <input type="radio" id="4_semaines" name="duree" value="4_semaines">
+                            <input type="radio" id="4_semaines" name="duree_option" value="4">
                             <label class="label-check" for="4_semaines">4 semaines</label>
                         </div>
                     </div>
@@ -571,16 +571,72 @@
             </form>
 
             <script>
-                function checkStatus(id) {
-                    const checkbox = document.getElementById(id);
-                    
-                    if (checkbox.checked) {
-                        return true;
-                    } else {
-                        return false;
+                function checkFermeture() {
+                    const checkboxL = document.getElementById('fermeCheckboxL');
+                    const ouvertureInputL = document.getElementById('ouvertureL');
+                    const fermetureInputL = document.getElementById('fermetureL');
+
+                    const checkboxMa = document.getElementById('fermeCheckboxMa');
+                    const ouvertureInputMa = document.getElementById('ouvertureMa');
+                    const fermetureInputMa = document.getElementById('fermetureMa');
+
+                    const checkboxMe = document.getElementById('fermeCheckboxMe');
+                    const ouvertureInputMe = document.getElementById('ouvertureMe');
+                    const fermetureInputMe = document.getElementById('fermetureMe');
+
+                    const checkboxJ = document.getElementById('fermeCheckboxJ');
+                    const ouvertureInputJ = document.getElementById('ouvertureJ');
+                    const fermetureInputJ = document.getElementById('fermetureJ');
+
+                    const checkboxV = document.getElementById('fermeCheckboxV');
+                    const ouvertureInputV = document.getElementById('ouvertureV');
+                    const fermetureInputV = document.getElementById('fermetureV');
+
+                    const checkboxS = document.getElementById('fermeCheckboxS');
+                    const ouvertureInputS = document.getElementById('ouvertureS');
+                    const fermetureInputS = document.getElementById('fermetureS');
+
+                    const checkboxD = document.getElementById('fermeCheckboxD');
+                    const ouvertureInputD = document.getElementById('ouvertureD');
+                    const fermetureInputD = document.getElementById('fermetureD');
+
+                    if (checkboxL.checked) {
+                        // Si le bouton est activé (fermé), les valeurs d'ouverture et fermeture sont nulles
+                        ouvertureInputL.value = "";
+                        fermetureInputL.value = "";
+                    }
+                    else if (checkboxMa.checked) {
+                        // Si le bouton est activé (fermé), les valeurs d'ouverture et fermeture sont nulles
+                        ouvertureInputMa.value = "";
+                        fermetureInputMa.value = "";
+                    }
+                    else if (checkboxMe.checked) {
+                        // Si le bouton est activé (fermé), les valeurs d'ouverture et fermeture sont nulles
+                        ouvertureInputMe.value = "";
+                        fermetureInputMe.value = "";
+                    }
+                    else if (checkboxJ.checked) {
+                        // Si le bouton est activé (fermé), les valeurs d'ouverture et fermeture sont nulles
+                        ouvertureInputJ.value = "";
+                        fermetureInputJ.value = "";
+                    }
+                    else if (checkboxV.checked) {
+                        // Si le bouton est activé (fermé), les valeurs d'ouverture et fermeture sont nulles
+                        ouvertureInputV.value = "";
+                        fermetureInputV.value = "";
+                    }
+                    else if (checkboxS.checked) {
+                        // Si le bouton est activé (fermé), les valeurs d'ouverture et fermeture sont nulles
+                        ouvertureInputS.value = "";
+                        fermetureInputS.value = "";
+                    }
+                    else if (checkboxD.checked) {
+                        // Si le bouton est activé (fermé), les valeurs d'ouverture et fermeture sont nulles
+                        ouvertureInputD.value = "";
+                        fermetureInputD.value = "";
                     }
                 }
-             </script>
+            </script>
 
             <?php
                 $insert = $dbh ->prepare("insert into tripenarvor.offre_activite (titre_offre, date_publication, date_derniere_modif, _resume, _description, site_web, tarif, accessibilite, en_ligne, nb_blacklister, adresse_postale, complement_adresse, code_postal, ville, type_offre, duree, age_requis, prestations_incluses, prestations_non_incluses)
@@ -601,6 +657,38 @@
                                     "prestations_incluses" => $_POST["prestations_incluses"], 
                                     "prestations_non_incluses" => $_POST["prestations_non_incluses"]]);
                 
+                switch ($_POST["option"]) {
+                    case 'en_relief':
+                        $insert = $dbh -> prepare("insert into tripenarvor._option (nb_semaines, date_debut, date_fin, prix)
+                                                    values (:nb_semaines, GETDATE(), DATEADD(WEEK, :nb_semaines, GETDATE()), 10.99)" );
+                        $insert->execute(["nb_semaines"=>$_POST["duree_option"]]);
+
+                        $select = $dbh -> prepare("select currval('tripenarvor._option_code_option_seq')");
+                        $select->execute();
+
+                        $update = $dbh -> prepare("update tripenarvor._offre
+                                                    set option_en_relief = :code_option
+                                                    where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
+                        $update->execute(["code_option"=>$select]) 
+                        break;
+                    
+                    case 'a_la_une':
+                        $insert = $dbh -> prepare("insert into tripenarvor._option (nb_semaines, date_debut, date_fin, prix)
+                                                    values (:nb_semaines, GETDATE(), DATEADD(WEEK, :nb_semaines, GETDATE()), 10.99)" );
+                        $insert->execute(["nb_semaines"=>$_POST["duree_option"]]);
+
+                        $select = $dbh -> prepare("select currval('tripenarvor._option_code_option_seq')");
+                        $select->execute();
+
+                        $update = $dbh -> prepare("update tripenarvor._offre
+                                                    set option_a_la_une = :code_option
+                                                    where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
+                        $update->execute(["code_option"=>$select]) 
+                        break;
+
+                    default:
+                        break;
+                }
 
                 $insert = $dbh -> prepare("insert into tripenarvor._horaire(ouverture, fermeture) values (:ouverture, :fermeture)");
                 $insert->execute(["ouverture"=>$_POST["ouvetureL"], "fermeture"=>$_POST["fermetureL"]]);
@@ -614,6 +702,130 @@
                                                 code_adresse = (select code_adresse from tripenarvor._adresse where code_offre = (select currval('tripenarvor._offre_code_offre_seq')))
                                             where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
                 $update->execute(["lundi"=>$select, "code_compte"=>$_SESSION["compte"]]);
+
+
+
+                $insert = $dbh -> prepare("insert into tripenarvor._horaire(ouverture, fermeture) values (:ouverture, :fermeture)");
+                $insert->execute(["ouverture"=>$_POST["ouvetureMa"], "fermeture"=>$_POST["fermetureMa"]]);
+
+                $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
+                $select->execute();
+
+                $update = $dbh -> prepare("update tripenarvor.offre_activite
+                                            set mardi = :mardi,
+                                                professionnel = :code_compte,
+                                                code_adresse = (select code_adresse from tripenarvor._adresse where code_offre = (select currval('tripenarvor._offre_code_offre_seq')))
+                                            where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
+                $update->execute(["mardi"=>$select, "code_compte"=>$_SESSION["compte"]]);
+
+
+
+                $insert = $dbh -> prepare("insert into tripenarvor._horaire(ouverture, fermeture) values (:ouverture, :fermeture)");
+                $insert->execute(["ouverture"=>$_POST["ouvetureMe"], "fermeture"=>$_POST["fermetureMe"]]);
+
+                $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
+                $select->execute();
+
+                $update = $dbh -> prepare("update tripenarvor.offre_activite
+                                            set mercredi = :mercredi,
+                                                professionnel = :code_compte,
+                                                code_adresse = (select code_adresse from tripenarvor._adresse where code_offre = (select currval('tripenarvor._offre_code_offre_seq')))
+                                            where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
+                $update->execute(["mercredi"=>$select, "code_compte"=>$_SESSION["compte"]]);
+
+
+
+                $insert = $dbh -> prepare("insert into tripenarvor._horaire(ouverture, fermeture) values (:ouverture, :fermeture)");
+                $insert->execute(["ouverture"=>$_POST["ouvetureJ"], "fermeture"=>$_POST["fermetureJ"]]);
+
+                $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
+                $select->execute();
+
+                $update = $dbh -> prepare("update tripenarvor.offre_activite
+                                            set jeudi = :jeudi,
+                                                professionnel = :code_compte,
+                                                code_adresse = (select code_adresse from tripenarvor._adresse where code_offre = (select currval('tripenarvor._offre_code_offre_seq')))
+                                            where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
+                $update->execute(["jeudi"=>$select, "code_compte"=>$_SESSION["compte"]]);
+
+
+
+                $insert = $dbh -> prepare("insert into tripenarvor._horaire(ouverture, fermeture) values (:ouverture, :fermeture)");
+                $insert->execute(["ouverture"=>$_POST["ouvetureV"], "fermeture"=>$_POST["fermetureV"]]);
+
+                $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
+                $select->execute();
+
+                $update = $dbh -> prepare("update tripenarvor.offre_activite
+                                            set vendredi = :vendredi,
+                                                professionnel = :code_compte,
+                                                code_adresse = (select code_adresse from tripenarvor._adresse where code_offre = (select currval('tripenarvor._offre_code_offre_seq')))
+                                            where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
+                $update->execute(["vendredi"=>$select, "code_compte"=>$_SESSION["compte"]]);
+
+
+
+                $insert = $dbh -> prepare("insert into tripenarvor._horaire(ouverture, fermeture) values (:ouverture, :fermeture)");
+                $insert->execute(["ouverture"=>$_POST["ouvetureS"], "fermeture"=>$_POST["fermetureS"]]);
+
+                $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
+                $select->execute();
+
+                $update = $dbh -> prepare("update tripenarvor.offre_activite
+                                            set samedi = :samedi,
+                                                professionnel = :code_compte,
+                                                code_adresse = (select code_adresse from tripenarvor._adresse where code_offre = (select currval('tripenarvor._offre_code_offre_seq')))
+                                            where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
+                $update->execute(["samedi"=>$select, "code_compte"=>$_SESSION["compte"]]);
+
+
+
+                $insert = $dbh -> prepare("insert into tripenarvor._horaire(ouverture, fermeture) values (:ouverture, :fermeture)");
+                $insert->execute(["ouverture"=>$_POST["ouvetureD"], "fermeture"=>$_POST["fermetureD"]]);
+
+                $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
+                $select->execute();
+
+                $update = $dbh -> prepare("update tripenarvor.offre_activite
+                                            set dimanche = :dimanche,
+                                                professionnel = :code_compte,
+                                                code_adresse = (select code_adresse from tripenarvor._adresse where code_offre = (select currval('tripenarvor._offre_code_offre_seq')))
+                                            where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
+                $update->execute(["dimanche"=>$select, "code_compte"=>$_SESSION["compte"]]);
+
+
+
+                
+                if (isset($_FILES['photos'])) {
+                    $files = $_FILES['photos'];
+
+                    // Parcourir les fichiers téléchargés
+                    for ($i = 0; $i < count($files['name']); $i++) {
+                        $fileName = $files['name'][$i];
+                        $fileTmpName = $files['tmp_name'][$i];
+                        $fileError = $files['error'][$i];
+                        $fileSize = $files['size'][$i];
+
+                        // Vérifier s'il n'y a pas d'erreur lors du téléchargement
+                        if ($fileError === 0) {
+                            // Définir un répertoire de destination
+                            $destination = 'imagesUser/' . $fileName;
+
+                            // Déplacer le fichier vers le répertoire de destination
+                            if (move_uploaded_file($fileTmpName, $destination)) {
+                                echo "Le fichier $fileName a été téléchargé avec succès !<br>";
+                            } else {
+                                echo "Erreur lors du téléchargement du fichier $fileName.<br>";
+                            }
+                        } else {
+                            echo "Erreur avec le fichier $fileName (code erreur : $fileError).<br>";
+                        }
+                    }
+                } else {
+                    echo "Aucun fichier sélectionné.";
+                }
+
+
             ?>
 
         </div>
