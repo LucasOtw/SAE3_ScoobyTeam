@@ -1,3 +1,23 @@
+<?php
+
+session_start();
+
+$bdd = new PDO("mysql:host=localhost;dbname=test;user=sae;password=DB_ROOT_PASSWORD");
+
+if(!isset($_POST["code_offre"])){
+    echo "Erreur : aucune offre";
+} else {
+    // si le formulaire est bien récupéré
+    $code_offre = $_POST["code_offre"]; // on récupère le code de l'offre envoyé
+
+    // On vérifie si le code existe dans la base de données (AU CAS OU !!!)
+    $existeOffre = $bdd->query("SELECT * FROM _offre WHERE code_offre = $code_offre");
+    if(!empty($existeOffre)){ // si l'offre existe
+        $details_offre = $existeOffre->fetch();
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
