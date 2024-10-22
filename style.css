@@ -27,15 +27,13 @@
 }
 
 html, body {
-    height: 100%;
     overflow-x: hidden;
-
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-   
 
-}
 /*****************************************************
         * Code pour la page header/footer responsive *
 *****************************************************/
@@ -471,10 +469,10 @@ footer {
     }
 
     .map-frame {
-    margin-left: 60px; /* Ajoute une marge à gauche */
-    max-width: 100%;   /* S'assure que l'iframe est responsive */
-    
-}
+        width: 100%;
+        height: 700px;
+        border: 0;
+    }
 
 
 
