@@ -1,3 +1,68 @@
+<?php
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $currentPassword = htmlspecialchars($_POST['mdpAct']);
+    $newPassword = htmlspecialchars($_POST['newMdp']);
+    $confirmNewPassword = htmlspecialchars($_POST['confNewMdp']);
+
+    try {
+        // Connexion à la base de données PostgreSQL via PDO
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
+        $username = "sae";
+        $password = "philly-Congo-bry4nt";
+
+        // Créer une instance PDO
+        $pdo = new PDO($dsn, $username, $password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Utilisateur actuel (récupérer email depuis la session)
+        $email = $_SESSION['email']; 
+
+        // Requête pour récupérer le mot de passe, raison_sociale et téléphone de l'utilisateur
+        $stmt = $pdo->prepare("SELECT mdp, raison_sociale, telephone FROM professionnel WHERE mail = :mail");
+        $stmt->bindParam(':mail', $email);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+            // Stocker les informations utilisateur dans la session
+            $_SESSION['raison_sociale'] = $user['raison_sociale'];
+            $_SESSION['telephone'] = $user['telephone'];
+
+            // Comparer le mot de passe actuel
+            if (password_verify($currentPassword, $user['mdp'])) {
+                // Vérifier que les nouveaux mots de passe correspondent
+                if ($newPassword === $confirmNewPassword) {
+                    // Hacher le nouveau mot de passe
+                    $newPasswordHashed = password_hash($newPassword, PASSWORD_DEFAULT);
+
+                    // Mettre à jour le mot de passe dans la base de données
+                    $updateStmt = $pdo->prepare("UPDATE professionnel SET mdp = :mdp WHERE mail = :mail");
+                    $updateStmt->bindParam(':mdp', $newPasswordHashed);
+                    $updateStmt->bindParam(':mail', $email);
+
+                    if ($updateStmt->execute()) {
+                        echo "Mot de passe mis à jour avec succès.";
+                    } else {
+                        echo "Erreur lors de la mise à jour du mot de passe.";
+                    }
+                } else {
+                    echo "Les nouveaux mots de passe ne correspondent pas.";
+                }
+            } else {
+                echo "Le mot de passe actuel est incorrect.";
+            }
+        } else {
+            echo "Utilisateur non trouvé.";
+        }
+    } catch (PDOException $e) {
+        echo "Erreur de connexion : " . $e->getMessage();
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,8 +91,8 @@
 
         <div class="profile-section">
             <img src="images/Photo_de_Profil.png" alt="Photo de profil" class="profile-img">
-            <h1>Juliette Martin</h1>
-            <p>juliettemartin@gmail.com | 07.98.76.54.12</p>
+            <h1><?php echo htmlspecialchars($_SESSION['raison_sociale']); ?></h1>
+        <p><?php echo htmlspecialchars($_SESSION['email']); ?> | <?php echo htmlspecialchars($_SESSION['telephone']); ?></p>
         </div>
 
         <div class="tabs">
@@ -40,17 +105,17 @@
     <form action="#" method="POST">
     <fieldset>
         <legend>Entrez votre mot de passe actuel</legend>
-        <input type="password" id="adresse" name="adresse" placeholder="Entrez votre mot de passe actuel" required>
+        <input type="password" id="mdpAct" name="mdpAct" placeholder="Entrez votre mot de passe actuel" required>
     </fieldset>
 
     <fieldset>
         <legend>Definissez votre nouveau mot de passe</legend>
-        <input type="password" id="code-postal" name="code-postal" placeholder="Definissez votre nouveau mot de passe" required>
+        <input type="password" id="newMdp" name="newMdp" placeholder="Definissez votre nouveau mot de passe" required>
     </fieldset>
     <fieldset>
 
         <legend>Re-tapez votre nouveau mot de passe</legend>
-        <input type="password" id="code-postal" name="code-postal" placeholder="Re-tapez votre nouveau mot de passe" required>
+        <input type="password" id="confNewMdp" name="confNewMdp" placeholder="Re-tapez votre nouveau mot de passe" required>
     </fieldset>
     <div class="compte_membre_save_delete">
     <button type="submit" class="submit-btn1">Supprimer mon compte</button>
