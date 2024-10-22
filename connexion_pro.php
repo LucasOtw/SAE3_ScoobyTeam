@@ -71,6 +71,53 @@
             </div>
         </div>
     </main>
+    <?php
+        $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
+        $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
+        
+
+        $mailDansBdd = $membre -> prepare("select code_compte from _professionnel NATURAL JOIN _compte where mail='$email';");
+        $mailDansBdd -> execute();
+        $membre = null;
+
+        $mdpDansBdd = $membre -> prepare("select mdp from _professionnel NATURAL JOIN _compte where mail='$email';");
+        $mailDansBdd -> execute();
+        $membre = null;
+        
+        $passwordHashedFromDB = password_hash($mdpDansBdd, PASSWORD_DEFAULT);
+
+        if ($mailDansBdd != NULL){
+            if (password_verify($password, $passwordHashedFromDB)) {
+                // Le mot de passe est correct
+                // Connexion
+                $_SESSION["compte"] = $mailDansBdd;
+                session_start();
+                // redirection
+                header('Location: modif_infos_pro.php');
+                exit();
+            } else {
+                // Le mot de passe est incorrect
+                ?>
+                <p>
+                <?php
+                    echo "Le mot de passe est incorrect";
+                ?>
+            </p>
+            <?php
+            }
+        } else {
+            // Mail inconnu
+            ?>
+            <p>
+                <?php
+                    echo "Le mail est inconnu";
+                ?>
+            </p>
+            <?php
+        }
+
+        
+    ?>
 </body>
 
 </html>
