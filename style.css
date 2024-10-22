@@ -540,10 +540,10 @@ footer {
     #body_offre_mobile {
         display: block !important;
         font-family: 'Arial', sans-serif;
-        margin: 0px 0 -1em -1em;
+        margin: 0px 0 -1em -3em;
         padding: 0 5vw;
         background-color: #ffffff;
-        width: 100%;
+        width: 113%;
     }
 
     #body_offre_mobile > div > div.swiper-container > div.swiper-wrapper > div > img {
@@ -552,7 +552,8 @@ footer {
 
     #body_offre_mobile > header {
         display: flex;
-        margin: 5vh 144px;
+        margin: 4vh 168px;
+        justify-content: center;
     }
 
     .icone {
