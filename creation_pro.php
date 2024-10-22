@@ -16,18 +16,55 @@
 </head>
 
 <body>
-    <header class="header_pro">
-        <div class="logo">
-            <img src="images/logo_blanc_pro.png" alt="PACT Logo">
+    <div class="header-membre">
+    <header class="header-pc">
+        <div class="logo-pc">
+            <img src="images/logoBlanc.png" alt="PACT Logo">
         </div>
+        
         <nav>
             <ul>
-                <li><a href="#">Accueil</a></li>
+                <li><a href="#" >Accueil</a></li>
                 <li><a href="#">Publier</a></li>
                 <li><a href="#" class="active">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
+    <header class="header-tel">
+        <div class="logo-tel">
+            <img src="images/LogoCouleur.png" alt="PACT Logo">
+        </div>
+        
+    </header>
+    </div>
+    
+
+    <div class="header-pro">
+    <header class="header-pc">
+        <div class="logo-pc">
+            <img src="images/logoBlanc.png" alt="PACT Logo">
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="#" >Accueil</a></li>
+                <li><a href="#">Publier</a></li>
+                <li><a href="#" class="active">Mon Compte</a></li>
+            </ul>
+        </nav>
+    </header>
+    <header class="header-tel">
+        <div class="logo-tel">
+            <img src="images/logoNoir.png" alt="PACT Logo">
+        </div>
+        
+    </header>
+    </div>
+
+
+
+
+
     <main class="creation_compte_pro">
         <div class="creation_compte_pro_container">
             <div class="creation_compte_pro_form-section">
