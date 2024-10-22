@@ -1,13 +1,9 @@
-<?php 
-$dbh = new PDO('pgsql:host=postgresql;port=5432;dbname=sae', 'sae', 'field-biDe-v3ndr4-bahut');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enregistrer coordonnées bancaires</title>
+    <title>Modifier coordonnées bancaires</title>
     <link rel="stylesheet" href="style_bancaire.css">
 </head>
 <body>
@@ -23,14 +19,13 @@ $dbh = new PDO('pgsql:host=postgresql;port=5432;dbname=sae', 'sae', 'field-biDe-
         </ul>
     </nav>
 </header>
-
 <div class="container">
     <div class="header">
         <img src="Images/Fond.png" alt="Bannière" class="header-img">
     </div>
 
     <div class="profile-section">
-        <img src="Images/Profil.png" alt="Photo de profil" class="profile-img">
+        <img src="Images/pp.png" alt="Photo de profil" class="profile-img">
         <h1>Ti al Lannec</h1>
         <p>ti.al.lannec@gmail.com | 07.98.76.54.12</p>
     </div>
@@ -43,7 +38,27 @@ $dbh = new PDO('pgsql:host=postgresql;port=5432;dbname=sae', 'sae', 'field-biDe-
 </div>
 
 <?php
+// Définir le chemin du fichier
+$file = 'coordonnees_bancaires.txt';
+
+// Initialiser les valeurs par défaut
+$iban = '';
+$bic = '';
+$nom = '';
+
+// Vérifier si le fichier existe déjà et récupérer les données
+if (file_exists($file)) {
+    $fileContents = file($file, FILE_IGNORE_NEW_LINES);
+    if (count($fileContents) >= 3) {
+        $nom = explode(": ", $fileContents[0])[1];
+        $iban = explode(": ", $fileContents[1])[1];
+        $bic = explode(": ", $fileContents[2])[1];
+    }
+}
+
+// Si le formulaire est soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Récupérer les données du formulaire
     $iban = htmlspecialchars($_POST['IBAN']);
     $bic = htmlspecialchars($_POST['BIC']);
     $nom = htmlspecialchars($_POST['nom']);
@@ -51,47 +66,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Vérifier que tous les champs sont bien remplis
     if (!empty($iban) && !empty($bic) && !empty($nom) && $cgu) {
-        // Supprimer les anciennes coordonnées
-        $stmt = $dbh->prepare("DELETE FROM _compte_bancaire WHERE nom_compte = :nom");
-        $stmt->bindParam(':nom', $nom);
-        $stmt->execute();
+        // Créer le contenu à écrire dans le fichier
+        $data = "Nom: $nom\nIBAN: $iban\nBIC: $bic\n---\n";
 
-        // Insérer les nouvelles coordonnées
-        $stmt = $dbh->prepare("INSERT INTO _compte_bancaire (iban, bic, nom_compte) VALUES (:iban, :bic, :nom)");
-        $stmt->bindParam(':iban', $iban);
-        $stmt->bindParam(':bic', $bic);
-        $stmt->bindParam(':nom', $nom);
+        // Ouvrir le fichier en mode "write" pour remplacer les données existantes
+        $fileHandle = fopen($file, 'w');
 
-        if ($stmt->execute()) {
-            echo "<p style='color:green;'>Les informations bancaires ont été enregistrées avec succès.</p>";
+        if ($fileHandle) {
+            // Écrire les nouvelles données dans le fichier
+            fwrite($fileHandle, $data);
+
+            // Fermer le fichier
+            fclose($fileHandle);
+
+            echo "Les informations bancaires ont été modifiées avec succès.";
         } else {
-            echo "<p style='color:red;'>Impossible d'enregistrer les informations. Veuillez réessayer.</p>";
+            echo "Impossible de modifier les informations. Veuillez réessayer.";
         }
     } else {
-        echo "<p style='color:red;'>Veuillez remplir tous les champs.</p>";
+        echo "Veuillez remplir tous les champs.";
     }
 }
 ?>
 
-<form action="" method="POST">
+<form action="#" method="POST">
+    <h4>Modification des coordonnées bancaires</h4>
     <div class="form-image-container">
         <div class="form-section">
             <div class="IBAN">
                 <fieldset>
                     <legend>IBAN</legend>
-                    <input type="text" id="IBAN" name="IBAN" placeholder="IBAN (obligatoire)" required>
+                    <input type="text" id="IBAN" name="IBAN" value="<?php echo $iban; ?>" required>
                 </fieldset>
             </div>
             <div class="BIC">
                 <fieldset>
                     <legend>BIC</legend>
-                    <input type="text" id="BIC" name="BIC" placeholder="Veuillez entrer votre BIC" required>
+                    <input type="text" id="BIC" name="BIC" value="<?php echo $bic; ?>" required>
                 </fieldset>
             </div>
             <div class="nom-du-proprietaire">
                 <fieldset>
                     <legend>Nom</legend>
-                    <input type="text" id="nom" name="nom" placeholder="Nom" required title="Veuillez entrer le nom du propriétaire du compte">
+                    <input type="text" id="nom" name="nom" value="<?php echo $nom; ?>" required>
                 </fieldset>
             </div>
         </div>
@@ -105,7 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
     </div>
     <div class="compte_membre_save_delete">
-        <button type="submit" class="submit-btn2">Enregistrer les coordonnées</button>
+        <button type="submit" class="submit-btn2">Modifier les coordonnées</button>
     </div>
 </form>
 

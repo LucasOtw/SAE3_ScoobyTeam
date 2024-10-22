@@ -1,7 +1,3 @@
-<?php 
-$dbh = new PDO('pgsql:host=postgresql;port=5432;dbname=sae', 'sae', 'field-biDe-v3ndr4-bahut');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,13 +19,14 @@ $dbh = new PDO('pgsql:host=postgresql;port=5432;dbname=sae', 'sae', 'field-biDe-
         </ul>
     </nav>
 </header>
+
 <div class="container">
     <div class="header">
         <img src="Images/Fond.png" alt="Bannière" class="header-img">
     </div>
 
     <div class="profile-section">
-        <img src="Images/Profil.png" alt="Photo de profil" class="profile-img">
+        <img src="Images/pp.png" alt="Photo de profil" class="profile-img">
         <h1>Ti al Lannec</h1>
         <p>ti.al.lannec@gmail.com | 07.98.76.54.12</p>
     </div>
@@ -41,24 +38,8 @@ $dbh = new PDO('pgsql:host=postgresql;port=5432;dbname=sae', 'sae', 'field-biDe-
     </div>
 </div>
 
+<!-- PHP intégré pour traiter les données du formulaire -->
 <?php
-// Initialiser les valeurs par défaut
-$iban = '';
-$bic = '';
-$nom = '';
-
-// Requête SQL pour récupérer les informations bancaires
-$query = $dbh->prepare("SELECT * FROM _compte_bancaire WHERE code_compte_bancaire = :id");
-$query->execute(['id' => 1]); // Remplacer 1 par l'ID du compte souhaité
-$compte = $query->fetch();
-
-if ($compte) {
-    $iban = $compte['iban'];
-    $bic = $compte['bic'];
-    $nom = $compte['nom_compte'];
-}
-
-// Si le formulaire est soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
     $iban = htmlspecialchars($_POST['IBAN']);
@@ -68,42 +49,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Vérifier que tous les champs sont bien remplis
     if (!empty($iban) && !empty($bic) && !empty($nom) && $cgu) {
-        // Mettre à jour les informations bancaires dans la base de données
-        $updateQuery = $dbh->prepare("UPDATE _compte_bancaire SET iban = :iban, bic = :bic, nom_compte = :nom WHERE code_compte_bancaire = :id");
-        $updateQuery->execute([
-            'iban' => $iban,
-            'bic' => $bic,
-            'nom' => $nom,
-            'id' => 1 // Remplacer 1 par l'ID du compte souhaité
-        ]);
+        // Créer le contenu à écrire dans le fichier
+        $data = "Nom: $nom\nIBAN: $iban\nBIC: $bic\n---\n";
+        
+        // Définir le chemin du fichier (il sera créé s'il n'existe pas)
+        $file = 'coordonnees_bancaires.txt';
 
-        echo "Les informations bancaires ont été modifiées avec succès.";
+        // Ouvrir le fichier en mode "append" pour ajouter les données à la fin
+        $fileHandle = fopen($file, 'a');
+        
+        if ($fileHandle) {
+            // Écrire les données dans le fichier
+            fwrite($fileHandle, $data);
+            
+            // Fermer le fichier
+            fclose($fileHandle);
+            
+            echo "<p style='color:green;'>Les informations bancaires ont été enregistrées avec succès.</p>";
+        } else {
+            echo "<p style='color:red;'>Impossible d'enregistrer les informations. Veuillez réessayer.</p>";
+        }
     } else {
-        echo "Veuillez remplir tous les champs.";
+        echo "<p style='color:red;'>Veuillez remplir tous les champs.</p>";
     }
 }
 ?>
 
-<form action="#" method="POST">
-    <h4>Modification des coordonnées bancaires</h4>
+<form action="" method="POST">
     <div class="form-image-container">
         <div class="form-section">
             <div class="IBAN">
                 <fieldset>
                     <legend>IBAN</legend>
-                    <input type="text" id="IBAN" name="IBAN" value="<?php echo $iban; ?>" required>
+                    <input type="text" id="IBAN" name="IBAN" placeholder="IBAN  (obligatoire)" required>
                 </fieldset>
             </div>
             <div class="BIC">
                 <fieldset>
                     <legend>BIC</legend>
-                    <input type="text" id="BIC" name="BIC" value="<?php echo $bic; ?>" required>
+                    <input type="text" id="BIC" name="BIC" placeholder="veuillez entrer votre BIC" required>
                 </fieldset>
             </div>
             <div class="nom-du-proprietaire">
                 <fieldset>
                     <legend>Nom</legend>
-                    <input type="text" id="nom" name="nom" value="<?php echo $nom; ?>" required>
+                    <input type="text" id="nom" name="nom" placeholder="Nom" required 
+                        title="Veuillez entrer le nom du propriétaire du compte">
                 </fieldset>
             </div>
         </div>
@@ -117,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
     </div>
     <div class="compte_membre_save_delete">
-        <button type="submit" class="submit-btn2">Modifier les coordonnées</button>
+        <button type="submit" class="submit-btn2">enregistrer les coordonnées</button>
     </div>
 </form>
 
