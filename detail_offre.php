@@ -1,6 +1,12 @@
 <?php
  session_start();
 
+    // Adresse que tu veux convertir
+    $adresse = "1600 Amphitheatre Parkway, Mountain View, CA";
+
+    // Encode l'adresse pour l'URL
+    $adresse_enc = urlencode($adresse);
+
     // Clé API Google obtenue après inscription
     $api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig";
 
