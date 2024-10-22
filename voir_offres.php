@@ -45,8 +45,8 @@
                     <p>Plœmeur Bodou</p>
                     <span>1 mois</span>
                     <span>
-                        <img src="images/etoile.png" class="img-etoile">
-                        <p>4.6 (355 avis)</p>
+                        <!-- <img src="images/etoile.png" class="img-etoile">
+                        <p>4.6 <span class="nb_avis">(355 avis)</span></p> -->
                     </span>
                     <button>Voir l'offre →</button>
                 </div>
@@ -59,8 +59,8 @@
                     <p>Lannion</p>
                     <span>3 mois</span>
                     <span>
-                        <img src="images/etoile.png" class="img-etoile">
-                        <p>4 (50 avis)</p>
+                        <!-- <img src="images/etoile.png" class="img-etoile">
+                        <p>4 <span class="nb_avis">(50 avis)</span></p> -->
                     </span>
                     <button>Voir l'offre →</button>
                 </div>
@@ -73,8 +73,8 @@
                     <p>Lannion</p>
                     <span>6 mois</span>
                     <span>
-                        <img src="images/etoile.png" class="img-etoile">
-                        <p>3.8 (300 avis)</p>
+                        <!-- <img src="images/etoile.png" class="img-etoile">
+                        <p>3.8 <span class="nb_avis">(300 avis)</span></p> -->
                     </span>
                     <button>Voir l'offre →</button>
                 </div>

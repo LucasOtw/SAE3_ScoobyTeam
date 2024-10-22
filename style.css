@@ -310,8 +310,8 @@ footer {
 }
 
 .toute_les_offres_main .offer img {
-    width: 200px;
-    height: auto;
+    width: auto;
+    height: 15vh;
     object-fit: cover;
     margin: 0.5vw 1vw;
 }
@@ -385,8 +385,14 @@ footer {
         display: none;
     }
 
-    .toute_les_offres_main header.header-tel {
+    header.header-tel {
         display: block;
+    }
+    .toute_les_offres_main .offer-details h2{
+        font-size:1.2rem;
+    }
+    .toute_les_offres_main .offer-details p:last-of-type{
+        font-size: 0.8rem;
     }
     
     .toute_les_offres_main .offer {
@@ -398,7 +404,7 @@ footer {
 
     .toute_les_offres_main .offer img {
         width: auto;
-        height: 10rem;
+        height: 13vh;
         object-fit: cover;
         margin: 1vh 1vh;
         border-radius: calc(30px - 1vh);
@@ -424,7 +430,7 @@ footer {
         display : none;
     }
 
-    .nav-bar {
+    nav.nav-bar {
         width: 84vw;
         position: fixed;
         bottom: 20px;
@@ -436,9 +442,13 @@ footer {
         box-shadow: 0px 2px 10px rgb(156, 156, 156);
     }
 
-    .nav-bar a {
+    nav.nav-bar a {
         display: flex;
         align-items: center;
         margin: 10px auto;
+    }
+
+    .nb-avis{
+        display: none   ;
     }
 }
