@@ -1,12 +1,10 @@
 <?php
-/*
-
 session_start();
 
 $bdd = new PDO("mysql:host=localhost;dbname=test;user=sae;password=DB_ROOT_PASSWORD");
 
-/* if(!isset($_POST["code_offre"])){
-    echo "Erreur : aucune offre";
+if(!isset($_POST["code_offre"])){
+    echo "Erreur : aucune offre"; // à remplacer
 } else {
     // si le formulaire est bien récupéré
     $code_offre = $_POST["code_offre"]; // on récupère le code de l'offre envoyé
@@ -14,9 +12,27 @@ $bdd = new PDO("mysql:host=localhost;dbname=test;user=sae;password=DB_ROOT_PASSW
     // On vérifie si le code existe dans la base de données (AU CAS OU !!!)
     $existeOffre = $bdd->query("SELECT * FROM _offre WHERE code_offre = $code_offre");
     if(!empty($existeOffre)){ // si l'offre existe
-        $details_offre = $existeOffre->fetch();
+        $details_offre = $existeOffre->fetch(); // on récupère son contenu
+
+        /*
+            Une offre a forcément au moins une image. 
+            On récupère l'image (ou les images) associée(s)
+        */
+        $images_offre = $bdd->query('SELECT url_image FROM _image WHERE code_image = (SELECT code_image FROM son_image WHERE code_offre = '.$code_offre.')');
+        /*
+            On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
+        */
+        $adresse_offre = $bdd->query('SELECT * FROM _adresse WHERE code_adresse = '.$details_offre["code_adresse"].'');
+        $horaires = $bdd->query('SELECT DISTINCT h.* FROM _offre o JOIN _horaire h ON h.code_horaire IN (o.lundi, o.mardi, o.mercredi, o.jeudi, o.vendredi, o.samedi, o.dimanche
+        WHERE o.lundi IS NOT NULL
+        OR o.mardi IS NOT NULL
+        OR o.mercredi IS NOT NULL
+        OR o.jeudi IS NOT NULL
+        OR o.vendredi IS NOT NULL
+        OR o.samedi IS NOT NULL
+        OR o.dimanche IS NOT NULL');
     }
-*/
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
