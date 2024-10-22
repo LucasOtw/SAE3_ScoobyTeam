@@ -497,10 +497,8 @@ footer {
     box-shadow: 0 0 15px 5px #12d889; /* Lumière fluo verte */
     background-color: #12d889;
 }
-
-@media (max-width: 768px) {
-
-
+/* Styles pour les écrans de 428px et moins */
+@media (max-width: 428px) {
     .header {
         display: flex;
         justify-content: space-between;
@@ -515,11 +513,12 @@ footer {
         font-weight: bold;
     }
 
-.back-button {
-    font-size: 24px;
-    text-decoration: none;
-    color: #333;
-}
+    .back-button {
+        font-size: 24px;
+        text-decoration: none;
+        color: #333;
+    }
+
     .detail_offre_hotel-header {
         flex-direction: column;
         text-align: center;
@@ -534,11 +533,10 @@ footer {
         height: auto;
     }
 
-    #body_offre_desktop{
+    #body_offre_desktop {
         display: none;
     }
 
-        /* styles.css */
     #body_offre_mobile {
         display: block !important;
         font-family: 'Arial', sans-serif;
@@ -548,55 +546,52 @@ footer {
         width: 100%;
     }
 
-    #body_offre_mobile > div > div.swiper-container > div.swiper-wrapper > div > img{
+    #body_offre_mobile > div > div.swiper-container > div.swiper-wrapper > div > img {
         width: 50%;
     }
 
-    #body_offre_mobile > header{
+    #body_offre_mobile > header {
         display: flex;
         margin: 5vh 144px;
     }
 
-
-    .icone{
+    .icone {
         width: 3vw;
     }
 
-    span#titre{
+    span#titre {
         display: flex;
-        align-items:last baseline;
+        align-items: last baseline;
         justify-content: space-between;
     }
 
-    span#titre > p{
-        color: #BDC426
+    span#titre > p {
+        color: #BDC426;
     }
 
-    #body_offre_mobile > div > div.details > p{
-        color:#727272;
+    #body_offre_mobile > div > div.details > p {
+        color: #727272;
     }
 
-    #body_offre_mobile > div > div.details > div.rating > span:nth-child(2){
-        color:#727272;
+    #body_offre_mobile > div > div.details > div.rating > span:nth-child(2) {
+        color: #727272;
     }
 
-    #body_offre_mobile > div > div.details > section{
+    #body_offre_mobile > div > div.details > section {
         margin: 3vh 0;
     }
 
-    #body_offre_mobile > div > div.details > section > article{
+    #body_offre_mobile > div > div.details > section > article {
         margin: 2vh 0 2vh 1vw;
     }
 
-    /* "Services" mobile */
-
-    .services{
+    .services {
         display: flex;
         justify-content: space-around;
         margin: 2vh 0;
     }
 
-    .services > span.service{
+    .services > span.service {
         border: 1px none;
         background-color: rgba(23, 111, 242, 0.05);
         padding: 20px;
@@ -613,27 +608,29 @@ footer {
         text-align: center;
     }
 
-    .services > span.service > img{
+    .services > span.service > img {
         width: 40%;
     }
 
-    #body_offre_mobile > div > div.details > ul{
+    #body_offre_mobile > div > div.details > ul {
         line-height: 200%;
     }
-    #body_offre_mobile > div > div.details > ul > li{
+
+    #body_offre_mobile > div > div.details > ul > li {
         list-style: none;
     }
-    
-    #body_offre_mobile > div > div.details > ul > li > span{
+
+    #body_offre_mobile > div > div.details > ul > li > span {
         font-weight: bolder;
     }
-    #body_offre_mobile > div > article{
+
+    #body_offre_mobile > div > article {
         display: flex;
         justify-content: space-between;
         margin: 2vh 0;
     }
-    
-    #body_offre_mobile > div > article > span{
+
+    #body_offre_mobile > div > article > span {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -641,8 +638,8 @@ footer {
         height: 7vh;
     }
 
-    #body_offre_mobile > div > article > button#bouton_publier{
-        background-color:#BDC426;
+    #body_offre_mobile > div > article > button#bouton_publier {
+        background-color: #BDC426;
         color: white;
         position: relative;
         right: 10%;
@@ -653,12 +650,10 @@ footer {
         box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.600);
     }
 
-    #body_offre_mobile > div > article > button#bouton_publier:active{
-        box-shadow: inset 2px 2px 10px -2px black;
-    }
+   
 
-    #prix{
-        color:#2DD7A4;
+    #prix {
+        color: #2DD7A4;
         font-size: x-large;
         font-weight: bold;
     }
@@ -667,22 +662,20 @@ footer {
         display: flex;
         position: relative;
         left: 5%;
-        border:1px solid black;
+        border: 1px solid black;
         border-radius: 5vw;
-        overflow-x: scroll;  /* Activer le défilement horizontal */
-        scroll-snap-type: x mandatory;  /* Snap au prochain élément horizontalement */
-        -webkit-overflow-scrolling: touch;  /* Pour activer le scroll fluide sur iOS */
-        scroll-behavior: smooth;  /* Smooth scrolling entre les images */
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
         width: 90%;
     }
 
-    /* Chaque slide (image) */
     .carousel-slide {
-        min-width: 100%;  /* Chaque image occupe 100% de la largeur du conteneur */
-        scroll-snap-align: center;  /* Aligner au centre lors du snap */
+        min-width: 100%;
+        scroll-snap-align: center;
     }
 
-    /* Style des images pour qu'elles s'adaptent */
     .carousel img {
         width: 346px;
         height: 275px;
@@ -691,122 +684,172 @@ footer {
         display: block;
     }
 
-    /* Style pour une meilleure expérience de scroll */
     .carousel::-webkit-scrollbar {
-        display: none;  /* Masquer la barre de défilement pour une apparence propre */
+        display: none;
     }
 
+    .carousel {
+        position: relative;
+        max-width: 100%;
+        margin: 20px auto;
+        overflow: hidden;
+    }
 
- /* Styles pour le carrousel */
-.carousel {
-    position: relative;
-    max-width: 100%;
-    margin: 20px auto;
-    overflow: hidden;
+    .carousel-images {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-images img {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .carousel-buttons {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+    }
+
+    .carousel-button {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .details {
+        padding: 30px;
+        margin: -6px;
+    }
+
+    .details_offres_infos {
+        padding: 20px;
+    }
+
+    .detail_offre_resumer {
+        margin-top: 0em;
+    }
+
+    .detail_offre_description {
+        margin-top: 1em;
+    }
+
+    .global_service_detail_offre {
+        margin-top: 2em;
+    }
+
+    .Detail_offre_ouverture_global {
+        margin-top: 2em;
+        padding: 4px;
+    }
+
+    .detail_offre_resumer_titre {
+        margin-top: 2em;
+    }
+
+    .titre_detail_offre_responsive {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .description-link h3 {
+        color: var(--vert-clair);
+        outline: none;
+  text-decoration: none; /* Pour enlever le soulignement si nécessaire */
+  font-size: 17px;
+
+
+    }
+
+    .Detail_offre_ouverture_global {
+        background-color: #ffffff;
+        border-radius: 10px;
+        max-width: 600px;
+        margin: 20px auto;
+    }
+
+    .Detail_offre_ouverture_global h3 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .hours {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .hours li {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .hours li:last-child {
+        border-bottom: none;
+    }
+
+    .hours span {
+        font-weight: bold;
+        color: var(--vert-clair);
+    }
 }
 
-.carousel-images {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+/* Styles pour les écrans de 429px et plus */
+@media (min-width: 429px) {
+    .header,
+    .back-button,
+    #body_offre_mobile,
+    #body_offre_mobile > header,
+    .icone,
+    span#titre,
+    span#titre > p,
+    #body_offre_mobile > div > div.details > p,
+    #body_offre_mobile > div > div.details > div.rating > span:nth-child(2),
+    #body_offre_mobile > div > div.details > section,
+    #body_offre_mobile > div > div.details > section > article,
+    .services,
+    .services > span.service,
+    .service > span.service,
+    .services > span.service > img,
+    #body_offre_mobile > div > div.details > ul,
+    #body_offre_mobile > div > div.details > ul > li,
+    #body_offre_mobile > div > div.details > ul > li > span,
+    #body_offre_mobile > div > article,
+    #body_offre_mobile > div > article > span,
+    #body_offre_mobile > div > article > button#bouton_publier,
+    #body_offre_mobile > div > article > button#bouton_publier:active,
+    #prix,
+    .carousel,
+    .carousel-slide,
+    .carousel img,
+    .carousel::-webkit-scrollbar,
+    .carousel,
+    .carousel-images,
+    .carousel-images img,
+    .carousel-buttons,
+    .carousel-button,
+    .details,
+    .details_offres_infos,
+    .detail_offre_resumer,
+    .global_service_detail_offre,
+    .Detail_offre_ouverture_global,
+    .detail_offre_resumer_titre,
+    .titre_detail_offre_responsive,
+    .titre_detail_offre_responsive p,
+    .Detail_offre_ouverture_global,
+    .Detail_offre_ouverture_global h3,
+    .hours,
+    .hours li,
+    .hours li:last-child,
+    .hours span {
+        display: none;
+    }
 }
-
-.carousel-images img {
-    width: 100%;
-    max-width: 600px;
-}
-
-.carousel-buttons {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-}
-
-.carousel-button {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.details {
-    padding : 30px;
-    margin : -6px;
-}
-
-.details_offres_infos{
-    padding: 20px;
-}
-
-.detail_offre_resumer{
-    margin-top : 0em;
-}
-.detail_offre_description {
-    margin-top: 1em;
-}
-
-
-.global_service_detail_offre{
-    margin-top: 2em;
-}
-
-.Detail_offre_ouverture_global{
-    margin-top : 2em;
-    padding : 4px;
-}
-
-.detail_offre_resumer_titre{
-    margin-top : 2em;
-}
-
-
-.titre_detail_offre_responsive{
-    display : flex;
-    justify-content: space-between;
-    align-items: center;
-    
-}
-
-.titre_detail_offre_responsive p{
-    color : var(--vert-clair);
-}
-
-.Detail_offre_ouverture_global {
-    background-color: #ffffff; 
-    border-radius: 10px; /* Coins arrondis */
-    max-width: 600px; /* Largeur maximale */
-    margin: 20px auto; /* Centrer la section */
-}
-
-.Detail_offre_ouverture_global h3 {
-    text-align: center; /* Centrer le titre */
-    color: #333; /* Couleur du texte */
-    margin-bottom: 20px; /* Espace sous le titre */
-}
-
-.hours {
-    list-style-type: none; /* Enlève les pastilles */
-    padding: 0; /* Enlève le padding par défaut */
-    margin: 0; /* Enlève la marge par défaut */
-}
-
-.hours li {
-    display: flex;
-    justify-content: space-between; /* Espace entre le jour et les horaires */
-    padding: 10px 0; /* Espacement vertical */
-    border-bottom: 1px solid #ddd; /* Ligne de séparation */
-}
-
-.hours li:last-child {
-    border-bottom: none; /* Enlève la ligne de séparation pour le dernier élément */
-}
-
-.hours span {
-    font-weight: bold; /* Met en gras les jours */
-    color: var(--vert-clair); /* Couleur des jours */
-}
-}
-

@@ -186,7 +186,7 @@
         <div class="details_offres_infos">
             <div class="titre_detail_offre_responsive">
                 <h1>Ti Al Lannec</h1>
-                <p>Direction</p>
+                <a href="https://www.google.com" class="description-link"><h3>Direction</h3></a>
     </div>
             <div class="rating">
                 <span>
@@ -208,7 +208,7 @@
                 </article>
                 <div class="detail_offre_resumer_titre">
                 <article>
-                    <h3>Description</h3>
+                <h3>Description</h3>
                     </div>
                     <p class="detail_offre_resumer">C'est très décontracté en terrasse, on sait tout par la force et la beauté du panorama à perte de vue.</p>
                 </article>
@@ -233,6 +233,7 @@
             </div>
 
             <div class="Detail_offre_ouverture_global">
+                <h3>Horaires</h3>
             <ul class="hours">
                 <li><span>Lundi</span>: 19h30 - 21h30</li>
                 <li><span>Mardi</span>: 19h30 - 21h30</li>
