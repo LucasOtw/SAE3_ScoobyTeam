@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier coordonnées bancaires</title>
+    <title>premières coordonnées bancaires</title>
     <link rel="stylesheet" href="style_bancaire.css">
 </head>
 <body>
@@ -30,9 +30,9 @@
         <p>ti.al.lannec@gmail.com | 07.98.76.54.12</p>
     </div>
     <div class="tabs">
-        //<div class="tab">Informations</div>
+        
         <div class="tab">Mot de passe et sécurité</div>
-        //<div class="tab">Mes Offres</div>
+        
         <div class="tab active">Compte Bancaire</div>
     </div>
 </div>
@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Fermer le fichier
             fclose($fileHandle);
 
-            echo "Les informations bancaires ont été modifiées avec succès.";
+            echo "Les informations bancaires ont été ajoutées avec succès.";
         } else {
             echo "Impossible de modifier les informations. Veuillez réessayer.";
         }
@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
     </div>
     <div class="compte_membre_save_delete">
-        <button type="submit" class="submit-btn2">Modifier les coordonnées</button>
+        <button type="submit" class="submit-btn2">Ajouter vos coordonnées</button>
     </div>
 </form>
 

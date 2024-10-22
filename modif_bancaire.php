@@ -40,9 +40,9 @@
         <p>ti.al.lannec@gmail.com | 07.98.76.54.12</p>
     </div>
     <div class="tabs">
-        //<div class="tab">Informations</div>
+        <!-- <div class="tab">Informations</div> -->
         <div class="tab">Mot de passe et sécurité</div>
-        //<div class="tab">Mes Offres</div>
+        <!-- <div class="tab">Mes Offres</div> -->
         <div class="tab active">Compte Bancaire</div>
     </div>
 </div>
@@ -114,19 +114,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="IBAN">
                 <fieldset>
                     <legend>IBAN</legend>
-                    <input type="text" id="IBAN" name="IBAN" value="<?php echo $iban; ?>" required>
+                    <input type="text" id="IBAN" name="IBAN" value="<?php echo $iban; ?>" placeholder="IBAN" required>
                 </fieldset>
             </div>
             <div class="BIC">
                 <fieldset>
                     <legend>BIC</legend>
-                    <input type="text" id="BIC" name="BIC" value="<?php echo $bic; ?>" required>
+                    <input type="text" id="BIC" name="BIC" value="<?php echo $bic; ?>" placeholder="BIC" required>
                 </fieldset>
             </div>
             <div class="nom-du-proprietaire">
                 <fieldset>
                     <legend>Nom</legend>
-                    <input type="text" id="nom" name="nom" value="<?php echo $nom; ?>" required>
+                    <input type="text" id="nom" name="nom" value="<?php echo $nom; ?>" placeholder="Nom"required>
                 </fieldset>
             </div>
         </div>
