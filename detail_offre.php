@@ -186,7 +186,7 @@
         <div class="details_offres_infos">
             <div class="titre_detail_offre_responsive">
                 <h1>Ti Al Lannec</h1>
-                <a href="https://www.google.com" class="description-link"><h3>Direction</h3></a>
+                <a href="https://www.tiallannec.com/FR/index.php" class="description-link"><h3>Direction</h3></a>
     </div>
             <div class="rating">
                 <span>

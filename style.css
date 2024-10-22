@@ -761,8 +761,8 @@ footer {
     .description-link h3 {
         color: var(--vert-clair);
         outline: none;
-  text-decoration: none; /* Pour enlever le soulignement si nécessaire */
-  font-size: 17px;
+        text-decoration: none !important;
+        font-size: 17px;
 
 
     }
