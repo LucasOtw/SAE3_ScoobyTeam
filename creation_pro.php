@@ -80,7 +80,7 @@
 
                         <fieldset>
                             <legend>N° de Siren (Professionnel privé)</legend>
-                            <input type="text" id="siren" name="siren" placeholder="N° de Siren (Professionnel privé)" >
+                            <input type="text" id="siren" name="siren" placeholder="N° de Siren (Professionnel privé)">
                         </fieldset>
                     </div>
                     <div class="crea_pro_mail_tel">
@@ -145,7 +145,7 @@
         <?php
 
         // Récupération des variables du formulaire
-        $raisonSociale = trim(isset($_POST['raison-sociale']) ? htmlspecialchars($_POST['raison-sociale']) : '');
+        $raison_sociale = trim(isset($_POST['raison-sociale']) ? htmlspecialchars($_POST['raison-sociale']) : '');
         $siren = trim(isset($_POST['siren']) ? htmlspecialchars($_POST['siren']) : '');
         $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
         $telephone = trim(isset($_POST['telephone']) ? htmlspecialchars($_POST['telephone']) : '');
@@ -170,7 +170,7 @@
         }
 
         // 2. N° de Siren : Vérifier si le Siren est valide (9 chiffres)
-        if (empty($siren) || !preg_match('/^[0-9]{9}$/', $siren)) {
+        if (!empty($siren) && !preg_match('/^[0-9]{9}$/', $siren)) {
             $erreurs[] = "Le numéro de Siren doit comporter 9 chiffres.";
         }
 
@@ -217,6 +217,7 @@
             if (empty($siren)) {
                 $insert = $professionnel_publique->prepare("INSERT INTO professionnel_publique(telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville) 
                                             VALUES ($telephone, $email, $passwordHashed, $raison_sociale, $adresse, $complementAdresse, $codePostal, $ville)");
+                var_dump($insert);
             }
             else {
                 $insert = $professionnel_prive->prepare("INSERT INTO professionnel_prive(telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville, num_siren) 
