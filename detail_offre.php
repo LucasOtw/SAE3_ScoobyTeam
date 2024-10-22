@@ -1,9 +1,5 @@
 <?php
-    // Adresse que tu veux convertir
-    $adresse = "A MODIFIER";
-
-    // Encode l'adresse pour l'URL
-    $adresse_enc = urlencode($adresse);
+ session_start();
 
     // Clé API Google obtenue après inscription
     $api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig";
@@ -22,10 +18,40 @@
     } else {
         // echo "Adresse non trouvée.";
     }
+
+
+
+
+if(!isset($_POST["code_offre"])){
+    echo "Erreur : aucune offre"; // à remplacer
+} else {
+    // si le formulaire est bien récupéré
+    $code_offre = $_POST["code_offre"]; // on récupère le code de l'offre envoyé
+
+    // On vérifie si le code existe dans la base de données (AU CAS OU !!!)
+    $existeOffre = $bdd->query("SELECT * FROM _offre WHERE code_offre = $code_offre");
+    if(!empty($existeOffre)){ // si l'offre existe
+        $details_offre = $existeOffre->fetch(); // on récupère son contenu
+
+            // Une offre a forcément au moins une image. 
+            // On récupère l'image (ou les images) associée(s)
+            
+        $images_offre = $bdd->query('SELECT url_image FROM _image WHERE code_image = (SELECT code_image FROM son_image WHERE code_offre = '.$code_offre.')');
+
+            // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
+        
+        $adresse_offre = $bdd->query('SELECT * FROM _adresse WHERE code_adresse = '.$details_offre["code_adresse"].'');
+        $horaires = $bdd->query('SELECT DISTINCT h.* FROM _offre o JOIN _horaire h ON h.code_horaire IN (o.lundi, o.mardi, o.mercredi, o.jeudi, o.vendredi, o.samedi, o.dimanche
+        WHERE o.lundi IS NOT NULL
+        OR o.mardi IS NOT NULL
+        OR o.mercredi IS NOT NULL
+        OR o.jeudi IS NOT NULL
+        OR o.vendredi IS NOT NULL
+        OR o.samedi IS NOT NULL
+        OR o.dimanche IS NOT NULL');
+    }
+} 
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -235,6 +261,7 @@
                 <h1>Ti Al Lannec</h1>
                 <a href="https://www.tiallannec.com/FR/index.php" class="description-link"><h3>Site Web</h3></a>
     </div>
+<<<<<<< HEAD
             <!-- <div class="rating">
                 <span>
                     <img class="icone" src="images/etoile.png">
@@ -243,6 +270,8 @@
                     4.7 (2 avis)
                 </span>
             </div> -->
+=======
+>>>>>>> eb330b4d83d50367af68d7fc2a2fd36242caba0b
             <p class="address">
                 <img class="icone" src="images/icones/pin.png">
                 34 Av. du Général de Gaulle, 22300 Lannion</p>
