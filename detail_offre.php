@@ -1,4 +1,5 @@
 <?php
+/*
 
 session_start();
 
@@ -15,9 +16,10 @@ $bdd = new PDO("mysql:host=localhost;dbname=test;user=sae;password=DB_ROOT_PASSW
     if(!empty($existeOffre)){ // si l'offre existe
         $details_offre = $existeOffre->fetch();
     }
-} */
-
+<<<<<<< HEAD
+*/
 ?>
+>>>>>>> eed49852ccc99d8a210b682e1131be1e8caa02a9
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -99,16 +101,17 @@ $bdd = new PDO("mysql:host=localhost;dbname=test;user=sae;password=DB_ROOT_PASSW
                     <p>255 avis</p>
                 </div>
                 <div class="detail_offre_icon">
-                    <p>Adapté</p>
+                    <p><span class="bx--handicap"></span>Adapté</p>
                 </div>
                 <div class="detail_offre_icon">
+                    <p><span class="iconify" data-icon="mdi:wifi" data-inline="false"></span></p>
                     <p>Wifi</p>
                 </div>
                 <div class="detail_offre_icon">
-                    <p>Autorisés</p>
+                    <p><span class="mdi--dog"></span>Autorisés</p>
                 </div>
                 <div class="detail_offre_icon">
-                    <p>Interdit</p>
+                    <p><span class="ph--cigarette-slash-bold"></span>Interdit</p>
                 </div>
             </div>
         </div>
@@ -118,18 +121,6 @@ $bdd = new PDO("mysql:host=localhost;dbname=test;user=sae;password=DB_ROOT_PASSW
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2629.6630360674853!2d-3.5818007!3d48.7692309!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4813d30ea0739aa5%3A0xa08df5c6c4d0aae5!2sTi%20Al%20Lannec%20Sa!5e0!3m2!1sfr!2sfr!4v1729076393212!5m2!1sfr!2sfr" 
             width="1650" height="700" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
         </iframe>
-
-        <div class="detail_offre_localisation_horraires">
-        <h2>Horaires</h2>
-        <ul class="hours">
-                    <li><span>Lundi</span>: 19h30 - 21h30</li>
-                    <li><span>Mardi</span>: 19h30 - 21h30</li>
-                    <li><span>Mercredi</span>: 19h30 - 21h30</li>
-                    <li><span>Jeudi</span>: 19h30 - 21h30</li>
-                    <li><span>Vendredi</span>: 19h30 - 21h30</li>
-                    <li><span>Samedi</span>: 12h30 - 13h30, 19h30 - 21h30</li>
-                    <li><span>Dimanche</span>: 12h30 - 13h30, 19h30 - 21h30</li>
-                </ul>
         <footer class="footer_detail_avis">
             <div class="newsletter">
                 <div class="newsletter-content">
@@ -265,16 +256,16 @@ $bdd = new PDO("mysql:host=localhost;dbname=test;user=sae;password=DB_ROOT_PASSW
 
             <div class="Detail_offre_ouverture_global">
                 <h3>Horaires</h3>
-                <ul class="hours">
-                    <li><span>Lundi</span>: 19h30 - 21h30</li>
-                    <li><span>Mardi</span>: 19h30 - 21h30</li>
-                    <li><span>Mercredi</span>: 19h30 - 21h30</li>
-                    <li><span>Jeudi</span>: 19h30 - 21h30</li>
-                    <li><span>Vendredi</span>: 19h30 - 21h30</li>
-                    <li><span>Samedi</span>: 12h30 - 13h30, 19h30 - 21h30</li>
-                    <li><span>Dimanche</span>: 12h30 - 13h30, 19h30 - 21h30</li>
-                </ul>
-            </div>
+            <ul class="hours">
+                <li><span>Lundi</span>: 19h30 - 21h30</li>
+                <li><span>Mardi</span>: 19h30 - 21h30</li>
+                <li><span>Mercredi</span>: 19h30 - 21h30</li>
+                <li><span>Jeudi</span>: 19h30 - 21h30</li>
+                <li><span>Vendredi</span>: 19h30 - 21h30</li>
+                <li><span>Samedi</span>: 12h30 - 13h30, 19h30 - 21h30</li>
+                <li><span>Dimanche</span>: 12h30 - 13h30, 19h30 - 21h30</li>
+            </ul>
+        </div>
 
         <!-- Bouton publier un avis -->
         <article class="publier_avis">
