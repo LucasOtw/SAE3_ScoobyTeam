@@ -464,8 +464,9 @@ footer {
     .detail_offre_localisation h2 {
     font-size: 1.8em;
     margin-bottom: 28px;
-    margin-left : 2em;
+    margin-left: 1em;
     margin-top: 2em;
+
     }
 
     .map-frame {
@@ -489,7 +490,44 @@ footer {
 .visit-button_detailoffre {
     margin-right: 0px; /* Supprime la marge négative */
     display: inline-block;
+
+
    
+}
+
+.Detail_offre_ouverture_global_desktop {
+    margin-top: 2em;
+    padding: 4px;
+    width: 34em;
+    margin-left: 1em;
+}
+
+.hours_desktop_detail_offre{
+    margin-left : 4em;
+    font-size: 20px;
+}
+
+.hours_desktop_detail_offre {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hours_desktop_detail_offre li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    margin-left: 1.4em;
+}
+
+.hours_desktop_detail_offre li:last-child {
+    border-bottom: none;
+}
+
+.hours_desktop_detail_offre span {
+    font-weight: bold;
+    color: var(--vert-clair);
 }
 
 .visit-button_detailoffre:hover {
@@ -803,6 +841,8 @@ footer {
         font-weight: bold;
         color: var(--vert-clair);
     }
+
+    
 }
 
 /* Styles pour les écrans de 429px et plus */
