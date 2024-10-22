@@ -2,6 +2,7 @@
 <html lang="fr">
 
 <head>
+    <?php session_start();?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Se connecter</title>
@@ -78,8 +79,8 @@
                         </fieldset>
 
                         <fieldset>
-                            <legend>N° de Siren *</legend>
-                            <input type="text" id="siren" name="siren" placeholder="N° de Siren *" required>
+                            <legend>N° de Siren (Professionnel privé)</legend>
+                            <input type="text" id="siren" name="siren" placeholder="N° de Siren (Professionnel privé)" >
                         </fieldset>
                     </div>
                     <div class="crea_pro_mail_tel">
@@ -98,6 +99,10 @@
                     <fieldset>
                         <legend>Adresse Postale *</legend>
                         <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" required>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Complément d'adresse</legend>
+                        <input type="text" id="complement-adresse" name="complement-adresse" placeholder="Complément d'adresse">
                     </fieldset>
 
                     <fieldset>
@@ -138,101 +143,95 @@
             </div>
         </div>
         <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupération des variables du formulaire
-    $raison_sociale = $_POST['raison-sociale'];
-    $siren = $_POST['siren'];
-    $email = $_POST['email'];
-    $telephone = $_POST['telephone'];
-    $adresse = $_POST['adresse'];
-    $codePostal = $_POST['code-postal'];
-    $ville = $_POST['ville'];
-    $password = $_POST['password'];
-    $confirmPassword = $_POST['confirm-password'];
-    $cgu = isset($_POST['cgu']) ? 1 : 0;  // Checkbox pour CGU
 
-    // Initialisation du tableau d'erreurs
-    $erreurs = [];
+        // Récupération des variables du formulaire
+        $raisonSociale = trim(isset($_POST['raison-sociale']) ? htmlspecialchars($_POST['raison-sociale']) : '');
+        $siren = trim(isset($_POST['siren']) ? htmlspecialchars($_POST['siren']) : '');
+        $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
+        $telephone = trim(isset($_POST['telephone']) ? htmlspecialchars($_POST['telephone']) : '');
+        $adresse = trim(isset($_POST['adresse']) ? htmlspecialchars($_POST['adresse']) : '');
+        $complementAdresse = trim(isset($_POST['complement-adresse']) ? htmlspecialchars($_POST['complement-adresse']) : '');
+        $codePostal = trim(isset($_POST['code-postal']) ? htmlspecialchars($_POST['code-postal']) : '');
+        $ville = trim(isset($_POST['ville']) ? htmlspecialchars($_POST['ville']) : '');
+        $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
+        $confirmPassword = isset($_POST['confirm-password']) ? htmlspecialchars($_POST['confirm-password']) : '';
+        $cgu = isset($_POST['cgu']) ? true : false; // Case à cocher
 
-    // 1. Raison sociale : Vérification basique (on peut ajouter des conditions spécifiques si nécessaire)
-    if (empty($raison_sociale)) {
-        $erreurs[] = "Le champ 'Raison sociale' est requis.";
-    }
+        $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
 
-    // 2. N° de Siren : Vérifier si le Siren est valide (9 chiffres)
-    if (empty($siren) || !preg_match('/^[0-9]{9}$/', $siren)) {
-        $erreurs[] = "Le numéro de Siren doit comporter 9 chiffres.";
-    }
 
-    // 3. Email : Vérifier si l'email est valide
-    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $erreurs[] = "L'adresse email est invalide.";
-    }
 
-    // 4. Téléphone : Doit être un format valide de 10 chiffres
-    if (empty($telephone) || !preg_match('/^[0-9]{10}$/', $telephone)) {
-        $erreurs[] = "Le numéro de téléphone doit comporter 10 chiffres.";
-    }
+        // Initialisation du tableau d'erreurs
+        $erreurs = [];
 
-    // 5. Adresse : Vérifier si elle est non vide
-    if (empty($adresse)) {
-        $erreurs[] = "Le champ 'Adresse' est requis.";
-    }
-
-    // 6. Code Postal : Format à 5 chiffres ou 2A/2B pour la Corse
-    if (empty($codePostal) || !preg_match('/^([0-9]{5}|2[A-B])$/', $codePostal)) {
-        $erreurs[] = "Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B.";
-    }
-
-    // 7. Ville : Pas de chiffres, pas de caractères spéciaux
-    if (empty($ville)) {
-        $erreurs[] = "Le champ 'Ville' est requis.";
-    } elseif (!preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/", $ville)) {
-        $erreurs[] = "Le nom de la ville ne doit contenir que des lettres, espaces, ou apostrophes.";
-    }
-
-    // 8. Mot de passe : Minimum 8 caractères, et correspondance avec le champ de confirmation
-    if ($password !== $confirmPassword) {
-        $erreurs[] = "Les mots de passe ne correspondent pas.";
-    }
-
-    // 9. Conditions générales d'utilisation (CGU) : Vérification que la case est cochée
-    if (!$cgu) {
-        $erreurs[] = "Vous devez accepter les conditions générales d'utilisation.";
-    }
-
-    // Vérifie s'il y a des erreurs
-    if (empty($erreurs)) {
-        // Pas d'erreurs, on peut procéder à l'enregistrement dans la base de données
-        try {
-            // Préparation de la requête d'insertion
-            $insert = $membre->prepare("INSERT INTO membre(raison_sociale, siren, email, telephone, adresse_postal, code_postal, ville, mdp) 
-                                        VALUES ($raison_sociale, $siren, $email, $telephone, $adresse, $code_postal, $ville, $mdp)");
-
-            // Exécution de la requête avec les valeurs du formulaire
-            $insert->execute([
-                ':raison_sociale' => $raison_sociale,
-                ':siren' => $siren,
-                ':email' => $email,
-                ':telephone' => $telephone,
-                ':adresse' => $adresse,
-                ':code_postal' => $codePostal,
-                ':ville' => $ville,
-                ':mdp' => password_hash($password, PASSWORD_DEFAULT) // Hachage du mot de passe
-            ]);
-
-            echo "Le formulaire est valide. Compte créé avec succès.";
-        } catch (Exception $e) {
-            echo "Une erreur est survenue lors de l'enregistrement : " . $e->getMessage();
+        // 1. Raison sociale : Vérification basique (on peut ajouter des conditions spécifiques si nécessaire)
+        if (empty($raison_sociale)) {
+            $erreurs[] = "Le champ 'Raison sociale' est requis.";
         }
-    } else {
-        // Affiche les erreurs
-        foreach ($erreurs as $erreur) {
-            echo "<p>$erreur</p>";
+
+        // 2. N° de Siren : Vérifier si le Siren est valide (9 chiffres)
+        if (empty($siren) || !preg_match('/^[0-9]{9}$/', $siren)) {
+            $erreurs[] = "Le numéro de Siren doit comporter 9 chiffres.";
+        }
+
+        // 3. Email : Vérifier si l'email est valide
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $erreurs[] = "L'adresse email est invalide.";
+        }
+
+        // 4. Téléphone : Doit être un format valide de 10 chiffres
+        if (empty($telephone) || !preg_match('/^[0-9]{10}$/', $telephone)) {
+            $erreurs[] = "Le numéro de téléphone doit comporter 10 chiffres.";
+        }
+
+        // 5. Adresse : Vérifier si elle est non vide
+        if (empty($adresse)) {
+            $erreurs[] = "Le champ 'Adresse' est requis.";
+        }
+
+        // 6. Code Postal : Format à 5 chiffres ou 2A/2B pour la Corse
+        if (empty($codePostal) || !preg_match('/^([0-9]{5}|2[A-B])$/', $codePostal)) {
+            $erreurs[] = "Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B.";
+        }
+
+        // 7. Ville : Pas de chiffres, pas de caractères spéciaux
+        if (empty($ville)) {
+            $erreurs[] = "Le champ 'Ville' est requis.";
+        } elseif (!preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/", $ville)) {
+            $erreurs[] = "Le nom de la ville ne doit contenir que des lettres, espaces, ou apostrophes.";
+        }
+
+        // 8. Mot de passe : Minimum 8 caractères, et correspondance avec le champ de confirmation
+        if ($password !== $confirmPassword) {
+            $erreurs[] = "Les mots de passe ne correspondent pas.";
+        }
+
+        // 9. Conditions générales d'utilisation (CGU) : Vérification que la case est cochée
+        if (!$cgu) {
+            $erreurs[] = "Vous devez accepter les conditions générales d'utilisation.";
+        }
+
+        // Vérifie s'il y a des erreurs
+        if (empty($erreurs)) {
+            // Pas d'erreurs, on peut procéder à l'enregistrement dans la base de données
+            if (empty($siren)) {
+                $insert = $professionnel_publique->prepare("INSERT INTO professionnel_publique(telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville) 
+                                            VALUES ($telephone, $email, $passwordHashed, $raison_sociale, $adresse, $complementAdresse, $codePostal, $ville)");
+            }
+            else {
+                $insert = $professionnel_prive->prepare("INSERT INTO professionnel_prive(telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville, num_siren) 
+                                            VALUES ($telephone, $email, $passwordHashed, $raison_sociale, $adresse, $complementAdresse, $codePostal, $ville, $siren)");
+            }
+
+            $_SESSION["compte"]= pg_query("select currval('_compte_code_compte_seq');");
+
+        } else {
+            // Affiche les erreurs
+            foreach ($erreurs as $erreur) {
+                echo "<p>$erreur</p>";
             }
         }
-    }
-?>
+    ?>
 
     </main>
 </body>
