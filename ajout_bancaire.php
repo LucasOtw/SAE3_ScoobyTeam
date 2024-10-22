@@ -22,15 +22,7 @@
 <div>
     <img src="Images/FilArianne3.png" alt="Fil d'Arianne 3">
 </div>
-<div class="container">
-    
-    <div class="tabs">
-        <div class="tab">Informations</div>
-        <div class="tab">Mot de passe et sécurité</div>
-        <div class="tab">Mes Offres</div>
-        <div class="tab active">Compte Bancaire</div>
-    </div>
-</div>
+
 
 <?php
 // Définir le chemin du fichier
