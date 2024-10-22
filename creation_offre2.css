@@ -66,7 +66,6 @@
 }
 
 .price-options, .meal-options, .boost-options, .offre-options, .duration-options {
-    margin-bottom: 20px;
     padding: 10px;
 }
 
@@ -113,7 +112,7 @@ input[type="radio"], input[type="checkbox"] {
     display: flex;
     align-items: center; /* Aligne verticalement au centre */
     justify-content: space-between; /* Espacement entre l'image et le toggle */
-    padding: 20px; /* Optionnel : espacement autour du conteneur */
+    padding: 20px 20px 0px 70px; /* Optionnel : espacement autour du conteneur */
 }
 
 .ferme{
@@ -180,7 +179,6 @@ input:checked + .slider:before {
 .main-creation-offre2 fieldset {
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-bottom: 20px;
     position: relative;
     padding-top: 0; /* Enlève le padding en haut */
 }
@@ -201,6 +199,10 @@ input:checked + .slider:before {
 #jour, .main-creation-offre2 input{
     background-color: white;
     height: 42px;
+}
+
+.duree{
+    width: 15vw;
 }
 
 

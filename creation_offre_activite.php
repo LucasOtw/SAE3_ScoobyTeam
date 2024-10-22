@@ -41,14 +41,14 @@
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Nom du parc *</legend>
-                            <input type="text" id="nom_offre" name="nom_offre" placeholder="Nom du parc *">
+                            <legend>Nom de l'activité *</legend>
+                            <input type="text" id="nom_offre" name="nom_offre" placeholder="Nom de l'activité *">
                         </fieldset>
                     </div>
                     <div class="col">
                         <fieldset>
                             <legend style="display:block;">Type de l'offre</legend>
-                            <input type="text" id="type_offre" name="type_offre" placeholder="Parc d'attractions" disabled>
+                            <input type="text" id="type_offre" name="type_offre" placeholder="Activité" disabled>
                         </fieldset>
                     </div>
                 </div>
@@ -73,8 +73,8 @@
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Où se trouve le parc ? *</legend>
-                            <input type="text" id="location" name="location" placeholder="Où se trouve le parc ? *">
+                            <legend>Où se trouve l'activité ? *</legend>
+                            <input type="text" id="location" name="location" placeholder="Où se trouve l'activité ? *">
                         </fieldset>
                     </div>
                 </div>
@@ -147,13 +147,6 @@
                     </div>
                 </div>
 
-                <!-- Plan du parc -->
-                <div class="row">
-                    <div class="col">
-                        <label for="carte">Ajouter le plan du parc (facultatif)</label>
-                        <input type="file" id="carte" name="carte" multiple>
-                    </div>
-                </div>
 
                 <!-- Lien du site -->
                 <div class="row">
@@ -175,14 +168,14 @@
                     </div>  
                 </div>
 
-                <!-- Nb attractions -->
+                <!-- Durée de l'activité -->
                 <div class="row">
-                    <div class="col">
-                        <fieldset>
-                            <legend>Nombre d'attractions</legend>
-                            <input type="number" id="nb_attraction" name="nb_attraction" placeholder="Nombre d'attractions">
+                <div class="col">
+                        <fieldset class="duree">
+                            <legend style="display:block;">Durée de l'activité</legend>
+                            <input type="time" id="duree" name="duree" placeholder="Durée de l'activité">
                         </fieldset>
-                    </div>  
+                    </div>
                 </div>
                 
 

@@ -29,6 +29,7 @@
     </div>
 
 
+
     <!-- Main Section -->
     <main class="main-creation-offre2">
 
@@ -148,8 +149,8 @@
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Ajouter le lien du restaurant(facultatif)</legend>
-                            <input type="text" id="lien" name="lien" placeholder="Ajouter le lien du restaurant (facultatif)">
+                            <legend>Ajouter le lien du site (facultatif)</legend>
+                            <input type="url" id="lien" name="lien" placeholder="Ajouter le lien du site (facultatif)">
                         </fieldset>
                     </div>  
                 </div>
@@ -481,7 +482,7 @@
 
                 <!-- Duration Options -->
                 <div class="duration-options">
-                    <label>Durée</label>
+                    <label>Durée du boost</label>
                     <div class="radio-group">
                         <div>
                             <input type="radio" id="1_semaine" name="duree" value="1_semaine">
