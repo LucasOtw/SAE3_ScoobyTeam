@@ -62,7 +62,10 @@ $reqOffresCons = $bdd->query("SELECT * FROM tripenarvor._consulte WHERE code_com
                     
                     ?>
                     <div class="card">
+                        <img src="<?php echo $image_offre; ?>">
+                        <div class="content">
 
+                        </div>
                     </div>
                     <?php
                 }
