@@ -36,7 +36,7 @@
             <h1>Publier une offre</h1>
 
             <!-- Form Fields -->
-            <form action="#" method="post" enctype="multipart/form-data">
+            <form action="" method="post" enctype="multipart/form-data">
                 <!-- Establishment Name & Type -->
                 <div class="row">
                     <div class="col">
@@ -127,7 +127,7 @@
                             <div class="dropdown-content">
 
                             <?php
-                                    $dbh = new PDO("servbdd.iutlan.etu.univ-rennes1.fr;host=postgresdb;port=5432;dbname=db-scooby-team", "sae", "philly-Congo-bry4nt");
+                                    $dbh = new PDO("host=postgresdb;port=5432;dbname=db-scooby-team", "sae", "philly-Congo-bry4nt");
 
                                     foreach($dbh->query('SELECT nom_tag from tripenarvor._son_tag natural join tripenarvor._tags where activite = true', PDO::FETCH_ASSOC) as $row)
                                     {
@@ -224,6 +224,39 @@
                         <fieldset>
                             <legend>Description (facultatif)</legend>
                             <input type="text" id="description" name="description" placeholder="Description (facultatif)">
+                        </fieldset>
+                    </div>
+                </div>
+
+
+                <!-- Accessibilite -->
+                <div class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend>Accessibilité</legend>
+                            <input type="text" id="accessibilite" name="accessibilite" placeholder="Accessibilité">
+                        </fieldset>
+                    </div>
+                </div>
+
+
+                <!-- Prestations incluses -->
+                <div class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend>Prestations incluses</legend>
+                            <input type="text" id="prestations_incluses" name="prestations_incluses" placeholder="Prestations incluses">
+                        </fieldset>
+                    </div>
+                </div>
+
+
+                <!-- Prestations non-incluses -->
+                <div class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend>Prestations incluses</legend>
+                            <input type="text" id="prestations_non_incluses" name="prestations_non_incluses" placeholder="Prestations non-incluses">
                         </fieldset>
                     </div>
                 </div>
@@ -449,40 +482,39 @@
                     </div>
                 </div>
 
-
-
-                <!-- <button onclick="checkStatus()">Vérifier</button> -->
-
-                <script>
-                    function checkStatus() {
-                        const checkbox = document.getElementById('fermeCheckbox');
-                        
-                        if (checkbox.checked) {
-                            alert("Le bouton est activé (fermé)");
-                        } else {
-                            alert("Le bouton est désactivé (ouvert)");
-                        }
-                    }
-                </script>
-
-
+                <?php
+                    $typeOffre = $dbh->prepare('select code_compte from tripenarvor.professionnel_prive');
+                    $typeOffre->execute();
+                ?>
 
                 <!-- Offre Options -->
                 <div class="offre-options">
                     <label>Choix de l'offre</label>
                     <div class="radio-group">
-                        <div>
-                            <input type="radio" id="offre_gratuite" name="offre" value="gratuite">
-                            <label class="label-check" for="offre_gratuite">Offre Gratuite (pour le secteur public ou associatif)</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="offre_standard" name="offre" value="standard">
-                            <label class="label-check" for="offre_standard">Offre Standard</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="offre_premium" name="offre" value="premium" checked>
-                            <label class="label-check" for="offre_premium">Offre Premium</label>
-                        </div>
+                        <?php
+                            if ($_SESSION["compte"] != $typeOffre)
+                            {
+                        ?>
+                                <div>
+                                    <input type="radio" id="offre_gratuite" name="offre" value="gratuite">
+                                    <label class="label-check" for="offre_gratuite">Offre Gratuite</label>
+                                </div>
+                            <?php
+                            }
+                            else 
+                            {
+                            ?>
+                                <div>
+                                    <input type="radio" id="offre_standard" name="offre" value="standard">
+                                    <label class="label-check" for="offre_standard">Offre Standard</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="offre_premium" name="offre" value="premium" checked>
+                                    <label class="label-check" for="offre_premium">Offre Premium</label>
+                                </div>
+                        <?php
+                            }
+                        ?>
                     </div>
                 </div>
 
@@ -537,6 +569,52 @@
                     <img src="images/fleche.png" alt="Fleche" width="25px" height="25px">
                 </button>
             </form>
+
+            <script>
+                function checkStatus(id) {
+                    const checkbox = document.getElementById(id);
+                    
+                    if (checkbox.checked) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+             </script>
+
+            <?php
+                $insert = $dbh ->prepare("insert into tripenarvor.offre_activite (titre_offre, date_publication, date_derniere_modif, _resume, _description, site_web, tarif, accessibilite, en_ligne, nb_blacklister, adresse_postale, complement_adresse, code_postal, ville, type_offre, duree, age_requis, prestations_incluses, prestations_non_incluses)
+                                            values (:titre_offre, GETDATE(), GETDATE(), :resume, :description, :site_web, :tarif, :accessibilite, false, 0, :adresse_postale, :complement_adresse, :code_postal, :ville, :type_offre, :duree, :age_requis, :prestations_incluses, :prestations_non_incluses)");
+                
+                $insert->execute(["titre_offre" => $_POST["nom_offre"], 
+                                    "resume" => $_POST["resume"], 
+                                    "description" => $_POST["description"], 
+                                    "site_web" => $_POST["lien"], 
+                                    "tarif" => $_POST["prix"], 
+                                    "accessibilite" => $_POST["accessibilite"], 
+                                    "adresse_postale" => $_POST["adresse_postale"], 
+                                    "complement_adresse" => $_POST["complement_adresse"], 
+                                    "code_postal" => $_POST["code_postal"], 
+                                    "ville" => $_POST["ville"], 
+                                    "type_offre" => $_POST["offre"], 
+                                    "duree" => $_POST["duree"], 
+                                    "prestations_incluses" => $_POST["prestations_incluses"], 
+                                    "prestations_non_incluses" => $_POST["prestations_non_incluses"]]);
+                
+
+                $insert = $dbh -> prepare("insert into tripenarvor._horaire(ouverture, fermeture) values (:ouverture, :fermeture)");
+                $insert->execute(["ouverture"=>$_POST["ouvetureL"], "fermeture"=>$_POST["fermetureL"]]);
+
+                $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
+                $select->execute();
+
+                $update = $dbh -> prepare("update tripenarvor.offre_activite
+                                            set lundi = :lundi,
+                                                professionnel = :code_compte,
+                                                code_adresse = (select code_adresse from tripenarvor._adresse where code_offre = (select currval('tripenarvor._offre_code_offre_seq')))
+                                            where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
+                $update->execute(["lundi"=>$select, "code_compte"=>$_SESSION["compte"]]);
+            ?>
 
         </div>
 
