@@ -81,6 +81,58 @@
             </div>
         </div>
     </main>
+    <?php
+        $postgresdb = "postgresdb";
+        $dbname = "5432";
+        $user = "sae";
+        $pass = "DB_ROOT_PASSWORD";
+
+        $dbh = new PDO("$driver:host=$postgresdb;dbname=$dbname", $user, $pass);
+
+        $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
+        $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
+        
+        $mailDansBdd = $dbh -> prepare("select code_compte from membre where mail='$email';");
+        $mailDansBdd -> execute();
+
+        $mdpDansBdd = $dbh -> prepare("select mdp from membre where mail='$email';");
+        $mailDansBdd -> execute();
+        $dbh = null;
+        
+        $passwordHashedFromDB = password_hash($mdpDansBdd, PASSWORD_DEFAULT);
+
+        if ($mailDansBdd != NULL){
+            if (password_verify($password, $passwordHashedFromDB)) {
+                // Le mot de passe est correct
+                // Connexion
+                session_start();
+                $_SESSION["compte"] = $mailDansBdd;
+                // redirection
+                header('Location: modif_infos_pro.php');
+                exit();
+            } else {
+                // Le mot de passe est incorrect
+                ?>
+                <p>
+                <?php
+                    echo "Le mot de passe est incorrect";
+                ?>
+            </p>
+            <?php
+            }
+        } else {
+            // Mail inconnu
+            ?>
+            <p>
+                <?php
+                    echo "Le mail est inconnu";
+                ?>
+            </p>
+            <?php
+        }
+
+        
+    ?>
 </body>
 
 </html>
