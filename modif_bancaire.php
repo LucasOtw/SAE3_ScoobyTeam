@@ -31,7 +31,7 @@
 </header>
 <div class="container">
     <div class="header">
-        <img src="Images/Fond.png" alt="Bannière" class="header-imge">
+        <img src="Images/Fond.png" alt="Bannière" class="header-img">
     </div>
 
     <div class="profile-section">
