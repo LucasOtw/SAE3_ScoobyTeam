@@ -600,3 +600,7 @@ form input:focus::placeholder {
     color: #ffb400;
     font-weight: bold;
 }
+
+.footer_detail_avis{
+    margin-top: 20vh;
+}

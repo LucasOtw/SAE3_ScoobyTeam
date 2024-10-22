@@ -1,5 +1,13 @@
+<?php
+
+// Connexion à la BDD
+
+$bdd = new PDO("$driver:host=scooby-team.ventsdouest.dev;$dbname=sae;charset=utf-8","sae","field-biDe-v3ndr4-bahut");
+
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +15,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
+    <header>
         <div class="logo">
             <img src="images/logoBlanc.png" alt="PACT Logo">
         </div>
@@ -38,60 +46,60 @@
         </div>
     </div>
     <div class="reviews-container">
-    <div class="card">
-        <img src="images/golf.png" alt="Golf de St-Samson">
-        <div class="content">
-            <h4>Golf de St-Samson</h4>
-            <p>Pleumeur Bodou</p>
-            <p class="rating">⭐ 4.6 (305 avis)</p>
+        <div class="card">
+            <img src="images/golf.png" alt="Golf de St-Samson">
+            <div class="content">
+                <h4>Golf de St-Samson</h4>
+                <p>Pleumeur Bodou</p>
+                <p class="rating">⭐ 4.6 (305 avis)</p>
+            </div>
         </div>
-    </div>
 
-    <div class="card">
-        <img src="images/Armorypark.png" alt="AmzerPark">
-        <div class="content">
-            <h4>AmzerPark</h4>
-            <p>Lannion</p>
-            <p class="rating">⭐ 4.0 (60 avis)</p>
+        <div class="card">
+            <img src="images/Armorypark.png" alt="AmzerPark">
+            <div class="content">
+                <h4>AmzerPark</h4>
+                <p>Lannion</p>
+                <p class="rating">⭐ 4.0 (60 avis)</p>
+            </div>
         </div>
-    </div>
 
-    <div class="card">
-        <img src="images/eclipse.png" alt="L'Éclipse">
-        <div class="content">
-            <h4>L'Éclipse</h4>
-            <p>Lannion</p>
-            <p class="rating">⭐ 3.8 (500 avis)</p>
+        <div class="card">
+            <img src="images/eclipse.png" alt="L'Éclipse">
+            <div class="content">
+                <h4>L'Éclipse</h4>
+                <p>Lannion</p>
+                <p class="rating">⭐ 3.8 (500 avis)</p>
+            </div>
         </div>
-    </div>
 
-    <div class="card">
-        <img src="images/plage.png" alt="Plage de Trestrou">
-        <div class="content">
-            <h4>Plage de Trestrou</h4>
-            <p>Trébeurden</p>
-            <p class="rating">⭐ 5.0 (14 avis)</p>
+        <div class="card">
+            <img src="images/plage.png" alt="Plage de Trestrou">
+            <div class="content">
+                <h4>Plage de Trestrou</h4>
+                <p>Trébeurden</p>
+                <p class="rating">⭐ 5.0 (14 avis)</p>
+            </div>
         </div>
-    </div>
 
-    <div class="card">
-        <img src="images/equitation.png" alt="Ruin Équitation">
-        <div class="content">
-            <h4>Ruin Équitation</h4>
-            <p>Pleumeur Bodou</p>
-            <p class="rating">⭐ 4.7 (240 avis)</p>
+        <div class="card">
+            <img src="images/equitation.png" alt="Ruin Équitation">
+            <div class="content">
+                <h4>Ruin Équitation</h4>
+                <p>Pleumeur Bodou</p>
+                <p class="rating">⭐ 4.7 (240 avis)</p>
+            </div>
         </div>
-    </div>
 
-    <div class="card">
-        <img src="images/chateau.png" alt="Château Kerlabou">
-        <div class="content">
-            <h4>Château Kerlabou</h4>
-            <p>Pleumeur Bodou</p>
-            <p class="rating">⭐ 3.9 (345 avis)</p>
+        <div class="card">
+            <img src="images/chateau.png" alt="Château Kerlabou">
+            <div class="content">
+                <h4>Château Kerlabou</h4>
+                <p>Pleumeur Bodou</p>
+                <p class="rating">⭐ 3.9 (345 avis)</p>
+            </div>
         </div>
     </div>
-</div>
 
 
     <footer class="footer_detail_avis">
