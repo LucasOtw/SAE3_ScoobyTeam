@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>premières coordonnées bancaires</title>
+    <title>Premières coordonnées bancaires</title>
     <link rel="stylesheet" href="style_bancaire.css">
 </head>
 <body>
@@ -30,63 +30,76 @@
         <p>ti.al.lannec@gmail.com | 07.98.76.54.12</p>
     </div>
     <div class="tabs">
-        
         <div class="tab">Mot de passe et sécurité</div>
-        
         <div class="tab active">Compte Bancaire</div>
     </div>
 </div>
 
 <?php
-// Définir le chemin du fichier
-$file = 'coordonnees_bancaires.txt';
+// Connexion à la base de données PostgreSQL
+$host = "localhost"; // ou l'adresse de votre serveur
+$port = "5432"; // Port par défaut de PostgreSQL
+$dbname = "votre_base_de_donnees";
+$user = "votre_nom_utilisateur";
+$password = "votre_mot_de_passe";
+
+// Créer la connexion
+$conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
+
+// Vérifier la connexion
+if (!$conn) {
+    die("Échec de la connexion: " . pg_last_error());
+}
 
 // Initialiser les valeurs par défaut
 $iban = '';
 $bic = '';
 $nom = '';
 
-// Vérifier si le fichier existe déjà et récupérer les données
-if (file_exists($file)) {
-    $fileContents = file($file, FILE_IGNORE_NEW_LINES);
-    if (count($fileContents) >= 3) {
-        $nom = explode(": ", $fileContents[0])[1];
-        $iban = explode(": ", $fileContents[1])[1];
-        $bic = explode(": ", $fileContents[2])[1];
+// Récupérer les données de la base de données
+$result = pg_query($conn, "SELECT nom, iban, bic FROM tripenarvor.professionnel_prive WHERE code_compte = 1"); // Ajustez la condition selon votre logique
+
+if ($result) {
+    if (pg_num_rows($result) > 0) {
+        $row = pg_fetch_assoc($result);
+        $nom = $row['nom'];
+        $iban = $row['iban'];
+        $bic = $row['bic'];
     }
 }
 
-// Si le formulaire est soumis
+// Insertion initiale des données (si nécessaire)
+$insertQuery = "INSERT INTO tripenarvor.professionnel_prive (telephone, mail, adresse_postal, complement_adresse, code_postal, ville, mdp, raison_sociale, num_siren)
+VALUES ('0123456789', 'pro@gmail.com', '123 Rue de la Liberté', 'Apt 2', '29870', 'Paris', 'password456', 'Entreprise Privée', '123456789')";
+pg_query($conn, $insertQuery);
+
+// Traitement du formulaire de mise à jour
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer les données du formulaire
     $iban = htmlspecialchars($_POST['IBAN']);
     $bic = htmlspecialchars($_POST['BIC']);
     $nom = htmlspecialchars($_POST['nom']);
     $cgu = isset($_POST['cgu']) ? true : false;
 
-    // Vérifier que tous les champs sont bien remplis
     if (!empty($iban) && !empty($bic) && !empty($nom) && $cgu) {
-        // Créer le contenu à écrire dans le fichier
-        $data = "Nom: $nom\nIBAN: $iban\nBIC: $bic\n---\n";
+        // Préparer la requête de mise à jour
+        $updateQuery = "UPDATE tripenarvor.professionnel_prive
+                        SET iban = $1, bic = $2, nom_compte = $3, code_adresse = (SELECT code_adresse FROM tripenarvor._compte WHERE code_compte = 1)
+                        WHERE code_compte = 1";
+        
+        $result = pg_prepare($conn, "update_query", $updateQuery);
+        $result = pg_execute($conn, "update_query", array($iban, $bic, $nom));
 
-        // Ouvrir le fichier en mode "write" pour remplacer les données existantes
-        $fileHandle = fopen($file, 'w');
-
-        if ($fileHandle) {
-            // Écrire les nouvelles données dans le fichier
-            fwrite($fileHandle, $data);
-
-            // Fermer le fichier
-            fclose($fileHandle);
-
-            echo "Les informations bancaires ont été ajoutées avec succès.";
+        if ($result) {
+            echo "Les informations bancaires ont été mises à jour avec succès.";
         } else {
-            echo "Impossible de modifier les informations. Veuillez réessayer.";
+            echo "Erreur lors de la mise à jour des informations: " . pg_last_error($conn);
         }
     } else {
         echo "Veuillez remplir tous les champs.";
     }
 }
+
+pg_close($conn);
 ?>
 
 <form action="#" method="POST">
@@ -96,13 +109,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="IBAN">
                 <fieldset>
                     <legend>IBAN</legend>
-                    <input type="text" id="IBAN" name="IBAN" value="<?php echo $iban; ?>" placeholder="IBAN  (obligatoire)" required>
+                    <input type="text" id="IBAN" name="IBAN" value="<?php echo $iban; ?>" placeholder="IBAN (obligatoire)" required>
                 </fieldset>
             </div>
             <div class="BIC">
                 <fieldset>
                     <legend>BIC</legend>
-                    <input type="text" id="BIC" name="BIC" value="<?php echo $bic; ?>" placeholder="veuillez entrer votre BIC" required>
+                    <input type="text" id="BIC" name="BIC" value="<?php echo $bic; ?>" placeholder="Veuillez entrer votre BIC" required>
                 </fieldset>
             </div>
             <div class="nom-du-proprietaire">
@@ -112,7 +125,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </fieldset>
             </div>
         </div>
-        
     </div>
 
     <div class="checkbox">
