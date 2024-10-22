@@ -177,18 +177,8 @@
         $confirmPassword = isset($_POST['confirm-password']) ? htmlspecialchars($_POST['confirm-password']) : '';
         $cgu = isset($_POST['cgu']) ? true : false; // Case à cocher
         
-        /*echo $prenom
-            . " / " . $nom
-            . " / " . $pseudo
-            . " / " . $email
-            . " / " . $telephone
-            . " / " . $adresse
-            . " / " . $codePostal
-            . " / " . $complementAdresse
-            . " / " . $ville
-            . " / " . $password
-            . " / " . $confirmPassword
-            . " / " . $cgu;*/
+
+        $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
 
             
         // Initialisation du tableau d'erreurs
@@ -245,7 +235,7 @@
             // Pas d'erreurs, on peut procéder au traitement (inscription, enregistrement, etc.)
             
             $insert = $membre -> prepare("insert into membre(telephone, mail, mdp, nom, prenom, pseudo, adresse_postal, complement_adresse, code_postal, ville)
-                                            values ($telephone, $email, $password, $nom, $prenom, $pseudo, $adresse, $complementAdresse, $codePostal, $ville)");
+                                            values ($telephone, $email, $passwordHashed, $nom, $prenom, $pseudo, $adresse, $complementAdresse, $codePostal, $ville)");
             $insert->execute();
             $membre = null;
 
