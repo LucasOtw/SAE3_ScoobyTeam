@@ -1,10 +1,4 @@
-<?php
-session_start();
-if(!isset($_SESSION['user_id'])) {
-    header("Location: connexion_pro"); // Redirection vers la page de connexion si non connecté
-    exit();
-}
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
