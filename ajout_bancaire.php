@@ -70,7 +70,7 @@
             <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
         </div>
         <div class="compte_membre_save_delete">
-            <button type="submit" class="submit-btn2">Enregistrer</button>
+            <button type="submit" class="submit-btn2">enregistrer les coordonnées</button>
         </div>
     </form>
 
