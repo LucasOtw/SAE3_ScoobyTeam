@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -36,7 +36,7 @@
             <h1>Publier une offre</h1>
 
             <!-- Form Fields -->
-            <form action="#" method="post">
+            <form action="#" method="post" enctype="multipart/form-data">
                 <!-- Establishment Name & Type -->
                 <div class="row">
                     <div class="col">
@@ -73,19 +73,45 @@
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Où se trouve l'activité ? *</legend>
-                            <input type="text" id="location" name="location" placeholder="Où se trouve l'activité ? *">
+                            <legend>Adresse Postale *</legend>
+                            <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *">
                         </fieldset>
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend>Complément d'Adresse</legend>
+                            <input type="text" id="complement_adresse" name="complement_adresse" placeholder="Complément d'Adresse ">
+                        </fieldset>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend>Ville *</legend>
+                            <input type="text" id="ville" name="ville" placeholder="Ville *">
+                        </fieldset>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend>Code Postal *</legend>
+                            <input type="text" id="code_postal" name="code_postal" placeholder="Code Postal *">
+                        </fieldset>
+                    </div>
+                </div>
 
                 <!-- Prix -->
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Prix (unique ou fourchette) *</legend>
-                            <input type="text" id="prix" name="prix" placeholder="Prix (unique ou fourchette) *">
+                            <legend>Tarif *</legend>
+                            <input type="text" id="prix" name="prix" placeholder="Tarif *">
                         </fieldset>
                     </div>
                 </div>
@@ -93,30 +119,33 @@
                 <!-- Tags -->
                 <div class="row">
                     <div class="col">
+
                         <label for="tags">Tags</label>
+
                         <div class="dropdown-container">
                             <button type="button" class="dropdown-button">Sélectionner des tags</button>
                             <div class="dropdown-content">
+
+                            <?php
+                                    $dbh = new PDO("servbdd.iutlan.etu.univ-rennes1.fr;host=postgresdb;port=5432;dbname=db-scooby-team", "sae", "philly-Congo-bry4nt");
+
+                                    foreach($dbh->query('SELECT nom_tag from tripenarvor._son_tag natural join tripenarvor._tags where activite = true', PDO::FETCH_ASSOC) as $row)
+                                    {
+                                    ?>
                                 <label class="tag">
-                                    <input type="checkbox" name="tags" value="restaurant">
-                                    Restaurant
+                                    <input type="checkbox" name="tags" value="<?php echo $row; ?>">
+                                    <?php echo ucfirst($row); ?>
                                 </label>
-                                <label class="tag">
-                                    <input type="checkbox" name="tags" value="plage">
-                                    Plage
-                                </label>
-                                <label class="tag">
-                                    <input type="checkbox" name="tags" value="hotel">
-                                    Hôtel
-                                </label>
-                                <label class="tag">
-                                    <input type="checkbox" name="tags" value="musee">
-                                    Musée
-                                </label>
+                                    <?php
+                                    }
+                                ?>
+
                             </div>
                         </div>
+
                     </div>
                 </div>
+
 
                 <script>
                     document.querySelector('.dropdown-button').addEventListener('click', function() {
@@ -143,7 +172,7 @@
                 <div class="row">
                     <div class="col">
                         <label for="photos">Photos (facultatif)</label>
-                        <input type="file" id="photos" name="photos" multiple>
+                        <input type="file" id="photos" name="photos[]" multiple>
                     </div>
                 </div>
 
@@ -213,20 +242,20 @@
                     </div>
                     <div class="col">
                         <fieldset>
-                            <legend>Matin</legend>
-                            <input type="time" id="matin" name="matin" placeholder="Matin">
+                            <legend>Ouverture</legend>
+                            <input type="time" id="ouvertureL" name="ouvertureL" placeholder="Ouverture">
                         </fieldset>
                     </div >
                     <div class="col">
                         <fieldset>
-                            <legend>Soir</legend>
-                            <input type="time" id="soir" name="soir" placeholder="Soir">
+                            <legend>Fermeture</legend>
+                            <input type="time" id="fermetureL" name="fermetureL" placeholder="Fermeture">
                         </fieldset>
                     </div >
                     <div class="col">
                         <div class="ferme">
                             <span>Fermé</span>
-                            <label class="switch">
+                            <label class="switch" id='fermeCheckboxL'>
                                 <input type="checkbox">
                                 <span class="slider"></span>
                             </label>
@@ -244,20 +273,20 @@
                     </div>
                     <div class="col">
                         <fieldset>
-                            <legend>Matin</legend>
-                            <input type="time" id="matin" name="matin" placeholder="Matin">
+                            <legend>Ouverture</legend>
+                            <input type="time" id="ouvertureMa" name="ouvertureMA" placeholder="Ouverture">
                         </fieldset>
                     </div >
                     <div class="col">
                         <fieldset>
-                            <legend>Soir</legend>
-                            <input type="time" id="soir" name="soir" placeholder="Soir">
+                            <legend>Fermeture</legend>
+                            <input type="time" id="fermetureMa" name="fermetureMa" placeholder="Fermeture">
                         </fieldset>
                     </div >
                     <div class="col">
                         <div class="ferme">
                             <span>Fermé</span>
-                            <label class="switch">
+                            <label class="switch" id='fermeCheckboxMa'>
                                 <input type="checkbox">
                                 <span class="slider"></span>
                             </label>
@@ -275,20 +304,20 @@
                     </div>
                     <div class="col">
                         <fieldset>
-                            <legend>Matin</legend>
-                            <input type="time" id="matin" name="matin" placeholder="Matin">
+                            <legend>Ouverture</legend>
+                            <input type="time" id="ouvertureMe" name="ouvertureMe" placeholder="Ouverture">
                         </fieldset>
                     </div >
                     <div class="col">
                         <fieldset>
-                            <legend>Soir</legend>
-                            <input type="time" id="soir" name="soir" placeholder="Soir">
+                            <legend>Fermeture</legend>
+                            <input type="time" id="fermetureMe" name="fermetureMe" placeholder="Fermeture">
                         </fieldset>
                     </div >
                     <div class="col">
                         <div class="ferme">
                             <span>Fermé</span>
-                            <label class="switch">
+                            <label class="switch" id='fermeCheckboxMe'>
                                 <input type="checkbox">
                                 <span class="slider"></span>
                             </label>
@@ -306,20 +335,20 @@
                     </div>
                     <div class="col">
                         <fieldset>
-                            <legend>Matin</legend>
-                            <input type="time" id="matin" name="matin" placeholder="Matin">
+                            <legend>Ouverture</legend>
+                            <input type="time" id="ouvertureJ" name="ouvertureJ" placeholder="Ouverture">
                         </fieldset>
                     </div >
                     <div class="col">
                         <fieldset>
-                            <legend>Soir</legend>
-                            <input type="time" id="soir" name="soir" placeholder="Soir">
+                            <legend>Fermeture</legend>
+                            <input type="time" id="fermetureJ" name="fermetureJ" placeholder="Fermeture">
                         </fieldset>
                     </div >
                     <div class="col">
                         <div class="ferme">
                             <span>Fermé</span>
-                            <label class="switch">
+                            <label class="switch" id='fermeCheckboxJ'>
                                 <input type="checkbox">
                                 <span class="slider"></span>
                             </label>
@@ -337,20 +366,20 @@
                     </div>
                     <div class="col">
                         <fieldset>
-                            <legend>Matin</legend>
-                            <input type="time" id="matin" name="matin" placeholder="Matin">
+                            <legend>Ouverture</legend>
+                            <input type="time" id="ouvertureV" name="ouvertureV" placeholder="Ouverture">
                         </fieldset>
                     </div >
                     <div class="col">
                         <fieldset>
-                            <legend>Soir</legend>
-                            <input type="time" id="soir" name="soir" placeholder="Soir">
+                            <legend>Fermeture</legend>
+                            <input type="time" id="fermetureV" name="fermetureV" placeholder="Fermeture">
                         </fieldset>
                     </div >
                     <div class="col">
                         <div class="ferme">
                             <span>Fermé</span>
-                            <label class="switch">
+                            <label class="switch" id='fermeCheckboxV'>
                                 <input type="checkbox">
                                 <span class="slider"></span>
                             </label>
@@ -368,20 +397,20 @@
                     </div>
                     <div class="col">
                         <fieldset>
-                            <legend>Matin</legend>
-                            <input type="time" id="matin" name="matin" placeholder="Matin">
+                            <legend>Ouverture</legend>
+                            <input type="time" id="ouvertureS" name="ouvertureS" placeholder="Ouverture">
                         </fieldset>
                     </div >
                     <div class="col">
                         <fieldset>
-                            <legend>Soir</legend>
-                            <input type="time" id="soir" name="soir" placeholder="Soir">
+                            <legend>Fermeture</legend>
+                            <input type="time" id="fermetureS" name="fermetureS" placeholder="Fermeture">
                         </fieldset>
                     </div >
                     <div class="col">
                         <div class="ferme">
                             <span>Fermé</span>
-                            <label class="switch">
+                            <label class="switch" id='fermeCheckboxS'>
                                 <input type="checkbox">
                                 <span class="slider"></span>
                             </label>
@@ -399,26 +428,44 @@
                     </div>
                     <div class="col">
                         <fieldset>
-                            <legend>Matin</legend>
-                            <input type="time" id="matin" name="matin" placeholder="Matin">
+                            <legend>Ouverture</legend>
+                            <input type="time" id="ouvertureD" name="ouvertureD" placeholder="Ouverture">
                         </fieldset>
                     </div >
                     <div class="col">
                         <fieldset>
-                            <legend>Soir</legend>
-                            <input type="time" id="soir" name="soir" placeholder="Soir">
+                            <legend>Fermeture</legend>
+                            <input type="time" id="fermetureD" name="fermetureD" placeholder="Fermeture">
                         </fieldset>
                     </div >
                     <div class="col">
                         <div class="ferme">
                             <span>Fermé</span>
-                            <label class="switch">
+                            <label class="switch" id='fermeCheckboxD'>
                                 <input type="checkbox">
                                 <span class="slider"></span>
                             </label>
                         </div>
                     </div>
                 </div>
+
+
+
+                <!-- <button onclick="checkStatus()">Vérifier</button> -->
+
+                <script>
+                    function checkStatus() {
+                        const checkbox = document.getElementById('fermeCheckbox');
+                        
+                        if (checkbox.checked) {
+                            alert("Le bouton est activé (fermé)");
+                        } else {
+                            alert("Le bouton est désactivé (ouvert)");
+                        }
+                    }
+                </script>
+
+
 
                 <!-- Offre Options -->
                 <div class="offre-options">
