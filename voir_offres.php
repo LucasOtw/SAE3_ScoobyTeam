@@ -70,19 +70,17 @@
 
 
         <?php
-            $postgresdb = "postgresdb";
-            $dbname = "5432";
-            $user = "sae";
-            $pass = "DB_ROOT_PASSWORD";
-
             try {
-                $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass);
-                $stmt = $dbh->prepare('SELECT * FROM _offre WHERE professionnel = :professionnel');
-                $stmt->execute(['professionnel' => $_SESSION["compte"]]);
+                $dbh = new PDO("host=postgresdb;dbname=5432; dbname=db-scooby-team", "sae", "philly-Congo-bry4nt");
+                $stmt = $dbh->prepare('SELECT * FROM tripenarvor._offre');
+                $stmt->execute();
                 
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {?>
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $fImg = $dbh->prepare('select url_image from tripenarvor._son_image natural join tripenarvor._image where code_offre = :offre');
+                    $fImg->execute(['offre' => $row["code_offre"]]);
+                    ?>
                         <article class="offer">
-                            <img src="images/<?php echo htmlspecialchars($row['url_image']); ?>.png" alt="<?php echo htmlspecialchars($row['titre_offre']); ?>">
+                            <img src="images/<?php echo htmlspecialchars($fImg[0]); ?>.png" alt="<?php echo htmlspecialchars($row['titre_offre']); ?>">
                             <div class="offer-details">
                                 <h2><?php echo htmlspecialchars($row['titre_offre']); ?></h2>
                                 <p><?php echo htmlspecialchars($row['ville']); ?></p>
