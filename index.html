@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails - Golf de St-Samson</title>
+    <link rel="stylesheet" href="style2.css">
+    
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="#" class="back-button">&larr;</a>
+            <h1>Détails</h1>
+        </header>
+        
+        <div class="image-section">
+            <!-- Carrousel d'images -->
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="golf-image1.jpg" alt="Golf de St-Samson Image 1">
+                    <img src="golf-image2.jpg" alt="Golf de St-Samson Image 2">
+                    <img src="golf-image3.jpg" alt="Golf de St-Samson Image 3">
+                </div>
+                <div class="carousel-buttons">
+                    <button class="carousel-button prev" onclick="prevSlide()">&#10094;</button>
+                    <button class="carousel-button next" onclick="nextSlide()">&#10095;</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-section">
+            <h2>Golf de St-Samson</h2>
+            <div class="rating">
+                <span class="star">★</span> 4.6 (4 avis)
+            </div>
+            <p class="location">Rte du Golf, 22560 Pleumeur-Bodou</p>
+            
+            <h3>Résumé</h3>
+            <p>
+                Le golf de St-Samson, situé à Pleumeur-Bodou sur la Côte de Granit Rose en Bretagne,
+                est un parcours plein de charme, proche de Lannion, Perros-Guirec et Ploumanac’h.
+            </p>
+            
+            <h3>Description</h3>
+            <p>
+                Un parcours de 18 trous est disponible; Relativement plat mais avec des arbres cela peut être un challenge entre amis
+            </p>
+            
+            <h3>Durée</h3>
+            <p>4h (en moyenne)</p>
+            
+            <h3>Age</h3>
+            <p>Tout public</p>
+        </div>
+
+        <div class="services">
+            <h3>Services</h3>
+            <div class="icons">
+                <div class="icon">Wifi</div>
+                <div class="icon">Repas</div>
+                <div class="icon">Bar</div>
+                <div class="icon">Piscine</div>
+            </div>
+        </div>
+
+        <div class="hours">
+            <h3>Horaires d’ouverture</h3>
+            <ul>
+                <li>lundi : 7h00 - 19h00</li>
+                <li>mardi : 7h00 - 19h00</li>
+                <li>mercredi : 7h00 - 19h00</li>
+                <li>jeudi : 7h00 - 19h00</li>
+                <li>vendredi : 7h00 - 19h00</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- JavaScript pour le carrousel -->
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel-images img');
+
+        function showSlide(index) {
+            const totalSlides = images.length;
+            if (index >= totalSlides) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else {
+                currentIndex = index;
+            }
+            const offset = -currentIndex * 100;
+            document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+    </script>
+    
+</body>
+</html>
+

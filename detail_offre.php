@@ -6,6 +6,13 @@
     <title>En-tête PACT</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script> <!-- Pour les icones -->
+    <style>
+        .hours {
+            list-style-type: none; /* Enlève les pastilles */
+            padding: 0; /* Enlève le padding par défaut */
+            margin: 0; /* Enlève la marge par défaut */
+        }
+    </style>
 </head>
 <body>
     <div id="body_offre_desktop">
@@ -155,38 +162,32 @@
     </div>
     </div>
     <div id="body_offre_mobile">
-        <header>
-            <button>LOL</button>
-            <h1>
-                Détails
-            </h1>
+    <header class="header">
+            <a href="#" class="back-button">&larr;</a>
+            <h1>Détails</h1>
         </header>
 
         <!-- Carrousel d'images -->
         <div class="carousel">
-            <div class="carousel-slide">
-                <img src="images/Tiallannec1.png" alt="Image 1">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/Tiallannec2.png" alt="Image 2">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/tiallannec3.png" alt="Image 3">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/tiallannec8.png" alt="Image 4">
-            </div>
-            <div class="carousel-slide">
-                <img src="images/tiallannec9.png" alt="Image 5">
+                <div class="carousel-images">
+                    <img src="images/tiallannec.png" alt="Golf de St-Samson Image 1">
+                    <img src="images/tiallannec3.png" alt="Golf de St-Samson Image 2">
+                    <img src="images/tiallannec6.png" alt="Golf de St-Samson Image 3">
+                </div>
+                <div class="carousel-buttons">
+                    <button class="carousel-button prev" onclick="prevSlide()">&#10094;</button>
+                    <button class="carousel-button next" onclick="nextSlide()">&#10095;</button>
+                </div>
             </div>
         </div>
+   
 
         <!-- Détails de l'offre -->
-        <div class="details">
-            <span id="titre">
+        <div class="details_offres_infos">
+            <div class="titre_detail_offre_responsive">
                 <h1>Ti Al Lannec</h1>
                 <p>Direction</p>
-            </span>
+    </div>
             <div class="rating">
                 <span>
                     <img class="icone" src="images/etoile.png">
@@ -199,17 +200,22 @@
                 <img class="icone" src="images/icones/pin.png">
                 34 Av. du Général de Gaulle, 22300 Lannion</p>
             <section>
+                <div class="detail_offre_resumer_titre">
                 <article>
                     <h3>Résumé</h3>
-                    <p class="summary">Choix des derniers technologies, tout y a été pensé pour votre confort.</p>
+                    </div>
+                    <p class="detail_offre_resumer">Choix des derniers technologies, tout y a été pensé pour votre confort.</p>
                 </article>
+                <div class="detail_offre_resumer_titre">
                 <article>
                     <h3>Description</h3>
-                    <p>C'est très décontracté en terrasse, on sait tout par la force et la beauté du panorama à perte de vue.</p>
+                    </div>
+                    <p class="detail_offre_resumer">C'est très décontracté en terrasse, on sait tout par la force et la beauté du panorama à perte de vue.</p>
                 </article>
             </section>
 
-            <h2>Services</h2>
+            <div class="global_service_detail_offre">
+            <h3>Services</h3>
             <div class="services">
                 <span class="service">
                     <p>Wifi</p>
@@ -224,8 +230,9 @@
                     <p>Piscine</p>
                 </span>
             </div>
+            </div>
 
-            <h2>Horaires d'ouverture</h2>
+            <div class="Detail_offre_ouverture_global">
             <ul class="hours">
                 <li><span>Lundi</span>: 19h30 - 21h30</li>
                 <li><span>Mardi</span>: 19h30 - 21h30</li>
@@ -243,10 +250,34 @@
                 <p>Tarif minimal</p>
                 <p id="prix">70€</p>
             </span>
-            <button id="bouton_publier">Publier un avis →</button>
+            <!--<button id="bouton_publier">Publier un avis →</button>-->
         </article>
     </div>
 </body>
+  <!-- JavaScript pour le carrousel -->
+  <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel-images img');
 
-<!-- SwiperJS pour le carrousel -->
+        function showSlide(index) {
+            const totalSlides = images.length;
+            if (index >= totalSlides) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else {
+                currentIndex = index;
+            }
+            const offset = -currentIndex * 100;
+            document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+    </script>
 </html>

@@ -28,11 +28,12 @@
 
 html, body {
     height: 100%;
+    overflow-x: hidden;
 
 }
 
 body{
-    overflow-x: hidden;
+   
 
 }
 /*****************************************************
@@ -500,6 +501,27 @@ footer {
 }
 
 @media (max-width: 768px) {
+
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        background-color: #F4F4F4;
+        border-bottom: 1px solid #EEE;
+    }
+    
+    .header h1 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+.back-button {
+    font-size: 24px;
+    text-decoration: none;
+    color: #333;
+}
     .detail_offre_hotel-header {
         flex-direction: column;
         text-align: center;
@@ -522,8 +544,8 @@ footer {
     #body_offre_mobile {
         display: block !important;
         font-family: 'Arial', sans-serif;
-        margin: 0;
-        padding: 0 2vw;
+        margin: 0px 0 -1em -1em;
+        padding: 0 5vw;
         background-color: #ffffff;
         width: 100%;
     }
@@ -534,7 +556,7 @@ footer {
 
     #body_offre_mobile > header{
         display: flex;
-        margin: 5vh 0;
+        margin: 5vh 144px;
     }
 
 
@@ -577,16 +599,20 @@ footer {
     }
 
     .services > span.service{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        background-color: #f4f8ff;
-        border-radius: 2vw;
-        box-shadow: 0 5px 10px -5px black;
-        aspect-ratio: 1 / 1;
-        width: 15vw;
-        color:#727272;
+        border: 1px none;
+        background-color: rgba(23, 111, 242, 0.05);
+        padding: 20px;
+        width: 83px;
+        height: 79px;
+        border-radius: 29px;
+        box-shadow: 5px 5px 10px 0px rgba(166, 158, 158, 0.5);
+        margin-right: 13px;
+        color: grey;
+        text-align: center;
+    }
+
+    .service > span.service {
+        text-align: center;
     }
 
     .services > span.service > img{
@@ -636,6 +662,7 @@ footer {
     #prix{
         color:#2DD7A4;
         font-size: x-large;
+        font-weight: bold;
     }
 
     .carousel {
@@ -659,8 +686,8 @@ footer {
 
     /* Style des images pour qu'elles s'adaptent */
     .carousel img {
-        width: 100%;
-        height: auto;
+        width: 346px;
+        height: 275px;
         image-rendering: pixelated;
         aspect-ratio: 2 / 1;
         display: block;
@@ -671,4 +698,117 @@ footer {
         display: none;  /* Masquer la barre de défilement pour une apparence propre */
     }
 
+
+ /* Styles pour le carrousel */
+.carousel {
+    position: relative;
+    max-width: 100%;
+    margin: 20px auto;
+    overflow: hidden;
 }
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-images img {
+    width: 100%;
+    max-width: 600px;
+}
+
+.carousel-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.carousel-button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.details {
+    padding : 30px;
+    margin : -6px;
+}
+
+.details_offres_infos{
+    padding: 20px;
+}
+
+.detail_offre_resumer{
+    margin-top : 0em;
+}
+.detail_offre_description {
+    margin-top: 1em;
+}
+
+
+.global_service_detail_offre{
+    margin-top: 2em;
+}
+
+.Detail_offre_ouverture_global{
+    margin-top : 2em;
+    padding : 4px;
+}
+
+.detail_offre_resumer_titre{
+    margin-top : 2em;
+}
+
+
+.titre_detail_offre_responsive{
+    display : flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.titre_detail_offre_responsive p{
+    color : var(--vert-clair);
+}
+
+.Detail_offre_ouverture_global {
+    background-color: #ffffff; 
+    border-radius: 10px; /* Coins arrondis */
+    max-width: 600px; /* Largeur maximale */
+    margin: 20px auto; /* Centrer la section */
+}
+
+.Detail_offre_ouverture_global h3 {
+    text-align: center; /* Centrer le titre */
+    color: #333; /* Couleur du texte */
+    margin-bottom: 20px; /* Espace sous le titre */
+}
+
+.hours {
+    list-style-type: none; /* Enlève les pastilles */
+    padding: 0; /* Enlève le padding par défaut */
+    margin: 0; /* Enlève la marge par défaut */
+}
+
+.hours li {
+    display: flex;
+    justify-content: space-between; /* Espace entre le jour et les horaires */
+    padding: 10px 0; /* Espacement vertical */
+    border-bottom: 1px solid #ddd; /* Ligne de séparation */
+}
+
+.hours li:last-child {
+    border-bottom: none; /* Enlève la ligne de séparation pour le dernier élément */
+}
+
+.hours span {
+    font-weight: bold; /* Met en gras les jours */
+    color: var(--vert-clair); /* Couleur des jours */
+}
+}
+
