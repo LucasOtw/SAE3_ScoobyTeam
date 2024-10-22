@@ -2,6 +2,7 @@
 <html lang="fr">
 
 <head>
+    <?php start_session();?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Se connecter</title>
@@ -161,7 +162,7 @@
     <?php
 
     // Vérifie si le formulaire a été soumis
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
         // Récupération des champs
         $prenom = trim(isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : '');
         $nom = trim(isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : '');
@@ -242,12 +243,13 @@
         // Vérifie s'il y a des erreurs
         if (empty($erreurs)) {
             // Pas d'erreurs, on peut procéder au traitement (inscription, enregistrement, etc.)
-            echo "Le formulaire est valide. Compte créé avec succès.";
-            // Tu peux maintenant ajouter l'enregistrement dans la base de données ici
+            
             $insert = $membre -> prepare("insert into membre(telephone, mail, mdp, nom, prenom, pseudo, adresse_postal, complement_adresse, code_postal, ville)
                                             values ($telephone, $email, $password, $nom, $prenom, $pseudo, $adresse, $complementAdresse, $codePostal, $ville)");
             $insert->execute();
             $membre = null;
+
+            $_SESSION["compte"]= pg_query("select currval('_compte_code_compte_seq');");
         } else {
             // Affiche les erreurs
             foreach ($erreurs as $erreur) {
@@ -255,7 +257,7 @@
             }
             
         }
-    }
+    
     ?>   
 </body>
 
