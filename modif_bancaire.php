@@ -142,7 +142,7 @@ pg_close($conn);
     </div>
 </form>
 
-<footer class="footer_detail_avis">
+<footer class="footer">
     <div class="footer-links">
         <div class="logo">
             <img src="Images/logoBlanc.png" alt="Logo PACT">
