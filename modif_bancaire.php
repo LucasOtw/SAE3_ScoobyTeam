@@ -6,7 +6,7 @@
     <title>Modifier coordonnées bancaires</title>
     <link rel="stylesheet" href="style_bancaire.css">
     <style>
-        .alert {
+        .alert_bancaire {
             display: none; /* Caché par défaut */
             padding: 10px;
             margin: 15px 0;
@@ -17,11 +17,11 @@
     </style>
 </head>
 <body>
-<header>
+<header class="header">
     <div class="logo">
         <img src="Images/logoBlanc.png" alt="PACT Logo">
     </div>
-    <nav>
+    <nav class="nav">
         <ul>
             <li><a href="#">Accueil</a></li>
             <li><a href="#">Publier</a></li>
@@ -31,7 +31,7 @@
 </header>
 <div class="container">
     <div class="header">
-        <img src="Images/Fond.png" alt="Bannière" class="header-img">
+        <img src="Images/Fond.png" alt="Bannière" class="header-imge">
     </div>
 
     <div class="profile-section">
@@ -40,57 +40,55 @@
         <p>ti.al.lannec@gmail.com | 07.98.76.54.12</p>
     </div>
     <div class="tabs">
-        <!-- <div class="tab">Informations</div> -->
         <div class="tab">Mot de passe et sécurité</div>
-        <!-- <div class="tab">Mes Offres</div> -->
         <div class="tab active">Compte Bancaire</div>
     </div>
 </div>
 
 <?php
-// Définir le chemin du fichier
-$file = 'coordonnees_bancaires.txt';
 
-// Initialiser les valeurs par défaut
+$host = 'votre_hôte';
+$db = 'votre_base_de_données';
+$user = 'votre_utilisateur'; 
+$password = 'votre_mot_de_passe'; 
+
+
+$conn = pg_connect("host=$host dbname=$db user=$user password=$password");
+
+
 $iban = '';
 $bic = '';
 $nom = '';
-$message = ''; // Pour stocker le message d'alerte
+$message = ''; 
 
-// Vérifier si le fichier existe déjà et récupérer les données
-if (file_exists($file)) {
-    $fileContents = file($file, FILE_IGNORE_NEW_LINES);
-    if (count($fileContents) >= 3) {
-        $nom = explode(": ", $fileContents[0])[1];
-        $iban = explode(": ", $fileContents[1])[1];
-        $bic = explode(": ", $fileContents[2])[1];
+
+$query = "SELECT nom_compte, iban, bic FROM _compte_bancaire LIMIT 1";
+$result = pg_query($conn, $query);
+if ($result) {
+    $row = pg_fetch_assoc($result);
+    if ($row) {
+        $nom = $row['nom_compte'];
+        $iban = $row['iban'];
+        $bic = $row['bic'];
     }
 }
 
-// Si le formulaire est soumis
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer les données du formulaire
+   
     $iban = htmlspecialchars($_POST['IBAN']);
     $bic = htmlspecialchars($_POST['BIC']);
     $nom = htmlspecialchars($_POST['nom']);
     $cgu = isset($_POST['cgu']) ? true : false;
 
-    // Vérifier que tous les champs sont bien remplis
+  
     if (!empty($iban) && !empty($bic) && !empty($nom) && $cgu) {
-        // Créer le contenu à écrire dans le fichier
-        $data = "Nom: $nom\nIBAN: $iban\nBIC: $bic\n---\n";
+       
+        $update_query = "UPDATE _compte_bancaire SET nom_compte = $1, iban = $2, bic = $3 WHERE nom_compte = $1";
+        $result = pg_query_params($conn, $update_query, array($nom, $iban, $bic));
 
-        // Ouvrir le fichier en mode "write" pour remplacer les données existantes
-        $fileHandle = fopen($file, 'w');
-
-        if ($fileHandle) {
-            // Écrire les nouvelles données dans le fichier
-            fwrite($fileHandle, $data);
-
-            // Fermer le fichier
-            fclose($fileHandle);
-
-            $message = "Les informations bancaires ont été modifiées avec succès."; // Message de succès
+        if ($result) {
+            $message = "Les informations bancaires ont été modifiées avec succès."; 
         } else {
             $message = "Impossible de modifier les informations. Veuillez réessayer.";
         }
@@ -98,56 +96,58 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = "Veuillez remplir tous les champs.";
     }
 }
+
+
+pg_close($conn);
 ?>
 
-<!-- Affichage du message d'alerte -->
+
 <?php if ($message): ?>
-    <div class="alert" id="alert">
+    <div class="alert_bancaire" id="alert_bancaire">
         <?php echo $message; ?>
     </div>
 <?php endif; ?>
 
 <form action="#" method="POST">
     <h4>Modification des coordonnées bancaires</h4>
-    <div class="form-image-container">
-        <div class="form-section">
-            <div class="IBAN">
+    <div class="form-image-container_bancaire">
+        <div class="form-section_bancaire">
+            <div class="IBAN_bancaire">
                 <fieldset>
                     <legend>IBAN</legend>
                     <input type="text" id="IBAN" name="IBAN" value="<?php echo $iban; ?>" placeholder="IBAN" required>
                 </fieldset>
             </div>
-            <div class="BIC">
+            <div class="BIC_bancaire">
                 <fieldset>
                     <legend>BIC</legend>
                     <input type="text" id="BIC" name="BIC" value="<?php echo $bic; ?>" placeholder="BIC" required>
                 </fieldset>
             </div>
-            <div class="nom-du-proprietaire">
+            <div class="nom-du-proprietaire_bancaire">
                 <fieldset>
                     <legend>Nom</legend>
-                    <input type="text" id="nom" name="nom" value="<?php echo $nom; ?>" placeholder="Nom"required>
+                    <input type="text" id="nom" name="nom" value="<?php echo $nom; ?>" placeholder="Nom" required>
                 </fieldset>
             </div>
         </div>
-        
     </div>
 
-    <div class="checkbox">
+    <div class="checkbox_bancaire">
         <input type="checkbox" id="cgu" name="cgu" required>
         <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
     </div>
-    <div class="compte_membre_save_delete">
-        <button type="submit" class="submit-btn2">Modifier les coordonnées</button>
+    <div class="compte_membre_save_delete_bancaire">
+        <button type="submit" class="submit-btn2_bancaire">Modifier les coordonnées</button>
     </div>
 </form>
 
-<footer class="footer_detail_avis">
-    <div class="footer-links">
-        <div class="logo">
+<footer class="footer_detail_avis_bancaire">
+    <div class="footer-links_bancaire">
+        <div class="logo_bancaire">
             <img src="Images/logoBlanc.png" alt="Logo PACT">
         </div>
-        <div class="link-group">
+        <div class="link-group_bancaire">
             <ul>
                 <li><a href="#">Mentions Légales</a></li>
                 <li><a href="#">RGPD</a></li>
@@ -155,21 +155,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li><a href="#">Nos partenaires</a></li>
             </ul>
         </div>
-        <div class="link-group">
+        <div class="link-group_bancaire">
             <ul>
                 <li><a href="#">Accueil</a></li>
                 <li><a href="#">Publier</a></li>
                 <li><a href="#">Historique</a></li>
             </ul>
         </div>
-        <div class="link-group">
+        <div class="link-group_bancaire">
             <ul>
                 <li><a href="#">CGU</a></li>
                 <li><a href="#">Signaler un problème</a></li>
                 <li><a href="#">Nous contacter</a></li>
             </ul>
         </div>
-        <div class="link-group">
+        <div class="link-group_bancaire">
             <ul>
                 <li><a href="#">Presse</a></li>
                 <li><a href="#">Newsletter</a></li>
@@ -178,8 +178,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 
-    <div class="footer-bottom">
-        <div class="social-icons">
+    <div class="footer-bottom_bancaire">
+        <div class="social-icons_bancaire">
             <a href="#"><img src="Images/Vector.png" alt="Facebook"></a>
             <a href="#"><img src="Images/Vector2.png" alt="Instagram"></a>
             <a href="#"><img src="Images/youtube.png" alt="YouTube"></a>
@@ -189,13 +189,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </footer>
 
 <script>
-    // Afficher le message d'alerte et le masquer après 3 secondes
+    
     window.onload = function() {
-        var alertBox = document.getElementById('alert');
+        var alertBox = document.getElementById('alert_bancaire');
         if (alertBox) {
-            alertBox.style.display = 'block'; // Affiche le message
+            alertBox.style.display = 'block'; 
             setTimeout(function() {
-                alertBox.style.display = 'none'; // Masque le message après 3 secondes
+                alertBox.style.display = 'none'; 
             }, 3000);
         }
     };

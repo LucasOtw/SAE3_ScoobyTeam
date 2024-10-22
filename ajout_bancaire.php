@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>premières coordonnées bancaires</title>
+    <title>Premières coordonnées bancaires</title>
     <link rel="stylesheet" href="style_bancaire.css">
 </head>
 <body>
@@ -30,56 +30,54 @@
         <p>ti.al.lannec@gmail.com | 07.98.76.54.12</p>
     </div>
     <div class="tabs">
-        
         <div class="tab">Mot de passe et sécurité</div>
-        
         <div class="tab active">Compte Bancaire</div>
     </div>
 </div>
 
 <?php
-// Définir le chemin du fichier
-$file = 'coordonnees_bancaires.txt';
 
-// Initialiser les valeurs par défaut
+$host = 'votre_hôte';
+$port = '5432'; 
+$dbname = 'votre_base_de_données';
+$user = 'votre_utilisateur';
+$password = 'votre_mot_de_passe';
+
+
+$conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
+if (!$conn) {
+    die("Erreur de connexion à la base de données.");
+}
+
 $iban = '';
 $bic = '';
 $nom = '';
 
 
-if (file_exists($file)) {
-    $fileContents = file($file, FILE_IGNORE_NEW_LINES);
-    if (count($fileContents) >= 3) {
-        $nom = explode(": ", $fileContents[0])[1];
-        $iban = explode(": ", $fileContents[1])[1];
-        $bic = explode(": ", $fileContents[2])[1];
+$query = "SELECT nom_compte, iban, bic FROM _compte_bancaire WHERE code_compte_bancaire = $_SESSION"; 
+$result = pg_query_params($conn, $query, array($_SESSION['compte_bancaire_id'])); 
+if ($result) {
+    if (pg_num_rows($result) > 0) {
+        $row = pg_fetch_assoc($result);
+        $nom = $row['nom_compte'];
+        $iban = $row['iban'];
+        $bic = $row['bic'];
     }
 }
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
     $iban = htmlspecialchars($_POST['IBAN']);
     $bic = htmlspecialchars($_POST['BIC']);
     $nom = htmlspecialchars($_POST['nom']);
     $cgu = isset($_POST['cgu']) ? true : false;
 
-    
     if (!empty($iban) && !empty($bic) && !empty($nom) && $cgu) {
         
-        $data = "Nom: $nom\nIBAN: $iban\nBIC: $bic\n---\n";
-
-       
-        $fileHandle = fopen($file, 'w');
-
-        if ($fileHandle) {
-            // Écrire les nouvelles données dans le fichier
-            fwrite($fileHandle, $data);
-
-            // Fermer le fichier
-            fclose($fileHandle);
-
-            echo "Les informations bancaires ont été ajoutées avec succès.";
+        $updateQuery = "UPDATE _compte_bancaire SET nom_compte = $1, iban = $2, bic = $3 WHERE code_compte_bancaire = $4"; 
+        $result = pg_query_params($conn, $updateQuery, array($nom, $iban, $bic, $_SESSION['compte_bancaire_id']));
+        
+        if ($result) {
+            echo "Les informations bancaires ont été modifiées avec succès.";
         } else {
             echo "Impossible de modifier les informations. Veuillez réessayer.";
         }
@@ -87,6 +85,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Veuillez remplir tous les champs.";
     }
 }
+
+
+pg_close($conn);
 ?>
 
 <form action="#" method="POST">
@@ -96,13 +97,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="IBAN">
                 <fieldset>
                     <legend>IBAN</legend>
-                    <input type="text" id="IBAN" name="IBAN" value="<?php echo $iban; ?>" placeholder="IBAN  (obligatoire)" required>
+                    <input type="text" id="IBAN" name="IBAN" value="<?php echo $iban; ?>" placeholder="IBAN (obligatoire)" required>
                 </fieldset>
             </div>
             <div class="BIC">
                 <fieldset>
                     <legend>BIC</legend>
-                    <input type="text" id="BIC" name="BIC" value="<?php echo $bic; ?>" placeholder="veuillez entrer votre BIC" required>
+                    <input type="text" id="BIC" name="BIC" value="<?php echo $bic; ?>" placeholder="Veuillez entrer votre BIC" required>
                 </fieldset>
             </div>
             <div class="nom-du-proprietaire">
@@ -112,7 +113,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </fieldset>
             </div>
         </div>
-        
     </div>
 
     <div class="checkbox">
