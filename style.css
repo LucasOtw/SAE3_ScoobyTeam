@@ -262,13 +262,14 @@ footer {
 .container {
     max-width: 900px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px;    
 }
 
 .header-img {
-    width: 152%;
+    width: 130%;
     border-radius: 10px;
-    margin-left: -14em;
+    height: auto;
+    margin-left: -120px;
 }
 
 .profile-section {
