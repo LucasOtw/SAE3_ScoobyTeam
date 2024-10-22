@@ -21,8 +21,8 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Publier</a></li>
+                <li><a href="voir_offres.php">Accueil</a></li>
+                <li><a href="creation_offre.php">Publier</a></li>
                 <li><a href="#" class="active">Mon Compte</a></li>
             </ul>
         </nav>
@@ -72,17 +72,22 @@
         </div>
     </main>
     <?php
+        $postgresdb = "postgresdb";
+        $dbname = "5432";
+        $user = "sae";
+        $pass = "DB_ROOT_PASSWORD";
+
+        $dbh = new PDO("$driver:host=$postgresdb;dbname=$dbname", $user, $pass);
+
         $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
         $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
         
-
-        $mailDansBdd = $membre -> prepare("select code_compte from _professionnel NATURAL JOIN _compte where mail='$email';");
+        $mailDansBdd = $dbh -> prepare("select code_compte from _professionnel NATURAL JOIN _compte where mail='$email';");
         $mailDansBdd -> execute();
-        $membre = null;
 
-        $mdpDansBdd = $membre -> prepare("select mdp from _professionnel NATURAL JOIN _compte where mail='$email';");
+        $mdpDansBdd = $dbh -> prepare("select mdp from _professionnel NATURAL JOIN _compte where mail='$email';");
         $mailDansBdd -> execute();
-        $membre = null;
+        $dbh = null;
         
         $passwordHashedFromDB = password_hash($mdpDansBdd, PASSWORD_DEFAULT);
 
@@ -90,8 +95,8 @@
             if (password_verify($password, $passwordHashedFromDB)) {
                 // Le mot de passe est correct
                 // Connexion
-                $_SESSION["compte"] = $mailDansBdd;
                 session_start();
+                $_SESSION["compte"] = $mailDansBdd;
                 // redirection
                 header('Location: modif_infos_pro.php');
                 exit();
