@@ -1,3 +1,7 @@
+<?php 
+$dbh = new PDO('pgsql:host=postgresql;port=5432;dbname=sae', 'sae', 'field-biDe-v3ndr4-bahut');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,22 +42,20 @@
 </div>
 
 <?php
-// Définir le chemin du fichier
-$file = 'coordonnees_bancaires.txt';
-
 // Initialiser les valeurs par défaut
 $iban = '';
 $bic = '';
 $nom = '';
 
-// Vérifier si le fichier existe déjà et récupérer les données
-if (file_exists($file)) {
-    $fileContents = file($file, FILE_IGNORE_NEW_LINES);
-    if (count($fileContents) >= 3) {
-        $nom = explode(": ", $fileContents[0])[1];
-        $iban = explode(": ", $fileContents[1])[1];
-        $bic = explode(": ", $fileContents[2])[1];
-    }
+// Requête SQL pour récupérer les informations bancaires
+$query = $dbh->prepare("SELECT * FROM _compte_bancaire WHERE code_compte_bancaire = :id");
+$query->execute(['id' => 1]); // Remplacer 1 par l'ID du compte souhaité
+$compte = $query->fetch();
+
+if ($compte) {
+    $iban = $compte['iban'];
+    $bic = $compte['bic'];
+    $nom = $compte['nom_compte'];
 }
 
 // Si le formulaire est soumis
@@ -66,23 +68,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Vérifier que tous les champs sont bien remplis
     if (!empty($iban) && !empty($bic) && !empty($nom) && $cgu) {
-        // Créer le contenu à écrire dans le fichier
-        $data = "Nom: $nom\nIBAN: $iban\nBIC: $bic\n---\n";
+        // Mettre à jour les informations bancaires dans la base de données
+        $updateQuery = $dbh->prepare("UPDATE _compte_bancaire SET iban = :iban, bic = :bic, nom_compte = :nom WHERE code_compte_bancaire = :id");
+        $updateQuery->execute([
+            'iban' => $iban,
+            'bic' => $bic,
+            'nom' => $nom,
+            'id' => 1 // Remplacer 1 par l'ID du compte souhaité
+        ]);
 
-        // Ouvrir le fichier en mode "write" pour remplacer les données existantes
-        $fileHandle = fopen($file, 'w');
-
-        if ($fileHandle) {
-            // Écrire les nouvelles données dans le fichier
-            fwrite($fileHandle, $data);
-
-            // Fermer le fichier
-            fclose($fileHandle);
-
-            echo "Les informations bancaires ont été modifiées avec succès.";
-        } else {
-            echo "Impossible de modifier les informations. Veuillez réessayer.";
-        }
+        echo "Les informations bancaires ont été modifiées avec succès.";
     } else {
         echo "Veuillez remplir tous les champs.";
     }

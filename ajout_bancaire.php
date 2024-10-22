@@ -1,9 +1,13 @@
+<?php 
+$dbh = new PDO('pgsql:host=postgresql;port=5432;dbname=sae', 'sae', 'field-biDe-v3ndr4-bahut');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier coordonnées bancaires</title>
+    <title>Enregistrer coordonnées bancaires</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -38,7 +42,6 @@
     </div>
 </div>
 
-
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $iban = htmlspecialchars($_POST['IBAN']);
@@ -48,19 +51,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Vérifier que tous les champs sont bien remplis
     if (!empty($iban) && !empty($bic) && !empty($nom) && $cgu) {
-        
-        $data = "Nom: $nom\nIBAN: $iban\nBIC: $bic\n---\n";
-        
-        
-        $file = 'coordonnees_bancaires.txt';
+        // Supprimer les anciennes coordonnées
+        $stmt = $dbh->prepare("DELETE FROM _compte_bancaire WHERE nom_compte = :nom");
+        $stmt->bindParam(':nom', $nom);
+        $stmt->execute();
 
-        
-        $fileHandle = fopen($file, 'a');
-        
-        if ($fileHandle) {
-            fwrite($fileHandle, $data);
-            fclose($fileHandle);
-            
+        // Insérer les nouvelles coordonnées
+        $stmt = $dbh->prepare("INSERT INTO _compte_bancaire (iban, bic, nom_compte) VALUES (:iban, :bic, :nom)");
+        $stmt->bindParam(':iban', $iban);
+        $stmt->bindParam(':bic', $bic);
+        $stmt->bindParam(':nom', $nom);
+
+        if ($stmt->execute()) {
             echo "<p style='color:green;'>Les informations bancaires ont été enregistrées avec succès.</p>";
         } else {
             echo "<p style='color:red;'>Impossible d'enregistrer les informations. Veuillez réessayer.</p>";
@@ -77,20 +79,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="IBAN">
                 <fieldset>
                     <legend>IBAN</legend>
-                    <input type="text" id="IBAN" name="IBAN" placeholder="IBAN  (obligatoire)" required>
+                    <input type="text" id="IBAN" name="IBAN" placeholder="IBAN (obligatoire)" required>
                 </fieldset>
             </div>
             <div class="BIC">
                 <fieldset>
                     <legend>BIC</legend>
-                    <input type="text" id="BIC" name="BIC" placeholder="veuillez entrer votre BIC" required>
+                    <input type="text" id="BIC" name="BIC" placeholder="Veuillez entrer votre BIC" required>
                 </fieldset>
             </div>
             <div class="nom-du-proprietaire">
                 <fieldset>
                     <legend>Nom</legend>
-                    <input type="text" id="nom" name="nom" placeholder="Nom" required 
-                        title="Veuillez entrer le nom du propriétaire du compte">
+                    <input type="text" id="nom" name="nom" placeholder="Nom" required title="Veuillez entrer le nom du propriétaire du compte">
                 </fieldset>
             </div>
         </div>
@@ -104,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
     </div>
     <div class="compte_membre_save_delete">
-        <button type="submit" class="submit-btn2">enregistrer les coordonnées</button>
+        <button type="submit" class="submit-btn2">Enregistrer les coordonnées</button>
     </div>
 </form>
 
