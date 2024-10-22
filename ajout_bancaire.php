@@ -30,9 +30,9 @@
         <p>ti.al.lannec@gmail.com | 07.98.76.54.12</p>
     </div>
     <div class="tabs">
-        <div class="tab">Informations</div>
+        //<div class="tab">Informations</div>
         <div class="tab">Mot de passe et sécurité</div>
-        <div class="tab">Mes Offres</div>
+        //<div class="tab">Mes Offres</div>
         <div class="tab active">Compte Bancaire</div>
     </div>
 </div>
