@@ -41,14 +41,14 @@
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Nom de l'établissement *</legend>
-                            <input type="text" id="nom_offre" name="nom_offre" placeholder="Nom de l'établissement *">
+                            <legend>Nom du parc *</legend>
+                            <input type="text" id="nom_offre" name="nom_offre" placeholder="Nom du parc *">
                         </fieldset>
                     </div>
                     <div class="col">
                         <fieldset>
                             <legend style="display:block;">Type de l'offre</legend>
-                            <input type="text" id="type_offre" name="type_offre" placeholder="Restauration" disabled>
+                            <input type="text" id="type_offre" name="type_offre" placeholder="Parc d'attractions" disabled>
                         </fieldset>
                     </div>
                 </div>
@@ -73,8 +73,19 @@
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Où se trouve le restaurant ? *</legend>
-                            <input type="text" id="location" name="location" placeholder="Où se trouve le restaurant ? *">
+                            <legend>Où se trouve l’offre ? *</legend>
+                            <input type="text" id="location" name="location" placeholder="Où se trouve l’offre ? *">
+                        </fieldset>
+                    </div>
+                </div>
+
+
+                <!-- Prix -->
+                <div class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend>Prix (unique ou fourchette) *</legend>
+                            <input type="text" id="prix" name="prix" placeholder="Prix (unique ou fourchette) *">
                         </fieldset>
                     </div>
                 </div>
@@ -132,14 +143,14 @@
                 <div class="row">
                     <div class="col">
                         <label for="photos">Photos (facultatif)</label>
-                        <input type="file" id="photos" name="photos" multiple >
+                        <input type="file" id="photos" name="photos" multiple>
                     </div>
                 </div>
 
-                <!-- Carte du restaurant -->
+                <!-- Plan du parc -->
                 <div class="row">
                     <div class="col">
-                        <label for="carte">Ajouter la carte du restaurant (facultatif)</label>
+                        <label for="carte">Ajouter le plan du parc (facultatif)</label>
                         <input type="file" id="carte" name="carte" multiple>
                     </div>
                 </div>
@@ -154,51 +165,26 @@
                     </div>  
                 </div>
 
-                <!-- Price Options -->
-                <div class="price-options">
-                    <label for="prix">Prix</label>
-                        <div class="radio-group">
-                            <div>
-                                <input type="radio" id="moins_25" name="prix" value="moins_25">
-                                <label class="label-check" for="moins_25">€ (menu à moins de 25€)</label>
-                            </div>
-                            <div>
-                                <input class="label-check" type="radio" id="entre_25_40" name="prix" value="entre_25_40">
-                                <label class="label-check" for="entre_25_40">€€ (entre 25€ et 40€)</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="plus_40" name="prix" value="plus_40">
-                                <label class="label-check" for="plus_40">€€€ (au-delà de 40€)</label>
-                            </div>
-                        </div>
+                <!-- Age requis -->
+                <div class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend>Age minimum requis</legend>
+                            <input type="number" id="age" name="age" placeholder="Age minimum requis">
+                        </fieldset>
+                    </div>  
                 </div>
 
-                <!-- Meal Options -->
-                <div class="meal-options">
-                    <label>Options de repas</label>
-                    <div class="checkbox-group">
-                        <div>
-                            <input type="checkbox" id="petit_dejeuner" name="repas" value="petit_dejeuner">
-                            <label class="label-check" for="petit_dejeuner">Petit-Déjeuner</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="brunch" name="repas" value="brunch">
-                            <label class="label-check" for="brunch">Brunch</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="dejeuner" name="repas" value="dejeuner" checked>
-                            <label class="label-check" for="dejeuner">Déjeuner</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="diner" name="repas" value="diner" checked>
-                            <label class="label-check" for="diner">Dîner</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="boissons" name="repas" value="boissons">
-                            <label class="label-check" for="boissons">Boissons</label>
-                        </div>
-                    </div>
+                <!-- Nb attractions -->
+                <div class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend>Nombre d'attractions</legend>
+                            <input type="number" id="nb_attraction" name="nb_attraction" placeholder="Nombre d'attractions">
+                        </fieldset>
+                    </div>  
                 </div>
+                
 
                 <!-- Résumé -->
                 <div class="row">
