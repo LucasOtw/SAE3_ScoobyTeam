@@ -1,23 +1,31 @@
-<!--<?php/*
+<?php
+    // Adresse que tu veux convertir
+    $adresse = "A MODIFIER";
 
-session_start();
+    // Encode l'adresse pour l'URL
+    $adresse_enc = urlencode($adresse);
 
-$bdd = new PDO("mysql:host=localhost;dbname=test;user=sae;password=DB_ROOT_PASSWORD");
+    // Clé API Google obtenue après inscription
+    $api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig";
 
-if(!isset($_POST["code_offre"])){
-    echo "Erreur : aucune offre";
-} else {
-    // si le formulaire est bien récupéré
-    $code_offre = $_POST["code_offre"]; // on récupère le code de l'offre envoyé
+    // URL de l'API Geocoding
+    $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
 
-    // On vérifie si le code existe dans la base de données (AU CAS OU !!!)
-    $existeOffre = $bdd->query("SELECT * FROM _offre WHERE code_offre = $code_offre");
-    if(!empty($existeOffre)){ // si l'offre existe
-        $details_offre = $existeOffre->fetch();
+    // Appel de l'API Google Geocoding
+    $response = file_get_contents($url);
+    $json = json_decode($response, true);
+
+    // Vérifie si la réponse contient des résultats
+    if(isset($json['results'][0])) {
+        $latitude = $json['results'][0]['geometry']['location']['lat'];
+        $longitude = $json['results'][0]['geometry']['location']['lng'];
+    } else {
+        // echo "Adresse non trouvée.";
     }
-}
-*/
-?>-->
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -26,15 +34,25 @@ if(!isset($_POST["code_offre"])){
     <title>En-tête PACT</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script> <!-- Pour les icones -->
-    <style>
-        .hours {
-            list-style-type: none; /* Enlève les pastilles */
-            padding: 0; /* Enlève le padding par défaut */
-            margin: 0; /* Enlève la marge par défaut */
-        }
-    </style>
+    
+    
+    <script>
+    function initMap() {
+        var location = {lat: <?php echo $latitude; ?>, lng: <?php echo $longitude; ?>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: location
+        });
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+    }
+    </script>
+
+
 </head>
-<body>
+<body onload="initMap()">
     <div id="body_offre_desktop">
         <header>
             <div class="logo">
@@ -48,15 +66,14 @@ if(!isset($_POST["code_offre"])){
                 </ul>
             </nav>
         </header>
-
         <div class="detail_offre_hotel-detail">
             <div class="detail_offre_hotel-header">
                 <div class="detail_offre_hotel-info">
                     <h1>Ti Al Lannec – Hôtel & Restaurant</h1>
                     <p>📍 Trébeurden, Bretagne 22300</p>
-                    <div class="detail_offre_rating">
+                    <!-- <div class="detail_offre_rating">
                         ⭐ 5.0 (255 avis)
-                    </div>
+                    </div> -->
                 </div>
                 <div class="detail_offre_price-button">
                     <p class="detail_offre_price">50€</p>
@@ -111,10 +128,11 @@ if(!isset($_POST["code_offre"])){
         </div>
         <div class="detail_offre_localisation">
         <h2>Localisation</h2>
-        <iframe class="map-frame" 
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2629.6630360674853!2d-3.5818007!3d48.7692309!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4813d30ea0739aa5%3A0xa08df5c6c4d0aae5!2sTi%20Al%20Lannec%20Sa!5e0!3m2!1sfr!2sfr!4v1729076393212!5m2!1sfr!2sfr" 
-            width="1650" height="700" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        <iframe class="map-frame"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig&q=<?php echo $latitude; ?>,<?php echo $longitude; ?>"
+                style="border:0;margin: auto 1em; width:95vw; height:70vh" allowfullscreen="" loading="lazy">
         </iframe>
+
 
         <div class="Detail_offre_ouverture_global_desktop">
                 <h2>Horaires</h2>
@@ -215,16 +233,16 @@ if(!isset($_POST["code_offre"])){
         <div class="details_offres_infos">
             <div class="titre_detail_offre_responsive">
                 <h1>Ti Al Lannec</h1>
-                <a href="https://www.tiallannec.com/FR/index.php" class="description-link"><h3>Direction</h3></a>
+                <a href="https://www.tiallannec.com/FR/index.php" class="description-link"><h3>Site Web</h3></a>
     </div>
-            <div class="rating">
+            <!-- <div class="rating">
                 <span>
                     <img class="icone" src="images/etoile.png">
                 </span>
                 <span>
                     4.7 (2 avis)
                 </span>
-            </div>
+            </div> -->
             <p class="address">
                 <img class="icone" src="images/icones/pin.png">
                 34 Av. du Général de Gaulle, 22300 Lannion</p>
@@ -237,7 +255,7 @@ if(!isset($_POST["code_offre"])){
                 </article>
                 <div class="detail_offre_resumer_titre">
                 <article>
-                <h3>Description</h3>
+                <h3>Site Web</h3>
                     </div>
                     <p class="detail_offre_resumer">C'est très décontracté en terrasse, on sait tout par la force et la beauté du panorama à perte de vue.</p>
                 </article>
@@ -260,6 +278,13 @@ if(!isset($_POST["code_offre"])){
                 </span>
             </div>
             </div>
+            <div class="Detail_offre_ouverture_global">
+            <h3>Localisation</h3>
+            <iframe class="map-frame"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig&q=<?php echo $latitude; ?>,<?php echo $longitude; ?>"
+            style="border:0;margin: auto 0.5em; width:85vw; height:50vh" allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
 
             <div class="Detail_offre_ouverture_global">
                 <h3>Horaires</h3>
