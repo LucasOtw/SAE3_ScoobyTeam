@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier coordonnées bancaires</title>
     <link rel="stylesheet" href="style_bancaire.css">
+    <style>
+        .alert {
+            display: none; /* Caché par défaut */
+            padding: 10px;
+            margin: 15px 0;
+            background-color: #4CAF50; /* Couleur verte */
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -19,14 +29,13 @@
         </ul>
     </nav>
 </header>
-
 <div class="container">
     <div class="header">
         <img src="Images/Fond.png" alt="Bannière" class="header-img">
     </div>
 
     <div class="profile-section">
-        <img src="Images/pp.png" alt="Photo de profil" class="profile-img">
+        <img src="Images/Profil.png" alt="Photo de profil" class="profile-img">
         <h1>Ti al Lannec</h1>
         <p>ti.al.lannec@gmail.com | 07.98.76.54.12</p>
     </div>
@@ -38,8 +47,27 @@
     </div>
 </div>
 
-<!-- PHP intégré pour traiter les données du formulaire -->
 <?php
+// Définir le chemin du fichier
+$file = 'coordonnees_bancaires.txt';
+
+// Initialiser les valeurs par défaut
+$iban = '';
+$bic = '';
+$nom = '';
+$message = ''; // Pour stocker le message d'alerte
+
+// Vérifier si le fichier existe déjà et récupérer les données
+if (file_exists($file)) {
+    $fileContents = file($file, FILE_IGNORE_NEW_LINES);
+    if (count($fileContents) >= 3) {
+        $nom = explode(": ", $fileContents[0])[1];
+        $iban = explode(": ", $fileContents[1])[1];
+        $bic = explode(": ", $fileContents[2])[1];
+    }
+}
+
+// Si le formulaire est soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
     $iban = htmlspecialchars($_POST['IBAN']);
@@ -51,50 +79,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($iban) && !empty($bic) && !empty($nom) && $cgu) {
         // Créer le contenu à écrire dans le fichier
         $data = "Nom: $nom\nIBAN: $iban\nBIC: $bic\n---\n";
-        
-        // Définir le chemin du fichier (il sera créé s'il n'existe pas)
-        $file = 'coordonnees_bancaires.txt';
 
-        // Ouvrir le fichier en mode "append" pour ajouter les données à la fin
-        $fileHandle = fopen($file, 'a');
-        
+        // Ouvrir le fichier en mode "write" pour remplacer les données existantes
+        $fileHandle = fopen($file, 'w');
+
         if ($fileHandle) {
-            // Écrire les données dans le fichier
+            // Écrire les nouvelles données dans le fichier
             fwrite($fileHandle, $data);
-            
+
             // Fermer le fichier
             fclose($fileHandle);
-            
-            echo "<p style='color:green;'>Les informations bancaires ont été enregistrées avec succès.</p>";
+
+            $message = "Les informations bancaires ont été modifiées avec succès."; // Message de succès
         } else {
-            echo "<p style='color:red;'>Impossible d'enregistrer les informations. Veuillez réessayer.</p>";
+            $message = "Impossible de modifier les informations. Veuillez réessayer.";
         }
     } else {
-        echo "<p style='color:red;'>Veuillez remplir tous les champs.</p>";
+        $message = "Veuillez remplir tous les champs.";
     }
 }
 ?>
 
-<form action="" method="POST">
+<!-- Affichage du message d'alerte -->
+<?php if ($message): ?>
+    <div class="alert" id="alert">
+        <?php echo $message; ?>
+    </div>
+<?php endif; ?>
+
+<form action="#" method="POST">
+    <h4>Modification des coordonnées bancaires</h4>
     <div class="form-image-container">
         <div class="form-section">
             <div class="IBAN">
                 <fieldset>
                     <legend>IBAN</legend>
-                    <input type="text" id="IBAN" name="IBAN" placeholder="IBAN  (obligatoire)" required>
+                    <input type="text" id="IBAN" name="IBAN" value="<?php echo $iban; ?>" required>
                 </fieldset>
             </div>
             <div class="BIC">
                 <fieldset>
                     <legend>BIC</legend>
-                    <input type="text" id="BIC" name="BIC" placeholder="veuillez entrer votre BIC" required>
+                    <input type="text" id="BIC" name="BIC" value="<?php echo $bic; ?>" required>
                 </fieldset>
             </div>
             <div class="nom-du-proprietaire">
                 <fieldset>
                     <legend>Nom</legend>
-                    <input type="text" id="nom" name="nom" placeholder="Nom" required 
-                        title="Veuillez entrer le nom du propriétaire du compte">
+                    <input type="text" id="nom" name="nom" value="<?php echo $nom; ?>" required>
                 </fieldset>
             </div>
         </div>
@@ -108,7 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
     </div>
     <div class="compte_membre_save_delete">
-        <button type="submit" class="submit-btn2">enregistrer les coordonnées</button>
+        <button type="submit" class="submit-btn2">Modifier les coordonnées</button>
     </div>
 </form>
 
@@ -157,5 +189,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 </footer>
+
+<script>
+    // Afficher le message d'alerte et le masquer après 3 secondes
+    window.onload = function() {
+        var alertBox = document.getElementById('alert');
+        if (alertBox) {
+            alertBox.style.display = 'block'; // Affiche le message
+            setTimeout(function() {
+                alertBox.style.display = 'none'; // Masque le message après 3 secondes
+            }, 3000);
+        }
+    };
+</script>
 </body>
 </html>

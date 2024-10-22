@@ -96,19 +96,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="IBAN">
                 <fieldset>
                     <legend>IBAN</legend>
-                    <input type="text" id="IBAN" name="IBAN" value="<?php echo $iban; ?>" required>
+                    <input type="text" id="IBAN" name="IBAN" value="<?php echo $iban; ?>" placeholder="IBAN  (obligatoire)" required>
                 </fieldset>
             </div>
             <div class="BIC">
                 <fieldset>
                     <legend>BIC</legend>
-                    <input type="text" id="BIC" name="BIC" value="<?php echo $bic; ?>" required>
+                    <input type="text" id="BIC" name="BIC" value="<?php echo $bic; ?>" placeholder="veuillez entrer votre BIC" required>
                 </fieldset>
             </div>
             <div class="nom-du-proprietaire">
                 <fieldset>
                     <legend>Nom</legend>
-                    <input type="text" id="nom" name="nom" value="<?php echo $nom; ?>" required>
+                    <input type="text" id="nom" name="nom" value="<?php echo $nom; ?>" placeholder="Nom" required>
                 </fieldset>
             </div>
         </div>
