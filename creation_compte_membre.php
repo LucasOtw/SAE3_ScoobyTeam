@@ -161,8 +161,14 @@
     </main>
     <?php
 
-    // Vérifie si le formulaire a été soumis
+        // Vérifie si le formulaire a été soumis    
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
+        $username = "sae";  // Utilisateur PostgreSQL défini dans .env
+        $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
     
+        // Créer une instance PDO avec les bons paramètres
+        $pdo = new PDO($dsn, $username, $password);
+
         // Récupération des champs
         $prenom = trim(isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : '');
         $nom = trim(isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : '');
