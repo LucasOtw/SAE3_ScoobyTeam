@@ -112,9 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </fieldset>
             </div>
         </div>
-        <div class="image-container">
-            <img src="Images/carte_bancaire.png" alt="image carte bancaire" class="image">
-        </div>
+        
     </div>
 
     <div class="checkbox">
