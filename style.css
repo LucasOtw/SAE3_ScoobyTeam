@@ -758,14 +758,16 @@ footer {
         align-items: center;
     }
 
+    .description-link {
+        text-decoration: none; 
+    }
+    
     .description-link h3 {
         color: var(--vert-clair);
         outline: none;
-        text-decoration: none !important;
         font-size: 17px;
-
-
     }
+    
 
     .Detail_offre_ouverture_global {
         background-color: #ffffff;
