@@ -103,28 +103,28 @@ pg_close($conn);
 
 
 <?php if ($message): ?>
-    <div class="alert_bancaire" id="alert_bancaire">
+    <div class="alert" id="alert">
         <?php echo $message; ?>
     </div>
 <?php endif; ?>
 
 <form action="#" method="POST">
     <h4>Modification des coordonnées bancaires</h4>
-    <div class="form-image-container_bancaire">
-        <div class="form-section_bancaire">
-            <div class="IBAN_bancaire">
+    <div class="form-image-container">
+        <div class="form-sectione">
+            <div class="IBAN">
                 <fieldset>
                     <legend>IBAN</legend>
                     <input type="text" id="IBAN" name="IBAN" value="<?php echo $iban; ?>" placeholder="IBAN" required>
                 </fieldset>
             </div>
-            <div class="BIC_bancaire">
+            <div class="BIC">
                 <fieldset>
                     <legend>BIC</legend>
                     <input type="text" id="BIC" name="BIC" value="<?php echo $bic; ?>" placeholder="BIC" required>
                 </fieldset>
             </div>
-            <div class="nom-du-proprietaire_bancaire">
+            <div class="nom-du-proprietaire">
                 <fieldset>
                     <legend>Nom</legend>
                     <input type="text" id="nom" name="nom" value="<?php echo $nom; ?>" placeholder="Nom" required>
@@ -133,21 +133,21 @@ pg_close($conn);
         </div>
     </div>
 
-    <div class="checkbox_bancaire">
+    <div class="checkbox">
         <input type="checkbox" id="cgu" name="cgu" required>
         <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
     </div>
-    <div class="compte_membre_save_delete_bancaire">
-        <button type="submit" class="submit-btn2_bancaire">Modifier les coordonnées</button>
+    <div class="compte_membre_save_delete">
+        <button type="submit" class="submit-btn2">Modifier les coordonnées</button>
     </div>
 </form>
 
-<footer class="footer_detail_avis_bancaire">
-    <div class="footer-links_bancaire">
-        <div class="logo_bancaire">
+<footer class="footer_detail_avis">
+    <div class="footer-links">
+        <div class="logo">
             <img src="Images/logoBlanc.png" alt="Logo PACT">
         </div>
-        <div class="link-group_bancaire">
+        <div class="link-group">
             <ul>
                 <li><a href="#">Mentions Légales</a></li>
                 <li><a href="#">RGPD</a></li>
@@ -155,21 +155,21 @@ pg_close($conn);
                 <li><a href="#">Nos partenaires</a></li>
             </ul>
         </div>
-        <div class="link-group_bancaire">
+        <div class="link-group">
             <ul>
                 <li><a href="#">Accueil</a></li>
                 <li><a href="#">Publier</a></li>
                 <li><a href="#">Historique</a></li>
             </ul>
         </div>
-        <div class="link-group_bancaire">
+        <div class="link-group">
             <ul>
                 <li><a href="#">CGU</a></li>
                 <li><a href="#">Signaler un problème</a></li>
                 <li><a href="#">Nous contacter</a></li>
             </ul>
         </div>
-        <div class="link-group_bancaire">
+        <div class="link-group">
             <ul>
                 <li><a href="#">Presse</a></li>
                 <li><a href="#">Newsletter</a></li>
@@ -178,8 +178,8 @@ pg_close($conn);
         </div>
     </div>
 
-    <div class="footer-bottom_bancaire">
-        <div class="social-icons_bancaire">
+    <div class="footer-bottome">
+        <div class="social-icons">
             <a href="#"><img src="Images/Vector.png" alt="Facebook"></a>
             <a href="#"><img src="Images/Vector2.png" alt="Instagram"></a>
             <a href="#"><img src="Images/youtube.png" alt="YouTube"></a>
@@ -191,7 +191,7 @@ pg_close($conn);
 <script>
     
     window.onload = function() {
-        var alertBox = document.getElementById('alert_bancaire');
+        var alertBox = document.getElementById('alert');
         if (alertBox) {
             alertBox.style.display = 'block'; 
             setTimeout(function() {
