@@ -849,10 +849,6 @@ footer {
     .titre_detail_offre_responsive p,
     .Detail_offre_ouverture_global,
     .Detail_offre_ouverture_global h3,
-    .hours,
-    .hours li,
-    .hours li:last-child,
-    .hours span {
-        display: none;
-    }
+    
+  
 }
