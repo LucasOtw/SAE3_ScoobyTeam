@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>En-tête PACT</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="creation_offre1.css">
 </head>
 <body>
     <header class="header_pro">
@@ -20,8 +20,10 @@
         </nav>
     </header>
 
-    <div>
-        <img id="etapes" src="images/FilArianne1.png" alt="Étapes">
+    <div class="header-controls">
+        <div>
+            <img id="etapes" src="images/FilArianne1.png" alt="Étapes" width="80%" height="80%">
+        </div>
     </div>
     <!-- Contenu principal centré -->
     <main class="main-creation-offre">
@@ -32,21 +34,36 @@
             <p>Tout d'abord, veuillez choisir le type de votre offre pour personnaliser votre expérience.</p>
 
     
-            <form action="#" method="post">
+            <form method="post">              
                 <label for="offre">Choisissez le type de votre offre</label>
-                <select id="offre">
-                    <option value="">Sélectionner...</option>
-                    <option value="restaurant">Restaurant</option>
-                    <option value="spectacle">Spectacle</option>
-                    <option value="visite">Visite</option>
-                    <option value="parc d'attraction">Parc d'attraction</option>
-                    <option value="activite">Activité</option>
-                </select>
+                <div class="type_offre_select_button">
+                    <select id="offre" name="offreChoisie">
+                        <option value="default">Sélectionner...</option>
+                        <option value="restaurant">Restaurant</option>
+                        <option value="spectacle">Spectacle</option>
+                        <option value="visite">Visite</option>
+                        <option value="attraction">Parc d'attraction</option>
+                        <option value="activite">Activité</option>
+                    </select>
+                    <button type="submit" class="button_continuer">Continuer
+                        <img src="images/fleche.png" alt="Fleche" width="25px" height="25px">
+                    </button>
+                </div>
             </form>
-            
-            <button id="button_continuer">Continuer
-                <img src="images/fleche.png" alt="Fleche" width="25px" height="25px">
-            </button>
+
+        <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $offreChoisie = $_POST["offreChoisie"];
+                
+                // Vérifie que l'utilisateur a sélectionné une option valide
+                if ($offreChoisie !== "default") {
+                    header("Location: creation_offre_$offreChoisie.php");
+                    exit();
+                } else {
+                    echo "<script>alert('Veuillez choisir une offre.');</script>";
+                }
+            }
+        ?>
         </div>
     </main>
 
