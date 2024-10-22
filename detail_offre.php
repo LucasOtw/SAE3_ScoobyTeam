@@ -16,10 +16,8 @@ $bdd = new PDO("mysql:host=localhost;dbname=test;user=sae;password=DB_ROOT_PASSW
     if(!empty($existeOffre)){ // si l'offre existe
         $details_offre = $existeOffre->fetch();
     }
-<<<<<<< HEAD
 */
 ?>
->>>>>>> eed49852ccc99d8a210b682e1131be1e8caa02a9
 <!DOCTYPE html>
 <html lang="fr">
 <head>
