@@ -80,7 +80,7 @@ session_start();
     }
     // Vérifier si le formulaire a été soumis
     var_dump($_POST);
-    if(isset($_POST) || !empty($_POST)){
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)){
         $email = trim(htmlspecialchars($_POST['email']));
         $password = htmlspecialchars($_POST['password']);
 
