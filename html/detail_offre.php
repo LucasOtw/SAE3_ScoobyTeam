@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En-tête PACT</title>
+    <title>Détail offre</title>
     <link rel="stylesheet" href="detail_offre.css">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script> <!-- Pour les icones -->
     <style>
@@ -45,9 +45,9 @@
             </div>
 
             <div class="detail_offre_gallery">
-                <img src="images/Tiallannec1.png" alt="Hôtel extérieur" class="main-image">
+                <img src="images/tiallannec1.png" alt="Hôtel extérieur" class="main-image">
                 <div class="thumbnail-grid">
-                    <img src="images/Tiallannec2.png" alt="Hôtel de nuit">
+                    <img src="images/tiallannec2.png" alt="Hôtel de nuit">
                     <img src="images/tiallannec3.png" alt="Salle à manger">
                 </div>
                 
