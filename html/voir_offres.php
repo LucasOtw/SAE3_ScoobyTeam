@@ -117,7 +117,7 @@ if(isset($_GET["deco"])){
             $infosOffre = $infosOffre->fetchAll();
             $i = 0;
             foreach($infosOffre as $offre){
-                echo $i+=1;
+                var_dump($offre);
             }
         ?>
         </section>
