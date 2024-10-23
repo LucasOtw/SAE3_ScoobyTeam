@@ -59,9 +59,9 @@
                 -->
                     <button type="submit">Se connecter</button>
                     <div class="connexion_pro_additional-links">
-                        <p><span class="pas_de_compte">Pas de compte ?<a href="#">Inscription</a></p>
+                        <p><span class="pas_de_compte">Pas de compte ?<a href="creation_pro.php">Inscription</a></p>
 
-                        <p class="compte_membre"><a href="#">Un compte Membre&nbsp?</a></p>
+                        <p class="compte_membre"><a href="connexion_membre.php">Un compte Membre&nbsp?</a></p>
                     </div>
                 </form>
 
@@ -72,12 +72,12 @@
         </div>
     </main>
     <?php
-        $dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
         $username = "sae";
         $password = "philly-Congo-bry4nt";
 
         // Créer une instance PDO
-        $pdo = new PDO($dsn, $username, $password);
+        $dbh = new PDO($dsn, $username, $password);
 
         $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
         $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
@@ -87,8 +87,6 @@
 
         $mdpDansBdd = $dbh -> prepare("select mdp from _professionnel NATURAL JOIN _compte where mail='$email';");
         $mailDansBdd -> execute();
-                                                
-        $dbh = null;
         
         $passwordHashedFromDB = password_hash($mdpDansBdd, PASSWORD_DEFAULT);
 

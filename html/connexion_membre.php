@@ -22,7 +22,7 @@
         
         <nav>
             <ul>
-                <li><a href="#" class="active">Accueil</a></li>
+                <li><a href="mes_offres.php" class="active">Accueil</a></li>
                 <li><a href="creation_offre1.php">Publier</a></li>
                 <li><a href="#">Mon Compte</a></li>
             </ul>
@@ -70,7 +70,7 @@
                     <div class="connexion_membre_btn_connecter_pas_de_compte">
                         <button type="submit">Se connecter</button>
                         <hr>
-                        <p><span class="pas_de_compte">Pas de compte ?<a href="#creation_membre.php">Inscription</a></p>
+                        <p><span class="pas_de_compte">Pas de compte ?<a href="creation_membre.php">Inscription</a></p>
                     </div>
                     
                 </form>
