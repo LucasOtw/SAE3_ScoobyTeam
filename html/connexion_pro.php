@@ -87,6 +87,7 @@ session_start();
         $codeCompte = $dbh->prepare("SELECT code_compte FROM tripenarvor._compte WHERE mail = :mail");
         $codeCompte->bindParam(":mail",$email);
         $codeCompte->execute();
+        var_dump($codeCompte->fetch());
 
         if($codeCompte){
             // si un compte est trouvé, on vérifie maintenant qu'il soit professionnel
