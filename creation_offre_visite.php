@@ -39,7 +39,7 @@
     </header>
     <div class="fleche_retour">
         <div>
-            <img src="images/Bouton_retour.png" alt="retour">
+            <a href="creation_offre1.php"><img src="images/Bouton_retour.png" alt="retour"></a>
         </div>
     </div>
 
