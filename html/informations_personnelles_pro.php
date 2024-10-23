@@ -40,7 +40,7 @@ session_start();
         <section class="tabs">
             <ul>
                 <li><a href="#" class="active">Déconnexion</a></li>
-                <li><a href="#">Offres</a></li>
+                <li><a href="mes_offres.php">Offres</a></li>
                 <li><a href="ajout_bancaire.php">Compte bancaire</a></li>
             </ul>
         </section>
