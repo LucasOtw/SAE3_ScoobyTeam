@@ -95,7 +95,9 @@
            AND table_name   = \'membre\'
              ;');
         $recupTable->execute();
+        echo "<pre>";
         var_dump($recupTable->fetch());
+        echo "</pre>";
 
         $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
         $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
