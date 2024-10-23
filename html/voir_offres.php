@@ -117,7 +117,7 @@ if(isset($_GET["deco"])){
             $infosOffre = $infosOffre->fetchAll();
 
             foreach($infosOffre as $offre){
-                $villeOffre = $dbh->query('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
+                $villeOffre = $dbh->prepare('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
                 $villeOffre->bindParam(":code_adresse",$offre["code_adresse"]);
                 $villeOffre->execute();
 
