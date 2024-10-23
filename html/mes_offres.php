@@ -1,5 +1,5 @@
 
- <?php
+ /*<?php
     try {
         $dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
         $username = "sae";
@@ -43,7 +43,7 @@
         }
         
         $dbh = null;
-    ?>
+    ?>*/
 
 
 
