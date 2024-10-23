@@ -100,11 +100,11 @@
             $existeUser->execute();
             var_dump($existeUser->fetch());
             
-            $mailDansBdd = $dbh -> prepare("select code_compte from tripenarvor._membre where mail='$email';");
-            $mailDansBdd -> execute();
+            // $mailDansBdd = $dbh -> prepare("select code_compte from tripenarvor._membre where mail='$email';");
+            // $mailDansBdd -> execute();
     
-            $mdpDansBdd = $dbh -> prepare("select mdp from tripenarvor._membre where mail='$email';");
-            $mailDansBdd -> execute();
+            // $mdpDansBdd = $dbh -> prepare("select mdp from tripenarvor._membre where mail='$email';");
+            // $mailDansBdd -> execute();
 
             $mailDansBdd = NULL;
             
