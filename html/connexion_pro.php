@@ -94,6 +94,7 @@ session_start();
             var_dump($codeCompte[0]);
             $estPro = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel WHERE code_compte = :codeCompte");
             $estPro->bindParam(":codeCompte",$codeCompte[0]);
+            var_dump($estPro);
             $estPro->execute();
 
             if($estPro){
