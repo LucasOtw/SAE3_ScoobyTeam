@@ -69,7 +69,7 @@
                     <div class="col">
                         <fieldset>
                             <legend style="display:block;">Type de l'offre</legend>
-                            <input type="text" id="type_offre" name="type_offre" placeholder="Parc d'attractions" disabled>
+                                <input type="text" id="type_offre" name="type_offre" placeholder="Visite" disabled>
                         </fieldset>
                     </div>
                 </div>
