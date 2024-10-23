@@ -23,7 +23,7 @@ session_start();
         <nav>
             <ul>
                 <li><a href="voir_offres.php">Accueil</a></li>
-                <li><a href="creation_offre1.php">Publier</a></li>
+                <li><a href="connexion_pro.php">Publier</a></li>
                 <li><a href="connexion_pro.php" class="active">Mon Compte</a></li>
             </ul>
         </nav>
@@ -55,7 +55,6 @@ session_start();
                     <div class="connexion_pro_additional-links">
                         <p><span class="pas_de_compte">Pas de compte ?<a href="creation_pro.php">Inscription</a></span></p>
                         <p class="compte_membre"><a href="connexion_membre.php">Un compte Membre&nbsp?</a></p>
-                        <p><a href="creation_compte_pro.php">Déjà Inscrit ? &nbsp</p>
                     </div>
                 </form>
             </div>

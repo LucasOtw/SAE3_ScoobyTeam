@@ -20,8 +20,8 @@ session_start();
         <nav>
             <ul>
                 <li><a href="mes_offres.php" class="active">Accueil</a></li>
-                <li><a href="creation_offre1.php">Publier</a></li>
-                <li><a href="ajout_bancaire.php">Mon Compte</a></li>
+                <li><a href="connexion_pro.php">Publier</a></li>
+                <li><a href="connexion_pro.php">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
@@ -40,7 +40,7 @@ session_start();
         <section class="tabs">
             <ul>
                 <li><a href="#" class="active">Déconnexion</a></li>
-                <li><a href="#">Offres</a></li>
+                <li><a href="mes_offres.php">Offres</a></li>
                 <li><a href="ajout_bancaire.php">Compte bancaire</a></li>
             </ul>
         </section>
@@ -71,7 +71,7 @@ session_start();
             <div class="link-group">
                 <ul>
                     <li><a href="mes_offres.php">Accueil</a></li>
-                    <li><a href="#">Publier</a></li>
+                    <li><a href="connexion_pro.php">Publier</a></li>
                     <li><a href="#">Historique</a></li>
                 </ul>
             </div>

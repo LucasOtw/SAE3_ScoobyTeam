@@ -98,8 +98,8 @@ if(!isset($_POST["code_offre"])){
             <nav>
                 <ul>
                     <li><a href="voir_offres.php" class="active">Accueil</a></li>
-                    <li><a href="creation_offre1.php">Publier</a></li>
-                    <li><a href="#">Mon Compte</a></li>
+                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <li><a href="connexion_membre.php">Mon Compte</a></li>
                 </ul>
             </nav>
         </header>
@@ -213,8 +213,8 @@ if(!isset($_POST["code_offre"])){
                 </div>
                 <div class="link-group">
                     <ul>
-                        <li><a href="#">Accueil</a></li>
-                        <li><a href="#">Publier</a></li>
+                        <li><a href="voir_offres.php">Accueil</a></li>
+                        <li><a href="connexion_pro.php">Publier</a></li>
                         <li><a href="#">Historique</a></li>
                     </ul>
                 </div>

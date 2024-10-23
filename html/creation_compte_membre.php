@@ -260,9 +260,6 @@
                 if ($insererAdresse->execute()) {
                     // 2. Récupérer le code_adresse nouvellement créé
                     $codeAdresse = $dbh->lastInsertId();
-                    echo "L'adresse a été insérée avec succès. Code adresse: " . $codeAdresse;
-                } else {
-                    echo "Erreur lors de l'insertion de l'adresse.";
                 }
                 
                // on ajoute maintenant le compte
@@ -278,13 +275,11 @@
                 if ($creerCompte->execute()) {
                     // 2. Récupérer le code_adresse nouvellement créé
                     $codeCompte = $dbh->lastInsertId();
-                    echo "Le compte a été crée avec succès. Code du compte : " . $codeCompte;
-                } else {
-                    echo "Erreur lors de l'insertion du compte.";
                 }
 
                 $creerMembre = $dbh->prepare("INSERT INTO tripenarvor._membre VALUES (:code_compte,:nom,:prenom,:pseudo)");
-                
+
+                $creerMembre->bindParam(':code_compte',$codeCompte);
                 $creerMembre->bindParam(':nom', $nom);
                 $creerMembre->bindParam(':prenom', $prenom);
                 $creerMembre->bindParam(':pseudo', $pseudo);
@@ -293,11 +288,6 @@
                     echo "Le compte Membre a été crée avec succès";
                 }
 
-                
-
-                
-                // Exécutez la requête
-                var_dump($insert->execute());
     
                try {
                     // Appelle nextval pour initier la séquence
