@@ -99,48 +99,55 @@
         var_dump($recupTable->fetch());
         echo "</pre>";
 
-        $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
-        $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
-        
-        $mailDansBdd = $dbh -> prepare("select code_compte from tripenarvor._membre where mail='$email';");
-        $mailDansBdd -> execute();
-
-        $mdpDansBdd = $dbh -> prepare("select mdp from tripenarvor._membre where mail='$email';");
-        $mailDansBdd -> execute();
-        $dbh = null;
-        
-        $passwordHashedFromDB = password_hash($mdpDansBdd, PASSWORD_DEFAULT);
-
-        if ($mailDansBdd != NULL){
-            if (password_verify($password, $passwordHashedFromDB)) {
-                // Le mot de passe est correct
-                // Connexion
-                session_start();
-                $_SESSION["compte"] = $mailDansBdd;
-                // redirection
-                header('Location: modif_infos_pro.php');
-                exit();
+        if(!empty($_POST)){
+            $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
+            $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
+    
+            // on cherche dans la base de données si le compte existe.
+    
+            $existeUser = $dbh->prepare("SELECT code_compte FROM tripenarvor._compte WHERE mail='$email'");
+            $existeUser->execute();
+            var_dump($existeUser->fetch());
+            
+            $mailDansBdd = $dbh -> prepare("select code_compte from tripenarvor._membre where mail='$email';");
+            $mailDansBdd -> execute();
+    
+            $mdpDansBdd = $dbh -> prepare("select mdp from tripenarvor._membre where mail='$email';");
+            $mailDansBdd -> execute();
+            $dbh = null;
+            
+            $passwordHashedFromDB = password_hash($mdpDansBdd, PASSWORD_DEFAULT);
+    
+            if ($mailDansBdd != NULL){
+                if (password_verify($password, $passwordHashedFromDB)) {
+                    // Le mot de passe est correct
+                    // Connexion
+                    session_start();
+                    $_SESSION["compte"] = $mailDansBdd;
+                    // redirection
+                    header('Location: modif_infos_pro.php');
+                    exit();
+                } else {
+                    // Le mot de passe est incorrect
+                    ?>
+                    <p>
+                    <?php
+                        echo "Le mot de passe est incorrect";
+                    ?>
+                </p>
+                <?php
+                }
             } else {
-                // Le mot de passe est incorrect
+                // Mail inconnu
                 ?>
                 <p>
+                    <?php
+                        echo "Le mail est inconnu";
+                    ?>
+                </p>
                 <?php
-                    echo "Le mot de passe est incorrect";
-                ?>
-            </p>
-            <?php
             }
-        } else {
-            // Mail inconnu
-            ?>
-            <p>
-                <?php
-                    echo "Le mail est inconnu";
-                ?>
-            </p>
-            <?php
         }
-
         
     ?>
 </body>
