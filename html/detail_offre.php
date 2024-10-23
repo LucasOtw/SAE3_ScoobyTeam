@@ -103,6 +103,8 @@ if(!isset($_POST["code_offre"])){
                 </ul>
             </nav>
         </header>
+
+
         <div class="detail_offre_hotel-detail">
             <div class="detail_offre_hotel-header">
                 <div class="detail_offre_hotel-info">
@@ -346,50 +348,53 @@ if(!isset($_POST["code_offre"])){
         </article>
     </div>
 </body>
+
+
   <!-- JavaScript pour le carrousel -->
   <script>
-       let startX = 0;
-let currentIndex = 0;
-const images = document.querySelectorAll('.carousel-images img');
+    
+        let startX = 0;
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel-images img');
 
-// Afficher l'image selon l'index
-function showSlide(index) {
-    const totalSlides = images.length;
-    if (index >= totalSlides) {
-        currentIndex = 0;
-    } else if (index < 0) {
-        currentIndex = totalSlides - 1;
-    } else {
-        currentIndex = index;
-    }
-    const offset = -currentIndex * 100;
-    document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
-}
+        // Afficher l'image selon l'index
+        function showSlide(index) {
+            const totalSlides = images.length;
+            if (index >= totalSlides) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else {
+                currentIndex = index;
+            }
+            const offset = -currentIndex * 100;
+            document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+        }
 
-// Suivant
-function nextSlide() {
-    showSlide(currentIndex + 1);
-}
+        // Suivant
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
 
-// Précédent
-function prevSlide() {
-    showSlide(currentIndex - 1);
-}
+        // Précédent
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
 
-// Détecter le début du swipe
-document.querySelector('.carousel-images').addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-});
+        // Détecter le début du swipe
+        document.querySelector('.carousel-images').addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
 
-// Détecter la fin du swipe
-document.querySelector('.carousel-images').addEventListener('touchend', (e) => {
-    const endX = e.changedTouches[0].clientX;
-    if (startX > endX + 50) {
-        nextSlide(); // Swipe vers la gauche
-    } else if (startX < endX - 50) {
-        prevSlide(); // Swipe vers la droite
-    }
-});
+        // Détecter la fin du swipe
+        document.querySelector('.carousel-images').addEventListener('touchend', (e) => {
+            const endX = e.changedTouches[0].clientX;
+            if (startX > endX + 50) {
+                nextSlide(); // Swipe vers la gauche
+            } else if (startX < endX - 50) {
+                prevSlide(); // Swipe vers la droite
+            }
+        });
 
     </script>
 </html>
