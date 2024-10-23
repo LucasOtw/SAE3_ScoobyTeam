@@ -53,7 +53,7 @@
                     <div class="col">
                         <fieldset>
                             <legend style="display:block;">Type de l'offre</legend>
-                            <input type="text" id="type_offre" name="type_offre" placeholder="Parc d'attractions" disabled>
+                            <input type="text" id="type_offre" name="type_offre" placeholder="Spectacle" disabled>
                         </fieldset>
                     </div>
                 </div>
@@ -121,25 +121,7 @@
                     </div>
                 </div>
 
-                <!-- Age requis -->
-                <div class="row">
-                    <div class="col">
-                        <fieldset>
-                            <legend>Age minimum requis</legend>
-                            <input type="number" id="age" name="age" placeholder="Age minimum requis">
-                        </fieldset>
-                    </div>  
-                </div>
-
-                <!-- Nb attractions -->
-                <div class="row">
-                    <div class="col">
-                        <fieldset>
-                            <legend>Nombre d'attractions</legend>
-                            <input type="number" id="nb_attraction" name="nb_attractions" placeholder="Nombre d'attractions">
-                        </fieldset>
-                    </div>  
-                </div>
+            
 
                 <!-- Tags -->
                 <div class="row">
