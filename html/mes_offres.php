@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+var_dump($_SESSION["compte"]);
+
 if (!isset($_SESSION["compte"]) || empty($_SESSION["compte"])) {
     header('location: connexion_pro.php');
     exit;
