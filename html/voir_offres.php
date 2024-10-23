@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php session_start();
+
+if(isset($_GET["deco"])){
+    echo "BONJOUR";
+};
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -32,6 +38,7 @@
                         <li><a href="connexion_membre.php">Se connecter</a></li>
                         <?php
                     }
+                    <li><a href="voir_offres.php?deco=true">Se déconnecter</a></li>
                 ?>
             </ul>
         </nav>
