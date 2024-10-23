@@ -348,7 +348,7 @@ if(!isset($_POST["code_offre"])){
 </body>
   <!-- JavaScript pour le carrousel -->
   <script>
-       let startX = 0;
+  let startX = 0;
 let currentIndex = 0;
 const images = document.querySelectorAll('.carousel-images img');
 
@@ -390,6 +390,5 @@ document.querySelector('.carousel-images').addEventListener('touchend', (e) => {
         prevSlide(); // Swipe vers la droite
     }
 });
-
-    </script>
+  </script>
 </html>
