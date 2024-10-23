@@ -112,29 +112,10 @@ if(isset($_GET["deco"])){
                 print "Erreur!: ". $e->getMessage(). "<br/>";
                 die();
             }
-            $stmt = $dbh->prepare('SELECT * FROM tripenarvor._offre');
-            $stmt->execute();
-            
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $fImg = $dbh->prepare('select url_image from tripenarvor._son_image natural join tripenarvor._image where code_offre = :offre');
-                $fImg->execute(['offre' => $row["code_offre"]]);
-                ?>
-                    <article class="offer">
-                        <img src="images/<?php echo htmlspecialchars($fImg[0]); ?>.png" alt="<?php echo htmlspecialchars($row['titre_offre']); ?>">
-                        <div class="offer-details">
-                            <h2><?php echo htmlspecialchars($row['titre_offre']); ?></h2>
-                            <p><?php echo htmlspecialchars($row['ville']); ?></p>
-                            <span><?php echo date_format(date_create($row['date_publication']), 'd/m/Y'); ?></span>
-                            <span>
-                                <!-- <img src="images/etoile.png" class="img-etoile">
-                                <p><?php /*echo round($row['note_moyenne'], 1); */?><span class="nb_avis">(355 avis)</span></p> -->
-                            </span>
-                            <button>Voir l'offre →</button>
-                        </div>
-                    </article>
-                <?php
-                }
-                ?>
+            // On récupère toutes les offres (titre,ville,images)
+            $infosOffre = $dbh->prepare('SELECT * FROM tripenarvor._offre');
+            var_dump($infosOffre);
+        ?>
         </section>
 
     </main>
