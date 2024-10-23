@@ -94,6 +94,7 @@ ob_start();
         $dbh = new PDO($dsn, $username, $password);
 
         if(!empty($_POST)){
+            var_dump($_POST);
             $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
             $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
     
