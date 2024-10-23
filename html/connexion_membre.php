@@ -166,8 +166,6 @@ session_start();
                 </p>
                 <?php
             }
-        } else {
-            echo "BONJOUR !";
         }
         
     ?>
