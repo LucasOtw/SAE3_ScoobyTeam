@@ -87,6 +87,7 @@
 
         $mdpDansBdd = $dbh -> prepare("select mdp from _professionnel NATURAL JOIN _compte where mail='$email';");
         $mailDansBdd -> execute();
+                                                
         $dbh = null;
         
         $passwordHashedFromDB = password_hash($mdpDansBdd, PASSWORD_DEFAULT);

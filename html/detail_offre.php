@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>En-tête PACT</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="detail_offre.css">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script> <!-- Pour les icones -->
     <style>
         .hours {
