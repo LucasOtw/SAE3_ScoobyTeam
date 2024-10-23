@@ -241,6 +241,13 @@
             if (empty($erreurs)) {
                 echo "OUIIIIIIIIIIII !";
                 // Pas d'erreurs, on peut procéder au traitement (inscription, enregistrement, etc.)
+
+                // Le complément d'adresse ne peut pas être NULL mais peut être vide.
+                // Si $complementAdresse est NULL, il faut le remplacer par une chaîne vide.
+
+                if(empty($complementAdresse) || !$complementAdresse){
+                    $complementAdresse = "";
+                }
                 
                 $insert = $dbh -> prepare("insert into membre(telephone, mail, mdp, nom, prenom, pseudo, adresse_postal, complement_adresse, code_postal, ville)
                                                 values ($telephone, $email, $passwordHashed, $nom, $prenom, $pseudo, $adresse, $complementAdresse, $codePostal, $ville)");
