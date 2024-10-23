@@ -82,12 +82,12 @@
         </div>
     </main>
     <?php
-        $postgresdb = "postgresdb";
-        $dbname = "5432";
-        $user = "sae";
-        $pass = "DB_ROOT_PASSWORD";
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
+        $username = "sae";
+        $password = "philly-Congo-bry4nt";
 
-        $dbh = new PDO("$driver:host=$postgresdb;dbname=$dbname", $user, $pass);
+        // Créer une instance PDO
+        $dbh = new PDO($dsn, $username, $password);
 
         $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
         $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
