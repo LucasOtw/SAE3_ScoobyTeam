@@ -149,7 +149,7 @@
                     
                 <div class="creation_compte_membre_other-links">
                     <p>Déjà un compte ? <a href="connexion_membre.php" class="connexion_membre">Connexion</a></p>
-                    <p>S’inscrire avec un compte <a href="creation_compte_pro" class="inscription_pro">Pro</a></p>
+                    <p>S’inscrire avec un compte <a href="creation_pro" class="inscription_pro">Pro</a></p>
                 </div>
             </div>
             <div class="image-section">
