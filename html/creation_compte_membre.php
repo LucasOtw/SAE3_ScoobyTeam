@@ -207,7 +207,7 @@
                 $erreurs[] = "Le champ 'Pseudo' est requis.";
             }
             // 4. Email : Vérifier si l'email est valide
-            if (empty($email) || !preg_match("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", $email)) {
+            if (empty($email) || !preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email)) {
                 $erreurs[] = "L'adresse email est invalide.";
             }
             // 5. Téléphone : Doit être un format valide de 10 chiffres
