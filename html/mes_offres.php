@@ -1,8 +1,9 @@
 <?php
 session_start();
 
-if(!isset($_SESSION["compte"]) || empty($_SESSION["compte"]){
-   header('location: connexion_pro.php');
+if (!isset($_SESSION["compte"]) || empty($_SESSION["compte"])) {
+    header('location: connexion_pro.php');
+    exit;
 }
 
 ?>
