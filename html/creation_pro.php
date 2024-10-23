@@ -154,7 +154,6 @@ session_start();
 
         if(!empty($_POST)){
            // Récupération des variables du formulaire
-            var_dump($_POST);
             
             $raison_sociale = trim(isset($_POST['raison-sociale']) ? htmlspecialchars($_POST['raison-sociale']) : '');
             $siren = trim(isset($_POST['siren']) ? htmlspecialchars($_POST['siren']) : '');
@@ -228,11 +227,12 @@ session_start();
                 if (empty($siren)) {
                     $professionnel_publique = $dbh->prepare("INSERT INTO professionnel_publique(telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville) 
                                                 VALUES ($telephone, $email, $passwordHashed, $raison_sociale, $adresse, $complementAdresse, $codePostal, $ville)");
-                    var_dump($insert);
+                    var_dump($professionnel_publique);
                 }
                 else {
                     $professionnel_prive = $dbh->prepare("INSERT INTO professionnel_prive(telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville, num_siren) 
                                                 VALUES ($telephone, $email, $passwordHashed, $raison_sociale, $adresse, $complementAdresse, $codePostal, $ville, $siren)");
+                    var_dump($professionnel_prive);
                 }
     
                 $dbh->query("SELECT nextval('tripenarvor._compte_code_compte_seq');");
