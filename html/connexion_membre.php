@@ -1,6 +1,7 @@
 <?php
 
 ob_start();
+session_start();
 
 ?>
 <!DOCTYPE html>
@@ -27,7 +28,7 @@ ob_start();
         
         <nav>
             <ul>
-                <li><a href="voir_offres.php.php" >Accueil</a></li>
+                <li><a href="voir_offres.php" >Accueil</a></li>
                 <li><a href="connexion_pro.php">Publier</a></li>
                 <li><a href="connexion_membre.php" class="active">Mon Compte</a></li>
             </ul>
@@ -118,7 +119,10 @@ ob_start();
                     $pwd_compte = $checkPWD->fetch();
 
                     if(password_verify($password,$pwd_compte[0])){
-                        echo "BONSOIR !";
+                        // les mots de passe correspondent
+                        // l'utilisateur peut être connecté
+                        header('location: voir_offres.php');
+                        $_SESSION["compte"] = $existeUser[0];
                     }
                 }
             }
@@ -162,8 +166,6 @@ ob_start();
                 </p>
                 <?php
             }
-        } else {
-            echo "BONJOUR !";
         }
         
     ?>
