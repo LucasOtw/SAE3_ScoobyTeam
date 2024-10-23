@@ -81,7 +81,7 @@ session_start();
 
                         <fieldset>
                             <legend>N° de Siren (Professionnel privé)</legend>
-                            <input type="text" id="siren" name="siren" placeholder="N° de Siren (Professionnel privé)">
+                            <input type="text" id="siren" name="siren" placeholder="N° de Siren (Professionnel privé)" maxlength=9>
                         </fieldset>
                     </div>
                     <div class="crea_pro_mail_tel">
