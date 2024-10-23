@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +40,7 @@
 
 <?php
 // Détails de la connexion à la base de données
-$dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";
 $password = "philly-Congo-bry4nt";
 
