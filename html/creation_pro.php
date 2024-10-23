@@ -134,7 +134,7 @@
                 </form>
                 <div class="creation_compte_pro_other-links">
                     <p>Déjà un compte ? <a href="connexion_pro.php">Connexion</a></p>
-                    <p>S’inscrire avec un compte <a href="#">Membre</a></p>
+                    <p>S’inscrire avec un compte <a href="creation_membre.php">Membre</a></p>
                 </div>
             </div>
             <div class="image-section">
