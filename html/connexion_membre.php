@@ -42,7 +42,7 @@
                     <h2>Se connecter</h2>
                     <p>Se connecter pour accéder à vos favoris</p>
                 </div>
-                <form action="#">
+                <form action="connexion_membre.php">
                     <fieldset>
                         <legend>E-mail</legend>
                         <div class="connexion_membre_input-group">
