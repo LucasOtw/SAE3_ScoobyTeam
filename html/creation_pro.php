@@ -145,6 +145,13 @@ session_start();
         </div>
         <?php
 
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+        $username = "sae";
+        $password = "philly-Congo-bry4nt";
+
+        // Créer une instance PDO
+        $dbh = new PDO($dsn, $username, $password);
+
         if(!empty($_POST)){
            // Récupération des variables du formulaire
             var_dump($_POST);
