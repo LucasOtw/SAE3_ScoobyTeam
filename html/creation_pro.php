@@ -169,8 +169,6 @@ session_start();
     
             $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
     
-    
-    
             // Initialisation du tableau d'erreurs
             $erreurs = [];
     
