@@ -352,10 +352,9 @@ if(!isset($_POST["code_offre"])){
 
   <!-- JavaScript pour le carrousel -->
   <script>
-    
-        let startX = 0;
-        let currentIndex = 0;
-        const images = document.querySelectorAll('.carousel-images img');
+  let startX = 0;
+let currentIndex = 0;
+const images = document.querySelectorAll('.carousel-images img');
 
         // Afficher l'image selon l'index
         function showSlide(index) {
@@ -381,20 +380,20 @@ if(!isset($_POST["code_offre"])){
             showSlide(currentIndex - 1);
         }
 
-        // Détecter le début du swipe
-        document.querySelector('.carousel-images').addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-        });
+// Détecter le début du swipe
+document.querySelector('.carousel-images').addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+});
 
-        // Détecter la fin du swipe
-        document.querySelector('.carousel-images').addEventListener('touchend', (e) => {
-            const endX = e.changedTouches[0].clientX;
-            if (startX > endX + 50) {
-                nextSlide(); // Swipe vers la gauche
-            } else if (startX < endX - 50) {
-                prevSlide(); // Swipe vers la droite
-            }
-        });
+// Détecter la fin du swipe
+document.querySelector('.carousel-images').addEventListener('touchend', (e) => {
+    const endX = e.changedTouches[0].clientX;
+    if (startX > endX + 50) {
+        nextSlide(); // Swipe vers la gauche
+    } else if (startX < endX - 50) {
+        prevSlide(); // Swipe vers la droite
+    }
+});
 
     </script>
 </html>

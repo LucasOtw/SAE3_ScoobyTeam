@@ -81,7 +81,7 @@ session_start();
 
                         <fieldset>
                             <legend>N° de Siren (Professionnel privé)</legend>
-                            <input type="text" id="siren" name="siren" placeholder="N° de Siren (Professionnel privé)">
+                            <input type="text" id="siren" name="siren" placeholder="N° de Siren (Professionnel privé)" maxlength=9>
                         </fieldset>
                     </div>
                     <div class="crea_pro_mail_tel">
@@ -145,9 +145,15 @@ session_start();
         </div>
         <?php
 
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+        $username = "sae";
+        $password = "philly-Congo-bry4nt";
+
+        // Créer une instance PDO
+        $dbh = new PDO($dsn, $username, $password);
+
         if(!empty($_POST)){
            // Récupération des variables du formulaire
-            var_dump($_POST);
             
             $raison_sociale = trim(isset($_POST['raison-sociale']) ? htmlspecialchars($_POST['raison-sociale']) : '');
             $siren = trim(isset($_POST['siren']) ? htmlspecialchars($_POST['siren']) : '');
@@ -219,16 +225,58 @@ session_start();
             if (empty($erreurs)) {
                 // Pas d'erreurs, on peut procéder à l'enregistrement dans la base de données
                 if (empty($siren)) {
-                    $insert = $professionnel_publique->prepare("INSERT INTO professionnel_publique(telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville) 
-                                                VALUES ($telephone, $email, $passwordHashed, $raison_sociale, $adresse, $complementAdresse, $codePostal, $ville)");
-                    var_dump($insert);
+                    // Requête pour "professionnel_publique"
+                    $professionnel_publique = $dbh->prepare("
+                        INSERT INTO professionnel_publique(
+                            telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville
+                        ) 
+                        VALUES (:telephone, :mail, :mdp, :raison_sociale, :adresse_postale, :complement_adresse, :code_postal, :ville)
+                    ");
+                    
+                    // Bind des valeurs
+                    $professionnel_publique->bindParam(':telephone', $telephone);
+                    $professionnel_publique->bindParam(':mail', $email);
+                    $professionnel_publique->bindParam(':mdp', $passwordHashed);
+                    $professionnel_publique->bindParam(':raison_sociale', $raison_sociale);
+                    $professionnel_publique->bindParam(':adresse_postale', $adresse);
+                    $professionnel_publique->bindParam(':complement_adresse', $complementAdresse);
+                    $professionnel_publique->bindParam(':code_postal', $codePostal);
+                    $professionnel_publique->bindParam(':ville', $ville);
+                
+                    // Exécuter la requête
+                    $professionnel_publique->execute();
+                    var_dump($professionnel_publique);
                 }
                 else {
-                    $insert = $professionnel_prive->prepare("INSERT INTO professionnel_prive(telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville, num_siren) 
-                                                VALUES ($telephone, $email, $passwordHashed, $raison_sociale, $adresse, $complementAdresse, $codePostal, $ville, $siren)");
+                    // Requête pour "professionnel_prive"
+                    $professionnel_prive = $dbh->prepare("
+                        INSERT INTO tripenarvor.professionnel_prive(
+                            telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville, num_siren
+                        ) 
+                        VALUES (:telephone, :mail, :mdp, :raison_sociale, :adresse_postale, :complement_adresse, :code_postal, :ville, :num_siren)
+                    ");
+                    
+                    // Bind des valeurs
+                    $professionnel_prive->bindParam(':telephone', $telephone);
+                    $professionnel_prive->bindParam(':mail', $email);
+                    $professionnel_prive->bindParam(':mdp', $passwordHashed);
+                    $professionnel_prive->bindParam(':raison_sociale', $raison_sociale);
+                    $professionnel_prive->bindParam(':adresse_postale', $adresse);
+                    $professionnel_prive->bindParam(':complement_adresse', $complementAdresse);
+                    $professionnel_prive->bindParam(':code_postal', $codePostal);
+                    $professionnel_prive->bindParam(':ville', $ville);
+                    $professionnel_prive->bindParam(':num_siren', $siren);
+                
+                    // Exécuter la requête
+                    $professionnel_prive->execute();
+                    var_dump($professionnel_prive);
                 }
+
     
-                $_SESSION["compte"]= pg_query("select currval('_compte_code_compte_seq');");
+                $dbh->query("SELECT nextval('tripenarvor._compte_code_compte_seq');");
+                
+                // Appelle currval pour récupérer la dernière valeur
+                $_SESSION["compte"] = ($dbh->query("SELECT currval('tripenarvor._compte_code_compte_seq');"))->fetchColumn();
     
     
             } else {

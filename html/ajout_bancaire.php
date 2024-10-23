@@ -33,7 +33,7 @@ session_start();
         <p>ti.al.lannec@gmail.com | 07.98.76.54.12</p>
     </div>
     <div class="tabs">
-        <div class="tab"><a href="modif_mdp_pro.php">Mot de passe et sécurité</div>
+        <div class="tab"><a href="modif_mdp_pro.php">Mot de passe et sécurité</a></div>
         <div class="tab active">Compte Bancaire</div>
     </div>
 </div>

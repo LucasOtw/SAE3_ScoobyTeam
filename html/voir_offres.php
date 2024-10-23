@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php session_start();
+
+if(isset($_GET["deco"])){
+    header('location: connexion_membre.php');
+    session_destroy();
+};
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,7 +29,17 @@
             <ul>
                 <li><a href="voir_offres.php" class="active">Accueil</a></li>
                 <li><a href="connexion_pro.php">Publier</a></li>
-                <li><a href="connexion_membre.php">Mon Compte</a></li>
+                <?php
+                    if(isset($_SESSION["compte"]) || !empty($_SESSION["compte"])){
+                        ?>
+                        <li><a href="#">/!\ EN COURS /!\</a></li>
+                        <li><a href="voir_offres.php?deco=true">Se déconnecter</a></li>
+                        <?php
+                    } else {
+                        ?>
+                        <li><a href="connexion_membre.php">Se connecter</a></li>
+                        <?php
+                    } ?>
             </ul>
         </nav>
     </header>
