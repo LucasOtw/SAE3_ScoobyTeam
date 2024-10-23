@@ -2,7 +2,7 @@
 session_start(); // Assurez-vous d'appeler cette fonction au début du fichier
 
 // Détails de la connexion à la base de données
-$dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";
 $password = "philly-Congo-bry4nt";
 

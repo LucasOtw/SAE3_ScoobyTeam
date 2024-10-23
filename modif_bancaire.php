@@ -36,7 +36,7 @@
         $codeCompteBancaire = '';
         
         // Connexion à la base de données
-        $dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
         $username = "sae";
         $password = "philly-Congo-bry4nt";
 
@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($iban) && !empty($bic) && !empty($nom) && $cgu) {
         // Mettre à jour les informations bancaires dans la base de données
         try {
-            $dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
+            $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
             $pdo = new PDO($dsn, $username, $password);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
