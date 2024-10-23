@@ -51,7 +51,7 @@ ob_start();
                     <fieldset>
                         <legend>E-mail</legend>
                         <div class="connexion_membre_input-group">
-                            <input type="email" id="email" name="email" placeholder="E-mail" required>
+                            <input type="email" id="email" name="mail" placeholder="E-mail" required>
                         </div>
                     </fieldset>
 
