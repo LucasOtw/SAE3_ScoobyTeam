@@ -36,7 +36,7 @@
 
     <?php
         // Connexion à la base de données PostgreSQL
-        $dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
         $username = "sae";
         $password = "philly-Congo-bry4nt";
 
@@ -155,7 +155,7 @@
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="#">Accueil</a></li>
+                    <li><a href="mes_offres.php">Accueil</a></li>
                     <li><a href="#">Publier</a></li>
                     <li><a href="#">Historique</a></li>
                 </ul>

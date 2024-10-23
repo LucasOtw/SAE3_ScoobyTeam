@@ -1,18 +1,12 @@
 
- /*<?php
+ <?php
+    session_start();
     try {
-        $dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
         $username = "sae";
         $password = "philly-Congo-bry4nt";
         // Créer une instance PDO
-        $pdo = new PDO($dsn, $username, $password);
-    
-        
-    } catch (PDOException $e) {
-        print "Erreur!: ". $e->getMessage(). "<br/>";
-        die();
-    }
-
+        $dbh = new PDO($dsn, $username, $password);
     $stmt = $dbh->prepare('SELECT * FROM _offre WHERE professionnel = :professionnel');
         $stmt->execute(['professionnel' => $_SESSION["compte"]]);
         
@@ -43,6 +37,13 @@
         }
         
         $dbh = null;
+        
+    } catch (PDOException $e) {
+        print "Erreur!: ". $e->getMessage(). "<br/>";
+        die();
+    }
+
+        
     ?>*/
 
 
