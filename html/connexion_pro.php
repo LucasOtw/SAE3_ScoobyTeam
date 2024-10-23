@@ -77,7 +77,7 @@
         $password = "philly-Congo-bry4nt";
 
         // Créer une instance PDO
-        $pdo = new PDO($dsn, $username, $password);
+        $dbh = new PDO($dsn, $username, $password);
 
         $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
         $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
@@ -87,8 +87,6 @@
 
         $mdpDansBdd = $dbh -> prepare("select mdp from _professionnel NATURAL JOIN _compte where mail='$email';");
         $mailDansBdd -> execute();
-                                                
-        $dbh = null;
         
         $passwordHashedFromDB = password_hash($mdpDansBdd, PASSWORD_DEFAULT);
 
