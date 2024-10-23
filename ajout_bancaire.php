@@ -1,3 +1,70 @@
+<?php
+session_start(); // Assurez-vous d'appeler cette fonction au début du fichier
+
+// Détails de la connexion à la base de données
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
+$username = "sae";
+$password = "philly-Congo-bry4nt";
+
+// Initialisation des variables
+$iban = '';
+$bic = '';
+$nom = '';
+$message = ''; // Pour les messages de succès ou d'erreur
+
+try {
+    // Créer une instance PDO
+    $pdo = new PDO($dsn, $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Préparer la requête pour récupérer les informations bancaires
+    $query = "SELECT nom_compte, iban, bic FROM tripenarvor._compte_bancaire WHERE code_compte_bancaire = :compte_bancaire_id";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':compte_bancaire_id', $_SESSION['compte_bancaire_id'], PDO::PARAM_INT);
+    $stmt->execute();
+
+    // Vérifier s'il y a des résultats
+    if ($stmt->rowCount() > 0) {
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $nom = $row['nom_compte'];
+        $iban = $row['iban'];
+        $bic = $row['bic'];
+    }
+
+    // Si le formulaire est soumis
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $iban = htmlspecialchars($_POST['IBAN']);
+        $bic = htmlspecialchars($_POST['BIC']);
+        $nom = htmlspecialchars($_POST['nom']);
+        $cgu = isset($_POST['cgu']) ? true : false;
+
+        // Vérifier que tous les champs sont remplis
+        if (!empty($iban) && !empty($bic) && !empty($nom) && $cgu) {
+            // Mettre à jour les informations bancaires dans la base de données
+            $updateQuery = "UPDATE tripenarvor._compte_bancaire SET nom_compte = :nom, iban = :iban, bic = :bic WHERE code_compte_bancaire = :compte_bancaire_id";
+            $stmt = $pdo->prepare($updateQuery);
+            $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
+            $stmt->bindParam(':iban', $iban, PDO::PARAM_STR);
+            $stmt->bindParam(':bic', $bic, PDO::PARAM_STR);
+            $stmt->bindParam(':compte_bancaire_id', $_SESSION['compte_bancaire_id'], PDO::PARAM_INT);
+
+            if ($stmt->execute()) {
+                $message = "Les informations bancaires ont été modifiées avec succès.";
+            } else {
+                $message = "Impossible de modifier les informations. Veuillez réessayer.";
+            }
+        } else {
+            $message = "Veuillez remplir tous les champs.";
+        }
+    }
+} catch (PDOException $e) {
+    $message = "Erreur de connexion à la base de données : " . $e->getMessage();
+}
+
+// Fermer la connexion
+$pdo = null;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,71 +102,12 @@
     </div>
 </div>
 
-<?php
-// Détails de la connexion à la base de données
-$dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
-$username = "sae";
-$password = "philly-Congo-bry4nt";
-
-try {
-    // Créer une instance PDO
-    $pdo = new PDO($dsn, $username, $password);
-
-    // Définir le mode d'erreur PDO à Exception
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Variables pour stocker les informations bancaires
-    $iban = '';
-    $bic = '';
-    $nom = '';
-
-    // Préparer la requête pour récupérer les informations bancaires
-    $query = "SELECT nom_compte, iban, bic FROM _compte_bancaire WHERE code_compte_bancaire = :compte_bancaire_id";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':compte_bancaire_id', $_SESSION['compte_bancaire_id'], PDO::PARAM_INT);
-    $stmt->execute();
-
-    // Vérifier s'il y a des résultats
-    if ($stmt->rowCount() > 0) {
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        $nom = $row['nom_compte'];
-        $iban = $row['iban'];
-        $bic = $row['bic'];
-    }
-
-    // Si le formulaire est soumis
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $iban = htmlspecialchars($_POST['IBAN']);
-        $bic = htmlspecialchars($_POST['BIC']);
-        $nom = htmlspecialchars($_POST['nom']);
-        $cgu = isset($_POST['cgu']) ? true : false;
-
-        // Vérifier que tous les champs sont remplis
-        if (!empty($iban) && !empty($bic) && !empty($nom) && $cgu) {
-            // Mettre à jour les informations bancaires dans la base de données
-            $updateQuery = "UPDATE _compte_bancaire SET nom_compte = :nom, iban = :iban, bic = :bic WHERE code_compte_bancaire = :compte_bancaire_id";
-            $stmt = $pdo->prepare($updateQuery);
-            $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
-            $stmt->bindParam(':iban', $iban, PDO::PARAM_STR);
-            $stmt->bindParam(':bic', $bic, PDO::PARAM_STR);
-            $stmt->bindParam(':compte_bancaire_id', $_SESSION['compte_bancaire_id'], PDO::PARAM_INT);
-
-            if ($stmt->execute()) {
-                echo "Les informations bancaires ont été modifiées avec succès.";
-            } else {
-                echo "Impossible de modifier les informations. Veuillez réessayer.";
-            }
-        } else {
-            echo "Veuillez remplir tous les champs.";
-        }
-    }
-} catch (PDOException $e) {
-    echo "Erreur de connexion à la base de données : " . $e->getMessage();
-}
-
-// Fermer la connexion
-$pdo = null;
-?>
+<!-- Affichage des messages -->
+<?php if ($message): ?>
+    <div class="message">
+        <p><?php echo $message; ?></p>
+    </div>
+<?php endif; ?>
 
 <form action="#" method="POST">
     <h4>Modification des coordonnées bancaires</h4>
@@ -131,7 +139,7 @@ $pdo = null;
         <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
     </div>
     <div class="compte_membre_save_delete">
-        <button type="submit" class="submit-btn2">Ajouter vos coordonnées</button>
+        <button type="submit" class="submit-btn2">Modifier les coordonnées</button>
     </div>
 </form>
 
