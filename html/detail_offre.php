@@ -128,36 +128,44 @@
                 </div>
                 <div class="detail_offre_price-button">
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?></p>
-                    <button class="visit-button_detailoffre"><a class="detail_offre_button" href="https://www.tiallannec.com/FR/index.php">Voir le site ➔</a></button>
+                    <button class="visit-button_detailoffre"><a class="detail_offre_button" href=<?php $details_offre["site_web"]?>>Voir le site ➔</a></button>
                 </div>
             </div>
 
             <div class="detail_offre_gallery">
-                <img src="images/tiallannec1.png" alt="Hôtel extérieur" class="main-image">
+                
+                <img src=<?php echo $images_offre[0];?> class="main-image">
                 <div class="thumbnail-grid">
-                    <img src="images/tiallannec2.png" alt="Hôtel de nuit">
-                    <img src="images/tiallannec3.png" alt="Salle à manger">
+                    <?php
+                    if (empty($images_offre[1]))
+                    {
+                        for ($i=0;$i<count($images_offre);$i+=2)
+                        {
+                            ?>
+                                <div class="thumbnail-grid">
+                                    <img src=<?php echo $images_offre[$i];?>>
+                                    <img src=<?php echo $images_offre[$i+1];?>>
+                                </div>
+                            <?php
+                        }
+                    }
+                    ?>
                 </div>
-                
-                <!-- Nouvelle structure pour les miniatures -->
-                
-                    
-                    <div class="detail_offre_thumbnail-grid3">
-                        <img src="images/tiallannec8.png" alt="Chambre">
-                        <img src="images/tiallannec9.png" alt="Vue sur la mer">
-                    </div>
 
             </div>
 
             <div class="detail_offre_description">
-                <h2>Description</h2>
-                <p>
-                    Équipées des dernières technologies, tout a été pensé pour votre confort. Côté jardin, on apprécie le calme de la verdure, le chant des oiseaux et le ruissellement mélodieux de la fontaine. Côté mer, des balcons et terrasses, on est saisi par la force et la beauté du panorama à perte de vue.
-                </p>
+
+                <h2>Résumé</h2>
+                <p><?php echo $details_offre["_resume"];?></p>
+
                 <p>
                 &nbsp <!-- Pour mettre un espace -->
                 </p>
-                <p>27 chambres et 6 suites au décor raffiné et cosy.</p>
+
+                <h2>Description</h2>
+                <p> <?php echo $details_offre["_description"];?></p>
+                
             </div>
 
             <div class="detail_offre_icons">
