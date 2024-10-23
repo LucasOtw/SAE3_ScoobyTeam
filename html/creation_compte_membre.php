@@ -219,8 +219,8 @@
                 $erreurs[] = "Le champ 'Adresse' est requis.";
             }
             // 7. Code Postal : Format à 5 chiffres
-            if (empty($codePostal) || !preg_match('/^[0-9]{5} | 2[AB]$/', $codePostal)) {
-                $erreurs[] = "Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B";
+            if (empty($codePostal) || !preg_match('/^([0-9]{5}|2[AB])$/', $codePostal)) {
+                $erreurs[] = "Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B.";
             }
             // 8. Ville : Pas de chiffres, pas de caractères spéciaux
             if (empty($ville)) {
