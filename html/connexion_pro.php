@@ -59,7 +59,7 @@
                 -->
                     <button type="submit">Se connecter</button>
                     <div class="connexion_pro_additional-links">
-                        <p><span class="pas_de_compte">Pas de compte ?<a href="#creation_pro.php">Inscription</a></p>
+                        <p><span class="pas_de_compte">Pas de compte ?<a href="creation_pro.php">Inscription</a></p>
 
                         <p class="compte_membre"><a href="connexion_membre.php">Un compte Membre&nbsp?</a></p>
                     </div>
