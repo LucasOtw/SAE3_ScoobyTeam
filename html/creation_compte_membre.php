@@ -241,12 +241,27 @@
             if (empty($erreurs)) {
                 echo "OUIIIIIIIIIIII !";
                 // Pas d'erreurs, on peut procéder au traitement (inscription, enregistrement, etc.)
+
+                // Le complément d'adresse ne peut pas être NULL mais peut être vide.
+                // Si $complementAdresse est NULL, il faut le remplacer par une chaîne vide.
+
+                if(empty($complementAdresse) || !$complementAdresse){
+                    $complementAdresse = "";
+                }
                 
-                $insert = $dbh -> prepare("insert into membre(telephone, mail, mdp, nom, prenom, pseudo, adresse_postal, complement_adresse, code_postal, ville)
+                $insert = $dbh -> prepare("insert into tripenarvor._compte(telephone, mail, mdp, nom, prenom, pseudo, adresse_postal, complement_adresse, code_postal, ville)
                                                 values ($telephone, $email, $passwordHashed, $nom, $prenom, $pseudo, $adresse, $complementAdresse, $codePostal, $ville)");
+                var_dump($insert->execute());
     
-                $_SESSION["compte"]= ($dbh->query("SELECT currval('_compte_code_compte_seq');"))->fetch();
-                var_dump($_SESSION["compte"]);
+               try {
+                    // Appelle nextval pour initier la séquence
+                    $dbh->query("SELECT nextval('tripenarvor._compte_code_compte_seq');");
+                    
+                    // Appelle currval pour récupérer la dernière valeur
+                    $_SESSION["compte"] = ($dbh->query("SELECT currval('tripenarvor._compte_code_compte_seq');"))->fetchColumn();
+                } catch (PDOException $e) {
+                    echo "Erreur : " . $e->getMessage();
+                }
             } else {
                 // Affiche les erreurs
                 foreach ($erreurs as $erreur) {
