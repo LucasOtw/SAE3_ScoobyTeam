@@ -1,7 +1,8 @@
 <?php session_start();
 
 if(isset($_GET["deco"])){
-    echo "BONJOUR";
+    header('location: connexion_membre.php');
+    session_destroy();
 };
 
 ?>
