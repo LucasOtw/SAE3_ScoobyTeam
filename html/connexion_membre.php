@@ -27,9 +27,9 @@ ob_start();
         
         <nav>
             <ul>
-                <li><a href="voir_offres.php.php" class="active">Accueil</a></li>
+                <li><a href="voir_offres.php.php" >Accueil</a></li>
                 <li><a href="connexion_pro.php">Publier</a></li>
-                <li><a href="connexion_membre.php">Mon Compte</a></li>
+                <li><a href="connexion_membre.php" class="active">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
