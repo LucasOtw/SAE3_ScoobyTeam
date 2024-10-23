@@ -89,9 +89,10 @@ session_start();
         $codeCompte->execute();
 
         if($codeCompte){
-            var_dump($codeCompte);
-        } else {
-            echo "AAAAAAARGH !!!";
+            // si un compte est trouvé, on vérifie maintenant qu'il soit professionnel
+            $codeCompte = $codeCompte->fetch();
+            $estPro = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel WHERE code_compte = :codeCompte");
+            $estPro->bindParam(":codeCompte",$codeCompte);
         }
     }
 
