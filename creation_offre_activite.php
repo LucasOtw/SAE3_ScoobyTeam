@@ -21,6 +21,11 @@
             </ul>
         </nav>
     </header>
+     <div class="fleche_retour">
+        <div>
+            <img src="images/Bouton_retour.png" alt="retour">
+        </div>
+    </div>
 
     <div class="header-controls">
         <div>
