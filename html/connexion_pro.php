@@ -104,7 +104,7 @@ session_start();
                 $mdpPro->bindParam("codeCompte",$codeCompte[0]);
                 $mdpPro->execute();
                 $mdpPro = $mdpPro->fetch();
-                if(passwod_verify($password,$mdpPro[0])){
+                if(password_verify($password,$mdpPro[0])){
                     echo "Ouais ouais ouais ouais !!";
                 }
                 
