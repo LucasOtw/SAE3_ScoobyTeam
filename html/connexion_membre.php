@@ -98,9 +98,7 @@
     
             $existeUser = $dbh->prepare("SELECT code_compte FROM tripenarvor._compte WHERE mail='$email'");
             $existeUser->execute();
-            echo "<pre>";
-            var_dump($existeUser->fetch());
-            echo "</pre>";
+            var_dump($existeUser);
 
             /*if($existeUser){
                 // si l'utilisateur existe, on vérifie d'abord si il est membre.
