@@ -1,3 +1,7 @@
+<?php
+ob_start(); // Démarre la mise en tampon de sortie
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -114,3 +118,7 @@
     </footer>
 </body>
 </html>
+
+<?php
+ob_end_flush(); // Termine et envoie la sortie tamponnée
+?>
