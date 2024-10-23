@@ -19,8 +19,8 @@
         <nav>
             <ul>
                 <li><a href="voir_offres.php" class="active" >Accueil</a></li>
-                <li><a href="connexion_membre.php">Publier</a></li>
-                <li><a href="#" >Mon Compte</a></li>
+                <li><a href="connexion_pro.php">Publier</a></li>
+                <li><a href="connexion_membre" >Mon Compte</a></li>
             </ul>
         </nav>
     </header>
