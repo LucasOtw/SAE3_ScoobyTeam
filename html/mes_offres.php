@@ -5,6 +5,10 @@ if (!isset($_SESSION["compte"]) || empty($_SESSION["compte"])) {
     header('location: connexion_pro.php');
     exit;
 }
+if(isset($_GET["deco"])){
+    header('location: connexion_pro.php');
+    exit;
+}
 
 ?>
 <!DOCTYPE html>
@@ -28,6 +32,7 @@ if (!isset($_SESSION["compte"]) || empty($_SESSION["compte"])) {
                 <li><a href="mes_offres.php" class="active">Accueil</a></li>
                 <li><a href="connexion_pro.php">Publier</a></li>
                 <li><a href="connexion_pro.php">Mon Compte</a></li>
+                <li><a href="mes_offres.php?deco=true">Déconnexion</a></li>
             </ul>
         </nav>
     </header>
