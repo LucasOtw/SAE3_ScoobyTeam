@@ -1,11 +1,11 @@
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <?php session_start(); ?>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En-tête PAVCT</title>
+    <title>Les Offres PACT</title>
     <link rel="stylesheet" href="voir_offres.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,7 +71,13 @@
 
         <?php
             try {
-                $dbh = new PDO("host=postgresdb;dbname=5432; dbname=db-scooby-team", "sae", "philly-Congo-bry4nt");
+                $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+                $username = "sae";
+                $password = "philly-Congo-bry4nt";
+        
+                // Créer une instance PDO
+                $dbh = new PDO($dsn, $username, $password);
+                
                 $stmt = $dbh->prepare('SELECT * FROM tripenarvor._offre');
                 $stmt->execute();
                 
@@ -104,10 +110,10 @@
 
     </main>
     <nav class="nav-bar">
-    <a href="#"><img src="images/icones/House.png" alt="image de maison"></a>
-    <a href="#"><img src="images/icones/recent.png" alt="image d'horloge"></a>
-    <a href="#"><img src="images/icones/Croix.png" alt="image de PLUS"></a>
-    <a href="#"><img src="images/icones/User.png" alt="image de Personne"></a>
+    <a href="#"><img src="images/icones/House icon.png" alt="image de maison"></a>
+    <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
+    <a href="#"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
+    <a href="#"><img src="images/icones/User icon.png" alt="image de Personne"></a>
 </nav>
     <footer>
         <div class="newsletter">
