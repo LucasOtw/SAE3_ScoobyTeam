@@ -108,7 +108,7 @@
     </main>
     <nav class="nav-bar">
     <a href="#"><img src="images/icones/House icon.png" alt="image de maison"></a>
-    <a href="#"><img src="images/icones/recent icon.png" alt="image d'horloge"></a>
+    <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
     <a href="#"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
     <a href="#"><img src="images/icones/User icon.png" alt="image de Personne"></a>
 </nav>
