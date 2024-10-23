@@ -89,31 +89,28 @@ session_start();
         $codeCompte->execute();
         $codeCompte = $codeCompte->fetch();
 
-        if($codeCompte){
+        if ($codeCompte) {
             // si un compte est trouvé, on vérifie maintenant qu'il soit professionnel
-            var_dump($codeCompte[0]);
+            // var_dump($codeCompte[0]);  // Commenté ou supprimé pour éviter la sortie avant header
             $estPro = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel WHERE code_compte = :codeCompte");
-            $estPro->bindParam(":codeCompte",$codeCompte[0]);
-            var_dump($estPro);
+            $estPro->bindParam(":codeCompte", $codeCompte[0]);
             $estPro->execute();
             $estPro = $estPro->fetch();
-
-            if($estPro){
+        
+            if ($estPro) {
                 // si le compte est professionnel, alors on vérifie son mot de passe
                 $mdpPro = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :codeCompte");
-                $mdpPro->bindParam("codeCompte",$codeCompte[0]);
+                $mdpPro->bindParam("codeCompte", $codeCompte[0]);
                 $mdpPro->execute();
                 $mdpPro = $mdpPro->fetch();
-                if(password_verify($password,$mdpPro[0])){
+                if (password_verify($password, $mdpPro[0])) {
                     // si le mot de passe est correct
-                    // alors on le connecte
-                    header('location: mes_offres.php');
-                    $_SESSION["compte"] = $codeCompte[0];
-                    exit();
+                    $_SESSION["compte"] = $codeCompte[0]; // Stocke le code_compte dans la session
+                    header('Location: mes_offres.php'); // Redirection
+                    exit; // Assure que le script s'arrête après la redirection
                 } else {
                     echo "Mot de passe incorrect.";
                 }
-                
             } else {
                 echo "Cette adresse mail est reliée à un compte non professionnel.";
             }
