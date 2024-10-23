@@ -42,26 +42,25 @@
                     <h2>Se connecter</h2>
                     <p>Se connecter pour accéder à vos favoris</p>
                 </div>
-                <form action="connexion_membre.php">
+                <form action="connexion_membre.php" method="POST">
                     <fieldset>
                         <legend>E-mail</legend>
                         <div class="connexion_membre_input-group">
-                            <input type="email" id="email" placeholder="E-mail" required>
+                            <input type="email" id="email" name="mail" placeholder="E-mail" required>
                         </div>
                     </fieldset>
 
                     <fieldset>
                         <legend>Mot de passe</legend>
                         <div class="connexion_membre_input-group">
-                            <input type="password" id="password" placeholder="Mot de passe" required>
+                            <input type="password" id="password" name="pwd" placeholder="Mot de passe" required>
                         </div>
                     </fieldset>
                     
                     <!--
                     <div class="connexion_membre_remember-group">
                         <div>
-                            <input type="checkbox" id="remember" checked>
-                            <label class="connexion_membre_lab_enreg" for="remember">Enregistrer</label>
+                            <input type="submit" value="Enregistrer">
                         </div>
                         <a href="#">Mot de passe oublié ?</a>
                     </div>
