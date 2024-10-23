@@ -79,7 +79,7 @@
         // Créer une instance PDO
         $dbh = new PDO($dsn, $username, $password);
 
-        $checkTables = $dbh->prepare("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'");
+        $checkTables = $dbh->prepare("SELECT table_name FROM information_schema.tables WHERE table_schema = 'tripenarvor'");
         $checkTables->execute();
         $tables = $checkTables->fetchAll(PDO::FETCH_COLUMN);
         var_dump($tables);
