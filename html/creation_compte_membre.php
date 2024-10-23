@@ -245,7 +245,15 @@
                 $insert = $dbh -> prepare("insert into membre(telephone, mail, mdp, nom, prenom, pseudo, adresse_postal, complement_adresse, code_postal, ville)
                                                 values ($telephone, $email, $passwordHashed, $nom, $prenom, $pseudo, $adresse, $complementAdresse, $codePostal, $ville)");
     
-                $_SESSION["compte"]= ($dbh->query("SELECT currval('tripenarvor._compte_code_compte_seq');"))->fetch();
+               try {
+                    // Appelle nextval pour initier la séquence
+                    $dbh->query("SELECT nextval('tripenarvor._compte_code_compte_seq');");
+                    
+                    // Appelle currval pour récupérer la dernière valeur
+                    $_SESSION["compte"] = ($dbh->query("SELECT currval('tripenarvor._compte_code_compte_seq');"))->fetchColumn();
+                } catch (PDOException $e) {
+                    echo "Erreur : " . $e->getMessage();
+                }
                 var_dump($_SESSION["compte"]);
             } else {
                 // Affiche les erreurs
