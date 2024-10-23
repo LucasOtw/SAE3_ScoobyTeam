@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Se connecter</title>
     <link rel="icon" type="image/png" href="images/logoPin.png" width="16px" height="32px">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="connexion_pro.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -72,12 +72,12 @@
         </div>
     </main>
     <?php
-        $postgresdb = "postgresdb";
-        $dbname = "5432";
-        $user = "sae";
-        $pass = "DB_ROOT_PASSWORD";
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
+        $username = "sae";
+        $password = "philly-Congo-bry4nt";
 
-        $dbh = new PDO("$driver:host=$postgresdb;dbname=$dbname", $user, $pass);
+        // Créer une instance PDO
+        $pdo = new PDO($dsn, $username, $password);
 
         $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
         $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
