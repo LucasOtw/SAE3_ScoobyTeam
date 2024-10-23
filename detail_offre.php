@@ -2,7 +2,7 @@
  session_start();
 
     // Adresse que tu veux convertir
-    $adresse = "1600 Amphitheatre Parkway, Mountain View, CA";
+    $adresse = "7 rue les hautes fontennelles";
 
     // Encode l'adresse pour l'URL
     $adresse_enc = urlencode($adresse);
@@ -64,7 +64,7 @@ if(!isset($_POST["code_offre"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>En-tête PACT</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="detail_offre.css">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script> <!-- Pour les icones -->
     
     
