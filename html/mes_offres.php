@@ -9,9 +9,10 @@ if (!isset($_SESSION["compte"]) || empty($_SESSION["compte"])) {
     exit;
 }
 if(isset($_GET["deco"])){
+    session_unset();
+    session_destroy();
     header('location: connexion_pro.php');
     exit;
-    session_destroy();
 }
 
 ?>
