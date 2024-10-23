@@ -117,23 +117,30 @@ if(isset($_GET["deco"])){
             $infosOffre = $infosOffre->fetchAll();
 
             foreach($infosOffre as $offre){
+                // Récupérer la ville
                 $villeOffre = $dbh->prepare('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
-                $villeOffre->bindParam(":code_adresse",$offre["code_adresse"]);
+                $villeOffre->bindParam(":code_adresse", $offre["code_adresse"]);
                 $villeOffre->execute();
-
+                $villeOffre = $villeOffre->fetch(); // Récupérer la ville (ou NULL si pas trouvé)
+                
+                // Récupérer les images
                 $imagesOffre = $dbh->prepare('SELECT code_image FROM tripenarvor._son_image WHERE code_offre = :code_offre');
-                $imagesOffre->bindParam(":code_offre",$offre["code_offre"]);
+                $imagesOffre->bindParam(":code_offre", $offre["code_offre"]);
                 $imagesOffre->execute();
-                $imagesOffre->fetchAll();
-
-                var_dump($imagesOffre);
-
-                if(!empty($imagesOffre)){
-                    $offre_image = $imagesOffre[0];
+                
+                // Utiliser fetchAll pour récupérer toutes les images sous forme de tableau
+                $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
+            
+                var_dump($images); // Affiche le tableau des images pour vérification
+            
+                if (!empty($images)) {
+                    // Récupérer la première image si disponible
+                    $offre_image = $images[0]['code_image']; 
                 } else {
-                    $offre_image = "";
+                    $offre_image = ""; // Pas d'image trouvée
                 }
             }
+
         ?>
         </section>
 
