@@ -126,7 +126,7 @@
     height: auto; /* Conserve le ratio d'aspect */
 }
 
-.switch {
+.main-creation-offre2 .switch {
     position: relative;
     display: inline-block;
     width: 50px;
@@ -135,13 +135,13 @@
     margin-left: 30px;
 }
 
-.switch input {
+.main-creation-offre2 .switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
 
-.slider {
+.main-creation-offre2 .slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -154,7 +154,7 @@
     height: 26px;
 }
 
-.slider:before {
+.main-creation-offre2 .slider:before {
     position: absolute;
     content: "";
     height: 20px;
@@ -166,11 +166,11 @@
     border-radius: 50%;
 }
 
-input:checked + .slider {
+.main-creation-offre2 input:checked + .slider {
     background-color: #ffa500;
 }
 
-input:checked + .slider:before {
+.main-creation-offre2 input:checked + .slider:before {
     transform: translateX(22px); /* Ajusté pour ajouter un espace de 4px à droite */
     background-color: white;
 }
