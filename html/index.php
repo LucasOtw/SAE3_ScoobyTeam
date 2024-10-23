@@ -1,1 +1,4 @@
-<php header('location:voir_offres.php')?>
+<?php 
+header('Location: voir_offres.php');
+exit();
+?>
