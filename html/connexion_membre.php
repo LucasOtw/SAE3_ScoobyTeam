@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Se connecter</title>
+    <link rel="icon" type="image/png" href="images/logoPin.png" width="16px" height="32px">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="header-pc">
+        <div class="logo-pc">
+            <img src="images/logoBlanc.png" alt="PACT Logo">
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Accueil</a></li>
+                <li><a href="#">Publier</a></li>
+                <li><a href="#">Mon Compte</a></li>
+            </ul>
+        </nav>
+    </header>
+    <header class="header-tel">
+        <div class="logo-tel">
+            <img src="images/LogoCouleur.png" alt="PACT Logo">
+        </div>
+        
+    </header>
+        <h3 class="connexion_membre_ravi">Ravi de vous revoir !</h3>
+    <main class="connexion_membre_main">
+        <div class="connexion_membre_container">
+            <div class="connexion_membre_form-container">
+                <div class="connexion_membre_h2_p">
+                    <h2>Se connecter</h2>
+                    <p>Se connecter pour accéder à vos favoris</p>
+                </div>
+                <form action="#">
+                    <fieldset>
+                        <legend>E-mail</legend>
+                        <div class="connexion_membre_input-group">
+                            <input type="email" id="email" placeholder="E-mail" required>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Mot de passe</legend>
+                        <div class="connexion_membre_input-group">
+                            <input type="password" id="password" placeholder="Mot de passe" required>
+                        </div>
+                    </fieldset>
+                    
+                    <!--
+                    <div class="connexion_membre_remember-group">
+                        <div>
+                            <input type="checkbox" id="remember" checked>
+                            <label class="connexion_membre_lab_enreg" for="remember">Enregistrer</label>
+                        </div>
+                        <a href="#">Mot de passe oublié ?</a>
+                    </div>
+                
+                -->
+                    <div class="connexion_membre_btn_connecter_pas_de_compte">
+                        <button type="submit">Se connecter</button>
+                        <hr>
+                        <p><span class="pas_de_compte">Pas de compte ?<a href="#creation_membre.php">Inscription</a></p>
+                    </div>
+                    
+                </form>
+
+            </div>
+            <div class="connexion_membre_image-container">
+                <img src="images/imageConnexionProEau.png" alt="Image de maison en pierre avec de l'eau">
+            </div>
+        </div>
+    </main>
+    <?php
+        $postgresdb = "postgresdb";
+        $dbname = "5432";
+        $user = "sae";
+        $pass = "DB_ROOT_PASSWORD";
+
+        $dbh = new PDO("$driver:host=$postgresdb;dbname=$dbname", $user, $pass);
+
+        $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
+        $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
+        
+        $mailDansBdd = $dbh -> prepare("select code_compte from membre where mail='$email';");
+        $mailDansBdd -> execute();
+
+        $mdpDansBdd = $dbh -> prepare("select mdp from membre where mail='$email';");
+        $mailDansBdd -> execute();
+        $dbh = null;
+        
+        $passwordHashedFromDB = password_hash($mdpDansBdd, PASSWORD_DEFAULT);
+
+        if ($mailDansBdd != NULL){
+            if (password_verify($password, $passwordHashedFromDB)) {
+                // Le mot de passe est correct
+                // Connexion
+                session_start();
+                $_SESSION["compte"] = $mailDansBdd;
+                // redirection
+                header('Location: modif_infos_pro.php');
+                exit();
+            } else {
+                // Le mot de passe est incorrect
+                ?>
+                <p>
+                <?php
+                    echo "Le mot de passe est incorrect";
+                ?>
+            </p>
+            <?php
+            }
+        } else {
+            // Mail inconnu
+            ?>
+            <p>
+                <?php
+                    echo "Le mail est inconnu";
+                ?>
+            </p>
+            <?php
+        }
+
+        
+    ?>
+</body>
+
+</html>
