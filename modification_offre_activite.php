@@ -33,7 +33,7 @@
 
         <div class="form-container2">
             <div class="header-controls">
-                <h1>Publier une offre</h1>
+                <h1>Modifier mon offre</h1>
                 <div>
                     <label class="switch">
                         <input type="checkbox">
