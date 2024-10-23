@@ -1,50 +1,5 @@
 
- <?php
-    session_start();
-    try {
-        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-        $username = "sae";
-        $password = "philly-Congo-bry4nt";
-        // Créer une instance PDO
-        $dbh = new PDO($dsn, $username, $password);
-    $stmt = $dbh->prepare('SELECT * FROM _offre WHERE professionnel = :professionnel');
-        $stmt->execute(['professionnel' => $_SESSION["compte"]]);
-        
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            ?>
-                <div class="offer-card">
-                    <div class="offer-image">
-                        <img src="images/hotel.jpg" alt="<?php echo htmlspecialchars($row['titre_offre']); ?>">
-                        <div class="offer-rating">
-                            <span class="star">★</span>
-                            <span class="rating"><?php echo round($row['note_moyenne'], 1); ?></span>
-                        </div>
-                        <div class="offer-status">
-                            <?php echo $row['en_ligne'] ? '<span class="status-dot"></span> En Ligne' : '<span class="status-dot"></span> Hors Ligne'; ?>
-                        </div>
-                    </div>
-                    <div class="offer-info">
-                        <h3><?php echo htmlspecialchars($row['titre_offre']); ?></h3>
-                        <p class="category"><?php echo htmlspecialchars($row['type_offre']); ?></p>
-                        <p class="update"><span class="update-icon">⟳</span> Update <?php echo date_diff(date_create($row['date_derniere_modif']), date_create('today'))->days; ?>j</p>
-                        <p class="last-update">Mis à jour le <?php echo date_format(date_create($row['date_derniere_modif']), 'd/m/Y'); ?></p>
-                        <p class="offer-type">Offre Standard</p>
-                        <p class="price"><?php echo $row['tarif']?>€</p>
-                    </div>
-                    <button class="add-btn">+</button>
-                </div>
-            <?php
-        }
-        
-        $dbh = null;
-        
-    } catch (PDOException $e) {
-        print "Erreur!: ". $e->getMessage(). "<br/>";
-        die();
-    }
-
-        
-    ?>*/
+ 
 
 
 
@@ -96,6 +51,52 @@
     
         <section class="offers">
             <h2>Vos offres</h2>
+         <?php
+    session_start();
+    try {
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+        $username = "sae";
+        $password = "philly-Congo-bry4nt";
+        // Créer une instance PDO
+        $dbh = new PDO($dsn, $username, $password);
+    $stmt = $dbh->prepare('SELECT * FROM _offre WHERE professionnel = :professionnel');
+        $stmt->execute(['professionnel' => $_SESSION["compte"]]);
+        
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            ?>
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="images/hotel.jpg" alt="<?php echo htmlspecialchars($row['titre_offre']); ?>">
+                        <div class="offer-rating">
+                            <span class="star">★</span>
+                            <span class="rating"><?php echo round($row['note_moyenne'], 1); ?></span>
+                        </div>
+                        <div class="offer-status">
+                            <?php echo $row['en_ligne'] ? '<span class="status-dot"></span> En Ligne' : '<span class="status-dot"></span> Hors Ligne'; ?>
+                        </div>
+                    </div>
+                    <div class="offer-info">
+                        <h3><?php echo htmlspecialchars($row['titre_offre']); ?></h3>
+                        <p class="category"><?php echo htmlspecialchars($row['type_offre']); ?></p>
+                        <p class="update"><span class="update-icon">⟳</span> Update <?php echo date_diff(date_create($row['date_derniere_modif']), date_create('today'))->days; ?>j</p>
+                        <p class="last-update">Mis à jour le <?php echo date_format(date_create($row['date_derniere_modif']), 'd/m/Y'); ?></p>
+                        <p class="offer-type">Offre Standard</p>
+                        <p class="price"><?php echo $row['tarif']?>€</p>
+                    </div>
+                    <button class="add-btn">+</button>
+                </div>
+            <?php
+        }
+        
+        $dbh = null;
+        
+    } catch (PDOException $e) {
+        print "Erreur!: ". $e->getMessage(). "<br/>";
+        die();
+    }
+
+        
+    ?>
             <button class="image-button">
             <span class="button-text">Publier une offre</span>
             </button>
