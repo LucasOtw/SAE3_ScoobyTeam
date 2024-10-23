@@ -251,23 +251,7 @@ footer {
     margin-top: auto;
 }
 
-.newsletter {
-    display: flex;
-    flex-direction: column;
-    /* Stack les éléments sur petits écrans */
-    justify-content: space-between;
-    background-color: var(--vert-clair);
-    padding: 20px;
-    border-radius: 20px;
-    position: relative;
-    margin-top: -130px;
-    z-index: 1;
-    width: 90%;
-    max-width: 1200px;
-    /* Limite la largeur sur grands écrans */
-    margin-left: auto;
-    margin-right: auto;
-}
+
 
 .newsletter-content {
     text-align: left;
