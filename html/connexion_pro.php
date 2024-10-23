@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -98,12 +101,11 @@
 
         if ($mailDansBdd != NULL){
             if (password_verify($password, $passwordHashedFromDB)) {
+                header('Location: modif_infos_pro.php');
                 // Le mot de passe est correct
                 // Connexion
-                session_start();
                 $_SESSION["compte"] = $mailDansBdd;
                 // redirection
-                header('Location: modif_infos_pro.php');
                 exit();
             } else {
                 // Le mot de passe est incorrect
