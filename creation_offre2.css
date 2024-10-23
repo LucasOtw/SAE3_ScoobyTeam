@@ -35,19 +35,19 @@
 }
 
 /* Form Elements */
-.row {
+.main-creation-offre2 .row {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.col {
+.main-creation-offre2 .col {
     flex: 1;
     padding: 10px;
 }
 
-.col input, .col select {
+.main-creation-offre2 .col input, .main-creation-offre2 .col select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -69,19 +69,19 @@
     padding: 10px;
 }
 
-.radio-group, .checkbox-group {
+.main-creation-offre2 .radio-group, .main-creation-offre2 .checkbox-group {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     align-items: center;
 }
 
-.radio-group div, .checkbox-group div {
+.main-creation-offre2 .radio-group div, .main-creation-offre2 .checkbox-group div {
     display: flex;
     align-items: center;
 }
 
-input[type="radio"], input[type="checkbox"] {
+.main-creation-offre2 input[type="radio"], input[type="checkbox"] {
     margin-right: 10px;
 }
 
