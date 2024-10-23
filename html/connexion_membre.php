@@ -1,3 +1,8 @@
+<?php
+
+ob_start();
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -88,27 +93,26 @@
         // Créer une instance PDO
         $dbh = new PDO($dsn, $username, $password);
 
-        var_dump($_POST);
-
         if(!empty($_POST)){
-            $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
+            $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
             $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
-
-            print_r($email);
-            print_r($password);
     
             // on cherche dans la base de données si le compte existe.
     
             $existeUser = $dbh->prepare("SELECT code_compte FROM tripenarvor._compte WHERE mail='$email'");
             $existeUser->execute();
-            var_dump($existeUser);
 
-            /*if($existeUser){
+            if($existeUser){
                 // si l'utilisateur existe, on vérifie d'abord si il est membre.
+                $existeUser = $existeUser->fetch();
                 // Car même si l'adresse mail et le mdp sont corrects, si le compte n'est pas lié à un membre, ça ne sert à rien de continuer les vérifications
                 $existeMembre = $dbh->prepare("SELECT 1 FROM tripenarvor._membre WHERE code_compte = :code_compte");
-                $existeMembre->bindParam(':code_compte',$existeUser->fetch()['code_compte']);
-            }*/
+                $existeMembre->bindParam(':code_compte',$existeUser[0]);
+                if($existeMembre){
+                    header('location:https://static.wikia.nocookie.net/dirtybiologistan/images/5/58/Rickroll.gif/revision/latest?cb=20220620191052&path-prefix=fr');
+                    exit();
+                }
+            }
             
             // $mailDansBdd = $dbh -> prepare("select code_compte from tripenarvor._membre where mail='$email';");
             // $mailDansBdd -> execute();

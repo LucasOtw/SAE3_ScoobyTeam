@@ -21,9 +21,9 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Publier</a></li>
-                <li><a href="#" class="active">Mon Compte</a></li>
+                <li><a href="voir_offres.php">Accueil</a></li>
+                <li><a href="connexion_pro.php">Publier</a></li>
+                <li><a href="connexion_membre.php" class="active">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
@@ -149,7 +149,7 @@
                     
                 <div class="creation_compte_membre_other-links">
                     <p>Déjà un compte ? <a href="connexion_membre.php" class="connexion_membre">Connexion</a></p>
-                    <p>S’inscrire avec un compte <a href="creation_compte_pro" class="inscription_pro">Pro</a></p>
+                    <p>S’inscrire avec un compte <a href="creation_pro.php" class="inscription_pro">Pro</a></p>
                 </div>
             </div>
             <div class="image-section">
