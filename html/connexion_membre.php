@@ -92,10 +92,10 @@
         $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
         $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
         
-        $mailDansBdd = $dbh -> prepare("select code_compte from membre where mail='$email';");
+        $mailDansBdd = $dbh -> prepare("select code_compte from tripenarvor._membre where mail='$email';");
         $mailDansBdd -> execute();
 
-        $mdpDansBdd = $dbh -> prepare("select mdp from membre where mail='$email';");
+        $mdpDansBdd = $dbh -> prepare("select mdp from tripenarvor._membre where mail='$email';");
         $mailDansBdd -> execute();
         $dbh = null;
         
