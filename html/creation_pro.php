@@ -225,16 +225,53 @@ session_start();
             if (empty($erreurs)) {
                 // Pas d'erreurs, on peut procéder à l'enregistrement dans la base de données
                 if (empty($siren)) {
-                    $professionnel_publique = $dbh->prepare("INSERT INTO professionnel_publique(telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville) 
-                                                VALUES ($telephone, $email, $passwordHashed, $raison_sociale, $adresse, $complementAdresse, $codePostal, $ville)");
+                    // Requête pour "professionnel_publique"
+                    $professionnel_publique = $dbh->prepare("
+                        INSERT INTO professionnel_publique(
+                            telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville
+                        ) 
+                        VALUES (:telephone, :mail, :mdp, :raison_sociale, :adresse_postale, :complement_adresse, :code_postal, :ville)
+                    ");
+                    
+                    // Bind des valeurs
+                    $professionnel_publique->bindParam(':telephone', $telephone);
+                    $professionnel_publique->bindParam(':mail', $email);
+                    $professionnel_publique->bindParam(':mdp', $passwordHashed);
+                    $professionnel_publique->bindParam(':raison_sociale', $raison_sociale);
+                    $professionnel_publique->bindParam(':adresse_postale', $adresse);
+                    $professionnel_publique->bindParam(':complement_adresse', $complementAdresse);
+                    $professionnel_publique->bindParam(':code_postal', $codePostal);
+                    $professionnel_publique->bindParam(':ville', $ville);
+                
+                    // Exécuter la requête
+                    $professionnel_publique->execute();
                     var_dump($professionnel_publique);
                 }
                 else {
-                    $professionnel_prive = $dbh->prepare("INSERT INTO tripenarvor.professionnel_prive(telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville, num_siren) 
-                                                VALUES ($telephone, $email, $passwordHashed, $raison_sociale, $adresse, $complementAdresse, $codePostal, $ville, $siren)");
+                    // Requête pour "professionnel_prive"
+                    $professionnel_prive = $dbh->prepare("
+                        INSERT INTO tripenarvor.professionnel_prive(
+                            telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville, num_siren
+                        ) 
+                        VALUES (:telephone, :mail, :mdp, :raison_sociale, :adresse_postale, :complement_adresse, :code_postal, :ville, :num_siren)
+                    ");
+                    
+                    // Bind des valeurs
+                    $professionnel_prive->bindParam(':telephone', $telephone);
+                    $professionnel_prive->bindParam(':mail', $email);
+                    $professionnel_prive->bindParam(':mdp', $passwordHashed);
+                    $professionnel_prive->bindParam(':raison_sociale', $raison_sociale);
+                    $professionnel_prive->bindParam(':adresse_postale', $adresse);
+                    $professionnel_prive->bindParam(':complement_adresse', $complementAdresse);
+                    $professionnel_prive->bindParam(':code_postal', $codePostal);
+                    $professionnel_prive->bindParam(':ville', $ville);
+                    $professionnel_prive->bindParam(':num_siren', $siren);
+                
+                    // Exécuter la requête
                     $professionnel_prive->execute();
                     var_dump($professionnel_prive);
                 }
+
     
                 $dbh->query("SELECT nextval('tripenarvor._compte_code_compte_seq');");
                 
