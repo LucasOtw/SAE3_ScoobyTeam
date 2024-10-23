@@ -379,11 +379,13 @@ function prevSlide() {
 // Détecter le début du swipe
 document.querySelector('.carousel-images').addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
+    console.log('Touch start:', startX);
 });
 
 // Détecter la fin du swipe
 document.querySelector('.carousel-images').addEventListener('touchend', (e) => {
     const endX = e.changedTouches[0].clientX;
+    console.log('Touch end:', endX);
     if (startX > endX + 50) {
         nextSlide(); // Swipe vers la gauche
     } else if (startX < endX - 50) {
