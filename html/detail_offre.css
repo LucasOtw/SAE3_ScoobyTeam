@@ -1,4 +1,41 @@
 /*****************************************************
+            * Code général pour les pages *
+*****************************************************/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --orange: #F28322;
+    --vert-clair: #BDC426;
+    --vert-fonce: #668C3F;
+    --gris: #E8E8E8;
+}
+
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+html,
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/*****************************************************
         * Code pour la page header/footer responsive *
 *****************************************************/
 
@@ -11,7 +48,7 @@ body {
     padding: 0;
 }
 
-header.header-pc {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,38 +57,28 @@ header.header-pc {
     color: white;
 }
 
-header.header-tel {
-    display: none;
-}
-
-.creation_compte_membre_bienvenue {
-    display: none;
-    text-align: center;
-}
-.logo-tel {
-    display: flex;
-    margin-top: 40px;
-    justify-content: center;
-}
-
 .logo img {
     height: 60px;
-    max-width: 100%; /* Pour s'assurer que l'image ne dépasse pas */
+    max-width: 100%;
+    /* Pour s'assurer que l'image ne dépasse pas */
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 3vw; /* Espace adaptable selon la largeur de l'écran */
+    gap: 3vw;
+    /* Espace adaptable selon la largeur de l'écran */
     margin-right: 4vw;
-    flex-wrap: wrap; /* Permet de passer sur plusieurs lignes si nécessaire */
+    flex-wrap: wrap;
+    /* Permet de passer sur plusieurs lignes si nécessaire */
 }
 
 nav ul li a {
     position: relative;
     text-decoration: none;
     color: white;
-    font-size: 1.2rem; /* Utilise des unités relatives */
+    font-size: 1.2rem;
+    /* Utilise des unités relatives */
     padding: 5px 10px;
     transition: color 0.3s, border-bottom 0.3s;
 }
@@ -101,7 +128,8 @@ footer {
 
 .newsletter {
     display: flex;
-    flex-direction: column; /* Stack les éléments sur petits écrans */
+    flex-direction: column;
+    /* Stack les éléments sur petits écrans */
     justify-content: space-between;
     background-color: var(--vert-clair);
     padding: 20px;
@@ -110,24 +138,28 @@ footer {
     margin-top: -130px;
     z-index: 1;
     width: 90%;
-    max-width: 1200px; /* Limite la largeur sur grands écrans */
+    max-width: 1200px;
+    /* Limite la largeur sur grands écrans */
     margin-left: auto;
     margin-right: auto;
 }
 
 .newsletter-content {
     text-align: left;
-    max-width: 100%; /* Ajuste pour petits écrans */
+    max-width: 100%;
+    /* Ajuste pour petits écrans */
 }
 
 .newsletter h2 {
-    font-size: 2rem; /* Taille adaptable */
+    font-size: 2rem;
+    /* Taille adaptable */
     margin-bottom: 10px;
 }
 
 .newsletter-form {
     display: flex;
-    flex-direction: column; /* Colonne sur petits écrans */
+    flex-direction: column;
+    /* Colonne sur petits écrans */
     gap: 10px;
     margin-top: 10px;
 }
@@ -140,7 +172,8 @@ footer {
     cursor: pointer;
 }
 
-.newsletter-form input, .newsletter-form button {
+.newsletter-form input,
+.newsletter-form button {
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -152,7 +185,8 @@ footer {
 
 .newsletter-image img {
     max-height: 100px;
-    width: auto; /* Maintien du ratio de l'image */
+    width: auto;
+    /* Maintien du ratio de l'image */
 }
 
 .footer-links {
@@ -199,15 +233,15 @@ footer {
         flex-direction: row;
         justify-content: space-between;
     }
-    
+
     .newsletter-content {
         max-width: 60%;
     }
-    
+
     .newsletter-form {
         flex-direction: row;
     }
-    
+
     .footer-links {
         flex-direction: row;
         justify-content: space-between;
@@ -222,7 +256,8 @@ footer {
 
 @media (min-width: 1024px) {
     nav ul {
-        gap: 50px; /* Réduit l'espace entre les éléments sur grands écrans */
+        gap: 50px;
+        /* Réduit l'espace entre les éléments sur grands écrans */
     }
 
     footer {
@@ -230,315 +265,11 @@ footer {
     }
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    --orange : #F28322;
-    --vert-clair : #BDC426;
-    --vert-fonce : #668C3F;
-    --gris : #E8E8E8;
-}
 
-.creation_compte_membre body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-}
+/*****************************************************
+                                                    * Code page détail d'une offre *
+                                        *****************************************************/
 
-.creation_compte_membre header {
-    background-color: #000;
-    padding: 10px 20px;
-}
-
-.creation_compte_membre nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.creation_compte_membre nav .logo {
-    color: white;
-    font-size: 24px;
-}
-
-.creation_compte_membre nav ul {
-    list-style-type: none;
-    display: flex;
-    gap: 20px;
-}
-
-.creation_compte_membre nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.creation_compte_membre nav ul li a.active {
-    border-bottom: 2px solid var(--vert-clair);
-}
-
-.creation_compte_membre .creation_compte_membre_container {
-    display: flex;
-    justify-content: space-between;
-    padding: 40px;
-    background-color: white;
-    max-width: 1200px;
-    margin: 0px auto;
-    border-radius: 10px;
-}
-
-.creation_compte_membre .creation_compte_membre_form-section {
-    width: 50%;
-}
-
-.crea_membre_raison_sociale_num_siren,
-.crea_membre_mail_tel {
-    display: flex;
-    justify-content: space-between;
-}
-
-body > main > div > div.creation_compte_membre_form-section > form > div.crea_membre_mail_tel > fieldset:nth-child(1),
-body > main > div > div.creation_compte_membre_form-section > form > div.crea_membre_mail_tel > fieldset:nth-child(2),
-body > main > div > div.creation_compte_membre_form-section > form > div.crea_membre_raison_sociale_num_siren > fieldset:nth-child(1), 
-body > main > div > div.creation_compte_membre_form-section > form > div.crea_membre_raison_sociale_num_siren > fieldset:nth-child(2) {
-    width: 48%;
-}
-
-.creation_compte_membre .crea_membre_raison_sociale_num_siren.creation_compte_membre_form-section,
-.creation_compte_membre .crea_membre_mail_tel .creation_compte_membre_form-section {
-    width: 50%;
-}
-
-.creation_compte_membre .creation_compte_membre_form-section h1 {
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-.creation_compte_membre .creation_compte_membre_form-section p {
-    margin-bottom: 20px;
-}
-
-.creation_compte_membre form {
-    display: flex;
-    flex-direction: column;
-}
-
-.creation_compte_membre label {
-    font-weight: bold;
-}
-
-.creation_compte_membre input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
-}
-
-.creation_compte_membre .checkbox {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-
-
-.creation_compte_membre .checkbox label a {
-    color: var(--vert-clair);
-    text-decoration: none;
-}
-
-.creation_compte_membre #cgu{
-    accent-color: var(--vert-clair);
-}
-
-.creation_compte_membre .submit-btn {
-    background-color: var(--vert-clair);
-    color: white;
-    padding: 14px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.creation_compte_membre .submit-btn:hover {
-    background-color: var(--vert-fonce);
-    transition: ease 0.2s;
-}
-
-.creation_compte_membre .creation_compte_membre_other-links {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-.creation_compte_membre .creation_compte_membre_other-links a.connexion_membre {
-    color: var(--vert-clair);
-    text-decoration: none;
-}
-.creation_compte_membre .creation_compte_membre_other-links a.inscription_pro {
-    color: var(--orange);
-    text-decoration: none;
-}
-
-.creation_compte_membre .image-section {
-    width: 40%;   
-}
-
-.creation_compte_membre .image-section img {
-    height: 100%;
-    width: 25vw;
-    border-radius: 10px;
-    object-fit: cover;
-    object-position: center center;
-}
-
-
-.creation_compte_membre fieldset {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    position: relative;
-    padding-top: 0; /* Enlève le padding en haut */
-}
-
-
-
-
-.creation_compte_membre legend {
-    font-size: 14px;
-    padding: 0 10px;
-    color: #333;
-    background-color: white;
-    position: absolute;
-    top: -10px; 
-    left: 10px; 
-    z-index: 2;
-    display: none;
-
-}
-.creation_compte_membre fieldset:focus-within legend {
-    display:inline;
-    transition: ease-out 0.3s;
-
-} 
-
-.creation_compte_membre fieldset input::placeholder {
-    padding-left: 10px;
-} 
-.creation_compte_membre fieldset input:focus::placeholder {
-    color: rgba(0, 0, 0, 0);
-} 
-
-.creation_compte_membre #remember{
-    accent-color: var(--vert-clair);
-}
-
-main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_membre_container > form > div.connexion_membre_remember-group > div {
-    display: flex;
-    flex-direction: row;
-}
-
-.creation_compte_membre_deja_compte{
-    display: none;
-}
-.creation_compte_membre_deja_compte a{
-    color: #000;
-    text-decoration: none;
-    font-style: italic;
-}
-/* Media query pour masquer l'image sur les petits écrans */
-@media (max-width: 768px) {
-    .image-section {
-        display: none; /* Cache l'image sur les petits écrans */
-    }
-    
-    .creation_compte_membre_form-section {
-        justify-content: center; /* Centre le formulaire quand l'image est cachée */
-    }
-    
-    main.creation_membre_main {
-        height: auto; /* Ajuste la hauteur sur les petits écrans */
-    }
-    
-    .creation_compte_membre .creation_compte_membre_form-section {
-        width: 100%; /* Le formulaire prend toute la largeur sur petits écrans */
-    }
-}
-
-.input-icon {
-    position: relative;
-}
-
-.input-icon-img {
-    display: none;
-    position: absolute;
-    right: 10px; /* Ajustez selon vos besoins */
-    top: 50%;
-    transform: translateY(-50%);
-    width: auto; /* Ajustez la taille */
-    height: 20px; /* Ajustez la taille */
-}
-
-@media (max-width: 430px) {
-    header.header-pc {
-        display: none !important;
-    }
-    header.header-tel {
-        display: block !important;
-    }
-
-    .input-icon-img {
-        display: inline-block;
-    }
-
-    .creation_compte_membre_bienvenue {
-        display: flex;
-        justify-content: center;
-    }
-
-    .crea_membre_raison_sociale_num_siren, .crea_membre_mail_tel {
-        flex-direction: column;
-    }
-    
-    body > main > div > div.creation_compte_membre_form-section > form > div.crea_membre_mail_tel > fieldset:nth-child(1), body > main > div > div.creation_compte_membre_form-section > form > div.crea_membre_mail_tel > fieldset:nth-child(2), body > main > div > div.creation_compte_membre_form-section > form > div.crea_membre_raison_sociale_num_siren > fieldset:nth-child(1), body > main > div > div.creation_compte_membre_form-section > form > div.crea_membre_raison_sociale_num_siren > fieldset:nth-child(2) {
-        width: auto;
-    }
-
-    .creation_compte_membre .checkbox {
-        display: none;
-    }
-
-    .creation_compte_membre .creation_compte_membre_container{
-        margin: auto;
-        padding-top: 0;
-    }
-
-    .creation_compte_membre_form-section h2, .creation_compte_membre_form-section p {
-        display: none;
-    }
-    .creation_compte_membre input[type="text"], input[type="email"], input[type="tel"], input[type="password"]{
-        border-radius: 100px;
-    }
-    .creation_compte_membre fieldset {
-        border-radius: 100px;
-    }
-    .creation_compte_membre_deja_compte{
-        display: flex;
-        justify-content: flex-end;
-        margin-bottom: 40px;
-    }
-    
-    body > main > div > div.creation_compte_membre_form-section > form > fieldset:nth-child(9){
-        margin-bottom: 0;
-    }
-}
-
-
-
-/***** DETAILS OFFRES  */
 
 
 .detail_offre_hotel-detail {
@@ -552,11 +283,11 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
     justify-content: space-between;
     align-items: center;
     margin-bottom: 4em;
-    margin-top : 4em;
+    margin-top: 4em;
 }
 
-.detail_offre_rating{
-    color : #727272;
+.detail_offre_rating {
+    color: #727272;
 }
 
 .detail_offre_hotel-info h1 {
@@ -567,7 +298,7 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
 
 .detail_offre_hotel-info p {
     font-size: 1.2em;
-    color : #727272;
+    color: #727272;
 }
 
 
@@ -580,7 +311,7 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
     font-weight: bold;
     color: #2DD7A4;
     margin-bottom: 10px;
-    
+
 }
 
 .visit-button_detailoffre {
@@ -610,41 +341,48 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
 .main-image {
     width: 47%;
     height: 550px;
-    
+
 }
+
 /* Ajout d'un conteneur pour réunir thumbnail 2 et thumbnail 3 */
 .detail_offre_thumbnail-container {
-    display: flex; /* Pour aligner les deux sections en ligne */
-    gap: 10px; /* Espacement entre les deux sections */
-    width: 100%; /* S'étend sur toute la largeur */
+    display: flex;
+    /* Pour aligner les deux sections en ligne */
+    gap: 10px;
+    /* Espacement entre les deux sections */
+    width: 100%;
+    /* S'étend sur toute la largeur */
 }
 
 /* Thumbnail 2 */
-.detail_offre_thumbnail-grid2{
+.detail_offre_thumbnail-grid2 {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    width: 40%; /* Ajuste la taille selon tes besoins */
+    width: 40%;
+    /* Ajuste la taille selon tes besoins */
 }
 
 .detail_offre_thumbnail-grid3 img {
     height: 49%;
     border-radius: 10px;
-    object-fit: cover; /* Pour s'assurer que les images restent proportionnées */
+    object-fit: cover;
+    /* Pour s'assurer que les images restent proportionnées */
 }
 
 
-.detail_offre_thumbnail-grid3, .thumbnail-grid {
+.detail_offre_thumbnail-grid3,
+.thumbnail-grid {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#body_offre_mobile{
+#body_offre_mobile {
     display: none;
 }
 
-#body_offre_mobile > header{
+#body_offre_mobile>header {
     all: unset;
 }
 
@@ -664,32 +402,32 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
 
 .detail_offre_icons {
     display: flex;
-    
+
     margin-bottom: 20px;
 }
 
 .detail_offre_icon {
     text-align: center;
     font-size: 1.1em;
-    margin-top : 3em;
+    margin-top: 3em;
     margin-right: 6em;
-    
+
 }
 
-.footer_detail_avis{
+.footer_detail_avis {
     margin-top: 19em;
 
 }
 
-.detail_offre_icon{
-    border : 1px none ;
-    background-color : rgba(23, 111, 242, 0.05);
-    padding : 20px;
-    width : 120px;
-    height : 109px;
-    border-radius : 29px;
+.detail_offre_icon {
+    border: 1px none;
+    background-color: rgba(23, 111, 242, 0.05);
+    padding: 20px;
+    width: 120px;
+    height: 109px;
+    border-radius: 29px;
     box-shadow: 5px 5px 10px 0px rgba(166, 158, 158, 0.5);
-    
+
 }
 
 .iconify {
@@ -709,9 +447,9 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
     mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
-    }
+}
 
-    .mdi--dog {
+.mdi--dog {
     display: inline-block;
     width: 80px;
     height: 50px;
@@ -723,9 +461,9 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
     mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
-    }
+}
 
-    .ph--cigarette-slash-bold {
+.ph--cigarette-slash-bold {
     display: inline-block;
     width: 80px;
     height: 50px;
@@ -737,24 +475,20 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
     mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
-    }
+}
 
-    .icones{
+.icones {
     margin-top: 3em;
-    }
+}
 
-    .detail_offre_localisation h2 {
+.detail_offre_localisation h2 {
     font-size: 1.8em;
     margin-bottom: 28px;
-    margin-left : 2em;
-    margin-top: 2em;
-    }
+    margin-left: 1em;
 
-    .map-frame {
-        width: 100%;
-        height: 700px;
-        border: 0;
-    }
+}
+
+
 
 
 
@@ -769,16 +503,57 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
 }
 
 .visit-button_detailoffre {
-    margin-right: 0px; /* Supprime la marge négative */
+    margin-right: 0px;
+    /* Supprime la marge négative */
     display: inline-block;
-   
+
+
+
+}
+
+.Detail_offre_ouverture_global_desktop {
+    margin-top: 2em;
+    padding: 4px;
+    width: 34em;
+    margin-left: 1em;
+}
+
+.hours_desktop_detail_offre {
+    margin-left: 4em;
+    font-size: 20px;
+}
+
+.hours_desktop_detail_offre {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hours_desktop_detail_offre li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    margin-left: 1.4em;
+}
+
+.hours_desktop_detail_offre li:last-child {
+    border-bottom: none;
+}
+
+.hours_desktop_detail_offre span {
+    font-weight: bold;
+    color: var(--vert-clair);
 }
 
 .visit-button_detailoffre:hover {
-    transform: scale(1.1); /* Grossissement à 110% */
-    box-shadow: 0 0 15px 5px #12d889; /* Lumière fluo verte */
+    transform: scale(1.1);
+    /* Grossissement à 110% */
+    box-shadow: 0 0 15px 5px #12d889;
+    /* Lumière fluo verte */
     background-color: #12d889;
 }
+
 /* Styles pour les écrans de 428px et moins */
 @media (max-width: 428px) {
     .header {
@@ -789,7 +564,7 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
         background-color: #F4F4F4;
         border-bottom: 1px solid #EEE;
     }
-    
+
     .header h1 {
         font-size: 24px;
         font-weight: bold;
@@ -804,7 +579,7 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
     .detail_offre_hotel-header {
         flex-direction: column;
         text-align: center;
-    } 
+    }
 
     .detail_offre_gallery {
         flex-direction: column;
@@ -828,11 +603,11 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
         width: 113%;
     }
 
-    #body_offre_mobile > div > div.swiper-container > div.swiper-wrapper > div > img {
+    #body_offre_mobile>div>div.swiper-container>div.swiper-wrapper>div>img {
         width: 50%;
     }
 
-    #body_offre_mobile > header {
+    #body_offre_mobile>header {
         display: flex;
         margin: 4vh 168px;
         justify-content: center;
@@ -848,23 +623,23 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
         justify-content: space-between;
     }
 
-    span#titre > p {
+    span#titre>p {
         color: #BDC426;
     }
 
-    #body_offre_mobile > div > div.details > p {
+    #body_offre_mobile>div>div.details>p {
         color: #727272;
     }
 
-    #body_offre_mobile > div > div.details > div.rating > span:nth-child(2) {
+    #body_offre_mobile>div>div.details>div.rating>span:nth-child(2) {
         color: #727272;
     }
 
-    #body_offre_mobile > div > div.details > section {
+    #body_offre_mobile>div>div.details>section {
         margin: 3vh 0;
     }
 
-    #body_offre_mobile > div > div.details > section > article {
+    #body_offre_mobile>div>div.details>section>article {
         margin: 2vh 0 2vh 1vw;
     }
 
@@ -874,7 +649,7 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
         margin: 2vh 0;
     }
 
-    .services > span.service {
+    .services>span.service {
         border: 1px none;
         background-color: rgba(23, 111, 242, 0.05);
         padding: 20px;
@@ -887,33 +662,33 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
         text-align: center;
     }
 
-    .service > span.service {
+    .service>span.service {
         text-align: center;
     }
 
-    .services > span.service > img {
+    .services>span.service>img {
         width: 40%;
     }
 
-    #body_offre_mobile > div > div.details > ul {
+    #body_offre_mobile>div>div.details>ul {
         line-height: 200%;
     }
 
-    #body_offre_mobile > div > div.details > ul > li {
+    #body_offre_mobile>div>div.details>ul>li {
         list-style: none;
     }
 
-    #body_offre_mobile > div > div.details > ul > li > span {
+    #body_offre_mobile>div>div.details>ul>li>span {
         font-weight: bolder;
     }
 
-    #body_offre_mobile > div > article {
+    #body_offre_mobile>div>article {
         display: flex;
         justify-content: space-between;
         margin: 2vh 0;
     }
 
-    #body_offre_mobile > div > article > span {
+    #body_offre_mobile>div>article>span {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -921,7 +696,7 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
         height: 7vh;
     }
 
-    #body_offre_mobile > div > article > button#bouton_publier {
+    #body_offre_mobile>div>article>button#bouton_publier {
         background-color: #BDC426;
         color: white;
         position: relative;
@@ -933,7 +708,7 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
         box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.600);
     }
 
-   
+
 
     #prix {
         color: #2DD7A4;
@@ -945,7 +720,6 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
         display: flex;
         position: relative;
         left: 5%;
-        border: 1px solid black;
         border-radius: 5vw;
         overflow-x: scroll;
         scroll-snap-type: x mandatory;
@@ -997,11 +771,20 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
         transform: translateY(-50%);
     }
 
+    div.carousel-buttons>button.carousel-button.next {
+        border-radius: 10% 0 0 10%;
+
+    }
+
+    div.carousel-buttons>button.carousel-button.prev {
+        border-radius: 0 10% 10% 0;
+    }
+
     .carousel-button {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.75);
         color: white;
         border: none;
-        padding: 10px;
+        padding: 15px;
         cursor: pointer;
     }
 
@@ -1042,15 +825,15 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
     }
 
     .description-link {
-        text-decoration: none; 
+        text-decoration: none;
     }
-    
+
     .description-link h3 {
         color: var(--vert-clair);
         outline: none;
         font-size: 17px;
     }
-    
+
 
     .Detail_offre_ouverture_global {
         background-color: #ffffff;
@@ -1085,32 +868,35 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
         font-weight: bold;
         color: var(--vert-clair);
     }
+
+
 }
 
 /* Styles pour les écrans de 429px et plus */
 @media (min-width: 429px) {
+
     .header,
     .back-button,
     #body_offre_mobile,
-    #body_offre_mobile > header,
+    #body_offre_mobile>header,
     .icone,
     span#titre,
-    span#titre > p,
-    #body_offre_mobile > div > div.details > p,
-    #body_offre_mobile > div > div.details > div.rating > span:nth-child(2),
-    #body_offre_mobile > div > div.details > section,
-    #body_offre_mobile > div > div.details > section > article,
+    span#titre>p,
+    #body_offre_mobile>div>div.details>p,
+    #body_offre_mobile>div>div.details>div.rating>span:nth-child(2),
+    #body_offre_mobile>div>div.details>section,
+    #body_offre_mobile>div>div.details>section>article,
     .services,
-    .services > span.service,
-    .service > span.service,
-    .services > span.service > img,
-    #body_offre_mobile > div > div.details > ul,
-    #body_offre_mobile > div > div.details > ul > li,
-    #body_offre_mobile > div > div.details > ul > li > span,
-    #body_offre_mobile > div > article,
-    #body_offre_mobile > div > article > span,
-    #body_offre_mobile > div > article > button#bouton_publier,
-    #body_offre_mobile > div > article > button#bouton_publier:active,
+    .services>span.service,
+    .service>span.service,
+    .services>span.service>img,
+    #body_offre_mobile>div>div.details>ul,
+    #body_offre_mobile>div>div.details>ul>li,
+    #body_offre_mobile>div>div.details>ul>li>span,
+    #body_offre_mobile>div>article,
+    #body_offre_mobile>div>article>span,
+    #body_offre_mobile>div>article>button#bouton_publier,
+    #body_offre_mobile>div>article>button#bouton_publier:active,
     #prix,
     .carousel,
     .carousel-slide,
@@ -1131,10 +917,20 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
     .titre_detail_offre_responsive p,
     .Detail_offre_ouverture_global,
     .Detail_offre_ouverture_global h3,
+    .Detail_offre_ouverture_global h3,
     .hours,
     .hours li,
     .hours li:last-child,
     .hours span {
         display: none;
     }
+}
+
+.hours {
+    list-style-type: none;
+    /* Enlève les pastilles */
+    padding: 0;
+    /* Enlève le padding par défaut */
+    margin: 0;
+    /* Enlève la marge par défaut */
 }
