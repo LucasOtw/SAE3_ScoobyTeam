@@ -245,7 +245,7 @@
                 $insert = $dbh -> prepare("insert into membre(telephone, mail, mdp, nom, prenom, pseudo, adresse_postal, complement_adresse, code_postal, ville)
                                                 values ($telephone, $email, $passwordHashed, $nom, $prenom, $pseudo, $adresse, $complementAdresse, $codePostal, $ville)");
     
-                $_SESSION["compte"]= ($dbh->query("SELECT currval('_compte_code_compte_seq');"))->fetch();
+                $_SESSION["compte"]= ($dbh->query("SELECT currval('tripenarvor._compte_code_compte_seq');"))->fetch();
                 var_dump($_SESSION["compte"]);
             } else {
                 // Affiche les erreurs
