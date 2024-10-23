@@ -99,6 +99,8 @@
         var_dump($recupTable->fetch());
         echo "</pre>";
 
+        var_dump($_POST);
+
         if(!empty($_POST)){
             $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
             $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
