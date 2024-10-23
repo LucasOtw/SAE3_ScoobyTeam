@@ -21,9 +21,9 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Publier</a></li>
-                <li><a href="#" class="active">Mon Compte</a></li>
+                <li><a href="voir_offres.php">Accueil</a></li>
+                <li><a href="connexion_pro.php">Publier</a></li>
+                <li><a href="connexion_membre.php" class="active">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
