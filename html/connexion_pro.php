@@ -1,9 +1,9 @@
 <?php
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,9 +12,7 @@ session_start();
     <link rel="stylesheet" href="connexion_pro.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -30,6 +28,7 @@ session_start();
             </ul>
         </nav>
     </header>
+    
     <main class="connexion_pro_main">
         <div class="connexion_pro_container">
             <div class="connexion_pro_form-container">
@@ -37,99 +36,79 @@ session_start();
                     <h2>Se connecter</h2>
                     <p>Se connecter pour accéder à vos favoris</p>
                 </div>
-                <form action="#">
+                <form action="#" method="POST">
                     <fieldset>
                         <legend>E-mail</legend>
                         <div class="connexion_pro_input-group">
-                            <input type="email" id="email" placeholder="E-mail" required>
+                            <input type="email" name="email" id="email" placeholder="E-mail" required>
                         </div>
                     </fieldset>
 
                     <fieldset>
                         <legend>Mot de passe</legend>
                         <div class="connexion_pro_input-group">
-                            <input type="password" id="password" placeholder="Mot de passe" required>
+                            <input type="password" name="password" id="password" placeholder="Mot de passe" required>
                         </div>
                     </fieldset>
-                <!--
-                    <div class="connexion_pro_remember-group">
-                        <div>
-                            <input type="checkbox" id="remember" checked>
-                            <label class="connexion_pro_lab_enreg" for="remember">Enregistrer</label>
-                        </div>
-                        <a href="#">Mot de passe oublié ?</a>
-                    </div>
-                -->
+
                     <button type="submit">Se connecter</button>
                     <div class="connexion_pro_additional-links">
-                        <p><span class="pas_de_compte">Pas de compte ?<a href="creation_pro.php">Inscription</a></p>
-
+                        <p><span class="pas_de_compte">Pas de compte ?<a href="creation_pro.php">Inscription</a></span></p>
                         <p class="compte_membre"><a href="connexion_membre.php">Un compte Membre&nbsp?</a></p>
                     </div>
                 </form>
-
             </div>
             <div class="connexion_pro_image-container">
                 <img src="images/imageConnexionProEau.png" alt="Image de maison en pierre avec de l'eau">
             </div>
         </div>
     </main>
-    <?php
-        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-        $username = "sae";
-        $password = "philly-Congo-bry4nt";
 
+    <?php
+    // Connexion à la base de données
+    $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+    $username = "sae";
+    $password = "philly-Congo-bry4nt";
+
+    try {
         // Créer une instance PDO
         $dbh = new PDO($dsn, $username, $password);
 
-        $checkTables = $dbh->prepare("SELECT table_name FROM information_schema.tables WHERE table_schema = 'tripenarvor'");
-        $checkTables->execute();
-        $tables = $checkTables->fetchAll(PDO::FETCH_COLUMN);
-        var_dump($tables);
+        // Vérifier si le formulaire a été soumis
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $email = trim(htmlspecialchars($_POST['email']));
+            $password = htmlspecialchars($_POST['password']);
+            
+            // Vérifier si l'email existe
+            $mailDansBdd = $dbh->prepare("SELECT code_compte FROM tripenarvor._professionnel NATURAL JOIN tripenarvor._compte WHERE mail = :email");
+            $mailDansBdd->bindParam(':email', $email);
+            $mailDansBdd->execute();
+            $compte = $mailDansBdd->fetch(PDO::FETCH_ASSOC);
 
-        $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
-        $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
-        
-        $mailDansBdd = $dbh -> prepare("select code_compte from tripenarvor._professionnel NATURAL JOIN tripenarvor._compte where mail='$email';");
-        $mailDansBdd -> execute();
+            if ($compte) {
+                // Vérifier le mot de passe
+                $mdpDansBdd = $dbh->prepare("SELECT mdp FROM tripenarvor._professionnel NATURAL JOIN tripenarvor._compte WHERE mail = :email");
+                $mdpDansBdd->bindParam(':email', $email);
+                $mdpDansBdd->execute();
+                $mdpDansBdd = $mdpDansBdd->fetch(PDO::FETCH_ASSOC);
 
-        $mdpDansBdd = $dbh -> prepare("select mdp from tripenarvor._professionnel NATURAL JOIN tripenarvor._compte where mail='$email';");
-        $mdpDansBdd -> execute();
-        $mdpDansBdd = $mdpDansBdd->fetch();
-        
-        $passwordHashedFromDB = password_hash($mdpDansBdd, PASSWORD_DEFAULT);
-
-        if ($mailDansBdd != NULL){
-            if (password_verify($password, $passwordHashedFromDB)) {
-                header('Location: modif_infos_pro.php');
-                // Le mot de passe est correct
-                // Connexion
-                $_SESSION["compte"] = $mailDansBdd;
-                // redirection
-                exit();
+                // Vérifiez le mot de passe
+                if ($mdpDansBdd && password_verify($password, $mdpDansBdd['mdp'])) {
+                    $_SESSION["compte"] = $compte['code_compte'];
+                    header('Location: modif_infos_pro.php');
+                    exit();
+                } else {
+                    echo "<p>Le mot de passe est incorrect</p>";
+                }
             } else {
-                // Le mot de passe est incorrect
-                ?>
-                <p>
-                <?php
-                    echo "Le mot de passe est incorrect";
-                ?>
-            </p>
-            <?php
+                echo "<p>Le mail est inconnu</p>";
             }
-        } else {
-            // Mail inconnu
-            ?>
-            <p>
-                <?php
-                    echo "Le mail est inconnu";
-                ?>
-            </p>
-            <?php
         }
 
-        
+    } catch (PDOException $e) {
+        echo 'Erreur : ' . $e->getMessage();
+    }
     ?>
 </body>
-
 </html>
+
