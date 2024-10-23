@@ -19,7 +19,6 @@
         <div class="logo-pc">
             <img src="images/logoBlanc.png" alt="PACT Logo">
         </div>
-
         <nav>
             <ul>
                 <li><a href="#">Accueil</a></li>
