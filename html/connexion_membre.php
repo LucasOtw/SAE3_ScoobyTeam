@@ -105,7 +105,8 @@
     
             $mdpDansBdd = $dbh -> prepare("select mdp from tripenarvor._membre where mail='$email';");
             $mailDansBdd -> execute();
-            $dbh = null;
+
+            $mailDansBdd = NULL;
             
             $passwordHashedFromDB = password_hash($mdpDansBdd, PASSWORD_DEFAULT);
     
