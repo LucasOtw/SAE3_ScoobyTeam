@@ -7,12 +7,6 @@
     --vert-fonce: #668C3F;
     --gris: #E8E8E8;
 }
-@font-face {
-    font-family: 'K2D';
-    src: url('polices/K2D/K2D-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
 
 body {
     display: flex;
