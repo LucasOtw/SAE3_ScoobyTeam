@@ -116,14 +116,12 @@ if(isset($_GET["deco"])){
             $infosOffre = $dbh->query('SELECT code_offre,titre_offre,code_adresse FROM tripenarvor._offre');
             $infosOffre = $infosOffre->fetchAll();
 
-            $villeOffre = $dbh->query('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
-            $villeOffre->bindParam(":code_adresse",$infosOffre["code_adresse"]);
-            $villeOffre->execute();
-
-            var_dump($villeOffre->fetch());
-
             foreach($infosOffre as $offre){
-                
+                $villeOffre = $dbh->query('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
+                $villeOffre->bindParam(":code_adresse",$infosOffre["code_adresse"]);
+                $villeOffre->execute();
+
+                var_dump($villeOffre->fetch());
             }
         ?>
         </section>
