@@ -19,7 +19,7 @@ ob_start(); // Démarre la mise en tampon de sortie
             <ul>
                 <li><a href="mes_offres.php">Accueil</a></li>
                 <li><a href="connexion_pro.php" class="active">Publier</a></li>
-                <li><a href="connexion_pro.php">Mon Compte</a></li>
+                <li><a href="informations_personnelles_pro.php">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
