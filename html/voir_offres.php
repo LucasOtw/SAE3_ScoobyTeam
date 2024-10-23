@@ -69,7 +69,12 @@
 
         <?php
             try {
-                $dbh = new PDO("host=postgresdb;dbname=5432; dbname=db-scooby-team", "sae", "philly-Congo-bry4nt");
+                $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+                $username = "sae";
+                $password = "philly-Congo-bry4nt";
+                // Créer une instance PDO
+                $dbh = new PDO($dsn, $username, $password);
+                
                 $stmt = $dbh->prepare('SELECT * FROM tripenarvor._offre');
                 $stmt->execute();
                 
