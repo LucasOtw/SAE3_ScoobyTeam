@@ -156,7 +156,7 @@
             <div class="link-group">
                 <ul>
                     <li><a href="mes_offres.php">Accueil</a></li>
-                    <li><a href="#">Publier</a></li>
+                    <li><a href="creation_offre1.php">Publier</a></li>
                     <li><a href="#">Historique</a></li>
                 </ul>
             </div>
