@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <?php session_start(); ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les offres</title>
+    <title>En-tête PAVCT</title>
     <link rel="stylesheet" href="voir_offres.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,9 +20,9 @@
         
         <nav>
             <ul>
-                <li><a href="voir_offres.php" class="active" >Accueil</a></li>
-                <li><a href="connexion_pro.php">Publier</a></li>
-                <li><a href="connexion_membre" >Mon Compte</a></li>
+                <li><a href="#" >Accueil</a></li>
+                <li><a href="#">Publier</a></li>
+                <li><a href="#" class="active">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
@@ -41,9 +43,9 @@
         
         <nav>
             <ul>
-                <li><a href="voir_offres.php" class="active" >Accueil</a></li>
-                <li><a href="connexion_pro.php">Publier</a></li>
-                <li><a href="connexion_membre.php" >Mon Compte</a></li>
+                <li><a href="#" >Accueil</a></li>
+                <li><a href="#">Publier</a></li>
+                <li><a href="#" class="active">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
@@ -69,12 +71,7 @@
 
         <?php
             try {
-                $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-                $username = "sae";
-                $password = "philly-Congo-bry4nt";
-                // Créer une instance PDO
-                $dbh = new PDO($dsn, $username, $password);
-                
+                $dbh = new PDO("host=postgresdb;dbname=5432; dbname=db-scooby-team", "sae", "philly-Congo-bry4nt");
                 $stmt = $dbh->prepare('SELECT * FROM tripenarvor._offre');
                 $stmt->execute();
                 
@@ -107,10 +104,10 @@
 
     </main>
     <nav class="nav-bar">
-    <a href="#"><img src="images/icones/House icon.png" alt="image de maison"></a>
-    <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
-    <a href="#"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
-    <a href="#"><img src="images/icones/User icon.png" alt="image de Personne"></a>
+    <a href="#"><img src="images/icones/House.png" alt="image de maison"></a>
+    <a href="#"><img src="images/icones/recent.png" alt="image d'horloge"></a>
+    <a href="#"><img src="images/icones/Croix.png" alt="image de PLUS"></a>
+    <a href="#"><img src="images/icones/User.png" alt="image de Personne"></a>
 </nav>
     <footer>
         <div class="newsletter">
@@ -142,8 +139,8 @@
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="voir_offres.php">Accueil</a></li>
-                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Publier</a></li>
                     <li><a href="#">Historique</a></li>
                 </ul>
             </div>
