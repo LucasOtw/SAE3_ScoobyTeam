@@ -113,7 +113,7 @@ if(isset($_GET["deco"])){
                 die();
             }
             // On récupère toutes les offres (titre,ville,images)
-            $infosOffre = $dbh->query('SELECT * FROM tripenarvor._offre');
+            $infosOffre = $dbh->query('SELECT code_offre,titre_offre,code_adresse FROM tripenarvor._offre');
             $infosOffre = $infosOffre->fetchAll();
             $i = 0;
             foreach($infosOffre as $offre){
