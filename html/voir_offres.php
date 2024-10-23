@@ -22,6 +22,17 @@
             <ul>
                 <li><a href="voir_offres.php" class="active">Accueil</a></li>
                 <li><a href="connexion_pro.php">Publier</a></li>
+                <?php
+                    if(isset($_SESSION["compte"]) || !empty($_SESSION["compte"])){
+                        ?>
+                        <li><a href="#">/!\ EN COURS /!\</a></li>
+                        <?php
+                    } else {
+                        ?>
+                        <li><a href="connexion_membre.php">Se connecter</a></li>
+                        <?php
+                    }
+                ?>
                 <li><a href="connexion_membre.php">Mon Compte</a></li>
             </ul>
         </nav>
