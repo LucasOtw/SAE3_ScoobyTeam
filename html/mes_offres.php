@@ -53,7 +53,7 @@
         $password = "philly-Congo-bry4nt";
         // Créer une instance PDO
         $dbh = new PDO($dsn, $username, $password);
-    $stmt = $dbh->prepare('SELECT * FROM _offre WHERE professionnel = :professionnel');
+    $stmt = $dbh->prepare('SELECT * FROM tripenarvor._offre WHERE tripenarvor.professionnel = :professionnel');
         $stmt->execute(['professionnel' => $_SESSION["compte"]]);
         
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
