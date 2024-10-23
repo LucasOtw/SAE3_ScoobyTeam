@@ -91,7 +91,7 @@
         var_dump($_POST);
 
         if(!empty($_POST)){
-            $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
+            $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
             $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
 
             echo "<pre>";
