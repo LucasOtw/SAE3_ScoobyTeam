@@ -42,26 +42,25 @@
                     <h2>Se connecter</h2>
                     <p>Se connecter pour accéder à vos favoris</p>
                 </div>
-                <form action="#">
+                <form action="connexion_membre.php" method="POST">
                     <fieldset>
                         <legend>E-mail</legend>
                         <div class="connexion_membre_input-group">
-                            <input type="email" id="email" placeholder="E-mail" required>
+                            <input type="email" id="email" name="mail" placeholder="E-mail" required>
                         </div>
                     </fieldset>
 
                     <fieldset>
                         <legend>Mot de passe</legend>
                         <div class="connexion_membre_input-group">
-                            <input type="password" id="password" placeholder="Mot de passe" required>
+                            <input type="password" id="password" name="pwd" placeholder="Mot de passe" required>
                         </div>
                     </fieldset>
                     
                     <!--
                     <div class="connexion_membre_remember-group">
                         <div>
-                            <input type="checkbox" id="remember" checked>
-                            <label class="connexion_membre_lab_enreg" for="remember">Enregistrer</label>
+                            <input type="submit" value="Enregistrer">
                         </div>
                         <a href="#">Mot de passe oublié ?</a>
                     </div>
@@ -89,48 +88,64 @@
         // Créer une instance PDO
         $dbh = new PDO($dsn, $username, $password);
 
-        $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
-        $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
-        
-        $mailDansBdd = $dbh -> prepare("select code_compte from membre where mail='$email';");
-        $mailDansBdd -> execute();
+        var_dump($_POST);
 
-        $mdpDansBdd = $dbh -> prepare("select mdp from membre where mail='$email';");
-        $mailDansBdd -> execute();
-        $dbh = null;
-        
-        $passwordHashedFromDB = password_hash($mdpDansBdd, PASSWORD_DEFAULT);
+        if(!empty($_POST)){
+            $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
+            $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
+    
+            // on cherche dans la base de données si le compte existe.
+    
+            $existeUser = $dbh->prepare("SELECT code_compte FROM tripenarvor._compte WHERE mail='$email'");
+            $existeUser->execute();
+            var_dump($existeUser->fetch());
 
-        if ($mailDansBdd != NULL){
-            if (password_verify($password, $passwordHashedFromDB)) {
-                // Le mot de passe est correct
-                // Connexion
-                session_start();
-                $_SESSION["compte"] = $mailDansBdd;
-                // redirection
-                header('Location: modif_infos_pro.php');
-                exit();
+            echo "<pre>";
+            var_dump($existeUser->fetch());
+            echo "</pre>";
+            
+            // $mailDansBdd = $dbh -> prepare("select code_compte from tripenarvor._membre where mail='$email';");
+            // $mailDansBdd -> execute();
+    
+            // $mdpDansBdd = $dbh -> prepare("select mdp from tripenarvor._membre where mail='$email';");
+            // $mailDansBdd -> execute();
+
+            $mailDansBdd = NULL;
+            
+            $passwordHashedFromDB = password_hash($mdpDansBdd, PASSWORD_DEFAULT);
+    
+            if ($mailDansBdd != NULL){
+                if (password_verify($password, $passwordHashedFromDB)) {
+                    // Le mot de passe est correct
+                    // Connexion
+                    session_start();
+                    $_SESSION["compte"] = $mailDansBdd;
+                    // redirection
+                    header('Location: modif_infos_pro.php');
+                    exit();
+                } else {
+                    // Le mot de passe est incorrect
+                    ?>
+                    <p>
+                    <?php
+                        echo "Le mot de passe est incorrect";
+                    ?>
+                </p>
+                <?php
+                }
             } else {
-                // Le mot de passe est incorrect
+                // Mail inconnu
                 ?>
                 <p>
+                    <?php
+                        echo "Le mail est inconnu";
+                    ?>
+                </p>
                 <?php
-                    echo "Le mot de passe est incorrect";
-                ?>
-            </p>
-            <?php
             }
         } else {
-            // Mail inconnu
-            ?>
-            <p>
-                <?php
-                    echo "Le mail est inconnu";
-                ?>
-            </p>
-            <?php
+            echo "BONJOUR !";
         }
-
         
     ?>
 </body>

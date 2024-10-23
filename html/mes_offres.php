@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -38,14 +40,13 @@
         <section class="tabs">
             <ul>
                 <li><a href="#" class="active">Offres</a></li>
-                <li><a href="#">Compte bancaire</a></li>
+                <li><a href="ajout_bancaire.php">Compte bancaire</a></li>
             </ul>
         </section>
     
         <section class="offers">
             <h2>Vos offres</h2>
-        <?php
-session_start(); // Make sure session is started
+<?php
 
 // Check if the session variable is set
 if (!isset($_SESSION["compte"])) {
