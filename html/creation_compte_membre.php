@@ -248,22 +248,53 @@
                 if(empty($complementAdresse) || !$complementAdresse){
                     $complementAdresse = "";
                 }
+
+                // On ajoute d'abord l'adresse
+
+                $insererAdresse = $dbh->prepare("INSERT INTO tripenarvor._adresse(adresse_postal,complement_adresse,code_postal,ville) VALUES (:adresse_postal,:complement_adresse,:code_postal,:ville)");
+                $insererAdresse->bindParam(':adresse_postal', $adresse);
+                $insererAdresse->bindParam(':complement_adresse', $complementAdresse);
+                $insererAdresse->bindParam(':code_postal', $codePostal);
+                $insererAdresse->bindParam(':ville', $ville);
+
+                if ($insererAdresse->execute()) {
+                    // 2. Récupérer le code_adresse nouvellement créé
+                    $codeAdresse = $dbh->lastInsertId();
+                    echo "L'adresse a été insérée avec succès. Code adresse: " . $codeAdresse;
+                } else {
+                    echo "Erreur lors de l'insertion de l'adresse.";
+                }
                 
-                $insert = $dbh->prepare("INSERT INTO tripenarvor._compte 
-                    (telephone, mail, mdp, nom, prenom, pseudo, adresse_postal, complement_adresse, code_postal, ville)
-                    VALUES (:telephone, :mail, :mdp, :nom, :prenom, :pseudo, :adresse_postal, :complement_adresse, :code_postal, :ville)");
+               // on ajoute maintenant le compte
+
+                $creerCompte = $dbh->prepare("INSERT INTO tripenarvor._compte (telephone,mail,code_adresse,mdp) VALUES (:telephone,:mail,:code_adresse,:mdp)");
                 
                 // Liez les valeurs aux paramètres
-                $insert->bindParam(':telephone', $telephone);
-                $insert->bindParam(':mail', $email);
-                $insert->bindParam(':mdp', $passwordHashed);
-                $insert->bindParam(':nom', $nom);
-                $insert->bindParam(':prenom', $prenom);
-                $insert->bindParam(':pseudo', $pseudo);
-                $insert->bindParam(':adresse_postal', $adresse);
-                $insert->bindParam(':complement_adresse', $complementAdresse);
-                $insert->bindParam(':code_postal', $codePostal);
-                $insert->bindParam(':ville', $ville);
+                $creerCompte->bindParam(':telephone', $telephone);
+                $creerCompte->bindParam(':mail', $email);
+                $creerCompte->bindParam(':mdp', $passwordHashed);
+                $creerCompte->bindParam(':code_adresse',$codeAdresse);
+
+                if ($creerCompte->execute()) {
+                    // 2. Récupérer le code_adresse nouvellement créé
+                    $codeCompte = $dbh->lastInsertId();
+                    echo "Le compte a été crée avec succès. Code du compte : " . $codeCompte;
+                } else {
+                    echo "Erreur lors de l'insertion du compte.";
+                }
+
+                $creerMembre = $dbh->prepare("INSERT INTO tripenarvor._membre VALUES (:code_compte,:nom,:prenom,:pseudo)");
+                
+                $creerMembre->bindParam(':nom', $nom);
+                $creerMembre->bindParam(':prenom', $prenom);
+                $creerMembre->bindParam(':pseudo', $pseudo);
+
+                if($creerMembre->execute()){
+                    echo "Le compte Membre a été crée avec succès";
+                }
+
+                
+
                 
                 // Exécutez la requête
                 var_dump($insert->execute());
