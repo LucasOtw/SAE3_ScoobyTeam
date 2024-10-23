@@ -501,6 +501,10 @@ footer {
     transition: ease-in-out 0.25s;
 }
 
+nav.nav-bar {
+        display:none;
+    }
+
 @media (max-width: 430px) {
     header.header-pc {
         display: none;
