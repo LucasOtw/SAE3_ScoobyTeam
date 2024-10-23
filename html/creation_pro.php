@@ -228,7 +228,10 @@ session_start();
                                                 VALUES ($telephone, $email, $passwordHashed, $raison_sociale, $adresse, $complementAdresse, $codePostal, $ville, $siren)");
                 }
     
-                $_SESSION["compte"]= pg_query("select currval('_compte_code_compte_seq');");
+                $dbh->query("SELECT nextval('tripenarvor._compte_code_compte_seq');");
+                
+                // Appelle currval pour récupérer la dernière valeur
+                $_SESSION["compte"] = ($dbh->query("SELECT currval('tripenarvor._compte_code_compte_seq');"))->fetchColumn();
     
     
             } else {
