@@ -501,7 +501,7 @@ footer {
     transition: ease-in-out 0.25s;
 }
 
-nav.nav-bar {
+body > nav > a > img {
         display:none;
 }
 
@@ -565,6 +565,10 @@ nav.nav-bar {
         justify-content: space-around;
         border-radius: 1000px;
         box-shadow: 0px 2px 10px rgb(156, 156, 156);
+    }
+
+    body > nav > a > img {
+        display:block;
     }
 
     nav.nav-bar a {
