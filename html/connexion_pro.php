@@ -79,9 +79,10 @@
         // Créer une instance PDO
         $dbh = new PDO($dsn, $username, $password);
 
-        $checkTables = $dbh->prepare('SHOW TABLES');
+        $checkTables = $dbh->prepare("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'");
         $checkTables->execute();
-        var_dump($checkTables->fetchAll());
+        $tables = $checkTables->fetchAll(PDO::FETCH_COLUMN);
+        var_dump($tables);
 
         $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
         $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
