@@ -8,6 +8,7 @@ if (!isset($_SESSION["compte"]) || empty($_SESSION["compte"])) {
 if(isset($_GET["deco"])){
     header('location: connexion_pro.php');
     exit;
+    session_destroy();
 }
 
 ?>
