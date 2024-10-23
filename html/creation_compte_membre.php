@@ -244,6 +244,7 @@
                 
                 $insert = $dbh -> prepare("insert into membre(telephone, mail, mdp, nom, prenom, pseudo, adresse_postal, complement_adresse, code_postal, ville)
                                                 values ($telephone, $email, $passwordHashed, $nom, $prenom, $pseudo, $adresse, $complementAdresse, $codePostal, $ville)");
+                var_dump($insert);
     
                try {
                     // Appelle nextval pour initier la séquence
@@ -254,7 +255,6 @@
                 } catch (PDOException $e) {
                     echo "Erreur : " . $e->getMessage();
                 }
-                var_dump($_SESSION["compte"]);
             } else {
                 // Affiche les erreurs
                 foreach ($erreurs as $erreur) {
