@@ -219,12 +219,12 @@ session_start();
             if (empty($erreurs)) {
                 // Pas d'erreurs, on peut procéder à l'enregistrement dans la base de données
                 if (empty($siren)) {
-                    $insert = $professionnel_publique->prepare("INSERT INTO professionnel_publique(telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville) 
+                    $professionnel_publique = $dbh->prepare("INSERT INTO professionnel_publique(telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville) 
                                                 VALUES ($telephone, $email, $passwordHashed, $raison_sociale, $adresse, $complementAdresse, $codePostal, $ville)");
                     var_dump($insert);
                 }
                 else {
-                    $insert = $professionnel_prive->prepare("INSERT INTO professionnel_prive(telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville, num_siren) 
+                    $professionnel_prive = $dbh->prepare("INSERT INTO professionnel_prive(telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville, num_siren) 
                                                 VALUES ($telephone, $email, $passwordHashed, $raison_sociale, $adresse, $complementAdresse, $codePostal, $ville, $siren)");
                 }
     
