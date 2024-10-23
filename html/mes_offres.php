@@ -35,8 +35,8 @@ if(isset($_GET["deco"])){
         <nav>
             <ul>
                 <li><a href="mes_offres.php" class="active">Accueil</a></li>
-                <li><a href="connexion_pro.php">Publier</a></li>
-                <li><a href="connexion_pro.php">Mon Compte</a></li>
+                <li><a href="creation_offre1.php">Publier</a></li>
+                <li><a href="#">/!\EN COURS/!\</a></li>
                 <li><a href="mes_offres.php?deco=true">Déconnexion</a></li>
             </ul>
         </nav>
