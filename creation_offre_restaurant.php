@@ -659,7 +659,7 @@
                                     "ville" => $_POST["ville"], 
                                     "type_offre" => $_POST["offre"], 
                                     "gamme_prix" => $_POST["prix"],
-                                    "repas" => $repasString = implode(', ', $_POST["repas"]);]);
+                                    "repas" => $repasString = implode(', ', $_POST["repas"])]);
                 
                 switch ($_POST["option"]) {
                     case 'en_relief':
@@ -673,7 +673,7 @@
                         $update = $dbh -> prepare("update tripenarvor._offre
                                                     set option_en_relief = :code_option
                                                     where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
-                        $update->execute(["code_option"=>$select]) 
+                        $update->execute(["code_option"=>$select]);
                         break;
                     
                     case 'a_la_une':
@@ -687,12 +687,14 @@
                         $update = $dbh -> prepare("update tripenarvor._offre
                                                     set option_a_la_une = :code_option
                                                     where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
-                        $update->execute(["code_option"=>$select]) 
+                        $update->execute(["code_option"=>$select]);
                         break;
 
                     default:
                         break;
                 }
+
+
 
                 $insert = $dbh -> prepare("insert into tripenarvor._horaire(ouverture, fermeture) values (:ouverture, :fermeture)");
                 $insert->execute(["ouverture"=>$_POST["ouvetureL"], "fermeture"=>$_POST["fermetureL"]]);
@@ -700,12 +702,10 @@
                 $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
                 $select->execute();
 
-                $update = $dbh -> prepare("update tripenarvor.offre_activite
+                $update = $dbh -> prepare("update tripenarvor._offre
                                             set lundi = :lundi,
-                                                professionnel = :code_compte,
-                                                code_adresse = (select code_adresse from tripenarvor._adresse where code_offre = (select currval('tripenarvor._offre_code_offre_seq')))
                                             where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
-                $update->execute(["lundi"=>$select, "code_compte"=>$_SESSION["compte"]]);
+                $update->execute(["lundi"=>$select]);
 
 
 
@@ -715,12 +715,10 @@
                 $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
                 $select->execute();
 
-                $update = $dbh -> prepare("update tripenarvor.offre_activite
+                $update = $dbh -> prepare("update tripenarvor._offre
                                             set mardi = :mardi,
-                                                professionnel = :code_compte,
-                                                code_adresse = (select code_adresse from tripenarvor._adresse where code_offre = (select currval('tripenarvor._offre_code_offre_seq')))
-                                            where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
-                $update->execute(["mardi"=>$select, "code_compte"=>$_SESSION["compte"]]);
+                                                where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
+                $update->execute(["mardi"=>$select]);
 
 
 
@@ -730,12 +728,10 @@
                 $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
                 $select->execute();
 
-                $update = $dbh -> prepare("update tripenarvor.offre_activite
+                $update = $dbh -> prepare("update tripenarvor._offre
                                             set mercredi = :mercredi,
-                                                professionnel = :code_compte,
-                                                code_adresse = (select code_adresse from tripenarvor._adresse where code_offre = (select currval('tripenarvor._offre_code_offre_seq')))
                                             where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
-                $update->execute(["mercredi"=>$select, "code_compte"=>$_SESSION["compte"]]);
+                $update->execute(["mercredi"=>$select]);
 
 
 
@@ -745,12 +741,10 @@
                 $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
                 $select->execute();
 
-                $update = $dbh -> prepare("update tripenarvor.offre_activite
+                $update = $dbh -> prepare("update tripenarvor._offre
                                             set jeudi = :jeudi,
-                                                professionnel = :code_compte,
-                                                code_adresse = (select code_adresse from tripenarvor._adresse where code_offre = (select currval('tripenarvor._offre_code_offre_seq')))
-                                            where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
-                $update->execute(["jeudi"=>$select, "code_compte"=>$_SESSION["compte"]]);
+                                                where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
+                $update->execute(["jeudi"=>$select]);
 
 
 
@@ -760,12 +754,10 @@
                 $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
                 $select->execute();
 
-                $update = $dbh -> prepare("update tripenarvor.offre_activite
+                $update = $dbh -> prepare("update tripenarvor._offre
                                             set vendredi = :vendredi,
-                                                professionnel = :code_compte,
-                                                code_adresse = (select code_adresse from tripenarvor._adresse where code_offre = (select currval('tripenarvor._offre_code_offre_seq')))
-                                            where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
-                $update->execute(["vendredi"=>$select, "code_compte"=>$_SESSION["compte"]]);
+                                                where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
+                $update->execute(["vendredi"=>$select]);
 
 
 
@@ -775,12 +767,10 @@
                 $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
                 $select->execute();
 
-                $update = $dbh -> prepare("update tripenarvor.offre_activite
+                $update = $dbh -> prepare("update tripenarvor._offre
                                             set samedi = :samedi,
-                                                professionnel = :code_compte,
-                                                code_adresse = (select code_adresse from tripenarvor._adresse where code_offre = (select currval('tripenarvor._offre_code_offre_seq')))
-                                            where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
-                $update->execute(["samedi"=>$select, "code_compte"=>$_SESSION["compte"]]);
+                                                where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
+                $update->execute(["samedi"=>$select]);
 
 
 
@@ -790,12 +780,10 @@
                 $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
                 $select->execute();
 
-                $update = $dbh -> prepare("update tripenarvor.offre_activite
+                $update = $dbh -> prepare("update tripenarvor._offre
                                             set dimanche = :dimanche,
-                                                professionnel = :code_compte,
-                                                code_adresse = (select code_adresse from tripenarvor._adresse where code_offre = (select currval('tripenarvor._offre_code_offre_seq')))
-                                            where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
-                $update->execute(["dimanche"=>$select, "code_compte"=>$_SESSION["compte"]]);
+                                                where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
+                $update->execute(["dimanche"=>$select]);
 
 
 
@@ -817,8 +805,19 @@
 
                             // Déplacer le fichier vers le répertoire de destination
                             if (move_uploaded_file($fileTmpName, $destination)) {
+
                                 echo "Le fichier $fileName a été téléchargé avec succès !<br>";
-                                
+
+                                $insert = $dbh -> prepare("insert into tripenarvor._image (url_image) values (:url_image)");
+                                $insert->execute(["url_image" => $fileName]);
+
+                                $select = $dbh -> prepare("select currval('tripenarvor._image_code_image_seq')");
+                                $select->execute();
+
+                                $insert = $dbh -> prepare("insert into tripenarvor._son_image (code_image, code_offre) 
+                                                            values (:code_image, (select currval('tripenarvor._offre_code_offre_seq')) )");
+                                $insert->execute(["code_image" => $select]);
+
                             } else {
                                 echo "Erreur lors du téléchargement du fichier $fileName.<br>";
                             }
