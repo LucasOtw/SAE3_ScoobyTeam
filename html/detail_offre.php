@@ -114,7 +114,7 @@ if(!isset($_POST["code_offre"])){
                 </div>
                 <div class="detail_offre_price-button">
                     <p class="detail_offre_price">50€</p>
-                    <button class="visit-button_detailoffre"><a href="https://www.tiallannec.com/FR/index.php">Voir le site ➔</button>
+                    <button class="visit-button_detailoffre"><a href="https://www.tiallannec.com/FR/index.php">Voir le site ➔</a></button>
                 </div>
             </div>
 
