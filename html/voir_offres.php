@@ -142,8 +142,8 @@
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Publier</a></li>
+                    <li><a href="voir_offres.php">Accueil</a></li>
+                    <li><a href="connexion_pro.php">Publier</a></li>
                     <li><a href="#">Historique</a></li>
                 </ul>
             </div>
