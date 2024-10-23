@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 ?>
 
@@ -74,39 +75,49 @@ session_start();
         // Créer une instance PDO
         $dbh = new PDO($dsn, $username, $password);
 
-        // Vérifier si le formulaire a été soumis
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $email = trim(htmlspecialchars($_POST['email']));
-            $password = htmlspecialchars($_POST['password']);
-            
-            // Vérifier si l'email existe
-            $mailDansBdd = $dbh->prepare("SELECT code_compte FROM tripenarvor._professionnel NATURAL JOIN tripenarvor._compte WHERE mail = :email");
-            $mailDansBdd->bindParam(':email', $email);
-            $mailDansBdd->execute();
-            $compte = $mailDansBdd->fetch(PDO::FETCH_ASSOC);
-
-            if ($compte) {
-                // Vérifier le mot de passe
-                $mdpDansBdd = $dbh->prepare("SELECT mdp FROM tripenarvor._professionnel NATURAL JOIN tripenarvor._compte WHERE mail = :email");
-                $mdpDansBdd->bindParam(':email', $email);
-                $mdpDansBdd->execute();
-                $mdpDansBdd = $mdpDansBdd->fetch(PDO::FETCH_ASSOC);
-
-                // Vérifiez le mot de passe
-                if ($mdpDansBdd && password_verify($password, $mdpDansBdd['mdp'])) {
-                    $_SESSION["compte"] = $compte['code_compte'];
-                    header('Location: modif_infos_pro.php');
-                    exit();
-                } else {
-                    echo "<p>Le mot de passe est incorrect</p>";
-                }
-            } else {
-                echo "<p>Le mail est inconnu</p>";
-            }
-        }
-
     } catch (PDOException $e) {
         echo 'Erreur : ' . $e->getMessage();
+    }
+    // Vérifier si le formulaire a été soumis
+    if(isset($_POST) || !empty($_POST)){
+        $email = trim(htmlspecialchars($_POST['email']));
+        $password = htmlspecialchars($_POST['password']);
+
+        // on vérifie que l'adresse mail soit reliée à un compte
+
+        $codeCompte = $dbh->prepare("SELECT code_compte FROM tripenarvor._compte WHERE mail = :mail");
+        $codeCompte->bindParam(":mail",$email);
+        $codeCompte->execute();
+        $codeCompte = $codeCompte->fetch();
+
+        if ($codeCompte) {
+            // si un compte est trouvé, on vérifie maintenant qu'il soit professionnel
+            // var_dump($codeCompte[0]);  // Commenté ou supprimé pour éviter la sortie avant header
+            $estPro = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel WHERE code_compte = :codeCompte");
+            $estPro->bindParam(":codeCompte", $codeCompte[0]);
+            $estPro->execute();
+            $estPro = $estPro->fetch();
+        
+            if ($estPro) {
+                // si le compte est professionnel, alors on vérifie son mot de passe
+                $mdpPro = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :codeCompte");
+                $mdpPro->bindParam("codeCompte", $codeCompte[0]);
+                $mdpPro->execute();
+                $mdpPro = $mdpPro->fetch();
+                if (password_verify($password, $mdpPro[0])) {
+                    // si le mot de passe est correct
+                    $_SESSION["compte"] = $codeCompte[0]; // Stocke le code_compte dans la session
+                    header('Location: mes_offres.php'); // Redirection
+                    exit; // Assure que le script s'arrête après la redirection
+                } else {
+                    echo "Mot de passe incorrect.";
+                }
+            } else {
+                echo "Cette adresse mail est reliée à un compte non professionnel.";
+            }
+        } else {
+            echo "Aucun compte trouvé à cette adresse mail";
+        }
     }
     ?>
 </body>
