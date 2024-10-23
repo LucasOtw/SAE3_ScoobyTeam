@@ -109,6 +109,7 @@ session_start();
                     // alors on le connecte
                     header('location: mes_offres.php');
                     $_SESSION["compte"] = $codeCompte[0];
+                    exit();
                 } else {
                     echo "Mot de passe incorrect.";
                 }
