@@ -72,7 +72,7 @@
         </div>
     </main>
     <?php
-        $dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
         $username = "sae";
         $password = "philly-Congo-bry4nt";
 
