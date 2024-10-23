@@ -251,7 +251,7 @@
                 
                 $insert = $dbh -> prepare("insert into tripenarvor._compte(telephone, mail, mdp, nom, prenom, pseudo, adresse_postal, complement_adresse, code_postal, ville)
                                                 values ($telephone, $email, $passwordHashed, $nom, $prenom, $pseudo, $adresse, $complementAdresse, $codePostal, $ville)");
-                var_dump($insert->execute);
+                var_dump($insert->execute());
     
                try {
                     // Appelle nextval pour initier la séquence
