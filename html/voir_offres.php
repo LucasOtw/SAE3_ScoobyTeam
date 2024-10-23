@@ -131,17 +131,40 @@ if(isset($_GET["deco"])){
                 // Utiliser fetchAll pour récupérer toutes les images sous forme de tableau
                 $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
             
-                var_dump($images); // Affiche le tableau des images pour vérification
-            
                 if (!empty($images)) {
                     // Récupérer la première image si disponible
                     $offre_image = $images[0]['code_image']; 
                 } else {
                     $offre_image = ""; // Pas d'image trouvée
                 }
+
+                ?>
+                <article class="offer">
+                    <img src=<?php echo $offre_image ?> alt="aucune image">
+                    <div class="offer-details">
+                        <h2><?php echo $offre["titre_offre"] ?></h2>
+                        <p><?php echo $offre["ville"] ?></p>
+                        <span>Durée inconnue</span>
+                        <button>Voir l'offre →</button>
+                    </div>
+                </article>
+                <?php
             }
 
         ?>
+        <article class="offer">
+                <img src="images/offre2.png" alt="Image de l'offre Armor'Park">
+                <div class="offer-details">
+                    <h2>Armor'Park</h2>
+                    <p>Lannion</p>
+                    <span>3 mois</span>
+                    <span>
+                        <!-- <img src="images/etoile.png" class="img-etoile">
+                        <p>4 <span class="nb_avis">(50 avis)</span></p> -->
+                    </span>
+                    <button>Voir l'offre →</button>
+                </div>
+            </article>
         </section>
 
     </main>
