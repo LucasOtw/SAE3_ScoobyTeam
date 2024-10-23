@@ -101,7 +101,7 @@ session_start();
             if($estPro){
                 // si le compte est professionnel, alors on vérifie son mot de passe
                 $mdpPro = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :codeCompte");
-                $mdpPro->bindParam("codeCompte",$codeCompte);
+                $mdpPro->bindParam("codeCompte",$codeCompte[0]);
                 $mdpPro->execute();
                 $mdpPro = $mdpPro->fetch();
                 if(passwod_verify($password,$mdpPro[0])){
