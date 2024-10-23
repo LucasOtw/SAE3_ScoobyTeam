@@ -27,9 +27,9 @@ ob_start();
         
         <nav>
             <ul>
-                <li><a href="voir_offres.php.php" class="active">Accueil</a></li>
+                <li><a href="voir_offres.php.php" >Accueil</a></li>
                 <li><a href="connexion_pro.php">Publier</a></li>
-                <li><a href="connexion_membre.php">Mon Compte</a></li>
+                <li><a href="connexion_membre.php" class="active">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
@@ -51,7 +51,7 @@ ob_start();
                     <fieldset>
                         <legend>E-mail</legend>
                         <div class="connexion_membre_input-group">
-                            <input type="email" id="email" name="email" placeholder="E-mail" required>
+                            <input type="email" id="email" name="mail" placeholder="E-mail" required>
                         </div>
                     </fieldset>
 
@@ -108,9 +108,15 @@ ob_start();
                 // Car même si l'adresse mail et le mdp sont corrects, si le compte n'est pas lié à un membre, ça ne sert à rien de continuer les vérifications
                 $existeMembre = $dbh->prepare("SELECT 1 FROM tripenarvor._membre WHERE code_compte = :code_compte");
                 $existeMembre->bindParam(':code_compte',$existeUser[0]);
+                $existeMembre->execute();
                 if($existeMembre){
-                    header('location:https://static.wikia.nocookie.net/dirtybiologistan/images/5/58/Rickroll.gif/revision/latest?cb=20220620191052&path-prefix=fr');
-                    exit();
+                    // Si le membre existe, on vérifie le mot de passe
+                    $checkPWD = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :code_compte");
+                    $checkPWD->bindParam(':code_compte',$existeUser[0]);
+                    $checkPWD->execute();
+
+                    $pwd_compte = $checkPWD->fetch();
+                    var_dump($pwd_compte);
                 }
             }
             
