@@ -616,6 +616,12 @@
             </script>
 
             <?php
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+            $username = "sae";
+            $password = "philly-Congo-bry4nt";
+    
+            // Créer une instance PDO
+            $dbh = new PDO($dsn, $username, $password);
                 $nom_offre = isset($_POST['nom_offre']) ? $_POST['nom_offre'] : '';
                 $email = isset($_POST['email']) ? $_POST['email'] : '';
                 $telephone = isset($_POST['telephone']) ? $_POST['telephone'] : '';
