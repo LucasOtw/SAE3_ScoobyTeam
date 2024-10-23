@@ -9,7 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Se connecter</title>
     <link rel="icon" type="image/png" href="images/logoPin.png" width="16px" height="32px">
-    <link rel="stylesheet" href="creation_pro.css">
+    <link rel="stylesheet" href="creation_pro.css?">
 </head>
 
 <body>
