@@ -57,7 +57,7 @@ try {
     $nom = '';
 
     // Préparer la requête pour récupérer les informations bancaires
-    $query = "SELECT nom_compte, iban, bic FROM _compte_bancaire WHERE code_compte_bancaire = :compte_bancaire_id";
+    $query = "SELECT nom_compte, iban, bic FROM tripenarvor._compte_bancaire WHERE code_compte_bancaire = :compte_bancaire_id";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':compte_bancaire_id', $_SESSION['compte_bancaire_id'], PDO::PARAM_INT);
     $stmt->execute();
@@ -80,7 +80,7 @@ try {
         // Vérifier que tous les champs sont remplis
         if (!empty($iban) && !empty($bic) && !empty($nom) && $cgu) {
             // Mettre à jour les informations bancaires dans la base de données
-            $updateQuery = "UPDATE _compte_bancaire SET nom_compte = :nom, iban = :iban, bic = :bic WHERE code_compte_bancaire = :compte_bancaire_id";
+            $updateQuery = "UPDATE tripenarvor._compte_bancaire SET nom_compte = :nom, iban = :iban, bic = :bic WHERE code_compte_bancaire = :compte_bancaire_id";
             $stmt = $pdo->prepare($updateQuery);
             $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
             $stmt->bindParam(':iban', $iban, PDO::PARAM_STR);
