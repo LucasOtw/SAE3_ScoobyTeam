@@ -20,8 +20,8 @@ session_start();
         <nav>
             <ul>
                 <li><a href="mes_offres.php" class="active">Accueil</a></li>
-                <li><a href="creation_offre1.php">Publier</a></li>
-                <li><a href="ajout_bancaire.php">Mon Compte</a></li>
+                <li><a href="connexion_pro.php">Publier</a></li>
+                <li><a href="connexion_pro.php">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
