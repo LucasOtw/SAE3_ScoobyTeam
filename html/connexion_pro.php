@@ -87,10 +87,10 @@
         $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
         $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
         
-        $mailDansBdd = $dbh -> prepare("select code_compte from _professionnel NATURAL JOIN _compte where mail='$email';");
+        $mailDansBdd = $dbh -> prepare("select code_compte from tripenarvor._professionnel NATURAL JOIN _compte where mail='$email';");
         $mailDansBdd -> execute();
 
-        $mdpDansBdd = $dbh -> prepare("select mdp from _professionnel NATURAL JOIN _compte where mail='$email';");
+        $mdpDansBdd = $dbh -> prepare("select mdp from tripenarvor._professionnel NATURAL JOIN _compte where mail='$email';");
         $mailDansBdd -> execute();
         
         $passwordHashedFromDB = password_hash($mdpDansBdd, PASSWORD_DEFAULT);
