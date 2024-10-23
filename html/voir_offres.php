@@ -33,13 +33,13 @@ if(isset($_GET["deco"])){
                     if(isset($_SESSION["compte"]) || !empty($_SESSION["compte"])){
                         ?>
                         <li><a href="#">/!\ EN COURS /!\</a></li>
+                        <li><a href="voir_offres.php?deco=true">Se déconnecter</a></li>
                         <?php
                     } else {
                         ?>
                         <li><a href="connexion_membre.php">Se connecter</a></li>
                         <?php
                     } ?>
-                    <li><a href="voir_offres.php?deco=true">Se déconnecter</a></li>
             </ul>
         </nav>
     </header>
