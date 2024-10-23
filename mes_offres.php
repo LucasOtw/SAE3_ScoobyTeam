@@ -1,20 +1,20 @@
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes offres</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-</head>
-<body>
-    <?php
+<?php
     try {
-        $dbh = new PDO("$driver:host=$server;dbname=$dbname", $user, $pass);
-        $stmt = $dbh->prepare('SELECT * FROM _offre WHERE professionnel = :professionnel');
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
+        $username = "sae";
+        $password = "philly-Congo-bry4nt";
+
+        // Créer une instance PDO
+        $pdo = new PDO($dsn, $username, $password);
+    
+        
+    } catch (PDOException $e) {
+        print "Erreur!: ". $e->getMessage(). "<br/>";
+        die();
+    }
+
+    $stmt = $dbh->prepare('SELECT * FROM _offre WHERE professionnel = :professionnel');
         $stmt->execute(['professionnel' => $_SESSION["compte"]]);
         
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -44,13 +44,24 @@
         }
         
         $dbh = null;
-    } catch (PDOException $e) {
-        print "Erreur!: ". $e->getMessage(). "<br/>";
-        die();
-    }
     ?>
 
-    <header>
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes offres</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+</head>
+<body>
+     <header>
         <div class="logo">
             <img src="images/logoBlanc.png" alt="PAVCT Logo">
         </div>
