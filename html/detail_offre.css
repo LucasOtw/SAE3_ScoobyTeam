@@ -324,6 +324,7 @@ footer {
     width: 223px;
     height: 52px;
     margin-right: -37em;
+    transition: ease-in-out 0.2s;
 }
 
 .visit-button_detailoffre:hover {
@@ -550,7 +551,7 @@ footer {
     transform: scale(1.1);
     /* Grossissement à 110% */
     box-shadow: 0 0 15px 5px #12d889;
-    /* Lumière fluo verte */
+    /* Lumière fluo verte */ 
     background-color: #12d889;
 }
 
