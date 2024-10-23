@@ -19,7 +19,7 @@
             <ul>
                 <li><a href="mes_offres.php" class="active">Accueil</a></li>
                 <li><a href="creation_offre1.php">Publier</a></li>
-                <li><a href="#">Mon Compte</a></li>
+                <li><a href="ajout_bancaire.php">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
@@ -37,8 +37,6 @@
     
         <section class="tabs">
             <ul>
-                <li><a href="#">Informations</a></li>
-                <li><a href="#">Mot de passe et sécurité</a></li>
                 <li><a href="#" class="active">Offres</a></li>
                 <li><a href="#">Compte bancaire</a></li>
             </ul>
@@ -136,7 +134,7 @@ try {
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="#">Accueil</a></li>
+                    <li><a href="mes_offres.php">Accueil</a></li>
                     <li><a href="#">Publier</a></li>
                     <li><a href="#">Historique</a></li>
                 </ul>
