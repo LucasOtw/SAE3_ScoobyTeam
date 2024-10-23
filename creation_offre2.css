@@ -50,7 +50,7 @@
 .main-creation-offre2 .col input, .main-creation-offre2 .col select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--orange);
     border-radius: 5px;
 }
 
@@ -81,7 +81,7 @@
     align-items: center;
 }
 
-.main-creation-offre2 input[type="radio"], input[type="checkbox"] {
+.main-creation-offre2 input[type="radio"], .main-creation-offre2 input[type="checkbox"] {
     margin-right: 10px;
 }
 
@@ -177,7 +177,7 @@
 
 
 .main-creation-offre2 fieldset {
-    border: 1px solid #ccc;
+    border: 0px solid #ccc;
     border-radius: 5px;
     position: relative;
     padding-top: 0; /* Enlève le padding en haut */
