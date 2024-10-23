@@ -22,6 +22,17 @@
     font-style: normal;
 }
 
+html, body {
+    height: 100%; /* Important pour que le footer se positionne en bas */
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "K2D", sans-serif;
+    min-height: 100vh; /*Pour occuper toute la page*/
+}
 
 /****** HEADER *****/
 
@@ -382,10 +393,10 @@ footer {
 /**** CODE PAGE CONNEXION PRO ***/
 
 
-.creation_compte_pro body {
+/*.creation_compte_pro body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-}
+}*/
 
 .creation_compte_pro header {
     background-color: #000;

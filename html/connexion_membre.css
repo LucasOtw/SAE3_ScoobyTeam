@@ -8,6 +8,24 @@
     --gris: #E8E8E8;
 }
 
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+html, body {
+    height: 100%; /* Important pour que le footer se positionne en bas */
+}
+
 body {
     display: flex;
     flex-direction: column;

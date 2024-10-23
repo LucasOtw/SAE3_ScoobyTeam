@@ -1,5 +1,20 @@
 <?php
+ob_start();
 session_start();
+
+var_dump($_SESSION["compte"]);
+
+if (!isset($_SESSION["compte"]) || empty($_SESSION["compte"])) {
+    header('location: connexion_pro.php');
+    exit;
+}
+if(isset($_GET["deco"])){
+    session_unset();
+    session_destroy();
+    header('location: connexion_pro.php');
+    exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,8 +35,9 @@ session_start();
         <nav>
             <ul>
                 <li><a href="mes_offres.php" class="active">Accueil</a></li>
-                <li><a href="connexion_pro.php">Publier</a></li>
-                <li><a href="connexion_pro.php">Mon Compte</a></li>
+                <li><a href="creation_offre1.php">Publier</a></li>
+                <li><a href="#">/!\EN COURS/!\</a></li>
+                <li><a href="mes_offres.php?deco=true">Déconnexion</a></li>
             </ul>
         </nav>
     </header>
