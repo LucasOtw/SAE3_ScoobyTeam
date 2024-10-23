@@ -1,5 +1,5 @@
 
- <?php
+ /*<?php
     try {
         $dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
         $username = "sae";
@@ -43,7 +43,7 @@
         }
         
         $dbh = null;
-    ?>
+    ?>*/
 
 
 
@@ -67,7 +67,7 @@
         <nav>
             <ul>
                 <li><a href="#" class="active">Accueil</a></li>
-                <li><a href="#">Publier</a></li>
+                <li><a href="creation_offre1.php">Publier</a></li>
                 <li><a href="#">Mon Compte</a></li>
             </ul>
         </nav>

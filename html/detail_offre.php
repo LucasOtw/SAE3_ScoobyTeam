@@ -98,7 +98,7 @@ if(!isset($_POST["code_offre"])){
             <nav>
                 <ul>
                     <li><a href="#" class="active">Accueil</a></li>
-                    <li><a href="#">Publier</a></li>
+                    <li><a href="creation_offre1.php">Publier</a></li>
                     <li><a href="#">Mon Compte</a></li>
                 </ul>
             </nav>

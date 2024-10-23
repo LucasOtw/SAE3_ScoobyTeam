@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <?php session_start(); ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En-tête PAVCT</title>
+    <title>Les offres</title>
     <link rel="stylesheet" href="voir_offres.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +19,7 @@
         <nav>
             <ul>
                 <li><a href="#" >Accueil</a></li>
-                <li><a href="#">Publier</a></li>
+                <li><a href="creation_offre1.php">Publier</a></li>
                 <li><a href="#" class="active">Mon Compte</a></li>
             </ul>
         </nav>
