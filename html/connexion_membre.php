@@ -100,6 +100,7 @@ ob_start();
             // on cherche dans la base de données si le compte existe.
     
             $existeUser = $dbh->prepare("SELECT code_compte FROM tripenarvor._compte WHERE mail='$email'");
+            var_dump($existeUser);
             $existeUser->execute();
 
             if($existeUser){
