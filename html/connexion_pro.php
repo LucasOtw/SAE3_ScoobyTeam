@@ -96,6 +96,7 @@ session_start();
             $estPro->bindParam(":codeCompte",$codeCompte[0]);
             var_dump($estPro);
             $estPro->execute();
+            $estPro = $estPro->fetch();
 
             if($estPro){
                 echo "OUI";
