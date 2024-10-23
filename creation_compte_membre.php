@@ -162,12 +162,12 @@
     <?php
 
         // Vérifie si le formulaire a été soumis    
-        $dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
         $username = "sae";  // Utilisateur PostgreSQL défini dans .env
         $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
     
         // Créer une instance PDO avec les bons paramètres
-        $pdo = new PDO($dsn, $username, $password);
+        $dbh = new PDO($dsn, $username, $password);
 
         // Récupération des champs
         $prenom = trim(isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : '');
@@ -240,7 +240,7 @@
         if (empty($erreurs)) {
             // Pas d'erreurs, on peut procéder au traitement (inscription, enregistrement, etc.)
             
-            $insert = $membre -> prepare("insert into membre(telephone, mail, mdp, nom, prenom, pseudo, adresse_postal, complement_adresse, code_postal, ville)
+            $insert = $dbh -> prepare("insert into membre(telephone, mail, mdp, nom, prenom, pseudo, adresse_postal, complement_adresse, code_postal, ville)
                                             values ($telephone, $email, $passwordHashed, $nom, $prenom, $pseudo, $adresse, $complementAdresse, $codePostal, $ville)");
             $insert->execute();
             $membre = null;
