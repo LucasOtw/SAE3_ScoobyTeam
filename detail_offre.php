@@ -267,7 +267,6 @@ if(!isset($_POST["code_offre"])){
                 <h1>Ti Al Lannec</h1>
                 <a href="https://www.tiallannec.com/FR/index.php" class="description-link"><h3>Site Web</h3></a>
     </div>
-<<<<<<< HEAD
             <!-- <div class="rating">
                 <span>
                     <img class="icone" src="images/etoile.png">
@@ -276,8 +275,6 @@ if(!isset($_POST["code_offre"])){
                     4.7 (2 avis)
                 </span>
             </div> -->
-=======
->>>>>>> eb330b4d83d50367af68d7fc2a2fd36242caba0b
             <p class="address">
                 <img class="icone" src="images/icones/pin.png">
                 34 Av. du Général de Gaulle, 22300 Lannion</p>
