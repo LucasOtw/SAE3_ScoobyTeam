@@ -116,6 +116,7 @@ ob_start();
                     $checkPWD->execute();
 
                     $pwd_compte = $checkPWD->fetch();
+                    var_dump($pwd_compte);
                 }
             }
             
