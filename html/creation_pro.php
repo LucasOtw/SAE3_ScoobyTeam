@@ -147,6 +147,8 @@ session_start();
 
         if(isset($_POST)){
            // Récupération des variables du formulaire
+            var_dump($_POST);
+            
             $raison_sociale = trim(isset($_POST['raison-sociale']) ? htmlspecialchars($_POST['raison-sociale']) : '');
             $siren = trim(isset($_POST['siren']) ? htmlspecialchars($_POST['siren']) : '');
             $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
