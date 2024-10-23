@@ -1,10 +1,9 @@
 
-!-- <?php
+ <?php
     try {
         $dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
         $username = "sae";
         $password = "philly-Congo-bry4nt";
-
         // Créer une instance PDO
         $pdo = new PDO($dsn, $username, $password);
     
@@ -44,7 +43,7 @@
         }
         
         $dbh = null;
-    ?>--!
+    ?>
 
 
 
