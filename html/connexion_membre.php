@@ -114,6 +114,7 @@
             // $mailDansBdd -> execute();
 
             $mailDansBdd = NULL;
+            $test = "";
             
             $passwordHashedFromDB = password_hash($mdpDansBdd, PASSWORD_DEFAULT);
     
