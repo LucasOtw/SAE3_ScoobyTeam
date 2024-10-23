@@ -294,11 +294,6 @@
                     echo "Le compte Membre a été crée avec succès";
                 }
 
-                
-
-                
-                // Exécutez la requête
-                var_dump($insert->execute());
     
                try {
                     // Appelle nextval pour initier la séquence
