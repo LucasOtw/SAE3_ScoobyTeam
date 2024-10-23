@@ -47,7 +47,7 @@ session_start();
     
         <section class="offers">
             <h2>Vos informations</h2>
-            <button type="submit" class="submit-btn2">Enregistrer</button>
+            <button type="submit" class="submit-btn2">Déconnexion</button>
         </section>    
     </main>
     
