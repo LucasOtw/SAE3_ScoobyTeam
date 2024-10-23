@@ -92,6 +92,7 @@
 
         $mdpDansBdd = $dbh -> prepare("select mdp from tripenarvor._professionnel NATURAL JOIN tripenarvor._compte where mail='$email';");
         $mdpDansBdd -> execute();
+        $mdpDansBdd = $mdpDansBdd->fetch();
         
         $passwordHashedFromDB = password_hash($mdpDansBdd, PASSWORD_DEFAULT);
 
