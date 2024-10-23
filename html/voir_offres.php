@@ -124,6 +124,7 @@ if(isset($_GET["deco"])){
                 $imagesOffre = $dbh->prepare('SELECT code_image FROM tripenarvor._son_image WHERE code_offre = :code_offre');
                 $imagesOffre->bindParam(":code_offre",$offre["code_offre"]);
                 $imagesOffre->execute();
+                $imagesOffre->fetchAll();
 
                 if(!empty($imagesOffre)){
                     $offre_image = $imagesOffre[0];
