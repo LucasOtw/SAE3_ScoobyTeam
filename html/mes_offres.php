@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -44,8 +46,7 @@
     
         <section class="offers">
             <h2>Vos offres</h2>
-        <?php
-session_start(); // Make sure session is started
+<?php
 
 // Check if the session variable is set
 if (!isset($_SESSION["compte"])) {
