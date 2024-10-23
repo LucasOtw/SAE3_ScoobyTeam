@@ -503,7 +503,7 @@ footer {
 
 nav.nav-bar {
         display:none;
-    }
+}
 
 @media (max-width: 430px) {
     header.header-pc {
