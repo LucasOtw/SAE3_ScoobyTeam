@@ -1,5 +1,6 @@
 
- /*<?php
+ <?php
+    session_start();
     try {
         $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
         $username = "sae";
