@@ -22,6 +22,12 @@
     font-style: normal;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "K2D", sans-serif;
+    min-height: 100vh; /*Pour occuper toute la page*/
+}
 
 /****** HEADER *****/
 
