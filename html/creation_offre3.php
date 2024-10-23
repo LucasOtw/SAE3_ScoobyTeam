@@ -15,7 +15,7 @@
             <ul>
                 <li><a href="mes_offres.php">Accueil</a></li>
                 <li><a href="creation_offre1.php" class="active">Publier</a></li>
-                <li><a href="#">Mon Compte</a></li>
+                <li><a href="connexion_pro.php">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
