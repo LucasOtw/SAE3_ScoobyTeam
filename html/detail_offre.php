@@ -1,11 +1,55 @@
  <?php
- session_start();
+    session_start();
 
-    // Adresse que tu veux convertir
-    $adresse = "7 rue les hautes fontennelles";
+    if(!isset($_POST["code_offre"])){
+        echo "Erreur : aucune offre"; // à remplacer
+    } else {
+        // si le formulaire est bien récupéré
+        $code_offre = $_POST["code_offre"]; // on récupère le code de l'offre envoyé
+
+        // On vérifie si le code existe dans la base de données (AU CAS OU !!!)
+        $existeOffre = $bdd->query("SELECT * FROM _offre WHERE code_offre = $code_offre");
+        if(!empty($existeOffre)){ // si l'offre existe
+            $details_offre = $existeOffre->fetch(); // on récupère son contenu
+
+                // Une offre a forcément au moins une image. 
+                // On récupère l'image (ou les images) associée(s)
+                
+            $images_offre = $bdd->query('SELECT url_image FROM _image WHERE code_image = (SELECT code_image FROM son_image WHERE code_offre = '.$code_offre.')');
+
+                // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
+            
+            $adresse_offre = $bdd->query('SELECT * FROM _adresse WHERE code_adresse = '.$details_offre["code_adresse"].'');
+            
+            $horaires = $bdd->query('SELECT DISTINCT h.* FROM _offre o JOIN _horaire h ON h.code_horaire IN (o.lundi, o.mardi, o.mercredi, o.jeudi, o.vendredi, o.samedi, o.dimanche)');
+
+            $tag = $bdd->query('SELECT nom_tag from _tags natural join _son_tag where code_offre = '.$code_offre.'');
+
+            if (!empty($bdd->query('SELECT * FROM _offre_activite where code_offre = '.$code_offre.'')))
+            {
+                $details_offre_type = $bdd->query('SELECT * FROM _offre_activite where code_offre = '.$code_offre.'');
+            }
+            else if (!empty($bdd->query('SELECT * FROM _offre_visite where code_offre = '.$code_offre.'')))
+            {
+                $details_offre_type = $bdd->query('SELECT * FROM _offre_visite where code_offre = '.$code_offre.'');
+            }
+            else if (!empty($bdd->query('SELECT * FROM _offre_spectacle where code_offre = '.$code_offre.'')))
+            {
+                $details_offre_type = $bdd->query('SELECT * FROM _offre_spectacle where code_offre = '.$code_offre.'');
+            }
+            else if (!empty($bdd->query('SELECT * FROM _offre_restauration where code_offre = '.$code_offre.'')))
+            {
+                $details_offre_type = $bdd->query('SELECT * FROM _offre_restauration where code_offre = '.$code_offre.'');
+            }
+            else if (!empty($bdd->query('SELECT * FROM _offre_parc_attractions where code_offre = '.$code_offre.'')))
+            {
+                $details_offre_type = $bdd->query('SELECT * FROM _offre_parc_attractions where code_offre = '.$code_offre.'');
+            }
+        }
+    } 
 
     // Encode l'adresse pour l'URL
-    $adresse_enc = urlencode($adresse);
+    $adresse_enc = urlencode($adresse_offre["adresse_postal"]);
 
     // Clé API Google obtenue après inscription
     $api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig";
@@ -25,38 +69,6 @@
         // echo "Adresse non trouvée.";
     }
 
-
-
-
-if(!isset($_POST["code_offre"])){
-    echo "Erreur : aucune offre"; // à remplacer
-} else {
-    // si le formulaire est bien récupéré
-    $code_offre = $_POST["code_offre"]; // on récupère le code de l'offre envoyé
-
-    // On vérifie si le code existe dans la base de données (AU CAS OU !!!)
-    $existeOffre = $bdd->query("SELECT * FROM _offre WHERE code_offre = $code_offre");
-    if(!empty($existeOffre)){ // si l'offre existe
-        $details_offre = $existeOffre->fetch(); // on récupère son contenu
-
-            // Une offre a forcément au moins une image. 
-            // On récupère l'image (ou les images) associée(s)
-            
-        $images_offre = $bdd->query('SELECT url_image FROM _image WHERE code_image = (SELECT code_image FROM son_image WHERE code_offre = '.$code_offre.')');
-
-            // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
-        
-        $adresse_offre = $bdd->query('SELECT * FROM _adresse WHERE code_adresse = '.$details_offre["code_adresse"].'');
-        $horaires = $bdd->query('SELECT DISTINCT h.* FROM _offre o JOIN _horaire h ON h.code_horaire IN (o.lundi, o.mardi, o.mercredi, o.jeudi, o.vendredi, o.samedi, o.dimanche
-        WHERE o.lundi IS NOT NULL
-        OR o.mardi IS NOT NULL
-        OR o.mercredi IS NOT NULL
-        OR o.jeudi IS NOT NULL
-        OR o.vendredi IS NOT NULL
-        OR o.samedi IS NOT NULL
-        OR o.dimanche IS NOT NULL');
-    }
-} 
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -108,14 +120,14 @@ if(!isset($_POST["code_offre"])){
         <div class="detail_offre_hotel-detail">
             <div class="detail_offre_hotel-header">
                 <div class="detail_offre_hotel-info">
-                    <h1>Ti Al Lannec – Hôtel & Restaurant</h1>
-                    <p>📍 Trébeurden, Bretagne 22300</p>
+                    <h1><?php echo $details_offre["titre_offre"];?></h1>
+                    <p><?php echo $adresse_offre["ville"]." ".$adresse_offre["code_postal"];?></p>
                     <!-- <div class="detail_offre_rating">
                         ⭐ 5.0 (255 avis)
                     </div> -->
                 </div>
                 <div class="detail_offre_price-button">
-                    <p class="detail_offre_price">50€</p>
+                    <p class="detail_offre_price"><?php echo $details_offre["tarif"];?></p>
                     <button class="visit-button_detailoffre"><a class="detail_offre_button" href="https://www.tiallannec.com/FR/index.php">Voir le site ➔</a></button>
                 </div>
             </div>
