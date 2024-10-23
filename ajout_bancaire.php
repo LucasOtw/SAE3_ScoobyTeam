@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premières coordonnées bancaires</title>
-    <link rel="stylesheet" href="style_bancaire.css">
+    <link rel="stylesheet" href="saisir_info_bancaire.css">
 </head>
 <body>
 <header>
