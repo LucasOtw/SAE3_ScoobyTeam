@@ -20,9 +20,9 @@
         
         <nav>
             <ul>
-                <li><a href="#" >Accueil</a></li>
+                <li><a href="#" class="active">Accueil</a></li>
                 <li><a href="#">Publier</a></li>
-                <li><a href="#" class="active">Mon Compte</a></li>
+                <li><a href="#">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
