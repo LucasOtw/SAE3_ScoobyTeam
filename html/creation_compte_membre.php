@@ -168,88 +168,91 @@
         $dbh = new PDO($dsn, $username, $password);
 
         // Récupération des champs
-        $prenom = trim(isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : '');
-        $nom = trim(isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : '');
-        $pseudo = trim(isset($_POST['pseudo']) ? htmlspecialchars($_POST['pseudo']) : '');
-        $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
-        $telephone = trim(isset($_POST['telephone']) ? htmlspecialchars($_POST['telephone']) : '');
-        $adresse = trim(isset($_POST['adresse']) ? htmlspecialchars($_POST['adresse']) : '');
-        $codePostal = trim(isset($_POST['code-postal']) ? htmlspecialchars($_POST['code-postal']) : '');
-        $complementAdresse = trim(isset($_POST['complement-adresse']) ? htmlspecialchars($_POST['complement-adresse']) : '');
-        $ville = trim(isset($_POST['ville']) ? htmlspecialchars($_POST['ville']) : '');
-        $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
-        $confirmPassword = isset($_POST['confirm-password']) ? htmlspecialchars($_POST['confirm-password']) : '';
-        $cgu = isset($_POST['cgu']) ? true : false; // Case à cocher
-        
 
-        $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
-
+        if(!empty($_POST)){
+            $prenom = trim(isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : '');
+            $nom = trim(isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : '');
+            $pseudo = trim(isset($_POST['pseudo']) ? htmlspecialchars($_POST['pseudo']) : '');
+            $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
+            $telephone = trim(isset($_POST['telephone']) ? htmlspecialchars($_POST['telephone']) : '');
+            $adresse = trim(isset($_POST['adresse']) ? htmlspecialchars($_POST['adresse']) : '');
+            $codePostal = trim(isset($_POST['code-postal']) ? htmlspecialchars($_POST['code-postal']) : '');
+            $complementAdresse = trim(isset($_POST['complement-adresse']) ? htmlspecialchars($_POST['complement-adresse']) : '');
+            $ville = trim(isset($_POST['ville']) ? htmlspecialchars($_POST['ville']) : '');
+            $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
+            $confirmPassword = isset($_POST['confirm-password']) ? htmlspecialchars($_POST['confirm-password']) : '';
+            $cgu = isset($_POST['cgu']) ? true : false; // Case à cocher
             
-        // Initialisation du tableau d'erreurs
-        $erreurs = [];
-        // Vérifications approfondies des champs
-        // 1. Prénom : Pas de chiffres, pas de caractères spéciaux
-        if (empty($prenom)) {
-            $erreurs[] = "Le champ 'Prénom' est requis.";
-        } elseif (!preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/", $prenom)) {
-            $erreurs[] = "Le prénom ne doit contenir que des lettres, espaces, ou apostrophes.";
-        }
-        // 2. Nom : Pas de chiffres, pas de caractères spéciaux
-        if (empty($nom)) {
-            $erreurs[] = "Le champ 'Nom' est requis.";
-        } elseif (!preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/", $nom)) {
-            $erreurs[] = "Le nom ne doit contenir que des lettres, espaces, ou apostrophes.";
-        }
-        // 3. Pseudo : Autoriser lettres, chiffres, mais pas de caractères spéciaux à part underscores
-        if (empty($pseudo)) {
-            $erreurs[] = "Le champ 'Pseudo' est requis.";
-        }
-        // 4. Email : Vérifier si l'email est valide
-        if (empty($email) || !preg_match("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", $email)) {
-            $erreurs[] = "L'adresse email est invalide.";
-        }
-        // 5. Téléphone : Doit être un format valide de 10 chiffres
-        if (empty($telephone) || !preg_match('/^[0-9]{10}$/', $telephone)) {
-            $erreurs[] = "Le numéro de téléphone doit comporter 10 chiffres.";
-        }
-        // 6. Adresse : Valider la longueur minimum et maximum si nécessaire
-        if (empty($adresse)) {
-            $erreurs[] = "Le champ 'Adresse' est requis.";
-        }
-        // 7. Code Postal : Format à 5 chiffres
-        if (empty($codePostal) || !preg_match('/^[0-9]{5} | 2[AB]$/', $codePostal)) {
-            $erreurs[] = "Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B";
-        }
-        // 8. Ville : Pas de chiffres, pas de caractères spéciaux
-        if (empty($ville)) {
-            $erreurs[] = "Le champ 'Ville' est requis.";
-        } elseif (!preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/", $ville)) {
-            $erreurs[] = "Le nom de la ville ne doit contenir que des lettres, espaces, ou apostrophes.";
-        }
-        // 9. Mot de passe : Minimum 8 caractères, et correspondance avec le champ de confirmation
-        if ($password !== $confirmPassword) {
-            $erreurs[] = "Les mots de passe ne correspondent pas.";
-        }
-        // 10. Conditions générales d'utilisation (CGU) : Vérification que la case est cochée
-        if (!$cgu) {
-            $erreurs[] = "Vous devez accepter les conditions générales d'utilisation.";
-        }
-        // Vérifie s'il y a des erreurs
-        if (empty($erreurs)) {
-            // Pas d'erreurs, on peut procéder au traitement (inscription, enregistrement, etc.)
-            
-            $insert = $dbh -> prepare("insert into membre(telephone, mail, mdp, nom, prenom, pseudo, adresse_postal, complement_adresse, code_postal, ville)
-                                            values ($telephone, $email, $passwordHashed, $nom, $prenom, $pseudo, $adresse, $complementAdresse, $codePostal, $ville)");
-            $insert->execute();
-            $membre = null;
-
-            $_SESSION["compte"]= pg_query("select currval('_compte_code_compte_seq');");
-        } else {
-            // Affiche les erreurs
-            foreach ($erreurs as $erreur) {
-                echo "<p>$erreur</p>";
+    
+            $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
+    
+                
+            // Initialisation du tableau d'erreurs
+            $erreurs = [];
+            // Vérifications approfondies des champs
+            // 1. Prénom : Pas de chiffres, pas de caractères spéciaux
+            if (empty($prenom)) {
+                $erreurs[] = "Le champ 'Prénom' est requis.";
+            } elseif (!preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/", $prenom)) {
+                $erreurs[] = "Le prénom ne doit contenir que des lettres, espaces, ou apostrophes.";
             }
-            
+            // 2. Nom : Pas de chiffres, pas de caractères spéciaux
+            if (empty($nom)) {
+                $erreurs[] = "Le champ 'Nom' est requis.";
+            } elseif (!preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/", $nom)) {
+                $erreurs[] = "Le nom ne doit contenir que des lettres, espaces, ou apostrophes.";
+            }
+            // 3. Pseudo : Autoriser lettres, chiffres, mais pas de caractères spéciaux à part underscores
+            if (empty($pseudo)) {
+                $erreurs[] = "Le champ 'Pseudo' est requis.";
+            }
+            // 4. Email : Vérifier si l'email est valide
+            if (empty($email) || !preg_match("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", $email)) {
+                $erreurs[] = "L'adresse email est invalide.";
+            }
+            // 5. Téléphone : Doit être un format valide de 10 chiffres
+            if (empty($telephone) || !preg_match('/^[0-9]{10}$/', $telephone)) {
+                $erreurs[] = "Le numéro de téléphone doit comporter 10 chiffres.";
+            }
+            // 6. Adresse : Valider la longueur minimum et maximum si nécessaire
+            if (empty($adresse)) {
+                $erreurs[] = "Le champ 'Adresse' est requis.";
+            }
+            // 7. Code Postal : Format à 5 chiffres
+            if (empty($codePostal) || !preg_match('/^[0-9]{5} | 2[AB]$/', $codePostal)) {
+                $erreurs[] = "Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B";
+            }
+            // 8. Ville : Pas de chiffres, pas de caractères spéciaux
+            if (empty($ville)) {
+                $erreurs[] = "Le champ 'Ville' est requis.";
+            } elseif (!preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/", $ville)) {
+                $erreurs[] = "Le nom de la ville ne doit contenir que des lettres, espaces, ou apostrophes.";
+            }
+            // 9. Mot de passe : Minimum 8 caractères, et correspondance avec le champ de confirmation
+            if ($password !== $confirmPassword) {
+                $erreurs[] = "Les mots de passe ne correspondent pas.";
+            }
+            // 10. Conditions générales d'utilisation (CGU) : Vérification que la case est cochée
+            if (!$cgu) {
+                $erreurs[] = "Vous devez accepter les conditions générales d'utilisation.";
+            }
+
+            // Vérifie s'il y a des erreurs
+            if (empty($erreurs)) {
+                echo "OUIIIIIIIIIIII !";
+                // Pas d'erreurs, on peut procéder au traitement (inscription, enregistrement, etc.)
+                
+                $insert = $dbh -> prepare("insert into membre(telephone, mail, mdp, nom, prenom, pseudo, adresse_postal, complement_adresse, code_postal, ville)
+                                                values ($telephone, $email, $passwordHashed, $nom, $prenom, $pseudo, $adresse, $complementAdresse, $codePostal, $ville)");
+    
+                $_SESSION["compte"]= pg_query("select currval('_compte_code_compte_seq');");
+            } else {
+                // Affiche les erreurs
+                foreach ($erreurs as $erreur) {
+                    echo "<p>$erreur</p>";
+                }
+                
+            }
         }
     
     ?>   
