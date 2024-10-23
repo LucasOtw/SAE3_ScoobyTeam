@@ -6,7 +6,7 @@
     <title>Modifier coordonnées bancaires</title>
     <link rel="stylesheet" href="ajout_bancaire.css">
     <style>
-        .alert_bancaire {
+        .alert {
             display: none; /* Caché par défaut */
             padding: 10px;
             margin: 15px 0;
@@ -46,61 +46,66 @@
 </div>
 
 <?php
+// Détails de la connexion à la base de données
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
+$username = "sae";
+$password = "philly-Congo-bry4nt";
 
-$host = 'votre_hôte';
-$db = 'votre_base_de_données';
-$user = 'votre_utilisateur'; 
-$password = 'votre_mot_de_passe'; 
+try {
+    // Créer une instance PDO
+    $pdo = new PDO($dsn, $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    // Variables pour stocker les informations bancaires
+    $iban = '';
+    $bic = '';
+    $nom = '';
+    $message = ''; 
 
-$conn = pg_connect("host=$host dbname=$db user=$user password=$password");
+    // Préparer la requête pour récupérer les informations bancaires
+    $query = "SELECT nom_compte, iban, bic FROM _compte_bancaire LIMIT 1";
+    $stmt = $pdo->query($query);
 
-
-$iban = '';
-$bic = '';
-$nom = '';
-$message = ''; 
-
-
-$query = "SELECT nom_compte, iban, bic FROM _compte_bancaire LIMIT 1";
-$result = pg_query($conn, $query);
-if ($result) {
-    $row = pg_fetch_assoc($result);
-    if ($row) {
+    // Vérifier s'il y a des résultats
+    if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $nom = $row['nom_compte'];
         $iban = $row['iban'];
         $bic = $row['bic'];
     }
-}
 
+    // Si le formulaire est soumis
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $iban = htmlspecialchars($_POST['IBAN']);
+        $bic = htmlspecialchars($_POST['BIC']);
+        $nom = htmlspecialchars($_POST['nom']);
+        $cgu = isset($_POST['cgu']) ? true : false;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   
-    $iban = htmlspecialchars($_POST['IBAN']);
-    $bic = htmlspecialchars($_POST['BIC']);
-    $nom = htmlspecialchars($_POST['nom']);
-    $cgu = isset($_POST['cgu']) ? true : false;
+        // Vérifier que tous les champs sont remplis
+        if (!empty($iban) && !empty($bic) && !empty($nom) && $cgu) {
+            // Mettre à jour les informations bancaires dans la base de données
+            $update_query = "UPDATE _compte_bancaire SET nom_compte = :nom, iban = :iban, bic = :bic WHERE nom_compte = :nom";
+            $stmt = $pdo->prepare($update_query);
+            $stmt->bindParam(':nom', $nom);
+            $stmt->bindParam(':iban', $iban);
+            $stmt->bindParam(':bic', $bic);
 
-  
-    if (!empty($iban) && !empty($bic) && !empty($nom) && $cgu) {
-       
-        $update_query = "UPDATE _compte_bancaire SET nom_compte = $1, iban = $2, bic = $3 WHERE nom_compte = $1";
-        $result = pg_query_params($conn, $update_query, array($nom, $iban, $bic));
-
-        if ($result) {
-            $message = "Les informations bancaires ont été modifiées avec succès."; 
+            if ($stmt->execute()) {
+                $message = "Les informations bancaires ont été modifiées avec succès."; 
+            } else {
+                $message = "Impossible de modifier les informations. Veuillez réessayer.";
+            }
         } else {
-            $message = "Impossible de modifier les informations. Veuillez réessayer.";
+            $message = "Veuillez remplir tous les champs.";
         }
-    } else {
-        $message = "Veuillez remplir tous les champs.";
     }
+
+} catch (PDOException $e) {
+    echo "Erreur de connexion à la base de données : " . $e->getMessage();
 }
 
-
-pg_close($conn);
+// Fermer la connexion
+$pdo = null;
 ?>
-
 
 <?php if ($message): ?>
     <div class="alert" id="alert">
@@ -178,7 +183,7 @@ pg_close($conn);
         </div>
     </div>
 
-    <div class="footer-bottome">
+    <div class="footer-bottom">
         <div class="social-icons">
             <a href="#"><img src="Images/Vector.png" alt="Facebook"></a>
             <a href="#"><img src="Images/Vector2.png" alt="Instagram"></a>
@@ -189,7 +194,6 @@ pg_close($conn);
 </footer>
 
 <script>
-    
     window.onload = function() {
         var alertBox = document.getElementById('alert');
         if (alertBox) {
