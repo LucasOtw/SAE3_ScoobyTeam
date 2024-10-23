@@ -33,7 +33,6 @@
                         <?php
                     }
                 ?>
-                <li><a href="connexion_membre.php">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
