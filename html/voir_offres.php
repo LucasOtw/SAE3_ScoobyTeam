@@ -37,9 +37,8 @@ if(isset($_GET["deco"])){
                         ?>
                         <li><a href="connexion_membre.php">Se connecter</a></li>
                         <?php
-                    }
+                    } ?>
                     <li><a href="voir_offres.php?deco=true">Se déconnecter</a></li>
-                ?>
             </ul>
         </nav>
     </header>
