@@ -99,7 +99,15 @@ session_start();
             $estPro = $estPro->fetch();
 
             if($estPro){
-                echo "OUI";
+                // si le compte est professionnel, alors on vérifie son mot de passe
+                $mdpPro = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :codeCompte");
+                $mdpPro->bindParam("codeCompte",$codeCompte);
+                $mdpPro->execute();
+                $mdpPro = $mdpPro->fetch();
+                if(passwod_verify($password,$mdpPro[0])){
+                    echo "Ouais ouais ouais ouais !!";
+                }
+                
             } else {
                 echo "NON";
             }
