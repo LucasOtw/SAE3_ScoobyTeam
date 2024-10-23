@@ -88,16 +88,6 @@
         // Créer une instance PDO
         $dbh = new PDO($dsn, $username, $password);
 
-        $recupTable = $dbh->prepare('SELECT *
-          FROM information_schema.columns
-         WHERE table_schema = \'tripenarvor\'
-           AND table_name   = \'membre\'
-             ;');
-        $recupTable->execute();
-        echo "<pre>";
-        var_dump($recupTable->fetch());
-        echo "</pre>";
-
         var_dump($_POST);
 
         if(!empty($_POST)){
