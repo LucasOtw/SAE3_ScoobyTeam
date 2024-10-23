@@ -23,7 +23,7 @@
             <ul>
                 <li><a href="voir_offres.php">Accueil</a></li>
                 <li><a href="creation_offre1.php">Publier</a></li>
-                <li><a href="#" class="active">Mon Compte</a></li>
+                <li><a href="connexion_pro.php" class="active">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
