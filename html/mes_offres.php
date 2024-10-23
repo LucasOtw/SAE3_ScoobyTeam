@@ -5,7 +5,7 @@
         $username = "sae";
         $password = "philly-Congo-bry4nt";
         // Créer une instance PDO
-        $bdh = new PDO($dsn, $username, $password);
+        $dbh = new PDO($dsn, $username, $password);
     $stmt = $dbh->prepare('SELECT * FROM _offre WHERE professionnel = :professionnel');
         $stmt->execute(['professionnel' => $_SESSION["compte"]]);
         
