@@ -70,7 +70,7 @@
                     <div class="connexion_membre_btn_connecter_pas_de_compte">
                         <button type="submit">Se connecter</button>
                         <hr>
-                        <p><span class="pas_de_compte">Pas de compte ?<a href="#creation_membre.php">Inscription</a></p>
+                        <p><span class="pas_de_compte">Pas de compte ?<a href="creation_membre.php">Inscription</a></p>
                     </div>
                     
                 </form>
