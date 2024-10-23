@@ -94,8 +94,10 @@
             $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
             $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
 
+            echo "<pre>";
             print_r($email);
             print_r($password);
+            echo "</pre>";
     
             // on cherche dans la base de données si le compte existe.
     
