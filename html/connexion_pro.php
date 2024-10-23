@@ -105,16 +105,21 @@ session_start();
                 $mdpPro->execute();
                 $mdpPro = $mdpPro->fetch();
                 if(password_verify($password,$mdpPro[0])){
-                    echo "Ouais ouais ouais ouais !!";
+                    // si le mot de passe est correct
+                    // alors on le connecte
+                    header('location: mes_offres.php');
+                    $_SESSION["compte"] = $codeCompte[0];
+                } else {
+                    echo "Mot de passe incorrect.";
                 }
                 
             } else {
-                echo "NON";
+                echo "Cette adresse mail est reliée à un compte non professionnel.";
             }
+        } else {
+            echo "Aucun compte trouvé à cette adresse mail";
         }
     }
-
-    // on vérifie si le
     ?>
 </body>
 </html>
