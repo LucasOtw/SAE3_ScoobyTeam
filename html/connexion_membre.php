@@ -116,7 +116,10 @@ ob_start();
                     $checkPWD->execute();
 
                     $pwd_compte = $checkPWD->fetch();
-                    var_dump($pwd_compte);
+
+                    if(password_verify($password,$pwd_compte)){
+                        echo "BONSOIR !";
+                    }
                 }
             }
             
