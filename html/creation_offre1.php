@@ -57,7 +57,7 @@
                 
                 // Vérifie que l'utilisateur a sélectionné une option valide
                 if ($offreChoisie !== "default") {
-                    header("Location: creation_offre_$offreChoisie.php");
+                    header("Location: https://scooby-team.ventsdouest.dev/creation_offre_$offreChoisie.php");
                     exit();
                 } else {
                     echo "<script>alert('Veuillez choisir une offre.');</script>";
