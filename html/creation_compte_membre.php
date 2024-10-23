@@ -249,8 +249,23 @@
                     $complementAdresse = "";
                 }
                 
-                $insert = $dbh -> prepare("insert into tripenarvor._compte(telephone, mail, mdp, nom, prenom, pseudo, adresse_postal, complement_adresse, code_postal, ville)
-                                                values ($telephone, $email, $passwordHashed, $nom, $prenom, $pseudo, $adresse, $complementAdresse, $codePostal, $ville)");
+                $insert = $dbh->prepare("INSERT INTO tripenarvor._compte 
+                    (telephone, mail, mdp, nom, prenom, pseudo, adresse_postal, complement_adresse, code_postal, ville)
+                    VALUES (:telephone, :mail, :mdp, :nom, :prenom, :pseudo, :adresse_postal, :complement_adresse, :code_postal, :ville)");
+                
+                // Liez les valeurs aux paramètres
+                $insert->bindParam(':telephone', $telephone);
+                $insert->bindParam(':mail', $email);
+                $insert->bindParam(':mdp', $passwordHashed);
+                $insert->bindParam(':nom', $nom);
+                $insert->bindParam(':prenom', $prenom);
+                $insert->bindParam(':pseudo', $pseudo);
+                $insert->bindParam(':adresse_postal', $adresse);
+                $insert->bindParam(':complement_adresse', $complementAdresse);
+                $insert->bindParam(':code_postal', $codePostal);
+                $insert->bindParam(':ville', $ville);
+                
+                // Exécutez la requête
                 var_dump($insert->execute());
     
                try {
