@@ -147,6 +147,8 @@
                 </p>
                 <?php
             }
+        } else {
+            echo "BONJOUR !";
         }
         
     ?>
