@@ -105,6 +105,7 @@ ob_start();
             if($existeUser){
                 // si l'utilisateur existe, on vérifie d'abord si il est membre.
                 $existeUser = $existeUser->fetch();
+                var_dump($existeUser);
                 // Car même si l'adresse mail et le mdp sont corrects, si le compte n'est pas lié à un membre, ça ne sert à rien de continuer les vérifications
                 $existeMembre = $dbh->prepare("SELECT 1 FROM tripenarvor._membre WHERE code_compte = :code_compte");
                 $existeMembre->bindParam(':code_compte',$existeUser[0]);
