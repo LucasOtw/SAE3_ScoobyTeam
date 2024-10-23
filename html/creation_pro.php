@@ -230,8 +230,9 @@ session_start();
                     var_dump($professionnel_publique);
                 }
                 else {
-                    $professionnel_prive = $dbh->prepare("INSERT INTO professionnel_prive(telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville, num_siren) 
+                    $professionnel_prive = $dbh->prepare("INSERT INTO tripenarvor.professionnel_prive(telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville, num_siren) 
                                                 VALUES ($telephone, $email, $passwordHashed, $raison_sociale, $adresse, $complementAdresse, $codePostal, $ville, $siren)");
+                    $professionnel_prive->execute();
                     var_dump($professionnel_prive);
                 }
     
