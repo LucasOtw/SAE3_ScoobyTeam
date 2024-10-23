@@ -46,7 +46,7 @@
                     <fieldset>
                         <legend>E-mail</legend>
                         <div class="connexion_membre_input-group">
-                            <input type="email" id="email" name="mail" placeholder="E-mail" required>
+                            <input type="email" id="email" name="email" placeholder="E-mail" required>
                         </div>
                     </fieldset>
 
@@ -92,7 +92,7 @@
 
         if(!empty($_POST)){
             $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
-            $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
+            $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
     
             // on cherche dans la base de données si le compte existe.
     
