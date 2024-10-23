@@ -19,7 +19,7 @@
         <nav>
             <ul>
                 <li><a href="voir_offres.php" class="active" >Accueil</a></li>
-                <li><a href="creation_offre1.php">Publier</a></li>
+                <li><a href="connexion_membre.php">Publier</a></li>
                 <li><a href="#" >Mon Compte</a></li>
             </ul>
         </nav>
