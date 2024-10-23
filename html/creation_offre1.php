@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En-tête PACT</title>
+    <title>Création offre</title>
     <link rel="stylesheet" href="creation_offre1.css">
 </head>
 <body>
