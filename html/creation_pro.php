@@ -224,52 +224,53 @@ session_start();
             // Vérifie s'il y a des erreurs
             if (empty($erreurs)) {
                 // Pas d'erreurs, on peut procéder à l'enregistrement dans la base de données
-                if (empty($siren)) {
-                    // Requête pour "professionnel_publique"
-                    $professionnel_publique = $dbh->prepare("
-                        INSERT INTO professionnel_publique(
-                            telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville
-                        ) 
-                        VALUES (:telephone, :mail, :mdp, :raison_sociale, :adresse_postale, :complement_adresse, :code_postal, :ville)
-                    ");
-                    
-                    // Bind des valeurs
-                    $professionnel_publique->bindParam(':telephone', $telephone);
-                    $professionnel_publique->bindParam(':mail', $email);
-                    $professionnel_publique->bindParam(':mdp', $passwordHashed);
-                    $professionnel_publique->bindParam(':raison_sociale', $raison_sociale);
-                    $professionnel_publique->bindParam(':adresse_postale', $adresse);
-                    $professionnel_publique->bindParam(':complement_adresse', $complementAdresse);
-                    $professionnel_publique->bindParam(':code_postal', $codePostal);
-                    $professionnel_publique->bindParam(':ville', $ville);
+                if(empty($complementAdresse) || !$complementAdresse){
+                    $complementAdresse = "";
+                }
+
+                // On ajoute d'abord l'adresse
+
+                $insererAdresse = $dbh->prepare("INSERT INTO tripenarvor._adresse(adresse_postal,complement_adresse,code_postal,ville) VALUES (:adresse_postal,:complement_adresse,:code_postal,:ville)");
+                $insererAdresse->bindParam(':adresse_postal', $adresse);
+                $insererAdresse->bindParam(':complement_adresse', $complementAdresse);
+                $insererAdresse->bindParam(':code_postal', $codePostal);
+                $insererAdresse->bindParam(':ville', $ville);
+
+                if ($insererAdresse->execute()) {
+                    // 2. Récupérer le code_adresse nouvellement créé
+                    $codeAdresse = $dbh->lastInsertId();
+                }
+
+                // on ajoute maintenant le compte
+
+                $creerCompte = $dbh->prepare("INSERT INTO tripenarvor._compte (telephone,mail,code_adresse,mdp) VALUES (:telephone,:mail,:code_adresse,:mdp)");
                 
-                    // Exécuter la requête
-                    $professionnel_publique->execute();
-                    var_dump($professionnel_publique);
+                $creerCompte->bindParam(':telephone', $telephone);
+                $creerCompte->bindParam(':mail', $email);
+                $creerCompte->bindParam(':mdp', $passwordHashed);
+                $creerCompte->bindParam(':code_adresse',$codeAdresse);
+
+                if ($creerCompte->execute()) {
+                    // 2. Récupérer le code_adresse nouvellement créé
+                    $codeCompte = $dbh->lastInsertId();
+                }
+                
+                // on ajoute ce compte à la table _professionnel
+
+                $insererPro = $dbh->prepare("INSERT INTO tripenarvor._professionnel (code_compte,raison_sociale) VALUES(:code_compte,:raison_sociale)");
+                $insererPro->bindParam(":code_compte",$codeCompte);
+                $insererPro->bindParam(":raison_sociale",$raison_sociale);
+                $insererPro->execute();
+                
+                if (empty($siren)) {
+                    // si il n'y a aucun numéro SIREN
+                    $creerProPublique = $dbh->prepare("INSERT INTO tripenarvor._professionnel_publique VALUES (:code_compte)");
+                    $creerProPublique->bindParam(":code_compte",$codeCompte);
                 }
                 else {
-                    // Requête pour "professionnel_prive"
-                    $professionnel_prive = $dbh->prepare("
-                        INSERT INTO tripenarvor.professionnel_prive(
-                            telephone, mail, mdp, raison_sociale, adresse_postale, complement_adresse, code_postal, ville, num_siren
-                        ) 
-                        VALUES (:telephone, :mail, :mdp, :raison_sociale, :adresse_postale, :complement_adresse, :code_postal, :ville, :num_siren)
-                    ");
-                    
-                    // Bind des valeurs
-                    $professionnel_prive->bindParam(':telephone', $telephone);
-                    $professionnel_prive->bindParam(':mail', $email);
-                    $professionnel_prive->bindParam(':mdp', $passwordHashed);
-                    $professionnel_prive->bindParam(':raison_sociale', $raison_sociale);
-                    $professionnel_prive->bindParam(':adresse_postale', $adresse);
-                    $professionnel_prive->bindParam(':complement_adresse', $complementAdresse);
-                    $professionnel_prive->bindParam(':code_postal', $codePostal);
-                    $professionnel_prive->bindParam(':ville', $ville);
-                    $professionnel_prive->bindParam(':num_siren', $siren);
-                
-                    // Exécuter la requête
-                    $professionnel_prive->execute();
-                    var_dump($professionnel_prive);
+                    $creerProPrive = $dbh->prepare("INSERT INTO tripenarvor._professionnel_prive VALUES (:code_compte,:num_siren)");
+                    $creerProPrive->bindParam(":code_compte",$codeCompte);
+                    $creerProPrive->bindParam(":num_siren",$siren);
                 }
 
     
@@ -277,6 +278,8 @@ session_start();
                 
                 // Appelle currval pour récupérer la dernière valeur
                 $_SESSION["compte"] = ($dbh->query("SELECT currval('tripenarvor._compte_code_compte_seq');"))->fetchColumn();
+
+                echo "Compte crée avec succès !";
     
     
             } else {
