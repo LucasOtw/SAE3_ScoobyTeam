@@ -284,7 +284,8 @@
                 }
 
                 $creerMembre = $dbh->prepare("INSERT INTO tripenarvor._membre VALUES (:code_compte,:nom,:prenom,:pseudo)");
-                
+
+                $creerMembre->bindParam(':code_compte',$codeCompte);
                 $creerMembre->bindParam(':nom', $nom);
                 $creerMembre->bindParam(':prenom', $prenom);
                 $creerMembre->bindParam(':pseudo', $pseudo);
