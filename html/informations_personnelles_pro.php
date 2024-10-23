@@ -47,9 +47,7 @@ session_start();
     
         <section class="offers">
             <h2>Vos informations</h2>
-            <button class="image-button">
-            <span class="button-text">Publier une offre</span>
-            </button>
+            <button type="submit" class="submit-btn2">Enregistrer</button>
         </section>    
     </main>
     
