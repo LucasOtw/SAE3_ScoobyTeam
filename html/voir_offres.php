@@ -126,6 +126,8 @@ if(isset($_GET["deco"])){
                 $imagesOffre->execute();
                 $imagesOffre->fetchAll();
 
+                var_dump($imagesOffre);
+
                 if(!empty($imagesOffre)){
                     $offre_image = $imagesOffre[0];
                 } else {
