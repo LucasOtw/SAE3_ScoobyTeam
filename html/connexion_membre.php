@@ -91,8 +91,8 @@
 
         $recupTable = $dbh->prepare('SELECT *
           FROM information_schema.columns
-         WHERE table_schema = "tripenarvor"
-           AND table_name   = "membre"
+         WHERE table_schema = \'tripenarvor\'
+           AND table_name   = \'membre\'
              ;');
         $recupTable->execute();
         var_dump($recupTable->fetch());
