@@ -145,7 +145,7 @@ session_start();
         </div>
         <?php
 
-        if(isset($_POST)){
+        if(!empty($_POST)){
            // Récupération des variables du formulaire
             var_dump($_POST);
             
