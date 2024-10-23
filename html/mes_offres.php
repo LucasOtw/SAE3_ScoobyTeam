@@ -6,13 +6,6 @@
         $password = "philly-Congo-bry4nt";
         // Créer une instance PDO
         $bdh = new PDO($dsn, $username, $password);
-    
-        
-    } catch (PDOException $e) {
-        print "Erreur!: ". $e->getMessage(). "<br/>";
-        die();
-    }
-
     $stmt = $dbh->prepare('SELECT * FROM _offre WHERE professionnel = :professionnel');
         $stmt->execute(['professionnel' => $_SESSION["compte"]]);
         
@@ -43,6 +36,13 @@
         }
         
         $dbh = null;
+        
+    } catch (PDOException $e) {
+        print "Erreur!: ". $e->getMessage(). "<br/>";
+        die();
+    }
+
+        
     ?>*/
 
 
