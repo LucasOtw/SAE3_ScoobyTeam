@@ -266,11 +266,14 @@ session_start();
                     // si il n'y a aucun numéro SIREN
                     $creerProPublique = $dbh->prepare("INSERT INTO tripenarvor._professionnel_publique VALUES (:code_compte)");
                     $creerProPublique->bindParam(":code_compte",$codeCompte);
+                    $creerProPublique->execute();
+                    
                 }
                 else {
                     $creerProPrive = $dbh->prepare("INSERT INTO tripenarvor._professionnel_prive VALUES (:code_compte,:num_siren)");
                     $creerProPrive->bindParam(":code_compte",$codeCompte);
                     $creerProPrive->bindParam(":num_siren",$siren);
+                    $creerProPrive->execute();
                 }
 
     
