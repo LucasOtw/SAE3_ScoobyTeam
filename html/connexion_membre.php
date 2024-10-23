@@ -99,6 +99,10 @@
             $existeUser = $dbh->prepare("SELECT code_compte FROM tripenarvor._compte WHERE mail='$email'");
             $existeUser->execute();
             var_dump($existeUser->fetch());
+
+            echo "<pre>";
+            var_dump($existeUser->fetch());
+            echo "</pre>";
             
             // $mailDansBdd = $dbh -> prepare("select code_compte from tripenarvor._membre where mail='$email';");
             // $mailDansBdd -> execute();
