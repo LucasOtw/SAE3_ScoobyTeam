@@ -28,7 +28,7 @@ session_start();
         
         <nav>
             <ul>
-                <li><a href="voir_offres.php.php" >Accueil</a></li>
+                <li><a href="voir_offres.php" >Accueil</a></li>
                 <li><a href="connexion_pro.php">Publier</a></li>
                 <li><a href="connexion_membre.php" class="active">Mon Compte</a></li>
             </ul>
