@@ -22,6 +22,17 @@
     font-style: normal;
 }
 
+html, body {
+    height: 100%; /* Important pour que le footer se positionne en bas */
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "K2D", sans-serif;
+    min-height: 100vh; /*Pour occuper toute la page*/
+}
 
 /****** HEADER *****/
 
@@ -240,23 +251,7 @@ footer {
     margin-top: auto;
 }
 
-.newsletter {
-    display: flex;
-    flex-direction: column;
-    /* Stack les éléments sur petits écrans */
-    justify-content: space-between;
-    background-color: var(--vert-clair);
-    padding: 20px;
-    border-radius: 20px;
-    position: relative;
-    margin-top: -130px;
-    z-index: 1;
-    width: 90%;
-    max-width: 1200px;
-    /* Limite la largeur sur grands écrans */
-    margin-left: auto;
-    margin-right: auto;
-}
+
 
 .newsletter-content {
     text-align: left;
@@ -382,10 +377,10 @@ footer {
 /**** CODE PAGE CONNEXION PRO ***/
 
 
-.creation_compte_pro body {
+/*.creation_compte_pro body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-}
+}*/
 
 .creation_compte_pro header {
     background-color: #000;

@@ -84,45 +84,87 @@ if(isset($_GET["deco"])){
 
         <section id="offers-list">
 
-
+        <article class="offer">
+                <img src="images/offre2.png" alt="Image de l'offre Armor'Park">
+                <div class="offer-details">
+                    <h2>Armor'Park</h2>
+                    <p>Lannion</p>
+                    <span>3 mois</span>
+                    <span>
+                        <!-- <img src="images/etoile.png" class="img-etoile">
+                        <p>4 <span class="nb_avis">(50 avis)</span></p> -->
+                    </span>
+                    <button>Voir l'offre →</button>
+                </div>
+            </article>
 
         <?php
             try {
                 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
                 $username = "sae";
                 $password = "philly-Congo-bry4nt";
-        
+
                 // Créer une instance PDO
                 $dbh = new PDO($dsn, $username, $password);
-                
-                $stmt = $dbh->prepare('SELECT * FROM tripenarvor._offre');
-                $stmt->execute();
-                
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $fImg = $dbh->prepare('select url_image from tripenarvor._son_image natural join tripenarvor._image where code_offre = :offre');
-                    $fImg->execute(['offre' => $row["code_offre"]]);
-                    ?>
-                        <article class="offer">
-                            <img src="images/<?php echo htmlspecialchars($fImg[0]); ?>.png" alt="<?php echo htmlspecialchars($row['titre_offre']); ?>">
-                            <div class="offer-details">
-                                <h2><?php echo htmlspecialchars($row['titre_offre']); ?></h2>
-                                <p><?php echo htmlspecialchars($row['ville']); ?></p>
-                                <span><?php echo date_format(date_create($row['date_publication']), 'd/m/Y'); ?></span>
-                                <span>
-                                    <!-- <img src="images/etoile.png" class="img-etoile">
-                                    <p><?php /*echo round($row['note_moyenne'], 1); */?><span class="nb_avis">(355 avis)</span></p> -->
-                                </span>
-                                <button>Voir l'offre →</button>
-                            </div>
-                        </article>
-        <?php
-            }
-            } catch (PDOException $e) {
+            } 
+            catch (PDOException $e) 
+            {
                 print "Erreur!: ". $e->getMessage(). "<br/>";
                 die();
             }
-            ?>
+            // On récupère toutes les offres (titre,ville,images)
+            $infosOffre = $dbh->query('SELECT code_offre,titre_offre,code_adresse FROM tripenarvor._offre');
+            $infosOffre = $infosOffre->fetchAll();
 
+            foreach($infosOffre as $offre){
+                // Récupérer la ville
+                $villeOffre = $dbh->prepare('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
+                $villeOffre->bindParam(":code_adresse", $offre["code_adresse"]);
+                $villeOffre->execute();
+                $villeOffre = $villeOffre->fetch(); // Récupérer la ville (ou NULL si pas trouvé)
+                
+                // Récupérer les images
+                $imagesOffre = $dbh->prepare('SELECT code_image FROM tripenarvor._son_image WHERE code_offre = :code_offre');
+                $imagesOffre->bindParam(":code_offre", $offre["code_offre"]);
+                $imagesOffre->execute();
+                
+                // Utiliser fetchAll pour récupérer toutes les images sous forme de tableau
+                $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
+            
+                if (!empty($images)) {
+                    // Récupérer la première image si disponible
+                    $offre_image = $images[0]['code_image']; 
+                } else {
+                    $offre_image = ""; // Pas d'image trouvée
+                }
+
+                ?>
+                <article class="offer">
+                    <img src=<?php echo $offre_image ?> alt="aucune image">
+                    <div class="offer-details">
+                        <h2><?php echo $offre["titre_offre"] ?></h2>
+                        <p><?php echo $villeOffre["ville"] ?></p>
+                        <span>Durée inconnue</span>
+                        <button>Voir l'offre →</button>
+                    </div>
+                </article>
+                <?php
+            }
+
+        ?>
+        <article class="offer">
+                <img src="images/offre2.png" alt="Image de l'offre Armor'Park">
+                <div class="offer-details">
+                    <h2>Armor'Park</h2>
+                    <p>Lannion</p>
+                    <span>3 mois</span>
+                    <span>
+                        <!-- <img src="images/etoile.png" class="img-etoile">
+                        <p>4 <span class="nb_avis">(50 avis)</span></p> -->
+                    </span>
+                    <button>Voir l'offre →</button>
+                </div>
+            </article>
         </section>
 
     </main>

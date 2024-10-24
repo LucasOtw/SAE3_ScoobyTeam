@@ -22,6 +22,17 @@
     font-style: normal;
 }
 
+html, body {
+    height: 100%; /* Important pour que le footer se positionne en bas */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "K2D", sans-serif;
+    min-height: 100vh; /*Pour occuper toute la page*/
+}
+
 header.header-pc {
     display: flex;
     justify-content: space-between;

@@ -266,10 +266,10 @@ footer {
 }
 
 .header-img {
-    width: 1312px;
+    width: 75em;
     border-radius: 10px;
-    height: 336px;
-    margin-left: -120px;
+    height: auto;
+    margin-left: -150px;
 }
 
 .profile-section {

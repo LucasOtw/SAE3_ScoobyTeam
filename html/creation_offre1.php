@@ -1,3 +1,7 @@
+<?php
+ob_start(); // Démarre la mise en tampon de sortie
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,7 +19,7 @@
             <ul>
                 <li><a href="mes_offres.php">Accueil</a></li>
                 <li><a href="connexion_pro.php" class="active">Publier</a></li>
-                <li><a href="connexion_pro.php">Mon Compte</a></li>
+                <li><a href="informations_personnelles_pro.php">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
@@ -57,7 +61,7 @@
                 
                 // Vérifie que l'utilisateur a sélectionné une option valide
                 if ($offreChoisie !== "default") {
-                    header("Location: creation_offre_$offreChoisie.php");
+                    header("Location: https://scooby-team.ventsdouest.dev/creation_offre_$offreChoisie.php");
                     exit();
                 } else {
                     echo "<script>alert('Veuillez choisir une offre.');</script>";
@@ -114,3 +118,7 @@
     </footer>
 </body>
 </html>
+
+<?php
+ob_end_flush(); // Termine et envoie la sortie tamponnée
+?>
