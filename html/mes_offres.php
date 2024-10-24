@@ -1,3 +1,19 @@
+<?php
+
+ob_start();
+session_start();
+if (!isset($_SESSION["compte"]) || empty($_SESSION["compte"])) {
+    header('location: connexion_pro.php');
+    exit;
+}
+if(isset($_GET["deco"])){
+    session_unset();
+    session_destroy();
+    header('location: connexion_pro.php');
+    exit;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
