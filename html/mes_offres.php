@@ -1,21 +1,3 @@
-<?php
-ob_start();
-session_start();
-
-var_dump($_SESSION["compte"]);
-
-if (!isset($_SESSION["compte"]) || empty($_SESSION["compte"])) {
-    header('location: connexion_pro.php');
-    exit;
-}
-if(isset($_GET["deco"])){
-    session_unset();
-    session_destroy();
-    header('location: connexion_pro.php');
-    exit;
-}
-
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -63,27 +45,9 @@ if(isset($_GET["deco"])){
     
         <section class="offers">
             <h2>Vos offres</h2>
-<?php
+            <?php
 
-// Check if the session variable is set
-if (!isset($_SESSION["compte"])) {
-    echo "Erreur: Vous devez être connecté pour voir vos offres.";
-    exit; // Stop script execution
-}
 
-try {
-    $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-    $username = "sae";
-    $password = "philly-Congo-bry4nt";
-    // Créer une instance PDO
-    $dbh = new PDO($dsn, $username, $password);
-    
-    // Adjust the table name if necessary
-    $stmt = $dbh->prepare('SELECT * FROM tripenarvor.offre WHERE professionnel = :professionnel');
-    $stmt->execute(['professionnel' => $_SESSION["compte"]]);
-    
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        ?>
         <div class="offer-card">
             <div class="offer-image">
                 <img src="images/hotel.jpg" alt="<?php echo htmlspecialchars($row['titre_offre']); ?>">
@@ -105,17 +69,6 @@ try {
             </div>
             <button class="add-btn">+</button>
         </div>
-        <?php
-    }
-    
-    $dbh = null;
-    
-} catch (PDOException $e) {
-    print "Erreur!: ". $e->getMessage(). "<br/>";
-    die();
-}
-?>
-
             <button class="image-button">
             <span class="button-text">Publier une offre</span>
             </button>
