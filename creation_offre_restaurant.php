@@ -111,16 +111,6 @@
                     </div>
                 </div>
 
-                <!-- Prix -->
-                <div class="row">
-                    <div class="col">
-                        <fieldset>
-                            <legend>Tarif *</legend>
-                            <input type="text" id="prix" name="prix" placeholder="Tarif *">
-                        </fieldset>
-                    </div>
-                </div>
-
                 <!-- Tags -->
                 <div class="row">
                     <div class="col">
