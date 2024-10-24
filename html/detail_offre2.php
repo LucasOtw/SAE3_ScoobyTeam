@@ -25,9 +25,6 @@
         // echo "Adresse non trouvée.";
     }
 
-
-
-
 if(!isset($_POST["code_offre"])){
     echo "Erreur : aucune offre"; // à remplacer
 } else {
