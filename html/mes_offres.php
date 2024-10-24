@@ -45,7 +45,6 @@
     
         <section class="offers">
             <h2>Vos offres</h2>
-            <?php
 
 
         <div class="offer-card">
