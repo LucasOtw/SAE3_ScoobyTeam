@@ -8,7 +8,7 @@
         $dbh = new PDO($dsn, $username, $password);
 
         // Récupération de tout le contenu de "_compte"
-        $recupComptes = $dbh->prepare('SELECT * FROM _compte');
+        $recupComptes = $dbh->prepare('SELECT * FROM tripenarvor._compte');
         $recupComptes->execute();
 
         $lesComptes = $recupComptes->fetchAll(PDO::FETCH_ASSOC);
