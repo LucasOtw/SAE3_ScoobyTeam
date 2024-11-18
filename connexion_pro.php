@@ -1,6 +1,10 @@
+<?php
+ob_start();
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +13,7 @@
     <link rel="stylesheet" href="connexion_pro.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -22,11 +24,12 @@
         <nav>
             <ul>
                 <li><a href="voir_offres.php">Accueil</a></li>
-                <li><a href="creation_offre.php">Publier</a></li>
-                <li><a href="#" class="active">Mon Compte</a></li>
+                <li><a href="creation_offre1.php">Publier</a></li>
+                <li><a href="connexion_pro.php" class="active">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
+    
     <main class="connexion_pro_main">
         <div class="connexion_pro_container">
             <div class="connexion_pro_form-container">
@@ -34,95 +37,88 @@
                     <h2>Se connecter</h2>
                     <p>Se connecter pour accéder à vos favoris</p>
                 </div>
-                <form action="#">
+                <form action="#" method="POST">
                     <fieldset>
                         <legend>E-mail</legend>
                         <div class="connexion_pro_input-group">
-                            <input type="email" id="email" placeholder="E-mail" required>
+                            <input type="email" name="email" id="email" placeholder="E-mail" required>
                         </div>
                     </fieldset>
 
                     <fieldset>
                         <legend>Mot de passe</legend>
                         <div class="connexion_pro_input-group">
-                            <input type="password" id="password" placeholder="Mot de passe" required>
+                            <input type="password" name="password" id="password" placeholder="Mot de passe" required>
                         </div>
                     </fieldset>
-                <!--
-                    <div class="connexion_pro_remember-group">
-                        <div>
-                            <input type="checkbox" id="remember" checked>
-                            <label class="connexion_pro_lab_enreg" for="remember">Enregistrer</label>
-                        </div>
-                        <a href="#">Mot de passe oublié ?</a>
-                    </div>
-                -->
+
                     <button type="submit">Se connecter</button>
                     <div class="connexion_pro_additional-links">
-                        <p><span class="pas_de_compte">Pas de compte ?<a href="#">Inscription</a></p>
-
-                        <p class="compte_membre"><a href="#">Un compte Membre&nbsp?</a></p>
+                        <p><span class="pas_de_compte">Pas de compte ?<a href="creation_pro.php">Inscription</a></span></p>
+                        <p class="compte_membre"><a href="connexion_membre.php">Un compte Membre&nbsp?</a></p>
                     </div>
                 </form>
-
             </div>
             <div class="connexion_pro_image-container">
                 <img src="images/imageConnexionProEau.png" alt="Image de maison en pierre avec de l'eau">
             </div>
         </div>
     </main>
+
     <?php
-        $dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
-        $username = "sae";
-        $password = "philly-Congo-bry4nt";
+    // Connexion à la base de données
+    $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+    $username = "sae";
+    $password = "philly-Congo-bry4nt";
 
+    try {
         // Créer une instance PDO
-        $pdo = new PDO($dsn, $username, $password);
+        $dbh = new PDO($dsn, $username, $password);
 
-        $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
-        $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
+    } catch (PDOException $e) {
+        echo 'Erreur : ' . $e->getMessage();
+    }
+    // Vérifier si le formulaire a été soumis
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)){
+        $email = trim(htmlspecialchars($_POST['email']));
+        $password = htmlspecialchars($_POST['password']);
+
+        // on vérifie que l'adresse mail soit reliée à un compte
+
+        $codeCompte = $dbh->prepare("SELECT code_compte FROM tripenarvor._compte WHERE mail = :mail");
+        $codeCompte->bindParam(":mail",$email);
+        $codeCompte->execute();
+        $codeCompte = $codeCompte->fetch();
+
+        if ($codeCompte) {
+            // si un compte est trouvé, on vérifie maintenant qu'il soit professionnel
+            // var_dump($codeCompte[0]);  // Commenté ou supprimé pour éviter la sortie avant header
+            $estPro = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel WHERE code_compte = :codeCompte");
+            $estPro->bindParam(":codeCompte", $codeCompte[0]);
+            $estPro->execute();
+            $estPro = $estPro->fetch();
         
-        $mailDansBdd = $dbh -> prepare("select code_compte from _professionnel NATURAL JOIN _compte where mail='$email';");
-        $mailDansBdd -> execute();
-
-        $mdpDansBdd = $dbh -> prepare("select mdp from _professionnel NATURAL JOIN _compte where mail='$email';");
-        $mailDansBdd -> execute();
-        $dbh = null;
-        
-        $passwordHashedFromDB = password_hash($mdpDansBdd, PASSWORD_DEFAULT);
-
-        if ($mailDansBdd != NULL){
-            if (password_verify($password, $passwordHashedFromDB)) {
-                // Le mot de passe est correct
-                // Connexion
-                session_start();
-                $_SESSION["compte"] = $mailDansBdd;
-                // redirection
-                header('Location: modif_infos_pro.php');
-                exit();
+            if ($estPro) {
+                // si le compte est professionnel, alors on vérifie son mot de passe
+                $mdpPro = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :codeCompte");
+                $mdpPro->bindParam("codeCompte", $codeCompte[0]);
+                $mdpPro->execute();
+                $mdpPro = $mdpPro->fetch();
+                if (password_verify($password, $mdpPro[0])) {
+                    // si le mot de passe est correct
+                    $_SESSION["compte"] = $codeCompte[0]; // Stocke le code_compte dans la session
+                    header('Location: mes_offres.php'); // Redirection
+                    exit; // Assure que le script s'arrête après la redirection
+                } else {
+                    echo "Mot de passe incorrect.";
+                }
             } else {
-                // Le mot de passe est incorrect
-                ?>
-                <p>
-                <?php
-                    echo "Le mot de passe est incorrect";
-                ?>
-            </p>
-            <?php
+                echo "Cette adresse mail est reliée à un compte non professionnel.";
             }
         } else {
-            // Mail inconnu
-            ?>
-            <p>
-                <?php
-                    echo "Le mail est inconnu";
-                ?>
-            </p>
-            <?php
+            echo "Aucun compte trouvé à cette adresse mail";
         }
-
-        
+    }
     ?>
 </body>
-
 </html>
