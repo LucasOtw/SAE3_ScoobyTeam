@@ -1,11 +1,18 @@
+<?php session_start();
 
+if(isset($_GET["deco"])){
+    header('location: connexion_membre.php');
+    session_destroy();
+};
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <?php session_start(); ?>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En-tête PAVCT</title>
+    <title>Les Offres PACT</title>
     <link rel="stylesheet" href="voir_offres.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,9 +27,19 @@
         
         <nav>
             <ul>
-                <li><a href="#" >Accueil</a></li>
-                <li><a href="#">Publier</a></li>
-                <li><a href="#" class="active">Mon Compte</a></li>
+                <li><a href="voir_offres.php" class="active">Accueil</a></li>
+                <li><a href="connexion_pro.php">Publier</a></li>
+                <?php
+                    if(isset($_SESSION["compte"]) || !empty($_SESSION["compte"])){
+                        ?>
+                        <li><a href="#">/!\ EN COURS /!\</a></li>
+                        <li><a href="voir_offres.php?deco=true">Se déconnecter</a></li>
+                        <?php
+                    } else {
+                        ?>
+                        <li><a href="connexion_membre.php">Se connecter</a></li>
+                        <?php
+                    } ?>
             </ul>
         </nav>
     </header>
@@ -43,9 +60,9 @@
         
         <nav>
             <ul>
-                <li><a href="#" >Accueil</a></li>
-                <li><a href="#">Publier</a></li>
-                <li><a href="#" class="active">Mon Compte</a></li>
+                <li><a href="voir_offres.php" >Accueil</a></li>
+                <li><a href="connexion_pro.php">Publier</a></li>
+                <li><a href="connexion_membre.php" class="active">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
@@ -67,47 +84,95 @@
 
         <section id="offers-list">
 
-
+        <article class="offer">
+                <img src="images/offre2.png" alt="Image de l'offre Armor'Park">
+                <div class="offer-details">
+                    <h2>Armor'Park</h2>
+                    <p>Lannion</p>
+                    <span>3 mois</span>
+                    <span>
+                        <!-- <img src="images/etoile.png" class="img-etoile">
+                        <p>4 <span class="nb_avis">(50 avis)</span></p> -->
+                    </span>
+                    <button>Voir l'offre →</button>
+                </div>
+            </article>
 
         <?php
             try {
-                $dbh = new PDO("host=postgresdb;dbname=5432; dbname=db-scooby-team", "sae", "philly-Congo-bry4nt");
-                $stmt = $dbh->prepare('SELECT * FROM tripenarvor._offre');
-                $stmt->execute();
-                
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $fImg = $dbh->prepare('select url_image from tripenarvor._son_image natural join tripenarvor._image where code_offre = :offre');
-                    $fImg->execute(['offre' => $row["code_offre"]]);
-                    ?>
-                        <article class="offer">
-                            <img src="images/<?php echo htmlspecialchars($fImg[0]); ?>.png" alt="<?php echo htmlspecialchars($row['titre_offre']); ?>">
-                            <div class="offer-details">
-                                <h2><?php echo htmlspecialchars($row['titre_offre']); ?></h2>
-                                <p><?php echo htmlspecialchars($row['ville']); ?></p>
-                                <span><?php echo date_format(date_create($row['date_publication']), 'd/m/Y'); ?></span>
-                                <span>
-                                    <!-- <img src="images/etoile.png" class="img-etoile">
-                                    <p><?php /*echo round($row['note_moyenne'], 1); */?><span class="nb_avis">(355 avis)</span></p> -->
-                                </span>
-                                <button>Voir l'offre →</button>
-                            </div>
-                        </article>
-        <?php
-            }
-            } catch (PDOException $e) {
+                $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+                $username = "sae";
+                $password = "philly-Congo-bry4nt";
+
+                // Créer une instance PDO
+                $dbh = new PDO($dsn, $username, $password);
+            } 
+            catch (PDOException $e) 
+            {
                 print "Erreur!: ". $e->getMessage(). "<br/>";
                 die();
             }
-            ?>
+            // On récupère toutes les offres (titre,ville,images)
+            $infosOffre = $dbh->query('SELECT code_offre,titre_offre,code_adresse FROM tripenarvor._offre');
+            $infosOffre = $infosOffre->fetchAll();
 
+            foreach($infosOffre as $offre){
+                // Récupérer la ville
+                $villeOffre = $dbh->prepare('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
+                $villeOffre->bindParam(":code_adresse", $offre["code_adresse"]);
+                $villeOffre->execute();
+                $villeOffre = $villeOffre->fetch(); // Récupérer la ville (ou NULL si pas trouvé)
+                
+                // Récupérer les images
+                $imagesOffre = $dbh->prepare('SELECT code_image FROM tripenarvor._son_image WHERE code_offre = :code_offre');
+                $imagesOffre->bindParam(":code_offre", $offre["code_offre"]);
+                $imagesOffre->execute();
+                
+                // Utiliser fetchAll pour récupérer toutes les images sous forme de tableau
+                $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
+            
+                if (!empty($images)) {
+                    // Récupérer la première image si disponible
+                    $offre_image = $images[0]['code_image']; 
+                } else {
+                    $offre_image = ""; // Pas d'image trouvée
+                }
+
+                ?>
+                <article class="offer">
+                    <img src=<?php echo $offre_image ?> alt="aucune image">
+                    <div class="offer-details">
+                        <h2><?php echo $offre["titre_offre"] ?></h2>
+                        <p><?php echo $villeOffre["ville"] ?></p>
+                        <span>Durée inconnue</span>
+                        <button>Voir l'offre →</button>
+                    </div>
+                </article>
+                <?php
+            }
+
+        ?>
+        <article class="offer">
+                <img src="images/offre2.png" alt="Image de l'offre Armor'Park">
+                <div class="offer-details">
+                    <h2>Armor'Park</h2>
+                    <p>Lannion</p>
+                    <span>3 mois</span>
+                    <span>
+                        <!-- <img src="images/etoile.png" class="img-etoile">
+                        <p>4 <span class="nb_avis">(50 avis)</span></p> -->
+                    </span>
+                    <button>Voir l'offre →</button>
+                </div>
+            </article>
         </section>
 
     </main>
     <nav class="nav-bar">
-    <a href="#"><img src="images/icones/House.png" alt="image de maison"></a>
-    <a href="#"><img src="images/icones/recent.png" alt="image d'horloge"></a>
-    <a href="#"><img src="images/icones/Croix.png" alt="image de PLUS"></a>
-    <a href="#"><img src="images/icones/User.png" alt="image de Personne"></a>
+    <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
+    <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
+    <a href="#"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
+    <a href="connexion_membre.php"><img src="images/icones/User icon.png" alt="image de Personne"></a>
 </nav>
     <footer>
         <div class="newsletter">
@@ -139,8 +204,8 @@
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Publier</a></li>
+                    <li><a href="voir_offres.php">Accueil</a></li>
+                    <li><a href="connexion_pro.php">Publier</a></li>
                     <li><a href="#">Historique</a></li>
                 </ul>
             </div>
