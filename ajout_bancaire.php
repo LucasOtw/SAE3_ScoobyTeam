@@ -1,21 +1,60 @@
 <?php
-session_start(); // Assurez-vous d'appeler cette fonction au début du fichier
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premières coordonnées bancaires</title>
+    <link rel="stylesheet" href="ajout_bancaire.css">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="images/logoBlanc.png" alt="PACT Logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="mes_offres.php">Accueil</a></li>
+            <li><a href="connexion_pro.php">Publier</a></li>
+            <li><a href="connexion_pro.pro" class="active">Mon Compte</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="container">
+    <div class="header">
+        <img src="images/Fond.png" alt="Bannière" class="header-img">
+    </div>
 
+    <div class="profile-section">
+        <img src="images/pp.png" alt="Photo de profil" class="profile-img">
+        <h1>Ti al Lannec</h1>
+        <p>ti.al.lannec@gmail.com | 07.98.76.54.12</p>
+    </div>
+    <div class="tabs">
+        <div class="tab"><a href="modif_mdp_pro.php">Mot de passe et sécurité</a></div>
+        <div class="tab active">Compte Bancaire</div>
+    </div>
+</div>
+
+<?php
 // Détails de la connexion à la base de données
 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";
 $password = "philly-Congo-bry4nt";
 
-// Initialisation des variables
-$iban = '';
-$bic = '';
-$nom = '';
-$message = ''; // Pour les messages de succès ou d'erreur
-
 try {
     // Créer une instance PDO
     $pdo = new PDO($dsn, $username, $password);
+
+    // Définir le mode d'erreur PDO à Exception
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Variables pour stocker les informations bancaires
+    $iban = '';
+    $bic = '';
+    $nom = '';
 
     // Préparer la requête pour récupérer les informations bancaires
     $query = "SELECT nom_compte, iban, bic FROM tripenarvor._compte_bancaire WHERE code_compte_bancaire = :compte_bancaire_id";
@@ -49,65 +88,21 @@ try {
             $stmt->bindParam(':compte_bancaire_id', $_SESSION['compte_bancaire_id'], PDO::PARAM_INT);
 
             if ($stmt->execute()) {
-                $message = "Les informations bancaires ont été modifiées avec succès.";
+                echo "Les informations bancaires ont été modifiées avec succès.";
             } else {
-                $message = "Impossible de modifier les informations. Veuillez réessayer.";
+                echo "Impossible de modifier les informations. Veuillez réessayer.";
             }
         } else {
-            $message = "Veuillez remplir tous les champs.";
+            echo "Veuillez remplir tous les champs.";
         }
     }
 } catch (PDOException $e) {
-    $message = "Erreur de connexion à la base de données : " . $e->getMessage();
+    echo "Erreur de connexion à la base de données : " . $e->getMessage();
 }
 
 // Fermer la connexion
 $pdo = null;
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premières coordonnées bancaires</title>
-    <link rel="stylesheet" href="ajout_bancaire.css">
-</head>
-<body>
-<header>
-    <div class="logo">
-        <img src="images/logoBlanc.png" alt="PACT Logo">
-    </div>
-    <nav>
-        <ul>
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#">Publier</a></li>
-            <li><a href="#" class="active">Mon Compte</a></li>
-        </ul>
-    </nav>
-</header>
-<div class="container">
-    <div class="header">
-        <img src="images/Fond.png" alt="Bannière" class="header-img">
-    </div>
-
-    <div class="profile-section">
-        <img src="images/pp.png" alt="Photo de profil" class="profile-img">
-        <h1>Ti al Lannec</h1>
-        <p>ti.al.lannec@gmail.com | 07.98.76.54.12</p>
-    </div>
-    <div class="tabs">
-        <div class="tab">Mot de passe et sécurité</div>
-        <div class="tab active">Compte Bancaire</div>
-    </div>
-</div>
-
-<!-- Affichage des messages -->
-<?php if ($message): ?>
-    <div class="message">
-        <p><?php echo $message; ?></p>
-    </div>
-<?php endif; ?>
 
 <form action="#" method="POST">
     <h4>Modification des coordonnées bancaires</h4>
@@ -139,7 +134,7 @@ $pdo = null;
         <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
     </div>
     <div class="compte_membre_save_delete">
-        <button type="submit" class="submit-btn2">Modifier les coordonnées</button>
+        <button type="submit" class="submit-btn2">Ajouter vos coordonnées</button>
     </div>
 </form>
 
@@ -158,8 +153,8 @@ $pdo = null;
         </div>
         <div class="link-group">
             <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Publier</a></li>
+                <li><a href="mes_offres.php">Accueil</a></li>
+                <li><a href="connexion_pro.php">Publier</a></li>
                 <li><a href="#">Historique</a></li>
             </ul>
         </div>
