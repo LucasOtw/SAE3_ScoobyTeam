@@ -1,9 +1,13 @@
+<?php
+ob_start(); // Démarre la mise en tampon de sortie
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En-tête PACT</title>
+    <title>Création offre</title>
     <link rel="stylesheet" href="creation_offre1.css">
 </head>
 <body>
@@ -13,9 +17,9 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#" class="active">Publier</a></li>
-                <li><a href="#">Mon Compte</a></li>
+                <li><a href="mes_offres.php">Accueil</a></li>
+                <li><a href="connexion_pro.php" class="active">Publier</a></li>
+                <li><a href="informations_personnelles_pro.php">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
@@ -57,7 +61,7 @@
                 
                 // Vérifie que l'utilisateur a sélectionné une option valide
                 if ($offreChoisie !== "default") {
-                    header("Location: creation_offre_$offreChoisie.php");
+                    header("Location: https://scooby-team.ventsdouest.dev/creation_offre_$offreChoisie.php");
                     exit();
                 } else {
                     echo "<script>alert('Veuillez choisir une offre.');</script>";
@@ -83,8 +87,8 @@
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Publier</a></li>
+                    <li><a href="mes_offres.php">Accueil</a></li>
+                    <li><a href="creation_offre1.php">Publier</a></li>
                     <li><a href="#">Historique</a></li>
                 </ul>
             </div>
@@ -114,3 +118,7 @@
     </footer>
 </body>
 </html>
+
+<?php
+ob_end_flush(); // Termine et envoie la sortie tamponnée
+?>
