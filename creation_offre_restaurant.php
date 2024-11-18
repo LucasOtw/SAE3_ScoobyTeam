@@ -110,36 +110,7 @@
                         </fieldset>
                     </div>
                 </div>
-
-                <!-- Tags -->
-                <div class="row">
-                    <div class="col">
-
-                        <label for="tags">Tags</label>
-
-                        <div class="dropdown-container">
-                            <button type="button" class="dropdown-button">Sélectionner des tags</button>
-                            <div class="dropdown-content">
-
-                            <?php
-                                    $dbh = new PDO("host=postgresdb;port=5432;dbname=db-scooby-team", "sae", "philly-Congo-bry4nt");
-
-                                    foreach($dbh->query('SELECT nom_tag from tripenarvor._son_tag natural join tripenarvor._tags where restauration = true', PDO::FETCH_ASSOC) as $row)
-                                    {
-                                    ?>
-                                <label class="tag">
-                                    <input type="checkbox" name="tags" value="<?php echo $row; ?>">
-                                    <?php echo ucfirst($row); ?>
-                                </label>
-                                    <?php
-                                    }
-                                ?>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+               
 
 
                 <script>
@@ -482,8 +453,8 @@
                 </div>
 
                 <?php
-                    $typeOffre = $dbh->prepare('select code_compte from tripenarvor.professionnel_prive');
-                    $typeOffre->execute();
+                    /*$typeOffre = $dbh->prepare('select code_compte from tripenarvor.professionnel_prive');
+                    $typeOffre->execute();*/
                 ?>
 
                 <!-- Offre Options -->
@@ -491,7 +462,7 @@
                     <label>Choix de l'offre</label>
                     <div class="radio-group">
                         <?php
-                            if ($_SESSION["compte"] != $typeOffre)
+                            /*if ($_SESSION["compte"] != $typeOffre)
                             {
                         ?>
                                 <div>
@@ -513,7 +484,7 @@
                                 </div>
                         <?php
                             }
-                        ?>
+                        */?>
                     </div>
                 </div>
 
@@ -559,13 +530,9 @@
                     </div>
                 </div>
             
-
-               
-
                 <!-- Final Submit Button -->
                 <button type="submit" id="button_valider">
-                    Valider
-                    <img src="images/fleche.png" alt="Fleche" width="25px" height="25px">
+                    Valider <img src="images/fleche.png" alt="Fleche" width="25px" height="25px">
                 </button>
             </form>
 
@@ -638,6 +605,12 @@
             </script>
 
             <?php
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+            $username = "sae";
+            $password = "philly-Congo-bry4nt";
+    
+            // Créer une instance PDO
+            $dbh = new PDO($dsn, $username, $password);
                 $nom_offre = isset($_POST['nom_offre']) ? $_POST['nom_offre'] : '';
                 $email = isset($_POST['email']) ? $_POST['email'] : '';
                 $telephone = isset($_POST['telephone']) ? $_POST['telephone'] : '';
