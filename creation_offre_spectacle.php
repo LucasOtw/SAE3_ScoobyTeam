@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En-tête PACT</title>
+    <title>Offre Spectacle</title>
     <link rel="stylesheet" href="creation_offre2.css">
 
 
@@ -15,9 +15,9 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Accueil</a></li>
+                <li><a href="mes_offres.php">Accueil</a></li>
                 <li><a href="#" class="active">Publier</a></li>
-                <li><a href="#">Mon Compte</a></li>
+                <li><a href="informations_personnelles_pro.php">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
@@ -53,7 +53,7 @@
                     <div class="col">
                         <fieldset>
                             <legend style="display:block;">Type de l'offre</legend>
-                            <input type="text" id="type_offre" name="type_offre" placeholder="Parc d'attractions" disabled>
+                            <input type="text" id="type_offre" name="type_offre" placeholder="Spectacle" disabled>
                         </fieldset>
                     </div>
                 </div>
@@ -121,25 +121,7 @@
                     </div>
                 </div>
 
-                <!-- Age requis -->
-                <div class="row">
-                    <div class="col">
-                        <fieldset>
-                            <legend>Age minimum requis</legend>
-                            <input type="number" id="age" name="age" placeholder="Age minimum requis">
-                        </fieldset>
-                    </div>  
-                </div>
-
-                <!-- Nb attractions -->
-                <div class="row">
-                    <div class="col">
-                        <fieldset>
-                            <legend>Nombre d'attractions</legend>
-                            <input type="number" id="nb_attraction" name="nb_attractions" placeholder="Nombre d'attractions">
-                        </fieldset>
-                    </div>  
-                </div>
+            
 
                 <!-- Tags -->
                 <div class="row">
@@ -642,44 +624,7 @@
             </script>
 
             <?php
-                $nom_offre = isset($_POST['nom_offre']) ? $_POST['nom_offre'] : '';
-                $email = isset($_POST['email']) ? $_POST['email'] : '';
-                $telephone = isset($_POST['telephone']) ? $_POST['telephone'] : '';
-                $adresse = isset($_POST['adresse']) ? $_POST['adresse'] : '';
-                $codePostal = isset($_POST['code_postal']) ? $_POST['code_postal'] : '';
-                $siteWeb = isset($_POST['lien']) ? $_POST['lien'] : '';
-                
-                // Initialisation des erreurs
-                $errors = [];
-            
-                // Validation du nom de l'offre (lettres, espaces, et quelques caractères spéciaux autorisés)
-                if (!preg_match("/^[a-zA-ZÀ-ÿ' -]+$/", $nom_offre)) {
-                    $errors[] = "Le nom de l'offre est invalide.";
-                }
-            
-                // Validation de l'email
-                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $errors[] = "L'email est invalide.";
-                }
-            
-                // Validation du téléphone (exemple : 10 chiffres)
-                if (!preg_match("/^[0-9]{10}$/", $telephone)) {
-                    $errors[] = "Le numéro de téléphone doit comporter 10 chiffres.";
-                }
-            
-                // Validation de l'adresse (lettres, chiffres et espaces autorisés)
-                if (!preg_match("/^[a-zA-Z0-9À-ÿ' ,.-]+$/", $adresse)) {
-                    $errors[] = "L'adresse est invalide.";
-                }
-                if (empty($codePostal) || !preg_match('/^[0-9]{5} | 2[AB]$/', $codePostal)) {
-                    $erreurs[] = "Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B";
-                }
-                
-                if (empty($siteWeb) || !preg_match('/^https?:\/\/(www\.)?[a-zA-Z0-9-]{1,63}\.[a-zA-Z]{2,6}(\/[a-zA-Z0-9#?&%=._-]*)?$/', $siteWeb)) {
-                    $erreurs[] = "Le Site web est invalide";
-                }
 
-                if (empty($errors)) {
                 $insert = $dbh ->prepare("insert into tripenarvor.offre_spectacle (titre_offre, date_publication, date_derniere_modif, _resume, _description, site_web, tarif, accessibilite, en_ligne, nb_blacklister, adresse_postale, complement_adresse, code_postal, ville, type_offre, capacite_acceuil, duree)
                                             values (:titre_offre, GETDATE(), GETDATE(), :resume, :description, :site_web, :tarif, :accessibilite, false, 0, :adresse_postale, :complement_adresse, :code_postal, :ville, :type_offre, :capacite_acceuil, :duree)");
                 
@@ -733,91 +678,91 @@
 
 
                 $insert = $dbh -> prepare("insert into tripenarvor._horaire(ouverture, fermeture) values (:ouverture, :fermeture)");
-                $insert->execute(["ouverture"=>$_POST["ouvertureL"], "fermeture"=>$_POST["fermetureL"]]);
+                $insert->execute(["ouverture"=>$_POST["ouvetureL"], "fermeture"=>$_POST["fermetureL"]]);
 
                 $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
                 $select->execute();
 
                 $update = $dbh -> prepare("update tripenarvor._offre
-                                            set lundi = :lundi
+                                            set lundi = :lundi,
                                             where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
                 $update->execute(["lundi"=>$select]);
 
 
 
                 $insert = $dbh -> prepare("insert into tripenarvor._horaire(ouverture, fermeture) values (:ouverture, :fermeture)");
-                $insert->execute(["ouverture"=>$_POST["ouvertureMa"], "fermeture"=>$_POST["fermetureMa"]]);
+                $insert->execute(["ouverture"=>$_POST["ouvetureMa"], "fermeture"=>$_POST["fermetureMa"]]);
 
                 $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
                 $select->execute();
 
                 $update = $dbh -> prepare("update tripenarvor._offre
-                                            set mardi = :mardi
+                                            set mardi = :mardi,
                                                 where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
                 $update->execute(["mardi"=>$select]);
 
 
 
                 $insert = $dbh -> prepare("insert into tripenarvor._horaire(ouverture, fermeture) values (:ouverture, :fermeture)");
-                $insert->execute(["ouverture"=>$_POST["ouvertureMe"], "fermeture"=>$_POST["fermetureMe"]]);
+                $insert->execute(["ouverture"=>$_POST["ouvetureMe"], "fermeture"=>$_POST["fermetureMe"]]);
 
                 $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
                 $select->execute();
 
                 $update = $dbh -> prepare("update tripenarvor._offre
-                                            set mercredi = :mercredi
+                                            set mercredi = :mercredi,
                                             where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
                 $update->execute(["mercredi"=>$select]);
 
 
 
                 $insert = $dbh -> prepare("insert into tripenarvor._horaire(ouverture, fermeture) values (:ouverture, :fermeture)");
-                $insert->execute(["ouverture"=>$_POST["ouvertureJ"], "fermeture"=>$_POST["fermetureJ"]]);
+                $insert->execute(["ouverture"=>$_POST["ouvetureJ"], "fermeture"=>$_POST["fermetureJ"]]);
 
                 $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
                 $select->execute();
 
                 $update = $dbh -> prepare("update tripenarvor._offre
-                                            set jeudi = :jeudi
+                                            set jeudi = :jeudi,
                                                 where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
                 $update->execute(["jeudi"=>$select]);
 
 
 
                 $insert = $dbh -> prepare("insert into tripenarvor._horaire(ouverture, fermeture) values (:ouverture, :fermeture)");
-                $insert->execute(["ouverture"=>$_POST["ouvertureV"], "fermeture"=>$_POST["fermetureV"]]);
+                $insert->execute(["ouverture"=>$_POST["ouvetureV"], "fermeture"=>$_POST["fermetureV"]]);
 
                 $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
                 $select->execute();
 
                 $update = $dbh -> prepare("update tripenarvor._offre
-                                            set vendredi = :vendredi
+                                            set vendredi = :vendredi,
                                                 where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
                 $update->execute(["vendredi"=>$select]);
 
 
 
                 $insert = $dbh -> prepare("insert into tripenarvor._horaire(ouverture, fermeture) values (:ouverture, :fermeture)");
-                $insert->execute(["ouverture"=>$_POST["ouvertureS"], "fermeture"=>$_POST["fermetureS"]]);
+                $insert->execute(["ouverture"=>$_POST["ouvetureS"], "fermeture"=>$_POST["fermetureS"]]);
 
                 $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
                 $select->execute();
 
                 $update = $dbh -> prepare("update tripenarvor._offre
-                                            set samedi = :samedi
+                                            set samedi = :samedi,
                                                 where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
                 $update->execute(["samedi"=>$select]);
 
 
 
                 $insert = $dbh -> prepare("insert into tripenarvor._horaire(ouverture, fermeture) values (:ouverture, :fermeture)");
-                $insert->execute(["ouverture"=>$_POST["ouvertureD"], "fermeture"=>$_POST["fermetureD"]]);
+                $insert->execute(["ouverture"=>$_POST["ouvetureD"], "fermeture"=>$_POST["fermetureD"]]);
 
                 $select = $dbh -> prepare("select currval('tripenarvor._horaire_code_horaire_seq')");
                 $select->execute();
 
                 $update = $dbh -> prepare("update tripenarvor._offre
-                                            set dimanche = :dimanche
+                                            set dimanche = :dimanche,
                                                 where code_offre = (select currval('tripenarvor._offre_code_offre_seq'))");
                 $update->execute(["dimanche"=>$select]);
 
@@ -854,8 +799,6 @@
                                                             values (:code_image, (select currval('tripenarvor._offre_code_offre_seq')) )");
                                 $insert->execute(["code_image" => $select]);
 
-                                header("Location: creation_offre3.php");
-                                exit();
                             } else {
                                 echo "Erreur lors du téléchargement du fichier $fileName.<br>";
                             }
@@ -866,12 +809,7 @@
                 } else {
                     echo "Aucun fichier sélectionné.";
                 }
-                } else {
-                    // Affichage des erreurs
-                    foreach ($errors as $error) {
-                        echo $error . "<br>";
-                    }
-                }
+
 
             ?>
 
