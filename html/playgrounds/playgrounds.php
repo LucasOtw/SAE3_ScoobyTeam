@@ -13,7 +13,7 @@
 
         $lesComptes = $recupComptes->fetchAll(PDO::FETCH_ASSOC);
 
-        $recupComptesPro = $dbh->prepare('SELECT * FROM tripenarvor._compte WHERE code_compte = (SELECT code_compte FROM tripenarvor._professionnel)');
+        $recupComptesPro = $dbh->prepare('SELECT * FROM tripenarvor._compte WHERE code_compte IN (SELECT code_compte FROM tripenarvor._professionnel)');
         $recupComptesPro->execute();
 
 echo "<pre>";
