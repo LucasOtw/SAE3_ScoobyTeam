@@ -266,10 +266,10 @@ footer {
 }
 
 .header-img {
-    width: 130%;
+    width: 75em;
     border-radius: 10px;
     height: auto;
-    margin-left: -120px;
+    margin-left: -150px;
 }
 
 .profile-section {
@@ -587,5 +587,4 @@ form input:focus::placeholder {
     max-width: 100%; /* L'image ne dépasse jamais la largeur de son conteneur */
     height: auto; /* Maintient le ratio d'aspect de l'image */
 }
-
 
