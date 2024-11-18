@@ -41,11 +41,11 @@ if(!isset($_POST["code_offre"])){
 
             // Une offre a forcément au moins une image. 
             // On récupère l'image (ou les images) associée(s)
-            
+
         $images_offre = $bdd->query('SELECT url_image FROM _image WHERE code_image = (SELECT code_image FROM son_image WHERE code_offre = '.$code_offre.')');
 
             // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
-        
+
         $adresse_offre = $bdd->query('SELECT * FROM _adresse WHERE code_adresse = '.$details_offre["code_adresse"].'');
         $horaires = $bdd->query('SELECT DISTINCT h.* FROM _offre o JOIN _horaire h ON h.code_horaire IN (o.lundi, o.mardi, o.mercredi, o.jeudi, o.vendredi, o.samedi, o.dimanche
         WHERE o.lundi IS NOT NULL
@@ -66,8 +66,13 @@ if(!isset($_POST["code_offre"])){
     <title>En-tête PACT</title>
     <link rel="stylesheet" href="detail_offre.css">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script> <!-- Pour les icones -->
-    
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+
+
     <script>
     function initMap() {
         var location = {lat: <?php echo $latitude; ?>, lng: <?php echo $longitude; ?>};
@@ -119,17 +124,12 @@ if(!isset($_POST["code_offre"])){
                     <img src="images/Tiallannec2.png" alt="Hôtel de nuit">
                     <img src="images/tiallannec3.png" alt="Salle à manger">
                 </div>
-                
                 <!-- Nouvelle structure pour les miniatures -->
-                
-                    
                     <div class="detail_offre_thumbnail-grid3">
                         <img src="images/tiallannec8.png" alt="Chambre">
                         <img src="images/tiallannec9.png" alt="Vue sur la mer">
                     </div>
-
             </div>
-
             <div class="detail_offre_description">
                 <h2>Description</h2>
                 <p>
@@ -142,7 +142,7 @@ if(!isset($_POST["code_offre"])){
             </div>
 
             <div class="detail_offre_icons">
-               
+
                 <div class="detail_offre_icon">
                     <p>Adapté handicap</p>
                 </div>
@@ -193,7 +193,7 @@ if(!isset($_POST["code_offre"])){
                     <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
                 </div>
             </div>
-            
+
             <div class="footer-links">
                 <div class="logo">
                     <img src="images/logoBlanc.png" alt="Logo PACT">
@@ -259,7 +259,7 @@ if(!isset($_POST["code_offre"])){
                 </div>
             </div>
         </div>
-   
+
 
         <!-- Détails de l'offre -->
         <div class="details_offres_infos">
