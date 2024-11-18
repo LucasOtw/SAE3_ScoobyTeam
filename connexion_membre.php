@@ -1,3 +1,9 @@
+<?php
+
+ob_start();
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -7,11 +13,6 @@
     <title>Se connecter</title>
     <link rel="icon" type="image/png" href="images/logoPin.png" width="16px" height="32px">
     <link rel="stylesheet" href="connexion_membre.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-        rel="stylesheet">
 </head>
 
 <body>
@@ -22,9 +23,9 @@
         
         <nav>
             <ul>
-                <li><a href="#" class="active">Accueil</a></li>
-                <li><a href="#">Publier</a></li>
-                <li><a href="#">Mon Compte</a></li>
+                <li><a href="voir_offres.php" >Accueil</a></li>
+                <li><a href="connexion_pro.php">Publier</a></li>
+                <li><a href="connexion_membre.php" class="active">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
@@ -42,26 +43,25 @@
                     <h2>Se connecter</h2>
                     <p>Se connecter pour accéder à vos favoris</p>
                 </div>
-                <form action="#">
+                <form action="connexion_membre.php" method="POST">
                     <fieldset>
                         <legend>E-mail</legend>
                         <div class="connexion_membre_input-group">
-                            <input type="email" id="email" placeholder="E-mail" required>
+                            <input type="email" id="email" name="mail" placeholder="E-mail" required>
                         </div>
                     </fieldset>
 
                     <fieldset>
                         <legend>Mot de passe</legend>
                         <div class="connexion_membre_input-group">
-                            <input type="password" id="password" placeholder="Mot de passe" required>
+                            <input type="password" id="password" name="pwd" placeholder="Mot de passe" required>
                         </div>
                     </fieldset>
                     
                     <!--
                     <div class="connexion_membre_remember-group">
                         <div>
-                            <input type="checkbox" id="remember" checked>
-                            <label class="connexion_membre_lab_enreg" for="remember">Enregistrer</label>
+                            <input type="submit" value="Enregistrer">
                         </div>
                         <a href="#">Mot de passe oublié ?</a>
                     </div>
@@ -70,7 +70,7 @@
                     <div class="connexion_membre_btn_connecter_pas_de_compte">
                         <button type="submit">Se connecter</button>
                         <hr>
-                        <p><span class="pas_de_compte">Pas de compte ?<a href="#creation_membre.php">Inscription</a></p>
+                        <p><span class="pas_de_compte">Pas de compte ?<a href="creation_compte_membre.php">Inscription</a></p>
                     </div>
                     
                 </form>
@@ -82,55 +82,46 @@
         </div>
     </main>
     <?php
-        $postgresdb = "postgresdb";
-        $dbname = "5432";
-        $user = "sae";
-        $pass = "DB_ROOT_PASSWORD";
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+        $username = "sae";
+        $password = "philly-Congo-bry4nt";
 
-        $dbh = new PDO("$driver:host=$postgresdb;dbname=$dbname", $user, $pass);
+        // Créer une instance PDO
+        $dbh = new PDO($dsn, $username, $password);
 
-        $email = trim(isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '');
-        $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
-        
-        $mailDansBdd = $dbh -> prepare("select code_compte from membre where mail='$email';");
-        $mailDansBdd -> execute();
+        if(!empty($_POST)){
+            $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
+            $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
+    
+            // on cherche dans la base de données si le compte existe.
+    
+            $existeUser = $dbh->prepare("SELECT code_compte FROM tripenarvor._compte WHERE mail='$email'");
+            $existeUser->execute();
 
-        $mdpDansBdd = $dbh -> prepare("select mdp from membre where mail='$email';");
-        $mailDansBdd -> execute();
-        $dbh = null;
-        
-        $passwordHashedFromDB = password_hash($mdpDansBdd, PASSWORD_DEFAULT);
+            if($existeUser){
+                // si l'utilisateur existe, on vérifie d'abord si il est membre.
+                $existeUser = $existeUser->fetch();
+                // Car même si l'adresse mail et le mdp sont corrects, si le compte n'est pas lié à un membre, ça ne sert à rien de continuer les vérifications
+                $existeMembre = $dbh->prepare("SELECT 1 FROM tripenarvor._membre WHERE code_compte = :code_compte");
+                $existeMembre->bindParam(':code_compte',$existeUser[0]);
+                $existeMembre->execute();
+                if($existeMembre){
+                    // Si le membre existe, on vérifie le mot de passe
+                    $checkPWD = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :code_compte");
+                    $checkPWD->bindParam(':code_compte',$existeUser[0]);
+                    $checkPWD->execute();
 
-        if ($mailDansBdd != NULL){
-            if (password_verify($password, $passwordHashedFromDB)) {
-                // Le mot de passe est correct
-                // Connexion
-                session_start();
-                $_SESSION["compte"] = $mailDansBdd;
-                // redirection
-                header('Location: modif_infos_pro.php');
-                exit();
-            } else {
-                // Le mot de passe est incorrect
-                ?>
-                <p>
-                <?php
-                    echo "Le mot de passe est incorrect";
-                ?>
-            </p>
-            <?php
+                    $pwd_compte = $checkPWD->fetch();
+
+                    if(password_verify($password,$pwd_compte[0])){
+                        // les mots de passe correspondent
+                        // l'utilisateur peut être connecté
+                        header('location: voir_offres.php');
+                        $_SESSION["compte"] = $existeUser[0];
+                    }
+                }
             }
-        } else {
-            // Mail inconnu
-            ?>
-            <p>
-                <?php
-                    echo "Le mail est inconnu";
-                ?>
-            </p>
-            <?php
         }
-
         
     ?>
 </body>
