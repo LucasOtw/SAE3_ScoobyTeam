@@ -13,7 +13,10 @@
 
         $lesComptes = $recupComptes->fetchAll(PDO::FETCH_ASSOC);
 
+        $recupComptesPro = $dbh->prepare('SELECT * FROM tripenarvor._compte WHERE code_compte = (SELECT code_compte FROM _professionnel)');
+        $recupComptesPro->execute();
+
 echo "<pre>";
-var_dump($lesComptes);
+var_dump($recupComptesPro->fetchAll(PDO::FETCH_ASSOC));
 echo "</pre>";
 ?>
