@@ -22,6 +22,10 @@
     font-style: normal;
 }
 
+html, body {
+    height: 100%; /* Important pour que le footer se positionne en bas */
+}
+
 body {
     display: flex;
     flex-direction: column;
