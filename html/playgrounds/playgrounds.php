@@ -14,6 +14,6 @@
         $lesComptes = $recupComptes->fetchAll(PDO::FETCH_ASSOC);
 
 echo "<pre>";
-var_dump($mesComptes);
+var_dump($lesComptes);
 echo "</pre>";
 ?>
