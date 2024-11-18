@@ -13,16 +13,16 @@
         </div>
         <nav>
             <ul>
-                <li><a href="">Accueil</a></li>
-                <li><a href="#" class="active">Publier</a></li>
-                <li><a href="#">Mon Compte</a></li>
+                <li><a href="mes_offres.php">Accueil</a></li>
+                <li><a href="creation_offre1.php" class="active">Publier</a></li>
+                <li><a href="connexion_pro.php">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="fleche_retour">
         <div>
-            <a href="creation_offre1.php"><img src="images/Bouton_retour.png" alt="retour"></a>
+            <img src="images/Bouton_retour.png" alt="retour">
         </div>
     </div>
 
@@ -36,7 +36,7 @@
 
     <?php
         // Connexion à la base de données PostgreSQL
-        $dsn = "pgsql:host=postgresdb;port=5432;dbname=db-scooby-team;";
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
         $username = "sae";
         $password = "philly-Congo-bry4nt";
 
@@ -155,8 +155,8 @@
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Publier</a></li>
+                    <li><a href="mes_offres.php">Accueil</a></li>
+                    <li><a href="creation_offre1.php">Publier</a></li>
                     <li><a href="#">Historique</a></li>
                 </ul>
             </div>
