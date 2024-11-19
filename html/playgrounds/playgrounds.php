@@ -7,14 +7,17 @@
         // Créer une instance PDO
         $dbh = new PDO($dsn, $username, $password);
 
+        $mail2 = "pro@gmail.com";
         $mail = "Valentin.Londubat@etudiant.univ-rennes.fr";
 
-        $existeUser = $dbh->prepare("SELECT 1 FROM tripenarvor._compte WHERE mail=:mail");
-        $existeUser->bindValue(":mail",$mail);
+        $existeUser = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail='$mail2'");
         $existeUser->execute();
         $existeUser->fetch();
-
-        $existeUser = $existeUser->fetch();
+        
+        if(count($existeUser) == 0){
+                // si l'utilisateur existe, on doit vérifier que c'est un membre
+                $verifMembre = $dbh->prepare("SELECT 1 FROM tripenarvor._membre WHERE code_compte = :code_compte");
+        }
 
         var_dump($existeUser);
 
