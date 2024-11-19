@@ -7,35 +7,28 @@
         // Créer une instance PDO
         $dbh = new PDO($dsn, $username, $password);
 
-        // Récupération de tout le contenu de "_compte"
-        $recupComptes = $dbh->prepare('SELECT * FROM tripenarvor._compte');
-        $recupComptes->execute();
+        $mail2 = "pro@gmail.com";
+        $mail = "Valentin.Londubat@etudiant.univ-rennes.fr";
 
-        $lesComptes = $recupComptes->fetchAll(PDO::FETCH_ASSOC);
+        $existeUser = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail='$mail2'");
+        $existeUser->execute();
+        $existeUser = $existeUser->fetch(PDO::FETCH_ASSOC);
+        
+        if($existeUser){
+                // si l'utilisateur existe, on doit vérifier que c'est un membre
+                echo "il existe";
+                $verifMembre = $dbh->prepare("SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte");
+                $verifMembre->bindValue(":code_compte",$existeUser['code_compte']);
+                $verifMembre->execute();
 
-        $recupComptesPro = $dbh->prepare('
-            SELECT c.*, p.raison_sociale 
-            FROM tripenarvor._compte c
-            JOIN tripenarvor._professionnel p ON c.code_compte = p.code_compte
-        ');
-        $recupComptesPro->execute();
-
-    $raison_sociale = "Mon Entreprise";
-
-    $verifRaisonSociale = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel WHERE raison_sociale = :raison_sociale");
-    $verifRaisonSociale->bindValue(":raison_sociale",$raison_sociale);
-    $verifRaisonSociale->execute();
-
-    $existeRaisonSociale = $verifRaisonSociale->fetch();
-
+                $estMembre = $verifMembre->fetch(PDO::FETCH_ASSOC);
+                if($estMembre){
+                        echo "C'est un membre";
+                } else {
+                        echo "Who the hell are you ?";
+                }
+        }
 echo "<pre>";
-var_dump($existeRaisonSociale);
-
-if($existeRaisonSociale){
-        echo "Cette raison sociale est déjà prise !";
-} else {
-        echo "Aussi libre qu'une pute un jour de Noël.";
-}
-
+var_dump($existeUser);
 echo "</pre>";
 ?>

@@ -163,8 +163,6 @@ session_start();
             $cgu = isset($_POST['cgu']) ? true : false; // Case à cocher
     
             $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
-
-            var_dump($raison_sociale);
     
             // Initialisation du tableau d'erreurs
             $erreurs = [];
@@ -173,15 +171,47 @@ session_start();
             if (empty($raison_sociale)) {
                 $erreurs[] = "Le champ 'Raison sociale' est requis.";
             }
+
+            // On vérifie si la raison sociale est bien unique (sinon, il y aura des insertions PUIS une erreur)
+
+            $verifRaisonSociale = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel WHERE raison_sociale = :raison_sociale");
+            $verifRaisonSociale->bindValue(":raison_sociale",$raison_sociale);
+            $verifRaisonSociale->execute();
+
+            $existeRaisonSociale = $verifRaisonSociale->fetch();
+
+            if($existeRaisonSociale){
+                $erreurs[] = "Une entreprise possède déjà cette raison sociale...";
+            }
     
             // 2. N° de Siren : Vérifier si le Siren est valide (9 chiffres)
             if (!empty($siren) && !preg_match('/^[0-9]{9}$/', $siren)) {
                 $erreurs[] = "Le numéro de Siren doit comporter 9 chiffres.";
             }
+
+            // On vérifie si le numéro Siren est déjà présent dans ._professionnel_prive
+            $verifNumeroSiren = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel_prive WHERE num_siren = :num_siren");
+            $verifNumeroSiren->bindValue(":num_siren",$siren);
+            $verifNumeroSiren->execute();
+
+            $existeSiren = $verifNumeroSiren->fetch();
+            if($existeSiren){
+                $erreurs[] = "Ce numéro SIREN est déjà lié à un compte professionnel !";
+            }
     
             // 3. Email : Vérifier si l'email est valide
             if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $erreurs[] = "L'adresse email est invalide.";
+            }
+
+            // On vérifie aussi l'unicité de l'adresse mail
+            $verifAdresseMail = $dbh->prepare("SELECT 1 FROM tripenarvor._compte WHERE mail = :adresse_mail");
+            $verifAdresseMail->bindValue(":adresse_mail",$email);
+            $verifAdresseMail->execute();
+
+            $existeAdresseMail = $verifAdresseMail->fetch();
+            if($existeAdresseMail){
+                $erreurs[] = "Cette adresse mail est déjà liée à un compte !";
             }
     
             // 4. Téléphone : Doit être un format valide de 10 chiffres
@@ -215,14 +245,6 @@ session_start();
             if (!$cgu) {
                 $erreurs[] = "Vous devez accepter les conditions générales d'utilisation.";
             }
-
-            // On vérifie si la raison sociale est bien unique (sinon, il y aura des insertions PUIS une erreur)
-
-            $verifRaisonSociale = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel WHERE raison_sociale = :raison_sociale");
-            $verifRaisonSociale->bindValue(":raison_sociale",$raison_sociale);
-            $verifRaisonSociale->execute();
-
-            $existeRaisonSociale = $verifRaisonSociale->fetch();
     
             // Vérifie s'il y a des erreurs
             if (empty($erreurs)) {
