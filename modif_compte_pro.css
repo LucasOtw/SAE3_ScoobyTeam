@@ -527,8 +527,7 @@ form input:focus::placeholder {
 .submit-btn1, .submit-btn2 {
     color: white;
     padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+    border: 1.5px solid var(--orange);
     cursor: pointer;
 }
 
