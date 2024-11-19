@@ -209,7 +209,20 @@
             // 4. Email : Vérifier si l'email est valide
             if (empty($email) || !preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email)) {
                 $erreurs[] = "L'adresse email est invalide.";
+            } else {
+                /* on vérifie l'unicité de l'adresse mail.
+                Sinon, les insertions présentes AVANT une insertion utilisant l'adresse mail se déclencheront quand même !*/
+    
+                $verifAdresseMail = $dbh->prepare("SELECT 1 FROM tripenarvor._compte WHERE mail = :adresse_mail");
+                $verifAdresseMail->bindValue(":adresse_mail",$email);
+                $verifAdresseMail->execute();
+
+                $existeAdresseMail = $verifAdresseMail->fetch(PDO::FETCH_ASSOC);
+                if($existeAdresseMail){
+                    $erreurs[] = "Cette adresse mail est déjà liée à un compte !";
+                }
             }
+            
             // 5. Téléphone : Doit être un format valide de 10 chiffres
             if (empty($telephone) || !preg_match('/^[0-9]{10}$/', $telephone)) {
                 $erreurs[] = "Le numéro de téléphone doit comporter 10 chiffres.";
@@ -228,6 +241,11 @@
             } elseif (!preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/", $ville)) {
                 $erreurs[] = "Le nom de la ville ne doit contenir que des lettres, espaces, ou apostrophes.";
             }
+
+            // 8.bis : Vérification du code postal
+
+            if(!empty($ville) && !empty($codePostal))
+            
             // 9. Mot de passe : Minimum 8 caractères, et correspondance avec le champ de confirmation
             if ($password !== $confirmPassword) {
                 $erreurs[] = "Les mots de passe ne correspondent pas.";
