@@ -135,13 +135,14 @@ if(isset($_GET["deco"])){
                 $imagesOffre->bindParam(":code_offre", $offre["code_offre"]);
                 $imagesOffre->execute();
                 
-                // Utiliser fetchAll pour récupérer toutes les images sous forme de tableau
+                // on recupère toutes les images sous forme de tableau
                 $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
-                echo "<pre>";
-                var_dump($images);
-                echo "</pre>";
 
-                if(!empty($images)){
+                if(!empty($images)){ // si le tableau n'est pas vide...
+                    /* On récupère uniquement la première image.
+                    Une offre peut avoir plusieurs images. Mais on n'en affiche qu'une seule sur cette page.
+                    On pourrait afficher aléatoirement chaque image, mais on serait vite perdus...*/
+                                    
                     $recupLienImage = $dbh->prepare('SELECT url_image FROM tripenarvor._image WHERE code_image = :code_image');
                     $recupLienImage->bindValue(":code_image",$images[0]['code_image']);
                     $recupLienImage->execute();
