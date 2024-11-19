@@ -32,16 +32,23 @@ var_dump($_SESSION);
                 <li><a href="voir_offres.php" class="active">Accueil</a></li>
                 <li><a href="connexion_pro.php">Publier</a></li>
                 <?php
-                    if(isset($_SESSION["compte"]) || !empty($_SESSION["compte"])){
-                        ?>
-                        <li><a href="#">/!\ EN COURS /!\</a></li>
-                        <li><a href="voir_offres.php?deco=true">Se déconnecter</a></li>
+                    if(isset($_SESSION["membre"] || !empty($_SESSION["membre"])){
+                       ?>
+                       <li>
+                           <a href="#">/!\ EN COURS /!\</a>
+                       </li>
+                        <li>
+                            <a href="voir_offres.php?deco=true">Se déconnecter</a>
+                        </li>
                         <?php
                     } else {
                         ?>
-                        <li><a href="connexion_membre.php">Se connecter</a></li>
-                        <?php
-                    } ?>
+                       <li>
+                           <a href="connexion_membre.php">Se connecter</a>
+                       </li>
+                       <?php
+                    }
+                ?>
             </ul>
         </nav>
     </header>
