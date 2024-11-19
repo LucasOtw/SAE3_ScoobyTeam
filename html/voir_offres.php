@@ -137,6 +137,8 @@ if(isset($_GET["deco"])){
                 
                 // Utiliser fetchAll pour récupérer toutes les images sous forme de tableau
                 $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
+
+                var_dump($images);
             
                 if (!empty($images)) {
                     // Récupérer la première image si disponible
