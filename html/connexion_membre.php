@@ -112,7 +112,21 @@ session_start();
 
                 if($estMembre !== false){
                     // si c'est un membre...
-                    echo "C'est un membre";
+                    // on vérifie le mot de passe
+                    $verifMDP = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE mail = :mail");
+                    $verifMDP->bindValue(":mail",$estUtilisateur['mail']);
+                    $verifMDP->execute();
+
+                    $vraiMDP = $verifMDP->fetch(PDO::FETCH_ASSOC);
+
+                    if(password_verify($password,$vraiMDP){
+                       // si le mdp correspond au mdp hâché...
+                       // on peut connecter l'utilisateur !
+
+                       $_SESSION['membre'] = $estUtilisateur;
+                       session_regenerate_id(true);
+                       header("location: voir_offres.php");
+                    }
                 } else {
                     echo "Ernie, petite mémé droit devant !";
                 }
