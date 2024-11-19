@@ -128,19 +128,19 @@ function tempsEcouleDepuisPublication($offre){
 
         <section id="offers-list">
 
-        <article class="offer">
-                <img src="images/offre2.png" alt="Image de l'offre Armor'Park">
-                <div class="offer-details">
-                    <h2>Armor'Park</h2>
-                    <p>Lannion</p>
-                    <span>3 mois</span>
-                    <span>
-                        <!-- <img src="images/etoile.png" class="img-etoile">
-                        <p>4 <span class="nb_avis">(50 avis)</span></p> -->
-                    </span>
-                    <button>Voir l'offre →</button>
-                </div>
-            </article>
+      <!--  <article class="offer">
+            <img src="images/offre2.png" alt="Image de l'offre Armor'Park">
+            <div class="offer-details">
+                <h2>Armor'Park</h2>
+                <p>Lannion</p>
+                <span>3 mois</span>
+                <span>
+                    <!-- <img src="images/etoile.png" class="img-etoile">
+                    <p>4 <span class="nb_avis">(50 avis)</span></p> -->
+                </span>
+                <button>Voir l'offre →</button>
+            </div>
+        </article> -->
 
         <?php
             try {
@@ -203,19 +203,6 @@ function tempsEcouleDepuisPublication($offre){
             }
 
         ?>
-        <article class="offer">
-                <img src="images/offre2.png" alt="Image de l'offre Armor'Park">
-                <div class="offer-details">
-                    <h2>Armor'Park</h2>
-                    <p>Lannion</p>
-                    <span>3 mois</span>
-                    <span>
-                        <!-- <img src="images/etoile.png" class="img-etoile">
-                        <p>4 <span class="nb_avis">(50 avis)</span></p> -->
-                    </span>
-                    <button>Voir l'offre →</button>
-                </div>
-            </article>
         </section>
 
     </main>
