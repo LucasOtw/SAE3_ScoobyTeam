@@ -140,7 +140,7 @@ if(isset($_GET["deco"])){
 
                 if(!empty($images)){
                     $recupLienImage = $dbh->prepare('SELECT url_image FROM tripenarvor._image WHERE code_image = :code_image');
-                    $recupLienImage->bindValue(":code_image",$images[0][1]);
+                    $recupLienImage->bindValue(":code_image",$images[0]);
                     $recupLienImage->execute();
     
                     $offre_image = $recupLienImage->fetch(PDO::FETCH_ASSOC);
