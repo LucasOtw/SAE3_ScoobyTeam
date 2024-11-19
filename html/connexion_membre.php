@@ -89,6 +89,18 @@ session_start();
         // Créer une instance PDO
         $dbh = new PDO($dsn, $username, $password);
 
+        /* CONNEXION (V2) */
+
+        if(!empty($_POST)){
+            $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
+            $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
+
+            // on cherche l'utilisateur dans la base de données
+
+            $existeUser = $dbh->prepare("SELECT ");
+        }
+
+        // V1 (connexion)
         if(!empty($_POST)){
             $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
             $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
@@ -97,7 +109,8 @@ session_start();
     
             $existeUser = $dbh->prepare("SELECT code_compte FROM tripenarvor._compte WHERE mail='$email'");
             $existeUser->execute();
-
+            $existeUser = $existeUser->fetch();
+            
             if($existeUser){
                 // si l'utilisateur existe, on vérifie d'abord si il est membre.
                 $existeUser = $existeUser->fetch();
