@@ -245,7 +245,7 @@
             // 8.bis : Vérification du code postal
 
             if(!empty($ville) && !empty($codePostal)){
-                $api_codePostal = 'http://api.zippopotam.us/fr/'.$code_postal;
+                $api_codePostal = 'http://api.zippopotam.us/fr/'.$codePostal;
 
                 $api_codePostal = file_get_contents($api_codePostal);
                 if($api_codePostal === FALSE){
