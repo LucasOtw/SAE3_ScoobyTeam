@@ -18,8 +18,7 @@
                 // si l'utilisateur existe, on doit vérifier que c'est un membre
                 echo "il existe";
         }
-
-        var_dump($existeUser);
-
+echo "<pre>";
+var_dump($existeUser);
 echo "</pre>";
 ?>
