@@ -10,7 +10,7 @@
 
 @font-face {
     font-family: 'K2D';
-    src: url('./polices/K2D/K2D-Regular.ttf') format('truetype');
+    src: url('html/polices/K2D/K2D-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -22,6 +22,12 @@
     font-style: normal;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "K2D", sans-serif;
+    min-height: 100vh; /*Pour occuper toute la page*/
+}
 
 /****** HEADER *****/
 
@@ -500,6 +506,10 @@ footer {
     transition: ease-in-out 0.25s;
 }
 
+nav.nav-bar {
+        display:none;
+}
+
 @media (max-width: 430px) {
     header.header-pc {
         display: none;
@@ -562,6 +572,7 @@ footer {
         box-shadow: 0px 2px 10px rgb(156, 156, 156);
     }
 
+
     nav.nav-bar a {
         display: flex;
         align-items: center;
@@ -597,7 +608,7 @@ footer {
     display: none;
 }
 /* Boutons de navigation */
-.scroll-btn {
+.card-scroll-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -612,15 +623,15 @@ footer {
     z-index: 10;
 }
 
-.scroll-btn.left {
+.card-scroll-btn.card-scroll-btn-left {
     left: -20px;
 }
 
-.scroll-btn.right {
+.card-scroll-btn.card-scroll-btn-right {
     right: -20px;
 }
 
-.scroll-btn:hover {
+.card-scroll-btn:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
