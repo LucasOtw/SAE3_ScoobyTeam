@@ -314,7 +314,10 @@ p {
    
     
 }
-
+.tab a {
+    color:black;
+    text-decoration:none;
+}
 .tab.active {
     color: #2e2e2e;
     border-bottom: 2px solid #F28322; /* Couleur vert olive */

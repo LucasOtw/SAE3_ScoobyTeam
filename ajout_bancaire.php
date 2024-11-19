@@ -6,13 +6,13 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premières coordonnées bancaires</title>
+    <title>ajout coordonnées bancaires</title>
     <link rel="stylesheet" href="ajout_bancaire.css">
 </head>
 <body>
 <header>
     <div class="logo">
-        <img src="images/logoBlanc.png" alt="PACT Logo">
+        <img src="images/logoBlanc_pro.png" alt="PACT Logo">
     </div>
     <nav>
         <ul>
@@ -33,7 +33,7 @@ session_start();
         <p>ti.al.lannec@gmail.com | 07.98.76.54.12</p>
     </div>
     <div class="tabs">
-        <div class="tab"><a href="modif_mdp_pro.php">Mot de passe et sécurité</a></div>
+        <div class="tab"><a href="modif_mdp_pro.php"  >Mot de passe et sécurité</a></div>
         <div class="tab active">Compte Bancaire</div>
     </div>
 </div>
