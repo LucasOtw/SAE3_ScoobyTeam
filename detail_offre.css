@@ -388,11 +388,12 @@ footer {
 
 .detail_offre_description {
     margin-bottom: 20px;
+    margin-top: 3em;
 }
 
 .detail_offre_description h2 {
     font-size: 1.8em;
-    margin-bottom: 50px;
+    margin-bottom: 21px;
 }
 
 .detail_offre_description p {
@@ -957,7 +958,7 @@ footer {
     display: flex;
     overflow-x: scroll;
     scroll-behavior: smooth;
-    width: 80vw; /* Réduit la largeur de la section pour vérifier le défilement */
+    width: 100vw;
     min-width: 100%;
     margin-left: -7em;
     
@@ -983,11 +984,12 @@ footer {
 }
 
 .card-scroll-btn.card-scroll-btn-left {
-    left: -20px;
+    left: -147px;
+    
 }
 
 .card-scroll-btn.card-scroll-btn-right {
-    right: -20px;
+    right: -98px;
 }
 
 .card-scroll-btn:hover {
