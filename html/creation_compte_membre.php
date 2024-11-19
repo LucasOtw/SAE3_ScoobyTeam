@@ -244,7 +244,30 @@
 
             // 8.bis : Vérification du code postal
 
-            if(!empty($ville) && !empty($codePostal))
+            if(!empty($ville) && !empty($codePostal)){
+                $api_codePostal = 'http://api.zippopotam.us/fr/'.$code_postal;
+
+                $api_codePostal = file_get_contents($api_codePostal);
+                if($api_codePostal === FALSE){
+                    $erreurs[] = "Erreur lors de l'accès à l'API";
+                    exit();
+                }
+
+                $data = json_decode($api_codePostal,true);
+                $isValid = false;
+
+                if($data && isset($data['places'])){
+                    foreach($data['places'] as $place){
+                        if(stripos($place['place name'], $ville) === 0){
+                            $isValid = true;
+                            break;
+                        }
+                    }
+                }
+                if(!$isValid){
+                    $erreurs[] = "La ville ne correspond pas au code postal";
+                }
+            }
             
             // 9. Mot de passe : Minimum 8 caractères, et correspondance avec le champ de confirmation
             if ($password !== $confirmPassword) {
