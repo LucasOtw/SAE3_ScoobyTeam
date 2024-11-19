@@ -71,6 +71,7 @@ if(!isset($_POST["code_offre"])){
     <link
         href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
+    <script src="scroll.js"></script>
 
 
     <script>
@@ -118,18 +119,69 @@ if(!isset($_POST["code_offre"])){
                 </div>
             </div>
 
-            <div class="detail_offre_gallery">
-                <img src="images/Tiallannec1.png" alt="Hôtel extérieur" class="main-image">
-                <div class="thumbnail-grid">
-                    <img src="images/Tiallannec2.png" alt="Hôtel de nuit">
-                    <img src="images/tiallannec3.png" alt="Salle à manger">
-                </div>
-                <!-- Nouvelle structure pour les miniatures -->
-                    <div class="detail_offre_thumbnail-grid3">
-                        <img src="images/tiallannec8.png" alt="Chambre">
-                        <img src="images/tiallannec9.png" alt="Vue sur la mer">
+            <div class="a-la-une-wrapper">
+            <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft()">&#8249;</button>
+            <section class="a-la-une">
+                <article class="card-a-la-une">
+                    <div class="image-background-card-a-la-une">
+                        <img src="images/tiallannec.png" alt="">
+                        <div class="raison-sociale-card-a-la-une">
+                            <p>Ti Al Lannec</p>
+                        </div>
                     </div>
-            </div>
+                </article>
+                <article class="card-a-la-une">
+                    <div class="image-background-card-a-la-une">
+                        <img src="images/tiallannec.png" alt="">
+                        <div class="raison-sociale-card-a-la-une">
+                            <p>Ti Al Lannec</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="card-a-la-une">
+                    <div class="image-background-card-a-la-une">
+                        <img src="images/tiallannec.png" alt="">
+                        <div class="raison-sociale-card-a-la-une">
+                            <p>Ti Al Lannec</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="card-a-la-une">
+                    <div class="image-background-card-a-la-une">
+                        <img src="images/tiallannec.png" alt="">
+                        <div class="raison-sociale-card-a-la-une">
+                            <p>Ti Al Lannec</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="card-a-la-une">
+                    <div class="image-background-card-a-la-une">
+                        <img src="images/tiallannec.png" alt="">
+                        <div class="raison-sociale-card-a-la-une">
+                            <p>Ti Al Lannec</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="card-a-la-une">
+                    <div class="image-background-card-a-la-une">
+                        <img src="images/tiallannec.png" alt="">
+                        <div class="raison-sociale-card-a-la-une">
+                            <p>Ti Al Lannec</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="card-a-la-une">
+                    <div class="image-background-card-a-la-une">
+                        <img src="images/tiallannec.png" alt="">
+                        <div class="raison-sociale-card-a-la-une">
+                            <p>Ti Al Lannec</p>
+                        </div>
+                    </div>
+                </article>
+            <!-- Ajoutez d'autres cartes ici -->
+            </section>
+            <button class="card-scroll-btn card-scroll-btn-right" onclick="scrollcontentRight()">&#8250;</button>
+        </div>
             <div class="detail_offre_description">
                 <h2>Description</h2>
                 <p>
