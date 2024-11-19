@@ -7,35 +7,13 @@
         // Créer une instance PDO
         $dbh = new PDO($dsn, $username, $password);
 
-        // Récupération de tout le contenu de "_compte"
-        $recupComptes = $dbh->prepare('SELECT * FROM tripenarvor._compte');
-        $recupComptes->execute();
+        $mail = "Valentin.Londubat@etudiant.univ-rennes.fr";
 
-        $lesComptes = $recupComptes->fetchAll(PDO::FETCH_ASSOC);
+        $existeUser = $dbh->prepare("SELECT 1 FROM tripenarvor._compte WHERE mail='$email'");
+        $existeUser->execute();
+        $existeUser->fetch();
 
-        $recupComptesPro = $dbh->prepare('
-            SELECT c.*, p.raison_sociale 
-            FROM tripenarvor._compte c
-            JOIN tripenarvor._professionnel p ON c.code_compte = p.code_compte
-        ');
-        $recupComptesPro->execute();
-
-    $raison_sociale = "Mon entreprise";
-
-    $verifRaisonSociale = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel WHERE raison_sociale = :raison_sociale");
-    $verifRaisonSociale->bindValue(":raison_sociale",$raison_sociale);
-    $verifRaisonSociale->execute();
-
-    $existeRaisonSociale = $verifRaisonSociale->fetch();
-
-echo "<pre>";
-var_dump($existeRaisonSociale);
-
-if($existeRaisonSociale){
-        echo "Cette raison sociale est déjà prise !";
-} else {
-        echo "Aussi libre qu'une pute un jour de Noël.";
-}
+        var_dump($existeUser);
 
 echo "</pre>";
 ?>
