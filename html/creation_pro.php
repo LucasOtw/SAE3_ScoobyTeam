@@ -163,8 +163,6 @@ session_start();
             $cgu = isset($_POST['cgu']) ? true : false; // Case à cocher
     
             $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
-
-            var_dump($raison_sociale);
     
             // Initialisation du tableau d'erreurs
             $erreurs = [];
