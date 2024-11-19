@@ -454,7 +454,8 @@ button.submit-btn3 {
 }
 
 .submit-btn1,
-button.submit-btn2{
+button.submit-btn2{         
+    padding: 10px 20px;
     background-color: white;
     border: 1.5px solid var(--orange);
     color: black;
@@ -521,16 +522,4 @@ form input:focus::placeholder {
 /* Style pour la case à cocher */
 #remember, #cgu {
     accent-color: var(--vert-fonce);
-}
-
-/* Styles pour les boutons */
-.submit-btn1, .submit-btn2 {
-    color: black;
-    padding: 10px 20px;
-    border: 1.5px solid var(--orange);
-    cursor: pointer;
-}
-
-.submit-btn1 {
-    margin-right: 10px;
 }
