@@ -153,7 +153,7 @@ if(isset($_GET["deco"])){
 
                 ?>
                 <article class="offer">
-                    <img src=<?php echo $offre_image ?> alt="aucune image">
+                    <img src=<?php echo $offre_image['url_image'] ?> alt="aucune image">
                     <div class="offer-details">
                         <h2><?php echo $offre["titre_offre"] ?></h2>
                         <p><?php echo $villeOffre["ville"] ?></p>
