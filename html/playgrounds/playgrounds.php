@@ -14,6 +14,8 @@
         $existeUser->execute();
         $existeUser->fetch();
 
+        $existeUser = $existeUser->fetch();
+
         var_dump($existeUser);
 
 echo "</pre>";
