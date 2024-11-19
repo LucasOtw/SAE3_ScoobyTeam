@@ -64,8 +64,8 @@
         </fieldset>
     </div>
     <div class="compte_membre_save_delete">
-    <button type="submit" class="submit-btn1">Supprimer mon compte</button>
-    <a href="deconnexion_compte_pro.php" class="submit-btn2">Déconnexion</a>
+    /*<button type="submit" class="submit-btn1">Supprimer mon compte</button>*/
+    <a href="deconnexion_compte_pro.php" class="submit-btn1">Déconnexion</a>
     <button type="submit" class="submit-btn3">Enregistrer</button>
 </div>
 
