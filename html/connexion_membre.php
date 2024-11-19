@@ -137,8 +137,10 @@ session_start();
             }
         }
 
-        foreach($erreurs as $erreur){
-            echo $erreur."<br>";
+        if(isset($erreurs) && !empty($erreurs)){
+            foreach($erreurs as $erreur){
+                echo $erreur."<br>";
+            }
         }
         
     ?>
