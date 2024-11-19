@@ -138,13 +138,14 @@ if(isset($_GET["deco"])){
                 // Utiliser fetchAll pour récupérer toutes les images sous forme de tableau
                 $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
 
-                var_dump($images);
-            
-                if (!empty($images)) {
-                    // Récupérer la première image si disponible
-                    $offre_image = $images[0]['code_image']; 
+                if(!empty($images)){
+                    $recupLienImage = $dbh->prepare('SELECT url_image FROM tripenarvor._image WHERE code_image = :code_image');
+                    $recupLienImage->bindValue(":code_image",$images[0][1]);
+                    $recupLienImage->execute();
+    
+                    $offre_image = $recupLienImage->fetch(PDO::FETCH_ASSOC);
                 } else {
-                    $offre_image = ""; // Pas d'image trouvée
+                    $offre_image = "";
                 }
 
                 ?>
