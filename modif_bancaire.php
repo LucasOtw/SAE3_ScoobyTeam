@@ -19,7 +19,7 @@
 <body>
 <header class="header">
     <div class="logo">
-        <img src="images/logoBlanc_pro.png" alt="PACT Logo">
+        <img src="images/logo_blanc_pro.png" alt="PACT Logo">
     </div>
     <nav class="nav">
         <ul>
