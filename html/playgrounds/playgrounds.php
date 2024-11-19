@@ -9,7 +9,7 @@
 
         $mail = "Valentin.Londubat@etudiant.univ-rennes.fr";
 
-        $existeUser = $dbh->prepare("SELECT 1 FROM tripenarvor._compte WHERE mail='$email'");
+        $existeUser = $dbh->prepare("SELECT 1 FROM tripenarvor._compte WHERE mail='$mail'");
         $existeUser->execute();
         $existeUser->fetch();
 
