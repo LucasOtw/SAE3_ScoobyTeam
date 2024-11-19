@@ -115,6 +115,8 @@ session_start();
                 } else {
                     echo "Ernie, petite mémé droit devant !";
                 }
+            } else {
+                echo "Ernie, petite mémé droit devant !";
             }
         } else {
             echo "Ta mère";
