@@ -14,9 +14,9 @@
         $existeUser->execute();
         $existeUser->fetch();
         
-        if(count($existeUser) == 0){
+        if(count($existeUser) > 0){
                 // si l'utilisateur existe, on doit vérifier que c'est un membre
-                $verifMembre = $dbh->prepare("SELECT 1 FROM tripenarvor._membre WHERE code_compte = :code_compte");
+                echo "il existe";
         }
 
         var_dump($existeUser);
