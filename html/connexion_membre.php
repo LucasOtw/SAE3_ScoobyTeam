@@ -117,7 +117,7 @@ session_start();
                     $verifMDP->bindValue(":mail",$estUtilisateur['mail']);
                     $verifMDP->execute();
 
-                    $vraiMDP = $verifMDP->fetch(PDO::FETCH_ASSOC);
+                    $vraiMDP = $verifMDP->fetch();
 
                     if (password_verify($password, $vraiMDP)) {
                         // Si le mdp correspond au mdp haché...
