@@ -119,14 +119,15 @@ session_start();
 
                     $vraiMDP = $verifMDP->fetch(PDO::FETCH_ASSOC);
 
-                    if(password_verify($password,$vraiMDP)){
-                       // si le mdp correspond au mdp hâché...
-                       // on peut connecter l'utilisateur !
-
-                       $_SESSION['membre'] = $estUtilisateur;
-                       session_regenerate_id(true);
-                       header("location: voir_offres.php");
+                    if (password_verify($password, $vraiMDP)) {
+                        // Si le mdp correspond au mdp haché...
+                        // On peut connecter l'utilisateur !
+                    
+                        $_SESSION['membre'] = $estUtilisateur;
+                        session_regenerate_id(true);
+                        header("location: voir_offres.php");
                     }
+
                 } else {
                     echo "Ernie, petite mémé droit devant !";
                 }
