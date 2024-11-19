@@ -119,7 +119,7 @@ session_start();
 
                     $vraiMDP = $verifMDP->fetch(PDO::FETCH_ASSOC);
 
-                    if(password_verify($password,$vraiMDP){
+                    if(password_verify($password,$vraiMDP)){
                        // si le mdp correspond au mdp hâché...
                        // on peut connecter l'utilisateur !
 
