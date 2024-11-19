@@ -29,6 +29,6 @@
     $existeRaisonSociale = $verifRaisonSociale->fetch();
 
 echo "<pre>";
-var_dump($lesComptes);
+var_dump($existeRaisonSociale);
 echo "</pre>";
 ?>
