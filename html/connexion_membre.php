@@ -97,43 +97,25 @@ session_start();
 
             // on cherche l'utilisateur dans la base de données
 
-            $existeUser = $dbh->prepare("SELECT ");
-        }
-
-        // V1 (connexion)
-        if(!empty($_POST)){
-            $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
-            $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
-    
-            // on cherche dans la base de données si le compte existe.
-    
-            $existeUser = $dbh->prepare("SELECT code_compte FROM tripenarvor._compte WHERE mail='$email'");
+            $existeUser = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail='$email'");
             $existeUser->execute();
-            $existeUser = $existeUser->fetch();
-            
-            if($existeUser){
-                // si l'utilisateur existe, on vérifie d'abord si il est membre.
-                $existeUser = $existeUser->fetch();
-                // Car même si l'adresse mail et le mdp sont corrects, si le compte n'est pas lié à un membre, ça ne sert à rien de continuer les vérifications
-                $existeMembre = $dbh->prepare("SELECT 1 FROM tripenarvor._membre WHERE code_compte = :code_compte");
-                $existeMembre->bindParam(':code_compte',$existeUser[0]);
-                $existeMembre->execute();
-                if($existeMembre){
-                    // Si le membre existe, on vérifie le mot de passe
-                    $checkPWD = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :code_compte");
-                    $checkPWD->bindParam(':code_compte',$existeUser[0]);
-                    $checkPWD->execute();
+            $estUtilisateur = $existeUser->fetch(PDO::FETCH_ASSOC);
 
-                    $pwd_compte = $checkPWD->fetch();
+            if($estUtilisateur !== false){
+                // si l'utilisateur existe, on doit vérifier que c'est un membre
+                $verifMembre = $dbh->prepare("SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte");
+                $verifMembre->bindValue(":code_compte",$existeUser['code_compte']);
+                $verifMembre->execute();
 
-                    if(password_verify($password,$pwd_compte[0])){
-                        // les mots de passe correspondent
-                        // l'utilisateur peut être connecté
-                        header('location: voir_offres.php');
-                        $_SESSION["compte"] = $existeUser[0];
-                    }
+                $estMembre = $verifMembre->fetch(PDO::FETCH_ASSOC);
+
+                if($estMembre !== false){
+                    // si c'est un membre...
+                } else {
+                    echo "Ernie, petite mémé droit devant !";
                 }
             }
+            
         }
         
     ?>
