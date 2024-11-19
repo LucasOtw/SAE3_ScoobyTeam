@@ -395,9 +395,8 @@ footer {
     margin-top: 5vh;
 }
 
-.toute_les_offres_main > header > h2 {
-    margin-top : 2vh;
-    margin-left: 8vw;
+.toute_les_offres_main header h2 {
+    margin:5vh 5vw 2vh;
 }
 
 .toute_les_offres_main #filter {
@@ -572,4 +571,96 @@ footer {
     .nb-avis{
         display: none   ;
     }
+}
+         
+
+/* Conteneur global */
+.a-la-une-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 6em;
+    margin-right: 6em;
+}
+
+/* Section des cartes */
+.a-la-une {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    width: 80vw; /* Réduit la largeur de la section pour vérifier le défilement */
+    min-width: 100%;
+    
+}
+
+.a-la-une::-webkit-scrollbar{
+    display: none;
+}
+/* Boutons de navigation */
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.scroll-btn.left {
+    left: -20px;
+}
+
+.scroll-btn.right {
+    right: -20px;
+}
+
+.scroll-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+
+.card-a-la-une {
+    width: 25em;
+    position: relative;
+    background-color: grey;
+    border-radius: 1.5em;
+    margin: 0 1vw;
+}
+
+.image-background-card-a-la-une {
+    width: 25em;
+    position: relative;
+    background-color: grey;
+    border-radius: 1.5em;
+    box-shadow: 4px 4px 20px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+.image-background-card-a-la-une img {
+    width: 100%;
+    object-fit:contain;
+    display: block;
+    border-radius: 1.5em;
+}
+
+.raison-sociale-card-a-la-une {
+    position: absolute;
+    bottom: 0; /* Assure que le texte est en bas */
+    left: 0;
+    width: 100%; /* Le bandeau couvre toute la largeur */
+    background: rgba(0, 0, 0, 0.7); /* Bandeau noir avec opacité */
+    color: white;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 1em; /* Ajuste la taille du texte */
+    text-align: left; /* Aligne le texte à gauche */
+    font-size: 1.2em;
 }

@@ -6,8 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>En-tête PAVCT</title>
-    <link rel="stylesheet" href="voir_offres.css">
+    <link rel="stylesheet" href="voir_plus_offres.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="scroll.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 </head>
@@ -59,11 +60,82 @@
 
     <main class="toute_les_offres_main">
         <header>
+            <h2>À la Une</h2>
+        </header>
+
+        <div class="a-la-une-wrapper">
+            <button class="scroll-btn left" onclick="scrollcontentLeft()">&#8249;</button>
+            <section class="a-la-une">
+                <article class="card-a-la-une">
+                    <div class="image-background-card-a-la-une">
+                        <img src="images/tiallannec.jpg" alt="">
+                        <div class="raison-sociale-card-a-la-une">
+                            <p>Ti Al Lannec</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="card-a-la-une">
+                    <div class="image-background-card-a-la-une">
+                        <img src="images/tiallannec.jpg" alt="">
+                        <div class="raison-sociale-card-a-la-une">
+                            <p>Ti Al Lannec</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="card-a-la-une">
+                    <div class="image-background-card-a-la-une">
+                        <img src="images/tiallannec.jpg" alt="">
+                        <div class="raison-sociale-card-a-la-une">
+                            <p>Ti Al Lannec</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="card-a-la-une">
+                    <div class="image-background-card-a-la-une">
+                        <img src="images/tiallannec.jpg" alt="">
+                        <div class="raison-sociale-card-a-la-une">
+                            <p>Ti Al Lannec</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="card-a-la-une">
+                    <div class="image-background-card-a-la-une">
+                        <img src="images/tiallannec.jpg" alt="">
+                        <div class="raison-sociale-card-a-la-une">
+                            <p>Ti Al Lannec</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="card-a-la-une">
+                    <div class="image-background-card-a-la-une">
+                        <img src="images/tiallannec.jpg" alt="">
+                        <div class="raison-sociale-card-a-la-une">
+                            <p>Ti Al Lannec</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="card-a-la-une">
+                    <div class="image-background-card-a-la-une">
+                        <img src="images/tiallannec.jpg" alt="">
+                        <div class="raison-sociale-card-a-la-une">
+                            <p>Ti Al Lannec</p>
+                        </div>
+                    </div>
+                </article>
+            <!-- Ajoutez d'autres cartes ici -->
+            </section>
+            <button class="scroll-btn right" onclick="scrollcontentRight()">&#8250;</button>
+        </div>
+
+
+
+
+        <header>
             <h2>Les offres</h2>
             <!-- <span id="filter">
                 <button><img src="images/tri.png">Filtrer</button>
             </span> -->
-        </header>
+        
 
         <section id="offers-list">
 
@@ -101,7 +173,6 @@
             ?>
 
         </section>
-
     </main>
     <nav class="nav-bar">
     <a href="#"><img src="images/icones/House.png" alt="image de maison"></a>
