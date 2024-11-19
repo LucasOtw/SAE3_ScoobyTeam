@@ -13,7 +13,7 @@ if(isset($_GET["deco"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Offres Pact</title>
-    <link rel="stylesheet" href="voir_plus_offres.css">
+    <link rel="stylesheet" href="voir_offres.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="scroll.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

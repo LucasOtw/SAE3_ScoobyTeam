@@ -26,7 +26,8 @@ body {
     display: flex;
     flex-direction: column;
     font-family: "K2D", sans-serif;
-    min-height: 100vh; /*Pour occuper toute la page*/
+    min-height: 100vh;
+    /*Pour occuper toute la page*/
 }
 
 /****** HEADER *****/
@@ -35,6 +36,7 @@ body {
 div.header-membre {
     display: block;
 }
+
 div.header-pro {
     display: none;
 }
@@ -233,7 +235,7 @@ div.header-pro nav ul li a:hover::before {
 }
 
 
-/* FOOTER */ 
+/* FOOTER */
 
 
 
@@ -383,18 +385,18 @@ footer {
     footer {
         padding: 40px 80px;
     }
-}    
+}
 
-                                        /*****************************************************
+/*****************************************************
                                                         * Code page  Mes offres *
                                         *****************************************************/
 
-.toute_les_offres_main{
+.toute_les_offres_main {
     margin-bottom: 9em;
     padding: auto 8vh;
 }
 
-.toute_les_offres_main .toute_les_offres_main > header {
+.toute_les_offres_main .toute_les_offres_main>header {
     all: unset;
     display: flex;
     align-items: center;
@@ -402,7 +404,7 @@ footer {
 }
 
 .toute_les_offres_main header h2 {
-    margin:5vh 5vw 2vh;
+    margin: 5vh 5vw 2vh;
 }
 
 .toute_les_offres_main #filter {
@@ -430,7 +432,7 @@ footer {
     display: flex;
     background-color: #f3feff;
     border-radius: 10px;
-    overflow:hidden;
+    overflow: hidden;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin: 3vh 8vw;
 }
@@ -462,32 +464,32 @@ footer {
     margin-left: 0;
 }
 
-.toute_les_offres_main .offer-details p:last-of-type{
+.toute_les_offres_main .offer-details p:last-of-type {
     margin: 0 0.5vw;
 }
 
-.toute_les_offres_main .offer-details span:first-of-type{
+.toute_les_offres_main .offer-details span:first-of-type {
     position: relative;
     left: 95%;
     bottom: 6vh;
-    color:#666;
+    color: #666;
 }
 
-.toute_les_offres_main .offer-details span:last-of-type{
+.toute_les_offres_main .offer-details span:last-of-type {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content:start;
+    justify-content: start;
 }
 
-.toute_les_offres_main .offer-details img{
+.toute_les_offres_main .offer-details img {
     image-rendering: pixelated;
     width: 1.5vw;
     height: auto;
     margin: 0;
 }
 
-.toute_les_offres_main #offers-list > article > div > button {
+.toute_les_offres_main #offers-list>article>div>button {
     background-color: var(--vert-clair);
     color: #fff;
     padding: 1.25vh 1.75vw;
@@ -496,18 +498,18 @@ footer {
     cursor: pointer;
     align-self: flex-start;
     transition: background-color 0.2s ease-in-out;
-    align-self:flex-end;
+    align-self: flex-end;
     transition: ease-in-out 0.25s;
 }
 
-.toute_les_offres_main #offers-list > article > div > button:hover {
+.toute_les_offres_main #offers-list>article>div>button:hover {
     background-color: var(--vert-fonce);
     transform: scale(1.05);
     transition: ease-in-out 0.25s;
 }
 
 nav.nav-bar {
-        display:none;
+    display: none;
 }
 
 @media (max-width: 430px) {
@@ -518,18 +520,21 @@ nav.nav-bar {
     header.header-tel {
         display: block;
     }
-    .toute_les_offres_main .offer-details h2{
-        font-size:1.2rem;
+
+    .toute_les_offres_main .offer-details h2 {
+        font-size: 1.2rem;
     }
-    .toute_les_offres_main .offer-details p:last-of-type{
+
+    .toute_les_offres_main .offer-details p:last-of-type {
         font-size: 0.8rem;
     }
-    
+
     .toute_les_offres_main .offer {
         border-radius: 30px;
     }
-    .offer-details{
-        padding:5px;
+
+    .offer-details {
+        padding: 5px;
     }
 
     .toute_les_offres_main .offer img {
@@ -539,25 +544,26 @@ nav.nav-bar {
         margin: 1vh 1vh;
         border-radius: calc(30px - 1vh);
     }
+
     .toute_les_offres_main .offer .img-etoile {
         width: 20px;
         height: auto;
         border-radius: 0;
     }
 
-    .toute_les_offres_main #offers-list > article > div > button {
+    .toute_les_offres_main #offers-list>article>div>button {
         display: block;
         align-self: normal;
         border-radius: 30px;
         margin-right: 1rem;
     }
 
-    .toute_les_offres_main #offers-list > article > div > span:nth-child(3){
+    .toute_les_offres_main #offers-list>article>div>span:nth-child(3) {
         display: none;
     }
-    
+
     footer {
-        display : none;
+        display: none;
     }
 
     nav.nav-bar {
@@ -566,7 +572,7 @@ nav.nav-bar {
         bottom: 20px;
         background-color: var(--vert-clair);
         display: flex;
-        margin: auto  8vw;
+        margin: auto 8vw;
         justify-content: space-around;
         border-radius: 1000px;
         box-shadow: 0px 2px 10px rgb(156, 156, 156);
@@ -579,11 +585,11 @@ nav.nav-bar {
         margin: 10px auto;
     }
 
-    .nb-avis{
-        display: none   ;
+    .nb-avis {
+        display: none;
     }
 }
-         
+
 
 /* Conteneur global */
 .a-la-une-wrapper {
@@ -599,14 +605,16 @@ nav.nav-bar {
     display: flex;
     overflow-x: scroll;
     scroll-behavior: smooth;
-    width: 80vw; /* Réduit la largeur de la section pour vérifier le défilement */
+    width: 80vw;
+    /* Réduit la largeur de la section pour vérifier le défilement */
     min-width: 100%;
-    
+
 }
 
-.a-la-une::-webkit-scrollbar{
+.a-la-une::-webkit-scrollbar {
     display: none;
 }
+
 /* Boutons de navigation */
 .card-scroll-btn {
     position: absolute;
@@ -640,6 +648,7 @@ nav.nav-bar {
 
 .card-a-la-une {
     width: 25em;
+    min-height: 10em;
     position: relative;
     background-color: grey;
     border-radius: 1.5em;
@@ -651,27 +660,32 @@ nav.nav-bar {
     position: relative;
     background-color: grey;
     border-radius: 1.5em;
-    box-shadow: 4px 4px 20px rgba(0,0,0,0.3);
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
     overflow: hidden;
 }
 
 .image-background-card-a-la-une img {
     width: 100%;
-    object-fit:contain;
+    object-fit: contain;
     display: block;
     border-radius: 1.5em;
 }
 
 .raison-sociale-card-a-la-une {
     position: absolute;
-    bottom: 0; /* Assure que le texte est en bas */
+    bottom: 0;
+    /* Assure que le texte est en bas */
     left: 0;
-    width: 100%; /* Le bandeau couvre toute la largeur */
-    background: rgba(0, 0, 0, 0.7); /* Bandeau noir avec opacité */
+    width: 100%;
+    /* Le bandeau couvre toute la largeur */
+    background: rgba(0, 0, 0, 0.7);
+    /* Bandeau noir avec opacité */
     color: white;
     padding: 15px;
     box-sizing: border-box;
-    font-size: 1em; /* Ajuste la taille du texte */
-    text-align: left; /* Aligne le texte à gauche */
+    font-size: 1em;
+    /* Ajuste la taille du texte */
+    text-align: left;
+    /* Aligne le texte à gauche */
     font-size: 1.2em;
 }
