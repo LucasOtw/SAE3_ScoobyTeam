@@ -5,6 +5,8 @@ if(isset($_GET["deco"])){
     session_destroy();
 };
 
+var_dump($_SESSION);
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
