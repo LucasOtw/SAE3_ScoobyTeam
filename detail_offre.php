@@ -339,7 +339,7 @@ if(!isset($_POST["code_offre"])){
                 </article>
                 <div class="detail_offre_resumer_titre">
                 <article>
-                <h3>Site Web</h3>
+                <h3>Description</h3>
                     </div>
                     <p class="detail_offre_resumer">C'est très décontracté en terrasse, on sait tout par la force et la beauté du panorama à perte de vue.</p>
                 </article>
