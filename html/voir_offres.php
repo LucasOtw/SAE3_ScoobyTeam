@@ -137,6 +137,9 @@ if(isset($_GET["deco"])){
                 
                 // Utiliser fetchAll pour récupérer toutes les images sous forme de tableau
                 $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
+                echo "<pre>";
+                var_dump($images);
+                echo "</pre">;
 
                 if(!empty($images)){
                     $recupLienImage = $dbh->prepare('SELECT url_image FROM tripenarvor._image WHERE code_image = :code_image');
