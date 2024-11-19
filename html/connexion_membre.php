@@ -105,7 +105,7 @@ session_start();
             if($estUtilisateur !== false){
                 // si l'utilisateur existe, on doit vérifier que c'est un membre
                 $verifMembre = $dbh->prepare("SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte");
-                $verifMembre->bindValue(":code_compte",$existeUser['code_compte']);
+                $verifMembre->bindValue(":code_compte",$estUtilisateur['code_compte']);
                 $verifMembre->execute();
 
                 $estMembre = $verifMembre->fetch(PDO::FETCH_ASSOC);
