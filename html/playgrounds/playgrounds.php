@@ -17,6 +17,16 @@
         if(count($existeUser) > 0){
                 // si l'utilisateur existe, on doit vérifier que c'est un membre
                 echo "il existe";
+                $verifMembre = $dbh->prepare("SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte");
+                $verifMembre->bindValue(":code_compte",$existeUser['code_compte']);
+                $verifMembre->execute();
+
+                $estMembre = $verifMembre->fetch(PDO::FETCH_ASSOC);
+                if(count($estMembre) > 0){
+                        echo "C'est un membre";
+                } else {
+                        echo "Who the hell are you ?";
+                }
         }
 echo "<pre>";
 var_dump($existeUser);
