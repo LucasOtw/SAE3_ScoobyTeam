@@ -438,7 +438,7 @@ footer {
 
 .toute_les_offres_main .offer img {
     width: auto;
-    height: 15vh;
+    height: 10vh;
     object-fit: cover;
     margin: 0.5vw 1vw;
 }
@@ -533,6 +533,13 @@ nav.nav-bar {
         padding:5px;
     }
 
+    .toute_les_offres_main .offer img {
+        width: auto;
+        height: 13vh;
+        object-fit: cover;
+        margin: 1vh 1vh;
+        border-radius: calc(30px - 1vh);
+    }
 
     .toute_les_offres_main .offer .img-etoile {
         width: 20px;
