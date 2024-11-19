@@ -30,5 +30,12 @@
 
 echo "<pre>";
 var_dump($existeRaisonSociale);
+
+if($existeRaisonSociale){
+        echo "Cette raison sociale est déjà prise !";
+} else {
+        echo "Aussi libre qu'une pute un jour de Noël.";
+}
+
 echo "</pre>";
 ?>
