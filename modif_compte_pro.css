@@ -531,7 +531,6 @@ form input:focus::placeholder {
 
 /* Styles pour les boutons */
 .submit-btn1, .submit-btn2 {
-    background-color: var(--vert-fonce);
     color: white;
     padding: 10px 20px;
     border: none;
