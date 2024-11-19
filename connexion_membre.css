@@ -283,7 +283,9 @@ main.connexion_membre_main {
 }
 
 .connexion_membre_form-container {
-    width: 33vw;
+    width: 35vw;
+    margin-right: 10em;
+    margin-top: 5em;
 }
 
 .connexion_membre_main fieldset {
@@ -429,10 +431,11 @@ main.connexion_membre_main {
 }
 
 .connexion_membre_image-container img {
-    width: 100%;
+    width: 126%;
     height: auto;
     object-fit: cover;
     max-height: 100%;
+    margin-left: -4em;
 }
 
 .connexion_membre_main .connexion_membre_btn_connecter_pas_de_compte {
