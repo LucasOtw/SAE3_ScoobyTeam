@@ -32,7 +32,7 @@ var_dump($_SESSION);
                 <li><a href="voir_offres.php" class="active">Accueil</a></li>
                 <li><a href="connexion_pro.php">Publier</a></li>
                 <?php
-                    if(isset($_SESSION["membre"] || !empty($_SESSION["membre"])){
+                    if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
                        ?>
                        <li>
                            <a href="#">/!\ EN COURS /!\</a>
