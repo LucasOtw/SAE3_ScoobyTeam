@@ -119,7 +119,7 @@ session_start();
 
                     $vraiMDP = $verifMDP->fetch();
 
-                    if (password_verify($password, $vraiMDP)) {
+                    if (password_verify($password, $vraiMDP[0])) {
                         // Si le mdp correspond au mdp haché...
                         // On peut connecter l'utilisateur !
                     
