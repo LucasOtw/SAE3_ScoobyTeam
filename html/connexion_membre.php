@@ -126,10 +126,12 @@ session_start();
                         $_SESSION['membre'] = $estUtilisateur;
                         session_regenerate_id(true);
                         header("location: voir_offres.php");
+                    } else {
+                        $erreurs[] = "Adresse mail ou mot de passe incorrect";
                     }
 
                 } else {
-                    echo "Ernie, petite mémé droit devant !";
+                    echo "Ce compte n'existe pas.";
                 }
             } else {
                 echo "Ernie, petite mémé droit devant !";
