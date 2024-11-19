@@ -469,9 +469,8 @@ button.submit-btn3 {
 
 }
 
-button.submit-btn2:hover{
+button.submit-btn2{
     background-color: var(--orange);
-
 }
 
 
