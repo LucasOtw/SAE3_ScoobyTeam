@@ -92,6 +92,7 @@ session_start();
         /* CONNEXION (V2) */
 
         if(!empty($_POST)){
+            echo "bonjour";
             $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
             $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
 
@@ -115,7 +116,8 @@ session_start();
                     echo "Ernie, petite mémé droit devant !";
                 }
             }
-            
+        } else {
+            echo "Ta mère";
         }
         
     ?>
