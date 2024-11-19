@@ -551,13 +551,16 @@ footer {
     color: white;
 }
 
-.visit-button_detailoffre:hover {
-    transform: scale(1.1);
-    /* Grossissement à 110% */
-    box-shadow: 0 0 15px 5px #12d889;
-    /* Lumière fluo verte */
-    background-color: #12d889;
+.visit-button_detailoffre {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
+
+.visit-button_detailoffre:hover {
+    transform: scale(1.004); /* Grossissement léger */
+    box-shadow: 0 0 5px 2px var(--vert-fonce); /* Lumière fluo verte */
+    background-color: var(--vert-fonce); /* Changement de couleur */
+}
+
 
 /* Styles pour les écrans de 428px et moins */
 @media (max-width: 428px) {
