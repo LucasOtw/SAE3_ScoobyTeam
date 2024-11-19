@@ -192,7 +192,7 @@ function tempsEcouleDepuisPublication($offre){
                     <div class="offer-details">
                         <h2><?php echo $offre["titre_offre"] ?></h2>
                         <p><?php echo $villeOffre["ville"] ?></p>
-                        <span><?php echo tempsEcouleDepuisPublication($offre['date_publication']); ?></span>
+                        <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
                         <button>Voir l'offre →</button>
                     </div>
                 </article>
