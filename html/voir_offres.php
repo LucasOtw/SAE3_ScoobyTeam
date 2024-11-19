@@ -24,7 +24,11 @@ function tempsEcouleDepuisPublication($offre){
     $date_mois_precedent->modify('-1 month');
     $jours_dans_mois_precedent = (int)$date_mois_precedent->format('t'); // 't' donne le nombre de jours dans le mois
 
-    if($jours < 7){
+    if($jours == 0){
+        $retour = "Aujourd'hui";
+    } elseif($jours == 1){
+        $retour = "Hier";
+    } elseif($jours > 1 && $jours < 7){
         $retour = $jours." jour(s)";
     } elseif ($jours >= 7 && $jours < $jours_dans_mois_precedent){
         $semaines = floor($jours / 7);
