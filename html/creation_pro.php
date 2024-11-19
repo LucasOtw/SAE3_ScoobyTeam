@@ -213,6 +213,14 @@ session_start();
             if (!$cgu) {
                 $erreurs[] = "Vous devez accepter les conditions générales d'utilisation.";
             }
+
+            // On vérifie si la raison sociale est bien unique (sinon, il y aura des insertions PUIS une erreur)
+
+            $verifRaisonSociale = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel WHERE raison_sociale = :raison_sociale");
+            $verifRaisonSociale->bindValue(":raison_sociale",$raison_sociale);
+            $verifRaisonSociale->execute();
+
+            $existeRaisonSociale = $verifRaisonSociale->fetch();
     
             // Vérifie s'il y a des erreurs
             if (empty($erreurs)) {
