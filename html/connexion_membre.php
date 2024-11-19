@@ -112,6 +112,7 @@ session_start();
 
                 if($estMembre !== false){
                     // si c'est un membre...
+                    echo "C'est un membre";
                 } else {
                     echo "Ernie, petite mémé droit devant !";
                 }
