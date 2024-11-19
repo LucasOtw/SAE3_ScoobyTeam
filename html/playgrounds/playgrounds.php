@@ -20,6 +20,14 @@
         ');
         $recupComptesPro->execute();
 
+    $raison_sociale = "Mon Entreprise";
+
+    $verifRaisonSociale = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel WHERE raison_sociale = :raison_sociale");
+    $verifRaisonSociale->bindValue(":raison_sociale",$raison_sociale);
+    $verifRaisonSociale->execute();
+
+    $existeRaisonSociale = $verifRaisonSociale->fetch();
+
 echo "<pre>";
 var_dump($lesComptes);
 echo "</pre>";
