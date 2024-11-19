@@ -131,13 +131,11 @@ session_start();
                     }
 
                 } else {
-                    echo "Ce compte n'existe pas.";
+                    $erreurs[] = "Ce compte n'existe pas";
                 }
             } else {
-                echo "Ernie, petite mémé droit devant !";
+                $erreurs[] = "Ce compte n'existe pas";
             }
-        } else {
-            echo "Ta mère";
         }
         
     ?>
