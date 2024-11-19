@@ -239,7 +239,6 @@
 
             // Vérifie s'il y a des erreurs
             if (empty($erreurs)) {
-                echo "OUIIIIIIIIIIII !";
                 // Pas d'erreurs, on peut procéder au traitement (inscription, enregistrement, etc.)
 
                 // Le complément d'adresse ne peut pas être NULL mais peut être vide.
