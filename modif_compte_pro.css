@@ -432,7 +432,7 @@ input[type="password"]::placeholder {
     margin-bottom: 11em;
 }
 
-button.submit-btn1, 
+.submit-btn1, 
 button.submit-btn2,
 button.submit-btn3 {
     display: flex;
@@ -453,14 +453,14 @@ button.submit-btn3 {
 
 }
 
-button.submit-btn1,
+.submit-btn1,
 button.submit-btn2{
     background-color: white;
     border: 1.5px solid var(--orange);
     color: black;
 }
 
-button.submit-btn1:hover,
+.submit-btn1:hover,
 button.submit-btn2:hover,
 button.submit-btn3 {
     background-color: var(--orange); /* Ajoute une couleur de survol pour les deux boutons */
