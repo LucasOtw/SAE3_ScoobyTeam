@@ -12,7 +12,7 @@
 
         $existeUser = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail='$mail2'");
         $existeUser->execute();
-        $existeUser->fetch();
+        $existeUser = $existeUser->fetch(PDO::FETCH_ASSOC);
         
         if(count($existeUser) > 0){
                 // si l'utilisateur existe, on doit vérifier que c'est un membre
