@@ -51,8 +51,8 @@
                             <div class="input-icon">
                                 <input class="erreur-prenom-requis erreur-prenom-invalide" type="text" id="prenom" name="prenom" placeholder="Prénom *" required>
                                 <img src="images/icones/personne.png" alt="icones silhouette d'une personne" class="input-icon-img">
-                                <p class="erreur-formulaire-creation-membre erreur-prenom-requis">Ce champ est requis.</p>
-                                <p class="erreur-formulaire-creation-membre erreur-prenom-invalide">Le prénom ne doit contenir que des lettres, espaces, ou apostrophes.</p>
+                                <p class="erreur-formulaire-creation-membre erreur-prenom-requis"<img src="images/icon_informations.png" alt="icon i pour informations">>Ce champ est requis.</p>
+                                <p class="erreur-formulaire-creation-membre erreur-prenom-invalide"><img src="images/icon_informations.png" alt="icon i pour informations">Le prénom ne doit contenir que des lettres, espaces, ou apostrophes.</p>
                             </div>
                         </fieldset>
 
@@ -61,8 +61,8 @@
                             <div class="input-icon">
                                 <input class="erreur-nom-requis erreur-nom-invalide" type="text" id="nom" name="nom" placeholder="Nom *" required>
                                 <img src="images/icones/personne.png" alt="icones silhouette d'une personne" class="input-icon-img">
-                            <p class="erreur-formulaire-creation-membre erreur-nom-requis">Le champ 'Nom' est requis.</p>
-                            <p class="erreur-formulaire-creation-membre erreur-nom-invalide">Le nom ne doit contenir que des lettres, espaces, ou apostrophes.</p>
+                            <p class="erreur-formulaire-creation-membre erreur-nom-requis"><img src="images/icon_informations.png" alt="icon i pour informations">Le champ 'Nom' est requis.</p>
+                            <p class="erreur-formulaire-creation-membre erreur-nom-invalide"><img src="images/icon_informations.png" alt="icon i pour informations">Le nom ne doit contenir que des lettres, espaces, ou apostrophes.</p>
                             </div>
                         </fieldset>
                     </div>
@@ -71,7 +71,7 @@
                         <div class="input-icon">
                             <input class="erreur-pseudo-requis" type="text" id="pseudo" name="pseudo" placeholder="Pseudo *" required>
                             <img src="images/icones/personne.png" alt="icones silhouette d'une personne" class="input-icon-img">
-                        <p class="erreur-formulaire-creation-membre erreur-pseudo-requis">Le champ 'Pseudo' est requis.</p>
+                        <p class="erreur-formulaire-creation-membre erreur-pseudo-requis"><img src="images/icon_informations.png" alt="icon i pour informations">Le champ 'Pseudo' est requis.</p>
                         </div>
                     </fieldset>
                     <div class="crea_membre_mail_tel">
@@ -81,8 +81,8 @@
                             <div class="input-icon">
                                 <input class="erreur-email-invalide erreur-email-existant" type="email" id="email" name="email" placeholder="Email *" required>
                                 <img src="images/icones/enveloppe.png" alt="icones de téléphone" class="input-icon-img">
-                            <p class="erreur-formulaire-creation-membre erreur-email-invalide">L'adresse email est invalide.</p>
-                            <p class="erreur-formulaire-creation-membre erreur-email-existant">Cette adresse mail est déjà liée à un compte !</p>
+                            <p class="erreur-formulaire-creation-membre erreur-email-invalide"><img src="images/icon_informations.png" alt="icon i pour informations">L'adresse email est invalide.</p>
+                            <p class="erreur-formulaire-creation-membre erreur-email-existant"><img src="images/icon_informations.png" alt="icon i pour informations">Cette adresse mail est déjà liée à un compte !</p>
                             </div>
 
                         </fieldset>
@@ -92,7 +92,7 @@
                             <div class="input-icon">
                                 <input class="erreur-telephone-invalide" type="tel" id="telephone" name="telephone" placeholder="Téléphone *" required>
                                 <img src="images/icones/telephone.png" alt="icones de téléphone" class="input-icon-img">
-                            <p class="erreur-formulaire-creation-membre erreur-telephone-invalide">Le numéro de téléphone doit comporter 10 chiffres.</p>
+                            <p class="erreur-formulaire-creation-membre erreur-telephone-invalide"><img src="images/icon_informations.png" alt="icon i pour informations">Le numéro de téléphone doit comporter 10 chiffres.</p>
                             </div>
                         </fieldset>
                     </div>
@@ -103,7 +103,7 @@
                         <div class="input-icon">
                             <input class="erreur-adresse-requis" type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" required>
                             <img src="images/icones/journal.png" alt="icones de journal" class="input-icon-img">
-                        <p class="erreur-formulaire-creation-membre erreur-adresse-requis">Le champ 'Adresse' est requis.</p>
+                        <p class="erreur-formulaire-creation-membre erreur-adresse-requis"><img src="images/icon_informations.png" alt="icon i pour informations">Le champ 'Adresse' est requis.</p>
                         </div>
                     </fieldset>
 
@@ -112,7 +112,7 @@
                         <div class="input-icon">
                             <input class="erreur-code-postal-invalide" type="text" id="code-postal" name="code-postal" placeholder="Code Postal *" required>
                             <img src="images/icones/pin.png" alt="icones de pin" class="input-icon-img">
-                        <p class="erreur-formulaire-creation-membre erreur-code-postal-invalide">Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B.</p>
+                        <p class="erreur-formulaire-creation-membre erreur-code-postal-invalide"><img src="images/icon_informations.png" alt="icon i pour informations">Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B.</p>
                         </div>
 
                     </fieldset>
@@ -129,9 +129,9 @@
                         <div class="input-icon">
                             <input class="erreur-ville-requis erreur-ville-invalide erreur-ville-code-postal-incompatible" type="text" id="ville" name="ville" placeholder="Ville *" required>
                             <img src="images/icones/batiment.png" alt="icones de batiment" class="input-icon-img">
-                        <p class="erreur-formulaire-creation-membre erreur-ville-requis">Le champ 'Ville' est requis.</p>
-                        <p class="erreur-formulaire-creation-membre erreur-ville-invalide">Le nom de la ville ne doit contenir que des lettres, espaces, ou apostrophes.</p>
-                        <p class="erreur-formulaire-creation-membre erreur-ville-code-postal-incompatible">La ville ne correspond pas au code postal.</p>
+                        <p class="erreur-formulaire-creation-membre erreur-ville-requis"><img src="images/icon_informations.png" alt="icon i pour informations">Le champ 'Ville' est requis.</p>
+                        <p class="erreur-formulaire-creation-membre erreur-ville-invalide"><img src="images/icon_informations.png" alt="icon i pour informations">Le nom de la ville ne doit contenir que des lettres, espaces, ou apostrophes.</p>
+                        <p class="erreur-formulaire-creation-membre erreur-ville-code-postal-incompatible"><img src="images/icon_informations.png" alt="icon i pour informations">La ville ne correspond pas au code postal.</p>
                         </div>
                     </fieldset>
 
@@ -147,7 +147,7 @@
                         <div class="input-icon">
                             <img src="images/icones/cadenas.png" alt="icones de cadenas" class="input-icon-img">
                             <input class="erreur-mots-de-passe-incompatibles" type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe *" required>
-                        <p class="erreur-formulaire-creation-membre erreur-mots-de-passe-incompatibles">Les mots de passe ne correspondent pas.</p>
+                        <p class="erreur-formulaire-creation-membre erreur-mots-de-passe-incompatibles"><img src="images/icon_informations.png" alt="icon i pour informations">Les mots de passe ne correspondent pas.</p>
                         </div>
 
                     </fieldset>
