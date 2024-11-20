@@ -605,12 +605,11 @@ nav.nav-bar {
     z-index: 1000;
     font-family: Arial, sans-serif;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center
 }
 
 #customPopup p {
     width: 75%;
-    margin: 0 1vw;
 }
 
 #connexion {
