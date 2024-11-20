@@ -586,7 +586,7 @@ nav.nav-bar {
         display: none   ;
     }
     #customPopup{
-        margin-left : 50%;
+        transform: translateX(50%);
     }
     #customPopup p{
         color: red;
