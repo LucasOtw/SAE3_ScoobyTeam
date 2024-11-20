@@ -9,8 +9,6 @@ if(isset($_SESSION['pro'])){
    header('location: mes_offres.php');
    exit;
 }
-
-echo password_hash("test",PASSWORD_DEFAULT);
    
 ?>
 
@@ -97,23 +95,23 @@ echo password_hash("test",PASSWORD_DEFAULT);
 
         // on vérifie que l'adresse mail soit reliée à un compte
 
-        $codeCompte = $dbh->prepare("SELECT code_compte FROM tripenarvor._compte WHERE mail = :mail");
+        $codeCompte = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail = :mail");
         $codeCompte->bindParam(":mail",$email);
         $codeCompte->execute();
-        $codeCompte = $codeCompte->fetch();
+        $Compte = $codeCompte->fetch(PDO::FETCH_ASSOC);
 
         if ($codeCompte) {
             // si un compte est trouvé, on vérifie maintenant qu'il soit professionnel
-            // var_dump($codeCompte[0]);  // Commenté ou supprimé pour éviter la sortie avant header
+            // var_dump($codeCompte['code_compte']);  // Commenté ou supprimé pour éviter la sortie avant header
             $estPro = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel WHERE code_compte = :codeCompte");
-            $estPro->bindParam(":codeCompte", $codeCompte[0]);
+            $estPro->bindParam(":codeCompte", $Compte['code_compte']);
             $estPro->execute();
             $estPro = $estPro->fetch();
         
             if ($estPro) {
                 // si le compte est professionnel, alors on vérifie son mot de passe
                 $mdpPro = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :codeCompte");
-                $mdpPro->bindParam("codeCompte", $codeCompte[0]);
+                $mdpPro->bindParam("codeCompte", $Compte['code_compte']);
                 $mdpPro->execute();
                 $mdpPro = $mdpPro->fetch();
 
@@ -121,7 +119,7 @@ echo password_hash("test",PASSWORD_DEFAULT);
                 
                 if (password_verify($password, $mdpPro[0])) {
                     // si le mot de passe est correct
-                    $_SESSION["pro"] = $codeCompte[0]; // Stocke le code_compte dans la session
+                    $_SESSION["pro"] = $Compte; // Stocke le code_compte dans la session
                     header('Location: mes_offres.php'); // Redirection
                     exit; // Assure que le script s'arrête après la redirection
                 } else {
