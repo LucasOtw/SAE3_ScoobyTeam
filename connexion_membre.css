@@ -558,3 +558,11 @@ main.connexion_membre_main {
         display: block;
     }
 }
+
+
+.connexion_membre_main fieldset p.erreur-formulaire-creation-pro{
+    color: #d70808;
+    margin-bottom: 0;
+    font-size: 12px;
+    display: none;
+}

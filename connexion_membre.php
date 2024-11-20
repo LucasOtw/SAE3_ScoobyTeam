@@ -47,14 +47,17 @@ session_start();
                     <fieldset>
                         <legend>E-mail</legend>
                         <div class="connexion_membre_input-group">
-                            <input type="email" id="email" name="mail" placeholder="E-mail" required>
+                            <input class="erreur-user-inconnu erreur-membre-inconnu" type="email" id="email" name="mail" placeholder="E-mail" required>
+                            <p class="erreur-formulaire-connexion-membre erreur-user-inconnu"><img src="images/icon_informations.png" alt="icon i pour informations">L'utilisateur n'existe pas</p>
+                            <p class="erreur-formulaire-connexion-membre erreur-membre-inconnu"><img src="images/icon_informations.png" alt="icon i pour informations">L'utilisateur n'existe pas en tant que membre </p>
                         </div>
                     </fieldset>
 
                     <fieldset>
                         <legend>Mot de passe</legend>
                         <div class="connexion_membre_input-group">
-                            <input type="password" id="password" name="pwd" placeholder="Mot de passe" required>
+                            <input class="erreur-mot-de-passe-incorect" type="password" id="password" name="pwd" placeholder="Mot de passe" required>
+                            <p class="erreur-formulaire-connexion-membre erreur-mot-de-passe-incorect"><img src="images/icon_informations.png" alt="icon i pour informations">Mot de passe incorrect</p>
                         </div>
                     </fieldset>
                     
@@ -118,8 +121,62 @@ session_start();
                         // l'utilisateur peut être connecté
                         header('location: voir_offres.php');
                         $_SESSION["compte"] = $existeUser[0];
+                    } else /* MDP Invalide */ {
+                        ?> 
+                        <style>
+                            <?php echo ".connexion_membre_main fieldset p.erreur-mot-de-passe-incorect"?>{
+                                display : flex;
+                                align-items: center;
+                                justify-content: space-between;
+                            }
+                            <?php echo ".connexion_membre_main fieldset p.erreur-mot-de-passe-incorect img"?>{
+                                width: 10px;
+                                height: 10px;
+                                margin-right: 10px;
+                            }
+                            <?php echo ".connexion_membre_main input.erreur-mot-de-passe-incorect"?>{
+                                border: 1px solid red;
+                            }
+                        </style>
+                        <?php
                     }
+                } else /* Utilisateur Membre Inexistant */ {
+                    ?> 
+                    <style>
+                        <?php echo ".connexion_membre_main fieldset p.erreur-membre-inconnu"?>{
+                            display : flex;
+                            align-items: center;
+                            justify-content: space-between;
+                        }
+                        <?php echo ".connexion_membre_main fieldset p.erreur-membre-inconnu img"?>{
+                            width: 10px;
+                            height: 10px;
+                            margin-right: 10px;
+                        }
+                        <?php echo ".connexion_membre_main input.erreur-membre-inconnu"?>{
+                            border: 1px solid red;
+                        }
+                    </style>
+                    <?php
                 }
+            } else /* Utilisateur Inexistant */ {
+                ?> 
+                    <style>
+                        <?php echo ".connexion_membre_main fieldset p.erreur-user-inconnu"?>{
+                            display : flex;
+                            align-items: center;
+                            justify-content: space-between;
+                        }
+                        <?php echo ".connexion_membre_main fieldset p.erreur-user-inconnu img"?>{
+                            width: 10px;
+                            height: 10px;
+                            margin-right: 10px;
+                        }
+                        <?php echo ".connexion_membre_main input.erreur-user-inconnu"?>{
+                            border: 1px solid red;
+                        }
+                    </style>
+                    <?php
             }
         }
         
