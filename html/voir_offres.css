@@ -605,7 +605,7 @@ nav.nav-bar {
     z-index: 1000;
     font-family: Arial, sans-serif;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 #customPopup p {
