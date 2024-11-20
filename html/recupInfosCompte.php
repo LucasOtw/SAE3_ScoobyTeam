@@ -30,7 +30,7 @@
 
     // on regarde si le pro est privé ou publique
 
-    $monComptePrive = $dbh->prepare("SELECT * FROM tripenarvor._professionnel WHERE code_compte = :code_compte");
+    $monComptePrive = $dbh->prepare("SELECT * FROM tripenarvor._professionnel_prive WHERE code_compte = :code_compte");
     $monComptePrive->bindValue(":code_compte",$compte['code_compte'],PDO::PARAM_INT);
     $monComptePrive->execute();
 
