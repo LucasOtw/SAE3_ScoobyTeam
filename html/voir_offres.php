@@ -8,6 +8,8 @@ if(isset($_GET["deco"])){
 if(isset($_SESSION['membre'])){
    var_dump($_SESSION['membre']);
 }
+$test = json_encode($_SESSION['membre'],JSON_PRETTY_PRINT);
+var_dump($test);
 
 function tempsEcouleDepuisPublication($offre){
     // date d'aujourd'hui
