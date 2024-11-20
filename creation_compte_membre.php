@@ -39,7 +39,11 @@
         <div class="creation_compte_membre_container">
             <div class="creation_compte_membre_form-section">
                 <h1>S’inscrire</h1>
-                <p>Créez un compte membre pour sauvegarder vos annonces favorites <br>partager vos avis sur les vendeurs,  <br>et vivre une expérience sur mesure !</p>
+                <p>
+                    Créez un compte membre pour sauvegarder vos annonces favorites 
+                    <br>partager vos avis sur les vendeurs,  
+                    <br>et vivre une expérience sur mesure !
+                </p>
                 <form action="creation_compte_membre.php" method="POST">
                     <div class="crea_membre_raison_sociale_num_siren">
                         <fieldset>
