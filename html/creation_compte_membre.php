@@ -51,7 +51,7 @@
                             <div class="input-icon">
                                 <input class="erreur-prenom-requis erreur-prenom-invalide" type="text" id="prenom" name="prenom" placeholder="Prénom *" required>
                                 <img src="images/icones/personne.png" alt="icones silhouette d'une personne" class="input-icon-img">
-                                <p class="erreur-formulaire-creation-membre erreur-prenom-requis"<img src="images/icon_informations.png" alt="icon i pour informations">>Ce champ est requis.</p>
+                                <p class="erreur-formulaire-creation-membre erreur-prenom-requis"><img src="images/icon_informations.png" alt="icon i pour informations">>Ce champ est requis.</p>
                                 <p class="erreur-formulaire-creation-membre erreur-prenom-invalide"><img src="images/icon_informations.png" alt="icon i pour informations">Le prénom ne doit contenir que des lettres, espaces, ou apostrophes.</p>
                             </div>
                         </fieldset>
