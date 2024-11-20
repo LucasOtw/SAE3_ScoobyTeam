@@ -61,11 +61,11 @@
                             ?>
                                 <div>
                                     <input type="radio" id="offre_standard" name="offre" value="standard">
-                                    <label class="label-check" for="offre_standard">Offre Standard <sup>2</sup> (3.99€)</label>
+                                    <label class="label-check" for="offre_standard">Offre Standard <sup>2</sup> (2€/jour)</label>
                                 </div>
                                 <div>
                                     <input type="radio" id="offre_premium" name="offre" value="premium" checked>
-                                    <label class="label-check" for="offre_premium">Offre Premium <sup>3</sup> (5.99€)</label>
+                                    <label class="label-check" for="offre_premium">Offre Premium <sup>3</sup> (4€/jour)</label>
                                 </div>
                         <?php
                             }
@@ -83,11 +83,11 @@
                         </div>
                         <div>
                             <input type="radio" id="en_relief" name="option" value="en_relief">
-                            <label class="label-check" for="relief">Mettre mon offre "en Relief" <sup>4</sup> (2.99€/semaine)</label>
+                            <label class="label-check" for="relief">Offre "en Relief" <sup>4</sup> (10€/semaine)</label>
                         </div>
                         <div>
                             <input type="radio" id="a_la_une" name="option" value="a_la_une" checked>
-                            <label class="label-check" for="a_la_une">Mettre mon offre "À la Une" <sup>5</sup> (3.99€/semaine)</label>
+                            <label class="label-check" for="a_la_une">Offre "À la Une" <sup>5</sup> (20€/semaine)</label>
                         </div>
                     </div>
                 </div>
@@ -125,17 +125,29 @@
             <p>
                 <sup>1</sup> Offre Gratuite : Accessible aux professionnels publics ou associatifs, sans coût.
             </p>
+            <br>
             <p>
-                <sup>2</sup> Offre Standard (payante) : Promotion sur la plateforme avec un coût mensuel, possibilité de personnaliser l'offre via des options payantes.
+                <sup>2</sup> Offre Standard (payante) : Promotion sur la plateforme avec un coût mensuel, possibilité de personnaliser l'offre via des options payantes. 
+                <br>
+                &nbsp;&nbsp;&nbsp;1.67€ HT, soit 2€ TTC/jour de publication.
             </p>
+            <br>
             <p>
                 <sup>3</sup> Offre Premium (payante) : Inclut tous les avantages de l'Offre Standard, avec en plus un droit de veto permettant de "blacklister" jusqu'à 3 avis sur 12 mois.
+                <br>
+                &nbsp;&nbsp;&nbsp;3.34€ HT, soit 4€ TTC/jour de publication.
             </p>
+            <br>
             <p>
                 <sup>4</sup> "En Relief" : Met en avant l'offre dans les listes.
+                <br>
+                &nbsp;&nbsp;&nbsp;8.34€ HT, soit 10€ TTC/semaine.
             </p>
+            <br>
             <p>
                 <sup>5</sup> "À la Une" : Offre une visibilité maximale en tête de la page d'accueil et dans les listes.
+                <br>
+                &nbsp;&nbsp;&nbsp;16.68€ HT, soit 20€ TTC/semaine.
             </p>
         </div>
     </main>
