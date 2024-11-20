@@ -1,3 +1,4 @@
+-- Active: 1731952295459@@127.0.0.1@13306
 <?php
  session_start();
 
@@ -110,7 +111,7 @@ if(!isset($_POST["code_offre"])){
                 <div class="detail_offre_hotel-info">
                     <h1>Ti Al Lannec – Hôtel & Restaurant</h1>
                     <p>📍 Trébeurden, Bretagne 22300</p>
-                    <p><i class="fas fa-clock"></i> Modifié il y a 3 jours</p>
+                    <p><i class="fas fa-clock"></i> Publié il y a 3 jours</p>
                     <!-- <div class="detail_offre_rating">
                         ⭐ 5.0 (255 avis)
                     </div> -->
@@ -185,6 +186,10 @@ if(!isset($_POST["code_offre"])){
             <button class="card-scroll-btn card-scroll-btn-right" onclick="scrollcontentRight()">&#8250;</button>
         </div>
             <div class="detail_offre_description">
+            <h2>Résumé</h2>
+                <p>
+                    Venez decouvrir un hotel chic dans l'esprit
+                </p>
                 <h2>Description</h2>
                 <p>
                     Équipées des dernières technologies, tout a été pensé pour votre confort. Côté jardin, on apprécie le calme de la verdure, le chant des oiseaux et le ruissellement mélodieux de la fontaine. Côté mer, des balcons et terrasses, on est saisi par la force et la beauté du panorama à perte de vue.
@@ -193,14 +198,17 @@ if(!isset($_POST["code_offre"])){
                 &nbsp <!-- Pour mettre un espace -->
                 </p>
                 <p>27 chambres et 6 suites au décor raffiné et cosy.</p>
-                <h2>Résumé</h2>
-                <p>
-                    Venez decouvrir un hotel chic dans l'esprit
-                </p>
+               
             </div>
+            <h2>Accessibilité</h2>
+            <p>
+                - Handicapé</br>
+                -Trisomique
+            </p>
           
 
             <div class="detail_offre_icons">
+            <h2>Tags</h2>
 
                 <div class="detail_offre_icon">
                     <p>Adapté handicap</p>
@@ -217,16 +225,6 @@ if(!isset($_POST["code_offre"])){
                 </div>
             </div>
         </div>
-        <div class="detail_offre_localisation">
-        <h2>Localisation</h2>
-        <iframe class="map-frame"
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig&q=<?php echo $latitude; ?>,<?php echo $longitude; ?>"
-                style="border:0;margin: auto 11em; width: 79vw; height:70vh" allowfullscreen="" loading="lazy">
-                border: 0;
-   
-        </iframe>
-
-
         <div class="Detail_offre_ouverture_global_desktop">
                 <h2>Horaires</h2>
             <ul class="hours_desktop_detail_offre">
@@ -239,6 +237,17 @@ if(!isset($_POST["code_offre"])){
                 <li><span>Dimanche</span>: 12h30 - 13h30, 19h30 - 21h30</li>
             </ul>
         </div>
+        <div class="detail_offre_localisation">
+        <h2>Localisation</h2>
+        <iframe class="map-frame"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig&q=<?php echo $latitude; ?>,<?php echo $longitude; ?>"
+                style="border:0;margin: auto 11em; width: 79vw; height:70vh" allowfullscreen="" loading="lazy">
+                border: 0;
+   
+        </iframe>
+
+
+       
         <footer class="footer_detail_avis">
             <div class="newsletter">
                 <div class="newsletter-content">
