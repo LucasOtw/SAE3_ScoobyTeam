@@ -395,28 +395,60 @@ if(!isset($_POST["code_offre"])){
 </body>
   <!-- JavaScript pour le carrousel -->
   <script>
-        let currentIndex = 0;
-        const images = document.querySelectorAll('.carousel-images img');
+     const imagesTrack = document.querySelector(".carousel-images");
+const images = document.querySelectorAll(".carousel-images img");
+const totalSlides = images.length;
 
-        function showSlide(index) {
-            const totalSlides = images.length;
-            if (index >= totalSlides) {
-                currentIndex = 0;
-            } else if (index < 0) {
-                currentIndex = totalSlides - 1;
-            } else {
-                currentIndex = index;
-            }
-            const offset = -currentIndex * 100;
-            document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
-        }
+let currentIndex = 0;
 
-        function nextSlide() {
-            showSlide(currentIndex + 1);
-        }
+// Gère les boutons
+function updateCarousel() {
+    const translateX = -currentIndex * 100;
+    imagesTrack.style.transform = `translateX(${translateX}%)`;
+}
 
-        function prevSlide() {
-            showSlide(currentIndex - 1);
-        }
+function prevSlide() {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+    }
+}
+
+function nextSlide() {
+    if (currentIndex < totalSlides - 1) {
+        currentIndex++;
+        updateCarousel();
+    }
+}
+
+// Gère les gestes tactiles
+let startX = 0;
+let isDragging = false;
+
+imagesTrack.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+});
+
+imagesTrack.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+
+    const currentX = e.touches[0].clientX;
+    const deltaX = currentX - startX;
+
+    if (deltaX > 50 && currentIndex > 0) {
+        prevSlide();
+        isDragging = false;
+    } else if (deltaX < -50 && currentIndex < totalSlides - 1) {
+        nextSlide();
+        isDragging = false;
+    }
+});
+
+imagesTrack.addEventListener("touchend", () => {
+    isDragging = false;
+});
+
+
     </script>
 </html>
