@@ -492,6 +492,7 @@ footer {
 .toutes_les_offres_main #offers-list > article > div > #form-voir-offre{
     display: flex;
     justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .toute_les_offres_main #offers-list > article > div > form > input[type="submit"] {
