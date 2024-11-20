@@ -35,7 +35,8 @@ session_start();
             <div class="connexion_pro_form-container">
                 <div class="connexion_pro_h2_p">
                     <h2>Se connecter</h2>
-                    <p>Se connecter pour accéder à vos favoris</p>
+                    <p>Connectez-vous à votre compte professionnel pour gérer vos annonces, 
+                        <br>suivre vos interactions et continuer à développer votre activité !</p>
                 </div>
                 <form action="#" method="POST">
                     <fieldset>
