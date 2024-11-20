@@ -585,6 +585,9 @@ nav.nav-bar {
     .nb-avis{
         display: none   ;
     }
+    #customPopup{
+        margin : 0;
+    }
 }
 
 
