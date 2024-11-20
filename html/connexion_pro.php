@@ -106,7 +106,7 @@ session_start();
                 $mdpPro->execute();
                 $mdpPro = $mdpPro->fetch();
 
-                var_dump($mdpPro[0]);
+                var_dump(password_hash($password));
                 
                 if (password_verify($password, $mdpPro[0])) {
                     // si le mot de passe est correct
