@@ -85,8 +85,9 @@ echo "</pre>";
                         <p class="update"><span class="update-icon">⟳</span> Update 2j</p>
                         <p class="last-update">Mis à jour il y a 2 semaines</p>
                         <p class="offer-type"><?php echo $monOffre['nom_type']; ?></p>
-                        <p class="price"><?php echo $monOffre['tarif']; ?></p>
+                        <p class="price"><?php echo $monOffre['tarif']; ?>€</p>
                     </div>
+                    <button class="add-btn">+</button>
                 </div>
                 <?php
             }
