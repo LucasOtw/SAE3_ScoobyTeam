@@ -70,7 +70,8 @@ function tempsEcouleDepuisPublication($offre){
     </div>
 
     <script>
-        // Fonction pour afficher le pop-up
+        document.addEventListener("DOMContentLoaded",function(){
+                    // Fonction pour afficher le pop-up
         function afficherPopupAvecDelai() {
             const popup = document.getElementById("customPopup");
             popup.style.display = "flex"; // Afficher le pop-up
@@ -87,6 +88,7 @@ function tempsEcouleDepuisPublication($offre){
 
         // Lancer le pop-up après 5 secondes
         setTimeout(afficherPopupAvecDelai, 1000);
+        })
     </script>
 
 
