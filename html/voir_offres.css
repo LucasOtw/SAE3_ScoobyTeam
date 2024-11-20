@@ -438,7 +438,8 @@ footer {
 
 .toute_les_offres_main .offer img {
     width: auto;
-    height: 2vh;
+    height: 15vh;
+    border-radius: 15px;
     object-fit: cover;
     margin: 0.5vw 1vw;
 }
