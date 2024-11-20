@@ -17,7 +17,7 @@ if(isset($_GET["deco"])){
 }
 
 echo "<pre>";
-var_dump($_SESSION["pro"]);
+var_dump($mesOffres);
 echo "</pre>";
 
 ?>
