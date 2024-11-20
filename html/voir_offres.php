@@ -206,7 +206,7 @@ function tempsEcouleDepuisPublication($offre){
             }
             // On récupère toutes les offres (titre,ville,images)
             $infosOffre = $dbh->query('SELECT * FROM tripenarvor._offre');
-            $infosOffre = $infosOffre->fetchAll();
+            $infosOffre = $infosOffre->fetchAll(PDO::FETCH_ASSOC);
 
             foreach($infosOffre as $offre){
                 echo "<pre>";
