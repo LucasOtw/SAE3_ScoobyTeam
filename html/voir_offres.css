@@ -489,6 +489,10 @@ footer {
     margin: 0;
 }
 
+.toutes_les_offres_main #offers-list > article > div > form{
+    display: flex;
+}
+
 .toute_les_offres_main #offers-list > article > div > form > input[type="submit"] {
     background-color: var(--vert-clair);
     color: #fff;
