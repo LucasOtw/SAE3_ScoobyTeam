@@ -501,6 +501,7 @@ footer {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    left: 90%;
     transition: background-color 0.2s ease-in-out;
     align-self:flex-end;
     transition: ease-in-out 0.25s;
@@ -607,7 +608,7 @@ nav.nav-bar {
 }
 
 #customPopup p {
-    width: 65%;
+    width: 75%;
     margin: 0 1vw;
 }
 
