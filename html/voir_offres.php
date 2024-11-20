@@ -5,7 +5,7 @@ if(isset($_GET["deco"])){
     session_destroy();
 };
 
-if(isset($_SESSION['membre']){
+if(isset($_SESSION['membre'])){
    var_dump($_SESSION['membre']);
 }
 
