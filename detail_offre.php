@@ -68,6 +68,7 @@ if(!isset($_POST["code_offre"])){
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script> <!-- Pour les icones -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
@@ -109,6 +110,7 @@ if(!isset($_POST["code_offre"])){
                 <div class="detail_offre_hotel-info">
                     <h1>Ti Al Lannec – Hôtel & Restaurant</h1>
                     <p>📍 Trébeurden, Bretagne 22300</p>
+                    <p><i class="fas fa-clock"></i> Modifié il y a 3 jours</p>
                     <!-- <div class="detail_offre_rating">
                         ⭐ 5.0 (255 avis)
                     </div> -->
@@ -191,7 +193,12 @@ if(!isset($_POST["code_offre"])){
                 &nbsp <!-- Pour mettre un espace -->
                 </p>
                 <p>27 chambres et 6 suites au décor raffiné et cosy.</p>
+                <h2>Résumé</h2>
+                <p>
+                    Venez decouvrir un hotel chic dans l'esprit
+                </p>
             </div>
+          
 
             <div class="detail_offre_icons">
 
@@ -214,7 +221,9 @@ if(!isset($_POST["code_offre"])){
         <h2>Localisation</h2>
         <iframe class="map-frame"
                 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig&q=<?php echo $latitude; ?>,<?php echo $longitude; ?>"
-                style="border:0;margin: auto 1em; width:95vw; height:70vh" allowfullscreen="" loading="lazy">
+                style="border:0;margin: auto 11em; width: 79vw; height:70vh" allowfullscreen="" loading="lazy">
+                border: 0;
+   
         </iframe>
 
 

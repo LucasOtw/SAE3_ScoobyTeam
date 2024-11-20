@@ -274,7 +274,7 @@ footer {
 
 .detail_offre_hotel-detail {
     /* max-width: 1200px; */
-    margin: 0 3em;
+    margin: 0 10em;
     padding: 20px;
 }
 
@@ -394,6 +394,7 @@ footer {
 .detail_offre_description h2 {
     font-size: 1.8em;
     margin-bottom: 21px;
+    margin-top: 24px;
 }
 
 .detail_offre_description p {
@@ -485,7 +486,7 @@ footer {
 .detail_offre_localisation h2 {
     font-size: 1.8em;
     margin-bottom: 28px;
-    margin-left: 1em;
+    margin-left: 6em;
 
 }
 
@@ -516,7 +517,7 @@ footer {
     margin-top: 2em;
     padding: 4px;
     width: 34em;
-    margin-left: 1em;
+    margin-left: 10em;
 }
 
 .hours_desktop_detail_offre {
