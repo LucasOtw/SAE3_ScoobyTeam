@@ -5,6 +5,13 @@ if(isset($_GET["deco"])){
     session_destroy();
 };
 
+if(isset($_SESSION['membre'])){
+   var_dump($_SESSION['membre']);
+   $donneesSession = json_encode($_SESSION['membre'],JSON_PRETTY_PRINT);
+} else {
+    $donneesSession = null;
+}
+
 function tempsEcouleDepuisPublication($offre){
     // date d'aujourd'hui
     $date_actuelle = new DateTime();
@@ -50,7 +57,7 @@ function tempsEcouleDepuisPublication($offre){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Offres PACT</title>
-    <link rel="stylesheet" href="voir_offres.css">
+    <link rel="stylesheet" href="voir_offres.css?">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
@@ -59,30 +66,48 @@ function tempsEcouleDepuisPublication($offre){
     <!-- Code pour le pop-up --> 
     <!-- Conteneur du pop-up -->
     <div id="customPopup">
+<<<<<<< HEAD
         <img src=images/connexion.png  width=50px height=50px >
         <p>Créez votre compte en quelques clics et accédez à un monde de possibilités ! </p>
         <img src=images/erreur.png>
         <button id="closePopup">Fermer</button>
+=======
+        <img src="images/connexion1.png"  width=70px height=70px >
+        <p>Créez votre compte en quelques clics et accédez à un monde de possibilités ! </p>
+        <a id="connexion" href="connexion_membre.php" id="bouton_connexion">S'inscrire</a>
+        <img id="closePopup" src="images/erreur.png" width=15px height=15px>
+>>>>>>> 2df5d3dcda537cdaa11c7508e3f6cc299ac6c622
     </div>
 
     <script>
-        // Fonction pour afficher le pop-up
-        function afficherPopupAvecDelai() {
-            const popup = document.getElementById("customPopup");
-            popup.style.display = "flex"; // Afficher le pop-up
-        }
+        const donneesSessionMembre = <?php echo $donneesSession; ?>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Fonction pour afficher le pop-up
+            function afficherPopupAvecDelai() {
+                const popup = document.getElementById("customPopup");
+                popup.style.display = "flex"; // Afficher le pop-up
+            }
+    
+            // Fonction pour fermer le pop-up
+            function fermerPopup() {
+                const popup = document.getElementById("customPopup");
+                popup.style.display = "none"; // Cacher le pop-up
+            }
+    
+            // Ajouter un écouteur d'événement au bouton "Fermer"
+            const closeButton = document.getElementById("closePopup");
+            if (closeButton) {
+                closeButton.addEventListener("click", fermerPopup);
+            } else {
+                console.error("Le bouton avec l'ID 'closePopup' est introuvable.");
+            }
 
-        // Fonction pour fermer le pop-up
-        function fermerPopup() {
-            const popup = document.getElementById("customPopup");
-            popup.style.display = "none"; // Cacher le pop-up
-        }
+            if(!donneesSessionMembre){
+                // Lancer le pop-up après 5 secondes
+                setTimeout(afficherPopupAvecDelai, 5000); // 5000 ms = 5 secondes
+            }
 
-        // Ajouter un écouteur d'événement au bouton "Fermer"
-        document.getElementById("closePopup").addEventListener("click", fermerPopup);
-
-        // Lancer le pop-up après 5 secondes
-        setTimeout(afficherPopupAvecDelai, 5000);
+        });
     </script>
 
 
@@ -187,8 +212,8 @@ function tempsEcouleDepuisPublication($offre){
                 die();
             }
             // On récupère toutes les offres (titre,ville,images)
-            $infosOffre = $dbh->query('SELECT code_offre,titre_offre,code_adresse,date_publication FROM tripenarvor._offre');
-            $infosOffre = $infosOffre->fetchAll();
+            $infosOffre = $dbh->query('SELECT * FROM tripenarvor._offre');
+            $infosOffre = $infosOffre->fetchAll(PDO::FETCH_ASSOC);
 
             foreach($infosOffre as $offre){
                 // Récupérer la ville
@@ -226,7 +251,10 @@ function tempsEcouleDepuisPublication($offre){
                         <h2><?php echo $offre["titre_offre"] ?></h2>
                         <p><?php echo $villeOffre["ville"] ?></p>
                         <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
-                        <button>Voir l'offre →</button>
+                        <form id="form-voir-offre" action="detail_offre.php" method="POST">
+                            <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
+                            <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
+                        </form>
                     </div>
                 </article>
                 <?php

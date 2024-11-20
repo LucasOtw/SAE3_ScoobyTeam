@@ -66,35 +66,44 @@ session_start();
         <div class="creation_compte_pro_container">
             <div class="creation_compte_pro_form-section">
                 <h1>S’inscrire</h1>
-                <p>Créer un compte pour profiter de l’expérience PACT</p>
+                <p>Créez un compte professionnel pour publier vos annonces, 
+                    <br>toucher davantage de clients et faire croître votre activité facilement !</p>
                 <form action="#" method="POST">
                     <div class="crea_pro_raison_sociale_num_siren">
                         <fieldset>
                             <legend>Raison sociale *</legend>
-                            <input type="text" id="raison-sociale" name="raison-sociale" placeholder="Raison sociale *" required>
+                            <input class="erreur-raison-sociale-vide erreur-raison-sociale-existante"" type="text" id="raison-sociale" name="raison-sociale" placeholder="Raison sociale *" required>
+                            <p class="erreur-formulaire-creation-pro erreur-raison-sociale-vide">Une raison sociale est requise</p>
+                            <p class="erreur-formulaire-creation-pro erreur-raison-sociale-existante">Une entreprise possède déjà cette raison sociale.</p>
                         </fieldset>
 
                         <fieldset>
                             <legend>N° de Siren (Professionnel privé)</legend>
-                            <input type="text" id="siren" name="siren" placeholder="N° de Siren (Professionnel privé)" maxlength=9>
+                            <input class="erreur-siren-invalide erreur-siren-existant"" type="text" id="siren" name="siren" placeholder="N° de Siren (Professionnel privé)" maxlength=9>
+                            <p class="erreur-formulaire-creation-pro erreur-siren-invalide">Le numéro de Siren doit comporter 9 chiffres.</p>
+                            <p class="erreur-formulaire-creation-pro erreur-siren-existant">Ce numéro SIREN est déjà lié à un compte professionnel !</p>
                         </fieldset>
                     </div>
                     <div class="crea_pro_mail_tel">
                         <fieldset>
                             <legend>Email *</legend>
-                            <input type="email" id="email" name="email" placeholder="Email *" required>
+                            <input class="erreur-email-invalide erreur-email-existant"" type="email" id="email" name="email" placeholder="Email *" required>
+                            <p class="erreur-formulaire-creation-pro erreur-email-invalide">L'adresse email est invalide.</p>
+                            <p class="erreur-formulaire-creation-pro erreur-email-existant">Cette adresse mail est déjà liée à un compte !</p>
                         </fieldset>
 
                         <fieldset>
                             <legend>Téléphone *</legend>
-                            <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *" required>
+                            <input class="erreur-telephone-invalide"" type="tel" id="telephone" name="telephone" placeholder="Téléphone *" required>
+                            <p class="erreur-formulaire-creation-pro erreur-telephone-invalide">Le numéro de téléphone doit comporter 10 chiffres.</p>
                         </fieldset>
                     </div>
 
 
                     <fieldset>
                         <legend>Adresse Postale *</legend>
-                        <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" required>
+                        <input class="erreur-adress" type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" required>
+                            <p class="erreur-formulaire-creation-pro erreur-adresse">Le champ 'Adresse' est requis.</p>
                     </fieldset>
                     <fieldset>
                         <legend>Complément d'adresse</legend>
@@ -103,22 +112,26 @@ session_start();
 
                     <fieldset>
                         <legend>Code Postal *</legend>
-                        <input type="text" id="code-postal" name="code-postal" placeholder="Code Postal *" required>
+                        <input class="erreur-code-postal" type="text" id="code-postal" name="code-postal" placeholder="Code Postal *" required>
+                            <p class="erreur-formulaire-creation-pro erreur-code-postal">Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B.</p>
                     </fieldset>
 
                     <fieldset>
                         <legend>Ville *</legend>
-                        <input type="text" id="ville" name="ville" placeholder="Ville *" required>
+                        <input class="erreur-ville erreur-ville-existant" type="text" id="ville" name="ville" placeholder="Ville *" required>
+                            <p class="erreur-formulaire-creation-pro erreur-ville">Le nom de la ville ne doit contenir que des lettres, espaces, ou apostrophes.</p>
+                            <p class="erreur-formulaire-creation-pro erreur-ville-existant">Ce champ est requis.</p>
                     </fieldset>
 
                     <fieldset>
                         <legend>Mot de passe *</legend>
-                        <input type="password" id="password" name="password" placeholder="Mot de passe *" required>
+                        <input class="erreur-password-confirmation" type="password" id="password" name="password" placeholder="Mot de passe *" required>
                     </fieldset>
 
                     <fieldset>
                         <legend>Confirmer le mot de passe *</legend>
-                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe *" required>
+                        <input class="erreur-password-confirmation" type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe *" required>
+                        <p class="erreur-formulaire-creation-pro erreur-password-confirmation">Les mots de passe ne correspondent pas.</p>
                     </fieldset>
 
                     
@@ -131,7 +144,7 @@ session_start();
                 </form>
                 <div class="creation_compte_pro_other-links">
                     <p>Déjà un compte ? <a href="connexion_pro.php">Connexion</a></p>
-                    <p>S’inscrire avec un compte <a href="creation_compte_membre.php">Membre</a></p>
+                    <p>S’inscrire avec un compte <a href="creation_compte_membre.php" class="lien-creation-compte-membre">Membre</a></p>
                 </div>
             </div>
             <div class="image-section">
@@ -166,10 +179,12 @@ session_start();
     
             // Initialisation du tableau d'erreurs
             $erreurs = [];
+            $erreurs_a_afficher = [];
     
             // 1. Raison sociale : Vérification basique (on peut ajouter des conditions spécifiques si nécessaire)
             if (empty($raison_sociale)) {
                 $erreurs[] = "Le champ 'Raison sociale' est requis.";
+                $erreurs_a_afficher[] = "erreur-raison-sociale-vide";
             }
 
             // On vérifie si la raison sociale est bien unique (sinon, il y aura des insertions PUIS une erreur)
@@ -182,11 +197,13 @@ session_start();
 
             if($existeRaisonSociale){
                 $erreurs[] = "Une entreprise possède déjà cette raison sociale...";
+                $erreurs_a_afficher[] = "erreur-raison-sociale-existante";
             }
     
             // 2. N° de Siren : Vérifier si le Siren est valide (9 chiffres)
             if (!empty($siren) && !preg_match('/^[0-9]{9}$/', $siren)) {
                 $erreurs[] = "Le numéro de Siren doit comporter 9 chiffres.";
+                $erreurs_a_afficher[] = "erreur-siren-invalide";
             }
 
             // On vérifie si le numéro Siren est déjà présent dans ._professionnel_prive
@@ -197,11 +214,13 @@ session_start();
             $existeSiren = $verifNumeroSiren->fetch();
             if($existeSiren){
                 $erreurs[] = "Ce numéro SIREN est déjà lié à un compte professionnel !";
+                $erreurs_a_afficher[] = "erreur-siren-existant";
             }
     
             // 3. Email : Vérifier si l'email est valide
             if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $erreurs[] = "L'adresse email est invalide.";
+                $erreurs_a_afficher[] = "erreur-email-invalide";
             }
 
             // On vérifie aussi l'unicité de l'adresse mail
@@ -212,38 +231,46 @@ session_start();
             $existeAdresseMail = $verifAdresseMail->fetch();
             if($existeAdresseMail){
                 $erreurs[] = "Cette adresse mail est déjà liée à un compte !";
+                $erreurs_a_afficher[] = "Cette adresse mail est déjà liée à un compte !";
             }
     
             // 4. Téléphone : Doit être un format valide de 10 chiffres
             if (empty($telephone) || !preg_match('/^[0-9]{10}$/', $telephone)) {
                 $erreurs[] = "Le numéro de téléphone doit comporter 10 chiffres.";
+                $erreurs_a_afficher[] = "erreur-email-existant";
             }
     
             // 5. Adresse : Vérifier si elle est non vide
             if (empty($adresse)) {
                 $erreurs[] = "Le champ 'Adresse' est requis.";
+                $erreurs_a_afficher[] = "erreur-adresse";
             }
     
             // 6. Code Postal : Format à 5 chiffres ou 2A/2B pour la Corse
             if (empty($codePostal) || !preg_match('/^([0-9]{5}|2[A-B])$/', $codePostal)) {
                 $erreurs[] = "Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B.";
+                $erreurs_a_afficher[] = "erreur-code-postal";
             }
     
             // 7. Ville : Pas de chiffres, pas de caractères spéciaux
             if (empty($ville)) {
                 $erreurs[] = "Le champ 'Ville' est requis.";
+                $erreurs_a_afficher[] = "erreur-ville-existant";
             } elseif (!preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/", $ville)) {
                 $erreurs[] = "Le nom de la ville ne doit contenir que des lettres, espaces, ou apostrophes.";
+                $erreurs_a_afficher[] = "erreur-ville-invalide";
             }
     
             // 8. Mot de passe : Minimum 8 caractères, et correspondance avec le champ de confirmation
             if ($password !== $confirmPassword) {
                 $erreurs[] = "Les mots de passe ne correspondent pas.";
+                $erreurs_a_afficher[] = "Les mots de passe ne correspondent pas.";
             }
     
             // 9. Conditions générales d'utilisation (CGU) : Vérification que la case est cochée
             if (!$cgu) {
                 $erreurs[] = "Vous devez accepter les conditions générales d'utilisation.";
+                $erreurs_a_afficher[] = "erreur-cgu";
             }
     
             // Vérifie s'il y a des erreurs
@@ -312,8 +339,20 @@ session_start();
     
             } else {
                 // Affiche les erreurs
-                foreach ($erreurs as $erreur) {
-                    echo "<p>$erreur</p>";
+                // foreach ($erreurs as $erreur) {
+                //     echo "<p>$erreur</p>";
+                // }
+                foreach ($erreurs_a_afficher as $champs) {
+                    ?> 
+                    <style>
+                        <?php echo ".creation_compte_pro fieldset p.$champs"?>{
+                            display : block;
+                        }
+                        <?php echo ".creation_compte_pro input.$champs"?>{
+                            border: 1px solid red;
+                        }
+                    </style>
+                    <?php
                 }
             }
         }
