@@ -27,7 +27,6 @@ body {
     flex-direction: column;
     font-family: "K2D", sans-serif;
     min-height: 100vh; /*Pour occuper toute la page*/
-    background-color: pink;
 }
 
 /****** HEADER *****/
@@ -508,9 +507,10 @@ footer {
 }
 
 .toute_les_offres_main #offers-list > article > div > form > input[type="submit"]:hover {
-    background-color: var(--vert-fonce);
+    background-color: pink;
     transform: scale(1.05);
     transition: ease-in-out 0.25s;
+    color: red;
 }
 
 nav.nav-bar {
