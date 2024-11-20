@@ -39,6 +39,14 @@
     if ($monComptePrive) {
         $monCompte['num_siren'] = $monComptePrive['num_siren'];
     }
+
+    // récupration des offres du compte (si il en a)
+
+    $recupOffres = $dbh->prepare("SELECT * FROM tripenarvor._offre WHERE professionnel = :code_compte");
+    $recupOffres->bindValue(":code_compte",$compte['code_compte']);
+    $recupOffres->execute();
+
+    $mesOffres = $recupOffres->fetch(PDO::FETCH_ASSOC);
   }
 
 echo "<pre>";
