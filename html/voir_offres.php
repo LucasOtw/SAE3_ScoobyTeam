@@ -59,7 +59,7 @@ function tempsEcouleDepuisPublication($offre){
     <!-- Code pour le pop-up --> 
     <!-- Conteneur du pop-up -->
     <div id="customPopup">
-        <img src=images/logoNoirVert.png>
+        <img src=images/connexion.png  width=50px height=50px >
         <p>Voici un message dans un pop-up !</p>
         <button id="closePopup">Fermer</button>
     </div>
@@ -68,7 +68,7 @@ function tempsEcouleDepuisPublication($offre){
         // Fonction pour afficher le pop-up
         function afficherPopupAvecDelai() {
             const popup = document.getElementById("customPopup");
-            popup.style.display = "block"; // Afficher le pop-up
+            popup.style.display = "flex"; // Afficher le pop-up
         }
 
         // Fonction pour fermer le pop-up

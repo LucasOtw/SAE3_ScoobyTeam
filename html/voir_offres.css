@@ -598,10 +598,16 @@ nav.nav-bar {
     background-color: #f8f9fa;
     padding: 15px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     font-family: Arial, sans-serif;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#customPopup button{
+    align-self: last baseline;
 }
 
 /* Bouton pour fermer le pop-up */
@@ -615,8 +621,9 @@ nav.nav-bar {
     border-radius: 3px;
     cursor: pointer;
     font-size: 14px;
+    float: right;
 }
 
 #closePopup:hover {
-    background-color: #c82333;
+    background-color: var(--vert-fonce);
 }
