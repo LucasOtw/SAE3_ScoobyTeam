@@ -588,9 +588,6 @@ nav.nav-bar {
     #customPopup{
         transform: translateX(calc(50%-25vw));
     }
-    #customPopup p{
-        color: red;
-    }
 }
 
 
