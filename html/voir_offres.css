@@ -27,6 +27,7 @@ body {
     flex-direction: column;
     font-family: "K2D", sans-serif;
     min-height: 100vh; /*Pour occuper toute la page*/
+    background-color: pink;
 }
 
 /****** HEADER *****/
@@ -510,7 +511,6 @@ footer {
     background-color: var(--vert-fonce);
     transform: scale(1.05);
     transition: ease-in-out 0.25s;
-    color: red;
 }
 
 nav.nav-bar {
