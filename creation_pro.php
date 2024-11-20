@@ -66,7 +66,8 @@ session_start();
         <div class="creation_compte_pro_container">
             <div class="creation_compte_pro_form-section">
                 <h1>S’inscrire</h1>
-                <p>Créer un compte pour profiter de l’expérience PACT</p>
+                <p>Créez un compte professionnel pour publier vos annonces, 
+                    <br>toucher davantage de clients et faire croître votre activité facilement !</p>
                 <form action="#" method="POST">
                     <div class="crea_pro_raison_sociale_num_siren">
                         <fieldset>
