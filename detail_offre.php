@@ -200,12 +200,13 @@ if(!isset($_POST["code_offre"])){
                 <p>27 chambres et 6 suites au décor raffiné et cosy.</p>
                
             </div>
+            <div class="accessibilite_infos_detail_offre">
             <h2>Accessibilité</h2>
             <p>
                 - Handicapé</br>
                 -Trisomique
             </p>
-          
+            </div>
 
             <div class="detail_offre_icons">
             <h2>Tags</h2>
@@ -361,33 +362,52 @@ if(!isset($_POST["code_offre"])){
                     </div>
                     <p class="detail_offre_resumer">C'est très décontracté en terrasse, on sait tout par la force et la beauté du panorama à perte de vue.</p>
                 </article>
+                <h3 style="margin-top: 1em;">Durée</h3>
+                    
+                    <p class="detail_offre_resumer">4h (en moyenne)</p>
+                <h3 style="margin-top: 1em;">Age</h3>
+                    
+                    <p class="detail_offre_resumer">Tout publics</p>
+                    <h3 style="margin-top: 1em;">Visite Guidée</h3>
+                    
+                    <p class="detail_offre_resumer">Oui</p>
+                    <h3 style="margin-top: 1em;">Prestations incluses</h3>
+                    
+                    <p class="detail_offre_resumer">Cours de golf</p>
+                    <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
+                    
+                    <p class="detail_offre_resumer">Spa</p>
+                    <h3 style="margin-top: 1em;">Capacité d'acceuil</h3>
+                    
+                    <p class="detail_offre_resumer"> 500pers environ</p>
+                    <h3 style="margin-top: 1em;">Repas</h3>
+                    
+                    <p class="detail_offre_resumer">Oui</p>
+                    <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
+                    
+                    <p class="detail_offre_resumer">23 attractions</p>
+                    
+                    </div>
             </section>
 
             <div class="global_service_detail_offre">
-            <h3>Services</h3>
+            <h3 style="margin-left: 1.1em;">Services</h3>
             <div class="services">
-                <span class="service">
-                    <p>Wifi</p>
-                </span>
-                <span class="service">
-                    <p>Repas</p>
-                </span>
-                <span class="service">
-                    <p>Bar</p>
-                </span>
-                <span class="service">
-                    <p>Piscine</p>
-                </span>
-            </div>
-            </div>
-            <div class="Detail_offre_ouverture_global">
-            <h3>Localisation</h3>
-            <iframe class="map-frame"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig&q=<?php echo $latitude; ?>,<?php echo $longitude; ?>"
-            style="border:0;margin: auto 0.5em; width:85vw; height:50vh" allowfullscreen="" loading="lazy">
-        </iframe>
+    <div class="service">
+        <p>Wifi</p>
     </div>
+    <div class="service">
+        <p>Repas</p>
+    </div>
+    <div class="service">
+        <p>Bar</p>
+    </div>
+    <div class="service">
+        <p>Piscine</p>
+    </div>
+</div>
 
+            </div>
             <div class="Detail_offre_ouverture_global">
                 <h3>Horaires</h3>
             <ul class="hours">
@@ -400,6 +420,15 @@ if(!isset($_POST["code_offre"])){
                 <li><span>Dimanche</span>: 12h30 - 13h30, 19h30 - 21h30</li>
             </ul>
         </div>
+            <div class="Detail_offre_ouverture_global">
+            <h3>Localisation</h3>
+            <iframe class="map-frame"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig&q=<?php echo $latitude; ?>,<?php echo $longitude; ?>"
+            style="border:0;margin: auto; width:85vw; height:50vh" allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
+
+        
 
         <!-- Bouton publier un avis -->
         <article class="publier_avis">
