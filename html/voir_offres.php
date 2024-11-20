@@ -66,7 +66,7 @@ function tempsEcouleDepuisPublication($offre){
         <img src=images/connexion.png  width=50px height=50px >
         <p>Créez votre compte en quelques clics et accédez à un monde de possibilités ! </p>
         <a href="connexion_membre.php" id="bouton_connexion>Se connecter</a>
-        <img id="closePopup" src=images/erreur.png width=15px height=15px>
+        <img id="closePopup" src="images/erreur.png" width=15px height=15px>
     </div>
 
     <script>
