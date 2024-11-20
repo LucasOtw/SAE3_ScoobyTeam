@@ -283,11 +283,13 @@ main.connexion_membre_main {
 }
 
 .connexion_membre_form-container {
-    width: 33vw;
+    width: 35vw;
+    margin-right: 10em;
+    margin-top: 5em;
 }
 
 .connexion_membre_main fieldset {
-    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 5px;
     margin-bottom: 20px;
     padding-top: 0;
@@ -335,7 +337,7 @@ main.connexion_membre_main {
 .connexion_membre_main input[type="password"] {
     width: 100%;
     padding: 10px;
-    border: 0;
+    border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
 }
@@ -429,10 +431,11 @@ main.connexion_membre_main {
 }
 
 .connexion_membre_image-container img {
-    width: 100%;
+    width: 126%;
     height: auto;
     object-fit: cover;
     max-height: 100%;
+    margin-left: -4em;
 }
 
 .connexion_membre_main .connexion_membre_btn_connecter_pas_de_compte {
@@ -554,4 +557,13 @@ main.connexion_membre_main {
     .connexion_membre_main hr {
         display: block;
     }
+}
+
+
+.connexion_membre_main fieldset p.erreur-formulaire-connexion-membre{
+    color: #d70808;
+    margin-bottom: 0;
+    font-size: 12px;
+    display: none;
+
 }
