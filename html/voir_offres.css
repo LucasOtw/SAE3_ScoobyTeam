@@ -606,6 +606,9 @@ nav.nav-bar {
     align-items: center;
     justify-content: space-around;
 }
+#customPopup p {
+    margin: 0 1vw;
+}
 
 #customPopup button{
     align-self: last baseline;
