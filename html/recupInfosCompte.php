@@ -8,7 +8,7 @@
   $dbh = new PDO($dsn, $username, $password);
 
   // on récupère les infos du compte actuelle
-  if(isset($_SESSION['membre']){
+  if(isset($_SESSION['membre'])){
      $compte = $_SESSION['membre'];
 
      // on sélectionne les infos du membre
