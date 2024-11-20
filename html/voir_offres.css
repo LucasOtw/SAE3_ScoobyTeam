@@ -594,7 +594,7 @@ nav.nav-bar {
     display: none;
     position: fixed;
     bottom: 20px;
-    left: 30%;
+    right:-25%;
     transform: translateX(-50%);
     background-color: #f8f9fa;
     padding: 15px;
