@@ -507,7 +507,6 @@ footer {
 }
 
 .toute_les_offres_main #offers-list > article > div > form > input[type="submit"]:hover {
-    background-color: var(--vert-fonce);
     transform: scale(1.05);
     transition: ease-in-out 0.25s;
 }
@@ -589,38 +588,13 @@ nav.nav-bar {
     .nb-avis{
         display: none   ;
     }
+    #customPopup {
+        margin-left : 15px;
     #customPopup{
         transform: translateX(calc(50%-25vw));
     }
 }
-
-
-
-
-  /* Styles pour le pop-up */
-  #customPopup {
-    display: none; /* Caché par défaut */
-    position: fixed;
-    bottom: 20px; /* Position en bas */
-    right: 20px; /* Position à gauche */
-    background-color: #f8f9fa;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 50px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    font-family: Arial, sans-serif;
-    align-items: center;
-    justify-content: space-between;
-}
-#customPopup p {
-    width: 65%;
-    margin: 0 1vw;
-}
-
-#customPopup button{
-    align-self: last baseline;
-}
+  
 
 #connexion{
     background-color: var(--vert-clair);
