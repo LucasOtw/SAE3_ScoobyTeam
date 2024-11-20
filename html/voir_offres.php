@@ -66,7 +66,7 @@ function tempsEcouleDepuisPublication($offre){
     <!-- Code pour le pop-up --> 
     <!-- Conteneur du pop-up -->
     <div id="customPopup">
-        <img src=images/connexion.png  width=50px height=50px >
+        <img src="images/connexion1.png"  width=50px height=50px >
         <p>Créez votre compte en quelques clics et accédez à un monde de possibilités ! </p>
         <a id="connexion" href="connexion_membre.php" id="bouton_connexion">S'inscrire</a>
         <img id="closePopup" src="images/erreur.png" width=15px height=15px>
@@ -247,6 +247,10 @@ function tempsEcouleDepuisPublication($offre){
                         <h2><?php echo $offre["titre_offre"] ?></h2>
                         <p><?php echo $villeOffre["ville"] ?></p>
                         <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
+                        <form action="detail_offre.php">
+                            <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
+                            <input type="submit" name="vueDetails" value="Voir l'offre &aquo;">
+                        </form>
                         <button>Voir l'offre →</button>
                     </div>
                 </article>
