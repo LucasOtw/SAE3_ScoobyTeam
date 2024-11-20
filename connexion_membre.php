@@ -127,7 +127,6 @@ session_start();
                             <?php echo ".connexion_membre_main fieldset p.erreur-mot-de-passe-incorect"?>{
                                 display : flex;
                                 align-items: center;
-                                justify-content: space-between;
                             }
                             <?php echo ".connexion_membre_main fieldset p.erreur-mot-de-passe-incorect img"?>{
                                 width: 10px;
@@ -146,7 +145,6 @@ session_start();
                         <?php echo ".connexion_membre_main fieldset p.erreur-membre-inconnu"?>{
                             display : flex;
                             align-items: center;
-                            justify-content: space-between;
                         }
                         <?php echo ".connexion_membre_main fieldset p.erreur-membre-inconnu img"?>{
                             width: 10px;
@@ -165,7 +163,6 @@ session_start();
                         <?php echo ".connexion_membre_main fieldset p.erreur-user-inconnu"?>{
                             display : flex;
                             align-items: center;
-                            justify-content: space-between;
                         }
                         <?php echo ".connexion_membre_main fieldset p.erreur-user-inconnu img"?>{
                             width: 10px;
