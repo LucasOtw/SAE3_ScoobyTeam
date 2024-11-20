@@ -27,6 +27,18 @@
      $monCompte->execute();
 
      $monCompte = $monCompte->fetch(PDO::FETCH_ASSOC);
+
+    // on regarde si le pro est privé ou publique
+
+    $monComptePrive = $dbh->prepare("SELECT * FROM tripenarvor._professionnel WHERE code_compte = :code_compte");
+    $monComptePrive->bindValue(":code_compte",$compte['code_compte']);
+    $monComptePrive->execute();
+
+    $monComptePrive->fetch(PDO::FETCH_ASSOC);
+    if(count($monComptePrive) > 0){
+      // alors le compte est privé, on le rajoute dans le tableau
+      $monComptePrive['num_SIREN'] = $monComptePrive['num_siren'];
+    }
   }
 
 echo "<pre>";
