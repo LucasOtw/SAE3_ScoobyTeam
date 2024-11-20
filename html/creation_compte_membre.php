@@ -381,7 +381,6 @@
                         <?php echo ".creation_compte_membre fieldset p.$champs"?>{
                             display : flex;
                             align-items: center;
-                            justify-content: space-between;
                         }
                         <?php echo ".creation_compte_membre fieldset p.$champs img"?>{
                             width: 10px;
