@@ -397,7 +397,7 @@ body > main > div > div.creation_compte_membre_form-section > form > div.crea_me
 
 
 .creation_compte_membre fieldset {
-    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 5px;
     margin-bottom: 10px;
     position: relative;
