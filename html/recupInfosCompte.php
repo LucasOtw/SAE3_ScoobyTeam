@@ -34,7 +34,7 @@
     $monComptePrive->bindValue(":code_compte",$compte['code_compte'],PDO::PARAM_INT);
     $monComptePrive->execute();
 
-    $monComptePrive->fetch(PDO::FETCH_ASSOC);
+    $monComptePrive = $monComptePrive->fetch(PDO::FETCH_ASSOC);
     var_dump($monComptePrive);
     if($monComptePrive){
       $monCompte['num_siren'] = $monComptePrive['num_siren'];
