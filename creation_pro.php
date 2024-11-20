@@ -73,29 +73,29 @@ session_start();
                         <fieldset>
                             <legend>Raison sociale *</legend>
                             <input class="erreur-raison-sociale-vide erreur-raison-sociale-existante" type="text" id="raison-sociale" name="raison-sociale" placeholder="Raison sociale *" required>
-                            <p class="erreur-formulaire-creation-pro erreur-raison-sociale-vide"><img src="images/icon_informations.png" alt="icon i pour informations" width="14px" height="14px"> Une raison sociale est requise</p>
-                            <p class="erreur-formulaire-creation-pro erreur-raison-sociale-existante"><img src="images/icon_informations.png" alt="icon i pour informations" width="14px" height="14px">Une entreprise possède déjà cette raison sociale.</p>
+                            <p class="erreur-formulaire-creation-pro erreur-raison-sociale-vide"><img src="images/icon_informations.png" alt="icon i pour informations"> Une raison sociale est requise</p>
+                            <p class="erreur-formulaire-creation-pro erreur-raison-sociale-existante"><img src="images/icon_informations.png" alt="icon i pour informations">Une entreprise possède déjà cette raison sociale.</p>
                         </fieldset>
 
                         <fieldset>
                             <legend>N° de Siren (Professionnel privé)</legend>
                             <input class="erreur-siren-invalide erreur-siren-existant" type="text" id="siren" name="siren" placeholder="N° de Siren (Professionnel privé)" maxlength=9>
-                            <p class="erreur-formulaire-creation-pro erreur-siren-invalide"><img src="images/icon_informations.png" alt="icon i pour informations" width="14px" height="14px">Le numéro de Siren doit comporter 9 chiffres.</p>
-                            <p class="erreur-formulaire-creation-pro erreur-siren-existant"><img src="images/icon_informations.png" alt="icon i pour informations" width="14px" height="14px">Ce numéro SIREN est déjà lié à un compte professionnel !</p>
+                            <p class="erreur-formulaire-creation-pro erreur-siren-invalide"><img src="images/icon_informations.png" alt="icon i pour informations">Le numéro de Siren doit comporter 9 chiffres.</p>
+                            <p class="erreur-formulaire-creation-pro erreur-siren-existant"><img src="images/icon_informations.png" alt="icon i pour informations">Ce numéro SIREN est déjà lié à un compte professionnel !</p>
                         </fieldset>
                     </div>
                     <div class="crea_pro_mail_tel">
                         <fieldset>
                             <legend>Email *</legend>
                             <input class="erreur-email-invalide erreur-email-existant" type="email" id="email" name="email" placeholder="Email *" required>
-                            <p class="erreur-formulaire-creation-pro erreur-email-invalide"><img src="images/icon_informations.png" alt="icon i pour informations" width="14px" height="14px">L'adresse email est invalide.</p>
-                            <p class="erreur-formulaire-creation-pro erreur-email-existant"><img src="images/icon_informations.png" alt="icon i pour informations" width="14px" height="14px">Cette adresse mail est déjà liée à un compte !</p>
+                            <p class="erreur-formulaire-creation-pro erreur-email-invalide"><img src="images/icon_informations.png" alt="icon i pour informations">L'adresse email est invalide.</p>
+                            <p class="erreur-formulaire-creation-pro erreur-email-existant"><img src="images/icon_informations.png" alt="icon i pour informations">Cette adresse mail est déjà liée à un compte !</p>
                         </fieldset>
 
                         <fieldset>
                             <legend>Téléphone *</legend>
                             <input class="erreur-telephone-invalide" type="tel" id="telephone" name="telephone" placeholder="Téléphone *" required>
-                            <p class="erreur-formulaire-creation-pro erreur-telephone-invalide"><img src="images/icon_informations.png" alt="icon i pour informations" width="14px" height="14px">Le numéro de téléphone doit comporter 10 chiffres.</p>
+                            <p class="erreur-formulaire-creation-pro erreur-telephone-invalide"><img src="images/icon_informations.png" alt="icon i pour informations">Le numéro de téléphone doit comporter 10 chiffres.</p>
                         </fieldset>
                     </div>
 
@@ -103,7 +103,7 @@ session_start();
                     <fieldset>
                         <legend>Adresse Postale *</legend>
                         <input class="erreur-adress" type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" required>
-                            <p class="erreur-formulaire-creation-pro erreur-adresse"><img src="images/icon_informations.png" alt="icon i pour informations" width="14px" height="14px">Le champ 'Adresse' est requis.</p>
+                            <p class="erreur-formulaire-creation-pro erreur-adresse"><img src="images/icon_informations.png" alt="icon i pour informations">Le champ 'Adresse' est requis.</p>
                     </fieldset>
                     <fieldset>
                         <legend>Complément d'adresse</legend>
@@ -113,14 +113,14 @@ session_start();
                     <fieldset>
                         <legend>Code Postal *</legend>
                         <input class="erreur-code-postal" type="text" id="code-postal" name="code-postal" placeholder="Code Postal *" required>
-                            <p class="erreur-formulaire-creation-pro erreur-code-postal"><img src="images/icon_informations.png" alt="icon i pour informations" width="14px" height="14px">Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B.</p>
+                            <p class="erreur-formulaire-creation-pro erreur-code-postal"><img src="images/icon_informations.png" alt="icon i pour informations">Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B.</p>
                     </fieldset>
 
                     <fieldset>
                         <legend>Ville *</legend>
                         <input class="erreur-ville erreur-ville-existant" type="text" id="ville" name="ville" placeholder="Ville *" required>
-                            <p class="erreur-formulaire-creation-pro erreur-ville"><img src="images/icon_informations.png" alt="icon i pour informations" width="14px" height="14px">Le nom de la ville ne doit contenir que des lettres, espaces, ou apostrophes.</p>
-                            <p class="erreur-formulaire-creation-pro erreur-ville-existant"><img src="images/icon_informations.png" alt="icon i pour informations" width="14px" height="14px">Ce champ est requis.</p>
+                            <p class="erreur-formulaire-creation-pro erreur-ville"><img src="images/icon_informations.png" alt="icon i pour informations">Le nom de la ville ne doit contenir que des lettres, espaces, ou apostrophes.</p>
+                            <p class="erreur-formulaire-creation-pro erreur-ville-existant"><img src="images/icon_informations.png" alt="icon i pour informations">Ce champ est requis.</p>
                     </fieldset>
 
                     <fieldset>
@@ -131,7 +131,7 @@ session_start();
                     <fieldset>
                         <legend>Confirmer le mot de passe *</legend>
                         <input class="erreur-password-confirmation" type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe *" required>
-                        <p class="erreur-formulaire-creation-pro erreur-password-confirmation"><img src="images/icon_informations.png" alt="icon i pour informations" width="14px" height="14px">Les mots de passe ne correspondent pas.</p>
+                        <p class="erreur-formulaire-creation-pro erreur-password-confirmation"><img src="images/icon_informations.png" alt="icon i pour informations">Les mots de passe ne correspondent pas.</p>
                     </fieldset>
 
                     
@@ -346,7 +346,13 @@ session_start();
                     ?> 
                     <style>
                         <?php echo ".creation_compte_pro fieldset p.$champs"?>{
-                            display : block;
+                            display : flex;
+                            align-items: center;
+                        }
+                        <?php echo ".creation_compte_pro fieldset p.$champs img"?>{
+                            width: 10px;
+                            height: 10px;
+                            margin-right: 10px;
                         }
                         <?php echo ".creation_compte_pro input.$champs"?>{
                             border: 1px solid red;
