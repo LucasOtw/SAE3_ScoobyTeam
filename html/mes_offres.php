@@ -13,7 +13,9 @@ if(isset($_GET["deco"])){
     exit;
 }
 
+echo "<pre>";
 var_dump($_SESSION["pro"]);
+echo "</pre>";
 
 ?>
 <!DOCTYPE html>
