@@ -149,6 +149,8 @@ var_dump($_SESSION["pro"]);
                 <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
                 <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
                 <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+            </div>
+        </div>
            
     </footer>
 </body>
