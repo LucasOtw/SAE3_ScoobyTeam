@@ -46,7 +46,7 @@
     $recupOffres->bindValue(":code_compte",$compte['code_compte']);
     $recupOffres->execute();
 
-    $mesOffres = $recupOffres->fetch(PDO::FETCH_ASSOC);
+    $mesOffres = $recupOffres->fetchAll(PDO::FETCH_ASSOC);
   }
 
 echo "<pre>";
