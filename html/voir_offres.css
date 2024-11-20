@@ -607,6 +607,7 @@ nav.nav-bar {
     justify-content: space-around;
 }
 #customPopup p {
+    width: 30%;
     margin: 0 1vw;
 }
 
