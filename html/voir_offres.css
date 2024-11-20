@@ -510,6 +510,7 @@ footer {
     background-color: var(--vert-fonce);
     transform: scale(1.05);
     transition: ease-in-out 0.25s;
+    color: red;
 }
 
 nav.nav-bar {
@@ -595,10 +596,6 @@ nav.nav-bar {
         transform: translateX(calc(50%-25vw));
     }
 }
-
-
-
-
   /* Styles pour le pop-up */
   #customPopup {
     display: none; /* Caché par défaut */
