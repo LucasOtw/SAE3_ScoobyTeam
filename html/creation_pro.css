@@ -599,7 +599,8 @@ main.creation_compte_pro > div > div.connexion_pro_form-creation_compte_pro_cont
 }
 
 .creation_compte_pro fieldset p.erreur-formulaire-creation-pro{
-    color: red;
+    color: #d70808;
     margin-bottom: 0;
-    display: none;
+    font-size: 12px;
+    
 }
