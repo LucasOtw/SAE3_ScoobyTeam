@@ -589,7 +589,7 @@ nav.nav-bar {
         display: none   ;
     }
 }
-#_customPopup {
+#customPopup {
     display: none;
     position: fixed;
     bottom: 20px;
@@ -606,13 +606,13 @@ nav.nav-bar {
     justify-content: space-around;
 }
 
-#_customPopup p {
+#customPopup p {
     width: 65%;
     margin: 0 1vw;
     color: red;
 }
 
-#_connexion {
+#connexion {
     background-color: var(--vert-clair);
     color: #fff;
     padding: 1.25vh 1.75vw;
