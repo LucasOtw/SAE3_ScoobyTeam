@@ -249,9 +249,8 @@ function tempsEcouleDepuisPublication($offre){
                         <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
                         <form action="detail_offre.php" method="POST">
                             <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
-                            <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &aquo;">
+                            <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
                         </form>
-                        <button>Voir l'offre →</button>
                     </div>
                 </article>
                 <?php
