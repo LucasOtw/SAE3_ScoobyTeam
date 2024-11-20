@@ -110,7 +110,7 @@ session_start();
                 
                 if (password_verify($password, $mdpPro[0])) {
                     // si le mot de passe est correct
-                    $_SESSION["compte"] = $codeCompte[0]; // Stocke le code_compte dans la session
+                    $_SESSION["pro"] = $codeCompte[0]; // Stocke le code_compte dans la session
                     header('Location: mes_offres.php'); // Redirection
                     exit; // Assure que le script s'arrête après la redirection
                 } else {
