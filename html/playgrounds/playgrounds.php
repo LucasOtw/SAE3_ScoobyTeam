@@ -8,7 +8,7 @@
         $dbh = new PDO($dsn, $username, $password);
 
         $afficheUtilisateur = $dbh->query("SELECT * FROM tripenarvor._compte WHERE code_compte = 1");
-        $afficheUtilisateur = $afficheUtilisateur->fetch(PDO::FETCH_ASSOC);
+        $afficheUtilisateur = $afficheUtilisateur->fetch();
 
         // Récup de ses infos compte pro :
 
