@@ -588,6 +588,9 @@ nav.nav-bar {
     #customPopup{
         margin : 0;
     }
+    #customPopup p{
+        color: red;
+    }
 }
 
 
