@@ -30,6 +30,6 @@
 echo "<pre>";
 var_dump($compte);
 var_dump($monCompte);
-echo "</pre">;
+echo "</pre>";
 
 ?>
