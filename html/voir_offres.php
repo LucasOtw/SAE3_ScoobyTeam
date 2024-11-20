@@ -5,6 +5,10 @@ if(isset($_GET["deco"])){
     session_destroy();
 };
 
+if(isset($_SESSION['membre']){
+   var_dump($_SESSION['membre']);
+}
+
 function tempsEcouleDepuisPublication($offre){
     // date d'aujourd'hui
     $date_actuelle = new DateTime();
