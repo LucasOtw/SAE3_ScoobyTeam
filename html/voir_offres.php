@@ -8,8 +8,7 @@ if(isset($_GET["deco"])){
 if(isset($_SESSION['membre'])){
    var_dump($_SESSION['membre']);
 }
-$test = json_encode($_SESSION['membre'],JSON_PRETTY_PRINT);
-var_dump($test);
+$donneesSession = json_encode($_SESSION['membre'],JSON_PRETTY_PRINT);
 
 function tempsEcouleDepuisPublication($offre){
     // date d'aujourd'hui
@@ -72,6 +71,7 @@ function tempsEcouleDepuisPublication($offre){
     </div>
 
     <script>
+        const donneesSessionMembre = <?php echo $donneesSession; ?>
         document.addEventListener("DOMContentLoaded", () => {
             // Fonction pour afficher le pop-up
             function afficherPopupAvecDelai() {
@@ -92,9 +92,12 @@ function tempsEcouleDepuisPublication($offre){
             } else {
                 console.error("Le bouton avec l'ID 'closePopup' est introuvable.");
             }
-    
-            // Lancer le pop-up après 5 secondes
-            setTimeout(afficherPopupAvecDelai, 5000); // 5000 ms = 5 secondes
+
+            if(!donneesSessionMembre){
+                // Lancer le pop-up après 5 secondes
+                setTimeout(afficherPopupAvecDelai, 5000); // 5000 ms = 5 secondes
+            }
+
         });
     </script>
 
