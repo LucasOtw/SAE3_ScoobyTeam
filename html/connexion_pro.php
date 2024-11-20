@@ -1,6 +1,15 @@
 <?php
 ob_start();
 session_start();
+
+if(isset($_SESSION['pro']){
+   // si un professionnel est déjà connecté....
+   // bah il va pas se reconnecter.
+
+   header('location: mes_offres.php');
+   exit;
+}
+
 ?>
 
 <!DOCTYPE html>
