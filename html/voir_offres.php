@@ -85,8 +85,8 @@ function tempsEcouleDepuisPublication($offre){
     
             // Ajouter un écouteur d'événement au bouton "Fermer"
             const closeButton = document.getElementById("closePopup");
-            if (closePopup) {
-                closePopup.addEventListener("click", fermerPopup);
+            if (closeButton) {
+                closeButton.addEventListener("click", fermerPopup);
             } else {
                 console.error("Le bouton avec l'ID 'closePopup' est introuvable.");
             }
