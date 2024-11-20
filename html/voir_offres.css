@@ -500,7 +500,6 @@ footer {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    align-self: flex-start;
     transition: background-color 0.2s ease-in-out;
     align-self:flex-end;
     transition: ease-in-out 0.25s;
