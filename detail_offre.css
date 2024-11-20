@@ -428,6 +428,7 @@ footer {
     height: 109px;
     border-radius: 29px;
     box-shadow: 5px 5px 10px 0px rgba(166, 158, 158, 0.5);
+    margin-left: -3em;
 
 }
 
@@ -846,7 +847,7 @@ footer {
     }
 
     .Detail_offre_ouverture_global {
-        margin-top: 2em;
+        margin: 1em;
         padding: 4px;
     }
 
@@ -870,7 +871,6 @@ footer {
         font-size: 17px;
     }
 
-    //Besoin d'un niveau slider
 
 
     .Detail_offre_ouverture_global {
@@ -1086,7 +1086,7 @@ footer {
   
   /* Bouton principal */
   .info-button {
-    width: 100%;
+    width: 135%;
     padding: 10px 15px;
     font-size: 16px;
     background-color: white;

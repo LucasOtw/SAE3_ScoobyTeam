@@ -205,7 +205,7 @@ if(!isset($_POST["code_offre"])){
         Détails
         <span class="arrow">&#9662;</span>
       </button>
-      <div class="info-box" id="infoBox">
+      <div class="info-box" id="infoBox" style="max-height: 507px;padding: 15px;overflow-y: auto;width:25.5em;">
         <p class="detail_offre_resumer">4h (en moyenne)</p>
                 <h3 style="margin-top: 1em;">Age</h2>
                     
