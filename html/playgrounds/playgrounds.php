@@ -10,7 +10,16 @@
         $afficheUtilisateur = $dbh->query("SELECT * FROM tripenarvor._compte WHERE code_compte = 1");
         $afficheUtilisateur = $afficheUtilisateur->fetch(PDO::FETCH_ASSOC);
 
+        // Récup de ses infos compte pro :
+
+        $monComptePro = $dbh->query("SELECT * FROM tripenarvor._professionnel WHERE code_compte = 1");
+        $monComptePro = $monComptePro->fetch(PDO::FETCH_ASSOC);
+
 echo "<pre>";
 var_dump($afficheUtilisateur);
+echo "</pre>";
+echo "<h1> INFOS. PRO </h1><br>";
+echo "<pre>";
+var_dump($monComptePro);
 echo "</pre>";
 ?>
