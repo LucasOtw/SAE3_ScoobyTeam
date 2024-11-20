@@ -1,5 +1,5 @@
 * {
-    margin: 5px;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     --orange: #F28322;
@@ -598,6 +598,7 @@ nav.nav-bar {
     transform: translateX(-50%);
     background-color: #f8f9fa;
     padding: 15px;
+    margin: 5px;
     border: 1px solid #ccc;
     border-radius: 50px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
