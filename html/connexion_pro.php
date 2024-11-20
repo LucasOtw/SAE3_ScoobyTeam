@@ -116,10 +116,8 @@ echo password_hash("test",PASSWORD_DEFAULT);
                 $mdpPro->bindParam("codeCompte", $Compte['code_compte']);
                 $mdpPro->execute();
                 $mdpPro = $mdpPro->fetch(PDO::FETCH_ASSOC);
-
-                  var_dump($mdpPro);
                 
-                if (password_verify($password, $mdpPro['mdp'])) {
+                if (password_verify(trim($password), trim($mdpPro['mdp']))) {
                     // si le mot de passe est correct
                     $_SESSION["pro"] = $Compte; // Stocke le code_compte dans la session
                     header('Location: mes_offres.php'); // Redirection
