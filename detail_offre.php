@@ -1,4 +1,4 @@
--- Active: 1731952295459@@127.0.0.1@13306
+
 <?php
  session_start();
 
@@ -188,7 +188,7 @@ if(!isset($_POST["code_offre"])){
             <div class="detail_offre_description">
             <h2>Résumé</h2>
                 <p>
-                    Venez decouvrir un hotel chic dans l'esprit
+                    Venez découvrir un hôtel chic dans l'esprit victorien.
                 </p>
                 <h2>Description</h2>
                 <p>
@@ -198,8 +198,41 @@ if(!isset($_POST["code_offre"])){
                 &nbsp <!-- Pour mettre un espace -->
                 </p>
                 <p>27 chambres et 6 suites au décor raffiné et cosy.</p>
+                <h2>Nos services</h2>
+                <div class="info-dropdown">
+
+      <button class="info-button" onclick="toggleInfoBox()">
+        Détails
+        <span class="arrow">&#9662;</span>
+      </button>
+      <div class="info-box" id="infoBox">
+        <p class="detail_offre_resumer">4h (en moyenne)</p>
+                <h3 style="margin-top: 1em;">Age</h2>
+                    
+                    <p>Tout publics</p>
+                    <h3 style="margin-top: 1em;">Visite Guidée</h2>
+                    
+                    <p>Oui</p>
+                    <h3 style="margin-top: 1em;">Prestations incluses</h2>
+                    
+                    <p>Cours de golf</p>
+                    <h3 style="margin-top: 1em;">Prestations non-incluses</h2>
+                    
+                    <p>Spa</p>
+                    <h3 style="margin-top: 1em;">Capacité d'acceuil</h2>
+                    
+                    <p> 500pers environ</p>
+                    <h3>Repas</h2>
+                    
+                    <p>Oui</p>
+                    <h3>Nombre d'attractions</h2>
+                    
+                    <p>23 attractions</p>
                
             </div>
+      </div>
+    </div>
+               
             <div class="accessibilite_infos_detail_offre">
             <h2>Accessibilité</h2>
             <p>
@@ -386,7 +419,7 @@ if(!isset($_POST["code_offre"])){
                     <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
                     
                     <p class="detail_offre_resumer">23 attractions</p>
-                    
+
                     </div>
             </section>
 
@@ -433,8 +466,8 @@ if(!isset($_POST["code_offre"])){
         <!-- Bouton publier un avis -->
         <article class="publier_avis">
             <span>
-                <p>Tarif minimal</p>
-                <p id="prix">70€</p>
+                <p style="margin-left: 2em;">Tarif minimal</p>
+                <p id="prix" style="margin-left: 1.5em;">70€</p>
             </span>
             <!--<button id="bouton_publier">Publier un avis →</button>-->
         </article>

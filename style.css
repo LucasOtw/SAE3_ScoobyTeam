@@ -1,51 +1,51 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-  }
-  
-  .info-menu {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #f9f9f9;
-  }
-  
-  .menu-section {
-    margin-bottom: 20px;
-  }
-  
-  .menu-section h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    font-weight: bold;
-  }
-  
-  .menu-section ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .menu-section ul li {
-    margin-bottom: 15px;
-  }
-  
-  .menu-section a {
-    text-decoration: none;
-    color: #0073e6;
-    font-weight: bold;
-  }
-  
-  .menu-section a:hover {
-    text-decoration: underline;
-  }
-  
-  .documentation-link {
-    font-size: 14px;
-    color: #666;
-  }
-  
-  .documentation-link:hover {
-    color: #333;
-  }
-  
+/* Conteneur principal */
+.info-dropdown {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 250px;
+  z-index: 1000;
+}
+
+/* Bouton principal */
+.info-button {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/* Flèche */
+.arrow {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+/* Boîte d'informations (repliée par défaut) */
+.info-box {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 5px;
+  padding: 0 15px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenu de la boîte */
+.info-box p,
+.info-box ul {
+  margin: 10px 0;
+  color: #333;
+  font-size: 14px;
+}

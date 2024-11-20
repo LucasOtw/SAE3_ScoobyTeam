@@ -870,6 +870,8 @@ footer {
         font-size: 17px;
     }
 
+    //Besoin d'un niveau slider
+
 
     .Detail_offre_ouverture_global {
         background-color: #ffffff;
@@ -1073,3 +1075,79 @@ footer {
     padding-top: 10px;
     padding-bottom: 19px;
 }
+/* Conteneur principal */
+.info-dropdown {
+    width: 100%;
+    max-width: 300px;
+    margin: 20px 0; /* Aligne le conteneur à gauche */
+    position: relative; /* Pour positionner la boîte déroulante */
+    display: block;
+  }
+  
+  /* Bouton principal */
+  .info-button {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .info-button:hover {
+    background-color: #f7f7f7;
+  }
+  
+  /* Flèche */
+  .arrow {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Boîte d'informations (repliée par défaut) */
+  .info-box {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    margin-top: 5px; /* Un léger espace au-dessus */
+    z-index: 10;
+    padding: 0;
+  }
+  
+  /* Afficher la boîte déroulante (ajoutez une classe "active" via JS) */
+  .info-box.active {
+    max-height: 200px; /* Ajustez selon le contenu */
+    padding: 10px 15px;
+  }
+  
+  /* Contenu de la boîte */
+  .info-box p,
+  .info-box ul {
+    margin: 10px 0;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  /* Responsivité */
+  @media (max-width: 480px) {
+    .info-dropdown {
+      max-width: 90%;
+    }
+  
+    .info-button {
+      font-size: 14px;
+    }
+  
+    .info-box {
+      padding: 0 10px;
+    }
+  }
+  

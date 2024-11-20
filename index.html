@@ -1,47 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="test.js"></script>
 </head>
 <body>
-    <div class="info-menu">
-    <div class="menu-section">
-      <h2>Étudiant</h2>
-      <ul>
-        <li>
-          <a href="#" target="_blank">
-            📄 Ouvrir votre compte
-          </a>
-          |
-          <a href="#" target="_blank">
-            🔒 Mot de passe oublié
-          </a>
-        </li>
-        <li>
-          <a href="#" target="_blank">
-            🔄 Changer votre mot de passe
-          </a>
-          <p>
-            <a href="#" target="_blank" class="documentation-link">
-              Documentation informatique pour votre compte étudiant
-            </a>
-          </p>
-        </li>
-        <li>
-          <a href="#" target="_blank">
-            ✉️ Déclarer ou modifier votre adresse personnelle de notification
-          </a>
-          <p>
-            Renseigner une adresse personnelle de notification vous donne plus
-            d’autonomie pour gérer votre compte (recouvrement de votre mot de
-            passe, déverrouillage du compte).
-          </p>
-        </li>
-      </ul>
+  <main>
+    <div class="info-dropdown">
+      <button class="info-button" onclick="toggleInfoBox()">
+        Options
+        <span class="arrow">&#9662;</span>
+      </button>
+      <div class="info-box" id="infoBox">
+        <p>Voici des informations importantes :</p>
+        <ul>
+          <li>Point 1</li>
+          <li>Point 2</li>
+          <li>Point 3</li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </main>
+  
+  
+  
 </body>
 </html>
