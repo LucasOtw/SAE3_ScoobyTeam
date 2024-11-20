@@ -54,7 +54,7 @@ echo "</pre>";
             <div class="profile-info">
                 <img class="profile-picture" src="images/PhotodeProfil.png" alt="Profil utilisateur">
                 <h1><?php echo $monCompte['raison_sociale']; ?></h1>
-                <p>Lal.lannec@pact.fr | 0109202548</p>
+                <p><?php echo $compte['mail'] ."|". $compte['telephone']; ?></p>
             </div>
         </section>
     
