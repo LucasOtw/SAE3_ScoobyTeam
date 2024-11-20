@@ -28,7 +28,8 @@ function tempsEcouleDepuisPublication($offre){
 
     // calcul du nombre de jours dans le mois précédent
     $date_mois_precedent = clone $date_actuelle;
-    $date_mois_precedent->modify('-1 month');
+    $date_mois_precedent->modify('-1 month');qsdfghjklmù
+    
     $jours_dans_mois_precedent = (int)$date_mois_precedent->format('t'); // 't' donne le nombre de jours dans le mois
 
     if($jours == 0){
