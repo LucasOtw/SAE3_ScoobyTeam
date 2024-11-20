@@ -64,30 +64,26 @@ function tempsEcouleDepuisPublication($offre){
 </head>
 <body>
     <!-- Code pour le pop-up --> 
-    <!-- Conteneur du pop-up -->
     <div id="customPopup">
-        <img src="images/connexion1.png"  width=70px height=70px >
+        <img src="images/connexion1.png" width="70" height="70">
         <p>Créez votre compte en quelques clics et accédez à un monde de possibilités ! </p>
-        <a id="connexion" href="connexion_membre.php" id="bouton_connexion">S'inscrire</a>
-        <img id="closePopup" src="images/erreur.png" width=15px height=15px>
+        <a id="connexion" href="connexion_membre.php">S'inscrire</a>
+        <img id="closePopup" src="images/erreur.png" width="15" height="15">
     </div>
 
     <script>
-        const donneesSessionMembre = <?php echo $donneesSession; ?>
+        const donneesSessionMembre = <?php echo json_encode($donneesSession); ?>;
         document.addEventListener("DOMContentLoaded", () => {
-            // Fonction pour afficher le pop-up
             function afficherPopupAvecDelai() {
                 const popup = document.getElementById("customPopup");
-                popup.style.display = "flex"; // Afficher le pop-up
+                popup.style.display = "flex"; 
             }
-    
-            // Fonction pour fermer le pop-up
+
             function fermerPopup() {
                 const popup = document.getElementById("customPopup");
-                popup.style.display = "none"; // Cacher le pop-up
+                popup.style.display = "none"; 
             }
-    
-            // Ajouter un écouteur d'événement au bouton "Fermer"
+
             const closeButton = document.getElementById("closePopup");
             if (closeButton) {
                 closeButton.addEventListener("click", fermerPopup);
@@ -95,13 +91,12 @@ function tempsEcouleDepuisPublication($offre){
                 console.error("Le bouton avec l'ID 'closePopup' est introuvable.");
             }
 
-            if(!donneesSessionMembre){
-                // Lancer le pop-up après 5 secondes
-                setTimeout(afficherPopupAvecDelai, 5000); // 5000 ms = 5 secondes
+            if (!donneesSessionMembre) {
+                setTimeout(afficherPopupAvecDelai, 5000);
             }
-
         });
     </script>
+
 
 
     <div class="header-membre">
