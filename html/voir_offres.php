@@ -209,9 +209,6 @@ function tempsEcouleDepuisPublication($offre){
             $infosOffre = $infosOffre->fetchAll(PDO::FETCH_ASSOC);
 
             foreach($infosOffre as $offre){
-                echo "<pre>";
-                var_dump($offre);
-                echo "</pre>";
                 // Récupérer la ville
                 $villeOffre = $dbh->prepare('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
                 $villeOffre->bindParam(":code_adresse", $offre["code_adresse"]);
@@ -247,7 +244,7 @@ function tempsEcouleDepuisPublication($offre){
                         <h2><?php echo $offre["titre_offre"] ?></h2>
                         <p><?php echo $villeOffre["ville"] ?></p>
                         <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
-                        <form action="detail_offre.php" method="POST">
+                        <form id="form-voir-offre" action="detail_offre.php" method="POST">
                             <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
                             <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
                         </form>
