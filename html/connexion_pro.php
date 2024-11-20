@@ -115,6 +115,8 @@ if(isset($_SESSION['pro'])){
                 $mdpPro->execute();
                 $mdpPro = $mdpPro->fetch();
 
+                var_dump($mdpPro);
+
                 var_dump(password_hash($password,PASSWORD_DEFAULT));
                 
                 if (password_verify($password, $mdpPro[0])) {
