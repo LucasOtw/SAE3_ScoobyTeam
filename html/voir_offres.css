@@ -589,13 +589,10 @@ nav.nav-bar {
     .nb-avis{
         display: none   ;
     }
-<<<<<<< HEAD
     #customPopup {
         margin-left : 15px;
-=======
     #customPopup{
         transform: translateX(calc(50%-25vw));
->>>>>>> 2df5d3dcda537cdaa11c7508e3f6cc299ac6c622
     }
 }
 
