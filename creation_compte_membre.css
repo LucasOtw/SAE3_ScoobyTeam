@@ -397,7 +397,7 @@ body > main > div > div.creation_compte_membre_form-section > form > div.crea_me
 
 
 .creation_compte_membre fieldset {
-    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 5px;
     margin-bottom: 10px;
     position: relative;
@@ -534,4 +534,12 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
     body > main > div > div.creation_compte_membre_form-section > form > fieldset:nth-child(9){
         margin-bottom: 0;
     }
+}
+
+
+.creation_compte_membre fieldset p.erreur-formulaire-creation-membre{
+    color: #d70808;
+    margin-bottom: 0;
+    font-size: 12px;
+    display: none;
 }

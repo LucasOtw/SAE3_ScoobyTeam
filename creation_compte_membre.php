@@ -49,24 +49,29 @@
                         <fieldset>
                             <legend>Prénom *</legend>
                             <div class="input-icon">
-                                <input type="text" id="prenom" name="prenom" placeholder="Prénom *" required>
+                                <input class="erreur-prenom-requis erreur-prenom-invalide" type="text" id="prenom" name="prenom" placeholder="Prénom *" required>
                                 <img src="images/icones/personne.png" alt="icones silhouette d'une personne" class="input-icon-img">
+                                <p class="erreur-formulaire-creation-membre erreur-prenom-requis"<img src="images/icon_informations.png" alt="icon i pour informations">>Ce champ est requis.</p>
+                                <p class="erreur-formulaire-creation-membre erreur-prenom-invalide"><img src="images/icon_informations.png" alt="icon i pour informations">Le prénom ne doit contenir que des lettres, espaces, ou apostrophes.</p>
                             </div>
                         </fieldset>
 
                         <fieldset>
                             <legend>Nom *</legend>
                             <div class="input-icon">
-                                <input type="text" id="nom" name="nom" placeholder="Nom *" required>
+                                <input class="erreur-nom-requis erreur-nom-invalide" type="text" id="nom" name="nom" placeholder="Nom *" required>
                                 <img src="images/icones/personne.png" alt="icones silhouette d'une personne" class="input-icon-img">
+                            <p class="erreur-formulaire-creation-membre erreur-nom-requis"><img src="images/icon_informations.png" alt="icon i pour informations">Le champ 'Nom' est requis.</p>
+                            <p class="erreur-formulaire-creation-membre erreur-nom-invalide"><img src="images/icon_informations.png" alt="icon i pour informations">Le nom ne doit contenir que des lettres, espaces, ou apostrophes.</p>
                             </div>
                         </fieldset>
                     </div>
                     <fieldset>
                         <legend>Pseudo *</legend>
                         <div class="input-icon">
-                            <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo *" required>
+                            <input class="erreur-pseudo-requis" type="text" id="pseudo" name="pseudo" placeholder="Pseudo *" required>
                             <img src="images/icones/personne.png" alt="icones silhouette d'une personne" class="input-icon-img">
+                        <p class="erreur-formulaire-creation-membre erreur-pseudo-requis"><img src="images/icon_informations.png" alt="icon i pour informations">Le champ 'Pseudo' est requis.</p>
                         </div>
                     </fieldset>
                     <div class="crea_membre_mail_tel">
@@ -74,8 +79,10 @@
                             <legend>Email *</legend>
 
                             <div class="input-icon">
-                                <input type="email" id="email" name="email" placeholder="Email *" required>
+                                <input class="erreur-email-invalide erreur-email-existant" type="email" id="email" name="email" placeholder="Email *" required>
                                 <img src="images/icones/enveloppe.png" alt="icones de téléphone" class="input-icon-img">
+                            <p class="erreur-formulaire-creation-membre erreur-email-invalide"><img src="images/icon_informations.png" alt="icon i pour informations">L'adresse email est invalide.</p>
+                            <p class="erreur-formulaire-creation-membre erreur-email-existant"><img src="images/icon_informations.png" alt="icon i pour informations">Cette adresse mail est déjà liée à un compte !</p>
                             </div>
 
                         </fieldset>
@@ -83,8 +90,9 @@
                         <fieldset>
                             <legend>Téléphone *</legend>
                             <div class="input-icon">
-                                <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *" required>
+                                <input class="erreur-telephone-invalide" type="tel" id="telephone" name="telephone" placeholder="Téléphone *" required>
                                 <img src="images/icones/telephone.png" alt="icones de téléphone" class="input-icon-img">
+                            <p class="erreur-formulaire-creation-membre erreur-telephone-invalide"><img src="images/icon_informations.png" alt="icon i pour informations">Le numéro de téléphone doit comporter 10 chiffres.</p>
                             </div>
                         </fieldset>
                     </div>
@@ -93,16 +101,18 @@
                     <fieldset>
                         <legend>Adresse Postale *</legend>
                         <div class="input-icon">
-                            <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" required>
+                            <input class="erreur-adresse-requis" type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" required>
                             <img src="images/icones/journal.png" alt="icones de journal" class="input-icon-img">
+                        <p class="erreur-formulaire-creation-membre erreur-adresse-requis"><img src="images/icon_informations.png" alt="icon i pour informations">Le champ 'Adresse' est requis.</p>
                         </div>
                     </fieldset>
 
                     <fieldset>
                         <legend>Code Postal *</legend>
                         <div class="input-icon">
-                            <input type="text" id="code-postal" name="code-postal" placeholder="Code Postal *" required>
+                            <input class="erreur-code-postal-invalide" type="text" id="code-postal" name="code-postal" placeholder="Code Postal *" required>
                             <img src="images/icones/pin.png" alt="icones de pin" class="input-icon-img">
+                        <p class="erreur-formulaire-creation-membre erreur-code-postal-invalide"><img src="images/icon_informations.png" alt="icon i pour informations">Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B.</p>
                         </div>
 
                     </fieldset>
@@ -114,28 +124,30 @@
                         </div>
 
                     </fieldset>
-
                     <fieldset>
                         <legend>Ville *</legend>
                         <div class="input-icon">
-                            <input type="text" id="ville" name="ville" placeholder="Ville *" required>
+                            <input class="erreur-ville-requis erreur-ville-invalide erreur-ville-code-postal-incompatible" type="text" id="ville" name="ville" placeholder="Ville *" required>
                             <img src="images/icones/batiment.png" alt="icones de batiment" class="input-icon-img">
+                        <p class="erreur-formulaire-creation-membre erreur-ville-requis"><img src="images/icon_informations.png" alt="icon i pour informations">Le champ 'Ville' est requis.</p>
+                        <p class="erreur-formulaire-creation-membre erreur-ville-invalide"><img src="images/icon_informations.png" alt="icon i pour informations">Le nom de la ville ne doit contenir que des lettres, espaces, ou apostrophes.</p>
+                        <p class="erreur-formulaire-creation-membre erreur-ville-code-postal-incompatible"><img src="images/icon_informations.png" alt="icon i pour informations">La ville ne correspond pas au code postal.</p>
                         </div>
                     </fieldset>
 
                     <fieldset>
                         <legend>Mot de passe *</legend>
                         <div class="input-icon">
-                            <input type="password" id="password" name="password" placeholder="Mot de passe *" required>
+                            <input class="erreur-mots-de-passe-incompatibles" type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe *" required>
                             <img src="images/icones/cadenas.png" alt="icones de cadenas" class="input-icon-img">
                         </div>
                     </fieldset>
-
                     <fieldset>
                         <legend>Confirmer le mot de passe *</legend>
                         <div class="input-icon">
                             <img src="images/icones/cadenas.png" alt="icones de cadenas" class="input-icon-img">
-                            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe *" required>
+                            <input class="erreur-mots-de-passe-incompatibles" type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe *" required>
+                        <p class="erreur-formulaire-creation-membre erreur-mots-de-passe-incompatibles"><img src="images/icon_informations.png" alt="icon i pour informations">Les mots de passe ne correspondent pas.</p>
                         </div>
 
                     </fieldset>
@@ -193,26 +205,33 @@
                 
             // Initialisation du tableau d'erreurs
             $erreurs = [];
+            $erreurs_a_afficher = [];
             // Vérifications approfondies des champs
             // 1. Prénom : Pas de chiffres, pas de caractères spéciaux
             if (empty($prenom)) {
                 $erreurs[] = "Le champ 'Prénom' est requis.";
+                $erreurs_a_afficher[] = "erreur-prenom-requis";
             } elseif (!preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/", $prenom)) {
                 $erreurs[] = "Le prénom ne doit contenir que des lettres, espaces, ou apostrophes.";
+                $erreurs_a_afficher[] = "erreur-prenom-invalide";
             }
             // 2. Nom : Pas de chiffres, pas de caractères spéciaux
             if (empty($nom)) {
                 $erreurs[] = "Le champ 'Nom' est requis.";
+                $erreurs_a_afficher[] = "erreur-nom-requis";
             } elseif (!preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/", $nom)) {
                 $erreurs[] = "Le nom ne doit contenir que des lettres, espaces, ou apostrophes.";
+                $erreurs_a_afficher[] = "erreur-nom-invalide";
             }
             // 3. Pseudo : Autoriser lettres, chiffres, mais pas de caractères spéciaux à part underscores
             if (empty($pseudo)) {
                 $erreurs[] = "Le champ 'Pseudo' est requis.";
+                $erreurs_a_afficher[] = "erreur-pseudo-requis";
             }
             // 4. Email : Vérifier si l'email est valide
             if (empty($email) || !preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email)) {
                 $erreurs[] = "L'adresse email est invalide.";
+                $erreurs_a_afficher[] = "erreur-email-invalide";
             } else {
                 /* on vérifie l'unicité de l'adresse mail.
                 Sinon, les insertions présentes AVANT une insertion utilisant l'adresse mail se déclencheront quand même !*/
@@ -224,26 +243,32 @@
                 $existeAdresseMail = $verifAdresseMail->fetch(PDO::FETCH_ASSOC);
                 if($existeAdresseMail){
                     $erreurs[] = "Cette adresse mail est déjà liée à un compte !";
+                    $erreurs_a_afficher[] = "erreur-email-existant";
                 }
             }
             
             // 5. Téléphone : Doit être un format valide de 10 chiffres
             if (empty($telephone) || !preg_match('/^[0-9]{10}$/', $telephone)) {
                 $erreurs[] = "Le numéro de téléphone doit comporter 10 chiffres.";
+                $erreurs_a_afficher[] = "erreur-telephone-invalide";
             }
             // 6. Adresse : Valider la longueur minimum et maximum si nécessaire
             if (empty($adresse)) {
                 $erreurs[] = "Le champ 'Adresse' est requis.";
+                $erreurs_a_afficher[] = "erreur-adresse-requis";
             }
             // 7. Code Postal : Format à 5 chiffres
             if (empty($codePostal) || !preg_match('/^([0-9]{5}|2[AB])$/', $codePostal)) {
                 $erreurs[] = "Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B.";
+                $erreurs_a_afficher[] = "erreur-code-postal-invalide";
             }
             // 8. Ville : Pas de chiffres, pas de caractères spéciaux
             if (empty($ville)) {
                 $erreurs[] = "Le champ 'Ville' est requis.";
+                $erreurs_a_afficher[] = "erreur-ville-requis";
             } elseif (!preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/", $ville)) {
                 $erreurs[] = "Le nom de la ville ne doit contenir que des lettres, espaces, ou apostrophes.";
+                $erreurs_a_afficher[] = "erreur-ville-invalide";
             }
 
             // 8.bis : Vérification du code postal
@@ -256,10 +281,10 @@
                     $erreurs[] = "Erreur lors de l'accès à l'API";
                     exit();
                 }
-
+                
                 $data = json_decode($api_codePostal,true);
                 $isValid = false;
-
+                
                 if($data && isset($data['places'])){
                     foreach($data['places'] as $place){
                         if(stripos($place['place name'], $ville) === 0){
@@ -270,16 +295,19 @@
                 }
                 if(!$isValid){
                     $erreurs[] = "La ville ne correspond pas au code postal";
+                    $erreurs_a_afficher[] = "erreur-ville-code-postal-incompatible";
                 }
             }
             
             // 9. Mot de passe : Minimum 8 caractères, et correspondance avec le champ de confirmation
             if ($password !== $confirmPassword) {
                 $erreurs[] = "Les mots de passe ne correspondent pas.";
+                $erreurs_a_afficher[] = "erreur-mots-de-passe-incompatibles";
             }
             // 10. Conditions générales d'utilisation (CGU) : Vérification que la case est cochée
             if (!$cgu) {
                 $erreurs[] = "Vous devez accepter les conditions générales d'utilisation.";
+                $erreurs_a_afficher[] = "erreur-cgu-non-accepte";
             }
 
             // Vérifie s'il y a des erreurs
@@ -344,10 +372,28 @@
                 }
             } else {
                 // Affiche les erreurs
-                foreach ($erreurs as $erreur) {
-                    echo "<p>$erreur</p>";
+                // foreach ($erreurs as $erreur) {
+                //     echo "<p>$erreur</p>";
+                // }
+                foreach ($erreurs_a_afficher as $champs) {
+                    ?> 
+                    <style>
+                        <?php echo ".creation_compte_membre fieldset p.$champs"?>{
+                            display : flex;
+                            align-items: center;
+                            justify-content: space-between;
+                        }
+                        <?php echo ".creation_compte_membre fieldset p.$champs img"?>{
+                            width: 10px;
+                            height: 10px;
+                            margin-right: 10px;
+                        }
+                        <?php echo ".creation_compte_membre input.$champs"?>{
+                            border: 1px solid red;
+                        }
+                    </style>
+                    <?php
                 }
-                
             }
         }
     
