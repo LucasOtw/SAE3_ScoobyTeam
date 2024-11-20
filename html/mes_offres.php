@@ -67,7 +67,7 @@ var_dump($_SESSION["pro"]);
 
         <div class="offer-card">
                 <div class="offer-image">
-                    <img src="hotel.jpg" alt="Offre Ti Al Lannec">
+                    <img src="images/hotel.jpg" alt="Offre Ti Al Lannec">
                     <div class="offer-rating">
                         <span class="star">★</span>
                         <span class="rating">5.0</span>
