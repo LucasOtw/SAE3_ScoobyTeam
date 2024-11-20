@@ -2,7 +2,7 @@
 
 ob_start();
 session_start();
-if (!isset($_SESSION["compte"]) || empty($_SESSION["compte"])) {
+if (!isset($_SESSION["pro"]) || empty($_SESSION["pro"])) {
     header('location: connexion_pro.php');
     exit;
 }
@@ -12,6 +12,8 @@ if(isset($_GET["deco"])){
     header('location: connexion_pro.php');
     exit;
 }
+
+var_dump($_SESSION["pro"]);
 
 ?>
 <!DOCTYPE html>
