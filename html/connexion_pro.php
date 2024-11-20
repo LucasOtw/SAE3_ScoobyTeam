@@ -1,17 +1,6 @@
 <?php
 ob_start();
 session_start();
-
-if(isset($_SESSION['pro'])){
-   // si un professionnel est déjà connecté....
-   // bah il va pas se reconnecter.
-
-   header('location: mes_offres.php');
-   exit;
-}
-
-echo password_hash("test",PASSWORD_DEFAULT);
-   
 ?>
 
 <!DOCTYPE html>
@@ -47,13 +36,15 @@ echo password_hash("test",PASSWORD_DEFAULT);
                 <div class="connexion_pro_h2_p">
                     <h2>Se connecter</h2>
                     <p>Connectez-vous à votre compte professionnel pour gérer vos annonces, 
-                        <br>suivre vos interactions et continuer à développer votre activité !</p>
+                    <br>suivre vos interactions et continuer à développer votre activité !</p>
                 </div>
                 <form action="#" method="POST">
                     <fieldset>
                         <legend>E-mail</legend>
                         <div class="connexion_pro_input-group">
                             <input type="email" name="email" id="email" placeholder="E-mail" required>
+                            <p class="erreur-formulaire-connexion-pro erreur-user-inconnu"><img src="images/icon_informations.png" alt="icon i pour informations">L'utilisateur n'existe pas</p>
+                            <p class="erreur-formulaire-connexion-pro erreur-pro-inconnu"><img src="images/icon_informations.png" alt="icon i pour informations">L'utilisateur n'existe pas en tant que professionnel </p>
                         </div>
                     </fieldset>
 
@@ -61,6 +52,7 @@ echo password_hash("test",PASSWORD_DEFAULT);
                         <legend>Mot de passe</legend>
                         <div class="connexion_pro_input-group">
                             <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+                            <p class="erreur-formulaire-connexion-pro erreur-mot-de-passe-incorect"><img src="images/icon_informations.png" alt="icon i pour informations">Mot de passe incorrect</p>
                         </div>
                     </fieldset>
 
@@ -97,39 +89,83 @@ echo password_hash("test",PASSWORD_DEFAULT);
 
         // on vérifie que l'adresse mail soit reliée à un compte
 
-        $codeCompte = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail = :mail");
+        $codeCompte = $dbh->prepare("SELECT code_compte FROM tripenarvor._compte WHERE mail = :mail");
         $codeCompte->bindParam(":mail",$email);
         $codeCompte->execute();
-        $Compte = $codeCompte->fetch(PDO::FETCH_ASSOC);
+        $codeCompte = $codeCompte->fetch();
 
         if ($codeCompte) {
             // si un compte est trouvé, on vérifie maintenant qu'il soit professionnel
-            // var_dump($codeCompte['code_compte']);  // Commenté ou supprimé pour éviter la sortie avant header
+            // var_dump($codeCompte[0]);  // Commenté ou supprimé pour éviter la sortie avant header
             $estPro = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel WHERE code_compte = :codeCompte");
-            $estPro->bindParam(":codeCompte", $Compte['code_compte']);
+            $estPro->bindParam(":codeCompte", $codeCompte[0]);
             $estPro->execute();
             $estPro = $estPro->fetch();
         
             if ($estPro) {
                 // si le compte est professionnel, alors on vérifie son mot de passe
                 $mdpPro = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :codeCompte");
-                $mdpPro->bindParam("codeCompte", $Compte['code_compte']);
+                $mdpPro->bindParam("codeCompte", $codeCompte[0]);
                 $mdpPro->execute();
-                $mdpPro = $mdpPro->fetch(PDO::FETCH_ASSOC);
-                
-                if (password_verify(trim($password), trim($mdpPro['mdp']))) {
+                $mdpPro = $mdpPro->fetch();
+                if (password_verify($password, $mdpPro[0])) {
                     // si le mot de passe est correct
-                    $_SESSION["pro"] = $Compte; // Stocke le code_compte dans la session
+                    $_SESSION["compte"] = $codeCompte[0]; // Stocke le code_compte dans la session
                     header('Location: mes_offres.php'); // Redirection
                     exit; // Assure que le script s'arrête après la redirection
-                } else {
-                    echo "Mot de passe incorrect.";
+                } else /* Mot de passe Invalide */{
+                    ?> 
+                        <style>
+                            <?php echo ".connexion_pro_main fieldset p.erreur-mot-de-passe-incorect"?>{
+                                display : flex;
+                                align-items: center;
+                            }
+                            <?php echo ".connexion_pro_main fieldset p.erreur-mot-de-passe-incorect img"?>{
+                                width: 10px;
+                                height: 10px;
+                                margin-right: 10px;
+                            }
+                            <?php echo ".connexion_pro_main input.erreur-mot-de-passe-incorect"?>{
+                                border: 1px solid red;
+                            }
+                        </style>
+                        <?php
                 }
-            } else {
-                echo "Cette adresse mail est reliée à un compte non professionnel.";
+            } else /* Mail Pas Pro */ {
+                ?> 
+                        <style>
+                            <?php echo ".connexion_pro fieldset p.erreur-pro-inconnu"?>{
+                                display : flex;
+                                align-items: center;
+                            }
+                            <?php echo ".connexion_pro fieldset p.erreur-pro-inconnu img"?>{
+                                width: 10px;
+                                height: 10px;
+                                margin-right: 10px;
+                            }
+                            <?php echo ".connexion_pro input.erreur-pro-inconnu"?>{
+                                border: 1px solid red;
+                            }
+                        </style>
+                        <?php
             }
-        } else {
-            echo "Aucun compte trouvé à cette adresse mail";
+        } else /* Mail Inconnu */{
+            ?> 
+                        <style>
+                            <?php echo ".connexion_membre_main fieldset p.erreur-user-inconnu"?>{
+                                display : flex;
+                                align-items: center;
+                            }
+                            <?php echo ".connexion_membre_main fieldset p.erreur-user-inconnu img"?>{
+                                width: 10px;
+                                height: 10px;
+                                margin-right: 10px;
+                            }
+                            <?php echo ".connexion_membre_main input.erreur-user-inconnu"?>{
+                                border: 1px solid red;
+                            }
+                        </style>
+                        <?php
         }
     }
     ?>
