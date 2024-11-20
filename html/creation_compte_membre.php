@@ -205,33 +205,33 @@
                 
             // Initialisation du tableau d'erreurs
             $erreurs = [];
-            $erreur_a_afficher = [];
+            $erreurs_a_afficher = [];
             // Vérifications approfondies des champs
             // 1. Prénom : Pas de chiffres, pas de caractères spéciaux
             if (empty($prenom)) {
                 $erreurs[] = "Le champ 'Prénom' est requis.";
-                $erreur_a_afficher[] = "erreur-prenom-requis";
+                $erreurs_a_afficher[] = "erreur-prenom-requis";
             } elseif (!preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/", $prenom)) {
                 $erreurs[] = "Le prénom ne doit contenir que des lettres, espaces, ou apostrophes.";
-                $erreur_a_afficher[] = "erreur-prenom-invalide";
+                $erreurs_a_afficher[] = "erreur-prenom-invalide";
             }
             // 2. Nom : Pas de chiffres, pas de caractères spéciaux
             if (empty($nom)) {
                 $erreurs[] = "Le champ 'Nom' est requis.";
-                $erreur_a_afficher[] = "erreur-nom-requis";
+                $erreurs_a_afficher[] = "erreur-nom-requis";
             } elseif (!preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/", $nom)) {
                 $erreurs[] = "Le nom ne doit contenir que des lettres, espaces, ou apostrophes.";
-                $erreur_a_afficher[] = "erreur-nom-invalide";
+                $erreurs_a_afficher[] = "erreur-nom-invalide";
             }
             // 3. Pseudo : Autoriser lettres, chiffres, mais pas de caractères spéciaux à part underscores
             if (empty($pseudo)) {
                 $erreurs[] = "Le champ 'Pseudo' est requis.";
-                $erreur_a_afficher[] = "erreur-pseudo-requis";
+                $erreurs_a_afficher[] = "erreur-pseudo-requis";
             }
             // 4. Email : Vérifier si l'email est valide
             if (empty($email) || !preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email)) {
                 $erreurs[] = "L'adresse email est invalide.";
-                $erreur_a_afficher[] = "erreur-email-invalide";
+                $erreurs_a_afficher[] = "erreur-email-invalide";
             } else {
                 /* on vérifie l'unicité de l'adresse mail.
                 Sinon, les insertions présentes AVANT une insertion utilisant l'adresse mail se déclencheront quand même !*/
@@ -243,32 +243,32 @@
                 $existeAdresseMail = $verifAdresseMail->fetch(PDO::FETCH_ASSOC);
                 if($existeAdresseMail){
                     $erreurs[] = "Cette adresse mail est déjà liée à un compte !";
-                    $erreur_a_afficher[] = "erreur-email-existant";
+                    $erreurs_a_afficher[] = "erreur-email-existant";
                 }
             }
             
             // 5. Téléphone : Doit être un format valide de 10 chiffres
             if (empty($telephone) || !preg_match('/^[0-9]{10}$/', $telephone)) {
                 $erreurs[] = "Le numéro de téléphone doit comporter 10 chiffres.";
-                $erreur_a_afficher[] = "erreur-telephone-invalide";
+                $erreurs_a_afficher[] = "erreur-telephone-invalide";
             }
             // 6. Adresse : Valider la longueur minimum et maximum si nécessaire
             if (empty($adresse)) {
                 $erreurs[] = "Le champ 'Adresse' est requis.";
-                $erreur_a_afficher[] = "erreur-adresse-requis";
+                $erreurs_a_afficher[] = "erreur-adresse-requis";
             }
             // 7. Code Postal : Format à 5 chiffres
             if (empty($codePostal) || !preg_match('/^([0-9]{5}|2[AB])$/', $codePostal)) {
                 $erreurs[] = "Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B.";
-                $erreur_a_afficher[] = "erreur-code-postal-invalide";
+                $erreurs_a_afficher[] = "erreur-code-postal-invalide";
             }
             // 8. Ville : Pas de chiffres, pas de caractères spéciaux
             if (empty($ville)) {
                 $erreurs[] = "Le champ 'Ville' est requis.";
-                $erreur_a_afficher[] = "erreur-ville-requis";
+                $erreurs_a_afficher[] = "erreur-ville-requis";
             } elseif (!preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ' -]+$/", $ville)) {
                 $erreurs[] = "Le nom de la ville ne doit contenir que des lettres, espaces, ou apostrophes.";
-                $erreur_a_afficher[] = "erreur-ville-invalide";
+                $erreurs_a_afficher[] = "erreur-ville-invalide";
             }
 
             // 8.bis : Vérification du code postal
@@ -295,19 +295,19 @@
                 }
                 if(!$isValid){
                     $erreurs[] = "La ville ne correspond pas au code postal";
-                    $erreur_a_afficher[] = "erreur-ville-code-postal-incompatible";
+                    $erreurs_a_afficher[] = "erreur-ville-code-postal-incompatible";
                 }
             }
             
             // 9. Mot de passe : Minimum 8 caractères, et correspondance avec le champ de confirmation
             if ($password !== $confirmPassword) {
                 $erreurs[] = "Les mots de passe ne correspondent pas.";
-                $erreur_a_afficher[] = "erreur-mots-de-passe-incompatibles";
+                $erreurs_a_afficher[] = "erreur-mots-de-passe-incompatibles";
             }
             // 10. Conditions générales d'utilisation (CGU) : Vérification que la case est cochée
             if (!$cgu) {
                 $erreurs[] = "Vous devez accepter les conditions générales d'utilisation.";
-                $erreur_a_afficher[] = "erreur-cgu-non-accepte";
+                $erreurs_a_afficher[] = "erreur-cgu-non-accepte";
             }
 
             // Vérifie s'il y a des erreurs
