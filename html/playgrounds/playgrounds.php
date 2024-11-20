@@ -18,7 +18,7 @@
 echo "<pre>";
 var_dump($afficheUtilisateur);
 echo "</pre>";
-echo "<h1> INFOS. PRO </h1><br>";
+echo "<h1> INFOS. PRO </h1>";
 echo "<pre>";
 var_dump($monComptePro);
 echo "</pre>";
