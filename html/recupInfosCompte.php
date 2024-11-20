@@ -36,8 +36,8 @@
 
     $monComptePrive = $monComptePrive->fetch(PDO::FETCH_ASSOC);
     var_dump($monComptePrive);
-    if(count($monComptePrive) > 0){
-      $monCompte['num_siren'] = $monComptePrive['num_siren'];
+    if ($monComptePrive) {
+        $monCompte['num_siren'] = $monComptePrive['num_siren'];
     }
   }
 
