@@ -585,3 +585,38 @@ nav.nav-bar {
         display: none   ;
     }
 }
+
+
+
+
+  /* Styles pour le pop-up */
+  #customPopup {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    bottom: 20px; /* Position en bas */
+    right: 20px; /* Position à gauche */
+    background-color: #f8f9fa;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+}
+
+/* Bouton pour fermer le pop-up */
+#closePopup {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: var(--vert-clair);
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#closePopup:hover {
+    background-color: #c82333;
+}

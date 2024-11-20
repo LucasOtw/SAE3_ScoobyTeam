@@ -56,6 +56,35 @@ function tempsEcouleDepuisPublication($offre){
     <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Code pour le pop-up --> 
+    <!-- Conteneur du pop-up -->
+    <div id="customPopup">
+        <img src=images/logoNoirVert.png>
+        <p>Voici un message dans un pop-up !</p>
+        <button id="closePopup">Fermer</button>
+    </div>
+
+    <script>
+        // Fonction pour afficher le pop-up
+        function afficherPopupAvecDelai() {
+            const popup = document.getElementById("customPopup");
+            popup.style.display = "block"; // Afficher le pop-up
+        }
+
+        // Fonction pour fermer le pop-up
+        function fermerPopup() {
+            const popup = document.getElementById("customPopup");
+            popup.style.display = "none"; // Cacher le pop-up
+        }
+
+        // Ajouter un écouteur d'événement au bouton "Fermer"
+        document.getElementById("closePopup").addEventListener("click", fermerPopup);
+
+        // Lancer le pop-up après 5 secondes
+        setTimeout(afficherPopupAvecDelai, 5000);
+    </script>
+
+
     <div class="header-membre">
     <header class="header-pc">
         <div class="logo-pc">
