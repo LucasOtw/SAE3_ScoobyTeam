@@ -2,6 +2,9 @@
 
 ob_start();
 session_start();
+
+include("recupInfosCompte.php");
+
 if (!isset($_SESSION["pro"]) || empty($_SESSION["pro"])) {
     header('location: connexion_pro.php');
     exit;
