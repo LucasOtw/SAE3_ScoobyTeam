@@ -66,10 +66,6 @@ function tempsEcouleDepuisPublication($offre){
     <!-- Code pour le pop-up --> 
     <!-- Conteneur du pop-up -->
     <div id="customPopup">
-        <img src=images/connexion.png  width=50px height=50px >
-        <p>Créez votre compte en quelques clics et accédez à un monde de possibilités ! </p>
-        <img src=images/erreur.png>
-        <button id="closePopup">Fermer</button>
         <img src="images/connexion1.png"  width=70px height=70px >
         <p>Créez votre compte en quelques clics et accédez à un monde de possibilités ! </p>
         <a id="connexion" href="connexion_membre.php" id="bouton_connexion">S'inscrire</a>
