@@ -438,7 +438,6 @@ footer {
 
 .toute_les_offres_main .offer img {
     width: 15vw;
-    height: 15vh;
     border-radius: 15px;
     object-fit: cover;
     margin: 0.5vw 1vw;
@@ -589,7 +588,7 @@ nav.nav-bar {
     .nb-avis{
         display: none   ;
     }
-    #customPopup {
+#customPopup {
     display: none;
     position: fixed;
     bottom: 20px;
