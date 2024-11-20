@@ -8,10 +8,10 @@ if(isset($_SESSION['pro'])){
 
    header('location: mes_offres.php');
    exit;
-
-   echo password_hash("test",PASSWORD_DEFAULT);
 }
 
+echo password_hash("test",PASSWORD_DEFAULT);
+   
 ?>
 
 <!DOCTYPE html>
