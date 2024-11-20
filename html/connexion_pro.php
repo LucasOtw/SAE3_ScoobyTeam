@@ -2,7 +2,7 @@
 ob_start();
 session_start();
 
-if(isset($_SESSION['pro']){
+if(isset($_SESSION['pro'])){
    // si un professionnel est déjà connecté....
    // bah il va pas se reconnecter.
 
