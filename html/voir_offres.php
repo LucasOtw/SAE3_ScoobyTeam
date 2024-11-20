@@ -81,7 +81,7 @@ function tempsEcouleDepuisPublication($offre){
         document.getElementById("closePopup").addEventListener("click", fermerPopup);
 
         // Lancer le pop-up après 5 secondes
-        setTimeout(afficherPopupAvecDelai, 5000);
+        setTimeout(afficherPopupAvecDelai, 1000);
     </script>
 
 
