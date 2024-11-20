@@ -66,26 +66,26 @@ var_dump($_SESSION["pro"]);
 
 
         <div class="offer-card">
-                <div class="offer-image">
-                    <img src="images/hotel.jpg" alt="Offre Ti Al Lannec">
-                    <div class="offer-rating">
-                        <span class="star">★</span>
-                        <span class="rating">5.0</span>
-                    </div>
-                    <div class="offer-status">
-                        <span class="status-dot"></span> Hors Ligne
-                    </div>
+            <div class="offer-image">
+                <img src="images/hotel.jpg" alt="Offre Ti Al Lannec">
+                <div class="offer-rating">
+                    <span class="star">★</span>
+                    <span class="rating">5.0</span>
                 </div>
-                <div class="offer-info">
-                    <h3>Ti Al Lannec</h3>
-                    <p class="category">Restaurant Gastronomique</p>
-                    <p class="update"><span class="update-icon">⟳</span> Update 2j</p>
-                    <p class="last-update">Mis à jour il y a 2 semaines</p>
-                    <p class="offer-type">Offre Standard</p>
-                    <p class="price">40-500€</p>
+                <div class="offer-status">
+                    <span class="status-dot"></span> Hors Ligne
                 </div>
-                <button class="add-btn">+</button>
             </div>
+            <div class="offer-info">
+                <h3>Ti Al Lannec</h3>
+                <p class="category">Restaurant Gastronomique</p>
+                <p class="update"><span class="update-icon">⟳</span> Update 2j</p>
+                <p class="last-update">Mis à jour il y a 2 semaines</p>
+                <p class="offer-type">Offre Standard</p>
+                <p class="price">40-500€</p>
+            </div>
+            <button class="add-btn">+</button>
+        </div>
             <button class="image-button">
             <span class="button-text">Publier une offre</span>
             </button>
