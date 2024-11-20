@@ -5,6 +5,43 @@ if(isset($_GET["deco"])){
     session_destroy();
 };
 
+function tempsEcouleDepuisPublication($offre){
+    // date d'aujourd'hui
+    $date_actuelle = new DateTime();
+    // conversion de la date de publication en objet DateTime
+    $date_ajout_offre = new DateTime($offre['date_publication']);
+    // calcul de la différence en jours
+    $diff = $date_ajout_offre->diff($date_actuelle);
+    // récupération des différentes unités de temps
+    $jours = $diff->days; // total des jours de différence
+    $mois = $diff->m + ($diff->y * 12); // mois totaux
+    $annees = $diff->y;
+
+    $retour = null;
+
+    // calcul du nombre de jours dans le mois précédent
+    $date_mois_precedent = clone $date_actuelle;
+    $date_mois_precedent->modify('-1 month');
+    $jours_dans_mois_precedent = (int)$date_mois_precedent->format('t'); // 't' donne le nombre de jours dans le mois
+
+    if($jours == 0){
+        $retour = "Aujourd'hui";
+    } elseif($jours == 1){
+        $retour = "Hier";
+    } elseif($jours > 1 && $jours < 7){
+        $retour = $jours." jour(s)";
+    } elseif ($jours >= 7 && $jours < $jours_dans_mois_precedent){
+        $semaines = floor($jours / 7);
+        $retour = $semaines." semaine(s)";
+    } elseif ($mois < 12){
+        $retour = $mois." mois";
+    } else {
+        $retour = $annees." an(s)";
+    }
+
+    return $retour;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -30,16 +67,23 @@ if(isset($_GET["deco"])){
                 <li><a href="voir_offres.php" class="active">Accueil</a></li>
                 <li><a href="connexion_pro.php">Publier</a></li>
                 <?php
-                    if(isset($_SESSION["compte"]) || !empty($_SESSION["compte"])){
-                        ?>
-                        <li><a href="#">/!\ EN COURS /!\</a></li>
-                        <li><a href="voir_offres.php?deco=true">Se déconnecter</a></li>
+                    if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
+                       ?>
+                       <li>
+                           <a href="#">/!\ EN COURS /!\</a>
+                       </li>
+                        <li>
+                            <a href="voir_offres.php?deco=true">Se déconnecter</a>
+                        </li>
                         <?php
                     } else {
                         ?>
-                        <li><a href="connexion_membre.php">Se connecter</a></li>
-                        <?php
-                    } ?>
+                       <li>
+                           <a href="connexion_membre.php">Se connecter</a>
+                       </li>
+                       <?php
+                    }
+                ?>
             </ul>
         </nav>
     </header>
@@ -84,19 +128,19 @@ if(isset($_GET["deco"])){
 
         <section id="offers-list">
 
-        <article class="offer">
-                <img src="images/offre2.png" alt="Image de l'offre Armor'Park">
-                <div class="offer-details">
-                    <h2>Armor'Park</h2>
-                    <p>Lannion</p>
-                    <span>3 mois</span>
-                    <span>
-                        <!-- <img src="images/etoile.png" class="img-etoile">
-                        <p>4 <span class="nb_avis">(50 avis)</span></p> -->
-                    </span>
-                    <button>Voir l'offre →</button>
-                </div>
-            </article>
+      <!--  <article class="offer">
+            <img src="images/offre2.png" alt="Image de l'offre Armor'Park">
+            <div class="offer-details">
+                <h2>Armor'Park</h2>
+                <p>Lannion</p>
+                <span>3 mois</span>
+                <span>
+                    <!-- <img src="images/etoile.png" class="img-etoile">
+                    <p>4 <span class="nb_avis">(50 avis)</span></p> -->
+                </span>
+                <button>Voir l'offre →</button>
+            </div>
+        </article> -->
 
         <?php
             try {
@@ -113,7 +157,7 @@ if(isset($_GET["deco"])){
                 die();
             }
             // On récupère toutes les offres (titre,ville,images)
-            $infosOffre = $dbh->query('SELECT code_offre,titre_offre,code_adresse FROM tripenarvor._offre');
+            $infosOffre = $dbh->query('SELECT code_offre,titre_offre,code_adresse,date_publication FROM tripenarvor._offre');
             $infosOffre = $infosOffre->fetchAll();
 
             foreach($infosOffre as $offre){
@@ -128,23 +172,30 @@ if(isset($_GET["deco"])){
                 $imagesOffre->bindParam(":code_offre", $offre["code_offre"]);
                 $imagesOffre->execute();
                 
-                // Utiliser fetchAll pour récupérer toutes les images sous forme de tableau
+                // on recupère toutes les images sous forme de tableau
                 $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
-            
-                if (!empty($images)) {
-                    // Récupérer la première image si disponible
-                    $offre_image = $images[0]['code_image']; 
+
+                if(!empty($images)){ // si le tableau n'est pas vide...
+                    /* On récupère uniquement la première image.
+                    Une offre peut avoir plusieurs images. Mais on n'en affiche qu'une seule sur cette page.
+                    On pourrait afficher aléatoirement chaque image, mais on serait vite perdus...*/
+                                    
+                    $recupLienImage = $dbh->prepare('SELECT url_image FROM tripenarvor._image WHERE code_image = :code_image');
+                    $recupLienImage->bindValue(":code_image",$images[0]['code_image']);
+                    $recupLienImage->execute();
+    
+                    $offre_image = $recupLienImage->fetch(PDO::FETCH_ASSOC);
                 } else {
-                    $offre_image = ""; // Pas d'image trouvée
+                    $offre_image = "";
                 }
 
                 ?>
                 <article class="offer">
-                    <img src=<?php echo $offre_image ?> alt="aucune image">
+                    <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
                     <div class="offer-details">
                         <h2><?php echo $offre["titre_offre"] ?></h2>
                         <p><?php echo $villeOffre["ville"] ?></p>
-                        <span>Durée inconnue</span>
+                        <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
                         <button>Voir l'offre →</button>
                     </div>
                 </article>
@@ -152,19 +203,6 @@ if(isset($_GET["deco"])){
             }
 
         ?>
-        <article class="offer">
-                <img src="images/offre2.png" alt="Image de l'offre Armor'Park">
-                <div class="offer-details">
-                    <h2>Armor'Park</h2>
-                    <p>Lannion</p>
-                    <span>3 mois</span>
-                    <span>
-                        <!-- <img src="images/etoile.png" class="img-etoile">
-                        <p>4 <span class="nb_avis">(50 avis)</span></p> -->
-                    </span>
-                    <button>Voir l'offre →</button>
-                </div>
-            </article>
         </section>
 
     </main>

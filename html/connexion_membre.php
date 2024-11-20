@@ -92,7 +92,6 @@ session_start();
         /* CONNEXION (V2) */
 
         if(!empty($_POST)){
-            echo "bonjour";
             $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
             $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
 
@@ -105,21 +104,43 @@ session_start();
             if($estUtilisateur !== false){
                 // si l'utilisateur existe, on doit vérifier que c'est un membre
                 $verifMembre = $dbh->prepare("SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte");
-                $verifMembre->bindValue(":code_compte",$existeUser['code_compte']);
+                $verifMembre->bindValue(":code_compte",$estUtilisateur['code_compte']);
                 $verifMembre->execute();
 
                 $estMembre = $verifMembre->fetch(PDO::FETCH_ASSOC);
 
                 if($estMembre !== false){
                     // si c'est un membre...
+                    // on vérifie le mot de passe
+                    $verifMDP = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE mail = :mail");
+                    $verifMDP->bindValue(":mail",$estUtilisateur['mail']);
+                    $verifMDP->execute();
+
+                    $vraiMDP = $verifMDP->fetch();
+
+                    if (password_verify($password, $vraiMDP[0])) {
+                        // Si le mdp correspond au mdp haché...
+                        // On peut connecter l'utilisateur !
+                    
+                        $_SESSION['membre'] = $estUtilisateur;
+                        session_regenerate_id(true);
+                        header("location: voir_offres.php");
+                    } else {
+                        $erreurs[] = "Adresse mail ou mot de passe incorrect";
+                    }
+
                 } else {
-                    echo "Ernie, petite mémé droit devant !";
+                    $erreurs[] = "Ce compte n'existe pas";
                 }
             } else {
-                echo "Ernie, petite mémé droit devant !";
+                $erreurs[] = "Ce compte n'existe pas";
             }
-        } else {
-            echo "Ta mère";
+        }
+
+        if(isset($erreurs) && !empty($erreurs)){
+            foreach($erreurs as $erreur){
+                echo $erreur."<br>";
+            }
         }
         
     ?>
