@@ -535,3 +535,11 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
         margin-bottom: 0;
     }
 }
+
+
+.creation_compte_membre fieldset p.erreur-formulaire-creation-membre{
+    color: #d70808;
+    margin-bottom: 0;
+    font-size: 12px;
+    display: none;
+}
