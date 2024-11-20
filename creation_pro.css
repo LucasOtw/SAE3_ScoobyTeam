@@ -513,6 +513,11 @@ body > main > div > div.creation_compte_pro_form-section > form > div.crea_pro_r
 .creation_compte_pro .creation_compte_pro_other-links a {
     color: var(--orange);
     text-decoration: none;
+    font-weight: bold;
+}
+.creation_compte_pro .creation_compte_pro_other-links a.lien-creation-compte-membre {
+    color: var(--vert-clair);
+    text-decoration: none;
 }
 
 .creation_compte_pro .image-section {
@@ -529,9 +534,9 @@ body > main > div > div.creation_compte_pro_form-section > form > div.crea_pro_r
 
 
 .creation_compte_pro fieldset {
-    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     position: relative;
     padding-top: 0; /* Enlève le padding en haut */
 }
@@ -591,4 +596,11 @@ main.creation_compte_pro > div > div.connexion_pro_form-creation_compte_pro_cont
     .creation_compte_pro .creation_compte_pro_form-section {
         width: 100%; /* Le formulaire prend toute la largeur sur petits écrans */
     }
+}
+
+.creation_compte_pro fieldset p.erreur-formulaire-creation-pro{
+    color: #d70808;
+    margin-bottom: 0;
+    font-size: 12px;
+    /* display: none; */
 }
