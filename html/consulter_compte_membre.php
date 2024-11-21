@@ -56,6 +56,7 @@ if(isset($_POST['logout'])){
            }
        }
        echo "Les informations ont été mises à jour.";
+       include("recupInfosCompte.php");
    } else {
        echo "Aucune modification détectée.";
    }
