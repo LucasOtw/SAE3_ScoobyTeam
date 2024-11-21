@@ -70,12 +70,12 @@ include("recupInfosCompte.php");
             <div class="crea_pro_mail_tel">
                 <fieldset>
                     <legend>Email *</legend>
-                    <input type="email" id="email" name="email" value="Test" placeholder="Email *" required>
+                    <input type="email" id="email" name="email" value="<?php echo $mesInfos['mail']; ?>" placeholder="Email *" required>
                 </fieldset>
 
                 <fieldset>
                     <legend>Téléphone *</legend>
-                    <input type="tel" id="telephone" name="telephone" value="Test" placeholder="Téléphone *" required>
+                    <input type="tel" id="telephone" name="telephone" value="<?php echo $mesInfos['telephone']; ?>" placeholder="Téléphone *" required>
                 </fieldset>
             </div>
 
