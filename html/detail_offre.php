@@ -17,7 +17,6 @@
     else
     {
         // si le formulaire est bien récupéré
-        file_put_contents("data",unserialze($_POST["uneOffre"]));
         $code_offre = unserialze($_POST["uneOffre"]); // on récupère le code de l'offre envoyé
 
         echo $code_offre;
