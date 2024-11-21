@@ -316,6 +316,9 @@ footer {
     margin-bottom: 20px;  /* Ajoute un espace en bas au cas où elles iraient à la ligne */
 }
 
+main#vosOffres {
+  margin-left: 20px;
+}
 
 /* Note */
 .offer-rating {
