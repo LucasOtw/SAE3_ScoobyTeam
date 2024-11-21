@@ -40,8 +40,8 @@ include("recupInfosCompte.php");
         </div>
             <section class="tabs">
                 <ul>
-                    <li><a href="informations_personnelles_pro.php">informations personnelles</a></li>
-                    <li><a href="mes_offres.php" class="active">Mot de passe et sécurité</a></li>
+                    <li><a href="informations_personnelles_pro.php" class="active">Informations personnelles</a></li>
+                    <li><a href="mes_offres.php">Mot de passe et sécurité</a></li>
                     <li><a href="ajout_bancaire.php">Historique</a></li>
                 </ul>
             </section>
