@@ -260,30 +260,44 @@
                             </button>
                             <div class="info-box" id="infoBox" style="max-height: 0; padding: 0; overflow: hidden; width: 25.5em; transition: max-height 0.3s ease, padding 0.3s ease;">
 
-                                <h3 style="margin-top: 1em;">Durée</h3>
-                                <p>4h (en moyenne)</p>
+                                <?php
+                                if ($type_offre === "restauration")
+                                {
+                                ?>
+                                    <h3 style="margin-top: 1em;">Repas</h3>
+                                    <p><?php echo details_offre["repas"];?></p>
 
-                                <h3 style="margin-top: 1em;">Age</h3>
-                                <p>Tout publics</p>
-                                
-                                <h3 style="margin-top: 1em;">Visite Guidée</h3>
-                                <p>Oui</p>
-                                
-                                <h3 style="margin-top: 1em;">Prestations incluses</h3>
-                                <p>Cours de golf</p>
-                                
-                                <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
-                                <p>Spa</p>
-                                
-                                <h3 style="margin-top: 1em;">Capacité d'acceuil</h3>
-                                <p> 500pers environ</p>
-                                
-                                <h3 style="margin-top: 1em;">Repas</h3>
-                                <p>Oui</p>
-                                
-                                <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
-                                <p>23 attractions</p>
-               
+                                    <h3 style="margin-top: 1em;">Gamme de prix</h3>
+                                    <p><?php echo details_offre["gamme_prix"];?></p>
+                                <?php
+                                }
+                                else
+                                {
+                                ?>
+                                    <h3 style="margin-top: 1em;">Durée</h3>
+                                    <p>4h (en moyenne)</p>
+    
+                                    <h3 style="margin-top: 1em;">Age</h3>
+                                    <p>Tout publics</p>
+                                    
+                                    <h3 style="margin-top: 1em;">Visite Guidée</h3>
+                                    <p>Oui</p>
+                                    
+                                    <h3 style="margin-top: 1em;">Prestations incluses</h3>
+                                    <p>Cours de golf</p>
+                                    
+                                    <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
+                                    <p>Spa</p>
+                                    
+                                    <h3 style="margin-top: 1em;">Capacité d'acceuil</h3>
+                                    <p> 500pers environ</p>
+                                    
+                                    <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
+                                    <p>23 attractions</p>
+                                <?php
+                                }
+                                ?>
+
                             </div>
                         </div>
             </div>
