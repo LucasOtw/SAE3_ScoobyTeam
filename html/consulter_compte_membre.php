@@ -160,7 +160,6 @@ if(isset($_POST['logout'])){
             </div>
             
             <div class="compte_membre_save_delete">
-                <button type="button" name="logout" class="submit-btn3">Déconnexion</button>
                 <button type="submit" name="modif_infos" class="submit-btn2" id="btn-enreg">Enregistrer</button>
             </div>
 
