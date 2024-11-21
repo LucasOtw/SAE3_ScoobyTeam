@@ -221,6 +221,7 @@
                 <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft()">&#8249;</button>
                 <section class="a-la-une">
                 <?php
+                var_dump($images_offre);
                 foreach ($images_offre as $photo)
                 {
                 ?>
