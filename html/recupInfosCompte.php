@@ -131,14 +131,14 @@
         } elseif($jours == 1){
             $retour = "Hier";
         } elseif($jours > 1 && $jours < 7){
-            $retour = "Il y a ".$jours." jour(s)";
+            $retour = "$jours." jour(s)";
         } elseif ($jours >= 7 && $jours < $jours_dans_mois_precedent){
             $semaines = floor($jours / 7);
-            $retour = "Il y a ".$semaines." semaine(s)";
+            $retour = $semaines." semaine(s)";
         } elseif ($mois < 12){
-            $retour = "Il y a ".$mois." mois";
+            $retour = $mois." mois";
         } else {
-            $retour = "Il y a ".$annees." an(s)";
+            $retour = $annees." an(s)";
         }
     
         return $retour;
