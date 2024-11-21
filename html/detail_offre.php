@@ -221,7 +221,6 @@
                 <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft()">&#8249;</button>
                 <section class="a-la-une">
                 <?php
-                var_dump($images_offre);
                 foreach ($images_offre as $photo)
                 {
                 ?>
@@ -244,18 +243,10 @@
             <div class="detail_offre_description">
 
                     <h2>Résumé</h2>
-                    <p>
-                        Venez découvrir un hôtel chic dans l'esprit victorien.
-                    </p>
+                    <p><?php echo $details_offre["_resume"]; ?></p>
 
                     <h2>Description</h2>
-                    <p>
-                        Équipées des dernières technologies, tout a été pensé pour votre confort. Côté jardin, on apprécie le calme de la verdure, le chant des oiseaux et le ruissellement mélodieux de la fontaine. Côté mer, des balcons et terrasses, on est saisi par la force et la beauté du panorama à perte de vue.
-                    </p>
-                    <p>
-                    &nbsp <!-- Pour mettre un espace -->
-                    </p>
-                    <p>27 chambres et 6 suites au décor raffiné et cosy.</p>
+                    <p><?php echo $details_offre["_description"]; ?></p>
 
                     <h2>Nos services</h2>
                         <div class="info-dropdown">
@@ -296,31 +287,24 @@
                
             <div class="accessibilite_infos_detail_offre">
                 <h2>Accessibilité</h2>
-                <p>
-                    - Handicapé</br>
-                    -Trisomique
-                </p>
+                <p><?php echo $details_offre["accessibilite"]; ?></p>
             </div>
 
             <div class="detail_offre_icons">
                 <h2>Tags</h2>
 
-                <div class="detail_offre_icon">
-                    <p>Adapté handicap</p>
-                </div>
+                <?php
+                foreach ($tags_offre as $tag)
+                {
+                ?>
+                    <div class="detail_offre_icon">
+                        <p><?php echo $tag;?></p>
+                    </div>
+                <?php
+                }
+                ?> 
 
-                <div class="detail_offre_icon">
-                    <p></span></p>
-                    <p>Wifi</p>
-                </div>
-
-                <div class="detail_offre_icon">
-                    <p>Chiens Autorisés</p>
-                </div>
-
-                <div class="detail_offre_icon">
-                    <p>Tabac Interdit</p>
-                </div>
+                
 
             </div>
         </div>
