@@ -33,8 +33,7 @@ if(isset($_GET["deco"])){
         <nav>
             <ul>
                 <li><a href="mes_offres.php" class="active">Accueil</a></li>
-                <li><a href="creation_offre1.php">Publier</a></li>
-                <li><a href="#">/!\EN COURS/!\</a></li>
+                <li><a href="creation_offre.php">Publier</a></li>
                 <li><a href="mes_offres.php?deco=true">Déconnexion</a></li>
             </ul>
         </nav>
@@ -107,7 +106,7 @@ if(isset($_GET["deco"])){
             </div>
             <button class="add-btn">+</button>
         </div>
-            <a href="mes_offres.php" class="button-text">
+            <a href="creation_offre.php" class="button-text">
                 <button class="image-button">
                     Publier une offre
                 </button>
