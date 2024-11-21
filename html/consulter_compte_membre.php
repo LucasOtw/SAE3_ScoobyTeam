@@ -43,7 +43,7 @@
 
            
 
-        <form action="traitement_formulaire.php?id=<?php echo $user_id; ?>" method="POST">
+        <form action="traitement_formulaire.php?" method="POST">
 
             <div class="crea_pro_raison_sociale_num_siren">
                 <fieldset>
