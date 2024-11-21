@@ -115,8 +115,6 @@ session_start();
                     // si le mot de passe est correct
                     echo "TA MERE";
                     $_SESSION["pro"] = $codeCompte; // Stocke le code_compte dans la session
-                    header('Location: mes_offres.php'); // Redirection
-                    exit; // Assure que le script s'arrête après la redirection
                 } else /* Mot de passe Invalide */{
                     ?> 
                         <style>
