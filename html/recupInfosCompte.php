@@ -21,6 +21,8 @@
   } elseif(isset($_SESSION['pro'])){
      $compte = $_SESSION['pro'];
 
+    var_dump($compte);
+
     // on sélectionne les infos du pro
      $monCompte = $dbh->prepare("SELECT * FROM tripenarvor._professionnel WHERE code_compte = :code_compte");
      $monCompte->bindValue(":code_compte",$compte['code_compte']);
