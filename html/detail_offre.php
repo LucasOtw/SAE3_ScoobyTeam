@@ -390,13 +390,13 @@
     
                 <h2>Horaires</h2>
                 <ul class="hours_desktop_detail_offre">
-                    <li><span>Lundi</span>: 19h30 - 21h30</li>
-                    <li><span>Mardi</span>: 19h30 - 21h30</li>
-                    <li><span>Mercredi</span>: 19h30 - 21h30</li>
-                    <li><span>Jeudi</span>: 19h30 - 21h30</li>
-                    <li><span>Vendredi</span>: 19h30 - 21h30</li>
-                    <li><span>Samedi</span>: 19h30 - 21h30</li>
-                    <li><span>Dimanche</span>: 19h30 - 21h30</li>
+                    <li><span>Lundi</span><?php echo afficherHoraire($h_lundi);?></li>
+                    <li><span>Mardi</span><?php echo afficherHoraire($h_mardi);?></li>
+                    <li><span>Mercredi</span><?php echo afficherHoraire($h_mercredi);?></li>
+                    <li><span>Jeudi</span><?php echo afficherHoraire($h_jeudi);?></li>
+                    <li><span>Vendredi</span><?php echo afficherHoraire($h_vendredi);?></li>
+                    <li><span>Samedi</span><?php echo afficherHoraire($h_samedi);?></li>
+                    <li><span>Dimanche</span><?php echo afficherHoraire($h_dimanche);?></li>
                 </ul>
     
             </div>
