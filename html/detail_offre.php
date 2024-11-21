@@ -43,6 +43,22 @@
         return $retour;
     }
 
+    function afficherHoraire($jour)
+    {
+        if (!empty($jour["ouverture"])
+        {
+            $dateTimeO = DateTime::createFromFormat('H:i:s', $jour["ouverture"]);
+            $dateTimeF = DateTime::createFromFormat('H:i:s', $jour["fermeture"]);
+        
+            $horaire = ": ".$dateTimeO->format('H')."h".$dateTimeO->format('i')." - ".$dateTimeF->format('H')."h".$dateTimeF->format('i');
+        }
+        else
+        {
+            $horaire = ": Fermé";
+        }
+        return $horaire;
+    }
+
     // Vérifie si le formulaire a été soumis    
     $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
     $username = "sae";  // Utilisateur PostgreSQL défini dans .env
