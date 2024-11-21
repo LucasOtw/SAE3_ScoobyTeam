@@ -54,7 +54,7 @@
 
     foreach ($mesOffres as $index => $monOffre) { // Utilisez une référence (&) pour modifier directement $monOffre
         $imagesOffres = $dbh->prepare("SELECT code_image FROM tripenarvor._son_image WHERE code_offre = :code_offre");
-        $imagesOffres->bindValue(":code_offre", $monOffre[$index]['code_offre']);
+        $imagesOffres->bindValue(":code_offre", $monOffre['code_offre']);
         $imagesOffres->execute();
     
         $imagesOffres = $imagesOffres->fetchAll(PDO::FETCH_ASSOC);
@@ -69,7 +69,7 @@
     
             $result = $liensImages->fetch(PDO::FETCH_ASSOC);
             if ($result) {
-                $monOffre[$index]['url_images'][] = $result['url_image']; // Ajoute chaque URL au tableau
+                $monOffre[$index]['url_images'] = $result['url_image']; // Ajoute chaque URL au tableau
             }
         }
     }
