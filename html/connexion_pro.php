@@ -110,7 +110,7 @@ session_start();
                 $mdpPro = $mdpPro->fetch();
                 echo "MDP : ".$password."";
                 echo "MDP2 : ".$mdpPro[0]."";
-                echo password_verify($password,$mdpPro[0]));
+                echo password_verify($password,$mdpPro[0]);
                 if (password_verify($password, $mdpPro[0])) {
                     // si le mot de passe est correct
                     $_SESSION["compte"] = $codeCompte[0]; // Stocke le code_compte dans la session
