@@ -92,8 +92,8 @@ if(isset($_POST['logout'])){
 
             <div class="profile-section">
                 <img src="images/Photo_de_Profil.png" alt="Photo de profil" class="profile-img">
-                <h1>Juliette Martin</h1>
-                <p>juliettemartin@gmail.com | 07.98.76.54.12</p>
+                <h1><?php echo $monCompteMembre['prenom']." ".$monCompteMembre['nom']." (".$monCompteMembre['pseudo'].")"; ?></h1>
+                <p><?php echo $mesInfos['mail']; ?> | <?php echo trim(preg_replace('/(\d{2})/', '$1 ', $mesInfos['telephone'])); ?></p>
             </div>
 
         </div>
