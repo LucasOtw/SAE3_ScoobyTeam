@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier mdp compte membre</title>
+    <title>Consulter compte membre</title>
     <link rel="stylesheet" href="consulter_compte_pro.css">
 </head>
 <body>
