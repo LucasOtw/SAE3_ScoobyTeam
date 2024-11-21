@@ -443,8 +443,8 @@ main #vosOffres {
     background-image: url('images/PublierAnnonce.png'); /* Chemin de l'image */
     background-size: cover; /* L'image couvrira tout le bouton */
     background-position: center; /* Centrer l'image */
-    width: 200px; /* Remplace par la largeur de tes cases offres */
-    height: 300px; /* Remplace par la hauteur de tes cases offres */
+    width: 260px; /* Remplace par la largeur de tes cases offres */
+    height: 420px; /* Remplace par la hauteur de tes cases offres */
     border: none; /* Pas de bordure */
     cursor: pointer; /* Curseur au survol */
     display: flex; /* Pour centrer le texte */
