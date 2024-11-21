@@ -85,7 +85,7 @@ session_start();
     // Vérifier si le formulaire a été soumis
     if($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)){
         $email = trim(htmlspecialchars($_POST['email']));
-        $password = htmlspecialchars($_POST['password']);
+        $password = trim(htmlspecialchars($_POST['password']));
 
         // on vérifie que l'adresse mail soit reliée à un compte
 
