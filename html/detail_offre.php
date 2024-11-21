@@ -2,6 +2,45 @@
 <?php
     session_start();
 
+
+    function tempsEcouleDepuisPublication($offre){
+        // date d'aujourd'hui
+        $date_actuelle = new DateTime();
+        // conversion de la date de publication en objet DateTime
+        $date_ajout_offre = new DateTime($offre['date_publication']);
+        // calcul de la différence en jours
+        $diff = $date_ajout_offre->diff($date_actuelle);
+        // récupération des différentes unités de temps
+        $jours = $diff->days; // total des jours de différence
+        $mois = $diff->m + ($diff->y * 12); // mois totaux
+        $annees = $diff->y;
+    
+        $retour = null;
+    
+        // calcul du nombre de jours dans le mois précédent
+        $date_mois_precedent = clone $date_actuelle;
+        $date_mois_precedent->modify('-1 month');
+        $jours_dans_mois_precedent = (int)$date_mois_precedent->format('t'); // 't' donne le nombre de jours dans le mois
+    
+        if($jours == 0){
+            $retour = "Aujourd'hui";
+        } elseif($jours == 1){
+            $retour = "Hier";
+        } elseif($jours > 1 && $jours < 7){
+            $retour = $jours." jour(s)";
+        } elseif ($jours >= 7 && $jours < $jours_dans_mois_precedent){
+            $semaines = floor($jours / 7);
+            $retour = $semaines." semaine(s)";
+        } elseif ($mois < 12){
+            $retour = $mois." mois";
+        } else {
+            $retour = $annees." an(s)";
+        }
+    
+        return $retour;
+    }
+
+
     // Vérifie si le formulaire a été soumis    
     $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
     $username = "sae";  // Utilisateur PostgreSQL défini dans .env
@@ -161,7 +200,7 @@
 
                     <p>📍 <?php echo $adresse_offre["ville"].", ".$adresse_offre["code_postal"];?></p>
 
-                    <p><i class="fas fa-clock"></i> Publié il y a 3 jours</p>
+                    <p><i class="fas fa-clock"></i> Publié il y a <?php echo tempsEcouleDepuisPublication($details_offre);?></p>
 
                     <!-- <div class="detail_offre_rating">
                         ⭐ 5.0 (255 avis)
