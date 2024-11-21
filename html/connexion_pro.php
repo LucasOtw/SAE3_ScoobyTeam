@@ -113,7 +113,7 @@ session_start();
                 var_dump(password_verify($password,$mdpPro[0]));
                 if (password_verify(trim($password), trim($mdpPro[0]))) {
                     // si le mot de passe est correct
-                    $_SESSION["pro"] = $codeCompte[0]; // Stocke le code_compte dans la session
+                    $_SESSION["pro"] = (int) $codeCompte[0]; // Stocke le code_compte dans la session
                     header('Location: mes_offres.php'); // Redirection
                     exit; // Assure que le script s'arrête après la redirection
                 } else /* Mot de passe Invalide */{
