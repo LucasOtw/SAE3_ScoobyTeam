@@ -1,5 +1,8 @@
 
 <?php
+    if (headers_sent($file, $line)) {
+        die("Les en-têtes ont déjà été envoyés dans le fichier $file à la ligne $line.");
+    }
     ob_start();
     session_start();
 
