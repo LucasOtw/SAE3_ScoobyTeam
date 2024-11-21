@@ -45,7 +45,7 @@ if(isset($_GET["deco"])){
                 <img src="images/Fond.png" alt="Bannière de profil">
             </div>
             <div class="profile-info">
-                <img class="profile-picture" src="images/PhotodeProfil.png" alt="Profil utilisateur">
+                <img class="profile-picture" src="images/hotel.jpg" alt="Profil utilisateur">
                 <h1><?php echo $monCompte['raison_sociale']; ?></h1>
                 <p><?php echo $compte['mail'] ." | ". $compte['telephone']; ?></p>
             </div>
@@ -53,8 +53,8 @@ if(isset($_GET["deco"])){
     
         <section class="tabs">
             <ul>
-                <li><a href="informations_personnelles_pro.php">informations personnelles</a></li>
-                <li><a href="mes_offres.php" class="active">Offres</a></li>
+                <li><a href="informations_personnelles_pro.php">Informations personnelles</a></li>
+                <li><a href="mes_offres.php" class="active">Mes offres</a></li>
                 <li><a href="ajout_bancaire.php">Compte bancaire</a></li>
             </ul>
         </section>
