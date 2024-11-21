@@ -74,7 +74,7 @@ echo "</pre>";
                 ?>
                 <div class="offer-card">
                     <div class="offer-image">
-                        <img src="images/hotel.jpg" alt="Offre">
+                        <img src="images/hotel.jp" alt="Offre">
                         <div class="offer-status">
                             <span class="status-dot"></span> Hors Ligne
                         </div>
