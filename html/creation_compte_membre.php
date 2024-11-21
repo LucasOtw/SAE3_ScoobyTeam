@@ -195,12 +195,12 @@
             $codePostal = trim(isset($_POST['code-postal']) ? htmlspecialchars($_POST['code-postal']) : '');
             $complementAdresse = trim(isset($_POST['complement-adresse']) ? htmlspecialchars($_POST['complement-adresse']) : '');
             $ville = trim(isset($_POST['ville']) ? htmlspecialchars($_POST['ville']) : '');
-            $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : '';
+            $pwd = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
             $confirmPassword = isset($_POST['confirm-password']) ? htmlspecialchars($_POST['confirm-password']) : '';
             $cgu = isset($_POST['cgu']) ? true : false; // Case à cocher
             
     
-            $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
+            $passwordHashed = password_hash($pwd, PASSWORD_DEFAULT);
     
                 
             // Initialisation du tableau d'erreurs
@@ -300,7 +300,7 @@
             }
             
             // 9. Mot de passe : Minimum 8 caractères, et correspondance avec le champ de confirmation
-            var_dump($password);
+            var_dump($pwd);
             var_dump($confirmPassword);
             if ($password !== $confirmPassword) {
                 $erreurs[] = "Les mots de passe ne correspondent pas.";
