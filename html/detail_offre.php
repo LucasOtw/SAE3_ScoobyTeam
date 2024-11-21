@@ -258,7 +258,7 @@
                                 Détails
                                 <span class="arrow">&#9662;</span>
                             </button>
-                            <div class="info-box" id="infoBox" style="max-height: 507px;padding: 15px;overflow-y: auto;width:25.5em;">
+                            <div class="info-box" id="infoBox" style="max-height: 0; padding: 0; overflow: hidden; width: 25.5em; transition: max-height 0.3s ease, padding 0.3s ease;">
 
                                 <h3 style="margin-top: 1em;">Durée</h3>
                                 <p>4h (en moyenne)</p>
