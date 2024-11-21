@@ -98,7 +98,7 @@ session_start();
     
             // on cherche dans la base de données si le compte existe.
     
-            $existeUser = $dbh->prepare("SELECT code_compte FROM tripenarvor._compte WHERE mail='$email'");
+            $existeUser = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail='$email'");
             $existeUser->execute();
 
             if($existeUser){
@@ -120,7 +120,7 @@ session_start();
                         // les mots de passe correspondent
                         // l'utilisateur peut être connecté
                         header('location: voir_offres.php');
-                        $_SESSION["compte"] = $existeUser[0];
+                        $_SESSION["membre"] = $existeUser;
                     } else /* MDP Invalide */ {
                         ?> 
                         <style>
