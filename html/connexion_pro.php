@@ -103,7 +103,6 @@ session_start();
             $estPro = $estPro->fetch(PDO::FETCH_ASSOC);
             
             if ($estPro) {
-                echo "t";
                 // si le compte est professionnel, alors on vérifie son mot de passe
                 $mdpPro = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :codeCompte");
                 $mdpPro->bindParam("codeCompte", $codeCompte['code_compte']);
@@ -114,8 +113,9 @@ session_start();
                 var_dump(password_verify($password,$mdpPro[0]));
                 if (password_verify(trim($password), trim($mdpPro[0]))) {
                     // si le mot de passe est correct
-                    echo "TA MERE";
                     $_SESSION["pro"] = $codeCompte; // Stocke le code_compte dans la session
+                    header('location: mes_offres.php');
+                    exit;
                 } else /* Mot de passe Invalide */{
                     ?> 
                         <style>
