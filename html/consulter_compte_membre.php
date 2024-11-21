@@ -91,7 +91,7 @@ include("recupInfosCompte.php");
 
             <fieldset>
                 <legend>Ville *</legend>
-                <input type="text" id="ville" name="ville" value="<?php echo $monAdresse['ville']"; ?> placeholder="Ville *" required>
+                <input type="text" id="ville" name="ville" value="<?php echo $monAdresse['ville']; ?>" placeholder="Ville *" required>
             </fieldset>
 
             <div class="checkbox">
