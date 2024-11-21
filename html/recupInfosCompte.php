@@ -18,6 +18,7 @@
     $monCompte->execute();
 
     $monCompte = $monCompte->fetch(PDO::FETCH_ASSOC);
+    var_dump($monCompte);
   } elseif(isset($_SESSION['pro'])){
      $compte = $_SESSION['pro'];
 
