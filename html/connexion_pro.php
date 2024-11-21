@@ -100,13 +100,12 @@ session_start();
             $estPro = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel WHERE code_compte = :codeCompte");
             $estPro->bindParam(":codeCompte", $codeCompte[0]);
             $estPro->execute();
-            $estPro = $estPro->fetch();
-            echo "TEST";
+            $estPro = $estPro->fetch(PDO::FETCH_ASSOC);
         
             if ($estPro) {
                 // si le compte est professionnel, alors on vérifie son mot de passe
                 $mdpPro = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :codeCompte");
-                $mdpPro->bindParam("codeCompte", $codeCompte[0]);
+                $mdpPro->bindParam("codeCompte", $codeCompte['code_compte']);
                 $mdpPro->execute();
                 $mdpPro = $mdpPro->fetch();
                 echo "MDP : ".$password."";
