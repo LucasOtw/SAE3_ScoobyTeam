@@ -29,8 +29,8 @@
             </div>
             <div class="profile-info">
                 <img class="profile-picture" src="images/hotel.jpg" alt="Profil utilisateur">
-                <h1><?php echo $monCompte['raison_sociale']; ?></h1>
-                <p><?php echo $compte['mail'] ." | ". $compte['telephone']; ?></p>
+                <h1>Entreprise privée</h1>
+                <p>0123456789</p>
             </div>
         </section>
     
