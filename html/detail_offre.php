@@ -79,7 +79,7 @@
     }
 
     // Adresse que tu veux convertir
-    $adresse = $adresse_offre["adresse_postal"].$adresse_offre["ville"];
+    $adresse = $adresse_offre["adresse_postal"]." ".$adresse_offre["ville"];
     echo $adresse;
 
     // Encode l'adresse pour l'URL
