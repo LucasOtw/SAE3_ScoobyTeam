@@ -114,11 +114,12 @@ echo "</pre>";
             </div>
             <button class="add-btn">+</button>
         </div>
-            
-        </section>  
             <button class="image-button">
             <span class="button-text">Publier une offre</span>
             </button>
+            
+        </section>  
+
     </main>
     
     <footer>
