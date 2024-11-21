@@ -108,6 +108,7 @@ session_start();
                 $mdpPro->bindParam("codeCompte", $codeCompte[0]);
                 $mdpPro->execute();
                 $mdpPro = $mdpPro->fetch();
+                echo "TA FEMME JE L'AI PRISE, JE L'AI ENCULEE !";
                 if (password_verify($password, $mdpPro[0])) {
                     // si le mot de passe est correct
                     $_SESSION["compte"] = $codeCompte[0]; // Stocke le code_compte dans la session
