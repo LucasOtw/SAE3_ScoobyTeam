@@ -111,9 +111,11 @@ echo "</pre>";
             </div>
             <button class="add-btn">+</button>
         </div>
-            <button class="image-button">
-            <a href="mes_offres.php" class="button-text">Publier une offre</a></li>
-            </button>
+            <a href="mes_offres.php" class="button-text">
+                <button class="image-button">
+                    Publier une offre
+                </button>
+            </a>
             
         </section>  
 
