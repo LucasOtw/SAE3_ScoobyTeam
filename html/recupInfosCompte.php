@@ -47,11 +47,31 @@
     $recupOffres->execute();
 
     $mesOffres = $recupOffres->fetchAll(PDO::FETCH_ASSOC);
+
+    // avec chaque offre, on peut récupérer leur première image
+
+    foreach($mesOffres as $monOffre){
+      $imagesOffres = $dbh->prepare("SELECT code_image FROM tripenarvor._son_image WHERE code_offre = :code_offre");
+      $imagesOffres->bindValue(":code_offre",$monOffre['code_offre']);
+      $imagesOffres->execute();
+
+      $imagesOffres = $imagesOffres->fetchAll(PDO::FETCH_ASSOC);
+
+      // on récupère toutes les images associées (pour l'avenir :) )
+      foreach($imagesOffres as $image){
+        $liensImages = $dbh->prepare("SELECT url_image FROM tripenarvor._image WHERE code_image = :code_image");
+        $liensImages->bindValue(":code_image",$image['code_image']);
+        $liensImages->execute();
+
+        $images = $liensImages->fetchAll(PDO::FETCH_ASSOC);
+      }
+    }
   }
 
 echo "<pre>";
 var_dump($compte);
 var_dump($monCompte);
+var_dump($images);
 echo "</pre>";
 
 ?>
