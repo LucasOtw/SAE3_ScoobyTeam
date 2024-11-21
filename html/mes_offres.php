@@ -116,7 +116,6 @@ echo "</pre>";
         </div>
             <button class="image-button">
             <a href="mes_offres.php" class="button-text">Publier une offre</a></li>
-            <span class="button-text">Publier une offre</span>
             </button>
             
         </section>  
