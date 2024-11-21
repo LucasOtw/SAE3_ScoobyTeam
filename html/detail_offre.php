@@ -46,7 +46,6 @@
              {
                  $type_offre = "restauration";
                  $details_offre = $offre_r->fetch(PDO::FETCH_ASSOC);
-                 echo $details_offre["gamme_prix"];
              }
              else if (!empty($offre_p))
              {
