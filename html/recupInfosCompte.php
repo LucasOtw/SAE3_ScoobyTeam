@@ -18,7 +18,6 @@
     $monCompte->execute();
 
     $monCompteMembre = $monCompte->fetch(PDO::FETCH_ASSOC);
-    var_dump($monCompteMembre);
 
     $infosCompte = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE code_compte = :code_compte");
     $infosCompte->bindValue(":code_compte",$compte['code_compte']);
