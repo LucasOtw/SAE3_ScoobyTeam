@@ -8,7 +8,7 @@
     $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
 
     // Créer une instance PDO avec les bons paramètres
-    $bdd = new PDO($dsn, $username, $password);
+    $dbh = new PDO($dsn, $username, $password);
 
     if(!isset($_POST["vueDetails"]))
     {
@@ -20,7 +20,7 @@
         $code_offre = $_POST["uneOffre"]; // on récupère le code de l'offre envoyé
     
         // On vérifie si le code existe dans la base de données (AU CAS OU !!!)
-        $existeOffre = $bdd->query("SELECT * FROM tripenarvor._offre WHERE code_offre = $code_offre");
+        $existeOffre = $dbh->query("SELECT * FROM tripenarvor._offre WHERE code_offre = $code_offre");
 
         if(!empty($existeOffre))
         { // si l'offre existe
@@ -30,12 +30,12 @@
                 // Une offre a forcément au moins une image. 
                 // On récupère l'image (ou les images) associée(s)
     
-            $images_offre = $bdd->query('SELECT url_image FROM tripenarvor._image WHERE code_image = (SELECT code_image FROM tripenarvor.son_image WHERE code_offre = '.$code_offre.')');
+            $images_offre = $dbh->query('SELECT url_image FROM tripenarvor._image WHERE code_image = (SELECT code_image FROM tripenarvor.son_image WHERE code_offre = '.$code_offre.')');
     
                 // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
     
-            $adresse_offre = $bdd->query('SELECT * FROM tripenarvor._adresse WHERE code_adresse = '.$details_offre["code_adresse"].'');
-            $horaires = $bdd->query('SELECT DISTINCT h.* FROM tripenarvor._offre o JOIN tripenarvor._horaire h ON h.code_horaire IN (o.lundi, o.mardi, o.mercredi, o.jeudi, o.vendredi, o.samedi, o.dimanche
+            $adresse_offre = $dbh->query('SELECT * FROM tripenarvor._adresse WHERE code_adresse = '.$details_offre["code_adresse"].'');
+            $horaires = $dbh->query('SELECT DISTINCT h.* FROM tripenarvor._offre o JOIN tripenarvor._horaire h ON h.code_horaire IN (o.lundi, o.mardi, o.mercredi, o.jeudi, o.vendredi, o.samedi, o.dimanche
             WHERE o.lundi IS NOT NULL
             OR o.mardi IS NOT NULL
             OR o.mercredi IS NOT NULL
