@@ -37,12 +37,14 @@ ob_start(); // Démarre la mise en tampon de sortie
                 <label for="offre">Choisissez le type de votre offre</label>
                 <div class="type_offre_select_button">
                     <select id="offre" name="offreChoisie">
-                        <option value="default">Sélectionner...</option>
-                        <option value="restaurant">Restaurant</option>
-                        <option value="spectacle">Spectacle</option>
-                        <option value="visite">Visite</option>
-                        <option value="attraction">Parc d'attraction</option>
-                        <option value="activite">Activité</option>
+                        <optgroup label="Choisissez une offre...">
+                            <option value="default">Sélectionner...</option>
+                            <option value="restaurant">Restaurant</option>
+                            <option value="spectacle">Spectacle</option>
+                            <option value="visite">Visite</option>
+                            <option value="attraction">Parc d'attraction</option>
+                            <option value="activite">Activité</option>
+                        </optgroup>
                     </select>
                     <button type="submit" class="button_continuer">Continuer
                         <img src="images/fleche.png" alt="Fleche" width="25px" height="25px">
