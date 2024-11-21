@@ -71,6 +71,7 @@
 echo "<pre>";
 var_dump($compte);
 var_dump($monCompte);
+echo "I AM FIRE.... I AM.... DEATH";
 var_dump($images);
 echo "</pre>";
 
