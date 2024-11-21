@@ -22,6 +22,14 @@ ob_start(); // Démarre la mise en tampon de sortie
                 <li><a href="informations_personnelles_pro.php">Mon Compte</a></li>
             </ul>
         </nav>
+        <style>
+            select:invalid {
+                color: gray;
+            }
+            option[hidden] {
+                display: none;
+            }
+        </style>
     </header>
 
     <!-- Contenu principal centré -->
@@ -36,14 +44,13 @@ ob_start(); // Démarre la mise en tampon de sortie
             <form method="post">              
                 <label for="offre">Choisissez le type de votre offre</label>
                 <div class="type_offre_select_button">
-                    <select id="offre" name="offreChoisie" data-placeholder="Sélectionner">
-                        <optgroup label="Choisissez une offre...">
-                            <option value="restaurant">Restaurant</option>
-                            <option value="spectacle">Spectacle</option>
-                            <option value="visite">Visite</option>
-                            <option value="attraction">Parc d'attraction</option>
-                            <option value="activite">Activité</option>
-                        </optgroup>
+                    <select id="offre" name="offreChoisie" data-placeholder="Sélectionner..." required>
+                        <option value="" hidden selected>Sélectionner...</option>
+                        <option value="restaurant">Restaurant</option>
+                        <option value="spectacle">Spectacle</option>
+                        <option value="visite">Visite</option>
+                        <option value="attraction">Parc d'attraction</option>
+                        <option value="activite">Activité</option>
                     </select>
                     <button type="submit" class="button_continuer">Continuer
                         <img src="images/fleche.png" alt="Fleche" width="25px" height="25px">
