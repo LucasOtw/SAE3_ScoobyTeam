@@ -13,10 +13,6 @@ if(isset($_GET["deco"])){
     exit;
 }
 
-echo "<pre>";
-var_dump($mesOffres);
-echo "</pre>";
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
