@@ -228,9 +228,6 @@
                     <article class="card-a-la-une">
                         <div class="image-background-card-a-la-une">
                             <img src="<?php echo $photo;?>" alt="">
-                            <div class="raison-sociale-card-a-la-une">
-                                <p><?php echo $details_offre["titre_offre"];?></p>
-                            </div>
                         </div>
                     </article>
 
