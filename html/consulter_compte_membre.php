@@ -58,7 +58,7 @@ include("recupInfosCompte.php");
 
                 <fieldset>
                     <legend>Prénom *</legend>
-                    <input type="text" id="prenom" name="prenom" value="" placeholder="Prénom *" required>
+                    <input type="text" id="prenom" name="prenom" value="<?php echo $monCompteMembre['prenom']; ?>" placeholder="Prénom *" required>
                 </fieldset>
             </div>
 
