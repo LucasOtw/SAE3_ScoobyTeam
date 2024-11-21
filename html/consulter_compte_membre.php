@@ -2,6 +2,15 @@
 session_start();
 
 include("recupInfosCompte.php");
+
+if(isset($_POST['logout']){
+   session_destroy();
+   header('location: connexion_membre.php');
+   exit;
+} else if (isset($_POST['modif_infos'])){
+    // si on a envoyé le formulaire
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +57,7 @@ include("recupInfosCompte.php");
 
            
 
-        <form action="traitement_formulaire.php?" method="POST">
+        <form action="consulter_compte_membre.php" method="POST" id="compteForm">
 
             <div class="crea_pro_raison_sociale_num_siren">
                 <fieldset>
@@ -100,8 +109,8 @@ include("recupInfosCompte.php");
             </div>
             
             <div class="compte_membre_save_delete">
-                <button type="button" class="submit-btn3" onclick="window.location.href='deconnexion.php'">Déconnexion</button>
-                <button type="submit" class="submit-btn2">Enregistrer</button>
+                <button type="button" name="logout" class="submit-btn3">Déconnexion</button>
+                <button type="submit" name="modif_infos" class="submit-btn2" id="btn-enreg">Enregistrer</button>
             </div>
 
         </form>
@@ -168,5 +177,28 @@ include("recupInfosCompte.php");
             </div>
         </div>
     </footer>
+    <script>
+        // Désactiver le bouton par défaut
+        const form = document.getElementById('compteForm');
+        const saveButton = document.getElementById('btn-enreg');
+        const inputs = form.querySelectorAll('input');
+    
+        // Sauvegarde des valeurs initiales
+        const initialValues = {};
+        inputs.forEach(input => {
+            initialValues[input.name] = input.value;
+        });
+    
+        // Vérifier si un champ a changé
+        form.addEventListener('input', () => {
+            let hasChanged = false;
+            inputs.forEach(input => {
+                if (input.value !== initialValues[input.name]) {
+                    hasChanged = true;
+                }
+            });
+            saveButton.disabled = !hasChanged; // Activer ou désactiver le bouton
+        });
+    </script>
 </body>
 </html>
