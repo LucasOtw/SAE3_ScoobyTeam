@@ -56,7 +56,7 @@ ob_start(); // Démarre la mise en tampon de sortie
                 
                 // Vérifie que l'utilisateur a sélectionné une option valide
                 if ($offreChoisie !== "default") {
-                    header("Location: https://scooby-team.ventsdouest.dev/etape_1_form/creation_offre_".$offreChoisie"_1.php");
+                    header("Location: https://scooby-team.ventsdouest.dev/etape_1_form/creation_offre_".$offreChoisie."_1.php");
                     exit();
                 } else {
                     echo "<script>alert('Veuillez choisir une offre.');</script>";
