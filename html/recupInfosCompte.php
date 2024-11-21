@@ -71,7 +71,7 @@
   }
 
 echo "<pre>";
-var_dump($images);
+var_dump($mesOffres);
 echo "</pre>";
 
 ?>
