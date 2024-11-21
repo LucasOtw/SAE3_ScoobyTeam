@@ -219,70 +219,24 @@
             <div class="a-la-une-wrapper">
 
                 <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft()">&#8249;</button>
-
                 <section class="a-la-une">
+                <?php
+                foreach ($images_offre as $photo)
+                {
+                ?>
+                
                     <article class="card-a-la-une">
                         <div class="image-background-card-a-la-une">
-                            <img src="images/tiallannec.png" alt="">
+                            <img src="<?php echo $photo;?>" alt="">
                             <div class="raison-sociale-card-a-la-une">
-                                <p>Ti Al Lannec</p>
+                                <p><?php echo $details_offre["titre_offre"];?></p>
                             </div>
                         </div>
                     </article>
 
-                    <article class="card-a-la-une">
-                        <div class="image-background-card-a-la-une">
-                            <img src="images/tiallannec.png" alt="">
-                            <div class="raison-sociale-card-a-la-une">
-                                <p>Ti Al Lannec</p>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="card-a-la-une">
-                        <div class="image-background-card-a-la-une">
-                            <img src="images/tiallannec.png" alt="">
-                            <div class="raison-sociale-card-a-la-une">
-                                <p>Ti Al Lannec</p>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="card-a-la-une">
-                        <div class="image-background-card-a-la-une">
-                            <img src="images/tiallannec.png" alt="">
-                            <div class="raison-sociale-card-a-la-une">
-                                <p>Ti Al Lannec</p>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="card-a-la-une">
-                        <div class="image-background-card-a-la-une">
-                            <img src="images/tiallannec.png" alt="">
-                            <div class="raison-sociale-card-a-la-une">
-                                <p>Ti Al Lannec</p>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="card-a-la-une">
-                        <div class="image-background-card-a-la-une">
-                            <img src="images/tiallannec.png" alt="">
-                            <div class="raison-sociale-card-a-la-une">
-                                <p>Ti Al Lannec</p>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="card-a-la-une">
-                        <div class="image-background-card-a-la-une">
-                            <img src="images/tiallannec.png" alt="">
-                            <div class="raison-sociale-card-a-la-une">
-                                <p>Ti Al Lannec</p>
-                            </div>
-                        </div>
-                    </article>
+                <?php
+                }
+                ?> 
                 </section>
 
                 <button class="card-scroll-btn card-scroll-btn-right" onclick="scrollcontentRight()">&#8250;</button>
