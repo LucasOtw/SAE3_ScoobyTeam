@@ -38,13 +38,13 @@ if(isset($_POST['logout'])){
                case 'prenom':
                case 'pseudo':
                    $query = $dbh->prepare("UPDATE tripenarvor._membre SET $champ = :valeur WHERE code_compte = :code_compte");
-                   $query->execute(['valeur' => $valeur, 'code_compte' => $_SESSION['code_compte']]);
+                   $query->execute(['valeur' => $valeur, 'code_compte' => $compte['code_compte']);
                    break;
    
                case 'email':
                case 'telephone':
                    $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
-                   $query->execute(['valeur' => $valeur, 'code_compte' => $_SESSION['code_compte']]);
+                   $query->execute(['valeur' => $valeur, 'code_compte' => $compte['code_compte']]);
                    break;
    
                case 'adresse':
