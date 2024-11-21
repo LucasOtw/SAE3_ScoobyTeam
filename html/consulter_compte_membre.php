@@ -8,7 +8,57 @@ if(isset($_POST['logout'])){
    header('location: connexion_membre.php');
    exit;
 } else if (isset($_POST['modif_infos'])){
-    // si on a envoyé le formulaire
+    // Récupérer les valeurs initiales (par exemple, depuis la base de données)
+   $valeursInitiales = [
+       'nom' => $monCompteMembre['nom'],
+       'prenom' => $monCompteMembre['prenom'],
+       'pseudo' => $monCompteMembre['pseudo'],
+       'email' => $mesInfos['mail'],
+       'telephone' => $mesInfos['telephone'],
+       'adresse' => $_adresse['adresse_postal'],
+       'code-postal' => $_adresse['code_postal'],
+       'ville' => $_adresse['ville'],
+   ];
+   
+   // Champs modifiés
+   $champsModifies = [];
+   
+   // Parcourir les données soumises
+   foreach ($_POST as $champ => $valeur) {
+       if (isset($valeursInitiales[$champ]) && $valeursInitiales[$champ] !== $valeur) {
+           $champsModifies[$champ] = $valeur;
+       }
+   }
+   
+   // Mettre à jour seulement les champs modifiés
+   if (!empty($champsModifies)) {
+       foreach ($champsModifies as $champ => $valeur) {
+           switch ($champ) {
+               case 'nom':
+               case 'prenom':
+               case 'pseudo':
+                   $query = $dbh->prepare("UPDATE tripenarvor._membre SET $champ = :valeur WHERE code_compte = :code_compte");
+                   $query->execute(['valeur' => $valeur, 'code_compte' => $_SESSION['code_compte']]);
+                   break;
+   
+               case 'email':
+               case 'telephone':
+                   $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
+                   $query->execute(['valeur' => $valeur, 'code_compte' => $_SESSION['code_compte']]);
+                   break;
+   
+               case 'adresse':
+               case 'code-postal':
+               case 'ville':
+                   $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
+                   $query->execute(['valeur' => $valeur, 'code_adresse' => $monAdresse['code_adresse']]);
+                   break;
+           }
+       }
+       echo "Les informations ont été mises à jour.";
+   } else {
+       echo "Aucune modification détectée.";
+   }
 }
 
 ?>
