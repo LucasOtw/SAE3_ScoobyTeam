@@ -108,8 +108,9 @@ session_start();
                 $mdpPro->bindParam("codeCompte", $codeCompte[0]);
                 $mdpPro->execute();
                 $mdpPro = $mdpPro->fetch();
+                echo "MDP : ".$password."";
+                echo "MDP2 : ".$mdpPro[0]."";
                 if (password_verify($password, $mdpPro[0])) {
-                    echo "test";
                     // si le mot de passe est correct
                     $_SESSION["compte"] = $codeCompte[0]; // Stocke le code_compte dans la session
                     header('Location: mes_offres.php'); // Redirection
