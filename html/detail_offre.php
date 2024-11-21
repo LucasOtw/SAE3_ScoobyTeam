@@ -22,7 +22,7 @@
         echo $code_offre;
     
         // On vérifie si le code existe dans la base de données (AU CAS OU !!!)
-        $existeOffre = $dbh->query("SELECT * FROM tripenarvor._offre WHERE code_offre = $code_offre");
+        $existeOffre = /*$dbh->query("SELECT * FROM tripenarvor._offre WHERE code_offre = $code_offre");*/
 
         if(!empty($existeOffre))
         { // si l'offre existe
