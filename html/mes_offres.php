@@ -106,7 +106,7 @@ if(isset($_GET["deco"])){
             </div>
             <button class="add-btn">+</button>
         </div>
-            <a href="mes_offres.php" class="button-text">
+            <a href="creation_offre.php" class="button-text">
                 <button class="image-button">
                     Publier une offre
                 </button>
