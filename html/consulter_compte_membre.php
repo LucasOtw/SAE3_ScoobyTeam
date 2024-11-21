@@ -53,7 +53,7 @@ include("recupInfosCompte.php");
             <div class="crea_pro_raison_sociale_num_siren">
                 <fieldset>
                     <legend>Nom *</legend>
-                    <input type="text" id="nom" name="nom" value="" placeholder="Nom *" required>
+                    <input type="text" id="nom" name="nom" value="<?php echo $monCompteMembre['nom']; ?>" placeholder="Nom *" required>
                 </fieldset>
 
                 <fieldset>
