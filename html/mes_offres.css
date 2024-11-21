@@ -422,6 +422,7 @@ main #vosOffres {
     color: #fff;
     font-size: 18px;
     padding: 10px;
+    margin: 10px;
     border: none;
     border-radius: 50%;
     cursor: pointer;
