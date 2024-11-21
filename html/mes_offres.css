@@ -452,7 +452,6 @@ main #vosOffres {
     justify-content: center; /* Centre le texte horizontalement */
     border-radius: 15px; /* Ajuste ce chiffre pour arrondir les angles comme tes cases offres */
     position: relative; /* Pour bien positionner le texte */
-    margin: 10px; /* Optionnel, pour espacer le bouton des autres éléments */
 }
 
 .button-text {
