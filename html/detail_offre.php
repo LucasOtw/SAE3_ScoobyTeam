@@ -35,7 +35,34 @@
             $tags_offre = $dbh->query('SELECT nom_tag FROM tripenarvor._tags WHERE code_tag = (SELECT code_tag FROM tripenarvor._son_tag WHERE code_offre = '.$code_offre.')');
             $tags_offre = $tags_offre->fetch();
 
-             echo $tags_offre[0];
+         
+            $offre_r = $dbh->query('select * from tripenarvor.offre_restauration where code_offre = '.$code_offre.')');
+            $offre_p = $dbh->query('select * from tripenarvor.offre_parc_attractions where code_offre = '.$code_offre.')');
+            $offre_s = $dbh->query('select * from tripenarvor.offre_spectacle where code_offre = '.$code_offre.')');
+            $offre_v = $dbh->query('select * from tripenarvor.offre_visite where code_offre = '.$code_offre.')');
+            $offre_a = $dbh->query('select * from tripenarvor.offre_activite where code_offre = '.$code_offre.')');
+
+             if (!empty($offre_r))
+             {
+                 $type_offre = "restauration";
+             }
+             else if (!empty($offre_p))
+             {
+                 $type_offre = "parc d'attraction";
+             }
+             else if (!empty($offre_s))
+             {
+                 $type_offre = "spectacle";
+             }
+             else if (!empty($offre_v))
+             {
+                 $type_offre = "visite";
+             }
+             else if (!empty($offre_a))
+             {
+                 $type_offre = "activite";
+             }
+         
 
             // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
     
