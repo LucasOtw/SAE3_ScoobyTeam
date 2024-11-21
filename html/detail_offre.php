@@ -261,6 +261,7 @@
                             <div class="info-box" id="infoBox" style="max-height: 0; padding: 0; overflow: hidden; width: 25.5em; transition: max-height 0.3s ease, padding 0.3s ease;">
 
                                 <?php
+                                var_dump($details_offre);
                                 if ($type_offre === "restauration")
                                 {
                                 ?>
