@@ -86,12 +86,12 @@ include("recupInfosCompte.php");
 
             <fieldset>
                 <legend>Code Postal *</legend>
-                <input type="text" id="code-postal" name="code-postal" value="<?php echo $monAdresse['code_postal'] ?>" placeholder="Code Postal *" required>
+                <input type="text" id="code-postal" name="code-postal" value="<?php echo $monAdresse['code_postal']; ?>" placeholder="Code Postal *" required>
             </fieldset>
 
             <fieldset>
                 <legend>Ville *</legend>
-                <input type="text" id="ville" name="ville" value="echo $monAdresse['ville']" placeholder="Ville *" required>
+                <input type="text" id="ville" name="ville" value="<?php echo $monAdresse['ville']"; ?> placeholder="Ville *" required>
             </fieldset>
 
             <div class="checkbox">
