@@ -98,11 +98,12 @@ session_start();
             // si un compte est trouvé, on vérifie maintenant qu'il soit professionnel
             // var_dump($codeCompte[0]);  // Commenté ou supprimé pour éviter la sortie avant header
             $estPro = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel WHERE code_compte = :codeCompte");
-            $estPro->bindParam(":codeCompte", $codeCompte[0]);
+            $estPro->bindParam(":codeCompte", $codeCompte['code_compte']);
             $estPro->execute();
             $estPro = $estPro->fetch(PDO::FETCH_ASSOC);
-        
+            
             if ($estPro) {
+                echo "t";
                 // si le compte est professionnel, alors on vérifie son mot de passe
                 $mdpPro = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :codeCompte");
                 $mdpPro->bindParam("codeCompte", $codeCompte['code_compte']);
