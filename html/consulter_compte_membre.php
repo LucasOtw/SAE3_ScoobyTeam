@@ -75,6 +75,18 @@
                 <input type="text" id="adresse" name="adresse" value="12 Rue Charlemagne" placeholder="Adresse Postale *" required>
             </fieldset>
 
+            <div class="crea_pro_mail_tel">
+                <fieldset>
+                    <legend>Code Postal *</legend>
+                    <input type="text" id="code-postal" name="code-postal" value="22300" placeholder="Code Postal *" required>
+                </fieldset>
+    
+                <fieldset>
+                    <legend>Ville *</legend>
+                    <input type="text" id="ville" name="ville" value="Lannion" placeholder="Ville *" required>
+                </fieldset>
+            </div>
+            
             <fieldset>
                 <legend>Code Postal *</legend>
                 <input type="text" id="code-postal" name="code-postal" value="22300" placeholder="Code Postal *" required>
