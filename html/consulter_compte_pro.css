@@ -1,37 +1,19 @@
-/*****************************************************
-            * Code général pour les pages *
-*****************************************************/
+/* Styles généraux */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.k2d-light {
-    font-family: "K2D", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-}
-
 html, body {
-    height: 100%; /* Important pour que le footer se positionne en bas */
-}
-
-
-
-                                        /*****************************************************
-                                                * Code pour la page header/footer *
-                                        *****************************************************/
-
-
-
-body {
+    height: 100%;
+    font-family: "K2D", sans-serif;
+    min-height: 100vh; /* Pour un footer toujours en bas */
     display: flex;
     flex-direction: column;
-    font-family: "K2D", sans-serif;
-    min-height: 100vh; /*Pour occuper toute la page*/
 }
 
+/* Header */
 header {
     display: flex;
     justify-content: space-between;
@@ -41,81 +23,70 @@ header {
     color: white;
 }
 
-.logo img {
+header .logo img {
     height: 40px;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 70px; /*Espace pour les éléments */
+    gap: 70px;
     margin-right: 4em;
 }
 
 nav ul li a {
-    position: relative; /* Ajout pour que ::before fonctionne */
     text-decoration: none;
     color: white;
     font-size: 18px;
     padding: 5px 10px;
-    transition: color 0.3s, border-bottom 0.3s;
+    position: relative;
+    transition: color 0.3s;
 }
 
-nav ul li a.active {
-    color: #F28322;
-}
-
-nav ul li a:hover {
+nav ul li a.active, nav ul li a:hover {
     color: #F28322;
 }
 
 nav ul li a::before {
-    content: ""; /* Contenu vide pour l'effet de soulignement */
-    position: absolute; /* Positionnement absolu */
-    width: 0; /* Largeur initiale de la ligne de soulignement */
-    height: 2.5px; /* Hauteur de la ligne de soulignement */
-    bottom: -2px; /* Positionnement sous le texte */
-    background-color: #c46026; /* Couleur du soulignement */
-    transition: width 0.3s ease; /* Transition fluide */
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2.5px;
+    bottom: -2px;
+    background-color: #c46026;
+    transition: width 0.3s ease;
 }
 
 nav ul li a:hover::before {
-    width: 90%; /* Élargissement du soulignement au survol */
+    width: 90%;
 }
 
+/* Footer */
 footer {
     background-color: #000;
-    color: rgb(0, 0, 0);
+    color: white;
     padding: 40px 20px;
-    text-align: left;
     width: 100%;
-    margin-top: auto; /* Positionne le footer en bas */
+    margin-top: auto;
 }
 
 .newsletter {
     display: flex;
     justify-content: space-between;
-    background-color: #F28322; 
+    background-color: #F28322;
     padding: 20px;
     border-radius: 20px;
-    position: relative; /* Permet de le positionner */
-    margin-top: -130px; /* Ajuste cette valeur pour chevaucher les sections */
-    z-index: 1; /* Assure que le bloc soit au-dessus de la section noire */
-    width: 90%; /* Ajuste la largeur si nécessaire */
-    height: 65%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: -130px auto 0;
+    width: 90%;
+    z-index: 1;
 }
 
-
 .newsletter-content {
-    text-align: left;
     max-width: 60%;
 }
 
 .newsletter h2 {
     font-size: 24px;
-    margin-bottom: 10px;
 }
 
 .newsletter-form {
@@ -124,54 +95,40 @@ footer {
     margin-top: 10px;
 }
 
-.newsletter-form input {
+.newsletter-form input, .newsletter-form button {
     padding: 10px;
-    border: none;
     border-radius: 5px;
-    flex-grow: 1;
+    border: none;
 }
 
 .newsletter-form button {
-    padding: 10px 20px;
     background-color: #112211;
     color: white;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
-}
-
-.newsletter-image img {
-    max-height: 100px;
 }
 
 .footer-links {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 40px;
-    margin-top: 50px;
-    margin-right: 89px;
+    margin: 50px 89px 40px;
 }
 
-.logo img {
+.footer-links .logo img {
     max-height: 50px;
     margin-bottom: 20px;
 }
 
-.link-group ul {
+.footer-links ul {
     list-style: none;
 }
 
-.link-group ul li {
-    margin-bottom: 10px;
-}
-
-.link-group ul li a {
+.footer-links ul li a {
     color: white;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s;
 }
 
-.link-group ul li a:hover {
+.footer-links ul li a:hover {
     color: #F28322;
 }
 
@@ -186,34 +143,25 @@ footer {
     margin: 0 10px;
 }
 
-
-                                        /*****************************************************
-                                                        * Code page  Mes offres *
-                                        *****************************************************/
-
-
 /* Profile Section */
 .profile {
     text-align: center;
     margin-bottom: 30px;
 }
 
-
-
 .banner img {
     width: 70%;
     height: 200px;
     object-fit: cover;
-    margin: 30px;
+    margin: 30px auto;
     border-radius: 20px;
 }
 
 .profile-info {
     margin-top: -90px;
-    text-align: center;
 }
 
-.profile-info img.profile-picture {
+.profile-info img {
     width: 120px;
     height: 120px;
     border-radius: 35px;
@@ -231,211 +179,67 @@ footer {
 }
 
 /* Tabs Section */
-.tabs {
-    display: flex;
-    justify-content: center;
-    margin: 30px 0;
-    text-align: center;
-}
-
 .tabs ul {
     display: flex;
-    padding: 0;
+    justify-content: center;
     list-style: none;
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-decoration: none;
-    min-width: 40vw;
-}
-
-.tabs ul li {
-    display: flex;
-    margin: 0 20px;
-    text-decoration: none;
+    padding: 0;
 }
 
 .tabs ul li a {
-    width: calc(60vw/3);
     font-size: 20px;
     padding: 10px 20px;
-    display: inline-block;
-    border-bottom: 2px solid transparent;
-    transition: border-color 0.3s;
     color: #333;
     text-decoration: none;
+    transition: border-color 0.3s;
 }
 
 .tabs ul li a.active {
-    border-color: #ff6600;
-    text-decoration: none;
+    border-bottom: 2px solid #ff6600;
 }
 
-/* Carte d'offre */
+/* Cards Section */
+.offers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    margin: 20px;
+}
+
 .offer-card {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 15px;
     padding: 15px;
-    width: 260px; /* Ajuste selon ton besoin */
+    width: 260px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: relative;
-    overflow: hidden;
     text-align: left;
 }
 
-/* Image */
-.offer-image {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 10px;
-}
-
-.offer-image img {
+.offer-card img {
     width: 100%;
     height: 150px;
     object-fit: cover;
     border-radius: 12px;
 }
 
-.offers {
-    display: flex;
-    flex-wrap: wrap;  /* Pour que les cartes aillent à la ligne si nécessaire */
-    gap: 50px;        /* Ajoute un espacement entre les cartes */
-    justify-content: center;  /* Aligne les cartes de manière équitable */
-    margin: 20px;
-    margin-bottom: 150px;
-}
-
-.offres {
-    display: flex;
-    flex-wrap: wrap;  /* Pour que les cartes aillent à la ligne si nécessaire */
-    gap: 20px;        /* Ajoute un espacement entre les cartes */
-    justify-content: center;  /* Aligne les cartes de manière équitable */
-    margin: 20px;
-    margin-bottom: 100px;
-}
-
-.offer-card {
-    width: 260px;  /* Assure une largeur fixe pour chaque carte */
-    margin-bottom: 20px;  /* Ajoute un espace en bas au cas où elles iraient à la ligne */
-}
-
-main #vosOffres {
-    margin-left: 5.7vw;
-    margin-bottom: 30px;
-}
-
-/* Note */
-.offer-rating {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 5px 10px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-}
-
-.star {
-    color: #ffcc00;
-    margin-right: 5px;
-}
-
-.rating {
-    color: #333;
-}
-
-/* Statut */
-.offer-status {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 5px 10px;
-    border-radius: 12px;
-    font-size: 12px;
-    color: #ff4d4f;
-    display: flex;
-    align-items: center;
-}
-
-.status-dot {
-    width: 8px;
-    height: 8px;
-    background-color: #ff4d4f;
-    border-radius: 50%;
-    margin-right: 5px;
-}
-
-/* Information de l'offre */
-.offer-info {
-    padding: 10px 0;
-}
-
-.offer-info h3 {
-    font-size: 18px;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.offer-info .category {
-    font-size: 14px;
-    color: #888;
-    margin-bottom: 5px;
-}
-
-.offer-info .update {
-    font-size: 12px;
-    color: #ff6600;
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-}
-
-.update-icon {
-    font-size: 14px;
-    margin-right: 5px;
-}
-
-.offer-info .last-update {
-    font-size: 12px;
-    color: #999;
-    margin-bottom: 10px;
-}
-
-.offer-info .offer-type {
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.offer-info .price {
-    font-size: 18px;
-    color: #333;
-    font-weight: bold;
-}
-
-/* Bouton d'ajout */
+/* Button */
 .add-btn {
     position: absolute;
     bottom: 15px;
     right: 15px;
     background-color: #ff6600;
-    color: #fff;
+    color: white;
     font-size: 30px;
     padding: 10px;
-    margin: 10px;
-    border: none;
-    width:50px;
+    width: 50px;
     height: 50px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
+    border: none;
     border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -443,33 +247,4 @@ main #vosOffres {
 
 .add-btn:hover {
     background-color: #e65a00;
-}
-
-.image-button {
-    background-image: url('images/PublierAnnonce.png'); /* Chemin de l'image */
-    background-size: cover; /* L'image couvrira tout le bouton */
-    background-position: center; /* Centrer l'image */
-    width: 260px; /* Remplace par la largeur de tes cases offres */
-    height: 420px; /* Remplace par la hauteur de tes cases offres */
-    border: none; /* Pas de bordure */
-    cursor: pointer; /* Curseur au survol */
-    display: flex; /* Pour centrer le texte */
-    align-items: center; /* Centre le texte verticalement */
-    justify-content: center; /* Centre le texte horizontalement */
-    border-radius: 15px; /* Ajuste ce chiffre pour arrondir les angles comme tes cases offres */
-    position: relative; /* Pour bien positionner le texte */
-}
-
-.button-text button.image-button{
-    color: white; /* Couleur du texte */
-    font-size: 18px; /* Taille du texte */
-    font-weight: bold; /* Rendre le texte plus visible */
-    text-decoration: none;
-}
-a.button-text{
-    text-decoration: none;
-}
-
-.image-button:hover {
-    opacity: 0.8; /* Effet visuel lors du survol (optionnel) */
 }
