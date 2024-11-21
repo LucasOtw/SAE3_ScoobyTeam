@@ -21,8 +21,6 @@
   } elseif(isset($_SESSION['pro'])){
      $compte = $_SESSION['pro'];
 
-    var_dump($compte['code_compte']);
-
     // on sélectionne les infos du pro
      $monCompte = $dbh->prepare("SELECT * FROM tripenarvor._professionnel WHERE code_compte = :code_compte");
      $monCompte->bindValue(":code_compte",$compte['code_compte']);
@@ -37,7 +35,6 @@
     $monComptePrive->execute();
 
     $monComptePrive = $monComptePrive->fetch(PDO::FETCH_ASSOC);
-    var_dump($monComptePrive);
     if ($monComptePrive) {
         $monCompte['num_siren'] = $monComptePrive['num_siren'];
     }
@@ -76,10 +73,5 @@
     }
   }
 
-echo "<pre>";
-var_dump($compte);
-var_dump($monCompte);
-var_dump($mesOffres);
-echo "</pre>";
 
 ?>
