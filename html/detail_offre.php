@@ -171,8 +171,7 @@
                 <div class="detail_offre_price-button">
 
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
-
-                    <a href=$details_offre["site_web"]><button class="visit-button_detailoffre">Voir le site ➔</button></a>
+                    <a href="<?php echo $details_offre["site_web"]; ?>"><button class="visit-button_detailoffre">Voir le site ➔</button></a>
 
                 </div>
 
