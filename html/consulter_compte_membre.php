@@ -53,6 +53,11 @@
                 </fieldset>
             </div>
 
+            <fieldset>
+                <legend>Pseudo *</legend>
+                <input type="text" id="pseudo" name="pseudo" value="JuMart" placeholder="Pseudo *" required>
+            </fieldset>
+
             <div class="crea_pro_mail_tel">
                 <fieldset>
                     <legend>Email *</legend>
