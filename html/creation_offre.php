@@ -36,9 +36,8 @@ ob_start(); // Démarre la mise en tampon de sortie
             <form method="post">              
                 <label for="offre">Choisissez le type de votre offre</label>
                 <div class="type_offre_select_button">
-                    <select id="offre" name="offreChoisie">
+                    <select id="offre" name="offreChoisie" placeholder="Sélectionner...">
                         <optgroup label="Choisissez une offre...">
-                            <option value="default" disabled>Sélectionner...</option>
                             <option value="restaurant">Restaurant</option>
                             <option value="spectacle">Spectacle</option>
                             <option value="visite">Visite</option>
