@@ -1,19 +1,37 @@
-/* Styles généraux */
+/*****************************************************
+            * Code général pour les pages *
+*****************************************************/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
+.k2d-light {
     font-family: "K2D", sans-serif;
-    min-height: 100vh; /* Pour un footer toujours en bas */
-    display: flex;
-    flex-direction: column;
+    font-weight: 300;
+    font-style: normal;
 }
 
-/* Header */
+html, body {
+    height: 100%; /* Important pour que le footer se positionne en bas */
+}
+
+
+
+                                        /*****************************************************
+                                                * Code pour la page header/footer *
+                                        *****************************************************/
+
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "K2D", sans-serif;
+    min-height: 100vh; /*Pour occuper toute la page*/
+}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -23,70 +41,81 @@ header {
     color: white;
 }
 
-header .logo img {
+.logo img {
     height: 40px;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 70px;
+    gap: 70px; /*Espace pour les éléments */
     margin-right: 4em;
 }
 
 nav ul li a {
+    position: relative; /* Ajout pour que ::before fonctionne */
     text-decoration: none;
     color: white;
     font-size: 18px;
     padding: 5px 10px;
-    position: relative;
-    transition: color 0.3s;
+    transition: color 0.3s, border-bottom 0.3s;
 }
 
-nav ul li a.active, nav ul li a:hover {
+nav ul li a.active {
+    color: #F28322;
+}
+
+nav ul li a:hover {
     color: #F28322;
 }
 
 nav ul li a::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2.5px;
-    bottom: -2px;
-    background-color: #c46026;
-    transition: width 0.3s ease;
+    content: ""; /* Contenu vide pour l'effet de soulignement */
+    position: absolute; /* Positionnement absolu */
+    width: 0; /* Largeur initiale de la ligne de soulignement */
+    height: 2.5px; /* Hauteur de la ligne de soulignement */
+    bottom: -2px; /* Positionnement sous le texte */
+    background-color: #c46026; /* Couleur du soulignement */
+    transition: width 0.3s ease; /* Transition fluide */
 }
 
 nav ul li a:hover::before {
-    width: 90%;
+    width: 90%; /* Élargissement du soulignement au survol */
 }
 
-/* Footer */
 footer {
     background-color: #000;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 40px 20px;
+    text-align: left;
     width: 100%;
-    margin-top: auto;
+    margin-top: auto; /* Positionne le footer en bas */
 }
 
 .newsletter {
     display: flex;
     justify-content: space-between;
-    background-color: #F28322;
+    background-color: #F28322; 
     padding: 20px;
     border-radius: 20px;
-    margin: -130px auto 0;
-    width: 90%;
-    z-index: 1;
+    position: relative; /* Permet de le positionner */
+    margin-top: -130px; /* Ajuste cette valeur pour chevaucher les sections */
+    z-index: 1; /* Assure que le bloc soit au-dessus de la section noire */
+    width: 90%; /* Ajuste la largeur si nécessaire */
+    height: 65%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+
 .newsletter-content {
+    text-align: left;
     max-width: 60%;
 }
 
 .newsletter h2 {
     font-size: 24px;
+    margin-bottom: 10px;
 }
 
 .newsletter-form {
@@ -95,40 +124,54 @@ footer {
     margin-top: 10px;
 }
 
-.newsletter-form input, .newsletter-form button {
+.newsletter-form input {
     padding: 10px;
-    border-radius: 5px;
     border: none;
+    border-radius: 5px;
+    flex-grow: 1;
 }
 
 .newsletter-form button {
+    padding: 10px 20px;
     background-color: #112211;
     color: white;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+.newsletter-image img {
+    max-height: 100px;
 }
 
 .footer-links {
     display: flex;
     justify-content: space-between;
-    margin: 50px 89px 40px;
+    margin-bottom: 40px;
+    margin-top: 50px;
+    margin-right: 89px;
 }
 
-.footer-links .logo img {
+.logo img {
     max-height: 50px;
     margin-bottom: 20px;
 }
 
-.footer-links ul {
+.link-group ul {
     list-style: none;
 }
 
-.footer-links ul li a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s;
+.link-group ul li {
+    margin-bottom: 10px;
 }
 
-.footer-links ul li a:hover {
+.link-group ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.link-group ul li a:hover {
     color: #F28322;
 }
 
@@ -143,25 +186,34 @@ footer {
     margin: 0 10px;
 }
 
+
+                                        /*****************************************************
+                                                        * Code page  Mes offres *
+                                        *****************************************************/
+
+
 /* Profile Section */
 .profile {
     text-align: center;
     margin-bottom: 30px;
 }
 
+
+
 .banner img {
     width: 70%;
     height: 200px;
     object-fit: cover;
-    margin: 30px auto;
+    margin: 30px;
     border-radius: 20px;
 }
 
 .profile-info {
     margin-top: -90px;
+    text-align: center;
 }
 
-.profile-info img {
+.profile-info img.profile-picture {
     width: 120px;
     height: 120px;
     border-radius: 35px;
@@ -179,72 +231,47 @@ footer {
 }
 
 /* Tabs Section */
-.tabs ul {
+.tabs {
     display: flex;
     justify-content: center;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.tabs ul {
+    display: flex;
+    padding: 0;
     list-style: none;
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 0;
+    text-decoration: none;
+    min-width: 40vw;
+}
+
+.tabs ul li {
+    display: flex;
+    margin: 0 20px;
+    text-decoration: none;
 }
 
 .tabs ul li a {
+    width: calc(60vw/3);
     font-size: 20px;
     padding: 10px 20px;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
     color: #333;
     text-decoration: none;
-    transition: border-color 0.3s;
 }
 
 .tabs ul li a.active {
-    border-bottom: 2px solid #ff6600;
+    border-color: #ff6600;
+    text-decoration: none;
 }
 
-/* Cards Section */
-.offers {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    justify-content: center;
-    margin: 20px;
-}
 
-.offer-card {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    padding: 15px;
-    width: 260px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative;
-    text-align: left;
-}
-
-.offer-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 12px;
-}
-
-/* Button */
-.add-btn {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    background-color: #ff6600;
-    color: white;
-    font-size: 30px;
-    padding: 10px;
-    width: 50px;
-    height: 50px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.add-btn:hover {
-    background-color: #e65a00;
+.image-button:hover {
+    opacity: 0.8; /* Effet visuel lors du survol (optionnel) */
 }
