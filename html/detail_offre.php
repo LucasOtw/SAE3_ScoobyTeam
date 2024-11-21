@@ -246,28 +246,28 @@
                             </button>
                             <div class="info-box" id="infoBox" style="max-height: 507px;padding: 15px;overflow-y: auto;width:25.5em;">
 
+                                <h3 style="margin-top: 1em;">Durée</h3>
                                 <p class="detail_offre_resumer">4h (en moyenne)</p>
 
-                                <h3 style="margin-top: 1em;">Age</h2>
-                    
+                                <h3 style="margin-top: 1em;">Age</h3>
                                 <p>Tout publics</p>
-                                <h3 style="margin-top: 1em;">Visite Guidée</h2>
                                 
+                                <h3 style="margin-top: 1em;">Visite Guidée</h3>
                                 <p>Oui</p>
-                                <h3 style="margin-top: 1em;">Prestations incluses</h2>
                                 
+                                <h3 style="margin-top: 1em;">Prestations incluses</h3>
                                 <p>Cours de golf</p>
-                                <h3 style="margin-top: 1em;">Prestations non-incluses</h2>
                                 
+                                <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
                                 <p>Spa</p>
-                                <h3 style="margin-top: 1em;">Capacité d'acceuil</h2>
                                 
+                                <h3 style="margin-top: 1em;">Capacité d'acceuil</h3>
                                 <p> 500pers environ</p>
-                                <h3>Repas</h2>
                                 
+                                <h3 style="margin-top: 1em;">Repas</h3>
                                 <p>Oui</p>
-                                <h3>Nombre d'attractions</h2>
                                 
+                                <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
                                 <p>23 attractions</p>
                
                             </div>
