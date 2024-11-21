@@ -296,7 +296,7 @@ footer {
 .offers {
     display: flex;
     flex-wrap: wrap;  /* Pour que les cartes aillent à la ligne si nécessaire */
-    gap: 20px;        /* Ajoute un espacement entre les cartes */
+    gap: 50px;        /* Ajoute un espacement entre les cartes */
     justify-content: center;  /* Aligne les cartes de manière équitable */
     margin: 20px;
     margin-bottom: 150px;
