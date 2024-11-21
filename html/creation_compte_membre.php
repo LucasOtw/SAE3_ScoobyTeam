@@ -300,7 +300,7 @@
             }
             
             // 9. Mot de passe : Minimum 8 caractères, et correspondance avec le champ de confirmation
-            if (trim($password) !== trim($confirmPassword)) {
+            if (trim($pwd) !== trim($confirmPassword)) {
                 $erreurs[] = "Les mots de passe ne correspondent pas.";
                 $erreurs_a_afficher[] = "erreur-mots-de-passe-incompatibles";
             }
