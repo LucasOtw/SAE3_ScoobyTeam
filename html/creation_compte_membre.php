@@ -138,7 +138,7 @@
                     <fieldset>
                         <legend>Mot de passe *</legend>
                         <div class="input-icon">
-                            <input class="erreur-mots-de-passe-incompatibles" type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe *" required>
+                            <input class="erreur-mots-de-passe-incompatibles" type="password" id="confirm-password" name="pwd" placeholder="Confirmer le mot de passe *" required>
                             <img src="images/icones/cadenas.png" alt="icones de cadenas" class="input-icon-img">
                         </div>
                     </fieldset>
