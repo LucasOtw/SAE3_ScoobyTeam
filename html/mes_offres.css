@@ -30,7 +30,6 @@ body {
     flex-direction: column;
     font-family: "K2D", sans-serif;
     min-height: 100vh; /*Pour occuper toute la page*/
-    background-color: purple; 
 }
 
 header {
