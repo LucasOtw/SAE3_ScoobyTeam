@@ -6,7 +6,6 @@ if(isset($_GET["deco"])){
 };
 
 if(isset($_SESSION['membre'])){
-   var_dump($_SESSION['membre']);
    $donneesSession = json_encode($_SESSION['membre'],JSON_PRETTY_PRINT);
 } else {
     $donneesSession = null;
