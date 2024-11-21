@@ -261,15 +261,14 @@
                             <div class="info-box" id="infoBox" style="max-height: 0; padding: 0; overflow: hidden; width: 25.5em; transition: max-height 0.3s ease, padding 0.3s ease;">
 
                                 <?php
-                                var_dump($details_offre);
                                 if ($type_offre === "restauration")
                                 {
                                 ?>
                                     <h3 style="margin-top: 1em;">Repas</h3>
-                                    <p><?php echo details_offre["repas"];?></p>
+                                    <p><?php echo $details_offre["repas"];?></p>
 
                                     <h3 style="margin-top: 1em;">Gamme de prix</h3>
-                                    <p><?php echo details_offre["gamme_prix"];?></p>
+                                    <p><?php echo $details_offre["gamme_prix"];?></p>
                                 <?php
                                 }
                                 else
