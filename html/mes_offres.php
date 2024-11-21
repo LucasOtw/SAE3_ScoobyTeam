@@ -66,7 +66,7 @@ echo "</pre>";
             </ul>
         </section>
 
-        <h2>Vos offres</h2>
+        <h2 id="vosOffres">Vos offres</h2>
     
         <section class="offers">
         <?php
