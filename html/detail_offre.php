@@ -23,8 +23,6 @@
         
         $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
 
-        echo $details_offre;
-
         if(!empty($details_offre))
         { // si l'offre existe
     
