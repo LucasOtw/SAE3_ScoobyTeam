@@ -462,6 +462,9 @@ main #vosOffres {
     font-weight: bold; /* Rendre le texte plus visible */
     text-decoration: none;
 }
+a.button-text{
+  text-decoration: none;
+}
 
 .image-button:hover {
     opacity: 0.8; /* Effet visuel lors du survol (optionnel) */
