@@ -302,7 +302,7 @@
                                 <?php
                                 }
                                 else if  ($type_offre === "activite")
-                                }
+                                {
                                 ?>
                                     <h3 style="margin-top: 1em;">Durée</h3>
                                     <p><?php echo $details_offre["duree"];?></p>
