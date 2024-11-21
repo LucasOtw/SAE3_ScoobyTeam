@@ -17,17 +17,14 @@
     else
     {
         // si le formulaire est bien récupéré
-        $code_offre = unserialize($_POST["uneOffre"])["code_offre"]; // on récupère le code de l'offre envoyé
+        $details_offre = unserialize($_POST["uneOffre"]);// on récupère son contenu
+        
+        $code_offre = $details_offre["code_offre"];// on récupère le code de l'offre envoyé
 
         echo $code_offre;
-    
-        // On vérifie si le code existe dans la base de données (AU CAS OU !!!)
-        $existeOffre = NULL;/*$dbh->query("SELECT * FROM tripenarvor._offre WHERE code_offre = $code_offre");*/
 
         if(!empty($existeOffre))
         { // si l'offre existe
-
-            $details_offre = $existeOffre->fetch(); // on récupère son contenu
     
                 // Une offre a forcément au moins une image. 
                 // On récupère l'image (ou les images) associée(s)
