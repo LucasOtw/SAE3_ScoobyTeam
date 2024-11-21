@@ -21,7 +21,9 @@
         // si le formulaire est bien récupéré
         $details_offre = unserialize($_POST["uneOffre"]);// on récupère son contenu
         
-        $code_offre = $details_offre["code_offre"];// on récupère le code de l'offre envoyé
+        $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
+
+        echo $details_offre;
 
         if(!empty($details_offre))
         { // si l'offre existe
@@ -35,19 +37,9 @@
             // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
     
             $adresse_offre = $dbh->query('SELECT * FROM tripenarvor._adresse WHERE code_adresse = '.$details_offre["code_adresse"].'');
-            $adresse_offre = $adresse_offre->fetch();
-
-            echo $adresse_offre["ville"];
-            echo $adresse_offre[4]; 
+            $adresse_offre = $adresse_offre->fetch(PDO::FETCH_ASSOC);
          
-            $horaires = $dbh->query('SELECT DISTINCT h.* FROM tripenarvor._offre o JOIN tripenarvor._horaire h ON h.code_horaire IN (o.lundi, o.mardi, o.mercredi, o.jeudi, o.vendredi, o.samedi, o.dimanche
-            WHERE o.lundi IS NOT NULL
-            OR o.mardi IS NOT NULL
-            OR o.mercredi IS NOT NULL
-            OR o.jeudi IS NOT NULL
-            OR o.vendredi IS NOT NULL
-            OR o.samedi IS NOT NULL
-            OR o.dimanche IS NOT NULL');
+            
         }
     }
 
