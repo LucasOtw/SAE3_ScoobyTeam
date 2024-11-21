@@ -27,14 +27,14 @@
         } elseif($jours == 1){
             $retour = "Hier";
         } elseif($jours > 1 && $jours < 7){
-            $retour = $jours." jour(s)";
+            $retour = "il y a ".$jours." jour(s)";
         } elseif ($jours >= 7 && $jours < $jours_dans_mois_precedent){
             $semaines = floor($jours / 7);
-            $retour = $semaines." semaine(s)";
+            $retour = "il y a ".$semaines." semaine(s)";
         } elseif ($mois < 12){
-            $retour = $mois." mois";
+            $retour = "il y a ".$mois." mois";
         } else {
-            $retour = $annees." an(s)";
+            $retour = "il y a ".$annees." an(s)";
         }
     
         return $retour;
@@ -200,7 +200,7 @@
 
                     <p>📍 <?php echo $adresse_offre["ville"].", ".$adresse_offre["code_postal"];?></p>
 
-                    <p><i class="fas fa-clock"></i> Publié il y a <?php echo tempsEcouleDepuisPublication($details_offre);?></p>
+                    <p><i class="fas fa-clock"></i> Publié <?php echo tempsEcouleDepuisPublication($details_offre);?></p>
 
                     <!-- <div class="detail_offre_rating">
                         ⭐ 5.0 (255 avis)
