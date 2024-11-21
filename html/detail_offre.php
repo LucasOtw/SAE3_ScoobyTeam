@@ -159,7 +159,7 @@
                 <div class="detail_offre_hotel-info">
                     <h1><?php echo $details_offre["titre_offre"];?></h1>
 
-                    <p>📍 Trébeurden, Bretagne 22300</p>
+                    <p>📍 <?php echo $adresse_offre["ville"].", ".$adresse_offre["code_postale"];?></p>
 
                     <p><i class="fas fa-clock"></i> Publié il y a 3 jours</p>
 
@@ -170,9 +170,9 @@
 
                 <div class="detail_offre_price-button">
 
-                    <p class="detail_offre_price">50€</p>
+                    <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
 
-                    <button class="visit-button_detailoffre">Voir le site ➔</button>
+                    <a href=$details_offre["site_web"]><button class="visit-button_detailoffre">Voir le site ➔</button></a>
 
                 </div>
 
