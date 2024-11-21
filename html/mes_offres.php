@@ -134,7 +134,7 @@ echo "</pre>";
                 </form>
             </div>
             <div class="newsletter-image">
-                <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
+                <img src="images/Boiteauxlettres_pro.png" alt="Boîte aux lettres">
             </div>
         </div>
         
