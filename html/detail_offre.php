@@ -247,7 +247,7 @@
                             <div class="info-box" id="infoBox" style="max-height: 507px;padding: 15px;overflow-y: auto;width:25.5em;">
 
                                 <h3 style="margin-top: 1em;">Durée</h3>
-                                <p class="detail_offre_resumer">4h (en moyenne)</p>
+                                <p>4h (en moyenne)</p>
 
                                 <h3 style="margin-top: 1em;">Age</h3>
                                 <p>Tout publics</p>
