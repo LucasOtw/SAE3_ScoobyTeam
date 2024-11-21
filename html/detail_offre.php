@@ -62,6 +62,8 @@
              {
                  $type_offre = "activite";
              }
+
+            echo $type_offre; 
          
 
             // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
