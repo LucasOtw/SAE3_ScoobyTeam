@@ -1,6 +1,6 @@
-                                        /*****************************************************
-                                                    * Code général pour les pages *
-                                        *****************************************************/
+/*****************************************************
+            * Code général pour les pages *
+*****************************************************/
 * {
     margin: 0;
     padding: 0;
@@ -201,9 +201,11 @@ footer {
 
 
 .banner img {
-    width: 100%;
+    width: 70%;
     height: 200px;
     object-fit: cover;
+    margin: 30px;
+    border-radius: 20px;
 }
 
 .profile-info {
@@ -295,19 +297,18 @@ footer {
 
 .offers {
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;  /* Pour que les cartes aillent à la ligne si nécessaire */
-    gap: 20px;        /* Ajoute un espacement entre les cartes */
-    justify-content: space-around;  /* Aligne les cartes de manière équitable */
+    gap: 50px;        /* Ajoute un espacement entre les cartes */
+    justify-content: center;  /* Aligne les cartes de manière équitable */
     margin: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 150px;
 }
 
 .offres {
     display: flex;
     flex-wrap: wrap;  /* Pour que les cartes aillent à la ligne si nécessaire */
     gap: 20px;        /* Ajoute un espacement entre les cartes */
-    justify-content: space-around;  /* Aligne les cartes de manière équitable */
+    justify-content: center;  /* Aligne les cartes de manière équitable */
     margin: 20px;
     margin-bottom: 100px;
 }
@@ -317,6 +318,10 @@ footer {
     margin-bottom: 20px;  /* Ajoute un espace en bas au cas où elles iraient à la ligne */
 }
 
+main #vosOffres {
+    margin-left: 5.7vw;
+    margin-bottom: 30px;
+}
 
 /* Note */
 .offer-rating {
@@ -418,10 +423,16 @@ footer {
     right: 15px;
     background-color: #ff6600;
     color: #fff;
-    font-size: 18px;
+    font-size: 30px;
     padding: 10px;
+    margin: 10px;
     border: none;
-    border-radius: 50%;
+    width:50px;
+    height: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -434,8 +445,8 @@ footer {
     background-image: url('images/PublierAnnonce.png'); /* Chemin de l'image */
     background-size: cover; /* L'image couvrira tout le bouton */
     background-position: center; /* Centrer l'image */
-    width: 300px; /* Remplace par la largeur de tes cases offres */
-    height: 200px; /* Remplace par la hauteur de tes cases offres */
+    width: 260px; /* Remplace par la largeur de tes cases offres */
+    height: 420px; /* Remplace par la hauteur de tes cases offres */
     border: none; /* Pas de bordure */
     cursor: pointer; /* Curseur au survol */
     display: flex; /* Pour centrer le texte */
@@ -443,14 +454,16 @@ footer {
     justify-content: center; /* Centre le texte horizontalement */
     border-radius: 15px; /* Ajuste ce chiffre pour arrondir les angles comme tes cases offres */
     position: relative; /* Pour bien positionner le texte */
-    margin: 10px; /* Optionnel, pour espacer le bouton des autres éléments */
 }
 
-.button-text {
+.button-text button.image-button{
     color: white; /* Couleur du texte */
     font-size: 18px; /* Taille du texte */
     font-weight: bold; /* Rendre le texte plus visible */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour rendre le texte plus lisible */
+    text-decoration: none;
+}
+a.button-text{
+    text-decoration: none;
 }
 
 .image-button:hover {

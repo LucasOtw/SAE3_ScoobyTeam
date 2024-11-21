@@ -2,10 +2,10 @@
 
 ob_start();
 session_start();
-if (!isset($_SESSION["compte"]) || empty($_SESSION["compte"])) {
-    header('location: connexion_pro.php');
-    exit;
-}
+
+include("recupInfosCompte.php");
+
+
 if(isset($_GET["deco"])){
     session_unset();
     session_destroy();
@@ -46,8 +46,8 @@ if(isset($_GET["deco"])){
             </div>
             <div class="profile-info">
                 <img class="profile-picture" src="images/PhotodeProfil.png" alt="Profil utilisateur">
-                <h1>Ti Al Lannec</h1>
-                <p>Lal.lannec@pact.fr | 0109202548</p>
+                <h1><?php echo $monCompte['raison_sociale']; ?></h1>
+                <p><?php echo $compte['mail'] ." | ". $compte['telephone']; ?></p>
             </div>
         </section>
     
@@ -58,36 +58,63 @@ if(isset($_GET["deco"])){
                 <li><a href="ajout_bancaire.php">Compte bancaire</a></li>
             </ul>
         </section>
+
+        <h2 id="vosOffres">Vos offres</h2>
     
         <section class="offers">
-            <h2>Vos offres</h2>
-
+        <?php
+            foreach($mesOffres as $monOffre){
+                ?>
+                <div class="offer-card">
+                    <div class="offer-image">
+                        <img src="<?php echo $monOffre['url_images'][0]; ?>" alt="Offre">
+                        <div class="offer-status">
+                            <span class="status-dot"></span> Hors Ligne
+                        </div>
+                    </div>
+                    <div class="offer-info">
+                        <h3><?php echo $monOffre['titre_offre']; ?></h3>
+                        <p class="category"><?php echo $monOffre['_resume']; ?></p>
+                        <p class="update"><span class="update-icon">⟳</span> Update 2j</p>
+                        <p class="last-update">Mis à jour il y a 2 semaines</p>
+                        <p class="offer-type"><?php echo $monOffre['nom_type']; ?></p>
+                        <p class="price"><?php echo $monOffre['tarif']; ?>€</p>
+                    </div>
+                    <button class="add-btn">+</button>
+                </div>
+                <?php
+            }
+        ?>
 
         <div class="offer-card">
             <div class="offer-image">
-                <img src="images/hotel.jpg" alt="<?php echo htmlspecialchars($row['titre_offre']); ?>">
+                <img src="images/hotel.jpg" alt="Offre Ti Al Lannec">
                 <div class="offer-rating">
                     <span class="star">★</span>
-                    <span class="rating"><?php echo round($row['note_moyenne'], 1); ?></span>
+                    <span class="rating">5.0</span>
                 </div>
                 <div class="offer-status">
-                    <?php echo $row['en_ligne'] ? '<span class="status-dot"></span> En Ligne' : '<span class="status-dot"></span> Hors Ligne'; ?>
+                    <span class="status-dot"></span> Hors Ligne
                 </div>
             </div>
             <div class="offer-info">
-                <h3><?php echo htmlspecialchars($row['titre_offre']); ?></h3>
-                <p class="category"><?php echo htmlspecialchars($row['type_offre']); ?></p>
-                <p class="update"><span class="update-icon">⟳</span> Update <?php echo date_diff(date_create($row['date_derniere_modif']), date_create('today'))->days; ?>j</p>
-                <p class="last-update">Mis à jour le <?php echo date_format(date_create($row['date_derniere_modif']), 'd/m/Y'); ?></p>
+                <h3>Ti Al Lannec</h3>
+                <p class="category">Restaurant Gastronomique</p>
+                <p class="update"><span class="update-icon">⟳</span> Update 2j</p>
+                <p class="last-update">Mis à jour il y a 2 semaines</p>
                 <p class="offer-type">Offre Standard</p>
-                <p class="price"><?php echo $row['tarif']?>€</p>
+                <p class="price">40-500€</p>
             </div>
             <button class="add-btn">+</button>
         </div>
-            <button class="image-button">
-            <span class="button-text">Publier une offre</span>
-            </button>
-        </section>    
+            <a href="mes_offres.php" class="button-text">
+                <button class="image-button">
+                    Publier une offre
+                </button>
+            </a>
+            
+        </section>  
+
     </main>
     
     <footer>
@@ -102,7 +129,7 @@ if(isset($_GET["deco"])){
                 </form>
             </div>
             <div class="newsletter-image">
-                <img src="images/BoiteAuxLettres.png" alt="Boîte aux lettres">
+                <img src="images/Boiteauxlettres_pro.png" alt="Boîte aux lettres">
             </div>
         </div>
         
@@ -147,6 +174,8 @@ if(isset($_GET["deco"])){
                 <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
                 <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
                 <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+            </div>
+        </div>
            
     </footer>
 </body>
