@@ -456,7 +456,7 @@ main #vosOffres {
     position: relative; /* Pour bien positionner le texte */
 }
 
-.button-text {
+.button-text button.image-button{
     color: white; /* Couleur du texte */
     font-size: 18px; /* Taille du texte */
     font-weight: bold; /* Rendre le texte plus visible */
