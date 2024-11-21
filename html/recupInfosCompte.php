@@ -14,7 +14,7 @@
      // on sélectionne les infos du membre
 
     $monCompte = $dbh->prepare("SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte");
-    $monCompte->bindValue(":code_compte",(int) $compte['code_compte']);
+    $monCompte->bindValue(":code_compte",$compte['code_compte']);
     $monCompte->execute();
 
     $monCompte = $monCompte->fetch(PDO::FETCH_ASSOC);
@@ -33,7 +33,7 @@
     // on regarde si le pro est privé ou publique
 
     $monComptePrive = $dbh->prepare("SELECT * FROM tripenarvor._professionnel_prive WHERE code_compte = :code_compte");
-    $monComptePrive->bindValue(":code_compte",$compte['code_compte'],PDO::PARAM_INT);
+    $monComptePrive->bindValue(":code_compte",(int) $compte['code_compte'],PDO::PARAM_INT);
     $monComptePrive->execute();
 
     $monComptePrive = $monComptePrive->fetch(PDO::FETCH_ASSOC);
