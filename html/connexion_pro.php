@@ -89,7 +89,7 @@ session_start();
 
         // on vérifie que l'adresse mail soit reliée à un compte
 
-        $codeCompte = $dbh->prepare("SELECT code_compte FROM tripenarvor._compte WHERE mail = :mail");
+        $codeCompte = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail = :mail");
         $codeCompte->bindParam(":mail",$email);
         $codeCompte->execute();
         $codeCompte = $codeCompte->fetch(PDO::FETCH_ASSOC);
