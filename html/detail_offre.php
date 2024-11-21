@@ -159,7 +159,7 @@
                 <div class="detail_offre_hotel-info">
                     <h1><?php echo $details_offre["titre_offre"];?></h1>
 
-                    <p>📍 <?php echo $adresse_offre["ville"].", ".$adresse_offre["code_postale"];?></p>
+                    <p>📍 <?php echo $adresse_offre["ville"].", ".$adresse_offre["code_postal"];?></p>
 
                     <p><i class="fas fa-clock"></i> Publié il y a 3 jours</p>
 
