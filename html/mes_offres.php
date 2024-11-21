@@ -99,7 +99,7 @@ if(isset($_GET["deco"])){
             <div class="offer-info">
                 <h3>Ti Al Lannec</h3>
                 <p class="category">Restaurant Gastronomique</p>
-                <p class="update"><span class="update-icon">⟳</span> Update 2j</p>
+                <p class="update"><span class="update-icon">⟳</span> Update <?php echo strtolower(tempsEcouleDepuisUpdate($monOffre)) ?></p>
                 <p class="last-update">Mis à jour il y a 2 semaines</p>
                 <p class="offer-type">Offre Standard</p>
                 <p class="price">40-500€</p>
