@@ -79,7 +79,7 @@
     }
 
     // Adresse que tu veux convertir
-    $adresse = "7 rue les hautes fontennelles";
+    $adresse = $adresse_offre["adresse_postal"];
 
     // Encode l'adresse pour l'URL
     $adresse_enc = urlencode($adresse);
@@ -157,7 +157,7 @@
             <div class="detail_offre_hotel-header">
 
                 <div class="detail_offre_hotel-info">
-                    <h1>Ti Al Lannec – Hôtel & Restaurant</h1>
+                    <h1><?php echo $details_offre["titre_offre"];?></h1>
 
                     <p>📍 Trébeurden, Bretagne 22300</p>
 
