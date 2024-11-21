@@ -112,7 +112,7 @@ function tempsEcouleDepuisPublication($offre){
                     if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
                        ?>
                        <li>
-                           <a href="#">/!\ EN COURS /!\</a>
+                           <a href="consulter_comptre_membre.php">Mon compte</a>
                        </li>
                         <li>
                             <a href="voir_offres.php?deco=true">Se déconnecter</a>
