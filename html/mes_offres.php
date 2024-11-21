@@ -64,6 +64,7 @@ if(isset($_GET["deco"])){
         <section class="offers">
         <?php
             foreach($mesOffres as $monOffre){
+                var_dump($monOffre['url_image'];
                 ?>
                 <div class="offer-card">
                     <div class="offer-image">
