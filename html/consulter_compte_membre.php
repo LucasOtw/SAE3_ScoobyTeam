@@ -86,16 +86,6 @@
                     <input type="text" id="ville" name="ville" value="Lannion" placeholder="Ville *" required>
                 </fieldset>
             </div>
-            
-            <fieldset>
-                <legend>Code Postal *</legend>
-                <input type="text" id="code-postal" name="code-postal" value="22300" placeholder="Code Postal *" required>
-            </fieldset>
-
-            <fieldset>
-                <legend>Ville *</legend>
-                <input type="text" id="ville" name="ville" value="Lannion" placeholder="Ville *" required>
-            </fieldset>
 
             <div class="checkbox">
                 <input type="checkbox" id="cgu" name="cgu" required>
