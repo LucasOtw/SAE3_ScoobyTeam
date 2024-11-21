@@ -21,8 +21,8 @@
     </header>
     <main class="main_consulter_compte_membre">
 
-        <div class="container">
-            <div class="header">
+        <div class="profile">
+            <div class="banner">
                 <img src="images/Rectangle 3.png" alt="Bannière" class="header-img">
             </div>
 
@@ -32,12 +32,16 @@
                 <p>juliettemartin@gmail.com | 07.98.76.54.12</p>
             </div>
 
-            <div class="tabs">
-                <div class="tab active">Informations personnelles</div>
-                <div class="tab">Mot de passe et sécurité</div>
-                <div class="tab">Historique</div>
-            </div>
         </div>
+            <section class="tabs">
+                <ul>
+                    <li><a href="informations_personnelles_pro.php">informations personnelles</a></li>
+                    <li><a href="mes_offres.php" class="active">Mot de passe et sécurité</a></li>
+                    <li><a href="ajout_bancaire.php">Historique</a></li>
+                </ul>
+            </section>
+
+           
 
         <form action="traitement_formulaire.php?id=<?php echo $user_id; ?>" method="POST">
 
