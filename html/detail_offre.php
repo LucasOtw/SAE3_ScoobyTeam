@@ -32,7 +32,7 @@
                 // On récupère l'image (ou les images) associée(s)
     
             $images_offre = $dbh->query('SELECT url_image FROM tripenarvor._image WHERE code_image = (SELECT code_image FROM tripenarvor._son_image WHERE code_offre = '.$code_offre.')');
-            $images_offre = $dbh->fetch();
+            $images_offre = $images_offre->fetch();
          
             echo $images_offre[0];
                 // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
