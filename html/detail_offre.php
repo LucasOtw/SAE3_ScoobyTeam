@@ -38,7 +38,7 @@
             $adresse_offre = $adresse_offre->fetch();
 
             echo $adresse_offre["ville"];
-            echo $adresse_offre[0]; 
+            echo $adresse_offre[4]; 
          
             $horaires = $dbh->query('SELECT DISTINCT h.* FROM tripenarvor._offre o JOIN tripenarvor._horaire h ON h.code_horaire IN (o.lundi, o.mardi, o.mercredi, o.jeudi, o.vendredi, o.samedi, o.dimanche
             WHERE o.lundi IS NOT NULL
