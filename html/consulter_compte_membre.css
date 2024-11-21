@@ -258,70 +258,82 @@ footer {
     padding: 0;
 }
 
-
-.main_consulter_compte_membre .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
+/* Profile Section */
+.profile {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-.main_consulter_compte_membre .header-img {
-    width: 152%;
-    margin-left: -14em;
+
+.main_consulter_compte_membre .banner img {
+    width: 70%;
     height: 200px;
+    object-fit: cover;
+    margin: 30px;
+    border-radius: 20px;
 }
+
 
 .main_consulter_compte_membre .profile-section {
     text-align: center;
-    margin-top: -50px; /* Remonter la photo de profil */
+    margin-top: -90px; /* Remonter la photo de profil */
 }
 
 .main_consulter_compte_membre .profile-img {
     width: 120px;
     height: 120px;
+    border-radius: 35px;
     object-fit: cover;
 }
 
 .main_consulter_compte_membre h1 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 10px;
+    font-size: 28px;
+    margin: 10px 0;
 }
 
 .main_consulter_compte_membre p {
     color: #888;
-    margin-bottom: 30px;
 }
-
-.main_consulter_compte_membre .tabs {
+/* Tabs Section */
+.tabs {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    padding: 0px;
-
+    justify-content: center;
+    margin: 30px 0;
+    text-align: center;
 }
 
-.main_consulter_compte_membre .tab {
-    padding: 10px 40px;
-    cursor: pointer;
-    color: #2e2e2e;
+.tabs ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    min-width: 40vw;
+}
+
+.tabs ul li {
+    display: flex;
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+.tabs ul li a {
+    width: calc(60vw/3);
+    font-size: 20px;
+    padding: 10px 20px;
+    display: inline-block;
     border-bottom: 2px solid transparent;
-    transition: border-bottom 0.3s ease;
-   
-    
+    transition: border-color 0.3s;
+    color: #333;
+    text-decoration: none;
 }
 
-.main_consulter_compte_membre .tab.active {
-    color: #2e2e2e;
-    border-bottom: 2px solid #6b8e23; /* Couleur vert olive */
+.tabs ul li a.active {
+    border-color: #ff6600;
+    text-decoration: none;
 }
-
-.main_consulter_compte_membre .tab:not(.active):hover {
-    border-bottom: 2px solid #ccc;
-}
-
 
 .main_consulter_compte_membre .label {
     display: block;
