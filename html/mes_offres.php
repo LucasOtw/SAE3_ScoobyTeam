@@ -33,7 +33,8 @@ if(isset($_GET["deco"])){
         <nav>
             <ul>
                 <li><a href="mes_offres.php" class="active">Accueil</a></li>
-                <li><a href="creation_offre.php">Publier</a></li>
+                <li><a href="creation_offre1.php">Publier</a></li>
+                <li><a href="#">/!\EN COURS/!\</a></li>
                 <li><a href="mes_offres.php?deco=true">Déconnexion</a></li>
             </ul>
         </nav>
@@ -44,7 +45,7 @@ if(isset($_GET["deco"])){
                 <img src="images/Fond.png" alt="Bannière de profil">
             </div>
             <div class="profile-info">
-                <img class="profile-picture" src="images/PhotodeProfil.png" alt="Profil utilisateur">
+                <img class="profile-picture" src="images/hotel.jpg" alt="Profil utilisateur">
                 <h1><?php echo $monCompte['raison_sociale']; ?></h1>
                 <p><?php echo $compte['mail'] ." | ". $compte['telephone']; ?></p>
             </div>
@@ -52,8 +53,8 @@ if(isset($_GET["deco"])){
     
         <section class="tabs">
             <ul>
-                <li><a href="informations_personnelles_pro.php">informations personnelles</a></li>
-                <li><a href="mes_offres.php" class="active">Offres</a></li>
+                <li><a href="informations_personnelles_pro.php">Informations personnelles</a></li>
+                <li><a href="mes_offres.php" class="active">Mes offres</a></li>
                 <li><a href="ajout_bancaire.php">Compte bancaire</a></li>
             </ul>
         </section>
@@ -106,7 +107,7 @@ if(isset($_GET["deco"])){
             </div>
             <button class="add-btn">+</button>
         </div>
-            <a href="creation_offre.php" class="button-text">
+            <a href="mes_offres.php" class="button-text">
                 <button class="image-button">
                     Publier une offre
                 </button>
