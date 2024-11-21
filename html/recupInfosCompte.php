@@ -65,7 +65,7 @@
         $liensImages->bindValue(":code_image",$image['code_image']);
         $liensImages->execute();
 
-        $images[] = $liensImages->fetchAll(PDO::FETCH_ASSOC);
+        $mesOffres["url_image"] = $liensImages->fetchAll(PDO::FETCH_ASSOC);
       }
     }
   }
