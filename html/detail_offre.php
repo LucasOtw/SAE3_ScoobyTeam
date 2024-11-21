@@ -18,6 +18,8 @@
     {
         // si le formulaire est bien récupéré
         $code_offre = $_POST["uneOffre"]; // on récupère le code de l'offre envoyé
+
+        echo $code_offre;
     
         // On vérifie si le code existe dans la base de données (AU CAS OU !!!)
         $existeOffre = $dbh->query("SELECT * FROM tripenarvor._offre WHERE code_offre = $code_offre");
