@@ -271,29 +271,50 @@
                                     <p><?php echo $details_offre["gamme_prix"];?></p>
                                 <?php
                                 }
-                                else
+                                else if ($type_offre === "parc d'attraction")
                                 {
                                 ?>
-                                    <h3 style="margin-top: 1em;">Durée</h3>
-                                    <p>4h (en moyenne)</p>
-    
-                                    <h3 style="margin-top: 1em;">Age</h3>
-                                    <p>Tout publics</p>
-                                    
-                                    <h3 style="margin-top: 1em;">Visite Guidée</h3>
-                                    <p>Oui</p>
-                                    
-                                    <h3 style="margin-top: 1em;">Prestations incluses</h3>
-                                    <p>Cours de golf</p>
-                                    
-                                    <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
-                                    <p>Spa</p>
-                                    
-                                    <h3 style="margin-top: 1em;">Capacité d'acceuil</h3>
-                                    <p> 500pers environ</p>
+                                    <h3 style="margin-top: 1em;">Age requis</h3>
+                                    <p><?php echo $details_offre["age_requis"];?></p>
                                     
                                     <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
-                                    <p>23 attractions</p>
+                                    <p><?php echo $details_offre["nombre_attractions"];?></p>
+                                <?php
+                                }
+                                else if ($type_offre === "spectacle")
+                                {
+                                ?>
+                                    <h3 style="margin-top: 1em;">Capacité d'acceuil</h3>
+                                    <p><?php echo $details_offre["capacite_acceuil"];?></p>
+
+                                    <h3 style="margin-top: 1em;">Durée</h3>
+                                    <p><?php echo $details_offre["duree"];?></p>
+                                <?php
+                                }
+                                else if ($type_offre === "visite")
+                                {
+                                ?>
+                                    <h3 style="margin-top: 1em;">Visite Guidée</h3>
+                                    <p>Oui</p>
+
+                                    <h3 style="margin-top: 1em;">Durée</h3>
+                                    <p><?php echo $details_offre["duree"];?></p>
+                                <?php
+                                }
+                                else if  ($type_offre === "activite")
+                                }
+                                ?>
+                                    <h3 style="margin-top: 1em;">Durée</h3>
+                                    <p><?php echo $details_offre["duree"];?></p>
+
+                                    <h3 style="margin-top: 1em;">Age requis</h3>
+                                    <p><?php echo $details_offre["age_requis"];?></p>
+                                    
+                                    <h3 style="margin-top: 1em;">Prestations incluses</h3>
+                                    <p><?php echo $details_offre["prestations_incluses"];?></p>
+                                    
+                                    <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
+                                    <p><?php echo $details_offre["prestations_non_incluses"];?></p>
                                 <?php
                                 }
                                 ?>
