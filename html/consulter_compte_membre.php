@@ -64,7 +64,7 @@ include("recupInfosCompte.php");
 
             <fieldset>
                 <legend>Pseudo *</legend>
-                <input type="text" id="pseudo" name="pseudo" value="?" placeholder="Pseudo *" required>
+                <input type="text" id="pseudo" name="pseudo" value="<?php echo $monCompteMembre['pseudo']; ?>" placeholder="Pseudo *" required>
             </fieldset>
 
             <div class="crea_pro_mail_tel">
