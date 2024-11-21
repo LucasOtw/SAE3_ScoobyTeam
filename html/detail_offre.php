@@ -361,7 +361,14 @@
         </div>
         
         <?php
-        if ()
+        if (!empty($h_lundi["ouverture"]) && 
+           !empty($h_mardi["ouverture"]) &&
+           !empty($h_mercredi["ouverture"]) &&
+           !empty($h_jeudi["ouverture"]) &&
+           !empty($h_vendredi["ouverture"]) &&
+           !empty($h_samedi["ouverture"]) &&
+           !empty($h_dimanche["ouverture"]))
+        {
         ?>
             <div class="Detail_offre_ouverture_global_desktop">
     
@@ -378,7 +385,7 @@
     
             </div>
         <?php
-
+        }
         ?>
 
         <div class="detail_offre_localisation">
