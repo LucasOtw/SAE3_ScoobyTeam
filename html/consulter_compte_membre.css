@@ -331,7 +331,7 @@ footer {
 }
 
 .tabs ul li a.active {
-    border-color: #ff6600;
+    border-color: var(--vert-clair);
     text-decoration: none;
 }
 
