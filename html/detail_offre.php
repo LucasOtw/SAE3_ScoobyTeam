@@ -45,25 +45,28 @@
              if (!empty($offre_r))
              {
                  $type_offre = "restauration";
+                 $details_offre = $offre_r->fetch(PDO::FETCH_ASSOC);
              }
              else if (!empty($offre_p))
              {
                  $type_offre = "parc d'attraction";
+                 $details_offre = $offre_p->fetch(PDO::FETCH_ASSOC);
              }
              else if (!empty($offre_s))
              {
                  $type_offre = "spectacle";
+                 $details_offre = $offre_s->fetch(PDO::FETCH_ASSOC);
              }
              else if (!empty($offre_v))
              {
                  $type_offre = "visite";
+                 $details_offre = $offre_v->fetch(PDO::FETCH_ASSOC);
              }
              else if (!empty($offre_a))
              {
                  $type_offre = "activite";
+                 $details_offre = $offre_a->fetch(PDO::FETCH_ASSOC);
              }
-
-            echo $type_offre; 
          
 
             // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
