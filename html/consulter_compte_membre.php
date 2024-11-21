@@ -38,20 +38,20 @@ if(isset($_POST['logout'])){
                case 'prenom':
                case 'pseudo':
                    $query = $dbh->prepare("UPDATE tripenarvor._membre SET $champ = :valeur WHERE code_compte = :code_compte");
-                   $query->execute(['valeur' => $valeur, 'code_compte' => $compte['code_compte']]);
+                   $query->execute(['valeur' => trim($valeur), 'code_compte' => $compte['code_compte']]);
                    break;
    
                case 'email':
                case 'telephone':
                    $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
-                   $query->execute(['valeur' => $valeur, 'code_compte' => $compte['code_compte']]);
+                   $query->execute(['valeur' => trim($valeur), 'code_compte' => $compte['code_compte']]);
                    break;
    
                case 'adresse':
                case 'code-postal':
                case 'ville':
                    $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
-                   $query->execute(['valeur' => $valeur, 'code_adresse' => $monAdresse['code_adresse']]);
+                   $query->execute(['valeur' => trim($valeur), 'code_adresse' => $monAdresse['code_adresse']]);
                    break;
            }
        }
