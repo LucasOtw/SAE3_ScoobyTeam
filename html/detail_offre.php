@@ -2,6 +2,14 @@
 <?php
     session_start();
 
+    // Vérifie si le formulaire a été soumis    
+    $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+    $username = "sae";  // Utilisateur PostgreSQL défini dans .env
+    $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
+
+    // Créer une instance PDO avec les bons paramètres
+    $dbh = new PDO($dsn, $username, $password);
+
     if(!isset($_POST["vueDetails"]))
     {
         echo "Erreur : aucune offre"; // à remplacer
