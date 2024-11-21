@@ -14,7 +14,7 @@
      // on sélectionne les infos du membre
 
     $monCompte = $dbh->prepare("SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte");
-    $monCompte->bindValue(":code_compte",$compte['code_compte']);
+    $monCompte->bindValue(":code_compte",(int) $compte['code_compte']);
     $monCompte->execute();
 
     $monCompte = $monCompte->fetch(PDO::FETCH_ASSOC);
