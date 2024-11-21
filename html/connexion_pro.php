@@ -101,6 +101,7 @@ session_start();
             $estPro->bindParam(":codeCompte", $codeCompte[0]);
             $estPro->execute();
             $estPro = $estPro->fetch();
+            echo "TEST";
         
             if ($estPro) {
                 // si le compte est professionnel, alors on vérifie son mot de passe
