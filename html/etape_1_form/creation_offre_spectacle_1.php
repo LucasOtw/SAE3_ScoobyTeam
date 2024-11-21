@@ -15,15 +15,15 @@
         </div>
         <nav>
             <ul>
-                <li><a href="mes_offres.php">Accueil</a></li>
+                <li><a href="../mes_offres.php">Accueil</a></li>
                 <li><a href="#" class="active">Publier</a></li>
-                <li><a href="informations_personnelles_pro.php">Mon Compte</a></li>
+                <li><a href="../consulter_compte_pro.php">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
      <div class="fleche_retour">
         <div>
-            <a href="creation_offre1.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
+            <a href="../creation_offre.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
         </div>
     </div>
 
