@@ -77,12 +77,19 @@
             $tags_offre = $tags_offre->fetch(PDO::FETCH_NUM);
 
             $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
-            $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
-            $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
-            $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
-            $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
-            $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
-            $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
+            $h_lundi = $h_lundi->fetch(PDO::FETCH_ASSOC);
+            $h_mardi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["mardi"].";");
+            $h_mardi = $h_mardi->fetch(PDO::FETCH_ASSOC);
+            $h_mercredi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["mercredi"].";");
+            $h_mercredi = $h_mercredi->fetch(PDO::FETCH_ASSOC);
+            $h_jeudi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["jeudi"].";");
+            $h_jeudi = $h_jeudi->fetch(PDO::FETCH_ASSOC);
+            $h_vendredi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["vendredi"].";");
+            $h_vendredi = $h_vendredi->fetch(PDO::FETCH_ASSOC);
+            $h_samedi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["samedi"].";");
+            $h_samedi = $h_samedi->fetch(PDO::FETCH_ASSOC);
+            $h_dimanche = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["dimanche"].";");
+            $h_dimanche = $h_dimanche->fetch(PDO::FETCH_ASSOC);
          
             $offre_r = $dbh->query('select * from tripenarvor.offre_restauration where code_offre = '.$code_offre.';');
             $offre_p = $dbh->query('select * from tripenarvor.offre_parc_attractions where code_offre = '.$code_offre.';');
