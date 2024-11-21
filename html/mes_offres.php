@@ -74,7 +74,7 @@ if(isset($_GET["deco"])){
                     <div class="offer-info">
                         <h3><?php echo $monOffre['titre_offre']; ?></h3>
                         <p class="category"><?php echo $monOffre['_resume']; ?></p>
-                        <p class="update"><span class="update-icon">⟳</span> Update 2j</p>
+                        <p class="update"><span class="update-icon">⟳</span> Update <?php echo strtolower(tempsEcouleDepuisUpdate($monOffre)) ?></p>
                         <p class="last-update">Publiée <?php echo strtolower(tempsEcouleDepuisPublication($monOffre)) ?></p>
                         <p class="offer-type"><?php echo $monOffre['nom_type']; ?></p>
                         <p class="price"><?php echo $monOffre['tarif']; ?>€</p>
@@ -99,7 +99,7 @@ if(isset($_GET["deco"])){
             <div class="offer-info">
                 <h3>Ti Al Lannec</h3>
                 <p class="category">Restaurant Gastronomique</p>
-                <p class="update"><span class="update-icon">⟳</span> Update <?php echo strtolower(tempsEcouleDepuisUpdate($monOffre)) ?></p>
+                <p class="update"><span class="update-icon">⟳</span> Update 2j</p>
                 <p class="last-update">Mis à jour il y a 2 semaines</p>
                 <p class="offer-type">Offre Standard</p>
                 <p class="price">40-500€</p>
