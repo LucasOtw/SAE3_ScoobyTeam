@@ -29,6 +29,9 @@
     $monAdresse->bindValue(":code_adresse",$mesInfos['code_adresse']);
     $monAdresse->execute();
 
+    /* un membre n'a qu'une seule image, puisque ce sera sa photo de profil.
+    Il suffit donc de voir si il en possède une :)*/
+
     $_adresse = $monAdresse->fetch(PDO::FETCH_ASSOC);
   } elseif(isset($_SESSION['pro'])){
      $compte = $_SESSION['pro'];
