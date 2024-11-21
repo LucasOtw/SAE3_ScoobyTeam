@@ -131,7 +131,7 @@
         } elseif($jours == 1){
             $retour = "Hier";
         } elseif($jours > 1 && $jours < 7){
-            $retour = "$jours." jour(s)";
+            $retour = $jours." jour(s)";
         } elseif ($jours >= 7 && $jours < $jours_dans_mois_precedent){
             $semaines = floor($jours / 7);
             $retour = $semaines." semaine(s)";
