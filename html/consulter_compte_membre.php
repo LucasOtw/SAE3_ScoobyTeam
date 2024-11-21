@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulter compte membre</title>
+    <title>Modifier compte membre</title>
     <link rel="stylesheet" href="consulter_compte_membre.css">
 </head>
 <body>
@@ -21,8 +21,8 @@
     </header>
     <main class="main_consulter_compte_membre">
 
-        <div class="container">
-            <div class="header">
+        <div class="profile">
+            <div class="banner">
                 <img src="images/Rectangle 3.png" alt="Bannière" class="header-img">
             </div>
 
@@ -32,12 +32,16 @@
                 <p>juliettemartin@gmail.com | 07.98.76.54.12</p>
             </div>
 
-            <div class="tabs">
-                <div class="tab active">Informations personnelles</div>
-                <div class="tab">Mot de passe et sécurité</div>
-                <div class="tab">Historique</div>
-            </div>
         </div>
+            <section class="tabs">
+                <ul>
+                    <li><a href="informations_personnelles_pro.php">informations personnelles</a></li>
+                    <li><a href="mes_offres.php" class="active">Mot de passe et sécurité</a></li>
+                    <li><a href="ajout_bancaire.php">Historique</a></li>
+                </ul>
+            </section>
+
+           
 
         <form action="traitement_formulaire.php?id=<?php echo $user_id; ?>" method="POST">
 
@@ -52,11 +56,6 @@
                     <input type="text" id="prenom" name="prenom" value="Juliette" placeholder="Prénom *" required>
                 </fieldset>
             </div>
-
-            <fieldset>
-                <legend>Pseudo *</legend>
-                <input type="text" id="pseudo" name="pseudo" value="JuMart" placeholder="Pseudo *" required>
-            </fieldset>
 
             <div class="crea_pro_mail_tel">
                 <fieldset>
@@ -75,17 +74,15 @@
                 <input type="text" id="adresse" name="adresse" value="12 Rue Charlemagne" placeholder="Adresse Postale *" required>
             </fieldset>
 
-            <div class="crea_pro_mail_tel">
-                <fieldset>
-                    <legend>Code Postal *</legend>
-                    <input type="text" id="code-postal" name="code-postal" value="22300" placeholder="Code Postal *" required>
-                </fieldset>
-    
-                <fieldset>
-                    <legend>Ville *</legend>
-                    <input type="text" id="ville" name="ville" value="Lannion" placeholder="Ville *" required>
-                </fieldset>
-            </div>
+            <fieldset>
+                <legend>Code Postal *</legend>
+                <input type="text" id="code-postal" name="code-postal" value="22300" placeholder="Code Postal *" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Ville *</legend>
+                <input type="text" id="ville" name="ville" value="Lannion" placeholder="Ville *" required>
+            </fieldset>
 
             <div class="checkbox">
                 <input type="checkbox" id="cgu" name="cgu" required>
