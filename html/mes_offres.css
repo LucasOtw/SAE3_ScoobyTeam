@@ -299,7 +299,7 @@ footer {
     gap: 20px;        /* Ajoute un espacement entre les cartes */
     justify-content: space-around;  /* Aligne les cartes de manière équitable */
     margin: 20px;
-    margin-bottom: 100px;
+    margin-bottom: 150px;
 }
 
 .offres {
