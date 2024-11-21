@@ -68,7 +68,7 @@ if(isset($_GET["deco"])){
                 ?>
                 <div class="offer-card">
                     <div class="offer-image">
-                        <img src="<?php echo $monOffre['url_image'][0]['url_image']; ?>" alt="Offre">
+                        <img src="<?php echo $monOffre['url_image'][0]; ?>" alt="Offre">
                         <div class="offer-status">
                             <span class="status-dot"></span> Hors Ligne
                         </div>
