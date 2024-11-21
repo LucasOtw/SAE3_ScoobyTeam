@@ -43,6 +43,10 @@
         return $retour;
     }
 
+    function affichageHorraire($offre)
+    {
+
+    }
 
     // Vérifie si le formulaire a été soumis    
     $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
@@ -346,21 +350,27 @@
 
             </div>
         </div>
+        
+        <?php
+        
+        ?>
+            <div class="Detail_offre_ouverture_global_desktop">
+    
+                <h2>Horaires</h2>
+                <ul class="hours_desktop_detail_offre">
+                    <li><span>Lundi</span>: 19h30 - 21h30</li>
+                    <li><span>Mardi</span>: 19h30 - 21h30</li>
+                    <li><span>Mercredi</span>: 19h30 - 21h30</li>
+                    <li><span>Jeudi</span>: 19h30 - 21h30</li>
+                    <li><span>Vendredi</span>: 19h30 - 21h30</li>
+                    <li><span>Samedi</span>: 19h30 - 21h30</li>
+                    <li><span>Dimanche</span>: 19h30 - 21h30</li>
+                </ul>
+    
+            </div>
+        <?php
 
-        <div class="Detail_offre_ouverture_global_desktop">
-
-            <h2>Horaires</h2>
-            <ul class="hours_desktop_detail_offre">
-                <li><span>Lundi</span>: 19h30 - 21h30</li>
-                <li><span>Mardi</span>: 19h30 - 21h30</li>
-                <li><span>Mercredi</span>: 19h30 - 21h30</li>
-                <li><span>Jeudi</span>: 19h30 - 21h30</li>
-                <li><span>Vendredi</span>: 19h30 - 21h30</li>
-                <li><span>Samedi</span>: 12h30 - 13h30, 19h30 - 21h30</li>
-                <li><span>Dimanche</span>: 12h30 - 13h30, 19h30 - 21h30</li>
-            </ul>
-
-        </div>
+        ?>
 
         <div class="detail_offre_localisation">
             <h2>Localisation</h2>
