@@ -17,7 +17,7 @@
     else
     {
         // si le formulaire est bien récupéré
-        $code_offre = ($_POST["uneOffre"])['code_offre']; // on récupère le code de l'offre envoyé
+        $code_offre = $_POST["uneOffre"]; // on récupère le code de l'offre envoyé
 
         echo $code_offre;
     
