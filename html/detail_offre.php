@@ -43,11 +43,6 @@
         return $retour;
     }
 
-    function affichageHorraire($offre)
-    {
-
-    }
-
     // Vérifie si le formulaire a été soumis    
     $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
     $username = "sae";  // Utilisateur PostgreSQL défini dans .env
@@ -81,6 +76,13 @@
             $tags_offre = $dbh->query('SELECT nom_tag FROM tripenarvor._tags WHERE code_tag = (SELECT code_tag FROM tripenarvor._son_tag WHERE code_offre = '.$code_offre.')');
             $tags_offre = $tags_offre->fetch(PDO::FETCH_NUM);
 
+            $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
+            $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
+            $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
+            $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
+            $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
+            $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
+            $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
          
             $offre_r = $dbh->query('select * from tripenarvor.offre_restauration where code_offre = '.$code_offre.';');
             $offre_p = $dbh->query('select * from tripenarvor.offre_parc_attractions where code_offre = '.$code_offre.';');
@@ -352,7 +354,7 @@
         </div>
         
         <?php
-        
+        if ()
         ?>
             <div class="Detail_offre_ouverture_global_desktop">
     
