@@ -53,40 +53,45 @@ include("recupInfosCompte.php");
             <div class="crea_pro_raison_sociale_num_siren">
                 <fieldset>
                     <legend>Nom *</legend>
-                    <input type="text" id="nom" name="nom" value="Martin" placeholder="Nom *" required>
+                    <input type="text" id="nom" name="nom" value="<?php echo $monCompteMembre['nom'] ?>" placeholder="Nom *" required>
                 </fieldset>
 
                 <fieldset>
                     <legend>Prénom *</legend>
-                    <input type="text" id="prenom" name="prenom" value="Juliette" placeholder="Prénom *" required>
+                    <input type="text" id="prenom" name="prenom" value="<?php echo $monCompteMembre['prenom']; ?>" placeholder="Prénom *" required>
                 </fieldset>
             </div>
+
+            <fieldset>
+                <legend>Pseudo *</legend>
+                <input type="text" id="pseudo" name="pseudo" value="?" placeholder="Pseudo *" required>
+            </fieldset>
 
             <div class="crea_pro_mail_tel">
                 <fieldset>
                     <legend>Email *</legend>
-                    <input type="email" id="email" name="email" value="jumartin@gmail.com" placeholder="Email *" required>
+                    <input type="email" id="email" name="email" value="<?php echo $mesInfos['mail']; ?>" placeholder="Email *" required>
                 </fieldset>
 
                 <fieldset>
                     <legend>Téléphone *</legend>
-                    <input type="tel" id="telephone" name="telephone" value="06 54 85 72 12" placeholder="Téléphone *" required>
+                    <input type="tel" id="telephone" name="telephone" value="<?php echo $mesInfos['telephone']; ?>" placeholder="Téléphone *" required>
                 </fieldset>
             </div>
 
             <fieldset>
                 <legend>Adresse Postale *</legend>
-                <input type="text" id="adresse" name="adresse" value="12 Rue Charlemagne" placeholder="Adresse Postale *" required>
+                <input type="text" id="adresse" name="adresse" value="<?php echo $monAdresse['adresse_postale']; ?>" placeholder="Adresse Postale *" required>
             </fieldset>
 
             <fieldset>
                 <legend>Code Postal *</legend>
-                <input type="text" id="code-postal" name="code-postal" value="22300" placeholder="Code Postal *" required>
+                <input type="text" id="code-postal" name="code-postal" value="<?php echo $monAdresse['code_postal'] ?>" placeholder="Code Postal *" required>
             </fieldset>
 
             <fieldset>
                 <legend>Ville *</legend>
-                <input type="text" id="ville" name="ville" value="Lannion" placeholder="Ville *" required>
+                <input type="text" id="ville" name="ville" value="echo $monAdresse['ville']" placeholder="Ville *" required>
             </fieldset>
 
             <div class="checkbox">
