@@ -8,7 +8,7 @@
     $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
 
     // Créer une instance PDO avec les bons paramètres
-    $dbh = new PDO($dsn, $username, $password);
+    $bdd = new PDO($dsn, $username, $password);
 
     if(!isset($_POST["vueDetails"]))
     {
