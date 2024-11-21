@@ -42,6 +42,62 @@
             </ul>
         </section> 
 
+        <form action="consulter_compte_pro.php" method="POST" id="compteForm">
+
+            <div class="crea_pro_raison_sociale_num_siren">
+                <fieldset>
+                    <legend>Raison sociale</legend>
+                    <input type="text" id="r_sociale" name="raison_sociale" placeholder="Raison sociale *" required>
+                </fieldset>
+
+                <fieldset>
+                    <legend>N° de Siren (Professionnel privé)</legend>
+                    <input type="text" id="num_siren" name="numero_siren"  placeholder="N° de Siren (Professionnel privé)" required>
+                </fieldset>
+            </div>
+
+            <fieldset>
+                <legend>Email *</legend>
+                <input type="text" id="mail" name="email" placeholder="Email *" required>
+            </fieldset>
+
+            <div class="crea_pro_mail_tel">
+                <fieldset>
+                    <legend>Email *</legend>
+                    <input type="email" id="email" name="email" value="<?php echo $mesInfos['mail']; ?>" placeholder="Email *" required>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Téléphone *</legend>
+                    <input type="tel" id="telephone" name="telephone" value="<?php echo trim(preg_replace('/(\d{2})/', '$1 ', $mesInfos['telephone'])) ?>" placeholder="Téléphone *" required>
+                </fieldset>
+            </div>
+
+            <fieldset>
+                <legend>Adresse Postale *</legend>
+                <input type="text" id="adresse" name="adresse" value="<?php echo $_adresse['adresse_postal']; ?>" placeholder="Adresse Postale *" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Code Postal *</legend>
+                <input type="text" id="code-postal" name="code-postal" value="<?php echo $_adresse['code_postal']; ?>" placeholder="Code Postal *" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Ville *</legend>
+                <input type="text" id="ville" name="ville" value="<?php echo $_adresse['ville']; ?>" placeholder="Ville *" required>
+            </fieldset>
+
+            <div class="checkbox">
+                <input type="checkbox" id="cgu" name="cgu" required>
+                <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
+            </div>
+            
+            <div class="compte_membre_save_delete">
+                <button type="submit" name="modif_infos" class="submit-btn2" id="btn-enreg">Enregistrer</button>
+            </div>
+
+        </form>
     </main>
     
     <footer>
