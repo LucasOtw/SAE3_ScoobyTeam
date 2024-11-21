@@ -460,7 +460,6 @@ main #vosOffres {
     color: white; /* Couleur du texte */
     font-size: 18px; /* Taille du texte */
     font-weight: bold; /* Rendre le texte plus visible */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre pour rendre le texte plus lisible */
     text-decoration: none;
 }
 
