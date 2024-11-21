@@ -43,6 +43,7 @@ if(isset($_POST['logout'])){
    
                case 'email':
                case 'telephone':
+                   error_log("Longueur de telephone : " . strlen(trim($valeur)) . ", Valeur : " . trim($valeur));
                    $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
                    $query->execute(['valeur' => trim($valeur), 'code_compte' => $compte['code_compte']]);
                    break;
