@@ -55,6 +55,8 @@
       $imagesOffres->bindValue(":code_offre",$monOffre['code_offre']);
       $imagesOffres->execute();
 
+      echo "TA MERE L'OFFRE N° : ".$monOffre['code_offre']."";
+
       $imagesOffres = $imagesOffres->fetchAll(PDO::FETCH_ASSOC);
 
       // on récupère toutes les images associées (pour l'avenir :) )
