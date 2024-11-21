@@ -71,6 +71,8 @@
   }
 
 echo "<pre>";
+var_dump($compte);
+var_dump($monCompte);
 var_dump($mesOffres);
 echo "</pre>";
 
