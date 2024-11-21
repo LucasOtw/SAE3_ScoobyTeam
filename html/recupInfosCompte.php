@@ -52,15 +52,15 @@
 
     // avec chaque offre, on peut récupérer leur première image
 
-    foreach ($mesOffres as &$monOffre) { // Utilisez une référence (&) pour modifier directement $monOffre
+    foreach ($mesOffres as $index => $monOffre) { // Utilisez une référence (&) pour modifier directement $monOffre
         $imagesOffres = $dbh->prepare("SELECT code_image FROM tripenarvor._son_image WHERE code_offre = :code_offre");
-        $imagesOffres->bindValue(":code_offre", $monOffre['code_offre']);
+        $imagesOffres->bindValue(":code_offre", $monOffre[$index]['code_offre']);
         $imagesOffres->execute();
     
         $imagesOffres = $imagesOffres->fetchAll(PDO::FETCH_ASSOC);
     
         // Tableau pour stocker les URLs des images associées à cette offre
-        $monOffre['url_images'] = [];
+        $monOffre[$index]['url_images'] = [];
     
         foreach ($imagesOffres as $image) {
             $liensImages = $dbh->prepare("SELECT url_image FROM tripenarvor._image WHERE code_image = :code_image");
@@ -69,7 +69,7 @@
     
             $result = $liensImages->fetch(PDO::FETCH_ASSOC);
             if ($result) {
-                $monOffre['url_images'][] = $result['url_image']; // Ajoute chaque URL au tableau
+                $monOffre[$index]['url_images'][] = $result['url_image']; // Ajoute chaque URL au tableau
             }
         }
     }
