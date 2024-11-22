@@ -263,12 +263,21 @@
                 </div>
 
 
-                <button type="submit" id="button_valider">
+                <button type="submit" id="button_valider" name="EnvoiEtape3">
                     Continuer <img src="../images/fleche.png" alt="Fleche" width="25px" height="25px">
                 </button>
 
             </form>
         </div>
     </main>
+    <?php
+
+    if(isset($_POST['EnvoiEtape3'])){
+        echo "<pre>";
+        var_dump($_POST);
+        echo "</pre>";
+    }
+
+    ?>
 </body>
 </html>
