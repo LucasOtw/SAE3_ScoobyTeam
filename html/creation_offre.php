@@ -11,25 +11,17 @@ ob_start(); // Démarre la mise en tampon de sortie
     <link rel="stylesheet" href="creation_offre.css">
 </head>
 <body>
-    <header class="header_pro">
+     <header class="header">
         <div class="logo">
             <img src="images/logo_blanc_pro.png" alt="PACT Logo">
         </div>
-        <nav>
+        <nav class="nav">
             <ul>
                 <li><a href="mes_offres.php">Accueil</a></li>
                 <li><a href="connexion_pro.php" class="active">Publier</a></li>
-                <li><a href="informations_personnelles_pro.php">Mon Compte</a></li>
+                <li><a href="consulter_compte_pro.php">Mon Compte</a></li>
             </ul>
         </nav>
-        <style>
-            select:invalid {
-                color: gray;
-            }
-            option[hidden] {
-                display: none;
-            }
-        </style>
     </header>
 
     <!-- Contenu principal centré -->
