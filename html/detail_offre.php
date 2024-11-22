@@ -544,75 +544,64 @@
 
                 
                 <h2>Nos services</h2>
-                        <div class="info-dropdown">
+                    <?php
+                    if ($type_offre === "restauration")
+                    {
+                    ?>
+                        <h3 style="margin-top: 1em;">Repas</h3>
+                        <p class="detail_offre_resumer"><?php echo $details_offre["repas"];?></p>
 
-                            <button class="info-button" onclick="toggleInfoBox()">
-                                Détails
-                                <span class="arrow">&#9662;</span>
-                            </button>
-                            <div class="info-box" id="infoBox" style="max-height: 0; padding: 0; overflow: hidden; width: 25.5em; transition: max-height 0.3s ease, padding 0.3s ease;">
+                        <h3 style="margin-top: 1em;">Gamme de prix</h3>
+                        <p class="detail_offre_resumer"><?php echo $details_offre["gamme_prix"];?></p>
+                    <?php
+                    }
+                    else if ($type_offre === "parc d'attraction")
+                    {
+                    ?>
+                        <h3 style="margin-top: 1em;">Age requis</h3>
+                        <p class="detail_offre_resumer"><?php echo $details_offre["age_requis"];?></p>
+                        
+                        <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
+                        <p class="detail_offre_resumer"><?php echo $details_offre["nombre_attractions"];?></p>
+                    <?php
+                    }
+                    else if ($type_offre === "spectacle")
+                    {
+                    ?>
+                        <h3 style="margin-top: 1em;">Capacité d'acceuil</h3>
+                        <p class="detail_offre_resumer"><?php echo $details_offre["capacite_acceuil"];?></p>
 
-                                <?php
-                                if ($type_offre === "restauration")
-                                {
-                                ?>
-                                    <h3 style="margin-top: 1em;">Repas</h3>
-                                    <p class="detail_offre_resumer"><?php echo $details_offre["repas"];?></p>
+                        <h3 style="margin-top: 1em;">Durée</h3>
+                        <p class="detail_offre_resumer"><?php echo $details_offre["duree"];?></p>
+                    <?php
+                    }
+                    else if ($type_offre === "visite")
+                    {
+                    ?>
+                        <h3 style="margin-top: 1em;">Visite Guidée</h3>
+                        <p class="detail_offre_resumer">Oui</p>
 
-                                    <h3 style="margin-top: 1em;">Gamme de prix</h3>
-                                    <p class="detail_offre_resumer"><?php echo $details_offre["gamme_prix"];?></p>
-                                <?php
-                                }
-                                else if ($type_offre === "parc d'attraction")
-                                {
-                                ?>
-                                    <h3 style="margin-top: 1em;">Age requis</h3>
-                                    <p class="detail_offre_resumer"><?php echo $details_offre["age_requis"];?></p>
-                                    
-                                    <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
-                                    <p class="detail_offre_resumer"><?php echo $details_offre["nombre_attractions"];?></p>
-                                <?php
-                                }
-                                else if ($type_offre === "spectacle")
-                                {
-                                ?>
-                                    <h3 style="margin-top: 1em;">Capacité d'acceuil</h3>
-                                    <p class="detail_offre_resumer"><?php echo $details_offre["capacite_acceuil"];?></p>
+                        <h3 style="margin-top: 1em;">Durée</h3>
+                        <p class="detail_offre_resumer"><?php echo $details_offre["duree"];?></p>
+                    <?php
+                    }
+                    else if  ($type_offre === "activite")
+                    {
+                    ?>
+                        <h3 style="margin-top: 1em;">Durée</h3>
+                        <p class="detail_offre_resumer"><?php echo $details_offre["duree"];?></p>
 
-                                    <h3 style="margin-top: 1em;">Durée</h3>
-                                    <p class="detail_offre_resumer"><?php echo $details_offre["duree"];?></p>
-                                <?php
-                                }
-                                else if ($type_offre === "visite")
-                                {
-                                ?>
-                                    <h3 style="margin-top: 1em;">Visite Guidée</h3>
-                                    <p class="detail_offre_resumer">Oui</p>
-
-                                    <h3 style="margin-top: 1em;">Durée</h3>
-                                    <p class="detail_offre_resumer"><?php echo $details_offre["duree"];?></p>
-                                <?php
-                                }
-                                else if  ($type_offre === "activite")
-                                {
-                                ?>
-                                    <h3 style="margin-top: 1em;">Durée</h3>
-                                    <p class="detail_offre_resumer"><?php echo $details_offre["duree"];?></p>
-
-                                    <h3 style="margin-top: 1em;">Age requis</h3>
-                                    <p class="detail_offre_resumer"><?php echo $details_offre["age_requis"];?></p>
-                                    
-                                    <h3 style="margin-top: 1em;">Prestations incluses</h3>
-                                    <p class="detail_offre_resumer"><?php echo $details_offre["prestations_incluses"];?></p>
-                                    
-                                    <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
-                                    <p class="detail_offre_resumer"><?php echo $details_offre["prestations_non_incluses"];?></p>
-                                <?php
-                                }
-                                ?>
-
-                            </div>
-                        </div>
+                        <h3 style="margin-top: 1em;">Age requis</h3>
+                        <p class="detail_offre_resumer"><?php echo $details_offre["age_requis"];?></p>
+                        
+                        <h3 style="margin-top: 1em;">Prestations incluses</h3>
+                        <p class="detail_offre_resumer"><?php echo $details_offre["prestations_incluses"];?></p>
+                        
+                        <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
+                        <p class="detail_offre_resumer"><?php echo $details_offre["prestations_non_incluses"];?></p>
+                    <?php
+                    }
+                    ?>
 
             </section>
 
