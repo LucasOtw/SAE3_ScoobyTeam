@@ -22,21 +22,24 @@ session_start();
         </ul>
     </nav>
 </header>
-<div class="container">
-    <div class="header">
-        <img src="images/Fond.png" alt="Bannière" class="header-img">
-    </div>
+        <section class="profile">
+            <div class="banner">
+                <img src="images/Fond.png" alt="Bannière de profil">
+            </div>
+            <div class="profile-info">
+                <img class="profile-picture" src="images/hotel.jpg" alt="Profil utilisateur">
+                <h1><?php echo $monCompte['raison_sociale']; ?></h1>
+                <p><?php echo $compte['mail'] . " | " . $compte['telephone']; ?></p>
+            </div>
+        </section>
 
-    <div class="profile-section">
-        <img src="images/pp.png" alt="Photo de profil" class="profile-img">
-        <h1>Ti al Lannec</h1>
-        <p>ti.al.lannec@gmail.com | 07.98.76.54.12</p>
-    </div>
-    <div class="tabs">
-        <div class="tab"><a href="modif_mdp_pro.php"  >Mot de passe et sécurité</a></div>
-        <div class="tab active">Compte Bancaire</div>
-    </div>
-</div>
+        <section class="tabs">
+            <ul>
+                <li><a href="consulter_compte_pro.php">Informations personnelles</a></li>
+                <li><a href="mes_offres.php">Mes offres</a></li>
+                <li><a href="#" class="active">Compte bancaire</a></li>
+            </ul>
+        </section>
 
 <?php
 // Détails de la connexion à la base de données
