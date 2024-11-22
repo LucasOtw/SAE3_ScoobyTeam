@@ -141,6 +141,7 @@
              }
              else if (!empty($offre_p))
              {
+                 echo "type et vue : ok";
                  $type_offre = "parc d'attraction";
                  $details_offre = $offre_p->fetch(PDO::FETCH_ASSOC);
              }
