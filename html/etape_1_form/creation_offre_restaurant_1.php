@@ -22,7 +22,7 @@ if(isset($_GET['logout'])){
 }
 
 if(isset($_POST['tags'])){
-    var_dump($_POST['tags'];
+    var_dump($_POST['tags']);
 }
 
 ?>
