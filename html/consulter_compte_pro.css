@@ -257,31 +257,34 @@ footer {
     margin: 0;
     padding: 0;
 }
-
+/* Profile Section */
 .profile {
     text-align: center;
     margin-bottom: 30px;
 }
-.profile-section {
-    text-align: center;
-    margin-top: -50px; /* Remonter la photo de profil */
+
+
+
+.banner img {
+    width: 70%;
+    height: 200px;
+    object-fit: cover;
+    margin: 30px;
+    border-radius: 20px;
 }
 
-.profile-img {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-}
 .profile-info {
     margin-top: -90px;
     text-align: center;
 }
+
 .profile-info img.profile-picture {
     width: 120px;
     height: 120px;
     border-radius: 35px;
     object-fit: cover;
 }
+
 .profile-info h1 {
     font-size: 28px;
     margin: 10px 0;
@@ -291,65 +294,46 @@ footer {
     font-size: 16px;
     color: #666;
 }
-.banner img {
-    width: 70%;
-    height: 200px;
-    object-fit: cover;
-    margin: 30px;
-    border-radius: 20px;
+
+/* Tabs Section */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    text-align: center;
 }
 
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.header-img {
-    width: 152%;
+.tabs ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    background-color: #f9f9f9;
     border-radius: 10px;
-    margin-left: -14em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    min-width: 40vw;
 }
 
-.profile {
-    text-align: center;
-    margin-bottom: 30px;
-}
-.profile-section {
-    text-align: center;
-    margin-top: -50px; /* Remonter la photo de profil */
+.tabs ul li {
+    display: flex;
+    margin: 0 20px;
+    text-decoration: none;
 }
 
-.profile-img {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-}
-.profile-info {
-    margin-top: -90px;
-    text-align: center;
-}
-.profile-info img.profile-picture {
-    width: 120px;
-    height: 120px;
-    border-radius: 35px;
-    object-fit: cover;
-}
-.profile-info h1 {
-    font-size: 28px;
-    margin: 10px 0;
+.tabs ul li a {
+    width: calc(60vw/3);
+    font-size: 20px;
+    padding: 10px 20px;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+    color: #333;
+    text-decoration: none;
 }
 
-.profile-info p {
-    font-size: 16px;
-    color: #666;
-}
-.banner img {
-    width: 70%;
-    height: 200px;
-    object-fit: cover;
-    margin: 30px;
-    border-radius: 20px;
+.tabs ul li a.active {
+    border-color: #ff6600;
+    text-decoration: none;
 }
 h1 {
     font-size: 24px;
@@ -404,34 +388,7 @@ form {
     padding: 20px;
     border-radius: 8px;
 }
-.tabs {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    padding: 0px;
 
-}
-
-.tab {
-    padding: 10px 20px;
-    cursor: pointer;
-    color: #2e2e2e;
-    border-bottom: 2px solid transparent;
-    transition: border-bottom 0.3s ease;
-   
-    
-}
-
-.tab.active {
-    color: #2e2e2e;
-    border-bottom: 2px solid var(--orange); 
-}
-
-.tab:not(.active):hover {
-    border-bottom: 2px solid #ccc;
-}
 fieldset {
     border: none;
     margin-bottom: 20px;
