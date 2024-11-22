@@ -226,11 +226,12 @@ if(isset($_POST['tags'])){
                     </thead>
                     <tbody>
                         <?php
-                            foreach($mesTags as $monTag){
+                            foreach($mesTags as $monTag){ // pour chaque tag correspondant...
                                 ?>
                                 <tr>
                                     <td>
                                         <input type="checkbox" name="tags[]" value="<?php echo $monTag['code_tag'] ?>">
+                                        <!-- On peut stocker chaque valeur pour chaque checkbox cochée dans un tableau "tags[]" ! -->
                                     </td>
                                     <td>
                                         <?php echo $monTag['nom_tag']; ?>
