@@ -83,7 +83,7 @@ if(!isset($_SESSION['pro'])){
                     </div>
                     <form id="add-btn" action="detail_offre_pro.php" method="POST">
                         <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($monOffre)); ?>">
-                        <input id="btn-voir-offre" type="submit" name="vueDetails" value="+">
+                        <input id="btn-voir-offre" class="button-text" type="submit" name="vueDetails" value="+">
                     </form>
                 </div>
                 <?php
