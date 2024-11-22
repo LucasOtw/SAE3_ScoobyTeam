@@ -12,7 +12,7 @@ if(isset($_GET["deco"])){
     header('location: connexion_pro.php');
     exit;
 }
-if(!isset($_SESSION['pro']){
+if(!isset($_SESSION['pro'])){
    header('location: connexion_pro.php');
    exit;
 }
