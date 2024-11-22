@@ -92,6 +92,7 @@
             $tags_offre = $dbh->query('SELECT nom_tag FROM tripenarvor._tags WHERE code_tag = (SELECT code_tag FROM tripenarvor._son_tag WHERE code_offre = '.$code_offre.')');
             $tags_offre = $tags_offre->fetch(PDO::FETCH_NUM);
 
+            echo "/////////////";
             if (!empty($details_offre["lundi"]))
             {
                 $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
@@ -128,6 +129,10 @@
                 $h_dimanche = $h_dimanche->fetch(PDO::FETCH_ASSOC);
             } else { $h_dimanche = null; }
          
+            var_dump($h_jeudi);
+            var_dump($h_vendredi);
+            var_dump($h_samedi);
+            var_dump($h_dimanche);
             $offre_r = $dbh->query('select * from tripenarvor.offre_restauration where code_offre = '.$code_offre.';');
             $offre_p = $dbh->query('select * from tripenarvor.offre_parc_attractions where code_offre = '.$code_offre.';');
             $offre_s = $dbh->query('select * from tripenarvor.offre_spectacle where code_offre = '.$code_offre.';');
@@ -141,6 +146,7 @@
              }
              else if (!empty($offre_p))
              {
+                 echo "type et vue : ok";
                  $type_offre = "parc d'attraction";
                  $details_offre = $offre_p->fetch(PDO::FETCH_ASSOC);
              }
@@ -159,6 +165,10 @@
                  $type_offre = "activite";
                  $details_offre = $offre_a->fetch(PDO::FETCH_ASSOC);
              }
+
+             echo "<pre>";
+             var_dump($details_offre);
+             echo "</pre>";
          
 
             // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
@@ -238,9 +248,26 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#" class="active">Accueil</a></li>
-                    <li><a href="#">Publier</a></li>
-                    <li><a href="#">Mon Compte</a></li>
+                    <li><a href="voir_offres.php" class="active">Accueil</a></li>
+                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <?php
+                        if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
+                           ?>
+                           <li>
+                               <a href="consulter_compte_membre.php">Mon compte</a>
+                           </li>
+                            <li>
+                                <a href="voir_offres.php?deco=true">Se déconnecter</a>
+                            </li>
+                            <?php
+                        } else {
+                            ?>
+                           <li>
+                               <a href="connexion_membre.php">Se connecter</a>
+                           </li>
+                           <?php
+                        }
+                    ?>
                 </ul>
             </nav>
         </header>
