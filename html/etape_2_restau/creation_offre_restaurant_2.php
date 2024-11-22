@@ -106,7 +106,7 @@ session_start();
     </main>
     <?php
 
-    if(isset($_POST['envoiFormeEtape2']){
+    if(isset($_POST['envoiFormeEtape2'])){
        
     }
 
