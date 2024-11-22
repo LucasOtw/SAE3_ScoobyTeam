@@ -110,6 +110,8 @@ session_start();
         echo "t";
        // on garde en mémoire la valeur du bouton radio sélectionné
         var_dump($_POST['prix']);
+    } else {
+        echo "t";
     }
 
     ?>
