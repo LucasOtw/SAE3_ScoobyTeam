@@ -421,9 +421,7 @@ input[type="password"]::placeholder {
 
 .main-consulter-compte-pro .crea_pro_raison_sociale_num_siren,
 .main-consulter-compte-pro .crea_pro_mail_tel {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    
 }
 
 .main-consulter-compte-pro .crea_pro_raison_sociale_num_siren fieldset,
