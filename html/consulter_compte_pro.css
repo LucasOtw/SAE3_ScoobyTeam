@@ -419,9 +419,10 @@ input[type="password"]::placeholder {
     color: #aaa;
 }
 
-.main-consulter-compte-pro .crea_pro_raison_sociale_num_siren,
-.main-consulter-compte-pro .crea_pro_mail_tel {
-    
+.main-consulter-compte-pro .crea_pro_raison_sociale_num_siren {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .main-consulter-compte-pro .crea_pro_raison_sociale_num_siren fieldset,
