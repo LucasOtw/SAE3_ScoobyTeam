@@ -73,7 +73,7 @@ if(!isset($_SESSION['pro'])){
 
                 <fieldset>
                     <legend>N° de Siren</legend>
-                    <input type="text" id="siren" name="siren*" placeholder="N° de Siren*" value="123456789" required>
+                    <input type="text" id="siren" name="siren*" placeholder="N° de Siren*" value="987654321" required>
                 </fieldset>
             </div>
 
@@ -95,12 +95,17 @@ if(!isset($_SESSION['pro'])){
 
                 <fieldset>
                     <legend>Complément d'adresse</legend>
-                    <input type="text" id="comp_adresse" name="comp_adresse" placeholder="Complément d'adresse*" required>
+                    <input type="text" id="comp_adresse" name="comp_adresse" placeholder="Complément d'adresse*" value="1° étage" required>
                 </fieldset>
 
                 <fieldset>
+                    <legend>Code Postal</legend>
+                    <input type="text" id="code_postal" name="code_postal*" placeholder="code_postal*" value="22300" required>
+                </fieldset>
+                
+                <fieldset>
                     <legend>Ville</legend>
-                    <input type="text" id="ville" name="ville*" placeholder="Ville*" required>
+                    <input type="text" id="ville" name="ville*" placeholder="Ville*" value="Lannion" required>
                 </fieldset>
             </div>
             <div class="checkbox">
