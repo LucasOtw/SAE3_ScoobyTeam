@@ -94,6 +94,7 @@
 
             $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
             $h_lundi = $h_lundi->fetch(PDO::FETCH_ASSOC);
+            var_dump($h_lundi);
             $h_mardi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["mardi"].";");
             $h_mardi = $h_mardi->fetch(PDO::FETCH_ASSOC);
             $h_mercredi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["mercredi"].";");
