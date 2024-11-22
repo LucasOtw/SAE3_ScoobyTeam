@@ -206,7 +206,9 @@ if(isset($_GET['logout'])){
                     $mesTags->execute();
                     $mesTags = $mesTags->fetchAll(PDO::FETCH_ASSOC);
 
+                    echo "<pre>";
                     var_dump($mesTags);
+                    echo "</pre>";
                 ?>
 
                 <!-- Tags -->
@@ -218,14 +220,6 @@ if(isset($_GET['logout'])){
                         <div class="dropdown-container">
                             <button type="button" class="dropdown-button">Sélectionner des tags</button>
                             <div class="dropdown-content">
-
-                            <?php
-                                $mesTags = $dbh->prepare('SELECT * FROM tripenarvor._son_tag NATURAL JOIN tripenarvor._tags WHERE restauration = true');
-                                $mesTags->execute();
-                                $mesTags = $mesTags->fetchAll(PDO::FETCH_ASSOC);
-
-                                var_dump($mesTags);
-                            ?>
 
                             </div>
                         </div>
