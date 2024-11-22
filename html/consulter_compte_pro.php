@@ -66,12 +66,12 @@ if(!isset($_SESSION['pro'])){
     <form action="#" method="POST">
         <div class="creation_compte_pro_form-section">
             <div class="crea_pro_raison_sociale_num_siren">
-                <fieldset disable>
+                <fieldset disabled>
                     <legend>Raison Sociale</legend>
                     <input type="text" id="raison-sociale" name="raison-sociale*" placeholder="Raison Sociale*" value="<?php echo $monCompte['raison_sociale']; ?>" required>
                 </fieldset>
 
-                <fieldset disable>
+                <fieldset disabled>
                     <legend>N° de Siren</legend>
                     <input type="text" id="siren" name="siren*" placeholder="N° de Siren*" value="987654321" required>
                 </fieldset>
