@@ -38,7 +38,7 @@ session_start();
       <div class="poster_un_avis_info">
         <h2 class="poster_un_avis_nom">Ti Al Lannec - Hôtel & Restaurant</h2>
         <p class="poster_un_avis_location">📍 Trébeurden, Bretagne 22300</p>
-        <p class="poster_un_avis_rating">⭐ 5.0 (255 avis)</p>
+        <!--<p class="poster_un_avis_rating">⭐ 5.0 (255 avis)</p><-->
         <button class="poster_un_avis_btn_offre">Voir l'offre →</button>
       </div>
       <div class="poster_un_avis_images">
