@@ -263,9 +263,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!preg_match('/^([0-9]{5}|2[AB])$/', $codePostal)) {
                 $erreurs[] = "Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B.";
             }
-            echo "test";
             if(!empty($ville) && !empty($codePostal)){
-                echo "HEIN ?";
                 $api_codePostal = 'http://api.zippopotam.us/fr/'.trim($codePostal);
 
                 $api_codePostal = file_get_contents($api_codePostal);
@@ -290,13 +288,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $erreurs_a_afficher[] = "erreur-ville-code-postal-incompatible";
                 }
             }
-        echo "<pre>";
-        var_dump($erreurs);
-        echo "</pre>";
         if(!empty($erreurs)){
             foreach($erreurs as $erreur){
                 echo $erreur;
             }
+        } else {
+            echo "Aucune erreur, bâtard !";
         }
     }
 }
