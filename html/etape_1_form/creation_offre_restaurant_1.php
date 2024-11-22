@@ -291,6 +291,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $erreurs[] = "Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B.";
             }
             if(!empty($ville) && !empty($codePostal)){
+                echo "HEIN ?";
                 $api_codePostal = 'http://api.zippopotam.us/fr/'.$codePostal;
 
                 $api_codePostal = file_get_contents($api_codePostal);
