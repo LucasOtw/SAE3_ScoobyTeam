@@ -73,7 +73,9 @@
     }
     else
     {
+        echo "<pre>";
         echo $_POST["uneOffre"];
+        echo '</pre>';
         
         // si le formulaire est bien récupéré
         $details_offre = unserialize($_POST["uneOffre"]);// on récupère son contenu
