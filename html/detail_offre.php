@@ -702,8 +702,8 @@
                 <!-- Bouton publier un avis -->
                 <article class="publier_avis">
                     <span>
-                        <p style="margin-left: 2em;">Tarif minimal</p>
-                        <p id="prix" style="margin-left: 1.5em;"><?php echo $details_offre["tarif"];?>€</p>
+                        <p style="margin-left: 0em;">Tarif minimal</p>
+                        <p id="prix" style="margin-left: 0em;"><?php echo $details_offre["tarif"];?>€</p>
                     </span>
                     <!--<button id="bouton_publier">Publier un avis →</button>-->
                 </article>
