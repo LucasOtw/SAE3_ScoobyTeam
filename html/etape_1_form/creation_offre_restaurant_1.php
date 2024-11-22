@@ -233,7 +233,7 @@ if(isset($_POST['tags'])){
                                 ?>
                                 <tr>
                                     <td>
-                                        <input type="checkbox" name="tags[]" value="<?php echo ?>">
+                                        <input type="checkbox" name="tags[]" value="<?php echo $monTag['code_tag'] ?>">
                                     </td>
                                     <td>
                                         <?php echo $monTag['nom_tag']; ?>
