@@ -83,13 +83,13 @@ if(!isset($_SESSION['pro'])){
                     </div>
                     <form id="add-btn" action="detail_offre_pro.php" method="POST">
                         <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($monOffre)); ?>">
-                        <input id="btn-voir-offre" class="button-text" type="submit" name="vueDetails" value="+">
+                        <input id="btn-voir-offre" class="button-text add-btn" type="submit" name="vueDetails" value="+">
                     </form>
                 </div>
                 <?php
             }
         ?>
-
+<!--
         <div class="offer-card">
             <div class="offer-image">
                 <img src="images/hotel.jpg" alt="Offre Ti Al Lannec">
@@ -110,14 +110,14 @@ if(!isset($_SESSION['pro'])){
                 <p class="price">40-500€</p>
             </div>
             <button class="add-btn">+</button>
-        </div>
+        </div> -->
             <a href="creation_offre.php" class="button-text">
                 <button class="image-button">
                     Publier une offre
                 </button>
             </a>
             
-        </section>  
+        </section> 
 
     </main>
     
