@@ -492,7 +492,9 @@ footer {
 }
 
 
-
+.derniere_modif_offre {
+    color : var(--orange);
+}
 
 
 .detail_offre_price-button {
