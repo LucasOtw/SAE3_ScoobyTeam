@@ -59,7 +59,7 @@ session_start();
                     <button type="submit">Se connecter</button>
                     <div class="connexion_pro_additional-links">
                         <p><span class="pas_de_compte">Pas de compte ?<a href="creation_pro.php">Inscription</a></span></p>
-                        <p class="compte_membre"><a href="connexion_membre.php">Un compte Membre&nbsp?</a></p>
+                        <p class="compte_membre">Un compte<a href="connexion_membre.php">Membre </a>?</p>
                     </div>
                 </form>
             </div>
