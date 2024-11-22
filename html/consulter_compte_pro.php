@@ -59,7 +59,7 @@ if(!isset($_SESSION['pro'])){
             <ul>
                 <li><a href="consulter_compte_pro.php" class="active">Informations personnelles</a></li>
                 <li><a href="mes_offres.php" >Mes offres</a></li>
-                <li><a href="#">Compte bancaire</a></li>
+                <li><a href="modif_bancaire.php">Compte bancaire</a></li>
             </ul>
         </section>
 
@@ -68,29 +68,29 @@ if(!isset($_SESSION['pro'])){
             <div class="crea_pro_raison_sociale_num_siren">
                 <fieldset>
                     <legend>Raison Sociale</legend>
-                    <input type="text" id="raison-sociale" name="raison-sociale" placeholder="Raison Sociale*" required>
+                    <input type="text" id="raison-sociale" name="raison-sociale*" placeholder="Raison Sociale*" required>
                 </fieldset>
 
                 <fieldset>
                     <legend>N° de Siren</legend>
-                    <input type="text" id="siren" name="siren" placeholder="N° de Siren*" required>
+                    <input type="text" id="siren" name="siren*" placeholder="N° de Siren*" required>
                 </fieldset>
             </div>
 
             <div class="crea_pro_mail_tel">
                 <fieldset>
                     <legend>Email</legend>
-                    <input type="email" id="email" name="email" placeholder="Email*" required>
+                    <input type="email" id="email" name="email*" placeholder="Email*" required>
                 </fieldset>
 
                 <fieldset>
                     <legend>Téléphone</legend>
-                    <input type="tel" id="telephone" name="telephone" placeholder="Téléphone*" required>
+                    <input type="tel" id="telephone" name="telephone*" placeholder="Téléphone*" required>
                 </fieldset>
 
                 <fieldset>
                     <legend>Adresse Postale</legend>
-                    <input type="text" id="adresse" name="adresse" placeholder="Adresse postale*" required>
+                    <input type="text" id="adresse" name="adresse*" placeholder="Adresse postale*" required>
                 </fieldset>
 
                 <fieldset>
@@ -100,7 +100,7 @@ if(!isset($_SESSION['pro'])){
 
                 <fieldset>
                     <legend>Ville</legend>
-                    <input type="text" id="ville" name="ville" placeholder="Ville*" required>
+                    <input type="text" id="ville" name="ville*" placeholder="Ville*" required>
                 </fieldset>
             </div>
             <div class="checkbox">
