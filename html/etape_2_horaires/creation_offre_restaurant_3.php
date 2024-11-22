@@ -276,6 +276,10 @@
         echo "<pre>";
         var_dump($_POST);
         echo "</pre>";
+
+        foreach($_POST as $test){
+            echo $test;
+        }
     }
 
     ?>
