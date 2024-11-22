@@ -51,8 +51,14 @@ if (isset($_POST['modif_infos'])){
                    break;
    
                case 'email':
-                   $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
-                   $query->execute(['valeur' => trim($valeur), 'code_compte' => $compte['code_compte']]);
+                   $valeurSansEspaces = trim(preg_replace('/\s+/', '', trim($valeur)));
+                   try {
+                       $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
+                       $query->execute(['valeur' => $valeurSansEspaces, 'code_compte' => $compte['code_compte']]);
+                       echo "Email mis à jour : $valeurSansEspaces";
+                   } catch (PDOException $e) {
+                       echo "Erreur lors de la mise à jour de l'email : " . $e->getMessage();
+                   }
                    break;
                case 'telephone':
                    $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
