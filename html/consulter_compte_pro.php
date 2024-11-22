@@ -64,48 +64,54 @@ if(!isset($_SESSION['pro'])){
         </section>
 
     <form action="#" method="POST">
-        <div class="crea_pro_raison_sociale_num_siren">
-            <fieldset>
-                <legend>Raison Sociale</legend>
-                <input type="text" id="raison-sociale" name="raison-sociale" placeholder="Raison Sociale*" required>
-            </fieldset>
+        <div class="creation_compte_pro_form-section">
+            <div class="crea_pro_raison_sociale_num_siren">
+                <fieldset>
+                    <legend>Raison Sociale</legend>
+                    <input type="text" id="raison-sociale" name="raison-sociale" placeholder="Raison Sociale*" required>
+                </fieldset>
 
-            <fieldset>
-                <legend>N° de Siren</legend>
-                <input type="text" id="siren" name="siren" placeholder="N° de Siren*" required>
-            </fieldset>
-        </div>
+                <fieldset>
+                    <legend>N° de Siren</legend>
+                    <input type="text" id="siren" name="siren" placeholder="N° de Siren*" required>
+                </fieldset>
+            </div>
 
-        <div class="crea_pro_mail_tel">
-            <fieldset>
-                <legend>Email</legend>
-                <input type="email" id="email" name="email" placeholder="Email*" required>
-            </fieldset>
+            <div class="crea_pro_mail_tel">
+                <fieldset>
+                    <legend>Email</legend>
+                    <input type="email" id="email" name="email" placeholder="Email*" required>
+                </fieldset>
 
-            <fieldset>
-                <legend>Téléphone</legend>
-                <input type="tel" id="telephone" name="telephone" placeholder="Téléphone*" required>
-            </fieldset>
+                <fieldset>
+                    <legend>Téléphone</legend>
+                    <input type="tel" id="telephone" name="telephone" placeholder="Téléphone*" required>
+                </fieldset>
 
-            <fieldset>
-                <legend>Adresse Postale</legend>
-                <input type="text" id="adresse" name="adresse" placeholder="Adresse postale*" required>
-            </fieldset>
+                <fieldset>
+                    <legend>Adresse Postale</legend>
+                    <input type="text" id="adresse" name="adresse" placeholder="Adresse postale*" required>
+                </fieldset>
 
-            <fieldset>
-                <legend>Complément d'adresse</legend>
-                <input type="text" id="comp_adresse" name="comp_adresse" placeholder="Complément d'adresse*" required>
-            </fieldset>
+                <fieldset>
+                    <legend>Complément d'adresse</legend>
+                    <input type="text" id="comp_adresse" name="comp_adresse" placeholder="Complément d'adresse*" required>
+                </fieldset>
 
-            <fieldset>
-                <legend>Ville</legend>
-                <input type="text" id="ville" name="ville" placeholder="Ville*" required>
-            </fieldset>
-        </div>
+                <fieldset>
+                    <legend>Ville</legend>
+                    <input type="text" id="ville" name="ville" placeholder="Ville*" required>
+                </fieldset>
+            </div>
+            <div class="checkbox">
+                                <input type="checkbox" id="cgu" name="cgu" required>
+                                <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
+                            </div>
 
-        <div class="compte_membre_save_delete">
-            <a href="deconnexion_compte_pro.php" class="submit-btn1">Déconnexion</a>
-            <button type="submit" class="submit-btn3">Enregistrer</button>
+            <div class="compte_membre_save_delete">
+                <a href="deconnexion_compte_pro.php" class="submit-btn1">Déconnexion</a>
+                <button type="submit" class="submit-btn3">Enregistrer</button>
+            </div>
         </div>
     </form>
 
