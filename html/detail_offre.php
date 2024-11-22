@@ -627,18 +627,33 @@
                 </div>
             </div>
 
-            <div class="Detail_offre_ouverture_global">
-                <h3>Horaires</h3>
-                <ul class="hours">
-                    <li><span>Lundi</span>: 19h30 - 21h30</li>
-                    <li><span>Mardi</span>: 19h30 - 21h30</li>
-                    <li><span>Mercredi</span>: 19h30 - 21h30</li>
-                    <li><span>Jeudi</span>: 19h30 - 21h30</li>
-                    <li><span>Vendredi</span>: 19h30 - 21h30</li>
-                    <li><span>Samedi</span>: 12h30 - 13h30, 19h30 - 21h30</li>
-                    <li><span>Dimanche</span>: 12h30 - 13h30, 19h30 - 21h30</li>
-                </ul>
-            </div>
+            <?php
+            if (!empty($h_lundi["ouverture"]) && 
+               !empty($h_mardi["ouverture"]) &&
+               !empty($h_mercredi["ouverture"]) &&
+               !empty($h_jeudi["ouverture"]) &&
+               !empty($h_vendredi["ouverture"]) &&
+               !empty($h_samedi["ouverture"]) &&
+               !empty($h_dimanche["ouverture"]))
+            {
+            ?>
+                <div class="Detail_offre_ouverture_global">
+        
+                    <h3>Horaires</h3>
+                    <ul class="hours">
+                        <li><span>Lundi</span><?php echo afficherHoraire($h_lundi);?></li>
+                        <li><span>Mardi</span><?php echo afficherHoraire($h_mardi);?></li>
+                        <li><span>Mercredi</span><?php echo afficherHoraire($h_mercredi);?></li>
+                        <li><span>Jeudi</span><?php echo afficherHoraire($h_jeudi);?></li>
+                        <li><span>Vendredi</span><?php echo afficherHoraire($h_vendredi);?></li>
+                        <li><span>Samedi</span><?php echo afficherHoraire($h_samedi);?></li>
+                        <li><span>Dimanche</span><?php echo afficherHoraire($h_dimanche);?></li>
+                    </ul>
+        
+                </div>
+            <?php
+            }
+            ?>
 
             <div class="Detail_offre_ouverture_global">
                 <h3>Localisation</h3>
