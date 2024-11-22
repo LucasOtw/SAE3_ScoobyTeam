@@ -334,7 +334,7 @@
                                     <p><?php echo $details_offre["gamme_prix"];?></p>
                                 <?php
                                 }
-                                else if ($type_offre === "parc d'attraction")
+                                else if ($type_offre === "parc_attractions")
                                 {
                                 ?>
                                     <h3 style="margin-top: 1em;">Age requis</h3>
@@ -590,7 +590,7 @@
                         <p class="detail_offre_resumer"><?php echo $details_offre["gamme_prix"];?></p>
                     <?php
                     }
-                    else if ($type_offre === "parc d'attraction")
+                    else if ($type_offre === "parc_attractions")
                     {
                     ?>
                         <h3 style="margin-top: 1em;">Age requis</h3>
