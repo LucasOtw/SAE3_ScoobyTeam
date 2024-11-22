@@ -50,7 +50,7 @@ if (isset($_POST['modif_infos'])){
                    $query->execute(['valeur' => trim($valeur), 'code_compte' => $compte['code_compte']]);
                    break;
    
-               case 'email':
+               case 'mail':
                    $valeurSansEspaces = trim(preg_replace('/\s+/', '', trim($valeur)));
                    try {
                        $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
