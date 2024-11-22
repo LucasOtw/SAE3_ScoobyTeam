@@ -362,35 +362,6 @@ p {
     margin-bottom: 30px;
 }
 
-.tabs {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    padding: 0px;
-
-}
-
-.tab {
-    padding: 10px 20px;
-    cursor: pointer;
-    color: #2e2e2e;
-    border-bottom: 2px solid transparent;
-    transition: border-bottom 0.3s ease;
-   
-    
-}
-
-.tab.active {
-    color: #2e2e2e;
-    border-bottom: 2px solid var(--orange); 
-}
-
-.tab:not(.active):hover {
-    border-bottom: 2px solid #ccc;
-}
-
 .form-section {
     background-color: white;
     padding: 20px;
