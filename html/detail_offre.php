@@ -392,7 +392,7 @@
             </div>
 
             <div class="detail_offre_icons">
-                <h2>Tags</h2>
+                <h2 style="margin-left: 0.1em;">Tags</h2>
 
                 <?php
                 foreach ($tags_offre as $tag)
