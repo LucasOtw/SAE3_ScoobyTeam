@@ -278,6 +278,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             echo "Aucune photo n'a été téléchargée.<br>";
         }
+        echo "TEST";
     }
 
     $erreurs[] = [];
