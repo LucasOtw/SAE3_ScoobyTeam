@@ -144,16 +144,18 @@ if(isset($_POST['logout'])){
                 <legend>Adresse Postale *</legend>
                 <input type="text" id="adresse" name="adresse" value="<?php echo $_adresse['adresse_postal']; ?>" placeholder="Adresse Postale *" required>
             </fieldset>
-
-            <fieldset>
-                <legend>Code Postal *</legend>
-                <input type="text" id="code-postal" name="code-postal" value="<?php echo $_adresse['code_postal']; ?>" placeholder="Code Postal *" required>
-            </fieldset>
-
-            <fieldset>
-                <legend>Ville *</legend>
-                <input type="text" id="ville" name="ville" value="<?php echo $_adresse['ville']; ?>" placeholder="Ville *" required>
-            </fieldset>
+           
+            <div class="crea_pro_mail_tel">
+               <fieldset>
+                   <legend>Code Postal *</legend>
+                   <input type="text" id="code-postal" name="code-postal" value="<?php echo $_adresse['code_postal']; ?>" placeholder="Code Postal *" required>
+               </fieldset>
+   
+               <fieldset>
+                   <legend>Ville *</legend>
+                   <input type="text" id="ville" name="ville" value="<?php echo $_adresse['ville']; ?>" placeholder="Ville *" required>
+               </fieldset>
+            </div>
 
             <div class="checkbox">
                 <input type="checkbox" id="cgu" name="cgu" required>
