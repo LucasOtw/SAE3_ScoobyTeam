@@ -154,13 +154,6 @@
                     break;
                 }
             }
-            
-            if ($type_offre) {
-                echo "Type d'offre : $type_offre";
-                print_r($details_offre);
-            } else {
-                echo "Aucune offre trouvée pour le code_offre $code_offre.";
-            }
          
 
             // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
