@@ -4,16 +4,19 @@ session_start();
 
 include("recupInfosCompte.php");
 
+if(isset($_GET['logout'])){
+   session_unset();
+   session_destroy();
+   header('location: connexion_membre.php');
+   exit;
+}
+
 if(!isset($_SESSION['membre'])){
    header('location: connexion_membre.php');
    exit;
 }
 
-if(isset($_POST['logout'])){
-   session_destroy();
-   header('location: connexion_membre.php');
-   exit;
-} else if (isset($_POST['modif_infos'])){
+if (isset($_POST['modif_infos'])){
     // Récupérer les valeurs initiales (par exemple, depuis la base de données)
    $valeursInitiales = [
        'nom' => $monCompteMembre['nom'],
@@ -84,9 +87,26 @@ if(isset($_POST['logout'])){
         </div>
         <nav>
             <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Publier</a></li>
-                <li><a href="#" class="active">Mon Compte</a></li>
+                <li><a href="voir_offres.php" class="active">Accueil</a></li>
+                <li><a href="connexion_pro.php">Publier</a></li>
+                <?php
+                    if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
+                       ?>
+                       <li>
+                           <a href="consulter_compte_membre.php">Mon compte</a>
+                       </li>
+                        <li>
+                            <a href="voir_offres.php?deco=true">Se déconnecter</a>
+                        </li>
+                        <?php
+                    } else {
+                        ?>
+                       <li>
+                           <a href="connexion_membre.php">Se connecter</a>
+                       </li>
+                       <?php
+                    }
+                ?>
             </ul>
         </nav>
     </header>
