@@ -453,7 +453,7 @@ input[type="password"]::placeholder {
     display: flex;
     justify-content: right; /* Aligne les boutons au centre */
     gap: 20px; /* Espacement entre les boutons */
-    margin-bottom: 11em;
+    margin-bottom: 5em;
 }
 
 button.submit-btn1, 
