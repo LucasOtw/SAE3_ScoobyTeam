@@ -73,7 +73,7 @@
     }
     else
     {
-        //echo $_POST["uneOffre"];
+        echo $_POST["uneOffre"];
         
         // si le formulaire est bien récupéré
         $details_offre = unserialize($_POST["uneOffre"]);// on récupère son contenu
@@ -257,6 +257,10 @@
             </nav>
         </header>
 
+        <div class="detail_offre_pro">
+            
+        </div>
+        
         <div class="detail_offre_hotel-detail">
 
             <div class="detail_offre_hotel-header">
