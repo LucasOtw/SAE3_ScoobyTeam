@@ -285,24 +285,13 @@
                 <ul>
                     <li><a href="voir_offres.php" class="active">Accueil</a></li>
                     <li><a href="connexion_pro.php">Publier</a></li>
-                    <?php
-                        if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
-                           ?>
-                           <li>
-                               <a href="consulter_compte_membre.php">Mon compte</a>
-                           </li>
-                            <li>
-                                <a href="voir_offres.php?deco=true">Se déconnecter</a>
-                            </li>
-                            <?php
-                        } else {
-                            ?>
-                           <li>
-                               <a href="connexion_membre.php">Se connecter</a>
-                           </li>
-                           <?php
-                        }
-                    ?>
+                    
+                   <li>
+                       <a href="consulter_compte_pro.php">Mon compte</a>
+                   </li>
+                    <li>
+                        <a href="voir_offres.php?deco=true">Se déconnecter</a>
+                    </li>
                 </ul>
             </nav>
         </header>
