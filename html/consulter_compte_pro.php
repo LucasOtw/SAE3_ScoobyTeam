@@ -43,7 +43,7 @@ if(!isset($_SESSION['pro'])){
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="main-consulter-compte-pro">
         <section class="profile">
             <div class="banner">
                 <img src="images/Fond.png" alt="Bannière de profil">
