@@ -31,15 +31,15 @@ if(!isset($_SESSION['pro'])){
     <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 </head>
 <body>
-     <header>
+     <header class="header">
         <div class="logo">
-            <img src="images/logoBlanc.png" alt="PAVCT Logo">
+            <img src="images/logo_blanc_pro.png" alt="PACT Logo">
         </div>
-        <nav>
+        <nav class="nav">
             <ul>
-                <li><a href="mes_offres.php" class="active">Accueil</a></li>
-                <li><a href="creation_offre.php">Publier</a></li>
-                <li><a href="mes_offres.php?deco=true">Déconnexion</a></li>
+                <li><a href="mes_offres.php">Accueil</a></li>
+                <li><a href="connexion_pro.php">Publier</a></li>
+                <li><a href="connexion_pro.php" class="active">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
