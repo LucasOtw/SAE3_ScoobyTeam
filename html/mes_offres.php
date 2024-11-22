@@ -58,11 +58,9 @@ if(!isset($_SESSION['pro'])){
             <ul>
                 <li><a href="consulter_compte_pro.php">Informations personnelles</a></li>
                 <li><a href="mes_offres.php" class="active">Mes offres</a></li>
-                <li><a href="#">Compte bancaire</a></li>
+                <li><a href="modif_bancaire.php">Compte bancaire</a></li>
             </ul>
         </section>
-
-        <h2 id="vosOffres">Vos offres</h2>
     
         <section class="offers">
         <?php
