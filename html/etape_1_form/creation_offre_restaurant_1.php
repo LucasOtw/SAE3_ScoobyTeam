@@ -93,7 +93,7 @@ if(isset($_POST['tags'])){
                     <div class="col">
                         <fieldset>
                             <legend>Nom du Restaurant *</legend>
-                            <input type="text" id="nom_offre" name="nom_offre" placeholder="Nom du Restaurant *" required>
+                            <input type="text" id="nom_offre" name="nom_offre" placeholder="Nom du Restaurant *" maxlength="50" required>
                         </fieldset>
                     </div>
                     <div class="col">
@@ -103,23 +103,7 @@ if(isset($_POST['tags'])){
                         </fieldset>
                     </div>
                 </div>
-
-                <!-- Email & Phone -->
-                <div class="row">
-                    <div class="col">
-                        <fieldset>
-                            <legend>Email *</legend>
-                            <input type="email" id="email" name="email" placeholder="Email *" required>
-                        </fieldset>            
-                    </div>
-                    <div class="col">                     
-                        <fieldset>
-                            <legend>Téléphone *</legend>
-                            <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *" required>
-                        </fieldset>
-                    </div>
-                </div>
-
+                
                 <!-- Localisation -->
                 <div class="row">
                     <div class="col">
@@ -255,8 +239,6 @@ if(isset($_POST['tags'])){
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupération des champs obligatoires
     $nomOffre = htmlspecialchars($_POST['nom_offre'] ?? '');
-    $email = htmlspecialchars($_POST['email'] ?? '');
-    $telephone = htmlspecialchars($_POST['telephone'] ?? '');
     $adresse = htmlspecialchars($_POST['adresse'] ?? '');
     $ville = htmlspecialchars($_POST['ville'] ?? '');
     $codePostal = htmlspecialchars($_POST['code_postal'] ?? '');
@@ -272,13 +254,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $photos = $_FILES['photos'] ?? null;
 
     // Validation des données
-    if (empty($nomOffre) || empty($email) || empty($telephone) || empty($adresse) || empty($ville) || empty($codePostal) || empty($resume) || empty($description)) {
+    if (empty($nomOffre) || empty($adresse) || empty($ville) || empty($codePostal) || empty($resume) || empty($description)) {
         echo "Tous les champs obligatoires doivent être remplis.";
     } else {
         echo "<h3>Données reçues :</h3>";
         echo "Nom de l'offre : $nomOffre<br>";
-        echo "Email : $email<br>";
-        echo "Téléphone : $telephone<br>";
         echo "Adresse : $adresse<br>";
         echo "Ville : $ville<br>";
         echo "Code postal : $codePostal<br>";
@@ -298,6 +278,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             echo "Aucune photo n'a été téléchargée.<br>";
         }
+    }
+
+    $erreurs[] = [];
+
+    if(empty($monOffre) || empty($adresse) || empty($ville) || empty($codePostal) || empty($resume) || empty($description)){
+        $erreurs[] = "Tous les champs doivent être obligatoires";
+        exit;
+    } else {
+        // si tous les champs obligatoires sont remplis, on procède aux vérifications
+
+        
     }
 }
 ?>
