@@ -21,6 +21,10 @@ if(isset($_GET['logout'])){
     exit;
 }
 
+if(isset($_POST['tags'])){
+    var_dump($_POST['tags'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +87,7 @@ if(isset($_GET['logout'])){
             <h1>Publier une offre</h1>
 
             <!-- Form Fields -->
-            <form action="../etape_2_restau/creation_offre_restaurant_2.php" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
+            <form action="#" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
                 <!-- Establishment Name & Type -->
                 <div class="row">
                     <div class="col">
@@ -229,7 +233,7 @@ if(isset($_GET['logout'])){
                                 ?>
                                 <tr>
                                     <td>
-                                        <input type="checkbox" name="test">
+                                        <input type="checkbox" name="tags[]">
                                     </td>
                                     <td>
                                         <?php echo $monTag['nom_tag']; ?>
