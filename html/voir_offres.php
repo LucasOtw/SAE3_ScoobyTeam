@@ -1,4 +1,5 @@
-<?php session_start();
+<?php
+session_start();
 
 if(isset($_GET["deco"])){
     header('location: connexion_membre.php');
