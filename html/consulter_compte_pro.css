@@ -271,6 +271,10 @@ footer {
     margin-left: -14em;
 }
 
+.profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
 .profile-section {
     text-align: center;
     margin-top: -50px; /* Remonter la photo de profil */
@@ -281,7 +285,32 @@ footer {
     height: 120px;
     object-fit: cover;
 }
+.profile-info {
+    margin-top: -90px;
+    text-align: center;
+}
+.profile-info img.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 35px;
+    object-fit: cover;
+}
+.profile-info h1 {
+    font-size: 28px;
+    margin: 10px 0;
+}
 
+.profile-info p {
+    font-size: 16px;
+    color: #666;
+}
+.banner img {
+    width: 70%;
+    height: 200px;
+    object-fit: cover;
+    margin: 30px;
+    border-radius: 20px;
+}
 h1 {
     font-size: 24px;
     font-weight: bold;
