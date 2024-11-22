@@ -73,14 +73,15 @@
     }
     else
     {
-        echo "<pre>";
-        echo $_POST["uneOffre"];
-        echo '</pre>';
         
         // si le formulaire est bien récupéré
         $details_offre = unserialize($_POST["uneOffre"]);// on récupère son contenu
         
         $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
+
+        echo "<pre>";
+        var_dump($details_offre);
+        echo '</pre>';
 
         if(!empty($details_offre))
         { // si l'offre existe
