@@ -2,7 +2,8 @@
 ob_start();
 session_start();
 
-var_dump($_SESSION['crea_offre']);
+// var_dump($_SESSION['crea_offre']);
+// pour afficher les infos (meilleur résultat avec <pre> !)
 
 ?>
 
@@ -55,15 +56,15 @@ var_dump($_SESSION['crea_offre']);
                     <label for="prix">Prix</label>
                         <div class="radio-group">
                             <div>
-                                <input type="radio" id="moins_25" name="prix" value="€">
+                                <input type="radio" id="moins_25" name="prix" value="€" required>
                                 <label class="label-check" for="moins_25">€ (menu à moins de 25€)</label>
                             </div>
                             <div>
-                                <input class="label-check" type="radio" id="entre_25_40" name="prix" value="€€">
+                                <input class="label-check" type="radio" id="entre_25_40" name="prix" value="€€" required>
                                 <label class="label-check" for="entre_25_40">€€ (entre 25€ et 40€)</label>
                             </div>
                             <div>
-                                <input type="radio" id="plus_40" name="prix" value="€€€">
+                                <input type="radio" id="plus_40" name="prix" value="€€€" required>
                                 <label class="label-check" for="plus_40">€€€ (au-delà de 40€)</label>
                             </div>
                         </div>
@@ -96,12 +97,19 @@ var_dump($_SESSION['crea_offre']);
                     </div>
                 </div>
 
-                <button type="submit" id="button_valider">
+                <button type="submit" id="button_valider" name="envoiFormEtape2">
                     Continuer <img src="../images/fleche.png" alt="Fleche" width="25px" height="25px">
                 </button>
 
             </form>
         </div>
     </main>
+    <?php
+
+    if(isset($_POST['envoiFormeEtape2']){
+       
+    }
+
+    ?>
 </body>
 </html>
