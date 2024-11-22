@@ -53,6 +53,7 @@ if (isset($_POST['modif_infos'])){
                case 'email':
                    $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
                    $query->execute(['valeur' => trim($valeur), 'code_compte' => $compte['code_compte']]);
+                   break;
                case 'telephone':
                    $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
                    $query->execute(['valeur' => trim(preg_replace('/\s+/', '', trim($valeur))), 'code_compte' => $compte['code_compte']]);
