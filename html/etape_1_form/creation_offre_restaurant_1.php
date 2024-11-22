@@ -332,6 +332,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $tab_offre['photos'] = [];
             }
 
+            foreach($_POST['tags'] as $tags){
+                $mesTags[] = $tags;
+            }
+            $tab_offre["tags"] = $mesTags;
+
             $_SESSION['crea_offre'] = $tab_offre;
         }
     }
