@@ -180,7 +180,7 @@ if(isset($_POST['tags'])){
                     <div class="col">
                         <fieldset>
                             <legend>Résumé (facultatif)</legend>
-                            <input type="text" id="resume" name="resume" placeholder="Résumé (facultatif)">
+                            <input type="text" id="resume" name="resume" placeholder="Résumé" required>
                         </fieldset>
                     </div>
                 </div>
@@ -190,7 +190,7 @@ if(isset($_POST['tags'])){
                     <div class="col">
                         <fieldset>
                             <legend>Description (facultatif)</legend>
-                            <input type="text" id="description" name="description" placeholder="Description (facultatif)">
+                            <input type="text" id="description" name="description" placeholder="Description" required>
                         </fieldset>
                     </div>
                 </div>
@@ -260,19 +260,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $adresse = htmlspecialchars($_POST['adresse'] ?? '');
     $ville = htmlspecialchars($_POST['ville'] ?? '');
     $codePostal = htmlspecialchars($_POST['code_postal'] ?? '');
+    $resume = htmlspecialchars($_POST['resume'] ?? '');
+    $description = htmlspecialchars($_POST['description'] ?? '');
 
     // Récupération des champs facultatifs
     $complementAdresse = htmlspecialchars($_POST['complement_adresse'] ?? '');
     $lien = htmlspecialchars($_POST['lien'] ?? '');
-    $resume = htmlspecialchars($_POST['resume'] ?? '');
-    $description = htmlspecialchars($_POST['description'] ?? '');
     $accessibilite = htmlspecialchars($_POST['accessibilite'] ?? '');
 
     // Récupération des fichiers (photos)
     $photos = $_FILES['photos'] ?? null;
 
     // Validation des données
-    if (empty($nomOffre) || empty($email) || empty($telephone) || empty($adresse) || empty($ville) || empty($codePostal)) {
+    if (empty($nomOffre) || empty($email) || empty($telephone) || empty($adresse) || empty($ville) || empty($codePostal) || empty($resume) || empty($description)) {
         echo "Tous les champs obligatoires doivent être remplis.";
     } else {
         echo "<h3>Données reçues :</h3>";
@@ -282,11 +282,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Adresse : $adresse<br>";
         echo "Ville : $ville<br>";
         echo "Code postal : $codePostal<br>";
+        echo "Résumé : $resume<br>";
+        echo "Description : $description<br>";
 
         if (!empty($complementAdresse)) echo "Complément d'adresse : $complementAdresse<br>";
         if (!empty($lien)) echo "Lien : $lien<br>";
-        if (!empty($resume)) echo "Résumé : $resume<br>";
-        if (!empty($description)) echo "Description : $description<br>";
         if (!empty($accessibilite)) echo "Accessibilité : $accessibilite<br>";
 
         // Gestion des fichiers (photos)
