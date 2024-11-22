@@ -26,7 +26,7 @@
         </div>
 
         <div class="profile-section">
-            <img src="images/pppro.png" alt="Photo de profil" class="profile-img">
+            <img src="images/offres/BreizhShelter.jpg" alt="Photo de profil" class="profile-img">
             <h1>Ti Al Lannec</h1>
             <p>tiallannec@gmail.com | 07.98.76.54.12</p>
         </div>
