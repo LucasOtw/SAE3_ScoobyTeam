@@ -94,43 +94,36 @@
 
             if (!empty($details_offre["lundi"]))
             {
-                echo 'ok';
                 $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
                 $h_lundi = $h_lundi->fetch(PDO::FETCH_ASSOC);
             } else { $h_lundi = null; }
             if (!empty($details_offre["mardi"]))
             {
-                echo 'ok';
                 $h_mardi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["mardi"].";");
                 $h_mardi = $h_mardi->fetch(PDO::FETCH_ASSOC);
             } else { $h_mardi = null; }
             if (!empty($details_offre["mercredi"]))
             {
-                echo 'ok';
                 $h_mercredi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["mercredi"].";");
                 $h_mercredi = $h_mercredi->fetch(PDO::FETCH_ASSOC);
             } else { $h_mercredi = null; }
             if (!empty($details_offre["jeudi"]))
             {
-                echo 'ok';
                 $h_jeudi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["jeudi"].";");
                 $h_jeudi = $h_jeudi->fetch(PDO::FETCH_ASSOC);
             } else { $h_jeudi = null; }
             if (!empty($details_offre["vendredi"]))
             {
-                echo 'ok';
                 $h_vendredi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["vendredi"].";");
                 $h_vendredi = $h_vendredi->fetch(PDO::FETCH_ASSOC);
             } else { $h_vendredi = null; }
             if (!empty($details_offre["samedi"]))
             {
-                echo 'ok';
                 $h_samedi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["samedi"].";");
                 $h_samedi = $h_samedi->fetch(PDO::FETCH_ASSOC);
             } else { $h_samedi = null; }
             if (!empty($details_offre["dimanche"]))
             {
-                echo 'ok';
                 $h_dimanche = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["dimanche"].";");
                 $h_dimanche = $h_dimanche->fetch(PDO::FETCH_ASSOC);
             } else { $h_dimanche = null; }
@@ -413,6 +406,7 @@
            !empty($h_samedi["ouverture"]) &&
            !empty($h_dimanche["ouverture"]))
         {
+            echo "OKKKKKK";
         ?>
             <div class="Detail_offre_ouverture_global_desktop">
     
@@ -665,7 +659,6 @@
                !empty($h_dimanche["ouverture"]))
             {
             ?>
-                <?php echo "OKKKKKK"; ?>
                 <div class="Detail_offre_ouverture_global">
         
                     <h3>Horaires</h3>
