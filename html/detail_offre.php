@@ -127,39 +127,6 @@
                 $h_dimanche = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["dimanche"].";");
                 $h_dimanche = $h_dimanche->fetch(PDO::FETCH_ASSOC);
             } else { $h_dimanche = null; }
-         
-            // $offre_r = $dbh->query('select * from tripenarvor.offre_restauration where code_offre = '.$code_offre.';');
-            // $offre_p = $dbh->query('select * from tripenarvor.offre_parc_attractions where code_offre = '.$code_offre.';');
-            // $offre_s = $dbh->query('select * from tripenarvor.offre_spectacle where code_offre = '.$code_offre.';');
-            // $offre_v = $dbh->query('select * from tripenarvor.offre_visite where code_offre = '.$code_offre.';');
-            // $offre_a = $dbh->query('select * from tripenarvor.offre_activite where code_offre = '.$code_offre.';');
-
-            // if (!empty($offre_r))
-            // {
-            //     $type_offre = "restauration";
-            //     $details_offre = $offre_r->fetch(PDO::FETCH_ASSOC);
-            // }
-            // else if (!empty($offre_p))
-            // {
-            //     echo "type et vue : ok";
-            //     $type_offre = "parc d'attraction";
-            //     $details_offre = $offre_p->fetch(PDO::FETCH_ASSOC);
-            // }
-            // else if (!empty($offre_s))
-            // {
-            //     $type_offre = "spectacle";
-            //     $details_offre = $offre_s->fetch(PDO::FETCH_ASSOC);
-            // }
-            // else if (!empty($offre_v))
-            // {
-            //     $type_offre = "visite";
-            //     $details_offre = $offre_v->fetch(PDO::FETCH_ASSOC);
-            // }
-            // else if (!empty($offre_a))
-            // {
-            //     $type_offre = "activite";
-            //     $details_offre = $offre_a->fetch(PDO::FETCH_ASSOC);
-            // }
 
             // Utilisez des requêtes préparées
             $queries = [
@@ -194,10 +161,6 @@
             } else {
                 echo "Aucune offre trouvée pour le code_offre $code_offre.";
             }
-
-            echo "<pre>";
-            var_dump($details_offre);
-            echo "</pre>";
          
 
             // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
