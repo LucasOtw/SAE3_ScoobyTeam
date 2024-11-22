@@ -201,6 +201,13 @@ if(isset($_GET['logout'])){
                         </fieldset>
                     </div>
                 </div>
+                <?php
+                    $mesTags = $dbh->prepare('SELECT * FROM tripenarvor._son_tag NATURAL JOIN tripenarvor._tags WHERE restauration = true');
+                    $mesTags->execute();
+                    $mesTags = $mesTags->fetchAll(PDO::FETCH_ASSOC);
+
+                    var_dump($mesTags);
+                ?>
 
                 <!-- Tags -->
                 <div class="row">
