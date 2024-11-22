@@ -142,7 +142,7 @@ FROM tripenarvor._compte c
 JOIN tripenarvor._professionnel p ON c.code_compte = p.code_compte
 JOIN tripenarvor._adresse a ON c.code_adresse = a.code_adresse
 WHERE c.code_compte = :code_compte");
-$stmt->bindValue(":code_compte", $codeCompte);
+$stmt->bindValue(":code_compte", $codeCompte['code_compte']);
 $stmt->execute();
 $userData = $stmt->fetch(PDO::FETCH_ASSOC);
 
