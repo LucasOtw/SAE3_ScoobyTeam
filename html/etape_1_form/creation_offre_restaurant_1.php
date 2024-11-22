@@ -83,7 +83,7 @@ if(isset($_GET['logout'])){
             <h1>Publier une offre</h1>
 
             <!-- Form Fields -->
-            <form action="" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
+            <form action="../etape_2_restau/creation_offre_restaurant_2.php" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
                 <!-- Establishment Name & Type -->
                 <div class="row">
                     <div class="col">
@@ -212,29 +212,34 @@ if(isset($_GET['logout'])){
                 ?>
 
                 <!-- Tags -->
-                <div class="row">
-                    <div class="col">
-
-                        <label for="tags">Tags</label>
-
-                        <div class="dropdown-container">
-                            <button type="button" class="dropdown-button">Sélectionner des tags</button>
-                            <div class="dropdown-content">
-                                <?php
-                                    foreach($mesTags as $monTag){
-                                        ?>
-                                        <label for="monTag" class="tags">
-                                            <input type="checkbox" name="tags" value = <?php echo $monTag['nom_tag']; ?>>
-                                            <?php echo ucfirst($monTag['nom_tag']); ?>
-                                        </label>
-                                        <?php
-                                    }
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Checkbox
+                            </th>
+                            <th>
+                                Tag
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            foreach($mesTags as $monTag){
                                 ?>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="test">
+                                    </td>
+                                    <td>
+                                        <?php echo $monTag['nom_tag']; ?>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                        ?>
+                    </tbody>
+                </table>
 
                 <button type="submit" id="button_valider">
                     Continuer <img src="../images/fleche.png" alt="Fleche" width="25px" height="25px">
