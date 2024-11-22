@@ -113,8 +113,11 @@ session_start();
         foreach($_POST['repas'] as $repas){
             $mesRepas[] = $repas;
         }
+        $_SESSION['crea_offre_2']['ma_gamme'] = $ma_gamme;
+        $_SESSION['crea_offre_2']['mesRepas'] = $mesRepas;
+
         echo "<pre>";
-        var_dump($mesRepas);
+        var_dump($_SESSION['crea_offre_2']);
         echo "</pre>";
     }
 
