@@ -295,7 +295,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "</pre>";
         if(!empty($erreurs)){
             foreach($erreurs as $erreur){
-                var_dump($erreur);
+                echo $erreur;
             }
         }
     }
