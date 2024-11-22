@@ -93,7 +93,7 @@ if(isset($_POST['tags'])){
                     <div class="col">
                         <fieldset>
                             <legend>Nom du Restaurant *</legend>
-                            <input type="text" id="nom_offre" name="nom_offre" placeholder="Nom du Restaurant *">
+                            <input type="text" id="nom_offre" name="nom_offre" placeholder="Nom du Restaurant *" required>
                         </fieldset>
                     </div>
                     <div class="col">
@@ -109,13 +109,13 @@ if(isset($_POST['tags'])){
                     <div class="col">
                         <fieldset>
                             <legend>Email *</legend>
-                            <input type="email" id="email" name="email" placeholder="Email *">
+                            <input type="email" id="email" name="email" placeholder="Email *" required>
                         </fieldset>            
                     </div>
                     <div class="col">                     
                         <fieldset>
                             <legend>Téléphone *</legend>
-                            <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *">
+                            <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -125,7 +125,7 @@ if(isset($_POST['tags'])){
                     <div class="col">
                         <fieldset>
                             <legend>Adresse Postale *</legend>
-                            <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *">
+                            <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" required>
                         </fieldset>
                     </div>
                 </div>
