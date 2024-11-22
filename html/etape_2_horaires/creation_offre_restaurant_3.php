@@ -41,7 +41,7 @@
             <h1>Publier une offre</h1>
 
             <!-- Form Fields -->
-            <form action="../etape_3_boost/creation_offre_restaurant_4.php" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
+            <form action="" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
                  <!-- Offer Times -->
                  <h3>Horaires</h3>
                 <div class="container">
