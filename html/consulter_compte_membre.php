@@ -169,7 +169,7 @@ if (isset($_POST['modif_infos'])){
             <div class="crea_pro_mail_tel">
                 <fieldset>
                     <legend>Email *</legend>
-                    <input type="email" id="email" name="email" value="<?php echo $mesInfos['mail']; ?>" placeholder="Email *" required>
+                    <input type="email" id="email" name="mail" value="<?php echo $mesInfos['mail']; ?>" placeholder="Email *" required>
                 </fieldset>
 
                 <fieldset>
