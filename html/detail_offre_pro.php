@@ -43,6 +43,43 @@
         return $retour;
     }
 
+    function tempsEcouleDepuisDerniereModif($offre){
+            // date d'aujourd'hui
+            $date_actuelle = new DateTime();
+            // conversion de la date de publication en objet DateTime
+            $date_modif_offre = new DateTime($offre['date_derniere_modif']);
+            // calcul de la différence en jours
+            $diff = $date_modif_offre->diff($date_actuelle);
+            // récupération des différentes unités de temps
+            $jours = $diff->days; // total des jours de différence
+            $mois = $diff->m + ($diff->y * 12); // mois totaux
+            $annees = $diff->y;
+        
+            $retour = null;
+        
+            // calcul du nombre de jours dans le mois précédent
+            $date_mois_precedent = clone $date_actuelle;
+            $date_mois_precedent->modify('-1 month');
+            $jours_dans_mois_precedent = (int)$date_mois_precedent->format('t'); // 't' donne le nombre de jours dans le mois
+        
+            if($jours == 0){
+                $retour = "Aujourd'hui";
+            } elseif($jours == 1){
+                $retour = "Hier";
+            } elseif($jours > 1 && $jours < 7){
+                $retour = "il y a ".$jours." jour(s)";
+            } elseif ($jours >= 7 && $jours < $jours_dans_mois_precedent){
+                $semaines = floor($jours / 7);
+                $retour = "il y a ".$semaines." semaine(s)";
+            } elseif ($mois < 12){
+                $retour = "il y a ".$mois." mois";
+            } else {
+                $retour = "il y a ".$annees." an(s)";
+            }
+        
+            return $retour;
+    }
+
     function afficherHoraire($jour)
     {
         if (!empty($jour["ouverture"]))
@@ -271,6 +308,25 @@
         </header>
 
         <div class="detail_offre_pro">
+            <div class="detail_offre_option">
+                <?php
+                    if ($option_a_la_une === false)
+                    {
+                ?>
+                <?php
+                    }
+                    if ($option_en_relief === false)
+                    {
+                ?>
+                <?php
+                    }
+                ?>
+            </div>
+
+            <form id="add-btn" action="modifier_offre.php" method="POST">
+                <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
+                <input id="btn-voir-offre" class="button-text add-btn" type="submit" name="vueDetails" value="Modifier votre offre ➔">
+            </form>
             
         </div>
         
@@ -284,6 +340,8 @@
                     <p>📍 <?php echo $adresse_offre["ville"].", ".$adresse_offre["code_postal"];?></p>
 
                     <p><i class="fas fa-clock"></i> Publié <?php echo tempsEcouleDepuisPublication($details_offre);?></p>
+
+                    <p>⟳ Dernière modification <?php echo tempsEcouleDepuisDerniereModif($details_offre);?></p>
 
                     <!-- <div class="detail_offre_rating">
                         ⭐ 5.0 (255 avis)
