@@ -112,7 +112,7 @@
         <?php endif; ?>
 
         <form action="#" method="POST">
-            <h2>Modification des coordonnées bancaires</h2>
+            <h3>Modification des coordonnées bancaires</h3>
             <div class="form-image-container">
                 <div class="form-section">
                     <div class="IBAN">
