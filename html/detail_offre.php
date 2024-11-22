@@ -398,12 +398,12 @@
         </div>
         
         <?php
-        if (!empty($h_lundi["ouverture"]) && 
-           !empty($h_mardi["ouverture"]) &&
-           !empty($h_mercredi["ouverture"]) &&
-           !empty($h_jeudi["ouverture"]) &&
-           !empty($h_vendredi["ouverture"]) &&
-           !empty($h_samedi["ouverture"]) &&
+        if (!empty($h_lundi["ouverture"]) || 
+           !empty($h_mardi["ouverture"]) ||
+           !empty($h_mercredi["ouverture"]) ||
+           !empty($h_jeudi["ouverture"]) ||
+           !empty($h_vendredi["ouverture"]) ||
+           !empty($h_samedi["ouverture"]) ||
            !empty($h_dimanche["ouverture"]))
         {
             echo "OKKKKKK";
