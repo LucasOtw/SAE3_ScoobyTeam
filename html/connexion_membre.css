@@ -289,7 +289,7 @@ main.connexion_membre_main {
 }
 
 .connexion_membre_main fieldset {
-    border: 1px solid rgba(0, 0, 0, 0);
+    border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 20px;
     padding-top: 0;
@@ -337,7 +337,7 @@ main.connexion_membre_main {
 .connexion_membre_main input[type="password"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 0;
     border-radius: 5px;
     font-size: 14px;
 }
@@ -369,6 +369,8 @@ main.connexion_membre_main {
 .connexion_membre_main .connexion_membre_btn_connecter_pas_de_compte .pas_de_compte a {
     text-decoration: none;
     color: var(--vert-clair);
+    font-weight: bold;
+
     margin-left: 5px;
 }
 
@@ -438,9 +440,19 @@ main.connexion_membre_main {
     margin-left: -4em;
 }
 
-.connexion_membre_main .connexion_membre_btn_connecter_pas_de_compte {
+.connexion_membre_main .connexion_membre_liens_connexion_inscription .connexion_membre_btn_connecter_pas_de_compte {
     display: flex;
     flex-direction: column;
+}
+.connexion_membre_main .connexion_membre_liens_connexion_inscription {
+    display: flex;
+    justify-content: space-between;
+}
+.connexion_membre_main .connexion_membre_liens_connexion_inscription .connexion_compte_pro a{
+    text-decoration: none;
+    color: var(--orange);
+    font-weight: bold;
+    margin-left: 5px;
 }
 
 /* Empêche l'image de dépasser sur les grands écrans */
@@ -560,10 +572,9 @@ main.connexion_membre_main {
 }
 
 
-.connexion_membre_main fieldset p.erreur-formulaire-connexion-membre{
+.connexion_membre_main fieldset p.erreur-formulaire-creation-pro{
     color: #d70808;
     margin-bottom: 0;
     font-size: 12px;
     display: none;
-
 }
