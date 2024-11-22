@@ -73,24 +73,24 @@ if(!isset($_SESSION['pro'])){
 
                 <fieldset disabled>
                     <legend>N° de Siren</legend>
-                    <input type="text" id="siren" name="siren*" placeholder="N° de Siren*" value="987654321" required>
+                    <input type="text" id="siren*" name="siren" placeholder="N° de Siren*" value="987654321" required>
                 </fieldset>
             </div>
 
             <div class="crea_pro_mail_tel">
                 <fieldset>
                     <legend>Email</legend>
-                    <input type="email" id="email" name="email*" placeholder="Email*" value="<?php echo $compte['mail'] ?>" required>
+                    <input type="email" id="email*" name="email" placeholder="Email*" value="<?php echo $compte['mail'] ?>" required>
                 </fieldset>
 
                 <fieldset>
                     <legend>Téléphone</legend>
-                    <input type="tel" id="telephone" name="telephone*" placeholder="Téléphone*" value=" <?php echo $compte['telephone']; ?> " required>
+                    <input type="tel" id="telephone*" name="telephone" placeholder="Téléphone*" value=" <?php echo $compte['telephone']; ?> " required>
                 </fieldset>
 
                 <fieldset>
                     <legend>Adresse Postale</legend>
-                    <input type="text" id="adresse" name="adresse*" placeholder="Adresse postale*" value="1 rue de la Republique" required>
+                    <input type="text" id="adresse*" name="adresse" placeholder="Adresse postale*" value="1 rue de la Republique" required>
                 </fieldset>
 
                 <fieldset>
