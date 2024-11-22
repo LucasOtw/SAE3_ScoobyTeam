@@ -128,22 +128,22 @@
                 <div class="form-section">
                     <div class="IBAN">
                         <fieldset>
-                            <legend>IBAN</legend>
+                            <legend>IBAN *</legend>
                             <input type="text" id="IBAN" name="IBAN" value="<?php echo $iban; ?>"
-                                placeholder="IBAN (obligatoire)" required>
+                                placeholder="IBAN *" required>
                         </fieldset>
                     </div>
                     <div class="BIC">
                         <fieldset>
-                            <legend>BIC</legend>
+                            <legend>BIC *</legend>
                             <input type="text" id="BIC" name="BIC" value="<?php echo $bic; ?>"
-                                placeholder="Veuillez entrer votre BIC" required>
+                                placeholder="BIC *" required>
                         </fieldset>
                     </div>
                     <div class="nom-du-proprietaire">
                         <fieldset>
-                            <legend>Nom</legend>
-                            <input type="text" id="nom" name="nom" value="<?php echo $nom; ?>" placeholder="Nom"
+                            <legend>Nom *</legend>
+                            <input type="text" id="nom" name="nom" value="<?php echo $nom; ?>" placeholder="Nom *"
                                 required>
                         </fieldset>
                     </div>
@@ -155,7 +155,7 @@
                 <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
             </div>
             <div class="compte_membre_save_delete">
-                <button type="submit" class="submit-btn2">Ajouter vos coordonnées</button>
+                <button type="submit" class="submit-btn2">Modifier vos coordonnées</button>
             </div>
         </form>
     </main>
