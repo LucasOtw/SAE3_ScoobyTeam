@@ -22,7 +22,7 @@ if (isset($_POST['modif_infos'])){
        'nom' => $monCompteMembre['nom'],
        'prenom' => $monCompteMembre['prenom'],
        'pseudo' => $monCompteMembre['pseudo'],
-       'email' => $mesInfos['mail'],
+       'mail' => $mesInfos['mail'],
        'telephone' => $mesInfos['telephone'],
        'adresse' => $_adresse['adresse_postal'],
        'code-postal' => $_adresse['code_postal'],
