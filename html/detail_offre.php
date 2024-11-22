@@ -658,6 +658,7 @@
                !empty($h_dimanche["ouverture"]))
             {
             ?>
+                <?php echo "OKKKKKK"; ?>
                 <div class="Detail_offre_ouverture_global">
         
                     <h3>Horaires</h3>
