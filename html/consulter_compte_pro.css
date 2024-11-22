@@ -263,7 +263,9 @@ footer {
     margin-bottom: 30px;
 }
 
-
+fieldset[disabled] {
+    opacity: 0.6; 
+}
 
 .main-consulter-compte-pro .banner img {
     width: 70%;
