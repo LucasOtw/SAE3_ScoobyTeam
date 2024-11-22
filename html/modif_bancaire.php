@@ -89,7 +89,7 @@ include("recupInfosCompte.php");
                 // Vérifier que tous les champs sont remplis
                 if (!empty($iban) && !empty($bic) && !empty($nom) && $cgu) {
                     // Mettre à jour les informations bancaires dans la base de données
-                    $update_query = "UPDATE _compte_bancaire SET nom_compte = :nom, iban = :iban, bic = :bic WHERE nom_compte = :nom";
+                    $update_query = "UPDATE tripenarvor._compte_bancaire SET nom_compte = :nom, iban = :iban, bic = :bic WHERE nom_compte = :nom";
                     $stmt = $pdo->prepare($update_query);
                     $stmt->bindParam(':nom', $nom);
                     $stmt->bindParam(':iban', $iban);
