@@ -14,7 +14,7 @@ $password = "philly-Congo-bry4nt";
 $dbh = new PDO($dsn, $username, $password);
 
 // Récupération de l'ID de l'utilisateur connecté
-$codeCompte = $_SESSION['compte'];
+$codeCompte = $_SESSION['pro'];
 
 // Si le formulaire est soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
