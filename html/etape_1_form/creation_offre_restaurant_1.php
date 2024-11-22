@@ -237,6 +237,7 @@ if(isset($_POST['tags'])){
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $tab_offre = [];
     // Récupération des champs obligatoires
     $nomOffre = htmlspecialchars($_POST['nom_offre'] ?? '');
     $adresse = htmlspecialchars($_POST['adresse'] ?? '');
@@ -293,10 +294,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo $erreur;
             }
         } else {
-            echo "Aucune erreur, bâtard !";
+            /* on ne peut pas insérer les données pour le moment...
+            Donc on les STOCKE ! :D*/
+            
+            $tab_offre['titre_offre'] = $nomOffre;
+            $tab_offre['adresse'] = $adresse;
+            $tab_offre['ville'] = $ville;
+            $tab_offre['codePostal'] = $codePostal;
+            $tab_offre['resume'] = $resume;
+            $tab_offre['description'] = $description;
+            
+            // Récupération des champs facultatifs
+            $tab_offre['complementAdresse'] = $complementAdresse;
+            $tab_offre['lien'] = $lien;
+            $tab_offre['accessibilite'] = $accessibilite;
+            
+            // Récupération des fichiers (photos) - si plusieurs fichiers sont envoyés
+            if (isset($_FILES['photos']) && !empty($_FILES['photos']['name'][0])) {
+                $photos = [];
+                // Parcourir chaque photo envoyée
+                foreach ($_FILES['photos']['name'] as $key => $file_name) {
+                    // Si le fichier n'est pas vide, on récupère les informations nécessaires
+                    if ($_FILES['photos']['error'][$key] === 0) {
+                        $photos[] = [
+                            'name' => $file_name,
+                            'type' => $_FILES['photos']['type'][$key],
+                            'tmp_name' => $_FILES['photos']['tmp_name'][$key],
+                            'size' => $_FILES['photos']['size'][$key]
+                        ];
+                    }
+                }
+            
+                // Ajouter le tableau photos dans $tab_offre
+                $tab_offre['photos'] = $photos;
+            } else {
+                // Si aucune photo n'est envoyée, on initialise un tableau vide
+                $tab_offre['photos'] = [];
+            }
         }
     }
 }
+echo "<pre>";
+var_dump($tab_offre);
+echo "</pre>";
 ?>
 </body>
 </html>
