@@ -137,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Récupérer les informations existantes pour l'affichage initial
 $stmt = $dbh->prepare("SELECT 
-    p.raison_sociale, num_siren, c.mail, c.telephone, a.adresse_postal, a.complement_adresse, a.code_postal, a.ville
+    p.raison_sociale, p.num_siren, c.mail, c.telephone, a.adresse_postal, a.complement_adresse, a.code_postal, a.ville
 FROM tripenarvor._compte c
 JOIN tripenarvor._professionnel p ON c.code_compte = p.code_compte
 JOIN tripenarvor._adresse a ON c.code_adresse = a.code_adresse
