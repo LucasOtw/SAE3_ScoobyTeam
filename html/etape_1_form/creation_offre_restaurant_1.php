@@ -1,9 +1,34 @@
+<?php
+ob_start();
+session_start();
+
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+$username = "sae";
+$password = "philly-Congo-bry4nt";
+
+// Créer une instance PDO
+$dbh = new PDO($dsn, $username, $password);
+
+if(!isset($_SESSION['pro'])){
+    header('location: connexion_pro.php');
+    exit;
+}
+
+if(isset($_GET['logout'])){
+    session_unset();
+    session_destroy();
+    header('location: connexion_pro.php');
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offre Restaurant</title>
+    <title>Offre Activité</title>
     <link rel="stylesheet" href="../creation_offre2.css">
 
 
@@ -15,9 +40,26 @@
         </div>
         <nav>
             <ul>
-                <li><a href="../mes_offres.php">Accueil</a></li>
-                <li><a href="#" class="active">Publier</a></li>
-                <li><a href="../consulter_compte_pro.php">Mon Compte</a></li>
+                <li><a href="voir_offres.php" class="active">Accueil</a></li>
+                <li><a href="connexion_pro.php">Publier</a></li>
+                <?php
+                    if(isset($_SESSION["pro"]) || !empty($_SESSION["pro"])){
+                       ?>
+                       <li>
+                           <a href="consulter_compte_pro.php">Mon compte</a>
+                       </li>
+                        <li>
+                            <a href="creation_offre_restaurant_1.php?deco=true">Se déconnecter</a>
+                        </li>
+                        <?php
+                    } else {
+                        ?>
+                       <li>
+                           <a href="connexion_pro.php">Se connecter</a>
+                       </li>
+                       <?php
+                    }
+                ?>
             </ul>
         </nav>
     </header>
@@ -159,6 +201,15 @@
                         </fieldset>
                     </div>
                 </div>
+                <?php
+                    $mesTags = $dbh->prepare('SELECT * FROM tripenarvor._son_tag NATURAL JOIN tripenarvor._tags WHERE restauration = true');
+                    $mesTags->execute();
+                    $mesTags = $mesTags->fetchAll(PDO::FETCH_ASSOC);
+
+                    echo "<pre>";
+                    var_dump($mesTags);
+                    echo "</pre>";
+                ?>
 
                 <!-- Tags -->
                 <div class="row">
@@ -169,20 +220,6 @@
                         <div class="dropdown-container">
                             <button type="button" class="dropdown-button">Sélectionner des tags</button>
                             <div class="dropdown-content">
-
-                            <?php
-                                    $dbh = new PDO("host=postgresdb;port=5432;dbname=db-scooby-team", "sae", "philly-Congo-bry4nt");
-
-                                    foreach($dbh->query('SELECT nom_tag from tripenarvor._son_tag natural join tripenarvor._tags where restauration = true', PDO::FETCH_ASSOC) as $row)
-                                    {
-                                    ?>
-                                <label class="tag">
-                                    <input type="checkbox" name="tags" value="<?php echo $row; ?>">
-                                    <?php echo ucfirst($row); ?>
-                                </label>
-                                    <?php
-                                    }
-                                ?>
 
                             </div>
                         </div>

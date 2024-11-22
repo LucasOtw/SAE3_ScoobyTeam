@@ -92,7 +92,6 @@
             $tags_offre = $dbh->query('SELECT nom_tag FROM tripenarvor._tags WHERE code_tag = (SELECT code_tag FROM tripenarvor._son_tag WHERE code_offre = '.$code_offre.')');
             $tags_offre = $tags_offre->fetch(PDO::FETCH_NUM);
 
-            echo "/////////////";
             if (!empty($details_offre["lundi"]))
             {
                 $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
@@ -128,47 +127,33 @@
                 $h_dimanche = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["dimanche"].";");
                 $h_dimanche = $h_dimanche->fetch(PDO::FETCH_ASSOC);
             } else { $h_dimanche = null; }
-         
-            var_dump($h_jeudi);
-            var_dump($h_vendredi);
-            var_dump($h_samedi);
-            var_dump($h_dimanche);
-            $offre_r = $dbh->query('select * from tripenarvor.offre_restauration where code_offre = '.$code_offre.';');
-            $offre_p = $dbh->query('select * from tripenarvor.offre_parc_attractions where code_offre = '.$code_offre.';');
-            $offre_s = $dbh->query('select * from tripenarvor.offre_spectacle where code_offre = '.$code_offre.';');
-            $offre_v = $dbh->query('select * from tripenarvor.offre_visite where code_offre = '.$code_offre.';');
-            $offre_a = $dbh->query('select * from tripenarvor.offre_activite where code_offre = '.$code_offre.';');
 
-             if (!empty($offre_r))
-             {
-                 $type_offre = "restauration";
-                 $details_offre = $offre_r->fetch(PDO::FETCH_ASSOC);
-             }
-             else if (!empty($offre_p))
-             {
-                 echo "type et vue : ok";
-                 $type_offre = "parc d'attraction";
-                 $details_offre = $offre_p->fetch(PDO::FETCH_ASSOC);
-             }
-             else if (!empty($offre_s))
-             {
-                 $type_offre = "spectacle";
-                 $details_offre = $offre_s->fetch(PDO::FETCH_ASSOC);
-             }
-             else if (!empty($offre_v))
-             {
-                 $type_offre = "visite";
-                 $details_offre = $offre_v->fetch(PDO::FETCH_ASSOC);
-             }
-             else if (!empty($offre_a))
-             {
-                 $type_offre = "activite";
-                 $details_offre = $offre_a->fetch(PDO::FETCH_ASSOC);
-             }
-
-             echo "<pre>";
-             var_dump($details_offre);
-             echo "</pre>";
+            // Utilisez des requêtes préparées
+            $queries = [
+                'restauration' => 'SELECT * FROM tripenarvor.offre_restauration WHERE code_offre = :code_offre',
+                'parc_attractions' => 'SELECT * FROM tripenarvor.offre_parc_attractions WHERE code_offre = :code_offre',
+                'spectacle' => 'SELECT * FROM tripenarvor.offre_spectacle WHERE code_offre = :code_offre',
+                'visite' => 'SELECT * FROM tripenarvor.offre_visite WHERE code_offre = :code_offre',
+                'activite' => 'SELECT * FROM tripenarvor.offre_activite WHERE code_offre = :code_offre'
+            ];
+            
+            $type_offre = null;
+            $details_offre = null;
+            
+            // Parcourez les requêtes et exécutez-les
+            foreach ($queries as $type => $sql) {
+                $stmt = $dbh->prepare($sql);
+                $stmt->bindParam(':code_offre', $code_offre, PDO::PARAM_INT);
+                $stmt->execute();
+                
+                // Vérifiez si une ligne est retournée
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                if ($result) {
+                    $type_offre = $type;
+                    $details_offre = $result;
+                    break;
+                }
+            }
          
 
             // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
@@ -531,7 +516,7 @@
     <!-- Détails de l'offre sur MOBILE -->
     <div id="body_offre_mobile">
         <header class="header">
-            <a href="#" class="back-button">&larr;</a>
+            <a href="https://scooby-team.ventsdouest.dev/voir_offres.php" class="back-button">&larr;</a>
             <h1>Détails</h1>
         </header>
 
