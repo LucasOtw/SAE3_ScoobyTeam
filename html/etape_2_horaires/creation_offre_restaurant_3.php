@@ -300,10 +300,17 @@
                 if(strtotime($horaire_ouverture) <= strtotime($horaire_fermeture)){
                     $erreurs[] = $jour." : L'heure d'ouverture doit être plus ancienne que l'heure de fermeture !";
                 }
-                $horaires_par_jour[$jour] = [
-                    'ouverture' => $horaire_ouverture,
-                    'fermeture' => $horaire_fermeture
-                ];
+                if(empty($erreurs)){
+                    $horaires_par_jour[$jour] = [
+                        'ouverture' => $horaire_ouverture,
+                        'fermeture' => $horaire_fermeture
+                    ];
+                }
+            }
+        }
+        if(!empty($erreurs)){
+            foreach($erreurs as $err){
+                echo $err."<br>";
             }
         }
         
