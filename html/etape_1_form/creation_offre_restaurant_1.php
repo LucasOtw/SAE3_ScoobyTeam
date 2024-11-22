@@ -143,7 +143,7 @@ if(isset($_POST['tags'])){
                     <div class="col">
                         <fieldset>
                             <legend>Ville *</legend>
-                            <input type="text" id="ville" name="ville" placeholder="Ville *">
+                            <input type="text" id="ville" name="ville" placeholder="Ville *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -152,7 +152,7 @@ if(isset($_POST['tags'])){
                     <div class="col">
                         <fieldset>
                             <legend>Code Postal *</legend>
-                            <input type="text" id="code_postal" name="code_postal" placeholder="Code Postal *">
+                            <input type="text" id="code_postal" name="code_postal" placeholder="Code Postal *" required>
                         </fieldset>
                     </div>
                 </div>
