@@ -72,30 +72,36 @@ function tempsEcouleDepuisPublication($offre){
     </div>
 
     <script>
-        const donneesSessionMembre = <?php echo json_encode($donneesSession); ?>;
-        document.addEventListener("DOMContentLoaded", () => {
-            function afficherPopupAvecDelai() {
-                const popup = document.getElementById("customPopup");
-                popup.style.display = "flex"; 
-            }
+    const donneesSessionMembre = <?php echo json_encode($donneesSession); ?>;
+    document.addEventListener("DOMContentLoaded", () => {
+        function afficherPopupAvecDelai() {
+            const popup = document.getElementById("customPopup");
+            popup.style.display = "flex"; 
+            setTimeout(() => {
+                popup.classList.add("visible"); // Ajoute l'effet de transition
+            }, 10); // Légère pause pour déclencher la transition
+        }
 
-            function fermerPopup() {
-                const popup = document.getElementById("customPopup");
-                popup.style.display = "none"; 
-            }
+        function fermerPopup() {
+            const popup = document.getElementById("customPopup");
+            popup.classList.remove("visible"); // Retire la classe pour l'effet inverse
+            setTimeout(() => {
+                popup.style.display = "none"; // Cache après l'animation
+            }, 500); // Correspond à la durée de la transition CSS
+        }
 
-            const closeButton = document.getElementById("closePopup");
-            if (closeButton) {
-                closeButton.addEventListener("click", fermerPopup);
-            } else {
-                console.error("Le bouton avec l'ID 'closePopup' est introuvable.");
-            }
+        const closeButton = document.getElementById("closePopup");
+        if (closeButton) {
+            closeButton.addEventListener("click", fermerPopup);
+        } else {
+            console.error("Le bouton avec l'ID 'closePopup' est introuvable.");
+        }
 
-            if (!donneesSessionMembre) {
-                setTimeout(afficherPopupAvecDelai, 5000);
-            }
-        });
-    </script>
+        if (!donneesSessionMembre) {
+            setTimeout(afficherPopupAvecDelai, 5000);
+        }
+    });
+</script>
 
 
 

@@ -590,27 +590,6 @@ nav.nav-bar {
         display: none   ;
     }
 }
-#customPopup {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right:20px;
-/*     transform: translateX(-50%); */
-    background-color: #f8f9fa;
-    padding: 15px;
-    margin: 5px;
-    border: 1px solid #ccc;
-    border-radius: 50px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    font-family: Arial, sans-serif;
-    align-items: center;
-    justify-content: space-between;
-}
-
-#customPopup p {
-    width: 75%;
-}
 
 #connexion {
     background-color: var(--vert-clair);
@@ -627,3 +606,33 @@ nav.nav-bar {
 .customImage {
     margin-left: 10px;
 }
+
+#customPopup {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: -100%; /* Positionné en dehors de l'écran à droite */
+    background-color: #f8f9fa;
+    padding: 15px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0; /* Transparent au départ */
+    transition: all 0.5s ease; /* Transition douce pour la position et l'opacité */
+}
+
+#customPopup.visible {
+    right: 20px; /* Position finale visible */
+    opacity: 1; /* Complètement visible */
+}
+
+#customPopup p {
+    width: 75%;
+}
+
+
