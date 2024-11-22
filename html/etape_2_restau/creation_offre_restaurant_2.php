@@ -105,10 +105,17 @@ session_start();
         </div>
     </main>
     <?php
+    $mesRepas = [];
 
     if(isset($_POST['envoiFormEtape2'])){
        // on garde en mémoire la valeur du bouton radio sélectionné
-        var_dump($_POST['prix']);
+        $ma_gamme = $_POST['prix'];
+        foreach($_POST['repas'] as $repas){
+            $mesRepas[] = $repas;
+        }
+        echo "<pre>";
+        var_dump($mesRepas);
+        echo "</pre>";
     }
 
     ?>
