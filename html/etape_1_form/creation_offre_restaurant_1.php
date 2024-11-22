@@ -253,39 +253,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupération des fichiers (photos)
     $photos = $_FILES['photos'] ?? null;
 
+    $erreurs[] = [];
+
     // Validation des données
     if (empty($nomOffre) || empty($adresse) || empty($ville) || empty($codePostal) || empty($resume) || empty($description)) {
         echo "Tous les champs obligatoires doivent être remplis.";
-    } else {
-        echo "<h3>Données reçues :</h3>";
-        echo "Nom de l'offre : $nomOffre<br>";
-        echo "Adresse : $adresse<br>";
-        echo "Ville : $ville<br>";
-        echo "Code postal : $codePostal<br>";
-        echo "Résumé : $resume<br>";
-        echo "Description : $description<br>";
-
-        if (!empty($complementAdresse)) echo "Complément d'adresse : $complementAdresse<br>";
-        if (!empty($lien)) echo "Lien : $lien<br>";
-        if (!empty($accessibilite)) echo "Accessibilité : $accessibilite<br>";
-
-        // Gestion des fichiers (photos)
-        if ($photos && $photos['error'][0] === UPLOAD_ERR_OK) {
-            echo "<h3>Photos téléchargées :</h3>";
-            foreach ($photos['name'] as $key => $photoName) {
-                echo "Photo $key : " . htmlspecialchars($photoName) . "<br>";
-            }
-        } else {
-            echo "Aucune photo n'a été téléchargée.<br>";
-        }
-        echo "TEST";
-    }
-
-    $erreurs[] = [];
-
-    if(empty($monOffre) || empty($adresse) || empty($ville) || empty($codePostal) || empty($resume) || empty($description)){
-        $erreurs[] = "Tous les champs doivent être obligatoires";
-        exit;
     } else {
         // si tous les champs obligatoires sont remplis, on procède aux vérifications
             if (!preg_match('/^([0-9]{5}|2[AB])$/', $codePostal)) {
