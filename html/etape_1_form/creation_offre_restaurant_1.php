@@ -220,7 +220,16 @@ if(isset($_GET['logout'])){
                         <div class="dropdown-container">
                             <button type="button" class="dropdown-button">Sélectionner des tags</button>
                             <div class="dropdown-content">
-
+                                <?php
+                                    foreach($mesTags as $monTag){
+                                        ?>
+                                        <label for="monTag" class="tags">
+                                            <input type="checkbox" name="tags" value = <?php echo $monTag['nom_tag']; ?>>
+                                            <?php echo ucfirst($monTag['nom_tag']); ?>
+                                        </label>
+                                        <?php
+                                    }
+                                ?>
                             </div>
                         </div>
 
