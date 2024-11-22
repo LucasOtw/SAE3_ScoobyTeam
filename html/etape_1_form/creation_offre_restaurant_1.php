@@ -109,7 +109,7 @@ if(isset($_POST['tags'])){
                     <div class="col">
                         <fieldset>
                             <legend>Adresse Postale *</legend>
-                            <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" required>
+                            <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" maxlength="38" required>
                         </fieldset>
                     </div>
                 </div>
@@ -287,8 +287,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     } else {
         // si tous les champs obligatoires sont remplis, on procède aux vérifications
+            if (!preg_match('/^([0-9]{5}|2[AB])$/', $codePostal)) {
+                $erreurs[] = "Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B.";
+            }
+            if(!empty($ville) && !empty($codePostal)){
+                $api_codePostal = 'http://api.zippopotam.us/fr/'.$codePostal;
 
-        
+                $api_codePostal = file_get_contents($api_codePostal);
+                if($api_codePostal === FALSE){
+                    $erreurs[] = "Erreur lors de l'accès à l'API";
+                    exit();
+                }
+                
+                $data = json_decode($api_codePostal,true);
+                $isValid = false;
+                
+                if($data && isset($data['places'])){
+                    foreach($data['places'] as $place){
+                        if(stripos($place['place name'], $ville) === 0){
+                            $isValid = true;
+                            break;
+                        }
+                    }
+                }
+                if(!$isValid){
+                    $erreurs[] = "La ville ne correspond pas au code postal";
+                    $erreurs_a_afficher[] = "erreur-ville-code-postal-incompatible";
+                }
+            }
+        if(!empty($erreurs)){
+            foreach($erreurs as $erreur){
+                echo $erreur;
+            }
+        }
     }
 }
 ?>
