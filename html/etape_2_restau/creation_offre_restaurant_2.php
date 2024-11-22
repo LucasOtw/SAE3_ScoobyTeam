@@ -107,7 +107,6 @@ session_start();
     <?php
 
     if(isset($_POST['envoiFormeEtape2'])){
-        echo "t";
        // on garde en mémoire la valeur du bouton radio sélectionné
         var_dump($_POST['prix']);
     } else {
