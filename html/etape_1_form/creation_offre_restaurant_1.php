@@ -213,17 +213,12 @@ if(isset($_GET['logout'])){
                             <div class="dropdown-content">
 
                             <?php
+                                $mesTags = $dbh->prepare('SELECT * FROM tripenarvor._son_tag NATURAL JOIN tripenarvor._tags WHERE restauration = true');
+                                $mesTags->execute();
+                                $mesTags = $mesTags->fetchAll(PDO::FETCH_ASSOC);
 
-                                    foreach($dbh->query('SELECT nom_tag from tripenarvor._son_tag natural join tripenarvor._tags where restauration = true', PDO::FETCH_ASSOC) as $row)
-                                    {
-                                    ?>
-                                <label class="tag">
-                                    <input type="checkbox" name="tags" value="<?php echo $row; ?>">
-                                    <?php echo ucfirst($row); ?>
-                                </label>
-                                    <?php
-                                    }
-                                ?>
+                                var_dump($mesTags);
+                            ?>
 
                             </div>
                         </div>
