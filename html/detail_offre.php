@@ -564,6 +564,7 @@
                     <p class="detail_offre_resumer"><?php echo $details_offre["_description"]; ?></p>
                 </article>
 
+                <br>
                 
                 <h2>Nos services</h2>
                     <?php
