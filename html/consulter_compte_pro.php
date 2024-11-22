@@ -117,7 +117,7 @@ if(!isset($_SESSION['pro'])){
                             </div>
 
             <div class="compte_membre_save_delete">
-                <a href="deconnexion_compte_pro.php" class="submit-btn1">Déconnexion</a>
+                <a href="voir_offres.php?deco=true" class="submit-btn1">Déconnexion</a>
                 <button type="submit" class="submit-btn3">Enregistrer</button>
             </div>
         </div>
