@@ -310,7 +310,7 @@
         <div class="detail_offre_pro">
             <div class="detail_offre_option">
                 <?php
-                    if ($option_a_la_une === false)
+                    if ($option_a_la_une !== false)
                     {
                 ?>
                         <h3>Option à la une</h3>
@@ -320,7 +320,7 @@
                         <p>Prix de l'option : <?php echo $option_a_la_une["prix"];?></p>
                 <?php
                     }
-                    if ($option_en_relief === false)
+                    if ($option_en_relief !== false)
                     {
                 ?>
                         <h3>Option en relief</h3>
