@@ -543,3 +543,7 @@ main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_me
     font-size: 12px;
     display: none;
 }
+
+.creation_compte_membre creation_compte_membre_other-links a {
+    font-weight: bold;
+}
