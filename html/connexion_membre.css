@@ -572,7 +572,7 @@ main.connexion_membre_main {
 }
 
 
-.connexion_membre_main fieldset p.erreur-formulaire-creation-pro{
+.connexion_membre_main fieldset p.erreur-formulaire-connexion-membre{
     color: #d70808;
     margin-bottom: 0;
     font-size: 12px;
