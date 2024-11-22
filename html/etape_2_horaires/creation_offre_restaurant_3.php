@@ -277,9 +277,37 @@
         var_dump($_POST);
         echo "</pre>";
 
-        foreach($_POST as $test){
-            echo $test;
+        // Liste des jours et les champs associés dans $_POST
+        $jours = [
+            'Lundi'    => ['ouvertureL', 'fermetureL'],
+            'Mardi'    => ['ouvertureMA', 'fermetureMa'],
+            'Mercredi' => ['ouvertureMe', 'fermetureMe'],
+            'Jeudi'    => ['ouvertureJ', 'fermetureJ'],
+            'Vendredi' => ['ouvertureV', 'fermetureV'],
+            'Samedi'   => ['ouvertureS', 'fermetureS'],
+            'Dimanche' => ['ouvertureD', 'fermetureD']
+        ];
+        
+        $horaires_par_jour = [];
+        
+        // Parcours des jours pour organiser les horaires
+        foreach ($jours as $jour => [$ouverture, $fermeture]) {
+            $horaire_ouverture = $_POST[$ouverture] ?? ''; // Récupère l'heure d'ouverture
+            $horaire_fermeture = $_POST[$fermeture] ?? ''; // Récupère l'heure de fermeture
+        
+            // Ajoute les horaires au tableau si l'un des champs est rempli
+            if (!empty($horaire_ouverture) || !empty($horaire_fermeture)) {
+                $horaires_par_jour[$jour] = [
+                    'ouverture' => $horaire_ouverture,
+                    'fermeture' => $horaire_fermeture
+                ];
+            }
         }
+        
+        // Debugging : afficher les horaires par jour
+        echo '<pre>';
+        print_r($horaires_par_jour);
+        echo '</pre>';
     }
 
     ?>
