@@ -338,7 +338,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tab_offre["tags"] = $mesTags;
 
             $_SESSION['crea_offre'] = $tab_offre;
-            var_dump($_SESSION['crea_offre'];
+            var_dump($_SESSION['crea_offre']);
         }
     }
 }
