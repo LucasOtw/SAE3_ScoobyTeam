@@ -360,7 +360,7 @@ footer {
   }
   
   .poster_un_avis_note_titre {
-    margin-bottom: 5px;
+   margin-bottom: 11px;
   }
   
   .poster_un_avis_stars .poster_un_avis_star {
@@ -378,13 +378,13 @@ footer {
     flex: 2;
     font-size: 0.8rem;
     color: #888;
-    margin: 9px 0px -28px 6px;
+    /* margin : 114px 5px -25px -349px; */
   }
   
   .poster_un_avis_buttons {
     display: flex;
     gap: 10px;
-    margin-top : 40px;
+    margin-top: 143px;
   }
   
   .poster_un_avis_btn_annuler,
@@ -421,4 +421,5 @@ footer {
     padding-bottom: 13px;
     padding-left: 45px;
     padding-top: 13px;
+    width: 225px;
   }

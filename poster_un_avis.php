@@ -50,8 +50,18 @@ session_start();
       <h2 class="poster_un_avis_section_titre">Votre avis</h2>
       <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea"></textarea>
       <div class="poster_un_avis_footer">
-        
-        <p class="poster_un_avis_disclaimer">En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
+    <div class="poster_un_avis_footer">
+        <div class="poster_un_avis_note">
+          <h2 class="poster_un_avis_note_titre">Votre note</h2>
+          <div class="poster_un_avis_stars">
+            <span class="poster_un_avis_star">⭐</span>
+            <span class="poster_un_avis_star">⭐</span>
+            <span class="poster_un_avis_star">⭐</span>
+            <span class="poster_un_avis_star">⭐</span>
+            <span class="poster_un_avis_star">⭐</span>
+          </div>
+          <p class="poster_un_avis_disclaimer">En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
+        </div>
         <div class="poster_un_avis_buttons">
           <button class="poster_un_avis_btn_annuler">Annuler</button>
           <button class="poster_un_avis_btn_publier">Publier →</button>
