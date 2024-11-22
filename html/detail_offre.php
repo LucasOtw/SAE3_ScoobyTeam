@@ -129,9 +129,10 @@
                 $h_dimanche = $h_dimanche->fetch(PDO::FETCH_ASSOC);
             } else { $h_dimanche = null; }
          
-            var_dump($h_lundi);
-            var_dump($h_mardi);
-            var_dump($h_mercredi);
+            var_dump($h_jeudi);
+            var_dump($h_vendredi);
+            var_dump($h_samedi);
+            var_dump($h_dimanche);
             $offre_r = $dbh->query('select * from tripenarvor.offre_restauration where code_offre = '.$code_offre.';');
             $offre_p = $dbh->query('select * from tripenarvor.offre_parc_attractions where code_offre = '.$code_offre.';');
             $offre_s = $dbh->query('select * from tripenarvor.offre_spectacle where code_offre = '.$code_offre.';');
