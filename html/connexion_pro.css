@@ -570,4 +570,9 @@ main.connexion_pro_main>div>div.connexion_pro_form-container>form>div.connexion_
     font-weight: bold;
 }
 
+.connexion_pro_main p.compte_membre a {
+    color: var(--vert-clair);
+    font-weight: bold;
+}
+
 
