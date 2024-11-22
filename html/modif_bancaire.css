@@ -1,0 +1,609 @@
+/*****************************************************
+            * Code général pour les pages *
+*****************************************************/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --orange : #F28322;
+    --vert-clair : #BDC426;
+    --vert-fonce : #668C3F;
+    --gris : white;
+}
+
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+html, body {
+    height: 100%;
+
+}
+
+body{
+    overflow-x: hidden;
+
+}
+/*****************************************************
+        * Code pour la page header/footer responsive *
+*****************************************************/
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "K2D", sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 20px;
+    color: white;
+}
+
+.logo img {
+    height: 60px;
+    max-width: 100%; /* Pour s'assurer que l'image ne dépasse pas */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 3vw; /* Espace adaptable selon la largeur de l'écran */
+    margin-right: 4vw;
+    flex-wrap: wrap; /* Permet de passer sur plusieurs lignes si nécessaire */
+}
+
+nav ul li a {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem; /* Utilise des unités relatives */
+    padding: 5px 10px;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+nav ul li a.active {
+    color: var(--orange);
+}
+
+nav ul li a:hover {
+    color: var(--orange);
+}
+
+.header_pro nav ul li a.active {
+    color: var(--orange);
+}
+
+.header_pro nav ul li a:hover {
+    color: var(--orange);
+}
+
+nav ul li a::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2.5px;
+    bottom: -2px;
+    background-color: var(--orange);
+    transition: width 0.3s ease;
+}
+
+.header_pro nav ul li a::before {
+    background-color: var(--orange);
+}
+
+nav ul li a:hover::before {
+    width: 90%;
+}
+
+footer {
+    background-color: #000;
+    color: rgb(0, 0, 0);
+    padding: 40px 20px;
+    text-align: left;
+    width: 100%;
+    margin-top: auto;
+}
+
+.newsletter {
+    display: flex;
+    flex-direction: column; /* Stack les éléments sur petits écrans */
+    justify-content: space-between;
+    background-color: var(--orange);
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    margin-top: -130px;
+    z-index: 1;
+    width: 90%;
+    max-width: 1200px; /* Limite la largeur sur grands écrans */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newsletter-content {
+    text-align: left;
+    max-width: 100%; /* Ajuste pour petits écrans */
+}
+
+.newsletter h2 {
+    font-size: 2rem; /* Taille adaptable */
+    margin-bottom: 10px;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-direction: column; /* Colonne sur petits écrans */
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.newsletter-form button {
+    background-color: #112211;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newsletter-form input, .newsletter-form button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.newsletter-form input {
+    flex-grow: 1;
+}
+
+.newsletter-image img {
+    max-height: 100px;
+    width: auto; /* Maintien du ratio de l'image */
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.link-group ul {
+    list-style: none;
+}
+
+.link-group ul li {
+    margin-bottom: 10px;
+}
+
+.link-group ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.link-group ul li a:hover {
+    color: var(--orange);
+}
+
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-icons a img {
+    width: 24px;
+    margin: 0 10px;
+}
+
+/* Media queries pour l'adaptabilité */
+
+@media (min-width: 768px) {
+    .newsletter {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .newsletter-content {
+        max-width: 60%;
+    }
+    
+    .newsletter-form {
+        flex-direction: row;
+    }
+    
+    .footer-links {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+@media (min-width: 1024px) {
+    nav ul {
+        gap: 50px; /* Réduit l'espace entre les éléments sur grands écrans */
+    }
+
+    footer {
+        padding: 40px 80px;
+    }
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* Profile Section */
+.main-modif-bancaire .profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+
+.main-modif-bancaire .banner img {
+    width: 70%;
+    height: 200px;
+    object-fit: cover;
+    margin: 30px;
+    border-radius: 20px;
+}
+
+.main-modif-bancaire .profile-info {
+    margin-top: -90px;
+    text-align: center;
+}
+
+.main-modif-bancaire .profile-info img.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 35px;
+    object-fit: cover;
+}
+
+.main-modif-bancaire .profile-info h1 {
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+.main-modif-bancaire .profile-info p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Tabs Section */
+.main-modif-bancaire .tabs {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.main-modif-bancaire .tabs ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    min-width: 40vw;
+}
+
+.main-modif-bancaire .tabs ul li {
+    display: flex;
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+.main-modif-bancaire .tabs ul li a {
+    width: calc(60vw/3);
+    font-size: 20px;
+    padding: 10px 20px;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+    color: #333;
+    text-decoration: none;
+}
+
+.main-modif-bancaire .tabs ul li a.active {
+    border-color: #ff6600;
+    text-decoration: none;
+}
+
+.main-modif-bancaire .form-section {
+    background-color: white;
+    padding: 20px 0;
+    border-radius: 10px;
+}
+
+.main-modif-bancaire .form-group {
+    margin-bottom: 15px;
+}
+
+.main-modif-bancaire label {
+    display: block;
+    margin-bottom: 0px;
+    font-size: 14px;
+    color: #555;
+}
+
+.main-modif-bancaire input[type="text"],
+.main-modif-bancaire input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.main-modif-bancaire .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+
+
+
+.main-modif-bancaire form {
+    width: 885px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.main-modif-bancaire fieldset {
+    border: none;
+    margin-bottom: 20px;
+}
+
+.main-modif-bancaire legend {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.main-modif-bancaire input[type="text"],
+.main-modif-bancaire input[type="email"],
+.main-modif-bancaire input[type="tel"],
+.main-modif-bancaire input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.main-modif-bancaire input[type="text"]::placeholder,
+.main-modif-bancaire input[type="email"]::placeholder,
+.main-modif-bancaire input[type="tel"]::placeholder,
+.main-modif-bancaire input[type="password"]::placeholder {
+    color: #aaa;
+}
+
+.main-modif-bancaire .IBAN,
+.main-modif-bancaire .nom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.main-modif-bancaire .IBAN fieldset,
+.main-modif-bancaire .nom fieldset {
+    flex: 1;
+}
+.main-modif-bancaire .BIC,
+.main-modif-bancaire .nom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.main-modif-bancaire .BIC fieldset,
+.main-modif-bancaire .nom fieldset {
+    flex: 1;
+}
+
+.main-modif-bancaire .checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.main-modif-bancaire .checkbox input {
+    margin-right: 10px;
+}
+
+.main-modif-bancaire .checkbox label a {
+    color: var(--orange);
+    text-decoration: none;
+}
+
+.main-modif-bancaire .checkbox label a:hover {
+    text-decoration: underline;
+}
+.main-modif-bancaire .compte_membre_save_delete {
+    display: flex;
+    justify-content: right; /* Aligne les boutons au centre */
+    gap: 20px; /* Espacement entre les boutons */
+    margin-bottom: 11em;
+}
+
+.main-modif-bancaire button.submit-btn1, 
+.main-modif-bancaire button.submit-btn2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--orange);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1em;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 28%;
+    height: 8%;
+    padding : 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ajout de l'ombre */
+
+}
+
+.main-modif-bancaire button.submit-btn1{
+    background-color: white;
+    border: 1.5px solid var(--orange);
+    color: black;
+}
+
+.main-modif-bancaire button.submit-btn1:hover,
+.main-modif-bancaire button.submit-btn2:hover {
+    background-color: var(--orange-hover); /* Ajoute une couleur de survol pour les deux boutons */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Ombre plus forte au survol */
+    transition: 0.3s;
+
+}
+
+.main-modif-bancaire button.submit-btn2:hover{
+    background-color: var(--orange);
+
+}
+
+.main-modif-bancaire .alert {
+    display: none;
+    padding: 10px;
+    margin: 15px 0;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+
+
+
+/* Style général pour tous les fieldsets */
+.main-modif-bancaire .nom fieldset, 
+.main-modif-bancaire .IBAN fieldset,
+.main-modif-bancaire .BIC fieldset,
+.main-modif-bancaire form fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-top: 0;
+}
+
+/* Style pour les légendes */
+.main-modif-bancaire .nom legend, 
+.main-modif-bancaire .IBAN legend,
+.main-modif-bancaire .BIC legend,
+.main-modif-bancaire form legend {
+    font-size: 14px;
+    padding: 0 10px;
+    color: #333;
+    background-color: white;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    display: none;
+}
+
+/* Légende visible au focus */
+.main-modif-bancaire .nom fieldset:focus-within legend, 
+.main-modif-bancaire .IBAN fieldset:focus-within legend,
+.main-modif-bancaire form fieldset:focus-within legend {
+    display: inline-block;
+    transition: ease-out 0.3s;
+}
+
+/* Placeholder style pour tous les champs de formulaire */
+.main-modif-bancaire .nom input::placeholder, 
+.main-modif-bancaire .IBAN input::placeholder,
+.main-modif-bancaire form input::placeholder {
+    padding-left: 10px;
+}
+
+/* Placeholder masqué au focus */
+.main-modif-bancaire .nom input:focus::placeholder, 
+.main-modif-bancaire .IBAN input:focus::placeholder,
+.main-modif-bancaire form input:focus::placeholder {
+    color: rgba(0, 0, 0, 0);
+}
+
+/* Style pour la case à cocher */
+.main-modif-bancaire #remember, #cgu {
+    accent-color: var(--orange);
+}
+
+/* Styles pour les boutons */
+.main-modif-bancaire .submit-btn1, .submit-btn2 {
+    background-color: var(--orange);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.main-modif-bancaire .submit-btn1 {
+    margin-right: 10px;
+}
+
+.main-modif-bancaire .submit-btn2 img {
+    margin-left: 5px;
+}
+.main-modif-bancaire .input-with-icon {
+    display: flex;
+    align-items: center; /* Aligne l'image et l'input verticalement */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.main-modif-bancaire .input-with-icon img {
+    margin-right: 10px; /* Espacement entre l'image et le champ */
+    width: 20px; /* Ajuster la taille selon ton design */
+    height: auto;
+}
+
+.main-modif-bancaire .input-with-icon input {
+    border: none;
+    outline: none;
+    flex-grow: 1; /* Permet à l'input de prendre tout l'espace disponible */
+    padding: 10px;
+}
+.main-modif-bancaire .image-container {
+    text-align: center; /* Centre le texte en dessous de l'image */
+}
+
+.main-modif-bancaire .image {
+    max-width: 100%; /* L'image ne dépasse jamais la largeur de son conteneur */
+    height: auto; /* Maintient le ratio d'aspect de l'image */
+}
+
