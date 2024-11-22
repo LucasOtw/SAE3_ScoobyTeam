@@ -12,6 +12,10 @@
   if(isset($_SESSION['membre'])){
      $compte = $_SESSION['membre'];
 
+    echo "<pre>";
+    var_dump($compte);
+    echo "</pre>";
+
      // on sélectionne les infos du membre
 
     $monCompte = $dbh->prepare("SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte");

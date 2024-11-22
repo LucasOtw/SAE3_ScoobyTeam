@@ -123,7 +123,7 @@ session_start();
                         // les mots de passe correspondent
                         // l'utilisateur peut être connecté
                         header('location: voir_offres.php');
-                        $_SESSION["compte"] = $existeUser[0];
+                        $_SESSION["membre"] = $existeUser[0];
                     } else /* MDP Invalide */ {
                         ?> 
                         <style>
