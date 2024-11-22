@@ -136,7 +136,7 @@ if(isset($_POST['logout'])){
 
                 <fieldset>
                     <legend>Téléphone *</legend>
-                    <input type="tel" id="telephone" name="telephone" value="<?php echo trim(preg_replace('/(\d{2})/', '$1 ', $mesInfos['telephone'])) ?>" placeholder="Téléphone *" required>
+                    <input type="tel" id="telephone" name="telephone" value="<?php echo trim(preg_replace('/(\d{2})/', '$1 ', $mesInfos['telephone'])) ?>" placeholder="Téléphone *" maxlength="14" required>
                 </fieldset>
             </div>
 
