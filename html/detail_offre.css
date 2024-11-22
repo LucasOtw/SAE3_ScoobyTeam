@@ -424,7 +424,7 @@ footer {
 .detail_offre_icon {
     border: 1px none;
     background-color: rgba(23, 111, 242, 0.05);
-    padding: 20px;
+    padding-top: 26px;
     width: 120px;
     height: 109px;
     border-radius: 29px;
