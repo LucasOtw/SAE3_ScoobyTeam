@@ -73,7 +73,7 @@
     }
     else
     {
-        echo $_POST["uneOffre"];
+        //echo $_POST["uneOffre"];
         
         // si le formulaire est bien récupéré
         $details_offre = unserialize($_POST["uneOffre"]);// on récupère son contenu
@@ -94,19 +94,24 @@
 
             $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
             $h_lundi = $h_lundi->fetch(PDO::FETCH_ASSOC);
-            var_dump($h_lundi);
             $h_mardi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["mardi"].";");
             $h_mardi = $h_mardi->fetch(PDO::FETCH_ASSOC);
+            var_dump($h_mardi);
             $h_mercredi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["mercredi"].";");
             $h_mercredi = $h_mercredi->fetch(PDO::FETCH_ASSOC);
+            var_dump($h_mercredi);
             $h_jeudi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["jeudi"].";");
             $h_jeudi = $h_jeudi->fetch(PDO::FETCH_ASSOC);
+            var_dump($h_jeudi);
             $h_vendredi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["vendredi"].";");
             $h_vendredi = $h_vendredi->fetch(PDO::FETCH_ASSOC);
+            var_dump($h_vendredi);
             $h_samedi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["samedi"].";");
             $h_samedi = $h_samedi->fetch(PDO::FETCH_ASSOC);
+            var_dump($h_samedi);
             $h_dimanche = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["dimanche"].";");
             $h_dimanche = $h_dimanche->fetch(PDO::FETCH_ASSOC);
+            var_dump($h_dimanche);
          
             $offre_r = $dbh->query('select * from tripenarvor.offre_restauration where code_offre = '.$code_offre.';');
             $offre_p = $dbh->query('select * from tripenarvor.offre_parc_attractions where code_offre = '.$code_offre.';');
