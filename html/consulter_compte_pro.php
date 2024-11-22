@@ -2,10 +2,11 @@
 session_start();
 
 // Vérifiez si l'utilisateur est connecté
-if (!isset($_SESSION['compte'])) {
-    echo "Veuillez vous connecter pour modifier votre compte.";
+if (!isset($_SESSION['pro'])) {
+    header('location: connexion_pro.php');
     exit;
 }
+
 
 // Connexion à la base de données
 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
