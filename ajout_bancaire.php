@@ -22,6 +22,7 @@ session_start();
         </ul>
     </nav>
 </header>
+<main class="main-ajout-bancaire">
         <section class="profile">
             <div class="banner">
                 <img src="images/Fond.png" alt="Bannière de profil">
@@ -140,7 +141,7 @@ $pdo = null;
         <button type="submit" class="submit-btn2">Ajouter vos coordonnées</button>
     </div>
 </form>
-
+</main>
 <footer class="footer">
     <div class="footer-links">
         <div class="logo">
