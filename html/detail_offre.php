@@ -516,7 +516,7 @@
     <!-- Détails de l'offre sur MOBILE -->
     <div id="body_offre_mobile">
         <header class="header">
-            <a href="#" class="back-button">&larr;</a>
+            <a href="https://scooby-team.ventsdouest.dev/voir_offres.php" class="back-button">&larr;</a>
             <h1>Détails</h1>
         </header>
 
