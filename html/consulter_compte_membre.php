@@ -38,10 +38,6 @@ if (isset($_POST['modif_infos'])){
            $champsModifies[$champ] = $valeur;
        }
    }
-
-   echo "<pre>";
-   var_dump($champsModifies);
-   echo "</pre>";
    
    // Mettre à jour seulement les champs modifiés
    if (!empty($champsModifies)) {
