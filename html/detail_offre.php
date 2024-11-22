@@ -129,8 +129,8 @@
             } else { $h_dimanche = null; }
          
             $offre_r = $dbh->query('select * from tripenarvor.offre_restauration where code_offre = '.$code_offre.';');
-            $offre_p = $dbh->query('select * from tripenarvor.offre_parc_attractions where code_offre = '.$code_offre.';');
             echo "type et vue : ok";
+            $offre_p = $dbh->query('select * from tripenarvor.offre_parc_attractions where code_offre = '.$code_offre.';');
             $offre_s = $dbh->query('select * from tripenarvor.offre_spectacle where code_offre = '.$code_offre.';');
             $offre_v = $dbh->query('select * from tripenarvor.offre_visite where code_offre = '.$code_offre.';');
             $offre_a = $dbh->query('select * from tripenarvor.offre_activite where code_offre = '.$code_offre.';');
