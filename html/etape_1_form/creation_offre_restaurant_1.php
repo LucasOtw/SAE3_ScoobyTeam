@@ -87,7 +87,7 @@ if(isset($_POST['tags'])){
             <h1>Publier une offre</h1>
 
             <!-- Form Fields -->
-            <form action="#" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
+            <form action="../etape_2_restau/creation_offre_restau_2.php" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
                 <!-- Establishment Name & Type -->
                 <div class="row">
                     <div class="col">
@@ -331,12 +331,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Si aucune photo n'est envoyée, on initialise un tableau vide
                 $tab_offre['photos'] = [];
             }
+
+            $_SESSION['crea_offre'] = $tab_offre;
         }
     }
 }
-echo "<pre>";
-var_dump($tab_offre);
-echo "</pre>";
 ?>
 </body>
 </html>
