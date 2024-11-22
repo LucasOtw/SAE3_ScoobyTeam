@@ -210,9 +210,6 @@ if(isset($_POST['tags'])){
                     $mesTags->execute();
                     $mesTags = $mesTags->fetchAll(PDO::FETCH_ASSOC);
 
-                    echo "<pre>";
-                    var_dump($mesTags);
-                    echo "</pre>";
                 ?>
 
                 <!-- Tags -->
