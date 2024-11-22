@@ -50,7 +50,7 @@ session_start();
             <h1>Publier une offre</h1>
 
             <!-- Form Fields -->
-            <form action="" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
+            <form action="../etape_2_horaires/creation_offre_restaurant_3.php" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
                 <!-- Price Options -->
                 <div class="price-options">
                     <label for="prix">Prix</label>
@@ -116,9 +116,6 @@ session_start();
         $_SESSION['crea_offre_2']['ma_gamme'] = $ma_gamme;
         $_SESSION['crea_offre_2']['mesRepas'] = $mesRepas;
 
-        echo "<pre>";
-        var_dump($_SESSION['crea_offre_2']);
-        echo "</pre>";
     }
 
     ?>
