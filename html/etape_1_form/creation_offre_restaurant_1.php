@@ -87,7 +87,7 @@ if(isset($_POST['tags'])){
             <h1>Publier une offre</h1>
 
             <!-- Form Fields -->
-            <form action="../etape_2_restau/creation_offre_restaurant_2.php" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
+            <form action="#" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
                 <!-- Establishment Name & Type -->
                 <div class="row">
                     <div class="col">
@@ -338,6 +338,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tab_offre["tags"] = $mesTags;
 
             $_SESSION['crea_offre'] = $tab_offre;
+            var_dump($_SESSION['crea_offre'];
         }
     }
 }
