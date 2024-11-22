@@ -45,7 +45,7 @@
 
     function afficherHoraire($jour)
     {
-        if (!empty($jour["ouverture"])
+        if (!empty($jour["ouverture"]))
         {
             $dateTimeO = DateTime::createFromFormat('H:i:s', $jour["ouverture"]);
             $dateTimeF = DateTime::createFromFormat('H:i:s', $jour["fermeture"]);
