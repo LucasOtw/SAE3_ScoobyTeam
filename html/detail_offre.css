@@ -696,10 +696,11 @@ footer {
     
     @media (max-width: 480px) {
         .service {
-            width: 79px;
-            height: 76px;
-            font-size: 15px; /* Réduction supplémentaire pour les petits écrans */
-            padding: 10px; /* Ajustement du padding */
+            width: 95px;
+            height: 95px;
+            font-size: 15px;
+            padding: 10px;
+            margin-right: 19em;
         }
     }
     
