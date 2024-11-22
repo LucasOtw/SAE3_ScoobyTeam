@@ -243,12 +243,63 @@ if(isset($_POST['tags'])){
                     </tbody>
                 </table>
 
-                <button type="submit" id="button_valider">
+                <button type="submit" name="envoiFormulaire" id="button_valider">
                     Continuer <img src="../images/fleche.png" alt="Fleche" width="25px" height="25px">
                 </button>
 
             </form>
         </div>
     </main>
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Récupération des champs obligatoires
+    $nomOffre = htmlspecialchars($_POST['nom_offre'] ?? '');
+    $email = htmlspecialchars($_POST['email'] ?? '');
+    $telephone = htmlspecialchars($_POST['telephone'] ?? '');
+    $adresse = htmlspecialchars($_POST['adresse'] ?? '');
+    $ville = htmlspecialchars($_POST['ville'] ?? '');
+    $codePostal = htmlspecialchars($_POST['code_postal'] ?? '');
+
+    // Récupération des champs facultatifs
+    $complementAdresse = htmlspecialchars($_POST['complement_adresse'] ?? '');
+    $lien = htmlspecialchars($_POST['lien'] ?? '');
+    $resume = htmlspecialchars($_POST['resume'] ?? '');
+    $description = htmlspecialchars($_POST['description'] ?? '');
+    $accessibilite = htmlspecialchars($_POST['accessibilite'] ?? '');
+
+    // Récupération des fichiers (photos)
+    $photos = $_FILES['photos'] ?? null;
+
+    // Validation des données
+    if (empty($nomOffre) || empty($email) || empty($telephone) || empty($adresse) || empty($ville) || empty($codePostal)) {
+        echo "Tous les champs obligatoires doivent être remplis.";
+    } else {
+        echo "<h3>Données reçues :</h3>";
+        echo "Nom de l'offre : $nomOffre<br>";
+        echo "Email : $email<br>";
+        echo "Téléphone : $telephone<br>";
+        echo "Adresse : $adresse<br>";
+        echo "Ville : $ville<br>";
+        echo "Code postal : $codePostal<br>";
+
+        if (!empty($complementAdresse)) echo "Complément d'adresse : $complementAdresse<br>";
+        if (!empty($lien)) echo "Lien : $lien<br>";
+        if (!empty($resume)) echo "Résumé : $resume<br>";
+        if (!empty($description)) echo "Description : $description<br>";
+        if (!empty($accessibilite)) echo "Accessibilité : $accessibilite<br>";
+
+        // Gestion des fichiers (photos)
+        if ($photos && $photos['error'][0] === UPLOAD_ERR_OK) {
+            echo "<h3>Photos téléchargées :</h3>";
+            foreach ($photos['name'] as $key => $photoName) {
+                echo "Photo $key : " . htmlspecialchars($photoName) . "<br>";
+            }
+        } else {
+            echo "Aucune photo n'a été téléchargée.<br>";
+        }
+    }
+}
+?>
 </body>
 </html>
