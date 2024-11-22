@@ -257,74 +257,83 @@ footer {
     margin: 0;
     padding: 0;
 }
-
-
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;    
-}
-
-.header-img {
-    width: 75em;
-    border-radius: 10px;
-    height: auto;
-    margin-left: -150px;
-}
-
-.profile-section {
+/* Profile Section */
+.profile {
     text-align: center;
-    margin-top: -50px; /* Remonter la photo de profil */
-}
-
-.profile-img {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 30px;
-}
-
-h1 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-p {
-    color: #888;
     margin-bottom: 30px;
 }
 
+
+
+.banner img {
+    width: 70%;
+    height: 200px;
+    object-fit: cover;
+    margin: 30px;
+    border-radius: 20px;
+}
+
+.profile-info {
+    margin-top: -90px;
+    text-align: center;
+}
+
+.profile-info img.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 35px;
+    object-fit: cover;
+}
+
+.profile-info h1 {
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+.profile-info p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Tabs Section */
 .tabs {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    padding: 0px;
-
+    margin: 30px 0;
+    text-align: center;
 }
 
-.tab {
+.tabs ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    min-width: 40vw;
+}
+
+.tabs ul li {
+    display: flex;
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+.tabs ul li a {
+    width: calc(60vw/3);
+    font-size: 20px;
     padding: 10px 20px;
-    cursor: pointer;
-    color: #2e2e2e;
+    display: inline-block;
     border-bottom: 2px solid transparent;
-    transition: border-bottom 0.3s ease;
-   
-    
-}
-.tab a {
-    color:black;
-    text-decoration:none;
-}
-.tab.active {
-    color: #2e2e2e;
-    border-bottom: 2px solid #F28322; /* Couleur vert olive */
+    transition: border-color 0.3s;
+    color: #333;
+    text-decoration: none;
 }
 
-.tab:not(.active):hover {
-    border-bottom: 2px solid #ccc;
+.tabs ul li a.active {
+    border-color: #ff6600;
+    text-decoration: none;
 }
 
 .form-section {
