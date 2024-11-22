@@ -206,7 +206,7 @@ if(isset($_POST['tags'])){
                     </div>
                 </div>
                 <?php
-                    $mesTags = $dbh->prepare('SELECT * FROM tripenarvor._son_tag NATURAL JOIN tripenarvor._tags WHERE restauration = true');
+                    $mesTags = $dbh->prepare('SELECT * FROM tripenarvor._tags WHERE restauration = true');
                     $mesTags->execute();
                     $mesTags = $mesTags->fetchAll(PDO::FETCH_ASSOC);
 
@@ -233,7 +233,7 @@ if(isset($_POST['tags'])){
                                 ?>
                                 <tr>
                                     <td>
-                                        <input type="checkbox" name="tags[]">
+                                        <input type="checkbox" name="tags[]" value="<?php echo ?>">
                                     </td>
                                     <td>
                                         <?php echo $monTag['nom_tag']; ?>
