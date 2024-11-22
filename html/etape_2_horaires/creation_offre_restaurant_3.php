@@ -41,7 +41,7 @@
             <h1>Publier une offre</h1>
 
             <!-- Form Fields -->
-            <form action="" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
+            <form action="../etape_3_boost/creation_offre_restaurant_4.php" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
                  <!-- Offer Times -->
                  <h3>Horaires</h3>
                 <div class="container">
@@ -289,13 +289,13 @@
         ];
         
         $horaires_par_jour = [];
-        
-        // Parcours des jours pour organiser les horaires
+
+        // on parcourt chaque jour
         foreach ($jours as $jour => [$ouverture, $fermeture]) {
             $horaire_ouverture = $_POST[$ouverture] ?? ''; // Récupère l'heure d'ouverture
             $horaire_fermeture = $_POST[$fermeture] ?? ''; // Récupère l'heure de fermeture
         
-            // Ajoute les horaires au tableau si l'un des champs est rempli
+            // si il y a une horaire d'ouverture ou de fermeture, on la met
             if (!empty($horaire_ouverture) || !empty($horaire_fermeture)) {
                 $horaires_par_jour[$jour] = [
                     'ouverture' => $horaire_ouverture,
@@ -304,10 +304,11 @@
             }
         }
         
-        // Debugging : afficher les horaires par jour
         echo '<pre>';
         print_r($horaires_par_jour);
         echo '</pre>';
+
+        $_SESSION['crea_offre_3'] = $horaires_par_jour;
     }
 
     ?>
