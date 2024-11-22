@@ -290,6 +290,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $erreurs_a_afficher[] = "erreur-ville-code-postal-incompatible";
                 }
             }
+        echo "<pre>";
+        var_dump($erreurs);
+        echo "</pre>";
         if(!empty($erreurs)){
             foreach($erreurs as $erreur){
                 echo $erreur;
