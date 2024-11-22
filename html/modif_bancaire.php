@@ -69,7 +69,7 @@ include("recupInfosCompte.php");
             $message = '';
 
             // Préparer la requête pour récupérer les informations bancaires
-            $query = "SELECT nom_compte, iban, bic FROM _compte_bancaire LIMIT 1";
+            $query = "SELECT nom_compte, iban, bic FROM tripenarvor._compte_bancaire LIMIT 1";
             $stmt = $pdo->query($query);
 
             // Vérifier s'il y a des résultats
