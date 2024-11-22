@@ -83,7 +83,10 @@ if(!isset($_SESSION['pro'])){
                         <p class="offer-type"><?php echo $monOffre['nom_type']; ?></p>
                         <p class="price"><?php echo $monOffre['tarif']; ?>€</p>
                     </div>
-                    <button class="add-btn">+</button>
+                    <form id="add-btn" action="detail_offre_pro.php" method="POST">
+                        <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($monOffre)); ?>">
+                        <input id="btn-voir-offre" type="submit" name="vueDetails" value="+">
+                    </form>
                 </div>
                 <?php
             }
