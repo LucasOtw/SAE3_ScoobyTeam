@@ -566,7 +566,7 @@ main.connexion_pro_main>div>div.connexion_pro_form-container>form>div.connexion_
     display: none;
 }
 
-.connexion_pro_main p.pas_de_compte a {
+.connexion_pro_main span.pas_de_compte a {
     font-weight: bold;
 }
 
