@@ -406,7 +406,6 @@
            !empty($h_samedi["ouverture"]) ||
            !empty($h_dimanche["ouverture"]))
         {
-            echo "OKKKKKK";
         ?>
             <div class="Detail_offre_ouverture_global_desktop">
     
