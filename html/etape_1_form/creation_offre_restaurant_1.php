@@ -253,7 +253,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupération des fichiers (photos)
     $photos = $_FILES['photos'] ?? null;
 
-    $erreurs[] = [];
+    $erreurs = [];
 
     // Validation des données
     if (empty($nomOffre) || empty($adresse) || empty($ville) || empty($codePostal) || empty($resume) || empty($description)) {
