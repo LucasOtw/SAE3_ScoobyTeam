@@ -454,7 +454,9 @@ input[type="password"]::placeholder {
     gap: 20px; /* Espacement entre les boutons */
     margin-bottom: 11em;
 }
-
+.main-consulter-compte-pro .compte_membre_save_delete a {
+           text-decoration : none;
+}
 .main-consulter-compte-pro .submit-btn1, 
 .main-consulter-compte-pro button.submit-btn2,
 .main-consulter-compte-pro button.submit-btn3 {
