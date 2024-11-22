@@ -92,6 +92,7 @@
             $tags_offre = $dbh->query('SELECT nom_tag FROM tripenarvor._tags WHERE code_tag = (SELECT code_tag FROM tripenarvor._son_tag WHERE code_offre = '.$code_offre.')');
             $tags_offre = $tags_offre->fetch(PDO::FETCH_NUM);
 
+            echo "/////////////";
             if (!empty($details_offre["lundi"]))
             {
                 $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
@@ -128,7 +129,7 @@
                 $h_dimanche = $h_dimanche->fetch(PDO::FETCH_ASSOC);
             } else { $h_dimanche = null; }
          
-            echo "type et vue : ok";
+            echo "/////////////";
             $offre_r = $dbh->query('select * from tripenarvor.offre_restauration where code_offre = '.$code_offre.';');
             $offre_p = $dbh->query('select * from tripenarvor.offre_parc_attractions where code_offre = '.$code_offre.';');
             $offre_s = $dbh->query('select * from tripenarvor.offre_spectacle where code_offre = '.$code_offre.';');
