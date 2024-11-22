@@ -155,10 +155,19 @@
                 }
             }
 
+            $option_en_relief = $dbh->prepare('SELECT * FROM tripenarvor._option WHERE code_option = :option_en_relief');
+            $option_en_relief->bindValue(":option_en_relief",$details_offre["option_en_relief"]);
+            $option_en_relief->execute();
+            $option_en_relief = $option_en_relief->fetch(PDO::FETCH_ASSOC);
+            
+            $option_a_la_une = $dbh->prepare('SELECT * FROM tripenarvor._option WHERE code_option = :option_a_la_une');
+            $option_a_la_une->bindValue(":option_a_la_une",$details_offre["option_a_la_une"]);
+            $option_a_la_une->execute();
+            $option_a_la_une = $option_a_la_une->fetch(PDO::FETCH_ASSOC);
+
             echo "<pre>";
             var_dump($details_offre);
             echo '</pre>';
-         
 
             // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
     
