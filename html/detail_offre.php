@@ -646,7 +646,7 @@
             </div>
 
             <div class="global_service_detail_offre">
-                <h3 style="margin-left: 1.1em;">Tags</h3>
+                <h3>Tags</h3>
 
                 <div class="services">
                     <?php
