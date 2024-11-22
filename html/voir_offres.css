@@ -624,4 +624,10 @@ nav.nav-bar {
     transition: background-color 0.2s ease-in-out;
 }
 
-    
+
+
+
+#customPopup img {
+    width: 43px;
+margin-left: 21px;
+}
