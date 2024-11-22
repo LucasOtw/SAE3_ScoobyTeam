@@ -163,9 +163,10 @@
 
             // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
     
-            $adresse_offre = $dbh->query('SELECT * FROM tripenarvor._adresse WHERE code_adresse = '.$details_offre["code_adresse"].'');
+            $adresse_offre = $dbh->prepare('SELECT * FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
+            $adresse_offre->bindValue(":code_adresse",$details_offre["code_adresse"]);
+            $adresse_offre->execute();
             $adresse_offre = $adresse_offre->fetch(PDO::FETCH_ASSOC);
-         
             
         }
     }
