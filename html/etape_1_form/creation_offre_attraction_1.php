@@ -246,7 +246,6 @@ if(isset($_GET['logout'])){
                             <div class="dropdown-content">
 
                             <?php
-                                    $dbh = new PDO("host=postgresdb;port=5432;dbname=db-scooby-team", "sae", "philly-Congo-bry4nt");
 
                                     foreach($dbh->query('SELECT nom_tag from tripenarvor._son_tag natural join tripenarvor._tags where restauration = true', PDO::FETCH_ASSOC) as $row)
                                     {
