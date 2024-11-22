@@ -79,9 +79,6 @@
         
         $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
 
-        echo "<pre>";
-        var_dump($details_offre);
-        echo '</pre>';
 
         if(!empty($details_offre))
         { // si l'offre existe
@@ -157,6 +154,10 @@
                     break;
                 }
             }
+
+            echo "<pre>";
+            var_dump($details_offre);
+            echo '</pre>';
          
 
             // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
