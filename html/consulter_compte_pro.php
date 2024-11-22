@@ -73,40 +73,43 @@ if(!isset($_SESSION['pro'])){
 
                 <fieldset disabled>
                     <legend>N° de Siren</legend>
-                    <input type="text" id="siren*" name="siren" placeholder="N° de Siren*" value="987654321" required>
+                    <input type="text" id="siren" name="siren" placeholder="N° de Siren" value="987654321">
                 </fieldset>
             </div>
 
             <div class="crea_pro_mail_tel">
-                <fieldset>
-                    <legend>Email</legend>
-                    <input type="email" id="email*" name="email" placeholder="Email*" value="<?php echo $compte['mail'] ?>" required>
-                </fieldset>
+                <div class="crea_pro_raison_sociale_num_siren">
+                    <fieldset>
+                        <legend>Email *</legend>
+                        <input type="email" id="email" name="email" placeholder="Email *" value="<?php echo $compte['mail'] ?>" required>
+                    </fieldset>
+    
+                    <fieldset>
+                        <legend>Téléphone *</legend>
+                        <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *" value=" <?php echo $compte['telephone']; ?> " required>
+                    </fieldset>
+                </div>
 
                 <fieldset>
-                    <legend>Téléphone</legend>
-                    <input type="tel" id="telephone*" name="telephone" placeholder="Téléphone*" value=" <?php echo $compte['telephone']; ?> " required>
-                </fieldset>
-
-                <fieldset>
-                    <legend>Adresse Postale</legend>
-                    <input type="text" id="adresse*" name="adresse" placeholder="Adresse postale*" value="1 rue de la Republique" required>
+                    <legend>Adresse Postale *</legend>
+                    <input type="text" id="adresse" name="adresse" placeholder="Adresse postale *" value="1 rue de la Republique" required>
                 </fieldset>
 
                 <fieldset>
                     <legend>Complément d'adresse</legend>
-                    <input type="text" id="comp_adresse" name="comp_adresse" placeholder="Complément d'adresse*" value="1° étage" required>
+                    <input type="text" id="comp_adresse" name="comp_adresse" placeholder="Complément d'adresse" value="1° étage">
                 </fieldset>
-
-                <fieldset>
-                    <legend>Code Postal</legend>
-                    <input type="text" id="code_postal" name="code_postal*" placeholder="code_postal*" value="22300" required>
-                </fieldset>
-                
-                <fieldset>
-                    <legend>Ville</legend>
-                    <input type="text" id="ville" name="ville*" placeholder="Ville*" value="Lannion" required>
-                </fieldset>
+                <div class="crea_pro_raison_sociale_num_siren">
+                    <fieldset>
+                        <legend>Code Postal *</legend>
+                        <input type="text" id="code_postal" name="code_postal" placeholder="code_postal *" value="22300" required>
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>Ville *</legend>
+                        <input type="text" id="ville" name="ville" placeholder="Ville *" value="Lannion" required>
+                    </fieldset>
+                </div>
             </div>
             <div class="checkbox">
                                 <input type="checkbox" id="cgu" name="cgu" required>
