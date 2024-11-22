@@ -4,6 +4,11 @@ session_start();
 
 include("recupInfosCompte.php");
 
+if(!isset($_SESSION['membre'])){
+   header('location: connexion_membre.php');
+   exit;
+}
+
 if(isset($_POST['logout'])){
    session_destroy();
    header('location: connexion_membre.php');
