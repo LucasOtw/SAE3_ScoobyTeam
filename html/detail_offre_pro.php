@@ -351,7 +351,7 @@
 
                     <p><i class="fas fa-clock"></i> Publié <?php echo tempsEcouleDepuisPublication($details_offre);?></p>
 
-                    <p>⟳ Dernière modification <?php echo tempsEcouleDepuisDerniereModif($details_offre);?></p>
+                    <p color="var(--orange)">⟳ Dernière modification <?php echo tempsEcouleDepuisDerniereModif($details_offre);?></p>
 
                     <!-- <div class="detail_offre_rating">
                         ⭐ 5.0 (255 avis)
