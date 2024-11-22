@@ -565,3 +565,9 @@ main.connexion_pro_main>div>div.connexion_pro_form-container>form>div.connexion_
     font-size: 12px;
     display: none;
 }
+
+.connexion_pro_main p.pas_de_compte a {
+    font-weight: bold;
+}
+
+
