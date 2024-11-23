@@ -272,6 +272,10 @@ footer {
 
 
 
+                                        .detail_offre_pro_button {
+                                            display: flex;
+                                            flex-direction: row-reverse;
+                                        }
 .detail_offre_hotel-detail {
     /* max-width: 1200px; */
     margin: 0 10em;
@@ -500,12 +504,6 @@ footer {
     width: 223px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
-}
-}
-
-.detail_offre_pro_button {
-    display: flex;
-    flex-direction: row-reverse;
 }
 
 
