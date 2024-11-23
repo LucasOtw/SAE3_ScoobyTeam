@@ -346,7 +346,7 @@
 
                 <div class="detail_offre_price-button">
                 <div class="detail_offre_pro_info-icon-container">
-                <span class="info-icon">Infos</span>
+                <span class="info-icon">I</span>
                 <div class="tooltip">
                     Ceci est une information importante pour l'utilisateur.
                 </div>
