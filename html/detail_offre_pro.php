@@ -255,7 +255,7 @@
         href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
     <script src="scroll.js"></script>
-    <script src="script.js"></script>
+    
 
 
     <script>
@@ -346,7 +346,7 @@
 
                 <div class="detail_offre_price-button">
                 <div class="detail_offre_pro_info-icon-container">
-                <span class="info-icon">i</span>
+                <span class="info-icon">Infos</span>
                 <div class="tooltip">
                     Ceci est une information importante pour l'utilisateur.
                 </div>
