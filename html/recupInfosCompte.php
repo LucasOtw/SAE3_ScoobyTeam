@@ -42,11 +42,9 @@
      $compte = $_SESSION['pro'];
 
     // on sélectionne les infos du pro
-     $monCompte = $dbh->prepare("SELECT * FROM tripenarvor._professionnel WHERE code_compte = :code_compte");
-     $monCompte->bindValue(":code_compte",$compte['code_compte']);
-     $monCompte->execute();
-
-     $monComptePro = $monCompte->fetch(PDO::FETCH_ASSOC);
+     $monComptePro = $dbh->prepare("SELECT * FROM tripenarvor._professionnel WHERE code_compte = :code_compte");
+     $monComptePro->bindValue(":code_compte",$compte['code_compte']);
+     $monComptePro->execute();
 
      $infosCompte = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE code_compte = :code_compte");
      $infosCompte->bindValue(":code_compte",$compte['code_compte']);
@@ -66,7 +64,7 @@
 
     $monComptePrive = $monComptePrive->fetch(PDO::FETCH_ASSOC);
     if ($monComptePrive) {
-        $monCompte['num_siren'] = $monComptePrive['num_siren'];
+        $monComptePro['num_siren'] = $monComptePrive['num_siren'];
     }
 
     // récupration des offres du compte (si il en a)
