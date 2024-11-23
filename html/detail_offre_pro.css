@@ -302,7 +302,7 @@ footer {
 
 .detail_offre_hotel-info p {
     font-size: 1.2em;
-    color: #727272;
+    
 }
 
 
@@ -520,8 +520,9 @@ footer {
 }
 
 .update-icon {
-    font-size: 14px;
-    margin-right: 5px;
+    font-size: 36px;
+    margin-right: 2px;
+    margin-top: -5px;
 }
 
 
