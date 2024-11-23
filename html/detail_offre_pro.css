@@ -314,13 +314,15 @@ body {
     margin: 0;
     background-color: #f5f5f5;
   }
+
+
   
-  .info-icon-container {
+  .detail_offre_pro_info-icon-container {
     position: relative;
     display: inline-block;
   }
   
-  .info-icon {
+  .detail_offre_pro_info-icon {
     background-color: #007bff;
     color: white;
     border-radius: 50%;
