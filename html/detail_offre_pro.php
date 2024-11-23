@@ -298,31 +298,7 @@
         </header>
 
         <div class="detail_offre_pro">
-            <div class="detail_offre_option">
-                <?php
-                    if ($option_a_la_une !== false)
-                    {
-                ?>
-                        <h3>Option à la une</h3>
-                        <p>Début de l'option : <?php echo $option_a_la_une["date_debut"];?></p>
-                        <p>Fin de l'option : <?php echo $option_a_la_une["date_fin"];?></p>
-                        <p>Duree de l'option : <?php echo $option_a_la_une["nb_semaines"];?></p>
-                        <p>Prix de l'option : <?php echo $option_a_la_une["prix"];?></p>
-                <?php
-                    }
-                    if ($option_en_relief !== false)
-                    {
-                ?>
-                        <h3>Option en relief</h3>
-                        <p>Début de l'option : <?php echo $option_en_relief["date_debut"];?></p>
-                        <p>Fin de l'option : <?php echo $option_en_relief["date_fin"];?></p>
-                        <p>Duree de l'option : <?php echo $option_en_relief["nb_semaines"];?></p>
-                        <p>Prix de l'option : <?php echo $option_en_relief["prix"];?></p>
-                <?php
-                    }
-                ?>
-            </div>
-
+            
             
         </div>
         
@@ -348,7 +324,31 @@
                 <div class="detail_offre_pro_info-icon-container">
                 <span class="info-icon">I</span>
                 <div class="tooltip">
-                    Ceci est une information importante pour l'utilisateur.
+                <div class="detail_offre_option">
+                <?php
+                    if ($option_a_la_une !== false)
+                    {
+                ?>
+                        <h3>Option à la une</h3>
+                        <p>Début de l'option : <?php echo $option_a_la_une["date_debut"];?></p>
+                        <p>Fin de l'option : <?php echo $option_a_la_une["date_fin"];?></p>
+                        <p>Duree de l'option : <?php echo $option_a_la_une["nb_semaines"];?></p>
+                        <p>Prix de l'option : <?php echo $option_a_la_une["prix"];?></p>
+                <?php
+                    }
+                    if ($option_en_relief !== false)
+                    {
+                ?>
+                        <h3>Option en relief</h3>
+                        <p>Début de l'option : <?php echo $option_en_relief["date_debut"];?></p>
+                        <p>Fin de l'option : <?php echo $option_en_relief["date_fin"];?></p>
+                        <p>Duree de l'option : <?php echo $option_en_relief["nb_semaines"];?></p>
+                        <p>Prix de l'option : <?php echo $option_en_relief["prix"];?></p>
+                <?php
+                    }
+                ?>
+            </div>
+
                 </div>
                 </div>
 
