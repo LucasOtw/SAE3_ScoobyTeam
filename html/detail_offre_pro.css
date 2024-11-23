@@ -496,7 +496,7 @@ footer {
     border: 1.5px solid var(--orange);
     color: black;
     border-radius: 16px;
-    height: 49px;
+    height: 52px;
     width: 223px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
