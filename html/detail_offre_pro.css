@@ -353,10 +353,12 @@ footer {
     border-color: #333 transparent transparent transparent;
   }
   
-  .info-icon-container:hover .tooltip {
+  .detail_offre_pro_info-icon-container .tooltip {
     opacity: 1;
     visibility: visible;
   }
+
+  detail_offre_pro_info-icon-container
   
 
 
