@@ -129,7 +129,7 @@ if (isset($_POST['modif_infos'])){
             <div class="crea_pro_raison_sociale_num_siren">
                 <fieldset disabled>
                     <legend>Raison Sociale</legend>
-                    <input type="text" id="raison-sociale" name="raison-sociale*" placeholder="Raison Sociale*" value="<?php echo $monCompte['raison_sociale']; ?>" required>
+                    <input type="text" id="raison-sociale" name="raison-sociale*" placeholder="Raison Sociale*" value="<?php echo $monComptePro['raison_sociale']; ?>" required>
                 </fieldset>
 
                 <fieldset disabled>
@@ -142,33 +142,33 @@ if (isset($_POST['modif_infos'])){
                 <div class="crea_pro_raison_sociale_num_siren">
                     <fieldset>
                         <legend>Email *</legend>
-                        <input type="email" id="email" name="email" placeholder="Email *" value="<?php echo $compte['mail'] ?>" required>
+                        <input type="email" id="email" name="email" placeholder="Email *" value="<?php echo $mesInfos['mail'] ?>" required>
                     </fieldset>
     
                     <fieldset>
                         <legend>Téléphone *</legend>
-                        <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *" value=" <?php echo $compte['telephone']; ?> " required>
+                        <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *" value=" <?php echo $mesInfos['telephone']; ?> " required>
                     </fieldset>
                 </div>
 
                 <fieldset>
                     <legend>Adresse Postale *</legend>
-                    <input type="text" id="adresse" name="adresse" placeholder="Adresse postale *" value="1 rue de la Republique" required>
+                    <input type="text" id="adresse" name="adresse" placeholder="Adresse postale *" value="<?php echo trim(preg_replace('/(\d{2})/', '$1 ', $mesInfos['telephone'])) ?>" required>
                 </fieldset>
 
                 <fieldset>
                     <legend>Complément d'adresse</legend>
-                    <input type="text" id="comp_adresse" name="comp_adresse" placeholder="Complément d'adresse" value="1° étage">
+                    <input type="text" id="comp_adresse" name="comp_adresse" placeholder="Complément d'adresse" value="<?php echo $_adresse['complement_adresse']; ?>">
                 </fieldset>
                 <div class="crea_pro_raison_sociale_num_siren">
                     <fieldset>
                         <legend>Code Postal *</legend>
-                        <input type="text" id="code_postal" name="code_postal" placeholder="code_postal *" value="22300" required>
+                        <input type="text" id="code_postal" name="code_postal" placeholder="code_postal *" value="<?php echo $_adresse['code_postal']; ?>" required>
                     </fieldset>
                     
                     <fieldset>
                         <legend>Ville *</legend>
-                        <input type="text" id="ville" name="ville" placeholder="Ville *" value="Lannion" required>
+                        <input type="text" id="ville" name="ville" placeholder="Ville *" value="<?php echo $_adresse['ville']; ?>" required>
                     </fieldset>
                 </div>
             </div>
