@@ -296,11 +296,6 @@
                 </ul>
             </nav>
         </header>
-
-        <div class="detail_offre_pro">
-            
-            
-        </div>
         
         <div class="detail_offre_hotel-detail">
 
