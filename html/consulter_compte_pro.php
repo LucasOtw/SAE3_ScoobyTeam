@@ -43,10 +43,13 @@ if (isset($_POST['modif_infos'])){
    if (!empty($champsModifies)) {
        foreach ($champsModifies as $champ => $valeur) {
            switch ($champ) {
-               case 'nom':
-               case 'prenom':
-               case 'pseudo':
-                   $query = $dbh->prepare("UPDATE tripenarvor._membre SET $champ = :valeur WHERE code_compte = :code_compte");
+               case 'raison-sociale':
+                   $query = $dbh->prepare("UPDATE tripenarvor._professionnel SET $champ = :valeur WHERE code_compte = :code_compte");
+                   $query->execute(['valeur' => trim($valeur), 'code_compte' => $compte['code_compte']]);
+                   break;
+               
+               case 'num-siren':
+                   $query = $dbh->prepare("UPDATE tripenarvor._professionnel_prive SET $champ = :valeur WHERE code_compte = :code_compte");
                    $query->execute(['valeur' => trim($valeur), 'code_compte' => $compte['code_compte']]);
                    break;
    
