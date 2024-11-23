@@ -1162,3 +1162,7 @@ footer {
     }
   }
   
+.detail_offre_pro_button{
+    display: flex;
+    flex-direction: row-reverse;
+}
