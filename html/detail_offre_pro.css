@@ -307,13 +307,12 @@ footer {
 
 
 
-  
-  .detail_offre_pro_info-icon-container {
+.detail_offre_pro_info-icon-container {
     position: relative;
     display: inline-block;
   }
   
-  .detail_offre_pro_info-icon {
+  .info-icon {
     background-color: #007bff;
     color: white;
     border-radius: 50%;
@@ -353,12 +352,10 @@ footer {
     border-color: #333 transparent transparent transparent;
   }
   
-  .detail_offre_pro_info-icon-container .tooltip {
+  .detail_offre_pro_info-icon-container:hover .tooltip {
     opacity: 1;
     visibility: visible;
   }
-
-  detail_offre_pro_info-icon-container
   
 
 
