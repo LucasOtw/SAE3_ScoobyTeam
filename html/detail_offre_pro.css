@@ -491,6 +491,18 @@ footer {
 
 }
 
+#btn-voir-offre{
+    background-color: white;
+    border: 1.5px solid var(--orange);
+    color: black;
+    border-radius: 16px;
+    height: 49px;
+    width: 223px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+}
+
 .detail_offre_pro_button {
     display: flex;
     flex-direction: row-reverse;
