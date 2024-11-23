@@ -358,6 +358,14 @@
 
                 if($creerMembre->execute()){
                     echo "Le compte Membre a été crée avec succès";
+                    header('Location: consulter_compte_membre.php');
+
+                    $code_compte = $dbh->query("SELECT currval('tripenarvor._compte_code_compte_seq');");
+                    
+                    $membre = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE code_compte = :code_compte");
+                    $membre->bindParam(':code_compte',$code_compte);
+                    $membre->execute();
+                    $_SESSION["membre"] = $membre;
                 }
 
     
