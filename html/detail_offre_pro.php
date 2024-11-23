@@ -255,6 +255,7 @@
         href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
     <script src="scroll.js"></script>
+    <script src="script.js"></script>
 
 
     <script>
@@ -344,6 +345,12 @@
                 </div>
 
                 <div class="detail_offre_price-button">
+                <div class="detail_offre_pro_info-icon-container">
+                <span class="info-icon">i</span>
+                <div class="tooltip">
+                    Ceci est une information importante pour l'utilisateur.
+                </div>
+                </div>
 
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
                     <div class="detail_offre_pro_button">
