@@ -562,4 +562,6 @@ a.button-text{
            cursor: pointer;
            margin-left:30px;
            color:white;
+           outline: none;
+           border: none;
 }
