@@ -113,7 +113,7 @@ if (isset($_POST['modif_infos'])){
             </ul>
         </section>
 
-    <form action="#" method="POST">
+    <form action="consulter_compte_pro.php" method="POST">
         <div class="creation_compte_pro_form-section">
             <div class="crea_pro_raison_sociale_num_siren">
                 <fieldset disabled>
