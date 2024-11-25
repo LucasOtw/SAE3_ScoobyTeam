@@ -158,7 +158,7 @@
                         <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
                     </div>
                     <div class="creation_compte_membre_deja_compte">
-                        <a href="#">Déjà un compte ?</a>
+                        <a href="connexion_membre.php">Déjà un compte ?</a>
                     </div>
                     <button type="submit" class="submit-btn">Créer mon compte <img src="images/flecheBlancheDroite.png" alt="fleche vers la droite"></button>
                 </form>
