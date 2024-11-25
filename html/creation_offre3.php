@@ -1,3 +1,18 @@
+<?php
+
+ob_start();
+session_start();
+
+if(!isset($_SESSION['pro'])){
+    // si on tente d'accéder à la page sans être connecté à un compte pro, on
+    header('location: connexion_pro.php');
+    exit;
+}
+if(isset($_SESSION['crea_offre']) && isset($_SESSION['crea_offre2']) && isset($_SESSION['crea_offre3']) && isset($_SESSION['crea_offre4'])){
+    echo "DOBBY HAS NO MASTER YOU SON OF A BITCH !";
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
