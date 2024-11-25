@@ -194,7 +194,6 @@ function tempsEcouleDepuisPublication($offre){
         <div id="filters-section" class="hidden">
             <h3>Filtres supplémentaires</h3>
             <span>
-                <input id="livraison" type="checkbox" value="livraison">
             <label for="prix_min">
                 Prix min :
             </label>
