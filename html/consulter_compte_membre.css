@@ -260,14 +260,14 @@ footer {
 
 
 /* Profile Section */
-.main-consulter-compte-pro .profile {
+.main_consulter_compte_membre .profile {
     text-align: center;
     margin-bottom: 30px;
 }
 
 
 
-.main-consulter-compte-pro .banner img {
+.main_consulter_compte_membre .banner img {
     width: 70%;
     height: 200px;
     object-fit: cover;
@@ -275,37 +275,37 @@ footer {
     border-radius: 20px;
 }
 
-.main-consulter-compte-pro .profile-info {
+.main_consulter_compte_membre .profile-info {
     margin-top: -90px;
     text-align: center;
 }
 
-.main-consulter-compte-pro .profile-info img.profile-img {
+.main_consulter_compte_membre .profile-info img.profile-img {
     width: 120px;
     height: 120px;
     border-radius: 35px;
     object-fit: cover;
 }
 
-.main-consulter-compte-pro .profile-info h1 {
+.main_consulter_compte_membre .profile-info h1 {
     font-size: 28px;
     margin: 10px 0;
 }
 
-.main-consulter-compte-pro .profile-info p {
+.main_consulter_compte_membre .profile-info p {
     font-size: 16px;
     color: #666;
 }
 
 /* Tabs Section */
-.main-consulter-compte-pro .tabs {
+.main_consulter_compte_membre .tabs {
     display: flex;
     justify-content: center;
     margin: 30px 0;
     text-align: center;
 }
 
-.main-consulter-compte-pro .tabs ul {
+.main_consulter_compte_membre .tabs ul {
     display: flex;
     padding: 0;
     list-style: none;
@@ -316,13 +316,13 @@ footer {
     min-width: 40vw;
 }
 
-.main-consulter-compte-pro .tabs ul li {
+.main_consulter_compte_membre .tabs ul li {
     display: flex;
     margin: 0 20px;
     text-decoration: none;
 }
 
-.main-consulter-compte-pro .tabs ul li a {
+.main_consulter_compte_membre .tabs ul li a {
     width: calc(60vw/3);
     font-size: 20px;
     padding: 10px 20px;
@@ -333,24 +333,24 @@ footer {
     text-decoration: none;
 }
 
-.main-consulter-compte-pro .tabs ul li a.active {
+.main_consulter_compte_membre .tabs ul li a.active {
     border-color: var(--vert-clair);
     text-decoration: none;
 }
 
-.main-consulter-compte-pro .form-group {
+.main_consulter_compte_membre .form-group {
     margin-bottom: 15px;
 }
 
-.main-consulter-compte-pro label {
+.main_consulter_compte_membre label {
     display: block;
     margin-bottom: 0px;
     font-size: 14px;
     color: #555;
 }
 
-.main-consulter-compte-pro input[type="text"],
-.main-consulter-compte-pro input[type="email"] {
+.main_consulter_compte_membre input[type="text"],
+.main_consulter_compte_membre input[type="email"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -358,7 +358,7 @@ footer {
     font-size: 14px;
 }
 
-.main-consulter-compte-pro .form-actions {
+.main_consulter_compte_membre .form-actions {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
@@ -367,28 +367,28 @@ footer {
 
 
 
-.main-consulter-compte-pro form {
+.main_consulter_compte_membre form {
     width: 885px;
     margin: 0 auto;
     padding: 20px;
     border-radius: 8px;
 }
 
-.main-consulter-compte-pro fieldset {
+.main_consulter_compte_membre fieldset {
     border: none;
     margin-bottom: 20px;
 }
 
-.main-consulter-compte-pro legend {
+.main_consulter_compte_membre legend {
     font-size: 1.2em;
     margin-bottom: 10px;
     color: #333;
 }
 
-.main-consulter-compte-pro input[type="text"],
-.main-consulter-compte-pro input[type="email"],
-.main-consulter-compte-pro input[type="tel"],
-.main-consulter-compte-pro input[type="password"] {
+.main_consulter_compte_membre input[type="text"],
+.main_consulter_compte_membre input[type="email"],
+.main_consulter_compte_membre input[type="tel"],
+.main_consulter_compte_membre input[type="password"] {
     width: 100%;
     padding: 12px;
     font-size: 1em;
@@ -397,53 +397,53 @@ footer {
     box-sizing: border-box;
 }
 
-.main-consulter-compte-pro input[type="text"]::placeholder,
-.main-consulter-compte-pro input[type="email"]::placeholder,
-.main-consulter-compte-pro input[type="tel"]::placeholder,
-.main-consulter-compte-pro input[type="password"]::placeholder {
+.main_consulter_compte_membre input[type="text"]::placeholder,
+.main_consulter_compte_membre input[type="email"]::placeholder,
+.main_consulter_compte_membre input[type="tel"]::placeholder,
+.main_consulter_compte_membre input[type="password"]::placeholder {
     color: #aaa;
 }
 
-.main-consulter-compte-pro .crea_pro_raison_sociale_num_siren,
-.main-consulter-compte-pro .crea_pro_mail_tel {
+.main_consulter_compte_membre .crea_pro_raison_sociale_num_siren,
+.main_consulter_compte_membre .crea_pro_mail_tel {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.main-consulter-compte-pro .crea_pro_raison_sociale_num_siren fieldset,
-.main-consulter-compte-pro .crea_pro_mail_tel fieldset {
+.main_consulter_compte_membre .crea_pro_raison_sociale_num_siren fieldset,
+.main_consulter_compte_membre .crea_pro_mail_tel fieldset {
     flex: 1;
 }
 
-.main-consulter-compte-pro .checkbox {
+.main_consulter_compte_membre .checkbox {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.main-consulter-compte-pro .checkbox input {
+.main_consulter_compte_membre .checkbox input {
     margin-right: 10px;
 }
 
-.main-consulter-compte-pro .checkbox label a {
+.main_consulter_compte_membre .checkbox label a {
     color: var(--vert-clair);
     text-decoration: none;
 }
 
-.main-consulter-compte-pro .checkbox label a:hover {
+.main_consulter_compte_membre .checkbox label a:hover {
     text-decoration: underline;
 }
-.main-consulter-compte-pro .compte_membre_save_delete {
+.main_consulter_compte_membre .compte_membre_save_delete {
     display: flex;
     justify-content: right; /* Aligne les boutons au centre */
     gap: 20px; /* Espacement entre les boutons */
     margin-bottom: 11em;
 }
 
-.main-consulter-compte-pro .submit-btn1, 
-.main-consulter-compte-pro button.submit-btn2,
-.main-consulter-compte-pro button.submit-btn3 {
+.main_consulter_compte_membre .submit-btn1, 
+.main_consulter_compte_membre button.submit-btn2,
+.main_consulter_compte_membre button.submit-btn3 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -462,17 +462,17 @@ footer {
 
 }
 
-.main-consulter-compte-pro .submit-btn1,
-.main-consulter-compte-pro button.submit-btn2{ 
+.main_consulter_compte_membre .submit-btn1,
+.main_consulter_compte_membre button.submit-btn2{ 
     background-color: white;
     border: 1.5px solid var(--vert-clair);
     color: black;
     border-radius: 16px;
 }
 
-.main-consulter-compte-pro .submit-btn1:hover,
-.main-consulter-compte-pro button.submit-btn2:hover,
-.main-consulter-compte-pro button.submit-btn3 {
+.main_consulter_compte_membre .submit-btn1:hover,
+.main_consulter_compte_membre button.submit-btn2:hover,
+.main_consulter_compte_membre button.submit-btn3 {
     background-color: var(--vert-clair); /* Ajoute une couleur de survol pour les deux boutons */
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Ombre plus forte au survol */
     transition: 0.3s;
@@ -481,9 +481,9 @@ footer {
 
 
 /* Style général pour tous les fieldsets */
-.main-consulter-compte-pro .crea_pro_mail_tel fieldset, 
-.main-consulter-compte-pro .crea_pro_raison_sociale_num_siren fieldset,
-.main-consulter-compte-pro form fieldset {
+.main_consulter_compte_membre .crea_pro_mail_tel fieldset, 
+.main_consulter_compte_membre .crea_pro_raison_sociale_num_siren fieldset,
+.main_consulter_compte_membre form fieldset {
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 20px;
@@ -492,9 +492,9 @@ footer {
 }
 
 /* Style pour les légendes */
-.main-consulter-compte-pro .crea_pro_mail_tel legend, 
-.main-consulter-compte-pro .crea_pro_raison_sociale_num_siren legend,
-.main-consulter-compte-pro form legend {
+.main_consulter_compte_membre .crea_pro_mail_tel legend, 
+.main_consulter_compte_membre .crea_pro_raison_sociale_num_siren legend,
+.main_consulter_compte_membre form legend {
     font-size: 14px;
     padding: 0 10px;
     color: #333;
@@ -506,28 +506,28 @@ footer {
 }
 
 /* Légende visible au focus */
-.main-consulter-compte-pro .crea_pro_mail_tel fieldset:focus-within legend, 
-.main-consulter-compte-pro .crea_pro_raison_sociale_num_siren fieldset:focus-within legend,
-.main-consulter-compte-pro form fieldset:focus-within legend {
+.main_consulter_compte_membre .crea_pro_mail_tel fieldset:focus-within legend, 
+.main_consulter_compte_membre .crea_pro_raison_sociale_num_siren fieldset:focus-within legend,
+.main_consulter_compte_membre form fieldset:focus-within legend {
     display: inline-block;
     transition: ease-out 0.3s;
 }
 
 /* Placeholder style pour tous les champs de formulaire */
-.main-consulter-compte-pro .crea_pro_mail_tel input::placeholder, 
-.main-consulter-compte-pro .crea_pro_raison_sociale_num_siren input::placeholder,
-.main-consulter-compte-pro form input::placeholder {
+.main_consulter_compte_membre .crea_pro_mail_tel input::placeholder, 
+.main_consulter_compte_membre .crea_pro_raison_sociale_num_siren input::placeholder,
+.main_consulter_compte_membre form input::placeholder {
     padding-left: 10px;
 }
 
 /* Placeholder masqué au focus */
-.main-consulter-compte-pro .crea_pro_mail_tel input:focus::placeholder, 
-.main-consulter-compte-pro .crea_pro_raison_sociale_num_siren input:focus::placeholder,
-.main-consulter-compte-pro form input:focus::placeholder {
+.main_consulter_compte_membre .crea_pro_mail_tel input:focus::placeholder, 
+.main_consulter_compte_membre .crea_pro_raison_sociale_num_siren input:focus::placeholder,
+.main_consulter_compte_membre form input:focus::placeholder {
     color: rgba(0, 0, 0, 0);
 }
 
 /* Style pour la case à cocher */
-.main-consulter-compte-pro #remember, #cgu {
+.main_consulter_compte_membre #remember, #cgu {
     accent-color: var(--vert-fonce);
 }
