@@ -106,87 +106,88 @@ function tempsEcouleDepuisPublication($offre){
 
 
     <div class="header-membre">
-    <header class="header-pc">
-        <div class="logo-pc">
-            <img src="images/logoBlanc.png" alt="PACT Logo">
-        </div>
-        
-        <nav>
-            <ul>
-                <li><a href="voir_offres.php" class="active">Accueil</a></li>
-                <li><a href="connexion_pro.php">Publier</a></li>
-                <?php
-                    if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
-                       ?>
-                       <li>
-                           <a href="consulter_compte_membre.php">Mon compte</a>
-                       </li>
-                        <li>
-                            <a href="voir_offres.php?deco=true">Se déconnecter</a>
-                        </li>
-                        <?php
-                    } else {
-                        ?>
-                       <li>
-                           <a href="connexion_membre.php">Se connecter</a>
-                       </li>
-                       <?php
-                    }
-                ?>
-            </ul>
-        </nav>
-    </header>
-    <header class="header-tel">
-        <div class="logo-tel">
-            <img src="images/LogoCouleur.png" alt="PACT Logo">
-        </div>
-        
-    </header>
+        <header class="header-pc">
+            <div class="logo-pc">
+                <img src="images/logoBlanc.png" alt="PACT Logo">
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="voir_offres.php" class="active">Accueil</a></li>
+                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <?php
+                        if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
+                           ?>
+                           <li>
+                               <a href="consulter_compte_membre.php">Mon compte</a>
+                           </li>
+                            <li>
+                                <a href="voir_offres.php?deco=true">Se déconnecter</a>
+                            </li>
+                            <?php
+                        } else {
+                            ?>
+                           <li>
+                               <a href="connexion_membre.php">Se connecter</a>
+                           </li>
+                           <?php
+                        }
+                    ?>
+                </ul>
+            </nav>
+        </header>
+        <header class="header-tel">
+            <div class="logo-tel">
+                <img src="images/LogoCouleur.png" alt="PACT Logo">
+            </div>
+            
+        </header>
     </div>
     
 
     <div class="header-pro">
-    <header class="header-pc">
-        <div class="logo-pc">
-            <img src="images/logoBlanc.png" alt="PACT Logo">
-        </div>
-        
-        <nav>
-            <ul>
-                <li><a href="voir_offres.php" >Accueil</a></li>
-                <li><a href="connexion_pro.php">Publier</a></li>
-                <li><a href="connexion_membre.php" class="active">Mon Compte</a></li>
-            </ul>
-        </nav>
-    </header>
-    <header class="header-tel">
-        <div class="logo-tel">
-            <img src="images/logoNoir.png" alt="PACT Logo">
-        </div>
-        
-    </header>
+        <header class="header-pc">
+            <div class="logo-pc">
+                <img src="images/logoBlanc.png" alt="PACT Logo">
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="voir_offres.php" >Accueil</a></li>
+                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <li><a href="connexion_membre.php" class="active">Mon Compte</a></li>
+                </ul>
+            </nav>
+        </header>
+        <header class="header-tel">
+            <div class="logo-tel">
+                <img src="images/logoNoir.png" alt="PACT Logo">
+            </div>
+            
+        </header>
     </div>
-    <div class="search-bar">
-        <div class="search-top">
-            <input type="text" class="search-input" placeholder="Recherchez parmi mes offres" />
-            <button class="search-button">Rechercher</button>
-        </div>
-        <div class="search-options">
-            <select class="search-select">
-                <option value="">Catégories</option>
-            </select>
-            <select class="search-select">
-                <option value="">Lieu</option>
-            </select>
-            <select class="search-select">
-                <option value="">Ouverture</option>
-            </select>
-            <button class="search-select">
-                <option value="">Autres</option>
-            </button>
-        </div>
-    </div>
+    
     <main class="toute_les_offres_main">
+        <div class="search-bar">
+            <div class="search-top">
+                <input type="text" class="search-input" placeholder="Recherchez parmi mes offres" />
+                <button class="search-button">Rechercher</button>
+            </div>
+            <div class="search-options">
+                <select class="search-select">
+                    <option value="">Catégories</option>
+                </select>
+                <select class="search-select">
+                    <option value="">Lieu</option>
+                </select>
+                <select class="search-select">
+                    <option value="">Ouverture</option>
+                </select>
+                <button class="search-select">
+                    <option value="">Autres</option>
+                </button>
+            </div>
+        </div>
         <header>
             <h2>Les offres</h2>
             <!-- <span id="filter">
