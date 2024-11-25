@@ -434,10 +434,18 @@ main #vosOffres {
     align-items: center;
 }
 
-.status-dot {
+.status-dot-offline {
     width: 8px;
     height: 8px;
     background-color: #ff4d4f;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.status-dot-online {
+    width: 8px;
+    height: 8px;
+    background-color: var(--vert-clair);
     border-radius: 50%;
     margin-right: 5px;
 }
