@@ -45,10 +45,10 @@ if (isset($_POST['modif_infos'])){
        foreach ($champsModifies as $champ => $valeur) {
            switch ($champ) {
                case 'mail':
-                   echo "AAAAAAAAAAAAAAAARGH";
                    $valeurSansEspaces = trim(preg_replace('/\s+/', '', trim($valeur)));
                    $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
                    $query->execute(['valeur' => $valeurSansEspaces, 'code_compte' => $compte['code_compte']]);
+                   var_dump($query);
                    break;
                
                case 'telephone':
