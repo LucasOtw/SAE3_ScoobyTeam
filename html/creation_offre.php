@@ -2,7 +2,7 @@
 ob_start(); // Démarre la mise en tampon de sortie
 session_start();
 
-if(!isset($_SESSION['pro']){
+if(!isset($_SESSION['pro'])){
    header('location: connexion-pro.php');
    exit;
 }
