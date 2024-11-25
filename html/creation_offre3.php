@@ -34,55 +34,6 @@
 
     <main class="main-creation-offre3">
 
-    <?php
-        // Connexion à la base de données PostgreSQL
-        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-        $username = "sae";
-        $password = "philly-Congo-bry4nt";
-
-        try {
-            $pdo = new PDO($dsn, $username, $password);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            die("Erreur de connexion : " . $e->getMessage());
-        }
-
-        // Initialiser les valeurs par défaut
-        $iban = '';
-        $bic = '';
-        $nom = '';
-
-        // Requête pour récupérer les informations bancaires
-        $sql = "SELECT iban, bic, nom_compte FROM _compte_bancaire LIMIT 1";
-        $stmt = $pdo->query($sql);
-        if ($stmt && $row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $iban = $row['iban'];
-            $bic = $row['bic'];
-            $nom = $row['nom_compte'];
-        }
-
-        // Si le formulaire est soumis
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // Récupérer les données du formulaire
-            $iban = htmlspecialchars($_POST['IBAN']);
-            $bic = htmlspecialchars($_POST['BIC']);
-            $nom = htmlspecialchars($_POST['nom']);
-            $cgu = isset($_POST['cgu']) ? true : false;
-
-            // Vérifier que tous les champs sont bien remplis
-            if (!empty($iban) && !empty($bic) && !empty($nom) && $cgu) {
-                // Mise à jour des informations dans la base de données
-                $sql = "UPDATE _compte_bancaire SET iban = :iban, bic = :bic, nom_compte = :nom_compte WHERE code_compte_bancaire = (SELECT code_compte_bancaire FROM _compte_bancaire LIMIT 1)";
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute(['iban' => $iban, 'bic' => $bic, 'nom_compte' => $nom]);
-
-                echo "Les informations bancaires ont été modifiées avec succès.";
-            } else {
-                echo "Veuillez remplir tous les champs.";
-            }
-        }
-        ?>
-
         <h1>Publier une offre</h1>
         <h2>Ajouter une nouvelle carte</h2>
 
@@ -93,7 +44,7 @@
                     <div class="col">
                         <fieldset>
                             <legend>IBAN *</legend>
-                            <input type="text" id="IBAN" name="IBAN" value="<?php echo $iban; ?>" placeholder="IBAN *" required>
+                            <input type="text" id="IBAN" name="IBAN" value="test" placeholder="IBAN *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -103,7 +54,7 @@
                     <div class="col">
                         <fieldset>
                             <legend>BIC *</legend>
-                            <input type="text" id="BIC" name="BIC" value="<?php echo $bic; ?>" placeholder="BIC *" required>
+                            <input type="text" id="BIC" name="BIC" value="test" placeholder="BIC *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -113,7 +64,7 @@
                     <div class="col">
                         <fieldset>
                             <legend>Nom du compte *</legend>
-                            <input type="text" id="nom" name="nom" value="<?php echo $nom; ?>" placeholder="Nom du compte *" required>
+                            <input type="text" id="nom" name="nom" value="test" placeholder="Nom du compte *" required>
                         </fieldset>
                     </div>
                 </div>
