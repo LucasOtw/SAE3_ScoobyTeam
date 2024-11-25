@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+var_dump($_SESSION['crea_offre_2']);
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
