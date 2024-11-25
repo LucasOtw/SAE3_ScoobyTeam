@@ -545,7 +545,7 @@ a.button-text{
 }
 .button-container {
     display: flex;
-    gap: 10px; /* Espace entre les boutons */
+    gap: 5px; /* Espace entre les boutons */
 }
 
 .button-Ligne {
