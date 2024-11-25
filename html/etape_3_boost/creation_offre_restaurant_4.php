@@ -7,16 +7,15 @@ include_once('../recupInfosCompte.php');
 
 if(isset($_POST['envoiForm4'])){
     // si le formulaire est envoyé..
-    echo "<pre>";
-    var_dump($_POST);
-    echo "</pre>";
-
     foreach($_POST as $cle => $post){
         if($cle !== "envoiForm4"){
             $_SESSION["crea_offre4"][$cle] = $post;
         }
     }
-    var_dump($_SESSION["crea_offre4"]);
+    if(isset($_SESSION["crea_offre4"]) && !empty($_SESSION["crea_offre4"])){
+        header('location: ../creation_offre3.php');
+        exit;
+    }
 }
 
 ?>
