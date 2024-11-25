@@ -702,6 +702,9 @@ nav.nav-bar {
 }
 
 .toute_les_offres_main .search-select {
+    appearance: none; /* Supprime l'apparence native */
+    -moz-appearance: none; /* Pour Firefox */
+    -webkit-appearance: none; /* Pour Webkit (Chrome, Safari) */
     border: none;
     outline: none;
     background: rgba(255, 255, 255, 0.8);
