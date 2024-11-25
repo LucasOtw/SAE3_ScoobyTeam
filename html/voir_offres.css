@@ -752,7 +752,6 @@ nav.nav-bar {
 /* Section des filtres supplémentaires */
 #filters-section {
     display: none; /* Cachée par défaut */
-    position: absolute;
     background: rgba(255, 255, 255);
     flex-direction: column;
     border-radius: 20px;
@@ -760,7 +759,8 @@ nav.nav-bar {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 80%;
     max-width: 600px;
-    left: 50%;
+    margin: 20px auto;
+    z-index: 3;
     animation: fadeIn 0.3s ease-in-out;
 }
 
