@@ -7,8 +7,10 @@ include_once('../recupInfosCompte.php');
 
 if(isset($_POST['envoiForm4'])){
     // si le formulaire est envoyé..
-    header('location: ../creation_offre3.php');
-    exit;
+    echo "<pre>";
+    var_dump($_POST);
+    echo "</pre>";
+    $mon_tab = [];
 }
 
 ?>
