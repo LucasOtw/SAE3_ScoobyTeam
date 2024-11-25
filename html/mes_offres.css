@@ -576,7 +576,7 @@ a.button-text{
 .button-Ligne:hover {
   background-color: #f0f0f0; /* Change la couleur de fond */
   color: #333;              /* Change la couleur du texte */
-  transform: scale(1.05);   /* Légère mise en avant */
+  transform: scale(1.3);   /* Légère mise en avant */
   transition: 0.3s ease;    /* Animation douce */
 }
 
