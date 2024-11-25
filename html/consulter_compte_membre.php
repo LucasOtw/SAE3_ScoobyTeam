@@ -22,8 +22,8 @@ if (isset($_POST['modif_infos'])){
        'nom' => $monCompteMembre['nom'],
        'prenom' => $monCompteMembre['prenom'],
        'pseudo' => $monCompteMembre['pseudo'],
-       'mail' => $mesInfos['mail'],
-       'telephone' => $mesInfos['telephone'],
+       'mail' => $compte['mail'],
+       'telephone' => $compte['telephone'],
        'adresse' => $_adresse['adresse_postal'],
        'code-postal' => $_adresse['code_postal'],
        'ville' => $_adresse['ville'],
@@ -123,7 +123,7 @@ if (isset($_POST['modif_infos'])){
             <div class="profile-info">
                 <img src="images/icones/icone_compte.png" alt="Photo de profil" class="profile-img">
                 <h1><?php echo $monCompteMembre['prenom']." ".$monCompteMembre['nom']." (".$monCompteMembre['pseudo'].")"; ?></h1>
-                <p><?php echo $mesInfos['mail']; ?> | <?php echo trim(preg_replace('/(\d{2})/', '$1 ', $mesInfos['telephone'])); ?></p>
+                <p><?php echo $compte['mail']; ?> | <?php echo trim(preg_replace('/(\d{2})/', '$1 ', $compte['telephone'])); ?></p>
             </div>
         </div>
 <!-- POUR TEL -->
@@ -163,12 +163,12 @@ if (isset($_POST['modif_infos'])){
             <div class="crea_pro_mail_tel">
                 <fieldset>
                     <legend>Email *</legend>
-                    <input type="email" id="email" name="mail" value="<?php echo $mesInfos['mail']; ?>" placeholder="Email *" required>
+                    <input type="email" id="email" name="mail" value="<?php echo $compte['mail']; ?>" placeholder="Email *" required>
                 </fieldset>
 
                 <fieldset>
                     <legend>Téléphone *</legend>
-                    <input type="tel" id="telephone" name="telephone" value="<?php echo trim(preg_replace('/(\d{2})/', '$1 ', $mesInfos['telephone'])) ?>" placeholder="Téléphone *" maxlength="14" required>
+                    <input type="tel" id="telephone" name="telephone" value="<?php echo trim(preg_replace('/(\d{2})/', '$1 ', $compte['telephone'])) ?>" placeholder="Téléphone *" maxlength="14" required>
                 </fieldset>
             </div>
 
