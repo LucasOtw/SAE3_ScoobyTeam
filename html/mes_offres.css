@@ -531,7 +531,7 @@ main #vosOffres {
     flex-direction: column;
 }
 .image-button img{
-           margin-top:10px;}
+           margin-top:20px;}
 
 .button-text button.image-button{
     color: white; /* Couleur du texte */
