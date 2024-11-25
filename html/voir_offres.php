@@ -177,14 +177,28 @@ function tempsEcouleDepuisPublication($offre){
                 <button class="search-button">Rechercher</button>
             </div>
             <div class="search-options">
-                <button id="autres-button" class="search-select">Catégories ></button>
-                <button id="autres-button" class="search-select">Lieu ></button>
                 <select class="search-select">
+                    <option value="">Catégories</option>
+                    <option value="">Catégories ></option>
+                </select>
+                <button id="autres-button" class="search-select">Catégories ></button>
+                <select class="search-select">
+                    <option value="">Lieu</option>
+                    <option value="">Lieu ></option>
+                </select>
+                <select class="search-select">
+                    <option value="">Ouverture</option>
                     <option value="">Ouverture ></option>
                 </select>
+                <button id="autres-button" class="search-select">Autres</button>
                 <button id="autres-button" class="search-select">Autres ></button>
             </div>
         </div>
+
+
+
+
+        
 
         <!-- Section cachée pour les filtres -->
         <div id="filters-section" class="hidden">
