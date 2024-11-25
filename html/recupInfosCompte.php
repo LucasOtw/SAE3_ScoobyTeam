@@ -32,7 +32,7 @@
     // $mesInfos = $infosCompte->fetch(PDO::FETCH_ASSOC);
 
     $monAdresse = $dbh->prepare("SELECT * FROM tripenarvor._adresse WHERE code_adresse = :code_adresse");
-    $monAdresse->bindValue(":code_adresse",$mesInfos['code_adresse']);
+    $monAdresse->bindValue(":code_adresse",$compte['code_adresse']);
     $monAdresse->execute();
 
     /* un membre n'a qu'une seule image, puisque ce sera sa photo de profil.
