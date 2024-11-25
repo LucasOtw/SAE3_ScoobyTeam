@@ -557,4 +557,8 @@ a.button-text{
 .button-Hors-Ligne {
            background-color : #F28322;
            border-radius : 15px;
+           padding: 10px 20px;
+           font-size: 16px;
+           cursor: pointer;
+           color: #F28322;
 }
