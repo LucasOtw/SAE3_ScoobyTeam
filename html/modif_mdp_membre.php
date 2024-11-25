@@ -166,7 +166,7 @@ if (isset($_POST['modif_infos'])){
             </div>
         </form>
     </main>
-    <nav class="nav-bar">
+    <nav class="nav-bar-tel">
         <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
         <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
         <a href="#"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
