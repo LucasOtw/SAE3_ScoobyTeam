@@ -2,7 +2,7 @@
 ob_start(); // bufferisation, ça devrait marcher ?
 session_start();
 
-include("recupInfosCompte.php");
+include_once("recupInfosCompte.php");
 
 if(isset($_GET['logout'])){
    session_unset();
@@ -59,7 +59,7 @@ if (isset($_POST['modif_infos'])){
            }
        }
        // echo "Les informations ont été mises à jour.";
-       include("recupInfosCompte.php");
+       include_once("recupInfosCompte.php");
    } else {
        echo "Aucune modification détectée.";
    }
