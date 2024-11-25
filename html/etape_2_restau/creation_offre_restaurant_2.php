@@ -9,6 +9,24 @@ echo "<pre>";
 var_dump($_SESSION['crea_offre']);
 echo "</pre>";
 
+$mesRepas = [];
+
+if(isset($_POST['envoiFormEtape2'])){
+   // on garde en mémoire la valeur du bouton radio sélectionné
+    $ma_gamme = $_POST['prix'];
+    foreach($_POST['repas'] as $repas){
+        $mesRepas[] = $repas;
+    }
+    $_SESSION['crea_offre_2']['ma_gamme'] = $ma_gamme;
+    $_SESSION['crea_offre_2']['mesRepas'] = $mesRepas;
+
+    header('location: ../etape_2_horaires/creation_offre_restaurant_3.php');
+    exit;
+}
+/*
+* Pas d'autre vérif à faire, on peut directement envoyer l'utilisateur vers l'étape 3
+*/
+
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +72,7 @@ echo "</pre>";
             <h1>Publier une offre</h1>
 
             <!-- Form Fields -->
-            <form action="../etape_2_horaires/creation_offre_restaurant_3.php" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
+            <form action="#" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
                 <!-- Price Options -->
                 <div class="price-options">
                     <label for="prix">Prix</label>
@@ -108,23 +126,5 @@ echo "</pre>";
             </form>
         </div>
     </main>
-    <?php
-    $mesRepas = [];
-
-    if(isset($_POST['envoiFormEtape2'])){
-       // on garde en mémoire la valeur du bouton radio sélectionné
-        $ma_gamme = $_POST['prix'];
-        foreach($_POST['repas'] as $repas){
-            $mesRepas[] = $repas;
-        }
-        $_SESSION['crea_offre_2']['ma_gamme'] = $ma_gamme;
-        $_SESSION['crea_offre_2']['mesRepas'] = $mesRepas;
-
-    }
-    /*
-    * Pas d'autre vérif à faire, on peut directement envoyer l'utilisateur vers l'étape 3
-    */
-
-    ?>
 </body>
 </html>
