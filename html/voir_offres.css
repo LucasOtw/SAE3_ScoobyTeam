@@ -444,7 +444,7 @@ footer {
 }
 
 .toute_les_offres_main .offer-details {
-    padding: 15px;
+    padding: 0 15px 15px 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -535,7 +535,7 @@ nav.nav-bar {
         border-radius: 30px;
         display: block;
     }
-    .toutes_les_offres_main .offer-details p{
+    .toute_les_offres_main .offer-details p{
         margin: 10px 0;
     }
     
