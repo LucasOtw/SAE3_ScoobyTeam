@@ -111,7 +111,7 @@ if (isset($_POST['modif_infos'])){
             </div>
             <div class="profile-info">
                 <img class="profile-picture" src="images/hotel.jpg" alt="Profil utilisateur">
-                <h1><?php echo $monCompte['raison_sociale']; ?></h1>
+                <h1><?php echo $monComptePro['raison_sociale']; ?></h1>
                 <p><?php echo $compte['mail'] ." | ". $compte['telephone']; ?></p>
             </div>
         </section>
@@ -142,18 +142,18 @@ if (isset($_POST['modif_infos'])){
                 <div class="crea_pro_raison_sociale_num_siren">
                     <fieldset>
                         <legend>Email *</legend>
-                        <input type="email" id="email" name="email" placeholder="Email *" value="<?php echo $mesInfos['mail'] ?>" required>
+                        <input type="email" id="email" name="email" placeholder="Email *" value="<?php echo $compte['mail'] ?>" required>
                     </fieldset>
     
                     <fieldset>
                         <legend>Téléphone *</legend>
-                        <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *" value=" <?php echo $mesInfos['telephone']; ?> " required>
+                        <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *" value=" <?php echo $compte['telephone']; ?> " required>
                     </fieldset>
                 </div>
 
                 <fieldset>
                     <legend>Adresse Postale *</legend>
-                    <input type="text" id="adresse" name="adresse" placeholder="Adresse postale *" value="<?php echo trim(preg_replace('/(\d{2})/', '$1 ', $mesInfos['telephone'])) ?>" required>
+                    <input type="text" id="adresse" name="adresse" placeholder="Adresse postale *" value="<?php echo trim(preg_replace('/(\d{2})/', '$1 ', $_adresse['adresse_postal'])) ?>" required>
                 </fieldset>
 
                 <fieldset>
