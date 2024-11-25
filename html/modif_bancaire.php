@@ -61,7 +61,10 @@ include("recupInfosCompte.php");
             // Créer une instance PDO
             $pdo = new PDO($dsn, $username, $password);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+        
+        } catch (PDOException $e) {
+            die("Erreur de connexion à la base de données : " . $e->getMessage());
+        }
             // Variables pour stocker les informations bancaires
             $iban = '';
             $bic = '';
@@ -105,10 +108,6 @@ include("recupInfosCompte.php");
                     $message = "Veuillez remplir tous les champs.";
                 }
             }
-
-        } catch (PDOException $e) {
-            echo "Erreur de connexion à la base de données : " . $e->getMessage();
-        }
 
         // Fermer la connexion
         $pdo = null;
