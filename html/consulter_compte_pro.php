@@ -57,7 +57,7 @@ if (isset($_POST['modif_infos'])){
                    $query->execute(['valeur' => trim(preg_replace('/\s+/', '', trim($valeur))), 'code_compte' => $compte['code_compte']]);
                    break;
    
-               case 'code_adresse':
+               case 'adresse_postal':
                    $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
                    $query->bindValue(":code_adresse",$_adresse['code_adresse']);
                    $query->bindValue(":valeur",trim($valeur));
