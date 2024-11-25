@@ -681,7 +681,7 @@ nav.nav-bar {
 .toute_les_offres_main .search-button {
     border: none;
     outline: none;
-    background-color: #d9e947;
+    background-color: var(--vert-clair);
     color: #333;
     font-size: 16px;
     padding: 10px 20px;
@@ -792,7 +792,7 @@ nav.nav-bar {
 
 #filters-section .apply-filters {
     display: block;
-    background-color: #d9e947;
+    background-color: var(--vert-clair);
     color: #333;
     font-size: 16px;
     padding: 10px 20px;
@@ -803,7 +803,7 @@ nav.nav-bar {
 }
 
 #filters-section .apply-filters:hover {
-    background-color: #c8d841;
+    background-color: var(--vert-clair);
 }
 
 /* Transition de visibilité */
