@@ -61,6 +61,7 @@ if(!isset($_SESSION['pro'])){
                 <li><a href="modif_bancaire.php">Compte bancaire</a></li>
             </ul>
         </section>
+        <section>
         <h2 class="vos_offres">Vos offres</h2>
         <div class="button-container">
             <button class="button-Active" id="offline-btn">Hors - Ligne</button>
@@ -81,6 +82,7 @@ if(!isset($_SESSION['pro'])){
                 offlineBtn.className = 'button-Ligne';
             });
         </script>
+        </section>
         <section class="offers">
         <?php
             foreach($mesOffres as $monOffre){

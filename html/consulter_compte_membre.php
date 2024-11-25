@@ -25,7 +25,6 @@ if (isset($_POST['modif_infos'])){
        'mail' => $compte['mail'],
        'telephone' => $compte['telephone'],
        'adresse' => $_adresse['adresse_postal'],
-       'complement-adresse' => $_adresse['complement_adresse'],
        'code-postal' => $_adresse['code_postal'],
        'ville' => $_adresse['ville'],
    ];
@@ -63,7 +62,6 @@ if (isset($_POST['modif_infos'])){
    
                case 'adresse':
                case 'code-postal':
-               case 'complement-adresse':
                case 'ville':
                    $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
                    $query->execute(['valeur' => trim($valeur), 'code_adresse' => $_adresse['code_adresse']]);
@@ -87,34 +85,36 @@ if (isset($_POST['modif_infos'])){
     <link rel="stylesheet" href="consulter_compte_membre.css">
 </head>
 <body>
-<header>
-        <div class="logo">
-            <img src="images/logoBlanc.png" alt="PACT Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="voir_offres.php">Accueil</a></li>
-                <li><a href="connexion_pro.php">Publier</a></li>
-                <?php
-                    if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
-                       ?>
-                       <li>
-                           <a href="consulter_compte_membre.php" class="active">Mon compte</a>
-                       </li>
-                        <?php
-                    } else {
+    <div class="header-membre">
+        <header class="header-pc">
+            <div class="logo">
+                <img src="images/logoBlanc.png" alt="PACT Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="voir_offres.php">Accueil</a></li>
+                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <?php
+                        if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
                         ?>
-                       <li>
-                           <a href="connexion_membre.php">Se connecter</a>
-                       </li>
-                       <?php
-                    }
-                ?>
-            </ul>
-        </nav>
-    </header>
+                        <li>
+                            <a href="consulter_compte_membre.php" class="active">Mon compte</a>
+                        </li>
+                            <?php
+                        } else {
+                            ?>
+                        <li>
+                            <a href="connexion_membre.php">Se connecter</a>
+                        </li>
+                        <?php
+                        }
+                    ?>
+                </ul>
+            </nav>
+        </header>
+    </div>
     <main class="main_consulter_compte_membre">
-
+<!-- POUR PC/TABLETTE -->
         <div class="profile">
             <div class="banner">
                 <img src="images/Rectangle 3.png" alt="Bannière" class="header-img">
@@ -125,8 +125,14 @@ if (isset($_POST['modif_infos'])){
                 <h1><?php echo $monCompteMembre['prenom']." ".$monCompteMembre['nom']." (".$monCompteMembre['pseudo'].")"; ?></h1>
                 <p><?php echo $compte['mail']; ?> | <?php echo trim(preg_replace('/(\d{2})/', '$1 ', $compte['telephone'])); ?></p>
             </div>
-
         </div>
+<!-- POUR TEL -->
+        <div class="edit-profil">
+            <a href="compte_membre_tel.php">
+               <img src="images/Bouton_retour.png" alt="bouton retour">
+            </a>
+            <h1>Editer le profil</h1>
+        </div>                
             <section class="tabs">
                 <ul>
                     <li><a href="#" class="active">Informations personnelles</a></li>
@@ -172,11 +178,6 @@ if (isset($_POST['modif_infos'])){
                 <legend>Adresse Postale *</legend>
                 <input type="text" id="adresse" name="adresse" value="<?php echo $_adresse['adresse_postal']; ?>" placeholder="Adresse Postale *" required>
             </fieldset>
-
-           <fieldset>
-               <legend>Complément d'adresse</legend>
-               <input type="text" id="comp_adresse" name="comp_adresse" placeholder="Complément d'adresse" value="<?php echo $_adresse['complement_adresse']; ?>">
-            </fieldset>
            
             <div class="crea_pro_mail_tel">
                <fieldset>
@@ -203,7 +204,20 @@ if (isset($_POST['modif_infos'])){
         </form>
         
     </main>
-
+    <nav class="nav-bar">
+        <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
+        <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
+        <a href="#"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
+        <a href="
+            <?php
+                if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
+                    echo "consulter_compte_membre.php";
+                } else {
+                    echo "connexion_membre.php";
+                }
+            ?>">
+            <img src="images/icones/User icon.png" alt="image de Personne"></a>
+    </nav>
     <footer class="footer_detail_avis">
         <div class="newsletter">
             <div class="newsletter-content">

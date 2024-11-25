@@ -867,3 +867,7 @@ nav.nav-bar {
         transform: translateY(0);
     }
 }
+.txt_popup{
+    color: #BDC426;
+    text-decoration : none;
+}

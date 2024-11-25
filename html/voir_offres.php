@@ -76,7 +76,7 @@ function tempsEcouleDepuisPublication($offre){
     <!-- Code pour le pop-up --> 
     <div id="customPopup">
         <img src="images/robot_popup.png" width="50" height="70" class="customImage">
-        <p><span class="txt-popup">Créez votre compte</span> en quelques clics et accédez à un monde de possibilités ! </p>
+        <p><a href="creation_compte_membre.php" class="txt_popup">Créez votre compte</a> en quelques clics et accédez à un monde de possibilités ! </p>
         <!--<a id="connexion" href="creation_compte_membre.php">S'inscrire</a>-->
         <img id="closePopup" src="images/erreur.png" width="15" height="15">
     </div>
@@ -132,9 +132,6 @@ function tempsEcouleDepuisPublication($offre){
                            <li>
                                <a href="consulter_compte_membre.php">Mon compte</a>
                            </li>
-                            <li>
-                                <a href="voir_offres.php?deco=true">Se déconnecter</a>
-                            </li>
                             <?php
                         } else {
                             ?>
