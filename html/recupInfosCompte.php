@@ -45,6 +45,7 @@
      $monComptePro = $dbh->prepare("SELECT * FROM tripenarvor._professionnel WHERE code_compte = :code_compte");
      $monComptePro->bindValue(":code_compte",$compte['code_compte']);
      $monComptePro->execute();
+     $monComptePro = $monComptePro->fetch(PDO::FETCH_ASSOC);
 
      $infosCompte = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE code_compte = :code_compte");
      $infosCompte->bindValue(":code_compte",$compte['code_compte']);
