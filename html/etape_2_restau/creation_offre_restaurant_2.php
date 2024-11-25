@@ -121,6 +121,9 @@ echo "</pre>";
         $_SESSION['crea_offre_2']['mesRepas'] = $mesRepas;
 
     }
+    /*
+    * Pas d'autre vérif à faire, on peut directement envoyer l'utilisateur vers l'étape 3
+    */
 
     ?>
 </body>
