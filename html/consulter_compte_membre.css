@@ -323,7 +323,7 @@ footer {
 }
 
 .main_consulter_compte_membre .tabs ul li a {
-    width: calc(60vw/3);
+    width: calc(60vw/2);
     font-size: 20px;
     padding: 10px 20px;
     display: inline-block;
@@ -530,4 +530,10 @@ footer {
 /* Style pour la case à cocher */
 .main_consulter_compte_membre #remember, #cgu {
     accent-color: var(--vert-fonce);
+}
+
+@media (min-width: 429px) {
+           .main_consulter_compte_membre .crea_pro_raison_sociale_num_siren, .main_consulter_compte_membre .crea_pro_mail_tel {
+                      flex-direction: column;
+                      gap: 0;
 }
