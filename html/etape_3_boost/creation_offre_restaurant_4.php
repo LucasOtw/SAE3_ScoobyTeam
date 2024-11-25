@@ -7,7 +7,7 @@ include_once('../recupInfosCompte.php');
 
 if(isset($_POST['envoiForm4'])){
     // si le formulaire est envoyé..
-    header('location : ../creation_offre3.php');
+    header('location: ../creation_offre3.php');
     exit;
 }
 
