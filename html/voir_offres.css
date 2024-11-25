@@ -726,10 +726,12 @@ nav.nav-bar {
 
 .toute_les_offres_main .search-button:hover {
     background-color: #c8d841;
+    color : white;
 }
 
 .search-input::placeholder {
-    color: white;
+    color: white; /* Couleur du texte du placeholder */
+    opacity: 0.10; /* Optionnel : ajoute une légère transparence */
 }
 
 .toute_les_offres_main .search-options {
