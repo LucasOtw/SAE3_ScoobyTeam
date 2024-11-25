@@ -647,7 +647,6 @@ nav.nav-bar {
     align-items: center; /* Assurez-vous que les éléments internes sont centrés */
     top: 50%; /* Positionner au centre verticalement */
     left: 50%; /* Positionner au centre horizontalement */
-    transform: translate(-50%, -50%); /* Centrer l'élément par rapport à son point central */
     background: rgba(255, 255, 255, 0.8);
     border-radius: 30px;
     padding: 20px;
