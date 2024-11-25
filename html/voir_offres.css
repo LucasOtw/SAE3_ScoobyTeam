@@ -651,6 +651,7 @@ nav.nav-bar {
     backdrop-filter: blur(8px);
     width: 80%;
     max-width: 600px;
+    justify-content:center;
 }
 
 
