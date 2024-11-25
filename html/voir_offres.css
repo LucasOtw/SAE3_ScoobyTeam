@@ -640,7 +640,7 @@ nav.nav-bar {
     width: 75%;
 }
 
-.toute_les_offres_main .search-bar {
+.search-bar {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -649,9 +649,8 @@ nav.nav-bar {
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8px);
-    width: 80%;
-    max-width: 600px;
-    align-items:center;
+    width: 80%; /* Pour une taille flexible */
+    max-width: 600px; /* Limite la largeur de la barre de recherche */
 }
 
 .toute_les_offres_main .search-top {
