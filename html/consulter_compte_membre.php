@@ -170,6 +170,11 @@ if (isset($_POST['modif_infos'])){
                 <legend>Adresse Postale *</legend>
                 <input type="text" id="adresse" name="adresse" value="<?php echo $_adresse['adresse_postal']; ?>" placeholder="Adresse Postale *" required>
             </fieldset>
+
+           <fieldset>
+               <legend>Complément d'adresse</legend>
+               <input type="text" id="comp_adresse" name="comp_adresse" placeholder="Complément d'adresse" value="<?php echo $_adresse['complement_adresse']; ?>">
+            </fieldset>
            
             <div class="crea_pro_mail_tel">
                <fieldset>
