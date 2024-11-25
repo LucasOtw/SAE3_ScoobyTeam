@@ -392,6 +392,7 @@ footer {
 .toute_les_offres_main{
     margin-bottom: 9em;
     padding: auto 8vh;
+    position: relative;
 }
 
 .toute_les_offres_main .toute_les_offres_main > header {
