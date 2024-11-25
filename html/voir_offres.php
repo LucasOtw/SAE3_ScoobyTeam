@@ -226,7 +226,6 @@ function tempsEcouleDepuisPublication($offre){
                 <button>Voir l'offre →</button>
             </div>
         </article> -->
-    </main>
         <?php
             try {
                 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
