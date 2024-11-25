@@ -180,7 +180,7 @@ function tempsEcouleDepuisPublication($offre){
     
         <div class="search-bar">
             <div class="search-top">
-                <input type="text" class="search-input" placeholder="Recherchez parmi les offres" />
+            <input type="text" class="search-input" placeholder="Recherchez parmi les offres" style="background: none; border: none; box-shadow: none;">
                 <button class="search-button">Rechercher</button>
             </div>
             <div class="search-options">
