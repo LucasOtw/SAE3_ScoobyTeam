@@ -133,8 +133,9 @@ if(!isset($_SESSION['pro'])){
             <a href="creation_offre.php" class="button-text">
                 <button class="image-button">
                     Publier une offre
+                    <img src="images/croix.png">
                 </button>
-                <img src="images/croix.png">
+                
             </a>
             
         </section> 
