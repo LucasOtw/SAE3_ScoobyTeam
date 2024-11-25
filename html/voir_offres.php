@@ -171,46 +171,46 @@ function tempsEcouleDepuisPublication($offre){
     </div>
     
     <main class="toute_les_offres_main">
-    <div class="search-bar">
-        <div class="search-top">
-            <input type="text" class="search-input" placeholder="Recherchez parmi mes offres" />
-            <button class="search-button">Rechercher</button>
+        <div class="search-bar">
+            <div class="search-top">
+                <input type="text" class="search-input" placeholder="Recherchez parmi mes offres" />
+                <button class="search-button">Rechercher</button>
+            </div>
+            <div class="search-options">
+                <select class="search-select">
+                    <option value="">Catégories</option>
+                </select>
+                <select class="search-select">
+                    <option value="">Lieu</option>
+                </select>
+                <select class="search-select">
+                    <option value="">Ouverture</option>
+                </select>
+                <button class="search-select autres-button">Autres</button>
+            </div>
         </div>
-        <div class="search-options">
-            <select class="search-select">
-                <option value="">Catégories</option>
-            </select>
-            <select class="search-select">
-                <option value="">Lieu</option>
-            </select>
-            <select class="search-select">
-                <option value="">Ouverture</option>
-            </select>
-            <button class="search-select autres-button">Autres</button>
+        <div class="filters-container hidden">
+            <h3>Filtres supplémentaires</h3>
+            <div class="filters">
+                <label>
+                    <input type="checkbox" name="livraison" />
+                    Avec livraison
+                </label>
+                <label>
+                    <input type="checkbox" name="occasion" />
+                    Occasion uniquement
+                </label>
+                <label>
+                    Prix minimum:
+                    <input type="number" name="prix-min" />
+                </label>
+                <label>
+                    Prix maximum:
+                    <input type="number" name="prix-max" />
+                </label>
+            </div>
+            <button class="close-filters">Fermer</button>
         </div>
-    </div>
-    <div class="filters-container hidden">
-        <h3>Filtres supplémentaires</h3>
-        <div class="filters">
-            <label>
-                <input type="checkbox" name="livraison" />
-                Avec livraison
-            </label>
-            <label>
-                <input type="checkbox" name="occasion" />
-                Occasion uniquement
-            </label>
-            <label>
-                Prix minimum:
-                <input type="number" name="prix-min" />
-            </label>
-            <label>
-                Prix maximum:
-                <input type="number" name="prix-max" />
-            </label>
-        </div>
-        <button class="close-filters">Fermer</button>
-    </div>
         <header>
             <h2>Les offres</h2>
             <!-- <span id="filter">
