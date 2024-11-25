@@ -569,6 +569,15 @@ main.connexion_membre_main {
     .connexion_membre_main hr {
         display: block;
     }
+
+    .connexion_membre_form-container {
+        margin-right:0;
+    }
+    .connexion_compte_pro {
+        display:none;
+    }
+    .connexion_membre_main .connexion_membre_liens_connexion_inscription{
+        justify-content:center;
 }
 
 
