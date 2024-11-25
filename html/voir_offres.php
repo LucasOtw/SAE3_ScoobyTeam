@@ -292,21 +292,23 @@ function tempsEcouleDepuisPublication($offre){
                 } else {
                     $offre_image = "";
                 }
-
+                if ($offre["en_ligne"]
+                {
                 ?>
-                <article class="offer">
-                    <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
-                    <div class="offer-details">
-                        <h2><?php echo $offre["titre_offre"] ?></h2>
-                        <p><?php echo $villeOffre["ville"] ?></p>
-                        <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
-                        <form id="form-voir-offre" action="detail_offre.php" method="POST">
-                            <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
-                            <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
-                        </form>
-                    </div>
-                </article>
+                    <article class="offer">
+                        <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
+                        <div class="offer-details">
+                            <h2><?php echo $offre["titre_offre"] ?></h2>
+                            <p><?php echo $villeOffre["ville"] ?></p>
+                            <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
+                            <form id="form-voir-offre" action="detail_offre.php" method="POST">
+                                <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
+                                <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
+                            </form>
+                        </div>
+                    </article>
                 <?php
+                }
             }
 
         ?>
