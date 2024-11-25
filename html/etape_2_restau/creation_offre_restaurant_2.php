@@ -5,6 +5,10 @@ session_start();
 // var_dump($_SESSION['crea_offre']);
 // pour afficher les infos (meilleur résultat avec <pre> !)
 
+echo "<pre>";
+var_dump($_SESSION['crea_offre']);
+echo "</pre>";
+
 ?>
 
 <!DOCTYPE html>
