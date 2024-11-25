@@ -539,11 +539,11 @@ nav.nav-bar {
     }
 
     .toute_les_offres_main .offer img {
-        width: auto;
-        height: 13vh;
+        width: 96%;
+        height: 20vh;
         object-fit: cover;
         margin: 1vh 1vh;
-        border-radius: calc(30px - 1vh);
+        border-radius: calc(30px - 1vh) calc(30px - 1vh) 0 0;
     }
 
     .toute_les_offres_main .offer .img-etoile {
