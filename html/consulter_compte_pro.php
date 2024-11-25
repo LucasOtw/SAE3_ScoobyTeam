@@ -70,6 +70,7 @@ if (isset($_POST['modif_infos'])){
                case 'code-postal':
                case 'ville':
            }
+           include('recupInfosCompte.php');
        }
    } else {
        echo "Aucune modification détectée.";
