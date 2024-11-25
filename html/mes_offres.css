@@ -529,6 +529,7 @@ main #vosOffres {
     border-radius: 15px; /* Ajuste ce chiffre pour arrondir les angles comme tes cases offres */
     position: relative; /* Pour bien positionner le texte */
     flex-direction: column;
+           margin-top:10px;
 }
 
 .button-text button.image-button{
