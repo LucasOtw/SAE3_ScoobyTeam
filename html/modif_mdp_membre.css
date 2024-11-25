@@ -595,4 +595,10 @@ nav.nav-bar-tel {
         justify-content: flex-start;
         align-items: center;
     }
+
+    nav.nav-bar-tel a {
+        display: flex;
+        align-items: center;
+        margin: 10px auto;
+    }
 }
