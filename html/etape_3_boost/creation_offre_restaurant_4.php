@@ -9,6 +9,10 @@ echo "<pre>";
 var_dump($_SESSION['crea_offre_3']);
 echo "</pre>";
 
+if(isset($_POST['envoiForm4'])){
+    var_dump($_POST['envoiForm4']);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +93,7 @@ echo "</pre>";
                     <label>Options de boost (lorsque l'offre sera en ligne)</label>
                     <div class="radio-group">
                         <div>
-                            <input type="radio" id="no_boost" name="option" value="">
+                            <input type="radio" id="no_boost" name="option" value="aucun">
                             <label class="label-check" for="no_boost">Ne pas booster mon offre</label>
                         </div>
                         <div>
@@ -126,7 +130,7 @@ echo "</pre>";
                     </div>
                 </div>
 
-                <button type="submit" id="button_valider">
+                <button type="submit" name="envoiForm4" id="button_valider">
                 Valider <img src="../images/fleche.png" alt="Fleche" width="25px" height="25px">
                 </button>
 
