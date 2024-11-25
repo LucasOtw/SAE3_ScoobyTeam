@@ -81,6 +81,7 @@ if (isset($_POST['modif_infos'])){
     <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 </head>
 <body>
+    
      <header class="header">
         <div class="logo">
             <img src="images/logo_blanc_pro.png" alt="PACT Logo">
@@ -93,6 +94,7 @@ if (isset($_POST['modif_infos'])){
             </ul>
         </nav>
     </header>
+    
     <main class="main-consulter-compte-pro">
         <section class="profile">
             <div class="banner">
@@ -113,65 +115,66 @@ if (isset($_POST['modif_infos'])){
             </ul>
         </section>
 
-    <form action="consulter_compte_pro.php" method="POST">
-        <div class="creation_compte_pro_form-section">
-            <div class="crea_pro_raison_sociale_num_siren">
-                <fieldset disabled>
-                    <legend>Raison Sociale</legend>
-                    <input type="text" id="raison-sociale" name="raison-sociale*" placeholder="Raison Sociale*" value="<?php echo $monComptePro['raison_sociale']; ?>" required>
-                </fieldset>
-
-                <fieldset disabled>
-                    <legend>N° de Siren</legend>
-                    <input type="text" id="siren" name="siren" placeholder="N° de Siren" value="987654321">
-                </fieldset>
-            </div>
-
-            <div class="crea_pro_mail_tel">
+        <form action="consulter_compte_pro.php" method="POST">
+            <div class="creation_compte_pro_form-section">
                 <div class="crea_pro_raison_sociale_num_siren">
+                    <fieldset disabled>
+                        <legend>Raison Sociale</legend>
+                        <input type="text" id="raison-sociale" name="raison-sociale*" placeholder="Raison Sociale*" value="<?php echo $monComptePro['raison_sociale']; ?>" required>
+                    </fieldset>
+    
+                    <fieldset disabled>
+                        <legend>N° de Siren</legend>
+                        <input type="text" id="siren" name="siren" placeholder="N° de Siren" value="987654321">
+                    </fieldset>
+                </div>
+    
+                <div class="crea_pro_mail_tel">
+                    <div class="crea_pro_raison_sociale_num_siren">
+                        <fieldset>
+                            <legend>Email *</legend>
+                            <input type="email" id="email" name="email" placeholder="Email *" value="<?php echo $compte['mail'] ?>" required>
+                        </fieldset>
+        
+                        <fieldset>
+                            <legend>Téléphone *</legend>
+                            <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *" value=" <?php echo $compte['telephone']; ?> " required>
+                        </fieldset>
+                    </div>
+    
                     <fieldset>
-                        <legend>Email *</legend>
-                        <input type="email" id="email" name="email" placeholder="Email *" value="<?php echo $compte['mail'] ?>" required>
+                        <legend>Adresse Postale *</legend>
+                        <input type="text" id="adresse" name="adresse" placeholder="Adresse postale *" value="<?php echo trim(preg_replace('/(\d{2})/', '$1 ', $_adresse['adresse_postal'])) ?>" required>
                     </fieldset>
     
                     <fieldset>
-                        <legend>Téléphone *</legend>
-                        <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *" value=" <?php echo $compte['telephone']; ?> " required>
+                        <legend>Complément d'adresse</legend>
+                        <input type="text" id="comp_adresse" name="comp_adresse" placeholder="Complément d'adresse" value="<?php echo $_adresse['complement_adresse']; ?>">
                     </fieldset>
+                    <div class="crea_pro_raison_sociale_num_siren">
+                        <fieldset>
+                            <legend>Code Postal *</legend>
+                            <input type="text" id="code_postal" name="code_postal" placeholder="code_postal *" value="<?php echo $_adresse['code_postal']; ?>" required>
+                        </fieldset>
+                        
+                        <fieldset>
+                            <legend>Ville *</legend>
+                            <input type="text" id="ville" name="ville" placeholder="Ville *" value="<?php echo $_adresse['ville']; ?>" required>
+                        </fieldset>
+                    </div>
                 </div>
-
-                <fieldset>
-                    <legend>Adresse Postale *</legend>
-                    <input type="text" id="adresse" name="adresse" placeholder="Adresse postale *" value="<?php echo trim(preg_replace('/(\d{2})/', '$1 ', $_adresse['adresse_postal'])) ?>" required>
-                </fieldset>
-
-                <fieldset>
-                    <legend>Complément d'adresse</legend>
-                    <input type="text" id="comp_adresse" name="comp_adresse" placeholder="Complément d'adresse" value="<?php echo $_adresse['complement_adresse']; ?>">
-                </fieldset>
-                <div class="crea_pro_raison_sociale_num_siren">
-                    <fieldset>
-                        <legend>Code Postal *</legend>
-                        <input type="text" id="code_postal" name="code_postal" placeholder="code_postal *" value="<?php echo $_adresse['code_postal']; ?>" required>
-                    </fieldset>
-                    
-                    <fieldset>
-                        <legend>Ville *</legend>
-                        <input type="text" id="ville" name="ville" placeholder="Ville *" value="<?php echo $_adresse['ville']; ?>" required>
-                    </fieldset>
+                <div class="checkbox">
+                                    <input type="checkbox" id="cgu" name="cgu" required>
+                                    <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
+                                </div>
+    
+                <div class="compte_membre_save_delete">
+                    <a href="voir_offres.php?deco=true" class="submit-btn1">Déconnexion</a>
+                    <button type="submit" class="submit-btn3">Enregistrer</button>
                 </div>
             </div>
-            <div class="checkbox">
-                                <input type="checkbox" id="cgu" name="cgu" required>
-                                <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
-                            </div>
-
-            <div class="compte_membre_save_delete">
-                <a href="voir_offres.php?deco=true" class="submit-btn1">Déconnexion</a>
-                <button type="submit" class="submit-btn3">Enregistrer</button>
-            </div>
-        </div>
-    </form>
+        </form>
+    </main>
 
     <footer class="footer_detail_avis">
         <div class="footer-links">
