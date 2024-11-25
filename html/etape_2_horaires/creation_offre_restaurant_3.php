@@ -38,7 +38,7 @@ session_start();
                   echo $err . "<br>";
               }
           } else {
-              $_SESSION['crea_offre_3'] = $horaires_par_jour;
+              $_SESSION['crea_offre3'] = $horaires_par_jour;
               header('Location: ../etape_3_boost/creation_offre_restaurant_4.php');
               exit;
           }
