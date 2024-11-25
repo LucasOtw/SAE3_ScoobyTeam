@@ -12,9 +12,11 @@ if(isset($_POST['envoiForm4'])){
     echo "</pre>";
 
     foreach($_POST as $cle => $post){
-        echo $cle;
+        if($cle !== "envoiForm4"){
+            $_SESSION["crea_offre4"][$cle] = $post;
+        }
     }
-    $mon_tab = [];
+    var_dump($_SESSION["crea_offre4"]);
 }
 
 ?>
