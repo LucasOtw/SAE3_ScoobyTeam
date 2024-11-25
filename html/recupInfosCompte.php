@@ -39,7 +39,6 @@
     Il suffit donc de voir si il en possède une :)*/
 
     $_adresse = $monAdresse->fetch(PDO::FETCH_ASSOC);
-    var_dump($_adresse);
   } elseif(isset($_SESSION['pro'])){
      $compte = $_SESSION['pro'];
 
