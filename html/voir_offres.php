@@ -300,11 +300,12 @@ function tempsEcouleDepuisPublication($offre){
     <a href="
         <?php
             if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
-                echo "consulter_compte_membre.php"
+                echo "consulter_compte_membre.php";
             } else {
-                echo "connexion_membre.php"
+                echo "connexion_membre.php";
             }
-        ?>"><img src="images/icones/User icon.png" alt="image de Personne"></a>
+        ?>">
+        <img src="images/icones/User icon.png" alt="image de Personne"></a>
 </nav>
     <footer>
         <div class="newsletter">
