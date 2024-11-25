@@ -468,6 +468,7 @@ footer {
     border: 1.5px solid var(--vert-clair);
     color: black;
     border-radius: 16px;
+    text-decoration: none;
 }
 
 .main_consulter_compte_membre .submit-btn1:hover,
