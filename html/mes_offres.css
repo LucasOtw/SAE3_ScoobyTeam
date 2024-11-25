@@ -549,39 +549,44 @@ a.button-text{
 }
 
 .button-Ligne {
-           border-radius : 30px;
-           padding: 10px 20px;
-           font-size: 16px;
-           cursor: pointer;
-           margin:20px;
-           outline: none;
-           border: none;
-           width: 150px;
-           height: 50px;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px;
+    outline: none;
+    border: none;
+    width: 150px;
+    height: 50px;
+    background-color: #D5D4D4;
+    color: black;
 }
+
 .button-Active {
-           background-color : #F28322;
-           border-radius : 30px;
-           padding: 10px 20px;
-           font-size: 16px;
-           cursor: pointer;
-           margin:20px;
-           color:white;
-           outline: none;
-           border: none;
-           width: 150px;
-           height: 50px;
+    background-color: #F28322;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px;
+    color: white;
+    outline: none;
+    border: none;
+    width: 150px;
+    height: 50px;
 }
+
 /* Effet au survol */
+.button-Ligne:hover, .button-Active:hover {
+    transform: scale(1.05);   /* Légère mise en avant */
+    transition: 0.3s ease;    /* Animation douce */
+}
+
 .button-Ligne:hover {
-  background-color: #D5D4D4; /* Change la couleur de fond */
-  color: black;              /* Change la couleur du texte */
-  transform: scale(1.05);   /* Légère mise en avant */
-  transition: 0.3s ease;    /* Animation douce */
+    background-color: #C0C0C0; /* Change la couleur de fond */
 }
 
 .button-Active:hover {
-  background-color: #E94524; /* Couleur de fond légèrement plus sombre */
-  transform: scale(1.05);    /* Légère mise en avant */
-  transition: 0.3s ease;     /* Animation douce */
+    background-color: #E94524; /* Couleur de fond légèrement plus sombre */
 }
+
