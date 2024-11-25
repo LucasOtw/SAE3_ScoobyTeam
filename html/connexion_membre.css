@@ -533,6 +533,8 @@ main.connexion_membre_main {
         position: absolute;
         bottom: 30px;
         width: 65vw;
+        display: flex;
+        justify-content:center;
     }
 
     .connexion_membre_main fieldset {
