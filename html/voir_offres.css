@@ -714,6 +714,13 @@ nav.nav-bar {
     min-width: 130px;
     text-align: center;
 }
+
+.toute_les_offres_main .search-select > option{
+    all: unset;
+}
+.toute_les_offres_main .search-select > option:hover{
+    color: red;
+}
 /* Format de 429px */
 @media (max-width: 429px) {
     .toute_les_offres_main .search-bar {
