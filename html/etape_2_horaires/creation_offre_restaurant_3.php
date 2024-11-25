@@ -46,7 +46,6 @@ session_start();
  /*       echo '<pre>';
         print_r($horaires_par_jour);
         echo '</pre>'; */
-    }
 
 ?>
 <!DOCTYPE html>
