@@ -179,9 +179,7 @@ function tempsEcouleDepuisPublication($offre){
             <div class="search-options">
                 <select class="search-select">
                     <option value="">Catégories</option>
-                    <option value="">Catégories ></option>
                 </select>
-                <button id="autres-button" class="search-select">Catégories ></button>
                 <select class="search-select">
                     <option value="">Lieu</option>
                     <option value="">Lieu ></option>
@@ -191,7 +189,6 @@ function tempsEcouleDepuisPublication($offre){
                     <option value="">Ouverture ></option>
                 </select>
                 <button id="autres-button" class="search-select">Autres</button>
-                <button id="autres-button" class="search-select">Autres ></button>
             </div>
         </div>
 
