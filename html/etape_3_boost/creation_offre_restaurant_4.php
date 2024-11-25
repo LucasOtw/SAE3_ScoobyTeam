@@ -10,7 +10,7 @@ var_dump($_SESSION['crea_offre_3']);
 echo "</pre>";
 
 if(isset($_POST['envoiForm4'])){
-    var_dump($_POST['envoiForm4']);
+    var_dump($_POST);
 }
 
 ?>
