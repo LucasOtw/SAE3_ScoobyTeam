@@ -586,7 +586,5 @@ a.button-text{
     background-color: #C0C0C0; /* Change la couleur de fond */
 }
 
-.button-Active:hover {
-    background-color: #E94524; /* Couleur de fond légèrement plus sombre */
-}
+
 
