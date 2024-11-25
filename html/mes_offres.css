@@ -556,4 +556,6 @@ a.button-text{
 }
 .button-Hors-Ligne {
            background-color : #F28322
+           border-radius : 15px;
+           color : white;
 }
