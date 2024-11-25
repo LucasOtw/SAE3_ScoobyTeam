@@ -394,6 +394,39 @@ footer {
     padding: auto 8vh;
     position: relative;
 }
+.half-background {
+    height: 100vh; /* 100% de la hauteur de la fenêtre */
+    background-image: url('images/acceuil_phare.png'); /* Mettez ici le chemin de votre image */
+    background-size: cover; /* L'image couvre toute la div */
+    background-position: center; /* Centre l'image */
+    background-repeat: no-repeat; /* Evite la répétition de l'image */
+    width: 99vw;
+    position: absolute;
+    top: 0;
+
+}
+
+.half-background h1 {
+    color : white;
+}
+
+.h1_voir_offre1{
+    margin-left : 10px;
+    font-size: 80px;
+}
+
+.h1_voir_offre2{
+    margin-left : 100px;
+    font-size: 80px;
+}
+
+.conteneur_titre_voir_offre{
+    margin-top: 15em;
+    margin-left: 93px;
+}
+
+
+
 
 .toute_les_offres_main .toute_les_offres_main > header {
     all: unset;
@@ -645,14 +678,14 @@ nav.nav-bar {
     display: flex;
     flex-direction: column;
     align-items: center; /* Assurez-vous que les éléments internes sont centrés */
-    margin: 1em auto;
-    background: #f3feff;
+    margin: 28em auto;
+    background: none;
     border-radius: 30px;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8px);
-    width: 80%;
-    max-width: 600px;
+    backdrop-filter: blur(35.42px);
+    width: 99%;
+    max-width: 960px;
     justify-content:center;
 }
 
@@ -681,7 +714,7 @@ nav.nav-bar {
 .toute_les_offres_main .search-button {
     border: none;
     outline: none;
-    background-color: var(--vert-clair);
+    background-color: white;
     color: #333;
     font-size: 16px;
     padding: 10px 20px;
