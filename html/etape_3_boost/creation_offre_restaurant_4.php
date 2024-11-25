@@ -10,6 +10,10 @@ if(isset($_POST['envoiForm4'])){
     echo "<pre>";
     var_dump($_POST);
     echo "</pre>";
+
+    foreach($_POST as $cle => $post){
+        echo $cle;
+    }
     $mon_tab = [];
 }
 
