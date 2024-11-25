@@ -67,8 +67,6 @@ if (isset($_POST['modif_infos'])){
                case 'ville':
            }
        }
-       // echo "Les informations ont été mises à jour.";
-       include("recupInfosCompte.php");
    } else {
        echo "Aucune modification détectée.";
    }
