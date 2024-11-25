@@ -21,10 +21,6 @@ if(isset($_GET['logout'])){
     exit;
 }
 
-if(isset($_POST['tags'])){
-    var_dump($_POST['tags']);
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -325,7 +321,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     }
                 }
             
-                // Ajouter le tableau photos dans $tab_offre
+                // ajout du tableau dans $tab_offre
                 $tab_offre['photos'] = $photos;
             } else {
                 // Si aucune photo n'est envoyée, on initialise un tableau vide
@@ -338,9 +334,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tab_offre["tags"] = $mesTags;
 
             $_SESSION['crea_offre'] = $tab_offre;
-            echo "<pre>";
-            var_dump($_SESSION['crea_offre']);
-            echo "</pre>";
+            header('location: ../etape2_restau/creation_offre_restaurant_2.php');
+            exit;
         }
     }
 }
