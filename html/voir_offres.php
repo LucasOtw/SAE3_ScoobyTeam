@@ -191,8 +191,8 @@ function tempsEcouleDepuisPublication($offre){
         </div>
 
         <!-- Section cachée pour les filtres -->
+        <h3>Filtres supplémentaires</h3>
         <div id="filters-section" class="hidden">
-            <h3>Filtres supplémentaires</h3>
             <label>
                 <input type="checkbox" value="livraison"> Livraison
             </label>
