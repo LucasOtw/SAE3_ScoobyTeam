@@ -39,8 +39,6 @@ if (isset($_POST['modif_infos'])){
            $champsModifies[$champ] = $valeur;
        }
    }
-
-    var_dump($monAdresse);
    
    // Mettre à jour seulement les champs modifiés
    if (!empty($champsModifies)) {
@@ -61,6 +59,10 @@ if (isset($_POST['modif_infos'])){
                    $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
                    $query->bindValue(":code_adresse",$_adresse['code_adresse']);
                    $query->bindValue(":valeur",trim($valeur));
+                   echo "<pre>";
+                   var_dump(trim($valeur));
+                   var_dump($_adresse['code_adresse']);
+                   echo "</pre>";
                    $query->execute();
                    break;
                case 'code-postal':
