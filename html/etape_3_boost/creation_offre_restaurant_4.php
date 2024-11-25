@@ -3,6 +3,8 @@
 ob_start();
 session_start();
 
+include_once('../recupInfosCompte.php');
+
 echo "<pre>";
 var_dump($_SESSION['crea_offre_3']);
 echo "</pre>";
