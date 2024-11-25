@@ -21,12 +21,11 @@ if (isset($_POST['modif_infos'])){
     // Récupérer les valeurs initiales (par exemple, depuis la base de données)
    $valeursInitiales = [
        'raison-sociale' => $monComptePro['raison_sociale'],
-       'mail' => $mesInfos['mail'],
-       'telephone' => $mesInfos['telephone'],
+       'mail' => $compte['mail'],
+       'telephone' => $compte['telephone'],
        'adresse' => $_adresse['adresse_postal'],
        'code-postal' => $_adresse['code_postal'],
        'ville' => $_adresse['ville'],
-       'num-siren' => $monComptePro['num_siren'],
    ];
    
    // Champs modifiés
