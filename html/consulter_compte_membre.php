@@ -99,9 +99,6 @@ if (isset($_POST['modif_infos'])){
                        <li>
                            <a href="consulter_compte_membre.php">Mon compte</a>
                        </li>
-                        <li>
-                            <a href="voir_offres.php?deco=true">Se déconnecter</a>
-                        </li>
                         <?php
                     } else {
                         ?>
