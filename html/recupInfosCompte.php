@@ -48,6 +48,8 @@
      $monAdresse->bindValue(":code_adresse",$compte['code_adresse']);
      $monAdresse->execute();
 
+     $_adresse = $monAdresse->fetch(PDO::FETCH_ASSOC);
+
     // on regarde si le pro est privé ou publique
 
     $monComptePrive = $dbh->prepare("SELECT * FROM tripenarvor._professionnel_prive WHERE code_compte = :code_compte");
