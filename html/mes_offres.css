@@ -572,3 +572,16 @@ a.button-text{
            width: 150px;
            height: 50px;
 }
+/* Effet au survol */
+.button-Ligne:hover {
+  background-color: #f0f0f0; /* Change la couleur de fond */
+  color: #333;              /* Change la couleur du texte */
+  transform: scale(1.05);   /* Légère mise en avant */
+  transition: 0.3s ease;    /* Animation douce */
+}
+
+.button-Active:hover {
+  background-color: #e6731b; /* Couleur de fond légèrement plus sombre */
+  transform: scale(1.05);    /* Légère mise en avant */
+  transition: 0.3s ease;     /* Animation douce */
+}
