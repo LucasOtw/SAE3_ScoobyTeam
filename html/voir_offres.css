@@ -646,7 +646,7 @@ nav.nav-bar {
     flex-direction: column;
     align-items: center; /* Assurez-vous que les éléments internes sont centrés */
     margin: 1em auto;
-    background: rgba(255, 255, 255, 0.8);
+    background: #f3feff;
     border-radius: 30px;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -752,7 +752,7 @@ nav.nav-bar {
 /* Section des filtres supplémentaires */
 #filters-section {
     display: none; /* Cachée par défaut */
-    background: rgba(255, 255, 255);
+    background: #f3feff;
     flex-direction: column;
     border-radius: 20px;
     padding: 20px;
