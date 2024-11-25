@@ -72,6 +72,8 @@ if (isset($_POST['modif_infos'])){
    } else {
        echo "Aucune modification détectée.";
    }
+} else {
+    echo "TAAAATA YOYO !";
 }
 ?>
 
