@@ -8,6 +8,57 @@ if(isset($_SESSION['crea_offre_2'])){
    echo "AQDSFG¨£";
 }
 
+    if(isset($_POST['EnvoiEtape3'])){
+        echo "<pre>";
+        var_dump($_POST);
+        echo "</pre>";
+
+        // Liste des jours et les champs associés dans $_POST
+        $jours = [
+            'Lundi'    => ['ouvertureL', 'fermetureL'],
+            'Mardi'    => ['ouvertureMA', 'fermetureMa'],
+            'Mercredi' => ['ouvertureMe', 'fermetureMe'],
+            'Jeudi'    => ['ouvertureJ', 'fermetureJ'],
+            'Vendredi' => ['ouvertureV', 'fermetureV'],
+            'Samedi'   => ['ouvertureS', 'fermetureS'],
+            'Dimanche' => ['ouvertureD', 'fermetureD']
+        ];
+        
+        $horaires_par_jour = [];
+
+        // on parcourt chaque jour
+        foreach ($jours as $jour => [$ouverture, $fermeture]) {
+            $horaire_ouverture = $_POST[$ouverture] ?? ''; // Récupère l'heure d'ouverture
+            $horaire_fermeture = $_POST[$fermeture] ?? ''; // Récupère l'heure de fermeture
+        
+            // si il y a une horaire d'ouverture ou de fermeture, on la met
+            if (!empty($horaire_ouverture) || !empty($horaire_fermeture)) {
+                if(strtotime($horaire_ouverture) >= strtotime($horaire_fermeture)){
+                    $erreurs[] = $jour." : L'heure d'ouverture doit être plus ancienne que l'heure de fermeture !";
+                }
+                if(empty($erreurs)){
+                    $horaires_par_jour[$jour] = [
+                        'ouverture' => $horaire_ouverture,
+                        'fermeture' => $horaire_fermeture
+                    ];
+                }
+            }
+        }
+        if(!empty($erreurs)){
+            foreach($erreurs as $err){
+                echo $err."<br>";
+            }
+        } else {
+           $_SESSION['crea_offre_3'] = $horaires_par_jour;
+           header('location : ../etape_3_boost/creation_offre_restaurant_3.php');
+           exit;
+        }
+        
+ /*       echo '<pre>';
+        print_r($horaires_par_jour);
+        echo '</pre>'; */
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -281,59 +332,5 @@ if(isset($_SESSION['crea_offre_2'])){
             </form>
         </div>
     </main>
-    <?php
-
-    if(isset($_POST['EnvoiEtape3'])){
-        echo "<pre>";
-        var_dump($_POST);
-        echo "</pre>";
-
-        // Liste des jours et les champs associés dans $_POST
-        $jours = [
-            'Lundi'    => ['ouvertureL', 'fermetureL'],
-            'Mardi'    => ['ouvertureMA', 'fermetureMa'],
-            'Mercredi' => ['ouvertureMe', 'fermetureMe'],
-            'Jeudi'    => ['ouvertureJ', 'fermetureJ'],
-            'Vendredi' => ['ouvertureV', 'fermetureV'],
-            'Samedi'   => ['ouvertureS', 'fermetureS'],
-            'Dimanche' => ['ouvertureD', 'fermetureD']
-        ];
-        
-        $horaires_par_jour = [];
-
-        // on parcourt chaque jour
-        foreach ($jours as $jour => [$ouverture, $fermeture]) {
-            $horaire_ouverture = $_POST[$ouverture] ?? ''; // Récupère l'heure d'ouverture
-            $horaire_fermeture = $_POST[$fermeture] ?? ''; // Récupère l'heure de fermeture
-        
-            // si il y a une horaire d'ouverture ou de fermeture, on la met
-            if (!empty($horaire_ouverture) || !empty($horaire_fermeture)) {
-                if(strtotime($horaire_ouverture) >= strtotime($horaire_fermeture)){
-                    $erreurs[] = $jour." : L'heure d'ouverture doit être plus ancienne que l'heure de fermeture !";
-                }
-                if(empty($erreurs)){
-                    $horaires_par_jour[$jour] = [
-                        'ouverture' => $horaire_ouverture,
-                        'fermeture' => $horaire_fermeture
-                    ];
-                }
-            }
-        }
-        if(!empty($erreurs)){
-            foreach($erreurs as $err){
-                echo $err."<br>";
-            }
-        } else {
-           echo "Dobby has no master. Dobby is a free elf.";
-        }
-        
-        echo '<pre>';
-        print_r($horaires_par_jour);
-        echo '</pre>';
-
-        $_SESSION['crea_offre_3'] = $horaires_par_jour;
-    }
-
-    ?>
 </body>
 </html>
