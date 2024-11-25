@@ -11,6 +11,8 @@ if(!isset($_SESSION['pro'])){
 if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
     if(isset($_SESSION['crea_offre']) && isset($_SESSION['crea_offre2']) && isset($_SESSION['crea_offre3']) && isset($_SESSION['crea_offre4'])){
         echo "DOBBY HAS NO MASTER YOU SON OF A BITCH !";
+    } else {
+        header('location: creation_offre.php');
     }
 }
 
