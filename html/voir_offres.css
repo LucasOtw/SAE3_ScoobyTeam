@@ -758,7 +758,6 @@ nav.nav-bar {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 80%;
-    max-width: 600px;
     margin: 20px auto;
     z-index: 3;
     animation: fadeIn 0.3s ease-in-out;
