@@ -2,16 +2,7 @@
 
 session_start();
 
-if(isset($_SESSION['crea_offre_2'])){
-   var_dump($_SESSION['crea_offre_2']);
-} else {
-   echo "AQDSFG¨£";
-}
-
-    if(isset($_POST['EnvoiEtape3'])){
-        echo "<pre>";
-        var_dump($_POST);
-        echo "</pre>";
+      if(isset($_POST['EnvoiEtape3'])){
 
         // Liste des jours et les champs associés dans $_POST
         $jours = [
