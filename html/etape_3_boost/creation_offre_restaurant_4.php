@@ -5,15 +5,7 @@ session_start();
 
 include_once('../recupInfosCompte.php');
 
-echo "<pre>";
-var_dump($_SESSION['crea_offre_3']);
-echo "</pre>";
-
 if(isset($_POST['envoiForm4'])){
-    echo "<pre>";
-    var_dump($_POST);
-    echo "</pre>";
-
     // si le formulaire est envoyé..
     header('location : ../creation_offre3.php');
     exit;
