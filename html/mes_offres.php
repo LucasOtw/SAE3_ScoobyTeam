@@ -61,7 +61,10 @@ if(!isset($_SESSION['pro'])){
                 <li><a href="modif_bancaire.php">Compte bancaire</a></li>
             </ul>
         </section>
-    
+        <div class="button-container">
+            <button class="button">Hors - Ligne</button>
+            <button class="button">En Ligne</button>
+        </div>
         <section class="offers">
         <?php
             foreach($mesOffres as $monOffre){
