@@ -14,7 +14,9 @@ if(isset($_POST['envoiForm4'])){
     var_dump($_POST);
     echo "</pre>";
 
-    // si le formulaire est envoyé, on va devoir 
+    // si le formulaire est envoyé..
+    header('location : ../creation_offre3.php');
+    exit;
 }
 
 ?>
