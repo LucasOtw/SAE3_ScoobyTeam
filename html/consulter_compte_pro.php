@@ -71,8 +71,7 @@ if (isset($_POST['modif_infos'])){
                case 'ville':
            }
        }
-    header('Location: consulter_compte_pro.php');
-    exit;
+    include('recupInfosCompte.php');
    } else {
        echo "Aucune modification détectée.";
    }
