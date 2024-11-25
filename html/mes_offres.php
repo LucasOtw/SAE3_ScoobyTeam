@@ -91,7 +91,7 @@ if(!isset($_SESSION['pro'])){
                     <div class="offer-image">
                         <img src="<?php echo $monOffre['url_images'][0]; ?>" alt="Offre">
                         <div class="offer-status">
-                            <span class="status-dot"></span> Hors Ligne
+                            <span class="status-dot-offline"></span> Hors Ligne
                         </div>
                     </div>
                     <div class="offer-info">
