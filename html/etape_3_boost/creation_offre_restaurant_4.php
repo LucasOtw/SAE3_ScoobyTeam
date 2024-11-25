@@ -4,6 +4,7 @@ ob_start();
 session_start();
 
 include_once('../recupInfosCompte.php');
+var_dump($monComptePro);
 
 echo "<pre>";
 var_dump($_SESSION['crea_offre_3']);
@@ -60,7 +61,7 @@ echo "</pre>";
                     <label>Choix de l'offre</label>
                     <div class="radio-group">
                         <?php
-                            if ($_SESSION["compte"] != $typeOffre)
+                            if ($_SESSION["pro"] != $typeOffre)
                             {
                         ?>
                                 <div>
