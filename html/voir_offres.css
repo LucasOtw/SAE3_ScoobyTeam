@@ -534,6 +534,10 @@ nav.nav-bar {
     .toute_les_offres_main .offer {
         border-radius: 30px;
     }
+    .toutes_les_offres_main .offer p{
+        margin: 10px 0;
+    }
+    
     .offer-details{
         padding:5px;
     }
