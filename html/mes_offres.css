@@ -549,7 +549,7 @@ a.button-text{
 .button-container {
     display: flex;
     gap: 10px; /* Espace entre les boutons */
-    margin-left:13em;
+    margin-left:21em;
 }
 
 .button-Ligne {
@@ -591,5 +591,5 @@ a.button-text{
 }
 
 .vos_offres {
-           padding-left:9em;
+           padding-left:15em;
 }
