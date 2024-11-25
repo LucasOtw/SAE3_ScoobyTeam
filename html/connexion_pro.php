@@ -24,7 +24,7 @@ session_start();
         <nav>
             <ul>
                 <li><a href="voir_offres.php">Accueil</a></li>
-                <li><a href="creation_offre1.php">Publier</a></li>
+                <li><a href="creation_offre.php">Publier</a></li>
                 <li><a href="#" class="active">Se connecter</a></li>
             </ul>
         </nav>
