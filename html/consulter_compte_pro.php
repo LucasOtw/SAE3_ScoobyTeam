@@ -79,6 +79,8 @@ if (isset($_POST['modif_infos'])){
 } else {
     echo "TAAAATA YOYO !";
 }
+
+var_dump($compte);
 ?>
 
 <!DOCTYPE html>
