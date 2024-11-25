@@ -568,7 +568,7 @@ footer {
 
 
 /* Styles pour les écrans de 428px et moins */
-@media (max-width: 428px) {
+@media (max-width: 429px) {
     .header {
         display: flex;
         justify-content: space-between;
