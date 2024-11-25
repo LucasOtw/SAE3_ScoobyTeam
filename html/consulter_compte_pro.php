@@ -19,9 +19,6 @@ if(!isset($_SESSION['pro'])){
 if (isset($_POST['modif_infos'])){
     // Récupérer les valeurs initiales (par exemple, depuis la base de données)
    $valeursInitiales = [
-       'nom' => $monCompteMembre['nom'],
-       'prenom' => $monCompteMembre['prenom'],
-       'pseudo' => $monCompteMembre['pseudo'],
        'mail' => $compte['mail'],
        'telephone' => $compte['telephone'],
        'adresse_postal' => $_adresse['adresse_postal'],
@@ -43,13 +40,6 @@ if (isset($_POST['modif_infos'])){
    if (!empty($champsModifies)) {
        foreach ($champsModifies as $champ => $valeur) {
            switch ($champ) {
-               case 'nom':
-               case 'prenom':
-               case 'pseudo':
-                   $query = $dbh->prepare("UPDATE tripenarvor._membre SET $champ = :valeur WHERE code_compte = :code_compte");
-                   $query->execute(['valeur' => trim($valeur), 'code_compte' => $compte['code_compte']]);
-                   break;
-   
                case 'mail':
                    $valeurSansEspaces = trim(preg_replace('/\s+/', '', trim($valeur)));
                    $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
