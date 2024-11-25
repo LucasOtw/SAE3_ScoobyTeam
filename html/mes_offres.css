@@ -581,7 +581,7 @@ a.button-text{
 }
 
 .button-Active:hover {
-  background-color: #e6731b; /* Couleur de fond légèrement plus sombre */
+  background-color: #D2670A; /* Couleur de fond légèrement plus sombre */
   transform: scale(1.3);    /* Légère mise en avant */
   transition: 0.3s ease;     /* Animation douce */
 }
