@@ -140,7 +140,7 @@ if (isset($_POST['modif_infos'])){
             <div class="crea_pro_raison_sociale_num_siren">
                 <fieldset>
                     <legend>Email *</legend>
-                    <input type="email" id="email" name="email" placeholder="Email *" value="<?php echo $compte['mail'] ?>" required>
+                    <input type="email" id="email" name="mail" placeholder="Email *" value="<?php echo $compte['mail'] ?>" required>
                 </fieldset>
 
                 <fieldset>
@@ -178,7 +178,7 @@ if (isset($_POST['modif_infos'])){
 
             <div class="compte_membre_save_delete">
                 <a href="voir_offres.php?deco=true" class="submit-btn1">Déconnexion</a>
-                <button type="submit" class="submit-btn3">Enregistrer</button>
+                <button type="submit" name="modif_infos" class="submit-btn3">Enregistrer</button>
             </div>
         </form>
     </main>
