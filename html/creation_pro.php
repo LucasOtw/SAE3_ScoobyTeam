@@ -260,6 +260,32 @@ session_start();
                 $erreurs[] = "Le nom de la ville ne doit contenir que des lettres, espaces, ou apostrophes.";
                 $erreurs_a_afficher[] = "erreur-ville-invalide";
             }
+
+            if(!empty($ville) && !empty($codePostal)){
+                $api_codePostal = 'http://api.zippopotam.us/fr/'.$codePostal;
+
+                $api_codePostal = file_get_contents($api_codePostal);
+                if($api_codePostal === FALSE){
+                    $erreurs[] = "Erreur lors de l'accès à l'API";
+                    exit();
+                }
+                
+                $data = json_decode($api_codePostal,true);
+                $isValid = false;
+                
+                if($data && isset($data['places'])){
+                    foreach($data['places'] as $place){
+                        if(stripos($place['place name'], $ville) === 0){
+                            $isValid = true;
+                            break;
+                        }
+                    }
+                }
+                if(!$isValid){
+                    $erreurs[] = "La ville ne correspond pas au code postal";
+                    $erreurs_a_afficher[] = "erreur-ville-code-postal-incompatible";
+                }
+            }
     
             // 8. Mot de passe : Minimum 8 caractères, et correspondance avec le champ de confirmation
             if ($password !== $confirmPassword) {
