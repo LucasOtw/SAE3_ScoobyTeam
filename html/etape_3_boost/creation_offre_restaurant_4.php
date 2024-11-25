@@ -4,7 +4,6 @@ ob_start();
 session_start();
 
 include_once('../recupInfosCompte.php');
-var_dump($monComptePro);
 
 echo "<pre>";
 var_dump($_SESSION['crea_offre_3']);
@@ -61,27 +60,25 @@ echo "</pre>";
                     <label>Choix de l'offre</label>
                     <div class="radio-group">
                         <?php
-                            if ($_SESSION["pro"] != $typeOffre)
-                            {
-                        ?>
+                            if(!isset($monComptePro['num_siren'])){
+                                // si il y a un numéro SIREN, c'est un compte privé
+                                ?>
                                 <div>
                                     <input type="radio" id="offre_gratuite" name="offre" value="gratuite">
                                     <label class="label-check" for="offre_gratuite">Offre Gratuite <sup>1</sup></label>
                                 </div>
-                            <?php
-                            }
-                            else 
-                            {
-                            ?>
+                                <?php
+                            } else {
+                                ?>
                                 <div>
-                                    <input type="radio" id="offre_standard" name="offre" value="standard">
-                                    <label class="label-check" for="offre_standard">Offre Standard <sup>2</sup> (2€/jour)</label>
+                                    <input type="radio" id="offre_premium" name="offre" value="standard">
+                                    <label class="label-check" for="offre_standard">Offre Standard <sup>2</sup> (2€ / jour)</label>
                                 </div>
                                 <div>
-                                    <input type="radio" id="offre_premium" name="offre" value="premium" checked>
-                                    <label class="label-check" for="offre_premium">Offre Premium <sup>3</sup> (4€/jour)</label>
+                                    <input type="radio" id="offre_premium" name="offre" value="premium">
+                                    <label class="label-check" for="offre_premium">Offre Premium <sup>3</sup></label>
                                 </div>
-                        <?php
+                                <?php
                             }
                         ?>
                     </div>
