@@ -2,7 +2,7 @@
 
 session_start();
 
-if(isset($_SESSION['crea_offre_2']){
+if(isset($_SESSION['crea_offre_2'])){
    var_dump($_SESSION['crea_offre_2']);
 } else {
    echo "AQDSFG¨£";
