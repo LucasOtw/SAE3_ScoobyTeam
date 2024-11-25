@@ -185,32 +185,26 @@ function tempsEcouleDepuisPublication($offre){
                 <select class="search-select">
                     <option value="">Ouverture</option>
                 </select>
-                <button class="search-select autres-button">Autres</button>
+                <button id="autres-button" class="search-select">Autres</button>
             </div>
         </div>
-        <div class="filters-container hidden">
+
+        <!-- Section cachée pour les filtres -->
+        <div id="filters-section" class="hidden">
             <h3>Filtres supplémentaires</h3>
-            <div class="filters">
-                <label>
-                    <input type="checkbox" name="livraison" />
-                    Avec livraison
-                </label>
-                <label>
-                    <input type="checkbox" name="occasion" />
-                    Occasion uniquement
-                </label>
-                <label>
-                    Prix minimum:
-                    <input type="number" name="prix-min" />
-                </label>
-                <label>
-                    Prix maximum:
-                    <input type="number" name="prix-max" />
-                </label>
-            </div>
-            <button class="close-filters">Fermer</button>
+            <label>
+                <input type="checkbox" value="livraison"> Livraison
+            </label>
+            <label>
+                Prix min : <input type="number" placeholder="€" class="price-input">
+            </label>
+            <label>
+                Prix max : <input type="number" placeholder="€" class="price-input">
+            </label>
+            <button class="apply-filters">Appliquer les filtres</button>
         </div>
-        <script src="filtre.js"></script>
+    </main>
+    <script src="filtre.js"></script>
         <header>
             <h2>Les offres</h2>
             <!-- <span id="filter">
