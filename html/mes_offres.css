@@ -553,7 +553,7 @@ a.button-text{
            padding: 10px 20px;
            font-size: 16px;
            cursor: pointer;
-           margin-left:30px;
+           margin:20px;
            outline: none;
            border: none;
            width: 150px;
@@ -565,7 +565,7 @@ a.button-text{
            padding: 10px 20px;
            font-size: 16px;
            cursor: pointer;
-           margin-left:30px;
+           margin:20px;
            color:white;
            outline: none;
            border: none;
