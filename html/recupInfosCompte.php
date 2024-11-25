@@ -55,8 +55,6 @@
     $monComptePrive->execute();
 
     $monComptePrive = $monComptePrive->fetch(PDO::FETCH_ASSOC);
-    var_dump($monComptePrive);
-    var_dump($monComptePro);
     if ($monComptePrive) {
         $monComptePro['num_siren'] = $monComptePrive['num_siren'];
     }
