@@ -68,18 +68,18 @@ if(isset($_POST['envoiForm4'])){
                                 // si il y a un numéro SIREN, c'est un compte privé
                                 ?>
                                 <div>
-                                    <input type="radio" id="offre_gratuite" name="offre" value="gratuite">
+                                    <input type="radio" id="offre_gratuite" name="offre" value="gratuite" required>
                                     <label class="label-check" for="offre_gratuite">Offre Gratuite <sup>1</sup></label>
                                 </div>
                                 <?php
                             } else {
                                 ?>
                                 <div>
-                                    <input type="radio" id="offre_premium" name="offre" value="standard">
+                                    <input type="radio" id="offre_premium" name="offre" value="standard" required>
                                     <label class="label-check" for="offre_standard">Offre Standard <sup>2</sup> (2€ / jour)</label>
                                 </div>
                                 <div>
-                                    <input type="radio" id="offre_premium" name="offre" value="premium">
+                                    <input type="radio" id="offre_premium" name="offre" value="premium" required>
                                     <label class="label-check" for="offre_premium">Offre Premium <sup>3</sup></label>
                                 </div>
                                 <?php
