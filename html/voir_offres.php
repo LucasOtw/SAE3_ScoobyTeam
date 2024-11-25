@@ -166,7 +166,26 @@ function tempsEcouleDepuisPublication($offre){
         
     </header>
     </div>
-
+    <div class="search-bar">
+        <div class="search-top">
+            <input type="text" class="search-input" placeholder="Recherchez parmi mes offres" />
+            <button class="search-button">Rechercher</button>
+        </div>
+        <div class="search-options">
+            <select class="search-select">
+                <option value="">Catégories</option>
+            </select>
+            <select class="search-select">
+                <option value="">Lieu</option>
+            </select>
+            <select class="search-select">
+                <option value="">Ouverture</option>
+            </select>
+            <button class="search-select">
+                <option value="">Autres</option>
+            </button>
+        </div>
+    </div>
     <main class="toute_les_offres_main">
         <header>
             <h2>Les offres</h2>
