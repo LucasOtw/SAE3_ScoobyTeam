@@ -651,6 +651,7 @@ nav.nav-bar {
     backdrop-filter: blur(8px);
     width: 80%; /* Pour une taille flexible */
     max-width: 600px; /* Limite la largeur de la barre de recherche */
+    align-items: center;
 }
 
 .toute_les_offres_main .search-top {
