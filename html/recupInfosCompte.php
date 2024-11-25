@@ -101,6 +101,7 @@
             }
         }
     }
+    if(!function_exists('tempsEcouleDepuisPublication')){
       function tempsEcouleDepuisPublication($offre){
         // date d'aujourd'hui
         $date_actuelle = new DateTime();
@@ -137,6 +138,8 @@
     
         return $retour;
       }
+    }
+    if(!function_exists('tempsEcouleDepuisUpdate')){
       function tempsEcouleDepuisUpdate($offre){
                 // date d'aujourd'hui
         $date_actuelle = new DateTime();
@@ -173,6 +176,7 @@
     
         return $retour;
       }
+    }
   }
 
 
