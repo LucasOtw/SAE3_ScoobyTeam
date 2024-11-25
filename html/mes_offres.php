@@ -61,7 +61,7 @@ if(!isset($_SESSION['pro'])){
                 <li><a href="modif_bancaire.php">Compte bancaire</a></li>
             </ul>
         </section>
-        <h3>Vos offres</h3>
+        <h2 class="vos_offres">Vos offres</h2>
         <div class="button-container">
             <button class="button-Active" id="offline-btn">Hors - Ligne</button>
             <button class="button-Ligne" id="online-btn">En Ligne</button>
