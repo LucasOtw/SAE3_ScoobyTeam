@@ -186,7 +186,8 @@ function tempsEcouleDepuisPublication($offre){
                 </select>
                 <select class="search-select">
                     <option value="">Ouverture</option>
-                    <option value="">Ouverture ></option>
+                    <option value="">Ouvert</option>
+                    <option value="">Fermé</option>
                 </select>
                 <button id="autres-button" class="search-select">Autres</button>
             </div>
