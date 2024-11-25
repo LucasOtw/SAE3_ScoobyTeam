@@ -70,8 +70,9 @@ if (isset($_POST['modif_infos'])){
                case 'code-postal':
                case 'ville':
            }
-           include('recupInfosCompte.php');
        }
+    header('Location: consulter_compte_pro.php');
+    exit;
    } else {
        echo "Aucune modification détectée.";
    }
