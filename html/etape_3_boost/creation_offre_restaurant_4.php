@@ -1,3 +1,14 @@
+<?php
+
+ob_start();
+session_start();
+
+echo "<pre>";
+var_dump($_SESSION['crea_offre_3']);
+echo "</pre>";
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
