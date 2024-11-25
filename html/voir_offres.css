@@ -753,14 +753,14 @@ nav.nav-bar {
 #filters-section {
     display: none; /* Cachée par défaut */
     position: absolute;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255);
     flex-direction: column;
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 80%;
     max-width: 600px;
-    margin: 20px auto;
+    left: 50%;
     animation: fadeIn 0.3s ease-in-out;
 }
 
