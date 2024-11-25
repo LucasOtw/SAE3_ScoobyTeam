@@ -193,15 +193,20 @@ function tempsEcouleDepuisPublication($offre){
         <!-- Section cachée pour les filtres -->
         <div id="filters-section" class="hidden">
             <h3>Filtres supplémentaires</h3>
-            <label>
-                <input type="checkbox" value="livraison"> Livraison
+            <span>
+                <label for="livraison">
+                    Livraison
+                </label>
+                <input id="livraison" type="checkbox" value="livraison">
+            <label for="prix_min">
+                Prix min :
             </label>
-            <label>
-                Prix min : <input type="number" placeholder="€" class="price-input">
+            <input id="prix_min" type="number" placeholder="€" class="price-input">
+            <label for="prix_max">
+                Prix max :
             </label>
-            <label>
-                Prix max : <input type="number" placeholder="€" class="price-input">
-            </label>
+            <input id="prix_max" type="number" placeholder="€" class="price-input">
+            </span>
             <button class="apply-filters">Appliquer les filtres</button>
         </div>
         <header>
