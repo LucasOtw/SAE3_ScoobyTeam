@@ -27,6 +27,8 @@ if (isset($_POST['modif_infos'])){
        'code-postal' => $_adresse['code_postal'],
        'ville' => $_adresse['ville'],
    ];
+
+    echo "TATA YOYO";
    
    // Champs modifiés
    $champsModifies = [];
