@@ -12,6 +12,11 @@
   if(isset($_SESSION['membre'])){
      $compte = $_SESSION['membre'];
 
+    /*
+    *  LA SESSION 'membre' CONTIENT DEJA LES INFOS DU SELECT SUR tripenarvor._compte !!!
+    */
+    
+    
      // on sélectionne les infos du membre
 
     $monCompte = $dbh->prepare("SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte");
@@ -37,6 +42,10 @@
     var_dump($_adresse);
   } elseif(isset($_SESSION['pro'])){
      $compte = $_SESSION['pro'];
+
+    /*
+    *  LA SESSION 'pro' CONTIENT DEJA LES INFOS DU SELECT SUR tripenarvor._compte !!!
+    */
 
     // on sélectionne les infos du pro
      $monComptePro = $dbh->prepare("SELECT * FROM tripenarvor._professionnel WHERE code_compte = :code_compte");
