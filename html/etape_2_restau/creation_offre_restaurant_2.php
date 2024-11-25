@@ -17,8 +17,8 @@ if(isset($_POST['envoiFormEtape2'])){
     foreach($_POST['repas'] as $repas){
         $mesRepas[] = $repas;
     }
-    $_SESSION['crea_offre_2']['ma_gamme'] = $ma_gamme;
-    $_SESSION['crea_offre_2']['mesRepas'] = $mesRepas;
+    $_SESSION['crea_offre2']['ma_gamme'] = $ma_gamme;
+    $_SESSION['crea_offre2']['mesRepas'] = $mesRepas;
 
     header('location: ../etape_2_horaires/creation_offre_restaurant_3.php');
     exit;
