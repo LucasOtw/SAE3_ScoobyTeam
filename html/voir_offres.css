@@ -747,3 +747,79 @@ nav.nav-bar {
         padding: 8px; /* Réduire le padding pour mieux s'adapter à la taille */
     }
 }
+/* Section des filtres supplémentaires */
+#filters-section {
+    display: none; /* Cachée par défaut */
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#filters-section h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#filters-section label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+#filters-section .price-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 8px;
+    border-radius: 10px;
+    margin-left: 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#filters-section .apply-filters {
+    display: block;
+    background-color: #d9e947;
+    color: #333;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 auto;
+}
+
+#filters-section .apply-filters:hover {
+    background-color: #c8d841;
+}
+
+/* Transition de visibilité */
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+/* Animation pour l'apparition de la section */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
