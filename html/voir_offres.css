@@ -751,6 +751,7 @@ nav.nav-bar {
 #filters-section {
     display: none; /* Cachée par défaut */
     background: rgba(255, 255, 255, 0.9);
+    flex-direction: column;
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
