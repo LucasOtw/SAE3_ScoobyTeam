@@ -62,8 +62,8 @@ if(!isset($_SESSION['pro'])){
             </ul>
         </section>
         <div class="button-container">
-            <button class="button">Hors - Ligne</button>
-            <button class="button">En Ligne</button>
+            <button class="button-Ligne">Hors - Ligne</button>
+            <button class="button-Ligne">En Ligne</button>
         </div>
         <section class="offers">
         <?php
