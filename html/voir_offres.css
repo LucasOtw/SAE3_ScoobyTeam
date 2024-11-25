@@ -640,19 +640,19 @@ nav.nav-bar {
     width: 75%;
 }
 
-.search-bar {
+.toute_les_offres_main .search-bar {    
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Assurez-vous que les éléments internes sont centrés */
     background: rgba(255, 255, 255, 0.8);
     border-radius: 30px;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8px);
-    width: 80%; /* Pour une taille flexible */
-    max-width: 600px; /* Limite la largeur de la barre de recherche */
-    align-items: center;
+    width: 80%;
+    max-width: 600px;
 }
+
 
 .toute_les_offres_main .search-top {
     display: flex;
