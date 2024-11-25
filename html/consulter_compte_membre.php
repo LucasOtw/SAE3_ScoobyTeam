@@ -25,6 +25,7 @@ if (isset($_POST['modif_infos'])){
        'mail' => $mesInfos['mail'],
        'telephone' => $mesInfos['telephone'],
        'adresse' => $_adresse['adresse_postal'],
+       'complement-adresse' => $_adresse['complement_adresse'],
        'code-postal' => $_adresse['code_postal'],
        'ville' => $_adresse['ville'],
    ];
@@ -62,6 +63,7 @@ if (isset($_POST['modif_infos'])){
    
                case 'adresse':
                case 'code-postal':
+               case 'complement-adresse':
                case 'ville':
                    $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
                    $query->execute(['valeur' => trim($valeur), 'code_adresse' => $monAdresse['code_adresse']]);
