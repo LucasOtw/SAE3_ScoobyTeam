@@ -513,7 +513,7 @@ footer {
     text-decoration: none;
 }
 
-.main_modif_mdp_membre nav.nav-bar {
+nav.nav-bar-tel {
     display:none;
 }
 
@@ -524,6 +524,7 @@ footer {
 .main_modif_mdp_membre .illustration{
     display: none;
 }
+
 
 @media (max-width: 430px) {
      header {
@@ -551,7 +552,7 @@ footer {
     }
     
 
-    nav.nav-bar {
+    nav.nav-bar-tel {
         width: 84vw;
         position: fixed;
         bottom: 20px;
