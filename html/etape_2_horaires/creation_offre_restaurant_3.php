@@ -323,6 +323,7 @@ if(isset($_SESSION['crea_offre_2'])){
             foreach($erreurs as $err){
                 echo $err."<br>";
             }
+           echo "t";
         } else {
            echo "Dobby has no master. Dobby is a free elf.";
         }
