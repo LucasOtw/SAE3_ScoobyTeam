@@ -532,7 +532,7 @@ footer {
     accent-color: var(--vert-fonce);
 }
 
-@media (min-width: 429px) {
+@media (max-width: 429px) {
            .main_consulter_compte_membre .crea_pro_raison_sociale_num_siren, .main_consulter_compte_membre .crea_pro_mail_tel {
                       flex-direction: column;
                       gap: 0;
