@@ -134,6 +134,7 @@ if(!isset($_SESSION['pro'])){
                 <button class="image-button">
                     Publier une offre
                 </button>
+                <img src="images/croix.png">
             </a>
             
         </section> 
