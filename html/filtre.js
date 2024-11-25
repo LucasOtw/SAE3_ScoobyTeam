@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function(){
     // Gestion du clic sur le bouton "Autres"
     autresButton.addEventListener('click', () => {
         // Alterne entre affichage et masquage
-        filtersSection.classList.toggle('hidden');
-        console.log(i+1);
+        filtersSection.classList.toggle('hidden', !filtersSection.classList.contains('hidden'));
     });
 });
