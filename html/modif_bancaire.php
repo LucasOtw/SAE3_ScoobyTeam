@@ -37,7 +37,7 @@ include("recupInfosCompte.php");
             </div>
             <div class="profile-info">
                 <img class="profile-picture" src="images/hotel.jpg" alt="Profil utilisateur">
-                <h1><?php echo $monCompte['raison_sociale']; ?></h1>
+                <h1><?php echo $monComptePro['raison_sociale']; ?></h1>
                 <p><?php echo $compte['mail'] . " | " . $compte['telephone']; ?></p>
             </div>
         </section>
@@ -94,7 +94,7 @@ include("recupInfosCompte.php");
                     // Mettre à jour les informations bancaires dans la base de données
                     $update_query = "UPDATE tripenarvor._compte_bancaire SET nom_compte = :nom, iban = :iban, bic = :bic WHERE code_compte_bancaire = :code_compte_bancaire";
                     $stmt = $pdo->prepare($update_query);
-                    $stmt->bindParam(':code_compte_bancaire', $monCompte["code_compte_bancaire"]);
+                    $stmt->bindParam(':code_compte_bancaire', $monComptePro["code_compte_bancaire"]);
                     $stmt->bindParam(':nom', $nom);
                     $stmt->bindParam(':iban', $iban);
                     $stmt->bindParam(':bic', $bic);
