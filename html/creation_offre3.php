@@ -8,8 +8,10 @@ if(!isset($_SESSION['pro'])){
     header('location: connexion_pro.php');
     exit;
 }
-if(isset($_SESSION['crea_offre']) && isset($_SESSION['crea_offre2']) && isset($_SESSION['crea_offre3']) && isset($_SESSION['crea_offre4'])){
-    echo "DOBBY HAS NO MASTER YOU SON OF A BITCH !";
+if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
+    if(isset($_SESSION['crea_offre']) && isset($_SESSION['crea_offre2']) && isset($_SESSION['crea_offre3']) && isset($_SESSION['crea_offre4'])){
+        echo "DOBBY HAS NO MASTER YOU SON OF A BITCH !";
+    }
 }
 
 ?>
@@ -90,8 +92,8 @@ if(isset($_SESSION['crea_offre']) && isset($_SESSION['crea_offre2']) && isset($_
                 </div>
 
                 <div class="boutons">
-                    <button type="submit" class="btn-primary">Valider</button>
-                    <button class="btn-secondary">Je l'ajouterai plus tard
+                    <button type="submit" name="valider" class="btn-primary">Valider</button>
+                    <button class="btn-secondary" name="valider_plus_tard">Je l'ajouterai plus tard
                         <img src="images/fleche_droite.png" alt="fleche_droite">
                     </button>
                 </div>
