@@ -16,6 +16,8 @@ if(!isset($_SESSION['membre'])){
    exit;
 }
 
+var_dump($_SESSION['membre']);
+
 if (isset($_POST['modif_infos'])){
     // Récupérer les valeurs initiales (par exemple, depuis la base de données)
    $valeursInitiales = [
