@@ -16,6 +16,57 @@ if(!isset($_SESSION['pro'])){
    header('location: connexion_pro.php');
    exit;
 }
+
+if (isset($_POST['modif_infos'])){
+    // Récupérer les valeurs initiales (par exemple, depuis la base de données)
+   $valeursInitiales = [
+       'raison-sociale' => $monComptePro['raison_sociale'],
+       'mail' => $compte['mail'],
+       'telephone' => $compte['telephone'],
+       'adresse' => $_adresse['adresse_postal'],
+       'code-postal' => $_adresse['code_postal'],
+       'ville' => $_adresse['ville'],
+   ];
+   
+   // Champs modifiés
+   $champsModifies = [];
+   
+   // Parcourir les données soumises
+   foreach ($_POST as $champ => $valeur) {
+       if (isset($valeursInitiales[$champ]) && $valeursInitiales[$champ] !== $valeur) {
+           $champsModifies[$champ] = $valeur;
+       }
+   }
+   
+   // Mettre à jour seulement les champs modifiés
+   if (!empty($champsModifies)) {
+       foreach ($champsModifies as $champ => $valeur) {
+           switch ($champ) {
+               case 'mail':
+                   $valeurSansEspaces = trim(preg_replace('/\s+/', '', trim($valeur)));
+                   $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
+                   $query->execute(['valeur' => $valeurSansEspaces, 'code_compte' => $compte['code_compte']]);
+                   break;
+               
+               case 'telephone':
+                   $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
+                   $query->execute(['valeur' => trim(preg_replace('/\s+/', '', trim($valeur))), 'code_compte' => $compte['code_compte']]);
+                   break;
+   
+               case 'adresse':
+               case 'code-postal':
+               case 'ville':
+                   $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
+                   $query->execute(['valeur' => trim($valeur), 'code_adresse' => $monAdresse['code_adresse']]);
+                   break;
+           }
+       }
+       // echo "Les informations ont été mises à jour.";
+       include("recupInfosCompte.php");
+   } else {
+       echo "Aucune modification détectée.";
+   }
+}
 ?>
 
 <!DOCTYPE html>
@@ -167,57 +218,6 @@ if(!isset($_SESSION['pro'])){
             </div>
         </div>
     </footer>
-    <?php
-        if (isset($_POST['modif_infos'])){
-        // Récupérer les valeurs initiales (par exemple, depuis la base de données)
-           $valeursInitiales = [
-               'raison-sociale' => $monComptePro['raison_sociale'],
-               'mail' => $compte['mail'],
-               'telephone' => $compte['telephone'],
-               'adresse' => $_adresse['adresse_postal'],
-               'code-postal' => $_adresse['code_postal'],
-               'ville' => $_adresse['ville'],
-           ];
-           
-           // Champs modifiés
-           $champsModifies = [];
-           
-           // Parcourir les données soumises
-           foreach ($_POST as $champ => $valeur) {
-               if (isset($valeursInitiales[$champ]) && $valeursInitiales[$champ] !== $valeur) {
-                   $champsModifies[$champ] = $valeur;
-               }
-           }
-           
-           // Mettre à jour seulement les champs modifiés
-           if (!empty($champsModifies)) {
-               foreach ($champsModifies as $champ => $valeur) {
-                   switch ($champ) {
-                       case 'mail':
-                           $valeurSansEspaces = trim(preg_replace('/\s+/', '', trim($valeur)));
-                           $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
-                           $query->execute(['valeur' => $valeurSansEspaces, 'code_compte' => $compte['code_compte']]);
-                           break;
-                       
-                       case 'telephone':
-                           $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
-                           $query->execute(['valeur' => trim(preg_replace('/\s+/', '', trim($valeur))), 'code_compte' => $compte['code_compte']]);
-                           break;
-           
-                       case 'adresse':
-                       case 'code-postal':
-                       case 'ville':
-                           $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
-                           $query->execute(['valeur' => trim($valeur), 'code_adresse' => $monAdresse['code_adresse']]);
-                           break;
-                   }
-               }
-               // echo "Les informations ont été mises à jour.";
-               include("recupInfosCompte.php");
-       } else {
-           echo "Aucune modification détectée.";
-       }
-    }
-?>
+
 </body>
 </html>
