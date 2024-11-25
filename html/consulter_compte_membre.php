@@ -24,8 +24,8 @@ if (isset($_POST['modif_infos'])){
        'pseudo' => $monCompteMembre['pseudo'],
        'mail' => $compte['mail'],
        'telephone' => $compte['telephone'],
-       'adresse' => $_adresse['adresse_postal'],
-       'code-postal' => $_adresse['code_postal'],
+       'adresse_postal' => $_adresse['adresse_postal'],
+       'code_postal' => $_adresse['code_postal'],
        'ville' => $_adresse['ville'],
    ];
    
@@ -54,14 +54,20 @@ if (isset($_POST['modif_infos'])){
                    $valeurSansEspaces = trim(preg_replace('/\s+/', '', trim($valeur)));
                    $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
                    $query->execute(['valeur' => $valeurSansEspaces, 'code_compte' => $compte['code_compte']]);
+                   if($query){
+                      $_SESSION['membre']['mail'] = $valeurSansEspaces;
+                   }
                    break;
                case 'telephone':
                    $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
                    $query->execute(['valeur' => trim(preg_replace('/\s+/', '', trim($valeur))), 'code_compte' => $compte['code_compte']]);
+                   if($query){
+                      $_SESSION['membre']['telephone'] = trim(preg_replace('/\s+/', '', trim($valeur)));
+                   }
                    break;
    
-               case 'adresse':
-               case 'code-postal':
+               case 'adresse_postal':
+               case 'code_postal':
                case 'ville':
                    $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
                    $query->execute(['valeur' => trim($valeur), 'code_adresse' => $_adresse['code_adresse']]);
