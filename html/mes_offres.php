@@ -65,6 +65,21 @@ if(!isset($_SESSION['pro'])){
             <button class="button-Active" id="offline-btn">Hors - Ligne</button>
             <button class="button-Ligne" id="online-btn">En Ligne</button>
         </div>
+        <script>
+            const offlineBtn = document.getElementById('offline-btn');
+            const onlineBtn = document.getElementById('online-btn');
+            
+            // Ajoute un écouteur d'événements pour chaque bouton
+            offlineBtn.addEventListener('click', () => {
+                offlineBtn.className = 'button-Active';
+                onlineBtn.className = 'button-Ligne';
+            });
+            
+            onlineBtn.addEventListener('click', () => {
+                onlineBtn.className = 'button-Active';
+                offlineBtn.className = 'button-Ligne';
+            });
+        </script>
         <section class="offers">
         <?php
             foreach($mesOffres as $monOffre){
