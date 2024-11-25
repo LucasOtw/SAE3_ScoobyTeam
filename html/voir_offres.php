@@ -57,7 +57,7 @@ function tempsEcouleDepuisPublication($offre){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Offres PACT</title>
-    <link rel="stylesheet" href="voir_offres.css?">
+    <link rel="stylesheet" href="voir_offres.css?ad">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="filtre.js"></script>
