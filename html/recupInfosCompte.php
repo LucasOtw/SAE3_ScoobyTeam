@@ -11,6 +11,7 @@
   // on récupère les infos du compte actuelle
   if(isset($_SESSION['membre'])){
      $compte = $_SESSION['membre'];
+    
 
     /*
     *  LA SESSION 'membre' CONTIENT DEJA LES INFOS DU SELECT SUR tripenarvor._compte !!!
