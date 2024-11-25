@@ -173,7 +173,7 @@ function tempsEcouleDepuisPublication($offre){
     <main class="toute_les_offres_main">
         <div class="search-bar">
             <div class="search-top">
-                <input type="text" class="search-input" placeholder="Recherchez parmi mes offres" />
+                <input type="text" class="search-input" placeholder="Recherchez parmi les offres" />
                 <button class="search-button">Rechercher</button>
             </div>
             <div class="search-options">
@@ -187,7 +187,6 @@ function tempsEcouleDepuisPublication($offre){
                 </select>
                 <select class="search-select">
                     <option value="">Lieu</option>
-                    <option value="">Lieu ></option>
                 </select>
                 <select class="search-select">
                     <option value="" hidden selected>Ouverture</option>
