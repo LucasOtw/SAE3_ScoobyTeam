@@ -10,7 +10,11 @@ var_dump($_SESSION['crea_offre_3']);
 echo "</pre>";
 
 if(isset($_POST['envoiForm4'])){
+    echo "<pre>";
     var_dump($_POST);
+    echo "</pre>";
+
+    // si le formulaire est envoyé, on va devoir 
 }
 
 ?>
@@ -40,7 +44,7 @@ if(isset($_POST['envoiForm4'])){
     </header>
      <div class="fleche_retour">
         <div>
-            <a href="creation_offre1.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
+            <a href="../etape_2_.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
         </div>
     </div>
 
