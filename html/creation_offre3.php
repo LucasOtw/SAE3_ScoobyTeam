@@ -13,6 +13,7 @@ if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
         echo "DOBBY HAS NO MASTER YOU SON OF A BITCH !";
     } else {
         header('location: creation_offre.php');
+        exit;
     }
 }
 
