@@ -203,7 +203,6 @@ function tempsEcouleDepuisPublication($offre){
             </label>
             <button class="apply-filters">Appliquer les filtres</button>
         </div>
-    </main>
     <script src="filtre.js"></script>
         <header>
             <h2>Les offres</h2>
@@ -227,7 +226,7 @@ function tempsEcouleDepuisPublication($offre){
                 <button>Voir l'offre →</button>
             </div>
         </article> -->
-
+    </main>
         <?php
             try {
                 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
