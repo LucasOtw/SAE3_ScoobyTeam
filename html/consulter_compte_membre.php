@@ -189,6 +189,7 @@ if (isset($_POST['modif_infos'])){
             </div>
             
             <div class="compte_membre_save_delete">
+                <a href="voir_offres.php?deco=true" class="submit-btn1">Déconnexion</a>
                 <button type="submit" name="modif_infos" class="submit-btn2" id="btn-enreg">Enregistrer</button>
             </div>
 
