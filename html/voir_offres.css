@@ -645,7 +645,7 @@ nav.nav-bar {
     display: flex;
     flex-direction: column;
     align-items: center; /* Assurez-vous que les éléments internes sont centrés */
-    transform: translate(75%, 30%); /* Centrer l'élément par rapport à son point central */
+    transform: translate(100%, 30%); /* Centrer l'élément par rapport à son point central */
     background: rgba(255, 255, 255, 0.8);
     border-radius: 30px;
     padding: 20px;
