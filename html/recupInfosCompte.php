@@ -12,10 +12,6 @@
   if(isset($_SESSION['membre'])){
      $compte = $_SESSION['membre'];
 
-    echo "<pre>";
-    var_dump($compte);
-    echo "</pre>";
-
      // on sélectionne les infos du membre
 
     $monCompte = $dbh->prepare("SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte");
@@ -47,14 +43,8 @@
      $monComptePro->execute();
      $monComptePro = $monComptePro->fetch(PDO::FETCH_ASSOC);
 
-     $infosCompte = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE code_compte = :code_compte");
-     $infosCompte->bindValue(":code_compte",$compte['code_compte']);
-     $infosCompte->execute();
-
-     $mesInfos = $infosCompte->fetch(PDO::FETCH_ASSOC);
-
      $monAdresse = $dbh->prepare("SELECT * FROM tripenarvor._adresse WHERE code_adresse = :code_adresse");
-     $monAdresse->bindValue(":code_adresse",$mesInfos['code_adresse']);
+     $monAdresse->bindValue(":code_adresse",$compte['code_adresse']);
      $monAdresse->execute();
 
     // on regarde si le pro est privé ou publique
