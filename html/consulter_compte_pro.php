@@ -7,11 +7,11 @@ include("recupInfosCompte.php");
 if(isset($_GET['logout'])){
    session_unset();
    session_destroy();
-   header('location: connexion_membre.php');
+   header('location: connexion_pro.php');
    exit;
 }
 
-if(!isset($_SESSION['membre'])){
+if(!isset($_SESSION['pro'])){
    header('location: connexion_membre.php');
    exit;
 }
