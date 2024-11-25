@@ -915,7 +915,7 @@ footer {
 }
 
 /* Styles pour les écrans de 429px et plus */
-@media (min-width: 429px) {
+@media (min-width: 430px) {
 
     .header,
     .back-button,
