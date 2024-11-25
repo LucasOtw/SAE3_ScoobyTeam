@@ -1,11 +1,7 @@
 <?php
 
+ob_start();
 session_start();
-
-echo "<pre>";
-var_dump($_SESSION['crea_offre']);
-var_dump($_SESSION['crea_offre_2']);
-echo "</pre>";
 
       if (isset($_POST['EnvoiEtape3'])) {
           $jours = [
