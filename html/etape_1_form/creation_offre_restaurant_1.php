@@ -328,8 +328,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $tab_offre['photos'] = [];
             }
 
-            foreach($_POST['tags'] as $tags){
-                $mesTags[] = $tags;
+            $mesTags = [];
+            if (isset($_POST['tags']) && is_array($_POST['tags'])) {
+                foreach ($_POST['tags'] as $tag) {
+                    $mesTags[] = htmlspecialchars($tag);
+                }
             }
             $tab_offre["tags"] = $mesTags;
 
