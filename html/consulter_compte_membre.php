@@ -91,13 +91,13 @@ if (isset($_POST['modif_infos'])){
         </div>
         <nav>
             <ul>
-                <li><a href="voir_offres.php" class="active">Accueil</a></li>
+                <li><a href="voir_offres.php">Accueil</a></li>
                 <li><a href="connexion_pro.php">Publier</a></li>
                 <?php
                     if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
                        ?>
                        <li>
-                           <a href="consulter_compte_membre.php">Mon compte</a>
+                           <a href="consulter_compte_membre.php" class="active">Mon compte</a>
                        </li>
                         <?php
                     } else {
