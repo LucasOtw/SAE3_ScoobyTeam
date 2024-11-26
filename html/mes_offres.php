@@ -118,12 +118,7 @@ if (isset($_GET["filter"])) {
                     <img src="images/croix.png">
                 </button>
         </a>
-        <a href="creation_offre.php" class="button-text">
-                <button class="image-button">
-                    Publier une offre
-                    <img src="images/croix.png">
-                </button>
-        </a>
+        
     </section>
     
 </main>
