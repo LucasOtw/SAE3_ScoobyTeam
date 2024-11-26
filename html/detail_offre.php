@@ -88,7 +88,7 @@
     
             $stmt = $dbh->prepare('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = :code_offre;');
             $stmt->execute([':code_offre' => $code_offre]);
-            $images_offre = $stmt->fetch(PDO::FETCH_NUM);
+            $images_offre = $stmt->fetchAll(PDO::FETCH_NUM);
 
 
             echo '<pre>';
