@@ -1267,7 +1267,7 @@ footer {
         }
 
         /* Lorsque le toggle est activé (en ligne) */
-        .toggle .active {
+        .toggle-button .active {
             background-color: orange;
         }
 
