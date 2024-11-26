@@ -100,9 +100,9 @@ if (isset($_POST['modif_infos'])){
                    ]);
 
                    if ($query->rowCount() > 0) {
-                      echo "La donnée a été modifiée avec succès dans la base de données.";
+                      print_r("La donnée a été modifiée avec succès dans la base de données.");
                   } else {
-                      echo "Aucune modification effectuée. Les données sont peut-être déjà identiques.";
+                      print_r("Aucune modification effectuée. Les données sont peut-être déjà identiques.");
                   }
                
                    if ($query->rowCount() > 0) {
