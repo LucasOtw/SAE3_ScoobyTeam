@@ -1208,6 +1208,8 @@ body.menu-open #overlay {
     .toute_les_offres_main .search-bar {
         width: 95%; /* La barre de recherche prend 95% de la largeur de l'écran */
         padding: 10px; /* Réduire le padding pour une meilleure adaptation */
+        box-shadow: none;
+        backdrop-filter: none;
     }
 
     .toute_les_offres_main .search-top {
