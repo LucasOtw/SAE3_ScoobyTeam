@@ -31,7 +31,7 @@ $infosCB = null;
 // on vérifie si le pro a un compte bancaire
 if($monComptePro['code_compte_bancaire']){
     // si le pro a un code de compte bancaire, on récupère ses infos
-    $recupInfosCB = $dbh->prepare('SELECT * FROM tripenarvor._compte WHERE code_compte_bancaire = :code_cb');
+    $recupInfosCB = $dbh->prepare('SELECT * FROM tripenarvor._compte_bancaire WHERE code_compte_bancaire = :code_cb');
     $recupInfosCB->bindValue(":code_cb",$monComptePro['code_compte_bancaire']);
     $recupInfosCB->execute();
 
