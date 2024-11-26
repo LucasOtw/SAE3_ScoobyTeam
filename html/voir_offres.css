@@ -688,18 +688,20 @@ body {
     transition: margin-right 0.3s ease;
 }
 
-button {
+#voir_offres_menu {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
     border-radius: 25px;
     border: 1px solid var(--vert-clair);
     background-color: var(--vert-clair);
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
-button:hover {
+#voir_offres_menu:hover {
     background-color: #BDC426;
     color: white;
+    transform: scale(1.02); /* Légère augmentation de taille */
 }
 
 #overlay {

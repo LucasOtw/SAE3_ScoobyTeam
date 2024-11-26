@@ -121,7 +121,6 @@ function tempsEcouleDepuisPublication($offre){
             <div class="logo-pc" style="z-index: 1">
                 <img src="images/logoBlanc.png" alt="PACT Logo">
             </div>
-            
             <nav>
                 <ul>
                     <li><a href="voir_offres.php" class="active">Accueil</a></li>
@@ -230,7 +229,7 @@ function tempsEcouleDepuisPublication($offre){
                 <option value="oldest">Plus anciennes</option>
             </select>
 
-            <button type="submit">Appliquer les filtres</button>
+            <button id="voir_offres_menu" type="submit">Appliquer les filtres</button>
         </form>
     </div>
 
