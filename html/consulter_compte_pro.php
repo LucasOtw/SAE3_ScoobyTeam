@@ -22,6 +22,7 @@ if (isset($_POST['modif_infos'])){
        'mail' => $compte['mail'],
        'telephone' => $compte['telephone'],
        'adresse_postal' => $_adresse['adresse_postal'],
+      'complement_adresse' => $_adresse['complement_adresse'],
        'code_postal' => $_adresse['code_postal'],
        'ville' => $_adresse['ville'],
    ];
@@ -57,12 +58,13 @@ if (isset($_POST['modif_infos'])){
                    break;
    
                case 'adresse_postal':
+               case 'complement_adresse':
                case 'code_postal':
                case 'ville':
                    $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
                    $query->execute(['valeur' => trim($valeur), 'code_adresse' => $_adresse['code_adresse']]);
                    if($query){
-                     $_SESSION['pro']['ville'] = $valeur;  
+                     $_SESSION['pro'][$champ] = $valeur;  
                    }
                    break;
            }
@@ -150,12 +152,12 @@ if (isset($_POST['modif_infos'])){
 
             <fieldset>
                 <legend>Adresse Postale *</legend>
-                <input type="text" id="adresse" name="adresse" placeholder="Adresse postale *" value="<?php echo trim(preg_replace('/(\d{2})/', '$1 ', $_adresse['adresse_postal'])) ?>" required>
+                <input type="text" id="adresse" name="adresse_postal" placeholder="Adresse postale *" value="<?php echo trim(preg_replace('/(\d{2})/', '$1 ', $_adresse['adresse_postal'])) ?>" required>
             </fieldset>
 
             <fieldset>
                 <legend>Complément d'adresse</legend>
-                <input type="text" id="comp_adresse" name="comp_adresse" placeholder="Complément d'adresse" value="<?php echo $_adresse['complement_adresse']; ?>">
+                <input type="text" id="complement_adresse" name="complement_adresse" placeholder="Complément d'adresse" value="<?php echo $_adresse['complement_adresse']; ?>">
             </fieldset>
             
             <div class="crea_pro_raison_sociale_num_siren">
