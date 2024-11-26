@@ -572,6 +572,7 @@ a.button-text{
     height: 50px;
     background-color: #F28322;
     color: black;
+    text-decoration: none;
 }
 
 .button-Active {
