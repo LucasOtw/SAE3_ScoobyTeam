@@ -179,7 +179,7 @@ if (isset($_POST['modif_infos'])){
                     echo "connexion_membre.php";
                 }
             ?>">
-            <img src="images/icones/User icon.png" alt="image de Personne"></a>
+            <a href="compte_membre_tel.php"><img src="images/icones/User icon.png" alt="image de Personne"></a>
     </nav>
     <footer class="footer_detail_avis">
         <div class="newsletter">
