@@ -714,60 +714,164 @@ body {
     z-index: 9;
     display: none;
 }
-
+/* Style général de la fenêtre de filtre */
 .filter-menu {
     position: fixed;
     top: 0;
-    right: -300px;
-    width: 300px;
+    right: -400px;
+    width: 400px;
     height: 100%;
-    background: #f5f5f5;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-    padding: 20px;
+    background: #ffffff;
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
     z-index: 10;
-    transition: right 0.3s ease;
+    transition: right 0.4s ease, width 0.2s ease;
+    overflow-y: auto;
 }
 
+/* Titre */
 .filter-menu h2 {
     margin: 0 0 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
 }
 
+/* Labels */
 .filter-menu label {
     display: block;
-    margin: 10px 0 5px;
+    margin: 15px 0 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
 }
 
+/* Champs de saisie */
 .filter-menu input,
-.filter-menu select,
-.filter-menu button {
+.filter-menu select {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 15px;
     font-size: 16px;
-    border-radius: 10px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    background: #f9f9f9;
+    transition: all 0.3s ease;
 }
 
+.filter-menu input:focus,
+.filter-menu select:focus {
+    border-color: #00a65a;
+    background: #fff;
+    box-shadow: 0 0 6px rgba(0, 166, 90, 0.3);
+    outline: none;
+}
+
+/* Boutons */
+.filter-menu button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+
+}
+
+.filter-menu button:hover {
+    transform: scale(1.02);
+}
+
+/* Bouton de fermeture */
 .filter-menu .close-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 13px;
+    right: 56px;
     font-size: 24px;
+    color: #333;
     background: none;
     border: none;
     cursor: pointer;
 }
 
-body.menu-open .content {
-    margin-right: 300px;
+
+/* Gestion de l'état ouvert */
+body.menu-open .filter-menu {
+    right: 0;
+    width: 400px;
 }
 
 body.menu-open #overlay {
     display: block;
 }
 
-body.menu-open .filter-menu {
-    right: 0;
-    width: 31em;
+/* Effets hover pour les champs */
+.filter-menu input:hover,
+.filter-menu select:hover {
+    border-color: #ccc;
+}
+
+/* Style des plages de prix */
+#price-slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#price-slider input[type="range"] {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    margin: 8px 0;
+    transition: background 0.3s ease;
+}
+
+#price-slider input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--vert-clair);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#price-slider input[type="range"]:hover {
+    background: #d6d6d6;
+}
+
+#price-slider p {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+}
+
+/* Style des dates */
+.filter-menu input[type="date"] {
+    font-family: inherit;
+    color: #333;
+}
+
+/* Amélioration pour les petits écrans */
+@media (max-width: 768px) {
+    .filter-menu {
+        width: 100%;
+    }
+    body.menu-open .filter-menu {
+        right: 0;
+    }
 }
 
 

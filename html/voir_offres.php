@@ -190,12 +190,14 @@ function tempsEcouleDepuisPublication($offre){
                     <option value="">Parc d'attraction</option>
                 </select>
                 <select class="search-select">
-                    <option value="">Lieu</option>
+                    <option value="" hidden selected>Prix</option>
+                    <option value="">Décroissant</option>
+                    <option value="">Croissant</option>
                 </select>
                 <select class="search-select">
-                    <option value="" hidden selected>Ouverture</option>
-                    <option value="">Ouvert</option>
-                    <option value="">Fermé</option>
+                    <option value="" hidden selected>Note</option>
+                    <option value="">Décroissant</option>
+                    <option value="">Croissant</option>
                 </select>
                 <button id="openMenu" class="search-select">Autres</button>
             </div>
@@ -203,34 +205,57 @@ function tempsEcouleDepuisPublication($offre){
         <div id="overlay"></div>
     
 
-    <div class="filter-menu" id="filterMenu">
-        <button id="closeMenu" class="close-btn">&times; </button>
-        <h2>Filtres</h2>
-        <form>
-            <label for="category">Catégorie</label>
-            <select id="category">
-                <option value="all">Toutes catégories</option>
-                <option value="mode">Mode</option>
-                <option value="maison">Maison & Jardin</option>
-            </select>
+        <div class="filter-menu" id="filterMenu">
+    <button id="closeMenu" class="close-btn">&times;</button>
+    <h2>Filtres</h2>
+    <form>
+        <!-- Lieu -->
+        <label for="voir_offres_lieu">Lieu</label>
+        <input type="text" id="location" placeholder="Ex : Lannion">
 
-            <label for="price-min">Prix minimum (€)</label>
-            <input type="number" id="price-min" placeholder="0">
+        <!-- Note générale des avis -->
+        <label for="category">Note générale des avis</label>
+        <select id="category">
+            <option value="all">Les notes</option>
+            <option value="1">1 étoile</option>
+            <option value="2">2 étoiles</option>
+            <option value="3">3 étoiles</option>
+            <option value="4">4 étoiles</option>
+            <option value="5">5 étoiles</option>
+        </select>
 
-            <label for="price-max">Prix maximum (€)</label>
-            <input type="number" id="price-max" placeholder="1000">
+        <!-- Fourchette de prix avec un slider -->
+        <label for="price-range">Fourchette de prix (€)</label>
+        <div id="price-slider">
+            <input type="range" id="price-min" name="price-min" min="0" max="1000" step="10" value="100">
+            <input type="range" id="price-max" name="price-max" min="0" max="1000" step="10" value="900">
+            <p>
+                De : <span id="price-min-display">100</span> € à : <span id="price-max-display">900</span> €
+            </p>
+        </div>
 
-            <label for="sort">Tri</label>
-            <select id="sort">
-                <option value="relevance">Pertinence</option>
-                <option value="recent">Plus récentes</option>
-                <option value="oldest">Plus anciennes</option>
-            </select>
+        <!-- Statut -->
+        <label for="sort">Statut</label>
+        <select id="sort">
+            <option value="relevance">Ouverture</option>
+            <option value="open">Ouvert</option>
+            <option value="closed">Fermé</option>
+            <option value="closing-soon">Ferme bientôt !</option>
+        </select>
 
-            <button id="voir_offres_menu" type="submit">Appliquer les filtres</button>
-        </form>
-    </div>
+        <!-- Dates d'événement -->
+        <label for="event-date">Date d’évènement</label>
+        <input type="date" id="event-date">
 
+        <!-- Dates d'ouverture -->
+        <label for="opening-dates">Dates d’ouverture</label>
+        <input type="date" id="opening-start-date" placeholder="Début">
+        <input type="date" id="opening-end-date" placeholder="Fin">
+
+        <!-- Bouton Appliquer -->
+        <button id="voir_offres_menu" type="submit">Appliquer les filtres</button>
+    </form>
+</div>
 
 
 
