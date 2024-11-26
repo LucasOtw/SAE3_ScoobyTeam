@@ -278,7 +278,21 @@
                         ⭐ 5.0 (255 avis)
                     </div> -->
                 </div>
+                <div class="toggle-container">
+                    <div id="toggle" class="toggle-button">
+                        <div class="toggle-circle"></div>
+                    </div>
+                </div>
 
+                <script>
+                    // Sélectionner le bouton toggle
+                    const toggleButton = document.getElementById('toggle');
+            
+                    // Ajouter un événement au toggle pour basculer son état
+                    toggleButton.addEventListener('click', () => {
+                        toggleButton.classList.toggle('active');
+                    });
+                </script>
                 <div class="detail_offre_price-button">
 
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
