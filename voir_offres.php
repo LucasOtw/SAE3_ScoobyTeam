@@ -80,70 +80,22 @@ if(isset($_GET["deco"])){
             <h2>À la Une</h2>
         </header>
 
-        <div class="a-la-une-wrapper">
-            <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft()">&#8249;</button>
-            <section class="a-la-une">
-                <article class="card-a-la-une">
-                    <div class="image-background-card-a-la-une">
-                        <img src="images/tiallannec.jpg" alt="">
-                        <div class="raison-sociale-card-a-la-une">
-                            <p>Ti Al Lannec</p>
-                        </div>
+        <div class="a-la-une-carrousel">
+        <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft()">&#8249;</button>
+        <section class="a-la-une">
+            <article class="card-a-la-une">
+                <div class="image-background-card-a-la-une">
+                    <img src="images/tiallannec.jpg" alt="">
+                    <div class="raison-sociale-card-a-la-une">
+                        <p>Ti Al Lannec</p>
                     </div>
-                </article>
-                <article class="card-a-la-une">
-                    <div class="image-background-card-a-la-une">
-                        <img src="images/tiallannec.jpg" alt="">
-                        <div class="raison-sociale-card-a-la-une">
-                            <p>Ti Al Lannec</p>
-                        </div>
-                    </div>
-                </article>
-                <article class="card-a-la-une">
-                    <div class="image-background-card-a-la-une">
-                        <img src="images/tiallannec.jpg" alt="">
-                        <div class="raison-sociale-card-a-la-une">
-                            <p>Ti Al Lannec</p>
-                        </div>
-                    </div>
-                </article>
-                <article class="card-a-la-une">
-                    <div class="image-background-card-a-la-une">
-                        <img src="images/tiallannec.jpg" alt="">
-                        <div class="raison-sociale-card-a-la-une">
-                            <p>Ti Al Lannec</p>
-                        </div>
-                    </div>
-                </article>
-                <article class="card-a-la-une">
-                    <div class="image-background-card-a-la-une">
-                        <img src="images/tiallannec.jpg" alt="">
-                        <div class="raison-sociale-card-a-la-une">
-                            <p>Ti Al Lannec</p>
-                        </div>
-                    </div>
-                </article>
-                <article class="card-a-la-une">
-                    <div class="image-background-card-a-la-une">
-                        <img src="images/tiallannec.jpg" alt="">
-                        <div class="raison-sociale-card-a-la-une">
-                            <p>Ti Al Lannec</p>
-                        </div>
-                    </div>
-                </article>
-                <article class="card-a-la-une">
-                    <div class="image-background-card-a-la-une">
-                        <img src="images/tiallannec.jpg" alt="">
-                        <div class="raison-sociale-card-a-la-une">
-                            <p>Ti Al Lannec</p>
-                        </div>
-                    </div>
-                </article>
-            <!-- Ajoutez d'autres cartes ici -->
-            </section>
-            <button class="card-scroll-btn card-scroll-btn-right" onclick="scrollcontentRight()">&#8250;</button>
-        </div>
-
+                </div>
+            </article>
+            
+        <!-- Ajoutez d'autres cartes ici -->
+        </section>
+        <button class="card-scroll-btn card-scroll-btn-right" onclick="scrollcontentRight()">&#8250;</button>
+    </div>
 
 
 
