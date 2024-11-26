@@ -1089,16 +1089,15 @@ body.menu-open #overlay {
     margin-right: 6em;
 }
 
-/* Section des cartes */
-.toute_les_offres_main .a-la-une {
+/* Conteneur global */
+.toute_les_offres_main .a-la-une-carrousel {
+    position: relative;
     display: flex;
-    overflow-x: scroll;
-    scroll-behavior: smooth;
-    width: 80vw;
-    /* Réduit la largeur de la section pour vérifier le défilement */
-    min-width: 100%;
-
+    align-items: center;
+    margin-left: 6em;
+    margin-right: 6em;
 }
+
 
 .toute_les_offres_main .a-la-une::-webkit-scrollbar {
     display: none;
