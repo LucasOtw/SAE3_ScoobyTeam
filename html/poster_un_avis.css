@@ -527,12 +527,12 @@ footer {
         padding-bottom: 13px;
         padding-left: 45px;
         padding-top: 13px;
-        width: 41vh;
+        width: 90vw;
     }
     .titre_poster_un_avis_format_tel {
         color: black;
         display: flex;
-        margin-left: 4vh;
+        margin-left: 4vm;
     }
 
     .poster_un_avis_btn_annuler {
