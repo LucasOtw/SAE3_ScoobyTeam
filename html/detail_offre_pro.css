@@ -1263,9 +1263,9 @@ footer {
  transition: left 0.3s ease;
 }
 /* Lorsque le toggle est activé (en ligne) */
-.Active {
+.EnLigne {
  background-color: orange;
 }
-.Active .toggle-circle {
+.EnLigne .toggle-circle {
  left: 42px;
 }
