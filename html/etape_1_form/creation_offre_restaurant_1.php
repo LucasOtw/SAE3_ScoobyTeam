@@ -151,22 +151,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <nav>
             <ul>
-                <li><a href="voir_offres.php" class="active">Accueil</a></li>
-                <li><a href="connexion_pro.php">Publier</a></li>
+                <li><a href="../mes_offres.php" class="active">Accueil</a></li>
+                <li><a href="../creation_offre.php">Publier</a></li>
                 <?php
                     if(isset($_SESSION["pro"]) || !empty($_SESSION["pro"])){
                        ?>
                        <li>
-                           <a href="consulter_compte_pro.php">Mon compte</a>
+                           <a href="../consulter_compte_pro.php">Mon compte</a>
                        </li>
                         <li>
-                            <a href="creation_offre_restaurant_1.php?deco=true">Se déconnecter</a>
+                            <a href="../creation_offre_restaurant_1.php?deco=true">Se déconnecter</a>
                         </li>
                         <?php
                     } else {
                         ?>
                        <li>
-                           <a href="connexion_pro.php">Se connecter</a>
+                           <a href="../connexion_pro.php">Se connecter</a>
                        </li>
                        <?php
                     }
