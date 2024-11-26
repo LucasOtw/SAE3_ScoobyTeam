@@ -92,7 +92,7 @@ if (isset($_POST['modif_infos'])){
                        return;
                    }
 
-                   alert($valeurNettoye);
+                   print_r($valeurNettoye);
                
                    // Mise à jour dans la base de données
                    $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
