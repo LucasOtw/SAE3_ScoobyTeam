@@ -1043,7 +1043,7 @@ body.menu-open .filter-menu {
     width: 25em;
     background-color: grey;
     border-radius: 1.5em;
-    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
+    
     overflow: hidden;
 }
 
