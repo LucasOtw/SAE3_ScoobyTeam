@@ -38,7 +38,12 @@ if($monComptePro['code_compte_bancaire']){
     $infosCB = $recupInfosCB->fetch(PDO::FETCH_ASSOC);
 }
 
+if(isset($_POST['valider']){
+   $code_iban = $_POST['IBAN'];
 
+   validerIBAN($code_iban);
+}
+    
 ?>
 <!DOCTYPE html>
 <html lang="fr">
