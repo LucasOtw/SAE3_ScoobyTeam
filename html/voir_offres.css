@@ -1197,7 +1197,7 @@ body.menu-open #overlay {
 .toute_les_offres_main #btn-voir-offre {
     background-color: var(--vert-clair);
     color: #fff;
-    padding: 1.25vh 1.75vw;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
