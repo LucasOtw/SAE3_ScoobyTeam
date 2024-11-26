@@ -27,7 +27,7 @@ include("recupInfosCompte.php");
 </head>
 <body>
     <header class="header-tel">
-        <img class="background" src="images/image_fond_gris.png" alt="image de fond">
+        <img class="background" src="images/icones/image_fond_gris.png" alt="image de fond">
         <div class="logo-tel">
             <img src="images/LogoCouleur.png" alt="PACT Logo">
         </div>
@@ -42,20 +42,20 @@ include("recupInfosCompte.php");
         <div class="actions">
             <a href="consulter_compte_membre.php">
                 <button class="action-button">
-                    <img src="images/crayon.png" alt="crayon">
+                    <img src="images/icones/crayon.png" alt="crayon">
                     Éditer les informations
                 </button>
             </a>
             <a href="modif_mdp_membre.php">
                 <button class="action-button">
-                    <img src="images/bouclier.png" alt="bouclier">
+                    <img src="images/icones/bouclier.png" alt="bouclier">
                     Modifier mon mot de passe
                 </button>
             </a>
             <!-- <button class="action-button">📜 Historique</button> -->
             <a href="voir_offres.php?deco=true">
                 <button class="action-button">
-                    <img src="images/power.png" alt="power">
+                    <img src="images/icones/power.png" alt="power">
                     Déconnexion
                 </button>
             </a>
