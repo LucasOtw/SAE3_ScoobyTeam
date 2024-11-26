@@ -199,44 +199,45 @@
     */
 
     
-if (!function_exists('validerIBAN')) {
-    function validerIBAN($iban) {
-        $LONGUEUR_IBAN = 27;
-        $erreurs = []; // Initialisation des erreurs
-
-        // Nettoyage de l'IBAN
-        $iban = strtoupper(str_replace(' ', '', $iban));
-
-        // Vérification de la longueur
-        if (strlen($iban) !== $LONGUEUR_IBAN) {
-            $erreurs[] = "L'IBAN n'a pas la bonne longueur (attendu : $LONGUEUR_IBAN caractères) !";
-        } else {
-            // Extraction du code pays
-            $code_pays = substr($iban, 0, 2);
-            if ($code_pays !== "FR") {
-                $erreurs[] = "Le code IBAN doit commencer par \"FR\".";
+    if (!function_exists('validerIBAN')) {
+        function validerIBAN($iban) {
+            $LONGUEUR_IBAN = 27;
+            $erreurs = []; // Initialisation des erreurs
+    
+            // Nettoyage de l'IBAN
+            $iban = strtoupper(str_replace(' ', '', $iban));
+    
+            // Vérification de la longueur
+            if (strlen($iban) !== $LONGUEUR_IBAN) {
+                $erreurs[] = "L'IBAN n'a pas la bonne longueur (attendu : $LONGUEUR_IBAN caractères) !";
             } else {
-                // Réorganisation de l'IBAN
-                $rearrangedIban = substr($iban, 4) . substr($iban, 0, 4);
-
-                // Conversion des lettres en chiffres
-                $numericIban = '';
-                foreach (str_split($rearrangedIban) as $char) {
-                    $numericIban .= is_numeric($char) ? $char : ord($char) - 55;
-                }
-
-                // Validation modulo 97
-                if (bcmod($numericIban, 97) != 1) {
-                    $erreurs[] = "L'IBAN est invalide (échec du calcul modulo 97).";
+                // Extraction du code pays
+                $code_pays = substr($iban, 0, 2);
+                if ($code_pays !== "FR") {
+                    $erreurs[] = "Le code IBAN doit commencer par \"FR\".";
+                } else {
+                    // Réorganisation de l'IBAN
+                    $rearrangedIban = substr($iban, 4) . substr($iban, 0, 4);
+    
+                    // Conversion des lettres en chiffres
+                    $numericIban = '';
+                    foreach (str_split($rearrangedIban) as $char) {
+                        $numericIban .= is_numeric($char) ? $char : ord($char) - 55;
+                    }
+    
+                    // Validation modulo 97
+                    if (bcmod($numericIban, 97) != 1) {
+                        $erreurs[] = "L'IBAN est invalide (échec du calcul modulo 97).";
+                    }
                 }
             }
+    
+            // Retour des erreurs ou succès
+            if (!empty($erreurs)) {
+                return $erreurs; // Retourne les erreurs en cas d'échec
+            }
+            return true; // Valide si aucune erreur
         }
-
-        // Retour des erreurs ou succès
-        if (!empty($erreurs)) {
-            return $erreurs; // Retourne les erreurs en cas d'échec
-        }
-        return true; // Valide si aucune erreur
     }
 }
 
