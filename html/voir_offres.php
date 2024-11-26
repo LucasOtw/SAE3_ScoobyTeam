@@ -306,8 +306,8 @@ function tempsEcouleDepuisPublication($offre){
                     }
                     if (!empty($offre["option_a_la_une"]))
                     {
-                        if ($offre["en_ligne"])
-                        {
+                        /*if ($offre["en_ligne"])
+                        {*/
                         ?>
                             
                                 <article class="card-a-la-une">
@@ -320,7 +320,7 @@ function tempsEcouleDepuisPublication($offre){
                                 </article>
                             
                         <?php
-                        }
+                        //}
                     }
                 }
             ?>
@@ -379,8 +379,8 @@ function tempsEcouleDepuisPublication($offre){
                 } else {
                     $offre_image = "";
                 }
-                /*if ($offre["en_ligne"])
-                {*/
+                if ($offre["en_ligne"])
+                {
                 ?>
                     <article class="offer">
                         <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
@@ -395,7 +395,7 @@ function tempsEcouleDepuisPublication($offre){
                         </div>
                     </article>
                 <?php
-                //}
+                }
             }
 
         ?>
