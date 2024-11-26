@@ -437,7 +437,8 @@ footer {
     margin-top: 5vh;
 }
 
-.toute_les_offres_main h2 {
+.toute_les_offres_main .a-la-une-carrousel h2.titre-a-la-une, 
+.toute_les_offres_main .titre-a-la-une{
     margin-top : 2vh;
     margin-left: 8vw;
 }
@@ -1080,6 +1081,10 @@ body.menu-open #overlay {
     text-decoration : none;
 }
 
+.toute_les_offres_main .a-la-une-titre-carrousel {
+    margin-top: -26em;
+}
+
 /* Conteneur global */
 .toute_les_offres_main .a-la-une-carrousel {
     position: relative;
@@ -1087,6 +1092,7 @@ body.menu-open #overlay {
     align-items: center;
     margin: 3vh 8vw;
 }
+
 .toute_les_offres_main .a-la-une {
     margin-left: 1em;
 }
