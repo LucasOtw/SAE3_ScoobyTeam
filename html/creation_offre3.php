@@ -53,9 +53,11 @@ if(isset($_POST['valider'])){
         var_dump($_SESSION['crea_offre4']);
         echo "</pre>";
 
+        
         /*
         * VERIFICATION DE L'ADRESSE
         */
+        
 
         $adresse_postal = $_SESSION['crea_offre']['adresse'];
         $complement_adresse = $_SESSION['crea_offre']['complementAdresse'];
@@ -80,11 +82,9 @@ if(isset($_POST['valider'])){
         $adresseCorrespondante = $adresseCorrespondante->fetch(PDO::FETCH_ASSOC);
 
         if($adresseCorrespondante){
-            echo "HAHAHAHAHAHA !";
             // si on trouve une adresse exactement similaire dans la base de données
             $code_adresse = $adresseCorrespondante['code_adresse'];
         } else {
-            echo "INSERTION";
             // sinon, on l'insère...
             $ajoutAdresse = $dbh->prepare("INSERT INTO tripenarvor._adresse (adresse_postal,complement_adresse,code_postal,ville) VALUES
             (:adresse,:complement,:code_postal,:ville)");
@@ -94,8 +94,19 @@ if(isset($_POST['valider'])){
             $ajoutAdresse->bindValue(":ville",trim($ville));
 
             $ajoutAdresse->execute();
+            // et on récupère le dernier id inséré, dans notre cas, c'est FORCEMENT le code_adresse ! :D
             $code_adresse = $dbh->lastInsertId();
         }
+
+        var_dump($code_adresse);
+        
+
+        /*
+        * VERIFICATION DES HORAIRES
+        */
+
+        
+        
     }
 }
     
