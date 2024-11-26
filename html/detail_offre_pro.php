@@ -347,20 +347,69 @@
 
                 </div>
                 </div>
-                    <div class="toggle-container">
-                    <div id="toggle" class="toggle-button">
-                        <div class="toggle-circle"></div>
-                    </div>
-                </div>
-                <script>
-                    // Sélectionner le bouton toggle
-                    const toggleButton = document.getElementById('toggle');
-            
-                    // Ajouter un événement au toggle pour basculer son état
-                    toggleButton.addEventListener('click', () => {
-                        toggleButton.classList.toggle('EnLigne');
-                    });
-                </script>
+
+
+
+                    
+                    <!-- Conteneur de l'offre -->
+    <div>
+        <p id="offer-state">L'offre est actuellement : <span id="offer-status">Hors Ligne</span></p>
+    </div>
+
+    <!-- Bouton toggle -->
+    <div class="toggle-container">
+        <div id="toggle" class="toggle-button">
+            <div class="toggle-circle"></div>
+        </div>
+    </div>
+
+    <script>
+        // État initial de l'offre (peut être récupéré dynamiquement depuis une base de données)
+        let offerState = "Hors Ligne"; // Valeur initiale : "En Ligne" ou "Hors Ligne"
+
+        // Sélectionner les éléments
+        const toggleButton = document.getElementById('toggle');
+        const offerStatusText = document.getElementById('offer-status');
+
+        // Initialiser le bouton et le texte en fonction de l'état de l'offre
+        function initializeToggle() {
+            if (offerState === "En Ligne") {
+                toggleButton.classList.add('EnLigne');
+                offerStatusText.textContent = "En Ligne";
+            } else {
+                toggleButton.classList.remove('EnLigne');
+                offerStatusText.textContent = "Hors Ligne";
+            }
+        }
+
+        // Basculer l'état de l'offre
+        toggleButton.addEventListener('click', () => {
+            if (offerState === "Hors Ligne") {
+                offerState = "En Ligne";
+            } else {
+                offerState = "Hors Ligne";
+            }
+
+            // Mettre à jour le bouton et le texte
+            initializeToggle();
+
+            // Optionnel : envoyer l'état mis à jour au serveur (AJAX ou Fetch API)
+            console.log("Nouvel état de l'offre :", offerState);
+        });
+
+        // Initialiser le bouton au chargement de la page
+        initializeToggle();
+    </script>
+
+
+
+
+
+
+
+
+
+                    
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
                     <div class="detail_offre_pro_button">
                     <a href="<?php echo $details_offre["site_web"]; ?>"><button class="visit-button_detailoffre">Voir le site ➔</button></a>
