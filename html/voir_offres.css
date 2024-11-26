@@ -1232,7 +1232,7 @@ body.menu-open #overlay {
 
     .toute_les_offres_main .search-select {
         width: 100%; /* Les sélecteurs prennent toute la largeur */
-        padding: 8px; /* Réduire le padding pour mieux s'adapter à la taille */
+        
     }
     
     h1_voir_offre1, h1_voir_offre2 {
@@ -1256,7 +1256,7 @@ body.menu-open #overlay {
 
     }
     .search-bar {
-        margin:1em 0 15em 0;
+        margin:1em 0 20em 0;
     }
     .toute_les_offres_main .search-select{
         width:5em;

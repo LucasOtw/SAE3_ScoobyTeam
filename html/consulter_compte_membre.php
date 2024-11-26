@@ -79,6 +79,10 @@ if (isset($_POST['modif_infos'])){
                
                    // Validation spécifique par champ
                    $valeurNettoye = trim($valeur);
+                   if ($champ == 'code_postal')
+                   {
+                      $valeurNettoye = intval($valeur);
+                   }
                    if ($champ === 'code_postal' && !preg_match('/^\d{5}$/', $valeur)) {
                        echo "Erreur : code_postal invalide.";
                        return;
@@ -94,6 +98,12 @@ if (isset($_POST['modif_infos'])){
                        'valeur' => $valeurNettoye,
                        'code_adresse' => $_adresse['code_adresse']
                    ]);
+
+                   if ($query->rowCount() > 0) {
+                      print_r("La donnée a été modifiée avec succès dans la base de données.");
+                  } else {
+                      print_r("Aucune modification effectuée. Les données sont peut-être déjà identiques.");
+                  }
                
                    if ($query->rowCount() > 0) {
                        $_SESSION['membre'][$champ] = $valeurNettoye;
