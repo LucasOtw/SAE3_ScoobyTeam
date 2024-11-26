@@ -64,7 +64,7 @@ if (isset($_POST['modif_infos'])){
                    $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
                    $query->execute(['valeur' => trim($valeur), 'code_adresse' => $_adresse['code_adresse']]);
                    if($query){
-                     $_SESSION['pro']['ville'] = $valeur;  
+                     $_SESSION['pro'][$champ] = $valeur;  
                    }
                    break;
            }
