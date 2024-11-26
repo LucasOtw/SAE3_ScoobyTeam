@@ -331,8 +331,8 @@ function tempsEcouleDepuisPublication($offre){
                     }
                     if (!empty($offre["option_a_la_une"]))
                     {
-                        /*if ($offre["en_ligne"])
-                        {*/
+                        if ($offre["en_ligne"])
+                        {
                         ?>
                             
                                 <article class="card-a-la-une">
@@ -350,7 +350,7 @@ function tempsEcouleDepuisPublication($offre){
                                 </article>
                                 
                         <?php
-                        //}
+                        }
                     }
                 }
             ?>
