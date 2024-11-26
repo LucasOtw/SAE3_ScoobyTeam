@@ -23,7 +23,7 @@
     </header>
      <div class="fleche_retour">
         <div>
-            <a href="../etape_1_form/creation_offre_attraction1.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
+            <a href="../etape_1_form/creation_offre_attraction_1.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
         </div>
     </div>
 
