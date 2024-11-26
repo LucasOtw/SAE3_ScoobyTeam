@@ -437,7 +437,7 @@ footer {
     margin-top: 5vh;
 }
 
-.toute_les_offres_main > header > h2 {
+.toute_les_offres_main > h2 {
     margin-top : 2vh;
     margin-left: 8vw;
 }
@@ -974,4 +974,101 @@ body.menu-open .filter-menu {
 .txt_popup{
     color: #BDC426;
     text-decoration : none;
+}
+
+/* Conteneur global */
+.toute_les_offres_main .a-la-une-carrousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 6em;
+    margin-right: 6em;
+}
+
+/* Section des cartes */
+.toute_les_offres_main .a-la-une {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    width: 80vw;
+    /* Réduit la largeur de la section pour vérifier le défilement */
+    min-width: 100%;
+
+}
+
+.toute_les_offres_main .a-la-une::-webkit-scrollbar {
+    display: none;
+}
+
+/* Boutons de navigation */
+.toute_les_offres_main .card-scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.toute_les_offres_main .card-scroll-btn.card-scroll-btn-left {
+    left: -20px;
+}
+
+.toute_les_offres_main .card-scroll-btn.card-scroll-btn-right {
+    right: -20px;
+}
+
+.toute_les_offres_main .card-scroll-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+.toute_les_offres_main .card-a-la-une {
+    width: 25em;
+    min-height: 10em;
+    position: relative;
+    background-color: grey;
+    border-radius: 1.5em;
+    margin: 0 1vw;
+}
+
+.toute_les_offres_main .image-background-card-a-la-une {
+    width: 25em;
+    position: relative;
+    background-color: grey;
+    border-radius: 1.5em;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.toute_les_offres_main .image-background-card-a-la-une img {
+    width: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: 1.5em;
+}
+
+.toute_les_offres_main .raison-sociale-card-a-la-une {
+    position: absolute;
+    bottom: 0;
+    /* Assure que le texte est en bas */
+    left: 0;
+    width: 100%;
+    /* Le bandeau couvre toute la largeur */
+    background: rgba(0, 0, 0, 0.7);
+    /* Bandeau noir avec opacité */
+    color: white;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 1em;
+    /* Ajuste la taille du texte */
+    text-align: left;
+    /* Aligne le texte à gauche */
+    font-size: 1.2em;
 }
