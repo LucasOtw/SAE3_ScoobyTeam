@@ -251,28 +251,85 @@ function tempsEcouleDepuisPublication($offre){
             </span>
             <button class="apply-filters">Appliquer les filtres</button>
         </div>
-        <header>
-            <h2>Les offres</h2>
-            <!-- <span id="filter">
-                <button><img src="images/tri.png">Filtrer</button>
-            </span> -->
-        </header>
 
+        
+        <h2>A La Une</h2>
+
+        <div class="a-la-une-carrousel">
+            <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft()">&#8249;</button>
+            <section class="a-la-une">
+            <?php
+                try {
+                    $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+                    $username = "sae";
+                    $password = "philly-Congo-bry4nt";
+    
+                    // Créer une instance PDO
+                    $dbh = new PDO($dsn, $username, $password);
+                } 
+                catch (PDOException $e) 
+                {
+                    print "Erreur!: ". $e->getMessage(). "<br/>";
+                    die();
+                }
+                // On récupère toutes les offres (titre,ville,images)
+                $infosOffre = $dbh->query('SELECT * FROM tripenarvor._offre');
+                $infosOffre = $infosOffre->fetchAll(PDO::FETCH_ASSOC);
+    
+                foreach($infosOffre as $offre){
+                    // Récupérer la ville
+                    $villeOffre = $dbh->prepare('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
+                    $villeOffre->bindParam(":code_adresse", $offre["code_adresse"]);
+                    $villeOffre->execute();
+                    $villeOffre = $villeOffre->fetch(); // Récupérer la ville (ou NULL si pas trouvé)
+                    
+                    // Récupérer les images
+                    $imagesOffre = $dbh->prepare('SELECT code_image FROM tripenarvor._son_image WHERE code_offre = :code_offre');
+                    $imagesOffre->bindParam(":code_offre", $offre["code_offre"]);
+                    $imagesOffre->execute();
+                    
+                    // on recupère toutes les images sous forme de tableau
+                    $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
+    
+                    if(!empty($images)){ // si le tableau n'est pas vide...
+                        /* On récupère uniquement la première image.
+                        Une offre peut avoir plusieurs images. Mais on n'en affiche qu'une seule sur cette page.
+                        On pourrait afficher aléatoirement chaque image, mais on serait vite perdus...*/
+                                        
+                        $recupLienImage = $dbh->prepare('SELECT url_image FROM tripenarvor._image WHERE code_image = :code_image');
+                        $recupLienImage->bindValue(":code_image",$images[0]['code_image']);
+                        $recupLienImage->execute();
+        
+                        $offre_image = $recupLienImage->fetch(PDO::FETCH_ASSOC);
+                    } else {
+                        $offre_image = "";
+                    }
+                    if ($offre["en_ligne"])
+                    {
+                    ?>
+                        
+                     <article class="card-a-la-une">
+                        <div class="image-background-card-a-la-une">
+                            <img src=<?php echo "./".$offre_image['url_image'] ?> alt="">
+                            <div class="raison-sociale-card-a-la-une">
+                                <p><?php echo $offre["titre_offre"] ?></p>
+                            </div>
+                        </div>
+                    </article>
+                
+                <?php
+                    }
+                }
+            ?>
+            </section>
+            <button class="card-scroll-btn card-scroll-btn-right" onclick="scrollcontentRight()">&#8250;</button>
+        </div>
+
+
+        
+        <h2>Les offres</h2>
+        
         <section id="offers-list">
-
-      <!--  <article class="offer">
-            <img src="images/offre2.png" alt="Image de l'offre Armor'Park">
-            <div class="offer-details">
-                <h2>Armor'Park</h2>
-                <p>Lannion</p>
-                <span>3 mois</span>
-                <span>
-                     <img src="images/etoile.png" class="img-etoile">
-                    <p>4 <span class="nb_avis">(50 avis)</span></p> 
-                </span>
-                <button>Voir l'offre →</button>
-            </div>
-        </article> -->
         <?php
             try {
                 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
