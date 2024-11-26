@@ -91,6 +91,8 @@ if (isset($_POST['modif_infos'])){
                        echo "Erreur : adresse_postal est vide.";
                        return;
                    }
+
+                   print_r($valeurNettoye);
                
                    // Mise à jour dans la base de données
                    $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
