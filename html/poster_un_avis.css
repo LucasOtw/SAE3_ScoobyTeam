@@ -423,3 +423,10 @@ footer {
     padding-top: 13px;
     width: 225px;
   }
+
+ 
+  @media (min-width: 419px) {
+    .body_offre_mobile {
+        display: none;
+    }
+}
