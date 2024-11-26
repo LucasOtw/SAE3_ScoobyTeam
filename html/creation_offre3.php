@@ -41,7 +41,13 @@ if($monComptePro['code_compte_bancaire']){
 if(isset($_POST['valider'])){
    $code_iban = $_POST['IBAN'];
 
-   validerIBAN($code_iban);
+   if(validerIBAN($code_iban) === true){
+       echo "YOUHOU !";
+   } else {
+       foreach($validerIBAN($code_iban) as $erreur){
+           echo $erreur;
+       }
+   }
 }
     
 ?>
