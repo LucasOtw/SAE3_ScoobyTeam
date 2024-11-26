@@ -102,6 +102,12 @@
             }
         }
     }
+
+    /*
+    * FONCTION "tempsEcouleDepuisPublication"
+    */
+
+    
     if(!function_exists('tempsEcouleDepuisPublication')){
       function tempsEcouleDepuisPublication($offre){
         // date d'aujourd'hui
@@ -140,6 +146,13 @@
         return $retour;
       }
     }
+
+
+    /*
+    * FONCTION "tempsEcouleDepuisUpdate"
+    */
+    
+    
     if(!function_exists('tempsEcouleDepuisUpdate')){
       function tempsEcouleDepuisUpdate($offre){
                 // date d'aujourd'hui
@@ -176,6 +189,25 @@
         }
     
         return $retour;
+      }
+    }
+
+
+    /*
+    * FONCTION "validerIBAN"
+    * >> On part du principe que seule une carte française peut être ajoutée
+    */
+
+    
+    if(!function_exists(validerIBAN)){
+      function validerIBAN($iban) : bool{
+        const LONGUEUR_IBAN = 27;
+        
+        $iban = strtoupper(str_replace(' ', '', $iban)); // on met tout en majuscules et on enlève les espaces si il y en a
+
+        if(strlen($iban) !== LONGUEUR_IBAN){
+          echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARGH !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+        }
       }
     }
   }
