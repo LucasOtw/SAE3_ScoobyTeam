@@ -396,7 +396,8 @@ footer {
 }
 .half-background {
     height: 100vh; /* 100% de la hauteur de la fenêtre */
-    background-image: url('images/acceuil_phare.png'); /* Mettez ici le chemin de votre image */
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 1)), 
+                      url('images/acceuil_phare.png'); /* Mettez ici le chemin de votre image */
     background-size: cover; /* L'image couvre toute la div */
     background-position: center; /* Centre l'image */
     background-repeat: no-repeat; /* Evite la répétition de l'image */
