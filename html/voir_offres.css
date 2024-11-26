@@ -437,7 +437,7 @@ footer {
     margin-top: 5vh;
 }
 
-.toute_les_offres_main > h2 {
+.toute_les_offres_main h2 {
     margin-top : 2vh;
     margin-left: 8vw;
 }
@@ -1085,8 +1085,7 @@ body.menu-open #overlay {
     position: relative;
     display: flex;
     align-items: center;
-    margin-left: 6em;
-    margin-right: 6em;
+    margin: 3vh 8vw;
 }
 .toute_les_offres_main .a-la-une {
     margin-left: 1em;
