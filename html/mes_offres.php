@@ -69,9 +69,9 @@ if (isset($_GET["filter"])) {
         <h2 class="vos_offres">Vos offres</h2>
         <div class="button-container">
             <!-- Les boutons déclenchent un filtre via des paramètres dans l'URL -->
-            <a href="mes_offres.php?filter=offline" class="button-Ligne <?php echo $filter === 'offline' ? 'button-Active' : ''; ?>">Hors - Ligne</a>
+            <a href="mes_offres.php?filter=offline" class="button-HorsLigne <?php echo $filter === 'offline' ? 'button-Active' : ''; ?>">Hors - Ligne</a>
             <a href="mes_offres.php?filter=online" class="button-Ligne <?php echo $filter === 'online' ? 'button-Active' : ''; ?>">En Ligne</a>
-            <a href="mes_offres.php?filter=all" class="button-Ligne <?php echo $filter === 'all' ? 'button-Active' : ''; ?>">Toutes</a>
+            <a href="mes_offres.php?filter=all" class="button-toutes <?php echo $filter === 'all' ? 'button-Active' : ''; ?>">Toutes</a>
         </div>
     </section>
     <section class="offers">
