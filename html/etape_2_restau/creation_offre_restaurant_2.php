@@ -14,6 +14,22 @@ $mesRepas = [];
 if(isset($_POST['envoiFormEtape2'])){
    // on garde en mémoire la valeur du bouton radio sélectionné
     $ma_gamme = $_POST['prix'];
+
+    $min = null;
+    $max = null;
+   
+    if($ma_gamme == "€"){
+       $min = 0;
+       $max = 25;
+    } else if ($ma_gamme == "€€"){
+       $min = 25;
+       $max = 40;
+    } else if ($ma_gamme == "€€€"){
+       $min = 40;
+    }
+
+    $tarif = $_POST['tarif'];
+   
     foreach($_POST['repas'] as $repas){
         $mesRepas[] = $repas;
     }
