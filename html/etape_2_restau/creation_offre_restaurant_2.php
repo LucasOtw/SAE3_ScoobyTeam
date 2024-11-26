@@ -92,6 +92,14 @@ if(isset($_POST['envoiFormEtape2'])){
                         </div>
                 </div>
 
+               <!-- Tarif -->
+
+               <div>
+                  <label for="tarif">
+                     <input type="text" id="tarif" name="_tarif" placeholder="00.00€" required>
+                  </label>
+               </div>
+
                 <!-- Meal Options -->
                 <div class="meal-options">
                     <label>Options de repas</label>
