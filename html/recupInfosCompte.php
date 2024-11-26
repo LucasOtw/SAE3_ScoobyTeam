@@ -208,9 +208,12 @@
         if(strlen($iban) !== $LONGUEUR_IBAN){
           $erreurs[] = "L'IBAN n'a pas la bonne longueur !";
         } else {
-          $code_pays = substr($iban,0,2); // "FR", "IT", "ES" ect...
-          if(strtoupper($code_pays) !== "FR"){
-            echo "One, two, three... Viva l'Algérie !";
+          $code_pays = substr($iban,0,4); // "FR", "IT", "ES" ect...
+          if(strtoupper($code_pays) !== "FR76"){
+            $erreurs[] = "Le code IBAN doit commencer par \"FR76\" !!";
+          } else {
+            $iban = substr($iban, 4) . substr($iban, 0, 4);
+            echo $iban;
           }
         }
       }
