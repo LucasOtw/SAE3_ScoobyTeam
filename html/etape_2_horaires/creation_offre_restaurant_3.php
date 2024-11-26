@@ -74,7 +74,7 @@ session_start();
     </header>
      <div class="fleche_retour">
         <div>
-            <a href="creation_offre1.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
+            <a href="../etape_1_form/creation_offre_restaurant_1.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
         </div>
     </div>
 
