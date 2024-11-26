@@ -201,11 +201,11 @@
     
     if(!function_exists(validerIBAN)){
       function validerIBAN($iban){
-        const LONGUEUR_IBAN = 27;
+        $LONGUEUR_IBAN = 27;
         
         $iban = strtoupper(str_replace(' ', '', $iban)); // on met tout en majuscules et on enlève les espaces si il y en a
 
-        if(strlen($iban) !== LONGUEUR_IBAN){
+        if(strlen($iban) !== $LONGUEUR_IBAN){
           echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARGH !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
         }
       }
