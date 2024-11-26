@@ -89,6 +89,10 @@
             $images_offre = $dbh->query('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = '.$code_offre.')');
             $images_offre = $images_offre->fetch(PDO::FETCH_NUM);
 
+            echo '<pre>';
+            var_dump($images_offre);
+            echo '</pre>';
+
             $tags_offre = $dbh->query('SELECT nom_tag FROM tripenarvor._tags WHERE code_tag = (SELECT code_tag FROM tripenarvor._son_tag WHERE code_offre = '.$code_offre.')');
             $tags_offre = $tags_offre->fetch(PDO::FETCH_NUM);
 
