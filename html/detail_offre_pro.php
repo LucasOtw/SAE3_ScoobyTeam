@@ -297,7 +297,20 @@
                 </ul>
             </nav>
         </header>
-
+        <div class="toggle-container">
+                    <div id="toggle" class="toggle-button">
+                        <div class="toggle-circle"></div>
+                    </div>
+                </div>
+                <script>
+                    // Sélectionner le bouton toggle
+                    const toggleButton = document.getElementById('toggle');
+            
+                    // Ajouter un événement au toggle pour basculer son état
+                    toggleButton.addEventListener('click', () => {
+                        toggleButton.classList.toggle('active');
+                    });
+                </script>
         <div class="detail_offre_hotel-detail">
 
             <div class="detail_offre_hotel-header">
@@ -305,7 +318,7 @@
                 <div class="detail_offre_hotel-info">
                     <h1><?php echo $details_offre["titre_offre"];?></h1>
 
-                    <p>📍 <?php echo $adresse_offre["ville"].", ".$adresse_offre["code_postal"];?></p>
+                    <p><?php echo $adresse_offre["ville"].", ".$adresse_offre["code_postal"];?></p>
 
                     <p><i class="fas fa-clock"></i> Publié <?php echo tempsEcouleDepuisPublication($details_offre);?></p>
 
