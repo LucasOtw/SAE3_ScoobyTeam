@@ -152,13 +152,15 @@
     * FONCTION "tempsEcouleDepuisUpdate"
     */
 
-    function simpleBcmod($number, $modulus) {
+    if(!function_exists('simpleBcmod')){
+      function simpleBcmod($number, $modulus) {
         // Réduire le grand nombre au modulo
         $remainder = 0;
         foreach (str_split($number) as $digit) {
             $remainder = ($remainder * 10 + $digit) % $modulus;
         }
         return $remainder;
+      }
     }
     
     
