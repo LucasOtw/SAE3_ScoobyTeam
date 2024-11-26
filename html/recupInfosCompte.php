@@ -151,6 +151,15 @@
     /*
     * FONCTION "tempsEcouleDepuisUpdate"
     */
+
+    function simpleBcmod($number, $modulus) {
+        // Réduire le grand nombre au modulo
+        $remainder = 0;
+        foreach (str_split($number) as $digit) {
+            $remainder = ($remainder * 10 + $digit) % $modulus;
+        }
+        return $remainder;
+    }
     
     
     if(!function_exists('tempsEcouleDepuisUpdate')){
@@ -226,7 +235,7 @@
                     }
     
                     // Validation modulo 97
-                    if (bcmod($numericIban, 97) != 1) {
+                    if (simpleBcmod($numericIban, 97) != 1) {
                         $erreurs[] = "L'IBAN est invalide (échec du calcul modulo 97).";
                     }
                 }
