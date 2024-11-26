@@ -295,12 +295,11 @@
                 <?php
                 foreach ($images_offre as $photo)
                 {
-                    echo $photo;
                 ?>
                 
                     <article class="card-a-la-une">
                         <div class="image-background-card-a-la-une">
-                            <img src="<?php echo $photo;?>" alt="">
+                            <img src="<?php echo $photo[0];?>" alt="">
                         </div>
                     </article>
 
