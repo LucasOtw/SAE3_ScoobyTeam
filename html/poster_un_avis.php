@@ -16,9 +16,8 @@ session_start();
 <body>
 <header class="header-pc">
         <div class="logo-pc">
-            <img src="images/logo.png" alt="PACT Logo">
+            <img src="images/logoBlanc.png" alt="PACT Logo">
         </div>
-        
         <nav>
             <ul>
                 <li><a href="voir_offres.php" >Accueil</a></li>
@@ -29,7 +28,7 @@ session_start();
     </header>
     <header class="header-tel">
         <div class="logo-tel">
-            <img src="images/logo.png" alt="PACT Logo">
+            <img src="images/logoBlanc.png" alt="PACT Logo">
         </div>
     </header>
     <div class="poster_un_avis_container">
