@@ -625,7 +625,7 @@ a.button-text{
     text-align: center;
 }
 /* Effet au survol */
-.button_Horsligne:hover {
+.button_HorsLigne:hover {
     transform: scale(1.05);   /* Légère mise en avant */
     transition: 0.3s ease;    /* Animation douce */
     text-align: center;
