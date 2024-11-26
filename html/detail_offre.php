@@ -295,6 +295,7 @@
                 <?php
                 foreach ($images_offre as $photo)
                 {
+                    echo $photo;
                 ?>
                 
                     <article class="card-a-la-une">
