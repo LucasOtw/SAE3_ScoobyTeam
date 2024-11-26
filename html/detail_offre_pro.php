@@ -358,7 +358,7 @@
             
                     // Ajouter un événement au toggle pour basculer son état
                     toggleButton.addEventListener('click', () => {
-                        toggleButton.classList.toggle('active');
+                        toggleButton.classList.toggle('Active');
                     });
                 </script>
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
