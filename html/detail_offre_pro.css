@@ -1263,9 +1263,9 @@ footer {
  transition: left 0.3s ease;
 }
 /* Lorsque le toggle est activé (en ligne) */
-.active {
+.Active {
  background-color: orange;
 }
-.active .toggle-circle {
+.Active .toggle-circle {
  left: 42px;
 }
