@@ -317,14 +317,14 @@
                 </div>
 
                 <div class="detail_offre_price-button">
-                <div class="detail_offre_pro_info-icon-container">
-                <span class="info-icon">I</span>
-                <div class="tooltip">
-                <div class="detail_offre_option">
-                <?php
-                    if ($option_a_la_une !== false)
-                    {
-                ?>
+                    <div class="detail_offre_pro_info-icon-container">
+                    <span class="info-icon">I</span>
+                    <div class="tooltip">
+                    <div class="detail_offre_option">
+                    <?php
+                        if ($option_a_la_une !== false)
+                        {
+                    ?>
                         <h3>Option à la une</h3>
                         <p>Début de l'option : <?php echo $option_a_la_une["date_debut"];?></p>
                         <p>Fin de l'option : <?php echo $option_a_la_une["date_fin"];?></p>
