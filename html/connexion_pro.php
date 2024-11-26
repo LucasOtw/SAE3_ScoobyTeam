@@ -1,6 +1,9 @@
 <?php
 ob_start();
 session_start();
+
+echo password_hash("test",PASSWORD_DEFAULT);
+
 ?>
 
 <!DOCTYPE html>
