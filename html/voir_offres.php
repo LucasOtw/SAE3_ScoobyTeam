@@ -306,18 +306,21 @@ function tempsEcouleDepuisPublication($offre){
                     }
                     if (!empty($offre["option_a_la_une"]))
                     {
-                    ?>
+                        if ($offre["en_ligne"])
+                        {
+                        ?>
                         
-                     <article class="card-a-la-une">
-                        <div class="image-background-card-a-la-une">
-                            <img src=<?php echo "./".$offre_image['url_image'] ?> alt="">
-                            <div class="raison-sociale-card-a-la-une">
-                                <p><?php echo $offre["titre_offre"] ?></p>
-                            </div>
-                        </div>
-                    </article>
+                             <article class="card-a-la-une">
+                                <div class="image-background-card-a-la-une">
+                                    <img src=<?php echo "./".$offre_image['url_image'] ?> alt="">
+                                    <div class="raison-sociale-card-a-la-une">
+                                        <p><?php echo $offre["titre_offre"] ?></p>
+                                    </div>
+                                </div>
+                            </article>
                 
-                <?php
+                        <?php
+                        }
                     }
                 }
             ?>
