@@ -44,7 +44,7 @@ if(isset($_POST['valider'])){
    if(validerIBAN($code_iban) === true){
        echo "YOUHOU !";
    } else {
-       foreach($validerIBAN($code_iban) as $erreur){
+       foreach(validerIBAN($code_iban) as $erreur){
            echo $erreur;
        }
    }
