@@ -346,12 +346,12 @@
             </div>
 
                 </div>
-                </div>
-                    <div class="toggle-container">
+                <div class="toggle-container">
                     <div id="toggle" class="toggle-button">
                         <div class="toggle-circle"></div>
                     </div>
                 </div>
+
                 <script>
                     // Sélectionner le bouton toggle
                     const toggleButton = document.getElementById('toggle');
