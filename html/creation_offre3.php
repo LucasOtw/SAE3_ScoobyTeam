@@ -112,9 +112,6 @@ if($monComptePro['code_compte_bancaire']){
 
                 <div class="boutons">
                     <button type="submit" name="valider" class="btn-primary">Valider</button>
-                    <button class="btn-secondary" name="valider_plus_tard">Je l'ajouterai plus tard
-                        <img src="images/fleche_droite.png" alt="fleche_droite">
-                    </button>
                 </div>
             </form>
 
