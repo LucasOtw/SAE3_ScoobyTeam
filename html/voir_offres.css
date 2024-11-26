@@ -1242,7 +1242,7 @@ body.menu-open #overlay {
 
     .toute_les_offres_main .search-options {
         flex-direction: column; /* Empiler les options verticalement */
-        gap: 6px; /* Espacement plus petit entre les options */
+        
         width: 100%;
         color: black;
     }
@@ -1250,7 +1250,8 @@ body.menu-open #overlay {
     .toute_les_offres_main .search-select {
         width: 100%; /* Les sélecteurs prennent toute la largeur */
         background-color: var(--gris);
-        padding: 10px 0;
+        padding: 10px 5px;
+        color: black;
     }
     
     h1_voir_offre1, h1_voir_offre2 {
@@ -1276,6 +1277,7 @@ body.menu-open #overlay {
     .search-bar {
         margin:1em 0 20em 0;
     }
+    
     .toute_les_offres_main .search-select{
         width:5em;
         min-width:0;
@@ -1283,6 +1285,7 @@ body.menu-open #overlay {
 
     .toute_les_offres_main .search-options {
         flex-direction:row;
+        width:100%;
     }
     .toute_les_offres_main .search-top{
         flex-direction:row;
