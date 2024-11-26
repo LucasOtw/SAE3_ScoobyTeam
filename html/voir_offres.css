@@ -1110,6 +1110,7 @@ body.menu-open #overlay {
 .toute_les_offres_main .a-la-une {
     margin-left: 1em;
     display: flex;
+    flex-direction: row;
 }
 
 /* Conteneur global */
