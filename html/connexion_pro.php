@@ -1,4 +1,4 @@
-<?php
+o<?php
 ob_start();
 session_start();
 
@@ -27,7 +27,7 @@ echo password_hash("test",PASSWORD_DEFAULT);
         <nav>
             <ul>
                 <li><a href="voir_offres.php">Accueil</a></li>
-                <li><a href="creation_offre.php">Publier</a></li>
+                <li><a href="creation_offre.php"deco=true>Publier</a></li>
                 <li><a href="#" class="active">Se connecter</a></li>
             </ul>
         </nav>
