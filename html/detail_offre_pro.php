@@ -353,15 +353,7 @@
                     </div>
                 </div>
 
-                <script>
-                    // Sélectionner le bouton toggle
-                    const toggleButton = document.getElementById('toggle');
-            
-                    // Ajouter un événement au toggle pour basculer son état
-                    toggleButton.addEventListener('click', () => {
-                        toggleButton.classList.toggle('active');
-                    });
-                </script>
+                
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
                     <div class="detail_offre_pro_button">
                     <a href="<?php echo $details_offre["site_web"]; ?>"><button class="visit-button_detailoffre">Voir le site ➔</button></a>
