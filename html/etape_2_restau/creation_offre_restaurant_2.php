@@ -54,15 +54,16 @@ if(isset($_POST['envoiFormEtape2'])){
       foreach($erreurs as $erreur){
          echo $erreur;
       }
-   }
-   
-    foreach($_POST['repas'] as $repas){
-        $mesRepas[] = $repas;
-    }
-    $_SESSION['crea_offre2']['ma_gamme'] = $ma_gamme;
-    $_SESSION['crea_offre2']['mesRepas'] = $mesRepas;
+   } else {
+      foreach($_POST['repas'] as $repas){
+         $mesRepas[] = $repas;
+      }
+      $_SESSION['crea_offre2']['ma_gamme'] = $ma_gamme;
+      $_SESSION['crea_offre2']['mesRepas'] = $mesRepas;
 
-   var_dump($_SESSION['crea_offre2']);
+      header('location: ../etape_2_horaires/creation_offre_restaurant_3.php');
+      exit;
+   }
 
 }
 /*
