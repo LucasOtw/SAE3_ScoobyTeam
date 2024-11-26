@@ -353,7 +353,7 @@
                     
                     <!-- Conteneur de l'offre -->
     <div>
-        <p id="offer-state">L'offre est actuellement : <?php echo $monOffre['en_ligne']; ?></p>
+        <p id="offer-state">L'offre est actuellement : <?php echo $details_offre['en_ligne']; ?></p>
     </div>
 
     <!-- Bouton toggle -->
