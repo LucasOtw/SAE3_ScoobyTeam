@@ -209,7 +209,7 @@
 
     
     if (!function_exists('validerIBAN')) {
-        function validerIBAN($iban) {
+        function validerIBAN(string $iban) {
             $LONGUEUR_IBAN = 27;
             $erreurs = []; // Initialisation des erreurs
     
@@ -247,6 +247,11 @@
             }
             return true; // Valide si aucune erreur
         }
+    }
+    if(!function_exists('validerBIC')){
+      function validerBIC(string $bic): bool {
+        return preg_match('/^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?$/', strtoupper($bic)) === 1;
+      }
     }
 }
 
