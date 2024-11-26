@@ -1036,11 +1036,11 @@ body.menu-open .filter-menu {
     background-color: grey;
     border-radius: 1.5em;
     margin: 0 1vw;
+    overflow:hidden;
 }
 
 .toute_les_offres_main .image-background-card-a-la-une {
     width: 25em;
-    position: relative;
     background-color: grey;
     border-radius: 1.5em;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
@@ -1049,7 +1049,8 @@ body.menu-open .filter-menu {
 
 .toute_les_offres_main .image-background-card-a-la-une img {
     width: 100%;
-    object-fit: contain;
+    height:100%;
+    object-fit: cover;
     display: block;
     border-radius: 1.5em;
 }
