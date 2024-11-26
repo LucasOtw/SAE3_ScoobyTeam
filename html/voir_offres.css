@@ -790,7 +790,7 @@ body {
 /* Bouton de fermeture */
 .filter-menu .close-btn {
     position: absolute;
-    top: 13px;
+    top: 17px;
     right: 56px;
     font-size: 24px;
     color: #333;
