@@ -203,6 +203,33 @@ function tempsEcouleDepuisPublication($offre){
                 <button id="autres-button" class="search-select">Autres</button>
             </div>
         </div>
+        <div class="filter-menu" id="filterMenu">
+        <button id="closeMenu" class="close-btn">&times;</button>
+        <h2>Filtres</h2>
+        <form>
+            <label for="category">Catégorie</label>
+            <select id="category">
+                <option value="all">Toutes catégories</option>
+                <option value="mode">Mode</option>
+                <option value="maison">Maison & Jardin</option>
+            </select>
+
+            <label for="price-min">Prix minimum (€)</label>
+            <input type="number" id="price-min" placeholder="0">
+
+            <label for="price-max">Prix maximum (€)</label>
+            <input type="number" id="price-max" placeholder="1000">
+
+            <label for="sort">Tri</label>
+            <select id="sort">
+                <option value="relevance">Pertinence</option>
+                <option value="recent">Plus récentes</option>
+                <option value="oldest">Plus anciennes</option>
+            </select>
+
+            <button type="submit">Appliquer les filtres</button>
+        </form>
+    </div>
 
 
 
