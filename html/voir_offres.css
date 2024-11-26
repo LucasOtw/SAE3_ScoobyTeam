@@ -1052,27 +1052,26 @@ body.menu-open .filter-menu {
     height: 100%;
     object-fit: cover;
     display: block;
-    border-radius:1.5em;
 }
 
-.toute_les_offres_main .raison-sociale-card-a-la-une p {
-    padding: 0 1em;
+.toute_les_offres_main .raison-sociale-card-a-la-une {
+    position: absolute;
+    bottom: 10px; /* Positionne le texte et le bouton en bas de l'image */
+    left: 1em;
+    right: 1em;
     color: white;
     font-size: 1.2em;
     font-weight: bold;
-}
-
-/* Styles pour le formulaire */
-form#form-voir-offre {
-    position: absolute;
-    bottom: 1em;
-    left: 1em;
-    right: 1em;
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Espacement entre le texte et le bouton */
+    align-items: center; /* Aligne verticalement le texte et le bouton */
 }
 
-/* Style du bouton */
+.toute_les_offres_main .raison-sociale-card-a-la-une p {
+    margin: 0; /* Supprime la marge par défaut du paragraphe */
+}
+
+/* Bouton */
 #btn-voir-offre {
     background-color: #4CAF50;
     color: white;
@@ -1082,12 +1081,12 @@ form#form-voir-offre {
     font-size: 16px;
     border-radius: 0.5em;
     transition: background-color 0.3s;
-    text-align: center;
 }
 
 #btn-voir-offre:hover {
     background-color: #45a049;
 }
+
 
 
 .toute_les_offres_main .raison-sociale-card-a-la-une {
