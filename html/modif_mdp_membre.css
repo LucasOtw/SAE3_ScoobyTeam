@@ -379,6 +379,10 @@ footer {
     border-radius: 8px;
 }
 
+.main_modif_mdp_membre h3{
+    margin-bottom: 20px;
+}
+
 .main_modif_mdp_membre fieldset {
     border: none;
     margin-bottom: 20px;
