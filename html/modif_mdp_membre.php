@@ -136,7 +136,7 @@ if (isset($_POST['modif_infos'])){
             </fieldset>
            
             <div class="compte_membre_save_delete">
-                <button type="submit" class="submit-btn2">Enregistrer</button>
+                <button type="submit" name="modif_infos" class="submit-btn2">Enregistrer</button>
             </div>
         </form>
        
