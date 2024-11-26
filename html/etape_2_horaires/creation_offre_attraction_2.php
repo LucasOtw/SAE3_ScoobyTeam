@@ -15,7 +15,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="../voir_offres.php">Accueil</a></li>
+                <li><a href="../mes_offres.php">Accueil</a></li>
                 <li><a href="../creation_offre.php" class="active">Publier</a></li>
                 <li><a href="../informations_personnelles_pro.php">Mon Compte</a></li>
             </ul>
@@ -23,7 +23,7 @@
     </header>
      <div class="fleche_retour">
         <div>
-            <a href="../creation_offre_attraction1.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
+            <a href="../etape_1_form/creation_offre_attraction_1.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
         </div>
     </div>
 

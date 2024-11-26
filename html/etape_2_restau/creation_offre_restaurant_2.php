@@ -14,14 +14,56 @@ $mesRepas = [];
 if(isset($_POST['envoiFormEtape2'])){
    // on garde en mémoire la valeur du bouton radio sélectionné
     $ma_gamme = $_POST['prix'];
+
+    $min = null;
+    $max = null;
+   
+    if($ma_gamme == "€"){
+       $min = 0;
+       $max = 25;
+    } else if ($ma_gamme == "€€"){
+       $min = 25;
+       $max = 40;
+    } else if ($ma_gamme == "€€€"){
+       $min = 40;
+    }
+
+   $tarif = $_POST['_tarif'];
+   
+   if($min === 0 && $max === 25){
+      if($tarif > $min && $tarif < $max){
+         $_SESSION['crea_offre2']['tarif'] = $tarif;
+      } else {
+         $erreurs[] = "Le tarif ne correspond pas à la gamme de prix choisie !";
+      }
+   } else if ($min === 25 && $max === 40){
+      if($tarif >= $min && $tarif < $max){
+         $_SESSION['crea_offre2']['tarif'] = $tarif;
+      } else {
+         $erreurs[] = "Le tarif ne correspond pas à la gamme de prix choisie !";
+      }
+   } else if ($min === 40){
+      if($tarif >= $min){
+         $_SESSION['crea_offre2']['tarif'] = $tarif;
+      } else {
+         $erreurs[] = "Le tarif ne correspond pas à la gamme de prix choisie !";
+      }
+   }
+
+   if(!empty($erreurs)){
+      foreach($erreurs as $erreur){
+         echo $erreur;
+      }
+   }
+   
     foreach($_POST['repas'] as $repas){
         $mesRepas[] = $repas;
     }
     $_SESSION['crea_offre2']['ma_gamme'] = $ma_gamme;
     $_SESSION['crea_offre2']['mesRepas'] = $mesRepas;
 
-    header('location: ../etape_2_horaires/creation_offre_restaurant_3.php');
-    exit;
+   var_dump($_SESSION['crea_offre2']);
+
 }
 /*
 * Pas d'autre vérif à faire, on peut directement envoyer l'utilisateur vers l'étape 3
@@ -46,9 +88,9 @@ if(isset($_POST['envoiFormEtape2'])){
         </div>
         <nav>
             <ul>
-                <li><a href="mes_offres.php">Accueil</a></li>
-                <li><a href="#" class="active">Publier</a></li>
-                <li><a href="informations_personnelles_pro.php">Mon Compte</a></li>
+                <li><a href="../mes_offres.php">Accueil</a></li>
+                <li><a href="../creation_offre.php" class="active">Publier</a></li>
+                <li><a href="../informations_personnelles_pro.php">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
@@ -91,6 +133,15 @@ if(isset($_POST['envoiFormEtape2'])){
                             </div>
                         </div>
                 </div>
+
+               <!-- Tarif -->
+
+               <div>
+                  <label for="tarif">
+                     Tarif : 
+                  </label>
+                  <input type="number" id="tarif" name="_tarif" placeholder="00.00€" min="0" step="0.01" required>
+               </div>
 
                 <!-- Meal Options -->
                 <div class="meal-options">

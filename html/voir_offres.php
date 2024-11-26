@@ -331,21 +331,26 @@ function tempsEcouleDepuisPublication($offre){
                     }
                     if (!empty($offre["option_a_la_une"]))
                     {
-                        if ($offre["en_ligne"])
-                        {
+                        /*if ($offre["en_ligne"])
+                        {*/
                         ?>
-                        
-                             <article class="card-a-la-une">
-                                <div class="image-background-card-a-la-une">
-                                    <img src=<?php echo "./".$offre_image['url_image'] ?> alt="">
-                                    <div class="raison-sociale-card-a-la-une">
-                                        <p><?php echo $offre["titre_offre"] ?></p>
-                                    </div>
-                                </div>
-                            </article>
-                
+                            
+                                <article class="card-a-la-une">
+                                    <form id="form-voir-offre" action="detail_offre.php" method="POST" class="form-voir-offre">
+                                        <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
+                                        <div class="image-background-card-a-la-une">
+                                            <img src="<?php echo './'.$offre_image['url_image']; ?>" alt="">
+                                            <div class="raison-sociale-card-a-la-une">
+                                                <p><?php echo $offre["titre_offre"]; ?></p>
+                                                <!-- Le bouton est maintenant juste après le texte dans la même zone -->
+                                                <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </article>
+                                
                         <?php
-                        }
+                        //}
                     }
                 }
             ?>

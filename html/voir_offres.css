@@ -1133,6 +1133,7 @@ body.menu-open #overlay {
 }
 
 
+/* Style de la carte */
 .toute_les_offres_main .card-a-la-une {
     width: 25em;
     min-height: 10em;
@@ -1140,23 +1141,38 @@ body.menu-open #overlay {
     background-color: grey;
     border-radius: 1.5em;
     margin: 0 1vw;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .toute_les_offres_main .image-background-card-a-la-une {
     width: 25em;
     background-color: grey;
     border-radius: 1.5em;
-    
     overflow: hidden;
 }
 
 .toute_les_offres_main .image-background-card-a-la-une img {
-    width: 100%;
-    height:100%;
+/*     width: 100%; */
+    height: 15em;
     object-fit: cover;
     display: block;
-    border-radius: 1.5em;
+}
+
+.toute_les_offres_main .raison-sociale-card-a-la-une {
+    position: absolute;
+    bottom: 10px; /* Positionne le texte et le bouton en bas de l'image */
+    left: 1em;
+    right: 1em;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between; /* Espacement entre le texte et le bouton */
+    align-items: center; /* Aligne verticalement le texte et le bouton */
+}
+
+.toute_les_offres_main .raison-sociale-card-a-la-une p {
+    margin: 0; /* Supprime la marge par défaut du paragraphe */
 }
 
 .toute_les_offres_main .raison-sociale-card-a-la-une {
@@ -1177,3 +1193,22 @@ body.menu-open #overlay {
     /* Aligne le texte à gauche */
     font-size: 1.2em;
 }
+
+.toute_les_offres_main #btn-voir-offre {
+    background-color: var(--vert-clair);
+    color: #fff;
+    padding: 1.25vh 1.75vw;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    transition: ease-in-out 0.25s;
+    text-align: center;
+    
+}
+
+.toute_les_offres_main #btn-voir-offre:hover {
+    transform: scale(1.05);
+    transition: ease-in-out 0.25s;
+}
+
