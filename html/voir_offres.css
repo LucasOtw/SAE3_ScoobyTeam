@@ -1029,6 +1029,7 @@ body.menu-open .filter-menu {
 }
 
 
+/* Style de la carte */
 .toute_les_offres_main .card-a-la-une {
     width: 25em;
     min-height: 10em;
@@ -1036,24 +1037,58 @@ body.menu-open .filter-menu {
     background-color: grey;
     border-radius: 1.5em;
     margin: 0 1vw;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .toute_les_offres_main .image-background-card-a-la-une {
     width: 25em;
     background-color: grey;
     border-radius: 1.5em;
-    
     overflow: hidden;
 }
 
 .toute_les_offres_main .image-background-card-a-la-une img {
     width: 100%;
-    height:100%;
+    height: 100%;
     object-fit: cover;
     display: block;
-    border-radius: 1.5em;
+    border-radius:1.5em;
 }
+
+.toute_les_offres_main .raison-sociale-card-a-la-une p {
+    padding: 0 1em;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Styles pour le formulaire */
+form#form-voir-offre {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    right: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+/* Style du bouton */
+#btn-voir-offre {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 0.5em;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+#btn-voir-offre:hover {
+    background-color: #45a049;
+}
+
 
 .toute_les_offres_main .raison-sociale-card-a-la-une {
     position: absolute;
