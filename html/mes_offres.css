@@ -571,7 +571,7 @@ a.button-text{
     border: none;
     width: 150px;
     height: 50px;
-    background-color: white;
+    background-color: #f9f9f9;
     color: black;
     text-decoration: none;
     text-align: center;
@@ -587,7 +587,7 @@ a.button-text{
     border: none;
     width: 150px;
     height: 50px;
-    background-color: white;
+    background-color: #f9f9f9;
     color: black;
     text-decoration: none;
     text-align: center;
@@ -619,13 +619,24 @@ a.button-text{
     border: none;
     width: 150px;
     height: 50px;
-    background-color: white;
+    background-color: #f9f9f9;
     color: black;
     text-decoration: none;
     text-align: center;
 }
 /* Effet au survol */
-.button-Ligne:hover, .button-toutes:hover, .button_Horsligne:hover {
+.button_Horsligne:hover {
+    transform: scale(1.05);   /* Légère mise en avant */
+    transition: 0.3s ease;    /* Animation douce */
+    text-align: center;
+}
+
+.button-Ligne:hover{
+    transform: scale(1.05);   /* Légère mise en avant */
+    transition: 0.3s ease;    /* Animation douce */
+    text-align: center;
+}
+.button-toutes:hover{
     transform: scale(1.05);   /* Légère mise en avant */
     transition: 0.3s ease;    /* Animation douce */
     text-align: center;
