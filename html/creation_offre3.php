@@ -43,7 +43,15 @@ if(isset($_POST['valider'])){
    $code_BIC = $_POST['BIC'];
 
     if(validerIBAN($code_iban) && validerBIC($code_BIC)){
-        echo "NICE";
+        // si validerIBAN et validerBIC retournent TRUE...
+        // on passe aux choses sérieuses :)
+
+        echo "<pre>";
+        var_dump($_SESSION['crea_offre']);
+        var_dump($_SESSION['crea_offre2']);
+        var_dump($_SESSION['crea_offre3']);
+        var_dump($_SESSION['crea_offre4']);
+        echo "</pre>";
     }
 }
     
