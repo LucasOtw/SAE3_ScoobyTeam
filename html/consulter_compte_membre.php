@@ -79,6 +79,10 @@ if (isset($_POST['modif_infos'])){
                
                    // Validation spécifique par champ
                    $valeurNettoye = trim($valeur);
+                   if ($champ == 'code_postal')
+                   {
+                      $valeurNettoye = intval($valeur);
+                   }
                    if ($champ === 'code_postal' && !preg_match('/^\d{5}$/', $valeur)) {
                        echo "Erreur : code_postal invalide.";
                        return;
