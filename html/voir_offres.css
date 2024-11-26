@@ -1236,3 +1236,29 @@ body.menu-open #overlay {
     transition: ease-in-out 0.25s;
 }
 
+@media (max-width: 429px){
+    h1_voir_offre1, h1_voir_offre2 {
+        display:none
+    }
+
+    .half-background{
+        display:none
+    }
+    
+    .toute_les_offres_main .a-la-une-carrousel{
+        margin: auto
+    }
+
+    .toute_les_offres_main .image-background-card-a-la-une img{
+        height:13em;
+    }
+
+    .toute_les_offres_main .search-button{
+        border-radius: 15px;
+
+    }
+
+    .toute_les_offres_main .search-select{
+        width:0
+    }
+}
