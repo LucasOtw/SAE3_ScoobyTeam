@@ -104,9 +104,9 @@ if(isset($_POST['valider'])){
         */
 
         $tab_horaires = $_SESSION['crea_offre3'];
-        echo "<pre>";
-        print_r($tab_horaires);
-        echo "</pre>";
+        foreach($tab_horaires as $jour => $horaire){
+            echo $jour;
+        }
         
     }
 }
