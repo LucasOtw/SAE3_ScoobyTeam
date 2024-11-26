@@ -278,7 +278,7 @@ function tempsEcouleDepuisPublication($offre){
         </div>
 
         <div class="a-la-une-titre-carrousel">
-            <h2>A La Une</h2>
+            <h2 class="titre-a-la-une">A La Une</h2>
     
             <div class="a-la-une-carrousel">
                 <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft()">&#8249;</button>
@@ -360,7 +360,7 @@ function tempsEcouleDepuisPublication($offre){
         </div>
 
         
-        <h2>Les offres</h2>
+        <h2 class="titre-les-offres">Les offres</h2>
         
         <section id="offers-list">
         <?php
