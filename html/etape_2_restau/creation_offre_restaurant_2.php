@@ -29,6 +29,7 @@ if(isset($_POST['envoiFormEtape2'])){
     }
 
     $tarif = $_POST['tarif'];
+    echo $tarif;
    
     foreach($_POST['repas'] as $repas){
         $mesRepas[] = $repas;
