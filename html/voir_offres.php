@@ -311,17 +311,19 @@ function tempsEcouleDepuisPublication($offre){
                         ?>
                             
                                 <article class="card-a-la-une">
-                                    <div class="image-background-card-a-la-une">
-                                        <img src=<?php echo "./".$offre_image['url_image'] ?> alt="">
-                                        <div class="raison-sociale-card-a-la-une">
-                                            <p><?php echo $offre["titre_offre"] ?></p>
-                                        </div>
-                                    </div>
-                                    <form id="form-voir-offre" action="detail_offre.php" method="POST">
+                                    <form id="form-voir-offre" action="detail_offre.php" method="POST" class="link-card">
                                         <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
+                                        <div class="image-background-card-a-la-une">
+                                            <img src="<?php echo './'.$offre_image['url_image']; ?>" alt="">
+                                            <div class="raison-sociale-card-a-la-une">
+                                                <p><?php echo $offre["titre_offre"]; ?></p>
+                                            </div>
+                                        </div>
+                                        <!-- Bouton intégré à l'intérieur de la carte -->
                                         <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
                                     </form>
                                 </article>
+
                             
                         <?php
                         //}
