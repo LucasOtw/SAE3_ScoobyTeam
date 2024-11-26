@@ -1241,7 +1241,7 @@ footer {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 1vh;
+            height: 100vh;
         }
 
         /* Style du bouton toggle */
