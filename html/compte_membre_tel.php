@@ -74,7 +74,7 @@ include("recupInfosCompte.php");
                     echo "connexion_membre.php";
                 }
             ?>">
-            <img src="images/icones/icones/User icon.png" alt="image de Personne">
+            <img src="images/icones/User icon.png" alt="image de Personne">
     </nav>
 </body>
 </html>
