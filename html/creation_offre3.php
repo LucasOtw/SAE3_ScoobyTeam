@@ -104,8 +104,36 @@ if(isset($_POST['valider'])){
         */
 
         $tab_horaires = $_SESSION['crea_offre3'];
+        // pour chaque jour
         foreach($tab_horaires as $jour => $horaire){
-            echo $jour;
+            /* On cherche d'abord le code horaire. */
+            $horaireCorrespondante = $dbh->prepare("SELECT code_horaire FROM tripenarvor._horaire
+            WHERE
+            ouverture = :ouverture AND
+            fermeture = :fermeture");
+            $horaireCorrespondante->bindValue(":ouverture",$horaire['ouverture']);
+            $horaireCorrespondante->bindValue(":fermeture",$horaire['fermeture']);
+
+            $horaireCorrespondante->execute();
+            $horaireCorrespondante = $horaireCorrespondante->fetch(PDO::FETCH_ASSOC);
+
+            if($horaireCorrespondante){
+                echo "HAHA <br>";
+                // si une horraire correspond, on récupère son code
+                $code_horaire = $horaireCorrespondante['code_horaire'];
+            } else {
+                echo "HOHO <br>";
+                // sinon, on l'insère
+                $ajoutHoraire = $dbh->prepare("INSERT INTO tripenarvor._horaire (ouverture,fermeture)
+                VALUES (:ouverture,:fermeture)");
+                $ajoutHoraire->bindValue(":ouverture",$horaire['ouverture']);
+                $ajoutHoraire->bindValue(":fermeture",$horaire['fermeture']);
+
+                $ajoutHoraire->execute();
+                // on récupère le dernier id enregistré, celui du code horaire.
+                $code_horaire = $dbh->lastInsertId();
+            }
+
         }
         
     }
