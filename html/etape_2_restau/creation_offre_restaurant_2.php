@@ -37,8 +37,6 @@ if(isset($_POST['envoiFormEtape2'])){
     $_SESSION['crea_offre2']['ma_gamme'] = $ma_gamme;
     $_SESSION['crea_offre2']['mesRepas'] = $mesRepas;
 
-    header('location: ../etape_2_horaires/creation_offre_restaurant_3.php');
-    exit;
 }
 /*
 * Pas d'autre vérif à faire, on peut directement envoyer l'utilisateur vers l'étape 3
