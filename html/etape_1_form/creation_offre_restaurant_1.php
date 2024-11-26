@@ -160,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                            <a href="../consulter_compte_pro.php">Mon compte</a>
                        </li>
                         <li>
-                            <a href="../creation_offre_restaurant_1.php?deco=true">Se déconnecter</a>
+                            <a href="../connexion_pro.php?deco=true">Se déconnecter</a>
                         </li>
                         <?php
                     } else {
