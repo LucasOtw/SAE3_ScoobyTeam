@@ -206,7 +206,10 @@
         $iban = strtoupper(str_replace(' ', '', $iban)); // on met tout en majuscules et on enlève les espaces si il y en a
 
         if(strlen($iban) !== $LONGUEUR_IBAN){
-          echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARGH !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+          $erreurs[] = "L'IBAN n'a pas la bonne longueur !";
+        } else {
+          $code_pays = substr($iban,0,2);
+          echo $code_pays;
         }
       }
     }
