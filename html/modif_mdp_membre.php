@@ -85,7 +85,9 @@ if (isset($_POST['modif_infos'])){
             </ul>
         </nav>
     </header>
+   
     <main class="main_modif_mdp_membre">
+       
 <!-- POUR PC/TABLETTE -->
         <div class="profile">
             <div class="banner">
@@ -98,6 +100,7 @@ if (isset($_POST['modif_infos'])){
                 <p><?php echo $compte['mail']; ?> | <?php echo trim(preg_replace('/(\d{2})/', '$1 ', $compte['telephone'])); ?></p>
             </div>
         </div>
+       
 <!-- POUR TEL -->
         <div class="mdp_securite">
             <a href="compte_membre_tel.php"><img src="images/Bouton_retour.png" alt="Bouton retour"></a>
@@ -113,6 +116,7 @@ if (isset($_POST['modif_infos'])){
 <!--                     <li><a href="historique_membre.php">Historique</a></li> -->
             </ul>
         </section>
+       
         <form action="modif_mdp_membre.php" method="POST">
            <h3>Modifiez votre mot de passe</h3>
             <fieldset>
@@ -134,7 +138,9 @@ if (isset($_POST['modif_infos'])){
                 <button type="submit" name="modif_infos" class="submit-btn2">Enregistrer</button>
             </div>
         </form>
+       
     </main>
+   
     <nav class="nav-bar-tel">
         <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
         <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
@@ -149,6 +155,7 @@ if (isset($_POST['modif_infos'])){
             ?>">
             <img src="images/icones/User icon.png" alt="image de Personne"></a>
     </nav>
+   
     <footer class="footer_detail_avis">
         <div class="newsletter">
             <div class="newsletter-content">
@@ -164,7 +171,6 @@ if (isset($_POST['modif_infos'])){
                 <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
             </div>
         </div>
-        
         <div class="footer-links">
             <div class="logo">
                 <img src="images/logoBlanc.png" alt="Logo PACT">
@@ -209,5 +215,6 @@ if (isset($_POST['modif_infos'])){
             </div>
         </div>
     </footer>
+   
 </body>
 </html>
