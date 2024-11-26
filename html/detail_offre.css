@@ -1045,13 +1045,13 @@ footer {
     position: relative;
     background-color: grey;
     border-radius: 1.5em;
-    box-shadow: 4px 4px 20px rgba(0,0,0,0.3);
     overflow: hidden;
 }
 
 .image-background-card-a-la-une img {
     width: 100%;
-    object-fit:contain;
+    height: 100%;
+    object-fit: cover;
     display: block;
     border-radius: 1.5em;
 }
