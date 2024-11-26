@@ -570,7 +570,7 @@ a.button-text{
     border: none;
     width: 150px;
     height: 50px;
-    background-color: #D5D4D4;
+    background-color: #F28322;
     color: black;
 }
 
@@ -586,6 +586,7 @@ a.button-text{
     border: none;
     width: 150px;
     height: 50px;
+    text-decoration: none;
 }
 
 /* Effet au survol */
