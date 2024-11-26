@@ -502,15 +502,15 @@ footer {
     }
 
     .poster_un_avis_textarea {
-        width: 107%;
-        height: 152px;
-        padding: 15px;
-        margin: 10px 0;
-        border: 1px solid #f3f8ff;
-        border-radius: 29px;
-        resize: none;
-        background-color: #f3f8ff;
-        box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
+            width: 106%;
+            height: 152px;
+            padding: 15px;
+            margin: 0vh 0;
+            border: 1px solid #f3f8ff;
+            border-radius: 29px;
+            resize: none;
+            background-color: #f3f8ff;
+            box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
     }
 
     .poster_un_avis_stars .poster_un_avis_star {
@@ -543,9 +543,7 @@ footer {
         font-size: 15px;
     }
     .poster_un_avis_location, .poster_un_avis_rating {
-    margin: 5px 0;
-    color: #555;
-    font-size: 11px;
+    display : none;
 }
 .poster_un_avis_images {
     display: flex;
@@ -561,7 +559,7 @@ footer {
     border-radius: 20px;
     font-size: 21px;
     transition: transform 0.3s ease; 
-    margin-top: -3em;
+    margin-top: -7vh;
 }
 
 .poster_un_avis_btn_publier:hover {
