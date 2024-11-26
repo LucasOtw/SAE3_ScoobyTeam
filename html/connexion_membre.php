@@ -111,6 +111,8 @@ session_start();
                 $existeMembre = $dbh->prepare("SELECT 1 FROM tripenarvor._membre WHERE code_compte = :code_compte");
                 $existeMembre->bindParam(':code_compte',$existeUser[0]);
                 $existeMembre->execute();
+
+                $existeMembre = $existeMembre->fetch(PDO::FETCH_ASSOC);
                 if($existeMembre){
                     // Si le membre existe, on vérifie le mot de passe
                     $checkPWD = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :code_compte");
