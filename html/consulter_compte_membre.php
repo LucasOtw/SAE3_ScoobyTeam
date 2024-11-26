@@ -45,46 +45,47 @@ if (isset($_POST['modif_infos'])){
    
    // Mettre à jour seulement les champs modifiés
    if (!empty($champsModifies)) {
-       foreach ($champsModifies as $champ => $valeur) {
-           switch ($champ) {
-               case 'nom':
-               case 'prenom':
-               case 'pseudo':
-                   $query = $dbh->prepare("UPDATE tripenarvor._membre SET $champ = :valeur WHERE code_compte = :code_compte");
-                   $query->execute(['valeur' => trim($valeur), 'code_compte' => $compte['code_compte']]);
-                   break;
-   
-               case 'mail':
-                   $valeurSansEspaces = trim(preg_replace('/\s+/', '', trim($valeur)));
-                   $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
-                   $query->execute(['valeur' => $valeurSansEspaces, 'code_compte' => $compte['code_compte']]);
-                   if($query){
-                      $_SESSION['membre']['mail'] = $valeurSansEspaces;
-                   }
-                   break;
-               case 'telephone':
-                   $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
-                   $query->execute(['valeur' => trim(preg_replace('/\s+/', '', trim($valeur))), 'code_compte' => $compte['code_compte']]);
-                   if($query){
-                      $_SESSION['membre']['telephone'] = trim(preg_replace('/\s+/', '', trim($valeur)));
-                   }
-                   break;
-   
-               case 'adresse_postal':
-               case 'code_postal':
-               case 'ville':
-                  echo $champ;
-                   $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
-                   $query->execute(['valeur' => trim($valeur), 'code_adresse' => $_adresse['code_adresse']]);
-                     if ($query)
-                     {
-                        $_SESSION['membre'][$champ] = trim($valeur);
-                     }
-                   break;
-           }
-       }
-       // echo "Les informations ont été mises à jour.";
-       include("recupInfosCompte.php");
+         $champs_valides_membre = ['nom', 'prenom', 'pseudo'];
+         $champs_valides_compte = ['mail', 'telephone'];
+         $champs_valides_adresse = ['adresse_postal', 'code_postal', 'ville'];
+         
+         if (empty($compte['code_compte']) || empty($_adresse['code_adresse'])) {
+             echo "Erreur : Informations de compte ou d'adresse manquantes.";
+             return;
+         }
+         
+         foreach ($champsModifies as $champ => $valeur) {
+             $valeurNettoye = trim(preg_replace('/\s+/', '', $valeur)); // Supprime les espaces en trop
+         
+             if (in_array($champ, $champs_valides_membre)) {
+                 // Mise à jour pour _membre
+                 $query = $dbh->prepare("UPDATE tripenarvor._membre SET $champ = :valeur WHERE code_compte = :code_compte");
+                 $query->execute(['valeur' => $valeurNettoye, 'code_compte' => $compte['code_compte']]);
+                 if ($query->rowCount() > 0) {
+                     $_SESSION['membre'][$champ] = $valeurNettoye;
+                 }
+             } elseif (in_array($champ, $champs_valides_compte)) {
+                 // Mise à jour pour _compte
+                 $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
+                 $query->execute(['valeur' => $valeurNettoye, 'code_compte' => $compte['code_compte']]);
+                 if ($query->rowCount() > 0) {
+                     $_SESSION['membre'][$champ] = $valeurNettoye;
+                 }
+             } elseif (in_array($champ, $champs_valides_adresse)) {
+                 // Mise à jour pour _adresse
+                 $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
+                 $query->execute(['valeur' => $valeurNettoye, 'code_adresse' => $_adresse['code_adresse']]);
+                 if ($query->rowCount() > 0) {
+                     $_SESSION['membre'][$champ] = $valeurNettoye;
+                 }
+             } else {
+                 echo "Champ non valide : $champ";
+             }
+         }
+         
+         // Récupérer les informations mises à jour
+         include("recupInfosCompte.php");
+
    } else {
        echo "Aucune modification détectée.";
    }
