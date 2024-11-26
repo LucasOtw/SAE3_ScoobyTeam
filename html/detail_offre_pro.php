@@ -352,8 +352,15 @@
 
                     
                     <!-- Conteneur de l'offre -->
+    <?php
+        // Simulation : récupérer la valeur de l'offre (1 pour "En Ligne", 0 pour "Hors Ligne")
+        $en_ligne = $details_offre['en_ligne'] ?? 0; // Par défaut 0 si $details_offre['en_ligne'] n'est pas défini
+    ?>
+
     <div>
-        <p id="offer-state">L'offre est actuellement : <?php echo $details_offre['en_ligne']; ?></p>
+        <p id="offer-state">L'offre est actuellement : <span id="offer-status">
+            <?php echo $en_ligne ? "En Ligne" : "Hors Ligne"; ?>
+        </span></p>
     </div>
 
     <!-- Bouton toggle -->
@@ -364,8 +371,8 @@
     </div>
 
     <script>
-        // État initial de l'offre (peut être récupéré dynamiquement depuis une base de données)
-        let offerState = "Hors Ligne"; // Valeur initiale : "En Ligne" ou "Hors Ligne"
+        // Récupérer l'état initial de l'offre depuis PHP
+        let offerState = <?php echo $en_ligne ? '"En Ligne"' : '"Hors Ligne"'; ?>;
 
         // Sélectionner les éléments
         const toggleButton = document.getElementById('toggle');
@@ -393,8 +400,20 @@
             // Mettre à jour le bouton et le texte
             initializeToggle();
 
-           
+            // Optionnel : envoyer l'état mis à jour au serveur via AJAX ou Fetch API
             console.log("Nouvel état de l'offre :", offerState);
+
+            // Exemple de simulation d'appel AJAX pour mettre à jour l'état
+            fetch('update_offer_status.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ en_ligne: offerState === "En Ligne" ? 1 : 0 })
+            })
+            .then(response => response.json())
+            .then(data => console.log('Mise à jour réussie :', data))
+            .catch(error => console.error('Erreur lors de la mise à jour :', error));
         });
 
         // Initialiser le bouton au chargement de la page
