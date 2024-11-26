@@ -226,7 +226,7 @@ if (isset($_POST['modif_infos'])){
 
             <fieldset>
                 <legend>Adresse Postale *</legend>
-                <input type="text" id="adresse" name="adresse" value="<?php echo $_adresse['adresse_postal']; ?>" placeholder="Adresse Postale *" required>
+                <input type="text" id="adresse_postal" name="adresse_postal" value="<?php echo $_adresse['adresse_postal']; ?>" placeholder="Adresse Postale *" required>
             </fieldset>
            
             <div class="crea_pro_mail_tel">
