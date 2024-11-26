@@ -1256,8 +1256,14 @@ body.menu-open #overlay {
         border-radius: 15px;
 
     }
-
+    .search-bar {
+        margin:0;
+    }
     .toute_les_offres_main .search-select{
         width:0
+    }
+
+    .toute_les_offres_main .search-options {
+        flex-direction:row;
     }
 }

@@ -561,7 +561,7 @@ a.button-text{
 }
 
 
-.button-toutes .button-HorsLigne .button-Ligne{
+.button-toutes{
     border-radius: 30px;
     padding: 10px 20px;
     font-size: 16px;
@@ -571,7 +571,23 @@ a.button-text{
     border: none;
     width: 150px;
     height: 50px;
-    background-color: white;
+    background-color: #f9f9f9;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+.button-Ligne{
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px 0;
+    outline: none;
+    border: none;
+    width: 150px;
+    height: 50px;
+    background-color: #f9f9f9;
     color: black;
     text-decoration: none;
     text-align: center;
@@ -593,8 +609,34 @@ a.button-text{
     text-align: center;
 }
 
+.button-HorsLigne{
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px 0;
+    outline: none;
+    border: none;
+    width: 150px;
+    height: 50px;
+    background-color: #f9f9f9;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
 /* Effet au survol */
-.button-Ligne:hover, .button-toutes:hover, .button_Horsligne:hover {
+.button_HorsLigne:hover {
+    transform: scale(1.05);   /* Légère mise en avant */
+    transition: 0.3s ease;    /* Animation douce */
+    text-align: center;
+}
+
+.button-Ligne:hover{
+    transform: scale(1.05);   /* Légère mise en avant */
+    transition: 0.3s ease;    /* Animation douce */
+    text-align: center;
+}
+.button-toutes:hover{
     transform: scale(1.05);   /* Légère mise en avant */
     transition: 0.3s ease;    /* Animation douce */
     text-align: center;
