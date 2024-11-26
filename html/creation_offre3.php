@@ -61,7 +61,24 @@ if(isset($_POST['valider'])){
         $complement_adresse = $_SESSION['crea_offre']['complementAdresse'];
         $code_postal = $_SESSION['crea_offre']['codePostal'];
         $ville = $_SESSION['crea_offre']['ville'];
-        
+
+        // on fait la vérification dans la base de données
+
+        $adresseCorrespondante = $dbh->prepare("SELECT code_adresse FROM tripenarvor._adresse
+        WHERE
+        adresse_postal = :adresse AND
+        (complement_adresse = :complement OR complement_adresse IS NULL) AND
+        code_postal = :code_postal AND
+        ville = :ville
+        ");
+        $adresseCorrespondante->bindValue(":adresse",trim($adresse_postal));
+        $adresseCorrespondante->bindValue(":complement",trim($complement_adresse));
+        $adresseCorrespondante->bindValue(":code_postal",trim($code_postal));
+        $adresseCorrespondante->bindValue(":ville",trim($ville));
+
+        $adresseCorrespondante->execute();
+        $adresseCorrespondante = $adresseCorrespondante->fetch(PDO::FETCH_ASSOC);
+        var_dump($adresseCorrespondante);
     }
 }
     
