@@ -278,7 +278,7 @@
                         ⭐ 5.0 (255 avis)
                     </div> -->
                 </div>
-
+                
                 <div class="detail_offre_price-button">
 
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
