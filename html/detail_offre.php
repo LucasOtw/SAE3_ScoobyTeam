@@ -86,9 +86,9 @@
                 // Une offre a forcément au moins une image. 
                 // On récupère l'image (ou les images) associée(s)
     
-            $stmt = $dbh->prepare('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = :code_offre');
+            $stmt = $dbh->prepare('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = :code_offre;');
             $stmt->execute([':code_offre' => $code_offre]);
-            $images_offre = $stmt->fetch(PDO::FETCH_NUM);
+            $images_offre = $stmt->fetchAll(PDO::FETCH_NUM);
 
 
             echo '<pre>';
@@ -299,7 +299,7 @@
                 
                     <article class="card-a-la-une">
                         <div class="image-background-card-a-la-une">
-                            <img src="<?php echo $photo;?>" alt="">
+                            <img src="<?php echo $photo[0];?>" alt="">
                         </div>
                     </article>
 

@@ -3,6 +3,15 @@
 ob_start();
 session_start();
 
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+$username = "sae";
+$password = "philly-Congo-bry4nt";
+
+// Créer une instance PDO
+$dbh = new PDO($dsn, $username, $password);
+
+include("recupInfosCompte.php");
+
 if(!isset($_SESSION['pro'])){
     // si on tente d'accéder à la page sans être connecté à un compte pro, on
     header('location: connexion_pro.php');
@@ -16,6 +25,19 @@ if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
         exit;
     }
 }
+
+$infosCB = null;
+
+// on vérifie si le pro a un compte bancaire
+if($monComptePro['code_compte_bancaire']){
+    // si le pro a un code de compte bancaire, on récupère ses infos
+    $recupInfosCB = $dbh->prepare('SELECT * FROM tripenarvor._compte WHERE code_compte_bancaire = :code_cb');
+    $recupInfosCB->bindValue(":code_cb",$monComptePro['code_compte_bancaire']);
+    $recupInfosCB->execute();
+
+    $infosCB = $recupInfosCB->fetch(PDO::FETCH_ASSOC);
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -42,13 +64,7 @@ if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
 
     <div class="fleche_retour">
         <div>
-            <img src="images/Bouton_retour.png" alt="retour">
-        </div>
-    </div>
-
-    <div class="header-controls">
-        <div>
-            <img id="etapes" src="images/FilArianne3.png" alt="Étapes" width="80%" height="80%">
+            <a href="etape_3_boost/creation_offre_restaurant_4.php"><img src="images/Bouton_retour.png" alt="retour"></a>
         </div>
     </div>
 
@@ -64,7 +80,7 @@ if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
                     <div class="col">
                         <fieldset>
                             <legend>IBAN *</legend>
-                            <input type="text" id="IBAN" name="IBAN" value="test" placeholder="IBAN *" required>
+                            <input type="text" id="IBAN" name="IBAN" value=<?php echo ($infosCB) ? $infosCB['iban'] : ""; ?> placeholder="IBAN *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -74,7 +90,7 @@ if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
                     <div class="col">
                         <fieldset>
                             <legend>BIC *</legend>
-                            <input type="text" id="BIC" name="BIC" value="test" placeholder="BIC *" required>
+                            <input type="text" id="BIC" name="BIC" value=<?php echo ($infosCB) ? $infosCB['bic'] : ""; ?> placeholder="BIC *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -84,7 +100,7 @@ if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
                     <div class="col">
                         <fieldset>
                             <legend>Nom du compte *</legend>
-                            <input type="text" id="nom" name="nom" value="test" placeholder="Nom du compte *" required>
+                            <input type="text" id="nom" name="nom" value=<?php echo ($infosCB) ? $infosCB['nom_compte'] : ""; ?> placeholder="Nom du compte *" required>
                         </fieldset>
                     </div>
                 </div>

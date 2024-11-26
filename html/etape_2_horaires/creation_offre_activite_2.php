@@ -15,9 +15,9 @@
         </div>
         <nav>
             <ul>
-                <li><a href="mes_offres.php">Accueil</a></li>
-                <li><a href="#" class="active">Publier</a></li>
-                <li><a href="informations_personnelles_pro.php">Mon Compte</a></li>
+                <li><a href="../voir_offres.php">Accueil</a></li>
+                <li><a href="../creation_offre.php" class="active">Publier</a></li>
+                <li><a href="../informations_personnelles_pro.php">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
