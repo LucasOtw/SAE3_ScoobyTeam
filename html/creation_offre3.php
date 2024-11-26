@@ -97,15 +97,16 @@ if(isset($_POST['valider'])){
             // et on récupère le dernier id inséré, dans notre cas, c'est FORCEMENT le code_adresse ! :D
             $code_adresse = $dbh->lastInsertId();
         }
-
-        var_dump($code_adresse);
         
 
         /*
         * VERIFICATION DES HORAIRES
         */
 
-        
+        $tab_horaires = $_SESSION['crea_offre3'];
+        echo "<pre>";
+        print_r($tab_horaires);
+        echo "</pre>";
         
     }
 }
