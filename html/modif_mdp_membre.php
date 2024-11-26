@@ -31,12 +31,16 @@ if (isset($_POST['modif_infos'])){
            $champsModifies[$champ] = $valeur;
        }
    }
+
+   echo "<pre>";
+   var_dump($champsModifies);
+   echo"</pre>";
    
    // Mettre à jour seulement les champs modifiés
    if (!empty($champsModifies))
    {
-      $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
-      $query->execute(['valeur' => trim(preg_replace('/\s+/', '', trim($valeur))), 'code_compte' => $compte['code_compte']]); 
+      // $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
+      // $query->execute(['valeur' => trim(preg_replace('/\s+/', '', trim($valeur))), 'code_compte' => $compte['code_compte']]); 
       
        // echo "Les informations ont été mises à jour.";
        include("recupInfosCompte.php");
