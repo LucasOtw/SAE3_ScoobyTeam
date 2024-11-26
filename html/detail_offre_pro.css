@@ -1240,7 +1240,7 @@ footer {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 1vh;
         }
 
         /* Style du bouton toggle */
@@ -1267,7 +1267,7 @@ footer {
         }
 
         /* Lorsque le toggle est activé (en ligne) */
-        .active {
+        .toggle .active {
             background-color: orange;
         }
 
