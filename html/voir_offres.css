@@ -1217,6 +1217,11 @@ body.menu-open #overlay {
         width: 100%; /* L'input prend toute la largeur */
         margin-right: 0; /* Retirer le margin droit */
         margin-bottom: 8px; /* Ajouter un espacement entre l'input et le bouton */
+        color: black;
+    }
+
+    .toute_les_offres_main .search-input::placeholder{
+        color:black;
     }
 
     .toute_les_offres_main .search-button {
@@ -1228,6 +1233,7 @@ body.menu-open #overlay {
         flex-direction: column; /* Empiler les options verticalement */
         gap: 6px; /* Espacement plus petit entre les options */
         width: 100%;
+        color: black;
     }
 
     .toute_les_offres_main .search-select {
