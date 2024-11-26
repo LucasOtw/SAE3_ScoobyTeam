@@ -72,12 +72,34 @@ if (isset($_POST['modif_infos'])){
                      $_SESSION['membre'][$champ] = $valeurNettoye;
                  }
              } elseif (in_array($champ, $champs_valides_adresse)) {
-                 // Mise à jour pour _adresse
-                 $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
-                 $query->execute(['valeur' => $valeurNettoye, 'code_adresse' => $_adresse['code_adresse']]);
-                 if ($query->rowCount() > 0) {
-                     $_SESSION['membre'][$champ] = $valeurNettoye;
-                 }
+                   if (empty($_adresse['code_adresse'])) {
+                       echo "Erreur : code_adresse introuvable.";
+                       return;
+                   }
+               
+                   // Validation spécifique par champ
+                   $valeurNettoye = trim($valeur);
+                   if ($champ === 'code_postal' && !preg_match('/^\d{5}$/', $valeur)) {
+                       echo "Erreur : code_postal invalide.";
+                       return;
+                   }
+                   if ($champ === 'adresse_postal' && empty($valeurNettoye)) {
+                       echo "Erreur : adresse_postal est vide.";
+                       return;
+                   }
+               
+                   // Mise à jour dans la base de données
+                   $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
+                   $query->execute([
+                       'valeur' => $valeurNettoye,
+                       'code_adresse' => $_adresse['code_adresse']
+                   ]);
+               
+                   if ($query->rowCount() > 0) {
+                       $_SESSION['membre'][$champ] = $valeurNettoye;
+                   } else {
+                       echo "Aucune mise à jour effectuée pour $champ.";
+                   }
              } else {
                  echo "Champ non valide : $champ";
              }
