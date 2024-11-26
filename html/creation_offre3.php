@@ -42,13 +42,7 @@ if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
 
     <div class="fleche_retour">
         <div>
-            <img src="images/Bouton_retour.png" alt="retour">
-        </div>
-    </div>
-
-    <div class="header-controls">
-        <div>
-            <img id="etapes" src="images/FilArianne3.png" alt="Étapes" width="80%" height="80%">
+            <a href="etape_3_boost/creation_restaurant_4.php"><img src="images/Bouton_retour.png" alt="retour"></a>
         </div>
     </div>
 
