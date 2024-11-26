@@ -621,7 +621,7 @@ a.button-text{
 }
 
 /* Effet au survol */
-.button-Ligne:hover, .button-Active:hover {
+.button-Ligne:hover, .button-Active:hover, .button_Horsligne:hover {
     transform: scale(1.05);   /* Légère mise en avant */
     transition: 0.3s ease;    /* Animation douce */
 }
