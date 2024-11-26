@@ -146,6 +146,7 @@ if (isset($_POST['modif_infos'])){
             </ul>
         </section>
         <form action="#" method="POST">
+           <h2>Modifiez votre mot de passe</h2>
             <fieldset>
                 <legend>Entrez votre mot de passe actuel *</legend>
                 <input type="password" id="adresse" name="adresse" placeholder="Entrez votre mot de passe actuel *" required>
