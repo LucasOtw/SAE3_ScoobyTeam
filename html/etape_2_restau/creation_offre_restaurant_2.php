@@ -28,7 +28,7 @@ if(isset($_POST['envoiFormEtape2'])){
        $min = 40;
     }
 
-    $tarif = $_POST['tarif'];
+    $tarif = $_POST['_tarif'];
     echo $tarif;
    
     foreach($_POST['repas'] as $repas){
