@@ -49,7 +49,7 @@ if(isset($_GET['logout'])){
                            <a href="../consulter_compte_pro.php">Mon compte</a>
                        </li>
                         <li>
-                            <a href="../connexion_pro?deco=true">Se déconnecter</a>
+                            <a href="../connexion_pro.php?deco=true">Se déconnecter</a>
                         </li>
                         <?php
                     } else {
