@@ -1073,3 +1073,18 @@ body.menu-open .filter-menu {
     /* Aligne le texte à gauche */
     font-size: 1.2em;
 }
+
+#btn-voir-offre {
+    background-color: #4CAF50; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    border: none; /* Pas de bordure */
+    padding: 10px 20px; /* Espacement interne */
+    cursor: pointer; /* Curseur de la souris */
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px; /* Marge au-dessus du bouton */
+}
+
+#btn-voir-offre:hover {
+    background-color: #45a049; /* Changement de couleur au survol */
+}
