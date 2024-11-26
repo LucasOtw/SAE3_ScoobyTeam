@@ -113,7 +113,7 @@ if (isset($_POST['modif_infos'])){
 <!--                     <li><a href="historique_membre.php">Historique</a></li> -->
             </ul>
         </section>
-        <form action="modif_mdp_membre" method="POST">
+        <form action="modif_mdp_membre.php" method="POST">
            <h3>Modifiez votre mot de passe</h3>
             <fieldset>
                 <legend>Entrez votre mot de passe actuel *</legend>
