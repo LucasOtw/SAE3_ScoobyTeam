@@ -1190,7 +1190,11 @@ body.menu-open #overlay {
 
 .toute_les_offres_main .search-input {
     background: none;
+    border: none; 
+    box-shadow: none;
+    color: white;
 }
+
 @media (max-width: 429px){
     .half-background {
     height: 50vh; /* 100% de la hauteur de la fenêtre */
@@ -1225,6 +1229,7 @@ body.menu-open #overlay {
         color: black;
         background-color: var(--gris);
         margin: 0;
+        color: black;
     }
 
     .toute_les_offres_main .search-input::placeholder{
