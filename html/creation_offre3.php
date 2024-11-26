@@ -3,6 +3,13 @@
 ob_start();
 session_start();
 
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+$username = "sae";
+$password = "philly-Congo-bry4nt";
+
+// Créer une instance PDO
+$dbh = new PDO($dsn, $username, $password);
+
 include("recupInfosCompte.php");
 
 if(!isset($_SESSION['pro'])){
@@ -19,11 +26,16 @@ if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
     }
 }
 
+$infosCB = null;
+
 // on vérifie si le pro a un compte bancaire
 if($monComptePro['code_compte_bancaire']){
-    echo "test";
-} else {
-    echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARGH !!";
+    // si le pro a un code de compte bancaire, on récupère ses infos
+    $recupInfosCB = $dbh->prepare('SELECT * FROM tripenarvor._compte WHERE code_compte_bancaire = :code_cb');
+    $recupInfosCB->bindValue(":code_cb",$monComptePro['code_compte_bancaire']);
+    $recupInfosCB->execute();
+
+    $infosCB = $recupInfosCB->fetch(PDO::FETCH_ASSOC);
 }
 
 
@@ -68,7 +80,7 @@ if($monComptePro['code_compte_bancaire']){
                     <div class="col">
                         <fieldset>
                             <legend>IBAN *</legend>
-                            <input type="text" id="IBAN" name="IBAN" value="test" placeholder="IBAN *" required>
+                            <input type="text" id="IBAN" name="IBAN" value=<?php echo ($infosCB) ? "OUIIIIIIII" : "LOL"; ?> placeholder="IBAN *" required>
                         </fieldset>
                     </div>
                 </div>
