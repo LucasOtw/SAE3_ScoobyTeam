@@ -92,7 +92,7 @@ if (isset($_POST['modif_infos'])){
                        return;
                    }
 
-                   alert($valeurNettoye);
+                   print_r($valeurNettoye);
                
                    // Mise à jour dans la base de données
                    $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
@@ -226,13 +226,13 @@ if (isset($_POST['modif_infos'])){
 
             <fieldset>
                 <legend>Adresse Postale *</legend>
-                <input type="text" id="adresse" name="adresse" value="<?php echo $_adresse['adresse_postal']; ?>" placeholder="Adresse Postale *" required>
+                <input type="text" id="adresse_postal" name="adresse_postal" value="<?php echo $_adresse['adresse_postal']; ?>" placeholder="Adresse Postale *" required>
             </fieldset>
            
             <div class="crea_pro_mail_tel">
                <fieldset>
                    <legend>Code Postal *</legend>
-                   <input type="text" id="code-postal" name="code-postal" value="<?php echo $_adresse['code_postal']; ?>" placeholder="Code Postal *" required>
+                   <input type="text" id="code_postal" name="code_postal" value="<?php echo $_adresse['code_postal']; ?>" placeholder="Code Postal *" required>
                </fieldset>
    
                <fieldset>
