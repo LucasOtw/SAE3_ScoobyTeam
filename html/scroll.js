@@ -1,4 +1,4 @@
-const scrollAmount = 300;
+const scrollAmount = 10;
 
 function scrollcontentLeft() {
     const container = document.querySelector('.a-la-une');
