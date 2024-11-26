@@ -17,14 +17,14 @@
         $jours = $diff->days; // total des jours de différence
         $mois = $diff->m + ($diff->y * 12); // mois totaux
         $annees = $diff->y;
-    
+
         $retour = null;
-    
+
         // calcul du nombre de jours dans le mois précédent
         $date_mois_precedent = clone $date_actuelle;
         $date_mois_precedent->modify('-1 month');
         $jours_dans_mois_precedent = (int)$date_mois_precedent->format('t'); // 't' donne le nombre de jours dans le mois
-    
+
         if($jours == 0){
             $retour = "Aujourd'hui";
         } elseif($jours == 1){
@@ -39,7 +39,7 @@
         } else {
             $retour = "il y a ".$annees." an(s)";
         }
-    
+
         return $retour;
     }
 
@@ -54,14 +54,14 @@
             $jours = $diff->days; // total des jours de différence
             $mois = $diff->m + ($diff->y * 12); // mois totaux
             $annees = $diff->y;
-        
+
             $retour = null;
-        
+
             // calcul du nombre de jours dans le mois précédent
             $date_mois_precedent = clone $date_actuelle;
             $date_mois_precedent->modify('-1 month');
             $jours_dans_mois_precedent = (int)$date_mois_precedent->format('t'); // 't' donne le nombre de jours dans le mois
-        
+
             if($jours == 0){
                 $retour = "Aujourd'hui";
             } elseif($jours == 1){
@@ -76,7 +76,7 @@
             } else {
                 $retour = "il y a ".$annees." an(s)";
             }
-        
+
             return $retour;
     }
 
@@ -86,7 +86,7 @@
         {
             $dateTimeO = DateTime::createFromFormat('H:i:s', $jour["ouverture"]);
             $dateTimeF = DateTime::createFromFormat('H:i:s', $jour["fermeture"]);
-        
+
             $horaire = ": ".$dateTimeO->format('H')."h".$dateTimeO->format('i')." - ".$dateTimeF->format('H')."h".$dateTimeF->format('i');
         }
         else
@@ -110,19 +110,19 @@
     }
     else
     {
-        
+
         // si le formulaire est bien récupéré
         $details_offre = unserialize($_POST["uneOffre"]);// on récupère son contenu
-        
+
         $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
 
 
         if(!empty($details_offre))
         { // si l'offre existe
-    
+
                 // Une offre a forcément au moins une image. 
                 // On récupère l'image (ou les images) associée(s)
-    
+
             $stmt = $dbh->prepare('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = :code_offre;');
             $stmt->execute([':code_offre' => $code_offre]);
             $images_offre = $stmt->fetchAll(PDO::FETCH_NUM);
@@ -174,16 +174,16 @@
                 'visite' => 'SELECT * FROM tripenarvor.offre_visite WHERE code_offre = :code_offre',
                 'activite' => 'SELECT * FROM tripenarvor.offre_activite WHERE code_offre = :code_offre'
             ];
-            
+
             $type_offre = null;
             $details_offre = null;
-            
+
             // Parcourez les requêtes et exécutez-les
             foreach ($queries as $type => $sql) {
                 $stmt = $dbh->prepare($sql);
                 $stmt->bindParam(':code_offre', $code_offre, PDO::PARAM_INT);
                 $stmt->execute();
-                
+
                 // Vérifiez si une ligne est retournée
                 $result = $stmt->fetch(PDO::FETCH_ASSOC);
                 if ($result) {
@@ -197,7 +197,7 @@
             $option_en_relief->bindValue(":option_en_relief",$details_offre["option_en_relief"]);
             $option_en_relief->execute();
             $option_en_relief = $option_en_relief->fetch(PDO::FETCH_ASSOC);
-            
+
             $option_a_la_une = $dbh->prepare('SELECT * FROM tripenarvor._option WHERE code_option = :option_a_la_une');
             $option_a_la_une->bindValue(":option_a_la_une",$details_offre["option_a_la_une"]);
             $option_a_la_une->execute();
@@ -208,12 +208,12 @@
             echo '</pre>';
 
             // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
-    
+
             $adresse_offre = $dbh->prepare('SELECT * FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
             $adresse_offre->bindValue(":code_adresse",$details_offre["code_adresse"]);
             $adresse_offre->execute();
             $adresse_offre = $adresse_offre->fetch(PDO::FETCH_ASSOC);
-            
+
         }
     }
 
@@ -256,7 +256,7 @@
         href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
     <script src="scroll.js"></script>
-    
+
 
 
     <script>
@@ -287,7 +287,7 @@
                 <ul>
                     <li><a href="voir_offres.php" class="active">Accueil</a></li>
                     <li><a href="connexion_pro.php">Publier</a></li>
-                    
+
                    <li>
                        <a href="consulter_compte_pro.php">Mon compte</a>
                    </li>
@@ -297,7 +297,7 @@
                 </ul>
             </nav>
         </header>
-        
+
         <div class="detail_offre_hotel-detail">
 
             <div class="detail_offre_hotel-header">
@@ -317,14 +317,14 @@
                 </div>
 
                 <div class="detail_offre_price-button">
-                    <div class="detail_offre_pro_info-icon-container">
-                    <span class="info-icon">I</span>
-                    <div class="tooltip">
-                    <div class="detail_offre_option">
-                    <?php
-                        if ($option_a_la_une !== false)
-                        {
-                    ?>
+                <div class="detail_offre_pro_info-icon-container">
+                <span class="info-icon">I</span>
+                <div class="tooltip">
+                <div class="detail_offre_option">
+                <?php
+                    if ($option_a_la_une !== false)
+                    {
+                ?>
                         <h3>Option à la une</h3>
                         <p>Début de l'option : <?php echo $option_a_la_une["date_debut"];?></p>
                         <p>Fin de l'option : <?php echo $option_a_la_une["date_fin"];?></p>
@@ -346,8 +346,8 @@
             </div>
 
                 </div>
-                
-                
+                </div>
+
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
                     <div class="detail_offre_pro_button">
                     <a href="<?php echo $details_offre["site_web"]; ?>"><button class="visit-button_detailoffre">Voir le site ➔</button></a>
@@ -368,9 +368,10 @@
                 foreach ($images_offre as $photo)
                 {
                 ?>
-                
+
                     <article class="card-a-la-une">
                         <div class="image-background-card-a-la-une">
+                            <img src="<?php echo $photo;?>" alt="">
                             <img src="<?php echo $photo[0];?>" alt="">
                         </div>
                     </article>
@@ -417,7 +418,7 @@
                                 ?>
                                     <h3 style="margin-top: 1em;">Age requis</h3>
                                     <p><?php echo $details_offre["age_requis"];?></p>
-                                    
+
                                     <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
                                     <p><?php echo $details_offre["nombre_attractions"];?></p>
                                 <?php
@@ -450,10 +451,10 @@
 
                                     <h3 style="margin-top: 1em;">Age requis</h3>
                                     <p><?php echo $details_offre["age_requis"];?></p>
-                                    
+
                                     <h3 style="margin-top: 1em;">Prestations incluses</h3>
                                     <p><?php echo $details_offre["prestations_incluses"];?></p>
-                                    
+
                                     <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
                                     <p><?php echo $details_offre["prestations_non_incluses"];?></p>
                                 <?php
@@ -463,7 +464,7 @@
                             </div>
                         </div>
             </div>
-               
+
             <div class="accessibilite_infos_detail_offre">
                 <h2>Accessibilité</h2>
                 <p><?php echo $details_offre["accessibilite"]; ?></p>
@@ -483,11 +484,11 @@
                 }
                 ?> 
 
-                
+
 
             </div>
         </div>
-        
+
         <?php
         if (!empty($h_lundi["ouverture"]) || 
            !empty($h_mardi["ouverture"]) ||
@@ -499,7 +500,7 @@
         {
         ?>
             <div class="Detail_offre_ouverture_global_desktop">
-    
+
                 <h2>Horaires</h2>
                 <ul class="hours_desktop_detail_offre">
                     <li><span>Lundi</span><?php echo afficherHoraire($h_lundi);?></li>
@@ -510,7 +511,7 @@
                     <li><span>Samedi</span><?php echo afficherHoraire($h_samedi);?></li>
                     <li><span>Dimanche</span><?php echo afficherHoraire($h_dimanche);?></li>
                 </ul>
-    
+
             </div>
         <?php
         }
@@ -525,7 +526,7 @@
             </iframe>
         </div>
 
-       
+
         <footer class="footer_detail_avis">
             <div class="newsletter">
                 <div class="newsletter-content">
