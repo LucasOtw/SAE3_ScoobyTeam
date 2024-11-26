@@ -78,7 +78,24 @@ if(isset($_POST['valider'])){
 
         $adresseCorrespondante->execute();
         $adresseCorrespondante = $adresseCorrespondante->fetch(PDO::FETCH_ASSOC);
-        var_dump($adresseCorrespondante);
+
+        if($adresseCorrespondante){
+            echo "HAHAHAHAHAHA !";
+            // si on trouve une adresse exactement similaire dans la base de données
+            $code_adresse = $adresseCorrespondante['code_adresse'];
+        } else {
+            echo "INSERTION";
+            // sinon, on l'insère...
+            $ajoutAdresse = $dbh->prepare("INSERT INTO tripenarvor._adresse (adresse_postal,complement_adresse,code_postal,ville) VALUES
+            (:adresse,:complement,:code_postal,:ville)");
+            $ajoutAdresse->bindValue(":adresse",trim($adresse_postal));
+            $ajoutAdresse->bindValue(":complement",trim($complement_adresse));
+            $ajoutAdresse->bindValue(":code_postal",trim($code_postal));
+            $ajoutAdresse->bindValue(":ville",trim($ville));
+
+            $ajoutAdresse->execute();
+            $code_adresse = $dbh->lastInsertId();
+        }
     }
 }
     
