@@ -40,6 +40,7 @@ if($monComptePro['code_compte_bancaire']){
 
 if(isset($_POST['valider'])){
    $code_iban = $_POST['IBAN'];
+   $code_BIC = $_POST['BIC'];
 
    if(validerIBAN($code_iban) === true){
        echo "YOUHOU !";
@@ -48,6 +49,11 @@ if(isset($_POST['valider'])){
            echo $erreur;
        }
    }
+    if(validerBIC($code_BIC)){
+        echo "Quentinou";
+    } else {
+        echo "Le code BIC est invalide !";
+    }
 }
     
 ?>
