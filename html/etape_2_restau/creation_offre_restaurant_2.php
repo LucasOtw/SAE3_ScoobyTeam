@@ -28,14 +28,41 @@ if(isset($_POST['envoiFormEtape2'])){
        $min = 40;
     }
 
-    $tarif = $_POST['_tarif'];
-    echo $tarif;
+   $tarif = $_POST['_tarif'];
+   
+   if($min === 0 && $max === 25){
+      if($tarif > $min && $tarif < $max){
+         $_SESSION['crea_offre2']['tarif'] = $tarif;
+      } else {
+         $erreurs[] = "Le tarif ne correspond pas à la gamme de prix choisie !";
+      }
+   } else if ($min === 25 && $max === 40){
+      if($tarif >= $min && $tarif < $max){
+         $_SESSION['crea_offre2']['tarif'] = $tarif;
+      } else {
+         $erreurs[] = "Le tarif ne correspond pas à la gamme de prix choisie !";
+      }
+   } else if ($min === 40){
+      if($tarif >= $min){
+         $_SESSION['crea_offre2']['tarif'] = $tarif;
+      } else {
+         $erreurs[] = "Le tarif ne correspond pas à la gamme de prix choisie !";
+      }
+   }
+
+   if(!empty($erreurs)){
+      foreach($erreurs as $erreur){
+         echo $erreur;
+      }
+   }
    
     foreach($_POST['repas'] as $repas){
         $mesRepas[] = $repas;
     }
     $_SESSION['crea_offre2']['ma_gamme'] = $ma_gamme;
     $_SESSION['crea_offre2']['mesRepas'] = $mesRepas;
+
+   var_dump($_SESSION['crea_offre2']);
 
 }
 /*
