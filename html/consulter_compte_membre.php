@@ -33,7 +33,7 @@ if (isset($_POST['modif_infos'])){
    $champsModifies = [];
 
    echo "<pre>";
-   var_dump($_SESSION["membre"]);
+   var_dump($_POST);
    echo"</pre>";
    
    // Parcourir les données soumises
