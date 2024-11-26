@@ -588,6 +588,7 @@ a.button-text{
     background-color: white;
     color: black;
     text-decoration: none;
+    text-align: center;
 }
 
 .button-toutes {
@@ -603,6 +604,7 @@ a.button-text{
     background-color: white;
     color: black;
     text-decoration: none;
+    text-align: center;
 }
 
 .button-Active {
@@ -618,12 +620,14 @@ a.button-text{
     width: 150px;
     height: 50px;
     text-decoration: none;
+    text-align: center;
 }
 
 /* Effet au survol */
 .button-Ligne:hover, .button-toutes:hover, .button_Horsligne:hover {
     transform: scale(1.05);   /* Légère mise en avant */
     transition: 0.3s ease;    /* Animation douce */
+    text-align: center;
 }
 
 
