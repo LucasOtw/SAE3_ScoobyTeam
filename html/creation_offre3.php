@@ -133,8 +133,15 @@ if(isset($_POST['valider'])){
                 // on récupère le dernier id enregistré, celui du code horaire.
                 $code_horaire = $dbh->lastInsertId();
             }
-
         }
+
+        /*
+        *    TRAITEMENT DES IMAGES
+        */
+
+        $nom_dossier_images = $_SESSION['crea_offre']['titre_offre'];
+        $nom_dossier_images = str_replace(' ','',$nom_dossier_images);
+        echo $nom_dossier_images;
         
     }
 }
