@@ -304,7 +304,7 @@ function tempsEcouleDepuisPublication($offre){
                     } else {
                         $offre_image = "";
                     }
-                    if ($offre["en_ligne"])
+                    if (!empty($offre["option_a_la_une"]))
                     {
                     ?>
                         
