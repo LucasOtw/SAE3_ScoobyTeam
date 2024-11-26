@@ -31,6 +31,10 @@ if (isset($_POST['modif_infos'])){
    
    // Champs modifiés
    $champsModifies = [];
+
+   echo "<pre>";
+   var_dump($_POST);
+   echo"</pre>";
    
    // Parcourir les données soumises
    foreach ($_POST as $champ => $valeur) {
