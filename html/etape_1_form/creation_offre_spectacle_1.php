@@ -41,7 +41,7 @@ if(isset($_GET['logout'])){
         <nav>
             <ul>
                 <li><a href="../mes_offres.php" class="active">Accueil</a></li>
-                <li><a href="../creation_pro.php">Publier</a></li>
+                <li><a href="../creation_offre.php">Publier</a></li>
                 <?php
                     if(isset($_SESSION["pro"]) || !empty($_SESSION["pro"])){
                        ?>
