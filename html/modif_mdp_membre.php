@@ -19,14 +19,7 @@ if(!isset($_SESSION['membre'])){
 if (isset($_POST['modif_infos'])){
     // Récupérer les valeurs initiales (par exemple, depuis la base de données)
    $valeursInitiales = [
-       'nom' => $monCompteMembre['nom'],
-       'prenom' => $monCompteMembre['prenom'],
-       'pseudo' => $monCompteMembre['pseudo'],
-       'mail' => $compte['mail'],
-       'telephone' => $compte['telephone'],
-       'adresse_postal' => $_adresse['adresse_postal'],
-       'code_postal' => $_adresse['code_postal'],
-       'ville' => $_adresse['ville'],
+       'mdp' => $compte['mdp'],
    ];
    
    // Champs modifiés
@@ -38,42 +31,17 @@ if (isset($_POST['modif_infos'])){
            $champsModifies[$champ] = $valeur;
        }
    }
+
+   echo "<pre>";
+   var_dump($_POST);
+   echo"</pre>";
    
    // Mettre à jour seulement les champs modifiés
-   if (!empty($champsModifies)) {
-       foreach ($champsModifies as $champ => $valeur) {
-           switch ($champ) {
-               case 'nom':
-               case 'prenom':
-               case 'pseudo':
-                   $query = $dbh->prepare("UPDATE tripenarvor._membre SET $champ = :valeur WHERE code_compte = :code_compte");
-                   $query->execute(['valeur' => trim($valeur), 'code_compte' => $compte['code_compte']]);
-                   break;
-   
-               case 'mail':
-                   $valeurSansEspaces = trim(preg_replace('/\s+/', '', trim($valeur)));
-                   $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
-                   $query->execute(['valeur' => $valeurSansEspaces, 'code_compte' => $compte['code_compte']]);
-                   if($query){
-                      $_SESSION['membre']['mail'] = $valeurSansEspaces;
-                   }
-                   break;
-               case 'telephone':
-                   $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
-                   $query->execute(['valeur' => trim(preg_replace('/\s+/', '', trim($valeur))), 'code_compte' => $compte['code_compte']]);
-                   if($query){
-                      $_SESSION['membre']['telephone'] = trim(preg_replace('/\s+/', '', trim($valeur)));
-                   }
-                   break;
-   
-               case 'adresse_postal':
-               case 'code_postal':
-               case 'ville':
-                   $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
-                   $query->execute(['valeur' => trim($valeur), 'code_adresse' => $_adresse['code_adresse']]);
-                   break;
-           }
-       }
+   if (!empty($champsModifies))
+   {
+      // $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
+      // $query->execute(['valeur' => trim(preg_replace('/\s+/', '', trim($valeur))), 'code_compte' => $compte['code_compte']]); 
+      
        // echo "Les informations ont été mises à jour.";
        include("recupInfosCompte.php");
    } else {
@@ -117,7 +85,9 @@ if (isset($_POST['modif_infos'])){
             </ul>
         </nav>
     </header>
+   
     <main class="main_modif_mdp_membre">
+       
 <!-- POUR PC/TABLETTE -->
         <div class="profile">
             <div class="banner">
@@ -130,6 +100,7 @@ if (isset($_POST['modif_infos'])){
                 <p><?php echo $compte['mail']; ?> | <?php echo trim(preg_replace('/(\d{2})/', '$1 ', $compte['telephone'])); ?></p>
             </div>
         </div>
+       
 <!-- POUR TEL -->
         <div class="mdp_securite">
             <a href="compte_membre_tel.php"><img src="images/Bouton_retour.png" alt="Bouton retour"></a>
@@ -145,27 +116,32 @@ if (isset($_POST['modif_infos'])){
 <!--                     <li><a href="historique_membre.php">Historique</a></li> -->
             </ul>
         </section>
-        <form action="#" method="POST">
+       
+        <form action="modif_mdp_membre.php" method="POST">
+           <h3>Modifiez votre mot de passe</h3>
+           
             <fieldset>
                 <legend>Entrez votre mot de passe actuel *</legend>
-                <input type="password" id="adresse" name="adresse" placeholder="Entrez votre mot de passe actuel *" required>
+                <input type="password" id="mdp_actuel" name="mdp_actuel" placeholder="Entrez votre mot de passe actuel *" required>
             </fieldset>
 
             <fieldset>
                 <legend>Définissez votre nouveau mot de passe *</legend>
-                <input type="password" id="code-postal" name="code-postal" placeholder="Definissez votre nouveau mot de passe *" required>
+                <input type="password" id="mdp_nv1" name="mdp_nv1" placeholder="Definissez votre nouveau mot de passe *" required>
             </fieldset>
+           
             <fieldset>
-
                 <legend>Confirmer votre nouveau mot de passe *</legend>
-                <input type="password" id="code-postal" name="code-postal" placeholder="Confirmer votre nouveau mot de passe *" required>
+                <input type="password" id="mdp_nv2" name="mdp_nv2" placeholder="Confirmer votre nouveau mot de passe *" required>
             </fieldset>
+           
             <div class="compte_membre_save_delete">
-                <!-- <button type="submit" class="submit-btn1">Supprimer mon compte</button> -->
-                <button type="submit" class="submit-btn2">Enregistrer</button>
+                <button type="submit" name="modif_infos" class="submit-btn2">Enregistrer</button>
             </div>
         </form>
+       
     </main>
+   
     <nav class="nav-bar-tel">
         <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
         <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
@@ -180,6 +156,7 @@ if (isset($_POST['modif_infos'])){
             ?>">
             <img src="images/icones/User icon.png" alt="image de Personne"></a>
     </nav>
+   
     <footer class="footer_detail_avis">
         <div class="newsletter">
             <div class="newsletter-content">
@@ -195,7 +172,6 @@ if (isset($_POST['modif_infos'])){
                 <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
             </div>
         </div>
-        
         <div class="footer-links">
             <div class="logo">
                 <img src="images/logoBlanc.png" alt="Logo PACT">
@@ -240,5 +216,6 @@ if (isset($_POST['modif_infos'])){
             </div>
         </div>
     </footer>
+   
 </body>
 </html>

@@ -871,9 +871,6 @@ body.menu-open #overlay {
 
 /* Amélioration pour les petits écrans */
 @media (max-width: 768px) {
-    .filter-menu {
-        width: 100%;
-    }
     body.menu-open .filter-menu {
         right: 0;
     }
@@ -1112,6 +1109,8 @@ body.menu-open #overlay {
 
 .toute_les_offres_main .a-la-une {
     margin-left: 1em;
+    display: flex;
+    flex-direction: row;
 }
 
 /* Conteneur global */

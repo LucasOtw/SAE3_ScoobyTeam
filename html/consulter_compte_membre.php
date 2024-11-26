@@ -31,6 +31,10 @@ if (isset($_POST['modif_infos'])){
    
    // Champs modifiés
    $champsModifies = [];
+
+   echo "<pre>";
+   var_dump($_SESSION["membre"]);
+   echo"</pre>";
    
    // Parcourir les données soumises
    foreach ($_POST as $champ => $valeur) {
@@ -71,6 +75,10 @@ if (isset($_POST['modif_infos'])){
                case 'ville':
                    $query = $dbh->prepare("UPDATE tripenarvor._adresse SET $champ = :valeur WHERE code_adresse = :code_adresse");
                    $query->execute(['valeur' => trim($valeur), 'code_adresse' => $_adresse['code_adresse']]);
+                     if ($query)
+                     {
+                        $_SESSION['membre'][$champ] = trim($valeur);
+                     }
                    break;
            }
        }

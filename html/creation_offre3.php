@@ -52,6 +52,90 @@ if(isset($_POST['valider'])){
         var_dump($_SESSION['crea_offre3']);
         var_dump($_SESSION['crea_offre4']);
         echo "</pre>";
+
+        
+        /*
+        * VERIFICATION DE L'ADRESSE
+        */
+        
+
+        $adresse_postal = $_SESSION['crea_offre']['adresse'];
+        $complement_adresse = $_SESSION['crea_offre']['complementAdresse'];
+        $code_postal = $_SESSION['crea_offre']['codePostal'];
+        $ville = $_SESSION['crea_offre']['ville'];
+
+        // on fait la vérification dans la base de données
+
+        $adresseCorrespondante = $dbh->prepare("SELECT code_adresse FROM tripenarvor._adresse
+        WHERE
+        adresse_postal = :adresse AND
+        (complement_adresse = :complement OR complement_adresse IS NULL) AND
+        code_postal = :code_postal AND
+        ville = :ville
+        ");
+        $adresseCorrespondante->bindValue(":adresse",trim($adresse_postal));
+        $adresseCorrespondante->bindValue(":complement",trim($complement_adresse));
+        $adresseCorrespondante->bindValue(":code_postal",trim($code_postal));
+        $adresseCorrespondante->bindValue(":ville",trim($ville));
+
+        $adresseCorrespondante->execute();
+        $adresseCorrespondante = $adresseCorrespondante->fetch(PDO::FETCH_ASSOC);
+
+        if($adresseCorrespondante){
+            // si on trouve une adresse exactement similaire dans la base de données
+            $code_adresse = $adresseCorrespondante['code_adresse'];
+        } else {
+            // sinon, on l'insère...
+            $ajoutAdresse = $dbh->prepare("INSERT INTO tripenarvor._adresse (adresse_postal,complement_adresse,code_postal,ville) VALUES
+            (:adresse,:complement,:code_postal,:ville)");
+            $ajoutAdresse->bindValue(":adresse",trim($adresse_postal));
+            $ajoutAdresse->bindValue(":complement",trim($complement_adresse));
+            $ajoutAdresse->bindValue(":code_postal",trim($code_postal));
+            $ajoutAdresse->bindValue(":ville",trim($ville));
+
+            $ajoutAdresse->execute();
+            // et on récupère le dernier id inséré, dans notre cas, c'est FORCEMENT le code_adresse ! :D
+            $code_adresse = $dbh->lastInsertId();
+        }
+        
+
+        /*
+        * VERIFICATION DES HORAIRES
+        */
+
+        $tab_horaires = $_SESSION['crea_offre3'];
+        // pour chaque jour
+        foreach($tab_horaires as $jour => $horaire){
+            /* On cherche d'abord le code horaire. */
+            $horaireCorrespondante = $dbh->prepare("SELECT code_horaire FROM tripenarvor._horaire
+            WHERE
+            ouverture = :ouverture AND
+            fermeture = :fermeture");
+            $horaireCorrespondante->bindValue(":ouverture",$horaire['ouverture']);
+            $horaireCorrespondante->bindValue(":fermeture",$horaire['fermeture']);
+
+            $horaireCorrespondante->execute();
+            $horaireCorrespondante = $horaireCorrespondante->fetch(PDO::FETCH_ASSOC);
+
+            if($horaireCorrespondante){
+                echo "HAHA <br>";
+                // si une horraire correspond, on récupère son code
+                $code_horaire = $horaireCorrespondante['code_horaire'];
+            } else {
+                echo "HOHO <br>";
+                // sinon, on l'insère
+                $ajoutHoraire = $dbh->prepare("INSERT INTO tripenarvor._horaire (ouverture,fermeture)
+                VALUES (:ouverture,:fermeture)");
+                $ajoutHoraire->bindValue(":ouverture",$horaire['ouverture']);
+                $ajoutHoraire->bindValue(":fermeture",$horaire['fermeture']);
+
+                $ajoutHoraire->execute();
+                // on récupère le dernier id enregistré, celui du code horaire.
+                $code_horaire = $dbh->lastInsertId();
+            }
+
+        }
+        
     }
 }
     
