@@ -42,8 +42,8 @@ session_start();
                 <button class="poster_un_avis_btn_offre">Voir l'offre →</button>
             </div>
             <div class="poster_un_avis_images">
-                <img src="images/Tiallannec1.png" alt="Image 1" class="poster_un_avis_image">
-                <img src="images/Tiallannec3.png" alt="Image 2" class="poster_un_avis_image">
+                <img src="images/tiallannec1.png" alt="Image 1" class="poster_un_avis_image">
+                <img src="images/tiallannec3.png" alt="Image 2" class="poster_un_avis_image">
             </div>
         </div>
 
