@@ -42,17 +42,8 @@ if(isset($_POST['valider'])){
    $code_iban = $_POST['IBAN'];
    $code_BIC = $_POST['BIC'];
 
-   if(validerIBAN($code_iban) === true){
-       echo "YOUHOU !";
-   } else {
-       foreach(validerIBAN($code_iban) as $erreur){
-           echo $erreur;
-       }
-   }
-    if(validerBIC($code_BIC)){
-        echo "Quentinou";
-    } else {
-        echo "Le code BIC est invalide !";
+    if(validerIBAN($code_iban) && validerBIC($code_BIC)){
+        echo "NICE";
     }
 }
     
