@@ -1088,6 +1088,9 @@ body.menu-open #overlay {
     margin-left: 6em;
     margin-right: 6em;
 }
+.toute_les_offres_main .a-la-une {
+    margin-left: 1em;
+}
 
 /* Conteneur global */
 .toute_les_offres_main .a-la-une-carrousel {
