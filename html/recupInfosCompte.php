@@ -199,26 +199,45 @@
     */
 
     
-    if(!function_exists('validerIBAN')){
-      function validerIBAN($iban){
+if (!function_exists('validerIBAN')) {
+    function validerIBAN($iban) {
         $LONGUEUR_IBAN = 27;
-        
-        $iban = strtoupper(str_replace(' ', '', $iban)); // on met tout en majuscules et on enlève les espaces si il y en a
+        $erreurs = []; // Initialisation des erreurs
 
-        if(strlen($iban) !== $LONGUEUR_IBAN){
-          $erreurs[] = "L'IBAN n'a pas la bonne longueur !";
+        // Nettoyage de l'IBAN
+        $iban = strtoupper(str_replace(' ', '', $iban));
+
+        // Vérification de la longueur
+        if (strlen($iban) !== $LONGUEUR_IBAN) {
+            $erreurs[] = "L'IBAN n'a pas la bonne longueur (attendu : $LONGUEUR_IBAN caractères) !";
         } else {
-          $code_pays = substr($iban,0,4); // "FR", "IT", "ES" ect...
-          if(strtoupper($code_pays) !== "FR76"){
-            $erreurs[] = "Le code IBAN doit commencer par \"FR76\" !!";
-          } else {
-            $iban = substr($iban, 4) . substr($iban, 0, 4);
-            echo $iban;
-          }
-        }
-      }
-    }
-  }
+            // Extraction du code pays
+            $code_pays = substr($iban, 0, 2);
+            if ($code_pays !== "FR") {
+                $erreurs[] = "Le code IBAN doit commencer par \"FR\".";
+            } else {
+                // Réorganisation de l'IBAN
+                $rearrangedIban = substr($iban, 4) . substr($iban, 0, 4);
 
+                // Conversion des lettres en chiffres
+                $numericIban = '';
+                foreach (str_split($rearrangedIban) as $char) {
+                    $numericIban .= is_numeric($char) ? $char : ord($char) - 55;
+                }
+
+                // Validation modulo 97
+                if (bcmod($numericIban, 97) != 1) {
+                    $erreurs[] = "L'IBAN est invalide (échec du calcul modulo 97).";
+                }
+            }
+        }
+
+        // Retour des erreurs ou succès
+        if (!empty($erreurs)) {
+            return $erreurs; // Retourne les erreurs en cas d'échec
+        }
+        return true; // Valide si aucune erreur
+    }
+}
 
 ?>
