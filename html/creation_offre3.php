@@ -3,6 +3,8 @@
 ob_start();
 session_start();
 
+include("recupInfosCompte.php");
+
 if(!isset($_SESSION['pro'])){
     // si on tente d'accéder à la page sans être connecté à un compte pro, on
     header('location: connexion_pro.php');
@@ -16,6 +18,12 @@ if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
         exit;
     }
 }
+
+// on vérifie si le pro a un compte bancaire
+if($monComptePro){
+    var_dump($monComptePro);
+}
+
 
 ?>
 <!DOCTYPE html>
