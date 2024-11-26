@@ -309,16 +309,16 @@ function tempsEcouleDepuisPublication($offre){
                         if ($offre["en_ligne"])
                         {
                         ?>
-                        
-                             <article class="card-a-la-une">
-                                <div class="image-background-card-a-la-une">
-                                    <img src=<?php echo "./".$offre_image['url_image'] ?> alt="">
-                                    <div class="raison-sociale-card-a-la-une">
-                                        <p><?php echo $offre["titre_offre"] ?></p>
+                            
+                                <article class="card-a-la-une">
+                                    <div class="image-background-card-a-la-une">
+                                        <img src=<?php echo "./".$offre_image['url_image'] ?> alt="">
+                                        <div class="raison-sociale-card-a-la-une">
+                                            <p><?php echo $offre["titre_offre"] ?></p>
+                                        </div>
                                     </div>
-                                </div>
-                            </article>
-                
+                                </article>
+                            
                         <?php
                         }
                     }
@@ -379,8 +379,8 @@ function tempsEcouleDepuisPublication($offre){
                 } else {
                     $offre_image = "";
                 }
-                if ($offre["en_ligne"])
-                {
+                /*if ($offre["en_ligne"])
+                {*/
                 ?>
                     <article class="offer">
                         <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
@@ -395,7 +395,7 @@ function tempsEcouleDepuisPublication($offre){
                         </div>
                     </article>
                 <?php
-                }
+                //}
             }
 
         ?>
