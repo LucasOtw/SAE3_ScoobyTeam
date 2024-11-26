@@ -33,7 +33,7 @@ if (isset($_POST['modif_infos'])){
    }
 
    echo "<pre>";
-   var_dump($_POST['modif_infos']);
+   var_dump($_POST);
    echo"</pre>";
    
    // Mettre à jour seulement les champs modifiés
@@ -119,6 +119,7 @@ if (isset($_POST['modif_infos'])){
        
         <form action="modif_mdp_membre.php" method="POST">
            <h3>Modifiez votre mot de passe</h3>
+           
             <fieldset>
                 <legend>Entrez votre mot de passe actuel *</legend>
                 <input type="password" id="mdp_actuel" name="mdp_actuel" placeholder="Entrez votre mot de passe actuel *" required>
@@ -128,13 +129,13 @@ if (isset($_POST['modif_infos'])){
                 <legend>Définissez votre nouveau mot de passe *</legend>
                 <input type="password" id="mdp_nv1" name="mdp_nv1" placeholder="Definissez votre nouveau mot de passe *" required>
             </fieldset>
+           
             <fieldset>
-
                 <legend>Confirmer votre nouveau mot de passe *</legend>
                 <input type="password" id="mdp_nv2" name="mdp_nv2" placeholder="Confirmer votre nouveau mot de passe *" required>
             </fieldset>
+           
             <div class="compte_membre_save_delete">
-                <!-- <button type="submit" class="submit-btn1">Supprimer mon compte</button> -->
                 <button type="submit" name="modif_infos" class="submit-btn2">Enregistrer</button>
             </div>
         </form>
