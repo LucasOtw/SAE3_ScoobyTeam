@@ -477,14 +477,18 @@ footer {
         display: none;
         
     }
-    .poster_un_avis_titre, .poster_un_avis_section_titre {
+    .poster_un_avis_titre {
         font-size: 1.5rem;
-        
+        margin-left: -5vh;
+        margin-top: 10vh;
     }
 
     .poster_un_avis_section {
         margin-right: -1.2em;
         margin-left: -2.7em;
+    }
+    .poster_un_avis_section_titre{
+        margin-top: -5em;
     }
 
     .poster_un_avis_container {
