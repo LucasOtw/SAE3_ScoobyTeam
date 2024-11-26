@@ -353,7 +353,7 @@
                     
                     <!-- Conteneur de l'offre -->
     <div>
-        <p id="offer-state">L'offre est actuellement : <span id="offer-status">Hors Ligne</span></p>
+        <p id="offer-state">L'offre est actuellement : <?php echo $monOffre['en_ligne']; ?></p>
     </div>
 
     <!-- Bouton toggle -->
@@ -393,7 +393,7 @@
             // Mettre à jour le bouton et le texte
             initializeToggle();
 
-            // Optionnel : envoyer l'état mis à jour au serveur (AJAX ou Fetch API)
+           
             console.log("Nouvel état de l'offre :", offerState);
         });
 
