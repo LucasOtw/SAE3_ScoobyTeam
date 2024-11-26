@@ -1128,7 +1128,6 @@ body.menu-open #overlay {
     height: 40px;
     font-size: 20px;
     cursor: pointer;
-    z-index: 10;
 }
 
 .toute_les_offres_main .card-scroll-btn.card-scroll-btn-left {
