@@ -33,7 +33,7 @@ if (isset($_POST['modif_infos'])){
    }
 
    echo "<pre>";
-   var_dump($champsModifies);
+   var_dump($_POST['modif_infos']);
    echo"</pre>";
    
    // Mettre à jour seulement les champs modifiés
