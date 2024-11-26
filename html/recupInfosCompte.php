@@ -199,7 +199,7 @@
     */
 
     
-    if(!function_exists(validerIBAN)){
+    if(!function_exists('validerIBAN')){
       function validerIBAN($iban){
         $LONGUEUR_IBAN = 27;
         
