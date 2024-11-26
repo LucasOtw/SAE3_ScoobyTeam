@@ -20,8 +20,10 @@ if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
 }
 
 // on vérifie si le pro a un compte bancaire
-if($monComptePro){
-    var_dump($monComptePro);
+if($monComptePro['code_compte_bancaire']){
+    echo "test";
+} else {
+    echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARGH !!";
 }
 
 
