@@ -33,6 +33,7 @@ session_start();
     </header>
 
     <div class="poster_un_avis_container">
+        <h1 class="titre_poster_un_avis_format_tel">Publier un avis</h1>
         <h1 class="poster_un_avis_titre">Récapitulatif</h1>
         <div class="poster_un_avis_recap_card">
             <div class="poster_un_avis_info">
@@ -71,7 +72,7 @@ session_start();
         </div>
     </div>
 
-    <footer class="footer_detail_avis">
+    <footer class="footer_poster_avis">
         <div class="newsletter">
             <div class="newsletter-content">
                 <h2>Inscrivez-vous à notre Newsletter</h2>

@@ -424,9 +424,110 @@ footer {
     width: 225px;
   }
 
- 
   @media (min-width: 419px) {
-    .body_offre_mobile {
+    .titre_poster_un_avis_format_tel{
         display: none;
     }
+  }
+
+
+                                                /*Code pour le format responsive de poster un avis */
+
+  @media (max-width: 419px) {
+    .footer_poster_avis {
+        display: none;
+    }
+    header.header-pc {
+        display: none;
+    }
+
+    .poster_un_avis_recap_card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 147px;
+        border: 1px solid #f3f8ff;
+        border-radius: 29px;
+        resize: none;
+        background-color: #f3f8ff;
+        box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
+        width: 42vh;
+        height: 13vh;
+        margin-left: -2.9em;
+    }
+    .poster_un_avis_nom{
+        font-size : 10px;
+    }
+    .poster_un_avis_image {
+        width: 91px;
+        height: 94px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .poster_un_avis_buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 97px;
+        margin-left: 3vh;
+    }
+    .poster_un_avis_btn_offre {
+        display: none;
+        
+    }
+    .poster_un_avis_titre, .poster_un_avis_section_titre {
+        font-size: 1.5rem;
+        
+    }
+
+    .poster_un_avis_section {
+        margin-right: -1.2em;
+        margin-left: -2.7em;
+    }
+
+    .poster_un_avis_container {
+        margin: 18px 10%;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+    }
+    .poster_un_avis_disclaimer {
+        display: none;
+    }
+
+    .poster_un_avis_textarea {
+        width: 107%;
+        height: 152px;
+        padding: 15px;
+        margin: 10px 0;
+        border: 1px solid #f3f8ff;
+        border-radius: 29px;
+        resize: none;
+        background-color: #f3f8ff;
+        box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
+    }
+
+    .poster_un_avis_stars .poster_un_avis_star {
+        font-size: 35px;
+        color: #ccc;
+        cursor: pointer;
+        padding: 8px;
+    }
+
+    .poster_un_avis_stars {
+        background-color: #f3f8ff;
+        border: 1px solid #f3f8ff;
+        border-radius: 29px;
+        padding-bottom: 13px;
+        padding-left: 45px;
+        padding-top: 13px;
+        width: 381px;
+    }
+    .titre_poster_un_avis_format_tel {
+        color: black;
+        display: flex;
+    }
+    
 }
