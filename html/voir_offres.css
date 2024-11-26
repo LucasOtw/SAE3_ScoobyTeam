@@ -676,6 +676,99 @@ nav.nav-bar {
     width: 75%;
 }
 
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    transition: transform 0.3s ease;
+}
+
+.content {
+    padding: 20px;
+    transition: margin-right 0.3s ease;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    border: 1px solid var(--vert-clair);
+    background-color: var(--vert-clair);
+}
+
+button:hover {
+    background-color: #BDC426;
+    color: white;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+    display: none;
+}
+
+.filter-menu {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background: #f5f5f5;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 10;
+    transition: right 0.3s ease;
+}
+
+.filter-menu h2 {
+    margin: 0 0 20px;
+}
+
+.filter-menu label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.filter-menu input,
+.filter-menu select,
+.filter-menu button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.filter-menu .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+body.menu-open .content {
+    margin-right: 300px;
+}
+
+body.menu-open #overlay {
+    display: block;
+}
+
+body.menu-open .filter-menu {
+    right: 0;
+    width: 31em;
+}
+
+
 .search-bar {    
     display: flex;
     flex-direction: column;

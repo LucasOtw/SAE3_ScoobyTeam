@@ -200,10 +200,13 @@ function tempsEcouleDepuisPublication($offre){
                     <option value="">Ouvert</option>
                     <option value="">Fermé</option>
                 </select>
-                <button id="autres-button" class="search-select">Autres</button>
+                <button id="openMenu" class="search-select">Autres</button>
             </div>
         </div>
-        <div class="filter-menu" id="filterMenu">
+        <div id="overlay"></div>
+    
+
+    <div class="filter-menu" id="filterMenu">
         <button id="closeMenu" class="close-btn">&times;</button>
         <h2>Filtres</h2>
         <form>
