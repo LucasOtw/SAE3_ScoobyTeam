@@ -86,7 +86,7 @@
                 // Une offre a forcément au moins une image. 
                 // On récupère l'image (ou les images) associée(s)
     
-            $images_offre = $dbh->query('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = '.$code_offre.')');
+            $images_offre = $dbh->query('SELECT code_image, url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = '.$code_offre.')');
             $images_offre = $images_offre->fetch(PDO::FETCH_NUM);
 
             echo '<pre>';
