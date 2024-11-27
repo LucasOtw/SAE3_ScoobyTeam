@@ -121,7 +121,7 @@ if(isset($_POST['valider'])){
             if($horaireCorrespondante){
                 echo "HAHA <br>";
                 // si une horraire correspond, on récupère son code
-                $code_horaire[$jour] = $horaireCorrespondante['code_horaire'];
+                $code_horaire[strtolower($jour)] = $horaireCorrespondante['code_horaire'];
             } else {
                 echo "HOHO <br>";
                 // sinon, on l'insère
