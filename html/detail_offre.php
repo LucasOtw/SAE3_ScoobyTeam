@@ -807,55 +807,47 @@
                 style="border:0;margin: auto; width:85vw; height:50vh" allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
+                     <div class="avis-widget">
+              <div class="avis-header">
+                <h1 class ="avis">5.0 <span class="avis-score">Très bien</span></h1>
+                <p class="avis">255 avis vérifiés</p>
+              </div>
+              <div class="avis-list">
+                <div class="avis">
+                  <div class="avis-content">
+                    <h3 class="avis">5.0 Excellent | <span class="nom_avis">Maël Sellier</span></h3>
+                    <p class ="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
+                  </div>
+                </div>
+                <div class="avis">
+                  <div class="avis-content">
+                    <h3 class="avis">4.9 Parfait | <span class="nom_avis">Juliette Martin</span></h3>
+                    <p class ="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande.</p>
+                  </div>
+                </div>
+                <div class="avis">
+                  <div class="avis-content">
+                    <h3 class="avis">4.2 Génial | <span class="nom_avis">Antoine Prieur</span></h3>
+                    <p class ="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
+                  </div>
+                </div>
+                <div class="avis">
+                  <div class="avis-content">
+                    <h3 class="avis">3.8 Bien | <span class="nom_avis">Tim Cook</span></h3>
+                    <p class ="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
+                  </div>
+                </div>
+                <div class="avis">
+                  <div class="avis-content">
+                    <h3 class="avis">4.0 Très bien | <span class="nom_avis">Johnny Ives</span></h3>
+                    <p class ="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
+                  </div>
+                </div>
+              </div>
+        </div>
 
-             <div class="footer-links">
-                <div class="logo">
-                    <img src="images/logoBlanc.png" alt="Logo PACT">
-                </div>
-                <div class="link-group">
-                    <ul>
-                        <li><a href="#">Mentions Légales</a></li>
-                        <li><a href="#">RGPD</a></li>
-                        <li><a href="#">Nous connaître</a></li>
-                        <li><a href="#">Nos partenaires</a></li>
-                    </ul>
-                </div>
-                <div class="link-group">
-                    <ul>
-                        <li><a href="#">Accueil</a></li>
-                        <li><a href="#">Publier</a></li>
-                        <li><a href="#">Historique</a></li>
-                    </ul>
-                </div>
-                <div class="link-group">
-                    <ul>
-                        <li><a href="#">CGU</a></li>
-                        <li><a href="#">Signaler un problème</a></li>
-                        <li><a href="#">Nous contacter</a></li>
-                    </ul>
-                </div>
-                <div class="link-group">
-                    <ul>
-                        <li><a href="#">Presse</a></li>
-                        <li><a href="#">Newsletter</a></li>
-                        <li><a href="#">Notre équipe</a></li>
-                    </ul>
-                </div>
-            </div>
 
-            <div class="footer-bottom">
-                <div class="social-icons">
-                    <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
-                    <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
-                    <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
-                    <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
-                </div>
-            </div>
-        </footer>
-
-    </div>
-
-            <div>
+             <div>
                 <!-- Bouton publier un avis -->
                 <article class="publier_avis">
                     <span>
@@ -927,6 +919,55 @@
         isDragging = false;
     });
     </script>
+
+             <div class="footer-links">
+                <div class="logo">
+                    <img src="images/logoBlanc.png" alt="Logo PACT">
+                </div>
+                <div class="link-group">
+                    <ul>
+                        <li><a href="#">Mentions Légales</a></li>
+                        <li><a href="#">RGPD</a></li>
+                        <li><a href="#">Nous connaître</a></li>
+                        <li><a href="#">Nos partenaires</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <ul>
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#">Publier</a></li>
+                        <li><a href="#">Historique</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <ul>
+                        <li><a href="#">CGU</a></li>
+                        <li><a href="#">Signaler un problème</a></li>
+                        <li><a href="#">Nous contacter</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <ul>
+                        <li><a href="#">Presse</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                        <li><a href="#">Notre équipe</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="social-icons">
+                    <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
+                    <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
+                    <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+                    <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+           
 
 
 </html>
