@@ -111,7 +111,7 @@ $dbh = new PDO($dsn, $username, $password);
                       
                        <div class="poster_un_avis_buttons">
                            <button class="poster_un_avis_btn_annuler">Annuler</button>
-                           <button class="poster_un_avis_btn_publier">Publier →</button>
+                           <button type="submit" class="poster_un_avis_btn_publier">Publier →</button>
                        </div>
                       
                     </div>
