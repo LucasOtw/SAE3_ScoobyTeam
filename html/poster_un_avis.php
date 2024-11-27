@@ -70,8 +70,8 @@ $code_offre = $details_offre["code_offre"];
             <h1 class="poster_un_avis_titre">Récapitulatif</h1>
             <div class="poster_un_avis_recap_card">
                 <div class="poster_un_avis_info">
-                    <h2 class="poster_un_avis_nom">Ti Al Lannec - Hôtel & Restaurant</h2>
-                    <p class="poster_un_avis_location">📍 Trébeurden, Bretagne 22300</p>
+                    <h2 class="poster_un_avis_nom"><?php echo $details_offre["titre_offre"]; ?><!-- - <?php // echo $details_offre["titre_offre"]; ?>--></h2>
+                    <p class="poster_un_avis_location">📍 <?php echo $details_offre["ville"]; ?>, <?php echo $details_offre["code_postal"]; ?></p>
                     <button class="poster_un_avis_btn_offre">Voir l'offre →</button>
                 </div>
                 <div class="poster_un_avis_images">
