@@ -137,6 +137,8 @@ if(isset($_POST['valider'])){
                 // on récupère le dernier id enregistré, celui du code horaire.
                 $code_horaire[] = $dbh->lastInsertId();
             }
+
+            var_dump($code_horaire);
         }
 
         /*
@@ -168,6 +170,7 @@ if(isset($_POST['valider'])){
         if($prix_option !== null){
             // si il y a un prix d'option, il y a une option, donc on l'ajoute.
             $nbSemaines_option = $_SESSION['crea_offre4']['duree_option'];
+            $champ_option = "option_".$_SESSION['crea_offre4']['option'];
 
                 // Calculer la date de fin en ajoutant les semaines
             $date_fin = new DateTime($date_offre); // Créer une instance de DateTime
@@ -193,6 +196,39 @@ if(isset($_POST['valider'])){
                 echo "AAAAAAAAAAAAAAAARGH";
             }
         }
+
+        // on récupère aussi le nom du type de l'offre
+        $champ_type_offre = null;
+        switch($_SESSION['crea_offre4']){
+            case "gratuite":
+                $champ_type_offre = "Option Gratuite";
+                break;
+            case "standard":
+                $champ_type_offre = "Option Standard";
+                break;
+            case "premium":
+                $champ_type_offre = "Option Premium";
+                break;
+        }
+        if($champ_type_offre === null){
+            echo "Erreur : le type de l'offre ne peut pas être null !";
+        }
+
+        // on crée un tableau pour stocker les données dynamiquement
+
+        $mon_offre = [
+            'titre_offre' => $_SESSION['crea_offre']['titre_offre'],
+            'date_publication' => $date_offre,
+            'date_derniere_modif' => $date_offre,
+            '_resume' => $_SESSION['crea_offre']['resume'],
+            '_description' => $_SESSION['crea_offre']['description'],
+            'note_moyenne' => null,
+            'tarif' => $_SESSION['crea_offre2']['tarif'],
+            'accessibilite' => $_SESSION['crea_offre']['accessibilite'],
+            'en_ligne' => false,
+            'nb_blacklister' => 0,
+            'code_adresse' => $code_adresse
+        ];
     }
 }
     
