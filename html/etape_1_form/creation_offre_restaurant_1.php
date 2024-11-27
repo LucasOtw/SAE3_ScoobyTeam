@@ -110,11 +110,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     }
                 }
             
-                // ajout du tableau dans $tab_offre
-                $tab_offre['photos'] = $photos;
-            } else {
-                // Si aucune photo n'est envoyée, on initialise un tableau vide
-                $tab_offre['photos'] = [];
+                /* on n'a plus besoin de rajouter les photos dans la session
+                puisque le chemin temporaire n'est disponible que lors de l'envoi du formulaire */
+
+                $nom_dossier_images = $tab_offre['titre_offre'];
+                $nom_dossier_images = str_replace(' ','',$nom_dossier_images);
+                $destination = "../images/offres/".$nom_dossier_images;
+
+                if(!file_exists($destination)){
+                    mkdir($destination, 0777, true); // crée le dossier si il n'existe pas.
+                }
+
+                foreach($photos as $photo){
+                    $nom_temp = $photo['tmp_name'];
+                    $nom_photo = $photo['name'];
+
+                    // on construit le chemin de destination complet
+                    $chemin = $destination . '/' . $nom_photo;
+
+                    if (file_exists($nom_temp)) {
+                        // Déplacer le fichier dans le dossier cible
+                        if (move_uploaded_file($nom_temp, $chemin_destination)) {
+                            echo "Le fichier $nom_photo a été déplacé avec succès.<br>";
+                        } else {
+                            echo "Erreur : Impossible de déplacer le fichier $nom_photo.<br>";
+                        }
+                    } else {
+                        echo "Erreur : Le fichier temporaire $nom_temp n'existe pas.<br>";
+                    }
+                }
             }
 
             $mesTags = [];
