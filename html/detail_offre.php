@@ -449,7 +449,6 @@
             
             <div class="schedule">
                 <h2>Horaire du Spectacle</h2>
-                <p><?php echo date("l, j F Y", strtotime($details_offre["date_spectacle"])); ?></p>
                 <p class="date">Date : 
                     <span>
                         <?php 
@@ -483,13 +482,37 @@
         else if ($type_offre === "visite")
         {
         ?>
+            
             <div class="schedule">
                 <h2>Horaire de la Visite</h2>
-                <div class="details">
-                    <p class="date">Date : <span><?php echo $details_offre["date_visite"];?></span></p>
-                    <p class="time">Heure : <span><?php echo $details_offre["heure_visite"];?></span></p>
-                </div>
+                <p class="date">Date : 
+                    <span>
+                        <?php 
+                        // Vérifiez si la date est définie et non nulle
+                        if (isset($details_offre["date_visite"])) {
+                            // Formatez la date SQL (YYYY-MM-DD) en format lisible
+                            echo date("l, j F Y", strtotime($details_offre["date_visite"])); 
+                        } else {
+                            echo "Date non disponible";
+                        }
+                        ?>
+                    </span>
+                </p>
+                <p class="time">Heure : 
+                    <span>
+                        <?php 
+                        // Vérifiez si l'heure est définie et non nulle
+                        if (isset($details_offre["heure_visite"])) {
+                            // Formatez l'heure SQL (HH:MM:SS) en format lisible
+                            echo date("H\h i", strtotime($details_offre["heure_visite"])); 
+                        } else {
+                            echo "Heure non disponible";
+                        }
+                        ?>
+                    </span>
+                </p>
             </div>
+        
         <?php
         }
         else if  ($type_offre === "activite")
