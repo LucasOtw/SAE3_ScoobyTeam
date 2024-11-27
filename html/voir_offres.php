@@ -80,36 +80,36 @@ function tempsEcouleDepuisPublication($offre){
     </div>
 
     <script>
-    const donneesSessionMembre = <?php echo json_encode($donneesSession); ?>;
-    document.addEventListener("DOMContentLoaded", () => {
-        function afficherPopupAvecDelai() {
-            const popup = document.getElementById("customPopup");
-            popup.style.display = "flex"; 
-            setTimeout(() => {
-                popup.classList.add("visible"); // Ajoute l'effet de transition
-            }, 10); // Légère pause pour déclencher la transition
-        }
-
-        function fermerPopup() {
-            const popup = document.getElementById("customPopup");
-            popup.classList.remove("visible"); // Retire la classe pour l'effet inverse
-            setTimeout(() => {
-                popup.style.display = "none"; // Cache après l'animation
-            }, 500); // Correspond à la durée de la transition CSS
-        }
-
-        const closeButton = document.getElementById("closePopup");
-        if (closeButton) {
-            closeButton.addEventListener("click", fermerPopup);
-        } else {
-            console.error("Le bouton avec l'ID 'closePopup' est introuvable.");
-        }
-
-        if (!donneesSessionMembre) {
-            setTimeout(afficherPopupAvecDelai, 5000);
-        }
-    });
-</script>
+        const donneesSessionMembre = <?php echo json_encode($donneesSession); ?>;
+        document.addEventListener("DOMContentLoaded", () => {
+            function afficherPopupAvecDelai() {
+                const popup = document.getElementById("customPopup");
+                popup.style.display = "flex"; 
+                setTimeout(() => {
+                    popup.classList.add("visible"); // Ajoute l'effet de transition
+                }, 10); // Légère pause pour déclencher la transition
+            }
+    
+            function fermerPopup() {
+                const popup = document.getElementById("customPopup");
+                popup.classList.remove("visible"); // Retire la classe pour l'effet inverse
+                setTimeout(() => {
+                    popup.style.display = "none"; // Cache après l'animation
+                }, 500); // Correspond à la durée de la transition CSS
+            }
+    
+            const closeButton = document.getElementById("closePopup");
+            if (closeButton) {
+                closeButton.addEventListener("click", fermerPopup);
+            } else {
+                console.error("Le bouton avec l'ID 'closePopup' est introuvable.");
+            }
+    
+            if (!donneesSessionMembre) {
+                setTimeout(afficherPopupAvecDelai, 5000);
+            }
+        });
+    </script>
 
 
 
@@ -176,10 +176,31 @@ function tempsEcouleDepuisPublication($offre){
     <main class="toute_les_offres_main">
     
         <div class="search-bar">
+            
             <div class="search-top">
-            <input type="text" class="search-input" placeholder="Recherchez parmi les offres" >
-                <button class="search-button">Rechercher</button>
+                <input type="text" class="search-input" placeholder="Recherchez parmi les offres" >
             </div>
+            <script>
+                // Récupération des éléments
+                const searchInput = document.querySelector('.search-input');
+                const offerItems = document.querySelectorAll('.offer');
+        
+                // Ajout d'un événement pour filtrer les offres
+                searchInput.addEventListener('input', () => {
+                    const query = searchInput.value.toLowerCase().trim();
+        
+                    // Parcourir chaque offre et vérifier si elle correspond à la recherche
+                    offerItems.forEach(offer => {
+                        const text = offer.textContent.toLowerCase();
+                        if (text.includes(query)) {
+                            offer.classList.remove('hidden');
+                        } else {
+                            offer.classList.add('hidden');
+                        }
+                    });
+                });
+            </script>
+            
             <div class="search-options">
                 <select class="search-select">
                     <option value="" hidden selected>Catégories</option>
@@ -201,6 +222,7 @@ function tempsEcouleDepuisPublication($offre){
                 </select>
                 <button id="openMenu" class="search-select">Autres</button>
             </div>
+            
         </div>
         
         <div id="overlay"></div>

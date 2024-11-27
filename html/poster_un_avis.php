@@ -78,16 +78,32 @@ $dbh = new PDO($dsn, $username, $password);
                    <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
                   
                    <div class="poster_un_avis_footer">
-                      
-                       <div class="poster_un_avis_note">
-                           <h2 class="poster_un_avis_note_titre">Votre note</h2>
-                           <div class="poster_un_avis_stars">
-                               <span class="poster_un_avis_star">⭐</span>
-                               <span class="poster_un_avis_star">⭐</span>
-                               <span class="poster_un_avis_star">⭐</span>
-                               <span class="poster_un_avis_star">⭐</span>
-                               <span class="poster_un_avis_star">⭐</span>
-                           </div>
+
+                   <div class="poster_un_avis_note">
+                    <h2 class="poster_un_avis_note_titre">Votre note</h2>
+                    <form class="poster_un_avis_stars" action="enregistrer_note.php" method="POST">
+                        <fieldset class="notation">
+                                <input type="radio" id="star5" name="note" value="5" />
+                                <label for="star5" title="5 étoiles"></label>
+
+                                    <input type="radio" id="star4" name="note" value="4" />
+                                    <label for="star4" title="4 étoiles"></label>
+
+                                    <input type="radio" id="star3" name="note" value="3" />
+                                    <label for="star3" title="3 étoiles"></label>
+
+                                    <input type="radio" id="star2" name="note" value="2" />
+                                    <label for="star2" title="2 étoiles"></label>
+
+                                    <input type="radio" id="star1" name="note" value="1" />
+                                    <label for="star1" title="1 étoile"></label>
+                        </fieldset>
+                    <button type="submit">Envoyer</button>
+                    </form>
+                    </div>
+
+                           
+
                            <p class="poster_un_avis_disclaimer">
                                En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).
                            </p>
