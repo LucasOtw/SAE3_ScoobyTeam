@@ -343,6 +343,7 @@ function tempsEcouleDepuisPublication($offre){
                                                     <!-- Le bouton est maintenant juste après le texte dans la même zone -->
                                                     <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
                                                 </div>
+                                                <p><?php echo $offre["prix"]; ?></p>
                                             </div>
                                         </form>
                                     </article>
