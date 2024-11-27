@@ -174,6 +174,7 @@ if(isset($_POST['valider'])){
 
             // on peut maintenant ajouter l'option
             if($_SESSION['ajoutOption'] === null){
+                echo "HAAAAAAAAAAAAAAAAAA";
                 // si la session est à null, alors on n'a pas rajouté d'option cette fois-là.
                 $ajoutOption = $dbh->prepare("INSERT INTO tripenarvor._option (nb_semaines,date_debut,date_fin,prix) VALUES
                 (:nb_semaines,:date_debut,:date_fin,:prix);");
@@ -187,7 +188,7 @@ if(isset($_POST['valider'])){
                 }
                 echo "test";
             } else {
-                echo "lol";
+                echo "AAAAAAAAAAAAAAAARGH";
             }
         }
     }
