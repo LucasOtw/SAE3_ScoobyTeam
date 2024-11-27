@@ -27,7 +27,10 @@ if (isset($_POST['modif_infos'])){
    
    // Parcourir les données soumises
    foreach ($_POST as $champ => $valeur) {
+      if ($champ != 'modif_infos')
+      {
          $champsModifies[$champ] = $valeur;
+      }
    }
 
    echo "<pre>";
