@@ -174,7 +174,10 @@ echo "</pre>";
             $creerAvis->bindParam(':code_compte', $code_compte);
          
         }
-
+echo $texte_avis;
+echo $note;
+echo $code_offre;
+echo $code_compte;
            foreach($erreurs as $erreur){
               echo $erreur;
            }
