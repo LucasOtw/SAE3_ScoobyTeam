@@ -352,16 +352,6 @@
 
                 </div>
                 </div>
-
-
-
-            
-
-
-
-
-
-
                     
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
                     <div class="detail_offre_pro_button">                        
@@ -383,11 +373,6 @@
             // Simulation : récupérer la valeur de l'offre (1 pour "En Ligne", 0 pour "Hors Ligne")
             $en_ligne = $details_offre['en_ligne'] ?? 0; // Par défaut 0 si $details_offre['en_ligne'] n'est pas défini
         ?>
-    
-        
-    
-        
-    
         <script>
             // Récupérer l'état initial de l'offre depuis PHP
             let offerState = <?php echo $details_offre['en_ligne'] ? '"En Ligne"' : '"Hors Ligne"'; ?>;
@@ -411,9 +396,17 @@
             toggleButton.addEventListener('click', () => {
                 if (offerState === "Hors Ligne") {
                     offerState = "En Ligne";
+                    $query = $dbh->prepare("UPDATE tripenarvor._offre SET en_ligne = :valeur");
+                    $query->execute([
+                        'valeur' => 1
+                    ]);
                     
                 } else {
                     offerState = "Hors Ligne";
+                    $query = $dbh->prepare("UPDATE tripenarvor._offre SET en_ligne = :valeur");
+                    $query->execute([
+                        'valeur' => 0
+                    ]); 
                 
                 }
                             // Mettre à jour le bouton et le texte
