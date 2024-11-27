@@ -222,7 +222,7 @@ if(isset($_POST['valider'])){
             'date_derniere_modif' => $date_offre,
             'note_moyenne' => null,
             'tarif' => $_SESSION['crea_offre2']['tarif'],
-            'accessibilite' => $_SESSION['crea_offre']['accessibilite']
+            'accessibilite' => $_SESSION['crea_offre']['accessibilite'],
             'en_ligne' => false,
             'nb_blacklister' => 0,
             'code_adresse' => $code_adresse,
