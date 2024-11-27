@@ -68,7 +68,7 @@ if(isset($_POST['valider'])){
 
         // on fait la vérification dans la base de données
 
-        $adresseCorrespondante = $->prepare("SELECT code_adresse FROM tripenarvor._adresse
+        $adresseCorrespondante = $dbh->prepare("SELECT code_adresse FROM tripenarvor._adresse
         WHERE
         adresse_postal = :adresse AND
         (complement_adresse = :complement OR complement_adresse IS NULL) AND
@@ -88,7 +88,7 @@ if(isset($_POST['valider'])){
             $code_adresse = $adresseCorrespondante['code_adresse'];
         } else {
             // sinon, on l'insère...
-            $ajoutAdresse = $->prepare("INSERT INTO tripenarvor._adresse (adresse_postal,complement_adresse,code_postal,ville) VALUES
+            $ajoutAdresse = $dbh->prepare("INSERT INTO tripenarvor._adresse (adresse_postal,complement_adresse,code_postal,ville) VALUES
             (:adresse,:complement,:code_postal,:ville)");
             $ajoutAdresse->bindValue(":adresse",trim($adresse_postal));
             $ajoutAdresse->bindValue(":complement",trim($complement_adresse));
@@ -97,7 +97,7 @@ if(isset($_POST['valider'])){
 
             $ajoutAdresse->execute();
             // et on récupère le dernier id inséré, dans notre cas, c'est FORCEMENT le code_adresse ! :D
-            $code_adresse = $->lastInsertId();
+            $code_adresse = $dbh->lastInsertId();
         }
         
 
@@ -109,7 +109,7 @@ if(isset($_POST['valider'])){
         // pour chaque jour
         foreach($tab_horaires as $jour => $horaire){
             /* On cherche d'abord le code horaire. */
-            $horaireCorrespondante = $->prepare("SELECT code_horaire FROM tripenarvor._horaire
+            $horaireCorrespondante = $dbh->prepare("SELECT code_horaire FROM tripenarvor._horaire
             WHERE
             ouverture = :ouverture AND
             fermeture = :fermeture");
@@ -126,14 +126,14 @@ if(isset($_POST['valider'])){
             } else {
                 echo "HOHO <br>";
                 // sinon, on l'insère
-                $ajoutHoraire = $->prepare("INSERT INTO tripenarvor._horaire (ouverture,fermeture)
+                $ajoutHoraire = $dbh->prepare("INSERT INTO tripenarvor._horaire (ouverture,fermeture)
                 VALUES (:ouverture,:fermeture)");
                 $ajoutHoraire->bindValue(":ouverture",$horaire['ouverture']);
                 $ajoutHoraire->bindValue(":fermeture",$horaire['fermeture']);
 
                 $ajoutHoraire->execute();
                 // on récupère le dernier id enregistré, celui du code horaire.
-                $code_horaire[] = $->lastInsertId();
+                $code_horaire[] = $dbh->lastInsertId();
             }
         }
 
@@ -175,7 +175,7 @@ if(isset($_POST['valider'])){
             // on peut maintenant ajouter l'option
             if($_SESSION['ajoutOption'] === null){
                 // si la session est à null, alors on n'a pas rajouté d'option cette fois-là.
-                $ajoutOption = $->prepare("INSERT INTO tripenarvor._option (nb_semaines,date_debut,date_fin,prix) VALUES
+                $ajoutOption = $dbh->prepare("INSERT INTO tripenarvor._option (nb_semaines,date_debut,date_fin,prix) VALUES
                 (:nb_semaines,:date_debut,:date_fin,:prix);");
                 $ajoutOption->bindValue(":nb_semaines",$nbSemaines_option);
                 $ajoutOption->bindValue(":date_debut",$date_offre);
