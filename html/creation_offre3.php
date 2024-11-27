@@ -149,7 +149,7 @@ if(isset($_POST['valider'])){
 
         // on vérifie d'abord si le pro a choisi une option
 
-        if($_SESSION['crea_offre3']['option'] === "aucune"){
+        if($_SESSION['crea_offre4']['option'] === "aucune"){
             echo "test";
         }
     }
