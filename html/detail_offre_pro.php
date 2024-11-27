@@ -351,75 +351,81 @@
 
 
                     
-                    <!-- Conteneur de l'offre -->
-    <?php
-        // Simulation : récupérer la valeur de l'offre (1 pour "En Ligne", 0 pour "Hors Ligne")
-        $en_ligne = $details_offre['en_ligne'] ?? 0; // Par défaut 0 si $details_offre['en_ligne'] n'est pas défini
-    ?>
+<?php
+// Récupérer l'état actuel de l'offre depuis la base de données
+// Exemple : $en_ligne = 1 pour "En Ligne" et 0 pour "Hors Ligne"
+$en_ligne = $details_offre['en_ligne'] ?? 0; // Par défaut 0 si $details_offre['en_ligne'] n'est pas défini
+?>
 
-    <div>
-        <p id="offer-state">L'offre est actuellement : <span id="offer-status">
-            <?php echo $en_ligne ? "En Ligne" : "Hors Ligne"; ?>
-        </span></p>
+<div>
+    <p id="offer-state">L'offre est actuellement : <span id="offer-status">
+        <?php echo $en_ligne ? "En Ligne" : "Hors Ligne"; ?>
+    </span></p>
+</div>
+
+<!-- Bouton toggle -->
+<div class="toggle-container">
+    <div id="toggle" class="toggle-button">
+        <div class="toggle-circle"></div>
     </div>
+</div>
 
-    <!-- Bouton toggle -->
-    <div class="toggle-container">
-        <div id="toggle" class="toggle-button">
-            <div class="toggle-circle"></div>
-        </div>
-    </div>
+<script>
+    // Récupérer l'état initial de l'offre depuis PHP
+    let offerState = <?php echo $en_ligne ? '"En Ligne"' : '"Hors Ligne"'; ?>;
 
-    <script>
-        // Récupérer l'état initial de l'offre depuis PHP
-        let offerState = <?php echo $en_ligne ? '"En Ligne"' : '"Hors Ligne"'; ?>;
+    // Sélectionner les éléments
+    const toggleButton = document.getElementById('toggle');
+    const offerStatusText = document.getElementById('offer-status');
 
-        // Sélectionner les éléments
-        const toggleButton = document.getElementById('toggle');
-        const offerStatusText = document.getElementById('offer-status');
+    // Initialiser le bouton et le texte en fonction de l'état de l'offre
+    function initializeToggle() {
+        if (offerState === "En Ligne") {
+            toggleButton.classList.add('EnLigne');
+            offerStatusText.textContent = "En Ligne";
+        } else {
+            toggleButton.classList.remove('EnLigne');
+            offerStatusText.textContent = "Hors Ligne";
+        }
+    }
 
-        // Initialiser le bouton et le texte en fonction de l'état de l'offre
-        function initializeToggle() {
-            if (offerState === "En Ligne") {
-                toggleButton.classList.add('EnLigne');
-                offerStatusText.textContent = "En Ligne";
-            } else {
-                toggleButton.classList.remove('EnLigne');
-                offerStatusText.textContent = "Hors Ligne";
-            }
+    // Basculer l'état de l'offre
+    toggleButton.addEventListener('click', () => {
+        // Changer l'état de l'offre
+        if (offerState === "Hors Ligne") {
+            offerState = "En Ligne";
+        } else {
+            offerState = "Hors Ligne";
         }
 
-        // Basculer l'état de l'offre
-        toggleButton.addEventListener('click', () => {
-            if (offerState === "Hors Ligne") {
-                offerState = "En Ligne";
-            } else {
-                offerState = "Hors Ligne";
-            }
-
-            // Mettre à jour le bouton et le texte
-            initializeToggle();
-
-            // Optionnel : envoyer l'état mis à jour au serveur via AJAX ou Fetch API
-            console.log("Nouvel état de l'offre :", offerState);
-
-            // Exemple de simulation d'appel AJAX pour mettre à jour l'état
-            fetch('update_offer_status.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ en_ligne: offerState === "En Ligne" ? 1 : 0 })
-            })
-            .then(response => response.json())
-            .then(data => console.log('Mise à jour réussie :', data))
-            .catch(error => console.error('Erreur lors de la mise à jour :', error));
-        });
-
-        // Initialiser le bouton au chargement de la page
+        // Mettre à jour le bouton et le texte
         initializeToggle();
-    </script>
 
+        // Optionnel : envoyer l'état mis à jour au serveur via AJAX ou Fetch API
+        console.log("Nouvel état de l'offre :", offerState);
+
+        // Appel AJAX pour mettre à jour l'état de l'offre dans la base de données
+        fetch('update_offer_status.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ en_ligne: offerState === "En Ligne" ? 1 : 0 })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log('Mise à jour réussie :', data);
+            } else {
+                console.error('Erreur lors de la mise à jour :', data);
+            }
+        })
+        .catch(error => console.error('Erreur lors de la mise à jour :', error));
+    });
+
+    // Initialiser le bouton au chargement de la page
+    initializeToggle();
+</script>
 
 
 
@@ -608,48 +614,43 @@
         </div>
 
         <div class="avis-widget">
-  <div class="avis-header">
-    <h1>5.0 <span class="avis-score">Très bien</span></h1>
-    <p>255 avis vérifiés</p>
-  </div>
-  <div class="avis-list">
-    <div class="avis">
-      <img src="images/fraise.png" alt="Fraise" class="avatar">
-      <div class="avis-content">
-        <h3>5.0 Excellent | <span>Maël Sellier</span></h3>
-        <p>Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
-      </div>
-    </div>
-    <div class="avis">
-      <img src="images/eau.png" alt="Eau" class="avatar">
-      <div class="avis-content">
-        <h3>4.9 Parfait | <span>Juliette Martin</span></h3>
-        <p>Super, un séjour enrichissant, un personnel réactif. Je recommande.</p>
-      </div>
-    </div>
-    <div class="avis">
-      <img src="images/person.png" alt="Antoine Prieur" class="avatar">
-      <div class="avis-content">
-        <h3>4.2 Génial | <span>Antoine Prieur</span></h3>
-        <p>Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
-      </div>
-    </div>
-    <div class="avis">
-      <img src="images/legumes.png" alt="Tim Cook" class="avatar">
-      <div class="avis-content">
-        <h3>3.8 Bien | <span>Tim Cook</span></h3>
-        <p>Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
-      </div>
-    </div>
-    <div class="avis">
-      <img src="images/citron.png" alt="Johnny Ives" class="avatar">
-      <div class="avis-content">
-        <h3>4.0 Très bien | <span>Johnny Ives</span></h3>
-        <p>Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
-      </div>
-    </div>
-  </div>
-</div>
+              <div class="avis-header">
+                <h1>5.0 <span class="avis-score">Très bien</span></h1>
+                <p>255 avis vérifiés</p>
+              </div>
+              <div class="avis-list">
+                <div class="avis">
+                  <div class="avis-content">
+                    <h3>5.0 Excellent | <span>Maël Sellier</span></h3>
+                    <p>Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
+                  </div>
+                </div>
+                <div class="avis">
+                  <div class="avis-content">
+                    <h3>4.9 Parfait | <span>Juliette Martin</span></h3>
+                    <p>Super, un séjour enrichissant, un personnel réactif. Je recommande.</p>
+                  </div>
+                </div>
+                <div class="avis">
+                  <div class="avis-content">
+                    <h3>4.2 Génial | <span>Antoine Prieur</span></h3>
+                    <p>Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
+                  </div>
+                </div>
+                <div class="avis">
+                  <div class="avis-content">
+                    <h3>3.8 Bien | <span>Tim Cook</span></h3>
+                    <p>Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
+                  </div>
+                </div>
+                <div class="avis">
+                  <div class="avis-content">
+                    <h3>4.0 Très bien | <span>Johnny Ives</span></h3>
+                    <p>Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
+                  </div>
+                </div>
+              </div>
+        </div>
 
 
 

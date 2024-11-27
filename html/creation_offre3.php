@@ -141,7 +141,7 @@ if(isset($_POST['valider'])){
 
         $nom_dossier_images = $_SESSION['crea_offre']['titre_offre'];
         $nom_dossier_images = str_replace(' ','',$nom_dossier_images);
-        $destination = "../images/offres/".$nom_dossier_images;
+        $destination = "./images/offres/".$nom_dossier_images;
 
         if(!file_exists($destination)){
             mkdir($destination, 0777, true); // crée le dossier si il n'existe pas.
