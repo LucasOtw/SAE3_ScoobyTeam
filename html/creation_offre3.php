@@ -224,7 +224,6 @@ if(isset($_POST['valider'])){
             '_description' => $_SESSION['crea_offre']['description'],
             'note_moyenne' => null,
             'tarif' => $_SESSION['crea_offre2']['tarif'],
-            'accessibilite' => $_SESSION['crea_offre']['accessibilite'],
             'en_ligne' => false,
             'nb_blacklister' => 0,
             'code_adresse' => $code_adresse,
@@ -243,6 +242,9 @@ if(isset($_POST['valider'])){
         echo "<pre>";
         print_r($mon_offre);
         echo "</pre>";
+        var_dump($mon_offre['en_ligne']);
+
+        // on passe à l'exécution
     }
 }
     
