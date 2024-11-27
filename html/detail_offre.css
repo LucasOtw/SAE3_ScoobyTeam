@@ -429,6 +429,18 @@ footer {
 
 }
 
+.Detail_offre_horaire{
+    margin-left: 11em;
+    margin-bottom: 3em;
+}
+
+.Detail_offre_horaire p{
+    color : #727272;
+}
+
+
+
+
 .footer_detail_avis {
     margin-top: 19em;
 
