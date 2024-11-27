@@ -314,7 +314,7 @@
     
         <div>
             <p id="offer-state">L'offre est actuellement : <span id="offer-status">
-                <?php echo $en_ligne ? "En Ligne" : "Hors Ligne"; ?>
+                <?php echo $details_offre['en_ligne'] ? "En Ligne" : "Hors Ligne"; ?>
             </span></p>
         </div>
     
@@ -327,7 +327,7 @@
     
         <script>
             // Récupérer l'état initial de l'offre depuis PHP
-            let offerState = <?php echo $en_ligne ? '"En Ligne"' : '"Hors Ligne"'; ?>;
+            let offerState = <?php echo $details_offre['en_ligne'] ? '"En Ligne"' : '"Hors Ligne"'; ?>;
     
             // Sélectionner les éléments
             const toggleButton = document.getElementById('toggle');
