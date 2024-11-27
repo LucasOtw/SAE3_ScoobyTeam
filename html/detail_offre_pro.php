@@ -376,7 +376,7 @@
 
 
                         
-    <button id="toggleButton" class="toggle-button">
+ <button id="toggleButton" class="toggle-button">
     <span class="toggle-text">Changer état</span>
     <div class="toggle-switch"></div>
 </button>
@@ -384,31 +384,40 @@
 <span id="offerStatus"></span>
 
 <script>
+    console.log('Initialisation du toggle...');
     let offerState = '<?php echo $details_offre['en_ligne'] ? 'En Ligne' : 'Hors Ligne'; ?>';
+    console.log('État initial:', offerState);
+
     const toggleButton = document.getElementById('toggleButton');
     const offerStatusText = document.getElementById('offerStatus');
 
     function initializeToggle() {
+        console.log('Initialisation du toggle...');
         if (offerState === "En Ligne") {
+            console.log("Bouton activé");
             toggleButton.classList.add('active');
             offerStatusText.textContent = "En Ligne";
         } else {
+            console.log("Bouton désactivé");
             toggleButton.classList.remove('active');
             offerStatusText.textContent = "Hors Ligne";
         }
     }
 
     toggleButton.addEventListener('click', () => {
+        console.log('Clic sur le bouton');
         let newState;
         if (offerState === "En Ligne") {
+            console.log("Passage à Hors Ligne");
             newState = "Hors Ligne";
         } else {
+            console.log("Passage à En Ligne");
             newState = "En Ligne";
         }
 
         offerState = newState;
 
-        // Mettre à jour l'affichage immédiatement
+        console.log('Nouvel état:', offerState);
         initializeToggle();
 
         // Mettre à jour la base de données
@@ -419,18 +428,27 @@
             },
             body: JSON.stringify({ en_ligne: offerState === "En Ligne" ? 1 : 0 })
         })
-        .then(response => response.json())
+        .then(response => {
+            console.log('Réponse reçue:', response);
+            return response.json();
+        })
         .then(data => {
-            console.log('Mise à jour réussie :', data);
-            alert('L\'offre a été mise à jour avec succès.');
+            console.log('Données reçues:', data);
+            if (data.success) {
+                console.log('Mise à jour réussie');
+                alert('L\'offre a été mise à jour avec succès.');
+            } else {
+                console.error('Erreur lors de la mise à jour :', data.error);
+                alert('Une erreur est survenue lors de la mise à jour de l\'offre. Erreur : ' + data.error);
+            }
         })
         .catch(error => {
-            console.error('Erreur lors de la mise à jour :', error);
+            console.error('Erreur lors de la requête AJAX :', error);
             alert('Une erreur est survenue lors de la mise à jour de l\'offre. Veuillez réessayer plus tard.');
         });
     });
 
-    // Initialiser le toggle au chargement de la page
+    console.log('Initialisation initiale du toggle...');
     initializeToggle();
 </script>
 
