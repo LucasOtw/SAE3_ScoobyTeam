@@ -106,7 +106,7 @@ if(isset($_POST['valider'])){
 
         $tab_horaires = $_SESSION['crea_offre3'];
         // pour chaque jour
-        foreach($tab_horaires as $jour => $horaire){
+        foreach($tab_horaires as strtolower($jour) => $horaire){
             /* On cherche d'abord le code horaire. */
             $horaireCorrespondante = $dbh->prepare("SELECT code_horaire FROM tripenarvor._horaire
             WHERE
