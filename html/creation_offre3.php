@@ -164,6 +164,7 @@ if(isset($_POST['valider'])){
                 break;
         }
 
+
         if($prix_option !== null){
             // si il y a un prix d'option, il y a une option, donc on l'ajoute.
             $nbSemaines_option = $_SESSION['crea_offre4']['duree_option'];
@@ -192,6 +193,8 @@ if(isset($_POST['valider'])){
             } else {
                 echo "AAAAAAAAAAAAAAAARGH";
             }
+        } else {
+            echo "MERDE";
         }
 
         // on récupère aussi le nom du type de l'offre
