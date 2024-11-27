@@ -252,7 +252,7 @@ if(isset($_POST['valider'])){
         var_dump($placeholders);
 
         $creation_offre_req = "INSERT INTO votre_table ($columns) VALUES ($placeholders)";
-        $creation_offre = $db->prepare($creation_offre_req);
+        $creation_offre = $dbh->prepare($creation_offre_req);
         
         if($creation_offre->execute($mon_offre)){
             echo "Offre créee avec succès !";
