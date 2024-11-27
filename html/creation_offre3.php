@@ -231,7 +231,7 @@ if(isset($_POST['valider'])){
             'code_adresse' => $code_adresse,
             'professionnel' => $_SESSION['pro']['code_compte'],
             'nom_type' => $champ_type_offre,
-            $champ_option => $prix_option
+            $champ_option => $_SESSION['ajoutOption']
         ];
 
         $mon_offre = array_merge($mon_offre,$code_horaire);
