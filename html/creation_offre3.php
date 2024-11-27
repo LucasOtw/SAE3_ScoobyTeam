@@ -12,7 +12,9 @@ $dbh = new PDO($dsn, $username, $password);
 
 include("recupInfosCompte.php");
 
-$_SESSION['ajoutOption'] = null; // cette session sert uniquement à éviter l'ajout d'une option si on l'a déjà fait
+if(!isset($_SESSION['ajoutOption'])){
+    $_SESSION['ajoutOption'] = null; // cette session sert uniquement à éviter l'ajout d'une option si on l'a déjà fait
+}
 
 if(!isset($_SESSION['pro'])){
     // si on tente d'accéder à la page sans être connecté à un compte pro, on
