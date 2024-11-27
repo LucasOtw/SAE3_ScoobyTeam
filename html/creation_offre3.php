@@ -228,7 +228,10 @@ if(isset($_POST['valider'])){
             'accessibilite' => $_SESSION['crea_offre']['accessibilite'],
             'en_ligne' => false,
             'nb_blacklister' => 0,
-            'code_adresse' => $code_adresse
+            'code_adresse' => $code_adresse,
+            'professionnel' => $_SESSION['pro']['code_compte'],
+            'nom_type' => $champ_type_offre,
+            $champ_option => $prix_option
         ];
 
         $mon_offre = array_merge($mon_offre,$code_horaire);
