@@ -421,16 +421,70 @@
 
             </div>
         </div>
-
-        <div class="schedule">
-            <h2>Horaire du Spectacle</h2>
-            <div class="details">
-                <p class="date">Date : <span><?php echo $details_offre["date_spectacle"];?></span></p>
-                <p class="time">Heure : <span><?php echo $details_offre["heure_spectacle"];?></span></p>
-            </div>
-        </div>
         
         <?php
+        if ($type_offre === "restauration")
+        {
+        ?>
+            <h3 style="margin-top: 1em;">Repas</h3>
+            <p><?php echo $details_offre["repas"];?></p>
+
+            <h3 style="margin-top: 1em;">Gamme de prix</h3>
+            <p><?php echo $details_offre["gamme_prix"];?></p>
+        <?php
+        }
+        else if ($type_offre === "parc_attractions")
+        {
+        ?>
+            <h3 style="margin-top: 1em;">Age requis</h3>
+            <p><?php echo $details_offre["age_requis"];?></p>
+            
+            <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
+            <p><?php echo $details_offre["nombre_attractions"];?></p>
+        <?php
+        }
+        else if ($type_offre === "spectacle")
+        {
+        ?>
+            <div class="schedule">
+                <h2>Horaire du Spectacle</h2>
+                <div class="details">
+                    <p class="date">Date : <span><?php echo $details_offre["date_spectacle"];?></span></p>
+                    <p class="time">Heure : <span><?php echo $details_offre["heure_spectacle"];?></span></p>
+                </div>
+            </div>
+        <?php
+        }
+        else if ($type_offre === "visite")
+        {
+        ?>
+            <div class="schedule">
+                <h2>Horaire de la Visite</h2>
+                <div class="details">
+                    <p class="date">Date : <span><?php echo $details_offre["date_visite"];?></span></p>
+                    <p class="time">Heure : <span><?php echo $details_offre["heure_visite"];?></span></p>
+                </div>
+            </div>
+        <?php
+        }
+        else if  ($type_offre === "activite")
+        {
+        ?>
+            <h3 style="margin-top: 1em;">Durée</h3>
+            <p><?php echo $details_offre["duree"];?></p>
+
+            <h3 style="margin-top: 1em;">Age requis</h3>
+            <p><?php echo $details_offre["age_requis"];?></p>
+            
+            <h3 style="margin-top: 1em;">Prestations incluses</h3>
+            <p><?php echo $details_offre["prestations_incluses"];?></p>
+            
+            <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
+            <p><?php echo $details_offre["prestations_non_incluses"];?></p>
+        <?php
+        }
+        ?>
+
         
         
         <?php
