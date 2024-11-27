@@ -790,7 +790,7 @@
                 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig&q=<?php echo $latitude; ?>,<?php echo $longitude; ?>"
                 style="border:0;margin: auto; width:85vw; height:50vh" allowfullscreen="" loading="lazy">
                 </iframe>
-            </div>
+            
                     
              <div class="avis-widget">
               <div class="avis-header">
@@ -830,6 +830,7 @@
                 </div>
               </div>
         </div>
+            </div>
 
                     
 
