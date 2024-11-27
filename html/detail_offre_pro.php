@@ -373,59 +373,63 @@
             // Simulation : récupérer la valeur de l'offre (1 pour "En Ligne", 0 pour "Hors Ligne")
             $en_ligne = $details_offre['en_ligne'] ?? 0; // Par défaut 0 si $details_offre['en_ligne'] n'est pas défini
         ?>
-        <script>
-            let offerState = <?php echo $details_offre['en_ligne'] ? '"En Ligne"' : '"Hors Ligne"'; ?>;
-            const toggleButton = document.getElementById('toggle');
-            const offerStatusText = document.getElementById('offer-status');
-            
-            function initializeToggle() {
-                if (offerState === "En Ligne") {
-                    toggleButton.classList.add('EnLigne');
-                    offerStatusText.textContent = "En Ligne";
-                } else {
-                    toggleButton.classList.remove('EnLigne');
-                    offerStatusText.textContent = "Hors Ligne";
-                }
-            }
-            
-            toggleButton.addEventListener('click', () => {
-                let newState;
-                if (offerState === "Hors Ligne") {
-                    newState = "En Ligne";
-                    offerState = "En Ligne";
-                } else {
-                    newState = "Hors Ligne";
-                    offerState = "Hors Ligne";
-                }
-            
-                // Mettre à jour l'affichage immédiatement
-                initializeToggle();
-            
-                // Mettre à jour la base de données
-                $query = $dbh->prepare("UPDATE tripenarvor._offre SET en_ligne = :valeur");
-                $query->execute([
-                    'valeur' => newState === "En Ligne" ? 1 : 0
-                ]);
-            
-                console.log("Nouvel état de l'offre :", offerState);
-            
-                // Exemple d'appel AJAX pour mettre à jour l'état (si nécessaire)
-                fetch('update_offer_status.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ en_ligne: offerState === "En Ligne" ? 1 : 0 })
-                })
-                .then(response => response.json())
-                .then(data => console.log('Mise à jour réussie :', data))
-                .catch(error => console.error('Erreur lors de la mise à jour :', error));
-            });
+
+
+                        
+         <button id="toggleButton">Changer état</button>
+        <span id="offerStatus"></span>
+
+    <script>
+        let offerState = <?php echo $details_offre['en_ligne'] ? '"En Ligne"' : '"Hors Ligne"'; ?>;
+        const toggleButton = document.getElementById('toggleButton');
+        const offerStatusText = document.getElementById('offerStatus');
     
-
-
-                
-        </script>
+        function initializeToggle() {
+            if (offerState === "En Ligne") {
+                toggleButton.classList.add('EnLigne');
+                offerStatusText.textContent = "En Ligne";
+            } else {
+                toggleButton.classList.remove('EnLigne');
+                offerStatusText.textContent = "Hors Ligne";
+            }
+        }
+    
+        toggleButton.addEventListener('click', () => {
+            let newState;
+            if (offerState === "En Ligne") {
+                newState = "Hors Ligne";
+                offerState = "Hors Ligne";
+            } else {
+                newState = "En Ligne";
+                offerState = "En Ligne";
+            }
+    
+            // Mettre à jour l'affichage immédiatement
+            initializeToggle();
+    
+            // Mettre à jour la base de données
+            fetch('update_offer_status.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ en_ligne: offerState === "En Ligne" ? 1 : 0 })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Mise à jour réussie :', data);
+                alert('L\'offre a été mise à jour avec succès.');
+            })
+            .catch(error => {
+                console.error('Erreur lors de la mise à jour :', error);
+                alert('Une erreur est survenue lors de la mise à jour de l\'offre.');
+            });
+        });
+    
+        // Initialiser le toggle au chargement de la page
+        initializeToggle();
+    </script>
+               
 
                         
                     </div>
