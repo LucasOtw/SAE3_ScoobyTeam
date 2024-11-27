@@ -1343,3 +1343,16 @@ footer {
   color: #555;
   font-size: 0.9em;
 }
+
+.avis-widget .avis-list .avis {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #000; /* Ligne horizontale noire */
+}
+
+.avis-widget .avis-list .avis:last-child {
+  border-bottom: none; /* Supprime la ligne après le dernier avis */
+}
+
