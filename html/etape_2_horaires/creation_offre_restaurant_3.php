@@ -138,7 +138,7 @@ session_start();
                     <div class="col">
                         <fieldset>
                             <legend>Ouverture</legend>
-                            <input type="time" id="ouvertureMa" name="ouvertureMA" placeholder="Ouverture">
+                            <input type="time" id="ouvertureMa" name="ouvertureMa" placeholder="Ouverture">
                         </fieldset>
                     </div >
                     <div class="col">
