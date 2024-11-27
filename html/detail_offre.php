@@ -449,6 +449,7 @@
             
             <div class="schedule">
                 <h2>Horaire du Spectacle</h2>
+                <p><?php echo $detials_offre["date_spectacle"];?></p>
                 <div class="details">
                     <p class="date">Date : 
                         <span>
