@@ -86,7 +86,7 @@ $dbh = new PDO($dsn, $username, $password);
                                 <input type="radio" id="star5" name="note" value="5" />
                                 <label for="star5" title="5 étoiles"></label>
 
-                                    <input type="star" id="star4" name="note" value="4" />
+                                    <input type="radio" id="star4" name="note" value="4" />
                                     <label for="star4" title="4 étoiles"></label>
 
                                     <input type="radio" id="star3" name="note" value="3" />
