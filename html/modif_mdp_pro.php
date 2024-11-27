@@ -95,7 +95,7 @@ if (isset($_POST['modif_infos'])){
         </nav>
     </header>
     
-    <main class="main-consulter-compte-pro">
+    <main class="main_modif_mdp_pro">
         <section class="profile">
             <div class="banner">
                 <img src="images/Fond.png" alt="Bannière de profil">
