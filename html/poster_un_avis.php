@@ -30,6 +30,12 @@ echo "</pre>";
 
 $code_offre = $details_offre["code_offre"];
 
+$compte = $_SESSION['membre'];
+$code_compte = $compte['code_compte'];
+
+echo "<pre>";
+var_dump($compte);
+echo "</pre>";
 
 ?>
 <!DOCTYPE html>
@@ -161,12 +167,12 @@ $code_offre = $details_offre["code_offre"];
             $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
 
             // Liez les valeurs aux paramètres
-            $creerCompte->bindParam(':texte_avis', $texte_avis);
-            $creerCompte->bindParam(':note', $note);
+            $creerAvis->bindParam(':texte_avis', $texte_avis);
+            $creerAvis->bindParam(':note', $note);
+            $creerAvis->bindParam(':code_offre', $code_offre);
            
-            $creerCompte->bindParam(':code_compte', $code_compte);
-            $creerCompte->bindParam(':code_offre', $code_offre);
-
+            $creerAvis->bindParam(':code_compte', $code_compte);
+         
         }
     ?>
                     
