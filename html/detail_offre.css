@@ -325,7 +325,7 @@ footer {
     height: 52px;
 }
 
-.button_detailoffre_avis {
+input#btn-poster-avis {
     padding: 10px 20px;
     background-color: #FFF;
     color: black;
