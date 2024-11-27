@@ -1,79 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier mdp compte membre</title>
-    <link rel="stylesheet" href="modif_mdp_pro.css">
+    <title>Mes offres</title>
+    <link rel="stylesheet" href="consulter_compte_pro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 </head>
 <body>
-<header>
+    
+     <header class="header">
         <div class="logo">
-            <img src="images/logoBlanc.png" alt="PACT Logo">
+            <img src="images/logo_blanc_pro.png" alt="PACT Logo">
         </div>
-        <nav>
+        <nav class="nav">
             <ul>
                 <li><a href="mes_offres.php">Accueil</a></li>
-                <li><a href="connexion_pro.php">Publier</a></li>
-                <li><a href="connexion_pro.php"class="active">Mon Compte</a></li>
+                <li><a href="creation_offre.php">Publier</a></li>
+                <li><a href="consulter_compte_pro.php" class="active">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <div class="header">
-            <img src="images/Rectangle_3.png" alt="Bannière" class="header-img">
-        </div>
+    
+    <main class="main-consulter-compte-pro">
+        <section class="profile">
+            <div class="banner">
+                <img src="images/Fond.png" alt="Bannière de profil">
+            </div>
+            <div class="profile-info">
+                <img class="profile-picture" src="images/hotel.jpg" alt="Profil utilisateur">
+                <h1><?php echo $monComptePro['raison_sociale']; ?></h1>
+                <p><?php echo $compte['mail'] ." | ". $compte['telephone']; ?></p>
+            </div>
+        </section>
+    
+        <section class="tabs">
+            <ul>
+                <li><a href="consulter_compte_pro.php" class="active">Informations personnelles</a></li>
+                <li><a href="mes_offres.php" >Mes offres</a></li>
+                <li><a href="modif_bancaire.php">Compte bancaire</a></li>
+            </ul>
+        </section>
 
-        <div class="profile-section">
-            <img src="images/pp.png" alt="Photo de profil" class="profile-img">
-            <h1>Ti al Lannec</h1>
-            <p>ti.al.lannec@gmail.com | 07.98.76.54.12</p>
-        </div>
+        
+        <form action="#" method="POST">
+            <fieldset>
+                <legend>Entrez votre mot de passe actuel</legend>
+                <input type="password" id="adresse" name="adresse" placeholder="Entrez votre mot de passe actuel" required>
+            </fieldset>
+        
+            <fieldset>
+                <legend>Definissez votre nouveau mot de passe</legend>
+                <input type="password" id="code-postal" name="code-postal" placeholder="Definissez votre nouveau mot de passe" required>
+            </fieldset>
+                
+            <fieldset>
+                <legend>Re-tapez votre nouveau mot de passe</legend>
+                <input type="password" id="code-postal" name="code-postal" placeholder="Re-tapez votre nouveau mot de passe" required>
+            </fieldset>
+                
+            <div class="compte_membre_save_delete">
+                <button type="submit" class="submit-btn1">Supprimer mon compte</button>
+                <button type="submit" class="submit-btn2">Enregistrer</button>
+            </div>
+        </form>
+    </main>
 
-        <div class="tabs">
-            <div class="tab">Informations</div>
-            <div class="tab active">Mot de passe et sécurité</div>
-            <div class="tab">Historique</div>
-        </div>
-    </div>
-    <form action="#" method="POST">
-    <fieldset>
-        <legend>Entrez votre mot de passe actuel</legend>
-        <input type="password" id="adresse" name="adresse" placeholder="Entrez votre mot de passe actuel" required>
-    </fieldset>
-
-    <fieldset>
-        <legend>Definissez votre nouveau mot de passe</legend>
-        <input type="password" id="code-postal" name="code-postal" placeholder="Definissez votre nouveau mot de passe" required>
-    </fieldset>
-    <fieldset>
-
-        <legend>Re-tapez votre nouveau mot de passe</legend>
-        <input type="password" id="code-postal" name="code-postal" placeholder="Re-tapez votre nouveau mot de passe" required>
-    </fieldset>
-    <div class="compte_membre_save_delete">
-    <button type="submit" class="submit-btn1">Supprimer mon compte</button>
-    <button type="submit" class="submit-btn2">Enregistrer</button>
-</div>
-
-</form>
 
     <footer class="footer_detail_avis">
-        <div class="newsletter">
-            <div class="newsletter-content">
-                <h2>Inscrivez-vous à notre Newsletter</h2>
-                <p>PACT</p>
-                <p>Redécouvrez la Bretagne !</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Votre adresse mail" required>
-                    <button type="submit">S'inscrire</button>
-                </form>
-            </div>
-            <div class="newsletter-image">
-                <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
-            </div>
-        </div>
-        
         <div class="footer-links">
             <div class="logo">
                 <img src="images/logoBlanc.png" alt="Logo PACT">
@@ -88,8 +84,8 @@
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="mes_offres.php">Accueil</a></li>
-                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Publier</a></li>
                     <li><a href="#">Historique</a></li>
                 </ul>
             </div>
@@ -118,5 +114,6 @@
             </div>
         </div>
     </footer>
+
 </body>
 </html>
