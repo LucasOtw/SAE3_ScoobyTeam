@@ -437,6 +437,30 @@ footer {
         display : none;
     }
 
+    .notation {
+        display: flex;
+        direction: row-reverse;
+        justify-content: center;
+    }
+    
+    .notation input {
+        display: none;
+    }
+    
+    .notation label {
+        font-size: 2rem;
+        color: #ccc;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+    
+    .notation input:checked ~ label,
+    .notation label:hover,
+    .notation label:hover ~ label {
+        color: #ffd700;
+    }
+    
+
 
 
   }
