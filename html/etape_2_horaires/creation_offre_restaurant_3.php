@@ -39,7 +39,7 @@ session_start();
               }
           } else {
               $_SESSION['crea_offre3'] = $horaires_par_jour;
-              var_dump($_SESSION['crea_offre3'];
+              var_dump($_SESSION['crea_offre3']);
           }
       }
         
