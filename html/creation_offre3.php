@@ -154,7 +154,7 @@ if(isset($_POST['valider'])){
             $nom_photo = $photo['name'];
 
                 // Construire le chemin de destination complet
-            $chemin_destination = $destination . '/' . $name;
+            $chemin_destination = $destination . '/' . $nom;
             
             // Vérifier si le fichier temporaire existe
             if (file_exists($nom_temp)) {
