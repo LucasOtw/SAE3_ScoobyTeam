@@ -4,7 +4,7 @@ session_start();
 
 include("recupInfosCompte.php");
 
-if(isset($_GET['logout'])){
+if(isset($_GET['deco'])){
    session_unset();
    session_destroy();
    header('location: connexion_pro.php');
