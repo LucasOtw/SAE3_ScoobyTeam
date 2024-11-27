@@ -12,6 +12,10 @@ $dbh = new PDO($dsn, $username, $password);
 
 include("recupInfosCompte.php");
 
+if(!isset($_SESSION['ajoutOption'])){
+    $_SESSION['ajoutOption'] = null; // cette session sert uniquement à éviter l'ajout d'une option si on l'a déjà fait
+}
+
 if(!isset($_SESSION['pro'])){
     // si on tente d'accéder à la page sans être connecté à un compte pro, on
     header('location: connexion_pro.php');
@@ -120,7 +124,7 @@ if(isset($_POST['valider'])){
             if($horaireCorrespondante){
                 echo "HAHA <br>";
                 // si une horraire correspond, on récupère son code
-                $code_horaire = $horaireCorrespondante['code_horaire'];
+                $code_horaire[] = $horaireCorrespondante['code_horaire'];
             } else {
                 echo "HOHO <br>";
                 // sinon, on l'insère
@@ -131,7 +135,7 @@ if(isset($_POST['valider'])){
 
                 $ajoutHoraire->execute();
                 // on récupère le dernier id enregistré, celui du code horaire.
-                $code_horaire = $dbh->lastInsertId();
+                $code_horaire[] = $dbh->lastInsertId();
             }
         }
 
@@ -149,8 +153,45 @@ if(isset($_POST['valider'])){
 
         // on vérifie d'abord si le pro a choisi une option
 
-        if($_SESSION['crea_offre4']['option'] === "aucune"){
-            echo "test";
+        $prix_option = null;
+        switch($_SESSION['crea_offre4']['option']){
+            case "aucun":
+                break;
+            case "en_relief":
+                $prix_option = 10.00;
+                break;
+            case "a_la_une":
+                $prix_option = 20.00;
+                break;
+        }
+
+        if($prix_option !== null){
+            // si il y a un prix d'option, il y a une option, donc on l'ajoute.
+            $nbSemaines_option = $_SESSION['crea_offre4']['duree_option'];
+
+                // Calculer la date de fin en ajoutant les semaines
+            $date_fin = new DateTime($date_offre); // Créer une instance de DateTime
+            $date_fin->modify("+{$nbSemaines_option} weeks"); // Ajouter le nombre de semaines
+            $date_fin_option = $date_fin->format('Y-m-d'); // Formater la date de fin
+
+            // on peut maintenant ajouter l'option
+            if($_SESSION['ajoutOption'] === null){
+                echo "HAAAAAAAAAAAAAAAAAA";
+                // si la session est à null, alors on n'a pas rajouté d'option cette fois-là.
+                $ajoutOption = $dbh->prepare("INSERT INTO tripenarvor._option (nb_semaines,date_debut,date_fin,prix) VALUES
+                (:nb_semaines,:date_debut,:date_fin,:prix);");
+                $ajoutOption->bindValue(":nb_semaines",$nbSemaines_option);
+                $ajoutOption->bindValue(":date_debut",$date_offre);
+                $ajoutOption->bindValue(":date_fin",$date_fin_option);
+                $ajoutOption->bindValue(":prix",$prix_option);
+
+                if($ajoutOption->execute()){
+                    $_SESSION['ajoutOption'] = $dbh->lastInsertId();
+                }
+                echo "test";
+            } else {
+                echo "AAAAAAAAAAAAAAAARGH";
+            }
         }
     }
 }

@@ -176,30 +176,11 @@ function tempsEcouleDepuisPublication($offre){
     <main class="toute_les_offres_main">
     
         <div class="search-bar">
-            
+
             <div class="search-top">
                 <input type="text" class="search-input" placeholder="Recherchez parmi les offres" >
             </div>
-            <script>
-                // Récupération des éléments
-                const searchInput = document.querySelector('.search-input');
-                const offerItems = document.querySelectorAll('.offer');
-        
-                // Ajout d'un événement pour filtrer les offres
-                searchInput.addEventListener('input', () => {
-                    const query = searchInput.value.toLowerCase().trim();
-        
-                    // Parcourir chaque offre et vérifier si elle correspond à la recherche
-                    offerItems.forEach(offer => {
-                        const text = offer.textContent.toLowerCase();
-                        if (text.includes(query)) {
-                            offer.classList.remove('hidden');
-                        } else {
-                            offer.classList.add('hidden');
-                        }
-                    });
-                });
-            </script>
+
             
             <div class="search-options">
                 <select class="search-select">
@@ -447,6 +428,33 @@ function tempsEcouleDepuisPublication($offre){
 
         ?>
         </section>
+
+        
+        <style>
+            .offer.hidden {
+                display: none;
+                }
+        </style>
+        <script>
+            // Récupération des éléments
+            const searchInput = document.querySelector('.search-input');
+            const offerItems = document.querySelectorAll('.offer');
+    
+            // Ajout d'un événement pour filtrer les offres
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.toLowerCase().trim();
+    
+                // Parcourir chaque offre et vérifier si elle correspond à la recherche
+                offerItems.forEach(offer => {
+                    const text = offer.textContent.toLowerCase();
+                    if (text.includes(query)) {
+                        offer.classList.remove('hidden');
+                    } else {
+                        offer.classList.add('hidden');
+                    }
+                });
+            });
+        </script>
 
     </main>
     <nav class="nav-bar">

@@ -374,40 +374,55 @@
             $en_ligne = $details_offre['en_ligne'] ?? 0; // Par défaut 0 si $details_offre['en_ligne'] n'est pas défini
         ?>
         <script>
-            toggleButton.addEventListener('click', () => {
-            let newState;
-            if (offerState === "Hors Ligne") {
-                newState = "En Ligne";
-                offerState = "En Ligne";
-            } else {
-                newState = "Hors Ligne";
-                offerState = "Hors Ligne";
+            let offerState = <?php echo $details_offre['en_ligne'] ? '"En Ligne"' : '"Hors Ligne"'; ?>;
+            const toggleButton = document.getElementById('toggle');
+            const offerStatusText = document.getElementById('offer-status');
+            
+            function initializeToggle() {
+                if (offerState === "En Ligne") {
+                    toggleButton.classList.add('EnLigne');
+                    offerStatusText.textContent = "En Ligne";
+                } else {
+                    toggleButton.classList.remove('EnLigne');
+                    offerStatusText.textContent = "Hors Ligne";
+                }
             }
-        
-            // Mettre à jour l'état local
-            initializeToggle();
-        
-            // Mettre à jour la base de données
-            $query = $dbh->prepare("UPDATE tripenarvor._offre SET en_ligne = :valeur");
-            $query->execute([
-                'valeur' => newState === "En Ligne" ? 1 : 0
-            ]);
-        
-            // Optionnel : envoyer l'état mis à jour au serveur via AJAX ou Fetch API
-            console.log("Nouvel état de l'offre :", offerState);
-        
-            // Exemple de simulation d'appel AJAX pour mettre à jour l'état
-            fetch('update_offer_status.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ en_ligne: offerState === "En Ligne" ? 1 : 0 })
-            })
-            .then(response => response.json())
-            .then(data => console.log('Mise à jour réussie :', data))
-            .catch(error => console.error('Erreur lors de la mise à jour :', error));
-        });
+            
+            toggleButton.addEventListener('click', () => {
+                let newState;
+                if (offerState === "Hors Ligne") {
+                    newState = "En Ligne";
+                    offerState = "En Ligne";
+                } else {
+                    newState = "Hors Ligne";
+                    offerState = "Hors Ligne";
+                }
+            
+                // Mettre à jour l'affichage immédiatement
+                initializeToggle();
+            
+                // Mettre à jour la base de données
+                $query = $dbh->prepare("UPDATE tripenarvor._offre SET en_ligne = :valeur");
+                $query->execute([
+                    'valeur' => newState === "En Ligne" ? 1 : 0
+                ]);
+            
+                console.log("Nouvel état de l'offre :", offerState);
+            
+                // Exemple d'appel AJAX pour mettre à jour l'état (si nécessaire)
+                fetch('update_offer_status.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ en_ligne: offerState === "En Ligne" ? 1 : 0 })
+                })
+                .then(response => response.json())
+                .then(data => console.log('Mise à jour réussie :', data))
+                .catch(error => console.error('Erreur lors de la mise à jour :', error));
+            });
+    
+
 
                 
         </script>
