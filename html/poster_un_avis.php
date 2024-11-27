@@ -70,11 +70,12 @@ $dbh = new PDO($dsn, $username, $password);
                     <img src="images/tiallannec3.png" alt="Image 2" class="poster_un_avis_image">
                 </div>
             </div>
-            <form  method="">
+
+            <form action="poster_un_avis.php" method="POST">
                <div class="poster_un_avis_section">
                    <h2 class="poster_un_avis_section_titre">Votre avis</h2>
                   
-                   <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea"></textarea>
+                   <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
                   
                    <div class="poster_un_avis_footer">
                       
@@ -119,7 +120,13 @@ $dbh = new PDO($dsn, $username, $password);
                 ?>">
                 <img src="images/icones/User icon.png" alt="image de Personne"></a>
         </nav>
-
+    </main>
+    <?php
+        if(!empty($_POST)){
+            $prenom = trim(isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : '');
+        }
+    ?>
+                    
     
     <footer class="footer_poster_avis">
         <div class="newsletter">
