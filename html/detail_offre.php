@@ -683,7 +683,7 @@
                 {
                 ?>
                     
-                    <img src="<?php echo $photo;?>" alt="">
+                    <img src="<?php echo $photo[0];?>" alt="">
                     
                 <?php
                 }
