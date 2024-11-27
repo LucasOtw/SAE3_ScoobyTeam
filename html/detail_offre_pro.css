@@ -1380,8 +1380,7 @@ footer {
 
 
 
-
-           .toggle-button {
+.toggle-button {
     position: relative;
     display: inline-block;
     width: 100px;
@@ -1414,5 +1413,3 @@ footer {
 .toggle-button.active .toggle-switch {
     left: 40px;
 }
-
-
