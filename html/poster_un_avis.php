@@ -28,7 +28,6 @@ echo "<pre>";
 var_dump($details_offre);
 echo "</pre>";
 
-$code_offre = $details_offre["code_offre"];
 
 
 echo "<pre>";
@@ -156,6 +155,9 @@ echo "</pre>";
             
             $compte = $_SESSION['membre'];
             $code_compte = $compte['code_compte'];
+
+           
+            $code_offre = $details_offre["code_offre"];
            
             $erreurs = [];
             if (empty($texte_avis)) {
