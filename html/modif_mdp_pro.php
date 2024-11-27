@@ -109,7 +109,7 @@ if (isset($_POST['modif_infos'])){
     
         <section class="tabs">
             <ul>
-                <li><a href="consulter_compte_pro.php" class="active">Informations personnelles</a></li>
+                <li><a href="consulter_compte_pro.php">Informations personnelles</a></li>
                 <li><a href="mes_offres.php" >Mes offres</a></li>
                 <li><a href="modif_bancaire.php">Compte bancaire</a></li>
                 <li><a href="#" class="active">Mot de passe et sécurité</a></li>
