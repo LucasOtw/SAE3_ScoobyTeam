@@ -605,22 +605,6 @@
         </div>
 
        
-        <footer class="footer_detail_avis">
-            <div class="newsletter">
-                <div class="newsletter-content">
-                    <h2>Inscrivez-vous à notre Newsletter</h2>
-                    <p>PACT</p>
-                    <p>Redécouvrez la Bretagne !</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Votre adresse mail" required>
-                        <button type="submit">S'inscrire</button>
-                    </form>
-                </div>
-                <div class="newsletter-image">
-                    <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
-                </div>
-            </div>
-
         
 
     <!-- Détails de l'offre sur MOBILE -->
@@ -919,7 +903,23 @@
         isDragging = false;
     });
     </script>
+            <footer class="footer_detail_avis">
+            <div class="newsletter">
+                <div class="newsletter-content">
+                    <h2>Inscrivez-vous à notre Newsletter</h2>
+                    <p>PACT</p>
+                    <p>Redécouvrez la Bretagne !</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Votre adresse mail" required>
+                        <button type="submit">S'inscrire</button>
+                    </form>
+                </div>
+                <div class="newsletter-image">
+                    <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
+                </div>
+            </div>
 
+        
              <div class="footer-links">
                 <div class="logo">
                     <img src="images/logoBlanc.png" alt="Logo PACT">
