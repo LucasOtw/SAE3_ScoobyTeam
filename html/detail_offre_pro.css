@@ -1289,7 +1289,7 @@ footer {
              margin-bottom: 20px;
            }
            
-           .avis-widget .avis-header h1 {
+           .avis-widget .avis-header h1.avis {
              font-size: 2.5em;
              margin: 0;
            }
@@ -1299,7 +1299,7 @@ footer {
              color: #555;
            }
            
-           .avis-widget .avis-header p {
+           .avis-widget .avis-header p.avis {
              color: #777;
            }
            
@@ -1318,17 +1318,17 @@ footer {
              border: 1px solid #ddd;
            }
            
-           .avis-widget .avis-content h3 {
+           .avis-widget .avis-content h3.avis {
              margin: 0;
              font-size: 1.1em;
              color: #333;
            }
            
-           .avis-widget .avis-content h3 span {
+           .avis-widget .avis-content h3.avis span {
              color: #F28322;
            }
            
-           .avis-widget .avis-content p {
+           .avis-widget .avis-content p.avis {
              margin: 5px 0 0;
              color: #555;
              font-size: 0.9em;
