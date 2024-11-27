@@ -74,6 +74,13 @@ $dbh = new PDO($dsn, $username, $password);
                <div class="poster_un_avis_section">
                    <h2 class="poster_un_avis_section_titre">Votre avis</h2>
                   
+
+                   
+
+
+
+
+
                    <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea"></textarea>
                   
                    <div class="poster_un_avis_footer">
