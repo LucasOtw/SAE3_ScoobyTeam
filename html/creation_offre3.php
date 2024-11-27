@@ -222,7 +222,7 @@ if(isset($_POST['valider'])){
             'date_derniere_modif' => $date_offre,
             'note_moyenne' => null,
             'tarif' => $_SESSION['crea_offre2']['tarif'],
-            'accessibilite' => $_SESSION['crea_offre']['accessibilite'], // peut être vide
+            'accessibilite' => $_SESSION['crea_offre']['accessibilite']
             'en_ligne' => false,
             'nb_blacklister' => 0,
             'code_adresse' => $code_adresse,
@@ -238,6 +238,9 @@ if(isset($_POST['valider'])){
         }
         if(isset($_SESSION['crea_offre']['lien']) && !empty($_SESSION['crea_offre']['lien'])){
             $mon_offre['site_web'] = $_SESSION['crea_offre']['lien'];
+        }
+        if(isset($_SESSION['crea_offre']['accessibilite']) && !empty($_SESSION['crea_offre']['accessibilite'])){
+            $mon_offre['accessibilite'] = $_SESSION['crea_offre']['accessibilite'];
         }
 
         $mon_offre = array_merge($mon_offre,$code_horaire);
