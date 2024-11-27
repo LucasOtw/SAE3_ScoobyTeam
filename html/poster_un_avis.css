@@ -452,7 +452,9 @@ color: white;
 }
 
 
-
+nav.nav-bar{
+    display:none
+}
                                             /*Code pour le format responsive de poster un avis */
 
 @media (max-width: 429px) {
@@ -500,7 +502,7 @@ color: white;
         
     }
 
-    .poster_un_avis_btn_footer {
+    .poster_un_avis_footer {
         display: block;   
     }
     .poster_un_avis_titre {
