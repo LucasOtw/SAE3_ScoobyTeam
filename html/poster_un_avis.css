@@ -410,16 +410,6 @@ color: white;
     background-color: #c3d34e;
 }
 
-.poster_un_avis_stars{
-    background-color: #f3f8ff ;
-    border : 1px solid #f3f8ff;
-    border-radius: 29px;
-    padding-bottom: 13px;
-    padding-left: 45px;
-    padding-top: 13px;
-    width: 225px;
-}
-
 .notation {
     direction: rtl; /* Permet d'inverser l'ordre visuel des étoiles */
     unicode-bidi: bidi-override;
@@ -431,8 +421,7 @@ color: white;
     background-color: #f3f8ff;
     border: 1px solid #f3f8ff;
     border-radius: 29px;
-    padding-bottom: 13px;
-    padding-top: 13px;
+    padding: 1vh 3vw;
 }
 
 .notation input[type="radio"] {
