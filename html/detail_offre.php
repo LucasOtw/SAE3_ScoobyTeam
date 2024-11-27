@@ -953,7 +953,7 @@
                         <li><a href="#">Notre équipe</a></li>
                     </ul>
                 </div>
-            </div>
+            
 
             <div class="footer-bottom">
                 <div class="social-icons">
