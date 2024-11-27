@@ -306,7 +306,72 @@
                     <p class="update"><span class="update-icon">⟳</span> Dernière modification <?php echo tempsEcouleDepuisDerniereModif($details_offre);?></p>
                     
 
-                     <!-- Conteneur de l'offre -->
+                     
+               
+
+                    <!-- <div class="detail_offre_rating">
+                        ⭐ 5.0 (255 avis)
+                    </div> -->
+                </div>
+
+                <div class="detail_offre_price-button">
+                <div class="detail_offre_pro_info-icon-container">
+                <span class="info-icon">I</span>
+                <div class="tooltip">
+                <div class="detail_offre_option">
+                <?php
+                    if ($option_a_la_une !== false)
+                    {
+                ?>
+                        <h3>Option à la une</h3>
+                        <p>Début de l'option : <?php echo $option_a_la_une["date_debut"];?></p>
+                        <p>Fin de l'option : <?php echo $option_a_la_une["date_fin"];?></p>
+                        <p>Duree de l'option : <?php echo $option_a_la_une["nb_semaines"];?></p>
+                        <p>Prix de l'option : <?php echo $option_a_la_une["prix"];?></p>
+                <?php
+                    }
+                    if ($option_en_relief !== false)
+                    {
+                ?>
+                        <h3>Option en relief</h3>
+                        <p>Début de l'option : <?php echo $option_en_relief["date_debut"];?></p>
+                        <p>Fin de l'option : <?php echo $option_en_relief["date_fin"];?></p>
+                        <p>Duree de l'option : <?php echo $option_en_relief["nb_semaines"];?></p>
+                        <p>Prix de l'option : <?php echo $option_en_relief["prix"];?></p>
+                <?php
+                    }
+                ?>
+            </div>
+
+                </div>
+                </div>
+
+
+
+            
+
+
+
+
+
+
+                    
+                    <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
+                    <div class="detail_offre_pro_button">                        
+                    <a href="<?php echo $details_offre["site_web"]; ?>"><button class="visit-button_detailoffre">Voir le site ➔</button></a>
+                    <form id="add-btn" action="modifier_offre.php" method="POST">
+                        <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
+                        <input id="btn-voir-offre" class="button-text add-btn" type="submit" name="vueDetails" value="Modifier votre offre">
+                    </form>
+
+
+                     <!-- Bouton toggle -->
+                            <div class="toggle-container">
+                                <div id="toggle" class="toggle-button">
+                                    <div class="toggle-circle"></div>
+                                </div>
+                            </div>
+                        <!-- Conteneur de l'offre -->
         <?php
             // Simulation : récupérer la valeur de l'offre (1 pour "En Ligne", 0 pour "Hors Ligne")
             $en_ligne = $details_offre['en_ligne'] ?? 0; // Par défaut 0 si $details_offre['en_ligne'] n'est pas défini
@@ -371,68 +436,8 @@
             initializeToggle();
                 
         </script>
-               
 
-                    <!-- <div class="detail_offre_rating">
-                        ⭐ 5.0 (255 avis)
-                    </div> -->
-                </div>
-
-                <div class="detail_offre_price-button">
-                <div class="detail_offre_pro_info-icon-container">
-                <span class="info-icon">I</span>
-                <div class="tooltip">
-                <div class="detail_offre_option">
-                <?php
-                    if ($option_a_la_une !== false)
-                    {
-                ?>
-                        <h3>Option à la une</h3>
-                        <p>Début de l'option : <?php echo $option_a_la_une["date_debut"];?></p>
-                        <p>Fin de l'option : <?php echo $option_a_la_une["date_fin"];?></p>
-                        <p>Duree de l'option : <?php echo $option_a_la_une["nb_semaines"];?></p>
-                        <p>Prix de l'option : <?php echo $option_a_la_une["prix"];?></p>
-                <?php
-                    }
-                    if ($option_en_relief !== false)
-                    {
-                ?>
-                        <h3>Option en relief</h3>
-                        <p>Début de l'option : <?php echo $option_en_relief["date_debut"];?></p>
-                        <p>Fin de l'option : <?php echo $option_en_relief["date_fin"];?></p>
-                        <p>Duree de l'option : <?php echo $option_en_relief["nb_semaines"];?></p>
-                        <p>Prix de l'option : <?php echo $option_en_relief["prix"];?></p>
-                <?php
-                    }
-                ?>
-            </div>
-
-                </div>
-                </div>
-
-
-
-            
-
-
-
-
-
-
-                    
-                    <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
-                    <div class="detail_offre_pro_button">
-                        <!-- Bouton toggle -->
-                            <div class="toggle-container">
-                                <div id="toggle" class="toggle-button">
-                                    <div class="toggle-circle"></div>
-                                </div>
-                            </div>
-                    <a href="<?php echo $details_offre["site_web"]; ?>"><button class="visit-button_detailoffre">Voir le site ➔</button></a>
-                    <form id="add-btn" action="modifier_offre.php" method="POST">
-                        <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
-                        <input id="btn-voir-offre" class="button-text add-btn" type="submit" name="vueDetails" value="Modifier votre offre">
-                    </form>
+                        
                     </div>
                 </div>
 
