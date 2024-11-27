@@ -326,6 +326,10 @@ footer {
     margin-right: -37em;
 }
 
+.Detail_offre_periode{
+    margin-left: 18vw;
+}
+
 .visit-button_detailoffre:hover {
     transition: ease-in-out 0.2s;
 }
