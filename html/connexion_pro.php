@@ -4,6 +4,10 @@ session_start();
 
 echo password_hash("test",PASSWORD_DEFAULT);
 
+echo "<pre>";
+var_dump($_SESSION);
+echo "</pre>";
+
 ?>
 
 <!DOCTYPE html>
