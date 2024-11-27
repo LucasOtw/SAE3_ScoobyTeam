@@ -194,7 +194,7 @@ if(isset($_POST['valider'])){
                 echo "AAAAAAAAAAAAAAAARGH";
             }
         } else {
-            echo "MERDE";
+            $champ_option = "";
         }
 
         // on récupère aussi le nom du type de l'offre
