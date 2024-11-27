@@ -340,15 +340,6 @@ label {
     color: #555;
 }
 
-input[type="text"],
-input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
 .form-actions {
     display: flex;
     justify-content: space-between;
@@ -376,9 +367,6 @@ legend {
     color: #333;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"],
 input[type="password"] {
     width: 100%;
     padding: 12px;
@@ -388,24 +376,10 @@ input[type="password"] {
     box-sizing: border-box;
 }
 
-input[type="text"]::placeholder,
-input[type="email"]::placeholder,
-input[type="tel"]::placeholder,
 input[type="password"]::placeholder {
     color: #aaa;
 }
 
-.crea_pro_raison_sociale_num_siren,
-.crea_pro_mail_tel {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.crea_pro_raison_sociale_num_siren fieldset,
-.crea_pro_mail_tel fieldset {
-    flex: 1;
-}
 
 .checkbox {
     display: flex;
