@@ -243,6 +243,8 @@ if(isset($_POST['valider'])){
         print_r($mon_offre);
         echo "</pre>";
 
+        $mon_offre['en_ligne'] = $mon_offre['en_ligne'] ? 'true' : 'false';
+
         // on passe à l'exécution
 
         $columns = implode(", ", array_keys($mon_offre)); // Liste des colonnes
