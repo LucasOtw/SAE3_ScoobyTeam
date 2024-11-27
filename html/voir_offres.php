@@ -193,13 +193,13 @@ function tempsEcouleDepuisPublication($offre){
                 </select>
                 <select class="search-select">
                     <option value="" selected>Prix</option>
-                    <option value="decroissantP">Décroissant</option>
-                    <option value="croissantP">Croissant</option>
+                    <option value="">Décroissant</option>
+                    <option value="">Croissant</option>
                 </select>
                 <select class="search-select">
                     <option value="" selected>Note</option>
-                    <option value="decroissantN">Décroissant</option>
-                    <option value="croissantN">Croissant</option>
+                    <option value="">Décroissant</option>
+                    <option value="">Croissant</option>
                 </select>
                 <button id="openMenu" class="search-select">Autres</button>
             </div>
@@ -438,7 +438,7 @@ function tempsEcouleDepuisPublication($offre){
                 if ($offre["en_ligne"])
                 {
                 ?>
-                    <article class="offer" data-category=<?php echo $type_offre;?> data-price=<?php echo $offre["tarif"];?> data-note=5>
+                    <article class="offer" data-category=<?php echo $type_offre;?> data-price=<?php echo $offre["tarif"];?> data-note="5">
                         <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
                         <div class="offer-details">
                             <h2><?php echo $offre["titre_offre"] ?></h2>
@@ -511,8 +511,8 @@ function tempsEcouleDepuisPublication($offre){
                     let offers = Array.from(document.querySelectorAll('.offer:not(.hidden)'));
                     if (priceOrder) {
                         offers.sort((a, b) => {
-                            const priceA = parseInt(a.getAttribute('data-price'));
-                            const priceB = parseInt(b.getAttribute('data-price'));
+                            const priceA = parseFloat(a.getAttribute('data-price'));
+                            const priceB = parseFloat(b.getAttribute('data-price'));
                             return priceOrder === 'Croissant' ? priceA - priceB : priceB - priceA;
                         });
                     }
