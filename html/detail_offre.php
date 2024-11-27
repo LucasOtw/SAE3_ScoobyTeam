@@ -431,10 +431,10 @@
                 <p>
                     <?php
                     // Vérifiez si les champs date_ouverture et date_fermeture existent et ne sont pas vides
-                    if (!empty($detail_offre["date_ouverture"]) && !empty($detail_offre["date_fermeture"])) {
+                    if (!empty($details_offre["date_ouverture"]) && !empty($details_offre["date_fermeture"])) {
                         // Formatez les dates d'ouverture et de fermeture
-                        $date_ouverture = date("j F Y", strtotime($detail_offre["date_ouverture"]));
-                        $date_fermeture = date("j F Y", strtotime($detail_offre["date_fermeture"]));
+                        $date_ouverture = date("j F Y", strtotime($details_offre["date_ouverture"]));
+                        $date_fermeture = date("j F Y", strtotime($details_offre["date_fermeture"]));
                         echo "De <span>$date_ouverture</span> à <span>$date_fermeture</span>";
                     } else {
                         // Si les champs sont vides, afficher "Ouvert toute l'année"
@@ -453,10 +453,10 @@
                 <p>
                     <?php
                     // Vérifiez si les champs date_ouverture et date_fermeture existent et ne sont pas vides
-                    if (!empty($detail_offre["date_ouverture"]) && !empty($detail_offre["date_fermeture"])) {
+                    if (!empty($details_offre["date_ouverture"]) && !empty($details_offre["date_fermeture"])) {
                         // Formatez les dates d'ouverture et de fermeture
-                        $date_ouverture = date("j F Y", strtotime($detail_offre["date_ouverture"]));
-                        $date_fermeture = date("j F Y", strtotime($detail_offre["date_fermeture"]));
+                        $date_ouverture = date("j F Y", strtotime($details_offre["date_ouverture"]));
+                        $date_fermeture = date("j F Y", strtotime($details_offre["date_fermeture"]));
                         echo "De <span>$date_ouverture</span> à <span>$date_fermeture</span>";
                     } else {
                         // Si les champs sont vides, afficher "Ouvert toute l'année"
@@ -547,10 +547,10 @@
                 <p>
                     <?php
                     // Vérifiez si les champs date_ouverture et date_fermeture existent et ne sont pas vides
-                    if (!empty($detail_offre["date_ouverture"]) && !empty($detail_offre["date_fermeture"])) {
+                    if (!empty($details_offre["date_ouverture"]) && !empty($details_offre["date_fermeture"])) {
                         // Formatez les dates d'ouverture et de fermeture
-                        $date_ouverture = date("j F Y", strtotime($detail_offre["date_ouverture"]));
-                        $date_fermeture = date("j F Y", strtotime($detail_offre["date_fermeture"]));
+                        $date_ouverture = date("j F Y", strtotime($details_offre["date_ouverture"]));
+                        $date_fermeture = date("j F Y", strtotime($details_offre["date_fermeture"]));
                         echo "De <span>$date_ouverture</span> à <span>$date_fermeture</span>";
                     } else {
                         // Si les champs sont vides, afficher "Ouvert toute l'année"
