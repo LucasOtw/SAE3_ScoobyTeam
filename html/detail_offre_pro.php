@@ -376,7 +376,7 @@
 
 
                         
-       <button id="toggleButton" class="toggle-button">
+    <button id="toggleButton" class="toggle-button">
     <span class="toggle-text">Changer état</span>
     <div class="toggle-switch"></div>
 </button>
@@ -384,7 +384,7 @@
 <span id="offerStatus"></span>
 
 <script>
-    let offerState = <?php echo $details_offre['en_ligne'] ? '"En Ligne"' : '"Hors Ligne"'; ?>;
+    let offerState = '<?php echo $details_offre['en_ligne'] ? 'En Ligne' : 'Hors Ligne'; ?>';
     const toggleButton = document.getElementById('toggleButton');
     const offerStatusText = document.getElementById('offerStatus');
 
@@ -402,11 +402,11 @@
         let newState;
         if (offerState === "En Ligne") {
             newState = "Hors Ligne";
-            offerState = "Hors Ligne";
         } else {
             newState = "En Ligne";
-            offerState = "En Ligne";
         }
+
+        offerState = newState;
 
         // Mettre à jour l'affichage immédiatement
         initializeToggle();
