@@ -116,7 +116,7 @@ if (isset($_POST['modif_infos'])){
             </ul>
         </section>
 
-        <form action="main_modif_mdp_pro" method="POST">
+        <form action="main-consulter-compte-pro" method="POST">
            <h3>Modifiez votre mot de passe</h3>
            
             <fieldset>
