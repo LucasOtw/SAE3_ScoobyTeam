@@ -802,7 +802,7 @@
                 </iframe>
             </div>
 
-             <div class="avis-widget">
+        <div class="avis-widget">
               <div class="avis-header">
                 <h1 class ="avis">5.0 <span class="avis-score">Très bien</span></h1>
                 <p class="avis">255 avis vérifiés</p>
