@@ -12,7 +12,7 @@ if(isset($_GET['logout'])){
 }
 
 if(!isset($_SESSION['pro'])){
-   header('location: connexion_membre.php');
+   header('location: connexion_pro.php');
    exit;
 }
 
