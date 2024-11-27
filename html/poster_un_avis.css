@@ -554,11 +554,11 @@ footer {
 .poster_un_avis_btn_publier {
     background-color: var(--vert-clair);
     color: white;
-    width: 35vh;
+    width: 77vw;
     height: 6vh;
     border-radius: 20px;
     font-size: 21px;
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease;
     margin-top: -7vh;
 }
 
