@@ -134,6 +134,14 @@ if(isset($_POST['valider'])){
                 $code_horaire = $dbh->lastInsertId();
             }
         }
+
+        /*
+        * DERNIERS AJOUTS
+        */
+
+        // on initialise la date actuelle
+        $date_offre = date('Y-m-d');
+        echo $date_offre;
     }
 }
     
