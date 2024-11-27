@@ -51,7 +51,7 @@ if(isset($_POST['valider'])){
         // on passe aux choses sérieuses :)
 
         echo "<pre>";
-        var_dump($_SESSION['crea_offre4']);
+        var_dump($_SESSION['crea_offre']);
         echo "</pre>";
 
         
