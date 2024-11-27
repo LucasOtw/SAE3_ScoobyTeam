@@ -348,8 +348,16 @@
             toggleButton.addEventListener('click', () => {
                 if (offerState === "Hors Ligne") {
                     offerState = "En Ligne";
+                     $query = $dbh->prepare("UPDATE tripenarvor._offre SET en_ligne = :valeur );
+                     $query->execute([
+                        'valeur' => 1
+                    ]);
                 } else {
                     offerState = "Hors Ligne";
+                    $query = $dbh->prepare("UPDATE tripenarvor._offre SET en_ligne = :valeur");
+                     $query->execute([
+                        'valeur' => 0
+                    ]);
                 }
                             // Mettre à jour le bouton et le texte
                 initializeToggle();
