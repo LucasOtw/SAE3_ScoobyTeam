@@ -201,13 +201,13 @@ if(isset($_POST['valider'])){
         $champ_type_offre = null;
         switch($_SESSION['crea_offre4']['offre']){
             case "gratuite":
-                $champ_type_offre = "Option Gratuite";
+                $champ_type_offre = "Offre Gratuite";
                 break;
             case "standard":
-                $champ_type_offre = "Option Standard";
+                $champ_type_offre = "Offre Standard";
                 break;
             case "premium":
-                $champ_type_offre = "Option Premium";
+                $champ_type_offre = "Offre Premium";
                 break;
         }
         if($champ_type_offre === null){
