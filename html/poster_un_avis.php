@@ -94,11 +94,9 @@ $dbh = new PDO($dsn, $username, $password);
 
                                     <input type="radio" id="star2" name="note" value="2" />
                                     <label for="star2" title="2 étoiles"></label>
-
                                     <input type="radio" id="star1" name="note" value="1" />
                                     <label for="star1" title="1 étoile"></label>
                         </fieldset>
-                    <button type="submit">Envoyer</button>
                     </form>
                     </div>
 
