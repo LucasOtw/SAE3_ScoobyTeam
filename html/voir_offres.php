@@ -444,7 +444,7 @@ function tempsEcouleDepuisPublication($offre){
                         <div class="offer-details">
                             <h2><?php echo $offre["titre_offre"] ?></h2>
                             <p><?php echo $villeOffre["ville"] ?></p>
-                            <p><?php echo $offre["prix"]; ?></p>
+                            <p><?php echo $offre["tarif"]; ?></p>
                             <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
                             <form id="form-voir-offre" action="detail_offre.php" method="POST">
                                 <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
