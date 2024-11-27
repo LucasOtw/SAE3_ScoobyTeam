@@ -429,17 +429,15 @@ function tempsEcouleDepuisPublication($offre){
         ?>
         </section>
 
-        
-        <style>
-            .offer.hidden {
-                display: none;
-                }
-        </style>
         <script>
             // Récupération des éléments
-            const searchInput = document.querySelector('.search-input');
             const offerItems = document.querySelectorAll('.offer');
-    
+            const searchInput = document.querySelector('.search-input');
+
+            
+            ///////////////////////////////////////////////////
+            ///            Barre de recherche               ///
+            ///////////////////////////////////////////////////
             // Ajout d'un événement pour filtrer les offres
             searchInput.addEventListener('input', () => {
                 const query = searchInput.value.toLowerCase().trim();
@@ -454,6 +452,8 @@ function tempsEcouleDepuisPublication($offre){
                     }
                 });
             });
+
+            
         </script>
 
     </main>
