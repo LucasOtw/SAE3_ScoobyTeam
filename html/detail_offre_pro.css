@@ -1147,7 +1147,8 @@ footer {
 
 .image-background-card-a-la-une img {
     width: 100%;
-    object-fit:contain;
+    height: 100%;
+    object-fit:cover;
     display: block;
     border-radius: 1.5em;
 }
