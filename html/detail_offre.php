@@ -217,6 +217,44 @@
         rel="stylesheet">
     <script src="scroll.js"></script>
 
+    <div class="avis-widget">
+              <div class="avis-header">
+                <h1 class ="avis">5.0 <span class="avis-score">Très bien</span></h1>
+                <p class="avis">255 avis vérifiés</p>
+              </div>
+              <div class="avis-list">
+                <div class="avis">
+                  <div class="avis-content">
+                    <h3 class="avis">5.0 Excellent | <span class="nom_avis">Maël Sellier</span></h3>
+                    <p class ="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
+                  </div>
+                </div>
+                <div class="avis">
+                  <div class="avis-content">
+                    <h3 class="avis">4.9 Parfait | <span class="nom_avis">Juliette Martin</span></h3>
+                    <p class ="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande.</p>
+                  </div>
+                </div>
+                <div class="avis">
+                  <div class="avis-content">
+                    <h3 class="avis">4.2 Génial | <span class="nom_avis">Antoine Prieur</span></h3>
+                    <p class ="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
+                  </div>
+                </div>
+                <div class="avis">
+                  <div class="avis-content">
+                    <h3 class="avis">3.8 Bien | <span class="nom_avis">Tim Cook</span></h3>
+                    <p class ="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
+                  </div>
+                </div>
+                <div class="avis">
+                  <div class="avis-content">
+                    <h3 class="avis">4.0 Très bien | <span class="nom_avis">Johnny Ives</span></h3>
+                    <p class ="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
+                  </div>
+                </div>
+              </div>
+        </div>
 
     <script>
     function initMap() {
