@@ -1252,6 +1252,8 @@ footer {
             position: relative;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            margin-top: -6.4em;
+            margin-right: -90em;
         }
 
         /* Style de la pastille (bouton interne) */
@@ -1269,6 +1271,8 @@ footer {
         /* Lorsque le toggle est activé (en ligne) */
         .EnLigne {
             background-color: orange;
+            margin-top: -6.4em;
+            margin-right: -90em;
         }
 
         .EnLigne .toggle-circle {
