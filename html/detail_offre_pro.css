@@ -1368,3 +1368,51 @@ footer {
              border-bottom: none; /* Supprime la ligne après le dernier avis */
            }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+           .toggle-button {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    background-color: #ccc;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.toggle-text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    color: white;
+}
+
+.toggle-switch {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 70px;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    transition: left 0.3s ease-in-out;
+}
+
+.toggle-button.active .toggle-switch {
+    left: 40px;
+}
+
+
