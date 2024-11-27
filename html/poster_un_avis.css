@@ -455,7 +455,7 @@ color: white;
 
                                             /*Code pour le format responsive de poster un avis */
 
-@media (max-width: 419px) {
+@media (max-width: 429px) {
     .footer_poster_avis {
         display: none;
     }
@@ -475,7 +475,7 @@ color: white;
         resize: none;
         background-color: #f3f8ff;
         box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
-        width: 42vh;
+        
         height: 13vh;
         margin-left: -4.9vh;
     }
@@ -499,10 +499,14 @@ color: white;
         display: none;
         
     }
+
+    .poster_un_avis_btn_footer {
+        display: block;   
+    }
     .poster_un_avis_titre {
         font-size: 1.5rem;
         margin-left: -5vh;
-        margin-top: 10vh;
+        margin-top: 5vh;
     }
     
     .poster_un_avis_section {
@@ -516,8 +520,6 @@ color: white;
     .poster_un_avis_container {
         margin: 18px 10%;
         padding: 20px;
-        background: white;
-        border-radius: 8px;
     }
     .poster_un_avis_disclaimer {
         display: none;
