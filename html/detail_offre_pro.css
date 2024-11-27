@@ -1324,12 +1324,10 @@ footer {
              color: #333;
            }
            
-           .avis-widget .avis-content h3.avis span {
+           .avis-widget .avis-content h3.avis nom.avis {
              color: #F28322;
            }
-           span {
-             color: #F28322;
-           }
+
            .avis-widget .avis-content p.avis {
              margin: 5px 0 0;
              color: #555;
