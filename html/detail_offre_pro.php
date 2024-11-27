@@ -752,31 +752,31 @@
               <div class="avis-list">
                 <div class="avis">
                   <div class="avis-content">
-                    <h3 class="h3.avis">5.0 Excellent | <span>Maël Sellier</span></h3>
+                    <h3 class="h3.avis">5.0 Excellent | <span class="nom.avis">Maël Sellier</span></h3>
                     <p class ="p.avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
                   </div>
                 </div>
                 <div class="avis">
                   <div class="avis-content">
-                    <h3 class="h3.avis">4.9 Parfait | <span>Juliette Martin</span></h3>
+                    <h3 class="h3.avis">4.9 Parfait | <span class="nom.avis">Juliette Martin</span></h3>
                     <p class ="p.avis">Super, un séjour enrichissant, un personnel réactif. Je recommande.</p>
                   </div>
                 </div>
                 <div class="avis">
                   <div class="avis-content">
-                    <h3 class="h3.avis">4.2 Génial | <span>Antoine Prieur</span></h3>
+                    <h3 class="h3.avis">4.2 Génial | <span class="nom.avis">Antoine Prieur</span></h3>
                     <p class ="p.avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
                   </div>
                 </div>
                 <div class="avis">
                   <div class="avis-content">
-                    <h3 class="h3.avis">3.8 Bien | <span>Tim Cook</span></h3>
+                    <h3 class="h3.avis">3.8 Bien | <span class="nom.avis">Tim Cook</span></h3>
                     <p class ="p.avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
                   </div>
                 </div>
                 <div class="avis">
                   <div class="avis-content">
-                    <h3 class="h3.avis">4.0 Très bien | <span>Johnny Ives</span></h3>
+                    <h3 class="h3.avis">4.0 Très bien | <span class="nom.avis">Johnny Ives</span></h3>
                     <p class ="p.avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
                   </div>
                 </div>
