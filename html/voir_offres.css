@@ -1302,4 +1302,8 @@ body.menu-open #overlay {
     .toute_les_offres_main .card-scroll-btn.card-scroll-btn-right{
         right:2vw;
     }
+
+    .toute_les_offres_main .card-a-la-une {
+        overflow : none;
+    }
 }

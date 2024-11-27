@@ -1324,7 +1324,7 @@ footer {
              color: #333;
            }
            
-           .avis-widget .avis-content h3.avis nom.avis {
+           .avis-widget .avis-content h3.avis span.nom.avis {
              color: #F28322;
            }
            nom.avis {
