@@ -242,9 +242,15 @@ if(isset($_POST['valider'])){
         echo "<pre>";
         print_r($mon_offre);
         echo "</pre>";
-        var_dump($mon_offre['en_ligne']);
 
         // on passe à l'exécution
+
+        $columns = implode(", ", array_keys($mon_offre)); // Liste des colonnes
+        $placeholders = implode(", ", array_map(fn($key) => ":$key", array_keys($mon_offre))); // Liste des placeholders
+
+        var_dump($columns);
+        var_dump($placeholders);
+        
     }
 }
     
