@@ -434,6 +434,29 @@
     initializeToggle();
 </script>
 
+<?php
+if (isset($_POST['en_ligne'])) {
+    $offer_id = $_GET['id']; // Assurez-vous d'inclure l'ID de l'offre dans l'URL ou dans les données POST
+    $new_state = $_POST['en_ligne'] ? 1 : 0;
+
+    try {
+        $pdo = new PDO('pgsql:host=postgresdb;port=5432;dbname=sae', 'sae', 'philly-Congo-bry4nt');
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $stmt = $pdo->prepare("UPDATE tripenarvor._offre SET en_ligne = :new_state WHERE id = :offer_id");
+        $stmt->execute([
+            'new_state' => $new_state,
+            'offer_id' => $offer_id
+        ]);
+
+        echo json_encode(['success' => true]);
+    } catch (PDOException $e) {
+        echo json_encode(['error' => $e->getMessage()]);
+    }
+}
+?>
+
+
 
                
 
