@@ -285,7 +285,7 @@
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
                     <div class="btn-poster-avis-voir-site">
                         <form action="poster_un_avis.php" method="POST">
-                           <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
+                           <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
                            <input id="btn-poster-avis" type="submit" name="posterAvis" value="Poster un avis">
                         </form>                    
     <!--                     <a href="poster_un_avis.php"><button class="button_detailoffre_avis">Poster un avis</button></a> -->
