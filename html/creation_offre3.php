@@ -154,15 +154,15 @@ if(isset($_POST['valider'])){
             $nom_photo = $photo['name'];
 
                 // Construire le chemin de destination complet
-            $chemin_destination = $destination . '/' . $nom;
+            $chemin_destination = $destination . '/' . $nom_photo;
             
             // Vérifier si le fichier temporaire existe
             if (file_exists($nom_temp)) {
                 // Déplacer le fichier dans le dossier cible
                 if (move_uploaded_file($nom_temp, $chemin_destination)) {
-                    echo "Le fichier $nom a été déplacé avec succès.<br>";
+                    echo "Le fichier $nom_photo a été déplacé avec succès.<br>";
                 } else {
-                    echo "Erreur : Impossible de déplacer le fichier $nom.<br>";
+                    echo "Erreur : Impossible de déplacer le fichier $nom_photo.<br>";
                 }
             } else {
                 echo "Erreur : Le fichier temporaire $nom_temp n'existe pas.<br>";
