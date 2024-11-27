@@ -791,7 +791,7 @@
                 style="border:0;margin: auto; width:85vw; height:50vh" allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
-                     <div class="avis-widget">
+             <div class="avis-widget">
               <div class="avis-header">
                 <h1 class ="avis">5.0 <span class="avis-score">Très bien</span></h1>
                 <p class="avis">255 avis vérifiés</p>
@@ -829,6 +829,7 @@
                 </div>
               </div>
         </div>
+                    
 
 
              <div>
