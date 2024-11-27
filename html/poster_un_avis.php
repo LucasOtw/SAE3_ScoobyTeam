@@ -22,6 +22,15 @@ $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
 // Créer une instance PDO avec les bons paramètres
 $dbh = new PDO($dsn, $username, $password);
 
+$details_offre = unserialize($_POST["uneOffre"]);// on récupère son contenu
+
+echo "<pre>";
+var_dump($details_offre);
+echo "</pre>";
+
+$code_offre = $details_offre["code_offre"];
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,26 +88,27 @@ $dbh = new PDO($dsn, $username, $password);
                   
                    <div class="poster_un_avis_footer">
 
-                   <div class="poster_un_avis_note">
-                    <h2 class="poster_un_avis_note_titre">Votre note</h2>
-                    <form class="poster_un_avis_stars" action="enregistrer_note.php" method="POST">
-                        <fieldset class="notation">
-                                <input type="radio" id="star5" name="note" value="5" />
-                                <label for="star5" title="5 étoiles"></label>
-
-                                    <input type="radio" id="star4" name="note" value="4" />
-                                    <label for="star4" title="4 étoiles"></label>
-
-                                    <input type="radio" id="star3" name="note" value="3" />
-                                    <label for="star3" title="3 étoiles"></label>
-
-                                    <input type="radio" id="star2" name="note" value="2" />
-                                    <label for="star2" title="2 étoiles"></label>
-                                    <input type="radio" id="star1" name="note" value="1" />
-                                    <label for="star1" title="1 étoile"></label>
-                        </fieldset>
-                    </form>
-                    </div>
+                           <div class="poster_un_avis_note">
+                              <h2 class="poster_un_avis_note_titre">Votre note</h2>
+                          
+                              <fieldset class="notation">
+                                         <input type="radio" id="star5" name="note" value="5" />
+                                         <label for="star5" title="5 étoiles"></label>
+            
+                                          <input type="radio" id="star4" name="note" value="4" />
+                                          <label for="star4" title="4 étoiles"></label>
+            
+                                          <input type="radio" id="star3" name="note" value="3" />
+                                          <label for="star3" title="3 étoiles"></label>
+            
+                                          <input type="radio" id="star2" name="note" value="2" />
+                                          <label for="star2" title="2 étoiles"></label>
+            
+                                          <input type="radio" id="star1" name="note" value="1" />
+                                          <label for="star1" title="1 étoile"></label>
+                              </fieldset>
+                      
+                            </div>
 
                            
 
@@ -109,7 +119,7 @@ $dbh = new PDO($dsn, $username, $password);
                       
                        <div class="poster_un_avis_buttons">
                            <button class="poster_un_avis_btn_annuler">Annuler</button>
-                           <button type="submit" class="poster_un_avis_btn_publier">Publier →</button>
+                           <button class="poster_un_avis_btn_publier">Publier →</button>
                        </div>
                       
                     </div>
@@ -138,6 +148,7 @@ $dbh = new PDO($dsn, $username, $password);
     <?php
         if(!empty($_POST)){
             $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
+            $note = isset($_POST['note']) ? $_POST['note'] : '';
 
             $erreurs = [];
             if (empty($texte_avis)) {
@@ -151,9 +162,8 @@ $dbh = new PDO($dsn, $username, $password);
 
             // Liez les valeurs aux paramètres
             $creerCompte->bindParam(':texte_avis', $texte_avis);
-            
-            
             $creerCompte->bindParam(':note', $note);
+           
             $creerCompte->bindParam(':code_compte', $code_compte);
             $creerCompte->bindParam(':code_offre', $code_offre);
 
