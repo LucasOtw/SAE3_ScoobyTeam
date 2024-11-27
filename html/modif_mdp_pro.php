@@ -1,3 +1,74 @@
+<?php
+ob_start(); // bufferisation, ça devrait marcher ?
+session_start();
+
+include("recupInfosCompte.php");
+
+if(isset($_GET['logout'])){
+   session_unset();
+   session_destroy();
+   header('location: connexion_pro.php');
+   exit;
+}
+
+if(!isset($_SESSION['pro'])){
+   header('location: connexion_pro.php');
+   exit;
+}
+
+if (isset($_POST['modif_infos'])){
+    // Récupérer les valeurs initiales (par exemple, depuis la base de données)
+   $valeursInitiales = [
+       'mdp' => $compte['mdp'],
+   ];
+   
+   // Champs modifiés
+   $champsModifies = [];
+   
+   // Parcourir les données soumises
+   foreach ($_POST as $champ => $valeur) {
+      if ($champ != 'modif_infos')
+      {
+         $champsModifies[$champ] = $valeur;
+      }
+   }
+
+   echo "<pre>";
+   var_dump($champsModifies);
+   echo"</pre>";
+   var_dump($valeursInitiales);
+   
+   // Mettre à jour seulement les champs modifiés
+   if (!empty($champsModifies))
+   {
+      echo password_hash($champsModifies['mdp_actuel'], PASSWORD_DEFAULT);
+      if (password_verify($champsModifies['mdp_actuel'],$valeursInitiales['mdp']))
+      {
+         if (trim($champsModifies['mdp_nv1']) === trim($champsModifies['mdp_nv2']))
+         {
+            $query = $dbh->prepare("UPDATE tripenarvor._compte SET mdp = :valeur WHERE code_compte = :code_compte");
+            $query->execute([
+                'valeur' => password_hash($champsModifies['mdp_nv1'], PASSWORD_DEFAULT),
+                'code_compte' => $compte['code_compte']
+            ]);
+                
+            $rowsAffected = $query->rowCount();
+            if ($rowsAffected > 0) {
+                echo "$rowsAffected ligne(s) mise(s) à jour avec succès.";
+            } else {
+                echo "Aucune mise à jour effectuée.";
+            }
+
+         }
+      }
+       // echo "Les informations ont été mises à jour.";
+       include("recupInfosCompte.php");
+   } else {
+       echo "Aucune modification détectée.";
+   }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
