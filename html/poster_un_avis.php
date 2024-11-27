@@ -23,7 +23,7 @@ $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
 $dbh = new PDO($dsn, $username, $password);
 
 $details_offre = unserialize($_POST["uneOffre"]); // on récupère son contenu
-
+/*
 echo "<pre>";
 var_dump($details_offre);
 echo "</pre>";
@@ -33,7 +33,7 @@ echo "</pre>";
 echo "<pre>";
 var_dump($compte);
 echo "</pre>";
-
+*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -165,6 +165,10 @@ echo "</pre>";
                 $erreurs[] = "Vous devez remplir ce champ";
             } elseif (strlen($texte_avis)>500) {
                 $erreurs[] = "L'avis ne doit pas dépasser 500 caractères.";
+            }
+
+           if (empty($note) || !is_numeric($note) || $note < 1 || $note > 5) {
+                $erreurs[] = "Veuillez sélectionner une note valide.";
             }
 
 
