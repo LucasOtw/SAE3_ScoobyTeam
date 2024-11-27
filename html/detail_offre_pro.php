@@ -614,35 +614,30 @@
   </div>
   <div class="avis-list">
     <div class="avis">
-      <img src="images/fraise.png" alt="Fraise" class="avatar">
       <div class="avis-content">
         <h3>5.0 Excellent | <span>Maël Sellier</span></h3>
         <p>Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
       </div>
     </div>
     <div class="avis">
-      <img src="images/eau.png" alt="Eau" class="avatar">
       <div class="avis-content">
         <h3>4.9 Parfait | <span>Juliette Martin</span></h3>
         <p>Super, un séjour enrichissant, un personnel réactif. Je recommande.</p>
       </div>
     </div>
     <div class="avis">
-      <img src="images/person.png" alt="Antoine Prieur" class="avatar">
       <div class="avis-content">
         <h3>4.2 Génial | <span>Antoine Prieur</span></h3>
         <p>Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
       </div>
     </div>
     <div class="avis">
-      <img src="images/legumes.png" alt="Tim Cook" class="avatar">
       <div class="avis-content">
         <h3>3.8 Bien | <span>Tim Cook</span></h3>
         <p>Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
       </div>
     </div>
     <div class="avis">
-      <img src="images/citron.png" alt="Johnny Ives" class="avatar">
       <div class="avis-content">
         <h3>4.0 Très bien | <span>Johnny Ives</span></h3>
         <p>Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
