@@ -316,6 +316,17 @@ footer {
 
 .visit-button_detailoffre {
     padding: 10px 20px;
+    background-color: var(--vert-clair);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    width: 223px;
+    height: 52px;
+}
+
+.button_detailoffre_avis {
+    padding: 10px 20px;
     background-color: #FFF;
     color: black;
     border: none;
@@ -324,17 +335,6 @@ footer {
     width: 223px;
     height: 52px;
     border: 1px #BDC426 solid;
-}
-
-.button_detailoffre_avis {
-    padding: 10px 20px;
-    background-color: var(--vert-clair);
-    color: white;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    width: 223px;
-    height: 52px;
 }
 
 .Detail_offre_periode{
