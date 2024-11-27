@@ -142,6 +142,16 @@ if(isset($_POST['valider'])){
         // on initialise la date actuelle
         $date_offre = date('Y-m-d');
         echo $date_offre;
+
+        /*
+        * INSERTIONS
+        */
+
+        // on vérifie d'abord si le pro a choisi une option
+
+        if($_SESSION['crea_offre3']['option'] === "aucune"){
+            echo "test";
+        }
     }
 }
     
