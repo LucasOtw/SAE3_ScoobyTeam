@@ -41,6 +41,10 @@ if (isset($_POST['modif_infos'])){
    // Mettre à jour seulement les champs modifiés
    if (!empty($champsModifies))
    {
+      if (password_hash($mdp_actuel, PASSWORD_DEFAULT) === $valeursInitiales['mdp'])
+      {
+         echo 'okkkkkkkkkkkkkkk';
+      }
       // $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
       // $query->execute(['valeur' => trim(preg_replace('/\s+/', '', trim($valeur))), 'code_compte' => $compte['code_compte']]); 
       
