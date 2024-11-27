@@ -544,3 +544,7 @@ form input:focus::placeholder {
 .submit-btn2 img {
     margin-left: 5px;
 }
+
+.main_modif_mdp_pro h3{
+    margin-bottom: 20px;
+}
