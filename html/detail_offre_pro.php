@@ -427,6 +427,12 @@
                     
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
                     <div class="detail_offre_pro_button">
+                        <!-- Bouton toggle -->
+                            <div class="toggle-container">
+                                <div id="toggle" class="toggle-button">
+                                    <div class="toggle-circle"></div>
+                                </div>
+                            </div>
                     <a href="<?php echo $details_offre["site_web"]; ?>"><button class="visit-button_detailoffre">Voir le site ➔</button></a>
                     <form id="add-btn" action="modifier_offre.php" method="POST">
                         <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
