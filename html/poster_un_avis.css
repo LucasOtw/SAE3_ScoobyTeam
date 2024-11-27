@@ -567,7 +567,7 @@ footer {
 .poster_un_avis_back_button {
     display: flex;
     justify-content: space-around;
-    margin-right: 7vw;
+    margin-right: 9vw;
 }
 
 .poster_un_avis_btn_publier {
