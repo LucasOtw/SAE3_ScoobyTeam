@@ -168,24 +168,24 @@ echo "</pre>";
             }
 
            if (empty($note) || !is_numeric($note) || $note < 1 || $note > 5) {
-                $erreurs[] = "Veuillez sélectionner une note valide.";
+                $erreurs[] = "Veuillez sélectionner une note valide."; 
             }
-
-
-            $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
-
-            // Liez les valeurs aux paramètres
-            $creerAvis->bindParam(':texte_avis', $texte_avis);
-            $creerAvis->bindParam(':note', $note);
-            $creerAvis->bindParam(':code_offre', $code_offre);
-           
-            $creerAvis->bindParam(':code_compte', $code_compte);
-
-           $creerAvis->execute();
         }
-        foreach($erreurs as $erreur){
-              echo $erreur;
-        }
+
+         if (empty($erreurs)) {
+             $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
+         
+             $creerAvis->bindParam(':texte_avis', $texte_avis);
+             $creerAvis->bindParam(':note', $note, PDO::PARAM_INT);
+             $creerAvis->bindParam(':code_offre', $code_offre);
+             $creerAvis->bindParam(':code_compte', $code_compte);
+         
+             $creerAvis->execute();
+         } else {
+           foreach($erreurs as $erreur){
+                 echo $erreur;
+           }
+         }
     ?>
                     
     
