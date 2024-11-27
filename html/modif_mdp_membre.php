@@ -27,13 +27,11 @@ if (isset($_POST['modif_infos'])){
    
    // Parcourir les données soumises
    foreach ($_POST as $champ => $valeur) {
-       if (isset($valeursInitiales[$champ]) && $valeursInitiales[$champ] !== $valeur) {
-           $champsModifies[$champ] = $valeur;
-       }
+         $champsModifies[$champ] = $valeur;
    }
 
    echo "<pre>";
-   var_dump($_POST);
+   var_dump($champsModifies);
    echo"</pre>";
    
    // Mettre à jour seulement les champs modifiés
