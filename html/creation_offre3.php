@@ -148,7 +148,7 @@ if(isset($_POST['valider'])){
         }
 
         // maintenant, on peut copier les images dans ce dossier
-        $photos = $_SESSION['crea_offre3']['photos'];
+        $photos = $_SESSION['crea_offre']['photos'];
         foreach($photos as $photo){
             $nom_temp = $photo['tmp_name'];
             $nom_photo = $photo['name'];
