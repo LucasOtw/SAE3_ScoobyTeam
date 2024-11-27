@@ -170,7 +170,7 @@ if(isset($_POST['valider'])){
                 // Calculer la date de fin en ajoutant les semaines
             $date_fin = new DateTime($date_offre); // Créer une instance de DateTime
             $date_fin->modify("+{$nbSemaines_option} weeks"); // Ajouter le nombre de semaines
-            $date_fin_option = $date->format('Y-m-d'); // Formater la date de fin
+            $date_fin_option = $date_fin->format('Y-m-d'); // Formater la date de fin
 
             // on peut maintenant ajouter l'option
             if($_SESSION['ajoutOption'] === null){
