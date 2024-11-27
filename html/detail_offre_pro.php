@@ -379,56 +379,64 @@
          <button id="toggleButton">Changer état</button>
         <span id="offerStatus"></span>
 
-    <script>
-        let offerState = <?php echo $details_offre['en_ligne'] ? '"En Ligne"' : '"Hors Ligne"'; ?>;
-        const toggleButton = document.getElementById('toggleButton');
-        const offerStatusText = document.getElementById('offerStatus');
-    
-        function initializeToggle() {
-            if (offerState === "En Ligne") {
-                toggleButton.classList.add('EnLigne');
-                offerStatusText.textContent = "En Ligne";
-            } else {
-                toggleButton.classList.remove('EnLigne');
-                offerStatusText.textContent = "Hors Ligne";
-            }
+    <button id="toggleButton" class="toggle-button">
+    <span class="toggle-text">Changer état</span>
+    <div class="toggle-switch"></div>
+</button>
+
+<span id="offerStatus"></span>
+
+<script>
+    let offerState = <?php echo $details_offre['en_ligne'] ? '"En Ligne"' : '"Hors Ligne"'; ?>;
+    const toggleButton = document.getElementById('toggleButton');
+    const offerStatusText = document.getElementById('offerStatus');
+
+    function initializeToggle() {
+        if (offerState === "En Ligne") {
+            toggleButton.classList.add('active');
+            offerStatusText.textContent = "En Ligne";
+        } else {
+            toggleButton.classList.remove('active');
+            offerStatusText.textContent = "Hors Ligne";
         }
-    
-        toggleButton.addEventListener('click', () => {
-            let newState;
-            if (offerState === "En Ligne") {
-                newState = "Hors Ligne";
-                offerState = "Hors Ligne";
-            } else {
-                newState = "En Ligne";
-                offerState = "En Ligne";
-            }
-    
-            // Mettre à jour l'affichage immédiatement
-            initializeToggle();
-    
-            // Mettre à jour la base de données
-            fetch('update_offer_status.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ en_ligne: offerState === "En Ligne" ? 1 : 0 })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Mise à jour réussie :', data);
-                alert('L\'offre a été mise à jour avec succès.');
-            })
-            .catch(error => {
-                console.error('Erreur lors de la mise à jour :', error);
-                alert('Une erreur est survenue lors de la mise à jour de l\'offre.');
-            });
-        });
-    
-        // Initialiser le toggle au chargement de la page
+    }
+
+    toggleButton.addEventListener('click', () => {
+        let newState;
+        if (offerState === "En Ligne") {
+            newState = "Hors Ligne";
+            offerState = "Hors Ligne";
+        } else {
+            newState = "En Ligne";
+            offerState = "En Ligne";
+        }
+
+        // Mettre à jour l'affichage immédiatement
         initializeToggle();
-    </script>
+
+        // Mettre à jour la base de données
+        fetch('update_offer_status.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ en_ligne: offerState === "En Ligne" ? 1 : 0 })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Mise à jour réussie :', data);
+            alert('L\'offre a été mise à jour avec succès.');
+        })
+        .catch(error => {
+            console.error('Erreur lors de la mise à jour :', error);
+            alert('Une erreur est survenue lors de la mise à jour de l\'offre.');
+        });
+    });
+
+    // Initialiser le toggle au chargement de la page
+    initializeToggle();
+</script>
+
                
 
                         
