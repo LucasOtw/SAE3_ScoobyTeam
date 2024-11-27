@@ -1169,6 +1169,7 @@ body.menu-open #overlay {
     text-align: left;
     /* Aligne le texte à gauche */
     font-size: 1.2em;
+    border-radius: 0 0 1.5em 1.5em;
 }
 
 .toute_les_offres_main #btn-voir-offre {
@@ -1304,6 +1305,6 @@ body.menu-open #overlay {
     }
 
     .toute_les_offres_main .card-a-la-une {
-        overflow : none;
+        overflow : visible;
     }
 }
