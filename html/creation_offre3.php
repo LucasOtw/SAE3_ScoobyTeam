@@ -251,7 +251,7 @@ if(isset($_POST['valider'])){
         var_dump($columns);
         var_dump($placeholders);
 
-        $creation_offre_req = "INSERT INTO votre_table ($columns) VALUES ($placeholders)";
+        $creation_offre_req = "INSERT INTO tripenarvor._offre ($columns) VALUES ($placeholders)";
         $creation_offre = $dbh->prepare($creation_offre_req);
         
         if($creation_offre->execute($mon_offre)){
