@@ -116,7 +116,6 @@ echo password_hash("test",PASSWORD_DEFAULT);
                 var_dump(password_verify($password,$mdpPro[0]));
                 if (password_verify(trim($password), trim($mdpPro[0]))) {
                     // si le mot de passe est correct
-                    session_destroy();
                     $_SESSION["pro"] = $codeCompte; // Stocke le code_compte dans la session
                     header('location: mes_offres.php');
                     exit;
