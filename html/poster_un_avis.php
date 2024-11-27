@@ -176,10 +176,8 @@ echo "</pre>";
             $creerAvis->bindParam(':code_offre', $code_offre);
            
             $creerAvis->bindParam(':code_compte', $code_compte);
-         
-        }
-        if($creerAvis->execute()){
-                    echo "L'avis a été posté avec succès";
+
+           $creerAvis->execute()
         }
         foreach($erreurs as $erreur){
               echo $erreur;
