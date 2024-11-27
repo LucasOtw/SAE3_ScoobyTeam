@@ -202,60 +202,55 @@ function tempsEcouleDepuisPublication($offre){
                 <button id="openMenu" class="search-select">Autres</button>
             </div>
         </div>
+        
         <div id="overlay"></div>
+            <div class="filter-menu" id="filterMenu">
+            <button id="closeMenu" class="close-btn">&times;</button>
+            <h2>Filtres</h2>
+            
+            <!-- Lieu -->
+            <label for="voir_offres_lieu">Lieu</label>
+            <input type="text" id="location" placeholder="Ex : Lannion">
     
-
-        <div class="filter-menu" id="filterMenu">
-    <button id="closeMenu" class="close-btn">&times;</button>
-    <h2>Filtres</h2>
-    <form>
-        <!-- Lieu -->
-        <label for="voir_offres_lieu">Lieu</label>
-        <input type="text" id="location" placeholder="Ex : Lannion">
-
-        <!-- Note générale des avis -->
-        <label for="category">Note générale des avis</label>
-        <select id="category">
-            <option value="all">Les notes</option>
-            <option value="1">1 étoile</option>
-            <option value="2">2 étoiles</option>
-            <option value="3">3 étoiles</option>
-            <option value="4">4 étoiles</option>
-            <option value="5">5 étoiles</option>
-        </select>
-
-        <!-- Fourchette de prix avec un slider -->
-        <label for="price-range">Fourchette de prix (€)</label>
-        <div id="price-slider">
-            <input type="range" id="price-min" name="price-min" min="0" max="1000" step="10" value="100">
-            <input type="range" id="price-max" name="price-max" min="0" max="1000" step="10" value="900">
-            <p>
-                De : <span id="price-min-display">100</span> € à : <span id="price-max-display">900</span> €
-            </p>
+            <!-- Note générale des avis -->
+            <label for="category">Note générale des avis</label>
+            <select id="category">
+                <option value="all">Les notes</option>
+                <option value="1">1 étoile</option>
+                <option value="2">2 étoiles</option>
+                <option value="3">3 étoiles</option>
+                <option value="4">4 étoiles</option>
+                <option value="5">5 étoiles</option>
+            </select>
+    
+            <!-- Fourchette de prix avec un slider -->
+            <label for="price-range">Fourchette de prix (€)</label>
+            <div id="price-slider">
+                <input type="range" id="price-min" name="price-min" min="0" max="1000" step="10" value="100">
+                <input type="range" id="price-max" name="price-max" min="0" max="1000" step="10" value="900">
+                <p>
+                    De : <span id="price-min-display">100</span> € à : <span id="price-max-display">900</span> €
+                </p>
+            </div>
+    
+            <!-- Statut -->
+            <label for="sort">Statut</label>
+            <select id="sort">
+                <option value="relevance">Ouverture</option>
+                <option value="open">Ouvert</option>
+                <option value="closed">Fermé</option>
+                <option value="closing-soon">Ferme bientôt !</option>
+            </select>
+    
+            <!-- Dates d'événement -->
+            <label for="event-date">Date d’évènement</label>
+            <input type="date" id="event-date">
+    
+            <!-- Dates d'ouverture -->
+            <label for="opening-dates">Dates d’ouverture</label>
+            <input type="date" id="opening-start-date" placeholder="Début">
+            <input type="date" id="opening-end-date" placeholder="Fin">
         </div>
-
-        <!-- Statut -->
-        <label for="sort">Statut</label>
-        <select id="sort">
-            <option value="relevance">Ouverture</option>
-            <option value="open">Ouvert</option>
-            <option value="closed">Fermé</option>
-            <option value="closing-soon">Ferme bientôt !</option>
-        </select>
-
-        <!-- Dates d'événement -->
-        <label for="event-date">Date d’évènement</label>
-        <input type="date" id="event-date">
-
-        <!-- Dates d'ouverture -->
-        <label for="opening-dates">Dates d’ouverture</label>
-        <input type="date" id="opening-start-date" placeholder="Début">
-        <input type="date" id="opening-end-date" placeholder="Fin">
-
-        <!-- Bouton Appliquer -->
-        <button id="voir_offres_menu" type="submit">Appliquer les filtres</button>
-    </form>
-</div>
 
 
 

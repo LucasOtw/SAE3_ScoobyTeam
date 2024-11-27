@@ -348,8 +348,10 @@
             toggleButton.addEventListener('click', () => {
                 if (offerState === "Hors Ligne") {
                     offerState = "En Ligne";
+                    
                 } else {
                     offerState = "Hors Ligne";
+                
                 }
                             // Mettre à jour le bouton et le texte
                 initializeToggle();
