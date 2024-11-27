@@ -963,10 +963,10 @@
                     <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
                 </div>
             </div>
-        </footer>
+        
 
     </div>
-
+</footer>
            
 
 
