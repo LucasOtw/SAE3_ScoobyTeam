@@ -313,6 +313,9 @@ footer {
     margin-bottom: 10px;
 
 }
+.btn-poster-avis-voir-site {
+    display: flex;
+}
 
 .visit-button_detailoffre {
     padding: 10px 20px;
