@@ -157,15 +157,15 @@ if(isset($_POST['valider'])){
             $chemin_destination = $destination . '/' . $name;
             
             // Vérifier si le fichier temporaire existe
-            if (file_exists($tmp_name)) {
+            if (file_exists($nom_temp)) {
                 // Déplacer le fichier dans le dossier cible
-                if (move_uploaded_file($tmp_name, $chemin_destination)) {
-                    echo "Le fichier $name a été déplacé avec succès.<br>";
+                if (move_uploaded_file($nom_temp, $chemin_destination)) {
+                    echo "Le fichier $nom a été déplacé avec succès.<br>";
                 } else {
-                    echo "Erreur : Impossible de déplacer le fichier $name.<br>";
+                    echo "Erreur : Impossible de déplacer le fichier $nom.<br>";
                 }
             } else {
-                echo "Erreur : Le fichier temporaire $tmp_name n'existe pas.<br>";
+                echo "Erreur : Le fichier temporaire $nom_temp n'existe pas.<br>";
             }
         }
     }
