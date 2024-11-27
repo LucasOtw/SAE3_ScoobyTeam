@@ -98,7 +98,7 @@ if(isset($_POST['envoiForm4'])){
                     <label>Options de boost (lorsque l'offre sera en ligne)</label>
                     <div class="radio-group">
                         <div>
-                            <input type="radio" id="no_boost" name="option" value="aucun">
+                            <input type="radio" id="no_boost" name="option" value="aucune">
                             <label class="label-check" for="no_boost">Ne pas booster mon offre</label>
                         </div>
                         <div>
