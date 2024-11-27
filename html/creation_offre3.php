@@ -175,7 +175,7 @@ if(isset($_POST['valider'])){
             // on peut maintenant ajouter l'option
             if($_SESSION['ajoutOption'] === null){
                 // si la session est à null, alors on n'a pas rajouté d'option cette fois-là.
-                $ajoutOption = $dbh->prepare("INSERT INTO tripenarvor._option (nb__semaines,date_debut,date_fin,prix) VALUES
+                $ajoutOption = $dbh->prepare("INSERT INTO tripenarvor._option (nb_semaines,date_debut,date_fin,prix) VALUES
                 (:nb_semaines,:date_debut,:date_fin,:prix);");
                 $ajoutOption->bindValue(":nb_semaines",$nbSemaines_option);
                 $ajoutOption->bindValue(":date_debut",$date_offre);
