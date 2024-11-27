@@ -42,7 +42,7 @@ if (isset($_POST['modif_infos'])){
    if (!empty($champsModifies))
    {
       echo password_hash($champsModifies['mdp_actuel'], PASSWORD_DEFAULT);
-      if (password_hash($champsModifies['mdp_actuel'], PASSWORD_DEFAULT) === $valeursInitiales['mdp'])
+      if (password_verify($champsModifies['mdp_actuel'],$valeursInitiales['mdp']))
       {
          echo 'okkkkkkkkkkkkkkk';
       }
