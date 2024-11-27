@@ -326,6 +326,18 @@ footer {
     margin-right: -37em;
 }
 
+.button_detailoffre_avis {
+    padding: 10px 20px;
+    background-color: var(--vert-clair);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    width: 223px;
+    height: 52px;
+    margin-right: -37em;
+}
+
 .Detail_offre_periode{
     margin-left: 11.4em;
 }
