@@ -1191,3 +1191,80 @@ input#btn-poster-avis {
 .map-frame{
            padding-bottom:15vh;
 }
+
+
+/* Encapsulation dans la classe avis-widget */
+           .avis-widget {
+             max-width: 82%;
+             margin-left: 11em;
+             margin-top: 5em;
+             padding: 20px;
+             background-color: #fff;
+             border-radius: 8px;
+           }
+           
+           .avis-widget .avis-header {
+             margin-bottom: 20px;
+           }
+           
+           .avis-widget .avis-header h1.avis {
+             font-size: 2.5em;
+             margin: 0;
+           }
+           
+           .avis-widget .avis-header .avis-score {
+             font-size: 1.2em;
+             color: #555;
+           }
+           
+           .avis-widget .avis-header p.avis {
+             color: #777;
+           }
+           
+           .avis-widget .avis-list .avis {
+             display: flex;
+             align-items: flex-start;
+             margin-bottom: 20px;
+           }
+           
+           .avis-widget .avis .avatar {
+             width: 60px;
+             height: 60px;
+             border-radius: 50%;
+             margin-right: 15px;
+             object-fit: cover;
+             border: 1px solid #ddd;
+           }
+           
+           .avis-widget .avis-content h3.avis {
+             margin: 0;
+             font-size: 1.1em;
+             color: #333;
+           }
+           
+           .avis-widget .avis-content h3.avis span.nom_avis {
+             color: #F28322;
+             margin-left: 0.5em;
+           }
+           nom.avis {
+             color: #F28322;
+           }
+           .avis-widget .avis-content p.avis {
+             margin: 5px 0 0;
+             color: #555;
+             font-size: 0.9em;
+           }
+           
+           .avis-widget .avis-list .avis {
+             display: flex;
+             align-items: flex-start;
+             margin-bottom: 20px;
+             padding-bottom: 15px;
+           }
+           .avis-content{
+             border-bottom: 1px solid #000; /* Ligne horizontale noire */
+           }
+           
+           .avis-widget .avis-list .avis:last-child {
+             border-bottom: none; /* Supprime la ligne après le dernier avis */
+           }
