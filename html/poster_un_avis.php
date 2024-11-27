@@ -122,6 +122,7 @@ echo "</pre>";
                       
                        <div class="poster_un_avis_buttons">
                            <button class="poster_un_avis_btn_annuler">Annuler</button>
+                           <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
                            <button class="poster_un_avis_btn_publier">Publier →</button>
                        </div>
                       
