@@ -77,10 +77,6 @@
         
         // si le formulaire est bien récupéré
         $details_offre = unserialize($_POST["uneOffre"]);// on récupère son contenu
-
-        echo "<pre>";
-        var_dump($details_offre);
-        echo"</pre>";
         
         $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
 
@@ -164,6 +160,11 @@
                     break;
                 }
             }
+
+            
+            echo "<pre>";
+            var_dump($details_offre);
+            echo"</pre>";
          
 
             // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
