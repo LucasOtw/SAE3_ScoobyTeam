@@ -575,6 +575,7 @@ a.button-text{
     color: black;
     text-decoration: none;
     text-align: center;
+    padding-top : 5px;
 }
 
 .button-Ligne{
@@ -591,6 +592,7 @@ a.button-text{
     color: black;
     text-decoration: none;
     text-align: center;
+    padding-top : 5px;
 }
 
 .button-HorsLigne{
@@ -607,6 +609,7 @@ a.button-text{
     color: black;
     text-decoration: none;
     text-align: center;
+    padding-top : 5px;
 }
 
 .button-Active{
