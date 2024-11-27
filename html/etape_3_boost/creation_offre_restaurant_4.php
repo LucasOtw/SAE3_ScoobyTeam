@@ -81,11 +81,11 @@ if(isset($_POST['envoiForm4'])){
                                 ?>
                                 <div>
                                     <input type="radio" id="offre_premium" name="offre" value="standard" required>
-                                    <label class="label-check" for="offre_standard">Offre Standard <sup>2</sup> (2€ / jour)</label>
+                                    <label class="label-check" for="offre_standard">Offre Standard <sup>2</sup> (5€ / jour)</label>
                                 </div>
                                 <div>
                                     <input type="radio" id="offre_premium" name="offre" value="premium" required>
-                                    <label class="label-check" for="offre_premium">Offre Premium <sup>3</sup></label>
+                                    <label class="label-check" for="offre_premium">Offre Premium <sup>3</sup> (15€ / jour)</label>
                                 </div>
                                 <?php
                             }
