@@ -123,7 +123,26 @@ $dbh = new PDO($dsn, $username, $password);
     </main>
     <?php
         if(!empty($_POST)){
-            $prenom = trim(isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : '');
+            $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
+
+            $erreurs = [];
+            if (empty($texte_avis)) {
+                $erreurs[] = "Vous devez remplir ce champ";
+            } elseif (strlen($texte_avis)>500) {
+                $erreurs[] = "L'avis ne doit pas dépasser 500 caractères.";
+            }
+
+
+            $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
+
+            // Liez les valeurs aux paramètres
+            $creerCompte->bindParam(':texte_avis', $texte_avis);
+            
+            
+            $creerCompte->bindParam(':note', $note);
+            $creerCompte->bindParam(':code_compte', $code_compte);
+            $creerCompte->bindParam(':code_offre', $code_offre);
+
         }
     ?>
                     
