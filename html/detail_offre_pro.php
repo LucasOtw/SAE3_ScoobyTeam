@@ -351,7 +351,27 @@
                 } else {
                     offerState = "Hors Ligne";
                 }
-    
+                            // Mettre à jour le bouton et le texte
+                initializeToggle();
+
+                // Optionnel : envoyer l'état mis à jour au serveur via AJAX ou Fetch API
+                console.log("Nouvel état de l'offre :", offerState);
+
+                // Exemple de simulation d'appel AJAX pour mettre à jour l'état
+                fetch('update_offer_status.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ en_ligne: offerState === "En Ligne" ? 1 : 0 })
+                })
+                .then(response => response.json())
+                .then(data => console.log('Mise à jour réussie :', data))
+                .catch(error => console.error('Erreur lors de la mise à jour :', error));
+            });
+
+            // Initialiser le bouton au chargement de la page
+            initializeToggle();
                 
         </script>
                
