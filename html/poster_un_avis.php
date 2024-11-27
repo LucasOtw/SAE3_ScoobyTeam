@@ -178,13 +178,12 @@ echo "</pre>";
             $creerAvis->bindParam(':code_compte', $code_compte);
          
         }
-echo "Avis : " . $texte_avis;
-echo "Note : " .$note;
-echo "code offre : " . $code_offre;
-echo "code compte : " . $code_compte;
-           foreach($erreurs as $erreur){
+        if($creerAvis->execute()){
+                    echo "L'avis a été posté avec succès";
+        }
+        foreach($erreurs as $erreur){
               echo $erreur;
-           }
+        }
     ?>
                     
     
