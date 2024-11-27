@@ -63,7 +63,7 @@ if (isset($_GET["filter"])) {
             <li><a href="consulter_compte_pro.php">Informations personnelles</a></li>
             <li><a href="mes_offres.php" class="active">Mes offres</a></li>
             <li><a href="modif_bancaire.php">Compte bancaire</a></li>
-            <li><a href="modif_mdp_pro.php" class="active">Mot de passe et sécurité</a></li>
+            <li><a href="modif_mdp_pro.php">Mot de passe et sécurité</a></li>
         </ul>
     </section>
     <section>
