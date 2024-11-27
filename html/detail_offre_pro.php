@@ -353,7 +353,31 @@
                 // Récupérer l'état actuel de l'offre depuis la base de données
                 // Exemple : $en_ligne = 1 pour "En Ligne" et 0 pour "Hors Ligne"
                 $en_ligne = $details_offre['en_ligne'] ?? 0; // Par défaut 0 si $details_offre['en_ligne'] n'est pas défini
-                ?>
+                
+                // Si le formulaire est soumis, mettre à jour l'état de l'offre dans la base de données
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    // Nouvelle valeur pour l'état de l'offre
+                    $en_ligne = isset($_POST['en_ligne']) && $_POST['en_ligne'] == 1 ? 1 : 0;
+                
+                    // Connexion à la base de données (ajuster avec tes propres identifiants)
+                    try {
+                        $pdo = new PDO("mysql:host=localhost;dbname=nom_de_la_base_de_donnees", "utilisateur", "mot_de_passe");
+                        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                
+                        // Préparer la requête SQL pour mettre à jour l'état de l'offre
+                        $stmt = $pdo->prepare("UPDATE offres SET en_ligne = :en_ligne WHERE id = :id");
+                        $stmt->bindParam(':en_ligne', $en_ligne, PDO::PARAM_INT);
+                        $stmt->bindParam(':id', $offre_id, PDO::PARAM_INT);
+                        $stmt->execute();
+                
+                        // Rediriger vers la même page pour afficher l'état mis à jour
+                        header("Location: " . $_SERVER['PHP_SELF']);
+                        exit;
+                    } catch (PDOException $e) {
+                        echo "Erreur : " . $e->getMessage();
+                    }
+                }
+            ?>
             
             <div>
                 <p id="offer-state">L'offre est actuellement : <span id="offer-status">
@@ -367,6 +391,13 @@
                     <div class="toggle-circle"></div>
                 </div>
             </div>
+            
+            <!-- Formulaire avec bouton "Valider" -->
+            <form method="POST">
+                <!-- Cacher la valeur actuelle de l'état -->
+                <input type="hidden" name="en_ligne" value="<?php echo $en_ligne ? 0 : 1; ?>">
+                <button type="submit" class="btn btn-primary">Valider</button>
+            </form>
             
             <script>
                 // Récupérer l'état initial de l'offre depuis PHP
@@ -387,51 +418,23 @@
                     }
                 }
             
-                // Basculer l'état de l'offre
+                // Basculer l'état de l'offre sur le bouton (avant soumission du formulaire)
                 toggleButton.addEventListener('click', () => {
-                    // Changer l'état de l'offre
-                    if (offerState === "Hors Ligne") {
-                        offerState = "En Ligne";
-                    } else {
-                        offerState = "Hors Ligne";
-                    }
+                    // Changer l'état de l'offre localement
+                    offerState = offerState === "Hors Ligne" ? "En Ligne" : "Hors Ligne";
             
                     // Mettre à jour le bouton et le texte
                     initializeToggle();
             
-                    // Optionnel : envoyer l'état mis à jour au serveur via AJAX ou Fetch API
-                    console.log("Nouvel état de l'offre :", offerState);
-            
-                    // Appel AJAX pour mettre à jour l'état de l'offre dans la base de données
-                    fetch('update_offer_status.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ en_ligne: offerState === "En Ligne" ? 1 : 0 })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            console.log('Mise à jour réussie :', data);
-                        } else {
-                            console.error('Erreur lors de la mise à jour :', data);
-                            // Si une erreur survient, on peut réinitialiser l'état à l'original
-                            offerState = offerState === "En Ligne" ? "Hors Ligne" : "En Ligne";
-                            initializeToggle();
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Erreur lors de la mise à jour :', error);
-                        // Réinitialiser l'état du bouton et du texte en cas d'erreur
-                        offerState = offerState === "En Ligne" ? "Hors Ligne" : "En Ligne";
-                        initializeToggle();
-                    });
+                    // Modifier la valeur cachée dans le formulaire
+                    const hiddenInput = document.querySelector('input[name="en_ligne"]');
+                    hiddenInput.value = offerState === "En Ligne" ? 1 : 0;
                 });
             
                 // Initialiser le bouton au chargement de la page
                 initializeToggle();
             </script>
+
             
 
 
