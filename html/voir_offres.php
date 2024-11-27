@@ -184,7 +184,7 @@ function tempsEcouleDepuisPublication($offre){
             
             <div class="search-options">
                 <select class="search-select">
-                    <option value="" hidden selected>Catégories</option>
+                    <option value="" selected>Catégories</option>
                     <option value="Activite">Activité</option>
                     <option value="Restaurant">Restaurant</option>
                     <option value="Visite">Visite</option>
@@ -192,12 +192,12 @@ function tempsEcouleDepuisPublication($offre){
                     <option value="ParcAttractions">Parc d'attractions</option>
                 </select>
                 <select class="search-select">
-                    <option value="" hidden selected>Prix</option>
+                    <option value="" selected>Prix</option>
                     <option value="decroissantP">Décroissant</option>
                     <option value="croissantP">Croissant</option>
                 </select>
                 <select class="search-select">
-                    <option value="" hidden selected>Note</option>
+                    <option value="" selected>Note</option>
                     <option value="decroissantN">Décroissant</option>
                     <option value="croissantN">Croissant</option>
                 </select>
