@@ -176,6 +176,12 @@ function tempsEcouleDepuisPublication($offre){
     <main class="toute_les_offres_main">
     
         <div class="search-bar">
+
+            <style>
+                .offer.hidden {
+                    display: none;
+                    }
+            </style>
             
             <div class="search-top">
                 <input type="text" class="search-input" placeholder="Recherchez parmi les offres" >
