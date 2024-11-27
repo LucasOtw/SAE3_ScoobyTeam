@@ -433,6 +433,7 @@ function tempsEcouleDepuisPublication($offre){
             // Récupération des éléments
             const offerItems = document.querySelectorAll('.offer');
             const searchInput = document.querySelector('.search-input');
+            const searchSelect = document.querySelectorAll('.search-select');
 
             
             ///////////////////////////////////////////////////
@@ -453,6 +454,53 @@ function tempsEcouleDepuisPublication($offre){
                 });
             });
 
+            
+            ///////////////////////////////////////////////////
+            ///            Selecteur cat, d et c            ///
+            ///////////////////////////////////////////////////
+            searchSelect.forEach(select => {
+                select.addEventListener('change', function () {
+                    const category = document.querySelector('.search-select:nth-of-type(1)').value;
+                    const priceOrder = document.querySelector('.search-select:nth-of-type(2)').value;
+                    const noteOrder = document.querySelector('.search-select:nth-of-type(3)').value;
+            
+                    offerItems.forEach(offer => {
+                        // Récupérer les attributs de l'offre (données simulées)
+                        const offerCategory = offer.getAttribute('data-category');
+                        const offerPrice = parseInt(offer.getAttribute('data-price'));
+                        const offerNote = parseFloat(offer.getAttribute('data-note'));
+            
+                        // Masquer l'offre si elle ne correspond pas à la catégorie sélectionnée
+                        if (category && category !== offerCategory) {
+                            offer.classList.add('hidden');
+                        } else {
+                            offer.classList.remove('hidden');
+                        }
+                    });
+            
+                    // Trier les offres dynamiquement selon le prix ou la note
+                    let offers = Array.from(document.querySelectorAll('.offer:not(.hidden)'));
+                    if (priceOrder) {
+                        offers.sort((a, b) => {
+                            const priceA = parseInt(a.getAttribute('data-price'));
+                            const priceB = parseInt(b.getAttribute('data-price'));
+                            return priceOrder === 'Croissant' ? priceA - priceB : priceB - priceA;
+                        });
+                    }
+                    if (noteOrder) {
+                        offers.sort((a, b) => {
+                            const noteA = parseFloat(a.getAttribute('data-note'));
+                            const noteB = parseFloat(b.getAttribute('data-note'));
+                            return noteOrder === 'Croissant' ? noteA - noteB : noteB - noteA;
+                        });
+                    }
+            
+                    // Réorganiser les offres dans le DOM
+                    const container = document.querySelector('.offers-list');
+                    container.innerHTML = '';
+                    offers.forEach(offer => container.appendChild(offer));
+                });
+            });
             
         </script>
 
