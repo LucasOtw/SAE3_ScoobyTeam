@@ -411,8 +411,6 @@ function tempsEcouleDepuisPublication($offre){
                         break;
                     }
                 }
-
-                echo $type_offre;
                 
                 // Récupérer les images
                 $imagesOffre = $dbh->prepare('SELECT code_image FROM tripenarvor._son_image WHERE code_offre = :code_offre');
@@ -437,6 +435,7 @@ function tempsEcouleDepuisPublication($offre){
                 }
                 if ($offre["en_ligne"])
                 {
+                    echo $type_offre;
                 ?>
                     <article class="offer">
                         <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
