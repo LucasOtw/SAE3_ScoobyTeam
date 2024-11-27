@@ -1276,12 +1276,6 @@ footer {
         }
 
 
-        body {
-             font-family: Arial, sans-serif;
-             line-height: 1.6;
-             margin: 20px;
-           }
-           
          /* Encapsulation dans la classe avis-widget */
            .avis-widget {
              max-width: 80%;
