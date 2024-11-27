@@ -87,12 +87,14 @@ $dbh = new PDO($dsn, $username, $password);
                                <span class="poster_un_avis_star">⭐</span>
                                <span class="poster_un_avis_star">⭐</span>
                                <span class="poster_un_avis_star">⭐</span>
+                               <figure class="notation">
+                            <span role="img" aria-labelledby="rating-67471c1e61e38" style="width: 66%"></span>
+                            <figcaption class="screen-readers" id="rating-67471c1e61e38">noté 3,3 sur 5</figcaption>
+                            </figure>
 
                            </div>
-                           <figure class="notation">
-<span role="img" aria-labelledby="rating-67471c1e61e38" style="width: 66%"></span>
-<figcaption class="screen-readers" id="rating-67471c1e61e38">noté 3,3 sur 5</figcaption>
-</figure>
+                           
+
                            <p class="poster_un_avis_disclaimer">
                                En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).
                            </p>
