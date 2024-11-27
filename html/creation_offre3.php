@@ -106,7 +106,7 @@ if(isset($_POST['valider'])){
 
         $tab_horaires = $_SESSION['crea_offre3'];
         // pour chaque jour
-        foreach($tab_horaires as strtolower($jour) => $horaire){
+        foreach($tab_horaires as $jour => $horaire){
             /* On cherche d'abord le code horaire. */
             $horaireCorrespondante = $dbh->prepare("SELECT code_horaire FROM tripenarvor._horaire
             WHERE
@@ -132,7 +132,7 @@ if(isset($_POST['valider'])){
 
                 $ajoutHoraire->execute();
                 // on récupère le dernier id enregistré, celui du code horaire.
-                $code_horaire[$jour] = $dbh->lastInsertId();
+                $code_horaire[strtolower($jour)] = $dbh->lastInsertId();
             }
 
             var_dump($code_horaire);
