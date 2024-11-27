@@ -1296,7 +1296,8 @@ footer {
          /* Encapsulation dans la classe avis-widget */
            .avis-widget {
              max-width: 82%;
-             margin: 50 auto;
+             margin-left: 11em;
+             margin-top: 5em;
              padding: 20px;
              background-color: #fff;
              border-radius: 8px;
