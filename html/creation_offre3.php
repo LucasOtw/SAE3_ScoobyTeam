@@ -150,7 +150,7 @@ if(isset($_POST['valider'])){
         // maintenant, on peut copier les images dans ce dossier
         $photos = $_SESSION['crea_offre']['photos'];
         foreach($photos as $photo){
-            $nom_temp = "etape_1_form/".$photo['tmp_name'];
+            $nom_temp = "etape_1_form".$photo['tmp_name'];
             $nom_photo = $photo['name'];
 
                 // Construire le chemin de destination complet
