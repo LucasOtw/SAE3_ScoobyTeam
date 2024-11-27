@@ -567,6 +567,7 @@ footer {
     font-size: 21px;
     transition: transform 0.3s ease;
     margin-top: -7vh;
+    margin-bottom: 10vh;
 }
 
 .poster_un_avis_btn_publier:hover {
