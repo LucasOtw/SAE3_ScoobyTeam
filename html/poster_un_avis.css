@@ -424,46 +424,44 @@ footer {
     width: 225px;
   }
 
-  @media (min-width: 419px) {
-    .titre_poster_un_avis_format_tel{
-        display: none;
-    }
+.notation {
+    direction: rtl; /* Permet d'inverser l'ordre visuel des étoiles */
+    unicode-bidi: bidi-override;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin: 10px 0;
+}
 
-    nav.nav-bar {
-        display: none;
-    }
+.notation input[type="radio"] {
+    display: none; /* Cache les boutons radio */
+}
 
-    .back-button{
-        display : none;
-    }
+.notation label {
+    font-size: 2rem;
+    color: #ccc; /* Couleur des étoiles non sélectionnées */
+    cursor: pointer;
+    transition: color 0.3s;
+}
 
-    .notation {
-        display: flex;
-        direction: row-reverse;
-        justify-content: center;
-    }
-    
-    .notation input {
-        display: none;
-    }
-    
-    .notation label {
-        font-size: 2rem;
-        color: #ccc;
-        cursor: pointer;
-        transition: color 0.3s ease;
-    }
-    
-    .notation input:checked ~ label,
-    .notation label:hover,
-    .notation label:hover ~ label {
-        color: #ffd700;
-    }
-    
+.notation label:before {
+    content: "★"; /* Symbole de l'étoile */
+}
 
+.notation input[type="radio"]:checked ~ label {
+    color: #FFD700; /* Couleur des étoiles sélectionnées */
+}
 
+.notation label:hover,
+.notation label:hover ~ label {
+    color: #FFD700; /* Couleur des étoiles au survol */
+}
 
-  }
+.notation label:active {
+    transform: scale(1.2); /* Effet d'agrandissement au clic */
+}
+
 
 
                                                 /*Code pour le format responsive de poster un avis */
