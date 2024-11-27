@@ -439,7 +439,7 @@ function tempsEcouleDepuisPublication($offre){
                 {
                     echo $type_offre;
                 ?>
-                    <article class="offer">
+                    <article class="offer" data-category=<?php echo $type_offre;?> data-price=<?php echo $offre["tarif"];?> data-note=5>
                         <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
                         <div class="offer-details">
                             <h2><?php echo $offre["titre_offre"] ?></h2>
