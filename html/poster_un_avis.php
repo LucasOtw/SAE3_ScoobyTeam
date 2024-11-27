@@ -70,21 +70,15 @@ $dbh = new PDO($dsn, $username, $password);
                     <img src="images/tiallannec3.png" alt="Image 2" class="poster_un_avis_image">
                 </div>
             </div>
-            <form  method="">
+
+            <form action="poster_un_avis.php" method="POST">
                <div class="poster_un_avis_section">
                    <h2 class="poster_un_avis_section_titre">Votre avis</h2>
                   
-
-                   
-
-
-
-
-
-                   <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea"></textarea>
+                   <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
                   
                    <div class="poster_un_avis_footer">
-                      
+
                        <div class="poster_un_avis_note">
                            <h2 class="poster_un_avis_note_titre">Votre note</h2>
                            <div class="poster_un_avis_stars">
@@ -93,7 +87,12 @@ $dbh = new PDO($dsn, $username, $password);
                                <span class="poster_un_avis_star">⭐</span>
                                <span class="poster_un_avis_star">⭐</span>
                                <span class="poster_un_avis_star">⭐</span>
+
                            </div>
+                           <figure class="notation">
+<span role="img" aria-labelledby="rating-67471c1e61e38" style="width: 66%"></span>
+<figcaption class="screen-readers" id="rating-67471c1e61e38">noté 3,3 sur 5</figcaption>
+</figure>
                            <p class="poster_un_avis_disclaimer">
                                En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).
                            </p>
@@ -126,7 +125,13 @@ $dbh = new PDO($dsn, $username, $password);
                 ?>">
                 <img src="images/icones/User icon.png" alt="image de Personne"></a>
         </nav>
-
+    </main>
+    <?php
+        if(!empty($_POST)){
+            $prenom = trim(isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : '');
+        }
+    ?>
+                    
     
     <footer class="footer_poster_avis">
         <div class="newsletter">
