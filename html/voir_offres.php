@@ -385,6 +385,34 @@ function tempsEcouleDepuisPublication($offre){
                 $villeOffre->bindParam(":code_adresse", $offre["code_adresse"]);
                 $villeOffre->execute();
                 $villeOffre = $villeOffre->fetch(); // Récupérer la ville (ou NULL si pas trouvé)
+
+                $queries = [
+                    'restauration' => 'SELECT * FROM tripenarvor.offre_restauration WHERE code_offre = :code_offre',
+                    'parc_attractions' => 'SELECT * FROM tripenarvor.offre_parc_attractions WHERE code_offre = :code_offre',
+                    'spectacle' => 'SELECT * FROM tripenarvor.offre_spectacle WHERE code_offre = :code_offre',
+                    'visite' => 'SELECT * FROM tripenarvor.offre_visite WHERE code_offre = :code_offre',
+                    'activite' => 'SELECT * FROM tripenarvor.offre_activite WHERE code_offre = :code_offre'
+                ];
+                
+                $type_offre = null;
+                $details_offre = null;
+                
+                // Parcourez les requêtes et exécutez-les
+                foreach ($queries as $type => $sql) {
+                    $stmt = $dbh->prepare($sql);
+                    $stmt->bindParam(':code_offre', $offre["code_offre"], PDO::PARAM_INT);
+                    $stmt->execute();
+                    
+                    // Vérifiez si une ligne est retournée
+                    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                    if ($result) {
+                        $type_offre = $type;
+                        $details_offre = $result;
+                        break;
+                    }
+                }
+
+                echo $type_offre;
                 
                 // Récupérer les images
                 $imagesOffre = $dbh->prepare('SELECT code_image FROM tripenarvor._son_image WHERE code_offre = :code_offre');
