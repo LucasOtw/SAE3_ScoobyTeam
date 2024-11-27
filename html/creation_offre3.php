@@ -199,8 +199,7 @@ if(isset($_POST['valider'])){
 
         // on récupère aussi le nom du type de l'offre
         $champ_type_offre = null;
-        echo "OPTION :" . $_SESSION['crea_offre4']['option'];
-        switch($_SESSION['crea_offre4']['option']){
+        switch($_SESSION['crea_offre4']['offre']){
             case "gratuite":
                 $champ_type_offre = "Option Gratuite";
                 break;
