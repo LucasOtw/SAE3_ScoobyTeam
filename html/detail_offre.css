@@ -333,6 +333,9 @@ footer {
 .Detail_offre_periode p{
     color : #727272;
 }
+.accessibilite_infos_detail_offre p {
+    color : #727272;
+}
 
 .visit-button_detailoffre:hover {
     transition: ease-in-out 0.2s;
