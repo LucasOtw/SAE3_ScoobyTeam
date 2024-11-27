@@ -22,7 +22,7 @@ $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
 // Créer une instance PDO avec les bons paramètres
 $dbh = new PDO($dsn, $username, $password);
 
-$details_offre = unserialize($_POST["uneOffre"]);// on récupère son contenu
+$details_offre = unserialize($_POST["uneOffre"]); // on récupère son contenu
 
 echo "<pre>";
 var_dump($details_offre);
