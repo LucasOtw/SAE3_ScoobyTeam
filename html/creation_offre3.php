@@ -124,7 +124,7 @@ if(isset($_POST['valider'])){
             if($horaireCorrespondante){
                 echo "HAHA <br>";
                 // si une horraire correspond, on récupère son code
-                $code_horaire[] = $horaireCorrespondante['code_horaire'];
+                $code_horaire[$jour] = $horaireCorrespondante['code_horaire'];
             } else {
                 echo "HOHO <br>";
                 // sinon, on l'insère
@@ -135,7 +135,7 @@ if(isset($_POST['valider'])){
 
                 $ajoutHoraire->execute();
                 // on récupère le dernier id enregistré, celui du code horaire.
-                $code_horaire[] = $dbh->lastInsertId();
+                $code_horaire[$jour] = $dbh->lastInsertId();
             }
 
             var_dump($code_horaire);
@@ -229,6 +229,9 @@ if(isset($_POST['valider'])){
             'nb_blacklister' => 0,
             'code_adresse' => $code_adresse
         ];
+
+        $mon_offre = array_merge($mon_offre,$code_horaire);
+        var_dump($mon_offre);
     }
 }
     
