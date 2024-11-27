@@ -1251,7 +1251,6 @@ footer {
 /* Style du conteneur du toggle */
         .toggle-container {
             display: flex;
-            justify-content: center;
             align-items: center;
             height: 1vh;
         }
