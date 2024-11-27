@@ -220,6 +220,8 @@ if(isset($_POST['valider'])){
             'titre_offre' => $_SESSION['crea_offre']['titre_offre'],
             'date_publication' => $date_offre,
             'date_derniere_modif' => $date_offre,
+            '_resume' => $_SESSION['crea_offre']['resume'],
+            '_description' => $_SESSION['crea_offre']['description'],
             'note_moyenne' => null,
             'tarif' => $_SESSION['crea_offre2']['tarif'],
             'accessibilite' => $_SESSION['crea_offre']['accessibilite'],
@@ -230,12 +232,6 @@ if(isset($_POST['valider'])){
             'nom_type' => $champ_type_offre,
         ];
 
-        if(isset($_SESSION['crea_offre']['resume']) && !empty($_SESSION['crea_offre']['resume'])){
-            $mon_offre['_resume'] = $_SESSION['crea_offre']['resume'];
-        }
-        if(isset($_SESSION['crea_offre']['description']) && !empty($_SESSION['crea_offre']['description'])){
-            $mon_offre['_description'] = $_SESSION['crea_offre']['description'];
-        }
         if(isset($_SESSION['crea_offre']['lien']) && !empty($_SESSION['crea_offre']['lien'])){
             $mon_offre['site_web'] = $_SESSION['crea_offre']['lien'];
         }
