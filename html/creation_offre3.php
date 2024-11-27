@@ -134,40 +134,6 @@ if(isset($_POST['valider'])){
                 $code_horaire = $dbh->lastInsertId();
             }
         }
-
-        /*
-        *    TRAITEMENT DES IMAGES
-        */
-
-        $nom_dossier_images = $_SESSION['crea_offre']['titre_offre'];
-        $nom_dossier_images = str_replace(' ','',$nom_dossier_images);
-        $destination = "./images/offres/".$nom_dossier_images;
-
-        if(!file_exists($destination)){
-            mkdir($destination, 0777, true); // crée le dossier si il n'existe pas.
-        }
-
-        // maintenant, on peut copier les images dans ce dossier
-        $photos = $_SESSION['crea_offre']['photos'];
-        foreach($photos as $photo){
-            $nom_temp = "etape_1_form".$photo['tmp_name'];
-            $nom_photo = $photo['name'];
-
-                // Construire le chemin de destination complet
-            $chemin_destination = $destination . '/' . $nom_photo;
-            
-            // Vérifier si le fichier temporaire existe
-            if (file_exists($nom_temp)) {
-                // Déplacer le fichier dans le dossier cible
-                if (move_uploaded_file($nom_temp, $chemin_destination)) {
-                    echo "Le fichier $nom_photo a été déplacé avec succès.<br>";
-                } else {
-                    echo "Erreur : Impossible de déplacer le fichier $nom_photo.<br>";
-                }
-            } else {
-                echo "Erreur : Le fichier temporaire $nom_temp n'existe pas.<br>";
-            }
-        }
     }
 }
     
