@@ -1279,7 +1279,6 @@ body.menu-open #overlay {
     }
     
     .toute_les_offres_main .search-select{
-        width:5em;
         min-width:0;
     }
 
@@ -1289,5 +1288,17 @@ body.menu-open #overlay {
     }
     .toute_les_offres_main .search-top{
         flex-direction:row;
+    }
+
+    .toute_les_offres_main .search-options {
+        justify-content:space-around;
+    }
+
+    .toute_les_offres_main .card-scroll-btn.card-scroll-btn-left{
+        left: right;
+    }
+
+    .toute_les_offres_main .card-scroll-btn.card-scroll-btn-right{
+        right:0;
     }
 }
