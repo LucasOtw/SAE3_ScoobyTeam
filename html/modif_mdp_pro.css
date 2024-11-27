@@ -101,7 +101,7 @@ nav ul li a::before {
     width: 0;
     height: 2.5px;
     bottom: -2px;
-    background-color: var(--or);
+    background-color: var(--orange);
     transition: width 0.3s ease;
 }
 
@@ -257,82 +257,108 @@ footer {
     margin: 0;
     padding: 0;
 }
-
-
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.header-img {
-    width: 152%;
-    border-radius: 10px;
-    margin-left: -14em;
-}
-
-.profile-section {
+/* Profile Section */
+.main_modif_mdp_pro .profile {
     text-align: center;
-    margin-top: -50px; /* Remonter la photo de profil */
+    margin-bottom: 30px;
 }
 
-.profile-img {
+fieldset[disabled] {
+    opacity: 0.6; 
+}
+
+.main_modif_mdp_pro .banner img {
+    width: 70%;
+    height: 200px;
+    object-fit: cover;
+    margin: 30px;
+    border-radius: 20px;
+}
+
+.main_modif_mdp_pro .profile-info {
+    margin-top: -90px;
+    text-align: center;
+}
+
+.main_modif_mdp_pro .profile-info img.profile-picture {
     width: 120px;
     height: 120px;
+    border-radius: 35px;
     object-fit: cover;
 }
 
-h1 {
+.main_modif_mdp_pro .profile-info h1 {
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+.main_modif_mdp_pro .profile-info p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Tabs Section */
+.main_modif_mdp_pro .tabs {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.main_modif_mdp_pro .tabs ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    min-width: 40vw;
+}
+
+.main_modif_mdp_pro .tabs ul li {
+    display: flex;
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+.main_modif_mdp_pro .tabs ul li a {
+    width: calc(60vw/3);
+    font-size: 20px;
+    padding: 10px 20px;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+    color: #333;
+    text-decoration: none;
+}
+
+.main_modif_mdp_pro .tabs ul li a.active {
+    border-color: #ff6600;
+    text-decoration: none;
+}
+.main_modif_mdp_pro h1 {
     font-size: 24px;
     font-weight: bold;
     margin-top: 10px;
 }
 
-p {
+.main_modif_mdp_pro p {
     color: #888;
     margin-bottom: 30px;
 }
 
-.tabs {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    padding: 0px;
-
-}
-
-.tab {
-    padding: 10px 20px;
-    cursor: pointer;
-    color: #2e2e2e;
-    border-bottom: 2px solid transparent;
-    transition: border-bottom 0.3s ease;
-   
-    
-}
-
-.tab.active {
-    color: #2e2e2e;
-    border-bottom: 2px solid --orange; /* Couleur vert olive */
-}
-
-.tab:not(.active):hover {
-    border-bottom: 2px solid #ccc;
-}
-
-.form-section {
+.main_modif_mdp_pro .form-section {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.form-group {
+.main_modif_mdp_pro .form-group {
     margin-bottom: 15px;
 }
-
+.main_modif_mdp_pro 
 label {
     display: block;
     margin-bottom: 0px;
@@ -358,28 +384,26 @@ input[type="email"] {
 
 
 
-form {
+.main_modif_mdp_pro form {
     width: 885px;
     margin: 0 auto;
     padding: 20px;
     border-radius: 8px;
 }
 
-fieldset {
+.main_modif_mdp_pro fieldset {
     border: none;
     margin-bottom: 20px;
 }
 
-legend {
+.main_modif_mdp_pro legend {
     font-size: 1.2em;
     margin-bottom: 10px;
     color: #333;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="password"] {
+
+.main_modif_mdp_pro input[type="password"] {
     width: 100%;
     padding: 12px;
     font-size: 1em;
@@ -388,52 +412,51 @@ input[type="password"] {
     box-sizing: border-box;
 }
 
-input[type="text"]::placeholder,
-input[type="email"]::placeholder,
-input[type="tel"]::placeholder,
 input[type="password"]::placeholder {
     color: #aaa;
 }
 
-.crea_pro_raison_sociale_num_siren,
-.crea_pro_mail_tel {
+.main_modif_mdp_pro .crea_pro_raison_sociale_num_siren {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.crea_pro_raison_sociale_num_siren fieldset,
-.crea_pro_mail_tel fieldset {
+.main_modif_mdp_pro .crea_pro_raison_sociale_num_siren fieldset,
+.main_modif_mdp_pro .crea_pro_mail_tel fieldset {
     flex: 1;
 }
 
-.checkbox {
+.main_modif_mdp_pro .checkbox {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.checkbox input {
+.main_modif_mdp_pro .checkbox input {
     margin-right: 10px;
 }
 
-.checkbox label a {
+.main_modif_mdp_pro .checkbox label a {
     color: var(--orange);
     text-decoration: none;
 }
 
-.checkbox label a:hover {
+.main_modif_mdp_pro .checkbox label a:hover {
     text-decoration: underline;
 }
-.compte_membre_save_delete {
+.main_modif_mdp_pro .compte_membre_save_delete {
     display: flex;
     justify-content: right; /* Aligne les boutons au centre */
     gap: 20px; /* Espacement entre les boutons */
     margin-bottom: 11em;
 }
-
-button.submit-btn1, 
-button.submit-btn2 {
+.main_modif_mdp_pro .compte_membre_save_delete a {
+           text-decoration : none;
+}
+.main_modif_mdp_pro .submit-btn1, 
+.main_modif_mdp_pro button.submit-btn2,
+.main_modif_mdp_pro button.submit-btn3 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -452,33 +475,28 @@ button.submit-btn2 {
 
 }
 
-button.submit-btn1{
+.main_modif_mdp_pro .submit-btn1,
+.main_modif_mdp_pro button.submit-btn2{ 
     background-color: white;
     border: 1.5px solid var(--orange);
     color: black;
+    border-radius: 16px;
 }
 
-button.submit-btn1:hover,
-button.submit-btn2:hover {
+.main_modif_mdp_pro .submit-btn1:hover,
+.main_modif_mdp_pro button.submit-btn2:hover,
+.main_modif_mdp_pro button.submit-btn3 {
     background-color: var(--orange); /* Ajoute une couleur de survol pour les deux boutons */
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Ombre plus forte au survol */
     transition: 0.3s;
-
 }
-
-button.submit-btn2:hover{
-    background-color: var(--orange);
-
-}
-
-
 
 
 
 /* Style général pour tous les fieldsets */
-.crea_pro_mail_tel fieldset, 
-.crea_pro_raison_sociale_num_siren fieldset,
-form fieldset {
+.main_modif_mdp_pro .crea_pro_mail_tel fieldset, 
+.main_modif_mdp_pro .crea_pro_raison_sociale_num_siren fieldset,
+.main_modif_mdp_pro form fieldset {
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 20px;
@@ -487,9 +505,9 @@ form fieldset {
 }
 
 /* Style pour les légendes */
-.crea_pro_mail_tel legend, 
-.crea_pro_raison_sociale_num_siren legend,
-form legend {
+.main_modif_mdp_pro .crea_pro_mail_tel legend, 
+.main_modif_mdp_pro .crea_pro_raison_sociale_num_siren legend,
+.main_modif_mdp_pro form legend {
     font-size: 14px;
     padding: 0 10px;
     color: #333;
@@ -501,24 +519,24 @@ form legend {
 }
 
 /* Légende visible au focus */
-.crea_pro_mail_tel fieldset:focus-within legend, 
-.crea_pro_raison_sociale_num_siren fieldset:focus-within legend,
-form fieldset:focus-within legend {
+.main_modif_mdp_pro .crea_pro_mail_tel fieldset:focus-within legend, 
+.main_modif_mdp_pro .crea_pro_raison_sociale_num_siren fieldset:focus-within legend,
+.main_modif_mdp_pro form fieldset:focus-within legend {
     display: inline-block;
     transition: ease-out 0.3s;
 }
 
 /* Placeholder style pour tous les champs de formulaire */
-.crea_pro_mail_tel input::placeholder, 
-.crea_pro_raison_sociale_num_siren input::placeholder,
-form input::placeholder {
+.main_modif_mdp_pro .crea_pro_mail_tel input::placeholder, 
+.main_modif_mdp_pro .crea_pro_raison_sociale_num_siren input::placeholder,
+.main_modif_mdp_pro form input::placeholder {
     padding-left: 10px;
 }
 
 /* Placeholder masqué au focus */
-.crea_pro_mail_tel input:focus::placeholder, 
-.crea_pro_raison_sociale_num_siren input:focus::placeholder,
-form input:focus::placeholder {
+.main_modif_mdp_pro .crea_pro_mail_tel input:focus::placeholder, 
+.main_modif_mdp_pro .crea_pro_raison_sociale_num_siren input:focus::placeholder,
+.main_modif_mdp_pro form input:focus::placeholder {
     color: rgba(0, 0, 0, 0);
 }
 
@@ -527,20 +545,6 @@ form input:focus::placeholder {
     accent-color: var(--vert-fonce);
 }
 
-/* Styles pour les boutons */
-.submit-btn1, .submit-btn2 {
-    background-color: var(--vert-fonce);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.submit-btn1 {
-    margin-right: 10px;
-}
-
-.submit-btn2 img {
-    margin-left: 5px;
+.main_modif_mdp_pro h3{
+    margin-bottom: 20px;
 }

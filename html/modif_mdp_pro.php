@@ -75,7 +75,7 @@ if (isset($_POST['modif_infos'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes offres</title>
-    <link rel="stylesheet" href="consulter_compte_pro.css">
+    <link rel="stylesheet" href="modif_mdp_pro.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
@@ -95,7 +95,7 @@ if (isset($_POST['modif_infos'])){
         </nav>
     </header>
     
-    <main class="main-consulter-compte-pro">
+    <main class="main_modif_mdp_pro">
         <section class="profile">
             <div class="banner">
                 <img src="images/Fond.png" alt="Bannière de profil">
@@ -116,28 +116,29 @@ if (isset($_POST['modif_infos'])){
             </ul>
         </section>
 
-        
-        <form action="#" method="POST">
+        <form action="modif_mdp_pro.php" method="POST">
+           <h3>Modifiez votre mot de passe</h3>
+           
             <fieldset>
-                <legend>Entrez votre mot de passe actuel</legend>
-                <input type="password" id="adresse" name="adresse" placeholder="Entrez votre mot de passe actuel" required>
+                <legend>Entrez votre mot de passe actuel *</legend>
+                <input type="password" id="mdp_actuel" name="mdp_actuel" placeholder="Entrez votre mot de passe actuel *" required>
             </fieldset>
-        
+
             <fieldset>
-                <legend>Definissez votre nouveau mot de passe</legend>
-                <input type="password" id="code-postal" name="code-postal" placeholder="Definissez votre nouveau mot de passe" required>
+                <legend>Définissez votre nouveau mot de passe *</legend>
+                <input type="password" id="mdp_nv1" name="mdp_nv1" placeholder="Definissez votre nouveau mot de passe *" required>
             </fieldset>
-                
+           
             <fieldset>
-                <legend>Re-tapez votre nouveau mot de passe</legend>
-                <input type="password" id="code-postal" name="code-postal" placeholder="Re-tapez votre nouveau mot de passe" required>
+                <legend>Confirmer votre nouveau mot de passe *</legend>
+                <input type="password" id="mdp_nv2" name="mdp_nv2" placeholder="Confirmer votre nouveau mot de passe *" required>
             </fieldset>
-                
+           
             <div class="compte_membre_save_delete">
-                <button type="submit" class="submit-btn1">Supprimer mon compte</button>
-                <button type="submit" class="submit-btn2">Enregistrer</button>
+                <button type="submit" name="modif_infos" class="submit-btn2">Enregistrer</button>
             </div>
         </form>
+       
     </main>
 
 

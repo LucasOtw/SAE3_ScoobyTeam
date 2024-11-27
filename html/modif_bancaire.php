@@ -47,7 +47,7 @@ include("recupInfosCompte.php");
                 <li><a href="consulter_compte_pro.php">Informations personnelles</a></li>
                 <li><a href="mes_offres.php">Mes offres</a></li>
                 <li><a href="#" class="active">Compte bancaire</a></li>
-                <li><a href="modif_mdp_pro.php" class="active">Mot de passe et sécurité</a></li>
+                <li><a href="modif_mdp_pro.php">Mot de passe et sécurité</a></li>
             </ul>
         </section>
         </div>
