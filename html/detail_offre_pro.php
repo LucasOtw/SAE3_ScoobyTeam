@@ -376,10 +376,7 @@
 
 
                         
-         <button id="toggleButton">Changer état</button>
-        <span id="offerStatus"></span>
-
-    <button id="toggleButton" class="toggle-button">
+       <button id="toggleButton" class="toggle-button">
     <span class="toggle-text">Changer état</span>
     <div class="toggle-switch"></div>
 </button>
@@ -429,13 +426,14 @@
         })
         .catch(error => {
             console.error('Erreur lors de la mise à jour :', error);
-            alert('Une erreur est survenue lors de la mise à jour de l\'offre.');
+            alert('Une erreur est survenue lors de la mise à jour de l\'offre. Veuillez réessayer plus tard.');
         });
     });
 
     // Initialiser le toggle au chargement de la page
     initializeToggle();
 </script>
+
 
                
 
