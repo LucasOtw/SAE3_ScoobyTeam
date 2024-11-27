@@ -116,28 +116,29 @@ if (isset($_POST['modif_infos'])){
             </ul>
         </section>
 
-        
-        <form action="#" method="POST">
+        <form action="modif_mdp_pro.php" method="POST">
+           <h3>Modifiez votre mot de passe</h3>
+           
             <fieldset>
-                <legend>Entrez votre mot de passe actuel</legend>
-                <input type="password" id="adresse" name="adresse" placeholder="Entrez votre mot de passe actuel" required>
+                <legend>Entrez votre mot de passe actuel *</legend>
+                <input type="password" id="mdp_actuel" name="mdp_actuel" placeholder="Entrez votre mot de passe actuel *" required>
             </fieldset>
-        
+
             <fieldset>
-                <legend>Definissez votre nouveau mot de passe</legend>
-                <input type="password" id="code-postal" name="code-postal" placeholder="Definissez votre nouveau mot de passe" required>
+                <legend>Définissez votre nouveau mot de passe *</legend>
+                <input type="password" id="mdp_nv1" name="mdp_nv1" placeholder="Definissez votre nouveau mot de passe *" required>
             </fieldset>
-                
+           
             <fieldset>
-                <legend>Re-tapez votre nouveau mot de passe</legend>
-                <input type="password" id="code-postal" name="code-postal" placeholder="Re-tapez votre nouveau mot de passe" required>
+                <legend>Confirmer votre nouveau mot de passe *</legend>
+                <input type="password" id="mdp_nv2" name="mdp_nv2" placeholder="Confirmer votre nouveau mot de passe *" required>
             </fieldset>
-                
+           
             <div class="compte_membre_save_delete">
-                <button type="submit" class="submit-btn1">Supprimer mon compte</button>
-                <button type="submit" class="submit-btn2">Enregistrer</button>
+                <button type="submit" name="modif_infos" class="submit-btn2">Enregistrer</button>
             </div>
         </form>
+       
     </main>
 
 
