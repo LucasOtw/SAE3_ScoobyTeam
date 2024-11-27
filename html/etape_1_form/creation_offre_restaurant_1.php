@@ -130,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     if (file_exists($nom_temp)) {
                         // Déplacer le fichier dans le dossier cible
-                        if (move_uploaded_file($nom_temp, $chemin_destination)) {
+                        if (move_uploaded_file($nom_temp, $chemin)) {
                             echo "Le fichier $nom_photo a été déplacé avec succès.<br>";
                         } else {
                             echo "Erreur : Impossible de déplacer le fichier $nom_photo.<br>";
