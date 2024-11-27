@@ -285,16 +285,10 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="voir_offres.php" class="active">Accueil</a></li>
-                    <li><a href="connexion_pro.php">Publier</a></li>
-
-                   <li>
-                       <a href="consulter_compte_pro.php">Mon compte</a>
-                   </li>
-                    <li>
-                        <a href="voir_offres.php?deco=true">Se déconnecter</a>
-                    </li>
-                </ul>
+                <li><a href="mes_offres.php">Accueil</a></li>
+                <li><a href="creation_offre.php">Publier</a></li>
+                <li><a href="consulter_compte_pro.php" class="active">Mon Compte</a></li>
+            </ul>
             </nav>
         </header>
         
@@ -452,7 +446,6 @@
 
                     <article class="card-a-la-une">
                         <div class="image-background-card-a-la-une">
-                            <img src="<?php echo $photo;?>" alt="">
                             <img src="<?php echo $photo[0];?>" alt="">
                         </div>
                     </article>

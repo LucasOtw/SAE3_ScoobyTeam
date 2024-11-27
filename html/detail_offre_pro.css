@@ -401,6 +401,19 @@ footer {
 
 }
 
+.Detail_offre_periode{
+    margin-left: 11.4em;
+}
+
+.Detail_offre_horaire{
+    margin-left: 11em;
+    margin-bottom: 3em;
+}
+
+.Detail_offre_horaire p{
+    color : #727272;
+}
+
 /* Ajout d'un conteneur pour réunir thumbnail 2 et thumbnail 3 */
 .detail_offre_thumbnail-container {
     display: flex;
@@ -1134,7 +1147,8 @@ footer {
 
 .image-background-card-a-la-une img {
     width: 100%;
-    object-fit:contain;
+    height: 100%;
+    object-fit:cover;
     display: block;
     border-radius: 1.5em;
 }
