@@ -20,6 +20,7 @@ session_start();
           foreach ($jours as $jour => [$ouverture, $fermeture]) {
               $horaire_ouverture = $_POST[$ouverture] ?? '';
               $horaire_fermeture = $_POST[$fermeture] ?? '';
+              var_dump($horaire_ouverture);
       
               if (!empty($horaire_ouverture) || !empty($horaire_fermeture)) {
                   if (strtotime($horaire_ouverture) >= strtotime($horaire_fermeture)) {
@@ -39,7 +40,7 @@ session_start();
               }
           } else {
               $_SESSION['crea_offre3'] = $horaires_par_jour;
-              header('Location: ../etape_3_boost/creation_offre_restaurant_4.php');
+              header('location: ../etape_3_boost/creation_offre_restaurant_4.php');
               exit;
           }
       }
@@ -138,7 +139,7 @@ session_start();
                     <div class="col">
                         <fieldset>
                             <legend>Ouverture</legend>
-                            <input type="time" id="ouvertureMa" name="ouvertureMA" placeholder="Ouverture">
+                            <input type="time" id="ouvertureMa" name="ouvertureMa" placeholder="Ouverture">
                         </fieldset>
                     </div >
                     <div class="col">

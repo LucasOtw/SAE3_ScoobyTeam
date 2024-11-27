@@ -426,30 +426,54 @@
         if ($type_offre === "restauration")
         {
         ?>
-            <h3 style="margin-top: 1em;">Repas</h3>
-            <p><?php echo $details_offre["repas"];?></p>
-
-            <h3 style="margin-top: 1em;">Gamme de prix</h3>
-            <p><?php echo $details_offre["gamme_prix"];?></p>
+            <div class="Detail_offre_periode">
+                <h2>Périodes d'ouverture</h2>
+                <p>
+                    <?php
+                    // Vérifiez si les champs date_ouverture et date_fermeture existent et ne sont pas vides
+                    if (!empty($details_offre["date_ouverture"]) && !empty($details_offre["date_fermeture"])) {
+                        // Formatez les dates d'ouverture et de fermeture
+                        $date_ouverture = date("j F Y", strtotime($details_offre["date_ouverture"]));
+                        $date_fermeture = date("j F Y", strtotime($details_offre["date_fermeture"]));
+                        echo "De <span>$date_ouverture</span> à <span>$date_fermeture</span>";
+                    } else {
+                        // Si les champs sont vides, afficher "Ouvert toute l'année"
+                        echo "Ouvert toute l'année";
+                    }
+                    ?>
+                </p>
+            </div>
         <?php
         }
         else if ($type_offre === "parc_attractions")
         {
         ?>
-            <h3 style="margin-top: 1em;">Age requis</h3>
-            <p><?php echo $details_offre["age_requis"];?></p>
-            
-            <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
-            <p><?php echo $details_offre["nombre_attractions"];?></p>
+            <div class="Detail_offre_periode">
+                <h2>Périodes d'ouverture</h2>
+                <p>
+                    <?php
+                    // Vérifiez si les champs date_ouverture et date_fermeture existent et ne sont pas vides
+                    if (!empty($details_offre["date_ouverture"]) && !empty($details_offre["date_fermeture"])) {
+                        // Formatez les dates d'ouverture et de fermeture
+                        $date_ouverture = date("j F Y", strtotime($details_offre["date_ouverture"]));
+                        $date_fermeture = date("j F Y", strtotime($details_offre["date_fermeture"]));
+                        echo "De <span>$date_ouverture</span> à <span>$date_fermeture</span>";
+                    } else {
+                        // Si les champs sont vides, afficher "Ouvert toute l'année"
+                        echo "Ouvert toute l'année";
+                    }
+                    ?>
+                </p>
+            </div>
         <?php
         }
         else if ($type_offre === "spectacle")
         {
         ?>
             
-            <div class="schedule">
+            <div class="Detail_offre_horaire">
                 <h2>Horaire du Spectacle</h2>
-                <p class="date">Date : 
+                <p>Date : 
                     <span>
                         <?php 
                         // Vérifiez si la date est définie et non nulle
@@ -462,7 +486,7 @@
                         ?>
                     </span>
                 </p>
-                <p class="time">Heure : 
+                <p>Heure : 
                     <span>
                         <?php 
                         // Vérifiez si l'heure est définie et non nulle
@@ -483,9 +507,9 @@
         {
         ?>
             
-            <div class="schedule">
+            <div class="Detail_offre_horaire">
                 <h2>Horaire de la Visite</h2>
-                <p class="date">Date : 
+                <p>Date : 
                     <span>
                         <?php 
                         // Vérifiez si la date est définie et non nulle
@@ -498,7 +522,7 @@
                         ?>
                     </span>
                 </p>
-                <p class="time">Heure : 
+                <p>Heure : 
                     <span>
                         <?php 
                         // Vérifiez si l'heure est définie et non nulle
@@ -518,17 +542,23 @@
         else if  ($type_offre === "activite")
         {
         ?>
-            <h3 style="margin-top: 1em;">Durée</h3>
-            <p><?php echo $details_offre["duree"];?></p>
-
-            <h3 style="margin-top: 1em;">Age requis</h3>
-            <p><?php echo $details_offre["age_requis"];?></p>
-            
-            <h3 style="margin-top: 1em;">Prestations incluses</h3>
-            <p><?php echo $details_offre["prestations_incluses"];?></p>
-            
-            <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
-            <p><?php echo $details_offre["prestations_non_incluses"];?></p>
+            <div class="Detail_offre_periode">
+                <h2>Périodes d'ouverture</h2>
+                <p>
+                    <?php
+                    // Vérifiez si les champs date_ouverture et date_fermeture existent et ne sont pas vides
+                    if (!empty($details_offre["date_ouverture"]) && !empty($details_offre["date_fermeture"])) {
+                        // Formatez les dates d'ouverture et de fermeture
+                        $date_ouverture = date("j F Y", strtotime($details_offre["date_ouverture"]));
+                        $date_fermeture = date("j F Y", strtotime($details_offre["date_fermeture"]));
+                        echo "De <span>$date_ouverture</span> à <span>$date_fermeture</span>";
+                    } else {
+                        // Si les champs sont vides, afficher "Ouvert toute l'année"
+                        echo "Ouvert toute l'année";
+                    }
+                    ?>
+                </p>
+            </div>
         <?php
         }
         ?>
