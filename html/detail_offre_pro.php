@@ -318,12 +318,7 @@
             </span></p>
         </div>
     
-        <!-- Bouton toggle -->
-        <div class="toggle-container">
-            <div id="toggle" class="toggle-button">
-                <div class="toggle-circle"></div>
-            </div>
-        </div>
+        
     
         <script>
             // Récupérer l'état initial de l'offre depuis PHP
