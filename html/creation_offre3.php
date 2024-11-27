@@ -146,7 +146,28 @@ if(isset($_POST['valider'])){
         if(!file_exists($destination)){
             mkdir($destination, 0777, true); // crée le dossier si il n'existe pas.
         }
-        
+
+        // maintenant, on peut copier les images dans ce dossier
+        $photos = $_SESSION['crea_offre3']['photos'];
+        foreach($photos as $photo){
+            $nom_temp = $photo['tmp_name'];
+            $nom_photo = $photo['name'];
+
+                // Construire le chemin de destination complet
+            $chemin_destination = $destination . '/' . $name;
+            
+            // Vérifier si le fichier temporaire existe
+            if (file_exists($tmp_name)) {
+                // Déplacer le fichier dans le dossier cible
+                if (move_uploaded_file($tmp_name, $chemin_destination)) {
+                    echo "Le fichier $name a été déplacé avec succès.<br>";
+                } else {
+                    echo "Erreur : Impossible de déplacer le fichier $name.<br>";
+                }
+            } else {
+                echo "Erreur : Le fichier temporaire $tmp_name n'existe pas.<br>";
+            }
+        }
     }
 }
     
