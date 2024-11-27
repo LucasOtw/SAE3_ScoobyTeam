@@ -563,7 +563,7 @@ a.button-text{
 
 .button-toutes{
     border-radius: 30px;
-    padding: 10px 20px;
+    padding: 20px 20px;
     font-size: 16px;
     cursor: pointer;
     margin: 20px 0;
@@ -575,12 +575,11 @@ a.button-text{
     color: black;
     text-decoration: none;
     text-align: center;
-    padding-top : 5px;
 }
 
 .button-Ligne{
     border-radius: 30px;
-    padding: 10px 20px;
+    padding: 20px 20px;
     font-size: 16px;
     cursor: pointer;
     margin: 20px 0;
@@ -592,12 +591,11 @@ a.button-text{
     color: black;
     text-decoration: none;
     text-align: center;
-    padding-top : 5px;
 }
 
 .button-HorsLigne{
     border-radius: 30px;
-    padding: 10px 20px;
+    padding: 20px 20px;
     font-size: 16px;
     cursor: pointer;
     margin: 20px 0;
@@ -609,7 +607,6 @@ a.button-text{
     color: black;
     text-decoration: none;
     text-align: center;
-    padding-top : 5px;
 }
 
 .button-Active{
