@@ -30,8 +30,6 @@ echo "</pre>";
 
 $code_offre = $details_offre["code_offre"];
 
-$compte = $_SESSION['membre'];
-$code_compte = $compte['code_compte'];
 
 echo "<pre>";
 var_dump($compte);
@@ -155,7 +153,10 @@ echo "</pre>";
         if(!empty($_POST)){
             $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
             $note = isset($_POST['note']) ? $_POST['note'] : '';
-
+            
+            $compte = $_SESSION['membre'];
+            $code_compte = $compte['code_compte'];
+           
             $erreurs = [];
             if (empty($texte_avis)) {
                 $erreurs[] = "Vous devez remplir ce champ";
