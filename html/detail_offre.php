@@ -449,35 +449,33 @@
             
             <div class="schedule">
                 <h2>Horaire du Spectacle</h2>
-                <div class="details">
-                    <p><?php echo date("l, j F Y", strtotime($details_offre["date_spectacle"])); ?></p>
-                    <p class="date">Date : 
-                        <span>
-                            <?php 
-                            // Vérifiez si la date est définie et non nulle
-                            if (isset($details_offre["date_spectacle"])) {
-                                // Formatez la date SQL (YYYY-MM-DD) en format lisible
-                                echo date("l, j F Y", strtotime($details_offre["date_spectacle"])); 
-                            } else {
-                                echo "Date non disponible";
-                            }
-                            ?>
-                        </span>
-                    </p>
-                    <p class="time">Heure : 
-                        <span>
-                            <?php 
-                            // Vérifiez si l'heure est définie et non nulle
-                            if (isset($details_offre["heure_spectacle"])) {
-                                // Formatez l'heure SQL (HH:MM:SS) en format lisible
-                                echo date("H\h i", strtotime($details_offre["heure_spectacle"])); 
-                            } else {
-                                echo "Heure non disponible";
-                            }
-                            ?>
-                        </span>
-                    </p>
-                </div>
+                <p><?php echo date("l, j F Y", strtotime($details_offre["date_spectacle"])); ?></p>
+                <p class="date">Date : 
+                    <span>
+                        <?php 
+                        // Vérifiez si la date est définie et non nulle
+                        if (isset($details_offre["date_spectacle"])) {
+                            // Formatez la date SQL (YYYY-MM-DD) en format lisible
+                            echo date("l, j F Y", strtotime($details_offre["date_spectacle"])); 
+                        } else {
+                            echo "Date non disponible";
+                        }
+                        ?>
+                    </span>
+                </p>
+                <p class="time">Heure : 
+                    <span>
+                        <?php 
+                        // Vérifiez si l'heure est définie et non nulle
+                        if (isset($details_offre["heure_spectacle"])) {
+                            // Formatez l'heure SQL (HH:MM:SS) en format lisible
+                            echo date("H\h i", strtotime($details_offre["heure_spectacle"])); 
+                        } else {
+                            echo "Heure non disponible";
+                        }
+                        ?>
+                    </span>
+                </p>
             </div>
         
         <?php
