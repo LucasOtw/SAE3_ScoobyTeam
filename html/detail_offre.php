@@ -449,8 +449,8 @@
             
             <div class="schedule">
                 <h2>Horaire du Spectacle</h2>
-                <p><?php echo $details_offre["date_spectacle"];?></p>
                 <div class="details">
+                    <p><?php echo date("l, j F Y", strtotime($details_offre["date_spectacle"])); ?></p>
                     <p class="date">Date : 
                         <span>
                             <?php 
