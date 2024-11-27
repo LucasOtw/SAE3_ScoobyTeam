@@ -46,12 +46,21 @@ if (isset($_POST['modif_infos'])){
       {
          if (trim($champsModifies['mdp_nv1']) === trim($champsModifies['mdp_nv2']))
          {
-            echo 'okkkkkkkkkkkkkkk';
+            $query = $dbh->prepare("UPDATE tripenarvor._compte SET mdp = :valeur WHERE code_compte = :code_compte");
+            $query->execute([
+                'valeur' => password_hash($champsModifies['mdp_nv1'], PASSWORD_DEFAULT),
+                'code_compte' => $compte['code_compte']
+            ]);
+                
+            $rowsAffected = $query->rowCount();
+            if ($rowsAffected > 0) {
+                echo "$rowsAffected ligne(s) mise(s) à jour avec succès.";
+            } else {
+                echo "Aucune mise à jour effectuée.";
+            }
+
          }
       }
-      // $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
-      // $query->execute(['valeur' => trim(preg_replace('/\s+/', '', trim($valeur))), 'code_compte' => $compte['code_compte']]); 
-      
        // echo "Les informations ont été mises à jour.";
        include("recupInfosCompte.php");
    } else {
