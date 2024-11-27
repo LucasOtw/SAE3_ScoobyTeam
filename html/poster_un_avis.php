@@ -82,12 +82,7 @@ $dbh = new PDO($dsn, $username, $password);
                        <div class="poster_un_avis_note">
                            <h2 class="poster_un_avis_note_titre">Votre note</h2>
                            <div class="poster_un_avis_stars">
-                               <span class="poster_un_avis_star">⭐</span>
-                               <span class="poster_un_avis_star">⭐</span>
-                               <span class="poster_un_avis_star">⭐</span>
-                               <span class="poster_un_avis_star">⭐</span>
-                               <span class="poster_un_avis_star">⭐</span>
-                               <figure class="notation">
+                            <figure class="notation">
                             <span role="img" aria-labelledby="rating-67471c1e61e38" style="width: 66%"></span>
                             <figcaption class="screen-readers" id="rating-67471c1e61e38">noté 3,3 sur 5</figcaption>
                             </figure>
