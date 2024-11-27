@@ -340,7 +340,7 @@ function tempsEcouleDepuisPublication($offre){
                                                 <img src="<?php echo './'.$offre_image['url_image']; ?>" alt="">
                                                 <div class="raison-sociale-card-a-la-une">
                                                     <p><?php echo $offre["titre_offre"]; ?></p>
-                                                    <p><?php echo $offre["prix"]; ?></p>
+                                                   
                                                     <!-- Le bouton est maintenant juste après le texte dans la même zone -->
                                                     <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
                                                 </div>
@@ -444,6 +444,7 @@ function tempsEcouleDepuisPublication($offre){
                         <div class="offer-details">
                             <h2><?php echo $offre["titre_offre"] ?></h2>
                             <p><?php echo $villeOffre["ville"] ?></p>
+                            <p><?php echo $offre["prix"]; ?></p>
                             <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
                             <form id="form-voir-offre" action="detail_offre.php" method="POST">
                                 <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
