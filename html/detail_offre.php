@@ -283,7 +283,12 @@
                 <div class="detail_offre_price-button">
 
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
-                    <a href="poster_un_avis.php"><button class="button_detailoffre_avis">Poster un avis</button></a>
+
+                    <form action="poster_un_avis.php" method="POST">
+                       <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
+                       <input id="button_detailoffre_avis" type="submit" name="posterAvis" value="Poster un avis">
+                    </form>                    
+<!--                     <a href="poster_un_avis.php"><button class="button_detailoffre_avis">Poster un avis</button></a> -->
                     <a href="<?php echo $details_offre["site_web"]; ?>"><button class="visit-button_detailoffre">Voir le site ➔</button></a>
 
                 </div>
