@@ -364,13 +364,6 @@
                                     <h3 style="margin-top: 1em;">Durée</h3>
                                     <p><?php echo $details_offre["duree"];?></p>
 
-                                    <div class="schedule">
-                                        <h2>Horaire du Spectacle</h2>
-                                        <div class="details">
-                                            <p class="date">Date : <span><?php echo $details_offre["date_spectacle"];?></span></p>
-                                            <p class="time">Heure : <span><?php echo $details_offre["heure_spectacle"];?></span></p>
-                                        </div>
-                                    </div>
                                 <?php
                                 }
                                 else if ($type_offre === "visite")
@@ -428,6 +421,17 @@
 
             </div>
         </div>
+
+        <div class="schedule">
+            <h2>Horaire du Spectacle</h2>
+            <div class="details">
+                <p class="date">Date : <span><?php echo $details_offre["date_spectacle"];?></span></p>
+                <p class="time">Heure : <span><?php echo $details_offre["heure_spectacle"];?></span></p>
+            </div>
+        </div>
+        
+        <?php
+        
         
         <?php
         if (!empty($h_lundi["ouverture"]) || 
