@@ -557,6 +557,18 @@ footer {
     gap: 10px;
     margin-left: 7vh;
 }
+.back-button {
+    font-size: 42px;
+    text-decoration: none;
+    color: #333;
+    margin-top: -0.3em;
+}
+
+.poster_un_avis_back_button {
+    display: flex;
+    justify-content: space-around;
+    margin-right: 7vw;
+}
 
 .poster_un_avis_btn_publier {
     background-color: var(--vert-clair);
