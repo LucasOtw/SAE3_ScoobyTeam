@@ -722,11 +722,11 @@ input#btn-poster-avis {
     .service:hover {
         transform: scale(1.1); /* Animation au survol */
     }
-           .avis-widget {
+    .avis-widget {
     max-width: 95%; /* Adapter à un écran étroit */
     margin-left: 1em; /* Réduire les marges */
     margin-top: 2em;
-    padding: 15px 15px 30px 15px;
+    padding-bottom:40px;
   }
 
   .avis-widget .avis-header h1.avis {
