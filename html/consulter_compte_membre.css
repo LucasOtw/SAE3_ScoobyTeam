@@ -453,7 +453,7 @@ footer {
     margin-bottom: 11em;
 }
 
-.main_consulter_compte_membre .submit-btn1, 
+
 .main_consulter_compte_membre button.submit-btn2,
 .main_consulter_compte_membre button.submit-btn3 {
     display: flex;
@@ -480,6 +480,11 @@ footer {
     color: white;
     border-radius: 16px;
     text-decoration: none;
+    transition: background-color 0.3s ease;
+    width: 28%;
+    height: 8%;
+    padding : 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ajout de l'ombre */
 }
 .main_consulter_compte_membre button.submit-btn2{ 
     background-color: white;
