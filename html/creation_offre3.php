@@ -34,6 +34,8 @@ if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
     }
 }
 
+var_dump($_SESSION['crea_offre2']);
+
 $infosCB = null;
 
 // on vérifie si le pro a un compte bancaire
@@ -303,9 +305,10 @@ if(isset($_POST['valider'])){
             $creation_offre_req = "INSERT INTO tripenarvor._offre ($columns) VALUES ($placeholders)";
             $creation_offre = $dbh->prepare($creation_offre_req);
             
-            if($creation_offre->execute($mon_offre)){
+/            if($creation_offre->execute($mon_offre)){
                 // on récupère son id
                 $id_offre = $dbh->lastInsertId();
+                // on lui ajoute ses images
                 $son_image = $dbh->prepare("INSERT INTO tripenarvor._son_image VALUES (:code_image,:code_offre)");
                 foreach($id_image as $code_image){
                     $son_image->execute([
@@ -313,7 +316,10 @@ if(isset($_POST['valider'])){
                         ":code_offre" => $id_offre
                     ]);
                 }
-                $_SESSION['aCreeUneOffre'] = true;
+                // on regarde quel type d'offre c'est (restauration, activité, ect.)
+                if(isset($_SESSION['crea_offre2']['repas'])){
+                    echo "nice";
+                }
             } else {
                 echo "Nique ta mère";
             }
