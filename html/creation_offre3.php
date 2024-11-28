@@ -61,6 +61,8 @@ if(isset($_POST['valider'])){
         * VERIFICATION DE L'ADRESSE
         */
 
+        var_dump($_SESSION['aCreeUneOffre']);
+
         if($_SESSION['aCreeUneOffre'] !== false){
             $adresse_postal = $_SESSION['crea_offre']['adresse'];
             $complement_adresse = $_SESSION['crea_offre']['complementAdresse'];
