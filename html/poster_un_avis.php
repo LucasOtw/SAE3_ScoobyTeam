@@ -80,9 +80,7 @@ echo "</pre>";
                     <button class="poster_un_avis_btn_offre">Voir l'offre →</button>
                 </div>
                 <div class="poster_un_avis_images">
-                           <?php
-                                   <img src="<?php echo $images_offre[0]; ?>" alt="">
-                            ?>
+                         <img src="<?php echo $images_offre[0]; ?>" alt="">  
 <!--                     <img src="images/tiallannec1.png" alt="Image 1" class="poster_un_avis_image"> -->
                 </div>
             </div>
