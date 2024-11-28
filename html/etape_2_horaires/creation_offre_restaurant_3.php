@@ -318,8 +318,8 @@ session_start();
                       <div class="col">
                             <fieldset>
                                   <legend style="display: block;">Période d'ouverture</legend>
-                                  <input id="jour" name="periode[]" type="text" placeholder="DD-MM" pattern="\d{2}-\d{2}">
-                                  <input id="jour" name="periode[]" type="text" placeholder="DD-MM" pattern="\d{2}(\d{2}">
+                                  <input id="jour" name="periode" type="text" placeholder="DD-MM" pattern="\d{2}-\d{2}">
+                                  <input id="jour" name="periode" type="text" placeholder="DD-MM" pattern="\d{2}(\d{2}">
                             </fieldset>
                       </div>
                 </div>
