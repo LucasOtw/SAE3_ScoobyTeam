@@ -225,7 +225,7 @@ footer {
     width: 24px;
     margin: 0 10px;
 }
-.nav-bar a.nav-bar{
+.nav-bar .nav-bar img{
            display : none;
 }
 
