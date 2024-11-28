@@ -1248,48 +1248,53 @@ footer {
   }
 
 
-/* Style du conteneur du toggle */
-        .toggle-container {
-            display: flex;
-            align-items: center;
-            height: 1vh;
-        }
+/* Conteneur du toggle */
+.toggle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-        /* Style du bouton toggle */
-        .toggle-button {
-            width: 80px;
-            height: 40px;
-            background-color: lightgray;
-            border-radius: 20px;
-            position: relative;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-top: -6.4em;
-            margin-right: -90em;
-        }
+/* Cache l'élément checkbox réel */
+.toggle-checkbox {
+    display: none;
+}
 
-        /* Style de la pastille (bouton interne) */
-        .toggle-circle {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: white;
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            transition: left 0.3s ease;
-        }
+/* Design du label (comportant le slider) */
+.toggle-label {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
-        /* Lorsque le toggle est activé (en ligne) */
-        .EnLigne {
-            background-color: orange;
-            margin-top: -6.4em;
-            margin-right: -90em;
-        }
+/* Le slider */
+.toggle-slider {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
 
-        .EnLigne .toggle-circle {
-            left: 42px;
-        }
+/* Quand le toggle est activé */
+.toggle-checkbox:checked + .toggle-label {
+    background-color: #4CAF50;
+}
+
+/* Quand le slider est déplacé */
+.toggle-checkbox:checked + .toggle-label .toggle-slider {
+    transform: translateX(30px);
+}
 
 
          /* Encapsulation dans la classe avis-widget */
