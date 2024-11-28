@@ -23,12 +23,14 @@ $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
 $dbh = new PDO($dsn, $username, $password);
 
 $details_offre = unserialize($_POST["uneOffre"]); // on récupère son contenu
+
+$stmt = $dbh->prepare('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = :code_offre;');
+$stmt->execute([':code_offre' => $details_offre["code_offre"]]);
+$images_offre = $stmt->fetchAll(PDO::FETCH_NUM);
 /*
 echo "<pre>";
 var_dump($details_offre);
 echo "</pre>";
-
-
 
 echo "<pre>";
 var_dump($compte);
@@ -78,8 +80,14 @@ echo "</pre>";
                     <button class="poster_un_avis_btn_offre">Voir l'offre →</button>
                 </div>
                 <div class="poster_un_avis_images">
-                    <img src="images/tiallannec1.png" alt="Image 1" class="poster_un_avis_image">
-                    <img src="images/tiallannec3.png" alt="Image 2" class="poster_un_avis_image">
+                   <?php
+                       foreach ($images_offre as $photo) {
+                           ?>
+                                   <img src="<?php echo $photo[0]; ?>" alt="">
+                           <?php
+                       }
+                    ?>
+<!--                     <img src="images/tiallannec1.png" alt="Image 1" class="poster_un_avis_image"> -->
                 </div>
             </div>
 
@@ -155,9 +163,7 @@ echo "</pre>";
             $note = isset($_POST['note']) ? $_POST['note'] : '';
             
             $compte = $_SESSION['membre'];
-            $code_compte = $compte['code_compte'];
-
-           
+            $code_compte = $compte['code_compte'];           
             $code_offre = $details_offre["code_offre"];
            
             $erreurs = [];
