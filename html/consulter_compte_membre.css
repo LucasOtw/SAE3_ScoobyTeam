@@ -474,7 +474,13 @@ footer {
 
 }
 
-.main_consulter_compte_membre .submit-btn1,
+.main_consulter_compte_membre .submit-btn1{
+    background-color: var(--vert-clair);
+    border: 1.5px solid var(--vert-clair);
+    color: white;
+    border-radius: 16px;
+    text-decoration: none;
+}
 .main_consulter_compte_membre button.submit-btn2{ 
     background-color: white;
     border: 1.5px solid var(--vert-clair);
