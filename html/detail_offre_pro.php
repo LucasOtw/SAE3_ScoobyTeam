@@ -356,6 +356,14 @@
 
                 </div>
                 </div>
+                    <!--toogle button pour mise en ligne/ hors ligne -->
+                    
+                    <div class="toggle-container">
+                        <input type="checkbox" id="toggle" class="toggle-checkbox">
+                        <label for="toggle" class="toggle-label">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
                     
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
                     <div class="detail_offre_pro_button">                        
