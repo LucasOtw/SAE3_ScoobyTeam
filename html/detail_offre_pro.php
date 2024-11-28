@@ -359,7 +359,9 @@
                     <!--toogle button pour mise en ligne/ hors ligne -->
                     
                     <div class="slider-container">
-                        <button class="slider" onclick="toggleSlider()">Off</button>
+                        <div class="slider" onclick="toggleSlider()">
+                            <div class="slider-circle"></div>
+                        </div>
                     </div>
 
                     <script src="toggle-button.js"></script>
