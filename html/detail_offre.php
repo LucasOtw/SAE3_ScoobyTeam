@@ -646,7 +646,7 @@
         </div>
 
     </div>
-</body>
+</div>
         
 
     <!-- Détails de l'offre sur MOBILE -->
