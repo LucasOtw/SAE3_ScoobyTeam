@@ -258,14 +258,6 @@ footer {
     margin: 0;
     padding: 0;
 }
-
-
-
-.poster_un_avis_container {
-    margin: 18px 10%; /* Auto centre horizontalement */
-    padding: 20px;
-    
-}    
   
 
 .poster_un_avis_titre,
@@ -476,7 +468,6 @@ a.back-button {
         align-items: center;
         padding: 20px;
         border-radius: 8px;
-        margin-bottom: 147px;
         border: 1px solid #f3f8ff;
         border-radius: 29px;
         resize: none;
@@ -512,22 +503,9 @@ a.back-button {
     }
     .poster_un_avis_titre {
         font-size: 1.5rem;
-        margin-left: -5vh;
         margin-top: 5vh;
     }
     
-    .poster_un_avis_section {
-        margin-right: -1.2em;
-        margin-left: -2.7em;
-    }
-    .poster_un_avis_section_titre{
-        margin-top: -5em;
-    }
-    
-    .poster_un_avis_container {
-        margin: 18px 10%;
-        padding: 20px;
-    }
     .poster_un_avis_disclaimer {
         display: none;
     }
@@ -575,11 +553,10 @@ a.back-button {
     .poster_un_avis_back_button {
         display: flex;
         justify-content: space-around;
-        margin-right: 9vw;
         font-size: 14px;
     }
     
-        .poster_un_avis_btn_publier {
+    .poster_un_avis_btn_publier {
         background-color: var(--vert-clair);
         color: white;
         width: 79vw;
@@ -587,8 +564,10 @@ a.back-button {
         border-radius: 20px;
         font-size: 21px;
         transition: transform 0.3s ease;
-        margin-top: -7vh;
         margin-bottom: 10vh;
+        display: flex;
+        align-item: center;
+        justify-content:center;
     }
     
     .poster_un_avis_btn_publier:hover {
