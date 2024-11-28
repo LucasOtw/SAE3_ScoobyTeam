@@ -16,7 +16,9 @@ session_start();
       
           $horaires_par_jour = [];
           $erreurs = []; // Assurez-vous d'initialiser le tableau
-          var_dump($_POST['EnvoiEtape3']['periode']);            
+          echo "<pre>";
+          var_dump($_POST['EnvoiEtape3']);
+          echo "</pre>";
       
           foreach ($jours as $jour => [$ouverture, $fermeture]) {
               $horaire_ouverture = $_POST[$ouverture] ?? '';
@@ -312,16 +314,6 @@ session_start();
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                      <div class="col">
-                            <fieldset>
-                                  <legend style="display: block;">Période d'ouverture</legend>
-                                  <input id="jour" name="periode[]" type="text" placeholder="DD-MM" pattern="\d{2}-\d{2}">
-                                  <input id="jour" name="periode[]" type="text" placeholder="DD-MM" pattern="\d{2}(\d{2}">
-                            </fieldset>
-                      </div>
-                </div>
-
 
                 <button type="submit" id="button_valider" name="EnvoiEtape3">
                     Continuer <img src="../images/fleche.png" alt="Fleche" width="25px" height="25px">
