@@ -151,8 +151,6 @@ if(isset($_POST['valider'])){
 
             if(file_exists($chemin)){
                 echo "ta mère";
-            } else {
-                die('AH');
             }
     
             /*
