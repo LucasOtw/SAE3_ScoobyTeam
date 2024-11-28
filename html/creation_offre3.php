@@ -182,6 +182,8 @@ if(isset($_POST['valider'])){
             } else {
                 die('Le chemin n existe pas');
             }
+
+            var_dump($id_image);
     
             /*
             * DERNIERS AJOUTS
