@@ -154,7 +154,7 @@ if(isset($_POST['valider'])){
             if(file_exists($chemin)){
                 echo "ta mère";
             } else {
-                die('Le chemin n'existe pas');
+                die('Le chemin n existe pas');
             }
     
             /*
