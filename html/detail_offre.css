@@ -624,7 +624,9 @@ input#btn-poster-avis {
         box-shadow: 0px 2px 10px rgb(156, 156, 156);
     }
 
-
+    .nav-bar img {
+        display: inline-block; /* Affiche les images dans la barre de navigation */
+    }
     nav.nav-bar a {
         display: flex;
         align-items: center;
