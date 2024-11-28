@@ -722,6 +722,40 @@ input#btn-poster-avis {
     .service:hover {
         transform: scale(1.1); /* Animation au survol */
     }
+    .avis-widget {
+    max-width: 95%; /* Largeur maximale */
+    margin: 2em auto; /* Centrage horizontal avec marge en haut et en bas */
+    padding: 15px 15px 100px; /* Espacement interne */
+    text-align: center; /* Alignement du contenu (si nécessaire) */
+    }
+
+
+  .avis-widget .avis-header h1.avis {
+    font-size: 2em; /* Réduire la taille de police */
+  }
+
+  .avis-widget .avis-header .avis-score {
+    font-size: 1em; /* Ajuster la taille */
+  }
+
+  .avis-widget .avis .avatar {
+    width: 50px; /* Réduire la taille de l'avatar */
+    height: 50px;
+    margin-right: 10px; /* Réduire l'espace entre l'avatar et le texte */
+  }
+
+  .avis-widget .avis-content h3.avis {
+    font-size: 1em; /* Adapter la taille de police */
+  }
+
+  .avis-widget .avis-content p.avis {
+    font-size: 0.8em; /* Réduire la taille des paragraphes */
+  }
+
+  .avis-widget .avis-list .avis {
+    margin-bottom: 15px; /* Réduire l'espacement entre les avis */
+    padding-bottom: 10px; /* Ajuster l'espacement interne */
+  }
 }
     @media (max-width: 768px) {
         .service {
@@ -1268,38 +1302,4 @@ input#btn-poster-avis {
            }
 
            
-@media (max-width: 429px) {
-  .avis-widget {
-    max-width: 95%; /* Adapter à un écran étroit */
-    margin-left: 1em; /* Réduire les marges */
-    margin-top: 2em;
-    padding: 15px 15px 30px 15px;
-  }
 
-  .avis-widget .avis-header h1.avis {
-    font-size: 2em; /* Réduire la taille de police */
-  }
-
-  .avis-widget .avis-header .avis-score {
-    font-size: 1em; /* Ajuster la taille */
-  }
-
-  .avis-widget .avis .avatar {
-    width: 50px; /* Réduire la taille de l'avatar */
-    height: 50px;
-    margin-right: 10px; /* Réduire l'espace entre l'avatar et le texte */
-  }
-
-  .avis-widget .avis-content h3.avis {
-    font-size: 1em; /* Adapter la taille de police */
-  }
-
-  .avis-widget .avis-content p.avis {
-    font-size: 0.8em; /* Réduire la taille des paragraphes */
-  }
-
-  .avis-widget .avis-list .avis {
-    margin-bottom: 15px; /* Réduire l'espacement entre les avis */
-    padding-bottom: 10px; /* Ajuster l'espacement interne */
-  }
-}

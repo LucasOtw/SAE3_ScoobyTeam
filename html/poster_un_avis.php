@@ -26,7 +26,12 @@ $details_offre = unserialize($_POST["uneOffre"]); // on récupère son contenu
 
 $stmt = $dbh->prepare('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = :code_offre;');
 $stmt->execute([':code_offre' => $details_offre["code_offre"]]);
-$images_offre = $stmt->fetchAll(PDO::FETCH_NUM);
+$image_offre = $stmt->fetch(PDO::FETCH_NUM);
+
+echo "<pre>";
+   var_dump($image_offre);
+echo "</pre>";
+
 /*
 echo "<pre>";
 var_dump($details_offre);
@@ -80,7 +85,7 @@ echo "</pre>";
                     <button class="poster_un_avis_btn_offre">Voir l'offre →</button>
                 </div>
                 <div class="poster_un_avis_images">
-                         <img src="<?php echo $images_offre[0]; ?>" alt="">  
+                         <img src="<?php echo $image_offre[0]; ?>" alt=""  class="poster_un_avis_image"> 
 <!--                     <img src="images/tiallannec1.png" alt="Image 1" class="poster_un_avis_image"> -->
                 </div>
             </div>
@@ -140,7 +145,7 @@ echo "</pre>";
             <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
             <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
             <a href="#"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
-            <a href="
+            <a href="r
                 <?php
                     if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
                         echo "consulter_compte_membre.php";
