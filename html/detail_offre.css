@@ -723,11 +723,12 @@ input#btn-poster-avis {
         transform: scale(1.1); /* Animation au survol */
     }
     .avis-widget {
-    max-width: 95%; /* Adapter à un écran étroit */
-    margin-left: 1em; /* Réduire les marges */
-    margin-top: 2em;
-    padding-bottom:30px;
-  }
+    max-width: 95%; /* Largeur maximale */
+    margin: 2em auto; /* Centrage horizontal avec marge en haut et en bas */
+    padding: 15px 15px 30px; /* Espacement interne */
+    text-align: center; /* Alignement du contenu (si nécessaire) */
+    }
+
 
   .avis-widget .avis-header h1.avis {
     font-size: 2em; /* Réduire la taille de police */
