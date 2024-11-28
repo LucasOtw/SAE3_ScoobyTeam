@@ -359,7 +359,7 @@
                     <!--toogle button pour mise en ligne/ hors ligne -->
                     
                     <div class="slider-container">
-                        <div class="slider" onclick="toggleSlider()">
+                        <div class="slider" onclick="toggleSlider(this)" data-offer-id="1" data-active="false">
                             <div class="slider-circle"></div>
                         </div>
                     </div>
