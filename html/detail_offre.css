@@ -225,6 +225,12 @@ footer {
     width: 24px;
     margin: 0 10px;
 }
+.nav-bar {
+           display : none;
+}
+.nav-bar img{
+           display: none;
+}
 
 /* Media queries pour l'adaptabilité */
 
@@ -618,7 +624,9 @@ input#btn-poster-avis {
         box-shadow: 0px 2px 10px rgb(156, 156, 156);
     }
 
-
+    .nav-bar img {
+        display: inline-block; /* Affiche les images dans la barre de navigation */
+    }
     nav.nav-bar a {
         display: flex;
         align-items: center;
@@ -751,6 +759,11 @@ input#btn-poster-avis {
              border-radius: 1000px;
              box-shadow: 0px 2px 10px rgb(156, 156, 156);
            }
+           nav.nav-bar a {
+                   display: flex;
+                   align-items: center;
+                   margin: 10px auto;
+               }
            footer {
                    display : none;
            }
