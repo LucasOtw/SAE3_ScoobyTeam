@@ -1279,7 +1279,7 @@ footer {
 
 /* Quand le slider est activé (sur la droite) */
 .slider.active {
-    background-color: #4CAF50;  /* Vert lorsque activé */
+    background-color: #F28322;  /* orange lorsque activé */
 }
 
 /* Quand le cercle se déplace sur la droite */
