@@ -358,12 +358,11 @@
                 </div>
                     <!--toogle button pour mise en ligne/ hors ligne -->
                     
-                    <div class="toggle-container">
-                        <input type="checkbox" id="toggle" class="toggle-checkbox">
-                        <label for="toggle" class="toggle-label">
-                            <span class="toggle-slider"></span>
-                        </label>
+                    <div class="slider-container">
+                        <button class="slider" onclick="toggleSlider()">Off</button>
                     </div>
+
+                    <script src="toglle-button.js"></script>
                     
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
                     <div class="detail_offre_pro_button">                        
