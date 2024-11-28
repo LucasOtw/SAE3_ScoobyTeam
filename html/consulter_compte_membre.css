@@ -477,7 +477,7 @@ footer {
 .main_consulter_compte_membre .submit-btn1{
     background-color: var(--vert-clair);
     border: 1.5px solid var(--vert-clair);
-    color: white;
+    color: var(--vert-clair);
     border-radius: 16px;
     text-decoration: none;
     transition: background-color 0.3s ease;
