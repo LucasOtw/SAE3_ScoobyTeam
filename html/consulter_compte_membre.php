@@ -1,6 +1,6 @@
 <?php
-ob_start(); // bufferisation, ça devrait marcher ?
-session_start();
+    ob_start(); // bufferisation, ça devrait marcher ?
+    session_start();
 
 include("recupInfosCompte.php");
 
