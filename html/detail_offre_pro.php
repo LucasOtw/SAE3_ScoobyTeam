@@ -366,24 +366,7 @@
                     </form>
 
 
-                     <!-- Bouton toggle -->
-                            <div class="toggle-container">
-                                <div id="toggle" class="toggle-button">
-                                    <div class="toggle-circle"></div>
-                                </div>
-                            </div>
-                        <!-- Conteneur de l'offre -->
-        <?php
-            // Simulation : récupérer la valeur de l'offre (1 pour "En Ligne", 0 pour "Hors Ligne")
-            $en_ligne = $details_offre['en_ligne'] ?? 0; // Par défaut 0 si $details_offre['en_ligne'] n'est pas défini
-        ?>
-
-
-                        
- <button id="toggleButton" class="toggle-button">
-    <span class="toggle-text">Changer état</span>
-    <div class="toggle-switch"></div>
-</button>
+                     
 
 <span id="offerStatus"></span>
 
