@@ -722,40 +722,7 @@ input#btn-poster-avis {
     .service:hover {
         transform: scale(1.1); /* Animation au survol */
     }
-    .avis-widget {
-    max-width: 95%; /* Largeur maximale */
-    margin: 2em auto; /* Centrage horizontal avec marge en haut et en bas */
-    padding: 15px 15px 100px; /* Espacement interne */
-    text-align: center; /* Alignement du contenu (si nécessaire) */
-    }
-
-
-  .avis-widget .avis-header h1.avis {
-    font-size: 2em; /* Réduire la taille de police */
-  }
-
-  .avis-widget .avis-header .avis-score {
-    font-size: 1em; /* Ajuster la taille */
-  }
-
-  .avis-widget .avis .avatar {
-    width: 50px; /* Réduire la taille de l'avatar */
-    height: 50px;
-    margin-right: 10px; /* Réduire l'espace entre l'avatar et le texte */
-  }
-
-  .avis-widget .avis-content h3.avis {
-    font-size: 1em; /* Adapter la taille de police */
-  }
-
-  .avis-widget .avis-content p.avis {
-    font-size: 0.8em; /* Réduire la taille des paragraphes */
-  }
-
-  .avis-widget .avis-list .avis {
-    margin-bottom: 15px; /* Réduire l'espacement entre les avis */
-    padding-bottom: 10px; /* Ajuster l'espacement interne */
-  }
+    
 }
     @media (max-width: 768px) {
         .service {
@@ -1301,5 +1268,164 @@ input#btn-poster-avis {
              border-bottom: none; /* Supprime la ligne après le dernier avis */
            }
 
-           
+       /* Styles pour les écrans de 429px et moins */
+@media (max-width: 429px) {
+
+    /* Header */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        background-color: #F4F4F4;
+        border-bottom: 1px solid #EEE;
+    }
+
+    .header h1 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .back-button {
+        font-size: 24px;
+        text-decoration: none;
+        color: #333;
+    }
+
+    /* Détails des offres */
+    .detail_offre_hotel-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .detail_offre_gallery {
+        flex-direction: column;
+    }
+
+    .main-image {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Corps pour mobile */
+    #body_offre_desktop {
+        display: none;
+    }
+
+    #body_offre_mobile {
+        display: block !important;
+        font-family: 'Arial', sans-serif;
+        margin: 0px 0 -1em -2em;
+        padding: 0 5vw;
+        background-color: #ffffff;
+        width: 113%;
+    }
+
+    #body_offre_mobile > div > div.swiper-container > div.swiper-wrapper > div > img {
+        width: 50%;
+    }
+
+    #body_offre_mobile > header {
+        display: flex;
+        margin: 4vh 168px;
+        justify-content: center;
+    }
+
+    .icone {
+        width: 3vw;
+    }
+
+    span#titre {
+        display: flex;
+        align-items: last baseline;
+        justify-content: space-between;
+    }
+
+    span#titre > p {
+        color: #BDC426;
+    }
+
+    #body_offre_mobile > div > div.details > p {
+        color: #727272;
+    }
+
+    #body_offre_mobile > div > div.details > div.rating > span:nth-child(2) {
+        color: #727272;
+    }
+
+    #body_offre_mobile > div > div.details > section {
+        margin: 3vh 0;
+    }
+
+    #body_offre_mobile > div > div.details > section > article {
+        margin: 2vh 0 2vh 1vw;
+    }
+
+    /* Services */
+    .services {
+        display: flex;
+        flex-wrap: wrap; /* Ajustement sur plusieurs lignes */
+        justify-content: center; /* Centrage */
+        gap: 20px; /* Espacement */
+        margin: 2vh 0;
+        padding: 10px;
+    }
+
+    .service {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid transparent;
+        background-color: rgba(23, 111, 242, 0.05);
+        padding: 20px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%; /* Forme circulaire */
+        box-shadow: 5px 5px 10px rgba(166, 158, 158, 0.5);
+        color: grey;
+        text-align: center;
+        font-size: 14px;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .service:hover {
+        transform: scale(1.1);
+    }
+
+    /* Avis Widget */
+    .avis-widget {
+        max-width: 95%;
+        margin-left: 1em;
+        margin-top: 2em;
+        padding: 15px 15px 30px 15px; /* Padding avec bas à 30px */
+    }
+
+    .avis-widget .avis-header h1.avis {
+        font-size: 2em;
+    }
+
+    .avis-widget .avis-header .avis-score {
+        font-size: 1em;
+    }
+
+    .avis-widget .avis .avatar {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    .avis-widget .avis-content h3.avis {
+        font-size: 1em;
+    }
+
+    .avis-widget .avis-content p.avis {
+        font-size: 0.8em;
+    }
+
+    .avis-widget .avis-list .avis {
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+    }
+}
+    
 
