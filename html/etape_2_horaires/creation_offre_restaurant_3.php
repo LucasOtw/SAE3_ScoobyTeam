@@ -16,6 +16,7 @@ session_start();
       
           $horaires_par_jour = [];
           $erreurs = []; // Assurez-vous d'initialiser le tableau
+          var_dump($_POST['EnvoiEtape3']['periode']);            
       
           foreach ($jours as $jour => [$ouverture, $fermeture]) {
               $horaire_ouverture = $_POST[$ouverture] ?? '';
@@ -40,8 +41,6 @@ session_start();
               }
           } else {
               $_SESSION['crea_offre3'] = $horaires_par_jour;
-              header('location: ../etape_3_boost/creation_offre_restaurant_4.php');
-              exit;
           }
       }
         
@@ -312,6 +311,15 @@ session_start();
                             </label>
                         </div>
                     </div>
+                </div>
+                <div class="row">
+                      <div class="col">
+                            <fieldset>
+                                  <legend style="display: block;">Période d'ouverture</legend>
+                                  <input id="jour" name="periode[]" type="text" placeholder="DD-MM" pattern="\d{2}-\d{2}">
+                                  <input id="jour" name="periode[]" type="text" placeholder="DD-MM" pattern="\d{2}(\d{2}">
+                            </fieldset>
+                      </div>
                 </div>
 
 
