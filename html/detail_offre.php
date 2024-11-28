@@ -791,9 +791,6 @@
                 style="border:0;margin: auto; width:85vw; height:50vh" allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
-
-
-                    <p> Avis </p>
                     
              <div class="avis-widget">
               <div class="avis-header">
