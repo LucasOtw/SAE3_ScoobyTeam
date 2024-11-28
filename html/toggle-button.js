@@ -1,43 +1,35 @@
 // Fonction pour basculer l'état du bouton slider
-function toggleSlider(slider) {
-    // Basculer la classe CSS
+function toggleSlider() {
+    var slider = document.querySelector('.slider');
+    var offerStatusText = document.getElementById('offer-status');
+    
+    // Bascule la classe 'active' pour déplacer le cercle et changer la couleur
     slider.classList.toggle('active');
+    
+    // Vérifie si le bouton est activé ou non et change l'état de l'offre
+    var isOnline = slider.classList.contains('active');
+    var newStatus = isOnline ? "En Ligne" : "Hors Ligne";
+    
+    // Met à jour le texte de l'état de l'offre
+    offerStatusText.textContent = newStatus;
 
-    // Récupérer l'état actuel et les attributs nécessaires
-    const offerId = slider.getAttribute('data-offer-id');
-    const isActive = slider.getAttribute('data-active') === 'true';
-    const detailsOffre = slider.getAttribute('data-details-offre');
+    // Envoyer l'état à PHP via AJAX pour mettre à jour la base de données
+    updateOfferState(isOnline);
+}
 
-    // Inverser l'état
-    const newActiveState = !isActive;
+// Fonction AJAX pour mettre à jour l'état de l'offre en ligne
+function updateOfferState(isOnline) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "update_offer_status.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-    // Mettre à jour l'attribut data-active
-    slider.setAttribute('data-active', newActiveState);
+    // Envoie l'état de l'offre (true pour "En Ligne", false pour "Hors Ligne")
+    xhr.send("en_ligne=" + (isOnline ? 1 : 0));
 
-    // Envoyer la mise à jour au serveur
-    fetch('/slider-details_offre.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ 
-            offerId, 
-            isActive: newActiveState, 
-            detailsOffre 
-        }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            console.log('Statut mis à jour avec succès');
-        } else {
-            console.error('Erreur lors de la mise à jour du statut:', data.message);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // Si la requête est réussie, tu peux afficher un message ou une confirmation
+            console.log("L'état de l'offre a été mis à jour avec succès.");
         }
-    })
-    .catch(error => {
-        console.error('Erreur réseau:', error);
-        // Annuler l'état local si la mise à jour échoue
-        slider.setAttribute('data-active', isActive);
-        slider.classList.toggle('active', isActive);
-    });
+    };
 }
