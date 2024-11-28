@@ -166,6 +166,19 @@ if(isset($_POST['valider'])){
                     $extension = strtolower(pathinfo($fichier, PATHINFO_EXTENSION));
                     return in_array($extension, $extensions_valides) && is_file("$chemin/$fichier");
                 });
+
+                $ajout_image = $dbh->prepare("INSERT INTO tripenarvor._image (url_image) VALUES (:url_image)");
+
+                // on insère chaque image (parce-que WHY NOT)
+
+                $id_image = [];
+                foreach($images as $image){
+                    $url_image = "$chemin/$image";
+                    $ajout_image->execute([
+                        ":url_image" => $url_image
+                    ]);
+                    $id_image[] = $dbh->lastInsertId();
+                }
             } else {
                 die('Le chemin n existe pas');
             }
@@ -289,8 +302,15 @@ if(isset($_POST['valider'])){
             $creation_offre = $dbh->prepare($creation_offre_req);
             
             if($creation_offre->execute($mon_offre)){
-                echo "Offre créee avec succès !";
-                $_SESSION['aCreeUneOffre'] = true;
+                // on récupère son id
+                $id_offre = $dbh->lastInsertId();
+                $son_image = "INSERT INTO tripenarvor._son_image VALUES (:code_image,:code_offre)";
+                foreach($id_image as $code_image){
+                    $son_image->execute([
+                        ":code_image" => $code_image,
+                        ":code_offre" => $id_offre
+                    ]);
+                }
             } else {
                 echo "Nique ta mère";
             }
