@@ -362,7 +362,7 @@
                         <button class="slider" onclick="toggleSlider()">Off</button>
                     </div>
 
-                    <script src="toglle-button.js"></script>
+                    <script src="toggle-button.js"></script>
                     
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
                     <div class="detail_offre_pro_button">                        
