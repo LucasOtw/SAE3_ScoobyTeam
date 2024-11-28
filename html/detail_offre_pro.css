@@ -1255,6 +1255,14 @@ footer {
     height: 1vh;
 }
 
+/* Conteneur du slider */
+.slider-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 /* Style du slider (bouton de bascule) */
 .slider {
     width: 100px;
@@ -1275,7 +1283,7 @@ footer {
     position: absolute;
     top: 5px;
     left: 5px;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease-in-out;
 }
 
 /* Quand le slider est activé (sur la droite) */
@@ -1287,6 +1295,7 @@ footer {
 .slider.active .slider-ball {
     transform: translateX(50px);  /* Déplace le cercle vers la droite */
 }
+
 
 
          /* Encapsulation dans la classe avis-widget */
