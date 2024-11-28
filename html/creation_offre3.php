@@ -147,7 +147,7 @@ if(isset($_POST['valider'])){
             * Si des images sont présentes dans un dossier au même nom que l'offre, on doit les insérer dans la bdd
             */
 
-            $nom_doss = str_replace(' ','',$_SESSION['crea_offre']);
+            $nom_doss = str_replace(' ','',$_SESSION['crea_offre']['titre_offre']);
             $chemin = "./images/offres/{nom_doss}";
             echo $chemin;
 
