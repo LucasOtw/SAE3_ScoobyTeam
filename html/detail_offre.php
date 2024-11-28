@@ -322,6 +322,7 @@
             <div class="detail_offre_description">
 
                     <h2>Résumé</h2>
+                    <h1>ta mere</h1>
                     <p><?php echo $details_offre["_resume"]; ?></p>
 
                     <h2>Description</h2>
