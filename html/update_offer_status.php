@@ -22,7 +22,7 @@ if (isset($_POST['en_ligne'], $_POST['id'])) {
 
     try {
         // Préparer et exécuter la requête
-        $query = "UPDATE tripenarvor._offre SET en_ligne = :en_ligne WHERE id = :id";
+        $query = "UPDATE tripenarvor._offre SET en_ligne = :en_ligne WHERE code_offre = :id";
         $stmt = $dbh->prepare($query);
         $stmt->execute([
             ':en_ligne' => $en_ligne,
