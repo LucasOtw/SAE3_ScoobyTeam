@@ -456,6 +456,10 @@ color: #ffc107;
 nav.nav-bar{
     display:none
 }
+
+a.back-button {
+    display:none;
+}
                                             /*Code pour le format responsive de poster un avis */
 
 @media (max-width: 429px) {
