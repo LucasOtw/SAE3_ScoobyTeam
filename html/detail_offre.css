@@ -726,7 +726,7 @@ input#btn-poster-avis {
     max-width: 95%; /* Adapter à un écran étroit */
     margin-left: 1em; /* Réduire les marges */
     margin-top: 2em;
-    padding-bottom:40px;
+    padding-bottom:500px;
   }
 
   .avis-widget .avis-header h1.avis {
