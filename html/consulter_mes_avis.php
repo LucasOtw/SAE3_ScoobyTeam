@@ -64,38 +64,77 @@
         </ul>
     </section>
     <div class="avis-widget">
-              <div class="avis-list">
-                  <div class="avis">
-                      <div class="avis-content">
-                        <h3 class="avis">5.0 Excellent | <span class="nom_avis">John Doe &nbsp;</span>| &nbsp;<span class="nom_visite">Je suis Tigre</h3>
-                        <p class ="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
-                      </div>
-                  </div>
-                <div class="avis">
-                <div class="avis-content">
-                        <h3 class="avis">4.2 Génial | <span class="nom_avis">John Doe &nbsp;</span>  | &nbsp;<span class="nom_visite">Breizh Shelter</h3>
-                        <p class ="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
-                    </div>
-                </div>
-                <div class="avis">
-                    <div class="avis-content">
-                        <h3 class="avis">4.2 Génial | <span class="nom_avis">John Doe &nbsp;</span>  | &nbsp;<span class="nom_visite">Abbaye de Beauport</h3>
-                        <p class ="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
-                    </div>
-                </div>
-                <div class="avis">
-                <div class="avis-content">
-                        <h3 class="avis">4.2 Génial | <span class="nom_avis">John Doe &nbsp;</span>  | &nbsp;<span class="nom_visite">Je suis tigre</h3>
-                        <p class ="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
-                    </div>
-                </div>
-                <div class="avis">
-                <div class="avis-content">
-                        <h3 class="avis">4.2 Génial | <span class="nom_avis">John Doe &nbsp;</span>  | &nbsp;<span class="nom_visite">Breizh Shelter</h3>
-                        <p class ="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
-                    </div>
-                </div>
+    <div class="avis-list">
+        <div class="avis">
+            <div class="avis-content">
+                <h3 class="avis" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>
+                        5.0 Excellent | <span class="nom_avis">John Doe &nbsp;</span>| &nbsp;<span class="nom_visite">Je suis Tigre</span>
+                    </span>
+                    <button class="delete-btn" title="Supprimer cet avis">
+                        <img src="images/trash.svg" alt="Supprimer" class="delete-icon">
+                    </button>
+                </h3>
+                <p class="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
             </div>
+        </div>
+
+        <div class="avis">
+            <div class="avis-content">
+                <h3 class="avis" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>
+                        4.2 Génial | <span class="nom_avis">John Doe &nbsp;</span>| &nbsp;<span class="nom_visite">Breizh Shelter</span>
+                    </span>
+                    <button class="delete-btn" title="Supprimer cet avis">
+                        <img src="images/trash.svg" alt="Supprimer" class="delete-icon">
+                    </button>
+                </h3>
+                <p class="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
+            </div>
+        </div>
+        <div class="avis">
+            <div class="avis-content">
+                <h3 class="avis" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>
+                        4.2 Génial | <span class="nom_avis">John Doe &nbsp;</span>| &nbsp;<span class="nom_visite">Breizh Shelter</span>
+                    </span>
+                    <button class="delete-btn" title="Supprimer cet avis">
+                        <img src="images/trash.svg" alt="Supprimer" class="delete-icon">
+                    </button>
+                </h3>
+                <p class="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
+            </div>
+        </div>
+        <div class="avis">
+            <div class="avis-content">
+                <h3 class="avis" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>
+                        4.2 Génial | <span class="nom_avis">John Doe &nbsp;</span>| &nbsp;<span class="nom_visite">Breizh Shelter</span>
+                    </span>
+                    <button class="delete-btn" title="Supprimer cet avis">
+                        <img src="images/trash.svg" alt="Supprimer" class="delete-icon">
+                    </button>
+                </h3>
+                <p class="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
+            </div>
+        </div>
+        <div class="avis">
+            <div class="avis-content">
+                <h3 class="avis" style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>
+                        4.2 Génial | <span class="nom_avis">John Doe &nbsp;</span>| &nbsp;<span class="nom_visite">Breizh Shelter</span>
+                    </span>
+                    <button class="delete-btn" title="Supprimer cet avis">
+                        <img src="images/trash.svg" alt="Supprimer" class="delete-icon">
+                    </button>
+                </h3>
+                <p class="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
 </main>
 
 </body>

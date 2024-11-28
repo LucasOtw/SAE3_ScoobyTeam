@@ -390,6 +390,23 @@ footer {
   .nom_visite{
     color : #777;
   }
+
+  .delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 10px;
+}
+
+.delete-icon {
+    width: 16px; /* Taille de l'icône */
+    height: 16px;
+    vertical-align: middle; /* Aligne bien l'icône */
+}
+.delete-btn:hover .delete-icon {
+    filter: invert(40%) sepia(700%) saturate(1300%) hue-rotate(0deg); /* Rouge */
+}
   
   .avis-widget .avis .avatar {
     width: 60px;
