@@ -313,6 +313,7 @@ if(isset($_POST['valider'])){
                         ":code_offre" => $id_offre
                     ]);
                 }
+                $_SESSION['aCreeUneOffre'] = false;
             } else {
                 echo "Nique ta mère";
             }
