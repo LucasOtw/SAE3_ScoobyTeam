@@ -306,7 +306,7 @@ if(isset($_POST['valider'])){
             if($creation_offre->execute($mon_offre)){
                 // on récupère son id
                 $id_offre = $dbh->lastInsertId();
-                $son_image->prepare("INSERT INTO tripenarvor._son_image VALUES (:code_image,:code_offre)");
+                $son_image = $dbh->prepare("INSERT INTO tripenarvor._son_image VALUES (:code_image,:code_offre)");
                 foreach($id_image as $code_image){
                     $son_image->execute([
                         ":code_image" => $code_image,
