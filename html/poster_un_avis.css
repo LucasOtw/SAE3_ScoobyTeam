@@ -452,6 +452,10 @@ nav.nav-bar{
 a.back-button {
     display:none;
 }
+
+.poster_un_avis_container {
+        padding: 5vh 9vw;
+}
                                             /*Code pour le format responsive de poster un avis */
 
 @media (max-width: 429px) {
