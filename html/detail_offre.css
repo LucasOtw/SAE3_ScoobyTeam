@@ -725,7 +725,7 @@ input#btn-poster-avis {
     .avis-widget {
     max-width: 95%; /* Largeur maximale */
     margin: 2em auto; /* Centrage horizontal avec marge en haut et en bas */
-    padding: 15px 15px 30px; /* Espacement interne */
+    padding: 15px 15px 100px; /* Espacement interne */
     text-align: center; /* Alignement du contenu (si nécessaire) */
     }
 
