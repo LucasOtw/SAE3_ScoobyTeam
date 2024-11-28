@@ -305,7 +305,7 @@ if(isset($_POST['valider'])){
             $creation_offre_req = "INSERT INTO tripenarvor._offre ($columns) VALUES ($placeholders)";
             $creation_offre = $dbh->prepare($creation_offre_req);
             
-/            if($creation_offre->execute($mon_offre)){
+            if($creation_offre->execute($mon_offre)){
                 // on récupère son id
                 $id_offre = $dbh->lastInsertId();
                 // on lui ajoute ses images
