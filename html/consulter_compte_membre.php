@@ -187,6 +187,7 @@ if (isset($_POST['modif_infos'])){
                 <ul>
                     <li><a href="#" class="active">Informations personnelles</a></li>
                     <li><a href="modif_mdp_membre.php">Mot de passe et sécurité</a></li>
+                    <li><a href="consulter_mes_avis.php">Historique</a></li>
 <!--                     <li><a href="historique_membre.php">Historique</a></li> -->
                 </ul>
             </section>

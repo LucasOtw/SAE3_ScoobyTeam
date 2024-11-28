@@ -58,7 +58,7 @@
         <ul>
             <li><a href="#">Informations personnelles</a></li>
             <li><a href="modif_mdp_membre.php">Mot de passe et sécurité</a></li>
-            <li><a href="consulter_mes_avis" class="active">Historique de mes avis</a></li>
+            <li><a href="consulter_mes_avis" class="active">Historique</a></li>
             <!-- Uncomment if needed -->
             <!-- <li><a href="historique_membre.php">Historique</a></li> -->
         </ul>
@@ -132,9 +132,7 @@
             </div>
         </div>
     </div>
-</div>
-
-        
+</div>        
 </main>
 
 </body>
