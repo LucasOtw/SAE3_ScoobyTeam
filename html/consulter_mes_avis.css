@@ -387,6 +387,9 @@ footer {
     align-items: flex-start;
     margin-bottom: 20px;
   }
+  .nom_visite{
+    color : #777;
+  }
   
   .avis-widget .avis .avatar {
     width: 60px;
