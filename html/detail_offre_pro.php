@@ -193,6 +193,8 @@
                 }
             }
 
+            var_dump($details_offre);
+
             $option_en_relief = $dbh->prepare('SELECT * FROM tripenarvor._option WHERE code_option = :option_en_relief');
             $option_en_relief->bindValue(":option_en_relief",$details_offre["option_en_relief"]);
             $option_en_relief->execute();
