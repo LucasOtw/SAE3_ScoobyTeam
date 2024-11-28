@@ -1247,55 +1247,31 @@ footer {
     }
   }
 
-
-/* Conteneur du toggle */
-.toggle-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-/* Cache l'élément checkbox réel */
-.toggle-checkbox {
-    display: none;
-}
-
-/* Design du label (comportant le slider) */
-.toggle-label {
-    display: flex;
-    align-items: center;
-    position: relative;
-    width: 60px;
-    height: 30px;
-    background-color: #ccc;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-/* Le slider */
-.toggle-slider {
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 24px;
-    height: 24px;
-    background-color: white;
-    border-radius: 50%;
-    transition: transform 0.3s;
-}
-
-/* Quand le toggle est activé */
-.toggle-checkbox:checked + .toggle-label {
-    background-color: #4CAF50;
-}
-
-/* Quand le slider est déplacé */
-.toggle-checkbox:checked + .toggle-label .toggle-slider {
-    transform: translateX(30px);
-}
-
+           /* Conteneur du slider */
+           .slider-container {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               height: 100vh;
+           }
+           
+           /* Style du bouton slider */
+           .slider {
+               background-color: #ccc;
+               border: 2px solid #ccc;
+               border-radius: 50px;
+               padding: 10px 20px;
+               font-size: 16px;
+               cursor: pointer;
+               transition: background-color 0.3s, transform 0.3s;
+           }
+           
+           /* État "on" du slider */
+           .slider.active {
+               background-color: #4CAF50;
+               color: white;
+               transform: translateX(25px); /* Déplacement du bouton pour simuler le slider */
+           }
 
          /* Encapsulation dans la classe avis-widget */
            .avis-widget {
