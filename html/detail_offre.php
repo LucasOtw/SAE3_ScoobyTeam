@@ -632,6 +632,7 @@
                     </div>
                 </div>
         </div>
+         </div>
 
 
              
@@ -644,7 +645,7 @@
             </iframe>
         </div>
 
-       
+    </div>
         
 
     <!-- Détails de l'offre sur MOBILE -->
