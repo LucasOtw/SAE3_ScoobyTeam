@@ -314,16 +314,6 @@ session_start();
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                      <div class="col">
-                              <fieldset>
-                                  <legend style="display: block;">Période d'ouverture</legend>
-                                  <input id="periode_debut" name="periode_debut" type="text" placeholder="DD-MM" pattern="\d{2}-\d{2}">
-                                  <input id="periode_fin" name="periode_fin" type="text" placeholder="DD-MM" pattern="\d{2}-\d{2}">
-                              </fieldset>
-                      </div>
-                </div>
-
 
                 <button type="submit" id="button_valider" name="EnvoiEtape3">
                     Continuer <img src="../images/fleche.png" alt="Fleche" width="25px" height="25px">
