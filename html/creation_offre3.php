@@ -63,7 +63,7 @@ if(isset($_POST['valider'])){
 
         var_dump($_SESSION['aCreeUneOffre']);
 
-        if($_SESSION['aCreeUneOffre'] !== false){
+        if($_SESSION['aCreeUneOffre'] === false){
             $adresse_postal = $_SESSION['crea_offre']['adresse'];
             $complement_adresse = $_SESSION['crea_offre']['complementAdresse'];
             $code_postal = $_SESSION['crea_offre']['codePostal'];
@@ -153,6 +153,8 @@ if(isset($_POST['valider'])){
 
             if(file_exists($chemin)){
                 echo "ta mère";
+            } else {
+                die('Le chemin n'existe pas');
             }
     
             /*
