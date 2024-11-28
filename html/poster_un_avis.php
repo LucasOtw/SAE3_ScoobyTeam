@@ -27,6 +27,11 @@ $details_offre = unserialize($_POST["uneOffre"]); // on récupère son contenu
 $stmt = $dbh->prepare('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = :code_offre;');
 $stmt->execute([':code_offre' => $details_offre["code_offre"]]);
 $image_offre = $stmt->fetch(PDO::FETCH_NUM);
+
+echo "<pre>";
+   var_dump($image_offre);
+echo "</pre>";
+
 /*
 echo "<pre>";
 var_dump($details_offre);
