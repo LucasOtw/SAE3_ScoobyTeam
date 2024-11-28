@@ -378,7 +378,7 @@ color: #ffc107;
 
 .poster_un_avis_buttons {
     display: flex;
-    flex-direction: flex-end;
+    justify-content: flex-end;
     gap: 10px
 }
 
