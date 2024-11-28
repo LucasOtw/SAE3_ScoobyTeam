@@ -154,7 +154,18 @@ if(isset($_POST['valider'])){
             echo $chemin;
 
             if(file_exists($chemin)){
-                echo "ta mère";
+                // si le chemin existe, on récupère tous les fichiers images
+                $fichiers = scandir($chemin);
+                echo "<pre>";
+                var_dump($fichiers);
+                echo "</pre>";
+    
+                // Filtrer uniquement les images
+                $images = array_filter($fichiers, function($fichier) use ($chemin) {
+                    $extensions_valides = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+                    $extension = strtolower(pathinfo($fichier, PATHINFO_EXTENSION));
+                    return in_array($extension, $extensions_valides) && is_file("$chemin/$fichier");
+                });
             } else {
                 die('Le chemin n existe pas');
             }
