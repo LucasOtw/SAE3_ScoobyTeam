@@ -489,8 +489,6 @@ a.back-button {
     .poster_un_avis_buttons {
         display: flex;
         gap: 10px;
-        margin-top: 97px;
-        margin-left: 3vh;
     }
     .poster_un_avis_btn_offre {
         display: none;
@@ -551,7 +549,7 @@ a.back-button {
     
     .poster_un_avis_back_button {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         font-size: 14px;
     }
     
@@ -571,11 +569,18 @@ a.back-button {
     .poster_un_avis_btn_publier:hover {
         transform: scale(1.05); 
     }
-
+    .poster_un_avis_container {
+        padding: 5vh 6vw;
+    }
 
    poster_un_avis_note{
        width:100%;
    }
+
+    a.back-button {
+        display : block;
+    }
+    
     
     nav.nav-bar {
         width: 84vw;
