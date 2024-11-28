@@ -317,8 +317,9 @@ if(isset($_POST['valider'])){
                     ]);
                 }
                 // on regarde quel type d'offre c'est (restauration, activité, ect.)
-                if(isset($_SESSION['crea_offre2']['repas'])){
-                    echo "nice";
+                if(isset($_SESSION['crea_offre2']['mesRepas'])){
+                    // l'offre est une offre de restauration
+                    $ajoutRestaurant = $dbh->prepare("");
                 }
             } else {
                 echo "Nique ta mère";
