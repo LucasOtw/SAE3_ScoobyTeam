@@ -147,6 +147,7 @@ if(isset($_POST['valider'])){
 
             $nom_doss = str_replace(' ','',$_SESSION['crea_offre']);
             $chemin = "./images/offres/{nom_doss}";
+            echo $chemin;
 
             if(file_exists($chemin)){
                 echo "ta mère";
