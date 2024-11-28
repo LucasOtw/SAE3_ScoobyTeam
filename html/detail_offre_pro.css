@@ -1247,14 +1247,6 @@ footer {
     }
   }
 
-           /* Conteneur du slider */
-.slider-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 1vh;
-}
-
 /* Conteneur du slider */
 .slider-container {
     display: flex;
@@ -1295,6 +1287,7 @@ footer {
 .slider.active .slider-ball {
     transform: translateX(50px);  /* Déplace le cercle vers la droite */
 }
+
 
 
 
