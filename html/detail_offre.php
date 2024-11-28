@@ -631,7 +631,10 @@
                         <p class ="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama magnifique.</p>
                     </div>
                 </div>
-            </div>
+        </div>
+
+
+             
         <div class="detail_offre_localisation">
             <h2>Localisation</h2>
             <iframe class="map-frame"
