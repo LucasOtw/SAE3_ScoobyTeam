@@ -225,8 +225,11 @@ footer {
     width: 24px;
     margin: 0 10px;
 }
-.nav-bar .nav-bar img{
+.nav-bar {
            display : none;
+}
+.nav-bar img{
+           display: none;
 }
 
 /* Media queries pour l'adaptabilité */
