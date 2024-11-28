@@ -966,6 +966,7 @@ if (isset($json['results'][0])) {
         ?>">
         <img src="images/icones/User icon.png" alt="image de Personne"></a>
 </nav>
+                
 <footer>
     <div class="newsletter">
         <div class="newsletter-content">
