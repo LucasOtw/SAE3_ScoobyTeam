@@ -119,14 +119,8 @@ echo "</pre>";
                               </fieldset>
                       
                             </div>
-
-                           
-
-                           <p class="poster_un_avis_disclaimer">
-                               En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).
-                           </p>
                        </div>
-                      
+                       <p class="poster_un_avis_disclaimer">En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
                        <div class="poster_un_avis_buttons">
                            <button class="poster_un_avis_btn_annuler">Annuler</button>
                            <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
@@ -157,40 +151,42 @@ echo "</pre>";
         </nav>
     </main>
     <?php
-        if(!empty($_POST)){
-            $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
-            $note = isset($_POST['note']) ? $_POST['note'] : '';
-            
-            $compte = $_SESSION['membre'];
-            $code_compte = $compte['code_compte'];           
-            $code_offre = $details_offre["code_offre"];
-           
-            $erreurs = [];
-            if (empty($texte_avis)) {
-                $erreurs[] = "Vous devez remplir ce champ";
-            } elseif (strlen($texte_avis)>500) {
-                $erreurs[] = "L'avis ne doit pas dépasser 500 caractères.";
-            }
-
-           if (empty($note) || !is_numeric($note) || $note < 1 || $note > 5) {
-                $erreurs[] = "Veuillez sélectionner une note valide."; 
-            }
-        }
-
-         if (empty($erreurs)) {
-             $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
-         
-             $creerAvis->bindParam(':texte_avis', $texte_avis);
-             $creerAvis->bindParam(':note', $note, PDO::PARAM_INT);
-             $creerAvis->bindParam(':code_offre', $code_offre);
-             $creerAvis->bindParam(':code_compte', $code_compte);
-         
-             $creerAvis->execute();
-         } else {
-           foreach($erreurs as $erreur){
-                 echo $erreur;
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+           if(!empty($_POST)){
+               $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
+               $note = isset($_POST['note']) ? $_POST['note'] : '';
+               
+               $compte = $_SESSION['membre'];
+               $code_compte = $compte['code_compte'];           
+               $code_offre = $details_offre["code_offre"];
+              
+               $erreurs = [];
+               if (empty($texte_avis)) {
+                   $erreurs[] = "Vous devez remplir ce champ";
+               } elseif (strlen($texte_avis)>500) {
+                   $erreurs[] = "L'avis ne doit pas dépasser 500 caractères.";
+               }
+   
+              if (empty($note) || !is_numeric($note) || $note < 1 || $note > 5) {
+                   $erreurs[] = "Veuillez sélectionner une note valide."; 
+               }
            }
-         }
+   
+            if (empty($erreurs)) {
+                $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
+            
+                $creerAvis->bindParam(':texte_avis', $texte_avis);
+                $creerAvis->bindParam(':note', $note, PDO::PARAM_INT);
+                $creerAvis->bindParam(':code_offre', $code_offre);
+                $creerAvis->bindParam(':code_compte', $code_compte);
+            
+                $creerAvis->execute();
+            } else {
+              foreach($erreurs as $erreur){
+                    echo $erreur;
+              }
+            }
+      }
     ?>
                     
     
