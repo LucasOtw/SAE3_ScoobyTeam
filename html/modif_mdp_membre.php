@@ -131,7 +131,7 @@ if (isset($_POST['modif_infos'])){
         <section class="tabs">
             <ul>
                 <li><a href="consulter_compte_membre.php">Informations personnelles</a></li>
-                <li><a href="#" class="active">Mot de passe et sécurité</a></li>
+                <li><a href="modif_mdp_membre.php" class="active">Mot de passe et sécurité</a></li>
                 <li><a href="consulter_mes_avis.php">Historique</a></li>
 <!--                     <li><a href="historique_membre.php">Historique</a></li> -->
             </ul>

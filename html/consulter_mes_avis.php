@@ -56,7 +56,7 @@
     </div>                
     <section class="tabs">
         <ul>
-            <li><a href="#">Informations personnelles</a></li>
+            <li><a href="consulter_compte_membre.php">Informations personnelles</a></li>
             <li><a href="modif_mdp_membre.php">Mot de passe et sécurité</a></li>
             <li><a href="consulter_mes_avis" class="active">Historique</a></li>
             <!-- Uncomment if needed -->
