@@ -1246,47 +1246,47 @@ footer {
       padding: 0 10px;
     }
   }
-
 /* Conteneur du slider */
 .slider-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 1vh;
+    height: 100vh;
 }
 
-/* Style du slider (bouton de bascule) */
+/* Style du slider (fond du bouton) */
 .slider {
-    width: 100px;
-    height: 50px;
+    width: 120px;
+    height: 60px;
     background-color: #ccc;
-    border-radius: 25px;
+    border-radius: 30px;
     position: relative;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-/* Le cercle qui se déplace */
-.slider-ball {
-    width: 40px;
-    height: 40px;
+/* Le cercle du slider */
+.slider-circle {
+    width: 50px;
+    height: 50px;
     background-color: white;
     border-radius: 50%;
     position: absolute;
     top: 5px;
     left: 5px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease;
 }
 
 /* Quand le slider est activé (sur la droite) */
 .slider.active {
-    background-color: #4CAF50;  /* Couleur du fond quand activé */
+    background-color: #4CAF50;  /* Vert lorsque activé */
 }
 
-/* Le cercle du slider activé */
-.slider.active .slider-ball {
-    transform: translateX(50px);  /* Déplace le cercle vers la droite */
+/* Quand le cercle se déplace sur la droite */
+.slider.active .slider-circle {
+    transform: translateX(60px); /* Déplace le cercle de 60px vers la droite */
 }
+
 
 
 
