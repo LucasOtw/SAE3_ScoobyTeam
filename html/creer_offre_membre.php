@@ -13,7 +13,7 @@
         <img src="images/logo_blanc_pro.png">
       </div>
       <div class="skip-container">
-        <img src="images/croix_fermer.png" class="skip">
+        <a href="voir_offres.php"><img src="images/croix_fermer.png" class="skip"></a>
       </div>
     </header>
 
