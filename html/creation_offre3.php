@@ -35,7 +35,7 @@ if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
 }
 
 echo "<pre>";
-var_dump($_SESSION['crea_offre']);
+var_dump($_SESSION['crea_offre4']);
 echo "</pre>";
 
 $infosCB = null;
