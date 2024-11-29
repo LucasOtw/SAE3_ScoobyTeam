@@ -340,7 +340,7 @@ footer {
 }
 
 .main_consulter_compte_membre .tabs ul li a {
-    width: calc(60vw/2);
+    width: calc(60vw/3);
     font-size: 20px;
     padding: 10px 20px;
     display: inline-block;
