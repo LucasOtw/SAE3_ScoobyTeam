@@ -23,7 +23,6 @@ body {
   width: 100%;
   background-color: #ff7d00;
   padding: 16px;
-  box-sizing: border-box;
 }
 
 .logo {
@@ -50,20 +49,26 @@ body {
   margin: 16px 0;
 }
 
-.gift-image {
-  width: 120px;
-  height: auto;
+.cadeau-image {
+  width: 260px;
+  height: 200px;
+}
+.features-image{
+  width : 300px;
+  height:160px;
 }
 
 .main-title {
   font-size: 20px;
   margin: 8px 0;
   color: #333;
+  margin-top:5em;
 }
 
 .subtitle {
   font-size: 16px;
   color: #666;
+  margin-bottom:5em;
 }
 
 .features {
@@ -94,7 +99,7 @@ nav.nav-bar {
         width: 84vw;
         position: fixed;
         bottom: 20px;
-        background-color: var(--vert-clair);
+        background-color: #F28322;
         display: flex;
         margin: auto  8vw;
         justify-content: space-around;

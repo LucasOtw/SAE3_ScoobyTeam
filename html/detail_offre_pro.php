@@ -127,8 +127,17 @@
             $stmt->execute([':code_offre' => $code_offre]);
             $images_offre = $stmt->fetchAll(PDO::FETCH_NUM);
 
-            $tags_offre = $dbh->query('SELECT nom_tag FROM tripenarvor._tags WHERE code_tag = (SELECT code_tag FROM tripenarvor._son_tag WHERE code_offre = '.$code_offre.')');
-            $tags_offre = $tags_offre->fetch(PDO::FETCH_NUM);
+            $tags_offre = $dbh->query('
+                SELECT nom_tag 
+                FROM tripenarvor._tags 
+                WHERE code_tag IN (
+                    SELECT code_tag 
+                    FROM tripenarvor._son_tag 
+                    WHERE code_offre = ' . (int)$code_offre . '
+                )
+            ');
+            $tags_offre = $tags_offre->fetchAll(PDO::FETCH_NUM);
+
 
             if (!empty($details_offre["lundi"]))
             {
@@ -308,6 +317,15 @@
                     <p><i class="fas fa-clock"></i> Publié <?php echo tempsEcouleDepuisPublication($details_offre);?></p>
 
                     <p class="update"><span class="update-icon">⟳</span> Dernière modification <?php echo tempsEcouleDepuisDerniereModif($details_offre);?></p>
+                    <!--
+                    <div> 
+                        <p id="offer-state">L'offre est actuellement : 
+                            <span id="offer-status"> 
+                                <<?php echo $details_offre[ 'en_ligne'] ? "En Ligne" : "Hors Ligne"; ?>
+                            </span>
+                        </p>
+                    </div>
+                    -->
 
                    
 
@@ -495,16 +513,15 @@
             <div class="detail_offre_icons">
                 <h2 style="margin-left: 0.1em;">Tags</h2>
 
-                <?php
-                foreach ($tags_offre as $tag)
-                {
-                ?>
-                    <div class="detail_offre_icon">
-                        <p><?php echo $tag;?></p>
-                    </div>
-                <?php
-                }
-                ?> 
+            <?php
+            foreach ($tags_offre as $tag) {
+            ?>
+                <div class="detail_offre_icon">
+                    <p><?php echo htmlspecialchars($tag[0]); ?></p>
+                </div>
+            <?php
+            }
+            ?>
 
 
 

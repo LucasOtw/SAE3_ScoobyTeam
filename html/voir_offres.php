@@ -176,12 +176,10 @@ function tempsEcouleDepuisPublication($offre){
     <main class="toute_les_offres_main">
     
         <div class="search-bar">
-
             <div class="search-top">
                 <input type="text" class="search-input" placeholder="Recherchez parmi les offres" >
             </div>
 
-            
             <div class="search-options">
                 <select class="search-select">
                     <option value="" selected>Catégories</option>
@@ -202,12 +200,14 @@ function tempsEcouleDepuisPublication($offre){
                     <option value="croissantN">Croissant</option>
                 </select>
                 <button id="openMenu" class="search-select">Autres</button>
-            </div>
-            
+            </div>  
         </div>
         
-        <div id="overlay"></div>
-            <div class="filter-menu" id="filterMenu">
+        
+        <div id="overlay">
+        </div>
+        
+        <div class="filter-menu" id="filterMenu">
             <button id="closeMenu" class="close-btn">&times;</button>
             <h2>Filtres</h2>
             
@@ -216,8 +216,8 @@ function tempsEcouleDepuisPublication($offre){
             <input type="text" id="location" placeholder="Ex : Lannion">
     
             <!-- Note générale des avis -->
-            <label for="category">Note générale des avis</label>
-            <select id="category">
+            <label for="note-select">Note générale des avis</label>
+            <select id="note-select">
                 <option value="all">Les notes</option>
                 <option value="1">1 étoile</option>
                 <option value="2">2 étoiles</option>
@@ -237,8 +237,8 @@ function tempsEcouleDepuisPublication($offre){
             </div>
     
             <!-- Statut -->
-            <label for="sort">Statut</label>
-            <select id="sort">
+            <label for="select-statut">Statut</label>
+            <select id="select-statut">
                 <option value="relevance">Ouverture</option>
                 <option value="open">Ouvert</option>
                 <option value="closed">Fermé</option>
@@ -438,7 +438,7 @@ function tempsEcouleDepuisPublication($offre){
                 if ($offre["en_ligne"])
                 {
                 ?>
-                    <article class="offer" data-category=<?php echo $type_offre;?> data-price=<?php echo $offre["tarif"];?> data-note="5">
+                    <article class="offer" data-category=<?php echo $type_offre;?> data-price="<?php echo $offre["tarif"];?>" data-note="5" location=<?php echo $villeOffre["ville"]; ?> >
                         <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
                         <div class="offer-details">
                             <h2><?php echo $offre["titre_offre"] ?></h2>
@@ -463,16 +463,21 @@ function tempsEcouleDepuisPublication($offre){
             const offerItems = document.querySelectorAll('.offer');
             const searchInput = document.querySelector('.search-input');
             const searchSelect = document.querySelectorAll('.search-select');
-
+            const container = document.querySelector('#offers-list'); 
+            const searchLocation = document.querySelector('#location');
+            const selectRate = document.querySelector('#note-select');
+            const selectStatus = document.querySelector('#select-statut');
+            const eventDate = document.querySelector('#event-date');
             
+
+
             ///////////////////////////////////////////////////
             ///            Barre de recherche               ///
             ///////////////////////////////////////////////////
-            // Ajout d'un événement pour filtrer les offres
+            // Barre de recherche
             searchInput.addEventListener('input', () => {
                 const query = searchInput.value.toLowerCase().trim();
-    
-                // Parcourir chaque offre et vérifier si elle correspond à la recherche
+            
                 offerItems.forEach(offer => {
                     const text = offer.textContent.toLowerCase();
                     if (text.includes(query)) {
@@ -483,23 +488,20 @@ function tempsEcouleDepuisPublication($offre){
                 });
             });
 
-            
+
             ///////////////////////////////////////////////////
             ///            Selecteur cat, d et c            ///
             ///////////////////////////////////////////////////
+            // Selecteurs de tri
             searchSelect.forEach(select => {
                 select.addEventListener('change', function () {
                     const category = document.querySelector('.search-select:nth-of-type(1)').value;
                     const priceOrder = document.querySelector('.search-select:nth-of-type(2)').value;
                     const noteOrder = document.querySelector('.search-select:nth-of-type(3)').value;
             
+                    // Filtrer par catégorie
                     offerItems.forEach(offer => {
-                        // Récupérer les attributs de l'offre (données simulées)
                         const offerCategory = offer.getAttribute('data-category');
-                        const offerPrice = parseInt(offer.getAttribute('data-price'));
-                        const offerNote = parseFloat(offer.getAttribute('data-note'));
-            
-                        // Masquer l'offre si elle ne correspond pas à la catégorie sélectionnée
                         if (category && category !== offerCategory) {
                             offer.classList.add('hidden');
                         } else {
@@ -507,27 +509,45 @@ function tempsEcouleDepuisPublication($offre){
                         }
                     });
             
-                    // Trier les offres dynamiquement selon le prix ou la note
+                    // Trier les offres visibles
                     let offers = Array.from(document.querySelectorAll('.offer:not(.hidden)'));
+            
                     if (priceOrder) {
                         offers.sort((a, b) => {
-                            const priceA = parseFloat(a.getAttribute('data-price'));
-                            const priceB = parseFloat(b.getAttribute('data-price'));
+                            const priceA = parseFloat(a.getAttribute('data-price')) || 0;
+                            const priceB = parseFloat(b.getAttribute('data-price')) || 0;
                             return priceOrder === 'croissantP' ? priceA - priceB : priceB - priceA;
                         });
                     }
+            
                     if (noteOrder) {
                         offers.sort((a, b) => {
-                            const noteA = parseFloat(a.getAttribute('data-note'));
-                            const noteB = parseFloat(b.getAttribute('data-note'));
+                            const noteA = parseFloat(a.getAttribute('data-note')) || 0;
+                            const noteB = parseFloat(b.getAttribute('data-note')) || 0;
                             return noteOrder === 'croissantN' ? noteA - noteB : noteB - noteA;
                         });
                     }
             
-                    // Réorganiser les offres dans le DOM
-                    const container = document.querySelector('.offers-list');
-                    container.innerHTML = '';
-                    offers.forEach(offer => container.appendChild(offer));
+                    // Réorganiser dans le DOM
+                    container.innerHTML = ''; // Clear container
+                    offers.forEach(offer => container.appendChild(offer)); // Append sorted offers
+                });
+            });
+
+            
+            ///////////////////////////////////////////////////
+            ///             Recherche de lieu               ///
+            ///////////////////////////////////////////////////
+            searchLocation.addEventListener('input', () => {
+                const query = searchLocation.value.toLowerCase().trim();
+            
+                offerItems.forEach(offer => {
+                    const text = offer.getAttribute('location').toLowerCase();
+                    if (text.includes(query)) {
+                        offer.classList.remove('hidden');
+                    } else {
+                        offer.classList.add('hidden');
+                    }
                 });
             });
             

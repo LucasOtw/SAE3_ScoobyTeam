@@ -35,8 +35,14 @@ if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
 }
 
 echo "<pre>";
-var_dump($_SESSION['crea_offre2']);
+var_dump($_SESSION['crea_offre']);
 echo "</pre>";
+
+if(isset($_SESSION['crea_offre']['tags'])){
+    foreach($_SESSION['crea_offre']['tags'] as $tag){
+        echo $tag;
+    }
+}
 
 $infosCB = null;
 
@@ -321,8 +327,34 @@ if(isset($_POST['valider'])){
                 // on regarde quel type d'offre c'est (restauration, activité, ect.)
                 if(isset($_SESSION['crea_offre2']['mesRepas'])){
                     // l'offre est une offre de restauration
-                    $ajoutRestaurant = $dbh->prepare("");
+                    $repas = implode(", ", $_SESSION['crea_offre2']['mesRepas']);
+                    $ajoutRestaurant = $dbh->prepare("INSERT INTO tripenarvor._offre_restauration (code_offre,gamme_prix,repas) VALUES(:code_offre,:gamme_prix,:repas)");
+                    $ajoutRestaurant->bindValue(":code_offre",$id_offre);
+                    $ajoutRestaurant->bindValue(":gamme_prix",$_SESSION['crea_offre2']['ma_gamme']);
+                    $ajoutRestaurant->bindValue(":repas",$repas);
+
+                    $ajoutRestaurant->execute();
                 }
+
+                foreach($_SESSION['crea_offre']['tags'] as $tag){
+                   echo $tag;
+                }
+
+
+                if(isset($_SESSION['crea_offre']['tags']) && is_array($_SESSION['crea_offre']['tags'])){
+                    foreach($_SESSION['crea_offre']['tags'] as $tag){
+                        try {
+                            $ajoutTag = $dbh->prepare("INSERT INTO tripenarvor._son_tag (code_tag, code_offre) VALUES (:code_tag, :code_offre)");
+                            $ajoutTag->bindValue(":code_tag", $tag);
+                            $ajoutTag->bindValue(":code_offre", $id_offre);
+                            $ajoutTag->execute();
+                        } catch (PDOException $e) {
+                            echo "Erreur lors de l'ajout du tag : " . $e->getMessage();
+                        }
+                    }
+                }
+
+                $_SESSION['aCreeUneOffre'] = true;
             } else {
                 echo "Nique ta mère";
             }
