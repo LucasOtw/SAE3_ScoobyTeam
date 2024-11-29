@@ -585,11 +585,13 @@ function tempsEcouleDepuisPublication($offre){
                         const offerRate = offer.getAttribute('data-rate');
                         if (!rate || rate === offerRate) {
                             console.log(`BOUCLE NON VALIDE : ${offerRate}`);
-                            offer.classList.remove('hidden');
+                            //offer.classList.remove('hidden');
+                            offer.style.display = "contents";
                             console.log(offer.classList);
                         } else {
                             console.log(`BOUCLE VALIDE : ${offerRate}`);
-                            offer.classList.add('hidden');
+                            //offer.classList.add('hidden');
+                            offer.style.display = "none";
                             console.log(offer.classList);
                         }
                     });
