@@ -433,6 +433,7 @@ function tempsEcouleDepuisPublication($offre){
                     $recupLienImage->execute();
     
                     $offre_image = $recupLienImage->fetch(PDO::FETCH_ASSOC);
+                    var_dump($offre_image);
                 } else {
                     $offre_image = "";
                 }
