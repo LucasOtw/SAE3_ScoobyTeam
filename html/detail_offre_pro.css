@@ -1359,7 +1359,8 @@ footer {
              margin-bottom: 20px;
              padding-bottom: 15px;
            }
-           .avis-content{
+           .avis-content{         
+             width:100%
              border-bottom: 1px solid #000; /* Ligne horizontale noire */
            }
            
