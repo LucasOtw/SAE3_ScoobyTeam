@@ -24,15 +24,23 @@
 
         <!-- Actions Section -->
         <main class="actions">
+        <a href="consulter_compte_membre.php">
+            
             <button class="action-btn">
                 <img src="images/Vector_10.png" alt="Edit Icon"> Éditer les informations
             </button>
+            </a>
+            <a href="modif_mdp_membre.php">
             <button class="action-btn">
                 <img src="images/Vector_11.png" alt="Password Icon"> Modifier mon mot de passe
             </button>
+            </a>
+            <a href="consulter_mes_avis.php">
             <button class="action-btn">
                 <img src="images/Vector_12.png" alt="History Icon"> Historique
             </button>
+            </a>
+            <!--Il faudra gérer la deconnexion sur bouton"-->
             <button class="action-btn">
                 <img src="images/Vector_14.png" alt="Logout Icon"> Déconnexion
             </button>
