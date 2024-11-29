@@ -9,6 +9,10 @@ echo "<pre>";
 var_dump($_SESSION['crea_offre']);
 echo "</pre>";
 
+foreach($_SESSION['crea_offre']['tags'] as $tag){
+   echo $tag;
+}
+
 $mesRepas = [];
 
 if(isset($_POST['envoiFormEtape2'])){
