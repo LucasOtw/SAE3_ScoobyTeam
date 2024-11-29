@@ -380,7 +380,7 @@ if(isset($_POST['valider'])){
 <body>
     <header class="header_pro">
         <div class="logo">
-            <img src="images/logo_blanc_pro.png" alt="PACT Logo">
+            <img src="../images/logo_blanc_pro.png" alt="PACT Logo">
         </div>
         <nav>
             <ul>
@@ -393,7 +393,7 @@ if(isset($_POST['valider'])){
 
     <div class="fleche_retour">
         <div>
-            <a href="etape_3_boost/creation_offre_restaurant_4.php"><img src="images/Bouton_retour.png" alt="retour"></a>
+            <a href="etape_3_boost/creation_offre_restaurant_4.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
         </div>
     </div>
 
@@ -445,7 +445,7 @@ if(isset($_POST['valider'])){
             </form>
 
             <div class="carte">
-                <img src="images/carte_bancaire.png" alt="carte">
+                <img src="../images/carte_bancaire.png" alt="carte">
             </div>
         </div>
 
@@ -456,7 +456,7 @@ if(isset($_POST['valider'])){
     <footer class="footer_pro">   
         <div class="footer-links">
             <div class="logo">
-                <img src="images/logo_blanc_pro.png" alt="PACT Logo">
+                <img src="../images/logo_blanc_pro.png" alt="PACT Logo">
             </div>
             <div class="link-group">
                 <ul>
@@ -484,10 +484,10 @@ if(isset($_POST['valider'])){
 
         <div class="footer-bottom">
             <div class="social-icons">
-                <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
-                <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
-                <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
-                <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="../images/Vector.png" alt="Facebook"></a>
+                <a href="#"><img src="../images/Vector2.png" alt="Instagram"></a>
+                <a href="#"><img src="../images/youtube.png" alt="YouTube"></a>
+                <a href="#"><img src="../images/twitter.png" alt="Twitter"></a>
             </div>
         </div>
     </footer>
