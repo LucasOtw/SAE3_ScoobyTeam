@@ -38,6 +38,10 @@ echo "<pre>";
 var_dump($_SESSION['crea_offre']);
 echo "</pre>";
 
+if(isset($_SESSION['crea_offre']['tags'])){
+    echo "t";
+}
+
 $infosCB = null;
 
 // on vérifie si le pro a un compte bancaire
