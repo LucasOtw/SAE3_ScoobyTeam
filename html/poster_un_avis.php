@@ -71,7 +71,8 @@ echo "</pre>";
                 <img src="images/logoBlanc.png" alt="PACT Logo">
             </div>
         </header>
-        
+   
+        <main class="main_poster_avis">
         <div class="poster_un_avis_container">
             <div class="poster_un_avis_back_button">
             <a href="" class="back-button">&larr;</a>
@@ -82,7 +83,11 @@ echo "</pre>";
                 <div class="poster_un_avis_info">
                     <h2 class="poster_un_avis_nom"><?php echo $details_offre["titre_offre"]; ?><!-- - <?php // echo $details_offre["titre_offre"]; ?>--></h2>
                     <p class="poster_un_avis_location">📍 <?php echo $details_offre["ville"]; ?>, <?php echo $details_offre["code_postal"]; ?></p>
-                    <button class="poster_un_avis_btn_offre">Voir l'offre →</button>
+<!--                     <button class="poster_un_avis_btn_offre">Voir l'offre →</button> -->
+                    <form id="form-voir-offre" action="detail_offre.php" method="POST">
+                       <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
+                       <input id="btn-voir-offre" class="poster_un_avis_btn_offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
+                   </form>
                 </div>
                 <div class="poster_un_avis_images">
                          <img src="<?php echo $image_offre[0]; ?>" alt=""  class="poster_un_avis_image"> 
@@ -95,7 +100,8 @@ echo "</pre>";
                    <h2 class="poster_un_avis_section_titre">Votre avis</h2>
                   
                    <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
-                  
+                   <p class="message-erreur avis-vide">Vous devez remplir ce champ</p>
+                   <p class="message-erreur avis-trop-long">L'avis ne doit pas dépasser 500 caractères.</p>                  
                    <div class="poster_un_avis_footer">
 
                            <div class="poster_un_avis_note">
@@ -117,6 +123,7 @@ echo "</pre>";
                                           <input type="radio" id="star1" name="note" value="1" />
                                           <label for="star1" title="1 étoile"></label>
                               </fieldset>
+                              <p class="message-erreur pas-de-note">Veuillez sélectionner une note valide.</p>
                       
                             </div>
                        </div>
@@ -161,14 +168,18 @@ echo "</pre>";
                $code_offre = $details_offre["code_offre"];
               
                $erreurs = [];
+               $erreur_a_afficher = [];
                if (empty($texte_avis)) {
                    $erreurs[] = "Vous devez remplir ce champ";
+                   $erreur_a_afficher = "avis-vide";
                } elseif (strlen($texte_avis)>500) {
                    $erreurs[] = "L'avis ne doit pas dépasser 500 caractères.";
+                   $erreur_a_afficher = "avis-trop-long";
                }
    
               if (empty($note) || !is_numeric($note) || $note < 1 || $note > 5) {
                    $erreurs[] = "Veuillez sélectionner une note valide."; 
+                   $erreur_a_afficher = "pas-de-note";
                }
            }
    
@@ -182,8 +193,20 @@ echo "</pre>";
             
                 $creerAvis->execute();
             } else {
+               /*
               foreach($erreurs as $erreur){
                     echo $erreur;
+              }*/
+
+               foreach($erreur_a_afficher as $erreur_a_afficher){
+                    ?> 
+                    <style>
+                        main.main_poster_avis <?php echo $erreur_a_afficher ?> {
+                           display:block;
+                        }         
+                       ?>
+                    </style> 
+                    <?php
               }
             }
       }

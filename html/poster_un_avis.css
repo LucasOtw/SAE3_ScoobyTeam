@@ -484,8 +484,8 @@ a.back-button {
         font-size : 10px;
     }
     .poster_un_avis_image {
-        width: 91px;
-        height: 94px;
+        width: 11vh;
+        height: 11vh;
         object-fit: cover;
         border-radius: 10px;
     }
