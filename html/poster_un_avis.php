@@ -198,10 +198,10 @@ echo "</pre>";
                     echo $erreur;
               }*/
 
-               foreach($erreur_a_afficher as $erreur_a_afficher){
+               foreach($erreur_a_afficher as $classe_erreur){
                     ?> 
                     <style>
-                        main.main_poster_avis <?php echo $erreur_a_afficher ?> {
+                        main.main_poster_avis <?php echo $classe_erreur ?> {
                            display:block;
                         }         
                        ?>
