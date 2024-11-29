@@ -35,7 +35,7 @@ if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
 }
 
 echo "<pre>";
-var_dump($_SESSION['crea_offre2']);
+var_dump($_SESSION['crea_offre']);
 echo "</pre>";
 
 $infosCB = null;
@@ -329,6 +329,11 @@ if(isset($_POST['valider'])){
 
                     $ajoutRestaurant->execute();
                 }
+
+                foreach($_SESSION['crea_offre']['tags'] as $tag){
+                   echo $tag;
+                }
+
 
                 if(isset($_SESSION['crea_offre']['tags'])){
                     foreach($_SESSION['crea_offre']['tags'] as $tag){
