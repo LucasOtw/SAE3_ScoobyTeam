@@ -513,14 +513,14 @@ function tempsEcouleDepuisPublication($offre){
                         offers.sort((a, b) => {
                             const priceA = parseFloat(a.getAttribute('data-price'));
                             const priceB = parseFloat(b.getAttribute('data-price'));
-                            return priceOrder === 'Croissant' ? priceA - priceB : priceB - priceA;
+                            return priceOrder === 'croissantP' ? priceA - priceB : priceB - priceA;
                         });
                     }
                     if (noteOrder) {
                         offers.sort((a, b) => {
                             const noteA = parseFloat(a.getAttribute('data-note'));
                             const noteB = parseFloat(b.getAttribute('data-note'));
-                            return noteOrder === 'Croissant' ? noteA - noteB : noteB - noteA;
+                            return noteOrder === 'croissantN' ? noteA - noteB : noteB - noteA;
                         });
                     }
             
