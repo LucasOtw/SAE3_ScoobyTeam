@@ -341,12 +341,16 @@ if(isset($_POST['valider'])){
                 }
 
 
-                if(isset($_SESSION['crea_offre']['tags'])){
+                if(isset($_SESSION['crea_offre']['tags']) && is_array($_SESSION['crea_offre']['tags'])){
                     foreach($_SESSION['crea_offre']['tags'] as $tag){
-                        $ajoutTag = $dbh->prepare("INSERT INTO tripenarvor._son_tag VALUES (:code_tag,:code_offre)");
-                        $ajoutTag->bindValue(":code_tag",$tag);
-                        $ajoutTag->bindValue(":code_offre",$id_offre);
-                        $ajoutTag->execute();
+                        try {
+                            $ajoutTag = $dbh->prepare("INSERT INTO tripenarvor._son_tag (code_tag, code_offre) VALUES (:code_tag, :code_offre)");
+                            $ajoutTag->bindValue(":code_tag", $tag);
+                            $ajoutTag->bindValue(":code_offre", $id_offre);
+                            $ajoutTag->execute();
+                        } catch (PDOException $e) {
+                            echo "Erreur lors de l'ajout du tag : " . $e->getMessage();
+                        }
                     }
                 }
 
