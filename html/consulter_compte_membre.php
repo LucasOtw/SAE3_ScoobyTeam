@@ -258,7 +258,7 @@ if (isset($_POST['modif_infos'])){
     <nav class="nav-bar">
         <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
         <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
-        <a href="#"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
+        <a href="creer_offre_membre.php"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
         <a href="
             <?php
                 if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
