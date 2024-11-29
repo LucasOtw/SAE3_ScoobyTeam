@@ -510,6 +510,7 @@ function tempsEcouleDepuisPublication($offre){
                     // Trier les offres dynamiquement selon le prix ou la note
                     let offers = Array.from(document.querySelectorAll('.offer:not(.hidden)'));
                     if (priceOrder) {
+                        print("ok");
                         offers.sort((a, b) => {
                             const priceA = parseFloat(a.getAttribute('data-price'));
                             const priceB = parseFloat(b.getAttribute('data-price'));
