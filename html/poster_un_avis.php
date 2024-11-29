@@ -215,7 +215,7 @@ echo "</pre>";
     ?>
                     
     
-    <footer class="footer_poster_avis">
+    <footer class="footer">
         <div class="newsletter">
             <div class="newsletter-content">
                 <h2>Inscrivez-vous à notre Newsletter</h2>
@@ -232,7 +232,7 @@ echo "</pre>";
         </div>
 
         <div class="footer-links">
-            <div class="logo">
+            <div class="logo\avis">
                 <img src="images/logoBlanc.png" alt="Logo PACT">
             </div>
             <div class="link-group">
