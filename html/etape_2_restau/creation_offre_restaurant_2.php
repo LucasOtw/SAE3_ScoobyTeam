@@ -61,9 +61,8 @@ if(isset($_POST['envoiFormEtape2'])){
       $_SESSION['crea_offre2']['ma_gamme'] = $ma_gamme;
       $_SESSION['crea_offre2']['mesRepas'] = $mesRepas;
 
-      echo "<pre>";
-      var_dump($_SESSION['crea_offre2']);
-      echo "</pre>";
+      header('location: ../etape_2_horaires/creation_offre_restaurant_3.php');
+      exit;
    }
 
 }
