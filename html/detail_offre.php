@@ -803,7 +803,7 @@ if (isset($json['results'][0])) {
             </section>
             <article class="prix">
                 <span>
-                    <p>Tarif minimal</p>
+                    <h3>Tarif minimal</h3>
                     <p class="tarif"><?php echo $details_offre["tarif"]; ?>€</p>
                 </span>
                 <!--<button id="bouton_publier">Publier un avis →</button>-->
