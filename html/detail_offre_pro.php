@@ -712,24 +712,41 @@
         <?php 
                       
             $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre');
-            
             $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-            
             $tout_les_avis->execute();
             $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
 
+            $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre');
+            $moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+            $moyenne_note->execute(); 
+            $note_moyenne = $moyenne_note->fetchColumn();
 
             $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis WHERE code_offre = :code_offre');
             $nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
             $nb_avis->execute();
             $nombre_d_avis = $nb_avis->fetchColumn();
 
+            $appreciationGenerale = "";
+                
+            if ($note_moyenne <= 1) {
+                $appreciationGenerale = "À éviter";
+            } elseif ($note_moyenne <= 2) {
+                $appreciationGenerale = "Peut mieux faire";
+            } elseif ($note_moyenne <= 3) {
+                $appreciationGenerale = "Correct";
+            } elseif ($note_moyenne <= 4) {
+                $appreciationGenerale = "Très Bien";
+            } elseif ($note_moyenne <= 5) {
+                $appreciationGenerale = "Exceptionnel";
+            } else {
+                $appreciationGenerale = "Valeur hors échelle";
+            }
     
         ?>
         <div class="avis-widget">
             <div class="avis-header">
-                <h1 class="avis">5.0 <span class="avis-score">Très bien</span></h1>
-                <p class="avis"><?php echo $nombre_d_avis ; ?> avis vérifiés</p>
+                <h1 class="avis"><?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne,1)) ?> <span class="avis-score"> <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?></span></h1>
+                <p class="avis"><?php echo $nombre_d_avis ; ?> avis vérifié<?php if ($nombre_d_avis > 1){ echo 's'; } ?></p>
             </div>
             <div class="avis-list">
                 <div class="avis">
