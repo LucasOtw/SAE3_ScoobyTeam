@@ -460,102 +460,164 @@ function tempsEcouleDepuisPublication($offre){
         </section>
 
         <script>
+            // // Récupération des éléments
+            // const offerItems = document.querySelectorAll('.offer');
+            // const searchInput = document.querySelector('.search-input');
+            // const searchSelect = document.querySelectorAll('.search-select');
+            // const container = document.querySelector('#offers-list'); 
+            // const searchLocation = document.querySelector('#location');
+            // const selectRate = document.querySelector('#note-select');
+            // const selectStatus = document.querySelector('#select-statut');
+            // const eventDate = document.querySelector('#event-date');
+            
+
+
+            // ///////////////////////////////////////////////////
+            // ///            Barre de recherche               ///
+            // ///////////////////////////////////////////////////
+            // // Barre de recherche
+            // searchInput.addEventListener('input', () => {
+            //     const query = searchInput.value.toLowerCase().trim();
+    
+            //     // Parcourir chaque offre et vérifier si elle correspond à la recherche
+            //     offerItems.forEach(offer => {
+            //         const text = offer.textContent.toLowerCase();
+            //         if (text.includes(query)) {
+            //             offer.classList.remove('hidden');
+            //         } else {
+            //             offer.classList.add('hidden');
+            //         }
+            //     });
+            // });
+
+
+            // ///////////////////////////////////////////////////
+            // ///            Selecteur cat, d et c            ///
+            // ///////////////////////////////////////////////////
+            // // Selecteurs de tri
+            // searchSelect.forEach(select => {
+            //     select.addEventListener('change', function () {
+            //         const category = document.querySelector('.search-select:nth-of-type(1)').value;
+            //         const priceOrder = document.querySelector('.search-select:nth-of-type(2)').value;
+            //         const noteOrder = document.querySelector('.search-select:nth-of-type(3)').value;
+            
+            //         // Filtrer par catégorie
+            //         offerItems.forEach(offer => {
+            //             const offerCategory = offer.getAttribute('data-category');
+            //             console.log(`Offre: ${offer.getAttribute('data-category')} | Visible: ${!offer.classList.contains('hidden')}`);
+            //             if (category && category !== offerCategory) {
+            //                 offer.classList.add('hidden');
+            //             } elseif (!category) {
+            //                 offerItems.forEach(offer => offer.classList.remove('hidden'));
+            //             } else {
+            //                 offer.classList.remove('hidden');
+            //             }
+            //         });
+            
+            //         // Trier les offres visibles
+            //         let offers = Array.from(document.querySelectorAll('.offer:not(.hidden)'));
+            
+            //         if (priceOrder) {
+            //             offers.sort((a, b) => {
+            //                 const priceA = parseFloat(a.getAttribute('data-price')) || 0;
+            //                 const priceB = parseFloat(b.getAttribute('data-price')) || 0;
+            //                 return priceOrder === 'croissantP' ? priceA - priceB : priceB - priceA;
+            //             });
+            //         }
+            
+            //         if (noteOrder) {
+            //             offers.sort((a, b) => {
+            //                 const noteA = parseFloat(a.getAttribute('data-note')) || 0;
+            //                 const noteB = parseFloat(b.getAttribute('data-note')) || 0;
+            //                 return noteOrder === 'croissantN' ? noteA - noteB : noteB - noteA;
+            //             });
+            //         }
+            
+            //         // Réorganiser dans le DOM
+            //         container.innerHTML = ''; // Clear container
+            //         offers.forEach(offer => container.appendChild(offer)); // Append sorted offers
+            //     });
+            // });
+
+            
+            // ///////////////////////////////////////////////////
+            // ///             Recherche de lieu               ///
+            // ///////////////////////////////////////////////////
+            // searchLocation.addEventListener('input', () => {
+            //     const query = searchLocation.value.toLowerCase().trim();
+            
+            //     offerItems.forEach(offer => {
+            //         const text = offer.getAttribute('location').toLowerCase();
+            //         if (text.includes(query)) {
+            //             offer.classList.remove('hidden');
+            //         } else {
+            //             offer.classList.add('hidden');
+            //         }
+            //     });
+            // });
+
             // Récupération des éléments
             const offerItems = document.querySelectorAll('.offer');
             const searchInput = document.querySelector('.search-input');
             const searchSelect = document.querySelectorAll('.search-select');
             const container = document.querySelector('#offers-list'); 
             const searchLocation = document.querySelector('#location');
-            const selectRate = document.querySelector('#note-select');
-            const selectStatus = document.querySelector('#select-statut');
-            const eventDate = document.querySelector('#event-date');
             
-
-
-            ///////////////////////////////////////////////////
-            ///            Barre de recherche               ///
-            ///////////////////////////////////////////////////
-            // Barre de recherche
-            searchInput.addEventListener('input', () => {
+            // Fonction pour afficher ou cacher les offres
+            function filterOffers() {
                 const query = searchInput.value.toLowerCase().trim();
-    
-                // Parcourir chaque offre et vérifier si elle correspond à la recherche
+                const category = document.querySelector('.search-select:nth-of-type(1)').value.toLowerCase();
+                const priceOrder = document.querySelector('.search-select:nth-of-type(2)').value;
+                const noteOrder = document.querySelector('.search-select:nth-of-type(3)').value;
+                const locationQuery = searchLocation.value.toLowerCase().trim();
+            
+                // Filtrer par recherche textuelle, catégorie et lieu
                 offerItems.forEach(offer => {
                     const text = offer.textContent.toLowerCase();
-                    if (text.includes(query)) {
+                    const offerCategory = offer.getAttribute('data-category').toLowerCase();
+                    const offerLocation = offer.getAttribute('location').toLowerCase();
+            
+                    const matchesQuery = !query || text.includes(query);
+                    const matchesCategory = !category || offerCategory === category;
+                    const matchesLocation = !locationQuery || offerLocation.includes(locationQuery);
+            
+                    if (matchesQuery && matchesCategory && matchesLocation) {
                         offer.classList.remove('hidden');
                     } else {
                         offer.classList.add('hidden');
                     }
                 });
-            });
-
-
-            ///////////////////////////////////////////////////
-            ///            Selecteur cat, d et c            ///
-            ///////////////////////////////////////////////////
-            // Selecteurs de tri
-            searchSelect.forEach(select => {
-                select.addEventListener('change', function () {
-                    const category = document.querySelector('.search-select:nth-of-type(1)').value;
-                    const priceOrder = document.querySelector('.search-select:nth-of-type(2)').value;
-                    const noteOrder = document.querySelector('.search-select:nth-of-type(3)').value;
             
-                    // Filtrer par catégorie
-                    offerItems.forEach(offer => {
-                        const offerCategory = offer.getAttribute('data-category');
-                        console.log(`Offre: ${offer.getAttribute('data-category')} | Visible: ${!offer.classList.contains('hidden')}`);
-                        if (category && category !== offerCategory) {
-                            offer.classList.add('hidden');
-                        } elseif (!category) {
-                            offerItems.forEach(offer => offer.classList.remove('hidden'));
-                        } else {
-                            offer.classList.remove('hidden');
-                        }
+                // Trier les offres visibles
+                let visibleOffers = Array.from(document.querySelectorAll('.offer:not(.hidden)'));
+            
+                if (priceOrder) {
+                    visibleOffers.sort((a, b) => {
+                        const priceA = parseFloat(a.getAttribute('data-price')) || 0;
+                        const priceB = parseFloat(b.getAttribute('data-price')) || 0;
+                        return priceOrder === 'croissantP' ? priceA - priceB : priceB - priceA;
                     });
+                }
             
-                    // Trier les offres visibles
-                    let offers = Array.from(document.querySelectorAll('.offer:not(.hidden)'));
+                if (noteOrder) {
+                    visibleOffers.sort((a, b) => {
+                        const noteA = parseFloat(a.getAttribute('data-note')) || 0;
+                        const noteB = parseFloat(b.getAttribute('data-note')) || 0;
+                        return noteOrder === 'croissantN' ? noteA - noteB : noteB - noteA;
+                    });
+                }
             
-                    if (priceOrder) {
-                        offers.sort((a, b) => {
-                            const priceA = parseFloat(a.getAttribute('data-price')) || 0;
-                            const priceB = parseFloat(b.getAttribute('data-price')) || 0;
-                            return priceOrder === 'croissantP' ? priceA - priceB : priceB - priceA;
-                        });
-                    }
+                // Réorganiser les offres triées dans le DOM
+                container.innerHTML = '';
+                visibleOffers.forEach(offer => container.appendChild(offer));
+            }
             
-                    if (noteOrder) {
-                        offers.sort((a, b) => {
-                            const noteA = parseFloat(a.getAttribute('data-note')) || 0;
-                            const noteB = parseFloat(b.getAttribute('data-note')) || 0;
-                            return noteOrder === 'croissantN' ? noteA - noteB : noteB - noteA;
-                        });
-                    }
+            // Événements sur les champs de recherche et les sélecteurs
+            searchInput.addEventListener('input', filterOffers);
+            searchLocation.addEventListener('input', filterOffers);
+            searchSelect.forEach(select => select.addEventListener('change', filterOffers));
             
-                    // Réorganiser dans le DOM
-                    container.innerHTML = ''; // Clear container
-                    offers.forEach(offer => container.appendChild(offer)); // Append sorted offers
-                });
-            });
-
-            
-            ///////////////////////////////////////////////////
-            ///             Recherche de lieu               ///
-            ///////////////////////////////////////////////////
-            searchLocation.addEventListener('input', () => {
-                const query = searchLocation.value.toLowerCase().trim();
-            
-                offerItems.forEach(offer => {
-                    const text = offer.getAttribute('location').toLowerCase();
-                    if (text.includes(query)) {
-                        offer.classList.remove('hidden');
-                    } else {
-                        offer.classList.add('hidden');
-                    }
-                });
-            });
-            
+                        
         </script>
 
     </main>
