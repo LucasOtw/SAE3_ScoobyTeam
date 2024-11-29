@@ -508,12 +508,22 @@ function tempsEcouleDepuisPublication($offre){
                     offerItems.forEach(offer => {
                         
                         const offerCategory = offer.getAttribute('data-category');
-                        if (category!=='all' && category !== offerCategory) {
-                            console.log(`BOUCLE VALIDE : ${offerCategory}`);
-                            offer.classList.add('hidden');
-                        } else {
+                        // if (category!=='all' && category !== offerCategory) {
+                        //     console.log(`BOUCLE VALIDE : ${offerCategory}`);
+                        //     offer.classList.add('hidden');
+                        // } else {
+                        //     console.log(`BOUCLE NON VALIDE : ${offerCategory}`);
+                        //     offer.classList.remove('hidden');
+                        //     console.log(offer.classList);
+                        // }
+
+                        if (category==='all' || category === offerCategory) {
                             console.log(`BOUCLE NON VALIDE : ${offerCategory}`);
                             offer.classList.remove('hidden');
+                            console.log(offer.classList);
+                        } else {
+                            console.log(`BOUCLE VALIDE : ${offerCategory}`);
+                            offer.classList.add('hidden');
                             console.log(offer.classList);
                         }
                     });
