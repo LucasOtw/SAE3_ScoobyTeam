@@ -106,6 +106,10 @@ if (!empty($_POST['supprAvis'])){
                 $tout_les_avis->execute();
                 $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
 
+                echo "<pre>";
+                var_dump($tout_les_avis);
+                echo "</pre>";
+
                 ?>
                 <div class="avis">
                     <?php
