@@ -584,20 +584,18 @@ if (isset($json['results'][0])) {
         ?>
 
         <?php 
+            // Ensure $code_offre is defined and has a valid value
+            echo "<pre>";
+            var_dump($code_offre); // Debugging: Check the value of $code_offre
+            echo "</pre>";
             
-            $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre where code_offre = :code_coffre');
+            $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre');
             
-echo "<pre>";
-var_dump($code_offre); // Ensure $code_offre is set and is an integer.
-echo "</pre>";
-
-
             $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-            //$stmt->execute([':code_offre' => $code_offre]);
+            
             $tout_les_avis->execute();
             $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
-
-
+        
         ?>
         <div class="avis-widget">
             <div class="avis-header">
