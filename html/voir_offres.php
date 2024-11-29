@@ -509,10 +509,10 @@ function tempsEcouleDepuisPublication($offre){
                         
                         const offerCategory = offer.getAttribute('data-category');
                         if (category && category !== offerCategory) {
-                            console.log('BOUCLE VALIDE : ${offerCategory}');
+                            console.log(`BOUCLE VALIDE : ${offerCategory}`);
                             offer.classList.add('hidden');
                         } else {
-                            console.log('BOUCLE NON VALIDE : ${offerCategory}');
+                            console.log(`BOUCLE NON VALIDE : ${offerCategory}`);
                             offer.classList.remove('hidden');
                         }
                     });
