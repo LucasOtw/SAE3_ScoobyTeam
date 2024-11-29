@@ -130,12 +130,13 @@ if (!empty($_POST['supprAvis'])){
                             <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="this.closest('form').submit()">
                         </form>
                     </h3>
-                    <p class="avis"><?php echo htmlspecialchars($avis["txt_avis"], ENT_NOQUOTES); ?></p>
+                    <p class="avis"><?php echo htmlspecialchars($avis["txt_avis"], ENT_QUOTES); ?></p> <!-- ENT_QUOTES pour garder les apostrophes et guillemets -->
                 </div>
             </div>
         <?php endforeach; ?>
     </div>
 </div>
+
 
 
     </main>
