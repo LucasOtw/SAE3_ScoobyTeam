@@ -958,10 +958,6 @@ body.menu-open #overlay {
     color: white;
 }
 
-.offer.hidden {
-    display: none;
-}
-
 .toute_les_offres_main .search-select > option{
     all: unset;
 }
