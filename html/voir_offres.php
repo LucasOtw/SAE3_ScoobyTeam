@@ -465,6 +465,9 @@ function tempsEcouleDepuisPublication($offre){
             const searchSelect = document.querySelectorAll('.search-select');
             const container = document.querySelector('#offers-list'); 
             const searchLocation = document.querySelector('#location');
+            const selectRate = document.querySelector('#note-select');
+            const selectStatus = document.querySelector('#select-statut');
+            const eventDate = document.querySelector('#event-date');
             
 
 
