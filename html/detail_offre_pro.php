@@ -127,8 +127,17 @@
             $stmt->execute([':code_offre' => $code_offre]);
             $images_offre = $stmt->fetchAll(PDO::FETCH_NUM);
 
-            $tags_offre = $dbh->query('SELECT nom_tag FROM tripenarvor._tags WHERE code_tag = (SELECT code_tag FROM tripenarvor._son_tag WHERE code_offre = '.$code_offre.')');
+            $tags_offre = $dbh->query('
+                SELECT nom_tag 
+                FROM tripenarvor._tags 
+                WHERE code_tag IN (
+                    SELECT code_tag 
+                    FROM tripenarvor._son_tag 
+                    WHERE code_offre = ' . (int)$code_offre . '
+                )
+            ');
             $tags_offre = $tags_offre->fetchAll(PDO::FETCH_NUM);
+
 
             if (!empty($details_offre["lundi"]))
             {
