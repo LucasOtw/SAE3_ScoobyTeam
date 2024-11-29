@@ -765,7 +765,7 @@ input#btn-poster-avis {
 
 
 
-    #prix {
+    .tarif {
         color: #2DD7A4;
         font-size: x-large;
         font-weight: bold;
@@ -803,7 +803,6 @@ input#btn-poster-avis {
     .carousel {
         position: relative;
         max-width: 100%;
-        margin: 20px auto;
         overflow: hidden;
     }
 
@@ -955,7 +954,7 @@ input#btn-poster-avis {
     #body_offre_mobile>div>article>span,
     #body_offre_mobile>div>article>button#bouton_publier,
     #body_offre_mobile>div>article>button#bouton_publier:active,
-    #prix,
+    .tarif,
     .carousel,
     .carousel-slide,
     .carousel img,
@@ -1402,6 +1401,10 @@ input#btn-poster-avis {
     .avis-widget .avis-list .avis {
         margin-bottom: 15px;
         padding-bottom: 10px;
+    }
+
+    .prix{
+    
     }
 }
     
