@@ -324,7 +324,7 @@ if(isset($_POST['valider'])){
                     $repas = implode(", ", $_SESSION['crea_offre2']['mesRepas']);
                     $ajoutRestaurant = $dbh->prepare("INSERT INTO tripenarvor._offre_restauration (code_offre,gamme_prix,repas) VALUES(:code_offre,:gamme_prix,:repas)");
                     $ajoutRestaurant->bindValue(":code_offre",$id_offre);
-                    $ajoutRestaurant->bindValue(":gamme_prix",$_SESSION['crea_offre2']['ma_gamme']');
+                    $ajoutRestaurant->bindValue(":gamme_prix",$_SESSION['crea_offre2']['ma_gamme']);
                     $ajoutRestaurant->bindValue(":repas",$repas);
 
                     $ajoutRestaurant->execute();
