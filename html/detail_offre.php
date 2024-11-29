@@ -911,11 +911,11 @@ if (isset($json['results'][0])) {
                 </div>
 
                 <div>
-                    <!-- Bouton publier un avis -->
-                    <article class="publier_avis">
+                    
+                    <article class="prix">
                         <span>
                             <p style="margin-left: 0em;">Tarif minimal</p>
-                            <p id="prix" style="margin-left: 0em; margin-bottom:50px"><?php echo $details_offre["tarif"]; ?>€</p>
+                            <p id="prix" style="margin-left: 0em; margin-bottom:3em"><?php echo $details_offre["tarif"]; ?>€</p>
                         </span>
                         <!--<button id="bouton_publier">Publier un avis →</button>-->
                     </article>
