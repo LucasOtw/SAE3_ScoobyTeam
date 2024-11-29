@@ -592,17 +592,17 @@ function tempsEcouleDepuisPublication($offre){
 
 
 
-            // // Récupérer les éléments
-            // const priceMinInput = document.getElementById("price-min");
-            // const priceMaxInput = document.getElementById("price-max");
-            // const priceMinDisplay = document.getElementById("price-min-display");
-            // const priceMaxDisplay = document.getElementById("price-max-display");
+            // Récupérer les éléments
+            const priceMinInput = document.getElementById("price-min");
+            const priceMaxInput = document.getElementById("price-max");
+            const priceMinDisplay = document.getElementById("price-min-display");
+            const priceMaxDisplay = document.getElementById("price-max-display");
             
-            // // Mettre à jour les affichages du prix
-            // function updatePriceDisplay() {
-            //     priceMinDisplay.textContent = priceMinInput.value;
-            //     priceMaxDisplay.textContent = priceMaxInput.value;
-            // }
+            // Mettre à jour les affichages du prix
+            function updatePriceDisplay() {
+                priceMinDisplay.textContent = priceMinInput.value;
+                priceMaxDisplay.textContent = priceMaxInput.value;
+            }
             
             // // Filtrer les offres en fonction de la fourchette de prix
             // function filterOffers() {
