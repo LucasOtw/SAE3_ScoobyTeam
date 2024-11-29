@@ -513,6 +513,7 @@ function tempsEcouleDepuisPublication($offre){
                             offer.classList.remove('hidden');
                         }
                     });
+                    console.log('///////////////////////////////////////////////')
                     
             
                     // Trier les offres visibles
