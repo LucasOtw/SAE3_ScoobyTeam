@@ -92,7 +92,7 @@ if (!empty($_POST['supprAvis'])){
 <!--                     <li><a href="historique_membre.php">Historique</a></li> -->
                 </ul>
             </section>
-        <div class="avis-widget">
+       <div class="avis-widget">
     <div class="avis-list">
         <?php
         // Préparer et exécuter la requête SQL
@@ -130,13 +130,13 @@ if (!empty($_POST['supprAvis'])){
                             <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="this.closest('form').submit()">
                         </form>
                     </h3>
-                    <p class="avis"><?php echo htmlspecialchars($avis["txt_avis"], ENT_QUOTES); ?></p> <!-- ENT_QUOTES pour garder les apostrophes et guillemets -->
+                    <!-- Remplacer &#039; par ' dans le texte de l'avis -->
+                    <p class="avis"><?php echo htmlspecialchars_decode($avis["txt_avis"], ENT_QUOTES); ?></p>
                 </div>
             </div>
         <?php endforeach; ?>
     </div>
 </div>
-
 
 
     </main>
