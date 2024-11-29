@@ -1,6 +1,20 @@
 <?php
-ob_start(); // bufferisation, ça devrait marcher ?
-session_start();
+    ob_start(); // bufferisation, ça devrait marcher ?
+    session_start();
+
+include("recupInfosCompte.php");
+
+if(isset($_GET['logout'])){
+   session_unset();
+   session_destroy();
+   header('location: connexion_membre.php');
+   exit;
+}
+
+if(!isset($_SESSION['membre'])){
+   header('location: connexion_membre.php');
+   exit;
+}
 
 if (!empty($_POST['supprAvis'])){
     $suppressionAvis = $dbh->prepare('DELETE FROM tripenarvor._avis WHERE code_avis = :code_avis;');
@@ -15,14 +29,12 @@ if (!empty($_POST['supprAvis'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="consulter_mes_avis.css">
+    <title>Modifier compte membre</title>
+    <link rel="stylesheet" href="consulter_compte_membre.css">
 </head>
-
 <body>
     <div class="header-membre">
         <header class="header-pc">
@@ -33,22 +45,27 @@ if (!empty($_POST['supprAvis'])){
                 <ul>
                     <li><a href="voir_offres.php">Accueil</a></li>
                     <li><a href="connexion_pro.php">Publier</a></li>
-                    <!-- Static example: User is connected -->
-                    <li>
-                        <a href="consulter_compte_membre.php" class="active">Mon compte</a>
-                    </li>
-                    <!-- Uncomment this to simulate user not connected -->
-                    <!--
-                <li>
-                    <a href="connexion_membre.php">Se connecter</a>
-                </li>
-                -->
+                    <?php
+                        if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
+                        ?>
+                        <li>
+                            <a href="consulter_compte_membre.php" class="active">Mon compte</a>
+                        </li>
+                            <?php
+                        } else {
+                            ?>
+                        <li>
+                            <a href="connexion_membre.php">Se connecter</a>
+                        </li>
+                        <?php
+                        }
+                    ?>
                 </ul>
             </nav>
         </header>
     </div>
     <main class="main_consulter_compte_membre">
-        <!-- POUR PC/TABLETTE -->
+<!-- POUR PC/TABLETTE -->
         <div class="profile">
             <div class="banner">
                 <img src="images/Rectangle 3.png" alt="Bannière" class="header-img">
@@ -56,26 +73,25 @@ if (!empty($_POST['supprAvis'])){
 
             <div class="profile-info">
                 <img src="images/icones/icone_compte.png" alt="Photo de profil" class="profile-img">
-                <h1>John Doe (johnny)</h1> <!-- Static example -->
-                <p>john.doe@example.com | 06 12 34 56 78</p> <!-- Static example -->
+                <h1><?php echo $monCompteMembre['prenom']." ".$monCompteMembre['nom']." (".$monCompteMembre['pseudo'].")"; ?></h1>
+                <p><?php echo $compte['mail']; ?> | <?php echo trim(preg_replace('/(\d{2})/', '$1 ', $compte['telephone'])); ?></p>
             </div>
         </div>
-        <!-- POUR TEL -->
+<!-- POUR TEL -->
         <div class="edit-profil">
             <a href="compte_membre_tel.php">
-                <img src="images/Bouton_retour.png" alt="bouton retour">
+               <img src="images/Bouton_retour.png" alt="bouton retour">
             </a>
-            <h1>Mes Avis</h1>
-        </div>
-        <section class="tabs">
-            <ul>
-                <li><a href="consulter_compte_membre.php">Informations personnelles</a></li>
-                <li><a href="modif_mdp_membre.php">Mot de passe et sécurité</a></li>
-                <li><a href="consulter_mes_avis" class="active">Historique</a></li>
-                <!-- Uncomment if needed -->
-                <!-- <li><a href="historique_membre.php">Historique</a></li> -->
-            </ul>
-        </section>
+            <h1>Editer le profil</h1>
+        </div>                
+            <section class="tabs">
+                <ul>
+                    <li><a href="consulter_compte_membre.php">Informations personnelles</a></li>
+                    <li><a href="modif_mdp_membre.php">Mot de passe et sécurité</a></li>
+                    <li><a href="consulter_mes_avis.php"  class="active">Historique</a></li>
+<!--                     <li><a href="historique_membre.php">Historique</a></li> -->
+                </ul>
+            </section>
         <div class="avis-widget">
             <div class="avis-list">
 
