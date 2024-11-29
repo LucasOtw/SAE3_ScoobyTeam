@@ -128,7 +128,7 @@
             $images_offre = $stmt->fetchAll(PDO::FETCH_NUM);
 
             $tags_offre = $dbh->query('SELECT nom_tag FROM tripenarvor._tags WHERE code_tag = (SELECT code_tag FROM tripenarvor._son_tag WHERE code_offre = '.$code_offre.')');
-            $tags_offre = $tags_offre->fetch(PDO::FETCH_NUM);
+            $tags_offre = $tags_offre->fetchAll(PDO::FETCH_NUM);
 
             if (!empty($details_offre["lundi"]))
             {
