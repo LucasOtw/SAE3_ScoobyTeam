@@ -24,8 +24,6 @@ if(!isset($_SESSION['aCreeUneOffre'])){
     }
 }
 
-var_dump($_SESSION);
-
 if(!isset($_SESSION['ajoutOption'])){
     $_SESSION['ajoutOption'] = null; // cette session sert uniquement à éviter l'ajout d'une option si on l'a déjà fait
 }
