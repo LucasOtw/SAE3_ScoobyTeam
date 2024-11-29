@@ -217,8 +217,8 @@ function tempsEcouleDepuisPublication($offre){
             <input type="text" id="location" placeholder="Ex : Lannion">
     
             <!-- Note générale des avis -->
-            <label for="note-select">Note générale des avis</label>
-            <select id="note-select">
+            <label for="select-rate">Note générale des avis</label>
+            <select id="select-rate">
                 <option value="">Les notes</option>
                 <option value="1">1 étoile</option>
                 <option value="2">2 étoiles</option>
@@ -439,7 +439,7 @@ function tempsEcouleDepuisPublication($offre){
                 if ($offre["en_ligne"])
                 {
                 ?>
-                    <article class="offer" data-category=<?php echo $type_offre;?> data-price="<?php echo $offre["tarif"];?>" data-note="5" location=<?php echo $villeOffre["ville"]; ?> >
+                    <article class="offer" data-category=<?php echo $type_offre;?> data-price="<?php echo $offre["tarif"];?>" data-rate="5" location=<?php echo $villeOffre["ville"]; ?> >
                         <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
                         <div class="offer-details">
                             <h2><?php echo $offre["titre_offre"] ?></h2>
@@ -469,7 +469,7 @@ function tempsEcouleDepuisPublication($offre){
             const searchSelect = document.querySelectorAll('.search-select');
             const container = document.querySelector('#offers-list'); 
             const searchLocation = document.querySelector('#location');
-            const selectRate = document.querySelector('#note-select');
+            const selectRate = document.querySelector('#select-rate');
             const selectStatus = document.querySelector('#select-statut');
             const eventDate = document.querySelector('#event-date');
             
@@ -582,51 +582,17 @@ function tempsEcouleDepuisPublication($offre){
                     // Filtrer par catégorie
                     offerItems.forEach(offer => {
                         
-                        const offerCategory = offer.getAttribute('data-category');
-                        // if (category!=='all' && category !== offerCategory) {
-                        //     console.log(`BOUCLE VALIDE : ${offerCategory}`);
-                        //     offer.classList.add('hidden');
-                        // } else {
-                        //     console.log(`BOUCLE NON VALIDE : ${offerCategory}`);
-                        //     offer.classList.remove('hidden');
-                        //     console.log(offer.classList);
-                        // }
-
-                        if (category==='all' || category === offerCategory) {
-                            console.log(`BOUCLE NON VALIDE : ${offerCategory}`);
+                        const offerRate = offer.getAttribute('data-rate');
+                        if (rate==='all' || rate === offerRate) {
+                            console.log(`BOUCLE NON VALIDE : ${offerRate}`);
                             offer.classList.remove('hidden');
                             console.log(offer.classList);
                         } else {
-                            console.log(`BOUCLE VALIDE : ${offerCategory}`);
+                            console.log(`BOUCLE VALIDE : ${offerRate}`);
                             offer.classList.add('hidden');
                             console.log(offer.classList);
                         }
                     });
-                    console.log('///////////////////////////////////////////////')
-                    
-            
-                    // Trier les offres visibles
-                    let offers = Array.from(document.querySelectorAll('.offer:not(.hidden)'));
-            
-                    if (priceOrder) {
-                        offers.sort((a, b) => {
-                            const priceA = parseFloat(a.getAttribute('data-price')) || 0;
-                            const priceB = parseFloat(b.getAttribute('data-price')) || 0;
-                            return priceOrder === 'croissantP' ? priceA - priceB : priceB - priceA;
-                        });
-                    }
-            
-                    if (noteOrder) {
-                        offers.sort((a, b) => {
-                            const noteA = parseFloat(a.getAttribute('data-note')) || 0;
-                            const noteB = parseFloat(b.getAttribute('data-note')) || 0;
-                            return noteOrder === 'croissantN' ? noteA - noteB : noteB - noteA;
-                        });
-                    }
-            
-                    // Réorganiser dans le DOM
-                    container.innerHTML = ''; // Clear container
-                    offers.forEach(offer => container.appendChild(offer)); // Append sorted offers
                 });
             
         </script>
