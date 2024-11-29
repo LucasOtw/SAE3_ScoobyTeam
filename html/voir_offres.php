@@ -182,7 +182,7 @@ function tempsEcouleDepuisPublication($offre){
 
             <div class="search-options">
                 <select class="search-select">
-                    <option value="" selected>Catégories</option>
+                    <option value='all' selected>Catégories</option>
                     <option value="restauration">Restaurant</option>
                     <option value="parc_attractions">Parc d'attractions</option>
                     <option value="spectacle">Spectacle</option>
@@ -507,7 +507,7 @@ function tempsEcouleDepuisPublication($offre){
                         console.log(`Offre: ${offer.getAttribute('data-category')} | Visible: ${!offer.classList.contains('hidden')}`);
                         if (category && category !== offerCategory) {
                             offer.classList.add('hidden');
-                        } else if (!category) {
+                        } else if (category === 'all') {
                             offerItems.forEach(offer => offer.classList.remove('hidden'));
                         } else {
                             offer.classList.remove('hidden');
