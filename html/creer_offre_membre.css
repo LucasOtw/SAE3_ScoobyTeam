@@ -22,7 +22,7 @@ body {
   align-items: center;
   width: 100%;
   background-color: #ff7d00; /* Couleur de fond de l'en-tête */
-  padding: 40px 32px; /* Espacement de l'en-tête */
+  padding: 10px 20px; /* Espacement de l'en-tête */
   border-bottom-left-radius: 50%; /* Arrondi pour le bas-gauche */
   border-bottom-right-radius: 50%; /* Arrondi pour le bas-droit */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre légère sous l'en-tête */
