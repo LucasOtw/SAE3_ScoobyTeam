@@ -1,0 +1,129 @@
+/* Global styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  width: 429px; /* Fixed width for the screen */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 16px;
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #ff7d00;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.logo span {
+  font-size: 14px;
+  display: block;
+}
+
+.skip {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Main content styles */
+.image-container {
+  margin: 16px 0;
+}
+
+.gift-image {
+  width: 120px;
+  height: auto;
+}
+
+.main-title {
+  font-size: 20px;
+  margin: 8px 0;
+  color: #333;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #666;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+  color: #333;
+}
+
+.features li {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.subscribe-button {
+  background-color: #ff7d00;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+/* Footer styles */
+nav.nav-bar {
+        width: 84vw;
+        position: fixed;
+        bottom: 20px;
+        background-color: var(--vert-clair);
+        display: flex;
+        margin: auto  8vw;
+        justify-content: space-around;
+        border-radius: 1000px;
+        box-shadow: 0px 2px 10px rgb(156, 156, 156);
+    }
+
+    .nav-bar img {
+        display: inline-block; /* Affiche les images dans la barre de navigation */
+    }
+    nav.nav-bar a {
+        display: flex;
+        align-items: center;
+        margin: 10px auto;
+    }
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.nav-item {
+  font-size: 24px;
+  text-decoration: none;
+  color: #666;
+}
+
+.nav-item.active {
+  color: #ff7d00;
+}

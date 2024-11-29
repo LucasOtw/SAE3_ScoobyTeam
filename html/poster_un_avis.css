@@ -458,6 +458,14 @@ a.back-button {
 }
                                             /*Code pour le format responsive de poster un avis */
 
+main.main_poster_avis .message-erreur{
+    color : red;
+    font-size: 14px;
+    display: none;
+}
+
+
+
 @media (max-width: 429px) {
     .footer_poster_avis {
         display: none;

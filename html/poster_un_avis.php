@@ -171,15 +171,15 @@ echo "</pre>";
                $erreur_a_afficher = [];
                if (empty($texte_avis)) {
                    $erreurs[] = "Vous devez remplir ce champ";
-                   $erreur_a_afficher = "avis-vide";
+                   $erreur_a_afficher[] = "avis-vide";
                } elseif (strlen($texte_avis)>500) {
                    $erreurs[] = "L'avis ne doit pas dépasser 500 caractères.";
-                   $erreur_a_afficher = "avis-trop-long";
+                   $erreur_a_afficher[] = "avis-trop-long";
                }
    
               if (empty($note) || !is_numeric($note) || $note < 1 || $note > 5) {
                    $erreurs[] = "Veuillez sélectionner une note valide."; 
-                   $erreur_a_afficher = "pas-de-note";
+                   $erreur_a_afficher[] = "pas-de-note";
                }
            }
    
@@ -198,10 +198,12 @@ echo "</pre>";
                     echo $erreur;
               }*/
 
-               foreach($erreur_a_afficher as $erreur_a_afficher){
+               foreach($erreur_a_afficher as $classe_erreur){
+                  // echo $classe_erreur;
                     ?> 
+                  
                     <style>
-                        main.main_poster_avis <?php echo $erreur_a_afficher ?> {
+                        main.main_poster_avis .<?php echo $classe_erreur ?> {
                            display:block;
                         }         
                        ?>

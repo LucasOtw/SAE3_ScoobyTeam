@@ -149,23 +149,23 @@ if(isset($_POST['envoiFormEtape2'])){
                     <label>Options de repas</label>
                     <div class="checkbox-group">
                         <div>
-                            <input type="checkbox" id="petit_dejeuner" name="repas[]" value="petit_dejeuner">
+                            <input type="checkbox" id="petit_dejeuner" name="repas[]" value="Petit déjeuner">
                             <label class="label-check" for="petit_dejeuner">Petit-Déjeuner</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="brunch" name="repas[]" value="brunch">
+                            <input type="checkbox" id="brunch" name="repas[]" value="Brunch">
                             <label class="label-check" for="brunch">Brunch</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="dejeuner" name="repas[]" value="dejeuner" checked>
+                            <input type="checkbox" id="dejeuner" name="repas[]" value="Déjeuner" checked>
                             <label class="label-check" for="dejeuner">Déjeuner</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="diner" name="repas[]" value="diner" checked>
+                            <input type="checkbox" id="diner" name="repas[]" value="Dîner" checked>
                             <label class="label-check" for="diner">Dîner</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="boissons" name="repas[]" value="boissons">
+                            <input type="checkbox" id="boissons" name="repas[]" value="Boissons">
                             <label class="label-check" for="boissons">Boissons</label>
                         </div>
                     </div>
