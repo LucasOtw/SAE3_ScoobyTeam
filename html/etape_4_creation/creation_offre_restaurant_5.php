@@ -14,6 +14,14 @@ include("../recupInfosCompte.php");
 
 if(!isset($_SESSION['aCreeUneOffre'])){
     $_SESSION['aCreeUneOffre'] = false;
+} else {
+    if(isset($_SESSION['crea_offre'])){
+        unset($_SESSION['crea_offre']);
+        unset($_SESSION['crea_offre2']);
+        unset($_SESSION['crea_offre3']);
+        unset($_SESSION['crea_offre4']);
+        unset($_SESSION['ajoutOption']);
+    }
 }
 
 var_dump($_SESSION);
