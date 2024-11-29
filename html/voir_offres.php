@@ -465,13 +465,24 @@ function tempsEcouleDepuisPublication($offre){
         <script>
             // Récupération des éléments
             const offerItems = document.querySelectorAll('.offer');
+            
             const searchInput = document.querySelector('.search-input');
+            
             const searchSelect = document.querySelectorAll('.search-select');
             const container = document.querySelector('#offers-list'); 
+            
             const searchLocation = document.querySelector('#location');
+            
             const selectRate = document.querySelector('#select-rate');
-            const selectStatus = document.querySelector('#select-statut');
-            const eventDate = document.querySelector('#event-date');
+            
+            const priceMinInput = document.getElementById("price-min");
+            const priceMaxInput = document.getElementById("price-max");
+            const priceMinDisplay = document.getElementById("price-min-display");
+            const priceMaxDisplay = document.getElementById("price-max-display");
+            
+            // const selectStatus = document.querySelector('#select-statut');
+            
+            // const eventDate = document.querySelector('#event-date');
             
 
 
@@ -590,14 +601,10 @@ function tempsEcouleDepuisPublication($offre){
                     });
                 });
 
-
-
-            // Récupérer les éléments
-            const priceMinInput = document.getElementById("price-min");
-            const priceMaxInput = document.getElementById("price-max");
-            const priceMinDisplay = document.getElementById("price-min-display");
-            const priceMaxDisplay = document.getElementById("price-max-display");
             
+            ///////////////////////////////////////////////////
+            ///      Selecteur de la fourchette de prix     ///
+            ///////////////////////////////////////////////////
             // Mettre à jour les affichages du prix
             function updatePriceDisplay() {
                 priceMinDisplay.textContent = priceMinInput.value;
@@ -631,10 +638,6 @@ function tempsEcouleDepuisPublication($offre){
                 updatePriceDisplay(); // Mettre à jour l'affichage des prix
                 filterOffers(); // Appliquer le filtre
             });
-            
-            // // Initialiser l'affichage
-            // updatePriceDisplay();
-            // filterOffers();
             
         </script>
 
