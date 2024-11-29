@@ -584,11 +584,7 @@ if (isset($json['results'][0])) {
         ?>
 
         <?php 
-            // Ensure $code_offre is defined and has a valid value
-            echo "<pre>";
-            var_dump($code_offre); // Debugging: Check the value of $code_offre
-            echo "</pre>";
-            
+                      
             $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre');
             
             $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
@@ -641,52 +637,15 @@ if (isset($json['results'][0])) {
                         }
                         ?>
                         <div class="avis-content">
-                            <h3 class="avis"><?php echo $avis["note"] . ".0 $appreciation";?>| <span class="nom_avis"><?php echo $avis["prenom"];?> <?php echo $avis["nom"]; ?></span></h3>
+                            <h3 class="avis"><?php echo $avis["note"] . ".0 $appreciation ";?>| <span class="nom_avis"><?php echo $avis["prenom"];?> <?php echo $avis["nom"]; ?></span></h3>
                             <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
                         </div>
                     </div>
                         <?php
                     }
-                        ?>
-                    
-                    <!--<div class="avis-content">
-                        <h3 class="avis">5.0 Excellent | <span class="nom_avis">Maël Sellier</span></h3>
-                        <p class="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les
-                            gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama
-                            magnifique.</p>
-                    </div>
+                        ?>            
                 </div>
-                <div class="avis">
-                    <div class="avis-content">
-                        <h3 class="avis">4.9 Parfait | <span class="nom_avis">Juliette Martin</span></h3>
-                        <p class="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande.</p>
-                    </div>
-                </div>
-                <div class="avis">
-                    <div class="avis-content">
-                        <h3 class="avis">4.2 Génial | <span class="nom_avis">Antoine Prieur</span></h3>
-                        <p class="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les
-                            gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama
-                            magnifique.</p>
-                    </div>
-                </div>
-                <div class="avis">
-                    <div class="avis-content">
-                        <h3 class="avis">3.8 Bien | <span class="nom_avis">Tim Cook</span></h3>
-                        <p class="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les
-                            gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama
-                            magnifique.</p>
-                    </div>
-                </div>
-                <div class="avis">
-                    <div class="avis-content">
-                        <h3 class="avis">4.0 Très bien | <span class="nom_avis">Johnny Ives</span></h3>
-                        <p class="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter les
-                            gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama
-                            magnifique.</p>
-                    </div>-->
             </div>
-        </div>
 
 
 
@@ -888,53 +847,49 @@ if (isset($json['results'][0])) {
 
 
             <div class="avis-widget">
-                <div class="avis-header">
-                    <h1 class="avis">5.0 <span class="avis-score">Très bien</span></h1>
-                    <p class="avis">255 avis vérifiés</p>
-                </div>
-                <div class="avis-list">
-                    <div class="avis">
+            <div class="avis-header">
+                <h1 class="avis">5.0 <span class="avis-score">Très bien</span></h1>
+                <p class="avis"><?php echo $nombre_d_avis ; ?> avis vérifiés</p>
+            </div>
+            <div class="avis-list">
+                <div class="avis">
+                    <?php
+                    foreach ($tout_les_avis as $avis) {
+                        $appreciation = "";
+                        
+                        switch ($avis["note"]) {
+                            case '1':
+                                $appreciation = "Insatisfaisant";
+                                break;
+                        
+                            case '2':
+                                $appreciation = "Passable";
+                                break;
+                        
+                            case '3':
+                                $appreciation = "Correct";
+                                break;
+                            
+                            case '4':
+                                $appreciation = "Excellent";
+                                break;
+                        
+                            case '5':
+                                $appreciation  = "Parfait";
+                                break;
+                            
+                            default:
+                                break;
+                        }
+                        ?>
                         <div class="avis-content">
-                            <h3 class="avis">5.0 Excellent | <span class="nom_avis">Maël Sellier</span></h3>
-                            <p class="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter
-                                les
-                                gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama
-                                magnifique.</p>
+                            <h3 class="avis"><?php echo $avis["note"] . ".0 $appreciation ";?>| <span class="nom_avis"><?php echo $avis["prenom"];?> <?php echo $avis["nom"]; ?></span></h3>
+                            <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
                         </div>
                     </div>
-                    <div class="avis">
-                        <div class="avis-content">
-                            <h3 class="avis">4.9 Parfait | <span class="nom_avis">Juliette Martin</span></h3>
-                            <p class="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande.</p>
-                        </div>
-                    </div>
-                    <div class="avis">
-                        <div class="avis-content">
-                            <h3 class="avis">4.2 Génial | <span class="nom_avis">Antoine Prieur</span></h3>
-                            <p class="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter
-                                les
-                                gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama
-                                magnifique.</p>
-                        </div>
-                    </div>
-                    <div class="avis">
-                        <div class="avis-content">
-                            <h3 class="avis">3.8 Bien | <span class="nom_avis">Tim Cook</span></h3>
-                            <p class="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter
-                                les
-                                gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama
-                                magnifique.</p>
-                        </div>
-                    </div>
-                    <div class="avis">
-                        <div class="avis-content">
-                            <h3 class="avis">4.0 Très bien | <span class="nom_avis">Johnny Ives</span></h3>
-                            <p class="avis">Super, un séjour enrichissant, un personnel réactif. Je recommande. À noter
-                                les
-                                gens sont serviables, à l'écoute. Le cadre est relativement tranquille avec un panorama
-                                magnifique.</p>
-                        </div>
-                    </div>
+                        <?php
+                    }
+                        ?>
                 </div>
 
 
