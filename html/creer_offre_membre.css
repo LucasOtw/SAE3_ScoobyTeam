@@ -18,22 +18,32 @@ body {
 /* Header styles */
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Espace entre le logo et le bouton */
   align-items: center;
   width: 100%;
-  background-color: #ff7d00;
-  padding: 16px;
+  background-color: #ff7d00; /* Couleur de fond de l'en-tête */
+  padding: 16px 32px; /* Espacement de l'en-tête */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre légère sous l'en-tête */
+}
+
+.logo-container {
+  flex-grow: 1; /* Prend tout l'espace restant à gauche */
 }
 
 .logo {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: bold;
   color: #fff;
 }
 
 .logo span {
   font-size: 14px;
-  display: block;
+  display: block; /* "Professionnel" en dessous du logo */
+}
+
+.skip-container {
+  display: flex;
+  justify-content: flex-end; /* Le bouton à droite */
 }
 
 .skip {
@@ -53,68 +63,47 @@ body {
   width: 260px;
   height: 200px;
 }
-.features-image{
-  width : 300px;
-  height:160px;
+
+.features-image {
+  width: 300px;
+  height: 160px;
 }
 
 .main-title {
   font-size: 20px;
   margin: 8px 0;
   color: #333;
-  margin-top:5em;
+  margin-top: 5em;
 }
 
 .subtitle {
   font-size: 16px;
   color: #666;
-  margin-bottom:3em;
-}
-
-.features {
-  list-style: none;
-  padding: 0;
-  margin: 16px 0;
-  color: #333;
-}
-
-.features li {
-  margin: 4px 0;
-  font-size: 14px;
-}
-
-.subscribe-button {
-  background-color: #ff7d00;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 16px;
+  margin-bottom: 3em;
 }
 
 /* Footer styles */
 nav.nav-bar {
-        width: 84vw;
-        position: fixed;
-        bottom: 20px;
-        background-color: #F28322;
-        display: flex;
-        margin: auto  8vw;
-        justify-content: space-around;
-        border-radius: 1000px;
-        box-shadow: 0px 2px 10px rgb(156, 156, 156);
-    }
+  width: 84vw;
+  position: fixed;
+  bottom: 20px;
+  background-color: #F28322;
+  display: flex;
+  margin: auto 8vw;
+  justify-content: space-around;
+  border-radius: 1000px;
+  box-shadow: 0px 2px 10px rgb(156, 156, 156);
+}
 
-    .nav-bar img {
-        display: inline-block; /* Affiche les images dans la barre de navigation */
-    }
-    nav.nav-bar a {
-        display: flex;
-        align-items: center;
-        margin: 10px auto;
-    }
+.nav-bar img {
+  display: inline-block; /* Affiche les images dans la barre de navigation */
+}
+
+nav.nav-bar a {
+  display: flex;
+  align-items: center;
+  margin: 10px auto;
+}
 
 .nav {
   display: flex;
