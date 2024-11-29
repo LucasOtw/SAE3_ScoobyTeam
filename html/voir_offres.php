@@ -501,16 +501,15 @@ function tempsEcouleDepuisPublication($offre){
                     const priceOrder = document.querySelector('.search-select:nth-of-type(2)').value;
                     const noteOrder = document.querySelector('.search-select:nth-of-type(3)').value;
 
-                    console.log(category);
                     // Filtrer par catégorie
                     offerItems.forEach(offer => {
                         
                         const offerCategory = offer.getAttribute('data-category');
                         if (category && category !== offerCategory) {
-                            console.log("BOUCLE VALIDE");
+                            console.log("BOUCLE VALIDE : ${offerCategory}");
                             offer.classList.add('hidden');
                         } else {
-                            console.log("BOUCLE NON VALIDE");
+                            console.log("BOUCLE NON VALIDE : ${offerCategory}");
                             offer.classList.remove('hidden');
                         }
                     });
