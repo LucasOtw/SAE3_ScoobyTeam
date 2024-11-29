@@ -801,7 +801,13 @@ if (isset($json['results'][0])) {
                 ?>
 
             </section>
-
+            <article class="prix">
+                <span>
+                    <p>Tarif minimal</p>
+                    <p class="tarif"><?php echo $details_offre["tarif"]; ?>€</p>
+                </span>
+                <!--<button id="bouton_publier">Publier un avis →</button>-->
+            </article>
             <div class="detail_offre_resumer_titre">
                 <h2>Accessibilité</h2>
                 <p><?php echo $details_offre["accessibilite"]; ?></p>
@@ -908,17 +914,6 @@ if (isset($json['results'][0])) {
                         <?php
                     }
                         ?>            
-                </div>
-
-                <div>
-                    
-                    <article class="prix">
-                        <span>
-                            <p style="margin-left: 0em;">Tarif minimal</p>
-                            <p id="prix" style="margin-left: 0em; margin-bottom:3em"><?php echo $details_offre["tarif"]; ?>€</p>
-                        </span>
-                        <!--<button id="bouton_publier">Publier un avis →</button>-->
-                    </article>
                 </div>
             </div>
         </div>
