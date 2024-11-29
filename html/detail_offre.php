@@ -641,8 +641,8 @@ if (isset($json['results'][0])) {
         ?>
         <div class="avis-widget">
             <div class="avis-header">
-                <h1 class="avis"><?php echo $note_moyenne; ?> <span class="avis-score"> Très bien</span></h1>
-                <p class="avis"><?php echo $nombre_d_avis ; ?> avis vérifiés</p>
+                <h1 class="avis"><?php echo round($note_moyenne, 1);; ?> <span class="avis-score"> $appreciationGenerale</span></h1>
+                <p class="avis"><?php echo $nombre_d_avis ; ?> avis vérifié<?php if ($nombre_d_avis > 1){ echo 's' } ?></p>
             </div>
             <div class="avis-list">
                 <div class="avis">
