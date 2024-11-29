@@ -85,9 +85,6 @@ if (!isset($_POST["vueDetails"])) {
         $images_offre = $stmt->fetchAll(PDO::FETCH_NUM);
 
 
-        echo '<pre>';
-        var_dump($images_offre);
-        echo '</pre>';
 
             $tags_offre_stmt = $dbh->prepare('
                 SELECT nom_tag 
@@ -173,9 +170,6 @@ if (!isset($_POST["vueDetails"])) {
         }
 
 
-        echo "<pre>";
-        var_dump($details_offre);
-        echo "</pre>";
 
 
         // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
