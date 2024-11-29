@@ -330,6 +330,15 @@ if(isset($_POST['valider'])){
                     $ajoutRestaurant->execute();
                 }
 
+                if(isset($_SESSION['crea_offre']['tags'])){
+                    foreach($_SESSION['crea_offre']['tags'] as $tag){
+                        $ajoutTag = $dbh->prepare("INSERT INTO tripenarvor._son_tag VALUES (:code_tag,:code_offre)");
+                        $ajoutTag->bindValue(":code_tag",$tag);
+                        $ajoutTag->bindValue(":code_offre",$id_offre);
+                        $ajoutTag->execute();
+                    }
+                }
+
                 $_SESSION['aCreeUneOffre'] = true;
             } else {
                 echo "Nique ta mère";
