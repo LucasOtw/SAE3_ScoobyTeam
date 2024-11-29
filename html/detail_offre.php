@@ -600,14 +600,14 @@ if (isset($json['results'][0])) {
             $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis WHERE code_offre = :code_offre');
             $nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
             $nb_avis->execute();
-
+            $nombre_d_avis = $nb_avis->fetchColumn();
 
     
         ?>
         <div class="avis-widget">
             <div class="avis-header">
                 <h1 class="avis">5.0 <span class="avis-score">Très bien</span></h1>
-                <p class="avis"><?php echo $nb_avis[0] ; ?> avis vérifiés</p>
+                <p class="avis"><?php echo $nombre_d_avis ; ?> avis vérifiés</p>
             </div>
             <div class="avis-list">
                 <div class="avis">
