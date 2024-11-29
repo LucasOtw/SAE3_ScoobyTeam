@@ -607,7 +607,7 @@ if (isset($json['results'][0])) {
         <div class="avis-widget">
             <div class="avis-header">
                 <h1 class="avis">5.0 <span class="avis-score">Très bien</span></h1>
-                <p class="avis"><?php echo $nb_avis;?> avis vérifiés</p>
+                <p class="avis"><?php echo $nb_avis[0] ; ?> avis vérifiés</p>
             </div>
             <div class="avis-list">
                 <div class="avis">
