@@ -253,6 +253,8 @@
     } else {
         echo "Adresse non trouvée.";
     }
+
+    var_dump($tags_offre);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
