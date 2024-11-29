@@ -93,73 +93,50 @@ if (!empty($_POST['supprAvis'])){
                 </ul>
             </section>
         <div class="avis-widget">
-            <div class="avis-list">
+    <div class="avis-list">
+        <?php
+        // Préparer et exécuter la requête SQL
+        $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor._membre NATURAL JOIN tripenarvor._offre WHERE code_compte = :code_compte');
+        $tout_les_avis->bindValue(':code_compte', $compte['code_compte'], PDO::PARAM_INT);
+        $tout_les_avis->execute();
+        $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
+        ?>
 
-                <?php
-                $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor._membre NATURAL JOIN tripenarvor._offre WHERE code_compte = :code_compte');
-
-                $tout_les_avis->bindValue(':code_compte', $compte['code_compte'], PDO::PARAM_INT);
-
-                $tout_les_avis->execute();
-                $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
-
-
-                ?>
-                <div class="avis">
-                    <?php
-                    foreach ($tout_les_avis as $avis) {
-                        $appreciation = "";
-
-                        switch ($avis["note"]) {
-                            case '1':
-                                $appreciation = "Insatisfaisant";
-                                break;
-
-                            case '2':
-                                $appreciation = "Passable";
-                                break;
-
-                            case '3':
-                                $appreciation = "Correct";
-                                break;
-
-                            case '4':
-                                $appreciation = "Excellent";
-                                break;
-
-                            case '5':
-                                $appreciation = "Parfait";
-                                break;
-
-                            default:
-                                break;
-                        }
-                        ?>
-                        <div class="avis">
-                            <div class="avis-content">
-                                <h3 class="avis"
-                                    style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span>
-                                        <?php echo $avis["note"] . ".0 $appreciation "; ?> | <span
-                                            class="nom_avis"><?php echo $avis["prenom"]; ?> <?php echo $avis["nom"]; ?>
-                                            &nbsp;</span>| &nbsp;<span
-                                            class="nom_visite"><?php echo $avis["titre_offre"]; ?></span>
-                                    </span>
-                                    <form method="POST" action="consulter_mes_avis.php">
-                                        <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis['code_avis']); ?>">
-                                        <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="this.closest('form').submit()">
-                                    </form>
-
-                                </h3>
-                                <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
-                            </div>
-                        </div>
-                    </div>
-                    <?php
-                    }
-                    ?>
+        <!-- Boucle pour afficher chaque avis -->
+        <?php foreach ($tout_les_avis as $avis): ?>
+            <?php
+            // Déterminer l'appréciation en fonction de la note
+            $appreciation = "";
+            switch ($avis["note"]) {
+                case '1': $appreciation = "Insatisfaisant"; break;
+                case '2': $appreciation = "Passable"; break;
+                case '3': $appreciation = "Correct"; break;
+                case '4': $appreciation = "Excellent"; break;
+                case '5': $appreciation = "Parfait"; break;
+                default: $appreciation = "Non noté"; break;
+            }
+            ?>
+            <div class="avis">
+                <div class="avis-content">
+                    <h3 class="avis" style="display: flex; justify-content: space-between; align-items: center;">
+                        <span>
+                            <?php echo htmlspecialchars($avis["note"]) . ".0 $appreciation "; ?> | 
+                            <span class="nom_avis"><?php echo htmlspecialchars($avis["prenom"]) . " " . htmlspecialchars($avis["nom"]); ?></span> | 
+                            <span class="nom_visite"><?php echo htmlspecialchars($avis["titre_offre"]); ?></span>
+                        </span>
+                        <!-- Formulaire pour supprimer un avis -->
+                        <form method="POST" action="consulter_mes_avis.php">
+                            <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis['code_avis']); ?>">
+                            <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="this.closest('form').submit()">
+                        </form>
+                    </h3>
+                    <p class="avis"><?php echo htmlspecialchars($avis["txt_avis"]); ?></p>
+                </div>
             </div>
-        </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
     </main>
     <nav class="nav-bar">
         <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
