@@ -160,8 +160,6 @@ if (!empty($_POST['supprAvis'])){
                     ?>
             </div>
         </div>
-        </div>
-        </div>
     </main>
     <nav class="nav-bar">
         <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
