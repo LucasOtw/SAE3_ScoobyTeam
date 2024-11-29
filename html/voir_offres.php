@@ -514,6 +514,7 @@ function tempsEcouleDepuisPublication($offre){
                         } else {
                             console.log(`BOUCLE NON VALIDE : ${offerCategory}`);
                             offer.classList.remove('hidden');
+                            console.log(offer.classList);
                         }
                     });
                     console.log('///////////////////////////////////////////////')
