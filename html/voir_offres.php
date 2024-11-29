@@ -589,6 +589,52 @@ function tempsEcouleDepuisPublication($offre){
                         }
                     });
                 });
+
+
+
+            // Récupérer les éléments
+            const priceMinInput = document.getElementById("price-min");
+            const priceMaxInput = document.getElementById("price-max");
+            const priceMinDisplay = document.getElementById("price-min-display");
+            const priceMaxDisplay = document.getElementById("price-max-display");
+            
+            // Mettre à jour les affichages du prix
+            function updatePriceDisplay() {
+                priceMinDisplay.textContent = priceMinInput.value;
+                priceMaxDisplay.textContent = priceMaxInput.value;
+            }
+            
+            // Filtrer les offres en fonction de la fourchette de prix
+            function filterOffers() {
+                const minPrice = parseFloat(priceMinInput.value);
+                const maxPrice = parseFloat(priceMaxInput.value);
+            
+                offerItems.forEach(offer => {
+                    const offerPrice = parseFloat(offer.getAttribute('data-price'));
+            
+                    // Vérifier si le prix de l'offre est dans la fourchette
+                    if (offerPrice >= minPrice && offerPrice <= maxPrice) {
+                        offer.style.display = "block"; // Afficher l'offre
+                    } else {
+                        offer.style.display = "none"; // Cacher l'offre
+                    }
+                });
+            }
+            
+            // Ajouter des événements sur les sliders
+            priceMinInput.addEventListener("input", () => {
+                updatePriceDisplay(); // Mettre à jour l'affichage des prix
+                filterOffers(); // Appliquer le filtre
+            });
+            
+            priceMaxInput.addEventListener("input", () => {
+                updatePriceDisplay(); // Mettre à jour l'affichage des prix
+                filterOffers(); // Appliquer le filtre
+            });
+            
+            // Initialiser l'affichage
+            updatePriceDisplay();
+            filterOffers();
             
         </script>
 
