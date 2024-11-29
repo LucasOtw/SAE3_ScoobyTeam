@@ -34,10 +34,6 @@ if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
     }
 }
 
-echo "<pre>";
-var_dump($_SESSION['crea_offre4']);
-echo "</pre>";
-
 $infosCB = null;
 
 // on vérifie si le pro a un compte bancaire
@@ -58,16 +54,10 @@ if(isset($_POST['valider'])){
         // si validerIBAN et validerBIC retournent TRUE...
         // on passe aux choses sérieuses :)
 
-        echo "<pre>";
-        var_dump($_SESSION['crea_offre4']);
-        echo "</pre>";
-
         
         /*
         * VERIFICATION DE L'ADRESSE
         */
-
-        var_dump($_SESSION['aCreeUneOffre']);
 
         if($_SESSION['aCreeUneOffre'] === false){
             $adresse_postal = $_SESSION['crea_offre']['adresse'];
@@ -144,8 +134,6 @@ if(isset($_POST['valider'])){
                     // on récupère le dernier id enregistré, celui du code horaire.
                     $code_horaire[strtolower($jour)] = $dbh->lastInsertId();
                 }
-    
-                var_dump($code_horaire);
             }
 
             /*
@@ -160,9 +148,6 @@ if(isset($_POST['valider'])){
             if(file_exists($chemin)){
                 // si le chemin existe, on récupère tous les fichiers images
                 $fichiers = scandir($chemin);
-                echo "<pre>";
-                var_dump($fichiers);
-                echo "</pre>";
     
                 // Filtrer uniquement les images
                 $images = array_filter($fichiers, function($fichier) use ($chemin) {
@@ -186,8 +171,6 @@ if(isset($_POST['valider'])){
             } else {
                 die('Le chemin n existe pas');
             }
-
-            var_dump($id_image);
     
             /*
             * DERNIERS AJOUTS
@@ -312,9 +295,6 @@ if(isset($_POST['valider'])){
             $columns = implode(", ", array_keys($mon_offre)); // Liste des colonnes
             $placeholders = implode(", ", array_map(fn($key) => ":$key", array_keys($mon_offre))); // Liste des placeholders
     
-            var_dump($columns);
-            var_dump($placeholders);
-    
             $creation_offre_req = "INSERT INTO tripenarvor._offre ($columns) VALUES ($placeholders)";
             $creation_offre = $dbh->prepare($creation_offre_req);
             
@@ -344,9 +324,6 @@ if(isset($_POST['valider'])){
                 foreach($_SESSION['crea_offre']['tags'] as $tag){
                    echo $tag;
                 }
-
-                var_dump($mon_offre);
-
 
                 if(isset($_SESSION['crea_offre']['tags']) && is_array($_SESSION['crea_offre']['tags'])){
                     foreach($_SESSION['crea_offre']['tags'] as $tag){
