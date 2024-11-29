@@ -100,7 +100,7 @@ if (!empty($_POST['supprAvis'])){
                                 break;
 
                             case '2':
-                                $appreciation = "Passable";<?php echo $avis["id"]; ?>
+                                $appreciation = "Passable";
                                 break;
 
                             case '3':
