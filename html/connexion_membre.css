@@ -289,7 +289,7 @@ main.connexion_membre_main {
 }
 
 .connexion_membre_main fieldset {
-    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,0);
     border-radius: 5px;
     margin-bottom: 20px;
     padding-top: 0;
