@@ -639,7 +639,7 @@ if (isset($json['results'][0])) {
                 <p class="avis"><?php echo $nombre_d_avis ; ?> avis vérifié<?php if ($nombre_d_avis > 1){ echo 's'; } ?></p>
             </div>
             <div class="avis-list">
-                <div class="avis">
+                
                     <?php
                     foreach ($tout_les_avis as $avis) {
                         $appreciation = "";
@@ -669,11 +669,12 @@ if (isset($json['results'][0])) {
                                 break;
                         }
                         ?>
-                        <div class="avis-content">
-                            <h3 class="avis"><?php echo $avis["note"] . ".0 $appreciation ";?>| <span class="nom_avis"><?php echo $avis["prenom"];?> <?php echo $avis["nom"]; ?></span></h3>
-                            <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
+                        <div class="avis">
+                            <div class="avis-content">
+                                <h3 class="avis"><?php echo $avis["note"] . ".0 $appreciation ";?>| <span class="nom_avis"><?php echo $avis["prenom"];?> <?php echo $avis["nom"]; ?></span></h3>
+                                <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
+                            </div>
                         </div>
-                    </div>
                         <?php
                     }
                         ?>            
