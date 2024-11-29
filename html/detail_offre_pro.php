@@ -308,14 +308,15 @@
                     <p><i class="fas fa-clock"></i> Publié <?php echo tempsEcouleDepuisPublication($details_offre);?></p>
 
                     <p class="update"><span class="update-icon">⟳</span> Dernière modification <?php echo tempsEcouleDepuisDerniereModif($details_offre);?></p>
-
+                    <!--
                     <div> 
                         <p id="offer-state">L'offre est actuellement : 
                             <span id="offer-status"> 
-                                <?php echo $details_offre[ 'en_ligne'] ? "En Ligne" : "Hors Ligne"; ?>
+                                <<?php echo $details_offre[ 'en_ligne'] ? "En Ligne" : "Hors Ligne"; ?>
                             </span>
                         </p>
                     </div>
+                    -->
 
                    
 
