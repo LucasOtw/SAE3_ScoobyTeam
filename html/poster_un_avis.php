@@ -199,11 +199,11 @@ echo "</pre>";
               }*/
 
                foreach($erreur_a_afficher as $classe_erreur){
-                  echo $classe_erreur;
+                  // echo $classe_erreur;
                     ?> 
                   
                     <style>
-                        main.main_poster_avis <?php echo $classe_erreur ?> {
+                        main.main_poster_avis .<?php echo $classe_erreur ?> {
                            display:block;
                         }         
                        ?>
