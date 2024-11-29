@@ -595,12 +595,19 @@ if (isset($json['results'][0])) {
             
             $tout_les_avis->execute();
             $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
-        
+
+            $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre');
+            
+            $nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+            $nb_avis->execute();
+            $nb_avis = $tout_les_avis->fetch(PDO::FETCH_ASSOC);
+
+    
         ?>
         <div class="avis-widget">
             <div class="avis-header">
                 <h1 class="avis">5.0 <span class="avis-score">Très bien</span></h1>
-                <p class="avis">255 avis vérifiés</p>
+                <p class="avis"><?php echo $nb_avis?> avis vérifiés</p>
             </div>
             <div class="avis-list">
                 <div class="avis">
@@ -634,7 +641,7 @@ if (isset($json['results'][0])) {
                         }
                         ?>
                         <div class="avis-content">
-                            <h3 class="avis"><?php $avis["note"] . ".0";?> $appreciation | <span class="nom_avis"><?php echo $avis["prenom"];?> <?php echo $avis["nom"]; ?></span></h3>
+                            <h3 class="avis"><?php echo $avis["note"] . ".0 $appreciation";?>| <span class="nom_avis"><?php echo $avis["prenom"];?> <?php echo $avis["nom"]; ?></span></h3>
                             <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
                         </div>
                     </div>
