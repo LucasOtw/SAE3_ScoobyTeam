@@ -885,6 +885,9 @@ if (isset($json['results'][0])) {
                         $appreciation = "";
                         
                         switch ($avis["note"]) {
+                            case '0':
+                                $appreciation = "";
+                                break;
                             case '1':
                                 $appreciation = "Insatisfaisant";
                                 break;
