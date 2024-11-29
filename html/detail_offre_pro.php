@@ -513,19 +513,16 @@
             <div class="detail_offre_icons">
                 <h2 style="margin-left: 0.1em;">Tags</h2>
 
-                <?php
-                var_dump($tags_offre);
-                foreach ($tags_offre as $tag)
-                {
-                ?>
-                    <?php
-
-                    <div class="detail_offre_icon">
-                        <p><?php echo $tag;?></p>
-                    </div>
-                <?php
-                }
-                ?> 
+            <?php
+            var_dump($tags_offre);
+            foreach ($tags_offre as $tag) {
+            ?>
+                <div class="detail_offre_icon">
+                    <p><?php echo htmlspecialchars($tag[0]); ?></p>
+                </div>
+            <?php
+            }
+            ?>
 
 
 
