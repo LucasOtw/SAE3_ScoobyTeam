@@ -504,14 +504,15 @@ function tempsEcouleDepuisPublication($offre){
                     console.log(category);
                     // Filtrer par catégorie
                     offerItems.forEach(offer => {
+                        
                         offerItems.forEach(offer => offer.classList.remove('hidden'));
+                        
                         const offerCategory = offer.getAttribute('data-category');
-                        if (category === 'all' ||  category === offerCategory) {
-                            offer.classList.remove('hidden');
-                        } else if (category && category !== offerCategory) {
+                        if (category && category !== offerCategory) {
                             offer.classList.add('hidden');
+                        } else {
+                            offer.classList.remove('hidden');
                         }
-                        console.log(`Offre: ${offer.getAttribute('data-category')} | Visible: ${!offer.classList.contains('hidden')}`);
                     });
                     
             
