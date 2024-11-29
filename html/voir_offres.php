@@ -219,7 +219,7 @@ function tempsEcouleDepuisPublication($offre){
             <!-- Note générale des avis -->
             <label for="note-select">Note générale des avis</label>
             <select id="note-select">
-                <option value="all">Les notes</option>
+                <option value="">Les notes</option>
                 <option value="1">1 étoile</option>
                 <option value="2">2 étoiles</option>
                 <option value="3">3 étoiles</option>
@@ -527,7 +527,7 @@ function tempsEcouleDepuisPublication($offre){
                             console.log(offer.classList);
                         }
                     });
-                    console.log('///////////////////////////////////////////////')
+                    console.log('///////////////////////////////////////////////');
                     
             
                     // Trier les offres visibles
@@ -571,6 +571,63 @@ function tempsEcouleDepuisPublication($offre){
                     }
                 });
             });
+
+
+            ///////////////////////////////////////////////////
+            ///               Selecteur note                ///
+            ///////////////////////////////////////////////////
+            selectRate.addEventListener('change', function () {
+                    const rate = selectRate.value;
+
+                    // Filtrer par catégorie
+                    offerItems.forEach(offer => {
+                        
+                        const offerCategory = offer.getAttribute('data-category');
+                        // if (category!=='all' && category !== offerCategory) {
+                        //     console.log(`BOUCLE VALIDE : ${offerCategory}`);
+                        //     offer.classList.add('hidden');
+                        // } else {
+                        //     console.log(`BOUCLE NON VALIDE : ${offerCategory}`);
+                        //     offer.classList.remove('hidden');
+                        //     console.log(offer.classList);
+                        // }
+
+                        if (category==='all' || category === offerCategory) {
+                            console.log(`BOUCLE NON VALIDE : ${offerCategory}`);
+                            offer.classList.remove('hidden');
+                            console.log(offer.classList);
+                        } else {
+                            console.log(`BOUCLE VALIDE : ${offerCategory}`);
+                            offer.classList.add('hidden');
+                            console.log(offer.classList);
+                        }
+                    });
+                    console.log('///////////////////////////////////////////////')
+                    
+            
+                    // Trier les offres visibles
+                    let offers = Array.from(document.querySelectorAll('.offer:not(.hidden)'));
+            
+                    if (priceOrder) {
+                        offers.sort((a, b) => {
+                            const priceA = parseFloat(a.getAttribute('data-price')) || 0;
+                            const priceB = parseFloat(b.getAttribute('data-price')) || 0;
+                            return priceOrder === 'croissantP' ? priceA - priceB : priceB - priceA;
+                        });
+                    }
+            
+                    if (noteOrder) {
+                        offers.sort((a, b) => {
+                            const noteA = parseFloat(a.getAttribute('data-note')) || 0;
+                            const noteB = parseFloat(b.getAttribute('data-note')) || 0;
+                            return noteOrder === 'croissantN' ? noteA - noteB : noteB - noteA;
+                        });
+                    }
+            
+                    // Réorganiser dans le DOM
+                    container.innerHTML = ''; // Clear container
+                    offers.forEach(offer => container.appendChild(offer)); // Append sorted offers
+                });
             
         </script>
 
