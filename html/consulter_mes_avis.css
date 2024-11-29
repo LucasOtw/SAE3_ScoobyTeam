@@ -57,17 +57,12 @@ header {
     color: white;
 }
 
-div.header-membre header.header-tel {
-    display: none;
-}
+
 
 nav.nav-bar {
     display: none;
 }
 
-.main_consulter_compte_membre .edit-profil{
-    display: none;
-}
 
 .logo img {
     height: 60px;
@@ -255,21 +250,6 @@ footer {
     }
 }
 
-@media (min-width: 1024px) {
-    nav ul {
-        gap: 50px; /* Réduit l'espace entre les éléments sur grands écrans */
-    }
-
-    footer {
-        padding: 40px 80px;
-    }
-}
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 
 /* Profile Section */
 .main_consulter_compte_membre .profile {
@@ -449,3 +429,39 @@ footer {
   .avis-widget .avis-list .avis:last-child {
     border-bottom: none; /* Supprime la ligne après le dernier avis */
   }
+
+  @media (max-width: 429px) {
+    header.header-pc {
+        display: none !important;
+    }
+
+    .avis-widget {
+        max-width: 92%;
+        background-color: #fff;
+        border-radius: 8px;
+        margin-left: 5vw;
+    }
+    .main_consulter_compte_membre .tabs ul {
+        display: none;
+    }
+    .main_consulter_compte_membre .profile-info {
+        display : none;
+    }
+    .main_consulter_compte_membre .banner img {
+        display : none;
+    }
+    .edit-profil{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .edit-profil img{
+        margin-top: 1.5vh;
+        height: 19px;
+    }
+    .edit-profil h1{
+        margin-right: 14vw;
+    }
+    .avis-list{
+        margin-top: -7vh;
+    }
+}
