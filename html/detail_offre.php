@@ -90,7 +90,7 @@ if (!isset($_POST["vueDetails"])) {
         echo '</pre>';
 
         $tags_offre = $dbh->query('SELECT nom_tag FROM tripenarvor._tags WHERE code_tag = (SELECT code_tag FROM tripenarvor._son_tag WHERE code_offre = ' . $code_offre . ')');
-        $tags_offre = $tags_offre->fetch(PDO::FETCH_NUM);
+        $tags_offre = $tags_offre->fetchAll(PDO::FETCH_NUM);
 
         if (!empty($details_offre["lundi"])) {
             $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = ' . $details_offre["lundi"] . ";");
@@ -586,6 +586,12 @@ if (isset($json['results'][0])) {
         <?php 
             
             $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre where code_offre = :code_coffre');
+            
+echo "<pre>";
+var_dump($code_offre); // Ensure $code_offre is set and is an integer.
+echo "</pre>";
+
+
             $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
             //$stmt->execute([':code_offre' => $code_offre]);
             $tout_les_avis->execute();
