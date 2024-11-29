@@ -504,6 +504,7 @@ function tempsEcouleDepuisPublication($offre){
                     console.log(category);
                     // Filtrer par catégorie
                     offerItems.forEach(offer => {
+                        offerItems.forEach(offer => offer.classList.remove('hidden'));
                         const offerCategory = offer.getAttribute('data-category');
                         if (category === 'all' ||  category === offerCategory) {
                             offer.classList.remove('hidden');
