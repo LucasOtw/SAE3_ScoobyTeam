@@ -504,7 +504,6 @@ function tempsEcouleDepuisPublication($offre){
                     // Filtrer par catégorie
                     offerItems.forEach(offer => {
                         const offerCategory = offer.getAttribute('data-category');
-                        console.log(`Offre: ${offer.getAttribute('data-category')} | Visible: ${offer.classList.contains('hidden')}`);
                         if (category && category !== offerCategory) {
                             offer.classList.add('hidden');
                         } else if (category === 'all') {
@@ -512,7 +511,9 @@ function tempsEcouleDepuisPublication($offre){
                         } else {
                             offer.classList.remove('hidden');
                         }
+                        console.log(`Offre: ${offer.getAttribute('data-category')} | Visible: ${offer.classList.contains('hidden')}`);
                     });
+                    
             
                     // Trier les offres visibles
                     let offers = Array.from(document.querySelectorAll('.offer:not(.hidden)'));
