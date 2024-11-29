@@ -583,7 +583,7 @@ function tempsEcouleDepuisPublication($offre){
                     offerItems.forEach(offer => {
                         
                         const offerRate = offer.getAttribute('data-rate');
-                        if (rate==='all' || rate === offerRate) {
+                        if (!rate || rate === offerRate) {
                             console.log(`BOUCLE NON VALIDE : ${offerRate}`);
                             offer.classList.remove('hidden');
                             console.log(offer.classList);
