@@ -508,7 +508,7 @@ function tempsEcouleDepuisPublication($offre){
                     offerItems.forEach(offer => {
                         
                         const offerCategory = offer.getAttribute('data-category');
-                        if (category || category !== offerCategory) {
+                        if (category && category !== offerCategory) {
                             console.log(`BOUCLE VALIDE : ${offerCategory}`);
                             offer.classList.add('hidden');
                         } else {
