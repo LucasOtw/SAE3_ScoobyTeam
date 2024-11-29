@@ -372,68 +372,80 @@ if(isset($_POST['valider'])){
             </ul>
         </nav>
     </header>
+    <?php
 
-    <div class="fleche_retour">
-        <div>
-            <a href="../etape_3_boost/creation_offre_restaurant_4.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
-        </div>
-    </div>
-
-    <main class="main-creation-offre3">
-
-        <h1>Publier une offre</h1>
-        <h2>Ajouter une nouvelle carte</h2>
-
-        <div class="form_carte">
-            <form action="#" method="POST">
-                <!-- Numero -->
-                <div class="row">
-                    <div class="col">
-                        <fieldset>
-                            <legend>IBAN *</legend>
-                            <input type="text" id="IBAN" name="IBAN" value="<?php echo ($infosCB) ? $infosCB['iban'] : ""; ?>" placeholder="IBAN *" required>
-                        </fieldset>
-                    </div>
+    if(isset($_SESSION['crea_offre'])){
+        ?>
+            <div class="fleche_retour">
+                <div>
+                    <a href="../etape_3_boost/creation_offre_restaurant_4.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
                 </div>
-
-                <!-- BIC -->
-                <div class="row">
-                    <div class="col">
-                        <fieldset>
-                            <legend>BIC *</legend>
-                            <input type="text" id="BIC" name="BIC" value="<?php echo ($infosCB) ? $infosCB['bic'] : ""; ?>" placeholder="BIC *" required>
-                        </fieldset>
-                    </div>
-                </div>
-
-                <!-- Nom -->
-                <div class="row">
-                    <div class="col">
-                        <fieldset>
-                            <legend>Nom du compte *</legend>
-                            <input type="text" id="nom" name="nom" value="<?php echo ($infosCB) ? $infosCB['nom_compte'] : ""; ?>" placeholder="Nom du compte *" required>
-                        </fieldset>
-                    </div>
-                </div>
-
-                <div class="checkbox">
-                    <input type="checkbox" id="cgu" name="cgu" required>
-                    <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
-                </div>
-
-                <div class="boutons">
-                    <button type="submit" name="valider" class="btn-primary">Valider</button>
-                </div>
-            </form>
-
-            <div class="carte">
-                <img src="../images/carte_bancaire.png" alt="carte">
             </div>
-        </div>
-
-        <p class="terms">En publiant votre offre, vous acceptez les conditions générales d'utilisation (CGU).</p>
-
-    </main>
+        
+            <main class="main-creation-offre3">
+        
+                <h1>Publier une offre</h1>
+                <h2>Ajouter une nouvelle carte</h2>
+        
+                <div class="form_carte">
+                    <form action="#" method="POST">
+                        <!-- Numero -->
+                        <div class="row">
+                            <div class="col">
+                                <fieldset>
+                                    <legend>IBAN *</legend>
+                                    <input type="text" id="IBAN" name="IBAN" value="<?php echo ($infosCB) ? $infosCB['iban'] : ""; ?>" placeholder="IBAN *" required>
+                                </fieldset>
+                            </div>
+                        </div>
+        
+                        <!-- BIC -->
+                        <div class="row">
+                            <div class="col">
+                                <fieldset>
+                                    <legend>BIC *</legend>
+                                    <input type="text" id="BIC" name="BIC" value="<?php echo ($infosCB) ? $infosCB['bic'] : ""; ?>" placeholder="BIC *" required>
+                                </fieldset>
+                            </div>
+                        </div>
+        
+                        <!-- Nom -->
+                        <div class="row">
+                            <div class="col">
+                                <fieldset>
+                                    <legend>Nom du compte *</legend>
+                                    <input type="text" id="nom" name="nom" value="<?php echo ($infosCB) ? $infosCB['nom_compte'] : ""; ?>" placeholder="Nom du compte *" required>
+                                </fieldset>
+                            </div>
+                        </div>
+        
+                        <div class="checkbox">
+                            <input type="checkbox" id="cgu" name="cgu" required>
+                            <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
+                        </div>
+        
+                        <div class="boutons">
+                            <button type="submit" name="valider" class="btn-primary">Valider</button>
+                        </div>
+                    </form>
+        
+                    <div class="carte">
+                        <img src="../images/carte_bancaire.png" alt="carte">
+                    </div>
+                </div>
+        
+                <p class="terms">En publiant votre offre, vous acceptez les conditions générales d'utilisation (CGU).</p>
+        
+            </main>
+        <?php
+    } else {
+        ?>
+        <h1>Votre offre a été créee avec succès !</h1>
+        <a href="../mes_offres.php">Retourner à "Mes offres"</a>
+        <?php
+    }
+    
+    ?>
     <!-- Footer -->
     <footer class="footer_pro">   
         <div class="footer-links">
