@@ -50,9 +50,13 @@ body {
   margin: 16px 0;
 }
 
-.image {
+.cadeau-image {
   width: 260px;
   height: 200px;
+}
+.features-image{
+  width : 200px;
+  height:150px;
 }
 
 .main-title {
