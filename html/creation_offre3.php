@@ -39,7 +39,9 @@ var_dump($_SESSION['crea_offre']);
 echo "</pre>";
 
 if(isset($_SESSION['crea_offre']['tags'])){
-    echo "t";
+    foreach($_SESSION['crea_offre']['tags'] as $tag){
+        echo $tag;
+    }
 }
 
 $infosCB = null;
