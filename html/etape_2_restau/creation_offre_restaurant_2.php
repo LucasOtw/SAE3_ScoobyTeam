@@ -60,6 +60,8 @@ if(isset($_POST['envoiFormEtape2'])){
       }
       $_SESSION['crea_offre2']['ma_gamme'] = $ma_gamme;
       $_SESSION['crea_offre2']['mesRepas'] = $mesRepas;
+
+      var_dump($_SESSION['crea_offre2']);
    }
 
 }
