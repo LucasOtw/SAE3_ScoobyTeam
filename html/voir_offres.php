@@ -475,19 +475,6 @@ function tempsEcouleDepuisPublication($offre){
             ///            Barre de recherche               ///
             ///////////////////////////////////////////////////
             // Barre de recherche
-            // searchInput.addEventListener('input', () => {
-            //     const query = searchInput.value.toLowerCase().trim();
-            
-            //     offerItems.forEach(offer => {
-            //         const text = offer.textContent.toLowerCase();
-            //         if (text.includes(query)) {
-            //             offer.classList.remove('hidden');
-            //         } else {
-            //             offer.classList.add('hidden');
-            //         }
-            //     });
-            // });
-
             searchInput.addEventListener('input', () => {
                 const query = searchInput.value.toLowerCase().trim();
     
