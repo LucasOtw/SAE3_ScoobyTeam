@@ -342,6 +342,8 @@ if(isset($_POST['valider'])){
                    echo $tag;
                 }
 
+                var_dump($mon_offre);
+
 
                 if(isset($_SESSION['crea_offre']['tags']) && is_array($_SESSION['crea_offre']['tags'])){
                     foreach($_SESSION['crea_offre']['tags'] as $tag){
@@ -356,7 +358,6 @@ if(isset($_POST['valider'])){
                     }
                 }
 
-                $_SESSION['aCreeUneOffre'] = true;
             } else {
                 echo "Nique ta mère";
             }
