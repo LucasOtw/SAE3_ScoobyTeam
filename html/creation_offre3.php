@@ -288,6 +288,14 @@ if(isset($_POST['valider'])){
             if(isset($_SESSION['crea_offre']['accessibilite']) && !empty($_SESSION['crea_offre']['accessibilite'])){
                 $mon_offre['accessibilite'] = $_SESSION['crea_offre']['accessibilite'];
             }
+
+            if(isset($_SESSION['crea_offre4']['option']) && !empty($_SESSION['crea_offre4']['option'])){
+                if($_SESSION['crea_offre4']['option'] == "en_relief"){
+                    $mon_offre['option_en_relief'] = $_SESSION['ajoutOption'];
+                } else if ($_SESSION['crea_offre4'] == "a_la_une"){
+                    $mon_offre['option_a_la_une'] = $_SESSION['ajoutOption'];
+                }
+            }
     
             $mon_offre = array_merge($mon_offre,$code_horaire);
             echo "<pre>";
