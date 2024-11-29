@@ -1374,6 +1374,7 @@ input#btn-poster-avis {
         margin-left: 0;
         margin-top: 0;
         padding: 15px 15px 30px 15px; /* Padding avec bas à 30px */
+        margin-bottom: 5vh;
     }
 
     .avis-widget .avis-header h1.avis {
