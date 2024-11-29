@@ -23,7 +23,7 @@
         <img src="images/cadeau.png" alt="Icône cadeau" class="image">
       </div>
       <h2 class="main-title">Envie de publier une offre ?</h2>
-      <p class="subtitle">Passez à la vitesse supérieure avec PRO</p>
+      <p class="subtitle">Passez à la vitesse supérieure avec un compte Professionnel</p>
       <div class="image-container">
         <img src="images/features.png" class="features-image">
       </div>
