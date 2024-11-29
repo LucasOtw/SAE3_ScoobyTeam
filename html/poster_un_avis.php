@@ -84,7 +84,7 @@ echo "</pre>";
                     <p class="poster_un_avis_location">📍 <?php echo $details_offre["ville"]; ?>, <?php echo $details_offre["code_postal"]; ?></p>
 <!--                     <button class="poster_un_avis_btn_offre">Voir l'offre →</button> -->
                     <form id="form-voir-offre" action="detail_offre.php" method="POST">
-                       <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
+                       <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
                        <input id="btn-voir-offre" class="poster_un_avis_btn_offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
                    </form>
                 </div>
