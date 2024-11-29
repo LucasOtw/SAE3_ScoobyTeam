@@ -146,8 +146,8 @@ if (!empty($_POST['supprAvis'])){
                                             class="nom_visite"><?php echo $avis["titre_offre"]; ?></span>
                                     </span>
                                     <form method="POST" action="consulter_mes_avis.php">
-                                        <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis["code_avis"]); ?>">
-                                        <input id="delete-btn" type="submit" name="delete-btn" class="delete-btn" title="Supprimer cet avis"><img src="images/trash.svg" alt="Supprimer" class="delete-icon">
+                                        <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis["code_avis"]); ?>"></input>
+                                        <input type="submit" class="delete-btn" title="Supprimer cet avis"><img src="images/trash.svg" alt="Supprimer" class="delete-icon"></input>
                                     </form>
                                 </h3>
                                 <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
