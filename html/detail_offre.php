@@ -605,7 +605,7 @@ if (isset($json['results'][0])) {
                 border: 0;
             </iframe>
         </div>
- <?php 
+        <?php 
                       
             $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre');
             $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
@@ -870,17 +870,7 @@ if (isset($json['results'][0])) {
                     style="border:0;margin: auto; width:85vw; height:50vh" allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
-
-
-
-            <div class="avis-widget">
-            <div class="avis-header">
-                <h1 class="avis">5.0 <span class="avis-score">Très bien</span></h1>
-                <p class="avis"><?php echo $nombre_d_avis ; ?> avis vérifiés</p>
-            </div>
-            <div class="avis-list">
-                <div class="avis">
-                    <div class="avis-widget">
+        <div class="avis-widget">
             <div class="avis-header">
                 <h1 class="avis"><?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne,1)) ?> <span class="avis-score"> <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?></span></h1>
                 <p class="avis"><?php echo $nombre_d_avis ; ?> avis vérifié<?php if ($nombre_d_avis > 1){ echo 's'; } ?></p>
