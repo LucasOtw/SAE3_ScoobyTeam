@@ -409,7 +409,7 @@ if (isset($json['results'][0])) {
                 foreach ($tags_offre as $tag) {
                     ?>
                     <div class="detail_offre_icon">
-                        <p><?php echo $tag; ?></p>
+                        <p><?php echo $tag[0]; ?></p>
                     </div>
                     <?php
                 }
