@@ -378,7 +378,7 @@
 
                      
 
-<span id="offerStatus"></span>
+                    <span id="offerStatus"></span>
 
 
                
