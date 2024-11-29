@@ -641,7 +641,7 @@ if (isset($json['results'][0])) {
         ?>
         <div class="avis-widget">
             <div class="avis-header">
-                <h1 class="avis"><?php echo ($note_moyenne === null ? "0" : round($note_moyenne,1)) ?> <span class="avis-score"> <?php echo $appreciationGenerale; ?></span></h1>
+                <h1 class="avis"><?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne,1)) ?> <span class="avis-score"> <?php echo ($note_moyenne === null ? "" : echo $appreciationGenerale;) ?></span></h1>
                 <p class="avis"><?php echo $nombre_d_avis ; ?> avis vérifié<?php if ($nombre_d_avis > 1){ echo 's'; } ?></p>
             </div>
             <div class="avis-list">
@@ -685,7 +685,7 @@ if (isset($json['results'][0])) {
                         ?>            
                 </div>
             </div>
-    </div>
+        </div>
     </div>
 
 
@@ -880,14 +880,18 @@ if (isset($json['results'][0])) {
             </div>
             <div class="avis-list">
                 <div class="avis">
+                    <div class="avis-widget">
+            <div class="avis-header">
+                <h1 class="avis"><?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne,1)) ?> <span class="avis-score"> <?php echo ($note_moyenne === null ? "" : echo $appreciationGenerale;) ?></span></h1>
+                <p class="avis"><?php echo $nombre_d_avis ; ?> avis vérifié<?php if ($nombre_d_avis > 1){ echo 's'; } ?></p>
+            </div>
+            <div class="avis-list">
+                <div class="avis">
                     <?php
                     foreach ($tout_les_avis as $avis) {
                         $appreciation = "";
                         
                         switch ($avis["note"]) {
-                            case '0':
-                                $appreciation = "";
-                                break;
                             case '1':
                                 $appreciation = "Insatisfaisant";
                                 break;
@@ -919,10 +923,8 @@ if (isset($json['results'][0])) {
                     </div>
                         <?php
                     }
-                        ?>
+                        ?>            
                 </div>
-
-
 
                 <div>
                     <!-- Bouton publier un avis -->
