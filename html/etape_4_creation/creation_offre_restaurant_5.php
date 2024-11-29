@@ -22,14 +22,14 @@ if(!isset($_SESSION['ajoutOption'])){
 
 if(!isset($_SESSION['pro'])){
     // si on tente d'accéder à la page sans être connecté à un compte pro, on
-    header('location: connexion_pro.php');
+    header('location: ../connexion_pro.php');
     exit;
 }
 if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
     if(isset($_SESSION['crea_offre']) && isset($_SESSION['crea_offre2']) && isset($_SESSION['crea_offre3']) && isset($_SESSION['crea_offre4'])){
         echo "DOBBY HAS NO MASTER YOU SON OF A BITCH !";
     } else {
-        header('location: creation_offre.php');
+        header('location: ../creation_offre.php');
         exit;
     }
 }
@@ -384,16 +384,16 @@ if(isset($_POST['valider'])){
         </div>
         <nav>
             <ul>
-                <li><a href="mes_offres.php">Accueil</a></li>
-                <li><a href="creation_offre1.php" class="active">Publier</a></li>
-                <li><a href="connexion_pro.php">Mon Compte</a></li>
+                <li><a href="../mes_offres.php">Accueil</a></li>
+                <li><a href="../creation_offre1.php" class="active">Publier</a></li>
+                <li><a href="../connexion_pro.php">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="fleche_retour">
         <div>
-            <a href="etape_3_boost/creation_offre_restaurant_4.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
+            <a href="../etape_3_boost/creation_offre_restaurant_4.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
         </div>
     </div>
 
