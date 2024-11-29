@@ -46,6 +46,7 @@ body {
 .skip-container {
   display: flex;
   justify-content: flex-end; /* Le bouton à droite */
+  width:1em;
 }
 
 .skip {
