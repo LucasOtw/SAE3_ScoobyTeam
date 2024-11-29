@@ -253,8 +253,6 @@
     } else {
         echo "Adresse non trouvée.";
     }
-
-    var_dump($tags_offre);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -516,7 +514,6 @@
                 <h2 style="margin-left: 0.1em;">Tags</h2>
 
             <?php
-            var_dump($tags_offre);
             foreach ($tags_offre as $tag) {
             ?>
                 <div class="detail_offre_icon">
