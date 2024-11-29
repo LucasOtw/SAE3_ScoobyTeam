@@ -593,7 +593,19 @@ if (isset($json['results'][0])) {
         }
         ?>
 
-        <?php 
+       
+
+
+
+        <div class="detail_offre_localisation">
+            <h2>Localisation</h2>
+            <iframe class="map-frame"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig&q=<?php echo $latitude; ?>,<?php echo $longitude; ?>"
+                style="border:0;margin: auto 11em; width: 79vw; height:70vh" allowfullscreen="" loading="lazy">
+                border: 0;
+            </iframe>
+        </div>
+ <?php 
                       
             $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre');
             
@@ -656,18 +668,6 @@ if (isset($json['results'][0])) {
                         ?>            
                 </div>
             </div>
-
-
-
-        <div class="detail_offre_localisation">
-            <h2>Localisation</h2>
-            <iframe class="map-frame"
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig&q=<?php echo $latitude; ?>,<?php echo $longitude; ?>"
-                style="border:0;margin: auto 11em; width: 79vw; height:70vh" allowfullscreen="" loading="lazy">
-                border: 0;
-            </iframe>
-        </div>
-
     </div>
     </div>
 
