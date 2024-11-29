@@ -624,15 +624,15 @@ if (isset($json['results'][0])) {
 
             $appreciationGenerale = "";
                 
-            if ($moyenne_note <= 1) {
+            if ($note_moyenne <= 1) {
                 $appreciationGenerale = "À éviter";
-            } elseif ($moyenne_note <= 2) {
+            } elseif ($note_moyenne <= 2) {
                 $appreciationGenerale = "Peut mieux faire";
-            } elseif ($moyenne_note <= 3) {
+            } elseif ($note_moyenne <= 3) {
                 $appreciationGenerale = "Correct";
-            } elseif ($moyenne_note <= 4) {
+            } elseif ($note_moyenne <= 4) {
                 $appreciationGenerale = "Très Bien";
-            } elseif ($moyenne_note <= 5) {
+            } elseif ($note_moyenne <= 5) {
                 $appreciationGenerale = "Exceptionnel";
             } else {
                 $appreciationGenerale = "Valeur hors échelle";
