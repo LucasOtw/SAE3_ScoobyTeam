@@ -10,7 +10,7 @@ $password = "philly-Congo-bry4nt";
 // Créer une instance PDO
 $dbh = new PDO($dsn, $username, $password);
 
-include("recupInfosCompte.php");
+include("../recupInfosCompte.php");
 
 if(!isset($_SESSION['aCreeUneOffre'])){
     $_SESSION['aCreeUneOffre'] = false;
