@@ -216,8 +216,8 @@ function tempsEcouleDepuisPublication($offre){
             <input type="text" id="location" placeholder="Ex : Lannion">
     
             <!-- Note générale des avis -->
-            <label for="category">Note générale des avis</label>
-            <select id="category">
+            <label for="note-select">Note générale des avis</label>
+            <select id="note-select">
                 <option value="all">Les notes</option>
                 <option value="1">1 étoile</option>
                 <option value="2">2 étoiles</option>
@@ -237,8 +237,8 @@ function tempsEcouleDepuisPublication($offre){
             </div>
     
             <!-- Statut -->
-            <label for="sort">Statut</label>
-            <select id="sort">
+            <label for="select-statut">Statut</label>
+            <select id="select-statut">
                 <option value="relevance">Ouverture</option>
                 <option value="open">Ouvert</option>
                 <option value="closed">Fermé</option>
@@ -463,7 +463,9 @@ function tempsEcouleDepuisPublication($offre){
             const offerItems = document.querySelectorAll('.offer');
             const searchInput = document.querySelector('.search-input');
             const searchSelect = document.querySelectorAll('.search-select');
-            const container = document.querySelector('#offers-list'); // Correct ID selector
+            const container = document.querySelector('#offers-list'); 
+            const searchLocation = document.querySelector('#location');
+            
 
 
             ///////////////////////////////////////////////////
