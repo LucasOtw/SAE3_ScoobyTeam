@@ -360,7 +360,7 @@ if(isset($_POST['valider'])){
                         }
                     }
                 }
-
+                $_SESSION['aCreeUneOffre'] = true;
             } else {
                 echo "Nique ta mère";
             }
