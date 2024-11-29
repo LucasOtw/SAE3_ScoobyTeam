@@ -1,39 +1,36 @@
 <?php
-// update_offer_status.php
-
-// Connexion à la base de données
+// Connexion à la base de données PostgreSQL
 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";
 $password = "philly-Congo-bry4nt";
 
 try {
-    $dbh = new PDO($dsn, $username, $password);
-    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo json_encode(['success' => false, 'message' => 'Erreur de connexion : ' . $e->getMessage()]);
-    exit;
-}
+    $pdo = new PDO($dsn, $username, $password, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Gestion des erreurs en mode exception
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // Retourne les résultats en tableau associatif
+    ]);
 
-// Vérifier si les données POST sont présentes
-if (isset($_POST['en_ligne'], $_POST['id'])) {
-    // Récupérer et valider les données
-    $en_ligne = $_POST['en_ligne'] == 1 ? 1 : 0;
-    $offer_id = (int) $_POST['id']; // Assurez-vous que l'ID est un entier
+    // Vérification si 'en_ligne' est envoyé via POST
+    if (isset($_POST['en_ligne'])) {
+        $en_ligne = intval($_POST['en_ligne']); // Convertir la valeur en entier (0 ou 1)
 
-    try {
-        // Préparer et exécuter la requête
-        $query = "UPDATE tripenarvor._offre SET en_ligne = :en_ligne WHERE code_offre = :id";
-        $stmt = $dbh->prepare($query);
+        // ID de l'offre à modifier (remplace '1' par l'ID réel si nécessaire)
+        $offer_id = 1; 
+
+        // Requête SQL pour mettre à jour l'état de l'offre
+        $query = "UPDATE offres SET en_ligne = :en_ligne WHERE id = :offer_id";
+        $stmt = $pdo->prepare($query);
         $stmt->execute([
             ':en_ligne' => $en_ligne,
-            ':id' => $offer_id,
+            ':offer_id' => $offer_id,
         ]);
 
-        echo json_encode(['success' => true, 'message' => 'Statut mis à jour avec succès']);
-    } catch (PDOException $e) {
-        echo json_encode(['success' => false, 'message' => 'Erreur lors de la mise à jour : ' . $e->getMessage()]);
+        echo "Statut mis à jour avec succès.";
+    } else {
+        echo "Aucune donnée reçue.";
     }
-} else {
-    echo json_encode(['success' => false, 'message' => 'Paramètres manquants']);
+} catch (PDOException $e) {
+    // Gérer les erreurs de connexion ou d'exécution SQL
+    echo "Erreur de connexion ou de requête : " . $e->getMessage();
 }
 ?>
