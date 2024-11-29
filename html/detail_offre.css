@@ -1220,7 +1220,7 @@ input#btn-poster-avis {
 
 /* Contenu des avis */
 .avis-content {
-  width:100%
+  width:100%;
   border-bottom: 1px solid #000; /* Ligne horizontale noire */
 }
 
