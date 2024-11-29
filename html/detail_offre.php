@@ -586,7 +586,7 @@ if (isset($json['results'][0])) {
         <?php 
             
             $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre where code_offre = :code_coffre');
-            $tout_les_avis->bindValue(':code_offre', parseInt($code_offre));
+            $tout_les_avis->bindValue(':code_offre', intval($code_offre));
             //$stmt->execute([':code_offre' => $code_offre]);
             $tout_les_avis->execute();
             $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
