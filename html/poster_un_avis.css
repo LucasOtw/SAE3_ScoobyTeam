@@ -113,7 +113,7 @@ nav ul li a:hover::before {
     width: 90%;
 }
 
-.footers {
+.footer {
     background-color: #000;
     color: rgb(0, 0, 0);
     padding: 40px 20px;
