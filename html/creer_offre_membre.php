@@ -10,7 +10,7 @@
   <div class="container">
     <header class="header">
       <div class="logo-container">
-        <img src="images/logo_blanc_pro.png">
+        <img src="images/logo_blanc_pro.png"class="logo">
       </div>
       <div class="skip-container">
         <a href="voir_offres.php"><img src="images/croix_fermer.png" class="skip"></a>
