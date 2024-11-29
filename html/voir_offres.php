@@ -176,12 +176,10 @@ function tempsEcouleDepuisPublication($offre){
     <main class="toute_les_offres_main">
     
         <div class="search-bar">
-
             <div class="search-top">
                 <input type="text" class="search-input" placeholder="Recherchez parmi les offres" >
             </div>
 
-            
             <div class="search-options">
                 <select class="search-select">
                     <option value="" selected>Catégories</option>
@@ -202,12 +200,14 @@ function tempsEcouleDepuisPublication($offre){
                     <option value="croissantN">Croissant</option>
                 </select>
                 <button id="openMenu" class="search-select">Autres</button>
-            </div>
-            
+            </div>  
         </div>
         
-        <div id="overlay"></div>
-            <div class="filter-menu" id="filterMenu">
+        
+        <div id="overlay">
+        </div>
+        
+        <div class="filter-menu" id="filterMenu">
             <button id="closeMenu" class="close-btn">&times;</button>
             <h2>Filtres</h2>
             
