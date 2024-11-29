@@ -33,7 +33,7 @@ if (!empty($_POST['supprAvis'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier compte membre</title>
-    <link rel="stylesheet" href="consulter_compte_membre.css">
+    <link rel="stylesheet" href="consulter_mes_avis.css">
 </head>
 <body>
     <div class="header-membre">
