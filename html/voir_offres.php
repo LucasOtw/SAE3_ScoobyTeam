@@ -438,7 +438,7 @@ function tempsEcouleDepuisPublication($offre){
                 if ($offre["en_ligne"])
                 {
                 ?>
-                    <article class="offer" data-category=<?php echo $type_offre;?> data-price="<?php echo $offre["tarif"];?>" data-note="5">
+                    <article class="offer" data-category=<?php echo $type_offre;?> data-price="<?php echo $offre["tarif"];?>" data-note="5" location=<?php echo $villeOffre["ville"]; ?> >
                         <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
                         <div class="offer-details">
                             <h2><?php echo $offre["titre_offre"] ?></h2>
@@ -531,6 +531,23 @@ function tempsEcouleDepuisPublication($offre){
                     // Réorganiser dans le DOM
                     container.innerHTML = ''; // Clear container
                     offers.forEach(offer => container.appendChild(offer)); // Append sorted offers
+                });
+            });
+
+            
+            ///////////////////////////////////////////////////
+            ///             Recherche de lieu               ///
+            ///////////////////////////////////////////////////
+            searchLocation.addEventListener('input', () => {
+                const query = searchLocation.value.toLowerCase().trim();
+            
+                offerItems.forEach(offer => {
+                    const text = offer.getAttribute('location').toLowerCase();
+                    if (text.includes(query)) {
+                        offer.classList.remove('hidden');
+                    } else {
+                        offer.classList.add('hidden');
+                    }
                 });
             });
             
