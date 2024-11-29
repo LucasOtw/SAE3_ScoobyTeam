@@ -627,11 +627,13 @@ if (isset($json['results'][0])) {
                         }
                         ?>
                         <div class="avis-content">
-                            <h3 class="avis"><?php $avis["note"] . ".0";?> $appreciation | <span class="nom_avis"><?php echo $avis["prenom"]?> <?php echo $avis["nom"]?></span></h3>
-                            <p class="avis"><?php echo $avis["txt_avis"]?></p>
+                            <h3 class="avis"><?php $avis["note"] . ".0";?> $appreciation | <span class="nom_avis"><?php echo $avis["prenom"];?> <?php echo $avis["nom"]; ?></span></h3>
+                            <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
                         </div>
                     </div>
+                        <?php
                     }
+                        ?>
                     
                     <!--<div class="avis-content">
                         <h3 class="avis">5.0 Excellent | <span class="nom_avis">Maël Sellier</span></h3>
