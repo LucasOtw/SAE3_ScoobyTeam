@@ -506,6 +506,7 @@ function tempsEcouleDepuisPublication($offre){
                         if (category && category !== offerCategory) {
                             offer.classList.add('hidden');
                         } else {
+                            window.open();
                             offer.classList.remove('hidden');
                         }
                     });
