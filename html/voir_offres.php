@@ -586,7 +586,7 @@ function tempsEcouleDepuisPublication($offre){
                         if (!rate || rate === offerRate) {
                             console.log(`BOUCLE NON VALIDE : ${offerRate}`);
                             //offer.classList.remove('hidden');
-                            offer.style.display = "contents";
+                            offer.style.removeProperty('display');
                             console.log(offer.classList);
                         } else {
                             console.log(`BOUCLE VALIDE : ${offerRate}`);
