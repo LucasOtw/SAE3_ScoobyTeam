@@ -462,7 +462,7 @@ function tempsEcouleDepuisPublication($offre){
             var_dump($offre_image);
         ?>
 
-        <script>
+<!--         <script>
             // Récupération des éléments
             const offerItems = document.querySelectorAll('.offer');
             const searchInput = document.querySelector('.search-input');
@@ -636,7 +636,7 @@ function tempsEcouleDepuisPublication($offre){
             updatePriceDisplay();
             filterOffers();
             
-        </script>
+        </script> -->
 
     </main>
     <nav class="nav-bar">
