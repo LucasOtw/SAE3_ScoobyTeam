@@ -596,17 +596,18 @@ if (isset($json['results'][0])) {
             $tout_les_avis->execute();
             $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
 
+/*
             $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis WHERE code_offre = :code_offre');
             $nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
             $nb_avis->execute();
-
+*/
 
     
         ?>
         <div class="avis-widget">
             <div class="avis-header">
                 <h1 class="avis">5.0 <span class="avis-score">Très bien</span></h1>
-                <p class="avis"><?php echo $nb_avis;?> avis vérifiés</p>
+                <p class="avis"><?php echo "255"/*$nb_avis*/;?> avis vérifiés</p>
             </div>
             <div class="avis-list">
                 <div class="avis">
