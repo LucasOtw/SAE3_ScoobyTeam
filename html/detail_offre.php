@@ -608,23 +608,38 @@ if (isset($json['results'][0])) {
  <?php 
                       
             $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre');
-            
             $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-            
             $tout_les_avis->execute();
             $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
 
+            $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre');
+            $moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+            $moyenne_note->execute();            
 
             $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis WHERE code_offre = :code_offre');
             $nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
             $nb_avis->execute();
             $nombre_d_avis = $nb_avis->fetchColumn();
 
+
+             if ($moyenne_note <= 1) {
+                $appreciation = "À éviter";
+            } elseif ($moyenne_note <= 2) {
+                $appreciation = "Peut mieux faire";
+            } elseif ($moyenne_note <= 3) {
+                $appreciation = "Correct";
+            } elseif ($moyenne_note <= 4) {
+                $appreciation = "Très Bien";
+            } elseif ($moyenne_note <= 5) {
+                $appreciation = "Exceptionnel";
+            } else {
+                $appreciation = "Valeur hors échelle";
+            }
     
         ?>
         <div class="avis-widget">
             <div class="avis-header">
-                <h1 class="avis">5.0 <span class="avis-score">Très bien</span></h1>
+                <h1 class="avis"><?php echo $moyenne_note; ?> <span class="avis-score"> Très bien</span></h1>
                 <p class="avis"><?php echo $nombre_d_avis ; ?> avis vérifiés</p>
             </div>
             <div class="avis-list">
