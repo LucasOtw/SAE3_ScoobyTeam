@@ -182,13 +182,14 @@ function tempsEcouleDepuisPublication($offre){
 
             <div class="search-options">
                 <select class="search-select">
-                    <option value="null" selected>Catégories</option>
-                    <option value="activite">Activité</option>
+                    <option value="" selected>Catégories</option>
                     <option value="restauration">Restaurant</option>
-                    <option value="visite">Visite</option>
-                    <option value="spectacle">Spectacle</option>
                     <option value="parc_attractions">Parc d'attractions</option>
+                    <option value="spectacle">Spectacle</option>
+                    <option value="visite">Visite</option>
+                    <option value="activite">Activité</option>
                 </select>
+
                 <select class="search-select">
                     <option value="" selected>Prix</option>
                     <option value="decroissantP">Décroissant</option>
@@ -502,11 +503,13 @@ function tempsEcouleDepuisPublication($offre){
             
                     // Filtrer par catégorie
                     offerItems.forEach(offer => {
-                        const offerCategory = offer.getAttribute('data-category');
+                        const offerCategory = offer.getAttribute('data-category').trim().toLowerCase();
+                        console.log(`Offre: ${offer.getAttribute('data-category')} | Visible: ${!offer.classList.contains('hidden')}`);
                         if (category && category !== offerCategory) {
                             offer.classList.add('hidden');
+                        } elseif (!category) {
+                            offerItems.forEach(offer => offer.classList.remove('hidden'));
                         } else {
-                            window.open();
                             offer.classList.remove('hidden');
                         }
                     });
