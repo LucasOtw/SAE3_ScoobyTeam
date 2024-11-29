@@ -9,13 +9,17 @@
 <body>
   <div class="container">
     <header class="header">
-      <h1 class="logo">PA@CT <span>Professionnel</span></h1>
-      <button class="skip">Plus tard</button>
+      <div class="logo-container">
+        <h1 class="logo">PA@CT <span>Professionnel</span></h1>
+      </div>
+      <div class="skip-container">
+        <button class="skip">Plus tard</button>
+      </div>
     </header>
 
     <main class="content">
       <div class="image-container">
-        <img src="images/cadeau.png" alt="Icône cadeau" class="image" >
+        <img src="images/cadeau.png" alt="Icône cadeau" class="image">
       </div>
       <h2 class="main-title">Envie de publier une offre ?</h2>
       <p class="subtitle">Passez à la vitesse supérieure avec PRO</p>
@@ -25,19 +29,19 @@
     </main>
 
     <nav class="nav-bar">
-    <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
-    <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
-    <a href="#"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
-    <a href="
+      <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
+      <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
+      <a href="#"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
+      <a href="
         <?php
             if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
-                echo "consulter_compte_membre.php";
+                echo 'consulter_compte_membre.php';
             } else {
-                echo "connexion_membre.php";
+                echo 'connexion_membre.php';
             }
         ?>
-        <img src="images/icones/User icon.png" alt="image de Personne"></a>
-</nav>
+      "><img src="images/icones/User icon.png" alt="image de Personne"></a>
+    </nav>
   </div>
 </body>
 </html>
