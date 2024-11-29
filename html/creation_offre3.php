@@ -290,9 +290,12 @@ if(isset($_POST['valider'])){
             }
 
             if(isset($_SESSION['crea_offre4']['option']) && !empty($_SESSION['crea_offre4']['option'])){
+                echo "t";
                 if($_SESSION['crea_offre4']['option'] == "en_relief"){
+                    echo "ha";
                     $mon_offre['option_en_relief'] = $_SESSION['ajoutOption'];
                 } else if ($_SESSION['crea_offre4'] == "a_la_une"){
+                    echo "hi";
                     $mon_offre['option_a_la_une'] = $_SESSION['ajoutOption'];
                 }
             }
