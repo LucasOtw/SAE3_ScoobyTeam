@@ -30,7 +30,6 @@ body {
 
 .logo-container {
   flex-grow: 1; /* Prend tout l'espace restant à gauche */
-  margin-left:6vm;
 }
 
 .logo {
