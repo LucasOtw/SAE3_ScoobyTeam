@@ -2,7 +2,7 @@
 ob_start(); // bufferisation, ça devrait marcher ?
 session_start();
 
-if (!empty($_POST['supprAvis']){
+if (!empty($_POST['supprAvis'])){
     $suppressionAvis = $dbh->prepare('DELETE FROM tripenarvor._avis WHERE code_avis = :code_avis;');
 
     $suppressionAvis->bindValue(':code_avis', $_POST['supprAvis'], PDO::PARAM_INT);
