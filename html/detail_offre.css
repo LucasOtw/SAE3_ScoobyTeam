@@ -701,7 +701,9 @@ input#btn-poster-avis {
             display : none;
     }
     btn-poster-avis-voir-site{
-               display: inline-block;
+               color : #BDC426;
+               border : none;
+               
     }
     
 }
