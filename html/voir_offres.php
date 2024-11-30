@@ -425,7 +425,7 @@ function tempsEcouleDepuisPublication($offre){
                 // on recupère toutes les images sous forme de tableau
                 $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
 
-                date = new DateTime();
+                $date = new DateTime();
                 echo $date->format('l');
 
                 if(!empty($images)){ // si le tableau n'est pas vide...
