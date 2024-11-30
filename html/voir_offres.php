@@ -440,7 +440,7 @@ function tempsEcouleDepuisPublication($offre){
                 // on recupère toutes les images sous forme de tableau
                 $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
 
-                $horaireOffre $dbh->prepare('select ouverture, fermeture from tripenarvor._horaire where code_horaire = (select :jour from tripenarvor._offre where code_offre = :code_offre);');
+                $horaireOffre $dbh->prepare('select ouverture, fermeture from tripenarvor._horaire WHERE code_horaire = ( SELECT code_horaire FROM tripenarvor._offre WHERE code_offre = :code_offre) AND :jour = jour;');
                 $horaireOffre->bindParam(":code_offre", $offre["code_offre"]);
                 $horaireOffre->bindParam(":jour", $dateFr);
                 $horaireOffre->execute();
