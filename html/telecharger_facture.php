@@ -8,6 +8,9 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Télécharger une facture</title>
     <link rel="stylesheet" href="telecharger_facture.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+
 </head>
 <body>
 <header>
@@ -41,6 +44,46 @@ session_start();
                 <li><a href="#" class="active">Compte bancaire</a></li>
             </ul>
         </section>
+<div class="facture-container">
+    <h1>Facture #12345</h1>
+    <div class="facture-details">
+        <p><strong>Date :</strong> 30 Novembre 2024</p>
+        <p><strong>Client :</strong> Jean Dupont</p>
+        <p><strong>Adresse :</strong> 123 Rue Exemple, Paris, France</p>
+    </div>
+    
+    <table class="facture-items">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Quantité</th>
+                <th>Prix Unitaire</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Service A</td>
+                <td>2</td>
+                <td>€50</td>
+                <td>€100</td>
+            </tr>
+            <tr>
+                <td>Service B</td>
+                <td>1</td>
+                <td>€150</td>
+                <td>€150</td>
+            </tr>
+            <tr class="total-row">
+                <td colspan="3"><strong>Total</strong></td>
+                <td><strong>€250</strong></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+    
 
 
 </main>

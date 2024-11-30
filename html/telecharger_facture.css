@@ -259,12 +259,12 @@ footer {
 }
 
 /* Profile Section */
-.main-telechager-facture .profile {
+.main-telecharger-facture .profile {
     text-align: center;
     margin-bottom: 30px;
 }
 
-.main-telechager-facture .banner img {
+.main-telecharger-facture .banner img {
     width: 70%;
     height: 200px;
     object-fit: cover;
@@ -272,37 +272,37 @@ footer {
     border-radius: 20px;
 }
 
-.main-telechager-facture .profile-info {
+.main-telecharger-facture .profile-info {
     margin-top: -90px;
     text-align: center;
 }
 
-.main-telechager-facture .profile-info img.profile-picture {
+.main-telecharger-facture .profile-info img.profile-picture {
     width: 120px;
     height: 120px;
     border-radius: 35px;
     object-fit: cover;
 }
 
-.main-telechager-facture .profile-info h1 {
+.main-telecharger-facture .profile-info h1 {
     font-size: 28px;
     margin: 10px 0;
 }
 
-.main-telechager-facture .profile-info p {
+.main-telecharger-facture .profile-info p {
     font-size: 16px;
     color: #666;
 }
 
 /* Tabs Section */
-.main-telechager-facture .tabs {
+.main-telecharger-facture .tabs {
     display: flex;
     justify-content: center;
     margin: 30px 0;
     text-align: center;
 }
 
-.main-telechager-facture .tabs ul {
+.main-telecharger-facture .tabs ul {
     display: flex;
     padding: 0;
     list-style: none;
@@ -313,13 +313,13 @@ footer {
     min-width: 40vw;
 }
 
-.main-telechager-facture .tabs ul li {
+.main-telecharger-facture .tabs ul li {
     display: flex;
     margin: 0 20px;
     text-decoration: none;
 }
 
-.main-telechager-facture .tabs ul li a {
+.main-telecharger-facture .tabs ul li a {
     width: calc(60vw/3);
     font-size: 20px;
     padding: 10px 20px;
@@ -330,105 +330,68 @@ footer {
     text-decoration: none;
 }
 
-.main-telechager-facture .tabs ul li a.active {
+.main-telecharger-facture .tabs ul li a.active {
     border-color: #ff6600;
     text-decoration: none;
+
+           
+/* Container principal */
+.facture-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    color: #333;
 }
 
-.form-section {
-    background-color: white;
-    padding: 20px 0;
-    border-radius: 10px;
-}
-
-.main-telechager-facture .form-group {
-    margin-bottom: 15px;
-}
-
-.main-telechager-facture label {
-    display: block;
-    margin-bottom: 0px;
-    font-size: 14px;
-    color: #555;
-}
-
-.main-telechager-facture input[type="text"],
-.main-telechager-facture input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.main-telechager-facture .form-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-
-
-
-.main-telechager-facture form {
-    width: 885px;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 8px;
-    background: #F3F4F7;
-    margin-top: 50px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.main-telechager-facture form h3 {
-    font-size: 25px;
-    font-weight: 500;
+/* Titre de la facture */
+.facture-container h1 {
+    font-size: 2rem;
+    color: #4CAF50;
     text-align: center;
-    margin-bottom: 30px;
-    color: var(--orange);
-    padding-bottom: 20px;
-    border-bottom: 2px solid var(--orange);
+    margin-bottom: 20px;
 }
 
-.main-telechager-facture form label {
+/* Détails client */
+.facture-details p {
+    font-size: 1rem;
+    color: #555;
+    margin: 5px 0;
+}
+
+/* Table des items */
+.facture-items {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 1rem;
+    margin-left: 30em;
+    width: 50%;
+}
+
+.facture-items th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    text-align: left;
     font-weight: 600;
-    font-size: 15px;
+    border-bottom: 2px solid #ddd;
 }
 
-.main-telechager-facture form input {
-    display: block;
-    width: 100%;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 10px;
-    margin: 10px 0 20px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+.facture-items td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }
 
-.main-telechager-facture form .form-input {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+.total-row {
+    background-color: #f4f4f4;
 }
 
-.main-telechager-facture form .form-input label {
-    width: 60%;
-}
-
-.main-telechager-facture form button {
-    background-color: var(--orange);
-    padding: 12px 25px;
-    border-radius: 8px;
-    color: #fff;
-    border: none;
-    font-size: 18px;
+.total-row td {
+    font-size: 1.1rem;
     font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.main-telechager-facture form button:hover {
-    background-color: #D3741C;
 }
