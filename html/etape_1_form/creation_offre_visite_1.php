@@ -21,7 +21,7 @@ if(isset($_GET['logout'])){
     exit;
 }
 
-if($_SERVEUR['REQUEST_METHOD'] === 'POST'){
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $tab_offre = [];
 
     // Récupération des champs obligatoires
