@@ -39,12 +39,10 @@ session_start();
               }
           } else {
               $_SESSION['crea_offre2'] = $horaires_par_jour;
+              header('location: ../etape_3_boost/creation_offre_visite_3.php');
+              exit;
           }
-      } else {
-            echo "Ah";
       }
-
-      var_dump($_SESSION['crea_offre2']);
         
  /*       echo '<pre>';
         print_r($horaires_par_jour);
