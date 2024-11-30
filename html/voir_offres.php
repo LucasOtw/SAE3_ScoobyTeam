@@ -366,9 +366,7 @@ function tempsEcouleDepuisPublication($offre){
         <h2 class="titre-les-offres">Les offres</h2>
         
         <section id="offers-list">
-        <?php
-            echo $_SERVER['SERVER_SOFTWARE'];    
-
+        <?php    
             try {
                 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
                 $username = "sae";
@@ -427,19 +425,8 @@ function tempsEcouleDepuisPublication($offre){
                 // on recupère toutes les images sous forme de tableau
                 $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
 
-                // Créer une date (la date actuelle)
-                $date = new DateTime();
-                
-                // Configurer le formatteur pour afficher le jour en français
-                $formatter = new IntlDateFormatter(
-                    'fr_FR', // Langue
-                    IntlDateFormatter::FULL, // Format complet (lundi, mardi, etc.)
-                    IntlDateFormatter::NONE // Pas besoin de l'heure
-                );
-                
-                // Formatter la date
-                $jour_fr = $formatter->format($date);
-                echo $jour_fr; // Résultat : lundi
+                date = new DateTime();
+                echo $date->format('l');
 
                 if(!empty($images)){ // si le tableau n'est pas vide...
                     /* On récupère uniquement la première image.
