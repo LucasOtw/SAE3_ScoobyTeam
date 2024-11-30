@@ -240,6 +240,7 @@ function tempsEcouleDepuisPublication($offre){
             <!-- Statut -->
             <label for="select-statut">Statut</label>
             <select id="select-statut">
+                <option value=""></option>
                 <option value="relevance">Ouverture</option>
                 <option value="open">Ouvert</option>
                 <option value="closed">Fermé</option>
