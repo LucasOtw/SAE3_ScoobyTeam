@@ -230,10 +230,10 @@ function tempsEcouleDepuisPublication($offre){
             <!-- Fourchette de prix avec un slider -->
             <label for="price-range">Fourchette de prix (€)</label>
             <div id="price-slider">
-                <input type="range" id="price-min" name="price-min" min="0" max="1000" step="10" value="100">
-                <input type="range" id="price-max" name="price-max" min="0" max="1000" step="10" value="900">
+                <input type="range" id="price-min" name="price-min" min="0" max="200" step="10" value="0">
+                <input type="range" id="price-max" name="price-max" min="0" max="200" step="10" value="200">
                 <p>
-                    De : <span id="price-min-display">100</span> € à : <span id="price-max-display">900</span> €
+                    De : <span id="price-min-display">0</span> € à : <span id="price-max-display">200</span> €
                 </p>
             </div>
     
@@ -623,7 +623,7 @@ function tempsEcouleDepuisPublication($offre){
                     if (offerPrice >= minPrice && offerPrice <= maxPrice) {
                         offer.classList.remove('hidden'); // Afficher l'offre
                     } else {
-                        offer.style.display = "none"; // Cacher l'offre
+                        offer.classList.add('hidden'); // Cacher l'offre
                     }
                 });
             }
