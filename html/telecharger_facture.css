@@ -348,12 +348,12 @@ footer {
 }
 
 /* En-tête de la facture */
-.facture-header {
+.facture-head {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.facture-header h1 {
+.facture-head h1 {
     font-size: 2rem;
     color: #4CAF50;
     margin-bottom: 10px;
@@ -398,7 +398,7 @@ footer {
 }
 
 /* Footer */
-.facture-footer {
+.facture-foot {
     margin-top: 30px;
     text-align: center;
     color: #666;
