@@ -297,7 +297,7 @@ if (isset($json['results'][0])) {
                                 value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
                             <input id="btn-poster-avis" type="submit" name="posterAvis" value="Poster un avis">
                         </form>
-                        <!--                     <a href="poster_un_avis.php"><button class="button_detailoffre_avis">Poster un avis</button></a> -->
+                                        <a href="poster_un_avis.php"><button class="button_detailoffre_avis">Poster un avis</button></a>
                         <a href="<?php echo $details_offre["site_web"]; ?>"><button
                                 class="visit-button_detailoffre">Voir le site ➔</button></a>
                     </div>
