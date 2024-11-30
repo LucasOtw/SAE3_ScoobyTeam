@@ -450,7 +450,7 @@ function tempsEcouleDepuisPublication($offre){
 
                 $horaire = $horaireOffre->fetchAll(PDO::FETCH_ASSOC);
 
-                echo $horaire["ouverture"];
+                var_dump($horaire);
                 
                 // Exemple d'horaires d'ouverture et de fermeture (remplacer par vos valeurs réelles)
                 $ouverture = new DateTime($horaire["ouverture"]);
