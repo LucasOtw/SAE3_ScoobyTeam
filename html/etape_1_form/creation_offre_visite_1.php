@@ -21,6 +21,26 @@ if(isset($_GET['logout'])){
     exit;
 }
 
+if($_SERVEUR['REQUEST_METHOD'] === 'POST'){
+    $tab_offre = [];
+
+    // Récupération des champs obligatoires
+    $nomOffre = htmlspecialchars($_POST['nom_offre'] ?? '');
+    $adresse = htmlspecialchars($_POST['adresse'] ?? '');
+    $ville = htmlspecialchars($_POST['ville'] ?? '');
+    $codePostal = htmlspecialchars($_POST['code_postal'] ?? '');
+    $resume = htmlspecialchars($_POST['resume'] ?? '');
+    $description = htmlspecialchars($_POST['description'] ?? '');
+    // tarif
+    $tarif = $_POST['_tarif'];
+    $duree = $_POST['duree'];
+
+    // Récupération des champs facultatifs
+    $complementAdresse = htmlspecialchars($_POST['complement_adresse'] ?? '');
+    $lien = htmlspecialchars($_POST['lien'] ?? '');
+    $accessibilite = htmlspecialchars($_POST['accessibilite'] ?? '');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -142,7 +162,7 @@ if(isset($_GET['logout'])){
                     <div class="col">
                         <fieldset>
                             <legend>Tarif *</legend>
-                            <input type="text" id="prix" name="prix" placeholder="Tarif *">
+                            <input type="number" id="prix" name="_tarif" placeholder="Tarif *" min="0" step="0.01" required>
                         </fieldset>
                     </div>
                 </div>
@@ -180,8 +200,8 @@ if(isset($_GET['logout'])){
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Résumé (facultatif)</legend>
-                            <input type="text" id="resume" name="resume" placeholder="Résumé (facultatif)">
+                            <legend>Résumé</legend>
+                            <input type="text" id="resume" name="resume" placeholder="Résumé">
                         </fieldset>
                     </div>
                 </div>
@@ -190,8 +210,8 @@ if(isset($_GET['logout'])){
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Description (facultatif)</legend>
-                            <input type="text" id="description" name="description" placeholder="Description (facultatif)">
+                            <legend>Description</legend>
+                            <input type="text" id="description" name="description" placeholder="Description">
                         </fieldset>
                     </div>
                 </div>
