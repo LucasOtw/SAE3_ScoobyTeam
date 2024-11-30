@@ -333,103 +333,62 @@ footer {
 .main-telecharger-facture .tabs ul li a.active {
     border-color: #ff6600;
     text-decoration: none;
-}
 
-/*.form-section {
-    background-color: white;
-    padding: 20px 0;
-    border-radius: 10px;
-}
-
-.main-telechrager-facture .form-group {
-    margin-bottom: 15px;
-}
-
-.main-telecharger-facture label {
-    display: block;
-    margin-bottom: 0px;
-    font-size: 14px;
-    color: #555;
-}
-
-.main-telecharger-facture input[type="text"],
-.main-telecharger-facture input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.main-telecharger-facture .form-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-
-
-
-.main-telecharger-facture form {
-    width: 885px;
+           
+.facture-container {
+    max-width: 900px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #fff;
     border-radius: 8px;
-    background: #F3F4F7;
-    margin-top: 50px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.main-telecharger-facture form h3 {
-    font-size: 25px;
-    font-weight: 500;
+h1 {
     text-align: center;
-    margin-bottom: 30px;
-    color: var(--orange);
-    padding-bottom: 20px;
-    border-bottom: 2px solid var(--orange);
+    color: #333;
 }
 
-.main-telecharger-facture form label {
-    font-weight: 600;
-    font-size: 15px;
+.facture-details p {
+    font-size: 1rem;
+    margin: 5px 0;
 }
 
-.main-telecharger-facture form input {
-    display: block;
+.facture-items {
     width: 100%;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 10px;
-    margin: 10px 0 20px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    margin-top: 20px;
+    border-collapse: collapse;
 }
 
-.main-telecharger-facture form .form-input {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+.facture-items th, .facture-items td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
 }
 
-.main-telecharger-facture form .form-input label {
-    width: 60%;
+.facture-items th {
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-.main-telecharger-facture form button {
-    background-color: var(--orange);
-    padding: 12px 25px;
-    border-radius: 8px;
-    color: #fff;
+.facture-footer {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#download-pdf {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
     border: none;
-    font-size: 18px;
-    font-weight: bold;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.main-telecharger-facture form button:hover {
-    background-color: #D3741C;
-}/*
+#download-pdf:hover {
+    background-color: #45a049;
+}
+
 
