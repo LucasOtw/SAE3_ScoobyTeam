@@ -448,7 +448,7 @@ function tempsEcouleDepuisPublication($offre){
                 $horaireOffre->bindParam(":code_offre", $offre["code_offre"]);
                 $horaireOffre->execute();
 
-                $horaire = $horaireOffre->fetchAll(PDO::FETCH_ASSOC);
+                $horaire = $horaireOffre->fetchAll();
 
                 var_dump($horaire);
                 
