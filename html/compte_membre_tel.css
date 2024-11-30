@@ -99,6 +99,52 @@ container {
     color: #666;
     margin: 5px 0 0;
 }
+.profile {
+    text-align: center;
+}
+
+.profile-img-container {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-img {
+    width: 120px; /* Ajustez selon vos besoins */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.upload-photo-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.upload-photo-button:hover {
+    background-color: #45a049;
+}
+
+.upload-photo-button i {
+    font-size: 18px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
 
 /* Actions */
 .actions {
@@ -121,6 +167,7 @@ container {
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
 }
 
 .action-btn img {
