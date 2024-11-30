@@ -42,6 +42,51 @@ session_start();
             </ul>
         </section>
 
+    <div class="facture-container">
+    <h1>Facture #12345</h1>
+    <div class="facture-details">
+        <p><strong>Date :</strong> 30 Novembre 2024</p>
+        <p><strong>Client :</strong> Jean Dupont</p>
+        <p><strong>Adresse :</strong> 123 Rue Exemple, Paris, France</p>
+    </div>
+    
+    <table class="facture-items">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Quantité</th>
+                <th>Prix Unitaire</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Service A</td>
+                <td>2</td>
+                <td>€50</td>
+                <td>€100</td>
+            </tr>
+            <tr>
+                <td>Service B</td>
+                <td>1</td>
+                <td>€150</td>
+                <td>€150</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="text-align: right;"><strong>Total</strong></td>
+                <td>€250</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="facture-footer">
+        <button id="download-pdf">Télécharger la facture en PDF</button>
+    </div>
+</div>
+
+
+    
+
 
 </main>
 <footer class="footer">
