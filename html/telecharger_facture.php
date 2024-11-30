@@ -45,7 +45,7 @@ session_start();
             </ul>
         </section>
 <div class="facture-container">
-    <header class="facture-header">
+    <header class="facture-head">
         <h1>Facture #12345</h1>
         <div class="facture-meta">
             <p><strong>Date :</strong> 30 Novembre 2024</p>
@@ -83,7 +83,7 @@ session_start();
         </tbody>
     </table>
     
-    <footer class="facture-footer">
+    <footer class="facture-foot">
         <p>Merci pour votre confiance !</p>
         <button id="download-pdf">Télécharger la facture en PDF</button>
     </footer>
