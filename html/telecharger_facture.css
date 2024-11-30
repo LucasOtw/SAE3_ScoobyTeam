@@ -338,7 +338,7 @@ footer {
 /* Container principal */
 .facture-container {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 30px;
     background: linear-gradient(135deg, #ffffff, #f9f9f9);
     border-radius: 12px;
@@ -347,22 +347,19 @@ footer {
     color: #333;
 }
 
-/* En-tête de la facture */
-.facture-head {
+/* Titre de la facture */
+.facture-container h1 {
+    font-size: 2rem;
+    color: #4CAF50;
     text-align: center;
     margin-bottom: 20px;
 }
 
-.facture-head h1 {
-    font-size: 2rem;
-    color: #4CAF50;
-    margin-bottom: 10px;
-}
-
-.facture-meta p {
+/* Détails client */
+.facture-details p {
     font-size: 1rem;
     color: #555;
-    margin: 3px 0;
+    margin: 5px 0;
 }
 
 /* Table des items */
@@ -395,29 +392,4 @@ footer {
 .total-row td {
     font-size: 1.1rem;
     font-weight: bold;
-}
-
-/* Footer */
-.facture-foot {
-    margin-top: 30px;
-    text-align: center;
-    color: #666;
-    font-size: 1rem;
-}
-
-#download-pdf {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-#download-pdf:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
 }
