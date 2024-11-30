@@ -83,7 +83,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             }
         } else {
             // si il n'y a aucune erreur, on peut stocker les données.
+            echo "<pre>";
             var_dump($_POST);
+            echo "</pre>";
         }
     }
 }
