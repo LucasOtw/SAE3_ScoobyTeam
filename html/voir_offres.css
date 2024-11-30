@@ -1028,6 +1028,10 @@ body.menu-open #overlay {
     display: none;
 }
 
+.offer.hidden {
+    display: none;
+}
+
 .show {
     display: block;
 }
