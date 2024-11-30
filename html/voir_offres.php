@@ -450,28 +450,45 @@ function tempsEcouleDepuisPublication($offre){
 
                 $horaire = $horaireOffre->fetchAll(PDO::FETCH_ASSOC);
 
-                if ($horaire["ouverture"] >= $currentTime && $horaire["fermeture"] < $currentTime)
-                {
-                    if ($horaire["fermeture"] - $currentTime <= '00:01:00')  
-                    {
-                        $data-status-eng = "closing-soon";
-                        $data-status-fr = "Ferme bientôt";    
-                    } else
-                    {
-                        $data-status-eng = "open";
-                        $data-status-fr = "Ouvert";    
+                // Exemple d'horaires d'ouverture et de fermeture (remplacer par vos valeurs réelles)
+                $ouverture = new DateTime($horaire["ouverture"]);
+                $fermeture = new DateTime($horaire["fermeture"]);
+                
+                // Comparer les horaires
+                if ($ouverture <= $currentTime && $fermeture > $currentTime) {
+                    // Si on est dans l'intervalle d'ouverture
+                    $interval = $fermeture->diff($currentTime);
+                    
+                    if (($interval->h < 1) || ($interval->h == 1 && $interval->i == 0)) {
+                        // Si la fermeture est dans moins de 1 heure
+                        $dataStatusEng = "closing-soon";
+                        $dataStatusFr = "Ferme bientôt";
+                    } else {
+                        // Si on est ouvert normalement
+                        $dataStatusEng = "open";
+                        $dataStatusFr = "Ouvert";
                     }
-                } else if ($horaire["ouverture"] < $currentTime && $horaire["fermeture"] >= $currentTime)
-                {
-                    if ($horaire["ouverture"] - $currentTime <= '00:01:00')  
-                    {
-                        $data-status-eng = "opening-soon";
-                        $data-status-fr = "Ouvre bientôt";    
-                    } else
-                    {
-                        $data-status-eng = "closed";
-                        $data-status-fr = "Fermé";    
+                } elseif ($ouverture > $currentTime && $fermeture > $currentTime) {
+                    // Si on est avant l'ouverture
+                    $interval = $ouverture->diff($currentTime);
+                    
+                    if (($interval->h < 1) || ($interval->h == 1 && $interval->i == 0)) {
+                        // Si l'ouverture est dans moins de 1 heure
+                        $dataStatusEng = "opening-soon";
+                        $dataStatusFr = "Ouvre bientôt";
+                    } else {
+                        // Si on est fermé
+                        $dataStatusEng = "closed";
+                        $dataStatusFr = "Fermé";
                     }
+                } else {
+                    // Si on est après la fermeture
+                    $dataStatusEng = "closed";
+                    $dataStatusFr = "Fermé";
+                }
+                
+                // Affichage des résultats
+                echo $dataStatusEng . " / " . $dataStatusFr;
                 }
 
 
@@ -495,14 +512,14 @@ function tempsEcouleDepuisPublication($offre){
                                 data-category=<?php echo $type_offre;?> 
                                 data-price="<?php echo $offre["tarif"];?>" 
                                 data-rate="2.5" location=<?php echo $villeOffre["ville"]; ?>
-                                data-status=<?php echo $data-status-eng; ?> >
+                                data-status=<?php echo $dataStatusEng; ?> >
                         
                         <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
                         <div class="offer-details">
                             <h2><?php echo $offre["titre_offre"] ?></h2>
                             <p><?php echo $villeOffre["ville"] ?></p>
                             <p><?php echo $offre["tarif"]; ?></p>
-                            <p><?php echo $data-status-fr; ?></p>
+                            <p><?php echo $dataStatusFr; ?></p>
                             <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
                             <form id="form-voir-offre" action="detail_offre.php" method="POST">
                                 <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
