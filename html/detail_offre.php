@@ -717,7 +717,7 @@ if (isset($json['results'][0])) {
             <div class="titre_detail_offre_responsive">
                 <h1><?php echo $details_offre["titre_offre"]; ?></h1>
                 <a href="<?php echo $details_offre["site_web"]; ?>" class="description-link">
-                    <h3> voir le Site Web</h3>
+                    <h3>Site Web</h3>
                 </a>
             </div>
             <!-- <div class="rating">
