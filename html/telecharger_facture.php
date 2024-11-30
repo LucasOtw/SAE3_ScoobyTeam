@@ -45,14 +45,12 @@ session_start();
             </ul>
         </section>
 <div class="facture-container">
-    <header class="facture-head">
-        <h1>Facture #12345</h1>
-        <div class="facture-meta">
-            <p><strong>Date :</strong> 30 Novembre 2024</p>
-            <p><strong>Client :</strong> Jean Dupont</p>
-            <p><strong>Adresse :</strong> 123 Rue Exemple, Paris, France</p>
-        </div>
-    </header>
+    <h1>Facture #12345</h1>
+    <div class="facture-details">
+        <p><strong>Date :</strong> 30 Novembre 2024</p>
+        <p><strong>Client :</strong> Jean Dupont</p>
+        <p><strong>Adresse :</strong> 123 Rue Exemple, Paris, France</p>
+    </div>
     
     <table class="facture-items">
         <thead>
@@ -82,13 +80,7 @@ session_start();
             </tr>
         </tbody>
     </table>
-    
-    <footer class="facture-foot">
-        <p>Merci pour votre confiance !</p>
-        <button id="download-pdf">Télécharger la facture en PDF</button>
-    </footer>
 </div>
-
 
 
     
