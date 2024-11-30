@@ -13,7 +13,8 @@ if(isset($_POST['envoiForm3'])){
         }
     }
     if(isset($_SESSION["crea_offre3"]) && !empty($_SESSION["crea_offre3"])){
-        var_dump($_SESSION["crea_offre3"]);
+        header('location: ../etape_4_creation/creation_offre_visite_4.php');
+        exit;
     }
 }
 
