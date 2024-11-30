@@ -335,45 +335,74 @@ footer {
     text-decoration: none;
 
            
+/* Container principal */
 .facture-container {
-    max-width: 900px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, #ffffff, #f9f9f9);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
     color: #333;
 }
 
-.facture-details p {
-    font-size: 1rem;
-    margin: 5px 0;
+/* En-tête de la facture */
+.facture-header {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
+.facture-header h1 {
+    font-size: 2rem;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.facture-meta p {
+    font-size: 1rem;
+    color: #555;
+    margin: 3px 0;
+}
+
+/* Table des items */
 .facture-items {
     width: 100%;
-    margin-top: 20px;
     border-collapse: collapse;
-}
-
-.facture-items th, .facture-items td {
-    padding: 12px;
-    text-align: left;
-    border: 1px solid #ddd;
+    margin-top: 20px;
+    font-size: 1rem;
 }
 
 .facture-items th {
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #ddd;
 }
 
+.facture-items td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.total-row {
+    background-color: #f4f4f4;
+}
+
+.total-row td {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* Footer */
 .facture-footer {
     margin-top: 30px;
     text-align: center;
+    color: #666;
+    font-size: 1rem;
 }
 
 #download-pdf {
@@ -382,13 +411,13 @@ h1 {
     padding: 12px 20px;
     font-size: 1rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #download-pdf:hover {
     background-color: #45a049;
+    transform: scale(1.05);
 }
-
-
