@@ -6,7 +6,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <tit>Télécharger une facture</title>
+    <title>Télécharger une facture</title>
     <link rel="stylesheet" href="telecharger_facture.css">
 </head>
 <body>
