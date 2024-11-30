@@ -52,8 +52,6 @@ session_start();
  /*       echo '<pre>';
         print_r($horaires_par_jour);
         echo '</pre>'; */
-
-      var_dump($_SESSION['crea_offre3']);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
