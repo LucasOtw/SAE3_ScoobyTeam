@@ -3,7 +3,7 @@
 ob_start();
 session_start();
 
-      if (isset($_POST['EnvoiEtape3'])) {
+      if (isset($_POST['EnvoiEtape2'])) {
           $jours = [
               'Lundi'    => ['ouvertureL', 'fermetureL'],
               'Mardi'    => ['ouvertureMa', 'fermetureMa'],
@@ -17,7 +17,7 @@ session_start();
           $horaires_par_jour = [];
           $erreurs = []; // Assurez-vous d'initialiser le tableau
           echo "<pre>";
-          var_dump($_POST['EnvoiEtape3']);
+          var_dump($_POST['EnvoiEtape2']);
           echo "</pre>";
       
           foreach ($jours as $jour => [$ouverture, $fermeture]) {
@@ -42,9 +42,11 @@ session_start();
                   echo $err . "<br>";
               }
           } else {
-              $_SESSION['crea_offre3'] = $horaires_par_jour;
-              var_dump($_SESSION['crea_offre3']);
+              $_SESSION['crea_offre2'] = $horaires_par_jour;
+              var_dump($_SESSION['crea_offre2']);
           }
+      } else {
+            echo "Ah";
       }
         
  /*       echo '<pre>';
@@ -317,7 +319,7 @@ session_start();
                     </div>
                 </div>
 
-                <button type="submit" id="button_valider" name="EnvoiEtape3">
+                <button type="submit" id="button_valider" name="EnvoiEtape2">
                     Continuer <img src="../images/fleche.png" alt="Fleche" width="25px" height="25px">
                 </button>
 
