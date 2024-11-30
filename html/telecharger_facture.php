@@ -44,14 +44,15 @@ session_start();
                 <li><a href="#" class="active">Compte bancaire</a></li>
             </ul>
         </section>
-
-    <div class="facture-container">
-    <h1>Facture #12345</h1>
-    <div class="facture-details">
-        <p><strong>Date :</strong> 30 Novembre 2024</p>
-        <p><strong>Client :</strong> Jean Dupont</p>
-        <p><strong>Adresse :</strong> 123 Rue Exemple, Paris, France</p>
-    </div>
+<div class="facture-container">
+    <header class="facture-header">
+        <h1>Facture #12345</h1>
+        <div class="facture-meta">
+            <p><strong>Date :</strong> 30 Novembre 2024</p>
+            <p><strong>Client :</strong> Jean Dupont</p>
+            <p><strong>Adresse :</strong> 123 Rue Exemple, Paris, France</p>
+        </div>
+    </header>
     
     <table class="facture-items">
         <thead>
@@ -75,17 +76,19 @@ session_start();
                 <td>€150</td>
                 <td>€150</td>
             </tr>
-            <tr>
-                <td colspan="3" style="text-align: right;"><strong>Total</strong></td>
-                <td>€250</td>
+            <tr class="total-row">
+                <td colspan="3"><strong>Total</strong></td>
+                <td><strong>€250</strong></td>
             </tr>
         </tbody>
     </table>
     
-    <div class="facture-footer">
+    <footer class="facture-footer">
+        <p>Merci pour votre confiance !</p>
         <button id="download-pdf">Télécharger la facture en PDF</button>
-    </div>
+    </footer>
 </div>
+
 
 
     
