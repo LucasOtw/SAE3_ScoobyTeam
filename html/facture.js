@@ -1,21 +1,22 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
 <script>
+    // On s'assure que l'élément est bien cliqué
     document.getElementById('download-pdf').addEventListener('click', function() {
-        const { jsPDF } = window.jspdf;
+        const { jsPDF } = window.jspdf; // On utilise la bibliothèque jsPDF
+
+        // Créer un nouveau document PDF
         const doc = new jsPDF();
 
-        // Titre de la facture
+        // Ajouter un titre
         doc.setFontSize(22);
         doc.text("Facture #12345", 20, 20);
 
-        // Informations sur le client
+        // Ajouter des informations sur le client
         doc.setFontSize(14);
         doc.text("Client: Jean Dupont", 20, 40);
         doc.text("Adresse: 123 Rue Exemple, Paris, France", 20, 50);
         doc.text("Date: 30 Novembre 2024", 20, 60);
 
-        // Détails des articles
+        // Ajouter des détails d'articles
         doc.autoTable({
             head: [['Description', 'Quantité', 'Prix Unitaire', 'Total']],
             body: [
@@ -26,7 +27,7 @@
             theme: 'grid'
         });
 
-        // Total de la facture
+        // Ajouter le total de la facture
         doc.text("Total: €250", 140, doc.lastAutoTable.finalY + 10);
 
         // Télécharger le PDF
