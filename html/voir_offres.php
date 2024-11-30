@@ -383,8 +383,6 @@ function tempsEcouleDepuisPublication($offre){
             $infosOffre = $dbh->query('SELECT * FROM tripenarvor._offre');
             $infosOffre = $infosOffre->fetchAll(PDO::FETCH_ASSOC);
 
-            setlocale(LC_TIME, 'fr_FR.UTF-8'); // Définit la langue
-
             foreach($infosOffre as $offre){
                 // Récupérer la ville
                 $villeOffre = $dbh->prepare('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
@@ -426,8 +424,9 @@ function tempsEcouleDepuisPublication($offre){
                 // on recupère toutes les images sous forme de tableau
                 $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
 
-                $jour_fr = strftime('%A', strtotime('now')); // récupérer le jour de la semaine
-                echo $offre[$jour_fr];
+                setlocale(LC_TIME, 'fr_FR.UTF-8'); // Définit la langue
+                $jour_fr = strftime('%A', strtotime('now'));
+                echo $jour_fr; 
 
                 if(!empty($images)){ // si le tableau n'est pas vide...
                     /* On récupère uniquement la première image.
