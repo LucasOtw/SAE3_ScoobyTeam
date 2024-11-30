@@ -88,6 +88,66 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 print_r($d);
             }
             echo "</pre>";
+            $tab_offre['titre_offre'] = $nomOffre;
+            $tab_offre['adresse'] = $adresse;
+            $tab_offre['ville'] = $ville;
+            $tab_offre['codePostal'] = $codePostal;
+            $tab_offre['resume'] = $resume;
+            $tab_offre['description'] = $description;
+
+            // Récupération des champs facultatifs
+            $tab_offre['complementAdresse'] = $complementAdresse;
+            $tab_offre['lien'] = $lien;
+            $tab_offre['accessibilite'] = $accessibilite;
+
+            // Récupération des fichiers (photos) - si plusieurs fichiers sont envoyés
+            if (isset($_FILES['photos']) && !empty($_FILES['photos']['name'][0])) {
+                $photos = [];
+                // Parcourir chaque photo envoyée
+                foreach ($_FILES['photos']['name'] as $key => $file_name) {
+                    // Si le fichier n'est pas vide, on récupère les informations nécessaires
+                    if ($_FILES['photos']['error'][$key] === 0) {
+                        $photos[] = [
+                            'name' => $file_name,
+                            'type' => $_FILES['photos']['type'][$key],
+                            'tmp_name' => $_FILES['photos']['tmp_name'][$key],
+                            'size' => $_FILES['photos']['size'][$key]
+                        ];
+                    }
+                }
+            
+                /* on n'a plus besoin de rajouter les photos dans la session
+                puisque le chemin temporaire n'est disponible que lors de l'envoi du formulaire */
+
+                $nom_dossier_images = $tab_offre['titre_offre'];
+                $nom_dossier_images = str_replace(' ','',$nom_dossier_images);
+                $destination = "../images/offres/".$nom_dossier_images;
+
+                if(!file_exists($destination)){
+                    mkdir($destination, 0777, true); // crée le dossier si il n'existe pas.
+                }
+
+                foreach($photos as $photo){
+                    $nom_temp = $photo['tmp_name'];
+                    $nom_photo = $photo['name'];
+
+                    // on construit le chemin de destination complet
+                    $chemin = $destination . '/' . $nom_photo;
+
+                    if (file_exists($nom_temp)) {
+                        // Déplacer le fichier dans le dossier cible
+                        if (move_uploaded_file($nom_temp, $chemin)) {
+                            echo "Le fichier $nom_photo a été déplacé avec succès.<br>";
+                        } else {
+                            echo "Erreur : Impossible de déplacer le fichier $nom_photo.<br>";
+                        }
+                    } else {
+                        echo "Erreur : Le fichier temporaire $nom_temp n'existe pas.<br>";
+                    }
+                }
+            }
+            $_SESSION['crea_offre'] = $tab_offre;
+            var_dump($_SESSION['crea_offre']);
         }
     }
 }
