@@ -424,9 +424,19 @@ function tempsEcouleDepuisPublication($offre){
                 // on recupère toutes les images sous forme de tableau
                 $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
 
-                setlocale(LC_TIME, 'fr_FR.UTF-8'); // Définit la langue
-                $jour_fr = strftime('%A', strtotime('now'));
-                echo $jour_fr; 
+                // Créer une date (la date actuelle)
+                $date = new DateTime();
+                
+                // Configurer le formatteur pour afficher le jour en français
+                $formatter = new IntlDateFormatter(
+                    'fr_FR', // Langue
+                    IntlDateFormatter::FULL, // Format complet (lundi, mardi, etc.)
+                    IntlDateFormatter::NONE // Pas besoin de l'heure
+                );
+                
+                // Formatter la date
+                $jour_fr = $formatter->format($date);
+                echo $jour_fr; // Résultat : lundi
 
                 if(!empty($images)){ // si le tableau n'est pas vide...
                     /* On récupère uniquement la première image.
