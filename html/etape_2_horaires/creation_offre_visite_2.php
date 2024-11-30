@@ -16,9 +16,6 @@ session_start();
       
           $horaires_par_jour = [];
           $erreurs = []; // Assurez-vous d'initialiser le tableau
-          echo "<pre>";
-          var_dump($_POST['EnvoiEtape2']);
-          echo "</pre>";
       
           foreach ($jours as $jour => [$ouverture, $fermeture]) {
               $horaire_ouverture = $_POST[$ouverture] ?? '';
@@ -50,6 +47,7 @@ session_start();
  /*       echo '<pre>';
         print_r($horaires_par_jour);
         echo '</pre>'; */
+      var_dump($_SESSION['crea_offre2']);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
