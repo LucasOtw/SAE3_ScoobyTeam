@@ -700,6 +700,9 @@ input#btn-poster-avis {
     footer {
             display : none;
     }
+    btn-poster-avis-voir-site{
+               display: inline-block;
+    }
     
 }
     @media (max-width: 768px) {
