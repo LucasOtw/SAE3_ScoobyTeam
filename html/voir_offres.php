@@ -384,7 +384,6 @@ function tempsEcouleDepuisPublication($offre){
             $infosOffre = $dbh->query('SELECT * FROM tripenarvor._offre');
             $infosOffre = $infosOffre->fetchAll(PDO::FETCH_ASSOC);
 
-
             $traductionDate = [
                 "Monday" => "lundi",
                 "Tuesday" => "mardi",
@@ -394,12 +393,10 @@ function tempsEcouleDepuisPublication($offre){
                 "Saturday" => "samedi",
                 "Sunday" => "dimanche"
             ];
-            $date = new DateTime();
-            echo $date->format('l');
-            $dateFr = $traductionDate[$date->format('l')];
-            echo $dateFr;
-        
 
+            $date = new DateTime();
+            $dateFr = $traductionDate[$date->format('l')];
+        
             foreach($infosOffre as $offre){
                 // Récupérer la ville
                 $villeOffre = $dbh->prepare('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
@@ -407,6 +404,7 @@ function tempsEcouleDepuisPublication($offre){
                 $villeOffre->execute();
                 $villeOffre = $villeOffre->fetch(); // Récupérer la ville (ou NULL si pas trouvé)
 
+                
                 $queries = [
                     'restauration' => 'SELECT * FROM tripenarvor.offre_restauration WHERE code_offre = :code_offre',
                     'parc_attractions' => 'SELECT * FROM tripenarvor.offre_parc_attractions WHERE code_offre = :code_offre',
@@ -432,6 +430,7 @@ function tempsEcouleDepuisPublication($offre){
                         break;
                     }
                 }
+
                 
                 // Récupérer les images
                 $imagesOffre = $dbh->prepare('SELECT code_image FROM tripenarvor._son_image WHERE code_offre = :code_offre');
@@ -440,6 +439,17 @@ function tempsEcouleDepuisPublication($offre){
                 
                 // on recupère toutes les images sous forme de tableau
                 $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
+
+                $horaireOffre $dbh->prepare('select ouverture, fermeture from tripenarvor._horaire where code_horaire = (select :jour from tripenarvor._offre where code_offre = :code_offre);');
+                $horaireOffre->bindParam(":code_offre", $offre["code_offre"]);
+                $horaireOffre->bindParam(":jour", $dateFr);
+                $horaireOffre->execute();
+
+                $horaire = $horaireOffre->fetchAll(PDO::FETCH_ASSOC);
+
+                echo "<pre>";
+                var_dump($horaire);
+                echo "</pre>";
 
                 if(!empty($images)){ // si le tableau n'est pas vide...
                     /* On récupère uniquement la première image.
