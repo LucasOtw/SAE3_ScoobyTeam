@@ -6,6 +6,7 @@
     <title>Profil Utilisateur</title>
     <link rel="stylesheet" href="compte_membre_tel.css">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script src="pp.js"></script>
 
 </head>
 <body>
