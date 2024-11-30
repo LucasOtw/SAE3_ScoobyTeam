@@ -395,8 +395,8 @@ function tempsEcouleDepuisPublication($offre){
                 "Sunday" => "dimanche"
             ];
             $date = new DateTime();
-            echo $date->format('1');
-            $dateFr = $traductionDate[$date->format('1')];
+            echo $date->format('l');
+            $dateFr = $traductionDate[$date->format('l')];
             echo $dateFr;
         
 
