@@ -481,15 +481,11 @@ function tempsEcouleDepuisPublication($offre){
                         $dataStatusEng = "closed";
                         $dataStatusFr = "Fermé";
                     }
-                } else {
-                    // Si on est après la fermeture
-                    $dataStatusEng = "closed";
-                    $dataStatusFr = "Fermé";
                 }
-                
+
                 // Affichage des résultats
                 echo $dataStatusEng . " / " . $dataStatusFr;
-                }
+                
 
 
                 if(!empty($images)){ // si le tableau n'est pas vide...
