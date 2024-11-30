@@ -259,12 +259,12 @@ footer {
 }
 
 /* Profile Section */
-.main-telechager-facture .profile {
+.main-telecharger-facture .profile {
     text-align: center;
     margin-bottom: 30px;
 }
 
-.main-telechager-facture .banner img {
+.main-telecharger-facture .banner img {
     width: 70%;
     height: 200px;
     object-fit: cover;
@@ -272,37 +272,37 @@ footer {
     border-radius: 20px;
 }
 
-.main-telechager-facture .profile-info {
+.main-telecharger-facture .profile-info {
     margin-top: -90px;
     text-align: center;
 }
 
-.main-telechager-facture .profile-info img.profile-picture {
+.main-telecharger-facture .profile-info img.profile-picture {
     width: 120px;
     height: 120px;
     border-radius: 35px;
     object-fit: cover;
 }
 
-.main-telechager-facture .profile-info h1 {
+.main-telecharger-facture .profile-info h1 {
     font-size: 28px;
     margin: 10px 0;
 }
 
-.main-telechager-facture .profile-info p {
+.main-telecharger-facture .profile-info p {
     font-size: 16px;
     color: #666;
 }
 
 /* Tabs Section */
-.main-telechager-facture .tabs {
+/*.main-telecharger-facture .tabs {
     display: flex;
     justify-content: center;
     margin: 30px 0;
     text-align: center;
 }
 
-.main-telechager-facture .tabs ul {
+.main-telecharger-facture .tabs ul {
     display: flex;
     padding: 0;
     list-style: none;
@@ -313,13 +313,13 @@ footer {
     min-width: 40vw;
 }
 
-.main-telechager-facture .tabs ul li {
+.main-telecharger-facture .tabs ul li {
     display: flex;
     margin: 0 20px;
     text-decoration: none;
 }
 
-.main-telechager-facture .tabs ul li a {
+.main-telecharger-facture .tabs ul li a {
     width: calc(60vw/3);
     font-size: 20px;
     padding: 10px 20px;
@@ -330,7 +330,7 @@ footer {
     text-decoration: none;
 }
 
-.main-telechager-facture .tabs ul li a.active {
+.main-telecharger-facture .tabs ul li a.active {
     border-color: #ff6600;
     text-decoration: none;
 }
@@ -341,19 +341,19 @@ footer {
     border-radius: 10px;
 }
 
-.main-telechager-facture .form-group {
+.main-telechrager-facture .form-group {
     margin-bottom: 15px;
 }
 
-.main-telechager-facture label {
+.main-telecharger-facture label {
     display: block;
     margin-bottom: 0px;
     font-size: 14px;
     color: #555;
 }
 
-.main-telechager-facture input[type="text"],
-.main-telechager-facture input[type="email"] {
+.main-telecharger-facture input[type="text"],
+.main-telecharger-facture input[type="email"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -361,7 +361,7 @@ footer {
     font-size: 14px;
 }
 
-.main-telechager-facture .form-actions {
+.main-telecharger-facture .form-actions {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
@@ -370,7 +370,7 @@ footer {
 
 
 
-.main-telechager-facture form {
+.main-telecharger-facture form {
     width: 885px;
     margin: 0 auto;
     padding: 20px;
@@ -380,7 +380,7 @@ footer {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.main-telechager-facture form h3 {
+.main-telecharger-facture form h3 {
     font-size: 25px;
     font-weight: 500;
     text-align: center;
@@ -390,12 +390,12 @@ footer {
     border-bottom: 2px solid var(--orange);
 }
 
-.main-telechager-facture form label {
+.main-telecharger-facture form label {
     font-weight: 600;
     font-size: 15px;
 }
 
-.main-telechager-facture form input {
+.main-telecharger-facture form input {
     display: block;
     width: 100%;
     font-size: 16px;
@@ -406,18 +406,18 @@ footer {
     border: 1px solid #ccc;
 }
 
-.main-telechager-facture form .form-input {
+.main-telecharger-facture form .form-input {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
 }
 
-.main-telechager-facture form .form-input label {
+.main-telecharger-facture form .form-input label {
     width: 60%;
 }
 
-.main-telechager-facture form button {
+.main-telecharger-facture form button {
     background-color: var(--orange);
     padding: 12px 25px;
     border-radius: 8px;
@@ -429,6 +429,7 @@ footer {
     transition: background-color 0.3s ease;
 }
 
-.main-telechager-facture form button:hover {
+.main-telecharger-facture form button:hover {
     background-color: #D3741C;
-}
+}/*
+
