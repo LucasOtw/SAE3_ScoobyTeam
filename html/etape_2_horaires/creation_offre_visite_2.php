@@ -80,7 +80,7 @@ session_start();
     </header>
      <div class="fleche_retour">
         <div>
-            <a href="../etape_2_restau/creation_offre_restaurant_2.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
+            <a href="../etape_1_form/creation_offre_visite_1.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
         </div>
     </div>
 
