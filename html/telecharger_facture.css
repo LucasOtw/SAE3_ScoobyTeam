@@ -259,12 +259,12 @@ footer {
 }
 
 /* Profile Section */
-.main-ajout-bancaire .profile {
+.main-telechager-facture .profile {
     text-align: center;
     margin-bottom: 30px;
 }
 
-.main-ajout-bancaire .banner img {
+.main-telechager-facture .banner img {
     width: 70%;
     height: 200px;
     object-fit: cover;
@@ -272,37 +272,37 @@ footer {
     border-radius: 20px;
 }
 
-.main-ajout-bancaire .profile-info {
+.main-telechager-facture .profile-info {
     margin-top: -90px;
     text-align: center;
 }
 
-.main-ajout-bancaire .profile-info img.profile-picture {
+.main-telechager-facture .profile-info img.profile-picture {
     width: 120px;
     height: 120px;
     border-radius: 35px;
     object-fit: cover;
 }
 
-.main-ajout-bancaire .profile-info h1 {
+.main-telechager-facture .profile-info h1 {
     font-size: 28px;
     margin: 10px 0;
 }
 
-.main-ajout-bancaire .profile-info p {
+.main-telechager-facture .profile-info p {
     font-size: 16px;
     color: #666;
 }
 
 /* Tabs Section */
-.main-ajout-bancaire .tabs {
+.main-telechager-facture .tabs {
     display: flex;
     justify-content: center;
     margin: 30px 0;
     text-align: center;
 }
 
-.main-ajout-bancaire .tabs ul {
+.main-telechager-facture .tabs ul {
     display: flex;
     padding: 0;
     list-style: none;
@@ -313,13 +313,13 @@ footer {
     min-width: 40vw;
 }
 
-.main-ajout-bancaire .tabs ul li {
+.main-telechager-facture .tabs ul li {
     display: flex;
     margin: 0 20px;
     text-decoration: none;
 }
 
-.main-ajout-bancaire .tabs ul li a {
+.main-telechager-facture .tabs ul li a {
     width: calc(60vw/3);
     font-size: 20px;
     padding: 10px 20px;
@@ -330,7 +330,7 @@ footer {
     text-decoration: none;
 }
 
-.main-ajout-bancaire .tabs ul li a.active {
+.main-telechager-facture .tabs ul li a.active {
     border-color: #ff6600;
     text-decoration: none;
 }
@@ -341,19 +341,19 @@ footer {
     border-radius: 10px;
 }
 
-.main-ajout-bancaire .form-group {
+.main-telechager-facture .form-group {
     margin-bottom: 15px;
 }
 
-.main-ajout-bancaire label {
+.main-telechager-facture label {
     display: block;
     margin-bottom: 0px;
     font-size: 14px;
     color: #555;
 }
 
-.main-ajout-bancaire input[type="text"],
-.main-ajout-bancaire input[type="email"] {
+.main-telechager-facture input[type="text"],
+.main-telechager-facture input[type="email"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -361,7 +361,7 @@ footer {
     font-size: 14px;
 }
 
-.main-ajout-bancaire .form-actions {
+.main-telechager-facture .form-actions {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
@@ -370,230 +370,65 @@ footer {
 
 
 
-.main-ajout-bancaire form {
+.main-telechager-facture form {
     width: 885px;
     margin: 0 auto;
     padding: 20px;
     border-radius: 8px;
+    background: #F3F4F7;
+    margin-top: 50px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.main-ajout-bancaire fieldset {
-    border: none;
-    margin-bottom: 20px;
-}
-
-.main-ajout-bancaire legend {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.main-ajout-bancaire input[type="text"],
-.main-ajout-bancaire input[type="email"],
-.main-ajout-bancaire input[type="tel"],
-.main-ajout-bancaire input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.main-ajout-bancaire input[type="text"]::placeholder,
-.main-ajout-bancaire input[type="email"]::placeholder,
-.main-ajout-bancaire input[type="tel"]::placeholder,
-.main-ajout-bancaire input[type="password"]::placeholder {
-    color: #aaa;
-}
-
-.main-ajout-bancaire .IBAN,
-.main-ajout-bancaire .nom {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.main-ajout-bancaire .IBAN fieldset,
-.main-ajout-bancaire .nom fieldset {
-    flex: 1;
-}
-.main-ajout-bancaire .BIC,
-.main-ajout-bancaire .nom {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.main-ajout-bancaire .BIC fieldset,
-.main-ajout-bancaire .nom fieldset {
-    flex: 1;
-}
-
-.main-ajout-bancaire .checkbox {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.main-ajout-bancaire .checkbox input {
-    margin-right: 10px;
-}
-
-.main-ajout-bancaire .checkbox label a {
+.main-telechager-facture form h3 {
+    font-size: 25px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 30px;
     color: var(--orange);
-    text-decoration: none;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--orange);
 }
 
-.main-ajout-bancaire .checkbox label a:hover {
-    text-decoration: underline;
-}
-.main-ajout-bancaire .compte_membre_save_delete {
-    display: flex;
-    justify-content: right; /* Aligne les boutons au centre */
-    gap: 20px; /* Espacement entre les boutons */
-    margin-bottom: 11em;
+.main-telechager-facture form label {
+    font-weight: 600;
+    font-size: 15px;
 }
 
-.main-ajout-bancaire button.submit-btn1, 
-.main-ajout-bancaire button.submit-btn2 {
+.main-telechager-facture form input {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.main-telechager-facture form .form-input {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    width: 100%;
+}
+
+.main-telechager-facture form .form-input label {
+    width: 60%;
+}
+
+.main-telechager-facture form button {
     background-color: var(--orange);
+    padding: 12px 25px;
+    border-radius: 8px;
     color: #fff;
     border: none;
-    padding: 12px 20px;
-    font-size: 1em;
-    border-radius: 16px;
+    font-size: 18px;
+    font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 28%;
-    height: 8%;
-    padding : 15px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ajout de l'ombre */
-
 }
 
-.main-ajout-bancaire button.submit-btn1{
-    background-color: white;
-    border: 1.5px solid var(--orange);
-    color: black;
-}
-
-.main-ajout-bancaire button.submit-btn1:hover,
-.main-ajout-bancaire button.submit-btn2:hover {
-    background-color: var(--orange-hover); /* Ajoute une couleur de survol pour les deux boutons */
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Ombre plus forte au survol */
-    transition: 0.3s;
-
-}
-
-.main-ajout-bancaire button.submit-btn2:hover{
-    background-color: var(--orange);
-
-}
-
-
-
-
-
-/* Style général pour tous les fieldsets */
-.nom fieldset, 
-.IBAN fieldset,
-.BIC fieldset,
-form fieldset {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    position: relative;
-    padding-top: 0;
-}
-
-/* Style pour les légendes */
-.nom legend, 
-.IBAN legend,
-.BIC legend,
-form legend {
-    font-size: 14px;
-    padding: 0 10px;
-    color: #333;
-    background-color: white;
-    position: absolute;
-    top: -10px;
-    left: 10px;
-    display: none;
-}
-
-/* Légende visible au focus */
-.nom fieldset:focus-within legend, 
-.IBAN fieldset:focus-within legend,
-form fieldset:focus-within legend {
-    display: inline-block;
-    transition: ease-out 0.3s;
-}
-
-/* Placeholder style pour tous les champs de formulaire */
-.nom input::placeholder, 
-.IBAN input::placeholder,
-form input::placeholder {
-    padding-left: 10px;
-}
-
-/* Placeholder masqué au focus */
-.nom input:focus::placeholder, 
-.IBAN input:focus::placeholder,
-form input:focus::placeholder {
-    color: rgba(0, 0, 0, 0);
-}
-
-/* Style pour la case à cocher */
-#remember, #cgu {
-    accent-color: var(--orange);
-}
-
-/* Styles pour les boutons */
-.submit-btn1, .submit-btn2 {
-    background-color: var(--orange);
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.submit-btn1 {
-    margin-right: 10px;
-}
-
-.submit-btn2 img {
-    margin-left: 5px;
-}
-.input-with-icon {
-    display: flex;
-    align-items: center; /* Aligne l'image et l'input verticalement */
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-}
-
-.input-with-icon img {
-    margin-right: 10px; /* Espacement entre l'image et le champ */
-    width: 20px; /* Ajuster la taille selon ton design */
-    height: auto;
-}
-
-.input-with-icon input {
-    border: none;
-    outline: none;
-    flex-grow: 1; /* Permet à l'input de prendre tout l'espace disponible */
-    padding: 10px;
-}
-.image-container {
-    text-align: center; /* Centre le texte en dessous de l'image */
-}
-
-.image {
-    max-width: 100%; /* L'image ne dépasse jamais la largeur de son conteneur */
-    height: auto; /* Maintient le ratio d'aspect de l'image */
+.main-telechager-facture form button:hover {
+    background-color: #D3741C;
 }
