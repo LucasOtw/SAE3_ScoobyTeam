@@ -1,9 +1,63 @@
+<?php
+
+ob_start();
+session_start();
+
+      if (isset($_POST['EnvoiEtape3'])) {
+          $jours = [
+              'Lundi'    => ['ouvertureL', 'fermetureL'],
+              'Mardi'    => ['ouvertureMa', 'fermetureMa'],
+              'Mercredi' => ['ouvertureMe', 'fermetureMe'],
+              'Jeudi'    => ['ouvertureJ', 'fermetureJ'],
+              'Vendredi' => ['ouvertureV', 'fermetureV'],
+              'Samedi'   => ['ouvertureS', 'fermetureS'],
+              'Dimanche' => ['ouvertureD', 'fermetureD']
+          ];
+      
+          $horaires_par_jour = [];
+          $erreurs = []; // Assurez-vous d'initialiser le tableau
+          echo "<pre>";
+          var_dump($_POST['EnvoiEtape3']);
+          echo "</pre>";
+      
+          foreach ($jours as $jour => [$ouverture, $fermeture]) {
+              $horaire_ouverture = $_POST[$ouverture] ?? '';
+              $horaire_fermeture = $_POST[$fermeture] ?? '';
+              var_dump($horaire_ouverture);
+      
+              if (!empty($horaire_ouverture) || !empty($horaire_fermeture)) {
+                  if (strtotime($horaire_ouverture) >= strtotime($horaire_fermeture)) {
+                      $erreurs[] = "$jour : L'heure d'ouverture doit être plus ancienne que l'heure de fermeture !";
+                  } else {
+                      $horaires_par_jour[$jour] = [
+                          'ouverture' => $horaire_ouverture,
+                          'fermeture' => $horaire_fermeture
+                      ];
+                  }
+              }
+          }
+      
+          if (!empty($erreurs)) {
+              foreach ($erreurs as $err) {
+                  echo $err . "<br>";
+              }
+          } else {
+              $_SESSION['crea_offre3'] = $horaires_par_jour;
+              var_dump($_SESSION['crea_offre3']);
+          }
+      }
+        
+ /*       echo '<pre>';
+        print_r($horaires_par_jour);
+        echo '</pre>'; */
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offre Visite</title>
+    <title>Offre Spectacle</title>
     <link rel="stylesheet" href="../creation_offre2.css">
 
 
@@ -23,13 +77,13 @@
     </header>
      <div class="fleche_retour">
         <div>
-            <a href="../etape_1_form/creation_offre_visite_1.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
+            <a href="../etape_2_restau/creation_offre_restaurant_2.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
         </div>
     </div>
 
     <div class="header-controls">
         <div>
-            <img id="etapes" src="../images/fil_ariane2.png" alt="Étapes" width="80%" height="80%">
+            <img id="etapes" src="../images/fil_ariane3.png" alt="Étapes" width="80%" height="80%">
         </div>
     </div>
 
@@ -87,7 +141,7 @@
                     <div class="col">
                         <fieldset>
                             <legend>Ouverture</legend>
-                            <input type="time" id="ouvertureMa" name="ouvertureMA" placeholder="Ouverture">
+                            <input type="time" id="ouvertureMa" name="ouvertureMa" placeholder="Ouverture">
                         </fieldset>
                     </div >
                     <div class="col">
@@ -262,7 +316,7 @@
                     </div>
                 </div>
 
-                <button type="submit" id="button_valider">
+                <button type="submit" id="button_valider" name="EnvoiEtape3">
                     Continuer <img src="../images/fleche.png" alt="Fleche" width="25px" height="25px">
                 </button>
 
