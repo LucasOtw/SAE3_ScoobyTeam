@@ -621,9 +621,9 @@ function tempsEcouleDepuisPublication($offre){
             
                     // Vérifier si le prix de l'offre est dans la fourchette
                     if (offerPrice >= minPrice && offerPrice <= maxPrice) {
-                        offer.classList.remove('hidden'); // Afficher l'offre
+                        offer.style.removeProperty('display'); // Afficher l'offre
                     } else {
-                        offer.classList.add('hidden'); // Cacher l'offre
+                        offer.style.display = "none"; // Cacher l'offre
                     }
                 });
             }
