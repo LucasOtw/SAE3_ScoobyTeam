@@ -368,6 +368,8 @@ footer {
     border-collapse: collapse;
     margin-top: 20px;
     font-size: 1rem;
+    margin-left: 30em;
+    width: 50%;
 }
 
 .facture-items th {
