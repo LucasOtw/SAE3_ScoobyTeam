@@ -22,7 +22,7 @@ session_start();
         </ul>
     </nav>
 </header>
-<main class="main-ajout-bancaire">
+<main class="main-telecharger-facture">
         <section class="profile">
             <div class="banner">
                 <img src="images/Fond.png" alt="Bannière de profil">
