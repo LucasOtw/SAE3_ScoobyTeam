@@ -43,7 +43,6 @@ session_start();
               }
           } else {
               $_SESSION['crea_offre2'] = $horaires_par_jour;
-              var_dump($_SESSION['crea_offre2']);
           }
       } else {
             echo "Ah";
