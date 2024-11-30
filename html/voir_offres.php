@@ -11,6 +11,8 @@ if(isset($_SESSION['membre'])){
     $donneesSession = null;
 }
 
+echo $_SERVER['SERVER_SOFTWARE'];
+
 function tempsEcouleDepuisPublication($offre){
     // date d'aujourd'hui
     $date_actuelle = new DateTime();
