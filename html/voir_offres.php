@@ -242,10 +242,10 @@ function tempsEcouleDepuisPublication($offre){
             <label for="select-statut">Statut</label>
             <select id="select-statut">
                 <option value=""></option>
-                <option value="relevance">Ouverture</option>
+                <option value="opening-soon">Ouvre bientôt</option>
                 <option value="open">Ouvert</option>
                 <option value="closed">Fermé</option>
-                <option value="closing-soon">Ferme bientôt !</option>
+                <option value="closing-soon">Ferme bientôt</option>
             </select>
     
             <!-- Dates d'événement -->
@@ -396,8 +396,11 @@ function tempsEcouleDepuisPublication($offre){
 
             $date = new DateTime();
             $dateFr = $traductionDate[$date->format('l')];
+            $currentTime = $date->format('H:i:s');
         
             foreach($infosOffre as $offre){
+
+                
                 // Récupérer la ville
                 $villeOffre = $dbh->prepare('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
                 $villeOffre->bindParam(":code_adresse", $offre["code_adresse"]);
@@ -440,29 +443,37 @@ function tempsEcouleDepuisPublication($offre){
                 // on recupère toutes les images sous forme de tableau
                 $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
 
-                echo $dateFr;
                 
-                $horaireOffre = $dbh->prepare(
-                    'SELECT ouverture, fermeture 
-                     FROM tripenarvor._horaire 
-                     WHERE code_horaire = (
-                         SELECT '.$dateFr.' 
-                         FROM tripenarvor._offre 
-                         WHERE code_offre = :code_offre
-                     );'
-                );
-                
-                // Lier les paramètres individuellement
+                $horaireOffre = $dbh->prepare('SELECT ouverture, fermeture FROM tripenarvor._horaire WHERE code_horaire = (SELECT '.$dateFr.' FROM tripenarvor._offre WHERE code_offre = :code_offre);');
                 $horaireOffre->bindParam(":code_offre", $offre["code_offre"]);
-                
-                // Exécuter la requête
                 $horaireOffre->execute();
 
                 $horaire = $horaireOffre->fetchAll(PDO::FETCH_ASSOC);
 
-                echo "<pre>";
-                var_dump($horaire);
-                echo "</pre>";
+                if ($horaire["ouverture"] >= $currentTime && $horaire["fermeture"] < $currentTime)
+                {
+                    if ($horaire["fermeture"] - $currentTime <= '00:01:00')  
+                    {
+                        $data-status-eng = "closing-soon";
+                        $data-status-fr = "Ferme bientôt";    
+                    } else
+                    {
+                        $data-status-eng = "open";
+                        $data-status-fr = "Ouvert";    
+                    }
+                } else if ($horaire["ouverture"] < $currentTime && $horaire["fermeture"] >= $currentTime)
+                {
+                    if ($horaire["ouverture"] - $currentTime <= '00:01:00')  
+                    {
+                        $data-status-eng = "opening-soon";
+                        $data-status-fr = "Ouvre bientôt";    
+                    } else
+                    {
+                        $data-status-eng = "closed";
+                        $data-status-fr = "Fermé";    
+                    }
+                }
+
 
                 if(!empty($images)){ // si le tableau n'est pas vide...
                     /* On récupère uniquement la première image.
@@ -480,18 +491,25 @@ function tempsEcouleDepuisPublication($offre){
                 if ($offre["en_ligne"])
                 {
                 ?>
-                    <article class="offer" data-category=<?php echo $type_offre;?> data-price="<?php echo $offre["tarif"];?>" data-rate="2.5" location=<?php echo $villeOffre["ville"]; ?> >
+                    <article class="offer" 
+                                data-category=<?php echo $type_offre;?> 
+                                data-price="<?php echo $offre["tarif"];?>" 
+                                data-rate="2.5" location=<?php echo $villeOffre["ville"]; ?>
+                                data-status=<?php echo $data-status-eng; ?> >
+                        
                         <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
                         <div class="offer-details">
                             <h2><?php echo $offre["titre_offre"] ?></h2>
                             <p><?php echo $villeOffre["ville"] ?></p>
                             <p><?php echo $offre["tarif"]; ?></p>
+                            <p><?php echo $data-status-fr; ?></p>
                             <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
                             <form id="form-voir-offre" action="detail_offre.php" method="POST">
                                 <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
                                 <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
                             </form>
                         </div>
+                        
                     </article>
                 <?php
                 }
@@ -521,7 +539,7 @@ function tempsEcouleDepuisPublication($offre){
             const priceMinDisplay = document.getElementById("price-min-display");
             const priceMaxDisplay = document.getElementById("price-max-display");
             
-            // const selectStatus = document.querySelector('#select-statut');
+            const selectStatus = document.querySelector('#select-statut');
             
             // const eventDate = document.querySelector('#event-date');
             
@@ -679,6 +697,28 @@ function tempsEcouleDepuisPublication($offre){
                 updatePriceDisplay(); // Mettre à jour l'affichage des prix
                 filterOffers(); // Appliquer le filtre
             });
+
+
+
+            ///////////////////////////////////////////////////
+            ///              Selecteur status               ///
+            ///////////////////////////////////////////////////
+            selectStatus.addEventListener('change', function () {
+                    const status = selectStatus.value;
+
+                    // Filtrer par catégorie
+                    offerItems.forEach(offer => {
+                        
+                        const offerStatus = offer.getAttribute('data-status');
+                        if (!status || status === offerStatus) {
+                            offer.style.removeProperty('display');
+                            console.log(offer.classList);
+                        } else {
+                            offer.style.display = "none";
+                            console.log(offer.classList);
+                        }
+                    });
+                });
             
         </script>
 
