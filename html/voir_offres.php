@@ -449,12 +449,13 @@ function tempsEcouleDepuisPublication($offre){
                 $horaireOffre->execute();
 
                 $horaire = ($horaireOffre->fetchAll(PDO::FETCH_ASSOC))[0];
-
-                var_dump($horaire);
+                
                 
                 // Exemple d'horaires d'ouverture et de fermeture (remplacer par vos valeurs réelles)
                 $ouverture = new DateTime($horaire["ouverture"]);
                 $fermeture = new DateTime($horaire["fermeture"]);
+
+                echo gettype($ouverture);
                 
                 // Comparer les horaires
                 if ($ouverture <= $currentTime && $fermeture > $currentTime) {
