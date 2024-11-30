@@ -446,15 +446,14 @@ function tempsEcouleDepuisPublication($offre){
                     'SELECT ouverture, fermeture 
                      FROM tripenarvor._horaire 
                      WHERE code_horaire = (
-                         SELECT code_horaire 
+                         SELECT '.$dateFr.' 
                          FROM tripenarvor._offre 
                          WHERE code_offre = :code_offre
-                     ) AND :jour = jour;'
+                     );'
                 );
                 
                 // Lier les paramètres individuellement
                 $horaireOffre->bindParam(":code_offre", $offre["code_offre"]);
-                $horaireOffre->bindParam(":jour", $dateFr);
                 
                 // Exécuter la requête
                 $horaireOffre->execute();
