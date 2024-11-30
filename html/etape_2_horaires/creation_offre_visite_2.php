@@ -23,7 +23,6 @@ session_start();
           foreach ($jours as $jour => [$ouverture, $fermeture]) {
               $horaire_ouverture = $_POST[$ouverture] ?? '';
               $horaire_fermeture = $_POST[$fermeture] ?? '';
-              var_dump($horaire_ouverture);
       
               if (!empty($horaire_ouverture) || !empty($horaire_fermeture)) {
                   if (strtotime($horaire_ouverture) >= strtotime($horaire_fermeture)) {
