@@ -69,15 +69,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                            <a href="../consulter_compte_pro.php">Mon compte</a>
                        </li>
                         <li>
-                            <a href="../connexion_pro.php?deco=true">Se déconnecter</a>
-                        </li>
                         <?php
-                    } else {
-                        ?>
-                       <li>
-                           <a href="../connexion_pro.php">Se connecter</a>
-                       </li>
-                       <?php
                     }
                 ?>
             </ul>
