@@ -11,7 +11,6 @@ if(isset($_SESSION['membre'])){
     $donneesSession = null;
 }
 
-echo $_SERVER['SERVER_SOFTWARE'];
 
 function tempsEcouleDepuisPublication($offre){
     // date d'aujourd'hui
@@ -368,6 +367,8 @@ function tempsEcouleDepuisPublication($offre){
         
         <section id="offers-list">
         <?php
+            echo $_SERVER['SERVER_SOFTWARE'];    
+
             try {
                 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
                 $username = "sae";
