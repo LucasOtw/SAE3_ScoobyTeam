@@ -439,7 +439,7 @@ function tempsEcouleDepuisPublication($offre){
                 if ($offre["en_ligne"])
                 {
                 ?>
-                    <article class="offer" data-category=<?php echo $type_offre;?> data-price="<?php echo $offre["tarif"];?>" data-rate="<?php echo $offre["note-moyenne"]; ?>" location=<?php echo $villeOffre["ville"]; ?> >
+                    <article class="offer" data-category=<?php echo $type_offre;?> data-price="<?php echo $offre["tarif"];?>" data-rate="2.5" location=<?php echo $villeOffre["ville"]; ?> >
                         <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
                         <div class="offer-details">
                             <h2><?php echo $offre["titre_offre"] ?></h2>
