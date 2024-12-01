@@ -526,7 +526,7 @@ function tempsEcouleDepuisPublication($offre){
                                 data-price="<?php echo $offre["tarif"];?>" 
                                 data-rate="2.5" location=<?php echo $villeOffre["ville"]; ?>
                                 data-status=<?php echo $dataStatusEng; ?> 
-                                data-event=<?php echo $event['date_'.$type_offre]; ?> >
+                                data-event=<?php if(!empty($event)) { echo $event['date_'.$type_offre]; } else { echo ""; } ?> >
                         
                         <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
                         <div class="offer-details">
