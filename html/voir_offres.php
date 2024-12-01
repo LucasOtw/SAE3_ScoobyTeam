@@ -488,6 +488,7 @@ function tempsEcouleDepuisPublication($offre){
                     }
                 } else if ($type_offre === 'spectacle'){
                     // Si il n'a pas d'horaire du tt
+                    echo "je suis passé";
                     $dataStatusEng = "xx";
                     $dataStatusFr = "xx";
                 } else {
