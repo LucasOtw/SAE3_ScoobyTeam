@@ -710,6 +710,16 @@ input#btn-poster-avis {
                font-size: large;
                           
     }
+
+    .btn-poster-avis-voir-site_tel{
+               border: none;
+    color: #BDC426;
+    background: white;
+    display: flex;
+    padding-left: 16em;
+    padding-top: 1em;
+    font-size: large;
+    }
     
 }
     @media (max-width: 768px) {
