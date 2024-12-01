@@ -396,7 +396,6 @@ function tempsEcouleDepuisPublication($offre){
 
             $date = new DateTime();
             $dateFr = $traductionDate[$date->format('l')];
-            $currentTime = $date->format('H:i:s');
         
             foreach($infosOffre as $offre){
 
@@ -457,16 +456,11 @@ function tempsEcouleDepuisPublication($offre){
                     // Exemple d'horaires d'ouverture et de fermeture (remplacer par vos valeurs réelles)
                     $ouverture = new DateTime("1970-01-01 " . $horaire["ouverture"]);  
                     $fermeture = new DateTime("1970-01-01 " . $horaire["fermeture"]);  
-
-                    var_dump($horaire["ouverture"]);
-                    var_dump($ouverture);
-                    
-                    $interval = $ouverture->diff($currentTime);
                     
                     // Comparer les horaires
-                    if ($ouverture <= $currentTime && $fermeture > $currentTime) {
+                    if ($ouverture <= $date && $fermeture > $date) {
                         // Si on est dans l'intervalle d'ouverture
-                        $interval = $fermeture->diff($currentTime);
+                        $interval = $fermeture->diff($date);
                         
                         if (($interval->h < 1) || ($interval->h == 1 && $interval->i == 0)) {
                             // Si la fermeture est dans moins de 1 heure
@@ -477,9 +471,9 @@ function tempsEcouleDepuisPublication($offre){
                             $dataStatusEng = "open";
                             $dataStatusFr = "Ouvert";
                         }
-                    } elseif ($ouverture > $currentTime && $fermeture > $currentTime) {
+                    } elseif ($ouverture > $date && $fermeture > $date) {
                         // Si on est avant l'ouverture
-                        $interval = $ouverture->diff($currentTime);
+                        $interval = $ouverture->diff($date);
                         
                         if (($interval->h < 1) || ($interval->h == 1 && $interval->i == 0)) {
                             // Si l'ouverture est dans moins de 1 heure
