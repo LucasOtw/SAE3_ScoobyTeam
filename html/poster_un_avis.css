@@ -612,4 +612,8 @@ main.main_poster_avis .message-erreur{
         align-items: center;
         margin: 10px auto;
     }
+    .btn-poster-avis{
+        color: var(--vert-clair);
+        border:none;
+    }
 }
