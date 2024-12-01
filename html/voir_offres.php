@@ -525,11 +525,6 @@ function tempsEcouleDepuisPublication($offre){
                 
                 if ($offre["en_ligne"])
                 {
-                    if (isset($event['date_' . $type_offre])) {
-                        echo $event['date_' . $type_offre];
-                    } else {
-                        echo "Date non disponible";
-                    }
                 ?>
                     <article class="offer" 
                                 data-category=<?php echo $type_offre;?> 
@@ -752,6 +747,7 @@ function tempsEcouleDepuisPublication($offre){
                     offerItems.forEach(offer => {
                         
                         const offerStatus = offer.getAttribute('data-status');
+                        console.log(status.' '.offerStatus);
                         if (!status || status === offerStatus) {
                             offer.style.removeProperty('display');
                             console.log(offer.classList);
