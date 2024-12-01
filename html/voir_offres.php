@@ -619,12 +619,10 @@ function tempsEcouleDepuisPublication($offre){
                         if (category==='all' || category === offerCategory) {
                             //offer.classList.remove('hidden');
                             offer.style.removeProperty('display');
-                            console.log(offer.classList);
                         } else {
                             console.log(`BOUCLE VALIDE : ${offerCategory}`);
                             //offer.classList.add('hidden');
                             offer.style.display = "none";
-                            console.log(offer.classList);
                         }
                     });
                     console.log('///////////////////////////////////////////////');
@@ -687,12 +685,10 @@ function tempsEcouleDepuisPublication($offre){
                             console.log(`BOUCLE NON VALIDE : ${offerRate}`);
                             //offer.classList.remove('hidden');
                             offer.style.removeProperty('display');
-                            console.log(offer.classList);
                         } else {
                             console.log(`BOUCLE VALIDE : ${offerRate}`);
                             //offer.classList.add('hidden');
                             offer.style.display = "none";
-                            console.log(offer.classList);
                         }
                     });
                 });
@@ -747,13 +743,10 @@ function tempsEcouleDepuisPublication($offre){
                     offerItems.forEach(offer => {
                         
                         const offerStatus = offer.getAttribute('data-status');
-                        console.log(status.' '.offerStatus);
                         if (!status || status === offerStatus) {
                             offer.style.removeProperty('display');
-                            console.log(offer.classList);
                         } else {
                             offer.style.display = "none";
-                            console.log(offer.classList);
                         }
                     });
                 });
@@ -770,12 +763,11 @@ function tempsEcouleDepuisPublication($offre){
                     offerItems.forEach(offer => {
                         
                         const offerEvent = offer.getAttribute('data-event');
+                        console.log(date.' '.offerEvent);
                         if (!date || date === offerEvent) {
                             offer.style.removeProperty('display');
-                            console.log(offer.classList);
                         } else {
                             offer.style.display = "none";
-                            console.log(offer.classList);
                         }
                     });
                 });
