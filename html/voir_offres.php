@@ -443,49 +443,55 @@ function tempsEcouleDepuisPublication($offre){
                 // on recupère toutes les images sous forme de tableau
                 $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
 
-                
+
                 $horaireOffre = $dbh->prepare('SELECT ouverture, fermeture FROM tripenarvor._horaire WHERE code_horaire = (SELECT '.$dateFr.' FROM tripenarvor._offre WHERE code_offre = :code_offre);');
                 $horaireOffre->bindParam(":code_offre", $offre["code_offre"]);
                 $horaireOffre->execute();
 
                 $horaire = ($horaireOffre->fetchAll(PDO::FETCH_ASSOC));
 
-                var_dump($horaire);
-                
-                
-                // Exemple d'horaires d'ouverture et de fermeture (remplacer par vos valeurs réelles)
-                $ouverture = new DateTime("1970-01-01 " . $horaire["ouverture"]);  
-                $fermeture = new DateTime("1970-01-01 " . $horaire["fermeture"]);  
-
-                var_dump($horaire["ouverture"]);
-                
-                // Comparer les horaires
-                if ($ouverture <= $currentTime && $fermeture > $currentTime) {
-                    // Si on est dans l'intervalle d'ouverture
-                    $interval = $fermeture->diff($currentTime);
+                if (!empty($horaire))
+                {
+                    $horaire = $horaire[0];
                     
-                    if (($interval->h < 1) || ($interval->h == 1 && $interval->i == 0)) {
-                        // Si la fermeture est dans moins de 1 heure
-                        $dataStatusEng = "closing-soon";
-                        $dataStatusFr = "Ferme bientôt";
-                    } else {
-                        // Si on est ouvert normalement
-                        $dataStatusEng = "open";
-                        $dataStatusFr = "Ouvert";
-                    }
-                } elseif ($ouverture > $currentTime && $fermeture > $currentTime) {
-                    // Si on est avant l'ouverture
-                    $interval = $ouverture->diff($currentTime);
+                    // Exemple d'horaires d'ouverture et de fermeture (remplacer par vos valeurs réelles)
+                    $ouverture = new DateTime("1970-01-01 " . $horaire["ouverture"]);  
+                    $fermeture = new DateTime("1970-01-01 " . $horaire["fermeture"]);  
+    
+                    var_dump($horaire["ouverture"]);
                     
-                    if (($interval->h < 1) || ($interval->h == 1 && $interval->i == 0)) {
-                        // Si l'ouverture est dans moins de 1 heure
-                        $dataStatusEng = "opening-soon";
-                        $dataStatusFr = "Ouvre bientôt";
-                    } else {
-                        // Si on est fermé
-                        $dataStatusEng = "closed";
-                        $dataStatusFr = "Fermé";
+                    // Comparer les horaires
+                    if ($ouverture <= $currentTime && $fermeture > $currentTime) {
+                        // Si on est dans l'intervalle d'ouverture
+                        $interval = $fermeture->diff($currentTime);
+                        
+                        if (($interval->h < 1) || ($interval->h == 1 && $interval->i == 0)) {
+                            // Si la fermeture est dans moins de 1 heure
+                            $dataStatusEng = "closing-soon";
+                            $dataStatusFr = "Ferme bientôt";
+                        } else {
+                            // Si on est ouvert normalement
+                            $dataStatusEng = "open";
+                            $dataStatusFr = "Ouvert";
+                        }
+                    } elseif ($ouverture > $currentTime && $fermeture > $currentTime) {
+                        // Si on est avant l'ouverture
+                        $interval = $ouverture->diff($currentTime);
+                        
+                        if (($interval->h < 1) || ($interval->h == 1 && $interval->i == 0)) {
+                            // Si l'ouverture est dans moins de 1 heure
+                            $dataStatusEng = "opening-soon";
+                            $dataStatusFr = "Ouvre bientôt";
+                        } else {
+                            // Si on est fermé
+                            $dataStatusEng = "closed";
+                            $dataStatusFr = "Fermé";
+                        }
                     }
+                } else {
+                    // Si on est fermé
+                    $dataStatusEng = "closed";
+                    $dataStatusFr = "Fermé";
                 }
 
                 // Affichage des résultats
