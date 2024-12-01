@@ -892,11 +892,51 @@ input#btn-poster-avis {
         margin-top: 2em;
     }
 
+    .button-group {
+    display: flex;
+    flex-direction: column; /* Aligne les boutons verticalement */
+    gap: 10px; /* Espacement entre les boutons */
+    align-items: center; /* Centre les boutons horizontalement */
+    margin-top: 20px;
+}
+    .btn-link {
+    text-decoration: none;
+    display: inline-block;
+    padding: 15px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%; /* Remplit la largeur */
+    max-width: 300px; /* Largeur maximale pour éviter un dépassement */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+
+    form .btn-link {
+    all: unset; /* Réinitialise les styles par défaut */
+    display: inline-block;
+    padding: 15px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #28a745;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+           
+           
     .titre_detail_offre_responsive {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+    text-align: center;
+    margin: 20px;
+}
 
     .description-link {
         text-decoration: none;
