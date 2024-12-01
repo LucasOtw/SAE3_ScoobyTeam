@@ -493,7 +493,7 @@ function tempsEcouleDepuisPublication($offre){
 
                 if ($type_offre == 'visite' || $type_offre == 'spectacle')
                 {
-                    echo 'SELECT date_'.$type_offre.', heure_'.$type_offre.' FROM tripenarvor._offre_'.$type_offre.'WHERE code_offre = .'$offre["code_offre"].';';
+                    echo 'SELECT date_'.$type_offre.', heure_'.$type_offre.' FROM tripenarvor._offre_'.$type_offre.'WHERE code_offre = .'$offre["code_offre"];
                     $eventOffre = $dbh->prepare('SELECT date_'.$type_offre.', heure_'.$type_offre.' FROM tripenarvor._offre_'.$type_offre.'WHERE code_offre = :code_offre;');
                     $eventOffre->bindParam(":code_offre", $offre["code_offre"]);
                     $eventOffre->execute();
