@@ -486,6 +486,7 @@ function tempsEcouleDepuisPublication($offre){
                             $dataStatusFr = "Fermé";
                         }
                     }
+                    echo $type_offre." ".$dataStatusEng." ".$dataStatusFr;
                 } else if ($type_offre === 'spectacle'){
                     // Si il n'a pas d'horaire du tt
                     echo "je suis passé";
