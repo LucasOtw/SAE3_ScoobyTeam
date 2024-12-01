@@ -449,7 +449,7 @@ function tempsEcouleDepuisPublication($offre){
 
                 $horaire = ($horaireOffre->fetch(PDO::FETCH_ASSOC));
 
-                echo($type_offre);
+                
                 if (!empty($horaire))
                 {
                     $horaire = $horaire;
@@ -495,6 +495,8 @@ function tempsEcouleDepuisPublication($offre){
                     $dataStatusEng = "closed";
                     $dataStatusFr = "Fermé";
                 }
+
+                echo $type_offre." ".dataStatusEng." ".dataStatusFr;
 
                 if ($type_offre == 'visite' || $type_offre == 'spectacle')
                 {
