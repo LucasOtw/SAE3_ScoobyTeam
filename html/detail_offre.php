@@ -709,12 +709,7 @@ if (isset($json['results'][0])) {
                 <button class="carousel-button next" onclick="nextSlide()">&#10095;</button>
             </div>
         </div>
-
-
-        <!-- Détails de l'offre -->
-        <div class="details_offres_infos">
-
-            <div class="titre_detail_offre_responsive">
+<div class="titre_detail_offre_responsive">
                 <h1><?php echo $details_offre["titre_offre"]; ?></h1>
                 <a href="<?php echo $details_offre["site_web"]; ?>" class="description-link">
                     <h3>Site Web</h3>
@@ -724,6 +719,20 @@ if (isset($json['results'][0])) {
                     </a>
                 </form>
             </div>
+
+        <!-- Détails de l'offre -->
+        <div class="details_offres_infos">
+
+            <div class="titre_detail_offre_responsive">
+                <h1><?php echo $details_offre["titre_offre"]; ?></h1>
+                <div class="button-group">
+                    <a href="<?php echo $details_offre["site_web"]; ?>" class="btn-link">Site Web</a>
+                    <form action="poster_un_avis.php" method="POST">
+                        <button type="submit" class="btn-link">Poster un avis</button>
+                    </form>
+                </div>
+            </div>
+
 
 
             
