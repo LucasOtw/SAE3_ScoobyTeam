@@ -447,11 +447,11 @@ function tempsEcouleDepuisPublication($offre){
                 $horaireOffre->bindParam(":code_offre", $offre["code_offre"]);
                 $horaireOffre->execute();
 
-                $horaire = ($horaireOffre->fetchAll(PDO::FETCH_ASSOC));
+                $horaire = ($horaireOffre->fetch(PDO::FETCH_ASSOC));
 
                 if (!empty($horaire))
                 {
-                    $horaire = $horaire[0];
+                    $horaire = $horaire;
                     
                     // Exemple d'horaires d'ouverture et de fermeture (remplacer par vos valeurs réelles)
                     $ouverture = new DateTime("1970-01-01 " . $horaire["ouverture"]);  
@@ -490,8 +490,18 @@ function tempsEcouleDepuisPublication($offre){
                     $dataStatusEng = "closed";
                     $dataStatusFr = "Fermé";
                 }
-                
 
+                if ($type_offre == 'visite' || $type_offre == 'spectacle')
+                {
+                    $eventOffre = $dbh->prepare('SELECT date_'.$type_offre.', heure_'.$type_offre.' FROM tripenarvor._offre_'.$type_offre.'WHERE code_offre = :code_offre;');
+                    $eventOffre->bindParam(":code_offre", $offre["code_offre"]);
+                    $eventOffre->execute();
+    
+                    $event = ($eventOffre->fetch(PDO::FETCH_ASSOC));
+                } else {
+                    $event = "";
+                }
+                
 
                 if(!empty($images)){ // si le tableau n'est pas vide...
                     /* On récupère uniquement la première image.
@@ -506,6 +516,8 @@ function tempsEcouleDepuisPublication($offre){
                 } else {
                     $offre_image = "";
                 }
+
+                
                 if ($offre["en_ligne"])
                 {
                 ?>
@@ -513,7 +525,8 @@ function tempsEcouleDepuisPublication($offre){
                                 data-category=<?php echo $type_offre;?> 
                                 data-price="<?php echo $offre["tarif"];?>" 
                                 data-rate="2.5" location=<?php echo $villeOffre["ville"]; ?>
-                                data-status=<?php echo $dataStatusEng; ?> >
+                                data-status=<?php echo $dataStatusEng; ?> 
+                                data-event=<?php echo $event['date_'.$type_offre]; ?> >
                         
                         <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
                         <div class="offer-details">
@@ -522,6 +535,7 @@ function tempsEcouleDepuisPublication($offre){
                             <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
                             <p><?php echo $offre["tarif"]; ?>€</p>
                             <p><?php echo $dataStatusFr; ?></p>
+                            <?php if (($type_offre == "visite" || $type_offre == "spectacle") && !empty($event)) { ?> <p><?php echo $event['date_'.$type_offre].' à '.$event['heure'.$type_offre]; ?></p> <?php } ?>
                             <form id="form-voir-offre" action="detail_offre.php" method="POST">
                                 <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
                                 <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
@@ -559,7 +573,7 @@ function tempsEcouleDepuisPublication($offre){
             
             const selectStatus = document.querySelector('#select-statut');
             
-            // const eventDate = document.querySelector('#event-date');
+            const eventDate = document.querySelector('#event-date');
             
 
 
