@@ -1090,7 +1090,7 @@ footer {
     width: 100vw;
     min-width: 100%;
     margin-left: -7em;
-    
+    height: 25em;
 }
 
 .a-la-une::-webkit-scrollbar{
