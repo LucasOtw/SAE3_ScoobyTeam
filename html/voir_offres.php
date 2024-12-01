@@ -493,7 +493,6 @@ function tempsEcouleDepuisPublication($offre){
 
                 if ($type_offre == 'visite' || $type_offre == 'spectacle')
                 {
-                    echo 'SELECT date_'.$type_offre.', heure_'.$type_offre.' FROM tripenarvor._offre_'.$type_offre.'WHERE code_offre = '.$offre["code_offre"];
                     $eventOffre = $dbh->prepare('SELECT date_'.$type_offre.', heure_'.$type_offre.' FROM tripenarvor._offre_'.$type_offre.' WHERE code_offre = :code_offre;');
                     $eventOffre->bindParam(":code_offre", $offre["code_offre"]);
                     $eventOffre->execute();
@@ -536,7 +535,7 @@ function tempsEcouleDepuisPublication($offre){
                             <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
                             <p><?php echo $offre["tarif"]; ?>€</p>
                             <p><?php echo $dataStatusFr; ?></p>
-                            <?php if (($type_offre == "visite" || $type_offre == "spectacle") && !empty($event)) { ?> <p><?php echo $event['date_'.$type_offre].' à '.$event['heure'.$type_offre]; ?></p> <?php } ?>
+                            <?php if (($type_offre == "visite" || $type_offre == "spectacle") && !empty($event)) { ?> <p><?php echo $event['date_'.$type_offre].' à '.$event['heure_'.$type_offre]; ?></p> <?php } ?>
                             <form id="form-voir-offre" action="detail_offre.php" method="POST">
                                 <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
                                 <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
