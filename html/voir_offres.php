@@ -763,7 +763,7 @@ function tempsEcouleDepuisPublication($offre){
                     offerItems.forEach(offer => {
                         
                         const offerEvent = offer.getAttribute('data-event');
-                        console.log(date.' '.offerEvent);
+                        console.log(date+' '+offerEvent);
                         if (!date || date === offerEvent) {
                             offer.style.removeProperty('display');
                         } else {
