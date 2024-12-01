@@ -756,6 +756,28 @@ function tempsEcouleDepuisPublication($offre){
                         }
                     });
                 });
+
+
+
+            ///////////////////////////////////////////////////
+            ///            Selecteur date event             ///
+            ///////////////////////////////////////////////////
+            eventDate.addEventListener('change', function () {
+                    const date = eventDate.value;
+
+                    // Filtrer par catégorie
+                    offerItems.forEach(offer => {
+                        
+                        const offerEvent = offer.getAttribute('data-event');
+                        if (!date || date === offerEvent) {
+                            offer.style.removeProperty('display');
+                            console.log(offer.classList);
+                        } else {
+                            offer.style.display = "none";
+                            console.log(offer.classList);
+                        }
+                    });
+                });
             
         </script>
 
