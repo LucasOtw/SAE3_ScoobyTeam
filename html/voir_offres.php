@@ -496,7 +496,7 @@ function tempsEcouleDepuisPublication($offre){
                     $dataStatusFr = "Fermé";
                 }
 
-                echo $type_offre." ".dataStatusEng." ".dataStatusFr;
+                echo $type_offre." ".$dataStatusEng." ".$dataStatusFr;
 
                 if ($type_offre == 'visite' || $type_offre == 'spectacle')
                 {
