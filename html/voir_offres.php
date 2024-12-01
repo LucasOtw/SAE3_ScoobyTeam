@@ -486,7 +486,7 @@ function tempsEcouleDepuisPublication($offre){
                         }
                     }
                 } else if ($type_offre == 'spectacle'){
-                    // Si on est fermé
+                    // Si il n'a pas d'horaire du tt
                     $dataStatusEng = "xx";
                     $dataStatusFr = "xx";
                 } else {
