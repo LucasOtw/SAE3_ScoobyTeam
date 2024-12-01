@@ -700,10 +700,15 @@ input#btn-poster-avis {
     footer {
             display : none;
     }
-    btn-poster-avis-voir-site_tel{
-               color: #BDC426;
+    #btn-poster-avis_tel{
                border: none;
-               
+               color: #BDC426;
+               background: white;
+               display: flex;
+               padding-left: 16em;
+               padding-top: 1em;
+               font-size: large;
+                          
     }
     
 }
