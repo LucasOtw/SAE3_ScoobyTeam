@@ -337,7 +337,7 @@ main.connexion_membre_main {
 .connexion_membre_main input[type="password"] {
     width: 100%;
     padding: 10px;
-    border: 0;
+    border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
 }
