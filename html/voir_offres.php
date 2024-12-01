@@ -485,10 +485,14 @@ function tempsEcouleDepuisPublication($offre){
                             $dataStatusFr = "Fermé";
                         }
                     }
-                } else {
+                } else if ($type_offre == 'spectacle'){
                     // Si on est fermé
                     $dataStatusEng = "xx";
                     $dataStatusFr = "xx";
+                } else {
+                    // Si on est fermé
+                    $dataStatusEng = "closed";
+                    $dataStatusFr = "Fermé";
                 }
 
                 if ($type_offre == 'visite' || $type_offre == 'spectacle')
