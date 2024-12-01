@@ -490,9 +490,6 @@ function tempsEcouleDepuisPublication($offre){
                     $dataStatusEng = "closed";
                     $dataStatusFr = "Fermé";
                 }
-
-                // Affichage des résultats
-                echo $dataStatusEng . " / " . $dataStatusFr;
                 
 
 
