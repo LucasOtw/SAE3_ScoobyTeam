@@ -1273,8 +1273,8 @@ footer {
     background-color: white;
     border-radius: 50%;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 6px;
+    left: 6px;
     transition: transform 0.3s ease;
 }
 
@@ -1285,7 +1285,7 @@ footer {
 
 /* Quand le cercle se déplace sur la droite */
 .slider.active .slider-circle {
-    transform: translateX(40px); /* Déplace le cercle de 60px vers la droite */
+    transform: translateX(38px); /* Déplace le cercle de 60px vers la droite */
 }
 
 
