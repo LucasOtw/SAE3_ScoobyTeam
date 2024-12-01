@@ -723,7 +723,7 @@ if (isset($json['results'][0])) {
 
 
             
-            <div >
+            <div  class="titre_detail_offre_responsive">
                         <form action="poster_un_avis.php" method="POST">
                             <input type="hidden" name="uneOffre"
                                 value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
