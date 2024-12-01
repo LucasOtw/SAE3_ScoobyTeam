@@ -455,7 +455,7 @@ function tempsEcouleDepuisPublication($offre){
                 $ouverture = new DateTime("1970-01-01 " . $horaire["ouverture"]);  
                 $fermeture = new DateTime("1970-01-01 " . $horaire["fermeture"]);  
 
-                echo gettype($ouverture);
+                var_dump($horaire["ouverture"]);
                 
                 // Comparer les horaires
                 if ($ouverture <= $currentTime && $fermeture > $currentTime) {
