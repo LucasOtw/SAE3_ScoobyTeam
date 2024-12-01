@@ -719,12 +719,7 @@ if (isset($json['results'][0])) {
                 <a href="<?php echo $details_offre["site_web"]; ?>" class="description-link">
                     <h3>Site Web</h3>
                 </a>
-            </div>
-
-
-            
-            <div  class="titre_detail_offre_responsive">
-                        <form action="poster_un_avis.php" method="POST">
+                <form action="poster_un_avis.php" method="POST">
                             <a href="poster_un_avis.php" class="description-link"><h3>Poster un avis</h3>
                             </a>
                         </form>
