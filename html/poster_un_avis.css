@@ -532,9 +532,10 @@ main.main_poster_avis .message-erreur{
     }
     
     .titre_poster_un_avis_format_tel {
-        color: black;
         display: flex;
         margin-left: 4vm;
+        border:none;
+        color:var(--vert-clair);
     }
     
     .poster_un_avis_btn_annuler {
