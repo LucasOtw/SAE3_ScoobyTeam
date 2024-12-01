@@ -457,8 +457,11 @@ function tempsEcouleDepuisPublication($offre){
                     // Exemple d'horaires d'ouverture et de fermeture (remplacer par vos valeurs réelles)
                     $ouverture = new DateTime("1970-01-01 " . $horaire["ouverture"]);  
                     $fermeture = new DateTime("1970-01-01 " . $horaire["fermeture"]);  
-    
+
                     var_dump($horaire["ouverture"]);
+                    var_dump($ouverture);
+                    
+                    $interval = $ouverture->diff($currentTime);
                     
                     // Comparer les horaires
                     if ($ouverture <= $currentTime && $fermeture > $currentTime) {
