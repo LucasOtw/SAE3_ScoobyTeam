@@ -147,16 +147,16 @@ echo "</pre>";
             } else /* Mail Pas Pro */ {
                 ?> 
                         <style>
-                            <?php echo ".connexion_pro fieldset p.erreur-pro-inconnu"?>{
+                            <?php echo ".connexion_pro_main fieldset p.erreur-pro-inconnu"?>{
                                 display : flex;
                                 align-items: center;
                             }
-                            <?php echo ".connexion_pro fieldset p.erreur-pro-inconnu img"?>{
+                            <?php echo ".connexion_pro_main fieldset p.erreur-pro-inconnu img"?>{
                                 width: 10px;
                                 height: 10px;
                                 margin-right: 10px;
                             }
-                            <?php echo ".connexion_pro input.erreur-pro-inconnu"?>{
+                            <?php echo ".connexion_pro_main input.erreur-pro-inconnu"?>{
                                 border: 1px solid red;
                             }
                         </style>
