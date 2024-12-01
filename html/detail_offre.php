@@ -720,13 +720,19 @@ if (isset($json['results'][0])) {
                     <h3>Site Web</h3>
                 </a>
             </div>
+
+
+            
             <div class="btn-poster-avis-voir-site">
                         <form action="poster_un_avis.php" method="POST">
                             <input type="hidden" name="uneOffre"
                                 value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
-                            <input id="btn-poster-avis" type="submit" name="posterAvis" value="Poster un avis">
+                            <input id="btn-poster-avis_tel" type="submit" name="posterAvis" value="Poster un avis">
                         </form>
             </div>
+
+
+            
             <!-- <div class="rating">
                     <span>
                         <img class="icone" src="images/etoile.png">
