@@ -1249,15 +1249,16 @@ footer {
 /* Conteneur du slider */
 .slider-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 1vh;
+    justify-content: flex-end;
+    position: relative;
+    right: 0;
+    margin: 10px auto;
 }
 
 /* Style du slider (fond du bouton) */
 .slider {
-    width: 120px;
-    height: 60px;
+    width: 76px;
+    height: 37px;
     background-color: #ccc;
     border-radius: 30px;
     position: relative;
@@ -1267,24 +1268,24 @@ footer {
 
 /* Le cercle du slider */
 .slider-circle {
-    width: 50px;
-    height: 50px;
+    width: 25px;
+    height: 25px;
     background-color: white;
     border-radius: 50%;
     position: absolute;
-    top: 5px;
-    left: 5px;
+    top: 0;
+    left: 0;
     transition: transform 0.3s ease;
 }
 
 /* Quand le slider est activé (sur la droite) */
 .slider.active {
-    background-color: #F28322;  /* orange lorsque activé */
+    background-color: var(--orange);  /* orange lorsque activé */
 }
 
 /* Quand le cercle se déplace sur la droite */
 .slider.active .slider-circle {
-    transform: translateX(60px); /* Déplace le cercle de 60px vers la droite */
+    transform: translateX(40px); /* Déplace le cercle de 60px vers la droite */
 }
 
 
