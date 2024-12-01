@@ -75,7 +75,7 @@ echo "</pre>";
         <main class="main_poster_avis">
         <div class="poster_un_avis_container">
             <div class="poster_un_avis_back_button">
-            <a href="" class="back-button">&larr;</a>
+            <a href="detail_offre.php" class="back-button">&larr;</a>
             <h1 class="titre_poster_un_avis_format_tel">Publier un avis</h1>
             </div>
             <h1 class="poster_un_avis_titre">Récapitulatif</h1>
