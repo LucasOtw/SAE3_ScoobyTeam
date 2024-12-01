@@ -1,13 +1,13 @@
 <?php
 ob_start();
 session_start();
-
+/*
 echo password_hash("test",PASSWORD_DEFAULT);
 
 echo "<pre>";
 var_dump($_SESSION);
 echo "</pre>";
-
+*/
 ?>
 
 <!DOCTYPE html>
@@ -115,9 +115,11 @@ echo "</pre>";
                 $mdpPro->bindParam("codeCompte", $codeCompte['code_compte']);
                 $mdpPro->execute();
                 $mdpPro = $mdpPro->fetch();
+                /*
                 echo "MDP : ".$password."";
                 echo "MDP2 : ".$mdpPro[0]."";
                 var_dump(password_verify($password,$mdpPro[0]));
+                */
                 if (password_verify(trim($password), trim($mdpPro[0]))) {
                     // si le mot de passe est correct
                     $_SESSION=[];
@@ -163,16 +165,16 @@ echo "</pre>";
         } else /* Mail Inconnu */{
             ?> 
                         <style>
-                            <?php echo ".connexion_membre_main fieldset p.erreur-user-inconnu"?>{
+                            <?php echo ".connexion_pro_main fieldset p.erreur-user-inconnu"?>{
                                 display : flex;
                                 align-items: center;
                             }
-                            <?php echo ".connexion_membre_main fieldset p.erreur-user-inconnu img"?>{
+                            <?php echo ".connexion_pro_main fieldset p.erreur-user-inconnu img"?>{
                                 width: 10px;
                                 height: 10px;
                                 margin-right: 10px;
                             }
-                            <?php echo ".connexion_membre_main input.erreur-user-inconnu"?>{
+                            <?php echo ".connexion_pro_main input.erreur-user-inconnu"?>{
                                 border: 1px solid red;
                             }
                         </style>
