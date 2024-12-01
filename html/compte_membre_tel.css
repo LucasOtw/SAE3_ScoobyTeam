@@ -150,6 +150,9 @@ input[type="file"] {
 .actions {
     padding: 20px;
 }
+.actions a {
+    text-decoration : none;
+}
 
 .action-btn {
     display: flex;
