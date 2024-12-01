@@ -525,7 +525,11 @@ function tempsEcouleDepuisPublication($offre){
                 
                 if ($offre["en_ligne"])
                 {
-                    echo $event['date_'.$type_offre];
+                    if (isset($event['date_' . $type_offre])) {
+                        echo $event['date_' . $type_offre];
+                    } else {
+                        echo "Date non disponible";
+                    }
                 ?>
                     <article class="offer" 
                                 data-category=<?php echo $type_offre;?> 
