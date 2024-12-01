@@ -487,8 +487,8 @@ function tempsEcouleDepuisPublication($offre){
                     }
                 } else {
                     // Si on est fermé
-                    $dataStatusEng = "closed";
-                    $dataStatusFr = "Fermé";
+                    $dataStatusEng = "xx";
+                    $dataStatusFr = "xx";
                 }
 
                 if ($type_offre == 'visite' || $type_offre == 'spectacle')
