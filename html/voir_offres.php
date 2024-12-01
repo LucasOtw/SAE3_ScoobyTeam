@@ -501,6 +501,8 @@ function tempsEcouleDepuisPublication($offre){
                 } else {
                     $event = "";
                 }
+
+                var_dump($event);
                 
 
                 if(!empty($images)){ // si le tableau n'est pas vide...
