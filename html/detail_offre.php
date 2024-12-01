@@ -720,9 +720,9 @@ if (isset($json['results'][0])) {
                     <h3>Site Web</h3>
                 </a>
                 <form action="poster_un_avis.php" method="POST">
-                            <a href="poster_un_avis.php" class="description-link"><h3>Poster un avis</h3>
-                            </a>
-                        </form>
+                    <a href="poster_un_avis.php" class="description-link"><h3>Poster un avis</h3>
+                    </a>
+                </form>
             </div>
 
 
