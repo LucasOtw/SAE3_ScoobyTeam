@@ -15,10 +15,6 @@ $password = "philly-Congo-bry4nt";
     die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
 
-echo "<pre>";
-var_dump($compte['code_compte']);
-echo "</pre>";
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -277,9 +273,6 @@ echo "</pre>";
                 $offres_pro->bindParam(':code_compte', $compte['code_compte']);
                 $offres_pro->execute();
                 $offres = $offres_pro->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($offres);
-        var_dump($compte['code_compte']);
-
 
             foreach ($offres as $offre){
                 ?>
@@ -387,57 +380,6 @@ echo "</pre>";
                  </tr>
              </tbody>
          </table>
-         <?php
-        header('Content-Type: application/json');
-        session_start();
-        
-        include('recupInfosCompte.php');
-        
-        // Connexion à la base de données
-        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-        $username = "sae";
-        $password = "philly-Congo-bry4nt";
-        
-        try {
-            $pdo = new PDO($dsn, $username, $password);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            die(json_encode(['error' => "Erreur de connexion à la base de données: " . $e->getMessage()]));
-        }
-        
-        // Récupérer les données envoyées par la requête AJAX
-        $data = json_decode(file_get_contents('php://input'), true);
-        $offre = $data['offre'];
-        
-        // Requête pour récupérer les détails de l'offre sélectionnée
-        $query = "SELECT * FROM tripenarvor._offre NATURAL JOIN tripenarvor._option WHERE code_offre = :offre";
-        $stmt = $pdo->prepare($query);
-        $stmt->bindParam(':offre', $offre, PDO::PARAM_INT);
-        $stmt->execute();
-        
-        if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $date_pub = new DateTime($row['date_publication']);
-            $date_actuelle = new DateTime();
-            $interval = $date_pub->diff($date_actuelle);
-            $jours_ecoules = $interval->days;
-            $montant_ht = $jours_ecoules * $row['prix'];
-        
-            $response = [
-                'nom_type' => $row['nom_type'],
-                'prix_par_jour' => $row['prix'],
-                'date_publication' => $row['date_publication'],
-                'montant_ht' => $montant_ht,
-                'total_ht' => $montant_ht, // Exemple simplifié
-                'tva' => $montant_ht * 0.2,
-                'total_ttc' => $montant_ht * 1.2,
-            ];
-        
-            echo json_encode($response);
-        } else {
-            echo json_encode(['error' => 'Aucune offre trouvée.']);
-        }
-        ?>
-
 
         
         <table class="facture-items">
@@ -552,39 +494,5 @@ echo "</pre>";
         </div>
     </div>
 </footer>
- <script>
-    document.getElementById('offres').addEventListener('change', function () {
-        const selectedOffre = this.value;
-
-        // Faire une requête AJAX pour récupérer les détails de l'offre
-        fetch('recupOffre.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ offre: selectedOffre }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Mettre à jour les sections nécessaires de la page avec les nouvelles données
-            document.querySelector('.facture-items tbody').innerHTML = `
-                <tr>
-                    <td>${data.nom_type}</td>
-                    <td>${data.prix_par_jour}€</td>
-                    <td>${data.date_publication}</td>
-                    <td>${data.montant_ht}€</td>
-                </tr>
-            `;
-            // Mettre à jour les totaux
-            document.querySelector('.info-facture').innerHTML = `
-                <p>Total HT: ${data.total_ht}€</p>
-                <p>TVA 20%: ${data.tva}€</p>
-                <p>Total TTC: ${data.total_ttc}€</p>
-            `;
-        })
-        .catch(error => console.error('Erreur lors de la mise à jour:', error));
-    });
-</script>
-
 </body>
 </html>
