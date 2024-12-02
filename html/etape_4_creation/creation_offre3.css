@@ -335,6 +335,7 @@ footer {
     transition: all 0.3s ease;
     display: inline-block;
     background-color: #F28322;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre élégante */
 }
 
 .back-link:hover {
