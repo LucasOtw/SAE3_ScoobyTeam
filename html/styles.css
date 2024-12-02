@@ -4517,6 +4517,10 @@ nav.nav-bar-tel {
   }
   
   /* Footer styles */
+nav-bar_consulter_compte_membre nav-bar_consulter__mes_avis {
+  display:none;
+}
+@media (max-width: 429px) {
   nav.nav-bar_consulter_compte_membre {
     width: 84vw;
     position: fixed;
@@ -4582,7 +4586,7 @@ nav.nav-bar {
     align-items: center;
     margin: 10px auto;
   }
-  
+}
   .nav {
     display: flex;
     justify-content: space-around;
