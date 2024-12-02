@@ -340,7 +340,7 @@ nav ul li a:hover::before {
 }
 
 /* Encapsulation dans la classe avis-widget */
-.avis-widget {
+.consulter_mes_avis-widget {
     max-width: 82%;
     margin-left: 11em;
     margin-top: 5em;

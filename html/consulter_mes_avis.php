@@ -92,8 +92,8 @@ if (!empty($_POST['supprAvis'])){
 <!--                     <li><a href="historique_membre.php">Historique</a></li> -->
                 </ul>
             </section>
-       <div class="avis-widget">
-    <div class="avis-list">
+       <div class="consulter_mes_avis-widget">
+    <div class="consulter_mes_avis-list">
         <?php
         // Préparer et exécuter la requête SQL
         $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor._membre NATURAL JOIN tripenarvor._offre WHERE code_compte = :code_compte');
