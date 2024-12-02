@@ -305,6 +305,10 @@ header.header-tel {
         display: flex;
         justify-content: center;
     }
+
+    footer {
+        display: none;
+    }
 }
 
 * {
@@ -1823,7 +1827,8 @@ main.main_poster_avis .poster_un_avis_disclaimer {
 .poster_un_avis_buttons {
     display: flex;
     justify-content: flex-end;
-    gap: 10px
+    gap: 10px;
+    margin-bottom: 12vh;
 }
 
 main.main_poster_avis .poster_un_avis_btn_annuler,
