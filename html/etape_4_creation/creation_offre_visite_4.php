@@ -60,12 +60,12 @@ if(isset($_POST['valider'])){
     $code_BIC = $_POST['BIC'];
 
     if(validerIBAN($code_iban) && validerBIC($code_BIC)){
-        echo "test";
         /*
         * VERIFICATION DE L'ADRESSE
         */
 
         if($_SESSION['aCreeUneOffre'] === false){
+            echo "test";
             $adresse_postal = $_SESSION['crea_offre']['adresse'];
             $complement_adresse = $_SESSION['crea_offre']['complementAdresse'];
             $code_postal = $_SESSION['crea_offre']['codePostal'];
