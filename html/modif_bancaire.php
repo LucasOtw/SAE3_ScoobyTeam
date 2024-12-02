@@ -18,7 +18,7 @@ include("recupInfosCompte.php");
 </head>
 
 <body>
-    <header class="header_membre">
+    <header class="header_pro">
         <div class="logo">
             <img src="images/logo_blanc_pro.png" alt="PACT Logo">
         </div>
@@ -157,7 +157,7 @@ include("recupInfosCompte.php");
             </div>
         </form>
     </main>
-    <footer class="footer footer_membre">
+    <footer class="footer footer_pro">
         <div class="footer-links">
             <div class="logo">
                 <img src="images/logoBlanc.png" alt="Logo PACT">
