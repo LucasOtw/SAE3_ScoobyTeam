@@ -4517,11 +4517,11 @@ nav.nav-bar-tel {
   }
   
   /* Footer styles */
-  nav.nav-bar {
+  nav.nav-bar_consulter_compte_membre {
     width: 84vw;
     position: fixed;
     bottom: 20px;
-    background-color: #F28322;
+    background-color: #BDC426;
     display: flex;
     margin: auto 8vw;
     justify-content: space-around;
@@ -4529,11 +4529,11 @@ nav.nav-bar-tel {
     box-shadow: 0px 2px 10px rgb(156, 156, 156);
   }
   
-  .nav-bar img {
+  .nav-bar_consulter_compte_membre img {
     display: inline-block; /* Affiche les images dans la barre de navigation */
   }
   
-  nav.nav-bar a {
+  nav.nav-bar_consulter_compte_membre a {
     display: flex;
     align-items: center;
     margin: 10px auto;
