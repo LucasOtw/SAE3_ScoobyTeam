@@ -4517,7 +4517,7 @@ nav.nav-bar-tel {
   }
   
   /* Footer styles */
-nav-bar_consulter_compte_membre nav-bar_consulter__mes_avis {
+nav.nav-bar_consulter_compte_membre nav.nav-bar_consulter__mes_avis {
   display:none;
 }
 @media (max-width: 429px) {
