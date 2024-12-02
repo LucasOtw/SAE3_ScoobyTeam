@@ -301,7 +301,9 @@ if(isset($_POST['valider'])){
 
             $mon_offre = array_merge($mon_offre,$code_horaire);
 
+            echo "<pre>";
             var_dump($mon_offre);
+            echo "</pre>";
         }
     }
 }
