@@ -4538,6 +4538,28 @@ nav.nav-bar-tel {
     align-items: center;
     margin: 10px auto;
   }
+
+nav.nav-bar {
+    width: 84vw;
+    position: fixed;
+    bottom: 20px;
+    background-color: #F28322;
+    display: flex;
+    margin: auto 8vw;
+    justify-content: space-around;
+    border-radius: 1000px;
+    box-shadow: 0px 2px 10px rgb(156, 156, 156);
+  }
+  
+  .nav-bar img {
+    display: inline-block; /* Affiche les images dans la barre de navigation */
+  }
+  
+  nav.nav-bar a {
+    display: flex;
+    align-items: center;
+    margin: 10px auto;
+  }
   
   .nav {
     display: flex;
