@@ -213,6 +213,34 @@ include('recupInfosCompte.php');
             font-style: italic;
         }
 
+        .payment-info {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+            padding: 10px;
+            border: 1px solid #d1d1d1;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        
+        .payment-info p {
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+        
+        .thank-you {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 16px;
+            font-style: italic;
+            color: #007bff;
+        }
+        
+        .thank-you p {
+            margin: 5px 0;
+        }
+
+
 
 
 
@@ -301,10 +329,22 @@ include('recupInfosCompte.php');
                 <p>TVA 20%: 26€</p>
                 <p>Total TTC: 156€</p>
             </div>
+            <div class="payment-info">
+                <p><strong>Mode de paiement accepté :</strong> Virement bancaire, chèque, carte de crédit</p>
+                <p><strong>IBAN :</strong> FR76 1234 5678 9012 3456 7890 123</p>
+                <p><strong>BIC :</strong> AGRIFRPP</p>
+            </div>
+
             <div class="signature-container">
                 <p><strong>Signature :</strong></p>
                 <div class="signature-box"></div>
             </div>
+
+            <div class="thank-you">
+                <p><strong>Merci pour votre confiance !</strong></p>
+                <p>Nous espérons vous revoir bientôt.</p>
+            </div>
+
 
         </div>
 
