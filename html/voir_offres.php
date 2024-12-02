@@ -456,7 +456,7 @@ function tempsEcouleDepuisPublication($offre){
                 echo "<pre>";
                 var_dump($horaire);
                 echo "</pre>";
-                echo date->format("Y-m-d ");
+                echo $date->format("Y-m-d ");
                 
                 if (!empty($horaire))
                 {
