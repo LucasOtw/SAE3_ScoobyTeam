@@ -273,6 +273,7 @@
         rel="stylesheet">
     
     <script>
+        
         // Fonction pour basculer l'état du bouton slider
         function toggleSlider() {
             var slider = document.querySelector('.slider');
@@ -308,22 +309,24 @@
                 }
             };
         }
-            </script>
+        
+    </script>
         
         
         
-            <script>
-            function initMap() {
-                var location = {lat: <?php echo $latitude; ?>, lng: <?php echo $longitude; ?>};
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 15,
-                    center: location
-                });
-                var marker = new google.maps.Marker({
-                    position: location,
-                    map: map
-                });
-            }
+    <script>
+        function initMap() {
+            var location = {lat: <?php echo $latitude; ?>, lng: <?php echo $longitude; ?>};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: location
+            });
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+        }
+                
     </script>
 
 
@@ -361,7 +364,7 @@
                     <div> 
                         <p id="offer-state">L'offre est actuellement : 
                             <span id="offer-status"> 
-                                <<?php echo $details_offre[ 'en_ligne'] ? "En Ligne" : "Hors Ligne"; ?>
+                                <?php echo $details_offre[ 'en_ligne'] ? "En Ligne" : "Hors Ligne"; ?>
                             </span>
                         </p>
                     </div>
@@ -418,7 +421,7 @@
                         </div>
                     </div>
 
-                    <script src="toggle-button.js"></script>
+                    <!-- <script src="toggle-button.js"></script> -->
                     
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
                     <div class="detail_offre_pro_button">                        
