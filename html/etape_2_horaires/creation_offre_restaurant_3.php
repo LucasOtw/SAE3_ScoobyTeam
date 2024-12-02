@@ -34,9 +34,11 @@ session_start();
                           'fermeture' => $horaire_fermeture
                       ];
                   }
-              } else {
-                  $erreurs[] = "Veuillez mettre AU MOINS une horaire d'ouverture ET de fermeture !";
               }
+          }
+
+          if(empty($horaires_par_jour)){
+                $erreurs[] = "Votre offre doit avoir au moins une heure d'ouverture et de fermeture !";
           }
       
           if (!empty($erreurs)) {
