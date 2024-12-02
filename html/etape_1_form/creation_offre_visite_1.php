@@ -298,8 +298,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <!-- Durée de la visite -->
                 <div class="row">
                     <div class="col">
+                        <fieldset>
+                            <legend style="display:block;">Date de la visite</legend>
+                            <input type="date" name="date_visite">
+                        </fieldset>
+                    </div>
+                    <div class="col">
                         <fieldset class="duree">
-                            <legend style="display:block;">Durée de la visite</legend>
+                            <legend style="display:block;">Durée de la visite *</legend>
                             <input type="time" id="duree" name="duree" placeholder="Durée de la visite">
                         </fieldset>
                     </div>
@@ -307,12 +313,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                         <fieldset class="duree">
                             <legend style="display:block;">Heure de la visite</legend>
                             <input type="time" id="duree" name="heure_visite" placeholder="Heure de la visite">
-                        </fieldset>
-                    </div>
-                    <div class="col">
-                        <fieldset>
-                            <legend style="display:block;">Date de la visite</legend>
-                            <input type="date" name="date_visite">
                         </fieldset>
                     </div>
                 </div>
