@@ -720,13 +720,13 @@ function tempsEcouleDepuisPublication($offre){
             // Mettre à jour les affichages du prix
             function updatePriceDisplay() {
                 // Empêche price-min de dépasser price-max
-                if (parseInt(priceMin.value) > parseInt(priceMax.value)) {
-                    priceMin.value = priceMax.value;
+                if (parseInt(priceMinInput.value) > parseInt(priceMaxInput.value)) {
+                    priceMinInput.value = priceMaxInput.value;
                 }
         
                 // Empêche price-max d'être inférieur à price-min
-                if (parseInt(priceMax.value) < parseInt(priceMin.value)) {
-                    priceMax.value = priceMin.value;
+                if (parseInt(priceMaxInput.value) < parseInt(priceMinInput.value)) {
+                    priceMaxInput.value = priceMinInput.value;
                 }
                 
                 priceMinDisplay.textContent = priceMinInput.value;
