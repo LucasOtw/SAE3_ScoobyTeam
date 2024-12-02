@@ -354,4 +354,30 @@ footer {
     gap: 20px; /* Espace entre les boutons */
     align-items: center;
 }
+.button-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espace entre les boutons */
+    width: 100%; /* Assure que la zone de boutons occupe toute la largeur */
+}
+
+.back-link {
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.back-link:hover {
+    background-color: #45a049;
+}
 
