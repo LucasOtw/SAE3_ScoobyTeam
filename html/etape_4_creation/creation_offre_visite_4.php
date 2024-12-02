@@ -102,6 +102,8 @@ if(isset($_POST['valider'])){
                 // et on récupère le dernier id inséré, dans notre cas, c'est FORCEMENT le code_adresse ! :D
                 $code_adresse = $dbh->lastInsertId();
             }
+
+            echo "Bonjour";
             
     
             /*
@@ -184,9 +186,9 @@ if(isset($_POST['valider'])){
             $date_offre = date('Y-m-d');
             echo $date_offre;
         }
-    } else {
-        echo "Ah";
     }
+} else {
+    echo "J'aime les enfants";
 }
 
 
