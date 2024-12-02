@@ -112,7 +112,7 @@ if(isset($_POST['valider'])){
             * VERIFICATION DES HORAIRES
             */
     
-            $tab_horaires = $_SESSION['crea_offre3'];
+            $tab_horaires = $_SESSION['crea_offre2'];
             // pour chaque jour
             foreach($tab_horaires as $jour => $horaire){
                 /* On cherche d'abord le code horaire. */
