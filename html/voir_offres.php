@@ -595,6 +595,9 @@ function tempsEcouleDepuisPublication($offre){
             const selectStatus = document.querySelector('#select-statut');
             
             const eventDate = document.querySelector('#event-date');
+
+            const openingStartDate = document.getElementById('opening-start-date');
+            const openingEndDate = document.getElementById('opening-end-date');
             
 
 
@@ -786,6 +789,33 @@ function tempsEcouleDepuisPublication($offre){
                         }
                     });
                 });
+
+
+
+            ///////////////////////////////////////////////////
+            ///           Selecteur date periode            ///
+            ///////////////////////////////////////////////////
+            function filterByOpeningDates() {
+                const startDate = openingStartDate.value;
+                const endDate = openingEndDate.value;
+            
+                // Parcourir chaque offre et vérifier les critères
+                offerItems.forEach(offer => {
+                    const periodStart = offer.getAttribute('data-period-o');
+                    const periodEnd = offer.getAttribute('data-period-c');
+            
+                    // Condition pour afficher l'offre
+                    if ((!startDate || startDate <= periodEnd) && (!endDate || endDate >= periodStart)) {
+                        offer.style.removeProperty('display'); // Afficher l'offre
+                    } else {
+                        offer.style.display = "none"; // Masquer l'offre
+                    }
+                });
+            }
+
+            // Ajouter un écouteur d'événement sur les champs de date
+            openingStartDate.addEventListener('change', filterByOpeningDates);
+            openingEndDate.addEventListener('change', filterByOpeningDates);
             
         </script>
 
