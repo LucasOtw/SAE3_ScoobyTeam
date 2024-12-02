@@ -458,7 +458,7 @@ if(isset($_POST['valider'])){
         <?php
     } else {
         ?>
-       <img src="verifier.png" alt="Succès" class="success-icon">
+       <img src="../verifier.png" alt="Succès" class="success-icon">
        <h1 class="success-message">Votre offre a été créée avec succès !</h1>
        <a href="../mes_offres.php" class="back-link">Retourner à "Mes offres"</a>
 
