@@ -397,7 +397,7 @@ function tempsEcouleDepuisPublication($offre){
             $date = new DateTime();
             $dateFr = $traductionDate[$date->format('l')];
 
-            echo ($date);
+            var_dump($date);
         
             foreach($infosOffre as $offre){
 
@@ -462,10 +462,13 @@ function tempsEcouleDepuisPublication($offre){
                     $ouverture = new DateTime($date->format("Y-m-d ") . $horaire["ouverture"]);  
                     $fermeture = new DateTime($date->format("Y-m-d ") . $horaire["fermeture"]);
 
-                    echo $ouverture." ".$fermeture;
+                    echo "<br>";
+                    var_dump($ouverture);
+                    echo "<br>";
+                    var_dump($fermeture);
                     
                     // Comparer les horaires
-                    if ($ouverture <= $date && $fermeture < $date) {
+                    if ($ouverture <= $date && $fermeture > $date) {
                         // Si on est dans l'intervalle d'ouverture
                         $interval = $fermeture->diff($date);
                         
@@ -478,7 +481,7 @@ function tempsEcouleDepuisPublication($offre){
                             $dataStatusEng = "open";
                             $dataStatusFr = "Ouvert";
                         }
-                    } elseif ($ouverture > $date && $fermeture >= $date) {
+                    } elseif ($ouverture > $date && $fermeture <= $date) {
                         // Si on est avant l'ouverture
                         $interval = $ouverture->diff($date);
                         
@@ -786,7 +789,7 @@ function tempsEcouleDepuisPublication($offre){
     <nav class="nav-bar">
     <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
     <a href="consulter_mes_avis.php"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
-    <a href="creer_offre_membre.php"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
+    <a href="incitation.php"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
     <a href="
         <?php
             if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
