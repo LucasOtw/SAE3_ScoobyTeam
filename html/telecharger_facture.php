@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+include('recupInfosCompte');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
