@@ -102,6 +102,7 @@ include('recupInfosCompte.php');
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
+            margin-top: 2em;
         }
         
         .facture-items th, .facture-items td {
