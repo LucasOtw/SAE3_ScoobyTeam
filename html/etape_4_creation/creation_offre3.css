@@ -365,7 +365,6 @@ footer {
     display: flex;
     justify-content: center;
     gap: 20px; /* Espace entre les boutons */
-    width: 100%; /* Assure que la zone de boutons occupe toute la largeur */
 }
 
 .back-link {
