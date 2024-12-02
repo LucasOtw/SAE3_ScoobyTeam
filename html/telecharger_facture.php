@@ -147,7 +147,7 @@ session_start();
         padding: 15px;
         font-size: 18px;
         color: white;
-        background-color: #007bff;
+        background-color:  var(--orange);
         border: none;
         border-radius: 5px;
         cursor: pointer;
@@ -157,12 +157,12 @@ session_start();
         }
     
         #download-btn:hover {
-            background-color: #0056b3;
+            background-color:  var(--orange);
             transform: translateY(-2px);
         }
         
         #download-btn:active {
-            background-color: #003f7f;
+            background-color:  var(--orange);
             transform: translateY(1px);
         }
 
