@@ -324,7 +324,7 @@ include('recupInfosCompte.php');
                 <tr>
                     <th>Type d'offre</th>
                     <th>Prix par jour</th>
-                    <th>Date de mise </th>
+                    <th>Date de mise en ligne</th>
                     <th>Montant HT</th>
                     
                 </tr>
@@ -333,26 +333,24 @@ include('recupInfosCompte.php');
                 <tr>
                     <td>standard</td>
                     <td>5€</td>
-                    <td>1</td>
-                    <td>En relief</td>
+                    <td>29/11/2024</td>
                     <td>100€</td>
                 </tr>
             </tbody>
             <thead>
                 <tr>
-                    <th>Type d'offre</th>
-                    <th>Prix par jour</th>
-                    <th>Date de mise </th>
+                    <th>Boost</th>
+                    <th>Prix par semaine</th>
+                    <th>Nombre de semaines</th>
                     <th>Montant HT</th>
                     
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>standard</td>
-                    <td>5€</td>
-                    <td>1</td>
                     <td>En relief</td>
+                    <td>10€</td>
+                    <td>3</td>
                     <td>100€</td>
                 </tr>
             </tbody>
