@@ -396,8 +396,6 @@ function tempsEcouleDepuisPublication($offre){
 
             $date = new DateTime();
             $dateFr = $traductionDate[$date->format('l')];
-
-            var_dump($date);
         
             foreach($infosOffre as $offre){
 
