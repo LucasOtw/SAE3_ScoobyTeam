@@ -14,7 +14,7 @@
         <!-- Header Section -->
         <header class="header">
             <div class="logo">
-                <img src="images/LogoNoirVert.png" alt="PACT Logo">
+                <img src="images/logoNoir.png" alt="PACT Logo">
             </div>
         </header>
 
