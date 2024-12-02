@@ -458,8 +458,10 @@ if(isset($_POST['valider'])){
         <?php
     } else {
         ?>
-        <h1 class="success-message">Votre offre a été créée avec succès !</h1>
-        <a href="../mes_offres.php" class="back-link">Retourner à "Mes offres"</a>
+       <img src="success-icon.png" alt="Succès" class="success-icon">
+       <h1 class="success-message">Votre offre a été créée avec succès !</h1>
+       <a href="../mes_offres.php" class="back-link">Retourner à "Mes offres"</a>
+
 
         <?php
     }
