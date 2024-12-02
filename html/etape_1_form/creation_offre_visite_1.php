@@ -151,6 +151,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             }
             $_SESSION['crea_offre'] = $tab_offre;
             var_dump($_SESSION['crea_offre']);
+            header('location: ../etape_2_horaires/creation_offre_visite_2.php');
+            exit;
         }
     }
 }
