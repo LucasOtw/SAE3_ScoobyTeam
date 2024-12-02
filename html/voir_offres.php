@@ -801,11 +801,11 @@ function tempsEcouleDepuisPublication($offre){
             
                 // Parcourir chaque offre et vérifier les critères
                 offerItems.forEach(offer => {
-                    const periodStart = offer.getAttribute('data-period-o');
-                    const periodEnd = offer.getAttribute('data-period-c');
+                    const offerPeriodStart = offer.getAttribute('data-period-o');
+                    const offerPeriodEnd = offer.getAttribute('data-period-c');
             
                     // Condition pour afficher l'offre
-                    if ((!startDate || startDate <= periodEnd) && (!endDate || endDate >= periodStart)) {
+                    if ((!startDate || startDate <= offerPeriodEnd) && (!endDate || endDate >= offerPeriodStart)) {
                         offer.style.removeProperty('display'); // Afficher l'offre
                     } else {
                         offer.style.display = "none"; // Masquer l'offre
