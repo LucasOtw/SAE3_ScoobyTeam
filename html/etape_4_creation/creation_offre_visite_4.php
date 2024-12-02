@@ -301,6 +301,8 @@ if(isset($_POST['valider'])){
 
             $mon_offre = array_merge($mon_offre,$code_horaire);
 
+            $mon_offre['en_ligne'] = $mon_offre['en_ligne'] ? 'true' : 'false';
+
             // on passe à l'exécution
 
             $columns = implode(", ", array_keys($mon_offre)); // liste des colonnes
