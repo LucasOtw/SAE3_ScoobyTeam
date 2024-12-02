@@ -326,6 +326,14 @@ if(isset($_POST['valider'])){
                 } else {
                     $duree_visite = $_SESSION['crea_offre']['duree'] . ":00";
                 }
+
+                if(empty($_SESSION['crea_offre']['date_visite'])){
+                    $date_visite = null;
+                } else {
+                    $date_visite = $_SESSION['crea_offre']['date_visite'];
+                    $date_visite = DateTime::createFromFormat('Y-m-d', $date_visite);
+                    var_dump($date_visite);
+                }
                 
                 if(empty($_SESSION['crea_offre']['langues'])){
                     $visite_guidee = null;
