@@ -33,12 +33,13 @@ if(isset($_POST['profilte-photo'])){
         <section class="profile">
     <div class="profile-img-container">
         <img class="profile-img" src="" alt="Photo de profil">
-        <form action="/upload" method="POST" enctype="multipart/form-data">
-            <label for="upload-photo" class="upload-photo-button">
-                <span class="iconify" data-icon="mdi:camera" data-inline="false"></span>
-            </label>
-            <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden>
-        </form>
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <label for="upload-photo" class="upload-photo-button">
+                    <span class="iconify" data-icon="mdi:camera" data-inline="false"></span>
+                </label>
+                <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden>
+                <button type="submit">Upload</button>
+            </form>
     </div>
     <h1 class="profile-name">Juliette Martin</h1>
      <p class="profile-contact">juliemartin@gmail.com | 07.98.76.54.12</p>
