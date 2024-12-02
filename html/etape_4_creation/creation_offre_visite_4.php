@@ -210,7 +210,7 @@ if(isset($_POST['valider'])){
                 case "aucune":
                     break;
                 case "en_relief":
-                    $prix_option = 10.00:
+                    $prix_option = 10.00;
                     break;
                 case "a_la_une":
                     $prix_option = 20.00;
