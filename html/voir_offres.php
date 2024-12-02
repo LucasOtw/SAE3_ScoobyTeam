@@ -552,7 +552,7 @@ function tempsEcouleDepuisPublication($offre){
                                 data-status=<?php echo $dataStatusEng; ?> 
                                 data-event=<?php if(!empty($event)) { echo $event['date_'.$type_offre]; } else { echo ""; } ?> 
                                 data-period-o=<?php if(!empty($periode)) { echo $periode['date_ouverture']; } else { echo ""; } ?>
-                                data-period-c=<?php if(!empty($periode)) { echo $periode['date_fermeture']; } else { echo ""; }? > >
+                                data-period-c=<?php if(!empty($periode)) { echo $periode['date_fermeture']; } else { echo ""; } ?> >
                         
                         <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
                         <div class="offer-details">
