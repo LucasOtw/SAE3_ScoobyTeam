@@ -179,7 +179,7 @@ include('recupInfosCompte.php');
         <div class="facture-info">
             <div class="info client">
                 <h3>Nom du client : Joseph Mulliez</h3>
-                <p>Adresse : Le Mouden, Lanmérin, 22300</p>
+                <p>Adresse : <?php echo $compte['adresse_postale']; ?>, <?php echo $compte['ville']; ?>, <?php echo $compte['code_postal']; ?></p>
                 <p>Numéro de téléphone : <?php echo $compte['telephone']; ?></p>
                 <p>Email : <?php echo $compte['mail']; ?></p>
             </div>
