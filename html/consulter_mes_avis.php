@@ -36,7 +36,7 @@ if (!empty($_POST['supprAvis'])){
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="header-membre">
+    <div class="header_membre">
         <header class="header-pc">
             <div class="logo">
                 <img src="images/logoBlanc.png" alt="PACT Logo">
@@ -156,7 +156,7 @@ if (!empty($_POST['supprAvis'])){
     </nav>
 
 </body>
-<footer class="footer">
+<footer class="footer footer_membre">
         <div class="newsletter">
             <div class="newsletter-content">
                 <h2>Inscrivez-vous à notre Newsletter</h2>
