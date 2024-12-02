@@ -591,7 +591,7 @@ main.creation_compte_pro nav ul li a.active {
 main.creation_compte_pro .creation_compte_pro_container {
     display: flex;
     justify-content: space-between;
-    padding: 40px;
+    padding: 35px;
     background-color: white;
     max-width: 1200px;
     margin: 20px auto;
@@ -3043,7 +3043,7 @@ main.creation_compte_membre nav ul li a.active {
 main.creation_compte_membre .creation_compte_membre_container {
     display: flex;
     justify-content: space-between;
-    padding: 40px;
+    padding: 35px;
     background-color: white;
     max-width: 1200px;
     margin: 0px auto;
