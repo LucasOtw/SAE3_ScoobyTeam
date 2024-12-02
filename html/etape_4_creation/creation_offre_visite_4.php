@@ -12,8 +12,6 @@ $dbh = new PDO($dsn, $username, $password);
 
 include("../recupInfosCompte.php");
 
-unset($_SESSION['aCreeUneOffre']);
-
 if(!isset($_SESSION['aCreeUneOffre'])){
     $_SESSION['aCreeUneOffre'] = false;
 }
