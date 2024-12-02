@@ -309,6 +309,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                             <input type="time" id="duree" name="heure_visite" placeholder="Heure de la visite">
                         </fieldset>
                     </div>
+                    <div class="col">
+                        <fieldset>
+                            <legend style="display:block;">Date de la visite</legend>
+                            <input type="date" name="date_visite">
+                        </fieldset>
+                    </div>
                 </div>
 
                 <!-- Visite guidée ? -->
