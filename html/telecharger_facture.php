@@ -83,6 +83,7 @@ include('recupInfosCompte.php');
         
         .facture-info .info {
             width: 48%;
+            margin-top: 1.5em;
         }
         
         .facture-info .info h3 {
