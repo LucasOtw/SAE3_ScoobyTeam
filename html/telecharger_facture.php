@@ -101,12 +101,71 @@ session_start();
     </style>
 </head>
 <body>
-    <div id="facture-container" class="facture-container">
-        <h1>Facture #12345</h1>
-        <div class="facture-details">
-            <p><strong>Date :</strong> 30 Novembre 2024</p>
-            <p><strong>Client :</strong> Jean Dupont</p>
-            <p><strong>Adresse :</strong> 123 Rue Exemple, Paris, France</p>
+     <div class="facture-container">
+        <header class="facture-header">
+            <div class="logo">
+                <img src="images/logo_blanc_pro.png" alt="Logo Entreprise">
+            </div>
+            <div class="facture-title">
+                <h1>Facture N°12345</h1>
+                <p>Ville, le 30 Novembre 2024</p>
+            </div>
+        </header>
+
+        <div class="facture-info">
+            <div class="info entreprise">
+                <h3>Nom de l'entreprise</h3>
+                <p>Adresse</p>
+                <p>Ville et Code Postal</p>
+                <p>Numéro de téléphone</p>
+                <p>Email</p>
+            </div>
+            <div class="info client">
+                <h3>Nom du client</h3>
+                <p>Adresse</p>
+                <p>Numéro de téléphone</p>
+                <p>Email</p>
+            </div>
+        </div>
+
+        <table class="facture-items">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Prix unitaire</th>
+                    <th>Unité</th>
+                    <th>Quantité</th>
+                    <th>Montant HT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Détail prestation ici</td>
+                    <td>20€</td>
+                    <td>heures</td>
+                    <td>5</td>
+                    <td>100€</td>
+                </tr>
+                <tr>
+                    <td>Détail prestation ici</td>
+                    <td>15€</td>
+                    <td>heures</td>
+                    <td>2</td>
+                    <td>30€</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="facture-footer">
+            <p>Total HT: 130€</p>
+            <p>TVA 20%: 26€</p>
+            <p>Total TTC: 156€</p>
+
+            <div class="signature">
+                <p>Date d'échéance: 30 Décembre 2024</p>
+                <p>Signature :</p>
+                <div class="signature-line"></div>
+            </div>
         </div>
     </div>
     <button id="download-btn">Télécharger en PDF</button>
