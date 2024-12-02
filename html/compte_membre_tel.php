@@ -3,7 +3,7 @@
 ob_start();
 session_start();
 
-if(isset($_POST['profilte-photo'])){
+if(isset($_POST['changePhoto'])){
     echo "zadefrgtyhui";
 }
 
@@ -33,12 +33,12 @@ if(isset($_POST['profilte-photo'])){
         <section class="profile">
     <div class="profile-img-container">
         <img class="profile-img" src="" alt="Photo de profil">
-            <form action="/upload" method="POST" enctype="multipart/form-data">
+            <form action="#" method="POST" enctype="multipart/form-data">
                 <label for="upload-photo" class="upload-photo-button">
                     <span class="iconify" data-icon="mdi:camera" data-inline="false"></span>
                 </label>
-                <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden>
-                <button type="submit">Upload</button>
+                <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden required>
+                <button type="submit" name="changePhoto">Upload</button>
             </form>
     </div>
     <h1 class="profile-name">Juliette Martin</h1>
