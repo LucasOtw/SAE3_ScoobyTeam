@@ -810,13 +810,25 @@ function tempsEcouleDepuisPublication($offre){
                     const offerCategory = offer.getAttribute('data-category');
             
                     // Condition pour afficher l'offre
-                    if ( ( (!startDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite')) && 
-                        (!endDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite')) ) ||
-                        ( startDate <= offerPeriodEnd || endDate >= offerPeriodStart ))
+                    // if ( ( (!startDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite')) && 
+                    //     (!endDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite')) ) ||
+                    //     (startDate <= offerPeriodEnd || endDate >= offerPeriodStart) )
+                    // {
+                    //     offer.style.removeProperty('display'); // Afficher l'offre
+                    // } else {
+                    //     offer.style.display = "none"; // Masquer l'offre
+                    // 
+                    if (!startDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite'))
                     {
-                        offer.style.removeProperty('display'); // Afficher l'offre
-                    } else {
-                        offer.style.display = "none"; // Masquer l'offre
+                        console.log("Boucle n1 : ok\n");
+                    }
+                    if (!endDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite'))
+                    {
+                        console.log("Boucle n2 : ok\n");
+                    }
+                    if ( startDate <= offerPeriodEnd || endDate >= offerPeriodStart )
+                    {
+                        console.log("Boucle n3 : ok\n");
                     }
                 });
             }
