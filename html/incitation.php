@@ -7,24 +7,22 @@
   <link rel="stylesheet" href="incitation.css">
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <div class="logo-container">
+  <div class="incitation_container">
+    <header class="incitation_header">
+      <div class="incitation_logo-container">
         <img src="images/logo_blanc_pro.png">
       </div>
-      <div class="skip-container">
+      <div class="incitation_skip-container">
         <a href="voir_offres.php"><img src="images/croix_fermer.png" class="skip"></a>
       </div>
     </header>
-
-    <main class="content">
-      
-      <div class="image-container">
+    <main class="incitation_content">
+      <div class="incitation_image-container">
         <img src="images/cadeau.png" alt="Icône cadeau" class="image">
       </div>
-      <h2 class="main-title">Envie de publier une offre ?</h2>
-      <p class="subtitle">Passez à la vitesse supérieure avec un compte Professionnel</p>
-      <div class="image-container">
+      <h2 class="incitation_main-title">Envie de publier une offre ?</h2>
+      <p class="incitation_subtitle">Passez à la vitesse supérieure avec un compte Professionnel</p>
+      <div class="incitation_image-container">
         <img src="images/features.png" class="features-image">
       </div>
     </main>
