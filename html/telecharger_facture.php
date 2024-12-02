@@ -327,9 +327,9 @@ include('recupInfosCompte.php');
                 
                 $date_publication = '';
                 $nom_type = '';
-                $query = "SELECT date_publication, nom_type FROM tripenarvor._offre where code_offre = :code_offre";
+                $query = "SELECT date_publication, nom_type FROM tripenarvor._offre where code_offre = 1";
                 $stmt = $pdo->query($query);
-                 $stmt->bindParam(':code_offre', 1/*$code_offre*/); // A GERER
+                /* $stmt->bindParam(':code_offre', 1); */// A GERER
                 // Vérifier s'il y a des résultats
                 if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $date_publication = $row['date_publication'];
