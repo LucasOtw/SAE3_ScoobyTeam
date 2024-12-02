@@ -135,7 +135,7 @@ if (isset($_POST['modif_infos'])){
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="header-membre">
+    <div class="header_membre">
         <header class="header-pc">
             <div class="logo">
                 <img src="images/logoBlanc.png" alt="PACT Logo">
