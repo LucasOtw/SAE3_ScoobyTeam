@@ -1122,7 +1122,6 @@ body.menu-open #overlay {
     background-color: grey;
     border-radius: 1.5em;
     margin: 0 1vw;
-    overflow: hidden;
 }
 
 .toute_les_offres_main .image-background-card-a-la-une {
@@ -1135,6 +1134,7 @@ body.menu-open #overlay {
 .toute_les_offres_main .image-background-card-a-la-une img {
     width: 100%;
     height: 15em;
+    border-radius:1.5em;
     object-fit: cover;
     display: block;
 }
