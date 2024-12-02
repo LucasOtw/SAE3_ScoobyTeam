@@ -195,12 +195,25 @@ include('recupInfosCompte.php');
 <body>
     <div class="dropdown-container">
         <label for="offres">Mes offres :</label>
-        <select id="offres" class="dropdown">
+        <!-- <select id="offres" class="dropdown">
             <option value="" disabled selected>Choisissez une offre</option>
             <option value="offre1">Offre 1 - Titre de l'offre</option>
             <option value="offre2">Offre 2 - Titre de l'offre</option>
             <option value="offre3">Offre 3 - Titre de l'offre</option>
-        </select>
+        </select>  --!>
+
+
+
+        <?php foreach ($offres as $monOffre): ?>
+                <option value="<?php echo htmlspecialchars($monOffre['titre_offre']); ?>">
+                    <?php echo htmlspecialchars($monOffre['titre_offre']); ?>
+                </option>
+            <?php endforeach; ?>
+
+
+
+
+        
     </div>
 
 
