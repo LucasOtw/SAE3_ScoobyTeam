@@ -499,7 +499,7 @@ function tempsEcouleDepuisPublication($offre){
                     }
                 } else if (empty($horaire)) {
                     
-                    $dataStatusEng = "closed-soon";
+                    $dataStatusEng = "closed";
                     $dataStatusFr = "Fermé";
                     
                 } else if ($type_offre === 'spectacle') {
@@ -507,8 +507,6 @@ function tempsEcouleDepuisPublication($offre){
                     $dataStatusEng = "xx";
                     $dataStatusFr = "xx";
                 }
-
-                echo $dataStatusEng.' / '.$dataStatusFr;
                 
 
                 if ($type_offre == 'visite' || $type_offre == 'spectacle')
