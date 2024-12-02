@@ -251,12 +251,18 @@ include('recupInfosCompte.php');
 <body>
     <div class="dropdown-container">
         <label for="offres">Mes offres :</label>
-        <select id="offres" class="dropdown">
-            <option value="" disabled selected>Choisissez une offre</option>
-            <option value="offre1">Offre 1 - Titre de l'offre</option>
-            <option value="offre2">Offre 2 - Titre de l'offre</option>
-            <option value="offre3">Offre 3 - Titre de l'offre</option>
-        </select>  
+        <form method="POST" action="">
+        <div class="dropdown-container">
+            <label for="offres">Mes offres :</label>
+            <select id="offres" name="offre" class="dropdown">
+                <option value="" disabled selected>Choisissez une offre</option>
+                <option value="1">Offre 1 - Titre de l'offre</option>
+                <option value="2">Offre 2 - Titre de l'offre</option>
+                <option value="3">Offre 3 - Titre de l'offre</option>
+            </select>  
+            <button type="submit">Valider</button>
+        </div>
+    </form>  
 
 
 
@@ -327,9 +333,10 @@ include('recupInfosCompte.php');
                 
                 $date_publication = '';
                 $nom_type = '';
-                $query = "SELECT date_publication, nom_type FROM tripenarvor._offre where code_offre = 1";
-                $stmt = $pdo->query($query);
-                /* $stmt->bindParam(':code_offre', 1); */// A GERER
+               $query = "SELECT date_publication, nom_type FROM tripenarvor._offre WHERE code_offre = :offreSelectionnee";
+                $stmt = $pdo->prepare($query);
+                $stmt->bindParam(':offreSelectionnee', $offreSelectionnee, PDO::PARAM_INT);
+                $stmt->execute();
                 // Vérifier s'il y a des résultats
                 if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $date_publication = $row['date_publication'];
