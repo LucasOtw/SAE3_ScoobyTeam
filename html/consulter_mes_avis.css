@@ -491,4 +491,7 @@ nav ul li a:hover::before {
         align-items: center;
         margin: 10px auto;
     }
+    footer {
+        display:none;
+    }
 }
