@@ -284,21 +284,6 @@ $password = "philly-Congo-bry4nt";
           margin-top: 2em;
       }
 
-     .offer-name {
-          margin-top: 20px;
-          padding: 10px;
-          border: 1px solid #d1d1d1;
-          border-radius: 5px;
-          background-color: #f9f9f9;
-          font-size: 16px;
-          color: #333;
-          text-align: center;
-      }
-      .offer-name strong {
-          color: #007bff;
-      }
-
-
 
         
 
