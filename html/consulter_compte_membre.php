@@ -177,7 +177,7 @@ if (isset($_POST['modif_infos'])){
             </div>
         </div>
 <!-- POUR TEL -->
-        <<style>
+        <style>
     .edit-profil {
         display: none;
     }
