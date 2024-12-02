@@ -330,10 +330,10 @@ include('recupInfosCompte.php');
 
 
          <?php 
-                
+                $offreSelectionnee = isset($_POST['offre']) ? $_POST['offre'] : 1;
                 $date_publication = '';
                 $nom_type = '';
-               $query = "SELECT date_publication, nom_type FROM tripenarvor._offre WHERE code_offre = :offreSelectionnee";
+                $query = "SELECT date_publication, nom_type FROM tripenarvor._offre WHERE code_offre = :offreSelectionnee";
                 $stmt = $pdo->prepare($query);
                 $stmt->bindParam(':offreSelectionnee', $offreSelectionnee, PDO::PARAM_INT);
                 $stmt->execute();
