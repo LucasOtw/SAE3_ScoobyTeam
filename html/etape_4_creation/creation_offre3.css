@@ -367,7 +367,7 @@ footer {
     gap: 20px; /* Espace entre les boutons */
 }
 
-.back-link-offre {
+.back-link-offres {
     padding: 10px 20px;
     text-decoration: none;
     background-color: #fff;
@@ -387,7 +387,7 @@ footer {
     border: 1px solid #F28322;
 }
 
-.back-link-offre:hover {
+.back-link-offres:hover {
     background-color: #fff;
     border: 1px solid #F28322;
     color: #F28322;
