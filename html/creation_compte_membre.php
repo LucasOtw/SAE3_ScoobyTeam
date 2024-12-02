@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <header class="header-pc">
+    <header class="header-pc header_membre">
         <div class="logo-pc">
             <img src="images/logoBlanc.png" alt="PACT Logo">
         </div>
@@ -27,7 +27,7 @@
             </ul>
         </nav>
     </header>
-    <header class="header-tel">
+    <header class="header-tel header_membre">
         <div class="logo-tel">
             <img src="images/LogoCouleur.png" alt="PACT Logo">
         </div>

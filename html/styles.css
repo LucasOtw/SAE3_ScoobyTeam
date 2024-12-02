@@ -2997,8 +2997,6 @@ input[type="password"]::placeholder {
     }
 }
 
-
-
                                         /*****************************************************
                                                   * page consulter mes avis *
                                         *****************************************************/
@@ -3250,6 +3248,10 @@ main.creation_compte_membre .input-icon-img {
     /* Ajustez la taille */
     height: 20px;
     /* Ajustez la taille */
+}
+
+main.creation_compte_membre .creation_compte_membre_bienvenue {
+    display: none;
 }
 
 @media (max-width: 430px) {

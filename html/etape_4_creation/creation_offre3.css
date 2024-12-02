@@ -385,12 +385,18 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 10px; /* Espace entre l'image et le texte */
-    margin-top: 20px; /* Espacement entre les boutons et cette section */
+    margin-top: 5em; /* Espacement entre les boutons et cette section */
+    padding: 10px; /* Ajoute un peu de padding autour du contenu */
+    border-radius: 30px; /* Bords arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    background-color: #f9f9f9; /* Fond clair pour la section */
+    margin-bottom:5em;
 }
 
+
 .image {
-    width: 50px; /* Taille de l'image */
-    height: 50px;
+    width: 5em; /* Taille de l'image */
+    height: 5em;
 }
 
 .text {

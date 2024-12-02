@@ -467,7 +467,7 @@ if(isset($_POST['valider'])){
           </div>
           <div class="image-text">
                 <img src="../images/bonhomme_orange.png" alt="Image description" class="image">
-                <p class="text">Voici un texte à côté de l'image</p>
+                <p class="text">Merci d'avoir créé une offre !</p>
           </div>
      </div>
 
