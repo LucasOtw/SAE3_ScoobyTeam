@@ -456,10 +456,10 @@ function tempsEcouleDepuisPublication($offre){
                 echo "<pre>";
                 var_dump($horaire);
                 echo "</pre>";
+                echo date->format("Y-m-d ");
                 
                 if (!empty($horaire))
                 {
-                    $horaire = $horaire;
                     
                     // Exemple d'horaires d'ouverture et de fermeture (remplacer par vos valeurs réelles)
                     $ouverture = new DateTime("1970-01-01 " . $horaire["ouverture"]);  
