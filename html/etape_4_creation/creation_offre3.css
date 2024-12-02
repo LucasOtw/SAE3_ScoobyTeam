@@ -370,14 +370,17 @@ footer {
 .back-link {
     padding: 10px 20px;
     text-decoration: none;
-    background-color: #F28322;
-    color: white;
+    background-color: #fff;
+    color: #F28322;
     border-radius: 5px;
     text-align: center;
+    border: 2px solid #F28322;
 }
 
 .back-link:hover {
-    background-color: #F28322;
+    background-color: #fff;
+    border: 2px solid #F28322;
+    color: #F28322;
 }
 
 .image-text {
