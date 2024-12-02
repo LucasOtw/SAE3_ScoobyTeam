@@ -386,7 +386,12 @@ footer {
     justify-content: center;
     gap: 10px; /* Espace entre l'image et le texte */
     margin-top: 20px; /* Espacement entre les boutons et cette section */
+    padding: 10px; /* Ajoute un peu de padding autour du contenu */
+    border-radius: 10px; /* Bords arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    background-color: #f9f9f9; /* Fond clair pour la section */
 }
+
 
 .image {
     width: 5em; /* Taille de l'image */
