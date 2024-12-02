@@ -817,18 +817,21 @@ function tempsEcouleDepuisPublication($offre){
                     //     offer.style.removeProperty('display'); // Afficher l'offre
                     // } else {
                     //     offer.style.display = "none"; // Masquer l'offre
-                    // 
-                    if (!startDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite'))
+                    //
+                    if (offerCategory == 'parc_attractions')
                     {
-                        console.log("Boucle n1 : ok\n");
-                    }
-                    if (!endDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite'))
-                    {
-                        console.log("Boucle n2 : ok\n");
-                    }
-                    if ( startDate <= offerPeriodEnd || endDate >= offerPeriodStart )
-                    {
-                        console.log("Boucle n3 : ok\n");
+                        if (!startDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite'))
+                        {
+                            console.log("Boucle n1 : ok\n");
+                        }
+                        if (!endDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite'))
+                        {
+                            console.log("Boucle n2 : ok\n");
+                        }
+                        if ( startDate <= offerPeriodEnd || endDate >= offerPeriodStart )
+                        {
+                            console.log("Boucle n3 : ok\n");
+                        }
                     }
                 });
             }
