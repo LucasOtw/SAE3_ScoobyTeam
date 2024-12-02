@@ -380,3 +380,20 @@ footer {
     background-color: #F28322;
 }
 
+.image-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espace entre l'image et le texte */
+    margin-top: 20px; /* Espacement entre les boutons et cette section */
+}
+
+.image {
+    width: 50px; /* Taille de l'image */
+    height: 50px;
+}
+
+.text {
+    font-size: 14px;
+    color: #333;
+}
