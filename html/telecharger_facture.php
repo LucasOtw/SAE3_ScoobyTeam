@@ -101,7 +101,7 @@ session_start();
     </style>
 </head>
 <body>
-     <div class="facture-container">
+     <div class="facture-container" id="facture-container">
         <header class="facture-header">
             <div class="logo">
                 <img src="images/logo_blanc_pro.png" alt="Logo Entreprise">
@@ -167,12 +167,17 @@ session_start();
                 <div class="signature-line"></div>
             </div>
         </div>
+
+        <!-- Bouton pour télécharger la facture en PDF -->
+        <button id="download-btn">Télécharger en PDF</button>
     </div>
-    <button id="download-btn">Télécharger en PDF</button>
+
+    <!-- Bibliothèque html2pdf -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
     <script>
+        // Génération du PDF
         document.getElementById('download-btn').addEventListener('click', () => {
-            const element = document.getElementById('facture-container');
+            const element = document.getElementById('facture-container'); // Conteneur cible
             const options = {
                 margin: 1,
                 filename: 'facture.pdf',
@@ -180,7 +185,7 @@ session_start();
                 html2canvas: { scale: 2 },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
-            html2pdf().set(options).from(element).save();
+            html2pdf().set(options).from(element).save(); // Convertir et télécharger
         });
     </script>
 
