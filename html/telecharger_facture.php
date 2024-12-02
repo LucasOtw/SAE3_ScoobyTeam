@@ -232,6 +232,7 @@ $password = "philly-Congo-bry4nt";
             font-size: 14px;
             color: #555;
             padding: 10px;
+            margin-bottom: 30px;
         }
         
         .payment-info p {
