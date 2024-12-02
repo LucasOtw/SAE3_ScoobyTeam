@@ -805,7 +805,7 @@ function tempsEcouleDepuisPublication($offre){
                     const offerPeriodEnd = offer.getAttribute('data-period-c');
             
                     // Condition pour afficher l'offre
-                    if ((!startDate || startDate <= offerPeriodEnd) && (!endDate || endDate >= offerPeriodStart)) {
+                    if ((!startDate || startDate <= offerPeriodEnd || !offerPeriodEnd) && (!endDate || endDate >= offerPeriodStart || !offerPeriodEnd)) {
                         offer.style.removeProperty('display'); // Afficher l'offre
                     } else {
                         offer.style.display = "none"; // Masquer l'offre
