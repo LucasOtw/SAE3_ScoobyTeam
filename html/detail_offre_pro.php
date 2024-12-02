@@ -302,6 +302,9 @@
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
         var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
+
+        console.log("Etat: " + (isOnline ? 1 : 0));
+        console.log("Code offre: " + codeOffre);
     
         // Envoie l'état (1 pour "En Ligne", 0 pour "Hors Ligne")
         xhr.send("en_ligne=" + (isOnline ? 1 : 0) + "&code_offre=" + encodeURIComponent(codeOffre));
