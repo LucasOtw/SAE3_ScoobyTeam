@@ -336,6 +336,7 @@ if(isset($_POST['valider'])){
                 } else {
                     $date_visite = $_SESSION['crea_offre']['date_visite'];
                     $date_visite = DateTime::createFromFormat('Y-m-d', $date_visite);
+                    $date_visite = $date_visite->format('Y-m-d');
                 }
                 
                 if(empty($_SESSION['crea_offre']['langues'])){
