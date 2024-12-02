@@ -530,39 +530,39 @@ main.connexion_pro_main>div>div.connexion_pro_form-container>form>div.connexion_
                                         *****************************************************/
 
 
-.creation_compte_pro header {
+main.creation_compte_pro header {
     background-color: #000;
     padding: 10px 20px;
 }
 
-.creation_compte_pro nav {
+main.creation_compte_pro nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.creation_compte_pro nav .logo {
+main.creation_compte_pro nav .logo {
     color: white;
     font-size: 24px;
 }
 
-.creation_compte_pro nav ul {
+main.creation_compte_pro nav ul {
     list-style-type: none;
     display: flex;
     gap: 20px;
 }
 
-.creation_compte_pro nav ul li a {
+main.creation_compte_pro nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 18px;
 }
 
-.creation_compte_pro nav ul li a.active {
+main.creation_compte_pro nav ul li a.active {
     border-bottom: 2px solid var(--orange);
 }
 
-.creation_compte_pro .creation_compte_pro_container {
+main.creation_compte_pro .creation_compte_pro_container {
     display: flex;
     justify-content: space-between;
     padding: 40px;
@@ -572,7 +572,7 @@ main.connexion_pro_main>div>div.connexion_pro_form-container>form>div.connexion_
     border-radius: 10px;
 }
 
-.creation_compte_pro .creation_compte_pro_form-section {
+main.creation_compte_pro .creation_compte_pro_form-section {
     width: 50%;
 }
 
@@ -589,30 +589,30 @@ body > main > div > div.creation_compte_pro_form-section > form > div.crea_pro_r
     width: 48%;
 }
 
-.creation_compte_pro .crea_pro_raison_sociale_num_siren.creation_compte_pro_form-section,
-.creation_compte_pro .crea_pro_mail_tel .creation_compte_pro_form-section {
+main.creation_compte_pro .crea_pro_raison_sociale_num_siren.creation_compte_pro_form-section,
+main.creation_compte_pro .crea_pro_mail_tel .creation_compte_pro_form-section {
     width: 50%;
 }
 
-.creation_compte_pro .creation_compte_pro_form-section h1 {
+main.creation_compte_pro .creation_compte_pro_form-section h1 {
     font-size: 28px;
     margin-bottom: 10px;
 }
 
-.creation_compte_pro .creation_compte_pro_form-section p {
+main.creation_compte_pro .creation_compte_pro_form-section p {
     margin-bottom: 20px;
 }
 
-.creation_compte_pro form {
+main.creation_compte_pro form {
     display: flex;
     flex-direction: column;
 }
 
-.creation_compte_pro label {
+main.creation_compte_pro label {
     font-weight: bold;
 }
 
-.creation_compte_pro input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
+main.creation_compte_pro input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -620,7 +620,7 @@ body > main > div > div.creation_compte_pro_form-section > form > div.crea_pro_r
     width: 100%;
 }
 
-.creation_compte_pro .checkbox {
+main.creation_compte_pro .checkbox {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -629,16 +629,16 @@ body > main > div > div.creation_compte_pro_form-section > form > div.crea_pro_r
 
 
 
-.creation_compte_pro .checkbox label a {
+main.creation_compte_pro .checkbox label a {
     color: var(--orange);
     text-decoration: none;
 }
 
-.creation_compte_pro #cgu{
+main.creation_compte_pro #cgu{
     accent-color: #df7519;
 }
 
-.creation_compte_pro .submit-btn {
+main.creation_compte_pro .submit-btn {
     background-color: var(--orange);
     color: white;
     padding: 14px 20px;
@@ -648,31 +648,31 @@ body > main > div > div.creation_compte_pro_form-section > form > div.crea_pro_r
     font-size: 18px;
 }
 
-.creation_compte_pro .submit-btn:hover {
+main.creation_compte_pro .submit-btn:hover {
     background-color: darkorange;
 }
 
-.creation_compte_pro .creation_compte_pro_other-links {
+main.creation_compte_pro .creation_compte_pro_other-links {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
 }
 
-.creation_compte_pro .creation_compte_pro_other-links a {
+main.creation_compte_pro .creation_compte_pro_other-links a {
     color: var(--orange);
     text-decoration: none;
     font-weight: bold;
 }
-.creation_compte_pro .creation_compte_pro_other-links a.lien-creation-compte-membre {
+main.creation_compte_pro .creation_compte_pro_other-links a.lien-creation-compte-membre {
     color: var(--vert-clair);
     text-decoration: none;
 }
 
-.creation_compte_pro .image-section {
+main.creation_compte_pro .image-section {
     width: 40%;   
 }
 
-.creation_compte_pro .image-section img {
+main.creation_compte_pro .image-section img {
     height: 100%;
     width: 33vw;
     border-radius: 10px;
@@ -681,7 +681,7 @@ body > main > div > div.creation_compte_pro_form-section > form > div.crea_pro_r
 }
 
 
-.creation_compte_pro fieldset {
+main.creation_compte_pro fieldset {
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 5px;
     margin-bottom: 10px;
@@ -689,10 +689,7 @@ body > main > div > div.creation_compte_pro_form-section > form > div.crea_pro_r
     padding-top: 0; /* Enlève le padding en haut */
 }
 
-
-
-
-.creation_compte_pro legend {
+main.creation_compte_pro legend {
     font-size: 14px;
     padding: 0 10px;
     color: #333;
@@ -704,24 +701,24 @@ body > main > div > div.creation_compte_pro_form-section > form > div.crea_pro_r
     display: none;
 
 }
-.creation_compte_pro fieldset:focus-within legend {
+main.creation_compte_pro fieldset:focus-within legend {
     display:inline;
     transition: ease-out 0.3s;
 
 } 
 
-.creation_compte_pro fieldset input::placeholder {
+main.creation_compte_pro fieldset input::placeholder {
     padding-left: 10px;
 } 
-.creation_compte_pro fieldset input:focus::placeholder {
+main.creation_compte_pro fieldset input:focus::placeholder {
     color: rgba(0, 0, 0, 0);
 } 
 
-.creation_compte_pro #remember{
+main.creation_compte_pro #remember{
     accent-color: #df7519;
 }
 
-main.creation_compte_pro > div > div.connexion_pro_form-creation_compte_pro_container > form > div.connexion_pro_remember-group > div {
+mainmain.creation_compte_pro > div > div.connexion_pro_form-creation_compte_pro_container > form > div.connexion_pro_remember-group > div {
     display: flex;
     flex-direction: row;
 }
@@ -729,7 +726,7 @@ main.creation_compte_pro > div > div.connexion_pro_form-creation_compte_pro_cont
 
 /* Media query pour masquer l'image sur les petits écrans */
 @media (max-width: 768px) {
-    .image-section {
+    main.creation_compte_pro .image-section {
         display: none; /* Cache l'image sur les petits écrans */
     }
 
@@ -737,16 +734,12 @@ main.creation_compte_pro > div > div.connexion_pro_form-creation_compte_pro_cont
         justify-content: center; /* Centre le formulaire quand l'image est cachée */
     }
 
-    main.creation_pro_main {
-        height: auto; /* Ajuste la hauteur sur les petits écrans */
-    }
-
-    .creation_compte_pro .creation_compte_pro_form-section {
+    main.creation_compte_pro .creation_compte_pro_form-section {
         width: 100%; /* Le formulaire prend toute la largeur sur petits écrans */
     }
 }
 
-.creation_compte_pro fieldset p.erreur-formulaire-creation-pro{
+main.creation_compte_pro fieldset p.erreur-formulaire-creation-pro{
     color: #d70808;
     margin-bottom: 0;
     font-size: 12px;
