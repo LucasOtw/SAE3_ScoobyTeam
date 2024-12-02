@@ -102,7 +102,7 @@ include('recupInfosCompte.php');
         .facture-items {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin-bottom: 3em;
             margin-top: 2em;
         }
         
@@ -233,6 +233,7 @@ include('recupInfosCompte.php');
             font-size: 16px;
             font-style: italic;
             color: #007bff;
+            margin-top: 10em;
         }
         
         .thank-you p {
@@ -326,7 +327,6 @@ include('recupInfosCompte.php');
                     <th>Prix par jour</th>
                     <th>Date de mise en ligne</th>
                     <th>Montant HT</th>
-                    
                 </tr>
             </thead>
             <tbody>
@@ -337,13 +337,15 @@ include('recupInfosCompte.php');
                     <td>100€</td>
                 </tr>
             </tbody>
+        </table>
+        
+        <table class="facture-items">
             <thead>
                 <tr>
                     <th>Boost</th>
                     <th>Prix par semaine</th>
                     <th>Nombre de semaines</th>
                     <th>Montant HT</th>
-                    
                 </tr>
             </thead>
             <tbody>

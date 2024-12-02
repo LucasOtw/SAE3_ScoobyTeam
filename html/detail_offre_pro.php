@@ -258,37 +258,54 @@
 
 <script>
     
+    // Initialisation du slider en fonction de $details_offre['en_ligne']
+    document.addEventListener("DOMContentLoaded", function() {
+        var slider = document.querySelector('.slider');
+        var offerStatusText = document.getElementById('offer-status');
+
+        // Récupérer l'état initial depuis PHP
+        var isOnline = <?php echo json_encode($details_offre['en_ligne']); ?>;
+
+        // Mettre à jour le slider et le texte en fonction de l'état
+        if (isOnline) {
+            slider.classList.add('active');
+            offerStatusText.textContent = "En Ligne";
+        } else {
+            slider.classList.remove('active');
+            offerStatusText.textContent = "Hors Ligne";
+        }
+    });
+
     // Fonction pour basculer l'état du bouton slider
     function toggleSlider() {
         var slider = document.querySelector('.slider');
         var offerStatusText = document.getElementById('offer-status');
         
-        // Bascule la classe 'active' pour déplacer le cercle et changer la couleur
+        // Bascule la classe 'active'
         slider.classList.toggle('active');
         
-        // Vérifie si le bouton est activé ou non et change l'état de l'offre
+        // Vérifie si le bouton est activé ou non
         var isOnline = slider.classList.contains('active');
         var newStatus = isOnline ? "En Ligne" : "Hors Ligne";
         
-        // Met à jour le texte de l'état de l'offre
+        // Met à jour le texte de l'état
         offerStatusText.textContent = newStatus;
     
-        // Envoyer l'état à PHP via AJAX pour mettre à jour la base de données
+        // Envoie l'état à PHP via AJAX
         updateOfferState(isOnline);
     }
-    
-    // Fonction AJAX pour mettre à jour l'état de l'offre en ligne
+
+    // Fonction AJAX pour mettre à jour l'état de l'offre
     function updateOfferState(isOnline) {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "update_offer_status.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     
-        // Envoie l'état de l'offre (true pour "En Ligne", false pour "Hors Ligne")
-        xhr.send("en_ligne=" + (isOnline ? 1 : 0));
+        // Envoie l'état (1 pour "En Ligne", 0 pour "Hors Ligne")
+        xhr.send("en_ligne=" + (isOnline ? 1 : 0) + "&code_offre=" + $details_offre['code_offre']);
     
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
-                // Si la requête est réussie, tu peux afficher un message ou une confirmation
                 console.log("L'état de l'offre a été mis à jour avec succès.");
             }
         };
