@@ -4517,7 +4517,19 @@ nav.nav-bar-tel {
   }
   
   /* Footer styles */
-  nav.nav-bar_consulter_compte_membre nav.nav-bar_consulter_mes_avis{
+  nav.nav-bar_consulter_compte_membre {
+    width: 84vw;
+    position: fixed;
+    bottom: 20px;
+    background-color: #BDC426;
+    display: flex;
+    margin: auto 8vw;
+    justify-content: space-around;
+    border-radius: 1000px;
+    box-shadow: 0px 2px 10px rgb(156, 156, 156);
+  }
+
+nav.nav-bar_consulter_mes_avis{
     width: 84vw;
     position: fixed;
     bottom: 20px;
@@ -4529,11 +4541,21 @@ nav.nav-bar-tel {
     box-shadow: 0px 2px 10px rgb(156, 156, 156);
   }
   
-  .nav-bar_consulter_compte_membre nav.nav-bar_consulter_mes_avis img {
+  .nav-bar_consulter_compte_membre img{
+    display: inline-block; /* Affiche les images dans la barre de navigation */
+  }
+
+
+nav.nav-bar_consulter_mes_avis img {
     display: inline-block; /* Affiche les images dans la barre de navigation */
   }
   
-  nav.nav-bar_consulter_compte_membre nav.nav-bar_consulter_mes_avis a {
+  nav.nav-bar_consulter_compte_membres a {
+    display: flex;
+    align-items: center;
+    margin: 10px auto;
+  }
+nav.nav-bar_consulter_mes_avis a {
     display: flex;
     align-items: center;
     margin: 10px auto;
