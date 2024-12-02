@@ -140,6 +140,32 @@ session_start();
             width: 50%;
             margin-bottom: 20px;
         }
+        #download-btn {
+        display: block;
+        width: 200px;
+        margin: 20px auto;
+        padding: 15px;
+        font-size: 18px;
+        color: white;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+    
+        #download-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        
+        #download-btn:active {
+            background-color: #003f7f;
+            transform: translateY(1px);
+        }
+
 
     </style>
 </head>
