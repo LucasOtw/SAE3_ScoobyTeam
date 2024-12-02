@@ -66,7 +66,7 @@ echo "</pre>";
         </nav>
       </header>
         
-        <header class="header-tel">
+        <header class="header-tel header_membre">
             <div class="logo-tel">
                 <img src="images/logoBlanc.png" alt="PACT Logo">
             </div>
