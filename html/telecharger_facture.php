@@ -250,10 +250,11 @@ include('recupInfosCompte.php');
         </table>
 
         <div class="facture-footer">
-            <p>Total HT: 130€</p>
-            <p>TVA 20%: 26€</p>
-            <p>Total TTC: 156€</p>
-
+            <div class="info-facture">
+                <p>Total HT: 130€</p>
+                <p>TVA 20%: 26€</p>
+                <p>Total TTC: 156€</p>
+            </div>
             <div class="signature">
                 <p>Date d'échéance: 30 Décembre 2024</p>
                 <p>Signature :</p>
