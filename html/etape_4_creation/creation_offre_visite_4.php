@@ -25,6 +25,13 @@ if(!isset($_SESSION['pro'])){
     header('location: ../connexion_pro.php');
     exit;
 }
+
+echo "<pre>";
+var_dump($_SESSION['crea_offre']);
+var_dump($_SESSION['crea_offre2']);
+var_dump($_SESSION['crea_offre3']);
+echo "</pre>";
+
 if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
     if(isset($_SESSION['crea_offre']) && isset($_SESSION['crea_offre2']) && isset($_SESSION['crea_offre3'])){
         echo "DOBBY HAS NO MASTER YOU SON OF A BITCH !";
@@ -47,6 +54,21 @@ if($monComptePro['code_compte_bancaire']){
 }
 
 // si le formulaire est envoyé...
+
+if(isset($_POST['valider'])){
+    $code_iban = $_POST['IBAN'];
+    $code_BIC = $_POST['BIC'];
+
+    if(validerIBAN($code_iban) && validerBIC($code_BIC)){
+        /*
+        * VERIFICATION DE L'ADRESSE
+        */
+
+        if($_SESSION['aCreeUneOffre'] === false){
+            $adresse_postal = $_SESSION
+        }
+    }
+}
 
 
 ?>
