@@ -33,7 +33,7 @@ include('recupInfosCompte.php');
             </div>
             <div class="profile-info">
                 <img class="profile-picture" src="images/hotel.jpg" alt="Profil utilisateur">
-                <h1><?php echo $compte['raison_sociale']; ?></h1>
+                <h1><?php echo $monComptePro['raison_sociale']; ?></h1>
                 <p><?php echo $compte['mail'] . " | " . $compte['telephone']; ?></p>
             </div>
         </section>
@@ -179,7 +179,7 @@ include('recupInfosCompte.php');
         <div class="facture-info">
             <div class="info client">
                 <h3>Nom du client : Joseph Mulliez</h3>
-                <p>Adresse : <?php echo $compte['adresse_postale']; ?>, <?php echo $compte['ville']; ?>, <?php echo $compte['code_postal']; ?></p>
+                <p>Adresse : <?php echo $_adresse['adresse_postale']; ?>, <?php echo $_adresse['ville']; ?>, <?php echo $_adresse['code_postal']; ?></p>
                 <p>Numéro de téléphone : <?php echo $compte['telephone']; ?></p>
                 <p>Email : <?php echo $compte['mail']; ?></p>
             </div>
