@@ -320,6 +320,22 @@ include('recupInfosCompte.php');
                 $bic = $row['bic'];
             }
         ?>
+
+
+
+         <?php 
+                
+                $date_publication = '';
+                $nom_type = '';
+                $query = "SELECT date_publication, nom_type FROM tripenarvor._offre where code_offre = :code_offre";
+                $stmt = $pdo->query($query);
+                 $recupInfo->bindParam(':code_offre', 1/*$code_offre*/); // A GERER
+                // Vérifier s'il y a des résultats
+                if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $date_publication = $row['date_publication'];
+                    $nom_type = $row['nom_type'];
+                }
+                    ?>
         <table class="facture-items">
             <thead>
                 <tr>
@@ -331,9 +347,9 @@ include('recupInfosCompte.php');
             </thead>
             <tbody>
                 <tr>
-                    <td>standard</td>
+                    <td><?php echo $nom_type ?></td>
                     <td>5€</td>
-                    <td>29/11/2024</td>
+                    <td><?php echo $date_publication ?></td>
                     <td>100€</td>
                 </tr>
             </tbody>
