@@ -374,12 +374,12 @@ footer {
     color: #F28322;
     border-radius: 5px;
     text-align: center;
-    border: 2px solid #F28322;
+    border: 1px solid #F28322;
 }
 
 .back-link:hover {
     background-color: #fff;
-    border: 2px solid #F28322;
+    border: 1px solid #F28322;
     color: #F28322;
 }
 
