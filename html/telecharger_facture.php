@@ -38,7 +38,7 @@ include('recupInfosCompte.php');
             </div>
         </section>
     
-    <style>
+    /*<style>
         /* Container principal */
         .facture-container {
             max-width: 800px;
@@ -216,7 +216,7 @@ include('recupInfosCompte.php');
 
 
         
-    </style>
+    </style>*/
 </head>
 <body>
     <div class="dropdown-container">
