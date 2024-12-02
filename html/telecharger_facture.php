@@ -214,7 +214,7 @@ include('recupInfosCompte.php');
             </div>
             <div class="facture-title">
                 <h1>Facture</h1>
-                <p><?php echo "La date du jour est : " . ucfirst($dateDuJour)?></p>
+                <p><?php echo "La date du jour est : " . $formatter->format($date)?></p>
             </div>
         </header>
 
