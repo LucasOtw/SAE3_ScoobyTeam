@@ -326,7 +326,6 @@ include('recupInfosCompte.php');
                     <th>Prix par jour</th>
                     <th>Date de mise en ligne</th>
                     <th>Montant HT</th>
-                    
                 </tr>
             </thead>
             <tbody>
@@ -337,13 +336,15 @@ include('recupInfosCompte.php');
                     <td>100€</td>
                 </tr>
             </tbody>
+        </table>
+        
+        <table class="facture-items">
             <thead>
                 <tr>
                     <th>Boost</th>
                     <th>Prix par semaine</th>
                     <th>Nombre de semaines</th>
                     <th>Montant HT</th>
-                    
                 </tr>
             </thead>
             <tbody>
