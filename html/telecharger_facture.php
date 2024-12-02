@@ -253,6 +253,34 @@ $password = "philly-Congo-bry4nt";
             margin: 5px 0;
         }
 
+        .btn-valider {
+          background-color: #007bff; /* Couleur de fond bleue */
+          color: #ffffff; /* Texte en blanc */
+          font-size: 16px; /* Taille du texte */
+          font-weight: bold; /* Texte en gras */
+          padding: 10px 20px; /* Espace intérieur */
+          border: none; /* Supprime les bordures */
+          border-radius: 5px; /* Coins arrondis */
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+          cursor: pointer; /* Pointeur "main" */
+          transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Effet de transition */
+          display: block; /* Permet un centrage */
+          margin: 20px auto; /* Centre horizontalement */
+      }
+      
+      .btn-valider:hover {
+          background-color: #0056b3; /* Couleur plus sombre au survol */
+          box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Ombre plus forte */
+      }
+      
+      .btn-valider:active {
+          background-color: #003f8a; /* Couleur encore plus sombre au clic */
+          box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2); /* Effet d'enfoncement */
+      }
+      
+
+
+     
 
 
 
@@ -280,7 +308,7 @@ $password = "philly-Congo-bry4nt";
                 <option value="<?php echo $offre['code_offre'];?>"><?php echo $offre['titre_offre'];?></option>
             <?php }?>
         </select>  
-        <button type="submit">Valider</button>
+        <button type="submit" class="btn-valider">Valider</button>
 
         </div>
     </form>  
