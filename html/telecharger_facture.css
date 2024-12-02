@@ -336,16 +336,17 @@ footer {
 
            
 .facture-container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border: 1px solid #d1d1d1;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
+    max-width: 600px !important;
+    margin: auto !important;
+    padding: 20px !important;
+    background-color: #ffffff !important;
+    border: 1px solid #d1d1d1 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    display: flex !important;
+    align-items: center !important;
 }
+
 
 /* En-tête de la facture */
 .facture-header {
