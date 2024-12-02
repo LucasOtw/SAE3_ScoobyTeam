@@ -7,7 +7,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Télécharger une facture</title>
-    <link rel="stylesheet" href="telecharger_facture.css">
+    <link rel="stylesheet" href="telecharger_facture.css?">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="script.js"></script>
 
@@ -44,20 +44,33 @@ session_start();
                 <li><a href="#" class="active">Compte bancaire</a></li>
             </ul>
         </section>
-
-
-        <div id="facture-container" class="facture-container">
-        <h1>Facture #12345</h1>
-        <div class="facture-details">
-            <p><strong>Date :</strong> 30 Novembre 2024</p>
-            <p><strong>Client :</strong> Jean Dupont</p>
-            <p><strong>Adresse :</strong> 123 Rue Exemple, Paris, France</p>
-        </div>
-    </div>
-    <button id="download-btn">Télécharger en PDF</button>
-    <script src="https://cdn.jsdelivr.net/npm/html2pdf.js/dist/html2pdf.bundle.min.js"></script>
-    <script src="script.js"></script>
     
+    <div id="facture-container" class="facture-container">
+            <h1>Facture #12345</h1>
+            <div class="facture-details">
+                <p><strong>Date :</strong> 30 Novembre 2024</p>
+                <p><strong>Client :</strong> Jean Dupont</p>
+                <p><strong>Adresse :</strong> 123 Rue Exemple, Paris, France</p>
+            </div>
+        </div>
+        <button id="download-btn">Télécharger en PDF</button>
+    
+        <!-- Bibliothèque html2pdf -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+        <script>
+            // Génération du PDF
+            document.getElementById('download-btn').addEventListener('click', () => {
+                const element = document.getElementById('facture-container'); // Conteneur cible
+                const options = {
+                    margin: 1,
+                    filename: 'facture.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2 },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                };
+                html2pdf().set(options).from(element).save(); // Convertir et télécharger
+            });
+        </script>
 
 
 </main>
