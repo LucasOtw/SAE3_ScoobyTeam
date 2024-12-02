@@ -75,7 +75,7 @@ if (isset($_POST['modif_infos'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier Mot de passe</title>
-    <link rel="stylesheet" href="modif_mdp_membre.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
