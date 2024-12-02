@@ -283,6 +283,14 @@ $password = "philly-Congo-bry4nt";
           justify-content: center; /* Centre les éléments horizontalement */
           margin-top: 2em;
       }
+     .offer-name {
+          color: #333;
+          text-align: center;
+      }
+      .offer-name strong {
+          color: var(--orange);
+      }
+
 
 
         
