@@ -297,6 +297,7 @@ header.header-tel {
 
     header.header-tel {
         display: flex;
+        justify-content: center;
     }
     
     header.header-tel .logo-tel {
