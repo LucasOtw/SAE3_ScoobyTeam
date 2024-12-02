@@ -79,12 +79,12 @@ nav ul li a {
     padding: 5px 10px;
     transition: color 0.3s, border-bottom 0.3s;
 }
-
-nav ul li a.active {
+/*PRO*/
+.header_pro nav ul li a.active {
     color: var(--orange);
 }
 
-nav ul li a:hover {
+.header_pro nav ul li a:hover {
     color: var(--orange);
 }
 
@@ -95,6 +95,29 @@ nav ul li a:hover {
 .header_pro nav ul li a:hover {
     color: var(--orange);
 }
+.header_pro nav ul li a::before {
+background-color: var(--orange);
+}
+
+/*MEMBRE*/
+.header_membre nav ul li a.active {
+    color: var(--vert-clair);
+}
+
+.header_membre nav ul li a:hover {
+    color: var(--vert-clair);
+}
+
+.header_membre nav ul li a.active {
+    color: var(--vert-clair);
+}
+
+.header_membre nav ul li a:hover {
+    color: var(--vert-clair);
+}
+.header_membre nav ul li a::before {
+background-color: var(--vert-clair);
+}
 
 nav ul li a::before {
     content: "";
@@ -102,12 +125,7 @@ nav ul li a::before {
     width: 0;
     height: 2.5px;
     bottom: -2px;
-    background-color: var(--orange);
     transition: width 0.3s ease;
-}
-
-.header_pro nav ul li a::before {
-    background-color: var(--orange);
 }
 
 nav ul li a:hover::before {
@@ -123,11 +141,17 @@ footer {
     margin-top: auto;
 }
 
+.footer_pro .newsletter {
+    background-color: var(--orange);
+}
+.footer_membre .newsletter {
+    background-color: var(--vert-clair);
+}
+
 .newsletter {
     display: flex;
     flex-direction: column; 
     justify-content: space-between;
-    background-color: var(--orange);
     padding: 20px;
     border-radius: 20px;
     position: relative;
@@ -200,8 +224,11 @@ footer {
     transition: color 0.3s ease;
 }
 
-.link-group ul li a:hover {
+.footer_pro .link-group ul li a:hover {
     color: var(--orange);
+}
+.footer_membre .link-group ul li a:hover {
+    color: var(--vert-clair);
 }
 
 .footer-bottom {
