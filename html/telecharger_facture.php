@@ -270,7 +270,7 @@ $password = "philly-Congo-bry4nt";
       }
       
       .dropdown-container label {
-          margin-bottom: 10px;
+          margin-bottom: 3em;
           font-size: 16px;
           color: #333;
           text-align: center;
