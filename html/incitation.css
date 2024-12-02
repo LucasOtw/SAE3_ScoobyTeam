@@ -1,3 +1,17 @@
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  text-align: center;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -7,7 +21,7 @@
 }
 
 /* Header styles */
-.incitation_header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,65 +30,62 @@
   padding: 10px 20px;
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  margin-left: -8px;
-  margin-top: -8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: -8px; /* Si nécessaire */
 }
 
-
-.incitation_logo-container {
+.logo-container {
   flex-grow: 1;
-  margin-left: 4em;
+  margin-left: 2em;
 }
 
 .logo {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #fff;
 }
 
 .logo span {
-  font-size: 14px;
-  display: block; /* "Professionnel" en dessous du logo */
+  font-size: 0.875rem; /* Taille réduite pour "Professionnel" */
+  display: block;
 }
 
-.incitation_skip-container{
+.skip-container {
   display: flex;
-  justify-content: flex-end; /* Le bouton à droite */
-  width:1em;
+  justify-content: flex-end;
+  width: 2rem;
 }
 
 .skip {
-  height : 35px;
-  width:35px;
+  height: 35px;
+  width: 35px;
 }
 
 /* Main content styles */
-.incitation_image-container {
+.image-container {
   margin: 16px 0;
 }
 
 .cadeau-image {
-  width: 260px;
-  height: 200px;
+  max-width: 260px;
+  height: auto;
 }
 
 .features-image {
-  width: 350px;
-  height: 160px;
+  max-width: 350px;
+  height: auto;
 }
-.incitation_main-title {
-  font-size: 20px;
-  margin: 8px 0;
+
+.main-title {
+  font-size: 1.25rem;
+  margin: 2rem 0 1rem;
   color: #333;
-  margin-top: 5em;
-  margin-left: 79px;
 }
 
 .subtitle {
-  font-size: 16px;
+  font-size: 1rem;
   color: #666;
-  margin-bottom: 3em;
+  margin-bottom: 2rem;
 }
 
 /* Footer styles */
@@ -84,35 +95,41 @@ nav.nav-bar {
   bottom: 20px;
   background-color: #F28322;
   display: flex;
-  margin: auto 8vw;
   justify-content: space-around;
-  border-radius: 1000px;
-  box-shadow: 0px 2px 10px rgb(156, 156, 156);
+  border-radius: 50px;
+  box-shadow: 0 2px 10px rgba(156, 156, 156, 0.5);
 }
 
 .nav-bar img {
-  display: inline-block; /* Affiche les images dans la barre de navigation */
+  display: inline-block;
+  width: 24px; /* Harmonisation des tailles des icônes */
+  height: auto;
 }
 
-nav.nav-bar a {
+.nav-bar a {
   display: flex;
   align-items: center;
   margin: 10px auto;
+  text-decoration: none;
+  color: inherit;
 }
 
 .nav {
   display: flex;
   justify-content: space-around;
   padding: 10px 0;
-  margin: 0;
 }
 
 .nav-item {
-  font-size: 24px;
-  text-decoration: none;
+  font-size: 1rem;
   color: #666;
+  transition: color 0.3s ease;
 }
 
 .nav-item.active {
+  color: #ff7d00;
+}
+
+.nav-item:hover {
   color: #ff7d00;
 }
