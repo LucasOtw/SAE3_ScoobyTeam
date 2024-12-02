@@ -295,26 +295,36 @@
         updateOfferState(isOnline);
     }
 
-    // Fonction AJAX pour mettre à jour l'état de l'offre
+    // Fonction AJAX pour mettre à jour l'état de l'offre avec fetch
     function updateOfferState(isOnline) {
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://scooby-team.ventsdouest.dev/update_offer_status.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
         var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
-
+        
         console.log("Etat: " + (isOnline ? 1 : 0));
         console.log("Code offre: " + codeOffre);
-    
-        // Envoie l'état (1 pour "En Ligne", 0 pour "Hors Ligne")
-        xhr.send("en_ligne=" + encodeURIComponent((isOnline ? 1 : 0)) + "&code_offre=" + encodeURIComponent(codeOffre));
-    
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
+        
+        // Utilisation de fetch pour envoyer les données
+        fetch("https://scooby-team.ventsdouest.dev/update_offer_status.php", {
+            method: "POST",  // Méthode POST
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",  // Spécifie le type de contenu
+            },
+            body: new URLSearchParams({
+                en_ligne: isOnline ? 1 : 0,  // Envoie l'état en ligne ou hors ligne (1 ou 0)
+                code_offre: codeOffre        // Envoie le code de l'offre
+            })
+        })
+        .then(response => {
+            if (response.ok) {
                 console.log("L'état de l'offre a été mis à jour avec succès.");
+            } else {
+                console.error("Erreur lors de la mise à jour de l'état de l'offre : " + response.status);
             }
-        };
+        })
+        .catch(error => {
+            console.error("Erreur de réseau ou autre :", error);
+        });
     }
+
     
 </script>
 
