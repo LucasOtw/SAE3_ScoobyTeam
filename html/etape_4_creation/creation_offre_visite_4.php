@@ -301,9 +301,30 @@ if(isset($_POST['valider'])){
 
             $mon_offre = array_merge($mon_offre,$code_horaire);
 
-            echo "<pre>";
-            var_dump($mon_offre);
-            echo "</pre>";
+            // on passe à l'exécution
+
+            $columns = implode(", ", array_keys($mon_offre)); // liste des colonnes
+            $placeholders = implode(", ", array_map(fn($key) => ":$key", array_keys($mon_offre))); // liste des placeholders
+
+            $creation_offre_req = "INSERT INTO tripenarvor._offre ($columns) VALUES ($placeholders)";
+            $creation_offre = $dbh->prepare($creation_offre_req);
+            
+            if($creation_offre->execute($mon_offre)){
+                // on récupère son id
+                $id_offre = $dbh->lastInsertId();
+                // on lui ajoute ses images
+                $son_image = $dbh->prepare("INSERT INTO tripenarvor._son_image VALUES (:code_image,:code_offre)");
+                foreach($id_image as $code_image){
+                    $son_image->execute([
+                        ":code_image" => $code_image,
+                        ":code_offre" => $id_offre
+                    ]);
+                }
+                // cette offre est une visite
+                $duree_visite = "$_SESSION['crea_offre']['duree']:00";
+                $visite_guidee = $_SESSION['crea_offre']['langues'];
+                
+            }
         }
     }
 }
