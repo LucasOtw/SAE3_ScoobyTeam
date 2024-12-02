@@ -21,8 +21,8 @@ include('recupInfosCompte.php');
     <nav>
         <ul>
             <li><a href="mes_offres.php">Accueil</a></li>
-            <li><a href="connexion_pro.php">Publier</a></li>
-            <li><a href="connexion_pro.pro" class="active">Mon Compte</a></li>
+            <li><a href="connexion_pro.php" class="active">Publier</a></li>
+            <li><a href="connexion_pro.pro">Mon Compte</a></li>
         </ul>
     </nav>
 </header>
