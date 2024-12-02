@@ -820,6 +820,7 @@ function tempsEcouleDepuisPublication($offre){
                     //
                     if (offerCategory == 'parc_attractions')
                     {
+                        console.log(offerCategory);
                         if (!startDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite'))
                         {
                             console.log("Boucle n1 : ok\n");
