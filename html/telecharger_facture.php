@@ -246,8 +246,8 @@ $password = "philly-Congo-bry4nt";
         } 
         
         .btn-valider {
-            background-color: #007bff;
-            color: #ffffff;
+            background-color: var(--orange);
+            color: #fff;
             font-size: 16px;
             font-weight: bold;
             padding: 10px 20px;
@@ -258,7 +258,7 @@ $password = "philly-Congo-bry4nt";
         }
         
         .btn-valider:hover {
-            background-color: #0056b3;
+            background-color: var(--orange);
         }
 
         .dropdown-container {
