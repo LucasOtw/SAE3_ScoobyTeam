@@ -367,7 +367,7 @@ footer {
     gap: 20px; /* Espace entre les boutons */
 }
 
-.back-link {
+.back-link-offre {
     padding: 10px 20px;
     text-decoration: none;
     background-color: #fff;
@@ -377,7 +377,23 @@ footer {
     border: 1px solid #F28322;
 }
 
-.back-link:hover {
+.back-link-facture {
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #fff;
+    color: #F28322;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid #F28322;
+}
+
+.back-link-offre:hover {
+    background-color: #fff;
+    border: 1px solid #F28322;
+    color: #F28322;
+}
+
+.back-link-facture:hover {
     background-color: #fff;
     border: 1px solid #F28322;
     color: #F28322;
