@@ -33,7 +33,7 @@ include('recupInfosCompte.php');
             </div>
             <div class="profile-info">
                 <img class="profile-picture" src="images/hotel.jpg" alt="Profil utilisateur">
-                <h1><?php echo $monCompte['raison_sociale']; ?></h1>
+                <h1><?php echo $compte['raison_sociale']; ?></h1>
                 <p><?php echo $compte['mail'] . " | " . $compte['telephone']; ?></p>
             </div>
         </section>
