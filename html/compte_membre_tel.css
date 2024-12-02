@@ -155,6 +155,7 @@ nav.nav-bar {
 }
 .actions a {
     text-decoration : none;
+    color: black;
 }
 
 .action-btn {
