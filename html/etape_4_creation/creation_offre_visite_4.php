@@ -65,7 +65,7 @@ if(isset($_POST['valider'])){
         */
 
         if($_SESSION['aCreeUneOffre'] === false){
-            $adresse_postal = $_SESSION
+            
         }
     }
 }
