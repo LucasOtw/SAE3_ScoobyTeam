@@ -146,7 +146,7 @@ if (!empty($_POST['supprAvis'])){
 
 
     </main>
-    <nav class="nav-bar">
+    <nav class="nav-bar_consulter_mes_avis">
         <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
         <a href="consulter_mes_avis.php"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
         <a href="incitation.php"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
