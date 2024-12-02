@@ -345,37 +345,49 @@ echo "</pre>";
 
 
          <?php 
-                $offreSelectionnee = isset($_POST['offre']) ? $_POST['offre'] : 1;
-                $date_publication = '';
-                $nom_type = '';
-                $query = "SELECT date_publication, nom_type FROM tripenarvor._offre WHERE code_offre = :offreSelectionnee";
-                $stmt = $pdo->prepare($query);
-                $stmt->bindParam(':offreSelectionnee', $offreSelectionnee, PDO::PARAM_INT);
-                $stmt->execute();
-                // Vérifier s'il y a des résultats
-                if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $date_publication = $row['date_publication'];
-                    $nom_type = $row['nom_type'];
-                }
-                    ?>
-        <table class="facture-items">
-            <thead>
-                <tr>
-                    <th>Type d'offre</th>
-                    <th>Prix par jour</th>
-                    <th>Date de mise en ligne</th>
-                    <th>Montant HT</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><?php echo $nom_type ?></td>
-                    <td>5€</td>
-                    <td><?php echo $date_publication ?></td>
-                    <td>100€</td>
-                </tr>
-            </tbody>
-        </table>
+         $offreSelectionnee = isset($_POST['offre']) ? $_POST['offre'] : 1;
+         $date_publication = '';
+         $nom_type = '';
+         $prix_par_jour = ''; // Prix par jour défini
+         $montant_ht = 0;
+         
+         $query = "SELECT * FROM tripenarvor._offre natural join tripenarvor._option WHERE code_offre = :offreSelectionnee";
+         $stmt = $pdo->prepare($query);
+         $stmt->bindParam(':offreSelectionnee', $offreSelectionnee, PDO::PARAM_INT);
+         $stmt->execute();
+         
+         if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+             $date_publication = $row['date_publication'];
+             $nom_type = $row['nom_type'];
+             $prix_par_jour = $row['prix'];
+         
+             $date_pub = new DateTime($date_publication);
+             $date_actuelle = new DateTime();
+             $interval = $date_pub->diff($date_actuelle);
+             $jours_ecoules = $interval->days;
+         
+             $montant_ht = $jours_ecoules * $prix_par_jour;
+         }
+         ?>
+         <table class="facture-items">
+             <thead>
+                 <tr>
+                     <th>Type d'offre</th>
+                     <th>Prix par jour</th>
+                     <th>Date de mise en ligne</th>
+                     <th>Montant HT</th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <tr>
+                     <td><?php echo $nom_type ?></td>
+                     <td><?php echo $prix_par_jour ?>€</td>
+                     <td><?php echo $date_publication ?></td>
+                     <td><?php echo $montant_ht ?>€</td>
+                 </tr>
+             </tbody>
+         </table>
+
         
         <table class="facture-items">
             <thead>
