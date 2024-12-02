@@ -460,6 +460,10 @@ function tempsEcouleDepuisPublication($offre){
                 } else {
                     $periode = "";
                 }
+
+                echo "<pre>";
+                var_dump($periode);
+                echo "</pre>";
                 
                 
                 if (!empty($horaire))
@@ -803,9 +807,12 @@ function tempsEcouleDepuisPublication($offre){
                 offerItems.forEach(offer => {
                     const offerPeriodStart = offer.getAttribute('data-period-o');
                     const offerPeriodEnd = offer.getAttribute('data-period-c');
+                    const offerCategory = offer.getAttribute('data-category');
             
                     // Condition pour afficher l'offre
-                    if ((!startDate || startDate <= offerPeriodEnd || !offerPeriodEnd) && (!endDate || endDate >= offerPeriodStart || !offerPeriodEnd)) {
+                    if ((!startDate || startDate <= offerPeriodEnd || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite')) && 
+                        (!endDate || endDate >= offerPeriodStart || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite'))) 
+                    {
                         offer.style.removeProperty('display'); // Afficher l'offre
                     } else {
                         offer.style.display = "none"; // Masquer l'offre
