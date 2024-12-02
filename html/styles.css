@@ -2316,6 +2316,7 @@ input[type="password"]::placeholder {
     transition: 0.3s;
     height:3.3em;
     width:15em;
+    color:white;
 }
 
 
