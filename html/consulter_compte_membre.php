@@ -177,12 +177,18 @@ if (isset($_POST['modif_infos'])){
             </div>
         </div>
 <!-- POUR TEL -->
-        <div class="edit-profil">
-            <a href="compte_membre_tel.php">
-               <img src="images/Bouton_retour.png" alt="bouton retour">
-            </a>
-            <h1>Editer le profil</h1>
-        </div>                
+        <<style>
+    .edit-profil {
+        display: none;
+    }
+</style>
+
+<div class="edit-profil">
+    <a href="compte_membre_tel.php">
+        <img src="images/Bouton_retour.png" alt="bouton retour">
+    </a>
+    <h1>Editer le profil</h1>
+</div>      
             <section class="tabs">
                 <ul>
                     <li><a href="#" class="active">Informations personnelles</a></li>
