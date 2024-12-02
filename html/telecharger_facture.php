@@ -195,9 +195,15 @@ include('recupInfosCompte.php');
     // Définir le fuseau horaire (optionnel, pour s'assurer de la bonne heure)
     date_default_timezone_set('Europe/Paris');
     
-    // Récupérer la date du jour au format souhaité
-    setlocale(LC_TIME, 'fr_FR.UTF-8'); // Définit la locale en français
-    $dateDuJour = strftime('%d %B %Y');
+    $date = new DateTime();
+
+    // Formatter la date en français
+    $formatter = new IntlDateFormatter(
+    'fr_FR', 
+    IntlDateFormatter::FULL, 
+    IntlDateFormatter::NONE
+    );
+    $formatter->setPattern('dd MMMM yyyy'); // Personnaliser le format
     ?>
 
     
