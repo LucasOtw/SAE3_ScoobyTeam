@@ -78,12 +78,18 @@ if (!empty($_POST['supprAvis'])){
             </div>
         </div>
 <!-- POUR TEL -->
-        <div class="edit-profil">
-            <a href="compte_membre_tel.php">
-               <img src="images/Bouton_retour.png" alt="bouton retour">
-            </a>
-            <h1>Editer le profil</h1>
-        </div>                
+<style>
+    .edit-profil {
+        display: none;
+    }
+</style>
+
+<div class="edit-profil">
+    <a href="compte_membre_tel.php">
+        <img src="images/Bouton_retour.png" alt="bouton retour">
+    </a>
+    <h1>Editer le profil</h1>
+</div>           
             <section class="tabs">
                 <ul>
                     <li><a href="consulter_compte_membre.php">Informations personnelles</a></li>
