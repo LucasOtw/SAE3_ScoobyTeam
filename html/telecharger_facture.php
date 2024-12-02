@@ -337,7 +337,6 @@ include('recupInfosCompte.php');
                     <td>100€</td>
                 </tr>
             </tbody>
-            <br><br><br>
             <thead>
                 <tr>
                     <th>Boost</th>
