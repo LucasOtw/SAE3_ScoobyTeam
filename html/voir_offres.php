@@ -829,11 +829,11 @@ function tempsEcouleDepuisPublication($offre){
                         {
                             console.log("Boucle n2 : ok\n");
                         }
-                        if ( startDate <= offerPeriodEnd )
+                        if ( startDate <= offerPeriodEnd && startDate >= offerPeridoStart)
                         {
                             console.log("Boucle n3 : ok\n");
                         }
-                        if ( endDate >= offerPeriodStart )
+                        if ( endDate >= offerPeriodStart && endDate <= offerPeridoEnd)
                         {
                             console.log("Boucle n4 : ok\n");
                         }
