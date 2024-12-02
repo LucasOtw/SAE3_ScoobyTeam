@@ -281,12 +281,13 @@ footer {
     }
 }
 
-header.header-pc {
+header.header_pc {
     display: block;
 }
 
-header.header-tel {
+header.header_tel {
     display: none;
+    background-color: white;
 }
 
 @media (max-width: 429px) {

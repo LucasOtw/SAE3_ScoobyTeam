@@ -16,7 +16,7 @@ session_start();
 </head>
 
 <body>
-    <header class="header_pc header_membre">
+    <header class="header-pc header_membre">
         <div class="logo-pc">
             <img src="images/logoBlanc.png" alt="PACT Logo">
         </div>
