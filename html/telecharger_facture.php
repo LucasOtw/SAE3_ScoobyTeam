@@ -161,8 +161,9 @@ include('recupInfosCompte.php');
             transform: translateY(1px);
         }
         .dropdown-container {
-            margin-top: 20px;
+            margin-top: 2em;
             text-align: center;
+            margin-bottom: 2em;
         }
         
         .dropdown {
