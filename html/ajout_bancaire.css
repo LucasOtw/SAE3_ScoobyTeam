@@ -258,13 +258,14 @@ footer {
     padding: 0;
 }
 
+
 /* Profile Section */
-.main-ajout-bancaire .profile {
+main.main-ajout-bancaire .profile {
     text-align: center;
     margin-bottom: 30px;
 }
 
-.main-ajout-bancaire .banner img {
+main.main-ajout-bancaire .banner img {
     width: 70%;
     height: 200px;
     object-fit: cover;
@@ -272,37 +273,37 @@ footer {
     border-radius: 20px;
 }
 
-.main-ajout-bancaire .profile-info {
+main.main-ajout-bancaire .profile-info {
     margin-top: -90px;
     text-align: center;
 }
 
-.main-ajout-bancaire .profile-info img.profile-picture {
+main.main-ajout-bancaire .profile-info img.profile-picture {
     width: 120px;
     height: 120px;
     border-radius: 35px;
     object-fit: cover;
 }
 
-.main-ajout-bancaire .profile-info h1 {
+main.main-ajout-bancaire .profile-info h1 {
     font-size: 28px;
     margin: 10px 0;
 }
 
-.main-ajout-bancaire .profile-info p {
+main.main-ajout-bancaire .profile-info p {
     font-size: 16px;
     color: #666;
 }
 
 /* Tabs Section */
-.main-ajout-bancaire .tabs {
+main.main-ajout-bancaire .tabs {
     display: flex;
     justify-content: center;
     margin: 30px 0;
     text-align: center;
 }
 
-.main-ajout-bancaire .tabs ul {
+main.main-ajout-bancaire .tabs ul {
     display: flex;
     padding: 0;
     list-style: none;
@@ -313,13 +314,13 @@ footer {
     min-width: 40vw;
 }
 
-.main-ajout-bancaire .tabs ul li {
+main.main-ajout-bancaire .tabs ul li {
     display: flex;
     margin: 0 20px;
     text-decoration: none;
 }
 
-.main-ajout-bancaire .tabs ul li a {
+main.main-ajout-bancaire .tabs ul li a {
     width: calc(60vw/3);
     font-size: 20px;
     padding: 10px 20px;
@@ -330,7 +331,7 @@ footer {
     text-decoration: none;
 }
 
-.main-ajout-bancaire .tabs ul li a.active {
+main.main-ajout-bancaire .tabs ul li a.active {
     border-color: #ff6600;
     text-decoration: none;
 }
@@ -341,19 +342,19 @@ footer {
     border-radius: 10px;
 }
 
-.main-ajout-bancaire .form-group {
+main.main-ajout-bancaire .form-group {
     margin-bottom: 15px;
 }
 
-.main-ajout-bancaire label {
+main.main-ajout-bancaire label {
     display: block;
     margin-bottom: 0px;
     font-size: 14px;
     color: #555;
 }
 
-.main-ajout-bancaire input[type="text"],
-.main-ajout-bancaire input[type="email"] {
+main.main-ajout-bancaire input[type="text"],
+main.main-ajout-bancaire input[type="email"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -361,7 +362,7 @@ footer {
     font-size: 14px;
 }
 
-.main-ajout-bancaire .form-actions {
+main.main-ajout-bancaire .form-actions {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
@@ -370,28 +371,28 @@ footer {
 
 
 
-.main-ajout-bancaire form {
+main.main-ajout-bancaire form {
     width: 885px;
     margin: 0 auto;
     padding: 20px;
     border-radius: 8px;
 }
 
-.main-ajout-bancaire fieldset {
+main.main-ajout-bancaire fieldset {
     border: none;
     margin-bottom: 20px;
 }
 
-.main-ajout-bancaire legend {
+main.main-ajout-bancaire legend {
     font-size: 1.2em;
     margin-bottom: 10px;
     color: #333;
 }
 
-.main-ajout-bancaire input[type="text"],
-.main-ajout-bancaire input[type="email"],
-.main-ajout-bancaire input[type="tel"],
-.main-ajout-bancaire input[type="password"] {
+main.main-ajout-bancaire input[type="text"],
+main.main-ajout-bancaire input[type="email"],
+main.main-ajout-bancaire input[type="tel"],
+main.main-ajout-bancaire input[type="password"] {
     width: 100%;
     padding: 12px;
     font-size: 1em;
@@ -400,63 +401,63 @@ footer {
     box-sizing: border-box;
 }
 
-.main-ajout-bancaire input[type="text"]::placeholder,
-.main-ajout-bancaire input[type="email"]::placeholder,
-.main-ajout-bancaire input[type="tel"]::placeholder,
-.main-ajout-bancaire input[type="password"]::placeholder {
+main.main-ajout-bancaire input[type="text"]::placeholder,
+main.main-ajout-bancaire input[type="email"]::placeholder,
+main.main-ajout-bancaire input[type="tel"]::placeholder,
+main.main-ajout-bancaire input[type="password"]::placeholder {
     color: #aaa;
 }
 
-.main-ajout-bancaire .IBAN,
-.main-ajout-bancaire .nom {
+main.main-ajout-bancaire .IBAN,
+main.main-ajout-bancaire .nom {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.main-ajout-bancaire .IBAN fieldset,
-.main-ajout-bancaire .nom fieldset {
+main.main-ajout-bancaire .IBAN fieldset,
+main.main-ajout-bancaire .nom fieldset {
     flex: 1;
 }
-.main-ajout-bancaire .BIC,
-.main-ajout-bancaire .nom {
+main.main-ajout-bancaire .BIC,
+main.main-ajout-bancaire .nom {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.main-ajout-bancaire .BIC fieldset,
-.main-ajout-bancaire .nom fieldset {
+main.main-ajout-bancaire .BIC fieldset,
+main.main-ajout-bancaire .nom fieldset {
     flex: 1;
 }
 
-.main-ajout-bancaire .checkbox {
+main.main-ajout-bancaire .checkbox {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.main-ajout-bancaire .checkbox input {
+main.main-ajout-bancaire .checkbox input {
     margin-right: 10px;
 }
 
-.main-ajout-bancaire .checkbox label a {
+main.main-ajout-bancaire .checkbox label a {
     color: var(--orange);
     text-decoration: none;
 }
 
-.main-ajout-bancaire .checkbox label a:hover {
+main.main-ajout-bancaire .checkbox label a:hover {
     text-decoration: underline;
 }
-.main-ajout-bancaire .compte_membre_save_delete {
+main.main-ajout-bancaire .compte_membre_save_delete {
     display: flex;
     justify-content: right; /* Aligne les boutons au centre */
     gap: 20px; /* Espacement entre les boutons */
     margin-bottom: 11em;
 }
 
-.main-ajout-bancaire button.submit-btn1, 
-.main-ajout-bancaire button.submit-btn2 {
+main.main-ajout-bancaire button.submit-btn1, 
+main.main-ajout-bancaire button.submit-btn2 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -475,21 +476,21 @@ footer {
 
 }
 
-.main-ajout-bancaire button.submit-btn1{
+main.main-ajout-bancaire button.submit-btn1{
     background-color: white;
     border: 1.5px solid var(--orange);
     color: black;
 }
 
-.main-ajout-bancaire button.submit-btn1:hover,
-.main-ajout-bancaire button.submit-btn2:hover {
+main.main-ajout-bancaire button.submit-btn1:hover,
+main.main-ajout-bancaire button.submit-btn2:hover {
     background-color: var(--orange-hover); /* Ajoute une couleur de survol pour les deux boutons */
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Ombre plus forte au survol */
     transition: 0.3s;
 
 }
 
-.main-ajout-bancaire button.submit-btn2:hover{
+main.main-ajout-bancaire button.submit-btn2:hover{
     background-color: var(--orange);
 
 }
@@ -499,10 +500,10 @@ footer {
 
 
 /* Style général pour tous les fieldsets */
-.nom fieldset, 
-.IBAN fieldset,
-.BIC fieldset,
-form fieldset {
+main.main-ajout-bancaire .nom fieldset, 
+main.main-ajout-bancaire .IBAN fieldset,
+main.main-ajout-bancaire .BIC fieldset,
+main.main-ajout-bancaire form fieldset {
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 20px;
@@ -511,10 +512,10 @@ form fieldset {
 }
 
 /* Style pour les légendes */
-.nom legend, 
-.IBAN legend,
-.BIC legend,
-form legend {
+main.main-ajout-bancaire .nom legend, 
+main.main-ajout-bancaire .IBAN legend,
+main.main-ajout-bancaire .BIC legend,
+main.main-ajout-bancaire form legend {
     font-size: 14px;
     padding: 0 10px;
     color: #333;
@@ -526,34 +527,34 @@ form legend {
 }
 
 /* Légende visible au focus */
-.nom fieldset:focus-within legend, 
-.IBAN fieldset:focus-within legend,
-form fieldset:focus-within legend {
+main.main-ajout-bancaire .nom fieldset:focus-within legend, 
+main.main-ajout-bancaire .IBAN fieldset:focus-within legend,
+main.main-ajout-bancaire form fieldset:focus-within legend {
     display: inline-block;
     transition: ease-out 0.3s;
 }
 
 /* Placeholder style pour tous les champs de formulaire */
-.nom input::placeholder, 
-.IBAN input::placeholder,
-form input::placeholder {
+main.main-ajout-bancaire .nom input::placeholder, 
+main.main-ajout-bancaire .IBAN input::placeholder,
+main.main-ajout-bancaire form input::placeholder {
     padding-left: 10px;
 }
 
 /* Placeholder masqué au focus */
-.nom input:focus::placeholder, 
-.IBAN input:focus::placeholder,
-form input:focus::placeholder {
+main.main-ajout-bancaire .nom input:focus::placeholder, 
+main.main-ajout-bancaire .IBAN input:focus::placeholder,
+main.main-ajout-bancaire form input:focus::placeholder {
     color: rgba(0, 0, 0, 0);
 }
 
 /* Style pour la case à cocher */
-#remember, #cgu {
+main.main-ajout-bancaire #remember, main.main-ajout-bancaire #cgu {
     accent-color: var(--orange);
 }
 
 /* Styles pour les boutons */
-.submit-btn1, .submit-btn2 {
+main.main-ajout-bancaire .submit-btn1, main.main-ajout-bancaire .submit-btn2 {
     background-color: var(--orange);
     color: white;
     padding: 10px 20px;
@@ -562,14 +563,14 @@ form input:focus::placeholder {
     cursor: pointer;
 }
 
-.submit-btn1 {
+main.main-ajout-bancaire .submit-btn1 {
     margin-right: 10px;
 }
 
-.submit-btn2 img {
+main.main-ajout-bancaire .submit-btn2 img {
     margin-left: 5px;
 }
-.input-with-icon {
+main.main-ajout-bancaire .input-with-icon {
     display: flex;
     align-items: center; /* Aligne l'image et l'input verticalement */
     border: 1px solid #ccc;
@@ -577,23 +578,24 @@ form input:focus::placeholder {
     padding: 10px;
 }
 
-.input-with-icon img {
+main.main-ajout-bancaire .input-with-icon img {
     margin-right: 10px; /* Espacement entre l'image et le champ */
     width: 20px; /* Ajuster la taille selon ton design */
     height: auto;
 }
 
-.input-with-icon input {
+main.main-ajout-bancaire .input-with-icon input {
     border: none;
     outline: none;
     flex-grow: 1; /* Permet à l'input de prendre tout l'espace disponible */
     padding: 10px;
 }
-.image-container {
+
+main.main-ajout-bancaire .image-container {
     text-align: center; /* Centre le texte en dessous de l'image */
 }
 
-.image {
+main.main-ajout-bancaire .image {
     max-width: 100%; /* L'image ne dépasse jamais la largeur de son conteneur */
     height: auto; /* Maintient le ratio d'aspect de l'image */
 }

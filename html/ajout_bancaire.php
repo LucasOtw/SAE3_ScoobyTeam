@@ -7,7 +7,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ajout coordonnées bancaires</title>
-    <link rel="stylesheet" href="ajout_bancaire.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header>
