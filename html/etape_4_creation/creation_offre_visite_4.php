@@ -153,28 +153,44 @@ if(isset($_POST['valider'])){
             $chemin = "../images/offres/{$nom_doss}";
             echo $chemin;
 
-            if(file_exists($chemin)){
-                // si le chemin existe, on récupère tous les fichiers images
+            if (file_exists($chemin)) {
+                // Récupérer tous les fichiers images
                 $fichiers = scandir($chemin);
-    
+            
                 // Filtrer uniquement les images
                 $images = array_filter($fichiers, function($fichier) use ($chemin) {
                     $extensions_valides = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
                     $extension = strtolower(pathinfo($fichier, PATHINFO_EXTENSION));
                     return in_array($extension, $extensions_valides) && is_file("$chemin/$fichier");
                 });
-
+            
+                // Préparer les requêtes
+                $verifier_image = $dbh->prepare("SELECT code_image FROM tripenarvor._image WHERE url_image = :url_image");
                 $ajout_image = $dbh->prepare("INSERT INTO tripenarvor._image (url_image) VALUES (:url_image)");
-
-                // on insère chaque image (parce-que WHY NOT)
-
+            
+                // Tableau pour stocker les IDs des images insérées
                 $id_image = [];
-                foreach($images as $image){
+                
+                foreach ($images as $image) {
                     $url_image = "$chemin/$image";
-                    $ajout_image->execute([
+            
+                    // Vérifier si l'image existe déjà
+                    $verifier_image->execute([
                         ":url_image" => $url_image
                     ]);
-                    $id_image[] = $dbh->lastInsertId();
+                    $code_image = $verifier_image->fetch(PDO::FETCH_ASSOC);
+            
+                    if ($code_image) {
+                        // L'image existe déjà, on peut ignorer ou effectuer une autre action
+                        $id_image[] = $code_image['code_image'];
+                    } else {
+                        // Insérer l'image si elle n'existe pas
+                        $ajout_image->execute([
+                            ":url_image" => $url_image
+                        ]);
+                        $id_image[] = $dbh->lastInsertId();
+                        echo "L'image $url_image a été ajoutée dans la base de données.<br>";
+                    }
                 }
             } else {
                 die('Le chemin n existe pas');
