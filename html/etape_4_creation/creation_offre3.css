@@ -14,7 +14,7 @@
 
 @font-face {
     font-family: 'K2D';
-    src: url('./polices/K2D/K2D-Regular.ttf') format('truetype');
+    src: url('../polices/K2D/K2D-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -327,16 +327,18 @@ footer {
 /* Style pour le lien */
 .back-link {
     font-size: 1rem;
-    color: #007bff; /* Bleu pour contraste */
+    color: #FFFFFF;
     text-decoration: none;
-    border: 2px solid #007bff;
+    border: 2px solid #F28322;
     padding: 10px 20px;
     border-radius: 5px;
     transition: all 0.3s ease;
     display: inline-block;
+    background-color: #F28322;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre élégante */
 }
 
 .back-link:hover {
-    background-color: #007bff;
+    background-color: #BD671C;
     color: #fff;
 }

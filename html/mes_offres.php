@@ -20,6 +20,11 @@ $filter = "all";
 if (isset($_GET["filter"])) {
     $filter = $_GET["filter"];
 }
+
+if(isset($_SESSION['aCreeUneOffre'])){
+    unset($_SESSION['aCreeUneOffre']);
+}
+    
 ?>
 
 <!DOCTYPE html>
