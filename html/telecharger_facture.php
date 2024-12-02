@@ -276,12 +276,12 @@ echo "</pre>";
                 $offres_pro = $dbh->prepare("SELECT * FROM tripenarvor._offre WHERE professionnel = :code_compte");
                 $offres_pro->bindParam(':code_compte', $compte['code_compte']);
                 $offres_pro->execute();
-                $offres_pro->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($offres_pro);
+                $offres = $offres_pro->fetchAll(PDO::FETCH_ASSOC);
+        var_dump($offres);
         var_dump($compte['code_compte']);
 
 
-            foreach ($offres_pro as $offre){
+            foreach ($offres as $offre){
                 ?>
                 <option value="<?php echo $offre['code_offre'];?>"><?php echo $offre['titre_offre'];?></option>
             <?php }?>
