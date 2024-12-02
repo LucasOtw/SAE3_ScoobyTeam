@@ -786,7 +786,7 @@ function tempsEcouleDepuisPublication($offre){
     <a href="
         <?php
             if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
-                echo "consulter_compte_membre.php";
+                echo "compte_membre_tel.php";
             } else {
                 echo "connexion_membre.php";
             }
