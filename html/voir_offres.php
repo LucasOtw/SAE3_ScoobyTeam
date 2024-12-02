@@ -452,6 +452,10 @@ function tempsEcouleDepuisPublication($offre){
                 
                 // $dataStatusEng = "closed";
                 // $dataStatusFr = "Fermé";
+
+                echo "<pre>";
+                var_dump($horaire);
+                echo "</pre>";
                 
                 if (!empty($horaire))
                 {
