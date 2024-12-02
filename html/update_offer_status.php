@@ -11,7 +11,9 @@
     } catch (PDOException $e) {
         die("Erreur de connexion : " . $e->getMessage());
     }
-    
+
+    echo "///////////////////////////////////////////////////";
+
     // Récupérer les données envoyées en POST
     $en_ligne = isset($_POST['en_ligne']) ? intval($_POST['en_ligne']) : null;
     
