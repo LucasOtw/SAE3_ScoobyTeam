@@ -1059,8 +1059,6 @@ input#btn-poster-avis {
     position: relative;
     display: flex;
     align-items: center;
-    margin-left: 6em;
-    margin-right: 6em;
 }
 
 /* Section des cartes */
@@ -1070,7 +1068,6 @@ input#btn-poster-avis {
     scroll-behavior: smooth;
     width: 100vw;
     min-width: 100%;
-    margin-left: -7em;
     
 }
 
@@ -1094,20 +1091,17 @@ input#btn-poster-avis {
 }
 
 .card-scroll-btn.card-scroll-btn-left {
-    left: -147px;
+    left: -3em;
     
 }
 
 .card-scroll-btn.card-scroll-btn-right {
-    right: -98px;
+    right: -3em;
 }
 
 .card-scroll-btn:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
-
-
-
 
 .card-a-la-une {
     width: 25em;
@@ -1119,6 +1113,7 @@ input#btn-poster-avis {
 
 .image-background-card-a-la-une {
     width: 25em;
+    height: 15em;
     position: relative;
     background-color: grey;
     border-radius: 1.5em;

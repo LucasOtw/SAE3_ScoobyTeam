@@ -21,8 +21,8 @@ include('recupInfosCompte.php');
     <nav>
         <ul>
             <li><a href="mes_offres.php">Accueil</a></li>
-            <li><a href="connexion_pro.php">Publier</a></li>
-            <li><a href="connexion_pro.pro" class="active">Mon Compte</a></li>
+            <li><a href="connexion_pro.php" class="active">Publier</a></li>
+            <li><a href="connexion_pro.pro">Mon Compte</a></li>
         </ul>
     </nav>
 </header>
@@ -33,17 +33,9 @@ include('recupInfosCompte.php');
             </div>
             <div class="profile-info">
                 <img class="profile-picture" src="images/hotel.jpg" alt="Profil utilisateur">
-                <h1><?php echo $monCompte['raison_sociale']; ?></h1>
+                <h1><?php echo $compte['raison_sociale']; ?></h1>
                 <p><?php echo $compte['mail'] . " | " . $compte['telephone']; ?></p>
             </div>
-        </section>
-
-        <section class="tabs">
-            <ul>
-                <li><a href="consulter_compte_pro.php">Informations personnelles</a></li>
-                <li><a href="mes_offres.php">Mes offres</a></li>
-                <li><a href="#" class="active">Compte bancaire</a></li>
-            </ul>
         </section>
     
     <style>
@@ -179,17 +171,17 @@ include('recupInfosCompte.php');
                 <img src="images/logo_blanc_pro.png" alt="Logo Entreprise">
             </div>
             <div class="facture-title">
-                <h1>Facture N°12345</h1>
+                <h1>Facture</h1>
                 <p>Le 30 Novembre 2024</p>
             </div>
         </header>
 
         <div class="facture-info">
             <div class="info client">
-                <h3>Nom du client</h3>
-                <p>Adresse</p>
-                <p>Numéro de téléphone</p>
-                <p>Email</p>
+                <h3>Nom du client : Joseph Mulliez</h3>
+                <p>Adresse : <?php echo $compte['adresse_postale']; ?>, <?php echo $compte['ville']; ?>, <?php echo $compte['code_postal']; ?></p>
+                <p>Numéro de téléphone : <?php echo $compte['telephone']; ?></p>
+                <p>Email : <?php echo $compte['mail']; ?></p>
             </div>
         </div>
 
