@@ -21,7 +21,7 @@
         <!-- Profile Section -->
         <section class="profile">
     <div class="profile-img-container">
-        <img class="profile-img" src="images/pp.png" alt="Photo de profil">
+        <img class="original-profile-img" src="images/pp.png" alt="Photo de profil originale">
         <div class="preview-image"></div>
         <form action="/upload" method="POST" enctype="multipart/form-data">
             <label for="upload-photo" class="upload-photo-button">
@@ -33,6 +33,7 @@
     <h1 class="profile-name">Juliette Martin</h1>
      <p class="profile-contact">juliemartin@gmail.com | 07.98.76.54.12</p>
 </section>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
     const input = document.getElementById('upload-photo');
@@ -45,14 +46,17 @@
             
             reader.onload = function(e) {
                 previewDiv.innerHTML = `<img src="${e.target.result}" alt="Image prévue">`;
+                previewDiv.style.opacity = '1';
             }
             
             reader.readAsDataURL(file);
         } else {
             previewDiv.innerHTML = '';
+            previewDiv.style.opacity = '0';
         }
     });
 });
+
 
 </script>
 
