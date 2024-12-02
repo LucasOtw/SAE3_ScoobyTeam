@@ -20,19 +20,19 @@
 
         <!-- Profile Section -->
         <section class="profile">
-    <div class="profile-img-container">
-        <img class="original-profile-img" src="images/pp.png" alt="Photo de profil originale">
-        <div class="preview-image"></div>
-        <form action="/upload" method="POST" enctype="multipart/form-data">
-            <label for="upload-photo" class="upload-photo-button">
-                <span class="iconify" data-icon="mdi:camera" data-inline="false"></span>
-            </label>
-            <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden>
-        </form>
-    </div>
-    <h1 class="profile-name">Juliette Martin</h1>
-     <p class="profile-contact">juliemartin@gmail.com | 07.98.76.54.12</p>
-</section>
+            <div class="profile-img-container">
+                <img class="original-profile-img" src="images/pp.png" alt="Photo de profil originale">
+                <div class="preview-image"></div>
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                    <label for="upload-photo" class="upload-photo-button">
+                        <span class="iconify" data-icon="mdi:camera" data-inline="false"></span>
+                    </label>
+                    <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden>
+                </form>
+            </div>
+            <h1 class="profile-name">Juliette Martin</h1>
+             <p class="profile-contact">juliemartin@gmail.com | 07.98.76.54.12</p>
+        </section>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
