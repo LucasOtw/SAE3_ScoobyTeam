@@ -244,27 +244,6 @@ $password = "philly-Congo-bry4nt";
             margin: 20px 0;
             font-family: Arial, sans-serif;
         } 
-
-        .dropdown-container label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 16px;
-            color: #333;
-        }
-        
-        .dropdown-button-wrapper {
-            display: flex; /* Active le mode flexbox */
-            gap: 10px; /* Espacement entre les éléments */
-            align-items: center; /* Aligne verticalement */
-        }
-        
-        .dropdown {
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            min-width: 200px; /* Largeur minimale pour les options */
-        }
         
         .btn-valider {
             background-color: #007bff;
@@ -281,6 +260,28 @@ $password = "philly-Congo-bry4nt";
         .btn-valider:hover {
             background-color: #0056b3;
         }
+
+        .dropdown-container {
+          margin: 20px 0;
+          font-family: Arial, sans-serif;
+          display: flex;
+          flex-direction: column;
+          align-items: center; /* Centre horizontalement le contenu */
+      }
+      
+      .dropdown-container label {
+          margin-bottom: 10px;
+          font-size: 16px;
+          color: #333;
+          text-align: center;
+      }
+      
+      .dropdown-button-wrapper {
+          display: flex; /* Active le mode flexbox */
+          gap: 10px; /* Espacement entre les éléments */
+          align-items: center; /* Aligne verticalement */
+          justify-content: center; /* Centre les éléments horizontalement */
+      }
 
 
         
