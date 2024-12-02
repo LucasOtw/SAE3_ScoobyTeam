@@ -282,7 +282,7 @@ footer {
 }
 
 header.header-pc {
-    display: block;
+    display: flex;
 }
 
 header.header-tel {
@@ -296,7 +296,7 @@ header.header-tel {
     }
 
     header.header-tel {
-        display: block;
+        display: flex;
     }
     
     header.header-tel .logo-tel {
