@@ -174,20 +174,7 @@ $password = "philly-Congo-bry4nt";
             background-color:  var(--orange);
             transform: translateY(1px);
         }
-        .dropdown-container {
-            margin-top: 2em;
-            text-align: center;
-            margin-bottom: 2em;
-        }
-        
-        .dropdown {
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+  
         .info-facture {
         width: max-content; /* Adapte la largeur au contenu */
         margin-left: auto; /* Repousse le conteneur vers la droite */
@@ -253,31 +240,52 @@ $password = "philly-Congo-bry4nt";
             margin: 5px 0;
         }
 
+       .dropdown-container {
+            margin: 20px 0;
+            font-family: Arial, sans-serif;
+        } 
+        
         .btn-valider {
-          background-color: #007bff; /* Couleur de fond bleue */
-          color: #ffffff; /* Texte en blanc */
-          font-size: 16px; /* Taille du texte */
-          font-weight: bold; /* Texte en gras */
-          padding: 10px 20px; /* Espace intérieur */
-          border: none; /* Supprime les bordures */
-          border-radius: 5px; /* Coins arrondis */
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
-          cursor: pointer; /* Pointeur "main" */
-          transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Effet de transition */
-          display: block; /* Permet un centrage */
-          margin: 20px auto; /* Centre horizontalement */
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .btn-valider:hover {
+            background-color: #0056b3;
+        }
+
+        .dropdown-container {
+          margin: 20px 0;
+          font-family: Arial, sans-serif;
+          display: flex;
+          flex-direction: column;
+          align-items: center; /* Centre horizontalement le contenu */
       }
       
-      .btn-valider:hover {
-          background-color: #0056b3; /* Couleur plus sombre au survol */
-          box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Ombre plus forte */
+      .dropdown-container label {
+          margin-bottom: 3em;
+          font-size: 16px;
+          color: #333;
+          text-align: center;
       }
       
-      .btn-valider:active {
-          background-color: #003f8a; /* Couleur encore plus sombre au clic */
-          box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2); /* Effet d'enfoncement */
+      .dropdown-button-wrapper {
+          display: flex; /* Active le mode flexbox */
+          gap: 10px; /* Espacement entre les éléments */
+          align-items: center; /* Aligne verticalement */
+          justify-content: center; /* Centre les éléments horizontalement */
+          margin-top: 2em;
       }
-      
+
+
+        
 
 
      
@@ -291,28 +299,26 @@ $password = "philly-Congo-bry4nt";
 </head>
 <body>
     <div class="dropdown-container">
+    <form method="POST" action="">
         <label for="offres">Mes offres :</label>
-        <form method="POST" action="">
-        <div class="dropdown-container">
-            <label for="offres">Mes offres :</label>
-           <select id="offres" name="offre" class="dropdown">
-            <option value="" disabled selected>Choisissez une offre</option>
-            <?php
-                $offres_pro = $dbh->prepare("SELECT * FROM tripenarvor._offre WHERE professionnel = :code_compte");
-                $offres_pro->bindParam(':code_compte', $compte['code_compte']);
-                $offres_pro->execute();
-                $offres = $offres_pro->fetchAll(PDO::FETCH_ASSOC);
+        <div class="dropdown-button-wrapper">
+            <select id="offres" name="offre" class="dropdown">
+                <option value="" disabled selected>Choisissez une offre</option>
+                <?php
+                    $offres_pro = $dbh->prepare("SELECT * FROM tripenarvor._offre WHERE professionnel = :code_compte");
+                    $offres_pro->bindParam(':code_compte', $compte['code_compte']);
+                    $offres_pro->execute();
+                    $offres = $offres_pro->fetchAll(PDO::FETCH_ASSOC);
 
-            foreach ($offres as $offre){
-                ?>
-                <option value="<?php echo $offre['code_offre'];?>"><?php echo $offre['titre_offre'];?></option>
-            <?php }?>
-        </select>  
-        <button type="submit" class="btn-valider">Valider</button>
-
+                    foreach ($offres as $offre) {
+                        ?>
+                        <option value="<?php echo $offre['code_offre'];?>"><?php echo $offre['titre_offre'];?></option>
+                    <?php } ?>
+            </select>
+            <button type="submit" class="btn-valider">Valider</button>
         </div>
-    </form>  
-
+    </form>
+</div>
 
 
 
