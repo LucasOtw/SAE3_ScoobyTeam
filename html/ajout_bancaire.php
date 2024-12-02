@@ -10,7 +10,7 @@ session_start();
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header>
+<header class="header_pro">
     <div class="logo">
         <img src="images/logo_blanc_pro.png" alt="PACT Logo">
     </div>
@@ -142,7 +142,7 @@ $pdo = null;
     </div>
 </form>
 </main>
-<footer class="footer">
+<footer class="footer footer_pro">
     <div class="footer-links">
         <div class="logo">
             <img src="images/logoBlanc.png" alt="Logo PACT">

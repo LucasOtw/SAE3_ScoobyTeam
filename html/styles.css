@@ -281,6 +281,24 @@ footer {
     }
 }
 
+header.header-pc {
+    display: block;
+}
+
+header.header-tel {
+    display: none;
+}
+
+@media (max-width: 429px) {
+    header.header-pc {
+        display: none;
+    }
+
+    header.header-tel {
+        display: block;
+    }
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -1093,4 +1111,312 @@ main.main-ajout-bancaire .image {
     max-width: 100%; /* L'image ne dépasse jamais la largeur de son conteneur */
     height: auto; /* Maintient le ratio d'aspect de l'image */
 }
+
+
+                                        /*****************************************************
+                                                      * page connexion compte membre *
+                                        *****************************************************/
+.connexion_membre_ravi {
+    display: none;
+}
+
+main.connexion_membre_main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main.connexion_membre_main .connexion_membre_container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 150%;
+    margin-top: 15vh;
+}
+
+main.connexion_membre_main .connexion_membre_form-container {
+    width: 35vw;
+    margin-right: 10em;
+    margin-top: 5em;
+}
+
+main.connexion_membre_main fieldset {
+    border: 1px solid rgba(0,0,0,0);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding-top: 0;
+    position: relative;
+}
+
+main.connexion_membre_main legend {
+    font-size: 14px;
+    padding: 0 10px;
+    color: #333;
+    background-color: white;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    display: none;
+}
+
+main.connexion_membre_main fieldset:focus-within legend {
+    display: inline;
+    transition: ease-out 0.3s;
+}
+
+main.connexion_membre_main fieldset input::placeholder {
+    padding-left: 10px;
+}
+
+main.connexion_membre_main fieldset input:focus::placeholder {
+    color: rgba(0, 0, 0, 0);
+}
+
+main.connexion_membre_main hr {
+    display: none;
+}
+
+main.connexion_membre_main #remember {
+    accent-color: var(--vert-clair);
+}
+
+main.connexion_membre_main .connexion_membre_remember-group>div {
+    display: flex;
+    flex-direction: row;
+}
+
+main.connexion_membre_main input[type="email"],
+main.connexion_membre_main input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+main.connexion_membre_main button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--vert-clair);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+main.connexion_membre_main button:hover {
+    background-color: var(--vert-fonce);
+}
+
+main.connexion_membre_main h2 {
+    margin-bottom: 10px;
+}
+
+main.connexion_membre_main .connexion_membre_h2_p p {
+    margin-bottom: 30px;
+}
+
+main.connexion_membre_main .connexion_membre_btn_connecter_pas_de_compte .pas_de_compte a {
+    text-decoration: none;
+    color: var(--vert-clair);
+    font-weight: bold;
+
+    margin-left: 5px;
+}
+
+main.connexion_membre_main .connexion_membre_input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+main.connexion_membre_main .connexion_membre_remember-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+main.connexion_membre_main .connexion_membre_lab_enreg {
+    margin: 0;
+}
+
+main.connexion_membre_main .connexion_membre_form-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main.connexion_membre_main .connexion_membre_remember-group input {
+    margin-right: 5px;
+}
+
+main.connexion_membre_main .connexion_membre_additional-links {
+    display: flex;
+    justify-content: space-between;
+}
+
+main.connexion_membre_main .connexion_membre_additional-links p {
+    /* width: 150%; */
+    padding: 0;
+}
+
+main.connexion_membre_main .pas_de_compte {
+    text-align: left;
+}
+
+main.connexion_membre_main .compte_membre {
+    text-align: right;
+}
+
+main.connexion_membre_main .connexion_membre_form-container>form>div.connexion_membre_remember-group>a {
+    color: var(--vert-clair);
+    text-decoration: none;
+}
+
+main.connexion_membre_main .connexion_membre_image-container {
+    width: 30%;
+    height: auto;
+    max-width: 400px;
+    flex-shrink: 0;
+}
+
+main.connexion_membre_main .connexion_membre_image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 100%;
+}
+
+main.connexion_membre_main .connexion_membre_liens_connexion_inscription .connexion_membre_btn_connecter_pas_de_compte {
+    display: flex;
+    flex-direction: column;
+}
+main.connexion_membre_main .connexion_membre_liens_connexion_inscription {
+    display: flex;
+    justify-content: space-between;
+}
+main.connexion_membre_main .connexion_membre_liens_connexion_inscription .connexion_compte_pro a{
+    text-decoration: none;
+    color: var(--orange);
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+main.connexion_membre_main fieldset p.erreur-formulaire-connexion-membre{
+    color: #d70808;
+    margin-bottom: 0;
+    font-size: 12px;
+    display: none;
+}
+
+/* Empêche l'image de dépasser sur les grands écrans */
+@media (max-width: 768px) {
+    main.connexion_membre_main .connexion_membre_image-container {
+        display: none;
+        /* Cache l'image sur les petits écrans */
+    }
+
+    main.connexion_membre_main .connexion_membre_container {
+        justify-content: center;
+        margin-top: auto;
+        /* Centre le formulaire quand l'image est cachée */
+    }
+
+    main.connexion_membre_main {
+        height: auto;
+        /* Ajuste la hauteur du main */
+        padding: 20px;
+        /* Ajoute du padding pour éviter que le contenu touche le bord */
+    }
+
+    main.connexion_membre_main .connexion_membre_form-container {
+        width: 65vw;
+    }
+}
+
+@media (max-width: 431px) {
+
+    main.connexion_membre_main .connexion_membre_h2_p {
+        display: none;
+    }
+
+    main.connexion_membre_main .input-icon-img {
+        display: inline-block;
+    }
+
+    main.connexion_membre_main .connexion_membre_ravi {
+        display: block;
+
+        text-align: center;
+        margin: 5vh auto;
+    }
+
+    main.connexion_membre_main legend {
+        left: 25px;
+        ;
+    }
+
+    main.connexion_membre_main input[type="email"],
+    main.connexion_membre_main input[type="password"] {
+        border-radius: 100px;
+        height: 7vh;
+    }
+
+
+    main.connexion_membre_main button {
+        border-radius: 100px;
+        position: absolute;
+        bottom: 30px;
+        width: 65vw;
+        display: flex;
+        justify-content:center;
+    }
+
+    main.connexion_membre_main fieldset {
+        border-radius: 100px;
+    }
+
+    main.connexion_membre_main .connexion_membre_deja_compte {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 40px;
+    }
+
+    body>main>div>div.connexion_membre_form-section>form>fieldset:nth-child(9) {
+        margin-bottom: 0;
+    }
+
+    main.connexion_membre_main fieldset:nth-child(2) {
+        margin-bottom: 15vh;
+    }
+
+    main.connexion_membre_main .connexion_membre_btn_connecter_pas_de_compte {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    main.connexion_membre_main .connexion_membre_btn_connecter_pas_de_compte p {
+        margin-bottom: 10px;
+    }
+
+    main.connexion_membre_main .connexion_membre_btn_connecter_pas_de_compte {
+        flex-direction: column-reverse;
+    }
+
+    main.connexion_membre_main hr {
+        display: block;
+    }
+
+    main.connexion_membre_main .connexion_membre_form-container {
+        margin-right:0;
+    }
+    main.connexion_membre_main .connexion_compte_pro {
+        display:none;
+    }
+    main.connexion_membre_main .connexion_membre_liens_connexion_inscription{
+        justify-content:center;
+    }
+}
+
 

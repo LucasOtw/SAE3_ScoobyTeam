@@ -16,7 +16,7 @@ session_start();
 </head>
 
 <body>
-    <header class="header-pc">
+    <header class="header_pc header_membre">
         <div class="logo-pc">
             <img src="images/logoBlanc.png" alt="PACT Logo">
         </div>
@@ -29,13 +29,13 @@ session_start();
             </ul>
         </nav>
     </header>
-    <header class="header-tel">
+    <header class="header-tel header_membre">
         <div class="logo-tel">
             <img src="images/LogoCouleur.png" alt="PACT Logo">
         </div>
-        
     </header>
         <h3 class="connexion_membre_ravi">Ravi de vous revoir !</h3>
+        
     <main class="connexion_membre_main">
         <div class="connexion_membre_container">
             <div class="connexion_membre_form-container">
