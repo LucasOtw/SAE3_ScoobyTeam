@@ -507,6 +507,8 @@ function tempsEcouleDepuisPublication($offre){
                     $dataStatusEng = "xx";
                     $dataStatusFr = "xx";
                 }
+
+                echo $dataStatusEng.' / '.$dataStatusFr;
                 
 
                 if ($type_offre == 'visite' || $type_offre == 'spectacle')
