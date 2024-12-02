@@ -216,7 +216,7 @@ include('recupInfosCompte.php');
 
 
         
-    </style>*/
+    </style>/*
 </head>
 <body>
     <div class="dropdown-container">
