@@ -452,18 +452,13 @@ function tempsEcouleDepuisPublication($offre){
                 
                 // $dataStatusEng = "closed";
                 // $dataStatusFr = "Fermé";
-
-                echo "<pre>";
-                var_dump($horaire);
-                echo "</pre>";
-                echo $date->format("Y-m-d ");
                 
                 if (!empty($horaire))
                 {
                     
                     // Exemple d'horaires d'ouverture et de fermeture (remplacer par vos valeurs réelles)
-                    $ouverture = new DateTime("1970-01-01 " . $horaire["ouverture"]);  
-                    $fermeture = new DateTime("1970-01-01 " . $horaire["fermeture"]);  
+                    $ouverture = new DateTime($date->format("Y-m-d ") . $horaire["ouverture"]);  
+                    $fermeture = new DateTime($date->format("Y-m-d ") . $horaire["fermeture"]);  
                     
                     // Comparer les horaires
                     if ($ouverture <= $date && $fermeture > $date) {
