@@ -55,6 +55,8 @@ if($monComptePro['code_compte_bancaire']){
 
 // si le formulaire est envoyé...
 
+echo "test";
+
 if(isset($_POST['valider'])){
     $code_iban = $_POST['IBAN'];
     $code_BIC = $_POST['BIC'];
