@@ -259,3 +259,242 @@ footer {
     margin: 0;
     padding: 0;
 }
+
+                                        /*****************************************************
+                                                    * Code pour la connexion pro *
+                                        *****************************************************/
+
+
+
+main.connexion_pro_main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 40px);
+    
+}
+
+.connexion_pro_container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 150%;
+}
+
+main.connexion_pro_main>div>div.connexion_pro_form-container {
+    width: 35vw;
+    margin-top: 5em;
+    margin-right: 10em;
+}
+
+
+.connexion_pro_main fieldset {
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-top: 0;
+   
+}
+
+
+
+
+.connexion_pro_main legend {
+    font-size: 14px;
+    padding: 0 10px;
+    color: #333;
+    background-color: white;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+
+    display: none;
+
+}
+
+.connexion_pro_main fieldset:focus-within legend {
+    display: inline;
+    transition: ease-out 0.3s;
+
+}
+
+.connexion_pro_main fieldset input::placeholder {
+    padding-left: 10px;
+}
+
+.connexion_pro_main fieldset input:focus::placeholder {
+    color: rgba(0, 0, 0, 0);
+}
+
+.connexion_pro_main #remember {
+    accent-color: #df7519;
+}
+
+main.connexion_pro_main>div>div.connexion_pro_form-container>form>div.connexion_pro_remember-group>div {
+    display: flex;
+    flex-direction: row;
+}
+
+.connexion_pro_main input[type="email"],
+.connexion_pro_main input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+
+.connexion_pro_main button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--orange);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.connexion_pro_main button:hover {
+    background-color: #e65c00;
+}
+
+
+.connexion_pro_main h2 {
+    margin-bottom: 10px;
+}
+
+.connexion_pro_main p {
+    margin-bottom: 30px;
+}
+
+
+.connexion_pro_input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.connexion_pro_remember-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.connexion_pro_lab_enreg {
+    margin: 0;
+}
+
+.connexion_pro_form-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.connexion_pro_remember-group input {
+    margin-right: 5px;
+}
+
+
+.connexion_pro_additional-links {
+    /* margin-top: 20px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.connexion_pro_main .pas_de_compte {
+    text-align: left;
+}
+
+.connexion_pro_main .compte_membre {
+    text-align: right;
+}
+
+.connexion_pro_form-container>form>div.connexion_pro_remember-group>a {
+    color: var(--orange);
+    text-decoration: none;
+}
+
+.connexion_pro_additional-links a {
+    text-decoration: none;
+    color: var(--orange);
+    margin-left: 5px;
+
+}
+
+.connexion_pro_image-container {
+    width: 400px;
+    height: auto;
+}
+
+.connexion_pro_image-container img {
+    width: 20em;
+    height: auto;
+    object-fit: cover;
+}
+
+
+.connexion_pro_image-container {
+    width: 30%;
+    height: auto;
+    max-width: 400px;
+    flex-shrink: 0;
+}
+
+.connexion_pro_image-container img {
+    width: 126%;
+    height: auto;
+    object-fit: cover;
+    max-height: 100%;
+    margin-left: -4em;
+}
+
+
+@media (max-width: 768px) {
+    .connexion_pro_image-container {
+        display: none;
+    }
+
+    .connexion_pro_container {
+        justify-content: center;
+    }
+
+    main.connexion_pro_main {
+        height: auto;
+    }
+
+    .connexion_pro_form-container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .connexion_pro_main button {
+        font-size: 14px;
+    }
+
+    .connexion_pro_main h2 {
+        font-size: 20px;
+    }
+}
+
+.connexion_pro_main fieldset p.erreur-formulaire-connexion-pro {
+    color: #d70808;
+    margin-bottom: 0;
+    font-size: 12px;
+    display: none;
+}
+
+.connexion_pro_main span.pas_de_compte a {
+    font-weight: bold;
+}
+
+.connexion_pro_main p.compte_membre a {
+    color: var(--vert-clair);
+    font-weight: bold;
+}
+
+
