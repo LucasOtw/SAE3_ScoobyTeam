@@ -189,8 +189,6 @@ if(isset($_POST['valider'])){
             echo $date_offre;
         }
     }
-} else {
-    echo "J'aime les enfants";
 }
 
 
