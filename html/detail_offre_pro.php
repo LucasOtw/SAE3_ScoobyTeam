@@ -302,7 +302,7 @@
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     
         // Envoie l'état (1 pour "En Ligne", 0 pour "Hors Ligne")
-        xhr.send("en_ligne=" + (isOnline ? 1 : 0) + "&code_offre=" + $details_offre['code_offre']);
+        xhr.send("en_ligne=" + (isOnline ? 1 : 0) + "&code_offre=" + encodeURIComponent($details_offre['code_offre']));
     
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
