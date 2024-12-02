@@ -233,6 +233,7 @@ include('recupInfosCompte.php');
             font-size: 16px;
             font-style: italic;
             color: #007bff;
+            margin-top: 5em;
         }
         
         .thank-you p {
