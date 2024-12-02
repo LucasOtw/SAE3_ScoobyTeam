@@ -3,8 +3,10 @@
 ob_start();
 session_start();
 
+include("recupInfosCompte.php");
+
 if(isset($_POST['changePhoto'])){
-    echo "zadefrgtyhui";
+    //
 }
 
 ?>
