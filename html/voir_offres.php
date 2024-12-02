@@ -554,7 +554,7 @@ function tempsEcouleDepuisPublication($offre){
                             <h2><?php echo $offre["titre_offre"] ?></h2>
                             <p><?php echo $villeOffre["ville"] ?></p>
                             <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
-                            <p><?php echo $offre["note_moyenne"]; ?></p>
+                            <p>⭐<?php echo $offre["note_moyenne"]; ?></p>
                             <p><?php echo $offre["tarif"]; ?>€</p>
                             <p><?php if ($type_offre !='spectacle') { echo $dataStatusFr; } ?></p>
                             <?php if (($type_offre == "visite" || $type_offre == "spectacle") && !empty($event['date_'.$type_offre])) { ?> <p><?php echo $event['date_'.$type_offre].' à '.$event['heure_'.$type_offre]; ?></p> <?php } ?>
