@@ -189,6 +189,17 @@ include('recupInfosCompte.php');
             <option value="offre3">Offre 3 - Titre de l'offre</option>
         </select>
     </div>
+
+
+    <?php
+    // Définir le fuseau horaire (optionnel, pour s'assurer de la bonne heure)
+    date_default_timezone_set('Europe/Paris');
+    
+    // Récupérer la date du jour au format souhaité
+    $dateDuJour = date('d/m/Y');
+    ?>
+
+    
      <div class="facture-container" id="facture-container">
         <header class="facture-header">
             <div class="logo">
@@ -196,7 +207,7 @@ include('recupInfosCompte.php');
             </div>
             <div class="facture-title">
                 <h1>Facture</h1>
-                <p>Le 30 Novembre 2024</p>
+                <p><?php echo $dateDuJour['date']; ?></p>
             </div>
         </header>
 
