@@ -1,3 +1,14 @@
+<?php
+
+ob_start();
+session_start();
+
+if(isset($_POST['profilte-photo'])){
+    echo "zadefrgtyhui";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
