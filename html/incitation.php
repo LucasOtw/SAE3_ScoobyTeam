@@ -16,10 +16,16 @@
         <a href="voir_offres.php"><img src="images/croix_fermer.png" class="skip"></a>
       </div>
     </header>
-    <main class="incitation_content">
-      <div class="incitation_image-container">
+    <style>
+    .incitation_content {
+        margin-left: 30px;
+    }
+</style>
+
+<main class="incitation_content">
+    <div class="incitation_image-container">
         <img src="images/cadeau.png" alt="Icône cadeau" class="image">
-      </div>
+    </div>
       <h2 class="incitation_main-title">Envie de publier une offre ?</h2>
       <p class="incitation_subtitle">Passez à la vitesse supérieure avec un compte Professionnel</p>
       <div class="incitation_image-container">
