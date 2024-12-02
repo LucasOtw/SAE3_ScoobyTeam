@@ -257,7 +257,7 @@ include('recupInfosCompte.php');
            <select id="offres" name="offre" class="dropdown">
             <option value="" disabled selected>Choisissez une offre</option>
             <?php
-                $offres_pro = $dbh->prepare("SELECT * FROM tripenarvor._offre WHERE professionel = :code_compte");
+                $offres_pro = $dbh->prepare("SELECT * FROM tripenarvor._offre WHERE professionnel = :code_compte");
                 $offres_pro->bindParam(':code_compte', $compte['code_compte']);
                 $offres_pro->execute();
                 $offres_pro->fetchAll(PDO::FETCH_NUM);
