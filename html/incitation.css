@@ -7,7 +7,7 @@
 }
 
 /* Header styles */
-.incitation_container{
+.incitation_header {
   display: flex;
   justify-content: space-between; /* Espace entre le logo et le bouton */
   align-items: center;
@@ -68,7 +68,7 @@
   margin-top: 5em;
 }
 
-.incitation_subtitle {
+.subtitle {
   font-size: 16px;
   color: #666;
   margin-bottom: 3em;
