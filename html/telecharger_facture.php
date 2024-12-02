@@ -151,7 +151,7 @@ session_start();
             </div>
             <div class="facture-title">
                 <h1>Facture N°12345</h1>
-                <p>Ville, le 30 Novembre 2024</p>
+                <p>Le 30 Novembre 2024</p>
             </div>
         </header>
 
