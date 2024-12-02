@@ -281,6 +281,7 @@ $password = "philly-Congo-bry4nt";
           gap: 10px; /* Espacement entre les éléments */
           align-items: center; /* Aligne verticalement */
           justify-content: center; /* Centre les éléments horizontalement */
+          margin-top: 2em;
       }
 
 
