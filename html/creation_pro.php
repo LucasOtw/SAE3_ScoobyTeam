@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S'inscrire</title>
+    <title>Création Profil</title>
     <link rel="icon" type="image/png" href="images/logoPin.png" width="16px" height="32px">
     <link rel="stylesheet" href="styles.css">
 </head>
