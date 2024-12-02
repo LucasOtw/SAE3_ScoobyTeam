@@ -1710,8 +1710,7 @@ main.connexion_membre_main fieldset p.erreur-formulaire-connexion-membre{
                                                       * page connexion compte membre *
                                         *****************************************************/
 
-                                        
-
+/* Profile Section */
 .main-consulter-compte-pro .profile {
     text-align: center;
     margin-bottom: 30px;
@@ -1752,14 +1751,14 @@ fieldset[disabled] {
 }
 
 /* Tabs Section */
-.main-consulter-compte-pro .consulter_compte_pro_tabs{
+.main-consulter-compte-pro .tabs {
     display: flex;
     justify-content: center;
     margin: 30px 0;
     text-align: center;
 }
 
-.main-consulter-compte-pro .consulter_compte_pro_tabs ul {
+.main-consulter-compte-pro .tabs ul {
     display: flex;
     padding: 0;
     list-style: none;
@@ -1770,13 +1769,13 @@ fieldset[disabled] {
     min-width: 40vw;
 }
 
-.main-consulter-compte-pro .consulter_compte_pro_tabs ul li {
+.main-consulter-compte-pro .tabs ul li {
     display: flex;
     margin: 0 20px;
     text-decoration: none;
 }
 
-.main-consulter-compte-pro .consulter_compte_pro_tabs ul li a {
+.main-consulter-compte-pro .tabs ul li a {
     width: calc(60vw/3);
     font-size: 20px;
     padding: 10px 20px;
@@ -1787,7 +1786,7 @@ fieldset[disabled] {
     text-decoration: none;
 }
 
-.main-consulter-compte-pro .consulter_compte_pro_tabs ul li a.active {
+.main-consulter-compte-pro .tabs ul li a.active {
     border-color: #ff6600;
     text-decoration: none;
 }
