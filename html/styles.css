@@ -3250,7 +3250,7 @@ main.creation_compte_membre .input-icon-img {
     /* Ajustez la taille */
 }
 
-.creation_compte_membre_bienvenue {
+main.creation_compte_membre .creation_compte_membre_bienvenue {
     display: none;
 }
 
@@ -3259,7 +3259,7 @@ main.creation_compte_membre .input-icon-img {
         display: inline-block;
     }
 
-    .creation_compte_membre_bienvenue {
+    main.creation_compte_membre .creation_compte_membre_bienvenue {
         display: flex;
         justify-content: center;
     }
