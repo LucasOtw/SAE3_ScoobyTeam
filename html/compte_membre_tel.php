@@ -65,7 +65,7 @@
         <a href="r
                 <?php
                 if (isset($_SESSION["membre"]) || !empty($_SESSION["membre"])) {
-                    echo "compte_membre_tel.php.php";
+                    echo "compte_membre_tel.php";
                 } else {
                     echo "connexion_membre.php";
                 }
