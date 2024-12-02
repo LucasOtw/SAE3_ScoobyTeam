@@ -298,7 +298,7 @@
     // Fonction AJAX pour mettre à jour l'état de l'offre
     function updateOfferState(isOnline) {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "update_offer_status.php", true);
+        xhr.open("POST", "https://scooby-team.ventsdouest.dev/update_offer_status.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
         var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
