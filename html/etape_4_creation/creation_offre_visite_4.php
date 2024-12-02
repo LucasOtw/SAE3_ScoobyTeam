@@ -353,7 +353,7 @@ if(isset($_POST['valider'])){
                 
                 // Préparation de la requête
                 $ajoutVisite = $dbh->prepare("
-                    INSERT INTO tripenarvor._offre_restauration 
+                    INSERT INTO tripenarvor._offre_visite 
                     (code_offre, duree, visite, date_visite, heure_visite) 
                     VALUES (:code_offre, :duree, :visite, :date_visite, :heure_visite)
                 ");
