@@ -32,6 +32,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $resume = htmlspecialchars($_POST['resume'] ?? '');
     $description = htmlspecialchars($_POST['description'] ?? '');
     // tarif
+    $date_visite = $_POST['date_visite'];
     $tarif = $_POST['_tarif'];
     $duree = $_POST['duree'];
     $heure_visite = $_POST['heure_visite'];
@@ -82,6 +83,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             foreach($erreurs as $erreur){
                 echo $erreur;
             }
+            echo "HA";
         } else {
             // si il n'y a aucune erreur, on peut stocker les données.
             echo "<pre>";
@@ -96,6 +98,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $tab_offre['resume'] = $resume;
             $tab_offre['description'] = $description;
             $tab_offre['tarif'] = $tarif;
+            $tab_offre['date_visite'] = $date_visite;
             $tab_offre['duree'] = $duree;
             $tab_offre['heure_visite'] = $heure_visite;
 
@@ -219,7 +222,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     <div class="col">
                         <fieldset>
                             <legend>Nom de la visite *</legend>
-                            <input type="text" id="nom_offre" name="nom_offre" placeholder="Nom de la visite *">
+                            <input type="text" id="nom_offre" name="nom_offre" placeholder="Nom de la visite *" required>
                         </fieldset>
                     </div>
                     <div class="col">
@@ -235,7 +238,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     <div class="col">
                         <fieldset>
                             <legend>Adresse Postale *</legend>
-                            <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *">
+                            <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -253,7 +256,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     <div class="col">
                         <fieldset>
                             <legend>Ville *</legend>
-                            <input type="text" id="ville" name="ville" placeholder="Ville *">
+                            <input type="text" id="ville" name="ville" placeholder="Ville *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -262,7 +265,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     <div class="col">
                         <fieldset>
                             <legend>Code Postal *</legend>
-                            <input type="text" id="code_postal" name="code_postal" placeholder="Code Postal *">
+                            <input type="text" id="code_postal" name="code_postal" placeholder="Code Postal *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -298,6 +301,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <!-- Durée de la visite -->
                 <div class="row">
                     <div class="col">
+                        <fieldset>
+                            <legend style="display:block;">Date de la visite</legend>
+                            <input type="date" name="date_visite">
+                        </fieldset>
+                    </div>
+                    <div class="col">
                         <fieldset class="duree">
                             <legend style="display:block;">Durée de la visite</legend>
                             <input type="time" id="duree" name="duree" placeholder="Durée de la visite">
@@ -322,7 +331,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                                 placeholder="Français, Anglais, ..." 
                                 pattern="^\s*([A-Za-zÀ-ÿ]+(\s+[A-Za-zÀ-ÿ]+)?)(\s*,\s*([A-Za-zÀ-ÿ]+(\s+[A-Za-zÀ-ÿ]+)?))*\s*$" 
                                 title="Entrez une liste de langues séparées par des virgules, ex. Français, Anglais"
-                                required
                             >
                         </fieldset>
                     </div>
@@ -334,7 +342,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     <div class="col">
                         <fieldset>
                             <legend>Résumé</legend>
-                            <input type="text" id="resume" name="resume" placeholder="Résumé">
+                            <input type="text" id="resume" name="resume" placeholder="Résumé" required>
                         </fieldset>
                     </div>
                 </div>
@@ -344,7 +352,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     <div class="col">
                         <fieldset>
                             <legend>Description</legend>
-                            <input type="text" id="description" name="description" placeholder="Description">
+                            <input type="text" id="description" name="description" placeholder="Description" required>
                         </fieldset>
                     </div>
                 </div>

@@ -465,6 +465,10 @@ if(isset($_POST['valider'])){
               <a href="../mes_offres.php" class="back-link">Retourner à "Mes offres"</a>
               <a href="../télécharger_facture.php" class="back-link">Télécharger ma facture</a>
           </div>
+          <div class="image-text">
+                <img src="../images/bonhomme_orange.png" alt="Image description" class="image">
+                <p class="text">Voici un texte à côté de l'image</p>
+          </div>
      </div>
 
 

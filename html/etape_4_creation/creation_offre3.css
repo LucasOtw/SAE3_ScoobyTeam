@@ -365,19 +365,35 @@ footer {
     display: flex;
     justify-content: center;
     gap: 20px; /* Espace entre les boutons */
-    width: 100%; /* Assure que la zone de boutons occupe toute la largeur */
 }
 
 .back-link {
     padding: 10px 20px;
     text-decoration: none;
-    background-color: #4CAF50;
+    background-color: #F28322;
     color: white;
     border-radius: 5px;
     text-align: center;
 }
 
 .back-link:hover {
-    background-color: #45a049;
+    background-color: #F28322;
 }
 
+.image-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espace entre l'image et le texte */
+    margin-top: 20px; /* Espacement entre les boutons et cette section */
+}
+
+.image {
+    width: 50px; /* Taille de l'image */
+    height: 50px;
+}
+
+.text {
+    font-size: 14px;
+    color: #333;
+}

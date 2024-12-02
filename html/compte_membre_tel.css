@@ -215,3 +215,8 @@ nav.nav-bar {
         align-items: center;
         margin: 10px auto;
     }
+    
+    a:visited {
+      color: inherit;
+    }
+}
