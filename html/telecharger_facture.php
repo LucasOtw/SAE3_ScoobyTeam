@@ -268,11 +268,6 @@ include('recupInfosCompte.php');
                 <p>TVA 20%: 26€</p>
                 <p>Total TTC: 156€</p>
             </div>
-            <div class="signature">
-                <p>Date d'échéance: 30 Décembre 2024</p>
-                <p>Signature :</p>
-                <div class="signature-line"></div>
-            </div>
         </div>
 
         
