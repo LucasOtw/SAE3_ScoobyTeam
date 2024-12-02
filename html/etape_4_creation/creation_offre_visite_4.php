@@ -268,6 +268,42 @@ if(isset($_POST['valider'])){
             }
 
             // on crée un tableau pour stocker les données dynamiquement
+
+            $mon_offre = [
+                'titre_offre' => $_SESSION['crea_offre']['titre_offre'],
+                'date_publication' => $date_offre,
+                'date_derniere_modif' => $date_offre,
+                '_resume' => $_SESSION['crea_offre']['resume'],
+                '_description' => $_SESSION['crea_offre']['description'],
+                'note_moyenne' => null,
+                'tarif' => $_SESSION['crea_offre']['tarif'],
+                'en_ligne' => false,
+                'nb_blacklister' => 0,
+                'code_adresse' => $code_adresse,
+                'professionnel' => $_SESSION['pro']['code_compte'],
+                'nom_type' => $champ_type_offre,
+            ];
+
+            if(isset($_SESSION['crea_offre']['lien']) && !empty($_SESSION['crea_offre']['lien'])){
+                $mon_offre['site_web'] = $_SESSION['crea_offre']['lien'];
+            }
+            if(isset($_SESSION['crea_offre']['accessibilite']) && !empty($_SESSION['crea_offre']['accessibilite'])){
+                $mon_offre['accessibilite'] = $_SESSION['crea_offre']['accessibilite'];
+            }
+
+            if(isset($_SESSION['crea_offre3']['option']) && !empty($_SESSION['crea_offre3']['option'])){
+                if(trim($_SESSION['crea_offre3']['option']) == "en_relief"){
+                    $mon_offre['option_en_relief'] = $_SESSION['ajoutOption'];
+                } else if (trim($_SESSION['crea_offre3']['option']) == "a_la_une"){
+                    $mon_offre['option_a_la_une'] = $_SESSION['ajoutOption'];
+                }
+            }
+
+            $mon_offre = array_merge($mon_offre,$code_horaire);
+
+            echo "<pre>";
+            var_dump($mon_offre);
+            echo "</pre>";
         }
     }
 }

@@ -927,8 +927,7 @@ input#btn-poster-avis {
     text-align: center;
     width: 100%;
     max-width: 300px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
+    
 }
 
            
@@ -946,6 +945,9 @@ input#btn-poster-avis {
         color: var(--vert-clair);
         outline: none;
         font-size: 17px;
+        display: flex;
+        justify-content: flex-end;
+        
     }
 
     .Detail_offre_ouverture_global {

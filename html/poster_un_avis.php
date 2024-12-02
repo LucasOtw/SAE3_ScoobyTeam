@@ -49,11 +49,11 @@ echo "</pre>";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poster un avis</title>
-    <link rel="stylesheet" href="poster_un_avis.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <header class="header-pc">
+    <header class="header-pc header_membre">
         <div class="logo-pc">
             <img src="images/logoBlanc.png" alt="PACT Logo">
         </div>
@@ -215,7 +215,7 @@ echo "</pre>";
     ?>
                     
     
-    <footer class="footer">
+    <footer class="footer footer_membre">
         <div class="newsletter">
             <div class="newsletter-content">
                 <h2>Inscrivez-vous à notre Newsletter</h2>

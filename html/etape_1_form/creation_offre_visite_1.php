@@ -101,6 +101,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $tab_offre['complementAdresse'] = $complementAdresse;
             $tab_offre['lien'] = $lien;
             $tab_offre['accessibilite'] = $accessibilite;
+            $tab_offre['langues'] = $_POST['langues'];
 
             // Récupération des fichiers (photos) - si plusieurs fichiers sont envoyés
             if (isset($_FILES['photos']) && !empty($_FILES['photos']['name'][0])) {
@@ -294,10 +295,27 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
                 <!-- Durée de la visite -->
                 <div class="row">
-                <div class="col">
+                    <div class="col">
                         <fieldset class="duree">
                             <legend style="display:block;">Durée de la visite</legend>
                             <input type="time" id="duree" name="duree" placeholder="Durée de la visite">
+                        </fieldset>
+                    </div>
+                </div>
+
+                <!-- Visite guidée ? -->
+                <div class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend>Langues (Visite guidée)</legend>
+                            <input 
+                                type="text" 
+                                name="langues" 
+                                placeholder="Français, Anglais, ..." 
+                                pattern="^\s*([A-Za-zÀ-ÿ]+(\s+[A-Za-zÀ-ÿ]+)?)(\s*,\s*([A-Za-zÀ-ÿ]+(\s+[A-Za-zÀ-ÿ]+)?))*\s*$" 
+                                title="Entrez une liste de langues séparées par des virgules, ex. Français, Anglais"
+                                required
+                            >
                         </fieldset>
                     </div>
                 </div>
