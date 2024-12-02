@@ -187,6 +187,32 @@ include('recupInfosCompte.php');
             color: #333; /* Texte un peu plus foncé pour le contraste */
         }
 
+        .signature-container {
+        margin-top: 20px;
+        text-align: left;
+        margin-left: 20px;
+        }
+        
+        .signature-container p {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .signature-box {
+            width: 250px;
+            height: 80px;
+            border: 2px dashed #007bff; /* Bordure en pointillés bleus */
+            border-radius: 5px; /* Coins légèrement arrondis */
+            background-color: #f9f9f9; /* Fond léger pour contraster */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999; /* Texte indicatif en gris */
+            font-size: 14px;
+            font-style: italic;
+        }
+
 
 
         
