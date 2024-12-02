@@ -182,7 +182,7 @@ if(isset($_POST['valider'])){
             
                     if ($code_image) {
                         // L'image existe déjà, on peut ignorer ou effectuer une autre action
-                        $id_image[] = $code_image['id_image'];
+                        $id_image[] = $code_image['code_image'];
                     } else {
                         // Insérer l'image si elle n'existe pas
                         $ajout_image->execute([
