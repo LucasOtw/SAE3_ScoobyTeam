@@ -307,7 +307,7 @@
         console.log("Code offre: " + codeOffre);
     
         // Envoie l'état (1 pour "En Ligne", 0 pour "Hors Ligne")
-        xhr.send("en_ligne=" + (isOnline ? 1 : 0) + "&code_offre=" + encodeURIComponent(codeOffre));
+        xhr.send("en_ligne=" + encodeURIComponent((isOnline ? 1 : 0)) + "&code_offre=" + encodeURIComponent(codeOffre));
     
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
