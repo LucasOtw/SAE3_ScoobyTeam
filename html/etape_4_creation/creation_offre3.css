@@ -301,7 +301,15 @@ footer {
     color: rgba(0, 0, 0, 0);
 } 
 
-/* Conteneur global pour centrer uniquement les éléments */
+/* Style pour l'image */
+.success-icon {
+    display: block;
+    margin: 0 auto 20px;
+    width: 100px; /* Taille ajustée pour s'adapter au design */
+    height: auto;
+}
+
+/* Conteneur global pour centrer les éléments */
 .success-message, .back-link {
     display: block;
     text-align: center;
@@ -331,4 +339,3 @@ footer {
     background-color: #007bff;
     color: #fff;
 }
-
