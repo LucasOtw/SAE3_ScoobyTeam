@@ -486,6 +486,8 @@ function tempsEcouleDepuisPublication($offre){
                     } elseif ($ouverture > $date && $fermeture <= $date) {
                         // Si on est avant l'ouverture
                         $interval = $ouverture->diff($date);
+
+                        echo "<br> interval : ".$interval;
                         
                         if (($interval->h < 1) || ($interval->h == 1 && $interval->i == 0)) {
                             // Si l'ouverture est dans moins de 1 heure
