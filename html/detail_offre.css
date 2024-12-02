@@ -948,6 +948,8 @@ input#btn-poster-avis {
         font-size: 17px;
         display: flex;
         justify-content: flex-end;
+        border-radius: 1000px;
+        box-shadow: 0px 2px 10px rgb(156, 156, 156);
     }
 
     .Detail_offre_ouverture_global {
