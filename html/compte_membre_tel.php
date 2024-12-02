@@ -20,18 +20,41 @@
 
         <!-- Profile Section -->
         <section class="profile">
-            <div class="profile-img-container">
-                 <img class="profile-img" src="images/pp.png" alt="Photo de profil">
-                    <form action="/upload" method="POST" enctype="multipart/form-data">
-                         <label for="upload-photo" class="upload-photo-button">
-                         <span class="iconify" data-icon="mdi:camera" data-inline="false"></span>
-                         </label>
-                        <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden>
-                    </form>
-            </div>
-        <h1 class="profile-name">Juliette Martin</h1>
+    <div class="profile-img-container">
+        <img class="profile-img" src="images/pp.png" alt="Photo de profil">
+        <div class="preview-image"></div>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <label for="upload-photo" class="upload-photo-button">
+                <span class="iconify" data-icon="mdi:camera" data-inline="false"></span>
+            </label>
+            <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden>
+        </form>
+    </div>
+    <h1 class="profile-name">Juliette Martin</h1>
      <p class="profile-contact">juliemartin@gmail.com | 07.98.76.54.12</p>
 </section>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const input = document.getElementById('upload-photo');
+    const previewDiv = document.querySelector('.preview-image');
+
+    input.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file && file.type.match('image.*')) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                previewDiv.innerHTML = `<img src="${e.target.result}" alt="Image prévue">`;
+            }
+            
+            reader.readAsDataURL(file);
+        } else {
+            previewDiv.innerHTML = '';
+        }
+    });
+});
+
+</script>
 
 
         <!-- Actions Section -->
