@@ -300,9 +300,11 @@
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "update_offer_status.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
     
         // Envoie l'état (1 pour "En Ligne", 0 pour "Hors Ligne")
-        xhr.send("en_ligne=" + (isOnline ? 1 : 0) + "&code_offre=" + encodeURIComponent($details_offre['code_offre']));
+        xhr.send("en_ligne=" + (isOnline ? 1 : 0) + "&code_offre=" + encodeURIComponent(codeOffre));
     
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
