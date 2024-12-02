@@ -224,10 +224,10 @@ if(isset($_POST['valider'])){
             if($prix_option !== null){
                 // si il y a un prix, il y a une option
                 $nbSemaines_option = $_SESSION['crea_offre3']['duree_option'];
-                $champ_option = "option_".$_SSESSION['crea_offre3']['option'];
+                $champ_option = "option_".$_SESSION['crea_offre3']['option'];
 
                 // Calcul de la date de fin
-                $date_fin = new DataTime($date_offre);
+                $date_fin = new DateTime($date_offre);
                 $date_fin->modify("+{$nbSemaines_options} weeks");
                 $date_fin_option = $date_fin->format('Y-m-d');
 
