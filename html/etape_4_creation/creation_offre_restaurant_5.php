@@ -458,7 +458,7 @@ if(isset($_POST['valider'])){
         <?php
     } else {
         ?>
-       <img src="../verifier.png" alt="Succès" class="success-icon">
+       <img src="../images/verifier.png" alt="Succès" class="success-icon">
        <h1 class="success-message">Votre offre a été créée avec succès !</h1>
        <a href="../mes_offres.php" class="back-link">Retourner à "Mes offres"</a>
 
@@ -471,7 +471,7 @@ if(isset($_POST['valider'])){
     <footer class="footer_pro">   
         <div class="footer-links">
             <div class="logo">
-                <img src="images/logo_blanc_pro.png" alt="PACT Logo">
+                <img src="../images/logo_blanc_pro.png" alt="PACT Logo">
             </div>
             <div class="link-group">
                 <ul>
