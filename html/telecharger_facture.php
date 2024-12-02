@@ -211,9 +211,10 @@ session_start();
             </div>
         </div>
 
-        <!-- Bouton pour télécharger la facture en PDF -->
-        <button id="download-btn">Télécharger en PDF</button>
+        
     </div>
+    <!-- Bouton pour télécharger la facture en PDF -->
+    <button id="download-btn">Télécharger en PDF</button>
 
     <!-- Bibliothèque html2pdf -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
