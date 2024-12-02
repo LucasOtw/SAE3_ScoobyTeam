@@ -70,13 +70,13 @@ session_start();
         
         .facture-title h1 {
             font-size: 24px;
-            color: #333;
+            color: #fff;
             margin: 0;
         }
         
         .facture-title p {
             font-size: 16px;
-            color: #555;
+            color: #fff;
         }
         
         /* Informations entreprise et client */
