@@ -202,7 +202,7 @@ include('recupInfosCompte.php');
         .signature-box {
             width: 250px;
             height: 80px;
-            border: 2px dashed #007bff; /* Bordure en pointillés bleus */
+            border: 2px dashed #9b9b9b;
             border-radius: 5px; /* Coins légèrement arrondis */
             background-color: #f9f9f9; /* Fond léger pour contraster */
             display: flex;
