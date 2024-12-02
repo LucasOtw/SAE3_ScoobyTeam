@@ -325,38 +325,45 @@ if(isset($_POST['valider'])){
                     ]);
                 }
                 // cette offre est une visite
-                if(empty($_SESSION['crea_offre']['duree'])){
+                if (empty($_SESSION['crea_offre']['duree'])) {
                     $duree_visite = null;
                 } else {
-                    $duree_visite = $_SESSION['crea_offre']['duree'] . ":00";
-                }
-
-                if(empty($_SESSION['crea_offre']['date_visite'])){
-                    $date_visite = null;
-                } else {
-                    $date_visite = $_SESSION['crea_offre']['date_visite'];
-                    $date_visite = DateTime::createFromFormat('Y-m-d', $date_visite);
-                    $date_visite = $date_visite->format('Y-m-d');
+                    $duree_visite = $_SESSION['crea_offre']['duree'] . ":00"; // Format HH:mm:ss
                 }
                 
-                if(empty($_SESSION['crea_offre']['langues'])){
+                if (empty($_SESSION['crea_offre']['date_visite'])) {
+                    $date_visite = null;
+                } else {
+                    $date_visite = DateTime::createFromFormat('Y-m-d', $_SESSION['crea_offre']['date_visite']);
+                    $date_visite = $date_visite ? $date_visite->format('Y-m-d') : null; // Valide ou null
+                }
+                
+                if (empty($_SESSION['crea_offre']['langues'])) {
                     $visite_guidee = null;
                 } else {
                     $visite_guidee = $_SESSION['crea_offre']['langues'];
                 }
-
-                if(empty($_SESSION['crea_offre']['heure_visite'])){
+                
+                if (empty($_SESSION['crea_offre']['heure_visite'])) {
                     $heure_visite = null;
                 } else {
-                    $heure_visite = $_SESSION['crea_offre']['heure_visite'];
+                    $heure_visite = DateTime::createFromFormat('H:i', $_SESSION['crea_offre']['heure_visite']);
+                    $heure_visite = $heure_visite ? $heure_visite->format('H:i:s') : null; // Format TIME
                 }
-
-                $ajoutVisite = $dbh->prepare("INSERT INTO tripenarvor._offre_restauration VALUES (:code_offre,:duree,:visite,:date_visite,:heure_visite)");
-                $ajoutVisite->bindValue(":code_offre",$id_offre);
-                $ajoutVisite->bindValue(":duree",$duree_visite);
-                $ajoutVisite->bindValue(":visite",$visite_guidee);
-                $ajoutVisite->bindValue(":date_visite",$date_visite);
-                $ajoutVisite->bindValue(":heure_visite",$heure_visite);
+                
+                // Préparation de la requête
+                $ajoutVisite = $dbh->prepare("
+                    INSERT INTO tripenarvor._offre_restauration 
+                    (code_offre, duree, visite, date_visite, heure_visite) 
+                    VALUES (:code_offre, :duree, :visite, :date_visite, :heure_visite)
+                ");
+                
+                $ajoutVisite->bindValue(":code_offre", $id_offre);
+                $ajoutVisite->bindValue(":duree", $duree_visite);
+                $ajoutVisite->bindValue(":visite", $visite_guidee);
+                $ajoutVisite->bindValue(":date_visite", $date_visite);
+                $ajoutVisite->bindValue(":heure_visite", $heure_visite);
+                
                 $ajoutVisite->execute();
 
                 if(isset($_SESSION['crea_offre']['tags']) && is_array($_SESSION['crea_offre']['tags'])){
