@@ -274,7 +274,7 @@ if (isset($_POST['modif_infos'])){
             ?>">
             <img src="images/icones/User icon.png" alt="image de Personne"></a>
     </nav>
-    <footer class="footer_detail_avis">
+    <footer class="footer footer_membre">
         <div class="newsletter">
             <div class="newsletter-content">
                 <h2>Inscrivez-vous à notre Newsletter</h2>
