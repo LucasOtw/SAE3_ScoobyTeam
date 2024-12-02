@@ -195,15 +195,9 @@ include('recupInfosCompte.php');
     // Définir le fuseau horaire (optionnel, pour s'assurer de la bonne heure)
     date_default_timezone_set('Europe/Paris');
     
-    $date = new DateTime();
-
-    // Formatter la date en français
-    $formatter = new IntlDateFormatter(
-    'fr_FR', 
-    IntlDateFormatter::FULL, 
-    IntlDateFormatter::NONE
-    );
-    $formatter->setPattern('dd MMMM yyyy'); // Personnaliser le format
+    // Récupérer la date du jour au format souhaité
+    $dateDuJour = date('d/m/Y');
+    
     ?>
 
     
@@ -214,7 +208,7 @@ include('recupInfosCompte.php');
             </div>
             <div class="facture-title">
                 <h1>Facture</h1>
-                <p><?php echo "La date du jour est : " . $formatter->format($date)?></p>
+                <p><?php echo "La date du jour est : " . $dateDuJour?></p>
             </div>
         </header>
 
