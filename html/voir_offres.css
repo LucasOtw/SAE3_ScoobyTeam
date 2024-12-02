@@ -960,6 +960,7 @@ body.menu-open #overlay {
 
 .toute_les_offres_main .search-select > option{
     all: unset;
+    color: black;
 }
 .toute_les_offres_main .search-select option:hover {
     background-color: transparent; /* Empêche le fond bleu */
