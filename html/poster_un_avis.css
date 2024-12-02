@@ -22,15 +22,18 @@
     font-style: normal;
 }
 
-html, body {
-    height: 100%; /* Important pour que le footer se positionne en bas */
+html,
+body {
+    height: 100%;
+    /* Important pour que le footer se positionne en bas */
 }
 
 body {
     display: flex;
     flex-direction: column;
     font-family: "K2D", sans-serif;
-    min-height: 100vh; /*Pour occuper toute la page*/
+    min-height: 100vh;
+    /*Pour occuper toute la page*/
 }
 
 header.header-pc {
@@ -124,7 +127,8 @@ nav ul li a:hover::before {
 
 .newsletter {
     display: flex;
-    flex-direction: column; /* Stack les éléments sur petits écrans */
+    flex-direction: column;
+    /* Stack les éléments sur petits écrans */
     justify-content: space-between;
     background-color: var(--vert-clair);
     padding: 20px;
@@ -133,24 +137,28 @@ nav ul li a:hover::before {
     margin-top: -130px;
     z-index: 1;
     width: 90%;
-    max-width: 1200px; /* Limite la largeur sur grands écrans */
+    max-width: 1200px;
+    /* Limite la largeur sur grands écrans */
     margin-left: auto;
     margin-right: auto;
 }
 
 .newsletter-content {
     text-align: left;
-    max-width: 100%; /* Ajuste pour petits écrans */
+    max-width: 100%;
+    /* Ajuste pour petits écrans */
 }
 
 .newsletter h2 {
-    font-size: 2rem; /* Taille adaptable */
+    font-size: 2rem;
+    /* Taille adaptable */
     margin-bottom: 10px;
 }
 
 .newsletter-form {
     display: flex;
-    flex-direction: column; /* Colonne sur petits écrans */
+    flex-direction: column;
+    /* Colonne sur petits écrans */
     gap: 10px;
     margin-top: 10px;
 }
@@ -163,7 +171,8 @@ nav ul li a:hover::before {
     cursor: pointer;
 }
 
-.newsletter-form input, .newsletter-form button {
+.newsletter-form input,
+.newsletter-form button {
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -175,7 +184,8 @@ nav ul li a:hover::before {
 
 .newsletter-image img {
     max-height: 100px;
-    width: auto; /* Maintien du ratio de l'image */
+    width: auto;
+    /* Maintien du ratio de l'image */
 }
 
 .footer-links {
@@ -222,15 +232,15 @@ nav ul li a:hover::before {
         flex-direction: row;
         justify-content: space-between;
     }
-    
+
     .newsletter-content {
         max-width: 60%;
     }
-    
+
     .newsletter-form {
         flex-direction: row;
     }
-    
+
     .footer-links {
         flex-direction: row;
         justify-content: space-between;
@@ -245,7 +255,8 @@ nav ul li a:hover::before {
 
 @media (min-width: 1024px) {
     nav ul {
-        gap: 50px; /* Réduit l'espace entre les éléments sur grands écrans */
+        gap: 50px;
+        /* Réduit l'espace entre les éléments sur grands écrans */
     }
 
     footer {
@@ -258,21 +269,22 @@ nav ul li a:hover::before {
     margin: 0;
     padding: 0;
 }
-  
 
-.poster_un_avis_titre,
-.poster_un_avis_section_titre {
-font-size: 1.5rem;
-margin-bottom: 1rem;
+
+main.poster_un_avis_titre .poster_un_avis_titre,
+main.poster_un_avis_titre .poster_un_avis_section_titre {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
-.poster_un_avis_recap_card {
+main.poster_un_avis_titre .poster_un_avis_recap_card {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
     border-radius: 8px;
-    margin-bottom: 20px;    width: 100%;
+    margin-bottom: 20px;
+    width: 100%;
     border: 1px solid #f3f8ff;
     border-radius: 29px;
     resize: none;
@@ -281,65 +293,65 @@ margin-bottom: 1rem;
     width: 100%;
 }
 
-.poster_un_avis_info {
+main.poster_un_avis_titre .poster_un_avis_info {
     flex: 1;
 }
 
-.poster_un_avis_nom {
+main.poster_un_avis_titre .poster_un_avis_nom {
     margin: 0;
 }
 
-.poster_un_avis_location,
-.poster_un_avis_rating {
-margin: 10px 0;
-color: #555;
+main.poster_un_avis_titre .poster_un_avis_location,
+main.poster_un_avis_titre .poster_un_avis_rating {
+    margin: 10px 0;
+    color: #555;
 }
 
-.poster_un_avis_btn_offre {
-padding: 10px 20px;
-background-color: var(--vert-clair);
-border: none;
-border-radius: 4px;
-color: white;
-cursor: pointer;
-font-size: 0.9rem;
-margin-top: 21px;
+main.poster_un_avis_titre .poster_un_avis_btn_offre {
+    padding: 10px 20px;
+    background-color: var(--vert-clair);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 21px;
 }
 
-.poster_un_avis_btn_offre:hover {
-background-color: #c3d34e;
+main.poster_un_avis_titre .poster_un_avis_btn_offre:hover {
+    background-color: #c3d34e;
 }
 
-.poster_un_avis_images {
-display: flex;
-gap: 10px;
+main.poster_un_avis_titre .poster_un_avis_images {
+    display: flex;
+    gap: 10px;
 }
 
-.poster_un_avis_image {
-width: 130px;
-height: 133px;
-object-fit: cover;
-border-radius: 10px;
+main.poster_un_avis_titre .poster_un_avis_image {
+    width: 130px;
+    height: 133px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
-.poster_un_avis_textarea {
-width: 100%;
-height: 152px;
-padding: 15px;
-margin: 10px 0;
-border: 1px solid #f3f8ff;
-border-radius: 29px;
-resize: none;
-background-color: #f3f8ff;
-box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
+main.poster_un_avis_titre .poster_un_avis_textarea {
+    width: 100%;
+    height: 152px;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #f3f8ff;
+    border-radius: 29px;
+    resize: none;
+    background-color: #f3f8ff;
+    box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
 }
 
-.poster_un_avis_footer {
-display: flex;
-justify-content: space-between;
-align-items: center;
-flex-wrap: wrap;
-width:100%;
+main.poster_un_avis_titre .poster_un_avis_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 /* .poster_un_avis_note {
@@ -361,7 +373,7 @@ cursor: pointer;
 color: #ffc107;
 } */
 
-.poster_un_avis_disclaimer {
+main.poster_un_avis_titre .poster_un_avis_disclaimer {
     flex: 2;
     font-size: 0.8rem;
     color: #888;
@@ -374,8 +386,8 @@ color: #ffc107;
     gap: 10px
 }
 
-.poster_un_avis_btn_annuler,
-.poster_un_avis_btn_publier {
+main.poster_un_avis_titre .poster_un_avis_btn_annuler,
+main.poster_un_avis_titre .poster_un_avis_btn_publier {
     padding: 1em 2em;
     border: none;
     border-radius: 4px;
@@ -384,26 +396,27 @@ color: #ffc107;
     border-radius: 0.5em;
 }
 
-.poster_un_avis_btn_annuler {
+main.poster_un_avis_titre .poster_un_avis_btn_annuler {
     background-color: #dcdcdc;
     color: white;
 }
 
-.poster_un_avis_btn_publier {
+main.poster_un_avis_titre .poster_un_avis_btn_publier {
     background-color: var(--vert-clair);
     color: white;
 }
 
-.poster_un_avis_btn_annuler:hover {
+main.poster_un_avis_titre .poster_un_avis_btn_annuler:hover {
     background-color: #e2e2e2;
 }
 
-.poster_un_avis_btn_publier:hover {
+main.poster_un_avis_titre .poster_un_avis_btn_publier:hover {
     background-color: #c3d34e;
 }
 
-.notation {
-    direction: rtl; /* Permet d'inverser l'ordre visuel des étoiles */
+main.poster_un_avis_titre .notation {
+    direction: rtl;
+    /* Permet d'inverser l'ordre visuel des étoiles */
     unicode-bidi: bidi-override;
     display: flex;
     justify-content: center;
@@ -416,65 +429,71 @@ color: #ffc107;
     padding: 1vh 3vw;
 }
 
-.notation input[type="radio"] {
-    display: none; /* Cache les boutons radio */
+main.poster_un_avis_titre .notation input[type="radio"] {
+    display: none;
+    /* Cache les boutons radio */
 }
 
-.notation label {
+main.poster_un_avis_titre .notation label {
     font-size: 3rem;
-    color: #ccc; /* Couleur des étoiles non sélectionnées */
+    color: #ccc;
+    /* Couleur des étoiles non sélectionnées */
     cursor: pointer;
     transition: color 0.3s;
 }
 
-.notation label:before {
-    content: "★"; /* Symbole de l'étoile */
+main.poster_un_avis_titre .notation label:before {
+    content: "★";
+    /* Symbole de l'étoile */
 }
 
-.notation input[type="radio"]:checked ~ label {
-    color: #FFD700; /* Couleur des étoiles sélectionnées */
+main.poster_un_avis_titre .notation input[type="radio"]:checked~label {
+    color: #FFD700;
+    /* Couleur des étoiles sélectionnées */
 }
 
-.notation label:hover,
-.notation label:hover ~ label {
-    color: #FFD700; /* Couleur des étoiles au survol */
+main.poster_un_avis_titre .notation label:hover,
+main.poster_un_avis_titre .notation label:hover~label {
+    color: #FFD700;
+    /* Couleur des étoiles au survol */
 }
 
-.notation label:active {
-    transform: scale(1.2); /* Effet d'agrandissement au clic */
+main.poster_un_avis_titre .notation label:active {
+    transform: scale(1.2);
+    /* Effet d'agrandissement au clic */
 }
 
 
-nav.nav-bar{
-    display:none
+main.poster_un_avis_titre nav.nav-bar {
+    display: none
 }
 
-a.back-button {
-    display:none;
-}
-
-.poster_un_avis_container {
-        padding: 5vh 9vw;
-}
-                                            /*Code pour le format responsive de poster un avis */
-
-main.main_poster_avis .message-erreur{
-    color : red;
-    font-size: 14px;
+main.poster_un_avis_titre a.back-button {
     display: none;
 }
 
+main.poster_un_avis_titre .poster_un_avis_container {
+    padding: 5vh 9vw;
+}
 
+/*Code pour le format responsive de poster un avis */
+
+main.main_poster_avis .message-erreur {
+    color: red;
+    font-size: 14px;
+    display: none;
+}
 
 @media (max-width: 429px) {
     .footer_poster_avis {
         display: none;
     }
+
     header.header-pc {
         display: none;
     }
-    
-    .poster_un_avis_recap_card {
+
+    main.poster_un_avis_titre .poster_un_avis_recap_card {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -485,88 +504,96 @@ main.main_poster_avis .message-erreur{
         resize: none;
         background-color: #f3f8ff;
         box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
-        
+
         height: 13vh;
     }
-    .poster_un_avis_nom{
-        font-size : 10px;
+
+    main.poster_un_avis_titre .poster_un_avis_nom {
+        font-size: 10px;
     }
-    .poster_un_avis_image {
+
+    main.poster_un_avis_titre .poster_un_avis_image {
         width: 11vh;
         height: 11vh;
         object-fit: cover;
         border-radius: 10px;
     }
-    
-    .poster_un_avis_buttons {
+
+    main.poster_un_avis_titre .poster_un_avis_buttons {
         display: flex;
         gap: 10px;
     }
-    .poster_un_avis_btn_offre {
+
+    main.poster_un_avis_titre .poster_un_avis_btn_offre {
         display: none;
-        
+
     }
 
-    .poster_un_avis_footer {
-        display: block;   
+    main.poster_un_avis_titre .poster_un_avis_footer {
+        display: block;
     }
-    .poster_un_avis_titre {
+
+    main.poster_un_avis_titre .poster_un_avis_titre {
         font-size: 1.5rem;
         margin-top: 5vh;
     }
-    
-    .poster_un_avis_disclaimer {
+
+    main.poster_un_avis_titre .poster_un_avis_disclaimer {
         display: none;
     }
-    
-    .poster_un_avis_textarea {
-            width: 100%;
-            height: 20vh;
-            padding: 15px;
-            margin: 0vh 0;
-            border: 1px solid #f3f8ff;
-            border-radius: 29px;
-            resize: none;
-            background-color: #f3f8ff;
-            box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
+
+    main.poster_un_avis_titre .poster_un_avis_textarea {
+        width: 100%;
+        height: 20vh;
+        padding: 15px;
+        margin: 0vh 0;
+        border: 1px solid #f3f8ff;
+        border-radius: 29px;
+        resize: none;
+        background-color: #f3f8ff;
+        box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
     }
-    
-    .titre_poster_un_avis_format_tel {
+
+    main.poster_un_avis_titre .titre_poster_un_avis_format_tel {
         display: flex;
         margin-left: 4vm;
-        border:none;
-        color:var(--vert-clair);
+        border: none;
+        color: var(--vert-clair);
     }
-    
-    .poster_un_avis_btn_annuler {
+
+    main.poster_un_avis_titre .poster_un_avis_btn_annuler {
         display: none;
     }
-    
-    .poster_un_avis_nom {
+
+    main.poster_un_avis_titre .poster_un_avis_nom {
         font-size: 15px;
     }
-    .poster_un_avis_location, .poster_un_avis_rating {
-        display : none;
+
+    main.poster_un_avis_titre .poster_un_avis_location,
+    main.poster_un_avis_titre .poster_un_avis_rating {
+        display: none;
     }
-    .poster_un_avis_images {
+
+    main.poster_un_avis_titre .poster_un_avis_images {
         display: flex;
         gap: 10px;
         margin-left: 7vh;
     }
-        .back-button {
+
+    main.poster_un_avis_titre .back-button {
         font-size: 42px;
         text-decoration: none;
         color: #333;
         margin-top: -0.4em;
     }
-    
-    .poster_un_avis_back_button {
+
+    main.poster_un_avis_titre .poster_un_avis_back_button {
         display: flex;
         justify-content: center;
         font-size: 14px;
     }
-    
-    .poster_un_avis_btn_publier {
+
+    main.poster_un_avis_titre .poster_un_avis_btn_publier {
         background-color: var(--vert-clair);
         color: white;
         width: 100%;
@@ -576,45 +603,27 @@ main.main_poster_avis .message-erreur{
         margin-bottom: 10vh;
         display: flex;
         align-item: center;
-        justify-content:center;
+        justify-content: center;
     }
-    
-    .poster_un_avis_btn_publier:hover {
-        transform: scale(1.05); 
+
+    main.poster_un_avis_titre .poster_un_avis_btn_publier:hover {
+        transform: scale(1.05);
     }
-    .poster_un_avis_container {
+
+    main.poster_un_avis_titre .poster_un_avis_container {
         padding: 5vh 6vw;
     }
 
-   poster_un_avis_note{
-       width:100%;
-   }
+    main.poster_un_avis_titre .poster_un_avis_note {
+        width: 100%;
+    }
 
-    a.back-button {
-        display : block;
+    main.poster_un_avis_titre a.back-button {
+        display: block;
     }
-    
-    
-    nav.nav-bar {
-        width: 84vw;
-        position: fixed;
-        bottom: 20px;
-        background-color: var(--vert-clair);
-        display: flex;
-        margin: auto  8vw;
-        justify-content: space-around;
-        border-radius: 1000px;
-        box-shadow: 0px 2px 10px rgb(156, 156, 156);
-    }
-    
-    
-    nav.nav-bar a {
-        display: flex;
-        align-items: center;
-        margin: 10px auto;
-    }
-    .btn-poster-avis{
+
+    main.poster_un_avis_titre .btn-poster-avis {
         color: var(--vert-clair);
-        border:none;
+        border: none;
     }
 }

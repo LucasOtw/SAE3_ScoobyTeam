@@ -53,7 +53,7 @@ echo "</pre>";
 </head>
 
 <body>
-    <header class="header-pc">
+    <header class="header-pc header_membre">
         <div class="logo-pc">
             <img src="images/logoBlanc.png" alt="PACT Logo">
         </div>
@@ -215,7 +215,7 @@ echo "</pre>";
     ?>
                     
     
-    <footer class="footer">
+    <footer class="footer footer_membre">
         <div class="newsletter">
             <div class="newsletter-content">
                 <h2>Inscrivez-vous à notre Newsletter</h2>
