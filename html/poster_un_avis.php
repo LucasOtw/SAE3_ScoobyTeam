@@ -49,7 +49,7 @@ echo "</pre>";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poster un avis</title>
-    <link rel="stylesheet" href="poster_un_avis.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
