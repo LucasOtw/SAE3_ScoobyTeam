@@ -343,3 +343,14 @@ footer {
     background-color: #BD671C;
     color: #fff;
 }
+
+.button-container {
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espace entre les boutons */
+}
+
