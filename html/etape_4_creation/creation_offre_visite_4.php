@@ -165,7 +165,7 @@ if(isset($_POST['valider'])){
                 });
             
                 // Préparer les requêtes
-                $verifier_image = $dbh->prepare("SELECT id_image FROM tripenarvor._image WHERE url_image = :url_image");
+                $verifier_image = $dbh->prepare("SELECT code_image FROM tripenarvor._image WHERE url_image = :url_image");
                 $ajout_image = $dbh->prepare("INSERT INTO tripenarvor._image (url_image) VALUES (:url_image)");
             
                 // Tableau pour stocker les IDs des images insérées
@@ -178,12 +178,11 @@ if(isset($_POST['valider'])){
                     $verifier_image->execute([
                         ":url_image" => $url_image
                     ]);
-                    $resultat = $verifier_image->fetch(PDO::FETCH_ASSOC);
+                    $code_image = $verifier_image->fetch(PDO::FETCH_ASSOC);
             
-                    if ($resultat) {
+                    if ($code_image) {
                         // L'image existe déjà, on peut ignorer ou effectuer une autre action
-                        echo "L'image $url_image est déjà présente dans la base de données (ID: {$resultat['id_image']}).<br>";
-                        $id_image[] = $resultat['id_image'];
+                        $id_image[] = $code_image['id_image'];
                     } else {
                         // Insérer l'image si elle n'existe pas
                         $ajout_image->execute([
