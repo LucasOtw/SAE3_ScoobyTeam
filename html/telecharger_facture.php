@@ -288,7 +288,7 @@ $password = "philly-Congo-bry4nt";
           text-align: center;
       }
       .offer-name strong {
-          color: var(--orange);
+          color: #333;
       }
 
 
