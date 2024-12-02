@@ -388,7 +388,7 @@ nav ul li a:hover::before {
     width: 16px; /* Taille de l'icône */
     height: 16px;
     vertical-align: middle; /* Aligne bien l'icône */
-    margin-left: 20em;
+    margin-left: 10em;
 }
 .delete-btn:hover .delete-icon {
     filter: invert(40%) sepia(700%) saturate(1300%) hue-rotate(0deg); /* Rouge */
