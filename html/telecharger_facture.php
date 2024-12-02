@@ -233,7 +233,7 @@ $password = "philly-Congo-bry4nt";
             font-size: 16px;
             font-style: italic;
             color: #007bff;
-            margin-top: 5em;
+            margin-top: 7em;
         }
         
         .thank-you p {
