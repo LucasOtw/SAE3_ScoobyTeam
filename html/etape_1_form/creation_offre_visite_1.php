@@ -101,6 +101,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $tab_offre['complementAdresse'] = $complementAdresse;
             $tab_offre['lien'] = $lien;
             $tab_offre['accessibilite'] = $accessibilite;
+            $tab_offre['langues'] = $_POST['langues'];
 
             // Récupération des fichiers (photos) - si plusieurs fichiers sont envoyés
             if (isset($_FILES['photos']) && !empty($_FILES['photos']['name'][0])) {
@@ -150,8 +151,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             }
             $_SESSION['crea_offre'] = $tab_offre;
             var_dump($_SESSION['crea_offre']);
-            header('location: ../etape_2_horaires/creation_offre_visite_2.php');
-            exit;
         }
     }
 }
