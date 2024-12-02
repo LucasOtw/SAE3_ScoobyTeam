@@ -449,9 +449,18 @@ function tempsEcouleDepuisPublication($offre){
 
                 $horaire = ($horaireOffre->fetch(PDO::FETCH_ASSOC));
 
+
+                if ($type_offre == 'parc_attractions' || $type_offre == 'restauration' || $type_offre == 'activite')
+                {
+                    $periodeOffre = $dbh->prepare('SELECT date_ouverture, date_fermeture FROM tripenarvor._offre_'.$type_offre.' WHERE code_offre = :code_offre;');
+                    $periodeOffre->bindParam(":code_offre", $offre["code_offre"]);
+                    $periodeOffre->execute();
+    
+                    $periode = ($periodeOffre->fetch(PDO::FETCH_ASSOC));
+                } else {
+                    $periode = "";
+                }
                 
-                // $dataStatusEng = "closed";
-                // $dataStatusFr = "Fermé";
                 
                 if (!empty($horaire))
                 {
@@ -536,7 +545,9 @@ function tempsEcouleDepuisPublication($offre){
                                 data-rate="2.5"
                                 location=<?php echo $villeOffre["ville"]; ?>
                                 data-status=<?php echo $dataStatusEng; ?> 
-                                data-event=<?php if(!empty($event)) { echo $event['date_'.$type_offre]; } else { echo ""; } ?> >
+                                data-event=<?php if(!empty($event)) { echo $event['date_'.$type_offre]; } else { echo ""; } ?> 
+                                data-period-o=<?php if(!empty($periode)) { echo $periode['date_ouverture']; } else { echo ""; } ?>
+                                data-period-c=<?php if(!empty($periode)) { echo $periode['date_fermeture']; } else { echo ""; } ?> >
                         
                         <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
                         <div class="offer-details">
@@ -584,6 +595,9 @@ function tempsEcouleDepuisPublication($offre){
             const selectStatus = document.querySelector('#select-statut');
             
             const eventDate = document.querySelector('#event-date');
+
+            const openingStartDate = document.getElementById('opening-start-date');
+            const openingEndDate = document.getElementById('opening-end-date');
             
 
 
@@ -775,6 +789,33 @@ function tempsEcouleDepuisPublication($offre){
                         }
                     });
                 });
+
+
+
+            ///////////////////////////////////////////////////
+            ///           Selecteur date periode            ///
+            ///////////////////////////////////////////////////
+            function filterByOpeningDates() {
+                const startDate = openingStartDate.value;
+                const endDate = openingEndDate.value;
+            
+                // Parcourir chaque offre et vérifier les critères
+                offerItems.forEach(offer => {
+                    const offerPeriodStart = offer.getAttribute('data-period-o');
+                    const offerPeriodEnd = offer.getAttribute('data-period-c');
+            
+                    // Condition pour afficher l'offre
+                    if ((!startDate || startDate <= offerPeriodEnd) && (!endDate || endDate >= offerPeriodStart)) {
+                        offer.style.removeProperty('display'); // Afficher l'offre
+                    } else {
+                        offer.style.display = "none"; // Masquer l'offre
+                    }
+                });
+            }
+
+            // Ajouter un écouteur d'événement sur les champs de date
+            openingStartDate.addEventListener('change', filterByOpeningDates);
+            openingEndDate.addEventListener('change', filterByOpeningDates);
             
         </script>
 

@@ -7,9 +7,6 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Télécharger une facture</title>
-    <link rel="stylesheet" href="telecharger_facture.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="script.js"></script>
 
 </head>
 <body>
@@ -45,33 +42,87 @@ session_start();
             </ul>
         </section>
     
-    <div id="facture-container" class="facture-container">
-            <h1>Facture #12345</h1>
-            <div class="facture-details">
-                <p><strong>Date :</strong> 30 Novembre 2024</p>
-                <p><strong>Client :</strong> Jean Dupont</p>
-                <p><strong>Adresse :</strong> 123 Rue Exemple, Paris, France</p>
-            </div>
-        </div>
-        <button id="download-btn">Télécharger en PDF</button>
-    
-        <!-- Bibliothèque html2pdf -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
-        <script>
-            // Génération du PDF
-            document.getElementById('download-btn').addEventListener('click', () => {
-                const element = document.getElementById('facture-container'); // Conteneur cible
-                const options = {
-                    margin: 1,
-                    filename: 'facture.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: { scale: 2 },
-                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-                };
-                html2pdf().set(options).from(element).save(); // Convertir et télécharger
-            });
-        </script>
+    <style>
+        .facture-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #d1d1d1;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
 
+        .facture-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .facture-header img {
+            max-height: 50px;
+            border-radius: 5px;
+        }
+
+        .facture-header h1 {
+            font-size: 24px;
+            color: #333;
+            margin: 0;
+            text-align: right;
+        }
+
+        .facture-details {
+            margin-bottom: 20px;
+            border-top: 2px solid #007bff;
+            padding-top: 10px;
+        }
+
+        .facture-details p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .facture-details strong {
+            color: #333;
+        }
+
+        .facture-footer {
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="facture-container" class="facture-container">
+        <h1>Facture #12345</h1>
+        <div class="facture-details">
+            <p><strong>Date :</strong> 30 Novembre 2024</p>
+            <p><strong>Client :</strong> Jean Dupont</p>
+            <p><strong>Adresse :</strong> 123 Rue Exemple, Paris, France</p>
+        </div>
+    </div>
+    <button id="download-btn">Télécharger en PDF</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <script>
+        document.getElementById('download-btn').addEventListener('click', () => {
+            const element = document.getElementById('facture-container');
+            const options = {
+                margin: 1,
+                filename: 'facture.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().set(options).from(element).save();
+        });
+    </script>
 
 </main>
 <footer class="footer">

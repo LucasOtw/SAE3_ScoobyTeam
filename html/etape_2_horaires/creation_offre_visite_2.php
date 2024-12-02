@@ -3,6 +3,8 @@
 ob_start();
 session_start();
 
+var_dump($_SESSION['crea_offre']);
+
       if (isset($_POST['EnvoiEtape2'])) {
           $jours = [
               'Lundi'    => ['ouvertureL', 'fermetureL'],

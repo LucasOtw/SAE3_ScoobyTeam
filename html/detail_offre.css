@@ -602,10 +602,10 @@ input#btn-poster-avis {
     #body_offre_mobile {
         display: block !important;
         font-family: 'Arial', sans-serif;
-        margin: 0px 0 -1em -2em;
+        margin: 0px 0 -1em ;
         padding: 0 5vw;
         background-color: #ffffff;
-        width: 113%;
+        width: 100%;
     }
 
     #body_offre_mobile>div>div.swiper-container>div.swiper-wrapper>div>img {
@@ -946,6 +946,10 @@ input#btn-poster-avis {
         color: var(--vert-clair);
         outline: none;
         font-size: 17px;
+        display: flex;
+        justify-content: flex-end;
+        border-radius: 1000px;
+        box-shadow: 0px 2px 10px rgb(156, 156, 156);
     }
 
     .Detail_offre_ouverture_global {
@@ -1353,10 +1357,10 @@ input#btn-poster-avis {
     #body_offre_mobile {
         display: block !important;
         font-family: 'Arial', sans-serif;
-        margin: 0px 0 -1em -2em;
+        margin: 0px 0 -1em ;
         padding: 0 5vw;
         background-color: #ffffff;
-        width: 113%;
+        width: 100%;
     }
 
     #body_offre_mobile > div > div.swiper-container > div.swiper-wrapper > div > img {
