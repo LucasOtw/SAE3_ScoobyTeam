@@ -4523,7 +4523,7 @@ nav.nav-bar_consulter_compte_membre nav.nav-bar_consulter__mes_avis {
 nav.nav-bar_consulter_compte_membre img{
   display:none;
 }
-nav.nav-bar_consulter__mes_avis img{
+nav.nav-bar_consulter_mes_avis img{
   display:none;
 }
 @media (max-width: 429px) {
