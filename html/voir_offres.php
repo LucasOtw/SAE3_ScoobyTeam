@@ -462,6 +462,7 @@ function tempsEcouleDepuisPublication($offre){
                     $ouverture = new DateTime($date->format("Y-m-d ") . $horaire["ouverture"]);  
                     $fermeture = new DateTime($date->format("Y-m-d ") . $horaire["fermeture"]);
 
+                    echo "<br>";
                     var_dump($ouverture);
                     echo "<br>";
                     var_dump($fermeture);
