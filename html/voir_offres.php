@@ -450,8 +450,8 @@ function tempsEcouleDepuisPublication($offre){
                 $horaire = ($horaireOffre->fetch(PDO::FETCH_ASSOC));
 
                 
-                $dataStatusEng = "closed";
-                $dataStatusFr = "Fermé";
+                // $dataStatusEng = "closed";
+                // $dataStatusFr = "Fermé";
                 
                 if (!empty($horaire))
                 {
@@ -529,7 +529,8 @@ function tempsEcouleDepuisPublication($offre){
                     <article class="offer" 
                                 data-category=<?php echo $type_offre;?> 
                                 data-price="<?php echo $offre["tarif"];?>" 
-                                data-rate="2.5" location=<?php echo $villeOffre["ville"]; ?>
+                                data-rate="2.5"
+                                location=<?php echo $villeOffre["ville"]; ?>
                                 data-status=<?php echo $dataStatusEng; ?> 
                                 data-event=<?php if(!empty($event)) { echo $event['date_'.$type_offre]; } else { echo ""; } ?> >
                         
