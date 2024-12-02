@@ -180,8 +180,8 @@ include('recupInfosCompte.php');
             <div class="info client">
                 <h3>Nom du client : Joseph Mulliez</h3>
                 <p>Adresse : Le Mouden, Lanmérin, 22300</p>
-                <p>Numéro de téléphone : 0695120981</p>
-                <p>Email : mulliezjospeh5@gmail.com</p>
+                <p>Numéro de téléphone : <?php echo $compte['telephone']; ?></p>
+                <p>Email :<?php echo $compte['mail']; ?></p>
             </div>
         </div>
 
