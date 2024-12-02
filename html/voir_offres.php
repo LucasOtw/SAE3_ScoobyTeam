@@ -397,7 +397,7 @@ function tempsEcouleDepuisPublication($offre){
             $date = new DateTime();
             $dateFr = $traductionDate[$date->format('l')];
 
-            echo ($date);
+            var_dump($date);
         
             foreach($infosOffre as $offre){
 
@@ -462,7 +462,9 @@ function tempsEcouleDepuisPublication($offre){
                     $ouverture = new DateTime($date->format("Y-m-d ") . $horaire["ouverture"]);  
                     $fermeture = new DateTime($date->format("Y-m-d ") . $horaire["fermeture"]);
 
-                    echo $ouverture." ".$fermeture;
+                    var_dump($ouverture);
+                    echo "<br>";
+                    var_dump($fermeture);
                     
                     // Comparer les horaires
                     if ($ouverture <= $date && $fermeture < $date) {
