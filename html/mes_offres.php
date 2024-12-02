@@ -129,7 +129,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
     
 </main>
 <footer class="footer footer_pro">
-        <div class="newsletter">
+        <!--<div class="newsletter">
             <div class="newsletter-content">
                 <h2>Inscrivez-vous à notre Newsletter</h2>
                 <p>PACT</p>
@@ -142,7 +142,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
             <div class="newsletter-image">
                 <img src="images/Boiteauxlettres_pro.png" alt="Boîte aux lettres">
             </div>
-        </div>
+        </div>-->
         
         <div class="footer-links">
             <div class="logo">
