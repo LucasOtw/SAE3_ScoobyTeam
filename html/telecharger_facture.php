@@ -292,7 +292,22 @@ include('recupInfosCompte.php');
             </div>
         </div>
         <?php
-             $query = "SELECT nom_compte, iban, bic FROM tripenarvor._compte_bancaire LIMIT 1";
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+        $username = "sae";
+        $password = "philly-Congo-bry4nt";
+         try {
+            // Créer une instance PDO
+            $pdo = new PDO($dsn, $username, $password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        } catch (PDOException $e) {
+            die("Erreur de connexion à la base de données : " . $e->getMessage());
+        }
+
+            $iban = '';
+            $bic = '';
+            $nom = '';
+            $query = "SELECT nom_compte, iban, bic FROM tripenarvor._compte_bancaire LIMIT 1";
             $stmt = $pdo->query($query);
 
             // Vérifier s'il y a des résultats
