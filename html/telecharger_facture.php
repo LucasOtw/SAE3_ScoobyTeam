@@ -320,7 +320,7 @@ $password = "philly-Congo-bry4nt";
 
                     foreach ($offres as $offre) {
                         ?>
-                        <option value="<?php echo $offre['code_offre'];?>"><?php echo $offre['titre_offre'];?></option>
+                        <option value="<?php echo $offre['code_offre'];?>"> <?php echo $offre['titre_offre'];?></option>
                     <?php } ?>
             </select>
             <button type="submit" class="btn-valider">Valider</button>
