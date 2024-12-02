@@ -302,17 +302,14 @@
         console.log("Etat: " + (isOnline ? 1 : 0));
         console.log("Code offre: " + codeOffre);
         
-        // Utilisation de fetch pour envoyer les données
-        fetch("https://scooby-team.ventsdouest.dev/update_offer_status.php", {
-            method: "POST",  // Méthode POST
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded",  // Spécifie le type de contenu
-            },
-            body: new URLSearchParams({
-                en_ligne: isOnline ? 1 : 0,  // Envoie l'état en ligne ou hors ligne (1 ou 0)
-                code_offre: codeOffre        // Envoie le code de l'offre
-            })
+        // Construction de l'URL avec les données en GET
+        var url = "https://scooby-team.ventsdouest.dev/update_offer_status.php?en_ligne=" + encodeURIComponent(isOnline ? 1 : 0) + "&code_offre=" + encodeURIComponent(codeOffre);
+        
+        // Utilisation de fetch pour envoyer les données en GET
+        fetch(url, {
+            method: "GET",  // Méthode GET
         })
+            
         .then(response => {
             if (response.ok) {
                 console.log("L'état de l'offre a été mis à jour avec succès.");
