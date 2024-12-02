@@ -499,11 +499,10 @@ main.connexion_pro_main>div>div.connexion_pro_form-container>form>div.connexion_
 }
 
 .connexion_pro_image-container img {
-    width: 126%;
+    width: 100%;
     height: auto;
     object-fit: cover;
     max-height: 100%;
-    margin-left: -4em;
 }
 
 
