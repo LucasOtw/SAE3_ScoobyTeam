@@ -380,17 +380,15 @@ footer {
 .back-link-facture {
     padding: 10px 20px;
     text-decoration: none;
-    background-color: #fff;
-    color: #F28322;
+    background-color: #F28322;
+    color: #fff;
     border-radius: 5px;
     text-align: center;
-    border: 1px solid #F28322;
 }
 
 .back-link-offres:hover {
-    background-color: #fff;
-    border: 1px solid #F28322;
-    color: #F28322;
+    background-color: #F28322;
+    color: #fff;
 }
 
 .back-link-facture:hover {
