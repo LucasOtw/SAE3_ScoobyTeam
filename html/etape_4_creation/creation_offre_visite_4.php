@@ -332,7 +332,6 @@ if(isset($_POST['valider'])){
                 } else {
                     $date_visite = $_SESSION['crea_offre']['date_visite'];
                     $date_visite = DateTime::createFromFormat('Y-m-d', $date_visite);
-                    var_dump($date_visite);
                 }
                 
                 if(empty($_SESSION['crea_offre']['langues'])){
@@ -346,6 +345,32 @@ if(isset($_POST['valider'])){
                 } else {
                     $heure_visite = $_SESSION['crea_offre']['heure_visite'];
                 }
+
+                $ajoutVisite = $dbh->prepare("INSERT INTO tripenarvor._offre_restauration VALUES (:code_offre,:duree,:visite,:date_visite,:heure_visite)");
+                $ajoutVisite->bindValue(":code_offre",$id_offre);
+                $ajoutVisite->bindValue(":duree",$duree_visite);
+                $ajoutVisite->bindValue(":visite",$visite_guidee);
+                $ajoutVisite->bindValue(":date_visite",$date_visite);
+                $ajoutVisite->bindValue(":heure_visite",$heure_visite);
+                $ajoutVisite->execute();
+
+                if(isset($_SESSION['crea_offre']['tags']) && is_array($_SESSION['crea_offre']['tags'])){
+                    foreach($_SESSION['crea_offre']['tags'] as $tag){
+                        try {
+                            $ajoutTag = $dbh->prepare("INSERT INTO tripenarvor._son_tag (code_tag, code_offre) VALUES (:code_tag, :code_offre)");
+                            $ajoutTag->bindValue(":code_tag",$tag);
+                            $ajoutTag->bindValue(":code_offre",$id_offre);
+                            $ajoutTag->execute();
+                        } catch (PDOException $e){
+                            echo "Erreur lors de l'ajout du tag : " . $e->getMessage();
+                        }
+                    }
+                }
+                $_SESSION['aCreeUneOffre'] = true;
+                unset($_SESSION['crea_offre']);
+                unset($_SESSION['crea_offre2']);
+                unset($_SESSION['crea_offre3']);
+                unset($_SESSION['ajoutOption']);
             }
         }
     }
@@ -359,7 +384,7 @@ if(isset($_POST['valider'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier coordonnées bancaires</title>
-    <link rel="stylesheet" href="creation_offre3.css">
+    <link rel="stylesheet" href="creation_offre3.css?">
 </head>
 <body>
     <header class="header_pro">
@@ -380,7 +405,7 @@ if(isset($_POST['valider'])){
         ?>
             <div class="fleche_retour">
                 <div>
-                    <a href="../etape_3_boost/creation_offre_visite_3.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
+                    <a href="../etape_3_boost/creation_offre_restaurant_4.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
                 </div>
             </div>
         
@@ -442,8 +467,18 @@ if(isset($_POST['valider'])){
         <?php
     } else {
         ?>
-        <h1>Votre offre a été créee avec succès !</h1>
-        <a href="../mes_offres.php">Retourner à "Mes offres"</a>
+      <div class="button-container">
+          <img src="../images/verifier.png" alt="Succès" class="success-icon">
+          <h1 class="success-message">Votre offre a été créée avec succès !</h1>
+          <div class="buttons">
+              <a href="../mes_offres.php" class="back-link-offres">Retourner à "Mes offres"</a>
+              <a href="../telecharger_facture.php" class="back-link-facture">Télécharger ma facture</a>
+          </div>
+     </div>
+
+
+
+
         <?php
     }
     
@@ -452,7 +487,7 @@ if(isset($_POST['valider'])){
     <footer class="footer_pro">   
         <div class="footer-links">
             <div class="logo">
-                <img src="images/logo_blanc_pro.png" alt="PACT Logo">
+                <img src="../images/logo_blanc_pro.png" alt="PACT Logo">
             </div>
             <div class="link-group">
                 <ul>
