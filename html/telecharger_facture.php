@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include('recupInfosCompte');
+include('recupInfosCompte.php');
 
 ?>
 <!DOCTYPE html>
