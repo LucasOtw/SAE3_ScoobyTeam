@@ -327,9 +327,9 @@ include('recupInfosCompte.php');
                 <p>Total TTC: 156€</p>
             </div>
             <div class="payment-info">
-                <p><strong>Mode de paiement accepté :</strong> Virement bancaire, chèque, carte de crédit</p>
-                <p><strong>IBAN :</strong> FR76 1234 5678 9012 3456 7890 123</p>
-                <p><strong>BIC :</strong> AGRIFRPP</p>
+                <p><strong>Mode de paiement :</strong> Virement bancaire</p>
+                <p><strong>IBAN :</strong> <?php echo $iban?></p>
+                <p><strong>BIC :</strong> <?php echo $bic?></p>
             </div>
 
             <div class="signature-container">
