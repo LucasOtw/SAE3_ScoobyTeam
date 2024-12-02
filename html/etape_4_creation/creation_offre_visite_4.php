@@ -69,6 +69,7 @@ if(isset($_POST['valider'])){
             $adresse_postal = $_SESSION['crea_offre']['adresse'];
             $complement_adresse = $_SESSION['crea_offre']['complementAdresse'];
             $code_postal = $_SESSION['crea_offre']['codePostal'];
+            $ville = $_SESSION['crea_offre']['ville'];
 
             // on fait la vérification dans la base de données
     
