@@ -13,7 +13,7 @@ include("recupInfosCompte.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier coordonnées bancaires</title>
-    <link rel="stylesheet" href="modif_bancaire.css?">
+    <link rel="stylesheet" href="styles.css">
     
 </head>
 
