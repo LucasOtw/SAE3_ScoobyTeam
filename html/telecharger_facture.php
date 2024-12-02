@@ -291,7 +291,17 @@ include('recupInfosCompte.php');
                 <p><strong>Email</strong> : <?php echo $compte['mail']; ?></p>
             </div>
         </div>
+        <?php
+             $query = "SELECT nom_compte, iban, bic FROM tripenarvor._compte_bancaire LIMIT 1";
+            $stmt = $pdo->query($query);
 
+            // Vérifier s'il y a des résultats
+            if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $nom = $row['nom_compte'];
+                $iban = $row['iban'];
+                $bic = $row['bic'];
+            }
+        ?>
         <table class="facture-items">
             <thead>
                 <tr>
