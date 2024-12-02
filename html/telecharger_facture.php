@@ -218,9 +218,6 @@ include('recupInfosCompte.php');
             font-size: 14px;
             color: #555;
             padding: 10px;
-            border: 1px solid #d1d1d1;
-            border-radius: 5px;
-            background-color: #f9f9f9;
         }
         
         .payment-info p {
