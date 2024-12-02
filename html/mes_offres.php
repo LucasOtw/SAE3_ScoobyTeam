@@ -45,9 +45,9 @@ if(isset($_SESSION['aCreeUneOffre'])){
     </div>
     <nav class="nav">
         <ul>
-            <li><a href="mes_offres.php">Accueil</a></li>
+            <li><a href="mes_offres.php" class="active">Accueil</a></li>
             <li><a href="creation_offre.php">Publier</a></li>
-            <li><a href="consulter_compte_pro.php" class="active">Mon Compte</a></li>
+            <li><a href="consulter_compte_pro.php">Mon Compte</a></li>
         </ul>
     </nav>
 </header>
