@@ -176,7 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <nav>
             <ul>
                 <li><a href="../mes_offres.php" class="active">Accueil</a></li>
-                <li><a href="../creation_offre.php">Publier</a></li>
+                <li><a href="#">Publier</a></li>
                 <?php
                     if(isset($_SESSION["pro"]) || !empty($_SESSION["pro"])){
                        ?>
