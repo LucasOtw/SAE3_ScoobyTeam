@@ -466,8 +466,8 @@ function tempsEcouleDepuisPublication($offre){
                     var_dump($ouverture);
                     echo "<br> fermeture : ";
                     var_dump($fermeture);
-                    echo "<br> ouverture <= date : ";
-                    echo $ouverture <= $date;
+                    echo "<br> ouverture > date et fermeture <= date : ";
+                    echo ($ouverture > $date && $fermeture <= $date);
                     
                     // Comparer les horaires
                     if ($ouverture <= $date && $fermeture > $date) {
