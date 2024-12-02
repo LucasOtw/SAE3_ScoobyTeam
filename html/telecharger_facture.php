@@ -256,9 +256,18 @@ include('recupInfosCompte.php');
             <label for="offres">Mes offres :</label>
             <select id="offres" name="offre" class="dropdown">
                 <option value="" disabled selected>Choisissez une offre</option>
-                <option value="1">Offre 1 - Titre de l'offre</option>
+                <?php
+                    $offres_pro = $dbh->prepare("SELECT * tripenarvor._offre where professionel = :code_compte");
+                    $offres_pro->bindParam(':code_compte', $compte['code_compte']);
+                    $offres_pro->execute();
+                    $offres_pro->fetchAll(PDO::FETCH_NUM);
+                foreach ($offres_pro as $offre){
+                    ?>
+                    <option value="<?php echo $offre['code_offre']?>"><?php echo $offre['titre_offre']?></option>
+                <?php}?>
+                /*
                 <option value="2">Offre 2 - Titre de l'offre</option>
-                <option value="3">Offre 3 - Titre de l'offre</option>
+                <option value="3">Offre 3 - Titre de l'offre</option>*/
             </select>  
             <button type="submit">Valider</button>
         </div>
