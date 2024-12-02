@@ -94,6 +94,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $tab_offre['codePostal'] = $codePostal;
             $tab_offre['resume'] = $resume;
             $tab_offre['description'] = $description;
+            $tab_offre['tarif'] = $tarif;
+            $tab_offre['duree'] = $duree;
 
             // Récupération des champs facultatifs
             $tab_offre['complementAdresse'] = $complementAdresse;
