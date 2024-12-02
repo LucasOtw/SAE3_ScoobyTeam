@@ -462,10 +462,12 @@ function tempsEcouleDepuisPublication($offre){
                     $ouverture = new DateTime($date->format("Y-m-d ") . $horaire["ouverture"]);  
                     $fermeture = new DateTime($date->format("Y-m-d ") . $horaire["fermeture"]);
 
-                    echo "<br>";
+                    echo "<br> ouverture : ";
                     var_dump($ouverture);
-                    echo "<br>";
+                    echo "<br> fermeture : ";
                     var_dump($fermeture);
+                    echo "<br> ouverture <= date : ";
+                    echo $ouverture <= $date;
                     
                     // Comparer les horaires
                     if ($ouverture <= $date && $fermeture > $date) {
@@ -484,6 +486,8 @@ function tempsEcouleDepuisPublication($offre){
                     } elseif ($ouverture > $date && $fermeture <= $date) {
                         // Si on est avant l'ouverture
                         $interval = $ouverture->diff($date);
+
+                        echo "<br> interval : ".$interval;
                         
                         if (($interval->h < 1) || ($interval->h == 1 && $interval->i == 0)) {
                             // Si l'ouverture est dans moins de 1 heure
