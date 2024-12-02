@@ -321,10 +321,23 @@ if(isset($_POST['valider'])){
                     ]);
                 }
                 // cette offre est une visite
-                $duree_visite = "$_SESSION['crea_offre']['duree']:00";
-                $visite_guidee = $_SESSION['crea_offre']['langues'];
-                $heure_visite = $_SESSION['crea_offre']['heure_visite'];
+                if(empty($_SESSION['crea_offre']['duree'])){
+                    $duree_visite = null;
+                } else {
+                    $duree_visite = $_SESSION['crea_offre']['duree'] . ":00";
+                }
                 
+                if(empty($_SESSION['crea_offre']['langues'])){
+                    $visite_guidee = null;
+                } else {
+                    $visite_guidee = $_SESSION['crea_offre']['langues'];
+                }
+
+                if(empty($_SESSION['crea_offre']['heure_visite'])){
+                    $heure_visite = null;
+                } else {
+                    $heure_visite = $_SESSION['crea_offre']['heure_visite'];
+                }
             }
         }
     }

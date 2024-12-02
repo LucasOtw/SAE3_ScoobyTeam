@@ -185,13 +185,6 @@ include('recupInfosCompte.php');
         </header>
 
         <div class="facture-info">
-            <div class="info entreprise">
-                <h3>Nom de l'entreprise</h3>
-                <p>Adresse</p>
-                <p>Ville et Code Postal</p>
-                <p>Numéro de téléphone</p>
-                <p>Email</p>
-            </div>
             <div class="info client">
                 <h3>Nom du client</h3>
                 <p>Adresse</p>

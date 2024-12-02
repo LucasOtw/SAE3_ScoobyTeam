@@ -458,9 +458,16 @@ if(isset($_POST['valider'])){
         <?php
     } else {
         ?>
-       <img src="../images/verifier.png" alt="Succès" class="success-icon">
-       <h1 class="success-message">Votre offre a été créée avec succès !</h1>
-       <a href="../mes_offres.php" class="back-link">Retourner à "Mes offres"</a>
+      <div class="button-container">
+          <img src="../images/verifier.png" alt="Succès" class="success-icon">
+          <h1 class="success-message">Votre offre a été créée avec succès !</h1>
+          <div class="buttons">
+              <a href="../mes_offres.php" class="back-link">Retourner à "Mes offres"</a>
+              <a href="../télécharger_facture.php" class="back-link">Télécharger ma facture</a>
+          </div>
+     </div>
+
+
 
 
         <?php

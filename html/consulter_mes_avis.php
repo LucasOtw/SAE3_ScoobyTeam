@@ -33,10 +33,10 @@ if (!empty($_POST['supprAvis'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier compte membre</title>
-    <link rel="stylesheet" href="consulter_mes_avis.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="header-membre">
+    <div class="header_membre">
         <header class="header-pc">
             <div class="logo">
                 <img src="images/logoBlanc.png" alt="PACT Logo">
@@ -156,7 +156,7 @@ if (!empty($_POST['supprAvis'])){
     </nav>
 
 </body>
-<footer class="footer">
+<footer class="footer footer_membre">
         <div class="newsletter">
             <div class="newsletter-content">
                 <h2>Inscrivez-vous à notre Newsletter</h2>

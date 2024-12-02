@@ -37,9 +37,9 @@ if(isset($_POST['envoiForm4'])){
         </div>
         <nav>
             <ul>
-                <li><a href="mes_offres.php">Accueil</a></li>
+                <li><a href="../mes_offres.php">Accueil</a></li>
                 <li><a href="#" class="active">Publier</a></li>
-                <li><a href="informations_personnelles_pro.php">Mon Compte</a></li>
+                <li><a href="../consulter_compte_pro.php">Mon Compte</a></li>
             </ul>
         </nav>
     </header>
