@@ -46,6 +46,8 @@
     $photo_profil = $checkPP->fetch(PDO::FETCH_ASSOC);
     if($photo_profil !== null){
       $compte_pp = $photo_profil['url_image'];
+    } else {
+      $compte_pp = "";
     }
 
     $_adresse = $monAdresse->fetch(PDO::FETCH_ASSOC);
