@@ -320,7 +320,7 @@
                     <p><i class="fas fa-clock"></i> Publié <?php echo tempsEcouleDepuisPublication($details_offre);?></p>
 
                     <p class="update"><span class="update-icon">⟳</span> Dernière modification <?php echo tempsEcouleDepuisDerniereModif($details_offre);?></p>
-                    <!--
+                    
                     <div> 
                         <p id="offer-state">L'offre est actuellement : 
                             <span id="offer-status"> 
@@ -328,7 +328,7 @@
                             </span>
                         </p>
                     </div>
-                    -->
+                    
 
                    
 
@@ -371,14 +371,15 @@
 
                 </div>
                 </div>
+                    
                     <!--toogle button pour mise en ligne/ hors ligne -->
                     
                     <!-- Bouton slider -->
-                <div class="slider-container">
-                    <div class="slider" id="slider-toggle" onclick="toggleSlider()">
-                        <div class="slider-circle"></div>
+                    <div class="slider-container">
+                        <div class="slider" id="slider-toggle" onclick="toggleSlider()">
+                            <div class="slider-circle"></div>
+                        </div>
                     </div>
-                </div>
 
                     <script src="toggle-button.js"></script>
                     
