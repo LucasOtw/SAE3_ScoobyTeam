@@ -21,7 +21,6 @@
         margin-left: 30px;
     }
 </style>
-
 <main class="incitation_content">
     <div class="incitation_image-container">
         <img src="images/cadeau.png" alt="Icône cadeau" class="image">
