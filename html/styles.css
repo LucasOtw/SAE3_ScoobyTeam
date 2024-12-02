@@ -281,11 +281,11 @@ footer {
     }
 }
 
-header.header_pc {
+header.header-pc {
     display: block;
 }
 
-header.header_tel {
+header.header-tel {
     display: none;
     background-color: white;
 }
