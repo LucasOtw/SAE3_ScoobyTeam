@@ -322,27 +322,38 @@ include('recupInfosCompte.php');
         <table class="facture-items">
             <thead>
                 <tr>
-                    <th>Description</th>
-                    <th>Prix unitaire</th>
-                    <th>Unité</th>
-                    <th>Quantité</th>
+                    <th>Type d'offre</th>
+                    <th>Prix par jour</th>
+                    <th>Date de mise </th>
                     <th>Montant HT</th>
+                    
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Détail prestation ici</td>
-                    <td>20€</td>
-                    <td>heures</td>
-                    <td>5</td>
+                    <td>standard</td>
+                    <td>5€</td>
+                    <td>1</td>
+                    <td>En relief</td>
                     <td>100€</td>
                 </tr>
+            </tbody>
+            <thead>
                 <tr>
-                    <td>Détail prestation ici</td>
-                    <td>15€</td>
-                    <td>heures</td>
-                    <td>2</td>
-                    <td>30€</td>
+                    <th>Type d'offre</th>
+                    <th>Prix par jour</th>
+                    <th>Date de mise </th>
+                    <th>Montant HT</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>standard</td>
+                    <td>5€</td>
+                    <td>1</td>
+                    <td>En relief</td>
+                    <td>100€</td>
                 </tr>
             </tbody>
         </table>
