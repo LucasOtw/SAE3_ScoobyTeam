@@ -323,6 +323,7 @@ if(isset($_POST['valider'])){
                 // cette offre est une visite
                 $duree_visite = "$_SESSION['crea_offre']['duree']:00";
                 $visite_guidee = $_SESSION['crea_offre']['langues'];
+                $heure_visite = $_SESSION['crea_offre']['heure_visite'];
                 
             }
         }

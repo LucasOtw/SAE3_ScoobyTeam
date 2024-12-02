@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+include('recupInfosCompte.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -147,7 +150,7 @@ session_start();
         padding: 15px;
         font-size: 18px;
         color: white;
-        background-color: #007bff;
+        background-color:  var(--orange);
         border: none;
         border-radius: 5px;
         cursor: pointer;
@@ -157,12 +160,12 @@ session_start();
         }
     
         #download-btn:hover {
-            background-color: #0056b3;
+            background-color:  var(--orange);
             transform: translateY(-2px);
         }
         
         #download-btn:active {
-            background-color: #003f7f;
+            background-color:  var(--orange);
             transform: translateY(1px);
         }
 
@@ -182,13 +185,6 @@ session_start();
         </header>
 
         <div class="facture-info">
-            <div class="info entreprise">
-                <h3>Nom de l'entreprise</h3>
-                <p>Adresse</p>
-                <p>Ville et Code Postal</p>
-                <p>Numéro de téléphone</p>
-                <p>Email</p>
-            </div>
             <div class="info client">
                 <h3>Nom du client</h3>
                 <p>Adresse</p>

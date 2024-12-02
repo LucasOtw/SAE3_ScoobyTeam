@@ -34,6 +34,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     // tarif
     $tarif = $_POST['_tarif'];
     $duree = $_POST['duree'];
+    $heure_visite = $_POST['heure_visite'];
 
     // Récupération des champs facultatifs
     $complementAdresse = htmlspecialchars($_POST['complement_adresse'] ?? '');
@@ -96,6 +97,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $tab_offre['description'] = $description;
             $tab_offre['tarif'] = $tarif;
             $tab_offre['duree'] = $duree;
+            $tab_offre['heure_visite'] = $heure_visite;
 
             // Récupération des champs facultatifs
             $tab_offre['complementAdresse'] = $complementAdresse;
