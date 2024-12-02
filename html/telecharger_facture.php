@@ -260,7 +260,7 @@ include('recupInfosCompte.php');
                 $offres_pro = $dbh->prepare("SELECT * FROM tripenarvor._offre WHERE professionnel = :code_compte");
                 $offres_pro->bindParam(':code_compte', $compte['code_compte']);
                 $offres_pro->execute();
-                $offres_pro->fetchAll(PDO::FETCH_NUM);
+                $offres_pro->fetchAll(PDO::FETCH_ASSOC);
             foreach ($offres_pro as $offre){
                 ?>
                 <option value="<?php echo $offre['code_offre'];?>"><?php echo $offre['titre_offre'];?></option>
