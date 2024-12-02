@@ -228,7 +228,7 @@ if(isset($_POST['valider'])){
 
                 // Calcul de la date de fin
                 $date_fin = new DateTime($date_offre);
-                $date_fin->modify("+{$nbSemaines_options} weeks");
+                $date_fin->modify("+{$nbSemaines_option} weeks");
                 $date_fin_option = $date_fin->format('Y-m-d');
 
                 // on peut ajouter l'option
