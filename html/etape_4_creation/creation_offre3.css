@@ -388,12 +388,12 @@ footer {
 }
 
 .back-link-offres:hover {
-    background-color: #F28322;
-    color: #fff;
+    background-color:  #fff;
+    color: #F28322;
+    border: 1px solid #F28322;
 }
 
 .back-link-facture:hover {
-    background-color: #fff;
-    border: 1px solid #F28322;
-    color: #F28322;
+    background-color: #F28322;
+    color: #fff;
 }
