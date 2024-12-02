@@ -16,7 +16,8 @@
     $en_ligne = isset($_POST['en_ligne']) ? intval($_POST['en_ligne']) : null;
     
     // Vérifier que l'identifiant de l'offre est défini
-    $code_offre = isset($_GET['code_offre']) ? intval($_GET['code_offre']) : null;
+    $code_offre = isset($_POST['code_offre']) ? intval($_POST['code_offre']) : null;
+
     if ($code_offre === null) {
         http_response_code(400);
         echo "Code offre manquant.";
