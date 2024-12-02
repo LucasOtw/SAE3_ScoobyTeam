@@ -1908,7 +1908,7 @@ main.main_poster_avis .notation label:active {
 }
 
 
-main.main_poster_avis main.main_consulter_compte_membre nav.nav-bar {
+main.main_poster_avis nav.nav-bar {
     display: none
 }
 
