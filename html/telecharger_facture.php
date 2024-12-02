@@ -3,6 +3,17 @@ session_start();
 
 include('recupInfosCompte.php');
 
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+$username = "sae";
+$password = "philly-Congo-bry4nt";
+ try {
+    // Créer une instance PDO
+    $pdo = new PDO($dsn, $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+} catch (PDOException $e) {
+    die("Erreur de connexion à la base de données : " . $e->getMessage());
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -261,7 +272,10 @@ include('recupInfosCompte.php');
                 $offres_pro->bindParam(':code_compte', $compte['code_compte']);
                 $offres_pro->execute();
                 $offres_pro->fetchAll(PDO::FETCH_ASSOC);
-var_dump($offres_pro);
+        var_dump($offres_pro);
+        var_dump($compte['code_compte']);
+
+
             foreach ($offres_pro as $offre){
                 ?>
                 <option value="<?php echo $offre['code_offre'];?>"><?php echo $offre['titre_offre'];?></option>
@@ -309,18 +323,6 @@ var_dump($offres_pro);
             </div>
         </div>
         <?php
-        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-        $username = "sae";
-        $password = "philly-Congo-bry4nt";
-         try {
-            // Créer une instance PDO
-            $pdo = new PDO($dsn, $username, $password);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
-        } catch (PDOException $e) {
-            die("Erreur de connexion à la base de données : " . $e->getMessage());
-        }
-
             $iban = '';
             $bic = '';
             $nom = '';
