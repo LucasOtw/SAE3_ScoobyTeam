@@ -273,6 +273,7 @@
         rel="stylesheet">
     
     <script>
+        
         // Fonction pour basculer l'état du bouton slider
         function toggleSlider() {
             var slider = document.querySelector('.slider');
@@ -324,6 +325,7 @@
                     map: map
                 });
             }
+                
     </script>
 
 
@@ -361,7 +363,7 @@
                     <div> 
                         <p id="offer-state">L'offre est actuellement : 
                             <span id="offer-status"> 
-                                <<?php echo $details_offre[ 'en_ligne'] ? "En Ligne" : "Hors Ligne"; ?>
+                                <?php echo $details_offre[ 'en_ligne'] ? "En Ligne" : "Hors Ligne"; ?>
                             </span>
                         </p>
                     </div>
