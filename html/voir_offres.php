@@ -468,7 +468,7 @@ function tempsEcouleDepuisPublication($offre){
                     var_dump($fermeture);
                     
                     // Comparer les horaires
-                    if ($ouverture <= $date && $fermeture < $date) {
+                    if ($ouverture <= $date && $fermeture > $date) {
                         // Si on est dans l'intervalle d'ouverture
                         $interval = $fermeture->diff($date);
                         
@@ -481,7 +481,7 @@ function tempsEcouleDepuisPublication($offre){
                             $dataStatusEng = "open";
                             $dataStatusFr = "Ouvert";
                         }
-                    } elseif ($ouverture > $date && $fermeture >= $date) {
+                    } elseif ($ouverture > $date && $fermeture <= $date) {
                         // Si on est avant l'ouverture
                         $interval = $ouverture->diff($date);
                         
