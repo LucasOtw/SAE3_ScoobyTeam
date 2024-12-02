@@ -39,144 +39,6 @@ include('recupInfosCompte.php');
         </section>
     
     <style>
-        /* Container principal */
-        .facture-container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            background-color: #fff;
-            border: 1px solid #d1d1d1;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            font-family: Arial, sans-serif;
-        }
-        
-        /* Header de la facture */
-        .facture-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .facture-header .logo img {
-            max-height: 50px;
-        }
-        
-        .facture-title h1 {
-            font-size: 24px;
-            color: #fff;
-            margin: 0;
-        }
-        
-        .facture-title p {
-            font-size: 16px;
-            color: #fff;
-        }
-        
-        /* Informations entreprise et client */
-        .facture-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        
-        .facture-info .info {
-            width: 48%;
-        }
-        
-        .facture-info .info h3 {
-            font-size: 18px;
-            color: #333;
-            margin: 0 0 10px 0;
-        }
-        
-        .facture-info .info p {
-            font-size: 14px;
-            color: #555;
-            margin: 3px 0;
-        }
-        
-        /* Table des items */
-        .facture-items {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        
-        .facture-items th, .facture-items td {
-            text-align: left;
-            padding: 10px;
-            border: 1px solid #ddd;
-        }
-        
-        .facture-items th {
-            background-color: var(--orange);
-            color: white;
-        }
-        
-        .facture-items td {
-            background-color: #f9f9f9;
-        }
-        
-        /* Footer de la facture */
-        .facture-footer {
-            margin-top: 20px;
-        }
-        
-        .facture-footer p {
-            font-size: 16px;
-            color: #333;
-        }
-        
-        .signature-line {
-            border-top: 1px solid #333;
-            margin-top: 30px;
-            width: 50%;
-            margin-bottom: 20px;
-        }
-        #download-btn {
-        display: block;
-        width: 200px;
-        margin: 20px auto;
-        padding: 15px;
-        font-size: 18px;
-        color: white;
-        background-color:  var(--orange);
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-    
-        #download-btn:hover {
-            background-color:  var(--orange);
-            transform: translateY(-2px);
-        }
-        
-        #download-btn:active {
-            background-color:  var(--orange);
-            transform: translateY(1px);
-        }
-        .dropdown-container {
-            margin-top: 2em;
-            text-align: center;
-            margin-bottom: 2em;
-        }
-        
-        .dropdown {
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-
-        
     </style>
 </head>
 <body>
@@ -187,7 +49,12 @@ include('recupInfosCompte.php');
             <option value="offre1">Offre 1 - Titre de l'offre</option>
             <option value="offre2">Offre 2 - Titre de l'offre</option>
             <option value="offre3">Offre 3 - Titre de l'offre</option>
-        </select>
+        </select>  
+
+
+
+
+        
     </div>
 
 
@@ -250,15 +117,16 @@ include('recupInfosCompte.php');
         </table>
 
         <div class="facture-footer">
-            <p>Total HT: 130€</p>
-            <p>TVA 20%: 26€</p>
-            <p>Total TTC: 156€</p>
-
-            <div class="signature">
-                <p>Date d'échéance: 30 Décembre 2024</p>
-                <p>Signature :</p>
-                <div class="signature-line"></div>
+            <div class="info-facture">
+                <p>Total HT: 130€</p>
+                <p>TVA 20%: 26€</p>
+                <p>Total TTC: 156€</p>
             </div>
+            <div class="signature-container">
+                <p><strong>Signature :</strong></p>
+                <div class="signature-box"></div>
+            </div>
+
         </div>
 
         
