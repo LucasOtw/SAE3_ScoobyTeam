@@ -460,6 +460,10 @@ function tempsEcouleDepuisPublication($offre){
                 } else {
                     $periode = "";
                 }
+
+                echo "<pre>";
+                var_dump($periode);
+                echo "</pre>";
                 
                 
                 if (!empty($horaire))
