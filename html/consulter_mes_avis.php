@@ -163,7 +163,7 @@ if (!empty($_POST['supprAvis'])){
 
 </body>
 <footer class="footer footer_membre">
-        <div class="newsletter">
+        <!--<div class="newsletter">
             <div class="newsletter-content">
                 <h2>Inscrivez-vous à notre Newsletter</h2>
                 <p>PACT</p>
@@ -176,7 +176,7 @@ if (!empty($_POST['supprAvis'])){
             <div class="newsletter-image">
                 <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
             </div>
-        </div>
+        </div>-->
 
         <div class="footer-links">
             <div class="logo\avis">
