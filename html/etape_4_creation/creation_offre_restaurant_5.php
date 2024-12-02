@@ -200,6 +200,7 @@ if(isset($_POST['valider'])){
     
     
             if($prix_option !== null){
+                echo "t";
                 // si il y a un prix d'option, il y a une option, donc on l'ajoute.
                 $nbSemaines_option = $_SESSION['crea_offre4']['duree_option'];
                 $champ_option = "option_".$_SESSION['crea_offre4']['option'];
