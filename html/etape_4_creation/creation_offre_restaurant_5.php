@@ -205,7 +205,7 @@ if(isset($_POST['valider'])){
     
             $prix_option = null;
             switch($_SESSION['crea_offre4']['option']){
-                case "aucun":
+                case "aucune":
                     break;
                 case "en_relief":
                     $prix_option = 10.00;
