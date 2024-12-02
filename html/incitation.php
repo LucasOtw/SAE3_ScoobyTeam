@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=429, initial-scale=1.0">
   <title>PACT Professionnel</title>
-  <link rel="stylesheet" href="incitation.php.css">
+  <link rel="stylesheet" href="incitation.css">
 </head>
 <body>
   <div class="container">
