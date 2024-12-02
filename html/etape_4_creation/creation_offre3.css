@@ -307,6 +307,7 @@ footer {
     margin: 0 auto 20px;
     width: 100px; /* Taille ajustée pour s'adapter au design */
     height: auto;
+    margin-top: 5em;
 }
 
 /* Conteneur global pour centrer les éléments */
