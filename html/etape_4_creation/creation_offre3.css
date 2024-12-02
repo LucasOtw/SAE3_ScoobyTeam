@@ -14,7 +14,7 @@
 
 @font-face {
     font-family: 'K2D';
-    src: url('./polices/K2D/K2D-Regular.ttf') format('truetype');
+    src: url('../polices/K2D/K2D-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -327,7 +327,7 @@ footer {
 /* Style pour le lien */
 .back-link {
     font-size: 1rem;
-    color: #007bff; /* Bleu pour contraste */
+    color: #FFFFFF;
     text-decoration: none;
     border: 2px solid #F28322;
     padding: 10px 20px;
