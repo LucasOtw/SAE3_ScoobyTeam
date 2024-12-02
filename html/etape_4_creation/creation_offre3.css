@@ -321,7 +321,7 @@ footer {
 .success-message {
     font-size: 2rem;
     color: #4caf50; /* Vert pour succès */
-    margin-bottom: 20px;
+    margin-bottom: 4em;
 }
 
 /* Style pour le lien */
