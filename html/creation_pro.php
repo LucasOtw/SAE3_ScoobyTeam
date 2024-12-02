@@ -9,34 +9,11 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S'inscrire</title>
     <link rel="icon" type="image/png" href="images/logoPin.png" width="16px" height="32px">
-    <link rel="stylesheet" href="creation_pro.css?">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div class="header-membre">
-    <header class="header-pc">
-        <div class="logo-pc">
-            <img src="images/logoBlanc.png" alt="PACT Logo">
-        </div>
-        
-        <nav>
-            <ul>
-                <li><a href="voir_offres.php" >Accueil</a></li>
-                <li><a href="connexion_pro.php">Publier</a></li>
-                <li><a href="connexion_pro.php" class="active">Se connecter</a></li>
-            </ul>
-        </nav>
-    </header>
-    <header class="header-tel">
-        <div class="logo-tel">
-            <img src="images/LogoCouleur.png" alt="PACT Logo">
-        </div>
-        
-    </header>
-    </div>
-    
-
-    <div class="header-pro">
+    <div class="header_pro">
     <header class="header-pc">
         <div class="logo-pc">
             <img src="images/logoBlanc.png" alt="PACT Logo">
@@ -50,17 +27,7 @@ session_start();
             </ul>
         </nav>
     </header>
-    <header class="header-tel">
-        <div class="logo-tel">
-            <img src="images/logoNoir.png" alt="PACT Logo">
-        </div>
-        
-    </header>
     </div>
-
-
-
-
 
     <main class="creation_compte_pro">
         <div class="creation_compte_pro_container">
