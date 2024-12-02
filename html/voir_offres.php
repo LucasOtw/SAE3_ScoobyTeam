@@ -550,7 +550,9 @@ function tempsEcouleDepuisPublication($offre){
                                 data-rate="2.5"
                                 location=<?php echo $villeOffre["ville"]; ?>
                                 data-status=<?php echo $dataStatusEng; ?> 
-                                data-event=<?php if(!empty($event)) { echo $event['date_'.$type_offre]; } else { echo ""; } ?> >
+                                data-event=<?php if(!empty($event)) { echo $event['date_'.$type_offre]; } else { echo ""; } ?> 
+                                data-period-o=<?php echo $periode['date_ouverture']; ?>
+                                data-period-c=<?php echo $periode['date_fermeture']; ?>>
                         
                         <img src=<?php echo "./".$offre_image['url_image'] ?> alt="aucune image">
                         <div class="offer-details">
