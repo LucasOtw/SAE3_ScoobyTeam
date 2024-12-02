@@ -1,8 +1,13 @@
 <?php
     // Connexion à la base de données
     try {
-        $pdo = new PDO('pgsql:host=localhost;dbname=tripenarvor', 'username', 'password');
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // Vérifie si le formulaire a été soumis    
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+        $username = "sae";  // Utilisateur PostgreSQL défini dans .env
+        $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
+    
+        // Créer une instance PDO avec les bons paramètres
+        $dbh = new PDO($dsn, $username, $password);
     } catch (PDOException $e) {
         die("Erreur de connexion : " . $e->getMessage());
     }
@@ -24,7 +29,7 @@
             // Si l'offre passe en ligne, mettre à jour la date_publication
             $stmt = $pdo->prepare("
                 UPDATE tripenarvor._offre
-                SET en_ligne = :en_ligne,
+                SET en_ligne = true,
                     date_publication = NOW()
                 WHERE code_offre = :code_offre
             ");
@@ -32,14 +37,11 @@
             // Si l'offre est hors ligne, ne pas toucher à date_publication
             $stmt = $pdo->prepare("
                 UPDATE tripenarvor._offre
-                SET en_ligne = :en_ligne
+                SET en_ligne = false
                 WHERE code_offre = :code_offre
             ");
         }
-        $stmt->execute([
-            ':en_ligne' => $en_ligne,
-            ':code_offre' => $code_offre
-        ]);
+        $stmt->execute([':code_offre' => $code_offre ]);
         echo "Mise à jour réussie.";
     } catch (PDOException $e) {
         http_response_code(500);
