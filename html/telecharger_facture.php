@@ -44,60 +44,103 @@ session_start();
         </section>
     
     <style>
+        /* Container principal */
         .facture-container {
-            max-width: 600px;
+            max-width: 800px;
             margin: auto;
             padding: 20px;
-            background-color: #ffffff;
+            background-color: #fff;
             border: 1px solid #d1d1d1;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            flex-direction: column;
+            font-family: Arial, sans-serif;
         }
-
+        
+        /* Header de la facture */
         .facture-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
-
-        .facture-header img {
+        
+        .facture-header .logo img {
             max-height: 50px;
-            border-radius: 5px;
         }
-
-        .facture-header h1 {
+        
+        .facture-title h1 {
             font-size: 24px;
             color: #333;
             margin: 0;
-            text-align: right;
         }
-
-        .facture-details {
-            margin-bottom: 20px;
-            border-top: 2px solid #007bff;
-            padding-top: 10px;
-        }
-
-        .facture-details p {
-            margin: 5px 0;
+        
+        .facture-title p {
             font-size: 16px;
             color: #555;
         }
-
-        .facture-details strong {
-            color: #333;
+        
+        /* Informations entreprise et client */
+        .facture-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
         }
-
-        .facture-footer {
-            text-align: center;
+        
+        .facture-info .info {
+            width: 48%;
+        }
+        
+        .facture-info .info h3 {
+            font-size: 18px;
+            color: #333;
+            margin: 0 0 10px 0;
+        }
+        
+        .facture-info .info p {
             font-size: 14px;
-            color: #777;
+            color: #555;
+            margin: 3px 0;
+        }
+        
+        /* Table des items */
+        .facture-items {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        .facture-items th, .facture-items td {
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        .facture-items th {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .facture-items td {
+            background-color: #f9f9f9;
+        }
+        
+        /* Footer de la facture */
+        .facture-footer {
             margin-top: 20px;
         }
+        
+        .facture-footer p {
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .signature-line {
+            border-top: 1px solid #333;
+            margin-top: 30px;
+            width: 50%;
+            margin-bottom: 20px;
+        }
+
     </style>
 </head>
 <body>
