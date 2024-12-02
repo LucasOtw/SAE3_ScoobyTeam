@@ -17,10 +17,10 @@
     echo"</pre>";
 
     // Récupérer les données envoyées en POST
-    $en_ligne = isset($_POST['en_ligne'])) : null;
+    $en_ligne = isset($_POST['en_ligne']) : null;
     
     // Vérifier que l'identifiant de l'offre est défini
-    $code_offre = isset($_POST['code_offre'])) : null;
+    $code_offre = isset($_POST['code_offre']) : null;
 
     if ($code_offre === null) {
         http_response_code(400);
