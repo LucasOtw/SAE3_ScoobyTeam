@@ -82,7 +82,7 @@ if (isset($_POST['modif_infos'])){
 </head>
 <body>
     
-     <header class="header">
+     <header class="header-pc header_pro">
         <div class="logo">
             <img src="images/logo_blanc_pro.png" alt="PACT Logo">
         </div>
@@ -141,7 +141,7 @@ if (isset($_POST['modif_infos'])){
     </main>
 
 
-    <footer class="footer_detail_avis">
+    <footer class="footer footer_pro">
         <div class="footer-links">
             <div class="logo">
                 <img src="images/logoBlanc.png" alt="Logo PACT">

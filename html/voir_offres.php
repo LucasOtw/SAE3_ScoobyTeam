@@ -57,7 +57,7 @@ function tempsEcouleDepuisPublication($offre){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Offres PACT</title>
-    <link rel="stylesheet" href="voir_offres.css?ad">
+    <link rel="stylesheet" href="voir_offres.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
@@ -499,7 +499,7 @@ function tempsEcouleDepuisPublication($offre){
                     }
                 } else if (empty($horaire)) {
                     
-                    $dataStatusEng = "closed-soon";
+                    $dataStatusEng = "closed";
                     $dataStatusFr = "Fermé";
                     
                 } else if ($type_offre === 'spectacle') {
@@ -542,7 +542,7 @@ function tempsEcouleDepuisPublication($offre){
                     <article class="offer" 
                                 data-category=<?php echo $type_offre;?> 
                                 data-price="<?php echo $offre["tarif"];?>" 
-                                data-rate="2.5"
+                                data-rate="<?php echo $offre["note_moyenne"]; ?>"
                                 location=<?php echo $villeOffre["ville"]; ?>
                                 data-status=<?php echo $dataStatusEng; ?> 
                                 data-event=<?php if(!empty($event)) { echo $event['date_'.$type_offre]; } else { echo ""; } ?> 
@@ -554,6 +554,7 @@ function tempsEcouleDepuisPublication($offre){
                             <h2><?php echo $offre["titre_offre"] ?></h2>
                             <p><?php echo $villeOffre["ville"] ?></p>
                             <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
+                            <p><?php if (!empty($offre["note_moyenne"])) { echo '⭐ '.$offre["note_moyenne"]; } else { echo "Aucune note"; } ?></p>
                             <p><?php echo $offre["tarif"]; ?>€</p>
                             <p><?php if ($type_offre !='spectacle') { echo $dataStatusFr; } ?></p>
                             <?php if (($type_offre == "visite" || $type_offre == "spectacle") && !empty($event['date_'.$type_offre])) { ?> <p><?php echo $event['date_'.$type_offre].' à '.$event['heure_'.$type_offre]; ?></p> <?php } ?>
@@ -718,6 +719,16 @@ function tempsEcouleDepuisPublication($offre){
             ///////////////////////////////////////////////////
             // Mettre à jour les affichages du prix
             function updatePriceDisplay() {
+                // Empêche price-min de dépasser price-max
+                if (parseInt(priceMinInput.value) > parseInt(priceMaxInput.value)) {
+                    priceMinInput.value = priceMaxInput.value;
+                }
+        
+                // Empêche price-max d'être inférieur à price-min
+                if (parseInt(priceMaxInput.value) < parseInt(priceMinInput.value)) {
+                    priceMaxInput.value = priceMinInput.value;
+                }
+                
                 priceMinDisplay.textContent = priceMinInput.value;
                 priceMaxDisplay.textContent = priceMaxInput.value;
             }

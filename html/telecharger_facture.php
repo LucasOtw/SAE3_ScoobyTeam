@@ -39,7 +39,7 @@ include('recupInfosCompte.php');
         </section>
     
     <style>
-        /* Container principal */
+         /* Container principal */
         .facture-container {
             max-width: 800px;
             margin: auto;
@@ -83,6 +83,7 @@ include('recupInfosCompte.php');
         
         .facture-info .info {
             width: 48%;
+            margin-top: 1.5em;
         }
         
         .facture-info .info h3 {
@@ -102,6 +103,7 @@ include('recupInfosCompte.php');
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
+            margin-top: 2em;
         }
         
         .facture-items th, .facture-items td {
@@ -174,9 +176,75 @@ include('recupInfosCompte.php');
             background-color: #f9f9f9;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
-
+        .info-facture {
+        width: max-content; /* Adapte la largeur au contenu */
+        margin-left: auto; /* Repousse le conteneur vers la droite */
+        margin-right: 20px; /* Ajoute un espace entre le conteneur et le bord droit */
+        padding: 10px;
+        }
         
+        .info-facture p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #333; /* Texte un peu plus foncé pour le contraste */
+        }
+
+        .signature-container {
+        margin-top: 20px;
+        text-align: left;
+        margin-left: 20px;
+        }
+        
+        .signature-container p {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .signature-box {
+            width: 250px;
+            height: 80px;
+            border: 2px dashed #9b9b9b;
+            border-radius: 5px; /* Coins légèrement arrondis */
+            background-color: #f9f9f9; /* Fond léger pour contraster */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999; /* Texte indicatif en gris */
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .payment-info {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+            padding: 10px;
+        }
+        
+        .payment-info p {
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+        
+        .thank-you {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 16px;
+            font-style: italic;
+            color: #007bff;
+        }
+        
+        .thank-you p {
+            margin: 5px 0;
+        }
+
+
+
+
+
+
+
     </style>
 </head>
 <body>
@@ -187,8 +255,25 @@ include('recupInfosCompte.php');
             <option value="offre1">Offre 1 - Titre de l'offre</option>
             <option value="offre2">Offre 2 - Titre de l'offre</option>
             <option value="offre3">Offre 3 - Titre de l'offre</option>
-        </select>
+        </select>  
+
+
+
+
+        
     </div>
+
+
+    <?php
+    // Définir le fuseau horaire (optionnel, pour s'assurer de la bonne heure)
+    date_default_timezone_set('Europe/Paris');
+    
+    // Récupérer la date du jour au format souhaité
+    $dateDuJour = date('d/m/Y');
+    
+    ?>
+
+    
      <div class="facture-container" id="facture-container">
         <header class="facture-header">
             <div class="logo">
@@ -196,7 +281,7 @@ include('recupInfosCompte.php');
             </div>
             <div class="facture-title">
                 <h1>Facture</h1>
-                <p>Le 30 Novembre 2024</p>
+                <p><?php echo $dateDuJour?></p>
             </div>
         </header>
 
@@ -208,7 +293,32 @@ include('recupInfosCompte.php');
                 <p><strong>Email</strong> : <?php echo $compte['mail']; ?></p>
             </div>
         </div>
+        <?php
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+        $username = "sae";
+        $password = "philly-Congo-bry4nt";
+         try {
+            // Créer une instance PDO
+            $pdo = new PDO($dsn, $username, $password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        } catch (PDOException $e) {
+            die("Erreur de connexion à la base de données : " . $e->getMessage());
+        }
 
+            $iban = '';
+            $bic = '';
+            $nom = '';
+            $query = "SELECT nom_compte, iban, bic FROM tripenarvor._compte_bancaire LIMIT 1";
+            $stmt = $pdo->query($query);
+
+            // Vérifier s'il y a des résultats
+            if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $nom = $row['nom_compte'];
+                $iban = $row['iban'];
+                $bic = $row['bic'];
+            }
+        ?>
         <table class="facture-items">
             <thead>
                 <tr>
@@ -238,15 +348,28 @@ include('recupInfosCompte.php');
         </table>
 
         <div class="facture-footer">
-            <p>Total HT: 130€</p>
-            <p>TVA 20%: 26€</p>
-            <p>Total TTC: 156€</p>
-
-            <div class="signature">
-                <p>Date d'échéance: 30 Décembre 2024</p>
-                <p>Signature :</p>
-                <div class="signature-line"></div>
+            <div class="info-facture">
+                <p>Total HT: 130€</p>
+                <p>TVA 20%: 26€</p>
+                <p>Total TTC: 156€</p>
             </div>
+            <div class="payment-info">
+                <p><strong>Mode de paiement :</strong> Virement bancaire</p>
+                <p><strong>IBAN :</strong> <?php echo $iban?></p>
+                <p><strong>BIC :</strong> <?php echo $bic?></p>
+            </div>
+
+            <div class="signature-container">
+                <p><strong>Signature :</strong></p>
+                <div class="signature-box"></div>
+            </div>
+
+            <div class="thank-you">
+                <p><strong>Merci pour votre confiance !</strong></p>
+                <p>Nous espérons vous revoir bientôt.</p>
+            </div>
+
+
         </div>
 
         

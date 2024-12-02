@@ -39,6 +39,17 @@
     /* un membre n'a qu'une seule image, puisque ce sera sa photo de profil.
     Il suffit donc de voir si il en possède une :)*/
 
+    $checkPP = $dbh->prepare("SELECT url_image FROM tripenarvor._sa_pp WHERE code_compte = :code_compte");
+    $checkPP->bindValue(":code_compte",$compte['code_compte']);
+    $checkPP->execute();
+
+    $photo_profil = $checkPP->fetch(PDO::FETCH_ASSOC);
+    if($photo_profil !== null){
+      $compte_pp = $photo_profil['url_image'];
+    } else {
+      $compte_pp = "";
+    }
+
     $_adresse = $monAdresse->fetch(PDO::FETCH_ASSOC);
   } elseif(isset($_SESSION['pro'])){
      $compte = $_SESSION['pro'];

@@ -499,11 +499,10 @@ main.connexion_pro_main>div>div.connexion_pro_form-container>form>div.connexion_
 }
 
 .connexion_pro_image-container img {
-    width: 126%;
+    width: 100%;
     height: auto;
     object-fit: cover;
     max-height: 100%;
-    margin-left: -4em;
 }
 
 
@@ -2314,6 +2313,9 @@ input[type="password"]::placeholder {
     background-color: var(--orange); /* Ajoute une couleur de survol pour les deux boutons */
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Ombre plus forte au survol */
     transition: 0.3s;
+    height:3.3em;
+    width:15em;
+    color:white;
 }
 
 
@@ -4026,4 +4028,398 @@ nav.nav-bar-tel {
     max-width: 100%; /* L'image ne dépasse jamais la largeur de son conteneur */
     height: auto; /* Maintient le ratio d'aspect de l'image */
 }
+
+
+
+                                        /*****************************************************
+                                                        * Code page  Mes offres *
+                                        *****************************************************/
+
+
+/* Profile Section */
+.main_mes_offres .profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+
+.main_mes_offres .banner img {
+    width: 70%;
+    height: 200px;
+    object-fit: cover;
+    margin: 30px;
+    border-radius: 20px;
+}
+
+.main_mes_offres .profile-info {
+    margin-top: -90px;
+    text-align: center;
+}
+
+.main_mes_offres .profile-info img.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 35px;
+    object-fit: cover;
+}
+
+.main_mes_offres .profile-info h1 {
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+.main_mes_offres .profile-info p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Tabs Section */
+.main_mes_offres .tabs {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.main_mes_offres .tabs ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    min-width: 40vw;
+}
+
+.main_mes_offres .tabs ul li {
+    display: flex;
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+.main_mes_offres .tabs ul li a {
+    width: calc(60vw/3);
+    font-size: 20px;
+    padding: 10px 20px;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+    color: #333;
+    text-decoration: none;
+}
+
+.main_mes_offres .tabs ul li a.active {
+    border-color: #ff6600;
+    text-decoration: none;
+}
+
+/* Carte d'offre */
+.main_mes_offres .offer-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 15px;
+    width: 260px; /* Ajuste selon ton besoin */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+}
+
+/* Image */
+.main_mes_offres .offer-image {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.main_mes_offres .offer-image img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.main_mes_offres .offers {
+    display: flex;
+    flex-wrap: wrap;  /* Pour que les cartes aillent à la ligne si nécessaire */
+    gap: 50px;        /* Ajoute un espacement entre les cartes */
+    justify-content: center;  /* Aligne les cartes de manière équitable */
+    margin: 20px;
+    margin-bottom: 150px;
+}
+
+.main_mes_offres .offres {
+    display: flex;
+    flex-wrap: wrap;  /* Pour que les cartes aillent à la ligne si nécessaire */
+    gap: 20px;        /* Ajoute un espacement entre les cartes */
+    justify-content: center;  /* Aligne les cartes de manière équitable */
+    margin: 20px;
+    margin-bottom: 100px;
+}
+
+.main_mes_offres .offer-card {
+    width: 260px;  /* Assure une largeur fixe pour chaque carte */
+    margin-bottom: 20px;  /* Ajoute un espace en bas au cas où elles iraient à la ligne */
+}
+
+.main_mes_offres #vosOffres {
+    margin-left: 5.7vw;
+    margin-bottom: 30px;
+}
+
+/* Note */
+.main_mes_offres  .offer-rating {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.main_mes_offres  .star {
+    color: #ffcc00;
+    margin-right: 5px;
+}
+
+.main_mes_offres  .rating {
+    color: #333;
+}
+
+/* Statut */
+.main_mes_offres  .offer-status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+.main_mes_offres  .status-dot-offline {
+    width: 8px;
+    height: 8px;
+    background-color: #ff4d4f;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.main_mes_offres  .status-dot-online {
+    width: 8px;
+    height: 8px;
+    background-color: var(--vert-clair);
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* Information de l'offre */
+.main_mes_offres  .offer-info {
+    padding: 10px 0;
+}
+
+.main_mes_offres  .offer-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.main_mes_offres  .offer-info .category {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.main_mes_offres  .offer-info .update {
+    font-size: 12px;
+    color: #ff6600;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.main_mes_offres  .update-icon {
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.main_mes_offres  .offer-info .last-update {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.main_mes_offres  .offer-info .offer-type {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.main_mes_offres  .offer-info .price {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Bouton d'ajout */
+.main_mes_offres  .add-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: #ff6600;
+    color: #fff;
+    font-size: 30px;
+    padding: 9px 10px 10px 10px;
+    margin: 10px;
+    border: none;
+    width:50px;
+    height: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.main_mes_offres  .add-btn:hover {
+    background-color: #e65a00;
+}
+
+.main_mes_offres  .image-button {
+    background-image: url('images/PublierAnnonce.png'); /* Chemin de l'image */
+    background-size: cover; /* L'image couvrira tout le bouton */
+    background-position: center; /* Centrer l'image */
+    width: 260px; /* Remplace par la largeur de tes cases offres */
+    height: 420px; /* Remplace par la hauteur de tes cases offres */
+    border: none; /* Pas de bordure */
+    cursor: pointer; /* Curseur au survol */
+    display: flex; /* Pour centrer le texte */
+    align-items: center; /* Centre le texte verticalement */
+    justify-content: center; /* Centre le texte horizontalement */
+    border-radius: 15px; /* Ajuste ce chiffre pour arrondir les angles comme tes cases offres */
+    position: relative; /* Pour bien positionner le texte */
+    flex-direction: column;
+}
+.main_mes_offres  .image-button img{
+           margin-top:35px;}
+
+.main_mes_offres  .button-text button.image-button{
+    color: white; /* Couleur du texte */
+    font-size: 18px; /* Taille du texte */
+    font-weight: bold; /* Rendre le texte plus visible */
+    text-decoration: none;
+}
+.main_mes_offres  a.button-text{
+    text-decoration: none;
+}
+
+.main_mes_offres  .image-button:hover {
+    opacity: 0.8; /* Effet visuel lors du survol (optionnel) */
+}
+.main_mes_offres  .button-container {
+    display: flex;
+    gap: 10px; /* Espace entre les boutons */
+    margin-left:20em;
+}
+
+
+.main_mes_offres  .button-toutes{
+    border-radius: 30px;
+    padding: 13px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px 0;
+    outline: none;
+    border: none;
+    width: 150px;
+    height: 50px;
+    background-color: #f9f9f9;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+.main_mes_offres  .button-Ligne{
+    border-radius: 30px;
+    padding: 13px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px 0;
+    outline: none;
+    border: none;
+    width: 150px;
+    height: 50px;
+    background-color: #f9f9f9;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+.main_mes_offres  .button-HorsLigne{
+    border-radius: 30px;
+    padding: 13px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px 0;
+    outline: none;
+    border: none;
+    width: 150px;
+    height: 50px;
+    background-color: #f9f9f9;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+.main_mes_offres  .button-Active{
+    background-color: #F28322;
+    border-radius: 30px;
+    padding: 13px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px 0;
+    color: white;
+    outline: none;
+    border: none;
+    width: 150px;
+    height: 50px;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Effet au survol */
+.main_mes_offres .button_HorsLigne:hover {
+    transform: scale(1.05);   /* Légère mise en avant */
+    transition: 0.3s ease;    /* Animation douce */
+    text-align: center;
+}
+
+.main_mes_offres .button-Ligne:hover{
+    transform: scale(1.05);   /* Légère mise en avant */
+    transition: 0.3s ease;    /* Animation douce */
+    text-align: center;
+}
+.main_mes_offres .button-toutes:hover{
+    transform: scale(1.05);   /* Légère mise en avant */
+    transition: 0.3s ease;    /* Animation douce */
+    text-align: center;
+}
+
+
+.main_mes_offres .vos_offres {
+    padding-left:13.5em;
+}
+
 

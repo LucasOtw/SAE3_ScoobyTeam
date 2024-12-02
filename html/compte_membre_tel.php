@@ -3,8 +3,72 @@
 ob_start();
 session_start();
 
-if(isset($_POST['changePhoto'])){
-    echo "zadefrgtyhui";
+include("recupInfosCompte.php");
+
+if (isset($_POST['changePhoto'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['profile-photo'])) {
+        $file = $_FILES['profile-photo'];
+
+        // Vérifier qu'il n'y a pas d'erreurs d'upload
+        if ($file['error'] === UPLOAD_ERR_OK) {
+            // Vérification du type MIME
+            $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            if (!in_array($file['type'], $allowedTypes)) {
+                echo "Type de fichier non autorisé.";
+                exit;
+            }
+
+            // Dossier où enregistrer l'image
+            $uploadDir = 'images/user/profile/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true); // Créer le dossier s'il n'existe pas
+            }
+
+            // Générer un nom unique pour le fichier
+            $fileName = uniqid('profile_', true) . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
+            $filePath = $uploadDir . $fileName;
+
+            // Déplacer le fichier temporaire vers le dossier cible
+            if (move_uploaded_file($file['tmp_name'], $filePath)) {
+                // Générer l'URL de l'image
+                $photoUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/' . $filePath;
+
+                // Connexion à la base de données
+                $db = new PDO('mysql:host=localhost;dbname=ma_base', 'utilisateur', 'motdepasse');
+
+                // Exemple d'identifiant utilisateur (à adapter selon ton application)
+                $userId = 123; // Par exemple, $_SESSION['user_id']
+
+                // Vérifier si l'utilisateur existe déjà
+                $query = $db->prepare('SELECT COUNT(*) FROM tripenarvor._sa_pp WHERE code_compte = :user_id');
+                $query->bindValue(':user_id', $compte['code_compte'], PDO::PARAM_INT);
+                $query->execute();
+                $exists = $query->fetchColumn() > 0;
+
+                if ($exists) {
+                    // Mise à jour de l'URL de la photo de profil
+                    $updateQuery = $db->prepare('UPDATE tripenarvor._sa_pp SET url_image = :profile_photo_url WHERE code_compte = :user_id');
+                    $updateQuery->bindValue(':profile_photo_url', $photoUrl, PDO::PARAM_STR);
+                    $updateQuery->bindValue(':user_id', $compte['code_compte'], PDO::PARAM_INT);
+                    $updateQuery->execute();
+
+                    echo "Photo de profil mise à jour avec succès !";
+                } else {
+                    // Insérer une nouvelle entrée
+                    $insertQuery = $db->prepare('INSERT INTO tripenarvor._sa_pp (url_image, code_compte) VALUES (:profile_photo_url, :user_id)');
+                    $insertQuery->bindValue(':user_id', $compte['code_compte'], PDO::PARAM_INT);
+                    $insertQuery->bindValue(':profile_photo_url', $photoUrl, PDO::PARAM_STR);
+                    $insertQuery->execute();
+
+                    echo "Utilisateur créé et URL de la photo enregistrée !";
+                }
+            } else {
+                echo "Erreur lors du déplacement du fichier.";
+            }
+        } else {
+            echo "Erreur lors de l'upload du fichier.";
+        }
+    }
 }
 
 ?>
@@ -32,7 +96,7 @@ if(isset($_POST['changePhoto'])){
         <!-- Profile Section -->
         <section class="profile">
     <div class="profile-img-container">
-        <img class="profile-img" src="" alt="Photo de profil">
+        <img class="profile-img" src="<?php echo $compte_pp; ?>" alt="Photo de profil">
             <form action="#" method="POST" enctype="multipart/form-data">
                 <label for="upload-photo" class="upload-photo-button">
                     <span class="iconify" data-icon="mdi:camera" data-inline="false"></span>
