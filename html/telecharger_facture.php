@@ -116,7 +116,7 @@ session_start();
         }
         
         .facture-items th {
-            background-color: #007bff;
+            background-color: var(--orange);
             color: white;
         }
         
