@@ -171,7 +171,7 @@ include('recupInfosCompte.php');
                 <img src="images/logo_blanc_pro.png" alt="Logo Entreprise">
             </div>
             <div class="facture-title">
-                <h1>Facture N°12345</h1>
+                <h1>Facture</h1>
                 <p>Le 30 Novembre 2024</p>
             </div>
         </header>
