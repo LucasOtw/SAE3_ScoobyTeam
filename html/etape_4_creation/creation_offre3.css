@@ -300,3 +300,35 @@ footer {
 .main-creation-offre3 fieldset input:focus::placeholder {
     color: rgba(0, 0, 0, 0);
 } 
+
+/* Conteneur global pour centrer uniquement les éléments */
+.success-message, .back-link {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Style pour le message de succès */
+.success-message {
+    font-size: 2rem;
+    color: #4caf50; /* Vert pour succès */
+    margin-bottom: 20px;
+}
+
+/* Style pour le lien */
+.back-link {
+    font-size: 1rem;
+    color: #007bff; /* Bleu pour contraste */
+    text-decoration: none;
+    border: 2px solid #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.back-link:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
