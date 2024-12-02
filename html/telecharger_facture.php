@@ -207,7 +207,7 @@ include('recupInfosCompte.php');
             </div>
             <div class="facture-title">
                 <h1>Facture</h1>
-                <p><?php echo "La date du jour est : " . $dateDuJour</p>
+                <p><?php echo "La date du jour est : " . $dateDuJour?></p>
             </div>
         </header>
 
