@@ -184,6 +184,8 @@ if(isset($_POST['valider'])){
             $date_offre = date('Y-m-d');
             echo $date_offre;
         }
+    } else {
+        echo "Ah";
     }
 }
 
