@@ -28,7 +28,6 @@ session_start();
         </nav>
     </header>
     </div>
-
     <main class="creation_compte_pro">
         <div class="creation_compte_pro_container">
             <div class="creation_compte_pro_form-section">
