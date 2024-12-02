@@ -16,7 +16,7 @@ $password = "philly-Congo-bry4nt";
 }
 
 echo "<pre>";
-var_dump($compte);
+var_dump($compte['code_compte']);
 echo "</pre>";
 
 ?>
