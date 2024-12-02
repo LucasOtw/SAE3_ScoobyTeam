@@ -178,10 +178,10 @@ include('recupInfosCompte.php');
 
         <div class="facture-info">
             <div class="info client">
-                <h3>Nom du client : Joseph Mulliez</h3>
-                <p>Adresse : <?php echo $_adresse['adresse_postal']; ?>, <?php echo $_adresse['ville']; ?>, <?php echo $_adresse['code_postal']; ?></p>
-                <p>Numéro de téléphone : <?php echo $compte['telephone']; ?></p>
-                <p>Email : <?php echo $compte['mail']; ?></p>
+                <h3>Raison sociale : Joseph Mulliez</h3>
+                <p><strong>Adresse</strong> : <?php echo $_adresse['adresse_postal']; ?>, <?php echo $_adresse['ville']; ?>, <?php echo $_adresse['code_postal']; ?></p>
+                <p><strong>Numéro de téléphone</strong> : <?php echo $compte['telephone']; ?></p>
+                <p><strong>Email</strong> : <?php echo $compte['mail']; ?></p>
             </div>
         </div>
 
