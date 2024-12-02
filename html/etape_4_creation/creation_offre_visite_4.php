@@ -26,12 +26,6 @@ if(!isset($_SESSION['pro'])){
     exit;
 }
 
-echo "<pre>";
-var_dump($_SESSION['crea_offre']);
-var_dump($_SESSION['crea_offre2']);
-var_dump($_SESSION['crea_offre3']);
-echo "</pre>";
-
 if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
     if(isset($_SESSION['crea_offre']) && isset($_SESSION['crea_offre2']) && isset($_SESSION['crea_offre3'])){
         echo "DOBBY HAS NO MASTER YOU SON OF A BITCH !";
@@ -310,8 +304,6 @@ if(isset($_POST['valider'])){
 
             $creation_offre_req = "INSERT INTO tripenarvor._offre ($columns) VALUES ($placeholders)";
             $creation_offre = $dbh->prepare($creation_offre_req);
-
-            var_dump($mon_offre);
             
             if($creation_offre->execute($mon_offre)){
                 // on récupère son id
