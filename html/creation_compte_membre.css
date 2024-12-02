@@ -24,10 +24,6 @@ header.header-tel {
     display: none;
 }
 
-.creation_compte_membre_bienvenue {
-    display: none;
-    text-align: center;
-}
 .logo-tel {
     display: flex;
     margin-top: 40px;
@@ -36,22 +32,26 @@ header.header-tel {
 
 .logo img {
     height: 60px;
-    max-width: 100%; /* Pour s'assurer que l'image ne dépasse pas */
+    max-width: 100%;
+    /* Pour s'assurer que l'image ne dépasse pas */
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 3vw; /* Espace adaptable selon la largeur de l'écran */
+    gap: 3vw;
+    /* Espace adaptable selon la largeur de l'écran */
     margin-right: 4vw;
-    flex-wrap: wrap; /* Permet de passer sur plusieurs lignes si nécessaire */
+    flex-wrap: wrap;
+    /* Permet de passer sur plusieurs lignes si nécessaire */
 }
 
 nav ul li a {
     position: relative;
     text-decoration: none;
     color: white;
-    font-size: 1.2rem; /* Utilise des unités relatives */
+    font-size: 1.2rem;
+    /* Utilise des unités relatives */
     padding: 5px 10px;
     transition: color 0.3s, border-bottom 0.3s;
 }
@@ -101,7 +101,8 @@ footer {
 
 .newsletter {
     display: flex;
-    flex-direction: column; /* Stack les éléments sur petits écrans */
+    flex-direction: column;
+    /* Stack les éléments sur petits écrans */
     justify-content: space-between;
     background-color: var(--vert-clair);
     padding: 20px;
@@ -110,24 +111,28 @@ footer {
     margin-top: -130px;
     z-index: 1;
     width: 90%;
-    max-width: 1200px; /* Limite la largeur sur grands écrans */
+    max-width: 1200px;
+    /* Limite la largeur sur grands écrans */
     margin-left: auto;
     margin-right: auto;
 }
 
 .newsletter-content {
     text-align: left;
-    max-width: 100%; /* Ajuste pour petits écrans */
+    max-width: 100%;
+    /* Ajuste pour petits écrans */
 }
 
 .newsletter h2 {
-    font-size: 2rem; /* Taille adaptable */
+    font-size: 2rem;
+    /* Taille adaptable */
     margin-bottom: 10px;
 }
 
 .newsletter-form {
     display: flex;
-    flex-direction: column; /* Colonne sur petits écrans */
+    flex-direction: column;
+    /* Colonne sur petits écrans */
     gap: 10px;
     margin-top: 10px;
 }
@@ -140,7 +145,8 @@ footer {
     cursor: pointer;
 }
 
-.newsletter-form input, .newsletter-form button {
+.newsletter-form input,
+.newsletter-form button {
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -152,7 +158,8 @@ footer {
 
 .newsletter-image img {
     max-height: 100px;
-    width: auto; /* Maintien du ratio de l'image */
+    width: auto;
+    /* Maintien du ratio de l'image */
 }
 
 .footer-links {
@@ -199,15 +206,15 @@ footer {
         flex-direction: row;
         justify-content: space-between;
     }
-    
+
     .newsletter-content {
         max-width: 60%;
     }
-    
+
     .newsletter-form {
         flex-direction: row;
     }
-    
+
     .footer-links {
         flex-direction: row;
         justify-content: space-between;
@@ -222,7 +229,8 @@ footer {
 
 @media (min-width: 1024px) {
     nav ul {
-        gap: 50px; /* Réduit l'espace entre les éléments sur grands écrans */
+        gap: 50px;
+        /* Réduit l'espace entre les éléments sur grands écrans */
     }
 
     footer {
@@ -234,50 +242,52 @@ footer {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    --orange : #F28322;
-    --vert-clair : #BDC426;
-    --vert-fonce : #668C3F;
-    --gris : #E8E8E8;
+    --orange: #F28322;
+    --vert-clair: #BDC426;
+    --vert-fonce: #668C3F;
+    --gris: #E8E8E8;
 }
 
-.creation_compte_membre body {
+
+
+main.creation_compte_membre body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
 
-.creation_compte_membre header {
+main.creation_compte_membre header {
     background-color: #000;
     padding: 10px 20px;
 }
 
-.creation_compte_membre nav {
+main.creation_compte_membre nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.creation_compte_membre nav .logo {
+main.creation_compte_membre nav .logo {
     color: white;
     font-size: 24px;
 }
 
-.creation_compte_membre nav ul {
+main.creation_compte_membre nav ul {
     list-style-type: none;
     display: flex;
     gap: 20px;
 }
 
-.creation_compte_membre nav ul li a {
+main.creation_compte_membre nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 18px;
 }
 
-.creation_compte_membre nav ul li a.active {
+main.creation_compte_membre nav ul li a.active {
     border-bottom: 2px solid var(--vert-clair);
 }
 
-.creation_compte_membre .creation_compte_membre_container {
+main.creation_compte_membre .creation_compte_membre_container {
     display: flex;
     justify-content: space-between;
     padding: 40px;
@@ -287,47 +297,50 @@ footer {
     border-radius: 10px;
 }
 
-.creation_compte_membre .creation_compte_membre_form-section {
+main.creation_compte_membre .creation_compte_membre_form-section {
     width: 50%;
 }
 
-.crea_membre_raison_sociale_num_siren,
-.crea_membre_mail_tel {
+main.creation_compte_membre .crea_membre_raison_sociale_num_siren,
+main.creation_compte_membre .crea_membre_mail_tel {
     display: flex;
     justify-content: space-between;
 }
 
-body > main > div > div.creation_compte_membre_form-section > form > div.crea_membre_mail_tel > fieldset:nth-child(1),
-body > main > div > div.creation_compte_membre_form-section > form > div.crea_membre_mail_tel > fieldset:nth-child(2),
-body > main > div > div.creation_compte_membre_form-section > form > div.crea_membre_raison_sociale_num_siren > fieldset:nth-child(1), 
-body > main > div > div.creation_compte_membre_form-section > form > div.crea_membre_raison_sociale_num_siren > fieldset:nth-child(2) {
+body>main.creation_compte_membre>div>div.creation_compte_membre_form-section>form>div.crea_membre_mail_tel>fieldset:nth-child(1),
+body>main.creation_compte_membre>div>div.creation_compte_membre_form-section>form>div.crea_membre_mail_tel>fieldset:nth-child(2),
+body>main.creation_compte_membre>div>div.creation_compte_membre_form-section>form>div.crea_membre_raison_sociale_num_siren>fieldset:nth-child(1),
+body>main.creation_compte_membre>div>div.creation_compte_membre_form-section>form>div.crea_membre_raison_sociale_num_siren>fieldset:nth-child(2) {
     width: 48%;
 }
 
-.creation_compte_membre .crea_membre_raison_sociale_num_siren.creation_compte_membre_form-section,
-.creation_compte_membre .crea_membre_mail_tel .creation_compte_membre_form-section {
+main.creation_compte_membre .crea_membre_raison_sociale_num_siren.creation_compte_membre_form-section,
+main.creation_compte_membre .crea_membre_mail_tel .creation_compte_membre_form-section {
     width: 50%;
 }
 
-.creation_compte_membre .creation_compte_membre_form-section h1 {
+main.creation_compte_membre .creation_compte_membre_form-section h1 {
     font-size: 28px;
     margin-bottom: 10px;
 }
 
-.creation_compte_membre .creation_compte_membre_form-section p {
+main.creation_compte_membre .creation_compte_membre_form-section p {
     margin-bottom: 20px;
 }
 
-.creation_compte_membre form {
+main.creation_compte_membre form {
     display: flex;
     flex-direction: column;
 }
 
-.creation_compte_membre label {
+main.creation_compte_membre label {
     font-weight: bold;
 }
 
-.creation_compte_membre input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
+main.creation_compte_membre input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -335,25 +348,23 @@ body > main > div > div.creation_compte_membre_form-section > form > div.crea_me
     width: 100%;
 }
 
-.creation_compte_membre .checkbox {
+main.creation_compte_membre .checkbox {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 20px;
 }
 
-
-
-.creation_compte_membre .checkbox label a {
+main.creation_compte_membre .checkbox label a {
     color: var(--vert-clair);
     text-decoration: none;
 }
 
-.creation_compte_membre #cgu{
+main.creation_compte_membre #cgu {
     accent-color: var(--vert-clair);
 }
 
-.creation_compte_membre .submit-btn {
+main.creation_compte_membre .submit-btn {
     background-color: var(--vert-clair);
     color: white;
     padding: 14px 20px;
@@ -363,31 +374,32 @@ body > main > div > div.creation_compte_membre_form-section > form > div.crea_me
     font-size: 18px;
 }
 
-.creation_compte_membre .submit-btn:hover {
+main.creation_compte_membre .submit-btn:hover {
     background-color: var(--vert-fonce);
     transition: ease 0.2s;
 }
 
-.creation_compte_membre .creation_compte_membre_other-links {
+main.creation_compte_membre .creation_compte_membre_other-links {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
 }
 
-.creation_compte_membre .creation_compte_membre_other-links a.connexion_membre {
+main.creation_compte_membre .creation_compte_membre_other-links a.connexion_membre {
     color: var(--vert-clair);
     text-decoration: none;
 }
-.creation_compte_membre .creation_compte_membre_other-links a.inscription_pro {
+
+main.creation_compte_membre .creation_compte_membre_other-links a.inscription_pro {
     color: var(--orange);
     text-decoration: none;
 }
 
-.creation_compte_membre .image-section {
-    width: 40%;   
+main.creation_compte_membre .image-section {
+    width: 40%;
 }
 
-.creation_compte_membre .image-section img {
+main.creation_compte_membre .image-section img {
     height: 100%;
     width: 25vw;
     border-radius: 10px;
@@ -395,155 +407,164 @@ body > main > div > div.creation_compte_membre_form-section > form > div.crea_me
     object-position: center center;
 }
 
-
-.creation_compte_membre fieldset {
+main.creation_compte_membre fieldset {
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 5px;
     margin-bottom: 10px;
     position: relative;
-    padding-top: 0; /* Enlève le padding en haut */
+    padding-top: 0;
+    /* Enlève le padding en haut */
 }
 
-
-
-
-.creation_compte_membre legend {
+main.creation_compte_membre legend {
     font-size: 14px;
     padding: 0 10px;
     color: #333;
     background-color: white;
     position: absolute;
-    top: -10px; 
-    left: 10px; 
+    top: -10px;
+    left: 10px;
     z-index: 2;
     display: none;
 
 }
-.creation_compte_membre fieldset:focus-within legend {
-    display:inline;
+
+main.creation_compte_membre fieldset:focus-within legend {
+    display: inline;
     transition: ease-out 0.3s;
 
-} 
+}
 
-.creation_compte_membre fieldset input::placeholder {
+main.creation_compte_membre fieldset input::placeholder {
     padding-left: 10px;
-} 
-.creation_compte_membre fieldset input:focus::placeholder {
-    color: rgba(0, 0, 0, 0);
-} 
+}
 
-.creation_compte_membre #remember{
+main.creation_compte_membre fieldset input:focus::placeholder {
+    color: rgba(0, 0, 0, 0);
+}
+
+main.creation_compte_membre #remember {
     accent-color: var(--vert-clair);
 }
 
-main.creation_compte_membre > div > div.connexion_membre_form-creation_compte_membre_container > form > div.connexion_membre_remember-group > div {
+main.creation_compte_membre>div>div.connexion_membre_form-creation_compte_membre_container>form>div.connexion_membre_remember-group>div {
     display: flex;
     flex-direction: row;
 }
 
-.creation_compte_membre_deja_compte{
+main.creation_compte_membre .creation_compte_membre_deja_compte {
     display: none;
 }
-.creation_compte_membre_deja_compte a{
+
+main.creation_compte_membre .creation_compte_membre_deja_compte a {
     color: #000;
     text-decoration: none;
     font-style: italic;
 }
+
 /* Media query pour masquer l'image sur les petits écrans */
 @media (max-width: 768px) {
-    .image-section {
-        display: none; /* Cache l'image sur les petits écrans */
+    main.creation_compte_membre .image-section {
+        display: none;
+        /* Cache l'image sur les petits écrans */
     }
-    
-    .creation_compte_membre_form-section {
-        justify-content: center; /* Centre le formulaire quand l'image est cachée */
+
+    main.creation_compte_membre .creation_compte_membre_form-section {
+        justify-content: center;
+        /* Centre le formulaire quand l'image est cachée */
     }
-    
-    main.creation_membre_main {
-        height: auto; /* Ajuste la hauteur sur les petits écrans */
-    }
-    
-    .creation_compte_membre .creation_compte_membre_form-section {
-        width: 100%; /* Le formulaire prend toute la largeur sur petits écrans */
+
+
+
+    main.creation_compte_membre .creation_compte_membre_form-section {
+        width: 100%;
+        /* Le formulaire prend toute la largeur sur petits écrans */
     }
 }
 
-.input-icon {
+main.creation_compte_membre .input-icon {
     position: relative;
 }
 
-.input-icon-img {
+main.creation_compte_membre .input-icon-img {
     display: none;
     position: absolute;
-    right: 10px; /* Ajustez selon vos besoins */
+    right: 10px;
+    /* Ajustez selon vos besoins */
     top: 50%;
     transform: translateY(-50%);
-    width: auto; /* Ajustez la taille */
-    height: 20px; /* Ajustez la taille */
+    width: auto;
+    /* Ajustez la taille */
+    height: 20px;
+    /* Ajustez la taille */
 }
 
 @media (max-width: 430px) {
-    header.header-pc {
-        display: none !important;
-    }
-    header.header-tel {
-        display: block !important;
-    }
-
-    .input-icon-img {
+    main.creation_compte_membre .input-icon-img {
         display: inline-block;
     }
 
-    .creation_compte_membre_bienvenue {
+    main.creation_compte_membre .creation_compte_membre_bienvenue {
         display: flex;
         justify-content: center;
     }
 
-    .crea_membre_raison_sociale_num_siren, .crea_membre_mail_tel {
+    main.creation_compte_membre .crea_membre_raison_sociale_num_siren,
+    .crea_membre_mail_tel {
         flex-direction: column;
     }
-    
-    body > main > div > div.creation_compte_membre_form-section > form > div.crea_membre_mail_tel > fieldset:nth-child(1), body > main > div > div.creation_compte_membre_form-section > form > div.crea_membre_mail_tel > fieldset:nth-child(2), body > main > div > div.creation_compte_membre_form-section > form > div.crea_membre_raison_sociale_num_siren > fieldset:nth-child(1), body > main > div > div.creation_compte_membre_form-section > form > div.crea_membre_raison_sociale_num_siren > fieldset:nth-child(2) {
+
+    body>main.creation_compte_membre>div>div.creation_compte_membre_form-section>form>div.crea_membre_mail_tel>fieldset:nth-child(1),
+    body>main.creation_compte_membre>div>div.creation_compte_membre_form-section>form>div.crea_membre_mail_tel>fieldset:nth-child(2),
+    body>main.creation_compte_membre>div>div.creation_compte_membre_form-section>form>div.crea_membre_raison_sociale_num_siren>fieldset:nth-child(1),
+    body>main.creation_compte_membre>div>div.creation_compte_membre_form-section>form>div.crea_membre_raison_sociale_num_siren>fieldset:nth-child(2) {
         width: auto;
     }
 
-    .creation_compte_membre .checkbox {
+    main.creation_compte_membre .checkbox {
         display: none;
     }
 
-    .creation_compte_membre .creation_compte_membre_container{
+    main.creation_compte_membre .creation_compte_membre_container {
         margin: auto;
         padding-top: 0;
     }
 
-    .creation_compte_membre_form-section h2, .creation_compte_membre_form-section p {
+    main.creation_compte_membre .creation_compte_membre_form-section h2,
+    .creation_compte_membre_form-section p {
         display: none;
     }
-    .creation_compte_membre input[type="text"], input[type="email"], input[type="tel"], input[type="password"]{
+
+    main.creation_compte_membre input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"] {
         border-radius: 100px;
     }
-    .creation_compte_membre fieldset {
+
+    main.creation_compte_membre fieldset {
         border-radius: 100px;
     }
-    .creation_compte_membre_deja_compte{
+
+    main.creation_compte_membre .creation_compte_membre_deja_compte {
         display: flex;
         justify-content: flex-end;
         margin-bottom: 40px;
     }
-    
-    body > main > div > div.creation_compte_membre_form-section > form > fieldset:nth-child(9){
+
+    body>main.creation_compte_membre>div>div.creation_compte_membre_form-section>form>fieldset:nth-child(9) {
         margin-bottom: 0;
     }
 }
 
 
-.creation_compte_membre fieldset p.erreur-formulaire-creation-membre{
+main.creation_compte_membre fieldset p.erreur-formulaire-creation-membre {
     color: #d70808;
     margin-bottom: 0;
     font-size: 12px;
     display: none;
 }
 
-.creation_compte_membre creation_compte_membre_other-links a {
+main.creation_compte_membre .creation_compte_membre_other-links a {
     font-weight: bold;
 }
