@@ -174,6 +174,19 @@ include('recupInfosCompte.php');
             background-color: #f9f9f9;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+        .info-facture {
+        width: max-content; /* Adapte la largeur au contenu */
+        margin-left: auto; /* Repousse le conteneur vers la droite */
+        margin-right: 20px; /* Ajoute un espace entre le conteneur et le bord droit */
+        padding: 10px;
+        }
+        
+        .info-facture p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #333; /* Texte un peu plus foncé pour le contraste */
+        }
+
 
 
         
