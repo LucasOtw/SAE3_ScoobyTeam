@@ -329,14 +329,15 @@ footer {
     font-size: 1rem;
     color: #007bff; /* Bleu pour contraste */
     text-decoration: none;
-    border: 2px solid #007bff;
+    border: 2px solid #F28322;
     padding: 10px 20px;
     border-radius: 5px;
     transition: all 0.3s ease;
     display: inline-block;
+    background-color: #F28322;
 }
 
 .back-link:hover {
-    background-color: #007bff;
+    background-color: #BD671C;
     color: #fff;
 }
