@@ -195,6 +195,9 @@ nav.nav-bar {
 .action-btn.danger:hover {
     background-color: #f8d7da;
 }
+
+
+
 .profile-img-container {
     position: relative;
 }
@@ -209,7 +212,7 @@ nav.nav-bar {
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0;
+    opacity: 100;
 }
 
 @media (max-width: 429px) {
