@@ -34,6 +34,8 @@ session_start();
                           'fermeture' => $horaire_fermeture
                       ];
                   }
+              } else {
+                  $erreurs[] = "Veuillez mettre AU MOINS une horaire d'ouverture ET de fermeture !";
               }
           }
       
