@@ -54,7 +54,7 @@
             </a>
             <!--Il faudra gérer la deconnexion sur bouton"-->
             <button class="action-btn">
-                <img src="images/Vector_14.png" alt="Logout Icon"> Déconnexion
+                <img src="images/Vector_14.png" alt="Logout Icon"> <a href="connexion_membre.php"&deco="true">Déconnexion</a>
             </button>
         </main>
     </div>
