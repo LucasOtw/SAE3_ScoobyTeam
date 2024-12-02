@@ -263,7 +263,7 @@ include('recupInfosCompte.php');
                     $offres_pro->fetchAll(PDO::FETCH_NUM);
                 foreach ($offres_pro as $offre){
                     ?>
-                    <option value="<?php echo $offre['code_offre']?>"><?php echo $offre['titre_offre']?></option>
+                    <option value="<?php echo $offre['code_offre'];?>"><?php echo $offre['titre_offre'];?></option>
                 <?php}?>
                 /*
                 <option value="2">Offre 2 - Titre de l'offre</option>
