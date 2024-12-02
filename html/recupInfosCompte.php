@@ -44,6 +44,7 @@
     $checkPP->execute();
 
     $photo_profil = $checkPP->fetch(PDO::FETCH_ASSOC);
+    var_dump($photo_profil);
     if($photo_profil !== null){
       $compte_pp = $photo_profil['url_image'];
     } else {
