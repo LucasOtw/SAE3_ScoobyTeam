@@ -196,7 +196,8 @@ include('recupInfosCompte.php');
     date_default_timezone_set('Europe/Paris');
     
     // Récupérer la date du jour au format souhaité
-    $dateDuJour = date('d/m/Y');
+    setlocale(LC_TIME, 'fr_FR.UTF-8'); // Définit la locale en français
+    $dateDuJour = strftime('%d %B %Y');
     ?>
 
     
