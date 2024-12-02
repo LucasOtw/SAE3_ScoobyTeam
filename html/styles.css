@@ -4520,6 +4520,9 @@ nav.nav-bar-tel {
 nav.nav-bar_consulter_compte_membre nav.nav-bar_consulter__mes_avis {
   display:none;
 }
+nav.nav-bar_consulter_compte_membre nav.nav-bar_consulter__mes_avis img{
+  display:none;
+}
 @media (max-width: 429px) {
   nav.nav-bar_consulter_compte_membre {
     width: 84vw;
