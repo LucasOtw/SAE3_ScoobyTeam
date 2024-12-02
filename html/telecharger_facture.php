@@ -406,7 +406,7 @@ $password = "philly-Congo-bry4nt";
          }
          ?>
           <div class="offer-name">
-               <p><strong>Nom de l'offre :</strong><?php echo $offre['titre_offre'];?></p>
+               <p><strong>Nom de l'offre :</strong> <?php echo $offre['titre_offre'];?></p>
           </div>
          <table class="facture-items">
              <thead>
