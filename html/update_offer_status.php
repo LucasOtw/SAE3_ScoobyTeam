@@ -12,6 +12,8 @@
         die("Erreur de connexion : " . $e->getMessage());
     }
 
+    echo $_SERVER['REQUEST_METHOD'];
+
     echo "<pre>";
     var_dump($_POST);
     echo"</pre>";
