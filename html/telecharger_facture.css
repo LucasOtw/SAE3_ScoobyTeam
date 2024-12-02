@@ -335,63 +335,39 @@ footer {
     text-decoration: none;
 
            
-/* Container principal */
 .facture-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 30px;
-    background: linear-gradient(135deg, #ffffff, #f9f9f9);
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.facture-container h1 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.facture-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.facture-details p {
+    margin: 0;
+}
+
+.facture-details strong {
     color: #333;
 }
 
-/* Titre de la facture */
-.facture-container h1 {
-    font-size: 2rem;
-    color: #4CAF50;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Détails client */
-.facture-details p {
-    font-size: 1rem;
-    color: #555;
-    margin: 5px 0;
-}
-
-/* Table des items */
-.facture-items {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    font-size: 1rem;
-    margin-left: 30em;
-    width: 50%;
-}
-
-.facture-items th {
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px;
-    text-align: left;
-    font-weight: 600;
-    border-bottom: 2px solid #ddd;
-}
-
-.facture-items td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.total-row {
-    background-color: #f4f4f4;
-}
-
-.total-row td {
-    font-size: 1.1rem;
-    font-weight: bold;
-}
