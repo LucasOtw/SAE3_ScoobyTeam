@@ -341,9 +341,6 @@ main.connexion_pro_main>div>div.connexion_pro_form-container {
    
 }
 
-
-
-
 .connexion_pro_main legend {
     font-size: 14px;
     padding: 0 10px;
@@ -704,7 +701,7 @@ main.creation_compte_pro fieldset {
     border-radius: 5px;
     margin-bottom: 10px;
     position: relative;
-    padding-top: 0; /* Enlève le padding en haut */
+    padding-top: 0;
 }
 
 main.creation_compte_pro legend {
@@ -742,18 +739,18 @@ mainmain.creation_compte_pro > div > div.connexion_pro_form-creation_compte_pro_
 }
 
 
-/* Media query pour masquer l'image sur les petits écrans */
+
 @media (max-width: 768px) {
     main.creation_compte_pro .image-section {
-        display: none; /* Cache l'image sur les petits écrans */
+        display: none; 
     }
 
     .creation_compte_pro_form-section {
-        justify-content: center; /* Centre le formulaire quand l'image est cachée */
+        justify-content: center; 
     }
 
     main.creation_compte_pro .creation_compte_pro_form-section {
-        width: 100%; /* Le formulaire prend toute la largeur sur petits écrans */
+        width: 100%; 
     }
 }
 
@@ -764,7 +761,297 @@ main.creation_compte_pro fieldset p.erreur-formulaire-creation-pro{
     display: none;
 }
 
+                                        /*****************************************************
+                                                      * page modifier compte pro *
+                                        *****************************************************/
 
+
+
+.main_modif_mdp_pro .profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+fieldset[disabled] {
+    opacity: 0.6; 
+}
+
+.main_modif_mdp_pro .banner img {
+    width: 70%;
+    height: 200px;
+    object-fit: cover;
+    margin: 30px;
+    border-radius: 20px;
+}
+
+.main_modif_mdp_pro .profile-info {
+    margin-top: -90px;
+    text-align: center;
+}
+
+.main_modif_mdp_pro .profile-info img.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 35px;
+    object-fit: cover;
+}
+
+.main_modif_mdp_pro .profile-info h1 {
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+.main_modif_mdp_pro .profile-info p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Tabs Section */
+.main_modif_mdp_pro .tabs {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.main_modif_mdp_pro .tabs ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    min-width: 40vw;
+}
+
+.main_modif_mdp_pro .tabs ul li {
+    display: flex;
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+.main_modif_mdp_pro .tabs ul li a {
+    width: calc(60vw/3);
+    font-size: 20px;
+    padding: 10px 20px;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+    color: #333;
+    text-decoration: none;
+}
+
+.main_modif_mdp_pro .tabs ul li a.active {
+    border-color: #ff6600;
+    text-decoration: none;
+}
+.main_modif_mdp_pro h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.main_modif_mdp_pro p {
+    color: #888;
+    margin-bottom: 30px;
+}
+
+.main_modif_mdp_pro .form-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.main_modif_mdp_pro .form-group {
+    margin-bottom: 15px;
+}
+.main_modif_mdp_pro 
+label {
+    display: block;
+    margin-bottom: 0px;
+    font-size: 14px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+
+
+
+.main_modif_mdp_pro form {
+    width: 885px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.main_modif_mdp_pro fieldset {
+    border: none;
+    margin-bottom: 20px;
+}
+
+.main_modif_mdp_pro legend {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+
+.main_modif_mdp_pro input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="password"]::placeholder {
+    color: #aaa;
+}
+
+.main_modif_mdp_pro .crea_pro_raison_sociale_num_siren {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.main_modif_mdp_pro .crea_pro_raison_sociale_num_siren fieldset,
+.main_modif_mdp_pro .crea_pro_mail_tel fieldset {
+    flex: 1;
+}
+
+.main_modif_mdp_pro .checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.main_modif_mdp_pro .checkbox input {
+    margin-right: 10px;
+}
+
+.main_modif_mdp_pro .checkbox label a {
+    color: var(--orange);
+    text-decoration: none;
+}
+
+.main_modif_mdp_pro .checkbox label a:hover {
+    text-decoration: underline;
+}
+.main_modif_mdp_pro .compte_membre_save_delete {
+    display: flex;
+    justify-content: right;
+    gap: 20px; 
+    margin-bottom: 11em;
+}
+.main_modif_mdp_pro .compte_membre_save_delete a {
+            text-decoration : none;
+}
+.main_modif_mdp_pro .submit-btn1, 
+.main_modif_mdp_pro button.submit-btn2,
+.main_modif_mdp_pro button.submit-btn3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--orange);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1em;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 28%;
+    height: 8%;
+    padding : 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+.main_modif_mdp_pro .submit-btn1,
+.main_modif_mdp_pro button.submit-btn2{ 
+    background-color: white;
+    border: 1.5px solid var(--orange);
+    color: black;
+    border-radius: 16px;
+}
+
+.main_modif_mdp_pro .submit-btn1:hover,
+.main_modif_mdp_pro button.submit-btn2:hover,
+.main_modif_mdp_pro button.submit-btn3 {
+    background-color: var(--orange); 
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.main_modif_mdp_pro .crea_pro_mail_tel fieldset, 
+.main_modif_mdp_pro .crea_pro_raison_sociale_num_siren fieldset,
+.main_modif_mdp_pro form fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-top: 0;
+}
+
+.main_modif_mdp_pro .crea_pro_mail_tel legend, 
+.main_modif_mdp_pro .crea_pro_raison_sociale_num_siren legend,
+.main_modif_mdp_pro form legend {
+    font-size: 14px;
+    padding: 0 10px;
+    color: #333;
+    background-color: white;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    display: none;
+}
+
+
+.main_modif_mdp_pro .crea_pro_mail_tel fieldset:focus-within legend, 
+.main_modif_mdp_pro .crea_pro_raison_sociale_num_siren fieldset:focus-within legend,
+.main_modif_mdp_pro form fieldset:focus-within legend {
+    display: inline-block;
+    transition: ease-out 0.3s;
+}
+
+
+.main_modif_mdp_pro .crea_pro_mail_tel input::placeholder, 
+.main_modif_mdp_pro .crea_pro_raison_sociale_num_siren input::placeholder,
+.main_modif_mdp_pro form input::placeholder {
+    padding-left: 10px;
+}
+
+.main_modif_mdp_pro .crea_pro_mail_tel input:focus::placeholder, 
+.main_modif_mdp_pro .crea_pro_raison_sociale_num_siren input:focus::placeholder,
+.main_modif_mdp_pro form input:focus::placeholder {
+    color: rgba(0, 0, 0, 0);
+}
+
+
+#remember, #cgu {
+    accent-color: var(--vert-fonce);
+}
+
+.main_modif_mdp_pro h3{
+    margin-bottom: 20px;
+}
 
                                         /*****************************************************
                                                       * page ajout bancaire *
@@ -963,8 +1250,8 @@ main.main-ajout-bancaire .checkbox label a:hover {
 }
 main.main-ajout-bancaire .compte_membre_save_delete {
     display: flex;
-    justify-content: right; /* Aligne les boutons au centre */
-    gap: 20px; /* Espacement entre les boutons */
+    justify-content: right; 
+    gap: 20px; 
     margin-bottom: 11em;
 }
 
@@ -984,7 +1271,7 @@ main.main-ajout-bancaire button.submit-btn2 {
     width: 28%;
     height: 8%;
     padding : 15px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ajout de l'ombre */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
 
 }
 
@@ -996,8 +1283,8 @@ main.main-ajout-bancaire button.submit-btn1{
 
 main.main-ajout-bancaire button.submit-btn1:hover,
 main.main-ajout-bancaire button.submit-btn2:hover {
-    background-color: var(--orange-hover); /* Ajoute une couleur de survol pour les deux boutons */
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Ombre plus forte au survol */
+    background-color: var(--orange-hover); 
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); 
     transition: 0.3s;
 
 }
@@ -1007,11 +1294,6 @@ main.main-ajout-bancaire button.submit-btn2:hover{
 
 }
 
-
-
-
-
-/* Style général pour tous les fieldsets */
 main.main-ajout-bancaire .nom fieldset, 
 main.main-ajout-bancaire .IBAN fieldset,
 main.main-ajout-bancaire .BIC fieldset,
@@ -1023,7 +1305,6 @@ main.main-ajout-bancaire form fieldset {
     padding-top: 0;
 }
 
-/* Style pour les légendes */
 main.main-ajout-bancaire .nom legend, 
 main.main-ajout-bancaire .IBAN legend,
 main.main-ajout-bancaire .BIC legend,
@@ -1038,7 +1319,7 @@ main.main-ajout-bancaire form legend {
     display: none;
 }
 
-/* Légende visible au focus */
+
 main.main-ajout-bancaire .nom fieldset:focus-within legend, 
 main.main-ajout-bancaire .IBAN fieldset:focus-within legend,
 main.main-ajout-bancaire form fieldset:focus-within legend {
@@ -1046,26 +1327,24 @@ main.main-ajout-bancaire form fieldset:focus-within legend {
     transition: ease-out 0.3s;
 }
 
-/* Placeholder style pour tous les champs de formulaire */
+
 main.main-ajout-bancaire .nom input::placeholder, 
 main.main-ajout-bancaire .IBAN input::placeholder,
 main.main-ajout-bancaire form input::placeholder {
     padding-left: 10px;
 }
 
-/* Placeholder masqué au focus */
+
 main.main-ajout-bancaire .nom input:focus::placeholder, 
 main.main-ajout-bancaire .IBAN input:focus::placeholder,
 main.main-ajout-bancaire form input:focus::placeholder {
     color: rgba(0, 0, 0, 0);
 }
 
-/* Style pour la case à cocher */
 main.main-ajout-bancaire #remember, main.main-ajout-bancaire #cgu {
     accent-color: var(--orange);
 }
 
-/* Styles pour les boutons */
 main.main-ajout-bancaire .submit-btn1, main.main-ajout-bancaire .submit-btn2 {
     background-color: var(--orange);
     color: white;
@@ -1084,32 +1363,32 @@ main.main-ajout-bancaire .submit-btn2 img {
 }
 main.main-ajout-bancaire .input-with-icon {
     display: flex;
-    align-items: center; /* Aligne l'image et l'input verticalement */
+    align-items: center; 
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
 }
 
 main.main-ajout-bancaire .input-with-icon img {
-    margin-right: 10px; /* Espacement entre l'image et le champ */
-    width: 20px; /* Ajuster la taille selon ton design */
+    margin-right: 10px;
+    width: 20px;
     height: auto;
 }
 
 main.main-ajout-bancaire .input-with-icon input {
     border: none;
     outline: none;
-    flex-grow: 1; /* Permet à l'input de prendre tout l'espace disponible */
+    flex-grow: 1; 
     padding: 10px;
 }
 
 main.main-ajout-bancaire .image-container {
-    text-align: center; /* Centre le texte en dessous de l'image */
+    text-align: center; 
 }
 
 main.main-ajout-bancaire .image {
-    max-width: 100%; /* L'image ne dépasse jamais la largeur de son conteneur */
-    height: auto; /* Maintient le ratio d'aspect de l'image */
+    max-width: 100%; 
+    height: auto; 
 }
 
 

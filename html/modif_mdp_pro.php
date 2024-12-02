@@ -94,7 +94,6 @@ if (isset($_POST['modif_infos'])){
             </ul>
         </nav>
     </header>
-    
     <main class="main_modif_mdp_pro">
         <section class="profile">
             <div class="banner">

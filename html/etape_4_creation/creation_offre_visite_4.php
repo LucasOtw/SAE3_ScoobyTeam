@@ -203,6 +203,71 @@ if(isset($_POST['valider'])){
             // on initialise la date actuelle
             $date_offre = date('Y-m-d');
             echo $date_offre;
+
+            // on vérifie si le pro a choisi une option
+            $prix_option = null;
+            switch($_SESSION['crea_offre3']['option']){
+                case "aucune":
+                    break;
+                case "en_relief":
+                    $prix_option = 10.00;
+                    break;
+                case "a_la_une":
+                    $prix_option = 20.00;
+                    break;
+            }
+
+            /*
+            * INSERTIONS
+            */
+
+            if($prix_option !== null){
+                // si il y a un prix, il y a une option
+                $nbSemaines_option = $_SESSION['crea_offre3']['duree_option'];
+                $champ_option = "option_".$_SESSION['crea_offre3']['option'];
+
+                // Calcul de la date de fin
+                $date_fin = new DateTime($date_offre);
+                $date_fin->modify("+{$nbSemaines_option} weeks");
+                $date_fin_option = $date_fin->format('Y-m-d');
+
+                // on peut ajouter l'option
+
+                if($_SESSION['ajoutOption'] === null){
+                    // si la session est null, alors on n'a pas rajouté d'option
+                    $ajoutOption = $dbh->prepare("INSERT INTO tripenarvor._option (nb_semaines,date_debut,date_fin,prix) VALUES
+                    (:nb_semaines,:date_debut,:date_fin,:prix)");
+                    $ajoutOption->bindValue(":nb_semaines",$nbSemaines_option);
+                    $ajoutOption->bindValue(":date_debut",$date_offre);
+                    $ajoutOption->bindValue(":date_fin",$date_fin_option);
+                    $ajoutOption->bindValue(":prix",$prix_option);
+
+                    if($ajoutOption->execute()){
+                        $_SESSION['ajoutOption'] = $dbh->lastInsertId(); // on récupère l'id de l'option ajoutée
+                    }
+                }
+            } else {
+                $champ_option = "";
+            }
+
+            // on récupère aussi le nom du type de l'offre
+            $champ_type_offre = null;
+            switch($_SESSION['crea_offre3']['offre']){
+                case "gratuite":
+                    $champ_type_offre = "Offre Gratuite";
+                    break;
+                case "standard":
+                    $champ_type_offre = "Offre Standard";
+                    break;
+                case "premium":
+                    $champ_type_offre = "Offre Premium";
+                    break;
+            }
+            if($champ_type_offre === null){
+                echo "Erreur : le type de l'offre ne peut pas être null !";
+            }
+
+            // on crée un tableau pour stocker les données dynamiquement
         }
     }
 }

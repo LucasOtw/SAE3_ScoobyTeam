@@ -44,12 +44,12 @@ session_start();
                 <li><a href="#" class="active">Compte bancaire</a></li>
             </ul>
         </section>
-<div class="facture-container">
-    <h1>Facture #12345</h1>
-    <div class="facture-details">
-        <p><strong>Date :</strong> 30 Novembre 2024</p>
-        <p><strong>Client :</strong> Jean Dupont</p>
-        <p><strong>Adresse :</strong> 123 Rue Exemple, Paris, France</p>
+    <div class="facture-container">
+        <h1>Facture #12345</h1>
+        <div class="facture-details">
+            <p><strong>Date :</strong> 30 Novembre 2024</p>
+            <p><strong>Client :</strong> Jean Dupont</p>
+            <p><strong>Adresse :</strong> 123 Rue Exemple, Paris, France</p>
     </div>
     
     <table class="facture-items">

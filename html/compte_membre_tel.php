@@ -54,7 +54,7 @@
             </a>
             <!--Il faudra gérer la deconnexion sur bouton"-->
             <button class="action-btn">
-                <img src="images/Vector_14.png" alt="Logout Icon"> Déconnexion
+                <img src="images/Vector_14.png" alt="Logout Icon"> <a href="connexion_membre.php"&deco="true">Déconnexion</a>
             </button>
         </main>
     </div>
@@ -62,10 +62,10 @@
         <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
         <a href="consulter_mes_avis.php"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
         <a href="incitation.php"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
-        <a href="r
+        <a href="
                 <?php
                 if (isset($_SESSION["membre"]) || !empty($_SESSION["membre"])) {
-                    echo "compte_membre_tel.php.php";
+                    echo "compte_membre_tel.php";
                 } else {
                     echo "connexion_membre.php";
                 }
