@@ -46,6 +46,9 @@ if($monComptePro['code_compte_bancaire']){
     $infosCB = $recupInfosCB->fetch(PDO::FETCH_ASSOC);
 }
 
+// si le formulaire est envoyé...
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -74,7 +77,7 @@ if($monComptePro['code_compte_bancaire']){
         ?>
             <div class="fleche_retour">
                 <div>
-                    <a href="../etape_3_boost/creation_offre_restaurant_4.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
+                    <a href="../etape_3_boost/creation_offre_visite_3.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
                 </div>
             </div>
         
