@@ -37,14 +37,6 @@ include('recupInfosCompte.php');
                 <p><?php echo $compte['mail'] . " | " . $compte['telephone']; ?></p>
             </div>
         </section>
-
-        <section class="tabs">
-            <ul>
-                <li><a href="consulter_compte_pro.php">Informations personnelles</a></li>
-                <li><a href="mes_offres.php">Mes offres</a></li>
-                <li><a href="#" class="active">Compte bancaire</a></li>
-            </ul>
-        </section>
     
     <style>
         /* Container principal */
