@@ -489,7 +489,12 @@ function tempsEcouleDepuisPublication($offre){
                             $dataStatusFr = "Fermé";
                         }
                     }
-                } else if ($type_offre === 'spectacle'){
+                } else if (empty($horaire)) {
+                    
+                    $dataStatusEng = "closed-soon";
+                    $dataStatusFr = "Fermé";
+                    
+                } else if ($type_offre === 'spectacle') {
                     // Si il n'a pas d'horaire du tt
                     $dataStatusEng = "xx";
                     $dataStatusFr = "xx";
