@@ -33,7 +33,7 @@ include('recupInfosCompte.php');
             </div>
             <div class="profile-info">
                 <img class="profile-picture" src="images/hotel.jpg" alt="Profil utilisateur">
-                <h1><?php echo $compte['raison_sociale']; ?></h1>
+                <h1><?php echo $monComptePro['raison_sociale']; ?></h1>
                 <p><?php echo $compte['mail'] . " | " . $compte['telephone']; ?></p>
             </div>
         </section>
@@ -160,11 +160,35 @@ include('recupInfosCompte.php');
             background-color:  var(--orange);
             transform: translateY(1px);
         }
+        .dropdown-container {
+            margin-top: 2em;
+            text-align: center;
+            margin-bottom: 2em;
+        }
+        
+        .dropdown {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
 
+        
     </style>
 </head>
 <body>
+    <div class="dropdown-container">
+        <label for="offres">Mes offres :</label>
+        <select id="offres" class="dropdown">
+            <option value="" disabled selected>Choisissez une offre</option>
+            <option value="offre1">Offre 1 - Titre de l'offre</option>
+            <option value="offre2">Offre 2 - Titre de l'offre</option>
+            <option value="offre3">Offre 3 - Titre de l'offre</option>
+        </select>
+    </div>
      <div class="facture-container" id="facture-container">
         <header class="facture-header">
             <div class="logo">
@@ -178,10 +202,10 @@ include('recupInfosCompte.php');
 
         <div class="facture-info">
             <div class="info client">
-                <h3>Nom du client : Joseph Mulliez</h3>
-                <p>Adresse : <?php echo $compte['adresse_postale']; ?>, <?php echo $compte['ville']; ?>, <?php echo $compte['code_postal']; ?></p>
-                <p>Numéro de téléphone : <?php echo $compte['telephone']; ?></p>
-                <p>Email : <?php echo $compte['mail']; ?></p>
+                <h3>Raison sociale : <?php echo $monComptePro['raison_sociale']; ?></h3>
+                <p><strong>Adresse</strong> : <?php echo $_adresse['adresse_postal']; ?>, <?php echo $_adresse['ville']; ?>, <?php echo $_adresse['code_postal']; ?></p>
+                <p><strong>Numéro de téléphone</strong> : <?php echo $compte['telephone']; ?></p>
+                <p><strong>Email</strong> : <?php echo $compte['mail']; ?></p>
             </div>
         </div>
 

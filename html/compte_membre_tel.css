@@ -195,22 +195,17 @@ nav.nav-bar {
 .action-btn.danger:hover {
     background-color: #f8d7da;
 }
+
+
 .profile-img-container {
     position: relative;
 }
 
-.original-profile-img,
-.preview-image img {
+.profile-img {
     width: 100%;
     height: auto;
 }
 
-.preview-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-}
 
 @media (max-width: 429px) {
     nav.nav-bar {

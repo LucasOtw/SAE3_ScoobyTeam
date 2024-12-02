@@ -1,3 +1,14 @@
+<?php
+
+ob_start();
+session_start();
+
+if(isset($_POST['profilte-photo'])){
+    echo "zadefrgtyhui";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -20,24 +31,25 @@
 
         <!-- Profile Section -->
         <section class="profile">
-            <div class="profile-img-container">
-                <img class="original-profile-img" src="images/pp.png" alt="Photo de profil originale">
-                <div class="preview-image"></div>
-                <form action="/upload" method="POST" enctype="multipart/form-data">
-                    <label for="upload-photo" class="upload-photo-button">
-                        <span class="iconify" data-icon="mdi:camera" data-inline="false"></span>
-                    </label>
-                    <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden>
-                </form>
-            </div>
-            <h1 class="profile-name">Juliette Martin</h1>
-             <p class="profile-contact">juliemartin@gmail.com | 07.98.76.54.12</p>
-        </section>
+    <div class="profile-img-container">
+        <img class="profile-img" src="" alt="Photo de profil">
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <label for="upload-photo" class="upload-photo-button">
+                    <span class="iconify" data-icon="mdi:camera" data-inline="false"></span>
+                </label>
+                <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden>
+                <button type="submit">Upload</button>
+            </form>
+    </div>
+    <h1 class="profile-name">Juliette Martin</h1>
+     <p class="profile-contact">juliemartin@gmail.com | 07.98.76.54.12</p>
+</section>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
     const input = document.getElementById('upload-photo');
-    const previewDiv = document.querySelector('.preview-image');
+    const profileImg = document.querySelector('.profile-img');
 
     input.addEventListener('change', function(e) {
         const file = e.target.files[0];
@@ -45,14 +57,12 @@
             const reader = new FileReader();
             
             reader.onload = function(e) {
-                previewDiv.innerHTML = `<img src="${e.target.result}" alt="Image prévue">`;
-                previewDiv.style.opacity = '1';
+                profileImg.src = e.target.result;
             }
             
             reader.readAsDataURL(file);
         } else {
-            previewDiv.innerHTML = '';
-            previewDiv.style.opacity = '0';
+            profileImg.src = '';
         }
     });
 });
