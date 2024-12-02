@@ -449,6 +449,20 @@ function tempsEcouleDepuisPublication($offre){
 
                 $horaire = ($horaireOffre->fetch(PDO::FETCH_ASSOC));
 
+
+                if ($type_offre == 'parc_attractions' || $type_offre == 'restauration' || $type_offre == 'activite')
+                {
+                    $periodeOffre = $dbh->prepare('SELECT date_ouverture, date_fermeture FROM tripenarvor._offre_'.$type_offre.' WHERE code_offre = :code_offre;');
+                    $periodeOffre->bindParam(":code_offre", $offre["code_offre"]);
+                    $periodeOffre->execute();
+    
+                    $periode = ($periodeOffre->fetch(PDO::FETCH_ASSOC));
+                } else {
+                    $periode = "";
+                }
+
+                var_dump($periode);
+                
                 
                 // $dataStatusEng = "closed";
                 // $dataStatusFr = "Fermé";
