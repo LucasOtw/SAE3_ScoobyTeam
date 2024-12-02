@@ -462,11 +462,11 @@ function tempsEcouleDepuisPublication($offre){
                     $ouverture = new DateTime($date->format("Y-m-d ") . $horaire["ouverture"]);  
                     $fermeture = new DateTime($date->format("Y-m-d ") . $horaire["fermeture"]);
 
-                    echo "<br>";
+                    echo "<br> ouverture : ";
                     var_dump($ouverture);
-                    echo "<br>";
+                    echo "<br> fermeture : ";
                     var_dump($fermeture);
-                    echo "<br>";
+                    echo "<br> ouverture <= date : ";
                     echo $ouverture <= $date;
                     
                     // Comparer les horaires
