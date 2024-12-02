@@ -272,10 +272,11 @@ footer {
 
 
 
-                                        .detail_offre_pro_button {
-                                            display: flex;
-                                            flex-direction: row-reverse;
-                                        }
+.detail_offre_pro_button {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 .detail_offre_hotel-detail {
     /* max-width: 1200px; */
     margin: 0 10em;
@@ -302,7 +303,7 @@ footer {
 
 .detail_offre_hotel-info p {
     font-size: 1.2em;
-    
+
 }
 
 
@@ -310,9 +311,9 @@ footer {
 .detail_offre_pro_info-icon-container {
     position: relative;
     display: inline-block;
-  }
-  
-  .info-icon {
+}
+
+.info-icon {
     background-color: #007bff;
     color: white;
     border-radius: 50%;
@@ -323,9 +324,9 @@ footer {
     align-items: center;
     cursor: pointer;
     font-weight: bold;
-  }
-  
-  .tooltip {
+}
+
+.tooltip {
     position: absolute;
     bottom: 120%;
     left: 50%;
@@ -339,9 +340,9 @@ footer {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s, visibility 0.3s;
-  }
-  
-  .tooltip::after {
+}
+
+.tooltip::after {
     content: '';
     position: absolute;
     top: 100%;
@@ -350,13 +351,13 @@ footer {
     border-width: 6px;
     border-style: solid;
     border-color: #333 transparent transparent transparent;
-  }
-  
-  .detail_offre_pro_info-icon-container:hover .tooltip {
+}
+
+.detail_offre_pro_info-icon-container:hover .tooltip {
     opacity: 1;
     visibility: visible;
-  }
-  
+}
+
 
 
 .detail_offre_price-button {
@@ -401,17 +402,17 @@ footer {
 
 }
 
-.Detail_offre_periode{
+.Detail_offre_periode {
     margin-left: 11.4em;
 }
 
-.Detail_offre_horaire{
+.Detail_offre_horaire {
     margin-left: 11em;
     margin-bottom: 3em;
 }
 
-.Detail_offre_horaire p{
-    color : #727272;
+.Detail_offre_horaire p {
+    color: #727272;
 }
 
 /* Ajout d'un conteneur pour réunir thumbnail 2 et thumbnail 3 */
@@ -561,7 +562,7 @@ footer {
 
 }
 
-#btn-voir-offre{
+#btn-voir-offre {
     background-color: white;
     border: 1.5px solid var(--orange);
     color: black;
@@ -570,9 +571,9 @@ footer {
     width: 223px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
-    font-size : 17px;
+    font-size: 17px;
     margin-right: 30px;
-    
+
 }
 
 
@@ -648,7 +649,7 @@ footer {
     color: var(--orange);
 }
 
-.detail_offre_button{ 
+.detail_offre_button {
     text-decoration: none;
     color: white;
 }
@@ -658,9 +659,12 @@ footer {
 }
 
 .visit-button_detailoffre:hover {
-    transform: scale(1.004); /* Grossissement léger */
-    box-shadow: 0 0 5px 2px var(--orange); /* Lumière fluo verte */
-    background-color: var(--orange); /* Changement de couleur */
+    transform: scale(1.004);
+    /* Grossissement léger */
+    box-shadow: 0 0 5px 2px var(--orange);
+    /* Lumière fluo verte */
+    background-color: var(--orange);
+    /* Changement de couleur */
 }
 
 
@@ -754,13 +758,16 @@ footer {
 
     .services {
         display: flex;
-        flex-wrap: wrap; /* Permet d'ajuster les éléments sur plusieurs lignes */
-        justify-content: center; /* Centrer les services */
-        gap: 20px; /* Espacement entre les services */
+        flex-wrap: wrap;
+        /* Permet d'ajuster les éléments sur plusieurs lignes */
+        justify-content: center;
+        /* Centrer les services */
+        gap: 20px;
+        /* Espacement entre les services */
         margin: 2vh 0;
         padding: 10px;
     }
-    
+
     .service {
         display: flex;
         justify-content: center;
@@ -768,28 +775,34 @@ footer {
         border: 1px solid transparent;
         background-color: rgba(23, 111, 242, 0.05);
         padding: 20px;
-        width: 100px; /* Largeur adaptée */
-        height: 100px; /* Hauteur adaptée */
-        border-radius: 50%; /* Donne une forme circulaire */
+        width: 100px;
+        /* Largeur adaptée */
+        height: 100px;
+        /* Hauteur adaptée */
+        border-radius: 50%;
+        /* Donne une forme circulaire */
         box-shadow: 5px 5px 10px rgba(166, 158, 158, 0.5);
         color: grey;
         text-align: center;
-        font-size: 14px; /* Taille de texte adaptée */
+        font-size: 14px;
+        /* Taille de texte adaptée */
         transition: transform 0.2s ease-in-out;
     }
-    
+
     .service:hover {
-        transform: scale(1.1); /* Animation au survol */
+        transform: scale(1.1);
+        /* Animation au survol */
     }
-    
+
     @media (max-width: 768px) {
         .service {
             width: 80px;
             height: 80px;
-            font-size: 12px; /* Réduit la taille du texte */
+            font-size: 12px;
+            /* Réduit la taille du texte */
         }
     }
-    
+
     @media (max-width: 480px) {
         .service {
             width: 95px;
@@ -799,7 +812,7 @@ footer {
             margin-right: 19em;
         }
     }
-    
+
 
     .services>span.service>img {
         width: 40%;
@@ -981,9 +994,9 @@ footer {
         margin-bottom: 20px;
     }
 
-   .detail_offre_resumer_titre h3{
-    margin-top: 1em;
-   }
+    .detail_offre_resumer_titre h3 {
+        margin-top: 1em;
+    }
 
     .hours {
         list-style-type: none;
@@ -1093,9 +1106,10 @@ footer {
     height: 25em;
 }
 
-.a-la-une::-webkit-scrollbar{
+.a-la-une::-webkit-scrollbar {
     display: none;
 }
+
 /* Boutons de navigation */
 .card-scroll-btn {
     position: absolute;
@@ -1114,7 +1128,7 @@ footer {
 
 .card-scroll-btn.card-scroll-btn-left {
     left: -147px;
-    
+
 }
 
 .card-scroll-btn.card-scroll-btn-right {
@@ -1147,22 +1161,27 @@ footer {
 .image-background-card-a-la-une img {
     width: 100%;
     height: 100%;
-    object-fit:cover;
+    object-fit: cover;
     display: block;
     border-radius: 1.5em;
 }
 
 .raison-sociale-card-a-la-une {
     position: absolute;
-    bottom: 0; /* Assure que le texte est en bas */
+    bottom: 0;
+    /* Assure que le texte est en bas */
     left: 0;
-    width: 100%; /* Le bandeau couvre toute la largeur */
-    background: rgba(0, 0, 0, 0.7); /* Bandeau noir avec opacité */
+    width: 100%;
+    /* Le bandeau couvre toute la largeur */
+    background: rgba(0, 0, 0, 0.7);
+    /* Bandeau noir avec opacité */
     color: white;
     padding: 15px;
     box-sizing: border-box;
-    font-size: 1em; /* Ajuste la taille du texte */
-    text-align: left; /* Aligne le texte à gauche */
+    font-size: 1em;
+    /* Ajuste la taille du texte */
+    text-align: left;
+    /* Aligne le texte à gauche */
     font-size: 1.2em;
 }
 
@@ -1171,17 +1190,20 @@ footer {
     padding-top: 10px;
     padding-bottom: 19px;
 }
+
 /* Conteneur principal */
 .info-dropdown {
     width: 100%;
     max-width: 300px;
-    margin: 20px 0; /* Aligne le conteneur à gauche */
-    position: relative; /* Pour positionner la boîte déroulante */
+    margin: 20px 0;
+    /* Aligne le conteneur à gauche */
+    position: relative;
+    /* Pour positionner la boîte déroulante */
     display: block;
-  }
-  
-  /* Bouton principal */
-  .info-button {
+}
+
+/* Bouton principal */
+.info-button {
     width: 135%;
     padding: 10px 15px;
     font-size: 16px;
@@ -1194,58 +1216,61 @@ footer {
     justify-content: space-between;
     align-items: center;
     transition: background-color 0.3s ease;
-  }
-  
-  .info-button:hover {
+}
+
+.info-button:hover {
     background-color: #f7f7f7;
-  }
-  
-  /* Flèche */
-  .arrow {
+}
+
+/* Flèche */
+.arrow {
     font-size: 12px;
     transition: transform 0.3s ease;
-  }
-  
-  /* Boîte d'informations (repliée par défaut) */
-  .info-box {
+}
+
+/* Boîte d'informations (repliée par défaut) */
+.info-box {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease, padding 0.3s ease;
     background-color: #f7f7f7;
     border-radius: 5px;
-    margin-top: 5px; /* Un léger espace au-dessus */
+    margin-top: 5px;
+    /* Un léger espace au-dessus */
     z-index: 10;
     padding: 0;
-  }
-  
-  /* Afficher la boîte déroulante (ajoutez une classe "active" via JS) */
-  .info-box.active {
-    max-height: 200px; /* Ajustez selon le contenu */
+}
+
+/* Afficher la boîte déroulante (ajoutez une classe "active" via JS) */
+.info-box.active {
+    max-height: 200px;
+    /* Ajustez selon le contenu */
     padding: 10px 15px;
-  }
-  
-  /* Contenu de la boîte */
-  .info-box p,
-  .info-box ul {
+}
+
+/* Contenu de la boîte */
+.info-box p,
+.info-box ul {
     margin: 10px 0;
     color: #333;
     font-size: 14px;
-  }
-  
-  /* Responsivité */
-  @media (max-width: 480px) {
+}
+
+/* Responsivité */
+@media (max-width: 480px) {
     .info-dropdown {
-      max-width: 90%;
+        max-width: 90%;
     }
-  
+
     .info-button {
-      font-size: 14px;
+        font-size: 14px;
     }
-  
+
     .info-box {
-      padding: 0 10px;
+        padding: 0 10px;
     }
-  }
+}
+
 /* Conteneur du slider */
 .slider-container {
     display: flex;
@@ -1280,94 +1305,101 @@ footer {
 
 /* Quand le slider est activé (sur la droite) */
 .slider.active {
-    background-color: var(--orange);  /* orange lorsque activé */
+    background-color: var(--orange);
+    /* orange lorsque activé */
 }
 
 /* Quand le cercle se déplace sur la droite */
 .slider.active .slider-circle {
-    transform: translateX(38px); /* Déplace le cercle de 60px vers la droite */
+    transform: translateX(38px);
+    /* Déplace le cercle de 60px vers la droite */
 }
 
 
 
 
 
-         /* Encapsulation dans la classe avis-widget */
-           .avis-widget {
-             max-width: 82%;
-             margin-left: 11em;
-             margin-top: 5em;
-             padding: 20px;
-             background-color: #fff;
-             border-radius: 8px;
-           }
-           
-           .avis-widget .avis-header {
-             margin-bottom: 20px;
-           }
-           
-           .avis-widget .avis-header h1.avis {
-             font-size: 2.5em;
-             margin: 0;
-           }
-           
-           .avis-widget .avis-header .avis-score {
-             font-size: 1.2em;
-             color: #555;
-           }
-           
-           .avis-widget .avis-header p.avis {
-             color: #777;
-           }
-           
-           .avis-widget .avis-list .avis {
-             display: flex;
-             align-items: flex-start;
-             margin-bottom: 20px;
-           }
-           
-           .avis-widget .avis .avatar {
-             width: 60px;
-             height: 60px;
-             border-radius: 50%;
-             margin-right: 15px;
-             object-fit: cover;
-             border: 1px solid #ddd;
-           }
-           
-           .avis-widget .avis-content h3.avis {
-             margin: 0;
-             font-size: 1.1em;
-             color: #333;
-           }
-           
-           .avis-widget .avis-content h3.avis span.nom_avis {
-             color: #F28322;
-             margin-left: 0.5em;
-           }
-           nom.avis {
-             color: #F28322;
-           }
-           .avis-widget .avis-content p.avis {
-             margin: 5px 0 0;
-             color: #555;
-             font-size: 0.9em;
-           }
-           
-           .avis-widget .avis-list .avis {
-             display: flex;
-             align-items: flex-start;
-             margin-bottom: 20px;
-             padding-bottom: 15px;
-           }
-           .avis-content{         
-             width:100%;
-             border-bottom: 1px solid #000; /* Ligne horizontale noire */
-           }
-           
-           .avis-widget .avis-list .avis:last-child {
-             border-bottom: none; /* Supprime la ligne après le dernier avis */
-           }
+/* Encapsulation dans la classe avis-widget */
+.avis-widget {
+    max-width: 82%;
+    margin-left: 11em;
+    margin-top: 5em;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.avis-widget .avis-header {
+    margin-bottom: 20px;
+}
+
+.avis-widget .avis-header h1.avis {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.avis-widget .avis-header .avis-score {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.avis-widget .avis-header p.avis {
+    color: #777;
+}
+
+.avis-widget .avis-list .avis {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.avis-widget .avis .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+}
+
+.avis-widget .avis-content h3.avis {
+    margin: 0;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.avis-widget .avis-content h3.avis span.nom_avis {
+    color: #F28322;
+    margin-left: 0.5em;
+}
+
+nom.avis {
+    color: #F28322;
+}
+
+.avis-widget .avis-content p.avis {
+    margin: 5px 0 0;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.avis-widget .avis-list .avis {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+.avis-content {
+    width: 100%;
+    border-bottom: 1px solid #000;
+    /* Ligne horizontale noire */
+}
+
+.avis-widget .avis-list .avis:last-child {
+    border-bottom: none;
+    /* Supprime la ligne après le dernier avis */
+}
 
 
 

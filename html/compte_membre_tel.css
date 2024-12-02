@@ -2,10 +2,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    --orange : #F28322;
-    --vert-clair : #BDC426;
-    --vert-fonce : #668C3F;
-    --gris : white;
+    --orange: #F28322;
+    --vert-clair: #BDC426;
+    --vert-fonce: #668C3F;
+    --gris: white;
 }
 
 @font-face {
@@ -22,15 +22,17 @@
     font-style: normal;
 }
 
-html, body {
+html,
+body {
     height: 100%;
 
 }
 
-body{
+body {
     overflow-x: hidden;
     font-family: "K2D", sans-serif;
 }
+
 container {
     max-width: 400px;
     margin: 0 auto;
@@ -99,6 +101,7 @@ container {
     color: #666;
     margin: 5px 0 0;
 }
+
 .profile {
     text-align: center;
 }
@@ -109,7 +112,8 @@ container {
 }
 
 .profile-img {
-    width: 120px; /* Ajustez selon vos besoins */
+    width: 120px;
+    /* Ajustez selon vos besoins */
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
@@ -144,6 +148,7 @@ container {
 input[type="file"] {
     display: none;
 }
+
 nav.nav-bar {
     display: none;
 }
@@ -153,8 +158,9 @@ nav.nav-bar {
 .actions {
     padding: 20px;
 }
+
 .actions a {
-    text-decoration : none;
+    text-decoration: none;
     color: black;
 }
 
@@ -220,15 +226,15 @@ nav.nav-bar {
         box-shadow: 0px 2px 10px rgb(156, 156, 156);
     }
 
-    
+
 
     nav.nav-bar a {
         display: flex;
         align-items: center;
         margin: 10px auto;
     }
-    
+
     a:visited {
-      color: inherit;
+        color: inherit;
     }
 }

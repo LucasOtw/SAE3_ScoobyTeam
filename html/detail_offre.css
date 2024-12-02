@@ -224,8 +224,9 @@ footer {
     width: 24px;
     margin: 0 10px;
 }
+
 .nav-bar {
-    display : none;
+    display: none;
     position: fixed;
 }
 
@@ -316,6 +317,7 @@ footer {
     margin-bottom: 10px;
 
 }
+
 .btn-poster-avis-voir-site {
     display: flex;
 }
@@ -344,17 +346,18 @@ input#btn-poster-avis {
     margin-right: 1em;
 }
 
-.Detail_offre_periode{
+.Detail_offre_periode {
     margin-left: 11.4em;
 }
 
 
-.Detail_offre_periode p{
-    color : #727272;
-    margin-top : 0.6em;
+.Detail_offre_periode p {
+    color: #727272;
+    margin-top: 0.6em;
 }
+
 .accessibilite_infos_detail_offre p {
-    color : #727272;
+    color: #727272;
 }
 
 .visit-button_detailoffre:hover {
@@ -447,13 +450,13 @@ input#btn-poster-avis {
 
 }
 
-.Detail_offre_horaire{
+.Detail_offre_horaire {
     margin-bottom: 3em;
     margin-letf: 11em;
 }
 
-.Detail_offre_horaire p{
-    color : #727272;
+.Detail_offre_horaire p {
+    color: #727272;
 }
 
 .footer_detail_avis {
@@ -543,7 +546,7 @@ input#btn-poster-avis {
     color: var(--vert-clair);
 }
 
-.detail_offre_button{ 
+.detail_offre_button {
     text-decoration: none;
     color: white;
 }
@@ -553,9 +556,12 @@ input#btn-poster-avis {
 }
 
 .visit-button_detailoffre:hover {
-    transform: scale(1.004); /* Grossissement léger */
-    box-shadow: 0 0 5px 2px var(--vert-fonce); /* Lumière fluo verte */
-    background-color: var(--vert-fonce); /* Changement de couleur */
+    transform: scale(1.004);
+    /* Grossissement léger */
+    box-shadow: 0 0 5px 2px var(--vert-fonce);
+    /* Lumière fluo verte */
+    background-color: var(--vert-fonce);
+    /* Changement de couleur */
 }
 
 
@@ -602,7 +608,7 @@ input#btn-poster-avis {
     #body_offre_mobile {
         display: block !important;
         font-family: 'Arial', sans-serif;
-        margin: 0px 0 -1em ;
+        margin: 0px 0 -1em;
         padding: 0 5vw;
         background-color: #ffffff;
         width: 100%;
@@ -650,13 +656,16 @@ input#btn-poster-avis {
 
     .services {
         display: flex;
-        flex-wrap: wrap; /* Permet d'ajuster les éléments sur plusieurs lignes */
-        justify-content: center; /* Centrer les services */
-        gap: 20px; /* Espacement entre les services */
+        flex-wrap: wrap;
+        /* Permet d'ajuster les éléments sur plusieurs lignes */
+        justify-content: center;
+        /* Centrer les services */
+        gap: 20px;
+        /* Espacement entre les services */
         margin: 2vh 0;
         padding: 10px;
     }
-    
+
     .service {
         display: flex;
         justify-content: center;
@@ -664,26 +673,31 @@ input#btn-poster-avis {
         border: 1px solid transparent;
         background-color: rgba(23, 111, 242, 0.05);
         padding: 20px;
-        width: 100px; /* Largeur adaptée */
-        height: 100px; /* Hauteur adaptée */
-        border-radius: 50%; /* Donne une forme circulaire */
+        width: 100px;
+        /* Largeur adaptée */
+        height: 100px;
+        /* Hauteur adaptée */
+        border-radius: 50%;
+        /* Donne une forme circulaire */
         box-shadow: 5px 5px 10px rgba(166, 158, 158, 0.5);
         color: grey;
         text-align: center;
-        font-size: 14px; /* Taille de texte adaptée */
+        font-size: 14px;
+        /* Taille de texte adaptée */
         transition: transform 0.2s ease-in-out;
     }
-    
+
     .service:hover {
-        transform: scale(1.1); /* Animation au survol */
+        transform: scale(1.1);
+        /* Animation au survol */
     }
-    
+
     nav.nav-bar {
         width: 84vw;
         bottom: 20px;
         background-color: var(--vert-clair);
         display: flex;
-        margin: auto  8vw;
+        margin: auto 8vw;
         justify-content: space-around;
         border-radius: 1000px;
         box-shadow: 0px 2px 10px rgb(156, 156, 156);
@@ -698,208 +712,215 @@ input#btn-poster-avis {
 
 
     footer {
-            display : none;
-    }
-    #btn-poster-avis_tel{
-               border: none;
-               color: #BDC426;
-               background: white;
-               display: flex;
-               padding-left: 16em;
-               padding-top: 1em;
-               font-size: large;
-                          
-    }
-
-    .btn-poster-avis-voir-site_tel{
-               border: none;
-    color: #BDC426;
-    background: white;
-    display: flex;
-    padding-left: 16em;
-    padding-top: 1em;
-    font-size: large;
-    }
-    
-}
-    @media (max-width: 768px) {
-        .service {
-            width: 80px;
-            height: 80px;
-            font-size: 12px; /* Réduit la taille du texte */
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .service {
-            width: 95px;
-            height: 95px;
-            font-size: 15px;
-            padding: 10px;
-            margin-right: 19em;
-        }
-    }
-    
-
-    .services>span.service>img {
-        width: 40%;
-    }
-
-    #body_offre_mobile>div>div.details>ul {
-        line-height: 200%;
-    }
-
-    #body_offre_mobile>div>div.details>ul>li {
-        list-style: none;
-    }
-
-    #body_offre_mobile>div>div.details>ul>li>span {
-        font-weight: bolder;
-    }
-
-    #body_offre_mobile>div>article {
-        display: flex;
-        justify-content: space-between;
-        margin: 2vh 0;
-    }
-
-    #body_offre_mobile>div>article>span {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        height: 7vh;
-    }
-
-    #body_offre_mobile>div>article>button#bouton_publier {
-        background-color: #BDC426;
-        color: white;
-        position: relative;
-        right: 10%;
-        border: none;
-        padding: 2vh 9vw;
-        transition: ease;
-        border-radius: 1vw;
-        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.600);
-    }
-
-
-
-    .tarif {
-        color: #2DD7A4;
-        font-size: x-large;
-        font-weight: bold;
-    }
-
-    .carousel {
-        display: flex;
-        position: relative;
-        left: 5%;
-        border-radius: 5vw;
-        overflow-x: scroll;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scroll-behavior: smooth;
-        width: 90%;
-    }
-
-    .carousel-slide {
-        min-width: 100%;
-        scroll-snap-align: center;
-    }
-
-    .carousel img {
-        width: 346px;
-        height: 275px;
-        image-rendering: pixelated;
-        aspect-ratio: 2 / 1;
-        display: block;
-    }
-
-    .carousel::-webkit-scrollbar {
         display: none;
     }
 
-    .carousel {
-        position: relative;
-        max-width: 100%;
-        overflow: hidden;
-    }
-
-    .carousel-images {
-        display: flex;
-        transition: transform 0.5s ease-in-out;
-    }
-
-    .carousel-images img {
-        width: 100%;
-        max-width: 600px;
-    }
-
-    .carousel-buttons {
-        position: absolute;
-        top: 50%;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        transform: translateY(-50%);
-    }
-
-    div.carousel-buttons>button.carousel-button.next {
-        border-radius: 10% 0 0 10%;
-
-    }
-
-    div.carousel-buttons>button.carousel-button.prev {
-        border-radius: 0 10% 10% 0;
-    }
-
-    .carousel-button {
-        background-color: rgba(0, 0, 0, 0.75);
-        color: white;
+    #btn-poster-avis_tel {
         border: none;
-        padding: 15px;
-        cursor: pointer;
+        color: #BDC426;
+        background: white;
+        display: flex;
+        padding-left: 16em;
+        padding-top: 1em;
+        font-size: large;
+
     }
 
-    .details {
-        padding: 30px;
-        margin: -6px;
+    .btn-poster-avis-voir-site_tel {
+        border: none;
+        color: #BDC426;
+        background: white;
+        display: flex;
+        padding-left: 16em;
+        padding-top: 1em;
+        font-size: large;
     }
 
-    .details_offres_infos {
-        padding: 20px;
-    }
+}
 
-    .detail_offre_resumer {
-        margin-top: 0em;
+@media (max-width: 768px) {
+    .service {
+        width: 80px;
+        height: 80px;
+        font-size: 12px;
+        /* Réduit la taille du texte */
     }
+}
 
-    .detail_offre_description {
-        margin-top: 1em;
+@media (max-width: 480px) {
+    .service {
+        width: 95px;
+        height: 95px;
+        font-size: 15px;
+        padding: 10px;
+        margin-right: 19em;
     }
+}
 
-    .global_service_detail_offre {
-        margin-top: 2em;
-    }
 
-    .Detail_offre_ouverture_global {
-        margin: 1em;
-        padding: 4px;
-    }
+.services>span.service>img {
+    width: 40%;
+}
 
-    .detail_offre_resumer_titre {
-        margin-top: 2em;
-    }
+#body_offre_mobile>div>div.details>ul {
+    line-height: 200%;
+}
 
-    .button-group {
+#body_offre_mobile>div>div.details>ul>li {
+    list-style: none;
+}
+
+#body_offre_mobile>div>div.details>ul>li>span {
+    font-weight: bolder;
+}
+
+#body_offre_mobile>div>article {
     display: flex;
-    flex-direction: column; /* Aligne les boutons verticalement */
-    gap: 10px; /* Espacement entre les boutons */
-    align-items: center; /* Centre les boutons horizontalement */
+    justify-content: space-between;
+    margin: 2vh 0;
+}
+
+#body_offre_mobile>div>article>span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 7vh;
+}
+
+#body_offre_mobile>div>article>button#bouton_publier {
+    background-color: #BDC426;
+    color: white;
+    position: relative;
+    right: 10%;
+    border: none;
+    padding: 2vh 9vw;
+    transition: ease;
+    border-radius: 1vw;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.600);
+}
+
+
+
+.tarif {
+    color: #2DD7A4;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.carousel {
+    display: flex;
+    position: relative;
+    left: 5%;
+    border-radius: 5vw;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    width: 90%;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    scroll-snap-align: center;
+}
+
+.carousel img {
+    width: 346px;
+    height: 275px;
+    image-rendering: pixelated;
+    aspect-ratio: 2 / 1;
+    display: block;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-images img {
+    width: 100%;
+    max-width: 600px;
+}
+
+.carousel-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+div.carousel-buttons>button.carousel-button.next {
+    border-radius: 10% 0 0 10%;
+
+}
+
+div.carousel-buttons>button.carousel-button.prev {
+    border-radius: 0 10% 10% 0;
+}
+
+.carousel-button {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.details {
+    padding: 30px;
+    margin: -6px;
+}
+
+.details_offres_infos {
+    padding: 20px;
+}
+
+.detail_offre_resumer {
+    margin-top: 0em;
+}
+
+.detail_offre_description {
+    margin-top: 1em;
+}
+
+.global_service_detail_offre {
+    margin-top: 2em;
+}
+
+.Detail_offre_ouverture_global {
+    margin: 1em;
+    padding: 4px;
+}
+
+.detail_offre_resumer_titre {
+    margin-top: 2em;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    /* Aligne les boutons verticalement */
+    gap: 10px;
+    /* Espacement entre les boutons */
+    align-items: center;
+    /* Centre les boutons horizontalement */
     margin-top: 20px;
 }
-    .btn-link {
+
+.btn-link {
     text-decoration: none;
     display: inline-block;
     padding: 15px 20px;
@@ -909,15 +930,18 @@ input#btn-poster-avis {
     border: none;
     border-radius: 5px;
     text-align: center;
-    width: 100%; /* Remplit la largeur */
-    max-width: 300px; /* Largeur maximale pour éviter un dépassement */
+    width: 100%;
+    /* Remplit la largeur */
+    max-width: 300px;
+    /* Largeur maximale pour éviter un dépassement */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
 
 
-    form .btn-link {
-    all: unset; /* Réinitialise les styles par défaut */
+form .btn-link {
+    all: unset;
+    /* Réinitialise les styles par défaut */
     display: inline-block;
     padding: 15px 20px;
     font-size: 18px;
@@ -927,68 +951,65 @@ input#btn-poster-avis {
     text-align: center;
     width: 100%;
     max-width: 300px;
-    
+
 }
 
-           
-           
-    .titre_detail_offre_responsive {
+
+
+.titre_detail_offre_responsive {
     text-align: center;
     margin: 20px;
 }
 
-    .description-link {
-        text-decoration: none;
-    }
+.description-link {
+    text-decoration: none;
+}
 
-    .description-link h3 {
-        color: var(--vert-clair);
-        outline: none;
-        font-size: 17px;
-        display: flex;
-        justify-content: flex-end;
-        
-    }
+.description-link h3 {
+    color: var(--vert-clair);
+    outline: none;
+    font-size: 17px;
+    display: flex;
+    justify-content: flex-end;
 
-    .Detail_offre_ouverture_global {
-        background-color: #ffffff;
-        border-radius: 10px;
-        max-width: 600px;
-        margin: 19px 0px;
-    }
+}
 
-    .Detail_offre_ouverture_global h3 {
-        color: #333;
-        margin-bottom: 20px;
-    }
+.Detail_offre_ouverture_global {
+    background-color: #ffffff;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 19px 0px;
+}
 
-   .detail_offre_resumer_titre h3{
+.Detail_offre_ouverture_global h3 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.detail_offre_resumer_titre h3 {
     margin-top: 1em;
-   }
+}
 
-    .hours {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
+.hours {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
 
-    .hours li {
-        display: flex;
-        justify-content: space-between;
-        padding: 10px 0;
-        border-bottom: 1px solid #ddd;
-    }
+.hours li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
 
-    .hours li:last-child {
-        border-bottom: none;
-    }
+.hours li:last-child {
+    border-bottom: none;
+}
 
-    .hours span {
-        font-weight: bold;
-        color: var(--vert-clair);
-    }
-
-
+.hours span {
+    font-weight: bold;
+    color: var(--vert-clair);
 }
 
 /* Styles pour les écrans de 429px et plus */
@@ -1068,12 +1089,13 @@ input#btn-poster-avis {
     scroll-behavior: smooth;
     width: 100vw;
     min-width: 100%;
-    
+
 }
 
-.a-la-une::-webkit-scrollbar{
+.a-la-une::-webkit-scrollbar {
     display: none;
 }
+
 /* Boutons de navigation */
 .card-scroll-btn {
     position: absolute;
@@ -1092,7 +1114,7 @@ input#btn-poster-avis {
 
 .card-scroll-btn.card-scroll-btn-left {
     left: -3em;
-    
+
 }
 
 .card-scroll-btn.card-scroll-btn-right {
@@ -1130,15 +1152,20 @@ input#btn-poster-avis {
 
 .raison-sociale-card-a-la-une {
     position: absolute;
-    bottom: 0; /* Assure que le texte est en bas */
+    bottom: 0;
+    /* Assure que le texte est en bas */
     left: 0;
-    width: 100%; /* Le bandeau couvre toute la largeur */
-    background: rgba(0, 0, 0, 0.7); /* Bandeau noir avec opacité */
+    width: 100%;
+    /* Le bandeau couvre toute la largeur */
+    background: rgba(0, 0, 0, 0.7);
+    /* Bandeau noir avec opacité */
     color: white;
     padding: 15px;
     box-sizing: border-box;
-    font-size: 1em; /* Ajuste la taille du texte */
-    text-align: left; /* Aligne le texte à gauche */
+    font-size: 1em;
+    /* Ajuste la taille du texte */
+    text-align: left;
+    /* Aligne le texte à gauche */
     font-size: 1.2em;
 }
 
@@ -1147,17 +1174,20 @@ input#btn-poster-avis {
     padding-top: 10px;
     padding-bottom: 19px;
 }
+
 /* Conteneur principal */
 .info-dropdown {
     width: 100%;
     max-width: 300px;
-    margin: 20px 0; /* Aligne le conteneur à gauche */
-    position: relative; /* Pour positionner la boîte déroulante */
+    margin: 20px 0;
+    /* Aligne le conteneur à gauche */
+    position: relative;
+    /* Pour positionner la boîte déroulante */
     display: block;
-  }
-  
-  /* Bouton principal */
-  .info-button {
+}
+
+/* Bouton principal */
+.info-button {
     width: 135%;
     padding: 10px 15px;
     font-size: 16px;
@@ -1170,140 +1200,144 @@ input#btn-poster-avis {
     justify-content: space-between;
     align-items: center;
     transition: background-color 0.3s ease;
-  }
-  
-  .info-button:hover {
+}
+
+.info-button:hover {
     background-color: #f7f7f7;
-  }
-  
-  /* Flèche */
-  .arrow {
+}
+
+/* Flèche */
+.arrow {
     font-size: 12px;
     transition: transform 0.3s ease;
-  }
-  
-  /* Boîte d'informations (repliée par défaut) */
-  .info-box {
+}
+
+/* Boîte d'informations (repliée par défaut) */
+.info-box {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease, padding 0.3s ease;
     background-color: #f7f7f7;
     border-radius: 5px;
-    margin-top: 5px; /* Un léger espace au-dessus */
+    margin-top: 5px;
+    /* Un léger espace au-dessus */
     z-index: 10;
     padding: 0;
-  }
-  
-  /* Afficher la boîte déroulante (ajoutez une classe "active" via JS) */
-  .info-box.active {
-    max-height: 200px; /* Ajustez selon le contenu */
+}
+
+/* Afficher la boîte déroulante (ajoutez une classe "active" via JS) */
+.info-box.active {
+    max-height: 200px;
+    /* Ajustez selon le contenu */
     padding: 10px 15px;
-  }
-  
-  /* Contenu de la boîte */
-  .info-box p,
-  .info-box ul {
+}
+
+/* Contenu de la boîte */
+.info-box p,
+.info-box ul {
     margin: 10px 0;
     color: #333;
     font-size: 14px;
-  }
-  
-  /* Responsivité */
-  @media (max-width: 480px) {
+}
+
+/* Responsivité */
+@media (max-width: 480px) {
     .info-dropdown {
-      max-width: 90%;
+        max-width: 90%;
     }
-  
+
     .info-button {
-      font-size: 14px;
+        font-size: 14px;
     }
-  
+
     .info-box {
-      padding: 0 10px;
+        padding: 0 10px;
     }
-  }
-           
+}
+
 
 
 
 .avis-widget {
-  max-width: 82%;
-  margin-left: 11em;
-  margin-top: 5em;
-  background-color: #fff;
-  border-radius: 8px;
+    max-width: 82%;
+    margin-left: 11em;
+    margin-top: 5em;
+    background-color: #fff;
+    border-radius: 8px;
 }
 
 /* Header de l'élément avis */
 .avis-widget .avis-header {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .avis-widget .avis-header h1.avis {
-  font-size: 2.5em;
-  margin: 0;
+    font-size: 2.5em;
+    margin: 0;
 }
 
 .avis-widget .avis-header .avis-score {
-  font-size: 1.2em;
-  color: #555;
+    font-size: 1.2em;
+    color: #555;
 }
 
 .avis-widget .avis-header p.avis {
-  color: #777;
+    color: #777;
 }
 
 /* Liste des avis */
 .avis-widget .avis-list .avis {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 20px;
-  padding-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
 }
 
 .avis-widget .avis-list .avis:last-child {
-  border-bottom: none; /* Supprime la ligne après le dernier avis */
+    border-bottom: none;
+    /* Supprime la ligne après le dernier avis */
 }
 
 /* Avatar de l'avis */
 .avis-widget .avis .avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-right: 15px;
-  object-fit: cover;
-  border: 1px solid #ddd;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+    border: 1px solid #ddd;
 }
 
 /* Contenu des avis */
 .avis-content {
-  width:100%;
-  border-bottom: 1px solid #000; /* Ligne horizontale noire */
+    width: 100%;
+    border-bottom: 1px solid #000;
+    /* Ligne horizontale noire */
 }
 
 .avis-widget .avis-content h3.avis {
-  margin: 0;
-  font-size: 1.1em;
-  color: #333;
+    margin: 0;
+    font-size: 1.1em;
+    color: #333;
 }
 
 .avis-widget .avis-content h3.avis span.nom_avis {
-  color: #BDC426;
-  margin-left: 0.5em;
+    color: #BDC426;
+    margin-left: 0.5em;
 }
 
 .nom.avis {
-  color: #BDC426;
+    color: #BDC426;
 }
 
 .avis-widget .avis-content p.avis {
-  margin: 5px 0 0;
-  color: #555;
-  font-size: 0.9em;
+    margin: 5px 0 0;
+    color: #555;
+    font-size: 0.9em;
 }
 
 
-       /* Styles pour les écrans de 429px et moins */
+/* Styles pour les écrans de 429px et moins */
 @media (max-width: 429px) {
 
     /* Header */
@@ -1350,17 +1384,17 @@ input#btn-poster-avis {
     #body_offre_mobile {
         display: block !important;
         font-family: 'Arial', sans-serif;
-        margin: 0px 0 -1em ;
+        margin: 0px 0 -1em;
         padding: 0 5vw;
         background-color: #ffffff;
         width: 100%;
     }
 
-    #body_offre_mobile > div > div.swiper-container > div.swiper-wrapper > div > img {
+    #body_offre_mobile>div>div.swiper-container>div.swiper-wrapper>div>img {
         width: 50%;
     }
 
-    #body_offre_mobile > header {
+    #body_offre_mobile>header {
         display: flex;
         margin: 4vh 168px;
         justify-content: center;
@@ -1376,32 +1410,35 @@ input#btn-poster-avis {
         justify-content: space-between;
     }
 
-    span#titre > p {
+    span#titre>p {
         color: #BDC426;
     }
 
-    #body_offre_mobile > div > div.details > p {
+    #body_offre_mobile>div>div.details>p {
         color: #727272;
     }
 
-    #body_offre_mobile > div > div.details > div.rating > span:nth-child(2) {
+    #body_offre_mobile>div>div.details>div.rating>span:nth-child(2) {
         color: #727272;
     }
 
-    #body_offre_mobile > div > div.details > section {
+    #body_offre_mobile>div>div.details>section {
         margin: 3vh 0;
     }
 
-    #body_offre_mobile > div > div.details > section > article {
+    #body_offre_mobile>div>div.details>section>article {
         margin: 2vh 0 2vh 1vw;
     }
 
     /* Services */
     .services {
         display: flex;
-        flex-wrap: wrap; /* Ajustement sur plusieurs lignes */
-        justify-content: center; /* Centrage */
-        gap: 20px; /* Espacement */
+        flex-wrap: wrap;
+        /* Ajustement sur plusieurs lignes */
+        justify-content: center;
+        /* Centrage */
+        gap: 20px;
+        /* Espacement */
         margin: 2vh 0;
         padding: 10px;
     }
@@ -1415,7 +1452,8 @@ input#btn-poster-avis {
         padding: 20px;
         width: 100px;
         height: 100px;
-        border-radius: 50%; /* Forme circulaire */
+        border-radius: 50%;
+        /* Forme circulaire */
         box-shadow: 5px 5px 10px rgba(166, 158, 158, 0.5);
         color: grey;
         text-align: center;
@@ -1432,7 +1470,8 @@ input#btn-poster-avis {
         max-width: 95%;
         margin-left: 0;
         margin-top: 0;
-        padding: 15px 15px 30px 15px; /* Padding avec bas à 30px */
+        padding: 15px 15px 30px 15px;
+        /* Padding avec bas à 30px */
         margin-bottom: 5vh;
     }
 
@@ -1463,9 +1502,7 @@ input#btn-poster-avis {
         padding-bottom: 10px;
     }
 
-    .prix{
-        margin-top:1em;
+    .prix {
+        margin-top: 1em;
     }
 }
-    
-
