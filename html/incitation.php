@@ -16,11 +16,7 @@
         <a href="voir_offres.php"><img src="images/croix_fermer.png" class="skip"></a>
       </div>
     </header>
-    <style>
-    .incitation_content {
-        margin-left: 30px;
-    }
-</style>
+    
 <main class="incitation_content">
     <div class="incitation_image-container">
         <img src="images/cadeau.png" alt="Icône cadeau" class="image">

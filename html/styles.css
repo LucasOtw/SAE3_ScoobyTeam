@@ -4443,20 +4443,20 @@ nav.nav-bar-tel {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 102%;
+    width: 100vw;
     background-color: #ff7d00;
     padding: 10px 20px;
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin-left: -8px;
     margin-top: -8px;
   }
   
-  
+.incitation_logo-container img{
+    margin-left:16vw;
+}
   .incitation_logo-container {
     flex-grow: 1;
-    margin-left: 5em;
   }
   
   .logo {
@@ -4474,6 +4474,13 @@ nav.nav-bar-tel {
     display: flex;
     justify-content: flex-end; /* Le bouton à droite */
     width:1em;
+  }
+
+  .incitation_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
   
   .skip {
@@ -4494,7 +4501,6 @@ nav.nav-bar-tel {
   .features-image {
     width: 350px;
     height: 160px;
-    margin-left: 36px;
   }
   
   .incitation_main-title {
@@ -4502,7 +4508,6 @@ nav.nav-bar-tel {
     margin: 8px 0;
     color: #333;
     margin-top: 5em;
-    margin-left: 79px;
   }
   
   .subtitle {
@@ -4552,5 +4557,5 @@ nav.nav-bar-tel {
   }
   
   .incitation_subtitle{
-    margin-left: -10px;
+    margin: auto 20vw;
   }

@@ -17,14 +17,17 @@
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  margin-left: -8px;
   margin-top: -8px;
 }
 
-
+.incitation_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .incitation_logo-container {
   flex-grow: 1;
-  margin-left: 5em;
 }
 
 .logo {
@@ -62,7 +65,6 @@
 .features-image {
   width: 350px;
   height: 160px;
-  margin-left: 36px;
 }
 
 .incitation_main-title {
@@ -70,7 +72,6 @@
   margin: 8px 0;
   color: #333;
   margin-top: 5em;
-  margin-left: 79px;
 }
 
 .subtitle {
@@ -120,5 +121,6 @@ nav.nav-bar a {
 }
 
 .incitation_subtitle{
-  margin-left: -10px;
+  margin:auto 20vw;
+  text-align: center;
 }
