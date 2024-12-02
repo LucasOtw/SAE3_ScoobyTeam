@@ -1353,10 +1353,10 @@ input#btn-poster-avis {
     #body_offre_mobile {
         display: block !important;
         font-family: 'Arial', sans-serif;
-        margin: 0px 0 -1em -2em;
+        margin: 0px 0 -1em ;
         padding: 0 5vw;
         background-color: #ffffff;
-        width: 113%;
+        width: 100%;
     }
 
     #body_offre_mobile > div > div.swiper-container > div.swiper-wrapper > div > img {
