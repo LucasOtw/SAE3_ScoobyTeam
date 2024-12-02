@@ -352,5 +352,6 @@ footer {
     display: flex;
     justify-content: center;
     gap: 20px; /* Espace entre les boutons */
+    align-items: center;
 }
 
