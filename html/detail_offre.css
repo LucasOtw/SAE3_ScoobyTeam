@@ -345,6 +345,8 @@ input#btn-poster-avis {
     border: 1px #BDC426 solid;
     margin-right: 1em;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease; /* Animation au survol */
+
 }
 
 .Detail_offre_periode {
