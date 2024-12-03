@@ -2791,6 +2791,129 @@ input[type="password"]::placeholder {
 #cgu {
     accent-color: var(--vert-clair);
 }
+.profile {
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.profile-img {
+    width: 7em;
+    height: 7em;
+    border-radius: 2.5em;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.profile-contact {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0 0;
+    text-decoration:none;
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile-img-container {
+    position: relative;
+    display: inline-block;
+}
+
+.upload-photo-button {
+    position: absolute;
+    bottom: 8em;
+    right: 0em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.upload-photo-button:hover {
+    background-color: #45a049;
+}
+
+.upload-photo-button i {
+    font-size: 18px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+nav.nav-bar {
+    display: none;
+}
+
+
+/* Actions */
+.actions {
+    padding: 20px;
+}
+
+.actions a {
+    text-decoration: none;
+    color: black;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 8px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+
+.action-btn img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.action-btn:hover {
+    background-color: #e9e9e9;
+}
+
+.action-btn.danger {
+    color: #d9534f;
+    font-weight: bold;
+}
+
+.action-btn.danger:hover {
+    background-color: #f8d7da;
+}
+
+
+.profile-img-container {
+    position: relative;
+}
 
 
 
