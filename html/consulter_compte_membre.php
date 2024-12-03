@@ -273,6 +273,13 @@ if (isset($_POST['changePhoto'])) {
                 <p><?php echo $compte['mail']; ?> | <?php echo trim(preg_replace('/(\d{2})/', '$1 ', $compte['telephone'])); ?></p>
             </form>
     </div>
+        <style>
+    @media (max-width: 429px) {
+        .profile-img-container{
+            display:none;
+        }
+    }
+</style>
 
 <!-- POUR TEL -->
         <style>
