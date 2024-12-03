@@ -99,8 +99,18 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $tab_offre['description'] = $description;
             $tab_offre['tarif'] = $tarif;
             $tab_offre['date_visite'] = $date_visite;
-            $tab_offre['duree'] = $duree;
-            $tab_offre['heure_visite'] = $heure_visite;
+
+            if(empty($duree)){
+                $duree = null;
+            } else {
+                $tab_offre['duree'] = $duree;
+            }
+
+            if(empty($heure_visite)){
+                $heure_visite = null;
+            } else {
+                $tab_offre['heure_visite'] = $heure_visite;   
+            }
 
             // Récupération des champs facultatifs
             $tab_offre['complementAdresse'] = $complementAdresse;
