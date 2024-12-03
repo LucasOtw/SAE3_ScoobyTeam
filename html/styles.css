@@ -3013,6 +3013,10 @@ input[type="password"]::placeholder {
     margin-left: 10em;
 }
 
+.delete-icon:hover {
+  cursor: pointer;
+}
+
 .delete-btn:hover .delete-icon {
     filter: invert(40%) sepia(700%) saturate(1300%) hue-rotate(0deg);
     /* Rouge */
