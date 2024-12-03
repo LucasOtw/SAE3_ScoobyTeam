@@ -2928,6 +2928,9 @@ nav.nav-bar {
     width: 10vw;
 }
 
+.modif_photo:hover{
+  cursor: pointer;
+}
 
 @media (max-width: 429px) {
     div.header-membre header.header-pc {
