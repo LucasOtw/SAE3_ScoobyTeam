@@ -1659,7 +1659,7 @@ main.connexion_membre_main fieldset p.erreur-formulaire-connexion-membre {
         display: inline-block;
     }
 
-    main.connexion_membre_main .connexion_membre_ravi {
+    .connexion_membre_ravi {
         display: block;
 
         text-align: center;
@@ -3356,10 +3356,13 @@ main.creation_compte_membre .creation_compte_membre_deja_compte {
     display: none;
 }
 
-main.creation_compte_membre .creation_compte_membre_deja_compte a {
+main.creation_compte_membre {
     color: #000;
     text-decoration: none;
     font-style: italic;
+}
+.deja_compte{
+  color:--var(--vert-clair);
 }
 
 /* Media query pour masquer l'image sur les petits écrans */

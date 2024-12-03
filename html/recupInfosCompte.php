@@ -47,7 +47,7 @@
     if($photo_profil){
       $compte_pp = $photo_profil['url_image'];
     } else {
-      $compte_pp = "";
+      $compte_pp = "images/icones/icone_compte.png";
     }
 
     $_adresse = $monAdresse->fetch(PDO::FETCH_ASSOC);

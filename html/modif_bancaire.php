@@ -12,7 +12,7 @@ include("recupInfosCompte.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
+    <link rel="icon" type="image/png" href="images/logoPin_orange.png" width="16px" height="32px">
     <title>Coordonnées bancaires</title>
     <link rel="stylesheet" href="styles.css">
     
@@ -21,8 +21,9 @@ include("recupInfosCompte.php");
 <body>
     <header class="header_pro">
         <div class="logo">
-            <link rel="icon" type="image/png" href="images/logoPin_orange.png" width="16px" height="32px">
-            <img src="images/logo_blanc_pro.png" alt="PACT Logo">
+            <a href="mes_offres.php">
+                <img src="images/logo_blanc_pro.png" alt="PACT Logo">
+            </a>
         </div>
         <nav class="nav">
             <ul>
