@@ -146,7 +146,7 @@ if (!empty($_POST['supprAvis'])){
             }
             ?>
             <div class="avis">
-                <div class="avis-content">
+                <div class="avis-content" style="margin-left:-7em">
                     <h3 class="avis" style="display: flex; flex-direction:column ;justify-content: space-between; align-items: center;">
                         <span>
                             <?php echo htmlspecialchars($avis["note"]) . ".0 ★  $appreciation "; ?> 
