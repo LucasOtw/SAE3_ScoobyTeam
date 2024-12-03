@@ -18,10 +18,10 @@ if(!isset($_SESSION['membre'])){
 
 if(isset($_GET['deco'])){
     if($_GET['deco'] == true){
-        echo "t";
+        header('location: voir_offres.php');
+        exit;
     }
 }
-
 
 if (isset($_POST['modif_infos'])){
     // Récupérer les valeurs initiales (par exemple, depuis la base de données)
