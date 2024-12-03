@@ -25,7 +25,8 @@ if (isset($_POST['changePhoto'])) {
             }
 
             // Générer un nom unique pour le fichier
-            $fileName = uniqid('profile_', true) . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
+            $fileName = pathinfo($file['name'], PATHINFO_FILENAME) . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
+            echo $fileName;
             $filePath = $uploadDir . $fileName;
 
             // Déplacer le fichier temporaire vers le dossier cible
