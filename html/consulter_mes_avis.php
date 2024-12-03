@@ -84,7 +84,7 @@ if (!empty($_POST['supprAvis'])){
     }
 </style>
 
-        <header class="header_tel">
+        <header>
             <img class="logo_tel" src="images/logoNoirVert.png" >
         <style>
             .logo_tel{
