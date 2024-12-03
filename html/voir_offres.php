@@ -645,6 +645,8 @@ function tempsEcouleDepuisPublication($offre){
                         const offerRate = offer.getAttribute('data-rate');
                         const offerStatus = offer.getAttribute('data-status');
 
+                        console.log(offerCategory.' / '.offerRate.' / '.offerStatus);
+
                         if (category==='all' || category === offerCategory) {
                             offer.style.removeProperty('display');
                         } else {
