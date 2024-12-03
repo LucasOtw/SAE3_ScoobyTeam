@@ -120,8 +120,13 @@ if (!empty($_POST['supprAvis'])){
         ?>
 
         <!-- Boucle pour afficher chaque avis -->
-        <?php foreach ($tout_les_avis as $avis): ?>
-            <?php
+        <?php foreach ($tout_les_avis as $avis): 
+            if (count($tout_les_avis) == 0){
+                ?>
+                <h2>Aucun Avis</h2>
+                <?php
+            }
+                
             // Déterminer l'appréciation en fonction de la note
             $appreciation = "";
             switch ($avis["note"]) {
