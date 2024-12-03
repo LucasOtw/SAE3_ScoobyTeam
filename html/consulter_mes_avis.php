@@ -84,17 +84,23 @@ if (!empty($_POST['supprAvis'])){
     }
 </style>
 
-    <div class="header_profil_tel">
-        <div class="logo_container_tel">
-            <img class="logo_profil_tel" src="images/logoNoirVert.png" alt="Logo de l'application">
-        </div>
-        <div class="titre_container_tel">
-            <a class="btn_retour_tel" href="compte_membre_tel.php">
-                <img src="images/Bouton_retour.png" alt="Retour au compte membre">
-            </a>
-            <h1 class="titre_profil_tel">Éditer le profil</h1>
-        </div>
-    </div>
+    <div id="body_offre_mobile">
+         <img class="logo_tel" src="images/logoNoirVert.png" >
+        <style>
+            .logo_tel{
+                margin-left:4.5em;
+            }
+        </style>
+        <header class="header_tel">
+            <a href="voir_offres.php"><img class="fleche_retour_tel" src="images/Bouton_retour.png" alt="bouton retour"></a>
+            <style>
+                .fleche_retour_tel{
+                    margin-left :-7em;
+                    padding-right:5em;
+                }
+            </style>
+            <h1><Mes Avis/h1>
+        </header>
 
 
 
