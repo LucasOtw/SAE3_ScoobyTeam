@@ -4633,6 +4633,20 @@ nav.nav-bar-tel {
 }
 
 
+.button-factures {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px; /* Ajout d'un espace si nécessaire */
+}
+
+.button-factures .arrow {
+    margin-left: 8px;
+    font-size: 18px;
+}
 
 /*****************************************************
                                                         * page incitation membre *
