@@ -64,8 +64,9 @@ echo "</pre>";
                 <li><a href="connexion_membre.php" class="active">Mon Compte</a></li>
             </ul>
         </nav>
-      </header>
+      </header> 
         
+      
         <header class="header-tel header_membre">
             <div class="logo-tel">
                 <img src="images/logoNoirVert.png" alt="PACT Logo">
