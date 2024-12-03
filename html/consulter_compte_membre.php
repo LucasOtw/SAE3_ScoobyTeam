@@ -235,6 +235,7 @@ if (isset($_POST['changePhoto'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualiser Profil</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 </head>
 <body>
     <?php
