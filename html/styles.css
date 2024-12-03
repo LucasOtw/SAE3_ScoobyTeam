@@ -2824,8 +2824,6 @@ input[type="password"]::placeholder {
 .profile-img-container {
     position: relative;
     display: inline-block;
-    background-color: #f0f0f0;
-    border-bottom: 1px solid #e0e0e0;
 }
 
 .upload-photo-button {
