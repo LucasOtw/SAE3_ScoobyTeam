@@ -233,7 +233,7 @@ $password = "philly-Congo-bry4nt";
             font-size: 16px;
             font-style: italic;
             color: #007bff;
-            margin-top: 7em;
+            margin-top: 5em;
         }
         
         .thank-you p {
@@ -453,15 +453,15 @@ $password = "philly-Congo-bry4nt";
                 <tr>
                     <td>En relief</td>
                     <td><?php if ($en_relief !== null ) { echo "8,34€"; } else { echo "Pas sélectionné"; }?></td>
-                    <td><?php if ($en_relief !== null ) { echo "$nb_semaines"; } else { echo "0"; }?></td>
-                    <td><?php if ($en_relief !== null ) { echo 8.34 * $nb_semaines; } else { echo "0"; }?></td>
+                    <td><?php if ($en_relief !== null ) { echo "$nb_semaines"; } else { echo "0€"; }?></td>
+                    <td><?php if ($en_relief !== null ) { echo 8.34 * $nb_semaines . "€"; } else { echo "0€"; }?></td>
                 </tr>
             
                 <tr>
                     <td>À la Une</td>
                     <td><?php if ($a_la_une !== null ) { echo "16,68€"; } else { echo "Pas sélectionné"; }?></td>
-                    <td><?php if ($a_la_une !== null ) { echo "$nb_semaines"; } else { echo "0"; }?></td>
-                    <td><?php if ($a_la_une !== null ) { echo 16.86 * $nb_semaine; } else { echo "0"; }?></td>
+                    <td><?php if ($a_la_une !== null ) { echo "$nb_semaines"; } else { echo "0€"; }?></td>
+                    <td><?php if ($a_la_une !== null ) { echo 16.86 * $nb_semaine . "€"; } else { echo "0€"; }?></td>
                 </tr>
             </tbody>
         </table>
