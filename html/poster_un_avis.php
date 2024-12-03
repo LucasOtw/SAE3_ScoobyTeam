@@ -68,7 +68,7 @@ echo "</pre>";
         
         <header class="header-tel header_membre">
             <div class="logo-tel">
-                <img src="images/logoBlanc.png" alt="PACT Logo">
+                <img src="images/logoNoitVert.png" alt="PACT Logo">
             </div>
         </header>
    
