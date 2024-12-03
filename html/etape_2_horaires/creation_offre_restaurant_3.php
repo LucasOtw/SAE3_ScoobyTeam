@@ -16,14 +16,10 @@ session_start();
       
           $horaires_par_jour = [];
           $erreurs = []; // Assurez-vous d'initialiser le tableau
-          echo "<pre>";
-          var_dump($_POST['EnvoiEtape3']);
-          echo "</pre>";
       
           foreach ($jours as $jour => [$ouverture, $fermeture]) {
               $horaire_ouverture = $_POST[$ouverture] ?? '';
               $horaire_fermeture = $_POST[$fermeture] ?? '';
-              var_dump($horaire_ouverture);
       
               if (!empty($horaire_ouverture) || !empty($horaire_fermeture)) {
                   if (strtotime($horaire_ouverture) >= strtotime($horaire_fermeture)) {
