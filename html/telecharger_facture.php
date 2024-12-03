@@ -58,9 +58,6 @@ if(!isset($_SESSION['pro'])){
     <style>
          /* Container principal */
 
-         * {
-             font-family: 'K2D', Arial, sans-serif;
-          }
 
         .facture-container {
             max-width: 800px;
