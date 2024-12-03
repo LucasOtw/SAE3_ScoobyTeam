@@ -64,6 +64,11 @@ if (isset($_POST['modif_infos'])){
                  }
              } elseif (in_array($champ, $champs_valides_compte)) {
                  // Mise à jour pour _compte
+                 switch($champ){
+                     case "telephone":
+                         echo "HAHAHAHA";
+                         break;
+                 }
                  $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
                  $query->execute(['valeur' => $valeurNettoye, 'code_compte' => $compte['code_compte']]);
                  if ($query->rowCount() > 0) {
