@@ -904,7 +904,7 @@ body.menu-open #overlay {
     flex-direction: column;
     align-items: center;
     /* Assurez-vous que les éléments internes sont centrés */
-    margin: 19em auto 22em auto;
+    margin: 41vh auto 53vh auto;
     background: none;
     border-radius: 30px;
     padding: 20px;
