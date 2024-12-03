@@ -991,10 +991,26 @@ if (isset($json['results'][0])) {
         isDragging = false;
     });
 </script>
+                
     <form action="poster_un_avis.php" method="POST">
         <a href="poster_un_avis.php" class="btn_poster_un_avis"><h3>Poster un avis</h3>
         </a>
     </form>
+    <style>
+        .btn_poster_un_avis{
+      padding: 10px 20px;
+      background-color: var(--vert-clair);
+      color: white;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      width: 223px;
+      height: 52px;
+    }
+    </style>
+
+
+                
     <nav class="nav-bar">
         <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
         <a href="consulter_mes_avis.php"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
