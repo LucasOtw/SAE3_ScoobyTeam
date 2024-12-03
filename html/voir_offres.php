@@ -660,10 +660,10 @@ function tempsEcouleDepuisPublication($offre){
                     offerItems.forEach(offer => {
                         
                         const offerCategory = offer.getAttribute('data-category');
-                        // const offerRate = offer.getAttribute('data-rate');
-                        // const offerStatus = offer.getAttribute('data-status');
+                        const offerRate = offer.getAttribute('data-rate');
+                        const offerStatus = offer.getAttribute('data-status');
 
-                        console.log(offerCategory.' / '.offerRate.' / '.offerStatus);
+                        console.log(offerCategory+' / '+offerRate+' / '+offerStatus);
 
                         if (category==='all' || category === offerCategory) {
                             offer.style.removeProperty('display');
