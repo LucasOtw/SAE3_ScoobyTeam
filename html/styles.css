@@ -1770,26 +1770,6 @@ main.main_poster_avis .poster_un_avis_nom {
     margin: 0;
 }
 
-
-
-
-
-margin-right: 0px;
-    display: inline-block;
-    font-size: 17px;
-    padding: 10px 20px;
-    background-color: var(--vert-clair);
-    color: white;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    width: 223px;
-    height: 52px;
-    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
-    transition: transform 0.2s ease;
-
-
-
 main.main_poster_avis .poster_un_avis_location,
 main.main_poster_avis .poster_un_avis_rating {
     margin: 10px 0;
@@ -1815,13 +1795,12 @@ main.main_poster_avis .poster_un_avis_btn_offre {
 
 
 main.main_poster_avis .poster_un_avis_btn_offre:hover {
-    transform: translateY(-2px);
-    /* Effet d'élévation au survol */
+    transform: translateY(-2px); 
 }
 
 main.main_poster_avis .poster_un_avis_btn_offre:active {
-    transform: translateY(2px);
-    /* Effet d'appui */
+    transform: translateY(2px); /* Effet d'appui */
+
 }
 
 main.main_poster_avis .poster_un_avis_images {
@@ -1879,7 +1858,7 @@ main.main_poster_avis .poster_un_avis_disclaimer {
     flex: 2;
     font-size: 0.8rem;
     color: #888;
-    /* margin : 114px 5px -25px -349px; */
+    margin-bottom: 5vh;
 }
 
 .poster_un_avis_buttons {
