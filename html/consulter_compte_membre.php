@@ -285,7 +285,6 @@ if (isset($_POST['changePhoto'])) {
         <img class="profile-img" src="<?php echo $compte_pp; ?>" alt="Photo de profil">
             <form action="#" method="POST" enctype="multipart/form-data">
                 <label for="upload-photo" class="upload-photo-button">
-                    <img class="photo-img" src="images/camera.png">
                 </label>
                 <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden required>
                 <button type="submit" class="modif_photo" name="changePhoto">Enregistrer</button>
