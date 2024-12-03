@@ -391,7 +391,7 @@ $password = "philly-Congo-bry4nt";
          $en_relief = '';
          $a_la_une = '';
          $nb_semaines = '';
-         $montant_ht_boost = 0;
+         $montant_ht_total = 0;
          
          $query = "SELECT * FROM tripenarvor._offre natural join tripenarvor._option WHERE code_offre = :offreSelectionnee";
          $stmt = $pdo->prepare($query);
@@ -453,24 +453,25 @@ $password = "philly-Congo-bry4nt";
                 <tr>
                     <td>En relief</td>
                     <td><?php if ($en_relief !== null ) { echo "8,34€"; } else { echo "Pas sélectionné"; }?></td>
-                    <td><?php if ($en_relief !== null ) { echo "$nb_semaines"; } else { echo "0€"; }?></td>
+                    <td><?php if ($en_relief !== null ) { echo "$nb_semaines"; } else { echo "0"; }?></td>
                     <td><?php if ($en_relief !== null ) { echo 8.34 * $nb_semaines . "€"; } else { echo "0€"; }?></td>
                 </tr>
             
                 <tr>
                     <td>À la Une</td>
                     <td><?php if ($a_la_une !== null ) { echo "16,68€"; } else { echo "Pas sélectionné"; }?></td>
-                    <td><?php if ($a_la_une !== null ) { echo "$nb_semaines"; } else { echo "0€"; }?></td>
-                    <td><?php if ($a_la_une !== null ) { echo 16.86 * $nb_semaine . "€"; } else { echo "0€"; }?></td>
+                    <td><?php if ($a_la_une !== null ) { echo "$nb_semaines"; } else { echo "0"; }?></td>
+                    <td><?php if ($a_la_une !== null ) { echo 16.86 * $nb_semaines . "€"; } else { echo "0€"; }?></td>
                 </tr>
             </tbody>
         </table>
-
+        <?php  
+             $montant_ht_total = $montant_ht + 16.86 * $nb_semaines + 8.34 * $nb_semaines;?>
         <div class="facture-footer">
             <div class="info-facture">
-                <p>Total HT: 130€</p>
-                <p>TVA 20%: 26€</p>
-                <p>Total TTC: 156€</p>
+                <p>Total HT: <?php echo $montant_ht_total; ?></p>
+                <p>TVA 20%: <?php echo $montant_ht_total*0.20; ?></p>
+                <p>Total TTC: <?php echo $montant_ht_total*1.20; ?></p>
             </div>
             <div class="payment-info">
                 <p><strong>Mode de paiement :</strong> Virement bancaire</p>
