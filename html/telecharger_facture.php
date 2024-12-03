@@ -393,7 +393,7 @@ $password = "philly-Congo-bry4nt";
          $nb_semaines = '';
          $montant_ht_total;
          
-         $query = "SELECT * FROM tripenarvor._offre natural join tripenarvor._option WHERE code_offre = :offreSelectionnee";
+         $query = "select * from tripenarvor._offre natural join tripenarvor._type_offre WHERE code_offre = :offreSelectionnee";
          $stmt = $pdo->prepare($query);
          $stmt->bindParam(':offreSelectionnee', $offreSelectionnee, PDO::PARAM_INT);
          $stmt->execute();
@@ -405,15 +405,7 @@ $password = "philly-Congo-bry4nt";
              $titre_offfre = $row['titre_offre'];
              $en_relief = $row['option_en_relief'];
              $a_la_une = $row['option_a_la_une'];
-             $nb_semaines = $row['nb_semaines'];
-             
-             
-            switch ($prix_par_jour) :
-
-             case '':
- 
-                break;
-          
+             $nb_semaines = $row['nb_semaines'];          
           
              $date_pub = new DateTime($date_publication);
              $date_actuelle = new DateTime();
@@ -422,13 +414,13 @@ $password = "philly-Congo-bry4nt";
          
              $montant_ht = $jours_ecoules * $prix_par_jour;
 
-             $montant_ht_total = $montant_ht + 16.86 * $nb_semaines + 8.34 * $nb_semaines;
+             
          }
          ?>
 
          
           <div class="offer-name">
-               <p><strong>Nom de l'offre :</strong> <?php echo $titre_offfre;?></p>
+               <p><strong>Nom de l'offre :</strong> <?php echo $titre_offre;?></p>
           </div>
          <table class="facture-items">
              <thead>
@@ -475,6 +467,7 @@ $password = "philly-Congo-bry4nt";
                 </tr>
             </tbody>
         </table>
+      <?php $montant_ht_total = $montant_ht + 16.86 * $nb_semaines + 8.34 * $nb_semaines;?>
         <div class="facture-footer">
             <div class="info-facture">
                 <p>Total HT: <?php echo round($montant_ht_total, 2) ; ?>€</p>
