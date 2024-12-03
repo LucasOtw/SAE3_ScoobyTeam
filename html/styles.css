@@ -2914,7 +2914,16 @@ nav.nav-bar {
 .profile-img-container {
     position: relative;
 }
-
+.modif_photo{
+    border-radius: 2.5em;
+    background-color: #BDC426;
+    border: none;
+    padding: 1vh;
+    color: white;
+    box-shadow: 0px 4px 6px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    width: 25vw;
+}
 
 
 @media (max-width: 429px) {
