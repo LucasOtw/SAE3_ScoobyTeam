@@ -117,7 +117,7 @@ if (isset($_POST['modif_infos'])){
             </div>
 
             <div class="profile-info">
-                <img src="images/icones/icone_compte.png" alt="Photo de profil" class="profile-img">
+                <img src=<?php echo $compte_pp; ?> alt="Photo de profil" class="profile-img">
                 <h1><?php echo $monCompteMembre['prenom']." ".$monCompteMembre['nom']." (".$monCompteMembre['pseudo'].")"; ?></h1>
                 <p><?php echo $compte['mail']; ?> | <?php echo trim(preg_replace('/(\d{2})/', '$1 ', $compte['telephone'])); ?></p>
             </div>
