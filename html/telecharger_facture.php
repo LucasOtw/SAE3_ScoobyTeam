@@ -425,6 +425,8 @@ if(!isset($_SESSION['pro'])){
           $stmt_nb_semaine->bindParam(':offreSelectionnee', $offreSelectionnee, PDO::PARAM_INT);
           $stmt_nb_semaine->execute();
 
+          echo "OFFRE :".$offreSelectionnee;
+
           if ($row = $stmt_nb_semaine->fetch(PDO::FETCH_ASSOC)) {
              echo "<pre>";
              var_dump($row);
