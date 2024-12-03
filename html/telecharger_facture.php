@@ -469,9 +469,9 @@ $password = "philly-Congo-bry4nt";
              $montant_ht_total = $montant_ht + 16.86 * $nb_semaines + 8.34 * $nb_semaines;?>
         <div class="facture-footer">
             <div class="info-facture">
-                <p>Total HT: <?php echo $montant_ht_total; ?></p>
-                <p>TVA 20%: <?php echo $montant_ht_total*0.20; ?></p>
-                <p>Total TTC: <?php echo $montant_ht_total*1.20; ?></p>
+                <p>Total HT: <?php echo round($montant_ht_total, 2) ; ?>€</p>
+                <p>TVA 20%: <?php echo round($montant_ht_total*0.20, 2); ?>€</p>
+                <p>Total TTC: <?php echo round($montant_ht_total*1.20, 2); ?>€</p>
             </div>
             <div class="payment-info">
                 <p><strong>Mode de paiement :</strong> Virement bancaire</p>
