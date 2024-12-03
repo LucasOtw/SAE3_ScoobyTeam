@@ -255,77 +255,6 @@
     }
 ?>
 
-
-<script>
-    
-    // Initialisation du slider en fonction de $details_offre['en_ligne']
-    document.addEventListener("DOMContentLoaded", function() {
-        var slider = document.querySelector('.slider');
-        var offerStatusText = document.getElementById('offer-status');
-
-        // Récupérer l'état initial depuis PHP
-        var isOnline = <?php echo json_encode($details_offre['en_ligne']); ?>;
-
-        // Mettre à jour le slider et le texte en fonction de l'état
-        if (isOnline) {
-            slider.classList.add('active');
-            offerStatusText.textContent = "En Ligne";
-        } else {
-            slider.classList.remove('active');
-            offerStatusText.textContent = "Hors Ligne";
-        }
-    });
-
-    // Fonction pour basculer l'état du bouton slider
-    function toggleSlider() {
-        var slider = document.querySelector('.slider');
-        var offerStatusText = document.getElementById('offer-status');
-        
-        // Bascule la classe 'active'
-        slider.classList.toggle('active');
-        
-        // Vérifie si le bouton est activé ou non
-        var isOnline = slider.classList.contains('active');
-        var newStatus = isOnline ? "En Ligne" : "Hors Ligne";
-        
-        // Met à jour le texte de l'état
-        offerStatusText.textContent = newStatus;
-    
-        // Envoie l'état à PHP via AJAX
-        updateOfferState(isOnline);
-    }
-
-    // Fonction AJAX pour mettre à jour l'état de l'offre avec fetch
-    function updateOfferState(isOnline) {
-        var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
-        
-        console.log("Etat: " + (isOnline ? 1 : 0));
-        console.log("Code offre: " + codeOffre);
-        
-        // Construction de l'URL avec les données en GET
-        var url = "https://scooby-team.ventsdouest.dev/update_offer_status.php?en_ligne=" + encodeURIComponent(isOnline ? 1 : 0) + "&code_offre=" + encodeURIComponent(codeOffre);
-        
-        // Utilisation de fetch pour envoyer les données en GET
-        fetch(url, {
-            method: "GET",  // Méthode GET
-        })
-            
-        .then(response => {
-            if (response.ok) {
-                console.log("L'état de l'offre a été mis à jour avec succès.");
-            } else {
-                console.error("Erreur lors de la mise à jour de l'état de l'offre : " + response.status);
-            }
-        })
-        .catch(error => {
-            console.error("Erreur de réseau ou autre :", error);
-        });
-    }
-
-    
-</script>
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -921,50 +850,116 @@
     </div>
 </body>
 
+<script>
+    // Initialisation du slider en fonction de $details_offre['en_ligne']
+    document.addEventListener("DOMContentLoaded", function() {
+        var slider = document.querySelector('.slider');
+        var offerStatusText = document.getElementById('offer-status');
 
-  <!-- JavaScript pour le carrousel -->
-  <script>
+        // Récupérer l'état initial depuis PHP
+        var isOnline = <?php echo json_encode($details_offre['en_ligne']); ?>;
+
+        // Mettre à jour le slider et le texte en fonction de l'état
+        if (isOnline) {
+            slider.classList.add('active');
+            offerStatusText.textContent = "En Ligne";
+        } else {
+            slider.classList.remove('active');
+            offerStatusText.textContent = "Hors Ligne";
+        }
+    });
+
+    // Fonction pour basculer l'état du bouton slider
+    function toggleSlider() {
+        var slider = document.querySelector('.slider');
+        var offerStatusText = document.getElementById('offer-status');
+        
+        // Bascule la classe 'active'
+        slider.classList.toggle('active');
+        
+        // Vérifie si le bouton est activé ou non
+        var isOnline = slider.classList.contains('active');
+        var newStatus = isOnline ? "En Ligne" : "Hors Ligne";
+        
+        // Met à jour le texte de l'état
+        offerStatusText.textContent = newStatus;
+    
+        // Envoie l'état à PHP via AJAX
+        updateOfferState(isOnline);
+    }
+
+    // Fonction AJAX pour mettre à jour l'état de l'offre avec fetch
+    function updateOfferState(isOnline) {
+        var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
+        
+        console.log("Etat: " + (isOnline ? 1 : 0));
+        console.log("Code offre: " + codeOffre);
+        
+        // Construction de l'URL avec les données en GET
+        var url = "https://scooby-team.ventsdouest.dev/update_offer_status.php?en_ligne=" + encodeURIComponent(isOnline ? 1 : 0) + "&code_offre=" + encodeURIComponent(codeOffre);
+        
+        // Utilisation de fetch pour envoyer les données en GET
+        fetch(url, {
+            method: "GET",  // Méthode GET
+        })
+            
+        .then(response => {
+            if (response.ok) {
+                console.log("L'état de l'offre a été mis à jour avec succès.");
+            } else {
+                console.error("Erreur lors de la mise à jour de l'état de l'offre : " + response.status);
+            }
+        })
+        .catch(error => {
+            console.error("Erreur de réseau ou autre :", error);
+        });
+    }
+</script>
+
+
+<!-- JavaScript pour le carrousel -->
+<script>
     const imagesTrack = document.querySelector(".carousel-images");
     const images = document.querySelectorAll(".carousel-images img");
     const totalSlides = images.length;
-
+    
     let currentIndex = 0;
-
+    
     // Gère les boutons
     function updateCarousel() {
         const translateX = -currentIndex * 100;
         imagesTrack.style.transform = `translateX(${translateX}%)`;
     }
-
+    
     function prevSlide() {
         if (currentIndex > 0) {
             currentIndex--;
             updateCarousel();
         }
     }
-
+    
     function nextSlide() {
         if (currentIndex < totalSlides - 1) {
             currentIndex++;
             updateCarousel();
         }
     }
-
+    
     // Gère les gestes tactiles
     let startX = 0;
     let isDragging = false;
-
+    
     imagesTrack.addEventListener("touchstart", (e) => {
         startX = e.touches[0].clientX;
         isDragging = true;
     });
-
+    
     imagesTrack.addEventListener("touchmove", (e) => {
         if (!isDragging) return;
-
+    
         const currentX = e.touches[0].clientX;
         const deltaX = currentX - startX;
-
+    
         if (deltaX > 50 && currentIndex > 0) {
             prevSlide();
             isDragging = false;
@@ -973,11 +968,11 @@
             isDragging = false;
         }
     });
-
+    
     imagesTrack.addEventListener("touchend", () => {
         isDragging = false;
     });
-    </script>
+</script>
 
 
 </html>
