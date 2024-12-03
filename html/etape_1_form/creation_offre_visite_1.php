@@ -318,7 +318,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     </div>
                     <div class="col">
                         <fieldset class="duree">
-                            <legend style="display:block;">Durée de la visite</legend>
+                            <legend style="display:block;">Durée de la visite *</legend>
                             <input type="time" id="duree" name="duree" placeholder="Durée de la visite">
                         </fieldset>
                     </div>
