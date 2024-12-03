@@ -1213,18 +1213,24 @@ body.menu-open #overlay {
     color: #fff;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 16px;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
-    transition: ease-in-out 0.25s;
     text-align: center;
 
+
 }
 
+
 .toute_les_offres_main #btn-voir-offre:hover {
-    transform: scale(1.05);
-    transition: ease-in-out 0.25s;
+    transform: translateY(-2px); /* Effet d'élévation au survol */
 }
+
+.toute_les_offres_main #btn-voir-offre:active{
+    transform: translateY(2px); /* Effet d'appui */
+}
+
+
 
 .toute_les_offres_main .search-input {
     background: none;
