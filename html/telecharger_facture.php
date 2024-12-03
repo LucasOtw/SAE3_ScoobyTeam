@@ -450,8 +450,7 @@ $password = "philly-Congo-bry4nt";
             <tbody>
                 <tr>
                     <td>En relief</td>
-                    <td><?php if ($en_relief !== null ) {
-                        echo "8,34€";}else { echo "Pas sélectionné" ?></td>
+                    <td><?php if ($en_relief !== null ) { echo "8,34€"; } else { echo "Pas sélectionné" }?></td>
                     <td>3</td>
                     <td>100€</td>
                 </tr>
