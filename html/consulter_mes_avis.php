@@ -85,6 +85,12 @@ if (!empty($_POST['supprAvis'])){
 </style>
 
 <div class="edit-profil">
+    <img class="logo_tel" src="logoNoirVert.png">
+    <style>
+        .logo_tel{
+            margin-left:4.5em;
+        }
+    </style>
     <a href="compte_membre_tel.php">
         <img src="images/Bouton_retour.png" alt="bouton retour">
     </a>
