@@ -33,7 +33,7 @@
             // Si l'offre passe en ligne, mettre à jour la date_publication
             $stmt = $dbh->prepare("
                 UPDATE tripenarvor._offre
-                SET en_ligne = "."true".",
+                SET en_ligne = :en_ligne,
                     date_publication = NOW()
                 WHERE code_offre = :code_offre
                 RETURNING titre_offre, en_ligne
@@ -42,12 +42,12 @@
             // Si l'offre est hors ligne, ne pas toucher à date_publication
             $stmt = $dbh->prepare("
                 UPDATE tripenarvor._offre
-                SET en_ligne = "."false"."
+                SET en_ligne = :en_ligne
                 WHERE code_offre = :code_offre
                 RETURNING titre_offre, en_ligne
             ");
         }
-        if ($stmt->execute([':code_offre' => $code_offre]))
+        if ($stmt->execute([':code_offre' => $code_offre, ':en_ligne' => $en_ligne == 1 ]))
         {
             echo "La mise à jour a été effectuée avec succès.";
             
