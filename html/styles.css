@@ -2799,7 +2799,7 @@ input[type="password"]::placeholder {
 .profile-img {
     width: 7em;
     height: 7em;
-    border-radius: 2.5em;
+    border-radius: 35px;
     object-fit: cover;
 }
 
