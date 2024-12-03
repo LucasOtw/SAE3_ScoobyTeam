@@ -117,15 +117,20 @@ if (!empty($_POST['supprAvis'])){
         $tout_les_avis->bindValue(':code_compte', $compte['code_compte'], PDO::PARAM_INT);
         $tout_les_avis->execute();
         $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
+
+
+        if (count($tout_les_avis) == 0){
+            ?>
+                <h2>Aucun Avis</h2>
+            <?php
+        }
         ?>
+
+        
 
         <!-- Boucle pour afficher chaque avis -->
         <?php foreach ($tout_les_avis as $avis): 
-            if (count($tout_les_avis) == 0){
-                ?>
-                <h2>Aucun Avis</h2>
-                <?php
-            }
+            
                 
             // Déterminer l'appréciation en fonction de la note
             $appreciation = "";
