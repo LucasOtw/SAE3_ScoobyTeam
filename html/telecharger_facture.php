@@ -385,7 +385,7 @@ $password = "philly-Congo-bry4nt";
          $date_publication = '';
          $nom_type = '';
          $prix_par_jour = ''; // Prix par jour défini
-         $montant_ht;
+         $montant_ht ;
          $titre_offre = '';
 
          $en_relief = '';
@@ -406,8 +406,13 @@ $password = "philly-Congo-bry4nt";
              $en_relief = $row['option_en_relief'];
              $a_la_une = $row['option_a_la_une'];
              $nb_semaines = $row['nb_semaines'];
-             $montant_ht_total=0;
-             $montant_ht=0;
+             
+             
+            switch ($prix_par_jour) :
+
+             case '':
+ 
+                break;
           
           
              $date_pub = new DateTime($date_publication);
@@ -416,6 +421,8 @@ $password = "philly-Congo-bry4nt";
              $jours_ecoules = $interval->days;
          
              $montant_ht = $jours_ecoules * $prix_par_jour;
+
+             $montant_ht_total = $montant_ht + 16.86 * $nb_semaines + 8.34 * $nb_semaines;
          }
          ?>
 
@@ -468,8 +475,6 @@ $password = "philly-Congo-bry4nt";
                 </tr>
             </tbody>
         </table>
-        <?php  
-             $montant_ht_total = $montant_ht + 16.86 * $nb_semaines + 8.34 * $nb_semaines;?>
         <div class="facture-footer">
             <div class="info-facture">
                 <p>Total HT: <?php echo round($montant_ht_total, 2) ; ?>€</p>
