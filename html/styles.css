@@ -1695,6 +1695,12 @@ main.connexion_membre_main fieldset p.erreur-formulaire-connexion-membre {
         padding-top: 1.7vh;
     }
 
+    main.connexion_membre_main button:hover{
+        translate: (-2px);
+    }
+    main.connexion_membre_main button:active{
+        translate: (2px);
+    }
 
     main.connexion_membre_main fieldset {
         border-radius: 100px;
