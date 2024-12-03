@@ -162,6 +162,11 @@
                     <div class="creation_compte_membre_deja_compte">
                         <a href="connexion_membre.php" class="deja_compte">Déjà un compte ?</a>
                     </div>
+                    <style>
+                        .deja_compte{
+                            color:--var(--vert-clair);
+                        }
+                    </style>
                     <button type="submit" class="submit-btn">Créer mon compte <img src="images/flecheBlancheDroite.png" alt="fleche vers la droite"></button>
                 </form>
                     
