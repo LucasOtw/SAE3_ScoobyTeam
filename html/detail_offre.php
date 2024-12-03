@@ -726,10 +726,7 @@ if (isset($json['results'][0])) {
                 <a href="<?php echo $details_offre["site_web"]; ?>" class="description-link">
                     <?php if (!empty($details_offre["site_web"])) { ?> <a href="<?php echo $details_offre["site_web"]; ?>" class="description-link"><h3>Site Web</h3></a> <?php } ?>
                 </a>
-                <form action="poster_un_avis.php" method="POST">
-                    <a href="poster_un_avis.php" class="description-link"><h3>Poster un avis</h3>
-                    </a>
-                </form>
+                
             </div>
 
 
@@ -994,19 +991,23 @@ if (isset($json['results'][0])) {
         isDragging = false;
     });
 </script>
-                <nav class="nav-bar">
-    <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
-    <a href="consulter_mes_avis.php"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
-    <a href="incitation.php"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
-    <a href="
-        <?php
-            if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
-                echo "consulter_compte_membre.php";
-            } else {
-                echo "connexion_membre.php";
-            }
-        ?>">
-        <img src="images/icones/User icon.png" alt="image de Personne"></a>
+                <form action="poster_un_avis.php" method="POST">
+                    <a href="poster_un_avis.php" class="description-link"><h3>Poster un avis</h3>
+                    </a>
+                </form>
+    <nav class="nav-bar">
+        <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
+        <a href="consulter_mes_avis.php"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
+        <a href="incitation.php"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
+        <a href="
+            <?php
+                if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
+                    echo "consulter_compte_membre.php";
+                } else {
+                    echo "connexion_membre.php";
+                }
+            ?>">
+            <img src="images/icones/User icon.png" alt="image de Personne"></a>
 </nav>
                 
 <footer>
