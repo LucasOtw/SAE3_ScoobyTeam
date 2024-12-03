@@ -17,8 +17,11 @@ if(!isset($_SESSION['membre'])){
 }
 
 if(isset($_GET['deco'])){
-    echo "t";
+    if($_GET['deco'] == true){
+        echo "t";
+    }
 }
+
 
 if (isset($_POST['modif_infos'])){
     // Récupérer les valeurs initiales (par exemple, depuis la base de données)
