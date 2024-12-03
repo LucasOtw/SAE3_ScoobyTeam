@@ -430,6 +430,8 @@ if(!isset($_SESSION['pro'])){
              $a_la_une = $row['option_a_la_une'];
              if ($en_relief === null ) { $nb_semaines_relief = 0 ;} else { $nb_semaines_relief = $row['nb_semaines']; }
              if ($a_la_une === null ) { $nb_semaines_une = 0 ;} else { $nb_semaines_une = $row['nb_semaines']; }
+
+             var_dump($row['nb_semaines']);
              
          }
 
