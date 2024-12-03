@@ -214,75 +214,29 @@ nav.nav-bar {
 }
 
 
-/* Media Query pour les écrans ≤ 429px */
-@media screen and (max-width: 429px) {
-    .container {
-        padding: 10px;
-    }
-
-    .header {
-        text-align: center;
-    }
-
-    .logo img {
-        width: 80%; /* Réduire la taille du logo */
-        height: auto;
-    }
-
-    .profile {
-        text-align: center;
-    }
-
-    .profile-img-container {
-        margin: 0 auto;
-        width: 120px;
-        height: 120px;
-    }
-
-    .profile-img {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-    }
-
-    .profile-name {
-        font-size: 1.2rem;
-    }
-
-    .profile-contact {
-        font-size: 0.9rem;
-    }
-
-    .actions {
+@media (max-width: 429px) {
+    nav.nav-bar {
+        width: 84vw;
+        position: fixed;
+        bottom: 20px;
+        background-color: var(--vert-clair);
         display: flex;
-        flex-direction: column;
-        gap: 10px;
+        margin: auto 8vw;
+        justify-content: space-around;
+        border-radius: 1000px;
+        box-shadow: 0px 2px 10px rgb(156, 156, 156);
     }
 
-    .action-btn {
-        font-size: 0.9rem;
-        padding: 10px;
+
+
+    nav.nav-bar a {
         display: flex;
         align-items: center;
-        justify-content: center;
-        text-align: center;
+        margin: 10px auto;
     }
 
-    .nav-bar {
-        display: flex;
-        justify-content: space-around;
-        padding: 10px 0;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: #f9f9f9;
-        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-bar a img {
-        width: 25px;
-        height: auto;
+    a:visited {
+        color: inherit;
     }
 }
-
-
+}
