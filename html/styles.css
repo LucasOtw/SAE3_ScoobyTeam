@@ -1659,7 +1659,7 @@ main.connexion_membre_main fieldset p.erreur-formulaire-connexion-membre {
         display: inline-block;
     }
 
-    main.connexion_membre_main .connexion_membre_ravi {
+    .connexion_membre_ravi {
         display: block;
 
         text-align: center;
