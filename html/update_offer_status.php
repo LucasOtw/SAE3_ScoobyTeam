@@ -49,17 +49,6 @@
         }
         $updatedRow = $stmt->fetch(PDO::FETCH_ASSOC);
         print_r($updatedRow);
-        // if ($stmt->execute([':code_offre' => $code_offre])) {
-        // $rowCount = $stmt->rowCount();
-        // if ($rowCount > 0) {
-        //     echo "\nLa mise à jour a été effectuée avec succès ($rowCount ligne(s) modifiée(s)).";
-        // } else {
-        //     echo "\nAucune ligne n'a été modifiée.";
-        // }
-} else {
-    $errorInfo = $stmt->errorInfo();
-    echo "Erreur lors de l'exécution de la requête : " . $errorInfo[2];
-}
 
     } catch (PDOException $e) {
         http_response_code(500);
