@@ -387,6 +387,11 @@ $password = "philly-Congo-bry4nt";
          $prix_par_jour = ''; // Prix par jour défini
          $montant_ht = 0;
          $titre_offre = '';
+
+         $en_relief = '';
+         $a_la_une = '';
+         $nb_semaine = '';
+         $montant_ht_boost = 0;
          
          $query = "SELECT * FROM tripenarvor._offre natural join tripenarvor._option WHERE code_offre = :offreSelectionnee";
          $stmt = $pdo->prepare($query);
@@ -398,6 +403,7 @@ $password = "philly-Congo-bry4nt";
              $nom_type = $row['nom_type'];
              $prix_par_jour = $row['prix'];
              $titre_offfre = $row['titre_offre'];
+             $en_relief = $row['option_en_relief'];
          
              $date_pub = new DateTime($date_publication);
              $date_actuelle = new DateTime();
@@ -444,6 +450,14 @@ $password = "philly-Congo-bry4nt";
             <tbody>
                 <tr>
                     <td>En relief</td>
+                    <td><?php if ($en_relief !=== null ) {
+                        echo "8,34€";}else { echo "Pas sélectionné" ?></td>
+                    <td>3</td>
+                    <td>100€</td>
+                </tr>
+            
+                <tr>
+                    <td>À la Une</td>
                     <td>10€</td>
                     <td>3</td>
                     <td>100€</td>
