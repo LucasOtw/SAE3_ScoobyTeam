@@ -150,8 +150,8 @@ if (!empty($_POST['supprAvis'])){
                     <h3 class="avis" style="display: flex; flex-direction:column ;justify-content: space-between; align-items: center;">
                         <span>
                             <?php echo htmlspecialchars($avis["note"]) . ".0 ★  $appreciation "; ?> 
-                            <span class="nom_avis"><?php echo htmlspecialchars($avis["prenom"]) . " " . htmlspecialchars($avis["nom"]); ?></span> 
-                            <span class="nom_visite"><?php echo htmlspecialchars($avis["titre_offre"]); ?></span>
+                            <br><span class="nom_avis"><?php echo htmlspecialchars($avis["prenom"]) . " " . htmlspecialchars($avis["nom"]); ?></span> 
+                            <br><span class="nom_visite"><?php echo htmlspecialchars($avis["titre_offre"]); ?></span>
                         </span>
                         <!-- Formulaire pour supprimer un avis -->
                         <form method="POST" action="consulter_mes_avis.php">
