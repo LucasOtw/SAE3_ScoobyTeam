@@ -108,7 +108,7 @@ session_start();
                             <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
                         </div>
 
-                    <button type="submit" class="submit-btn">Créer mon compte <img src="images/flecheBlancheDroite.png" alt="fleche vers la droite"></button>
+                    <button type="submit" class="submit-btn">Créer mon compte</button>
                 </form>
                 <div class="creation_compte_pro_other-links">
                     <p>Déjà un compte ? <a href="connexion_pro.php">Connexion</a></p>
