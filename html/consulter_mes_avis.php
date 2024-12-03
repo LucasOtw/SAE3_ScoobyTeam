@@ -91,7 +91,7 @@ if (!empty($_POST['supprAvis'])){
             
         </header>
         <div class="edit-profil">
-            <a href="compte_membre_tel.php">
+            <a href="voir_offres.php">
                 <img src="images/Bouton_retour.png" alt="bouton retour">
             </a>
             <h1>Editer le profil</h1>
