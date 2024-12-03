@@ -33,7 +33,7 @@
             // Si l'offre passe en ligne, mettre à jour la date_publication
             $stmt = $dbh->prepare("
                 UPDATE tripenarvor._offre
-                SET en_ligne = true,
+                SET en_ligne = "true",
                     date_publication = NOW()
                 WHERE code_offre = :code_offre
                 RETURNING titre_offre, en_ligne
@@ -42,7 +42,7 @@
             // Si l'offre est hors ligne, ne pas toucher à date_publication
             $stmt = $dbh->prepare("
                 UPDATE tripenarvor._offre
-                SET en_ligne = false
+                SET en_ligne = "false"
                 WHERE code_offre = :code_offre
                 RETURNING titre_offre, en_ligne
             ");
