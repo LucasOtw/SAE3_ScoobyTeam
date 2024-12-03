@@ -3524,7 +3524,6 @@ main.creation_compte_membre .creation_compte_membre_deja_compte {
 main.creation_compte_membre {
     color: #000;
     text-decoration: none;
-    font-style: italic;
 }
 .deja_compte{
   color:--var(--vert-clair);
