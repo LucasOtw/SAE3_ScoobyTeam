@@ -51,14 +51,41 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
     if(isset($_POST['passer_cb'])){
         $code_iban = $_POST['IBAN'];
         $code_BIC = $_POST['BIC'];
+        $nom_compte = $_POST['nom'];
 
         if(!validerIBAN($code_iban) || !validerBIC($code_BIC)){
             echo "IBAN ou BIC incorrect !";
             exit;
         }
+    } else {
+        if(empty($code_iban) || empty($code_BIC) || empty($nom_compte)){
+            echo "Des informations sont manquantes !";
+            exit;
+        }
     }
 
     if($_SESSION['aCreeUneOffre'] === false){
+        // on ajout d'abord la carte bancaire si elle n'existe pas
+        if(!$monComptePro['code_compte_bancaire']){
+            $ajoutCB = $dbh->prepare("INSERT INTO tripenarvor._compte_bancaire (iban,bic,nom_compte) VALUES (:iban,:bic,:nom_compte)");
+            $ajoutCB->bindValue(":iban",$code_iban);
+            $ajoutCB->bindValue(":bic",$code_BIC);
+            $ajoutCB->bindValue(":nom_compte",$nom_compte);
+
+            $ajoutCB->execute();
+            $code_cb = $dbh->lastInsertId();
+
+            // on met à jour tripenarvor._professionnel là où se trouve le code compte
+
+            $updateCompte = $dbh->prepare("UPDATE tripenarvor._professionnel SET code_compte_bancaire = :code_cb WHERE code_compte = :code_compte");
+            $updateCompte->bindValue(":code_cb",$code_cb);
+            $updateCompte->bindValue(":code_compte",$compte['code_compte']);
+
+            $updateCompte->execute();
+        }
+        // sinon, on ne fait rien.
+        
+        
         $adresse_postal = $_SESSION['crea_offre']['adresse'];
         $complement_adresse = $_SESSION['crea_offre']['complementAdresse'];
         $code_postal = $_SESSION['crea_offre']['codePostal'];
@@ -378,7 +405,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
                             <div class="col">
                                 <fieldset>
                                     <legend>IBAN *</legend>
-                                    <input type="text" id="IBAN" name="IBAN" value="<?php echo ($infosCB) ? $infosCB['iban'] : ""; ?>" placeholder="IBAN *" required>
+                                    <input type="text" id="IBAN" name="IBAN" value="<?php echo ($infosCB) ? $infosCB['iban'] : ""; ?>" placeholder="IBAN *">
                                 </fieldset>
                             </div>
                         </div>
@@ -388,7 +415,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
                             <div class="col">
                                 <fieldset>
                                     <legend>BIC *</legend>
-                                    <input type="text" id="BIC" name="BIC" value="<?php echo ($infosCB) ? $infosCB['bic'] : ""; ?>" placeholder="BIC *" required>
+                                    <input type="text" id="BIC" name="BIC" value="<?php echo ($infosCB) ? $infosCB['bic'] : ""; ?>" placeholder="BIC *">
                                 </fieldset>
                             </div>
                         </div>
@@ -398,7 +425,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
                             <div class="col">
                                 <fieldset>
                                     <legend>Nom du compte *</legend>
-                                    <input type="text" id="nom" name="nom" value="<?php echo ($infosCB) ? $infosCB['nom_compte'] : ""; ?>" placeholder="Nom du compte *" required>
+                                    <input type="text" id="nom" name="nom" value="<?php echo ($infosCB) ? $infosCB['nom_compte'] : ""; ?>" placeholder="Nom du compte *">
                                 </fieldset>
                             </div>
                         </div>
