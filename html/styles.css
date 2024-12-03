@@ -2106,6 +2106,7 @@ main.main_poster_avis .message-erreur {
         margin-bottom: 10vh;
         justify-content: center;
         margin-right:5em;
+        margin-top:2em;
     }
 
     main.main_poster_avis .poster_un_avis_btn_publier:hover {
