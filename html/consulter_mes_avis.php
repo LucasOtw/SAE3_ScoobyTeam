@@ -84,15 +84,15 @@ if (!empty($_POST['supprAvis'])){
     }
 </style>
 
-    <div class="header_profil">
-        <div class="logo_container">
-            <img class="logo_profil" src="images/logoNoirVert.png" alt="Logo de l'application">
+    <div class="header_profil_tel">
+        <div class="logo_container_tel">
+            <img class="logo_profil_tel" src="images/logoNoirVert.png" alt="Logo de l'application">
         </div>
-        <div class="titre_container">
-            <a class="btn_retour" href="compte_membre_tel.php">
+        <div class="titre_container_tel">
+            <a class="btn_retour_tel" href="compte_membre_tel.php">
                 <img src="images/Bouton_retour.png" alt="Retour au compte membre">
             </a>
-            <h1 class="titre_profil">Éditer le profil</h1>
+            <h1 class="titre_profil_tel">Éditer le profil</h1>
         </div>
     </div>
 
