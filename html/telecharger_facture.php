@@ -390,7 +390,7 @@ $password = "philly-Congo-bry4nt";
 
          $en_relief = '';
          $a_la_une = '';
-         $nb_semaines = '';
+         
          $montant_ht_total;
          
          $query = "select * from tripenarvor._offre natural join tripenarvor._type_offre WHERE code_offre = :offreSelectionnee";
@@ -402,10 +402,7 @@ $password = "philly-Congo-bry4nt";
              $date_publication = $row['date_publication'];
              $nom_type = $row['nom_type'];
              $prix_par_jour = $row['prix'];
-             $titre_offfre = $row['titre_offre'];
-             $en_relief = $row['option_en_relief'];
-             $a_la_une = $row['option_a_la_une'];
-             $nb_semaines = $row['nb_semaines'];          
+             $titre_offfre = $row['titre_offre'];      
           
              $date_pub = new DateTime($date_publication);
              $date_actuelle = new DateTime();
@@ -418,7 +415,21 @@ $password = "philly-Congo-bry4nt";
          }
          ?>
 
-         
+         <?
+          $nb_semaines = '';
+          $query_nb_semaine = "select * from tripenarvor._offre natural join tripenarvor._option WHERE code_offre = :offreSelectionnee";
+          $stmt_nb_semaine = $pdo->prepare($query_nb_semaine);
+          $stmt_nb_semaine->bindParam(':offreSelectionnee', $offreSelectionnee, PDO::PARAM_INT);
+          $stmt_nb_semaine->execute();
+
+          if ($row = $stmt_nb_semaine->fetch(PDO::FETCH_ASSOC)) {
+             $en_relief = $row['option_en_relief'];
+             $a_la_une = $row['option_a_la_une'];
+             $nb_semaines = $row['nb_semaines'];
+             
+         }
+
+?>
           <div class="offer-name">
                <p><strong>Nom de l'offre :</strong> <?php echo $titre_offre;?></p>
           </div>

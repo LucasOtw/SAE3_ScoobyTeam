@@ -11,7 +11,9 @@ $getPrixOffre = $dbh->prepare("SELECT * FROM tripenarvor._type_offre");
 $getPrixOffre->execute();
 
 $prixOffre = $getPrixOffre->fetchAll(PDO::FETCH_ASSOC);
-var_dump($prixOffre);
+
+const PRIX_RELIEF = 10.00;
+const PRIX_A_LA_UNE = 20.00;
 
 if(isset($_POST['envoiForm4'])){
     // si le formulaire est envoyé..
@@ -111,11 +113,11 @@ if(isset($_POST['envoiForm4'])){
                         </div>
                         <div>
                             <input type="radio" id="en_relief" name="option" value="en_relief">
-                            <label class="label-check" for="relief">Offre "en Relief" <sup>4</sup> (10€/semaine)</label>
+                            <label class="label-check" for="relief">Offre "en Relief" <sup>4</sup> (<?php echo PRIX_RELIEF; ?>€/semaine)</label>
                         </div>
                         <div>
                             <input type="radio" id="a_la_une" name="option" value="a_la_une" checked>
-                            <label class="label-check" for="a_la_une">Offre "À la Une" <sup>5</sup> (20€/semaine)</label>
+                            <label class="label-check" for="a_la_une">Offre "À la Une" <sup>5</sup> (<?php echo PRIX_A_LA_UNE; ?>€/semaine)</label>
                         </div>
                     </div>
                 </div>
