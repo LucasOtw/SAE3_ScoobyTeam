@@ -216,9 +216,6 @@
             $option_a_la_une->execute();
             $option_a_la_une = $option_a_la_une->fetch(PDO::FETCH_ASSOC);
 
-            echo "<pre>";
-            var_dump($option_a_la_une);
-            echo '</pre>';
 
             // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
 
