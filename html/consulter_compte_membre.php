@@ -19,6 +19,7 @@ if(isset($_GET['deco'])){
 }
 
 if (isset($_POST['modif_infos'])){
+    $erreur = [];
     // Récupérer les valeurs initiales (par exemple, depuis la base de données)
    $valeursInitiales = [
        'nom' => $monCompteMembre['nom'],
@@ -66,13 +67,20 @@ if (isset($_POST['modif_infos'])){
                  // Mise à jour pour _compte
                  switch($champ){
                      case "telephone":
-                         echo "HAHAHAHA";
+                         if(strlen($valeurNettoye) < 10){
+                             $erreur[] = "Le numéro de téléphone doit être composé de 10 numéros !";
+                             header('location: consulter_compte_membre.php');
+                             break;
+                         }
                          break;
                  }
-                 $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
-                 $query->execute(['valeur' => $valeurNettoye, 'code_compte' => $compte['code_compte']]);
-                 if ($query->rowCount() > 0) {
-                     $_SESSION['membre'][$champ] = $valeurNettoye;
+                 if(empty($erreur)){
+                    $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
+                    $query->execute(['valeur' => $valeurNettoye, 'code_compte' => $compte['code_compte']]);
+
+                    if ($query->rowCount() > 0) {
+                        $_SESSION['membre'][$champ] = $valeurNettoye;
+                    }
                  }
              } elseif (in_array($champ, $champs_valides_adresse)) {
                    if (empty($_adresse['code_adresse'])) {
@@ -229,6 +237,11 @@ if (isset($_POST['changePhoto'])) {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <?php
+        foreach($erreur as $err){
+            echo $erreur."<br>";
+        }
+    ?>
     <div class="header_membre">
         <header class="header-pc">
             <div class="logo">
