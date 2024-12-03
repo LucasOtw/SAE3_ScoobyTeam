@@ -284,7 +284,7 @@ if (isset($_POST['changePhoto'])) {
     <div class="profile-img-container">
         <img class="profile-img" src="<?php echo $compte_pp; ?>" alt="Photo de profil">
             <form action="#" method="POST" enctype="multipart/form-data">
-                <label for="upload-photo" class="upload-photo-button">
+                <label for="upload-photo" class="upload-photo-button" <img class="photo-img" src="images/camera.png">>
                 </label>
                 <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden required>
                 <button type="submit" class="modif_photo" name="changePhoto">Enregistrer</button>
@@ -292,6 +292,7 @@ if (isset($_POST['changePhoto'])) {
                 <p><?php echo $compte['mail']; ?> | <?php echo trim(preg_replace('/(\d{2})/', '$1 ', $compte['telephone'])); ?></p>
             </form>
     </div>
+
         <style>
     @media (max-width: 429px) {
         .profile-img-container{
