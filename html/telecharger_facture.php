@@ -385,13 +385,13 @@ $password = "philly-Congo-bry4nt";
          $date_publication = '';
          $nom_type = '';
          $prix_par_jour = ''; // Prix par jour défini
-         $montant_ht ;
+         $montant_ht = 0;
          $titre_offre = '';
 
          $en_relief = '';
          $a_la_une = '';
          
-         $montant_ht_total;
+         $montant_ht_total = 0;
          
          $query = "select * from tripenarvor._offre natural join tripenarvor._type_offre WHERE code_offre = :offreSelectionnee";
          $stmt = $pdo->prepare($query);
@@ -410,8 +410,8 @@ $password = "philly-Congo-bry4nt";
              $jours_ecoules = $interval->days;
          
              $montant_ht = $jours_ecoules * $prix_par_jour;
-
-             
+         } else {
+          echo "AZERTYUIO";
          }
          ?>
 
