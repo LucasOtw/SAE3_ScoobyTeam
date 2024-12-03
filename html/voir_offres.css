@@ -871,6 +871,7 @@ body.menu-open #overlay {
     color: var(--vert-clair);
     font-size: 1.2em;
     margin-right: 5px;
+    margin-bottom: -4px;
 }
 
 #price-slider input[type="range"]::-webkit-slider-thumb {
