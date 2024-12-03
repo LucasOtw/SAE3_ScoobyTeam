@@ -692,7 +692,7 @@ if (isset($json['results'][0])) {
             }
         </style>
         <header class="header_tel">
-            <img class="fleche_retour_tel" src="images/Bouton_retour.png" alt="bouton retour">
+            <a href="voir_offres.php"><img class="fleche_retour_tel" src="images/Bouton_retour.png" alt="bouton retour"></a>
             <style>
                 .fleche_retour_tel{
                     margin-left :-7em;
