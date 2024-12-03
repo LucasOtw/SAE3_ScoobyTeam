@@ -401,7 +401,7 @@ $password = "philly-Congo-bry4nt";
          if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
              $date_publication = $row['date_publication'];
              $nom_type = $row['nom_type'];
-             $prix_par_jour = $row['prix'];
+             $prix_par_jour = ($row['prix'] / (1 + 0.2));
              $titre_offre = $row['titre_offre'];      
           
              $date_pub = new DateTime($date_publication);
