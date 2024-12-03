@@ -2766,7 +2766,7 @@ input[type="password"]::placeholder {
 /* Style pour la case à cocher */
 .main_consulter_compte_membre #remember,
 #cgu {
-    accent-color: var(--vert-fonce);
+    accent-color: var(--vert-clair);
 }
 
 
@@ -4143,7 +4143,7 @@ nav.nav-bar-tel {
 /* Style pour la case à cocher */
 .main-modif-bancaire #remember,
 #cgu {
-    accent-color: var(--orange);
+    accent-color: var(--vert-clair);
 }
 
 /* Styles pour les boutons */
