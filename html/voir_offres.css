@@ -1217,10 +1217,8 @@ body.menu-open #overlay {
     border: none;
     border-radius: 16px;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
     text-align: center;
-
-
+    transition: transform 0.2s ease; /* Animation au survol */
 }
 
 .toute_les_offres_main #btn-voir-offre:hover {
