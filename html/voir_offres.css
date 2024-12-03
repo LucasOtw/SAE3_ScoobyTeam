@@ -1050,8 +1050,8 @@ body.menu-open #overlay {
     background-color: var(--vert-clair);
 }
 
-#select-rate option,
-#select-statut option {
+#select-rate,
+#select-statut {
     color: black;
 }
 
