@@ -1751,18 +1751,28 @@ main.main_poster_avis .poster_un_avis_rating {
 }
 
 main.main_poster_avis .poster_un_avis_btn_offre {
+    margin-right: 0px;
+    display: inline-block;
+    font-size: 17px;
     padding: 10px 20px;
     background-color: var(--vert-clair);
-    border: none;
-    border-radius: 4px;
     color: white;
+    border: none;
+    border-radius: 16px;
     cursor: pointer;
-    font-size: 0.9rem;
-    margin-top: 21px;
-}
+    width: 223px;
+    height: 52px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease; /* Animation au survol */
+
+
 
 main.main_poster_avis .poster_un_avis_btn_offre:hover {
-    background-color: #c3d34e;
+    transform: translateY(-2px); /* Effet d'élévation au survol */
+}
+
+main.main_poster_avis .poster_un_avis_btn_offre:active {
+    transform: translateY(2px); /* Effet d'appui */
 }
 
 main.main_poster_avis .poster_un_avis_images {
