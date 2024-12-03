@@ -2096,6 +2096,8 @@ main.main_poster_avis .message-erreur {
         display: flex;
         align-item: center;
         justify-content: center;
+        height:3em;
+        margin-right:4.5em;
     }
 
     main.main_poster_avis .poster_un_avis_btn_publier:hover {
