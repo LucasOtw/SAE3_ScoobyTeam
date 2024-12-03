@@ -47,17 +47,12 @@
                 RETURNING titre_offre, en_ligne
             ");
         }
+        
         if ($stmt->execute([':code_offre' => $code_offre, ':en_ligne' => ($en_ligne == 1) ? true : 0 ]))
         {
             echo "La mise à jour a été effectuée avec succès.";
-            
             $updatedRow = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (empty($updatedRow))
-            {
-                print_r("videeeee");
-            } else {
-                print_r($updatedRow);
-            }
+            print_r($updatedRow);
         }
         else
         {
