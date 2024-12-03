@@ -27,7 +27,9 @@ echo "</pre>";
 <body>
     <header class="header_pro">
         <div class="logo">
-            <img src="images/logo_blanc_pro.png" alt="PACT Logo">
+            <a href="voir_offres.php">
+                    <img src="images/logo_blanc_pro.png" alt="PACT Logo">
+            </a>
         </div>
         <nav>
             <ul>
