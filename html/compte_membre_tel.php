@@ -140,7 +140,7 @@ if (isset($_POST['changePhoto'])) {
                     <span class="iconify" data-icon="mdi:camera" data-inline="false"></span>
                 </label>
                 <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden required>
-                <button type="submit" name="changePhoto">Upload</button>
+                <button type="submit" class="modif_photo" name="changePhoto">Upload</button>
             </form>
     </div>
     <h1 class="profile-name"><?php echo $monCompteMembre['prenom']." ".$monCompteMembre['nom'] ?></h1>
