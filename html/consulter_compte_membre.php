@@ -238,8 +238,10 @@ if (isset($_POST['changePhoto'])) {
 </head>
 <body>
     <?php
-        foreach($erreur as $err){
-            echo $erreur."<br>";
+        if(isset($erreur)){
+            foreach($erreur as $err){
+                echo $erreur."<br>";
+            }
         }
     ?>
     <div class="header_membre">
