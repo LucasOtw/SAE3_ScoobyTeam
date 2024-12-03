@@ -2100,16 +2100,12 @@ main.main_poster_avis .message-erreur {
     main.main_poster_avis .poster_un_avis_btn_publier {
         background-color: var(--vert-clair);
         color: white;
-        width: 100%;
+        width: 50%;
         border-radius: 20px;
         font-size: 21px;
-        transition: transform 0.3s ease;
         margin-bottom: 10vh;
-        display: flex;
-        align-item: center;
         justify-content: center;
-        height:3em;
-        margin-right:4.5em;
+        margin-right:5em;
     }
 
     main.main_poster_avis .poster_un_avis_btn_publier:hover {

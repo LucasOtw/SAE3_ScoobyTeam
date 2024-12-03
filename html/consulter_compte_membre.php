@@ -4,13 +4,6 @@
 
 include("recupInfosCompte.php");
 
-if(isset($_GET['logout'])){
-   session_unset();
-   session_destroy();
-   header('location: connexion_membre.php');
-   exit;
-}
-
 if(!isset($_SESSION['membre'])){
    header('location: connexion_membre.php');
    exit;
@@ -18,6 +11,8 @@ if(!isset($_SESSION['membre'])){
 
 if(isset($_GET['deco'])){
     if($_GET['deco'] == true){
+        session_unset();
+        session_destroy();
         header('location: voir_offres.php');
         exit;
     }
