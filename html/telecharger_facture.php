@@ -390,7 +390,7 @@ $password = "philly-Congo-bry4nt";
 
          $en_relief = '';
          $a_la_une = '';
-         $nb_semaines = '';
+         
          $montant_ht_total;
          
          $query = "select * from tripenarvor._offre natural join tripenarvor._type_offre WHERE code_offre = :offreSelectionnee";
@@ -416,7 +416,8 @@ $password = "philly-Congo-bry4nt";
          ?>
 
          <?
-          $query_nb_semaine = "select * from tripenarvor._offre natural join tripenarvor._type_offre WHERE code_offre = :offreSelectionnee";
+          $nb_semaines = '';
+          $query_nb_semaine = "select * from tripenarvor._offre natural join tripenarvor._option WHERE code_offre = :offreSelectionnee";
           $stmt_nb_semaine = $pdo->prepare($query_nb_semaine);
           $stmt_nb_semaine->bindParam(':offreSelectionnee', $offreSelectionnee, PDO::PARAM_INT);
           $stmt_nb_semaine->execute();
