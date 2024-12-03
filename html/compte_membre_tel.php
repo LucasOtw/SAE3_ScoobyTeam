@@ -3,6 +3,20 @@
 ob_start();
 session_start();
 
+if(!isset($_SESSION['membre'])){
+    header('location: voir_offres.php');
+    exit;
+}
+
+if(isset($_GET['deco'])){
+    if($_GET['deco'] == true){
+        session_unset();
+        session_destroy();
+        header('location: voir_offres.php');
+        exit;
+    }
+}
+
 include("recupInfosCompte.php");
 
 if (isset($_POST['changePhoto'])) {
@@ -129,8 +143,8 @@ if (isset($_POST['changePhoto'])) {
                 <button type="submit" name="changePhoto">Upload</button>
             </form>
     </div>
-    <h1 class="profile-name">Juliette Martin</h1>
-     <p class="profile-contact">juliemartin@gmail.com | 07.98.76.54.12</p>
+    <h1 class="profile-name"><?php echo $monCompteMembre['prenom']." ".$monCompteMembre['nom'] ?></h1>
+     <p class="profile-contact"><?php echo $compte['mail'] ?> | echo $compte['telephone']</p>
 </section>
 
 
@@ -179,7 +193,7 @@ if (isset($_POST['changePhoto'])) {
             </a>
             <!--Il faudra gérer la deconnexion sur bouton"-->
             <button class="action-btn">
-                <img src="images/Vector_14.png" alt="Logout Icon"> <a href="connexion_membre.php"&deco="true">Déconnexion</a>
+                <img src="images/Vector_14.png" alt="Logout Icon"> <a href="?deco=true">Déconnexion</a>
             </button>
         </main>
     </div>
