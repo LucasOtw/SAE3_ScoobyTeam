@@ -13,6 +13,7 @@ if(!isset($_SESSION['pro'])){
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="images/logoPin_orange.png" width="16px" height="32px">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Création offre</title>
     <link rel="stylesheet" href="creation_offre.css">
