@@ -63,6 +63,8 @@ function tempsEcouleDepuisPublication($offre){
     <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <script src="filtre.js"></script>
     <script src="scroll.js"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
 </head>
 <body>
 <div class="half-background">
@@ -565,6 +567,7 @@ function tempsEcouleDepuisPublication($offre){
         <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
     </form>
 </div>
+
 
                         
                     </article>
