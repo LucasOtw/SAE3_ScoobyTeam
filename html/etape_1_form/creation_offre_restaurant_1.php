@@ -168,9 +168,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <nav>
             <ul>
-                <li><a href="../mes_offres.php" class="active">Accueil</a></li>
-                <li><a href="#">Publier</a></li>
-                <li><a href="../consulter_compte_pro.php"></a></li>
+                <li><a href="../mes_offres.php">Accueil</a></li>
+                <li><a href="#" class="active">Publier</a></li>
+                <li><a href="../consulter_compte_pro.php">Mon compte</a></li>
             </ul>
         </nav>
     </header>
