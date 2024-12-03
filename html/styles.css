@@ -3279,7 +3279,6 @@ main.creation_compte_membre #cgu {
 
 main.creation_compte_membre .submit-btn {
     border-radius: 16px;
-    position: absolute;
     bottom: 30px;
     display: flex;
     justify-content: center;
