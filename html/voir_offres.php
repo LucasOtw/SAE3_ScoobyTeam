@@ -551,7 +551,9 @@ function tempsEcouleDepuisPublication($offre){
         } 
         ?>
     </p>
-    <p><?php echo $offre["tarif"]; ?>€</p>
+    <p style="
+    color: #2DD7A4;
+    font-weight: bold;><?php echo $offre["tarif"]; ?>€</p>
     <p>
         <?php 
         if ($type_offre != 'spectacle') { 
