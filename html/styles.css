@@ -4788,7 +4788,7 @@ nav.nav-bar-tel {
 }
 
 /* Effet au survol */
-.main_mes_offres .button_HorsLigne:hover {
+.main_mes_offres .button-HorsLigne:hover {
     transform: scale(1.05);
     /* Légère mise en avant */
     transition: 0.3s ease;
