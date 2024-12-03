@@ -383,10 +383,10 @@
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
                     <div class="detail_offre_pro_button">                        
                     <a href="<?php echo $details_offre["site_web"]; ?>"><button class="visit-button_detailoffre">Voir le site ➔</button></a>
-                    <form id="add-btn" action="modifier_offre.php" method="POST">
+                    <!--<form id="add-btn" action="modifier_offre.php" method="POST">
                         <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
                         <input id="btn-voir-offre" class="button-text add-btn" type="submit" name="vueDetails" value="Modifier votre offre">
-                    </form>
+                    </form>-->
 
 
                      
