@@ -36,6 +36,7 @@
                 SET en_ligne = true,
                     date_publication = NOW()
                 WHERE code_offre = :code_offre
+                RETURNING titre_offre, en_ligne
             ");
         } else {
             // Si l'offre est hors ligne, ne pas toucher à date_publication
@@ -43,15 +44,18 @@
                 UPDATE tripenarvor._offre
                 SET en_ligne = false
                 WHERE code_offre = :code_offre
+                RETURNING titre_offre, en_ligne
             ");
         }
-        if ($stmt->execute([':code_offre' => $code_offre])) {
-        $rowCount = $stmt->rowCount();
-        if ($rowCount > 0) {
-            echo "\nLa mise à jour a été effectuée avec succès ($rowCount ligne(s) modifiée(s)).";
-        } else {
-            echo "\nAucune ligne n'a été modifiée.";
-        }
+        $updatedRow = $stmt->fetch(PDO::FETCH_ASSOC);
+        print_r($updatedRow);
+        // if ($stmt->execute([':code_offre' => $code_offre])) {
+        // $rowCount = $stmt->rowCount();
+        // if ($rowCount > 0) {
+        //     echo "\nLa mise à jour a été effectuée avec succès ($rowCount ligne(s) modifiée(s)).";
+        // } else {
+        //     echo "\nAucune ligne n'a été modifiée.";
+        // }
 } else {
     $errorInfo = $stmt->errorInfo();
     echo "Erreur lors de l'exécution de la requête : " . $errorInfo[2];
