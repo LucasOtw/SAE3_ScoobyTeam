@@ -685,7 +685,7 @@ if (isset($json['results'][0])) {
 
     <!-- Détails de l'offre sur MOBILE -->
     <div id="body_offre_mobile">
-         <img src="images/logoNoirVert.png" class="logo_tel">
+         <img class="logo_tel" src="images/logoNoirVert.png" >
         <header class="header_tel">
             <a href="https://scooby-team.ventsdouest.dev/voir_offres.php" class="back-button">&larr;</a>
             <h1>Détails</h1>
