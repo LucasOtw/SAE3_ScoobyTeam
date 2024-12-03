@@ -409,13 +409,7 @@ if(!isset($_SESSION['pro'])){
 
          <?
           $nb_semaines_relief = '';
-          $query_nb_semaine = "
-              SELECT *
-              FROM tripenarvor._offre
-              NATURAL JOIN tripenarvor._option
-              WHERE code_offre = :offreSelectionnee
-                AND code_option IN ('en_relief', 'a_la_une')
-          ";
+          $query_nb_semaine = "select * from tripenarvor._offre natural join tripenarvor._option WHERE code_offre = :offreSelectionnee";
 
           $stmt_nb_semaine = $pdo->prepare($query_nb_semaine);
           $stmt_nb_semaine->bindParam(':offreSelectionnee', $offreSelectionnee, PDO::PARAM_INT);
