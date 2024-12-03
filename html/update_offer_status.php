@@ -38,9 +38,6 @@
     echo "<pre>";
     var_dump($_POST);
     echo"</pre>";
-?>
-
-<?php
 
     // Récupérer les données envoyées en POST
     $en_ligne = $_POST['en_ligne'];
@@ -58,7 +55,7 @@
     try {
         if ($en_ligne === 1) {
             // Si l'offre passe en ligne, mettre à jour la date_publication
-            $stmt = $pdo->prepare("
+            $stmt = $dbh->prepare("
                 UPDATE tripenarvor._offre
                 SET en_ligne = true,
                     date_publication = NOW()
@@ -66,7 +63,7 @@
             ");
         } else {
             // Si l'offre est hors ligne, ne pas toucher à date_publication
-            $stmt = $pdo->prepare("
+            $stmt = $dbh->prepare("
                 UPDATE tripenarvor._offre
                 SET en_ligne = false
                 WHERE code_offre = :code_offre
