@@ -432,7 +432,7 @@ if(!isset($_SESSION['pro'])){
           $stmt_nb_semaine->execute();
 
           if ($row = $stmt_nb_semaine->fetch(PDO::FETCH_ASSOC)) {
-             echo "<pre>";
+
              $en_relief = $row['option_en_relief'];
              $a_la_une = $row['option_a_la_une'];
              if ($en_relief === null ) { $nb_semaines_relief = 0 ;} else { $nb_semaines_relief = $row['nb_semaines']; }
