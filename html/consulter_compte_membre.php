@@ -123,6 +123,96 @@ if (isset($_POST['modif_infos'])){
    }
 }
 
+// GESTION DE LA PHOTO
+
+if (isset($_POST['changePhoto'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['profile-photo'])) {
+        $file = $_FILES['profile-photo'];
+
+        // Vérifier qu'il n'y a pas d'erreurs d'upload
+        if ($file['error'] === UPLOAD_ERR_OK) {
+            // Vérification du type MIME
+            $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            if (!in_array($file['type'], $allowedTypes)) {
+                echo "Type de fichier non autorisé.";
+                exit;
+            }
+
+            // Dossier où enregistrer l'image
+            $uploadDir = 'images/profile/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true); // Créer le dossier s'il n'existe pas
+            }
+
+            function getUniqueFileName($directory, $fileName) {
+                // Récupérer le nom sans l'extension
+                $name = pathinfo($fileName, PATHINFO_FILENAME);
+                // Récupérer l'extension
+                $extension = pathinfo($fileName, PATHINFO_EXTENSION);
+            
+                // Construire le chemin complet du fichier
+                $newFileName = $fileName; // Par défaut, c'est le nom original
+                $counter = 1;
+            
+                // Vérifier si le fichier existe dans le dossier
+                while (file_exists($directory . '/' . $newFileName)) {
+                    // Ajouter un suffixe au nom
+                    $newFileName = $name . '_' . $counter . '.' . $extension;
+                    $counter++;
+                }
+            
+                return $newFileName;
+            }
+
+            // Générer un nom unique pour le fichier
+            $fileName = pathinfo($file['name'], PATHINFO_FILENAME) . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
+            $fichierImage = getUniqueFileName($uploadDir,$fileName);
+            $filePath = $uploadDir . $fileName;
+
+            // Déplacer le fichier temporaire vers le dossier cible
+            if (move_uploaded_file($file['tmp_name'], $filePath)) {
+                // Générer l'URL de l'image
+                $photoUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/' . $filePath;
+            
+                // Vérifier si l'utilisateur existe déjà
+                $query = $dbh->prepare('SELECT url_image FROM tripenarvor._sa_pp WHERE code_compte = :user_id');
+                $query->bindValue(':user_id', $compte['code_compte'], PDO::PARAM_INT);
+                $query->execute();
+                $existingPhoto = $query->fetch(PDO::FETCH_ASSOC);
+            
+                if ($existingPhoto) {
+                    // Récupérer l'ancienne URL et supprimer le fichier associé
+                    $oldPhotoPath = parse_url($existingPhoto['url_image'], PHP_URL_PATH);
+                    $oldPhotoPath = $_SERVER['DOCUMENT_ROOT'] . $oldPhotoPath; // Convertir l'URL en chemin absolu
+            
+                    if (file_exists($oldPhotoPath)) {
+                        unlink($oldPhotoPath); // Supprimer l'ancien fichier
+                    }
+            
+                    // Mise à jour de l'URL de la photo de profil
+                    $updateQuery = $dbh->prepare('UPDATE tripenarvor._sa_pp SET url_image = :profile_photo_url WHERE code_compte = :user_id');
+                    $updateQuery->bindValue(':profile_photo_url', $photoUrl, PDO::PARAM_STR);
+                    $updateQuery->bindValue(':user_id', $compte['code_compte'], PDO::PARAM_INT);
+                    $updateQuery->execute();
+            
+                } else {
+                    // Insérer une nouvelle entrée
+                    $insertQuery = $dbh->prepare('INSERT INTO tripenarvor._sa_pp (url_image, code_compte) VALUES (:profile_photo_url, :user_id)');
+                    $insertQuery->bindValue(':user_id', $compte['code_compte'], PDO::PARAM_INT);
+                    $insertQuery->bindValue(':profile_photo_url', $photoUrl, PDO::PARAM_STR);
+                    $insertQuery->execute();
+                }
+            } else {
+                echo "Erreur lors du déplacement du fichier.";
+            }
+        } else {
+            echo "Erreur lors de l'upload du fichier.";
+        }
+    }
+    header('location: compte_membre_tel.php');
+    exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
