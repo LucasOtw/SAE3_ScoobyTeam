@@ -634,16 +634,16 @@ function tempsEcouleDepuisPublication($offre){
                 select.addEventListener('change', function () {
                     const category = document.querySelector('.search-select:nth-of-type(1)').value;
                     const priceOrder = document.querySelector('.search-select:nth-of-type(2)').value;
-                    const noteOrder = document.querySelector('.search-select:nth-of-type(3)').value;
-                    const rate = document.querySelector('.search-select:nth-of-type(4)').value;
-                    const status = document.querySelector('.search-select:nth-of-type(5)').value;
+                    // const noteOrder = document.querySelector('.search-select:nth-of-type(3)').value;
+                    // const rate = document.querySelector('.search-select:nth-of-type(4)').value;
+                    // const status = document.querySelector('.search-select:nth-of-type(5)').value;
 
                     // Filtrer par catégorie
                     offerItems.forEach(offer => {
                         
                         const offerCategory = offer.getAttribute('data-category');
-                        const offerRate = offer.getAttribute('data-rate');
-                        const offerStatus = offer.getAttribute('data-status');
+                        // const offerRate = offer.getAttribute('data-rate');
+                        // const offerStatus = offer.getAttribute('data-status');
 
                         console.log(offerCategory.' / '.offerRate.' / '.offerStatus);
 
@@ -702,24 +702,24 @@ function tempsEcouleDepuisPublication($offre){
             ///////////////////////////////////////////////////
             ///               Selecteur note                ///
             ///////////////////////////////////////////////////
-            // selectRate.addEventListener('change', function () {
-            //         const rate = selectRate.value;
+            selectRate.addEventListener('change', function () {
+                    const rate = selectRate.value;
 
-            //         // Filtrer par catégorie
-            //         offerItems.forEach(offer => {
+                    // Filtrer par catégorie
+                    offerItems.forEach(offer => {
                         
-            //             const offerRate = offer.getAttribute('data-rate');
-            //             if (!rate || rate === offerRate || (offerRate > rate && offerRate < rate+1)) {
-            //                 console.log(`BOUCLE NON VALIDE : ${offerRate}`);
-            //                 //offer.classList.remove('hidden');
-            //                 offer.style.removeProperty('display');
-            //             } else {
-            //                 console.log(`BOUCLE VALIDE : ${offerRate}`);
-            //                 //offer.classList.add('hidden');
-            //                 offer.style.display = "none";
-            //             }
-            //         });
-            //     });
+                        const offerRate = offer.getAttribute('data-rate');
+                        if (!rate || rate === offerRate || (offerRate > rate && offerRate < rate+1)) {
+                            console.log(`BOUCLE NON VALIDE : ${offerRate}`);
+                            //offer.classList.remove('hidden');
+                            offer.style.removeProperty('display');
+                        } else {
+                            console.log(`BOUCLE VALIDE : ${offerRate}`);
+                            //offer.classList.add('hidden');
+                            offer.style.display = "none";
+                        }
+                    });
+                });
 
             
             ///////////////////////////////////////////////////
@@ -774,20 +774,20 @@ function tempsEcouleDepuisPublication($offre){
             ///////////////////////////////////////////////////
             ///              Selecteur status               ///
             ///////////////////////////////////////////////////
-            // selectStatus.addEventListener('change', function () {
-            //         const status = selectStatus.value;
+            selectStatus.addEventListener('change', function () {
+                    const status = selectStatus.value;
 
-            //         // Filtrer par catégorie
-            //         offerItems.forEach(offer => {
+                    // Filtrer par catégorie
+                    offerItems.forEach(offer => {
                         
-            //             const offerStatus = offer.getAttribute('data-status');
-            //             if (!status || status === offerStatus) {
-            //                 offer.style.removeProperty('display');
-            //             } else {
-            //                 offer.style.display = "none";
-            //             }
-            //         });
-            //     });
+                        const offerStatus = offer.getAttribute('data-status');
+                        if (!status || status === offerStatus) {
+                            offer.style.removeProperty('display');
+                        } else {
+                            offer.style.display = "none";
+                        }
+                    });
+                });
 
 
 
