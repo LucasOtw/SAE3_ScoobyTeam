@@ -557,6 +557,10 @@ input#btn-poster-avis {
     transform: translateY(2px); /* Effet d'appui */
 }
 
+
+#btn-poster-avis:{
+    transition: transform 0.2s ease; /* Animation au survol */
+}
 #btn-poster-avis:hover{
     transform: translateY(-2px); /* Effet d'élévation au survol */
 }
