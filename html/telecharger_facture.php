@@ -467,15 +467,15 @@ $password = "philly-Congo-bry4nt";
                 <tr>
                     <td>En relief</td>
                     <td><?php if ($en_relief !== null ) { echo "8,34€"; } else { echo "Pas sélectionné"; }?></td>
-                    <td><?php echo $nb_semaines_relief;?></td>
-                    <td><?php echo $nb_semaines_relief;?></td>
+                    <td><?php if ($en_relief !== null ) { echo "$nb_semaines_relief"; } else { echo "0"; }?></td>
+                    <td><?php if ($en_relief !== null ) { echo 8.34 * $nb_semaines_relief . "€"; } else { echo "0€"; }?></td>
                 </tr>
             
                 <tr>
                     <td>À la Une</td>
                     <td><?php if ($a_la_une !== null ) { echo "16,68€"; } else { echo "Pas sélectionné"; }?></td>
-                    <td><?php echo "$nb_semaines_une";?></td>
-                    <td><?php echo "$nb_semaines_une";?></td>
+                    <td><?php if ($a_la_une !== null ) { echo "$nb_semaines_une"; } else { echo "0"; }?></td>
+                    <td><?php if ($a_la_une !== null ) { echo 16.86 * $nb_semaines_une . "€"; } else { echo "0€"; }?></td>
                 </tr>
             </tbody>
         </table>
