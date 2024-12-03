@@ -1696,10 +1696,12 @@ main.connexion_membre_main fieldset p.erreur-formulaire-connexion-membre {
     }
 
     main.connexion_membre_main button:hover{
-        translate: (-2px);
+        transform: translateY(-2px); /* Effet d'élévation au survol */
+
     }
     main.connexion_membre_main button:active{
-        translate: (2px);
+        transform: translateY(-px); /* Effet d'élévation au survol */
+
     }
 
     main.connexion_membre_main fieldset {
