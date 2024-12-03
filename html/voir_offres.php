@@ -618,9 +618,9 @@ function tempsEcouleDepuisPublication($offre){
                 offerItems.forEach(offer => {
                     const text = offer.textContent.toLowerCase();
                     if (text.includes(query)) {
-                        offer.style.removeProperty('display');
+                        offer.classList.remove('hidden');
                     } else {
-                        offer.style.display = "none";
+                        offer.classList.add('hidden');
                     }
                 });
             });
