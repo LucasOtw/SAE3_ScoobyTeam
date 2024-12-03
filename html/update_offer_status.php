@@ -47,8 +47,25 @@
                 RETURNING titre_offre, en_ligne
             ");
         }
-        $updatedRow = $stmt->fetch(PDO::FETCH_ASSOC);
-        print_r($updatedRow);
+        if ($stmt->execute([':code_offre' => $code_offre]))
+        {
+            echo "La mise à jour a été effectuée avec succès.";
+            
+            $updatedRow = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (empty($updatedRow))
+            {
+                print_r("videeeee");
+            } else {
+                print_r($updatedRow);
+            }
+        }
+        else
+        {
+            $errorInfo = $stmt->errorInfo();
+            echo "Erreur lors de l'exécution de la requête : " . $errorInfo[2];
+        }
+        
+        
 
     } catch (PDOException $e) {
         http_response_code(500);
