@@ -385,7 +385,7 @@ $password = "philly-Congo-bry4nt";
          $date_publication = '';
          $nom_type = '';
          $prix_par_jour = ''; // Prix par jour défini
-         $montant_ht = 0;
+         $montant_ht;
          $titre_offre = '';
 
          $en_relief = '';
@@ -407,6 +407,8 @@ $password = "philly-Congo-bry4nt";
              $a_la_une = $row['option_a_la_une'];
              $nb_semaines = $row['nb_semaines'];
              $montant_ht_total=0;
+             $montant_ht=0;
+          
           
              $date_pub = new DateTime($date_publication);
              $date_actuelle = new DateTime();
