@@ -15,11 +15,17 @@ $password = "philly-Congo-bry4nt";
     die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
 
+if(!isset($_SESSION['pro'])){
+  header('location: connexion_pro.php');
+  exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="images/logoPin_orange.png" width="16px" height="32px">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Télécharger une facture</title>
     <link rel="stylesheet" href="telecharger_facture.css">
@@ -33,8 +39,8 @@ $password = "philly-Congo-bry4nt";
     <nav>
         <ul>
             <li><a href="mes_offres.php">Accueil</a></li>
-            <li><a href="connexion_pro.php" class="active">Publier</a></li>
-            <li><a href="connexion_pro.pro">Mon Compte</a></li>
+            <li><a href="creation_offre.php">Publier</a></li>
+            <li><a href="consulter_compte_pro.php" class="active">Mon Compte</a></li>
         </ul>
     </nav>
 </header>
@@ -52,6 +58,8 @@ $password = "philly-Congo-bry4nt";
     
     <style>
          /* Container principal */
+
+
         .facture-container {
             max-width: 800px;
             margin: auto;
@@ -293,22 +301,21 @@ $password = "philly-Congo-bry4nt";
 
 
 
-        
+
+
+
+
+
+
 
 
      
-
-
-
-
-
 
     </style>
 </head>
 <body>
     <div class="dropdown-container">
     <form method="POST" action="">
-        <label for="offres">Mes offres :</label>
         <div class="dropdown-button-wrapper">
             <select id="offres" name="offre" class="dropdown">
                 <option value="" disabled selected>Choisissez une offre</option>
@@ -385,13 +392,13 @@ $password = "philly-Congo-bry4nt";
          $date_publication = '';
          $nom_type = '';
          $prix_par_jour = ''; // Prix par jour défini
-         $montant_ht ;
+         $montant_ht = 0;
          $titre_offre = '';
 
          $en_relief = '';
          $a_la_une = '';
          
-         $montant_ht_total;
+         $montant_ht_total = 0;
          
          $query = "select * from tripenarvor._offre natural join tripenarvor._type_offre WHERE code_offre = :offreSelectionnee";
          $stmt = $pdo->prepare($query);
@@ -401,7 +408,7 @@ $password = "philly-Congo-bry4nt";
          if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
              $date_publication = $row['date_publication'];
              $nom_type = $row['nom_type'];
-             $prix_par_jour = $row['prix'];
+             $prix_par_jour = ($row['prix'] / (1 + 0.2));
              $titre_offre = $row['titre_offre'];      
           
              $date_pub = new DateTime($date_publication);
@@ -410,23 +417,23 @@ $password = "philly-Congo-bry4nt";
              $jours_ecoules = $interval->days;
          
              $montant_ht = $jours_ecoules * $prix_par_jour;
-
-             
          }
          ?>
 
          <?
           $nb_semaines_relief = '';
           $query_nb_semaine = "select * from tripenarvor._offre natural join tripenarvor._option WHERE code_offre = :offreSelectionnee";
+
           $stmt_nb_semaine = $pdo->prepare($query_nb_semaine);
           $stmt_nb_semaine->bindParam(':offreSelectionnee', $offreSelectionnee, PDO::PARAM_INT);
           $stmt_nb_semaine->execute();
 
           if ($row = $stmt_nb_semaine->fetch(PDO::FETCH_ASSOC)) {
+
              $en_relief = $row['option_en_relief'];
              $a_la_une = $row['option_a_la_une'];
-             if ($en_relief !== null ) { $nb_semaines_relief = 0 ;} else { $nb_semaines_relief = $row['nb_semaines']; }
-             if ($a_la_une !== null ) { $nb_semaines_une = 0 ;} else { $nb_semaines_une = $row['nb_semaines']; }
+             if ($en_relief === null ) { $nb_semaines_relief = 0 ;} else { $nb_semaines_relief = $row['nb_semaines']; }
+             if ($a_la_une === null ) { $nb_semaines_une = 0 ;} else { $nb_semaines_une = $row['nb_semaines']; }
              
          }
 
@@ -446,7 +453,7 @@ $password = "philly-Congo-bry4nt";
              <tbody>
                  <tr>
                      <td><?php echo $nom_type ?></td>
-                     <td><?php echo $prix_par_jour ?>€</td>
+                     <td><?php echo round($prix_par_jour,2) ?>€</td>
                      <td><?php echo $date_publication ?></td>
                      <td><?php echo $montant_ht ?>€</td>
                  </tr>
@@ -544,7 +551,7 @@ $password = "philly-Congo-bry4nt";
         <div class="link-group">
             <ul>
                 <li><a href="mes_offres.php">Accueil</a></li>
-                <li><a href="connexion_pro.php">Publier</a></li>
+                <li><a href="creation_offre.php">Publier</a></li>
                 <li><a href="#">Historique</a></li>
             </ul>
         </div>

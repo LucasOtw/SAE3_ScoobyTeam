@@ -2766,7 +2766,7 @@ input[type="password"]::placeholder {
 /* Style pour la case à cocher */
 .main_consulter_compte_membre #remember,
 #cgu {
-    accent-color: var(--vert-fonce);
+    accent-color: var(--vert-clair);
 }
 
 
@@ -4143,7 +4143,7 @@ nav.nav-bar-tel {
 /* Style pour la case à cocher */
 .main-modif-bancaire #remember,
 #cgu {
-    accent-color: var(--orange);
+    accent-color: var(--vert-clair);
 }
 
 /* Styles pour les boutons */
@@ -4631,8 +4631,21 @@ nav.nav-bar-tel {
 .main_mes_offres .vos_offres {
     padding-left: 13.5em;
 }
+.button-factures {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px; /* Ajout d'un espace si nécessaire */
+    margin-left:40%;
+}
 
-
+.button-factures .arrow {
+    margin-left: 8px;
+    font-size: 35px;
+}
 
 /*****************************************************
                                                         * page incitation membre *
@@ -4836,4 +4849,5 @@ nav.nav-bar_consulter_mes_avis img {
     .logo_tel{
       margin-left:4.5em;
     }
+    
 }

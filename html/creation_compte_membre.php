@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Créer un compte</title>
-    <link rel="icon" type="image/png" href="images/logoPin.png" width="16px" height="32px">
+    <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,7 +41,7 @@
                 <h1>S’inscrire</h1>
                 <p>
                     Créez un compte membre pour sauvegarder vos annonces favorites 
-                    <br>partager vos avis sur les vendeurs,  
+                    <br>partager vos avis sur les offres,  
                     <br>et vivre une expérience sur mesure !
                 </p>
                 <form action="creation_compte_membre.php" method="POST">

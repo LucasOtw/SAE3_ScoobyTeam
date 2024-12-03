@@ -1,24 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
-    <?php if ($_SERVER['REQUEST_METHOD'] == "POST")
-    {
-    ?>
-        <script>
-            window.open();
-        </script>
-    <?php
-    }
-    ?>
-    
-</body>
-</html>
 <?php
     // Connexion à la base de données
     try {
@@ -33,11 +12,8 @@
         die("Erreur de connexion : " . $e->getMessage());
     }
 
-    echo $_SERVER['REQUEST_METHOD'];
 
-    echo "<pre>";
-    var_dump($_POST);
-    echo"</pre>";
+    print_r($_POST);
 
     // Récupérer les données envoyées en POST
     $en_ligne = $_POST['en_ligne'];
@@ -70,7 +46,7 @@
             ");
         }
         $stmt->execute([':code_offre' => $code_offre ]);
-        echo "Mise à jour réussie.";
+        echo "\nMise à jour réussie.";
     } catch (PDOException $e) {
         http_response_code(500);
         echo "Erreur lors de la mise à jour : " . $e->getMessage();

@@ -19,13 +19,14 @@ if (isset($_POST['changePhoto'])) {
             }
 
             // Dossier où enregistrer l'image
-            $uploadDir = 'images/user/profile/';
+            $uploadDir = 'images/profile/';
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0777, true); // Créer le dossier s'il n'existe pas
             }
 
             // Générer un nom unique pour le fichier
-            $fileName = uniqid('profile_', true) . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
+            $fileName = pathinfo($file['name'], PATHINFO_FILENAME) . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
+            echo $fileName;
             $filePath = $uploadDir . $fileName;
 
             // Déplacer le fichier temporaire vers le dossier cible
@@ -33,21 +34,15 @@ if (isset($_POST['changePhoto'])) {
                 // Générer l'URL de l'image
                 $photoUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/' . $filePath;
 
-                // Connexion à la base de données
-                $db = new PDO('mysql:host=localhost;dbname=ma_base', 'utilisateur', 'motdepasse');
-
-                // Exemple d'identifiant utilisateur (à adapter selon ton application)
-                $userId = 123; // Par exemple, $_SESSION['user_id']
-
                 // Vérifier si l'utilisateur existe déjà
-                $query = $db->prepare('SELECT COUNT(*) FROM tripenarvor._sa_pp WHERE code_compte = :user_id');
+                $query = $dbh->prepare('SELECT COUNT(*) FROM tripenarvor._sa_pp WHERE code_compte = :user_id');
                 $query->bindValue(':user_id', $compte['code_compte'], PDO::PARAM_INT);
                 $query->execute();
                 $exists = $query->fetchColumn() > 0;
 
                 if ($exists) {
                     // Mise à jour de l'URL de la photo de profil
-                    $updateQuery = $db->prepare('UPDATE tripenarvor._sa_pp SET url_image = :profile_photo_url WHERE code_compte = :user_id');
+                    $updateQuery = $dbh->prepare('UPDATE tripenarvor._sa_pp SET url_image = :profile_photo_url WHERE code_compte = :user_id');
                     $updateQuery->bindValue(':profile_photo_url', $photoUrl, PDO::PARAM_STR);
                     $updateQuery->bindValue(':user_id', $compte['code_compte'], PDO::PARAM_INT);
                     $updateQuery->execute();
@@ -55,7 +50,7 @@ if (isset($_POST['changePhoto'])) {
                     echo "Photo de profil mise à jour avec succès !";
                 } else {
                     // Insérer une nouvelle entrée
-                    $insertQuery = $db->prepare('INSERT INTO tripenarvor._sa_pp (url_image, code_compte) VALUES (:profile_photo_url, :user_id)');
+                    $insertQuery = $dbh->prepare('INSERT INTO tripenarvor._sa_pp (url_image, code_compte) VALUES (:profile_photo_url, :user_id)');
                     $insertQuery->bindValue(':user_id', $compte['code_compte'], PDO::PARAM_INT);
                     $insertQuery->bindValue(':profile_photo_url', $photoUrl, PDO::PARAM_STR);
                     $insertQuery->execute();

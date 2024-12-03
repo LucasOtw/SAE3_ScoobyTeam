@@ -31,6 +31,7 @@ if (!empty($_POST['supprAvis'])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes Avis</title>
     <link rel="stylesheet" href="styles.css">
@@ -84,12 +85,22 @@ if (!empty($_POST['supprAvis'])){
     }
 </style>
 
-<div class="edit-profil">
-    <a href="compte_membre_tel.php">
-        <img src="images/Bouton_retour.png" alt="bouton retour">
-    </a>
-    <h1>Editer le profil</h1>
-</div>           
+       <header class="header-tel">
+            <div class="logo-tel">
+                <img src="images/logoNoirVert.png" alt="PACT Logo">
+            </div>
+            
+        </header>
+        <div class="edit-profil">
+            <a href="voir_offres.php">
+                <img src="images/Bouton_retour.png" alt="bouton retour">
+            </a>
+            <h1>Mes Avis</h1>
+        </div> 
+
+
+
+          
             <section class="tabs">
                 <ul>
                     <li><a href="consulter_compte_membre.php">Informations personnelles</a></li>
@@ -109,8 +120,13 @@ if (!empty($_POST['supprAvis'])){
         ?>
 
         <!-- Boucle pour afficher chaque avis -->
-        <?php foreach ($tout_les_avis as $avis): ?>
-            <?php
+        <?php foreach ($tout_les_avis as $avis): 
+            if (count($tout_les_avis) == 0){
+                ?>
+                <h2>Aucun Avis</h2>
+                <?php
+            }
+                
             // Déterminer l'appréciation en fonction de la note
             $appreciation = "";
             switch ($avis["note"]) {

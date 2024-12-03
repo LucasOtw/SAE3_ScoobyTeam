@@ -212,6 +212,7 @@ if (isset($json['results'][0])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
     <title>Détail offre</title>
     <link rel="stylesheet" href="detail_offre.css?">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script> <!-- Pour les icones -->
@@ -686,8 +687,19 @@ if (isset($json['results'][0])) {
     <!-- Détails de l'offre sur MOBILE -->
     <div id="body_offre_mobile">
          <img class="logo_tel" src="images/logoNoirVert.png" >
+        <style>
+            .logo_tel{
+                margin-left:4.5em;
+            }
+        </style>
         <header class="header_tel">
-            <a href="https://scooby-team.ventsdouest.dev/voir_offres.php" class="back-button">&larr;</a>
+            <a href="voir_offres.php"><img class="fleche_retour_tel" src="images/Bouton_retour.png" alt="bouton retour"></a>
+            <style>
+                .fleche_retour_tel{
+                    margin-left :-7em;
+                    padding-right:5em;
+                }
+            </style>
             <h1>Détails</h1>
         </header>
 
@@ -712,12 +724,9 @@ if (isset($json['results'][0])) {
 <div class="titre_detail_offre_responsive">
                 <h1><?php echo $details_offre["titre_offre"]; ?></h1>
                 <a href="<?php echo $details_offre["site_web"]; ?>" class="description-link">
-                    <h3>Site Web</h3>
+                    <?php if (!empty($details_offre["site_web"])) { ?> <a href="<?php echo $details_offre["site_web"]; ?>" class="description-link"><h3>Site Web</h3></a> <?php } ?>
                 </a>
-                <form action="poster_un_avis.php" method="POST">
-                    <a href="poster_un_avis.php" class="description-link"><h3>Poster un avis</h3>
-                    </a>
-                </form>
+                
             </div>
 
 
@@ -982,19 +991,37 @@ if (isset($json['results'][0])) {
         isDragging = false;
     });
 </script>
-                <nav class="nav-bar">
-    <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
-    <a href="consulter_mes_avis.php"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
-    <a href="incitation.php"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
-    <a href="
-        <?php
-            if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
-                echo "consulter_compte_membre.php";
-            } else {
-                echo "connexion_membre.php";
-            }
-        ?>">
-        <img src="images/icones/User icon.png" alt="image de Personne"></a>
+                
+    <form action="poster_un_avis.php" method="POST">
+        <a href="poster_un_avis.php" class="btn_poster_un_avis"><h3>Poster un avis</h3>
+        </a>
+    </form>
+    <style>
+        .btn_poster_un_avis{
+      background-color: var(--vert-clair);
+      color: white;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      
+    }
+    </style>
+
+
+                
+    <nav class="nav-bar">
+        <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
+        <a href="consulter_mes_avis.php"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
+        <a href="incitation.php"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
+        <a href="
+            <?php
+                if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
+                    echo "consulter_compte_membre.php";
+                } else {
+                    echo "connexion_membre.php";
+                }
+            ?>">
+            <img src="images/icones/User icon.png" alt="image de Personne"></a>
 </nav>
                 
 <footer>

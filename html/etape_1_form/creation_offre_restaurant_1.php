@@ -14,13 +14,6 @@ if(!isset($_SESSION['pro'])){
     exit;
 }
 
-if(isset($_GET['logout'])){
-    session_unset();
-    session_destroy();
-    header('location: connexion_pro.php');
-    exit;
-}
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tab_offre = [];
     // Récupération des champs obligatoires
@@ -163,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offre Activité</title>
+    <title>Offre - Restaurant</title>
     <link rel="stylesheet" href="../creation_offre2.css">
 
 
@@ -175,26 +168,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <nav>
             <ul>
-                <li><a href="../mes_offres.php" class="active">Accueil</a></li>
-                <li><a href="#">Publier</a></li>
-                <?php
-                    if(isset($_SESSION["pro"]) || !empty($_SESSION["pro"])){
-                       ?>
-                       <li>
-                           <a href="../consulter_compte_pro.php">Mon compte</a>
-                       </li>
-                        <li>
-                            <a href="../connexion_pro.php?deco=true">Se déconnecter</a>
-                        </li>
-                        <?php
-                    } else {
-                        ?>
-                       <li>
-                           <a href="../connexion_pro.php">Se connecter</a>
-                       </li>
-                       <?php
-                    }
-                ?>
+                <li><a href="../mes_offres.php">Accueil</a></li>
+                <li><a href="#" class="active">Publier</a></li>
+                <li><a href="../consulter_compte_pro.php">Mon compte</a></li>
             </ul>
         </nav>
     </header>
