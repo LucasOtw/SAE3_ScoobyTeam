@@ -404,6 +404,7 @@ $password = "philly-Congo-bry4nt";
              $prix_par_jour = $row['prix'];
              $titre_offfre = $row['titre_offre'];
              $en_relief = $row['option_en_relief'];
+             $a_la_une = $row['option_a_la_une'];
              $nb_semaines = $row['nb_semaines'];
          
              $date_pub = new DateTime($date_publication);
@@ -453,14 +454,14 @@ $password = "philly-Congo-bry4nt";
                     <td>En relief</td>
                     <td><?php if ($en_relief !== null ) { echo "8,34€"; } else { echo "Pas sélectionné"; }?></td>
                     <td><?php if ($en_relief !== null ) { echo "$nb_semaines"; } else { echo "0"; }?></td>
-                    <td>100€</td>
+                    <td><?php if ($en_relief !== null ) { echo 8.34 * $nb_semaines; } else { echo "0"; }?></td>
                 </tr>
             
                 <tr>
                     <td>À la Une</td>
                     <td><?php if ($a_la_une !== null ) { echo "16,68€"; } else { echo "Pas sélectionné"; }?></td>
                     <td><?php if ($a_la_une !== null ) { echo "$nb_semaines"; } else { echo "0"; }?></td>
-                    <td>100€</td>
+                    <td><?php if ($a_la_une !== null ) { echo 16.86 * $nb_semaine; } else { echo "0"; }?></td>
                 </tr>
             </tbody>
         </table>
