@@ -1201,7 +1201,8 @@ body.menu-open #overlay {
     padding: 15px;
     box-sizing: border-box;
     font-size: 1em;
-    /* Ajuste la taille du texte */
+    transition: transform 0.2s ease; /* Animation au survol */
+
     text-align: left;
     /* Aligne le texte à gauche */
     font-size: 1.2em;
