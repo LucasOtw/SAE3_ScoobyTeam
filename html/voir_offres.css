@@ -512,9 +512,6 @@ footer {
     margin-left: 0;
 }
 
-.toute_les_offres_main .offer-details p:last-of-type {
-    margin: 0 0.5vw;
-}
 
 .toute_les_offres_main .offer-details span:first-of-type {
     position: relative;
