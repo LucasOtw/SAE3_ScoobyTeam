@@ -652,9 +652,9 @@ function tempsEcouleDepuisPublication($offre){
                 select.addEventListener('change', function () {
                     const category = document.querySelector('.search-select:nth-of-type(1)').value;
                     const priceOrder = document.querySelector('.search-select:nth-of-type(2)').value;
-                    // const noteOrder = document.querySelector('.search-select:nth-of-type(3)').value;
-                    // const rate = document.querySelector('.search-select:nth-of-type(4)').value;
-                    // const status = document.querySelector('.search-select:nth-of-type(5)').value;
+                    const noteOrder = document.querySelector('.search-select:nth-of-type(3)').value;
+                    const rate = document.querySelector('.search-select:nth-of-type(4)').value;
+                    const status = document.querySelector('.search-select:nth-of-type(5)').value;
 
                     // Filtrer par catégorie
                     offerItems.forEach(offer => {
