@@ -192,9 +192,11 @@ if (isset($_POST['changePhoto'])) {
             </button>
             </a>
             <!--Il faudra gérer la deconnexion sur bouton"-->
+            <a href="?deco=true">
             <button class="action-btn">
-                <img src="images/Vector_14.png" alt="Logout Icon"> <a href="?deco=true">Déconnexion</a>
+                <img src="images/Vector_14.png" alt="Logout Icon"> Déconnexion
             </button>
+            </a>
         </main>
     </div>
     <nav class="nav-bar">
