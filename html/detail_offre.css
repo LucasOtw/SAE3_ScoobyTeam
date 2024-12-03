@@ -507,6 +507,7 @@ input#btn-poster-avis {
     margin-right: 0px;
     display: inline-block;
     font-size: 17px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
 }
 
 .Detail_offre_ouverture_global_desktop {
