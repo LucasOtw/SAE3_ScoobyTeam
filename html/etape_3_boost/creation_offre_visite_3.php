@@ -115,11 +115,11 @@ if(isset($_POST['envoiForm3'])){
                         </div>
                         <div>
                             <input type="radio" id="en_relief" name="option" value="en_relief">
-                            <label class="label-check" for="relief">Offre "en Relief" <sup>4</sup> (<?php echo $_PRIX_RELIEF?>€/semaine)</label>
+                            <label class="label-check" for="relief">Offre "en Relief" <sup>4</sup> (<?php echo $_PRIX_RELIEF; ?>€/semaine)</label>
                         </div>
                         <div>
                             <input type="radio" id="a_la_une" name="option" value="a_la_une" checked>
-                            <label class="label-check" for="a_la_une">Offre "À la Une" <sup>5</sup> (<?php echo $_PRIX_A_LA_UNE ?>€/semaine)</label>
+                            <label class="label-check" for="a_la_une">Offre "À la Une" <sup>5</sup> (<?php echo $_PRIX_A_LA_UNE; ?>€/semaine)</label>
                         </div>
                     </div>
                 </div>
