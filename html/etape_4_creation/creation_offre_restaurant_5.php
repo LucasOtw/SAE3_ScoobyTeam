@@ -120,11 +120,11 @@ if(isset($_POST['valider'])){
                 $horaireCorrespondante = $horaireCorrespondante->fetch(PDO::FETCH_ASSOC);
     
                 if($horaireCorrespondante){
-                    echo "HAHA <br>";
+                    
                     // si une horraire correspond, on récupère son code
                     $code_horaire[strtolower($jour)] = $horaireCorrespondante['code_horaire'];
                 } else {
-                    echo "HOHO <br>";
+
                     // sinon, on l'insère
                     $ajoutHoraire = $dbh->prepare("INSERT INTO tripenarvor._horaire (ouverture,fermeture)
                     VALUES (:ouverture,:fermeture)");
@@ -144,7 +144,6 @@ if(isset($_POST['valider'])){
 
             $nom_doss = str_replace(' ','',$_SESSION['crea_offre']['titre_offre']);
             $chemin = "../images/offres/{$nom_doss}";
-            echo $chemin;
 
             if(file_exists($chemin)){
                 // si le chemin existe, on récupère tous les fichiers images
@@ -179,7 +178,6 @@ if(isset($_POST['valider'])){
     
             // on initialise la date actuelle
             $date_offre = date('Y-m-d');
-            echo $date_offre;
     
             /*
             * INSERTIONS
@@ -201,7 +199,6 @@ if(isset($_POST['valider'])){
     
     
             if($prix_option !== null){
-                echo "t";
                 // si il y a un prix d'option, il y a une option, donc on l'ajoute.
                 $nbSemaines_option = $_SESSION['crea_offre4']['duree_option'];
                 $champ_option = "option_".$_SESSION['crea_offre4']['option'];
@@ -213,7 +210,6 @@ if(isset($_POST['valider'])){
     
                 // on peut maintenant ajouter l'option
                 if($_SESSION['ajoutOption'] === null){
-                    echo "HAAAAAAAAAAAAAAAAAA";
                     // si la session est à null, alors on n'a pas rajouté d'option cette fois-là.
                     $ajoutOption = $dbh->prepare("INSERT INTO tripenarvor._option (nb_semaines,date_debut,date_fin,prix) VALUES
                     (:nb_semaines,:date_debut,:date_fin,:prix);");
@@ -225,9 +221,6 @@ if(isset($_POST['valider'])){
                     if($ajoutOption->execute()){
                         $_SESSION['ajoutOption'] = $dbh->lastInsertId();
                     }
-                    echo "test";
-                } else {
-                    echo "AAAAAAAAAAAAAAAARGH";
                 }
             } else {
                 $champ_option = "";
@@ -248,6 +241,7 @@ if(isset($_POST['valider'])){
             }
             if($champ_type_offre === null){
                 echo "Erreur : le type de l'offre ne peut pas être null !";
+                exit;
             }
     
             // on crée un tableau pour stocker les données dynamiquement
@@ -286,9 +280,6 @@ if(isset($_POST['valider'])){
             }
     
             $mon_offre = array_merge($mon_offre,$code_horaire);
-            echo "<pre>";
-            print_r($mon_offre);
-            echo "</pre>";
     
             $mon_offre['en_ligne'] = $mon_offre['en_ligne'] ? 'true' : 'false';
     
@@ -323,10 +314,6 @@ if(isset($_POST['valider'])){
                     $ajoutRestaurant->execute();
                 }
 
-                foreach($_SESSION['crea_offre']['tags'] as $tag){
-                   echo $tag;
-                }
-
                 if(isset($_SESSION['crea_offre']['tags']) && is_array($_SESSION['crea_offre']['tags'])){
                     foreach($_SESSION['crea_offre']['tags'] as $tag){
                         try {
@@ -345,8 +332,6 @@ if(isset($_POST['valider'])){
                 unset($_SESSION['crea_offre3']);
                 unset($_SESSION['crea_offre4']);
                 unset($_SESSION['ajoutOption']);
-            } else {
-                echo "Nique ta mère";
             }
         }
     }
