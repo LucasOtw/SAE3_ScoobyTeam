@@ -553,17 +553,13 @@ input#btn-poster-avis {
     color: white;
 }
 
-.visit-button_detailoffre {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+.visit-button_detailoffre:hover {
+    transform: translateY(-2px); /* Effet d'élévation au survol */
+
 }
 
-.visit-button_detailoffre:hover {
-    transform: scale(1.004);
-    /* Grossissement léger */
-    box-shadow: 0 0 5px 2px var(--vert-fonce);
-    /* Lumière fluo verte */
-    background-color: var(--vert-fonce);
-    /* Changement de couleur */
+.visit-button_detailoffre:active {
+    transform: translateY(2px); /* Effet d'appui */
 }
 
 
