@@ -2794,8 +2794,6 @@ input[type="password"]::placeholder {
 .profile {
     text-align: center;
     padding: 20px;
-    background-color: #f0f0f0;
-    border-bottom: 1px solid #e0e0e0;
 }
 
 .profile-img {
@@ -2803,7 +2801,10 @@ input[type="password"]::placeholder {
     height: 7em;
     border-radius: 2.5em;
     object-fit: cover;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #e0e0e0;
 }
+
 
 .profile-name {
     font-size: 22px;
