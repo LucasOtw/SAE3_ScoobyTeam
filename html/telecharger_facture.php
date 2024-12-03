@@ -410,8 +410,6 @@ $password = "philly-Congo-bry4nt";
              $jours_ecoules = $interval->days;
          
              $montant_ht = $jours_ecoules * $prix_par_jour;
-         } else {
-          echo "AZERTYUIO";
          }
          ?>
 
@@ -425,8 +423,8 @@ $password = "philly-Congo-bry4nt";
           if ($row = $stmt_nb_semaine->fetch(PDO::FETCH_ASSOC)) {
              $en_relief = $row['option_en_relief'];
              $a_la_une = $row['option_a_la_une'];
-             if ($en_relief !== null ) { $nb_semaines_relief = 0 ;} else { $nb_semaines_relief = $row['nb_semaines']; }
-             if ($a_la_une !== null ) { $nb_semaines_une = 0 ;} else { $nb_semaines_une = $row['nb_semaines']; }
+             if ($en_relief === null ) { $nb_semaines_relief = 0 ;} else { $nb_semaines_relief = $row['nb_semaines']; }
+             if ($a_la_une === null ) { $nb_semaines_une = 0 ;} else { $nb_semaines_une = $row['nb_semaines']; }
              
          }
 
