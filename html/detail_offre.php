@@ -1009,7 +1009,7 @@ if (isset($json['results'][0])) {
     margin-left: 6.5em;
     margin-top: -2em;
     margin-bottom: 7em;
-    padding-left: 3em;
+    padding-left: 1em;
     padding-top: 0.6em;
     text-decoration: none;
       
