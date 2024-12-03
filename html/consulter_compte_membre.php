@@ -67,7 +67,7 @@ if (isset($_POST['modif_infos'])){
                  // Mise à jour pour _compte
                  switch($champ){
                      case "telephone":
-                         if(strlen($valeurNettoye) < 10 || strlen($valeursNettoye) > 10){
+                         if(strlen($valeurNettoye) < 10 || strlen($valeurNettoye) > 10){
                              $erreur[] = "Le numéro de téléphone doit être composé de 10 numéros !";
                              header('location: consulter_compte_membre.php');
                              break;
