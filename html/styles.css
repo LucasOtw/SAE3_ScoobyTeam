@@ -3436,6 +3436,10 @@ main.creation_compte_membre .creation_compte_membre_bienvenue {
 }
 
 @media (max-width: 430px) {
+      main.creation_compte_membre .submit-btn {
+        width: auto;
+        margin-left: auto;
+    }
     main.creation_compte_membre .input-icon-img {
         display: inline-block;
     }
