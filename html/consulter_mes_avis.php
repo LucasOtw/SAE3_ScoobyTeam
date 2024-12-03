@@ -95,22 +95,6 @@ if (!empty($_POST['supprAvis'])){
     
     <!-- Titre -->
     <h1>Editer le profil</h1>
-    <style>
-    .edit-profil {
-        text-align: center; /* Centrer le contenu */
-    }
-    .logo_tel {
-        display: block;
-        margin: 0 auto 1em auto; /* Centrer le logo et ajouter un espace en bas */
-    }
-    .edit-profil a img {
-        display: inline-block;
-        margin-bottom: 0.5em; /* Ajouter un espace entre le bouton et le titre */
-    }
-    .edit-profil h1 {
-        margin-top: 0; /* Réduire l'espace en haut du titre */
-    }
-</style>
 </div>
 
 
