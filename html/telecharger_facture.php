@@ -15,6 +15,8 @@ $password = "philly-Congo-bry4nt";
     die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
 
+echo "Ta mère";
+
 if(!isset($_SESSION['pro'])){
   header('connexion_pro.php');
   exit;
