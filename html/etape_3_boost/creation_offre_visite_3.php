@@ -5,6 +5,12 @@ session_start();
 
 include_once('../recupInfosCompte.php');
 
+$getPrixOffre = $dbh->prepare("SELECT * FROM tripenarvor._type_offre");
+$getPrixOffre->execute();
+
+$prixOffre = $getPrixOffre->fetchAll(PDO::FETCH_ASSOC);
+var_dump($prixOffre);
+
 if(isset($_POST['envoiForm3'])){
     // si le formulaire est envoyé..
     foreach($_POST as $cle => $post){
