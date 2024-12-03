@@ -684,11 +684,19 @@ main.creation_compte_pro .submit-btn {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease;
 }
 
+
+
 main.creation_compte_pro .submit-btn:hover {
-    background-color: darkorange;
+    transform: translateY(-2px); /* Effet d'élévation au survol */
+}
+
+main.creation_compte_pro .submit-btn:active {
+    transform: translateY(2px); /* Effet d'élévation au survol */
 }
 
 main.creation_compte_pro .creation_compte_pro_other-links {
