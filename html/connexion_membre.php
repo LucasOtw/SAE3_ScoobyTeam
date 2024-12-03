@@ -43,7 +43,7 @@ session_start();
             <div class="connexion_membre_form-container">
                 <div class="connexion_membre_h2_p">
                     <h2>Se connecter</h2>
-                    <p>Sauvegardez vos annonces favorites, donnez votre avis sur les vendeurs <br>profitez d'une expérience personnalisée.</p>
+                    <p>Sauvegardez vos annonces favorites, donnez votre avis sur les offres <br>profitez d'une expérience personnalisée.</p>
                 </div>
                 <form action="connexion_membre.php" method="POST">
                     <fieldset>
