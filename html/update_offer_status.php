@@ -1,3 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <?php if ($_SERVER['REQUEST_METHOD'] == "POST")
+    {
+    ?>
+        <script>
+            window.open();
+        </script>
+    <?php
+    }
+    ?>
+    
+</body>
+</html>
 <?php
     // Connexion à la base de données
     try {
@@ -17,6 +38,9 @@
     echo "<pre>";
     var_dump($_POST);
     echo"</pre>";
+?>
+
+<?php
 
     // Récupérer les données envoyées en POST
     $en_ligne = $_POST['en_ligne'];
