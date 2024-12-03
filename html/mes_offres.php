@@ -78,6 +78,11 @@ if(isset($_SESSION['aCreeUneOffre'])){
             <a href="mes_offres.php?filter=offline" class="button-HorsLigne <?php echo $filter === 'offline' ? 'button-Active' : ''; ?>">Hors - Ligne</a>
             <a href="mes_offres.php?filter=online" class="button-Ligne <?php echo $filter === 'online' ? 'button-Active' : ''; ?>">En Ligne</a>
             <a href="mes_offres.php?filter=all" class="button-toutes <?php echo $filter === 'all' ? 'button-Active' : ''; ?>">Toutes</a>
+
+            <a href="voir_factures.php" class="button-factures">
+                Voir mes factures
+            <span class="arrow">▶</span>
+    </a>
         </div>
     </section>
     <section class="offers">
