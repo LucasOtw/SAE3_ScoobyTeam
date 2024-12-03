@@ -1001,6 +1001,10 @@ if (isset($json['results'][0])) {
     </form>
     <style>
         .btn_poster_un_avis{
+            display:none;
+        }
+    @media (max-width: 429px){
+        .btn_poster_un_avis{
     background-color: var(--vert-clair);
     color: white;
     border: none;
@@ -1016,6 +1020,7 @@ if (isset($json['results'][0])) {
     padding-top: 0.6em;
     text-decoration: none;
       
+    }
     }
     </style>
 
