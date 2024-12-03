@@ -294,7 +294,7 @@
         <header>
             <div class="logo">
                 <a href="mes_offres.php">
-                  <img src="images/logoBlanc.png" alt="PACT Logo">
+                  <img src="images/logo_blanc_pro.png" alt="PACT Logo">
                 </a>
             </div>
             <nav>
