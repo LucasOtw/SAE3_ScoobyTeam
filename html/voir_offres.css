@@ -555,7 +555,7 @@ footer {
     left: 90%;
     align-self: flex-end;
     transition: transform 0.2s ease; /* Animation au survol */
-
+    font-size: 17px;
 }
 
 
