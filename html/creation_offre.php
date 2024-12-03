@@ -26,7 +26,7 @@ if(!isset($_SESSION['pro'])){
         <nav class="nav">
             <ul>
                 <li><a href="mes_offres.php">Accueil</a></li>
-                <li><a href="connexion_pro.php" class="active">Publier</a></li>
+                <li><a href="#" class="active">Publier</a></li>
                 <li><a href="consulter_compte_pro.php">Mon Compte</a></li>
             </ul>
         </nav>
