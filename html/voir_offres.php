@@ -263,7 +263,21 @@ function tempsEcouleDepuisPublication($offre){
             <input type="date" id="opening-start-date" placeholder="Début">
             <input type="date" id="opening-end-date" placeholder="Fin">
         </div>
-
+         <!-- Section cachée pour les filtres -->
+        <div id="filters-section" class="hidden">
+            <h3>Filtres supplémentaires</h3>
+            <span>
+            <label for="prix_min">
+                Prix min :
+            </label>
+            <input id="prix_min" type="number" placeholder="€" class="price-input">
+            <label for="prix_max">
+                Prix max :
+            </label>
+            <input id="prix_max" type="number" placeholder="€" class="price-input">
+            </span>
+            <button class="apply-filters">Appliquer les filtres</button>
+        </div>
         <div class="a-la-une-titre-carrousel">
             <h2 class="titre-a-la-une">A La Une</h2>
     
