@@ -209,7 +209,7 @@ if (isset($_POST['changePhoto'])) {
             echo "Erreur lors de l'upload du fichier.";
         }
     }
-    header('location: compte_membre_tel.php');
+    header('location: consulter_compte_membre.php');
     exit;
 }
 
