@@ -20,6 +20,7 @@ include("recupInfosCompte.php");
 <body>
     <header class="header_pro">
         <div class="logo">
+            <link rel="icon" type="image/png" href="images/logoPin_orange.png" width="16px" height="32px">
             <img src="images/logo_blanc_pro.png" alt="PACT Logo">
         </div>
         <nav class="nav">
