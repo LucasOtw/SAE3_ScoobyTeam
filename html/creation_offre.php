@@ -21,7 +21,10 @@ if(!isset($_SESSION['pro'])){
 <body>
      <header class="header">
         <div class="logo">
-            <img src="images/logo_blanc_pro.png" alt="PACT Logo">
+           <a href="mes_offres.php">
+                  <img src="images/logo_blanc_pro.png" alt="PACT Logo">
+            </a>
+      
         </div>
         <nav class="nav">
             <ul>
