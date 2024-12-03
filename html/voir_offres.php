@@ -119,7 +119,7 @@ function tempsEcouleDepuisPublication($offre){
     <div class="header-membre">
         <header class="header-pc">
             <div class="logo-pc" style="z-index: 1">
-                <a href="mes_offres.php">
+                <a href="voir_offres.php">
                     <img src="images/logoBlanc.png" alt="PACT Logo">
                 </a>
 
