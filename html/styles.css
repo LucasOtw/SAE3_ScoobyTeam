@@ -1672,13 +1672,15 @@ main.connexion_membre_main fieldset p.erreur-formulaire-connexion-membre {
 
     main.connexion_membre_main legend {
         left: 25px;
-        ;
+        
     }
 
     main.connexion_membre_main input[type="email"],
     main.connexion_membre_main input[type="password"] {
         border-radius: 100px;
         height: 7vh;
+        width: 78vw;
+        margin-left: -6vw;
     }
 
 
