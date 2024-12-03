@@ -1402,7 +1402,7 @@ body.menu-open #overlay {
   background: linear-gradient(145deg, #ffffff, #e6e6e6);
   border: 1px solid #4caf50; /* Couleur de mise en avant */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(76, 175, 80, 0.5);
-  transform: scale(1.05); /* Légère mise en avant */
+  transform: scale(1.01); /* Légère mise en avant */
 }
 
 
