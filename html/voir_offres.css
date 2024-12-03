@@ -867,13 +867,6 @@ body.menu-open #overlay {
     transition: background 0.3s ease;
 }
 
-.icon-localisation {
-    color: var(--vert-clair);
-    font-size: 1.2em;
-    margin-right: 5px;
-    margin-bottom: -4px;
-}
-
 #price-slider input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -1398,4 +1391,11 @@ body.menu-open #overlay {
     .toute_les_offres_main .image-background-card-a-la-une {
         width: 22em;
     }
+}
+
+.icon-localisation {
+    color: var(--vert-clair);
+    font-size: 1.2em;
+    margin-right: 5px;
+    margin-bottom: -4px;
 }
