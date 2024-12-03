@@ -536,42 +536,46 @@ function tempsEcouleDepuisPublication($offre){
                                 data-period-c=<?php if(!empty($periode)) { echo $periode['date_fermeture']; } else { echo ""; } ?> >
                         
                                 <img src="<?php echo "./".$offre_image['url_image']; ?>" alt="aucune image">
-<div class="offer-details">
-    <h2><?php echo $offre["titre_offre"]; ?></h2>
-    <p>
-        <span class="iconify" data-icon="mdi:map-marker" style="color: #BDC426; font-size: 1.2em; margin-right: 5px; margin-bottom: -4px;"></span>
-        <?php echo $villeOffre["ville"]; ?>
-    </p>
-    <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
-    <p>
-        <?php 
-        if (!empty($offre["note_moyenne"])) { 
-            echo '⭐ '.$offre["note_moyenne"]; 
-        } else { 
-            echo "Aucune note"; 
-        } 
-        ?>
-    </p>
-    <p style="color: #2DD7A4; font-weight: bold;"><?php echo $offre["tarif"]; ?>€</p>
-    <p>
-    <p>
-        <?php 
-        if ($type_offre != 'spectacle') { 
-            echo $dataStatusFr; 
-        } 
-        ?>
-    </p>
-    <?php if (($type_offre == "visite" || $type_offre == "spectacle") && !empty($event['date_'.$type_offre])) { ?> 
-        <p><?php echo $event['date_'.$type_offre].' à '.$event['heure_'.$type_offre]; ?></p> 
-    <?php } ?>
-    <form id="form-voir-offre" action="detail_offre.php" method="POST">
-        <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
-        <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
-    </form>
-</div>
-
-
                         
+                                <div class="offer-details">
+                                    <h2><?php echo $offre["titre_offre"]; ?></h2>
+                                    
+                                    <p>
+                                        <span class="iconify" data-icon="mdi:map-marker" style="color: #BDC426; font-size: 1.2em; margin-right: 5px; margin-bottom: -4px;"></span>
+                                        <?php echo $villeOffre["ville"]; ?>
+                                    </p>
+                                    
+                                    <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
+                                    
+                                    <p>
+                                        <?php 
+                                        if (!empty($offre["note_moyenne"])) { 
+                                            echo '⭐ '.$offre["note_moyenne"]; 
+                                        } else { 
+                                            echo "Aucune note"; 
+                                        } 
+                                        ?>
+                                    </p>
+                                    
+                                    <p style="color: #2DD7A4; font-weight: bold;"><?php echo $offre["tarif"]; ?>€</p>
+                                    <p>
+                                        <?php 
+                                        if ($type_offre != 'spectacle') { 
+                                            echo $dataStatusFr; 
+                                        } 
+                                        ?>
+                                    </p>
+                                    
+                                    <?php if (($type_offre == "visite" || $type_offre == "spectacle") && !empty($event['date_'.$type_offre])) { ?> 
+                                        <p><?php echo $event['date_'.$type_offre].' à '.$event['heure_'.$type_offre]; ?></p> 
+                                    <?php } ?>
+                                            
+                                    <form id="form-voir-offre" action="detail_offre.php" method="POST">
+                                        <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
+                                        <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
+                                    </form>
+                                    
+                                </div>
                     </article>
                 <?php
                 }
