@@ -1899,12 +1899,24 @@ main.main_poster_avis .poster_un_avis_btn_publier {
 }
 
 main.main_poster_avis .poster_un_avis_btn_annuler:hover {
-    background-color: #e2e2e2;
+    transform: translateY(-2px); /* Effet d'élévation au survol */
+
 }
 
 main.main_poster_avis .poster_un_avis_btn_publier:hover {
-    background-color: #c3d34e;
+    transform: translateY(-2px); /* Effet d'élévation au survol */
+
 }
+
+main.main_poster_avis .poster_un_avis_btn_publier:active {
+    transform: translateY(2px); /* Effet d'appui */
+}
+
+main.main_poster_avis .poster_un_avis_btn_annuler:active {
+    transform: translateY(2px); /* Effet d'élévation au survol */
+
+}
+
 
 main.main_poster_avis .notation {
     direction: rtl;
