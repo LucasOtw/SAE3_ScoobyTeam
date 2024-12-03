@@ -62,39 +62,28 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
                 exit;
             }
         }
-    }
-    
-    if(isset($_POST['passer_cb'])){
-        $code_iban = $_POST['IBAN'];
-        $code_BIC = $_POST['BIC'];
-        $nom_compte = $_POST['nom'];
-
-        if(!validerIBAN($code_iban) || !validerBIC($code_BIC)){
-            echo "IBAN ou BIC incorrect !";
-            exit;
-        }
-    } else {
-
-    }
+    } else
 
     if($_SESSION['aCreeUneOffre'] === false){
         // on ajout d'abord la carte bancaire si elle n'existe pas
         if(!$monComptePro['code_compte_bancaire']){
-            $ajoutCB = $dbh->prepare("INSERT INTO tripenarvor._compte_bancaire (iban,bic,nom_compte) VALUES (:iban,:bic,:nom_compte)");
-            $ajoutCB->bindValue(":iban",$code_iban);
-            $ajoutCB->bindValue(":bic",$code_BIC);
-            $ajoutCB->bindValue(":nom_compte",$nom_compte);
-
-            $ajoutCB->execute();
-            $code_cb = $dbh->lastInsertId();
-
-            // on met à jour tripenarvor._professionnel là où se trouve le code compte
-
-            $updateCompte = $dbh->prepare("UPDATE tripenarvor._professionnel SET code_compte_bancaire = :code_cb WHERE code_compte = :code_compte");
-            $updateCompte->bindValue(":code_cb",$code_cb);
-            $updateCompte->bindValue(":code_compte",$compte['code_compte']);
-
-            $updateCompte->execute();
+            if(isset($_POST['valider'])){
+                $ajoutCB = $dbh->prepare("INSERT INTO tripenarvor._compte_bancaire (iban,bic,nom_compte) VALUES (:iban,:bic,:nom_compte)");
+                $ajoutCB->bindValue(":iban",$code_iban);
+                $ajoutCB->bindValue(":bic",$code_BIC);
+                $ajoutCB->bindValue(":nom_compte",$nom_compte);
+    
+                $ajoutCB->execute();
+                $code_cb = $dbh->lastInsertId();
+    
+                // on met à jour tripenarvor._professionnel là où se trouve le code compte
+    
+                $updateCompte = $dbh->prepare("UPDATE tripenarvor._professionnel SET code_compte_bancaire = :code_cb WHERE code_compte = :code_compte");
+                $updateCompte->bindValue(":code_cb",$code_cb);
+                $updateCompte->bindValue(":code_compte",$compte['code_compte']);
+    
+                $updateCompte->execute();
+            }
         }
         // sinon, on ne fait rien.
         
