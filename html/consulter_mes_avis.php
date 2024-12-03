@@ -85,17 +85,13 @@ if (!empty($_POST['supprAvis'])){
 </style>
 
 <div class="edit-profil">
-    <!-- Logo placé au-dessus -->
     <img class="logo_tel" src="images/logoNoirVert.png" alt="Logo">
     
-    <!-- Bouton retour -->
-    <a href="compte_membre_tel.php">
+</div>
+<a href="compte_membre_tel.php">
         <img src="images/Bouton_retour.png" alt="Bouton retour">
     </a>
-    
-    <!-- Titre -->
     <h1>Editer le profil</h1>
-</div>
 
 
           
