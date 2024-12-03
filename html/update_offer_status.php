@@ -47,7 +47,7 @@
                 RETURNING titre_offre, en_ligne
             ");
         }
-        if ($stmt->execute([':code_offre' => $code_offre, ':en_ligne' => $en_ligne == 1 ]))
+        if ($stmt->execute([':code_offre' => $code_offre, ':en_ligne' => ($en_ligne == 1) ? true : false ]))
         {
             echo "La mise à jour a été effectuée avec succès.";
             
