@@ -3,48 +3,46 @@
 ob_start();
 session_start();
 
-var_dump($_SESSION['crea_offre']);
+if (isset($_POST['EnvoiEtape2'])) {
+    $jours = [
+        'Lundi'    => ['ouvertureL', 'fermetureL'],
+        'Mardi'    => ['ouvertureMa', 'fermetureMa'],
+        'Mercredi' => ['ouvertureMe', 'fermetureMe'],
+        'Jeudi'    => ['ouvertureJ', 'fermetureJ'],
+        'Vendredi' => ['ouvertureV', 'fermetureV'],
+        'Samedi'   => ['ouvertureS', 'fermetureS'],
+        'Dimanche' => ['ouvertureD', 'fermetureD']
+    ];
 
-      if (isset($_POST['EnvoiEtape2'])) {
-          $jours = [
-              'Lundi'    => ['ouvertureL', 'fermetureL'],
-              'Mardi'    => ['ouvertureMa', 'fermetureMa'],
-              'Mercredi' => ['ouvertureMe', 'fermetureMe'],
-              'Jeudi'    => ['ouvertureJ', 'fermetureJ'],
-              'Vendredi' => ['ouvertureV', 'fermetureV'],
-              'Samedi'   => ['ouvertureS', 'fermetureS'],
-              'Dimanche' => ['ouvertureD', 'fermetureD']
-          ];
-      
-          $horaires_par_jour = [];
-          $erreurs = []; // Assurez-vous d'initialiser le tableau
-      
-          foreach ($jours as $jour => [$ouverture, $fermeture]) {
-              $horaire_ouverture = $_POST[$ouverture] ?? '';
-              $horaire_fermeture = $_POST[$fermeture] ?? '';
-      
-              if (!empty($horaire_ouverture) || !empty($horaire_fermeture)) {
-                  if (strtotime($horaire_ouverture) >= strtotime($horaire_fermeture)) {
-                      $erreurs[] = "$jour : L'heure d'ouverture doit être plus ancienne que l'heure de fermeture !";
-                  } else {
-                      $horaires_par_jour[$jour] = [
-                          'ouverture' => $horaire_ouverture,
-                          'fermeture' => $horaire_fermeture
-                      ];
-                  }
-              }
-          }
-      
-          if (!empty($erreurs)) {
-              foreach ($erreurs as $err) {
-                  echo $err . "<br>";
-              }
-          } else {
-              $_SESSION['crea_offre2'] = $horaires_par_jour;
-              header('location: ../etape_3_boost/creation_offre_visite_3.php');
-              exit;
-          }
-      }
+    $horaires_par_jour = [];
+    $erreurs = []; // Assurez-vous d'initialiser le tableau
+
+    foreach ($jours as $jour => [$ouverture, $fermeture]) {
+        $horaire_ouverture = $_POST[$ouverture] ?? '';
+        $horaire_fermeture = $_POST[$fermeture] ?? '';
+
+        if (!empty($horaire_ouverture) || !empty($horaire_fermeture)) {
+            if (strtotime($horaire_ouverture) >= strtotime($horaire_fermeture)) {
+                $erreurs[] = "$jour : L'heure d'ouverture doit être plus ancienne que l'heure de fermeture !";
+            } else {
+                $horaires_par_jour[$jour] = [
+                    'ouverture' => $horaire_ouverture,
+                    'fermeture' => $horaire_fermeture
+                ];
+            }
+        }
+    }
+
+    if (!empty($erreurs)) {
+        foreach ($erreurs as $err) {
+            echo $err . "<br>";
+        }
+    } else {
+        $_SESSION['crea_offre2'] = $horaires_par_jour;
+        header('location: ../etape_3_boost/creation_offre_visite_3.php');
+        exit;
+    }
+}
         
  /*       echo '<pre>';
         print_r($horaires_par_jour);
