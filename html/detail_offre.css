@@ -731,8 +731,11 @@ input#btn-poster-avis {
         padding-left: 16em;
         padding-top: 1em;
         font-size: large;
+        box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
 
     }
+
+
 
     .btn-poster-avis-voir-site_tel {
         border: none;

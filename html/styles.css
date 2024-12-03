@@ -1515,14 +1515,19 @@ main.connexion_membre_main button {
     background-color: var(--vert-clair);
     border: none;
     color: white;
-    border-radius: 5px;
+    border-radius: 16px;
     cursor: pointer;
     font-size: 16px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2s ease;
 }
 
 main.connexion_membre_main button:hover {
-    background-color: var(--vert-fonce);
+    transform: translateY(-2px); /* Effet d'élévation au survol */
+}
+
+main.connexion_membre_main button:active {
+    transform: translateY(2px); /* Effet d'élévation au survol */
 }
 
 main.connexion_membre_main h2 {
