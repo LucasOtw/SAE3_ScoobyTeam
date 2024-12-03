@@ -1744,6 +1744,26 @@ main.main_poster_avis .poster_un_avis_nom {
     margin: 0;
 }
 
+
+
+
+
+margin-right: 0px;
+    display: inline-block;
+    font-size: 17px;
+    padding: 10px 20px;
+    background-color: var(--vert-clair);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    width: 223px;
+    height: 52px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease;
+
+
+
 main.main_poster_avis .poster_un_avis_location,
 main.main_poster_avis .poster_un_avis_rating {
     margin: 10px 0;
@@ -1845,9 +1865,19 @@ main.main_poster_avis .poster_un_avis_btn_publier {
     padding: 1em 2em;
     border: none;
     border-radius: 4px;
-    font-size: 1.2rem;
     cursor: pointer;
     border-radius: 0.5em;
+    font-size: 17px;
+    padding: 10px 20px;
+    background-color: var(--vert-clair);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    width: 223px;
+    height: 52px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease;
 }
 
 main.main_poster_avis .poster_un_avis_btn_annuler {

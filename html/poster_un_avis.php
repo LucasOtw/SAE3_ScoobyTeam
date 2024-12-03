@@ -66,7 +66,7 @@ echo "</pre>";
         </nav>
       </header> 
         
-      
+
         <header class="header-tel header_membre">
             <div class="logo-tel">
                 <img src="images/logoNoirVert.png" alt="PACT Logo">
@@ -134,15 +134,10 @@ echo "</pre>";
                            <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
                            <button class="poster_un_avis_btn_publier">Publier →</button>
                        </div>
-                      
                     </div>
                   </div>
                </div>
             </form>
-
-
-
-   
         <nav class="nav-bar">
             <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
             <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
