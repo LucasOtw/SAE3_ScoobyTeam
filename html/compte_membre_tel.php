@@ -24,9 +24,30 @@ if (isset($_POST['changePhoto'])) {
                 mkdir($uploadDir, 0777, true); // Créer le dossier s'il n'existe pas
             }
 
+            function getUniqueFileName($directory, $fileName) {
+                // Récupérer le nom sans l'extension
+                $name = pathinfo($fileName, PATHINFO_FILENAME);
+                // Récupérer l'extension
+                $extension = pathinfo($fileName, PATHINFO_EXTENSION);
+            
+                // Construire le chemin complet du fichier
+                $newFileName = $fileName; // Par défaut, c'est le nom original
+                $counter = 1;
+            
+                // Vérifier si le fichier existe dans le dossier
+                while (file_exists($directory . '/' . $newFileName)) {
+                    // Ajouter un suffixe au nom
+                    $newFileName = $name . '_' . $counter . '.' . $extension;
+                    $counter++;
+                }
+            
+                return $newFileName;
+            }
+
             // Générer un nom unique pour le fichier
             $fileName = pathinfo($file['name'], PATHINFO_FILENAME) . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
-            echo $fileName;
+            $fichierImage = getUniqueFileName($uploadDir,$fileName);
+            echo $fichierImage;
             $filePath = $uploadDir . $fileName;
 
             // Déplacer le fichier temporaire vers le dossier cible
