@@ -164,7 +164,7 @@
                     </div>
                     <style>
                         .deja_compte{
-                            color:--var(--vert-clair);
+                            color:#BDC426;
                         }
                     </style>
                     <button type="submit" class="submit-btn">Créer mon compte <img src="images/flecheBlancheDroite.png" alt="fleche vers la droite"></button>
