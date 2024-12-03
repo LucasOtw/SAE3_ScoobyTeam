@@ -247,7 +247,10 @@ if (isset($json['results'][0])) {
     <div id="body_offre_desktop">
         <header>
             <div class="logo">
-                <img src="images/logoBlanc.png" alt="PACT Logo">
+                <a href="voir_offres.php">
+                  <img src="images/logoBlanc.png" alt="PACT Logo">
+                </a>
+        
             </div>
             <nav>
                 <ul>
@@ -1009,7 +1012,7 @@ if (isset($json['results'][0])) {
     margin-left: 6.5em;
     margin-top: -2em;
     margin-bottom: 7em;
-    padding-left: 3em;
+    padding-left: 2em;
     padding-top: 0.6em;
     text-decoration: none;
       

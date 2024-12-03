@@ -431,7 +431,7 @@ footer {
 }
 
 .conteneur_titre_voir_offre {
-    margin-top: 15em;
+    margin-top: 8em;
     margin-left: 93px;
 }
 
@@ -907,7 +907,7 @@ body.menu-open #overlay {
     flex-direction: column;
     align-items: center;
     /* Assurez-vous que les éléments internes sont centrés */
-    margin: 28em auto;
+    margin: 19em auto 22em auto;
     background: none;
     border-radius: 30px;
     padding: 20px;

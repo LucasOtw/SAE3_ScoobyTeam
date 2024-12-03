@@ -381,7 +381,9 @@ if(isset($_POST['valider'])){
 <body>
     <header class="header_pro">
         <div class="logo">
-            <img src="../images/logo_blanc_pro.png" alt="PACT Logo">
+             <a href="mes_offres.php">
+                  <img src="../images/logo_blanc_pro.png" alt="PACT Logo">
+            </a>
         </div>
         <nav>
             <ul>
