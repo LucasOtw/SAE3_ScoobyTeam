@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <?php if ($_SERVER['REQUEST_METHOD'] == "GET")
+    <?php if ($_SERVER['REQUEST_METHOD'] == "POST")
     {
     ?>
         <script>
