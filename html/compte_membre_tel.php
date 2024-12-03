@@ -144,7 +144,7 @@ if (isset($_POST['changePhoto'])) {
             </form>
     </div>
     <h1 class="profile-name"><?php echo $monCompteMembre['prenom']." ".$monCompteMembre['nom'] ?></h1>
-     <p class="profile-contact"><?php echo $compte['mail'] ?> | echo $compte['telephone']</p>
+     <p class="profile-contact"><?php echo $compte['mail'] ?> | <?php echo $compte['telephone'] ?></p>
 </section>
 
 
