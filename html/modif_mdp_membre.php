@@ -81,7 +81,9 @@ if (isset($_POST['modif_infos'])){
 <body>
     <header class="header_membre">
         <div class="logo">
+         <a href="voir_offres.php">
             <img src="images/logoBlanc.png" alt="PACT Logo">
+         </a>
         </div>
         <nav>
             <ul>
