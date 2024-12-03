@@ -1085,14 +1085,11 @@ footer {
     margin: 0;
     /* Enlève la marge par défaut */
 }
-
 /* Conteneur global */
 .a-la-une-wrapper {
     position: relative;
     display: flex;
     align-items: center;
-    margin-left: 6em;
-    margin-right: 6em;
 }
 
 /* Section des cartes */
@@ -1102,8 +1099,7 @@ footer {
     scroll-behavior: smooth;
     width: 100vw;
     min-width: 100%;
-    margin-left: -7em;
-    height: 25em;
+
 }
 
 .a-la-une::-webkit-scrollbar {
@@ -1127,20 +1123,17 @@ footer {
 }
 
 .card-scroll-btn.card-scroll-btn-left {
-    left: -147px;
+    left: -3em;
 
 }
 
 .card-scroll-btn.card-scroll-btn-right {
-    right: -98px;
+    right: -3em;
 }
 
 .card-scroll-btn:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
-
-
-
 
 .card-a-la-une {
     width: 25em;
@@ -1152,6 +1145,7 @@ footer {
 
 .image-background-card-a-la-une {
     width: 25em;
+    height: 15em;
     position: relative;
     background-color: grey;
     border-radius: 1.5em;
