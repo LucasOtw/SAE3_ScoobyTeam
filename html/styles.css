@@ -4641,6 +4641,7 @@ nav.nav-bar-tel {
     text-decoration: none;
     font-weight: bold;
     margin-top: 10px; /* Ajout d'un espace si nécessaire */
+    margin-left:40%;
 }
 
 .button-factures .arrow {
