@@ -992,7 +992,7 @@ if (isset($json['results'][0])) {
     });
 </script>
     <form action="poster_un_avis.php" method="POST">
-        <a href="poster_un_avis.php" class="description-link"><h3>Poster un avis</h3>
+        <a href="poster_un_avis.php" class="btn_poster_un_avis"><h3>Poster un avis</h3>
         </a>
     </form>
     <nav class="nav-bar">
