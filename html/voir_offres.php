@@ -571,9 +571,6 @@ function tempsEcouleDepuisPublication($offre){
 
         ?>
         </section>
-        <?php
-            var_dump($offre_image);
-        ?>
 
         <script>
             // Récupération des éléments
