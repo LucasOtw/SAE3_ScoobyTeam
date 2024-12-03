@@ -27,9 +27,7 @@ if(!isset($_SESSION['pro'])){
 }
 
 if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
-    if(isset($_SESSION['crea_offre']) && isset($_SESSION['crea_offre2']) && isset($_SESSION['crea_offre3'])){
-        echo "DOBBY HAS NO MASTER YOU SON OF A BITCH !";
-    } else {
+    if(!isset($_SESSION['crea_offre']) && !isset($_SESSION['crea_offre2']) && !isset($_SESSION['crea_offre3'])){
         header('location: ../creation_offre.php');
         exit;
     }
@@ -98,8 +96,6 @@ if(isset($_POST['valider'])){
                 // et on récupère le dernier id inséré, dans notre cas, c'est FORCEMENT le code_adresse ! :D
                 $code_adresse = $dbh->lastInsertId();
             }
-
-            echo "Bonjour";
             
     
             /*
@@ -121,11 +117,11 @@ if(isset($_POST['valider'])){
                 $horaireCorrespondante = $horaireCorrespondante->fetch(PDO::FETCH_ASSOC);
     
                 if($horaireCorrespondante){
-                    echo "HAHA <br>";
+                    
                     // si une horraire correspond, on récupère son code
                     $code_horaire[strtolower($jour)] = $horaireCorrespondante['code_horaire'];
                 } else {
-                    echo "HOHO <br>";
+                    
                     // sinon, on l'insère
                     $ajoutHoraire = $dbh->prepare("INSERT INTO tripenarvor._horaire (ouverture,fermeture)
                     VALUES (:ouverture,:fermeture)");
@@ -145,7 +141,6 @@ if(isset($_POST['valider'])){
 
             $nom_doss = str_replace(' ','',$_SESSION['crea_offre']['titre_offre']);
             $chemin = "../images/offres/{$nom_doss}";
-            echo $chemin;
 
             if (file_exists($chemin)) {
                 // Récupérer tous les fichiers images
@@ -183,7 +178,6 @@ if(isset($_POST['valider'])){
                             ":url_image" => $url_image
                         ]);
                         $id_image[] = $dbh->lastInsertId();
-                        echo "L'image $url_image a été ajoutée dans la base de données.<br>";
                     }
                 }
             } else {
@@ -196,7 +190,6 @@ if(isset($_POST['valider'])){
     
             // on initialise la date actuelle
             $date_offre = date('Y-m-d');
-            echo $date_offre;
 
             // on vérifie si le pro a choisi une option
             $prix_option = null;
@@ -259,6 +252,7 @@ if(isset($_POST['valider'])){
             }
             if($champ_type_offre === null){
                 echo "Erreur : le type de l'offre ne peut pas être null !";
+                exit;
             }
 
             // on crée un tableau pour stocker les données dynamiquement

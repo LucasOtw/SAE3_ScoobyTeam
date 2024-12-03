@@ -26,22 +26,6 @@ if(!isset($_SESSION['pro'])){
     exit;
 }
 
-if (isset($_SESSION['crea_offre'])) {
-    var_dump($_SESSION['crea_offre']);
-}
-if (isset($_SESSION['crea_offre2'])) {
-    var_dump($_SESSION['crea_offre2']);
-}
-if (isset($_SESSION['crea_offre3'])) {
-    var_dump($_SESSION['crea_offre3']);
-}
-if (isset($_SESSION['crea_offre4'])) {
-    var_dump($_SESSION['crea_offre4']);
-}
-if (isset($_SESSION['ajoutOption'])) {
-    var_dump($_SESSION['ajoutOption']);
-}
-
 if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
     if(isset($_SESSION['crea_offre']) && isset($_SESSION['crea_offre2']) && isset($_SESSION['crea_offre3']) && isset($_SESSION['crea_offre4'])){
         echo "DOBBY HAS NO MASTER YOU SON OF A BITCH !";

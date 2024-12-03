@@ -219,7 +219,7 @@ function tempsEcouleDepuisPublication($offre){
     
             <!-- Note générale des avis -->
             <label for="select-rate">Note générale des avis</label>
-            <select id="select-rate">
+            <select id="select-rate" class="search-select">
                 <option value="">Les notes</option>
                 <option value="1">1 étoile</option>
                 <option value="2">2 étoiles</option>
@@ -240,7 +240,7 @@ function tempsEcouleDepuisPublication($offre){
     
             <!-- Statut -->
             <label for="select-statut">Statut</label>
-            <select id="select-statut">
+            <select id="select-statut" class="search-select">
                 <option value=""></option>
                 <option value="opening-soon">Ouvre bientôt</option>
                 <option value="open">Ouvert</option>
@@ -256,26 +256,6 @@ function tempsEcouleDepuisPublication($offre){
             <label for="opening-dates">Dates d’ouverture</label>
             <input type="date" id="opening-start-date" placeholder="Début">
             <input type="date" id="opening-end-date" placeholder="Fin">
-        </div>
-
-
-
-        
-
-        <!-- Section cachée pour les filtres -->
-        <div id="filters-section" class="hidden">
-            <h3>Filtres supplémentaires</h3>
-            <span>
-            <label for="prix_min">
-                Prix min :
-            </label>
-            <input id="prix_min" type="number" placeholder="€" class="price-input">
-            <label for="prix_max">
-                Prix max :
-            </label>
-            <input id="prix_max" type="number" placeholder="€" class="price-input">
-            </span>
-            <button class="apply-filters">Appliquer les filtres</button>
         </div>
 
         <div class="a-la-une-titre-carrousel">
