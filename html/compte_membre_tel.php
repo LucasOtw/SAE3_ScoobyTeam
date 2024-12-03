@@ -89,7 +89,7 @@ if (isset($_POST['changePhoto'])) {
         <!-- Header Section -->
         <header class="header">
             <div class="logo">
-                <img src="images/logoNoir.png" alt="PACT Logo">
+                <img src="images/logoNoirVert.png" alt="PACT Logo">
             </div>
         </header>
 
