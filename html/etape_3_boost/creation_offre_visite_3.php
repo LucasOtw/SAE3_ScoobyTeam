@@ -13,10 +13,6 @@ $prixOffre = $getPrixOffre->fetchAll(PDO::FETCH_ASSOC);
 const PRIX_RELIEF = 10.00;
 const PRIX_A_LA_UNE = 20.00;
 
-echo "<pre>";
-var_dump($prixOffre);
-echo "</pre>";
-
 if(isset($_POST['envoiForm3'])){
     // si le formulaire est envoyé..
     foreach($_POST as $cle => $post){
