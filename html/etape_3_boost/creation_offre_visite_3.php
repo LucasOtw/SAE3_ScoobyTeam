@@ -9,7 +9,9 @@ $getPrixOffre = $dbh->prepare("SELECT * FROM tripenarvor._type_offre");
 $getPrixOffre->execute();
 
 $prixOffre = $getPrixOffre->fetchAll(PDO::FETCH_ASSOC);
+echo "<pre>";
 var_dump($prixOffre);
+echo "</pre>";
 
 if(isset($_POST['envoiForm3'])){
     // si le formulaire est envoyé..
