@@ -448,7 +448,7 @@ $password = "philly-Congo-bry4nt";
                      <td><?php echo $nom_type ?></td>
                      <td><?php echo $prix_par_jour ?>€</td>
                      <td><?php echo $date_publication ?></td>
-                     <td><?php echo $montant_ht ?>€</td>
+                     <td><?php echo BONJOUR ?>€</td>
                  </tr>
              </tbody>
          </table>
