@@ -94,7 +94,7 @@ if (!empty($_POST['supprAvis'])){
             <a href="voir_offres.php">
                 <img src="images/Bouton_retour.png" alt="bouton retour">
             </a>
-            <h1>Editer le profil</h1>
+            <h1>Mes Avis</h1>
         </div> 
 
 
