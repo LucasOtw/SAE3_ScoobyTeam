@@ -87,12 +87,7 @@ if (!empty($_POST['supprAvis'])){
     }
 </style>
 
-       <header class="header-tel">
-            <div class="logo-tel">
-                <img src="images/logoNoirVert.png" alt="PACT Logo">
-            </div>
-            
-        </header>
+      
         <div class="edit-profil">
             <a href="compte_membre_tel.php">
                 <img src="images/Bouton_retour.png" alt="bouton retour">
