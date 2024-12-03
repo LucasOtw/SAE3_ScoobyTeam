@@ -85,18 +85,9 @@ if (!empty($_POST['supprAvis'])){
 </style>
 
        <img class="logo_tel" src="images/logoNoirVert.png" >
-        <style>
-            .logo_tel{
-                margin-left:4.5em;
-            }
-        </style>
+        
             <a href="voir_offres.php"><img class="fleche_retour_tel" src="images/Bouton_retour.png" alt="bouton retour"></a>
-            <style>
-                .fleche_retour_tel{
-                    margin-left :-7em;
-                    padding-right:5em;
-                }
-            </style>
+            
             <h1>Détails</h1>
 
 
