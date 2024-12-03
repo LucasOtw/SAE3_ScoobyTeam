@@ -48,6 +48,22 @@ if($monComptePro['code_compte_bancaire']){
 }
 
 if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
+
+    if(!isset($_POST['passer_cb'])){
+        $code_iban = $_POST['IBAN'];
+        $code_BIC = $_POST['BIC'];
+        $nom_compte = $_POST['nom'];
+        if(empty($code_iban) || empty($code_BIC) || empty($nom_compte)){
+            echo "Des informations sont manquantes !";
+            exit;
+        } else {
+            if(!validerIBAN($code_iban) || !validerBIC($code_BIC)){
+                echo "IBAN ou BIC incorrect !";
+                exit;
+            }
+        }
+    }
+    
     if(isset($_POST['passer_cb'])){
         $code_iban = $_POST['IBAN'];
         $code_BIC = $_POST['BIC'];
@@ -58,10 +74,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
             exit;
         }
     } else {
-        if(empty($code_iban) || empty($code_BIC) || empty($nom_compte)){
-            echo "Des informations sont manquantes !";
-            exit;
-        }
+
     }
 
     if($_SESSION['aCreeUneOffre'] === false){
