@@ -1688,10 +1688,11 @@ main.connexion_membre_main fieldset p.erreur-formulaire-connexion-membre {
         color : white;
         font-size: 17px;
         cursor: pointer;
-        width: 223px;
+        width: 65vw;
         height: 52px;
         box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
         transition: transform 0.2s ease;
+        padding-top: 1.7vh;
     }
 
 
