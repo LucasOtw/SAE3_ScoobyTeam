@@ -84,14 +84,11 @@ if (!empty($_POST['supprAvis'])){
     }
 </style>
 
-<div class="edit-profil">
     <img class="logo_tel" src="images/logoNoirVert.png" alt="Logo">
-    
-</div>
-<a href="compte_membre_tel.php">
-        <img src="images/Bouton_retour.png" alt="Bouton retour">
-    </a>
-    <h1>Editer le profil</h1>
+    <a href="compte_membre_tel.php">
+            <img src="images/Bouton_retour.png" alt="Bouton retour">
+        </a>
+        <h1>Editer le profil</h1>
 
 
           
