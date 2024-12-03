@@ -2930,6 +2930,7 @@ nav.nav-bar {
 
 .modif_photo:hover{
   cursor: pointer;
+  background-color: #668C3F;
 }
 
 @media (max-width: 429px) {
