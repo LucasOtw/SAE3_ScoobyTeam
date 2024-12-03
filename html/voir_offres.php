@@ -525,7 +525,7 @@ function tempsEcouleDepuisPublication($offre){
                 if ($offre["en_ligne"])
                 {
                 ?>
-                    <article class="offer" 
+                    <article class="offer <?php if ($offre['option_en_relief'] !== null){echo "en_relief";} ?>" 
                                 data-category=<?php echo $type_offre;?> 
                                 data-price="<?php echo $offre["tarif"];?>" 
                                 data-rate="<?php echo $offre["note_moyenne"]; ?>"
