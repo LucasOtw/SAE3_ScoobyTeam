@@ -2012,6 +2012,9 @@ main.main_poster_avis .message-erreur {
 }
 
 @media (max-width: 429px) {
+  .profile-img-container{
+    display:none;
+  }
   .logo_tel{
     margin-left:4.5em;
   }
