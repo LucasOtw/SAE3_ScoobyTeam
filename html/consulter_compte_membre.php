@@ -171,12 +171,19 @@ if (isset($_POST['modif_infos'])){
                 <img src="images/Rectangle 3.png" alt="Bannière" class="header-img">
             </div>
 
-            <div class="profile-info">
-                <img src=<?php echo $compte_pp; ?> alt="Photo de profil" class="profile-img">
+            <div class="profile-img-container">
+        <img class="profile-img" src="<?php echo $compte_pp; ?>" alt="Photo de profil">
+            <form action="#" method="POST" enctype="multipart/form-data">
+                <label for="upload-photo" class="upload-photo-button">
+                    <span class="iconify" data-icon="mdi:camera" data-inline="false"></span>
+                </label>
+                <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden required>
+                <button type="submit" class="modif_photo" name="changePhoto">Enregistrer</button>
                 <h1><?php echo $monCompteMembre['prenom']." ".$monCompteMembre['nom']." (".$monCompteMembre['pseudo'].")"; ?></h1>
                 <p><?php echo $compte['mail']; ?> | <?php echo trim(preg_replace('/(\d{2})/', '$1 ', $compte['telephone'])); ?></p>
-            </div>
-        </div>
+            </form>
+    </div>
+
 <!-- POUR TEL -->
         <style>
     .edit-profil {
