@@ -998,14 +998,12 @@ if (isset($json['results'][0])) {
     </form>
     <style>
         .btn_poster_un_avis{
-      padding: 10px 20px;
       background-color: var(--vert-clair);
       color: white;
       border: none;
       border-radius: 16px;
       cursor: pointer;
-      width: 223px;
-      height: 52px;
+      
     }
     </style>
 
