@@ -85,7 +85,7 @@ if (!empty($_POST['supprAvis'])){
 </style>
 
 <div class="edit-profil">
-    <img class="logo_tel" src="logoNoirVert.png">
+    <img class="logo_tel" src="images/logoNoirVert.png">
     <style>
         .logo_tel{
             margin-left:4.5em;
