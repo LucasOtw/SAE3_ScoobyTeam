@@ -298,6 +298,10 @@ header.header-tel {
 }
 
 @media (max-width: 429px) {
+  .deja_compte{
+    text-decoration: none;
+    color: #BDC426;
+  }
     header.header-pc {
         display: none;
     }
