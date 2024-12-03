@@ -538,7 +538,7 @@ function tempsEcouleDepuisPublication($offre){
 <div class="offer-details">
     <h2><?php echo $offre["titre_offre"]; ?></h2>
     <p>
-        <span class="iconify" data-icon="mdi:map-marker" style="color: green; font-size: 1.2em; margin-right: 5px;"></span>
+        <span class="iconify" data-icon="mdi:map-marker" style="color: #BDC426; font-size: 1.2em; margin-right: 5px; margin-bottom: -4px;"></span>
         <?php echo $villeOffre["ville"]; ?>
     </p>
     <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>

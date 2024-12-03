@@ -1269,6 +1269,12 @@ body.menu-open #overlay {
 
 
     }
+    .icon-localisation {
+        color: var(--vert-clair);
+        font-size: 1.2em;
+        margin-right: 5px;
+        margin-bottom: -4px;
+    }
 
     .toute_les_offres_main .search-bar {
         width: 95%;
@@ -1393,9 +1399,3 @@ body.menu-open #overlay {
     }
 }
 
-.icon-localisation {
-    color: var(--vert-clair);
-    font-size: 1.2em;
-    margin-right: 5px;
-    margin-bottom: -4px;
-}
