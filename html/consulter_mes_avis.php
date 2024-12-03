@@ -85,17 +85,35 @@ if (!empty($_POST['supprAvis'])){
 </style>
 
 <div class="edit-profil">
-    <img class="logo_tel" src="images/logoNoirVert.png">
-    <style>
-        .logo_tel{
-            margin-left:4.5em;
-        }
-    </style>
+    <!-- Logo placé au-dessus -->
+    <img class="logo_tel" src="images/logoNoirVert.png" alt="Logo">
+    
+    <!-- Bouton retour -->
     <a href="compte_membre_tel.php">
-        <img src="images/Bouton_retour.png" alt="bouton retour">
+        <img src="images/Bouton_retour.png" alt="Bouton retour">
     </a>
+    
+    <!-- Titre -->
     <h1>Editer le profil</h1>
-</div>           
+</div>
+<style>
+    .edit-profil {
+        text-align: center; /* Centrer le contenu */
+    }
+    .logo_tel {
+        display: block;
+        margin: 0 auto 1em auto; /* Centrer le logo et ajouter un espace en bas */
+    }
+    .edit-profil a img {
+        display: inline-block;
+        margin-bottom: 0.5em; /* Ajouter un espace entre le bouton et le titre */
+    }
+    .edit-profil h1 {
+        margin-top: 0; /* Réduire l'espace en haut du titre */
+    }
+</style>
+
+          
             <section class="tabs">
                 <ul>
                     <li><a href="consulter_compte_membre.php">Informations personnelles</a></li>
