@@ -47,36 +47,40 @@ if (isset($_POST['changePhoto'])) {
             // Générer un nom unique pour le fichier
             $fileName = pathinfo($file['name'], PATHINFO_FILENAME) . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
             $fichierImage = getUniqueFileName($uploadDir,$fileName);
-            echo $fichierImage;
             $filePath = $uploadDir . $fileName;
 
             // Déplacer le fichier temporaire vers le dossier cible
             if (move_uploaded_file($file['tmp_name'], $filePath)) {
                 // Générer l'URL de l'image
                 $photoUrl = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/' . $filePath;
-
+            
                 // Vérifier si l'utilisateur existe déjà
-                $query = $dbh->prepare('SELECT COUNT(*) FROM tripenarvor._sa_pp WHERE code_compte = :user_id');
+                $query = $dbh->prepare('SELECT url_image FROM tripenarvor._sa_pp WHERE code_compte = :user_id');
                 $query->bindValue(':user_id', $compte['code_compte'], PDO::PARAM_INT);
                 $query->execute();
-                $exists = $query->fetchColumn() > 0;
-
-                if ($exists) {
+                $existingPhoto = $query->fetch(PDO::FETCH_ASSOC);
+            
+                if ($existingPhoto) {
+                    // Récupérer l'ancienne URL et supprimer le fichier associé
+                    $oldPhotoPath = parse_url($existingPhoto['url_image'], PHP_URL_PATH);
+                    $oldPhotoPath = $_SERVER['DOCUMENT_ROOT'] . $oldPhotoPath; // Convertir l'URL en chemin absolu
+            
+                    if (file_exists($oldPhotoPath)) {
+                        unlink($oldPhotoPath); // Supprimer l'ancien fichier
+                    }
+            
                     // Mise à jour de l'URL de la photo de profil
                     $updateQuery = $dbh->prepare('UPDATE tripenarvor._sa_pp SET url_image = :profile_photo_url WHERE code_compte = :user_id');
                     $updateQuery->bindValue(':profile_photo_url', $photoUrl, PDO::PARAM_STR);
                     $updateQuery->bindValue(':user_id', $compte['code_compte'], PDO::PARAM_INT);
                     $updateQuery->execute();
-
-                    echo "Photo de profil mise à jour avec succès !";
+            
                 } else {
                     // Insérer une nouvelle entrée
                     $insertQuery = $dbh->prepare('INSERT INTO tripenarvor._sa_pp (url_image, code_compte) VALUES (:profile_photo_url, :user_id)');
                     $insertQuery->bindValue(':user_id', $compte['code_compte'], PDO::PARAM_INT);
                     $insertQuery->bindValue(':profile_photo_url', $photoUrl, PDO::PARAM_STR);
                     $insertQuery->execute();
-
-                    echo "Utilisateur créé et URL de la photo enregistrée !";
                 }
             } else {
                 echo "Erreur lors du déplacement du fichier.";
