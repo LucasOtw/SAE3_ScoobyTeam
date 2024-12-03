@@ -1062,6 +1062,11 @@ body.menu-open #overlay {
     display: block;
 }
 
+#select-statut,
+#select-rate {
+    color: black;
+}
+
 /* Animation pour l'apparition de la section */
 @keyframes fadeIn {
     from {
