@@ -557,6 +557,13 @@ input#btn-poster-avis {
     transform: translateY(2px); /* Effet d'appui */
 }
 
+#btn-poster-avis:hover{
+    transform: translateY(-2px); /* Effet d'élévation au survol */
+}
+
+#btn-poster-avis:active{
+    transform: translateY(2px); /* Effet d'appui */
+}
 
 /* Styles pour les écrans de 428px et moins */
 @media (max-width: 429px) {
