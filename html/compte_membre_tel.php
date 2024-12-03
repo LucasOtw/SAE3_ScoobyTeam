@@ -19,7 +19,7 @@ if (isset($_POST['changePhoto'])) {
             }
 
             // Dossier où enregistrer l'image
-            $uploadDir = 'images/user/profile/';
+            $uploadDir = 'images/profile/';
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0777, true); // Créer le dossier s'il n'existe pas
             }
