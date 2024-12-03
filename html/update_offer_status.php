@@ -48,7 +48,12 @@
             ");
         }
         $updatedRow = $stmt->fetch(PDO::FETCH_ASSOC);
-        print_r($updatedRow);
+        if (empty($updatedRow)))
+        {
+            print_r("videeeee");
+        } else {
+            print_r($updatedRow);
+        }
 
     } catch (PDOException $e) {
         http_response_code(500);
