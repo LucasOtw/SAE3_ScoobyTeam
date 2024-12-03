@@ -2628,9 +2628,7 @@ input[type="password"]::placeholder {
 .main_consulter_compte_membre .compte_membre_save_delete {
     display: flex;
     justify-content: right;
-    /* Aligne les boutons au centre */
-    gap: 20px;
-    /* Espacement entre les boutons */
+    gap: 6px;
     margin-bottom: 11em;
 }
 
@@ -2658,6 +2656,16 @@ input[type="password"]::placeholder {
     /* Ajout de l'ombre */
 
 }
+
+.main_consulter_compte_membre button.submit-btn2:hover{
+    transform: translateY(-2px); /* Effet d'élévation au survol */
+
+}
+
+.main_consulter_compte_membre button.submit-btn2:active{
+    transform: translateY(2px); /* Effet d'appui */
+}
+
 
 .main_consulter_compte_membre .submit-btn1 {
     padding: 14px 62px;
