@@ -55,7 +55,7 @@ echo "</pre>";
 <body>
     <header class="header-pc header_membre">
         <div class="logo-pc">
-            <img src="images/logoBlanc.png" alt="PACT Logo">
+            <img src="images/logoNoirVert.png" alt="PACT Logo">
         </div>
         <nav>
             <ul>
