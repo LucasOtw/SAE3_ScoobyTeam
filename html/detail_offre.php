@@ -692,7 +692,7 @@ if (isset($json['results'][0])) {
             }
         </style>
         <header class="header_tel">
-            <a href="https://scooby-team.ventsdouest.dev/voir_offres.php" class="back-button">&larr;</a>
+            <img src="images/Bouton_retour.png" alt="bouton retour">
             <h1>Détails</h1>
         </header>
 
