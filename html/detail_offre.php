@@ -724,7 +724,7 @@ if (isset($json['results'][0])) {
 <div class="titre_detail_offre_responsive">
                 <h1><?php echo $details_offre["titre_offre"]; ?></h1>
                 <a href="<?php echo $details_offre["site_web"]; ?>" class="description-link">
-                    <h3>Site Web</h3>
+                    <?php if (!empty($details_offre["site_web"])) { ?> <a href="<?php echo $details_offre["site_web"]; ?>"><button class="visit-button_detailoffre">Voir le site ➔</button></a> <?php } ?>
                 </a>
                 <form action="poster_un_avis.php" method="POST">
                     <a href="poster_un_avis.php" class="description-link"><h3>Poster un avis</h3>
