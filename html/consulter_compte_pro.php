@@ -4,16 +4,18 @@ session_start();
 
 include("recupInfosCompte.php");
 
-if(isset($_GET['logout'])){
-   session_unset();
-   session_destroy();
+if(!isset($_SESSION['pro'])){
    header('location: connexion_pro.php');
    exit;
 }
 
-if(!isset($_SESSION['pro'])){
-   header('location: connexion_pro.php');
-   exit;
+if(isset($_GET['deco'])){
+   if($_GET['deco'] == true){
+      session_unset();
+      session_destroy();
+      header('location: voir_offres.php');
+      exit;
+   }
 }
 
 if (isset($_POST['modif_infos'])){
@@ -179,7 +181,7 @@ if (isset($_POST['modif_infos'])){
             </div>
 
             <div class="compte_membre_save_delete">
-                <a href="voir_offres.php?deco=true" class="submit-btn1">Déconnexion</a>
+                <a href="?deco=true" class="submit-btn1">Déconnexion</a>
                 <button type="submit" name="modif_infos" class="submit-btn3">Enregistrer</button>
             </div>
         </form>
