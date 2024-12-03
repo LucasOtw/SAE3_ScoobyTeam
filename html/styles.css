@@ -4833,4 +4833,7 @@ nav.nav-bar_consulter_mes_avis img {
     .incitation_subtitle {
         margin: auto 20vw;
     }
+    .logo_tel{
+      margin-left:4.5em;
+    }
 }
