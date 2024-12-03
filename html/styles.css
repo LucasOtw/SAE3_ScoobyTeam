@@ -2562,7 +2562,6 @@ input[type="password"]::placeholder {
 }
 
 .main_consulter_compte_membre label {
-    display: block;
     margin-bottom: 0px;
     font-size: 14px;
     color: #555;
