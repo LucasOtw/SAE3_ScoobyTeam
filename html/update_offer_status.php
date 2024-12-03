@@ -46,7 +46,7 @@
             ");
         }
         $stmt->execute([':code_offre' => $code_offre ]);
-        echo "Mise à jour réussie.";
+        echo "\nMise à jour réussie.";
     } catch (PDOException $e) {
         http_response_code(500);
         echo "Erreur lors de la mise à jour : " . $e->getMessage();
