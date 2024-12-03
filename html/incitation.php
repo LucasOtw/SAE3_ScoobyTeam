@@ -10,7 +10,9 @@
   <div class="incitation_container">
     <header class="incitation_header">
       <div class="incitation_logo-container">
-        <img src="images/logo_blanc_pro.png">
+        <a href="voir_offres.php">
+            <img src="images/logo_blanc_pro.png">
+        </a>
       </div>
       <div class="incitation_skip-container">
         <a href="voir_offres.php"><img src="images/croix_fermer.png" class="skip"></a>
