@@ -86,7 +86,7 @@ if (!empty($_POST['supprAvis'])){
 
        <header class="header-tel">
             <div class="logo-tel">
-                <img src="images/LogoNoirVert.png" alt="PACT Logo">
+                <img src="images/logoNoirVert.png" alt="PACT Logo">
             </div>
             
         </header>
