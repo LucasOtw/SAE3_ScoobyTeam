@@ -1989,6 +1989,9 @@ main.main_poster_avis .message-erreur {
 }
 
 @media (max-width: 429px) {
+  .logo_tel{
+    margin-left:4.5em;
+  }
     .footer_poster_avis {
         display: none;
     }
