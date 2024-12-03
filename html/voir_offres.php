@@ -225,7 +225,7 @@ function tempsEcouleDepuisPublication($offre){
     
             <!-- Note générale des avis -->
             <label for="select-rate">Note générale des avis</label>
-            <select id="select-rate" >
+            <select id="select-rate" class="search-select">
                 <option value="">Les notes</option>
                 <option value="1">1 étoile</option>
                 <option value="2">2 étoiles</option>
@@ -246,7 +246,7 @@ function tempsEcouleDepuisPublication($offre){
     
             <!-- Statut -->
             <label for="select-statut">Statut</label>
-            <select id="select-statut" >
+            <select id="select-statut" class="search-select">
                 <option value=""></option>
                 <option value="opening-soon">Ouvre bientôt</option>
                 <option value="open">Ouvert</option>
