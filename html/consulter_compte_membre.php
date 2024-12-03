@@ -261,7 +261,7 @@ if (isset($_POST['changePhoto'])) {
                 <img src="images/Rectangle 3.png" alt="Bannière" class="header-img">
             </div>
 
-            <div class="profile-img-container">
+    <div class="profile-img-container">
         <img class="profile-img" src="<?php echo $compte_pp; ?>" alt="Photo de profil">
             <form action="#" method="POST" enctype="multipart/form-data">
                 <label for="upload-photo" class="upload-photo-button">
@@ -451,6 +451,29 @@ if (isset($_POST['changePhoto'])) {
             });
             saveButton.disabled = !hasChanged; // Activer ou désactiver le bouton
         });
+    </script>
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function() {
+        const input = document.getElementById('upload-photo');
+        const profileImg = document.querySelector('.profile-img');
+    
+        input.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file && file.type.match('image.*')) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    profileImg.src = e.target.result;
+                }
+                
+                reader.readAsDataURL(file);
+            } else {
+                profileImg.src = '';
+            }
+        });
+    });
+    
     </script>
 </body>
 </html>
