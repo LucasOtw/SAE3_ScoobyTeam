@@ -415,18 +415,12 @@ if(!isset($_SESSION['pro'])){
           $stmt_nb_semaine->bindParam(':offreSelectionnee', $offreSelectionnee, PDO::PARAM_INT);
           $stmt_nb_semaine->execute();
 
-          echo "OFFRE :".$offreSelectionnee;
-
           if ($row = $stmt_nb_semaine->fetch(PDO::FETCH_ASSOC)) {
              echo "<pre>";
-             var_dump($row);
-             echo "</pre>";
              $en_relief = $row['option_en_relief'];
              $a_la_une = $row['option_a_la_une'];
              if ($en_relief === null ) { $nb_semaines_relief = 0 ;} else { $nb_semaines_relief = $row['nb_semaines']; }
              if ($a_la_une === null ) { $nb_semaines_une = 0 ;} else { $nb_semaines_une = $row['nb_semaines']; }
-
-             var_dump($row['nb_semaines']);
              
          }
 
