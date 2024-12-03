@@ -62,7 +62,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
                 exit;
             }
         }
-    } else
+    }
 
     if($_SESSION['aCreeUneOffre'] === false){
         // on ajout d'abord la carte bancaire si elle n'existe pas
