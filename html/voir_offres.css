@@ -1221,7 +1221,6 @@ body.menu-open #overlay {
 
 }
 
-
 .toute_les_offres_main #btn-voir-offre:hover {
     transform: translateY(-2px); /* Effet d'élévation au survol */
 }
