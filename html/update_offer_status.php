@@ -1,3 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <?php if ($_SERVER['REQUEST_METHOD'] == "POST")
+    {
+    ?>
+        <script>
+            window.open();
+        </script>
+    <?php
+    }
+    ?>
+    
+</body>
+</html>
 <?php
     // Connexion à la base de données
     try {
@@ -34,7 +55,7 @@
     try {
         if ($en_ligne === 1) {
             // Si l'offre passe en ligne, mettre à jour la date_publication
-            $stmt = $pdo->prepare("
+            $stmt = $dbh->prepare("
                 UPDATE tripenarvor._offre
                 SET en_ligne = true,
                     date_publication = NOW()
@@ -42,7 +63,7 @@
             ");
         } else {
             // Si l'offre est hors ligne, ne pas toucher à date_publication
-            $stmt = $pdo->prepare("
+            $stmt = $dbh->prepare("
                 UPDATE tripenarvor._offre
                 SET en_ligne = false
                 WHERE code_offre = :code_offre
