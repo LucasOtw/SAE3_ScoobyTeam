@@ -84,8 +84,7 @@ if (!empty($_POST['supprAvis'])){
     }
 </style>
 
-        <header>
-            <img class="logo_tel" src="images/logoNoirVert.png" >
+       <img class="logo_tel" src="images/logoNoirVert.png" >
         <style>
             .logo_tel{
                 margin-left:4.5em;
@@ -99,7 +98,6 @@ if (!empty($_POST['supprAvis'])){
                 }
             </style>
             <h1>Détails</h1>
-        </header>
 
 
 
