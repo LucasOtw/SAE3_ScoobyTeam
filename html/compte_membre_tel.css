@@ -113,7 +113,7 @@ container {
 
 .upload-photo-button {
     position: absolute;
-    bottom: 2em;
+    bottom: 8em;
     right: 0em;
     background-color: #4CAF50;
     color: white;
@@ -232,6 +232,7 @@ nav.nav-bar {
     border: none;
     padding: 1vh;
     color: white;
-    box-shadow: 0px 4px 6px ;
-
+    box-shadow: 0px 4px 6px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    width: 25vw;
 }
