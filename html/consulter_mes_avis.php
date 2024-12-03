@@ -95,42 +95,6 @@ if (!empty($_POST['supprAvis'])){
             <h1 class="titre_profil_tel">Éditer le profil</h1>
         </div>
     </div>
-    <style>
-        .header_profil {
-    text-align: center;
-    padding: 20px 10px;
-    background-color: #f9f9f9;
-    border-bottom: 2px solid #ddd;
-}
-
-.logo_container {
-    margin-bottom: 10px;
-}
-
-.logo_profil {
-    height: 50px;
-    max-width: 100%;
-}
-
-.titre_container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px; /* Ajoute un espacement entre la flèche et le texte */
-}
-
-.btn_retour img {
-    height: 30px;
-    cursor: pointer;
-}
-
-.titre_profil {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-}
-
-    </style>
 
 
 
