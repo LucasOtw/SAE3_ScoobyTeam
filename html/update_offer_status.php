@@ -48,7 +48,7 @@
             ");
         }
         $updatedRow = $stmt->fetch(PDO::FETCH_ASSOC);
-        if (empty($updatedRow)))
+        if (empty($updatedRow))
         {
             print_r("videeeee");
         } else {
