@@ -95,8 +95,7 @@ if (!empty($_POST['supprAvis'])){
     
     <!-- Titre -->
     <h1>Editer le profil</h1>
-</div>
-<style>
+    <style>
     .edit-profil {
         text-align: center; /* Centrer le contenu */
     }
@@ -112,6 +111,8 @@ if (!empty($_POST['supprAvis'])){
         margin-top: 0; /* Réduire l'espace en haut du titre */
     }
 </style>
+</div>
+
 
           
             <section class="tabs">
