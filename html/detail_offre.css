@@ -562,7 +562,7 @@ input#btn-poster-avis {
 }
 
 
-#btn-poster-avis:{
+#btn-poster-avis{
     transition: transform 0.2s ease; /* Animation au survol */
 }
 #btn-poster-avis:hover{
