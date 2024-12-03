@@ -73,6 +73,7 @@ if (isset($_POST['modif_infos'])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+   <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier Mot de passe</title>
     <link rel="stylesheet" href="styles.css">
