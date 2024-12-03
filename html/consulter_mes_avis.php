@@ -84,8 +84,7 @@ if (!empty($_POST['supprAvis'])){
     }
 </style>
 
-    <div id="body_offre_mobile">
-         <img class="logo_tel" src="images/logoNoirVert.png" >
+    <img class="logo_tel" src="images/logoNoirVert.png" >
         <style>
             .logo_tel{
                 margin-left:4.5em;
@@ -99,7 +98,7 @@ if (!empty($_POST['supprAvis'])){
                     padding-right:5em;
                 }
             </style>
-            <h1><Mes Avis/h1>
+            <h1>Détails</h1>
         </header>
 
 
