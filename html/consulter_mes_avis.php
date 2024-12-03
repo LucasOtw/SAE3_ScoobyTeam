@@ -84,11 +84,12 @@ if (!empty($_POST['supprAvis'])){
     }
 </style>
 
-       <img class="logo_tel" src="images/logoNoirVert.png" >
-        
-            <a href="voir_offres.php"><img class="fleche_retour_tel" src="images/Bouton_retour.png" alt="bouton retour"></a>
+       <header class="header-tel">
+            <div class="logo-tel">
+                <img src="images/LogoCouleur.png" alt="PACT Logo">
+            </div>
             
-            <h1>Détails</h1>
+        </header>
 
 
 
