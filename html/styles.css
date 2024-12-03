@@ -2829,7 +2829,7 @@ input[type="password"]::placeholder {
 
 .upload-photo-button {
     position: absolute;
-    bottom: 9em;
+    bottom: 10em;
     right: 27em;
     background-color: #4CAF50;
     color: white;
@@ -2922,7 +2922,7 @@ nav.nav-bar {
     color: white;
     box-shadow: 0px 4px 6px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
-    width: 25vw;
+    width: 10vw;
 }
 
 
