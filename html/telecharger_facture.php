@@ -316,7 +316,6 @@ if(!isset($_SESSION['pro'])){
     <div class="dropdown-container">
     <form method="POST" action="">
         <div class="dropdown-button-wrapper">
-            <label for="offres">Mes offres :</label>
             <select id="offres" name="offre" class="dropdown">
                 <option value="" disabled selected>Choisissez une offre</option>
                 <?php
