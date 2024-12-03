@@ -548,8 +548,6 @@ input#btn-poster-avis {
     color: var(--vert-clair);
 }
 
-
-
 .visit-button_detailoffre:hover {
     transform: translateY(-2px); /* Effet d'élévation au survol */
 
