@@ -874,6 +874,16 @@
     function toggleSlider() {
         var slider = document.querySelector('.slider');
         var offerStatusText = document.getElementById('offer-status');
+
+        // Vérifie si les conditions PHP sont respectées
+        var hasSiren = Boolean(document.querySelector('body').dataset.hasSiren); // Extrait une donnée depuis un attribut data-* du body
+        var hasIban = Boolean(document.querySelector('body').dataset.hasIban);   // Extrait une donnée depuis un attribut data-* du body
+        
+        // Si les conditions ne sont pas respectées, affiche un message d'erreur
+        if (hasSiren && !hasIban) {
+            alert("Vous devez d'abord renseigner un compte bancaire dans l'onglet 'Compte bancaire'.");
+            return; // Empêche l'exécution du reste de la fonction
+        }
         
         // Bascule la classe 'active'
         slider.classList.toggle('active');
