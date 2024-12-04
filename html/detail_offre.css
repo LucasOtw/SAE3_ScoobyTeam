@@ -1350,6 +1350,19 @@ form .btn-link {
 
 /* Styles pour les écrans de 429px et moins */
 @media (max-width: 429px) {
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
 
     /* Header */
     .header {
