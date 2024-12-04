@@ -2431,7 +2431,7 @@ input[type="password"]::placeholder {
 }
 
 .main-consulter-compte-pro .submit-btn1:hover,
-.main-consulter-compte-pro button.submit-btn2:hover,
+.main-consulter-compte-pro button.submit-btn2,
 .main-consulter-compte-pro button.submit-btn3 {
     
     /* Ajoute une couleur de survol pour les deux boutons */
@@ -2444,7 +2444,7 @@ input[type="password"]::placeholder {
 
 }
 
-
+//Ajout 
 
 /* Style général pour tous les fieldsets */
 .main-consulter-compte-pro .crea_pro_mail_tel fieldset,
