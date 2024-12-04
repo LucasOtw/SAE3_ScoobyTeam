@@ -49,29 +49,29 @@
         }
         
         $stmt->execute([':code_offre' => $code_offre, ':en_ligne' => ($en_ligne == 1) ? true : 0 ]);
+        
         // Récupérer le nombre de lignes modifiées
-        $rowsAffected = $stmt->rowCount();
+        $updatedRow = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($updatedRow) {
+            // Étape 4 : Comparer les champs pour compter les modifications
+            $fieldsModified = 0;
     
-        if ($rowsAffected > 0)
-        {
-            echo "La mise à jour a été effectuée avec succès ($rowsAffected ligne(s) modifiée(s)).";
-            $updatedRow = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($updatedRow)
-            {
-                print_r($updatedRow);
+            if ($currentRow['en_ligne'] != $updatedRow['en_ligne']) {
+                $fieldsModified++;
             }
-            else
-            {
-                echo "Aucune mise à jour effectuée.";
+            if (isset($updatedRow['date_publication']) && $en_ligne == 1) { // Si en ligne, date modifiée
+                $fieldsModified++;
             }
-        }
-        else
-        {
+    
+            // Afficher les résultats
+            echo "La mise à jour a été effectuée avec succès.";
+            echo " Nombre de champs modifiés : $fieldsModified.";
+            print_r($updatedRow);
+        } else {
             echo "Aucune mise à jour effectuée.";
         }
         
-        
-
     } catch (PDOException $e) {
         http_response_code(500);
         echo "Erreur lors de la mise à jour : " . $e->getMessage();
