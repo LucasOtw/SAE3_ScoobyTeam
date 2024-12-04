@@ -67,11 +67,8 @@ $dbh = new PDO($dsn, $username, $password);
 
 $details_offre = null;
 
-var_dump($_SESSION['detail_offre']);
-
 if(isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])){
     //echo $_POST["uneOffre"];
-    echo "HEIN ?";
 
     // si le formulaire est bien récupéré
     if(isset($_POST['vueDetails'])){
