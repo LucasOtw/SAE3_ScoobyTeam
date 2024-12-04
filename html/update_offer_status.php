@@ -48,16 +48,26 @@
             ");
         }
         
-        if ($stmt->execute([':code_offre' => $code_offre, ':en_ligne' => ($en_ligne == 1) ? true : 0 ]))
+        $stmt->execute([':code_offre' => $code_offre, ':en_ligne' => ($en_ligne == 1) ? true : 0 ]);
+        // Récupérer le nombre de lignes modifiées
+        $rowsAffected = $stmt->rowCount();
+    
+        if ($rowsAffected > 0)
         {
-            echo "La mise à jour a été effectuée avec succès.";
+            echo "La mise à jour a été effectuée avec succès ($rowsAffected ligne(s) modifiée(s)).";
             $updatedRow = $stmt->fetch(PDO::FETCH_ASSOC);
-            print_r($updatedRow);
+            if ($updatedRow)
+            {
+                print_r($updatedRow);
+            }
         }
         else
         {
-            $errorInfo = $stmt->errorInfo();
-            echo "Erreur lors de l'exécution de la requête : " . $errorInfo[2];
+            echo "Aucune mise à jour effectuée.";
+        }
+        else
+        {
+            echo "Aucune mise à jour effectuée.";
         }
         
         
