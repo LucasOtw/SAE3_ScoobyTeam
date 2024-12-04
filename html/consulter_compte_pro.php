@@ -3,7 +3,7 @@ ob_start(); // bufferisation, ça devrait marcher ?
 session_start();
 
 include("recupInfosCompte.php");
-if($monComptePro['num_siren']){
+if(isset($monComptePro['num_siren'])){
    echo "Ta mère";
 } else {
    echo "Ton père";
