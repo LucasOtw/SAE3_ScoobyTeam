@@ -79,7 +79,6 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
     }
 
         if($_SESSION['aCreeUneOffre'] === false){
-            echo "test";
             $adresse_postal = $_SESSION['crea_offre']['adresse'];
             $complement_adresse = $_SESSION['crea_offre']['complementAdresse'];
             $code_postal = $_SESSION['crea_offre']['codePostal'];
