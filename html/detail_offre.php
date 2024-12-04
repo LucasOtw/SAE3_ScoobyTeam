@@ -67,6 +67,11 @@ $dbh = new PDO($dsn, $username, $password);
 
 $details_offre = null;
 
+if(!isset($_POST['vueDetails']) && !isset($_SESSION['detail_offre'])){
+    header('location: voir_offres.php');
+    exit;
+}
+
 if(isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])){
     //echo $_POST["uneOffre"];
 
