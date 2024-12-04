@@ -41,6 +41,66 @@ echo "<pre>";
 var_dump($compte);
 echo "</pre>";
 */
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+     if(isset($_POST['publier'])){
+         $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
+         $note = isset($_POST['note']) ? $_POST['note'] : '';
+         
+         $compte = $_SESSION['membre'];
+         $code_compte = $compte['code_compte'];           
+         $code_offre = $details_offre["code_offre"];
+        
+         $erreurs = [];
+         $erreur_a_afficher = [];
+         if (empty($texte_avis)) {
+             $erreurs[] = "Vous devez remplir ce champ";
+             $erreur_a_afficher[] = "avis-vide";
+         } elseif (strlen($texte_avis)>500) {
+             $erreurs[] = "L'avis ne doit pas dépasser 500 caractères.";
+             $erreur_a_afficher[] = "avis-trop-long";
+         }
+
+        if (empty($note) || !is_numeric($note) || $note < 1 || $note > 5) {
+             $erreurs[] = "Veuillez sélectionner une note valide."; 
+             $erreur_a_afficher[] = "pas-de-note";
+         }
+     }
+
+      if (empty($erreurs)) {
+          $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
+      
+          $creerAvis->bindParam(':texte_avis', $texte_avis);
+          $creerAvis->bindParam(':note', $note, PDO::PARAM_INT);
+          $creerAvis->bindParam(':code_offre', $code_offre);
+          $creerAvis->bindParam(':code_compte', $code_compte);
+          $creerAvis->execute();
+
+          header('location: detail_offre.php');
+          exit;
+         
+      } else {
+         /*
+        foreach($erreurs as $erreur){
+              echo $erreur;
+        }*/
+
+         foreach($erreur_a_afficher as $classe_erreur){
+            // echo $classe_erreur;
+              ?> 
+            
+              <style>
+                  main.main_poster_avis .<?php echo $classe_erreur ?> {
+                     display:block;
+                  }         
+                 ?>
+              </style> 
+              <?php
+        }
+      }
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -138,8 +198,7 @@ echo "</pre>";
                        <p class="poster_un_avis_disclaimer">En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
                        <div class="poster_un_avis_buttons">
                            <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
-                           <button class="poster_un_avis_btn_publier" type="submit">Publier →</button>
-                           <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
+                           <button class="poster_un_avis_btn_publier" type="submit"- name="publier">Publier →</button>
                        </div>
                     </div>
                   </div>
@@ -159,64 +218,7 @@ echo "</pre>";
                 ?>">
                 <img src="images/icones/User icon.png" alt="image de Personne"></a>
         </nav>
-    </main>
-    <?php
-      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-           if(!empty($_POST)){
-               $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
-               $note = isset($_POST['note']) ? $_POST['note'] : '';
-               
-               $compte = $_SESSION['membre'];
-               $code_compte = $compte['code_compte'];           
-               $code_offre = $details_offre["code_offre"];
-              
-               $erreurs = [];
-               $erreur_a_afficher = [];
-               if (empty($texte_avis)) {
-                   $erreurs[] = "Vous devez remplir ce champ";
-                   $erreur_a_afficher[] = "avis-vide";
-               } elseif (strlen($texte_avis)>500) {
-                   $erreurs[] = "L'avis ne doit pas dépasser 500 caractères.";
-                   $erreur_a_afficher[] = "avis-trop-long";
-               }
-   
-              if (empty($note) || !is_numeric($note) || $note < 1 || $note > 5) {
-                   $erreurs[] = "Veuillez sélectionner une note valide."; 
-                   $erreur_a_afficher[] = "pas-de-note";
-               }
-           }
-   
-            if (empty($erreurs)) {
-                $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
-            
-                $creerAvis->bindParam(':texte_avis', $texte_avis);
-                $creerAvis->bindParam(':note', $note, PDO::PARAM_INT);
-                $creerAvis->bindParam(':code_offre', $code_offre);
-                $creerAvis->bindParam(':code_compte', $code_compte);
-                $creerAvis->execute();
-               
-            } else {
-               /*
-              foreach($erreurs as $erreur){
-                    echo $erreur;
-              }*/
-
-               foreach($erreur_a_afficher as $classe_erreur){
-                  // echo $classe_erreur;
-                    ?> 
-                  
-                    <style>
-                        main.main_poster_avis .<?php echo $classe_erreur ?> {
-                           display:block;
-                        }         
-                       ?>
-                    </style> 
-                    <?php
-              }
-            }
-      }
-    ?>
-     
+    </main> 
     
     <footer class="footer footer_membre">
         <div class="newsletter">
