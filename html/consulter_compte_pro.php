@@ -9,6 +9,8 @@ if($monComptePro['num_siren']){
    echo "Ton père";
 }
 
+var_dump($monComptePro);
+
 if(!isset($_SESSION['pro'])){
    header('location: connexion_pro.php');
    exit;
