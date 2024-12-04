@@ -65,9 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
              $erreurs[] = "Veuillez sélectionner une note valide."; 
              $erreur_a_afficher[] = "pas-de-note";
          }
-     }
 
-      if (empty($erreurs)) {
+        if (empty($erreurs)) {
           $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
       
           $creerAvis->bindParam(':texte_avis', $texte_avis);
@@ -79,25 +78,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           header('location: detail_offre.php');
           exit;
          
-      } else {
-         /*
-        foreach($erreurs as $erreur){
-              echo $erreur;
-        }*/
-
-         foreach($erreur_a_afficher as $classe_erreur){
-            // echo $classe_erreur;
-              ?> 
-            
-              <style>
-                  main.main_poster_avis .<?php echo $classe_erreur ?> {
-                     display:block;
-                  }         
-                 ?>
-              </style> 
-              <?php
-        }
-      }
+         } else {
+            /*
+           foreach($erreurs as $erreur){
+                 echo $erreur;
+           }*/
+   
+            foreach($erreur_a_afficher as $classe_erreur){
+               // echo $classe_erreur;
+                 ?> 
+               
+                 <style>
+                     main.main_poster_avis .<?php echo $classe_erreur ?> {
+                        display:block;
+                     }         
+                    ?>
+                 </style> 
+                 <?php
+           }
+         }
+     }
 }
 
 
