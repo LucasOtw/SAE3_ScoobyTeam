@@ -225,65 +225,69 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
         * INSERTIONS
         */
 
-        // on vérifie d'abord si le pro a choisi une option
+        // on vérifie d'abord si le pro a choisi une option (SEULEMENT SI PRIVE)
 
-        $prix_option = null;
-        switch($_SESSION['crea_offre4']['option']){
-            case "aucune":
-                break;
-            case "en_relief":
-                $prix_option = 10.00;
-                break;
-            case "a_la_une":
-                $prix_option = 20.00;
-                break;
-        }
-
-
-        if($prix_option !== null){
-            // si il y a un prix d'option, il y a une option, donc on l'ajoute.
-            $nbSemaines_option = $_SESSION['crea_offre4']['duree_option'];
-            $champ_option = "option_".$_SESSION['crea_offre4']['option'];
-
-                // Calculer la date de fin en ajoutant les semaines
-            $date_fin = new DateTime($date_offre); // Créer une instance de DateTime
-            $date_fin->modify("+{$nbSemaines_option} weeks"); // Ajouter le nombre de semaines
-            $date_fin_option = $date_fin->format('Y-m-d'); // Formater la date de fin
-
-            // on peut maintenant ajouter l'option
-            if($_SESSION['ajoutOption'] === null){
-                // si la session est à null, alors on n'a pas rajouté d'option cette fois-là.
-                $ajoutOption = $dbh->prepare("INSERT INTO tripenarvor._option (nb_semaines,date_debut,date_fin,prix) VALUES
-                (:nb_semaines,:date_debut,:date_fin,:prix);");
-                $ajoutOption->bindValue(":nb_semaines",$nbSemaines_option);
-                $ajoutOption->bindValue(":date_debut",$date_offre);
-                $ajoutOption->bindValue(":date_fin",$date_fin_option);
-                $ajoutOption->bindValue(":prix",$prix_option);
-
-                if($ajoutOption->execute()){
-                    $_SESSION['ajoutOption'] = $dbh->lastInsertId();
+        if(isset($monComptePro['num_siren'])){
+            $prix_option = null;
+            switch($_SESSION['crea_offre4']['option']){
+                case "aucune":
+                    break;
+                case "en_relief":
+                    $prix_option = 10.00;
+                    break;
+                case "a_la_une":
+                    $prix_option = 20.00;
+                    break;
+            }
+    
+    
+            if($prix_option !== null){
+                // si il y a un prix d'option, il y a une option, donc on l'ajoute.
+                $nbSemaines_option = $_SESSION['crea_offre4']['duree_option'];
+                $champ_option = "option_".$_SESSION['crea_offre4']['option'];
+    
+                    // Calculer la date de fin en ajoutant les semaines
+                $date_fin = new DateTime($date_offre); // Créer une instance de DateTime
+                $date_fin->modify("+{$nbSemaines_option} weeks"); // Ajouter le nombre de semaines
+                $date_fin_option = $date_fin->format('Y-m-d'); // Formater la date de fin
+    
+                // on peut maintenant ajouter l'option
+                if($_SESSION['ajoutOption'] === null){
+                    // si la session est à null, alors on n'a pas rajouté d'option cette fois-là.
+                    $ajoutOption = $dbh->prepare("INSERT INTO tripenarvor._option (nb_semaines,date_debut,date_fin,prix) VALUES
+                    (:nb_semaines,:date_debut,:date_fin,:prix);");
+                    $ajoutOption->bindValue(":nb_semaines",$nbSemaines_option);
+                    $ajoutOption->bindValue(":date_debut",$date_offre);
+                    $ajoutOption->bindValue(":date_fin",$date_fin_option);
+                    $ajoutOption->bindValue(":prix",$prix_option);
+    
+                    if($ajoutOption->execute()){
+                        $_SESSION['ajoutOption'] = $dbh->lastInsertId();
+                    }
                 }
+            } else {
+                $champ_option = "";
+            }
+    
+            // on récupère aussi le nom du type de l'offre
+            $champ_type_offre = null;
+            switch($_SESSION['crea_offre4']['offre']){
+                case "gratuite":
+                    $champ_type_offre = "Offre Gratuite";
+                    break;
+                case "standard":
+                    $champ_type_offre = "Offre Standard";
+                    break;
+                case "premium":
+                    $champ_type_offre = "Offre Premium";
+                    break;
+            }
+            if($champ_type_offre === null){
+                echo "Erreur : le type de l'offre ne peut pas être null !";
+                exit;
             }
         } else {
-            $champ_option = "";
-        }
-
-        // on récupère aussi le nom du type de l'offre
-        $champ_type_offre = null;
-        switch($_SESSION['crea_offre4']['offre']){
-            case "gratuite":
-                $champ_type_offre = "Offre Gratuite";
-                break;
-            case "standard":
-                $champ_type_offre = "Offre Standard";
-                break;
-            case "premium":
-                $champ_type_offre = "Offre Premium";
-                break;
-        }
-        if($champ_type_offre === null){
-            echo "Erreur : le type de l'offre ne peut pas être null !";
-            exit;
+            $champ_type_offre = "Offre Gratuite";
         }
 
         // on crée un tableau pour stocker les données dynamiquement
@@ -311,12 +315,9 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
         }
 
         if(isset($_SESSION['crea_offre4']['option']) && !empty($_SESSION['crea_offre4']['option'])){
-            echo "t";
             if(trim($_SESSION['crea_offre4']['option']) == "en_relief"){
-                echo "ha";
                 $mon_offre['option_en_relief'] = $_SESSION['ajoutOption'];
             } else if (trim($_SESSION['crea_offre4']['option']) == "a_la_une"){
-                echo "hi";
                 $mon_offre['option_a_la_une'] = $_SESSION['ajoutOption'];
             }
         }
