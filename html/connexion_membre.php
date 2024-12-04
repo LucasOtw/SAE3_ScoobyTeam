@@ -28,6 +28,7 @@ if(!empty($_POST)){
         $existeMembre->execute();
 
         $existeMembre = $existeMembre->fetch(PDO::FETCH_ASSOC);
+        var_dump($existeMembre);
         if($existeMembre){
             // Si le membre existe, on vérifie le mot de passe
             $checkPWD = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :code_compte");
