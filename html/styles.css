@@ -2430,7 +2430,7 @@ input[type="password"]::placeholder {
     border-radius: 16px;
 }
 
-.main-consulter-compte-pro .submit-btn1:hover,
+.main-consulter-compte-pro .submit-btn1,
 .main-consulter-compte-pro button.submit-btn2,
 .main-consulter-compte-pro button.submit-btn3 {
     
