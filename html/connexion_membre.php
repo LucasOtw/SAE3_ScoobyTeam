@@ -18,6 +18,7 @@ if(!empty($_POST)){
 
     $existeUser = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail='$email'");
     $existeUser->execute();
+    $existeUser = $existeUser->fetch(PDO::FETCH_ASSOC);
 
     if($existeUser){
         // si l'utilisateur existe, on vérifie d'abord si il est membre.
