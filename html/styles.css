@@ -3240,8 +3240,6 @@ nav.nav-bar {
     /* Taille de l'icône */
     height: 16px;
     vertical-align: middle;
-    /* Aligne bien l'icône */
-    margin-left: 15em;
 }
 
 .delete-icon:hover {
@@ -3266,6 +3264,7 @@ nav.nav-bar {
     margin: 0;
     font-size: 1.1em;
     color: #333;
+    justify-content: space-between;
 }
 
 .avis-widget .avis-content h3.avis span.nom_avis {
