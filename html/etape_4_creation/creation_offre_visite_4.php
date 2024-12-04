@@ -380,7 +380,6 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
             }
         }
     }
-}
 
 
 ?>
