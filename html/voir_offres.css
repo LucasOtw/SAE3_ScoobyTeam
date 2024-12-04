@@ -578,10 +578,6 @@ nav.nav-bar {
         display: block;
     }
 
-    .toute_les_offres_main .card-a-la-une{
-        width: 22em;
-    }
-
     .toute_les_offres_main .offer-details h2 {
         font-size: 1.2rem;
     }
@@ -1382,6 +1378,7 @@ body.menu-open #overlay {
     }
 
     .toute_les_offres_main .card-a-la-une {
+        width: auto;
         overflow: visible;
     }
 
