@@ -44,7 +44,7 @@
                 UPDATE tripenarvor._offre
                 SET en_ligne = :en_ligne
                 WHERE code_offre = :code_offre
-                RETURNING titre_offre, en_ligne
+                RETURNING titre_offre, en_ligne, date_publication
             ");
         }
         
