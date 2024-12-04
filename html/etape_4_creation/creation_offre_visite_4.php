@@ -47,14 +47,22 @@ if($monComptePro['code_compte_bancaire']){
 
 // si le formulaire est envoyé...
 
-if(isset($_POST['valider'])){
-    $code_iban = $_POST['IBAN'];
-    $code_BIC = $_POST['BIC'];
+if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
 
-    if(validerIBAN($code_iban) && validerBIC($code_BIC)){
-        /*
-        * VERIFICATION DE L'ADRESSE
-        */
+    if(!isset($_POST['passer_cb'])){
+        $code_iban = $_POST['IBAN'];
+        $code_BIC = $_POST['BIC'];
+        $nom_compte = $_POST['nom'];
+        if(empty($code_iban) || empty($code_BIC) || empty($nom_compte)){
+            echo "Des informations sont manquantes !";
+            exit;
+        } else {
+            if(!validerIBAN($code_iban) || !validerBIC($code_BIC)){
+                echo "IBAN ou BIC incorrect !";
+                exit;
+            }
+        }
+    }
 
         if($_SESSION['aCreeUneOffre'] === false){
             echo "test";
@@ -451,6 +459,7 @@ if(isset($_POST['valider'])){
         
                         <div class="boutons">
                             <button type="submit" name="valider" class="btn-primary">Valider</button>
+                            <button type="submit" name="passer_cb">Plus tard...</button>
                         </div>
                     </form>
         
