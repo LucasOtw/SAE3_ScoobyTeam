@@ -2891,7 +2891,7 @@ input[type="password"]::placeholder {
 .upload-photo-button {
     position: absolute;
     bottom: 13em;
-    left:13em
+    left:13em;
     background-color: #4CAF50;
     color: white;
     border: none;
