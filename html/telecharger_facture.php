@@ -262,7 +262,7 @@ if(!isset($_SESSION['pro'])){
             font-size: 16px;
             padding: 10px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 15px;
             cursor: pointer;
             border-radius: 12px;
             box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
