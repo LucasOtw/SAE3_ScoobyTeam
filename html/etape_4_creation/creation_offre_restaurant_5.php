@@ -26,12 +26,29 @@ if(!isset($_SESSION['pro'])){
     exit;
 }
 
-if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
-    if(!isset($_SESSION['crea_offre']) && !isset($_SESSION['crea_offre2']) && !isset($_SESSION['crea_offre3']) && !isset($_SESSION['crea_offre4'])){
-        header('location: ../creation_offre.php');
-        exit;
+if (!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])) {
+    // Vérifier si une ou plusieurs sessions nécessaires ne sont pas définies
+    if (!isset($_SESSION['crea_offre']) || !isset($_SESSION['crea_offre2']) || !isset($_SESSION['crea_offre3']) || !isset($_SESSION['crea_offre4'])) {
+
+        // Cas où SEULEMENT $_SESSION['crea_offre3'] manque
+        if (!isset($_SESSION['crea_offre4']) 
+            && isset($_SESSION['crea_offre']) 
+            && isset($_SESSION['crea_offre2']) 
+            && isset($_SESSION['crea_offre3'])) {
+
+            // Vérifier si l'utilisateur est un professionnel privé
+            if (isset($monComptePro['num_siren'])) {
+                // Redirection obligatoire vers la page des boosts pour un professionnel privé
+                header('location: ../etape_3_boost/creation_offre_restaurant_4.php');
+                exit;
+            }
+        } else {
+            header('location: ../etape_3_boost/creation_offre_restaurant_4.php');
+        }
     }
 }
+
+var_dump($_SESSION['crea_offre3']);
 
 $infosCB = null;
 

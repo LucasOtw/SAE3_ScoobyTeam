@@ -80,7 +80,10 @@ echo "</pre>";
         <main class="main_poster_avis">
         <div class="poster_un_avis_container">
             <div class="poster_un_avis_back_button">
-            <a href="detail_offre.php" class="back-button">&larr;</a>
+                  <form id="back_button" action="detail_offre.php" method="POST">
+                       <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
+                       <input id="btn-voir-offre" class="back-button" type="submit" name="vueDetails" value="←">
+                   </form>
             <h1 class="titre_poster_un_avis_format_tel">Publier un avis</h1>
             </div>
             <h1 class="poster_un_avis_titre">Récapitulatif</h1>
@@ -134,9 +137,9 @@ echo "</pre>";
                        </div>
                        <p class="poster_un_avis_disclaimer">En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
                        <div class="poster_un_avis_buttons">
-                           <button class="poster_un_avis_btn_annuler">Annuler</button>
+                           <button class="poster_un_avis_btn_annuler" type="cancel">Annuler</button>
                            <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
-                           <button class="poster_un_avis_btn_publier">Publier →</button>
+                           <button class="poster_un_avis_btn_publier" type="submit">Publier →</button>
                        </div>
                     </div>
                   </div>

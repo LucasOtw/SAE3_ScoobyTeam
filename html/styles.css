@@ -2021,7 +2021,7 @@ main.main_poster_avis nav.nav-bar {
     display: none
 }
 
-main.main_poster_avis a.back-button {
+main.main_poster_avis .back-button {
     display: none;
 }
 
@@ -2143,7 +2143,9 @@ main.main_poster_avis .message-erreur {
         font-size: 42px;
         text-decoration: none;
         color: #333;
-        margin-top: -0.4em;
+        margin-top: -0.2em;
+        background: none;
+        border: none;
     }
 
     main.main_poster_avis .poster_un_avis_back_button {
@@ -2176,7 +2178,7 @@ main.main_poster_avis .message-erreur {
         width: 100%;
     }
 
-    main.main_poster_avis a.back-button {
+    main.main_poster_avis .back-button {
         display: block;
     }
 
