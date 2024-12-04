@@ -78,6 +78,7 @@ if (!isset($_POST["vueDetails"])) {
     } else {
         // si on n'a pas de POST alors on ne vient pas de l'accueil, DONC il y a une session.
         $details_offre = $_SESSION['detail_offre'];
+        echo "HA";
     }
 
     $_SESSION['detail_offre'] = $details_offre;
