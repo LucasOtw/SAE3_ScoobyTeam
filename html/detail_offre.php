@@ -72,6 +72,7 @@ if (!isset($_POST["vueDetails"])) {
 
     // si le formulaire est bien récupéré
     $details_offre = unserialize($_POST["uneOffre"]);// on récupère son contenu
+    $_SESSION['detail_offre'] = $details_offre;
 
     $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
 
