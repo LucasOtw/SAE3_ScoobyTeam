@@ -169,7 +169,7 @@ if(!isset($_SESSION['pro'])){
         color: white;
         background-color:  var(--orange);
         border: none;
-        border-radius: 5px;
+        border-radius: 15px;
         cursor: pointer;
         text-align: center;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -183,7 +183,7 @@ if(!isset($_SESSION['pro'])){
         
         #download-btn:active {
             background-color:  var(--orange);
-            transform: translateY(1px);
+            transform: translateY(2px);
         }
   
         .info-facture {
