@@ -26,10 +26,24 @@ if(!isset($_SESSION['pro'])){
     exit;
 }
 
-if(!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])){
-    if(!isset($_SESSION['crea_offre']) && !isset($_SESSION['crea_offre2']) && !isset($_SESSION['crea_offre3'])){
-        header('location: ../creation_offre.php');
-        exit;
+if (!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])) {
+    // Vérifier si une ou plusieurs sessions nécessaires ne sont pas définies
+    if (!isset($_SESSION['crea_offre']) || !isset($_SESSION['crea_offre2']) || !isset($_SESSION['crea_offre3'])) {
+
+        // Cas où SEULEMENT $_SESSION['crea_offre3'] manque
+        if (!isset($_SESSION['crea_offre3']) 
+            && isset($_SESSION['crea_offre']) 
+            && isset($_SESSION['crea_offre2'])) {
+
+            // Vérifier si l'utilisateur est un professionnel privé
+            if (isset($monComptePro['num_siren'])) {
+                // Redirection obligatoire vers la page des boosts pour un professionnel privé
+                header('location: ../etape_3_boost/creation_offre_visite_3.php');
+                exit;
+            }
+        } else {
+            header('location: ../etape_3_boost/creation_offre_visite_3.php');
+        }
     }
 }
 
@@ -47,9 +61,9 @@ if($monComptePro['code_compte_bancaire']){
 
 // si le formulaire est envoyé...
 
-if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
+if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer_offre_gratuite'])){
 
-    if(!isset($_POST['passer_cb'])){
+    if(!isset($_POST['passer_cb']) && !isset($_POST['creer_offre_gratuite'])){
         $code_iban = $_POST['IBAN'];
         $code_BIC = $_POST['BIC'];
         $nom_compte = $_POST['nom'];
@@ -199,68 +213,72 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
             // on initialise la date actuelle
             $date_offre = date('Y-m-d');
 
-            // on vérifie si le pro a choisi une option
-            $prix_option = null;
-            switch($_SESSION['crea_offre3']['option']){
-                case "aucune":
-                    break;
-                case "en_relief":
-                    $prix_option = 10.00;
-                    break;
-                case "a_la_une":
-                    $prix_option = 20.00;
-                    break;
-            }
-
-            /*
-            * INSERTIONS
-            */
-
-            if($prix_option !== null){
-                // si il y a un prix, il y a une option
-                $nbSemaines_option = $_SESSION['crea_offre3']['duree_option'];
-                $champ_option = "option_".$_SESSION['crea_offre3']['option'];
-
-                // Calcul de la date de fin
-                $date_fin = new DateTime($date_offre);
-                $date_fin->modify("+{$nbSemaines_option} weeks");
-                $date_fin_option = $date_fin->format('Y-m-d');
-
-                // on peut ajouter l'option
-
-                if($_SESSION['ajoutOption'] === null){
-                    // si la session est null, alors on n'a pas rajouté d'option
-                    $ajoutOption = $dbh->prepare("INSERT INTO tripenarvor._option (nb_semaines,date_debut,date_fin,prix) VALUES
-                    (:nb_semaines,:date_debut,:date_fin,:prix)");
-                    $ajoutOption->bindValue(":nb_semaines",$nbSemaines_option);
-                    $ajoutOption->bindValue(":date_debut",$date_offre);
-                    $ajoutOption->bindValue(":date_fin",$date_fin_option);
-                    $ajoutOption->bindValue(":prix",$prix_option);
-
-                    if($ajoutOption->execute()){
-                        $_SESSION['ajoutOption'] = $dbh->lastInsertId(); // on récupère l'id de l'option ajoutée
+            // on vérifie si le pro a choisi une option (SI PRIVE)
+            if(isset($monComptePro['num_siren'])){
+                $prix_option = null;
+                switch($_SESSION['crea_offre3']['option']){
+                    case "aucune":
+                        break;
+                    case "en_relief":
+                        $prix_option = 10.00;
+                        break;
+                    case "a_la_une":
+                        $prix_option = 20.00;
+                        break;
+                }
+    
+                /*
+                * INSERTIONS
+                */
+    
+                if($prix_option !== null){
+                    // si il y a un prix, il y a une option
+                    $nbSemaines_option = $_SESSION['crea_offre3']['duree_option'];
+                    $champ_option = "option_".$_SESSION['crea_offre3']['option'];
+    
+                    // Calcul de la date de fin
+                    $date_fin = new DateTime($date_offre);
+                    $date_fin->modify("+{$nbSemaines_option} weeks");
+                    $date_fin_option = $date_fin->format('Y-m-d');
+    
+                    // on peut ajouter l'option
+    
+                    if($_SESSION['ajoutOption'] === null){
+                        // si la session est null, alors on n'a pas rajouté d'option
+                        $ajoutOption = $dbh->prepare("INSERT INTO tripenarvor._option (nb_semaines,date_debut,date_fin,prix) VALUES
+                        (:nb_semaines,:date_debut,:date_fin,:prix)");
+                        $ajoutOption->bindValue(":nb_semaines",$nbSemaines_option);
+                        $ajoutOption->bindValue(":date_debut",$date_offre);
+                        $ajoutOption->bindValue(":date_fin",$date_fin_option);
+                        $ajoutOption->bindValue(":prix",$prix_option);
+    
+                        if($ajoutOption->execute()){
+                            $_SESSION['ajoutOption'] = $dbh->lastInsertId(); // on récupère l'id de l'option ajoutée
+                        }
                     }
+                } else {
+                    $champ_option = "";
+                }
+    
+                // on récupère aussi le nom du type de l'offre
+                $champ_type_offre = null;
+                switch($_SESSION['crea_offre3']['offre']){
+                    case "gratuite":
+                        $champ_type_offre = "Offre Gratuite";
+                        break;
+                    case "standard":
+                        $champ_type_offre = "Offre Standard";
+                        break;
+                    case "premium":
+                        $champ_type_offre = "Offre Premium";
+                        break;
+                }
+                if($champ_type_offre === null){
+                    echo "Erreur : le type de l'offre ne peut pas être null !";
+                    exit;
                 }
             } else {
-                $champ_option = "";
-            }
-
-            // on récupère aussi le nom du type de l'offre
-            $champ_type_offre = null;
-            switch($_SESSION['crea_offre3']['offre']){
-                case "gratuite":
-                    $champ_type_offre = "Offre Gratuite";
-                    break;
-                case "standard":
-                    $champ_type_offre = "Offre Standard";
-                    break;
-                case "premium":
-                    $champ_type_offre = "Offre Premium";
-                    break;
-            }
-            if($champ_type_offre === null){
-                echo "Erreur : le type de l'offre ne peut pas être null !";
-                exit;
+                $champ_type_offre = "Offre Gratuite";
             }
 
             // on crée un tableau pour stocker les données dynamiquement
@@ -406,7 +424,8 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
     </header>
     <?php
 
-    if(isset($_SESSION['crea_offre'])){
+    if(isset($monComptePro['num_siren'])){
+        if(isset($_SESSION['crea_offre'])){
         ?>
             <div class="fleche_retour">
                 <div>
@@ -486,9 +505,31 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
 
 
         <?php
-    }
-    
-    ?>
+    }    
+} else {
+        if(isset($_SESSION['crea_offre'])){
+           ?>
+            <div>
+                <form action="#" method="POST">
+                    <input type="submit" name="creer_offre_gratuite" value="Créer une offre">
+                </form>
+            </div>
+           <?php
+        } else {
+            ?>
+            <div class="button-container">
+                  <img src="../images/verifier.png" alt="Succès" class="success-icon">
+                  <h1 class="success-message">Votre offre a été créée avec succès !</h1>
+                  <div class="buttons">
+                      <a href="../mes_offres.php" class="back-link-offres">Retourner à "Mes offres"</a>
+                      <a href="../telecharger_facture.php" class="back-link-facture">Télécharger ma facture</a>
+                  </div>
+             </div>
+           <?php
+        }
+        ?>
+        <?php
+    }?>
     <!-- Footer -->
     <footer class="footer_pro">   
         <div class="footer-links">
