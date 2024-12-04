@@ -653,8 +653,8 @@ function tempsEcouleDepuisPublication($offre){
                     const category = document.querySelector('.search-select:nth-of-type(1)').value;
                     const priceOrder = document.querySelector('.search-select:nth-of-type(2)').value;
                     const noteOrder = document.querySelector('.search-select:nth-of-type(3)').value;
-                    const rate = document.querySelector('.search-select:nth-of-type(4)').value;
-                    const status = document.querySelector('.search-select:nth-of-type(5)').value;
+                    const rate = document.querySelector('#select-rate').value;
+                    const status = document.querySelector('#select-statut').value;
 
                     if (rate && status) {
                         console.log(`Rate: ${rate}, Status: ${status}`); // Les deux sont initialisées
