@@ -51,6 +51,8 @@ if (!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])) {
     }
 }
 
+var_dump($_SESSION['crea_offre3']);
+
 $infosCB = null;
 
 // on vérifie si le pro a un compte bancaire
