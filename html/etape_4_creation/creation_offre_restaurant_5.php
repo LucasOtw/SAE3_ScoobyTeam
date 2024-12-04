@@ -45,11 +45,9 @@ if (!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])) {
 
             // Si l'utilisateur n'est pas professionnel privé, continuer normalement
             return; // NE PAS REDIRIGER, cas normal
+        } else {
+            echo "TA MERE";
         }
-
-        // Si une autre session manque, rediriger vers creation_offre.php
-        header('location: ../creation_offre.php');
-        exit;
     }
 }
 
