@@ -1396,8 +1396,8 @@ body.menu-open #overlay {
     }
 
     .toute_les_offres_main .offer.en_relief::before {       
-        top: 1vh;
-        left: 1vh;
+        top: 1vh !important;
+        left: 1vh !important;
     }
 }
 
