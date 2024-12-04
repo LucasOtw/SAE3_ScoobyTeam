@@ -31,10 +31,10 @@ if (!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])) {
     if (!isset($_SESSION['crea_offre']) || !isset($_SESSION['crea_offre2']) || !isset($_SESSION['crea_offre3']) || !isset($_SESSION['crea_offre4'])) {
 
         // Cas où SEULEMENT $_SESSION['crea_offre3'] manque
-        if (!isset($_SESSION['crea_offre3']) 
+        if (!isset($_SESSION['crea_offre4']) 
             && isset($_SESSION['crea_offre']) 
             && isset($_SESSION['crea_offre2']) 
-            && isset($_SESSION['crea_offre4'])) {
+            && isset($_SESSION['crea_offre3'])) {
 
             // Vérifier si l'utilisateur est un professionnel privé
             if (isset($monComptePro['num_siren'])) {
