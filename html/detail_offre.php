@@ -1010,9 +1010,13 @@ if (isset($json['results'][0])) {
     margin-left: 6.5em;
     margin-top: -2em;
     margin-bottom: 7em;
-    padding-left: 2em;
-    padding-top: 0.6em;
+    padding-left: 3em;
+    padding-top: 0.7em;
     text-decoration: none;
+    transition: transform 0.2s ease; /* Animation au survol */
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+
+
       
     }
     }

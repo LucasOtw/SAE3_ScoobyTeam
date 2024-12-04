@@ -342,7 +342,7 @@ input#btn-poster-avis {
     cursor: pointer;
     width: 223px;
     height: 52px;
-    border: 1px #ff00a6 solid;
+    border: 1px #BDC426 solid;
     margin-right: 1em;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2s ease; /* Animation au survol */
