@@ -22,17 +22,16 @@ if(!empty($_POST)){
 
     if($existeUser){
         // si l'utilisateur existe, on vérifie d'abord si il est membre.
-        $existeUser = $existeUser->fetch();
         // Car même si l'adresse mail et le mdp sont corrects, si le compte n'est pas lié à un membre, ça ne sert à rien de continuer les vérifications
-        $existeMembre = $dbh->prepare("SELECT 1 FROM tripenarvor._membre WHERE code_compte = :code_compte");
-        $existeMembre->bindParam(':code_compte',$existeUser[0]);
+        $existeMembre = $dbh->prepare("SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte");
+        $existeMembre->bindParam(':code_compte',$existeUser['code_compte']);
         $existeMembre->execute();
 
         $existeMembre = $existeMembre->fetch(PDO::FETCH_ASSOC);
         if($existeMembre){
             // Si le membre existe, on vérifie le mot de passe
             $checkPWD = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :code_compte");
-            $checkPWD->bindParam(':code_compte',$existeUser[0]);
+            $checkPWD->bindParam(':code_compte',$existeUser['code_compte']);
             $checkPWD->execute();
 
             $pwd_compte = $checkPWD->fetch();
@@ -45,7 +44,7 @@ if(!empty($_POST)){
             } else /* MDP Invalide */ {
                 ?> 
                 <style>
-                    <?php echo ".connexion_membre_main fieldset p.erreur-mot-de-passe-incorect"?>{
+                    <?php echo ".connexion_membre_main form fieldset p.erreur-mot-de-passe-incorect"?>{
                         display : flex;
                         align-items: center;
                     }
@@ -63,7 +62,7 @@ if(!empty($_POST)){
         } else /* Utilisateur Membre Inexistant */ {
             ?> 
             <style>
-                <?php echo ".connexion_membre_main fieldset p.erreur-membre-inconnu"?>{
+                <?php echo ".connexion_membre_main form fieldset p.erreur-membre-inconnu"?>{
                     display : flex;
                     align-items: center;
                 }
@@ -81,7 +80,7 @@ if(!empty($_POST)){
     } else /* Utilisateur Inexistant */ {
         ?> 
             <style>
-                <?php echo ".connexion_membre_main fieldset p.erreur-user-inconnu"?>{
+                <?php echo ".connexion_membre_main form fieldset p.erreur-user-inconnu"?>{
                     display : flex;
                     align-items: center;
                 }
