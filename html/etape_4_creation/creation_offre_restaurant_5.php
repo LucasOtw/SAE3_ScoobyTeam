@@ -485,7 +485,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
             <?php
         }
     } else {
-        if(isset($_SESSION['crea_offre']){
+        if(isset($_SESSION['crea_offre'])){
            ?>
             <div>
                 <form action="#" method="POST">
