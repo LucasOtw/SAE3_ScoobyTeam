@@ -34,7 +34,7 @@
             $stmt = $dbh->prepare("
                 UPDATE tripenarvor._offre
                 SET en_ligne = :en_ligne,
-                    date_publication = NOW()
+                    date_publication = CURRENT_DATE
                 WHERE code_offre = :code_offre
                 RETURNING titre_offre, en_ligne
             ");
