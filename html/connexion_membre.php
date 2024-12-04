@@ -24,7 +24,7 @@ if(!empty($_POST)){
         // si l'utilisateur existe, on vérifie d'abord si il est membre.
         // Car même si l'adresse mail et le mdp sont corrects, si le compte n'est pas lié à un membre, ça ne sert à rien de continuer les vérifications
         $existeMembre = $dbh->prepare("SELECT 1 FROM tripenarvor._membre WHERE code_compte = :code_compte");
-        $existeMembre->bindParam(':code_compte',$existeUser[0]);
+        $existeMembre->bindParam(':code_compte',$existeUser['code_compte']);
         $existeMembre->execute();
 
         $existeMembre = $existeMembre->fetch(PDO::FETCH_ASSOC);
