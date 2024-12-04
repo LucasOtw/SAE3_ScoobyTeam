@@ -692,6 +692,9 @@ if (isset($json['results'][0])) {
         <header class="header_tel">
             <a href="voir_offres.php"><img class="fleche_retour_tel" src="images/Bouton_retour.png" alt="bouton retour"></a>
             <style>
+                #body_offre_mobile{
+                    font-style:'K2D';
+                }
                 .fleche_retour_tel{
                     margin-left :-7em;
                     padding-right:5em;
