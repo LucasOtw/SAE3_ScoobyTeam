@@ -665,12 +665,11 @@ function tempsEcouleDepuisPublication($offre){
 
                         console.log(offerCategory+' / '+offerRate+' / '+offerStatus);
 
-                        if (category==='all' || category === offerCategory) {
-                            if (!rate || rate === offerRate || (offerRate > rate && offerRate < rate+1)) {
-                                if (!status || status === offerStatus) {
-                                    offer.style.removeProperty('display');
-                                }
-                            }
+                        if ((category==='all' || category === offerCategory) && 
+                            (!rate || rate === offerRate || (offerRate > rate && offerRate < rate+1)) &&
+                            (!status || status === offerStatus))
+                        {
+                            offer.style.removeProperty('display');
                         } else {
                             offer.style.display = "none";
                         }
