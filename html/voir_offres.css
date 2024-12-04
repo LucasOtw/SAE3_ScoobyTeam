@@ -1248,6 +1248,38 @@ body.menu-open #overlay {
 }
 
 @media (max-width: 429px) {
+    #customPopup {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: -100%;
+    /* Positionné en dehors de l'écran à droite */
+    background-color: #f8f9fa;
+    padding: 15px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0;
+    /* Transparent au départ */
+    transition: all 0.5s ease;
+    /* Transition douce pour la position et l'opacité */
+}
+
+#customPopup.visible {
+    right: 20px;
+    /* Position finale visible */
+    opacity: 1;
+    /* Complètement visible */
+}
+
+#customPopup p {
+    width: 75%;
+}
     .half-background {
         height: 50vh;
         /* 100% de la hauteur de la fenêtre */
