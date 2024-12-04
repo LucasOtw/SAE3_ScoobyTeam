@@ -31,7 +31,7 @@ if(!empty($_POST)){
         if($existeMembre){
             // Si le membre existe, on vérifie le mot de passe
             $checkPWD = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :code_compte");
-            $checkPWD->bindParam(':code_compte',$existeUser[0]);
+            $checkPWD->bindParam(':code_compte',$existeUser['code_compte']);
             $checkPWD->execute();
 
             $pwd_compte = $checkPWD->fetch();
