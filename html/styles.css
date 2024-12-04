@@ -2394,6 +2394,18 @@ input[type="password"]::placeholder {
     gap: 20px;
     /* Espacement entre les boutons */
     margin-bottom: 11em;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    cursor: pointer;
+    transition: transform 0.2s ease; /* Animation au survol */
+}
+.main-consulter-compte-pro .compte_membre_save_delete:hover {
+    transform: translateY(-2px); /* Effet d'élévation au survol */
+
+}
+
+.main-consulter-compte-pro .compte_membre_save_delete:active {
+    transform: translateY(2px); /* Effet d'appui */
+
 }
 
 .main-consulter-compte-pro .compte_membre_save_delete a {
@@ -2954,6 +2966,7 @@ nav.nav-bar {
     width: 10vw;
     transition: transform 0.2s ease; /* Animation au survol */
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    cursor : pointer;
 
 
 }
