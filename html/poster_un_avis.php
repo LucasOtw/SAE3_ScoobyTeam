@@ -193,16 +193,8 @@ echo "</pre>";
                 $creerAvis->bindParam(':note', $note, PDO::PARAM_INT);
                 $creerAvis->bindParam(':code_offre', $code_offre);
                 $creerAvis->bindParam(':code_compte', $code_compte);
-            
-                if ($creerAvis->execute()){
-                   ?>'<form id="redirectForm" action="detail_offre.php" method="POST">
-                               <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
-                      </form>
-                     <script>
-                       document.getElementById("redirectForm").submit();
-                     </script>';
-                     exit;<?php
-                }
+                $creerAvis->execute();
+               
             } else {
                /*
               foreach($erreurs as $erreur){
