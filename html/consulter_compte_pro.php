@@ -4,10 +4,6 @@ session_start();
 
 include("recupInfosCompte.php");
 
-echo "<pre>";
-var_dump($monComptePro);
-echo "</pre>";
-
 
 if(!isset($_SESSION['pro'])){
    header('location: connexion_pro.php');
