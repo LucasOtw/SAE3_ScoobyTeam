@@ -629,8 +629,6 @@ if (isset($json['results'][0])) {
             $nombre_d_avis = $nb_avis->fetchColumn();
 
             $appreciationGenerale = "";
-
-            var_dump($tout_les_avis);
                 
             if ($note_moyenne <= 1) {
                 $appreciationGenerale = "À éviter";
