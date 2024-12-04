@@ -42,11 +42,11 @@ if (!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])) {
                 header('location: ../etape_3_boost/creation_offre_restaurant_4.php');
                 exit;
             }
+        } else {
+            // Si une autre session manque ou si les conditions ne sont pas respectées, rediriger vers la page principale
+            header('location: ../creation_offre.php');
+            exit;
         }
-
-        // Si une autre session manque ou si les conditions ne sont pas respectées, rediriger vers la page principale
-        header('location: ../creation_offre.php');
-        exit;
     }
 }
 
