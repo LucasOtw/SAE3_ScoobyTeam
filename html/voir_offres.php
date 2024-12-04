@@ -656,6 +656,12 @@ function tempsEcouleDepuisPublication($offre){
                     const rate = document.querySelector('.search-select:nth-of-type(4)').value;
                     const status = document.querySelector('.search-select:nth-of-type(5)').value;
 
+                    if (rate && status) {
+                        console.log(`Rate: ${rate}, Status: ${status}`); // Les deux sont initialisées
+                    } else {
+                        console.error('Rate ou Status n\'est pas initialisé correctement.');
+                    }
+
                     // Filtrer par catégorie
                     offerItems.forEach(offer => {
                         
