@@ -730,7 +730,7 @@ main.creation_compte_pro .image-section {
 
 main.creation_compte_pro .image-section img {
     height: 100%;
-    width: 33vw;
+    width: 100%;
     border-radius: 10px;
     object-fit: cover;
     object-position: center center;
