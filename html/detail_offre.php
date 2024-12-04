@@ -990,8 +990,8 @@ if (isset($json['results'][0])) {
 </script>
                 
     <form action="poster_un_avis.php" method="POST">
-        <a href="poster_un_avis.php" class="btn_poster_un_avis"><h3>Poster un avis</h3>
-        </a>
+        <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
+        <input id="btn-poster-avis" type="submit" name="posterAvis" value="Poster un avis">
     </form>
     <style>
         .btn_poster_un_avis{
@@ -999,22 +999,22 @@ if (isset($json['results'][0])) {
         }
     @media (max-width: 429px){
         .btn_poster_un_avis{
-    background-color: var(--vert-clair);
-    color: white;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    height: 50px;
-    display: flex;
-    width: 50%;
-    margin-left: 6.5em;
-    margin-top: -2em;
-    margin-bottom: 7em;
-    padding-left: 3em;
-    padding-top: 0.7em;
-    text-decoration: none;
-    transition: transform 0.2s ease; /* Animation au survol */
-    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+            background-color: var(--vert-clair);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            height: 50px;
+            display: flex;
+            width: 50%;
+            margin-left: 6.5em;
+            margin-top: -2em;
+            margin-bottom: 7em;
+            padding-left: 3em;
+            padding-top: 0.7em;
+            text-decoration: none;
+            transition: transform 0.2s ease; /* Animation au survol */
+            box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
 
 
       

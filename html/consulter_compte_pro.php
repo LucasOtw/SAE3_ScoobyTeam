@@ -137,10 +137,17 @@ if (isset($_POST['modif_infos'])){
                     <input type="text" id="raison-sociale" name="raison-sociale*" placeholder="Raison Sociale*" value="<?php echo $monComptePro['raison_sociale']; ?>" required>
                 </fieldset>
 
-                <fieldset disabled>
-                    <legend>N° de Siren</legend>
-                    <input type="text" id="siren" name="siren" placeholder="N° de Siren" value="">
-                </fieldset>
+               <?php 
+               if (isset( $monComptePro['num_siren']))
+               {
+               ?>
+                   <fieldset disabled>
+                       <legend>N° de Siren</legend>
+                       <input type="text" id="siren" name="siren" placeholder="N° de Siren" value="<?php echo $monComptePro['num_siren']; ?>">
+                   </fieldset>
+               <?php
+               }
+               ?>
             </div>
 
            
