@@ -1017,8 +1017,8 @@ if (isset($json['results'][0])) {
             box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
         }
         input#btn-poster-avis{
-            background: none;
-            color: none;
+            background-color: var(--vert-clair);
+            color: white;
         }
     }
     </style>
