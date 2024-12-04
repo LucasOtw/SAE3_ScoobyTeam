@@ -134,16 +134,16 @@ if (isset($_POST['changePhoto'])) {
         <!-- Profile Section -->
         <section class="profile">
             <div class="profile-img-container">
+                <img class="profile-img" src="<?php echo $compte_pp; ?>" alt="Photo de profil">
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    <label for="upload-photo" class="upload-photo-button">
+                        <span class="iconify" data-icon="mdi:camera" data-inline="false"></span>
+                    </label>
+                    <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden required>
+                    <button type="submit" class="modif_photo" name="changePhoto">Enregistrer</button>
+                </form>
+            </div>
         </section>
-        <img class="profile-img" src="<?php echo $compte_pp; ?>" alt="Photo de profil">
-            <form action="#" method="POST" enctype="multipart/form-data">
-                <label for="upload-photo" class="upload-photo-button">
-                    <span class="iconify" data-icon="mdi:camera" data-inline="false"></span>
-                </label>
-                <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden required>
-                <button type="submit" class="modif_photo" name="changePhoto">Enregistrer</button>
-            </form>
-    </div>
     <h1 class="profile-name"><?php echo $monCompteMembre['prenom']." ".$monCompteMembre['nom'] ?></h1>
      <p class="profile-contact"><?php echo $compte['mail'] ?> | <?php echo $compte['telephone'] ?></p>
 
