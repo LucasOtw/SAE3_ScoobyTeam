@@ -384,9 +384,7 @@ footer {
     margin-right: -37em;
 }
 
-.visit-button_detailoffre:hover {
-    transition: ease-in-out 0.2s;
-}
+
 
 .detail_offre_gallery {
     display: flex;
