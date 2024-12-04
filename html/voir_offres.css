@@ -1154,7 +1154,7 @@ body.menu-open #overlay {
 
 /* Style de la carte */
 .toute_les_offres_main .card-a-la-une {
-    width: 25em;
+    width: 22em;
     min-height: 10em;
     position: relative;
     background-color: grey;
