@@ -133,14 +133,12 @@ if (isset($_POST['changePhoto'])) {
 
         <!-- Profile Section -->
         <section class="profile">
-            <div class="fond">
             <div class="profile-img-container">
                 <img class="profile-img" src="<?php echo $compte_pp; ?>" alt="Photo de profil">
                 <form action="#" method="POST" enctype="multipart/form-data">
                     <label for="upload-photo" class="upload-photo-button">
                         <span class="iconify" data-icon="mdi:camera" data-inline="false"></span>
                     </label>
-            </div>
                     <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden required>
                     <button type="submit" class="modif_photo" name="changePhoto">Enregistrer</button>
                 </form>
