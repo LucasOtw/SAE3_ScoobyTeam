@@ -2170,10 +2170,6 @@ main.main_poster_avis .message-erreur {
         transform: scale(1.05);
     }
 
-    main.main_poster_avis .poster_un_avis_container {
-        padding: 5vh 6vw;
-    }
-
     main.main_poster_avis .poster_un_avis_note {
         width: 100%;
     }
