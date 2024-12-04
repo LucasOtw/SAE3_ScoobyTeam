@@ -62,7 +62,7 @@ if($monComptePro['code_compte_bancaire']){
     $infosCB = $recupInfosCB->fetch(PDO::FETCH_ASSOC);
 }
 
-if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
+if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer_offre_gratuite'])){
 
     if(!isset($_POST['passer_cb'])){
         $code_iban = $_POST['IBAN'];
@@ -402,8 +402,8 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
         </nav>
     </header>
     <?php
-
-    if(isset($_SESSION['crea_offre'])){
+    if(isset($monComptePro['num_siren'])){
+        if(isset($_SESSION['crea_offre'])){
         ?>
             <div class="fleche_retour">
                 <div>
@@ -482,9 +482,32 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb'])){
 
 
 
+            <?php
+        }
+    } else {
+        if(isset($_SESSION['crea_offre']){
+           ?>
+            <div>
+                <form action="#" method="POST">
+                    <input type="submit" name="creer_offre_gratuite" value="Créer une offre">
+                </form>
+            </div>
+           <?php
+        } else {
+            ?>
+            <div class="button-container">
+                  <img src="../images/verifier.png" alt="Succès" class="success-icon">
+                  <h1 class="success-message">Votre offre a été créée avec succès !</h1>
+                  <div class="buttons">
+                      <a href="../mes_offres.php" class="back-link-offres">Retourner à "Mes offres"</a>
+                      <a href="../telecharger_facture.php" class="back-link-facture">Télécharger ma facture</a>
+                  </div>
+             </div>
+           <?php
+        }
+        ?>
         <?php
     }
-    
     ?>
     <!-- Footer -->
     <footer class="footer_pro">   
