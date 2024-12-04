@@ -2188,6 +2188,9 @@ main.main_poster_avis .message-erreur {
 
     main.main_poster_avis .back-button {
         display: block;
+        width:25px;
+        margin-top:0.17em;
+        margin-left:-1.2em;
     }
 
     main.main_poster_avis .btn-poster-avis {
