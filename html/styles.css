@@ -2066,6 +2066,18 @@ main.main_poster_avis .message-erreur {
 
         height: 13vh;
     }
+  main.main_poster_avis .notation {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+    background-color: #f3f8ff;
+    border: 1px solid #f3f8ff;
+    border-radius: 29px;
+}
 
     main.main_poster_avis .poster_un_avis_nom {
         font-size: 10px;
