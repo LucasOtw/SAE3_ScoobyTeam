@@ -1033,10 +1033,11 @@ input[type="password"]::placeholder {
 
 .main_modif_mdp_pro .submit-btn1,
 .main_modif_mdp_pro button.submit-btn2 {
-    background-color: white;
     border: 1.5px solid var(--orange);
-    color: black;
+    color: white;
     border-radius: 16px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease; /* Animation au survol */
 }
 
 .main_modif_mdp_pro .submit-btn1:hover,
