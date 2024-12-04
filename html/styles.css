@@ -2439,12 +2439,10 @@ input[type="password"]::placeholder {
     /* Ombre plus forte au survol */
     height: 3.3em;
     width: 15em;
-    color: white;
+    color: black;
     transition: transform 0.2s ease; /* Animation au survol */
 
 }
-
-//Ajout 
 
 /* Style général pour tous les fieldsets */
 .main-consulter-compte-pro .crea_pro_mail_tel fieldset,
