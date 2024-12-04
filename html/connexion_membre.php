@@ -44,7 +44,7 @@ if(!empty($_POST)){
             } else /* MDP Invalide */ {
                 ?> 
                 <style>
-                    <?php echo ".connexion_membre_main fieldset p.erreur-mot-de-passe-incorect"?>{
+                    <?php echo ".connexion_membre_main form fieldset p.erreur-mot-de-passe-incorect"?>{
                         display : flex;
                         align-items: center;
                     }
@@ -62,7 +62,7 @@ if(!empty($_POST)){
         } else /* Utilisateur Membre Inexistant */ {
             ?> 
             <style>
-                <?php echo ".connexion_membre_main fieldset p.erreur-membre-inconnu"?>{
+                <?php echo ".connexion_membre_main form fieldset p.erreur-membre-inconnu"?>{
                     display : flex;
                     align-items: center;
                 }
@@ -80,7 +80,7 @@ if(!empty($_POST)){
     } else /* Utilisateur Inexistant */ {
         ?> 
             <style>
-                <?php echo ".connexion_membre_main fieldset p.erreur-user-inconnu"?>{
+                <?php echo ".connexion_membre_main form fieldset p.erreur-user-inconnu"?>{
                     display : flex;
                     align-items: center;
                 }
