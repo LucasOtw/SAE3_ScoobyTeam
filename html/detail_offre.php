@@ -991,7 +991,7 @@ if (isset($json['results'][0])) {
                 
     <form action="poster_un_avis.php" method="POST">
         <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
-        <input id="btn-poster-avis" type="submit" name="posterAvis" value="Poster un avis">
+        <input id="btn-poster-avis" class="btn_poster_un_avis" type="submit" name="posterAvis" value="Poster un avis">
     </form>
     <style>
         .btn_poster_un_avis{
@@ -1015,10 +1015,11 @@ if (isset($json['results'][0])) {
             text-decoration: none;
             transition: transform 0.2s ease; /* Animation au survol */
             box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
-
-
-      
-    }
+        }
+        input#btn-poster-avis{
+            background: none;
+            color: none;
+        }
     }
     </style>
 
