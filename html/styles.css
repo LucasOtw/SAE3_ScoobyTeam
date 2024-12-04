@@ -2648,9 +2648,7 @@ input[type="password"]::placeholder {
 
 
 .main_consulter_compte_membre form {
-    width: 885px;
     margin: 0 auto;
-    padding: 20px;
     border-radius: 8px;
 }
 
