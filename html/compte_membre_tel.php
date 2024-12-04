@@ -126,7 +126,7 @@ if (isset($_POST['changePhoto'])) {
         <header class="header">
             <div class="logo">
                 <a href="voir_offres.php">
-                    <img src="images/LogoCouleur.png" alt="PACT Logo" whidth:245px; height:52px;>
+                    <img src="images/LogoCouleur.png" alt="PACT Logo">
                 </a>
             </div>
         </header>
