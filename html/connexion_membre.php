@@ -3,6 +3,101 @@
 ob_start();
 session_start();
 
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+$username = "sae";
+$password = "philly-Congo-bry4nt";
+
+// Créer une instance PDO
+$dbh = new PDO($dsn, $username, $password);
+
+if(!empty($_POST)){
+    $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
+    $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
+
+    // on cherche dans la base de données si le compte existe.
+
+    $existeUser = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail='$email'");
+    $existeUser->execute();
+    $existeUser = $existeUser->fetch(PDO::FETCH_ASSOC);
+
+    if($existeUser){
+        // si l'utilisateur existe, on vérifie d'abord si il est membre.
+        $existeUser = $existeUser->fetch();
+        // Car même si l'adresse mail et le mdp sont corrects, si le compte n'est pas lié à un membre, ça ne sert à rien de continuer les vérifications
+        $existeMembre = $dbh->prepare("SELECT 1 FROM tripenarvor._membre WHERE code_compte = :code_compte");
+        $existeMembre->bindParam(':code_compte',$existeUser[0]);
+        $existeMembre->execute();
+
+        $existeMembre = $existeMembre->fetch(PDO::FETCH_ASSOC);
+        if($existeMembre){
+            // Si le membre existe, on vérifie le mot de passe
+            $checkPWD = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :code_compte");
+            $checkPWD->bindParam(':code_compte',$existeUser[0]);
+            $checkPWD->execute();
+
+            $pwd_compte = $checkPWD->fetch();
+
+            if(password_verify($password,$pwd_compte[0])){
+                // les mots de passe correspondent
+                // l'utilisateur peut être connecté
+                header('location: voir_offres.php');
+                $_SESSION["membre"] = $existeUser;
+            } else /* MDP Invalide */ {
+                ?> 
+                <style>
+                    <?php echo ".connexion_membre_main fieldset p.erreur-mot-de-passe-incorect"?>{
+                        display : flex;
+                        align-items: center;
+                    }
+                    <?php echo ".connexion_membre_main fieldset p.erreur-mot-de-passe-incorect img"?>{
+                        width: 10px;
+                        height: 10px;
+                        margin-right: 10px;
+                    }
+                    <?php echo ".connexion_membre_main input.erreur-mot-de-passe-incorect"?>{
+                        border: 1px solid red;
+                    }
+                </style>
+                <?php
+            }
+        } else /* Utilisateur Membre Inexistant */ {
+            ?> 
+            <style>
+                <?php echo ".connexion_membre_main fieldset p.erreur-membre-inconnu"?>{
+                    display : flex;
+                    align-items: center;
+                }
+                <?php echo ".connexion_membre_main fieldset p.erreur-membre-inconnu img"?>{
+                    width: 10px;
+                    height: 10px;
+                    margin-right: 10px;
+                }
+                <?php echo ".connexion_membre_main input.erreur-membre-inconnu"?>{
+                    border: 1px solid red;
+                }
+            </style>
+            <?php
+        }
+    } else /* Utilisateur Inexistant */ {
+        ?> 
+            <style>
+                <?php echo ".connexion_membre_main fieldset p.erreur-user-inconnu"?>{
+                    display : flex;
+                    align-items: center;
+                }
+                <?php echo ".connexion_membre_main fieldset p.erreur-user-inconnu img"?>{
+                    width: 10px;
+                    height: 10px;
+                    margin-right: 10px;
+                }
+                <?php echo ".connexion_membre_main input.erreur-user-inconnu"?>{
+                    border: 1px solid red;
+                }
+            </style>
+            <?php
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -89,102 +184,6 @@ session_start();
             </div>
         </div>
     </main>
-    <?php
-        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-        $username = "sae";
-        $password = "philly-Congo-bry4nt";
-
-        // Créer une instance PDO
-        $dbh = new PDO($dsn, $username, $password);
-
-        if(!empty($_POST)){
-            $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
-            $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
-    
-            // on cherche dans la base de données si le compte existe.
-    
-            $existeUser = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail='$email'");
-            $existeUser->execute();
-
-            if($existeUser){
-                // si l'utilisateur existe, on vérifie d'abord si il est membre.
-                $existeUser = $existeUser->fetch();
-                // Car même si l'adresse mail et le mdp sont corrects, si le compte n'est pas lié à un membre, ça ne sert à rien de continuer les vérifications
-                $existeMembre = $dbh->prepare("SELECT 1 FROM tripenarvor._membre WHERE code_compte = :code_compte");
-                $existeMembre->bindParam(':code_compte',$existeUser[0]);
-                $existeMembre->execute();
-
-                $existeMembre = $existeMembre->fetch(PDO::FETCH_ASSOC);
-                if($existeMembre){
-                    // Si le membre existe, on vérifie le mot de passe
-                    $checkPWD = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :code_compte");
-                    $checkPWD->bindParam(':code_compte',$existeUser[0]);
-                    $checkPWD->execute();
-
-                    $pwd_compte = $checkPWD->fetch();
-
-                    if(password_verify($password,$pwd_compte[0])){
-                        // les mots de passe correspondent
-                        // l'utilisateur peut être connecté
-                        header('location: voir_offres.php');
-                        $_SESSION["membre"] = $existeUser;
-                    } else /* MDP Invalide */ {
-                        ?> 
-                        <style>
-                            <?php echo ".connexion_membre_main fieldset p.erreur-mot-de-passe-incorect"?>{
-                                display : flex;
-                                align-items: center;
-                            }
-                            <?php echo ".connexion_membre_main fieldset p.erreur-mot-de-passe-incorect img"?>{
-                                width: 10px;
-                                height: 10px;
-                                margin-right: 10px;
-                            }
-                            <?php echo ".connexion_membre_main input.erreur-mot-de-passe-incorect"?>{
-                                border: 1px solid red;
-                            }
-                        </style>
-                        <?php
-                    }
-                } else /* Utilisateur Membre Inexistant */ {
-                    ?> 
-                    <style>
-                        <?php echo ".connexion_membre_main fieldset p.erreur-membre-inconnu"?>{
-                            display : flex;
-                            align-items: center;
-                        }
-                        <?php echo ".connexion_membre_main fieldset p.erreur-membre-inconnu img"?>{
-                            width: 10px;
-                            height: 10px;
-                            margin-right: 10px;
-                        }
-                        <?php echo ".connexion_membre_main input.erreur-membre-inconnu"?>{
-                            border: 1px solid red;
-                        }
-                    </style>
-                    <?php
-                }
-            } else /* Utilisateur Inexistant */ {
-                ?> 
-                    <style>
-                        <?php echo ".connexion_membre_main fieldset p.erreur-user-inconnu"?>{
-                            display : flex;
-                            align-items: center;
-                        }
-                        <?php echo ".connexion_membre_main fieldset p.erreur-user-inconnu img"?>{
-                            width: 10px;
-                            height: 10px;
-                            margin-right: 10px;
-                        }
-                        <?php echo ".connexion_membre_main input.erreur-user-inconnu"?>{
-                            border: 1px solid red;
-                        }
-                    </style>
-                    <?php
-            }
-        }
-        
-    ?>
 </body>
 
 </html>
