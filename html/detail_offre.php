@@ -689,12 +689,6 @@ if (isset($json['results'][0])) {
 
     <!-- Détails de l'offre sur MOBILE -->
     <div id="body_offre_mobile">
-         <img class="logo_tel" src="images/logoNoirVert.png" >
-        <style>
-            .logo_tel{
-                margin-left:4.5em;
-            }
-        </style>
         <header class="header_tel">
             <a href="voir_offres.php"><img class="fleche_retour_tel" src="images/Bouton_retour.png" alt="bouton retour"></a>
             <style>
