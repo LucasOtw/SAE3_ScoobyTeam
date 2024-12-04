@@ -615,7 +615,7 @@ input#btn-poster-avis {
 
     #body_offre_mobile {
         display: block !important;
-        font-family: 'K2D';
+        font-family: 'Arial', sans-serif;
         margin: 0px 0 -1em;
         padding: 0 5vw;
         background-color: #ffffff;
@@ -725,7 +725,7 @@ input#btn-poster-avis {
 
     #btn-poster-avis_tel {
         border: none;
-        color: #BDC426;
+        color: #6200ff;
         background: white;
         display: flex;
         padding-left: 16em;
@@ -800,7 +800,7 @@ input#btn-poster-avis {
 }
 
 #body_offre_mobile>div>article>button#bouton_publier {
-    background-color: #ff00ea;
+    background-color: #BDC426;
     color: white;
     position: relative;
     right: 10%;
