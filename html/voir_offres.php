@@ -11,6 +11,10 @@ if(isset($_SESSION['membre'])){
     $donneesSession = null;
 }
 
+if(isset($_SESSION['detail_offre'])){
+    unset($_SESSION['detail_offre']);
+}
+
 
 function tempsEcouleDepuisPublication($offre){
     // date d'aujourd'hui
