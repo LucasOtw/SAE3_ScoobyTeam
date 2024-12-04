@@ -81,7 +81,6 @@ if (!isset($_POST["vueDetails"])) {
     }
 
     $_SESSION['detail_offre'] = $details_offre;
-    var_dump($_SESSION['detail_offre']);
 
     $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
 
