@@ -5,6 +5,12 @@ session_start();
 
 include_once('../recupInfosCompte.php');
 
+if(!isset($monComptePro['num_siren'])){
+    // si le professionnel est publique, il n'a rien à faire là
+    header('location: ../etape_4_creation/creation_offre_restaurant_5.php');
+    exit;
+}
+
 // on récupère les prix de type_offre
 
 $getPrixOffre = $dbh->prepare("SELECT * FROM tripenarvor._type_offre");
