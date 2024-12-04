@@ -70,7 +70,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
         <ul>
             <li><a href="consulter_compte_pro.php">Informations personnelles</a></li>
             <li><a href="mes_offres.php" class="active">Mes offres</a></li>
-            <?php if ( !isset($monComptePro['raison_sociale'])) { ?>
+            <?php if ( isset($monComptePro['raison_sociale'])) { ?>
                 <li><a href="modif_bancaire.php">Compte bancaire</a></li>
             <?php } ?>
             <li><a href="modif_mdp_pro.php">Mot de passe et sécurité</a></li>
