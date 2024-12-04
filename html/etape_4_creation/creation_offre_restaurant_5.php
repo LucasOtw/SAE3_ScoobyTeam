@@ -62,13 +62,9 @@ if($monComptePro['code_compte_bancaire']){
     $infosCB = $recupInfosCB->fetch(PDO::FETCH_ASSOC);
 }
 
-if(isset($_POST['creer_offre_gratuite'])){
-    echo "TA MERE";
-}
-
 if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer_offre_gratuite'])){
 
-    if(!isset($_POST['passer_cb']) || !isset($_POST['creer_offre_gratuite'])){
+    if(!isset($_POST['passer_cb']) && !isset($_POST['creer_offre_gratuite'])){
         $code_iban = $_POST['IBAN'];
         $code_BIC = $_POST['BIC'];
         $nom_compte = $_POST['nom'];
