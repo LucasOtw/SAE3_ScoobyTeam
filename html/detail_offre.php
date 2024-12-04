@@ -65,13 +65,21 @@ $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
 // Créer une instance PDO avec les bons paramètres
 $dbh = new PDO($dsn, $username, $password);
 
+$details_offre = null;
+
 if (!isset($_POST["vueDetails"])) {
     echo "Erreur : aucune offre"; // à remplacer
-} else {
+} else if(isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])){
     //echo $_POST["uneOffre"];
 
     // si le formulaire est bien récupéré
-    $details_offre = unserialize($_POST["uneOffre"]);// on récupère son contenu
+    if(isset($_POST['vueDetails'])){
+        $details_offre = unserialize($_POST["uneOffre"]);// on récupère son contenu
+    } else {
+        // si on n'a pas de POST alors on ne vient pas de l'accueil, DONC il y a une session.
+        $details_offre = $_SESSION['detail_offre'];
+    }
+
     $_SESSION['detail_offre'] = $details_offre;
 
     $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
