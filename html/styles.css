@@ -2431,9 +2431,19 @@ input[type="password"]::placeholder {
     border-radius: 16px;
 }
 
-.main-consulter-compte-pro .submit-btn1,
+
 .main-consulter-compte-pro button.submit-btn2 {
     /* Ajoute une couleur de survol pour les deux boutons */
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    /* Ombre plus forte au survol */
+    height: 3.3em;
+    width: 15em;
+    color: black;
+    transition: transform 0.2s ease; /* Animation au survol */
+
+}
+
+.main-consulter-compte-pro .submit-btn1{
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     /* Ombre plus forte au survol */
     height: 3.3em;
