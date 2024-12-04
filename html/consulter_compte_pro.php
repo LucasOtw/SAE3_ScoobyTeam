@@ -3,13 +3,6 @@ ob_start(); // bufferisation, ça devrait marcher ?
 session_start();
 
 include("recupInfosCompte.php");
-if(isset($monComptePro['num_siren'])){
-   echo "Ta mère";
-} else {
-   echo "Ton père";
-}
-
-var_dump($monComptePro);
 
 if(!isset($_SESSION['pro'])){
    header('location: connexion_pro.php');
