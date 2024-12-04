@@ -653,17 +653,17 @@ function tempsEcouleDepuisPublication($offre){
                     const category = document.querySelector('.search-select:nth-of-type(1)').value;
                     const priceOrder = document.querySelector('.search-select:nth-of-type(2)').value;
                     const noteOrder = document.querySelector('.search-select:nth-of-type(3)').value;
-                    // const rate = document.querySelector('.search-select:nth-of-type(4)').value;
-                    // const status = document.querySelector('.search-select:nth-of-type(5)').value;
+                    const rate = document.querySelector('.search-select:nth-of-type(4)').value;
+                    const status = document.querySelector('.search-select:nth-of-type(5)').value;
 
                     // Filtrer par catégorie
                     offerItems.forEach(offer => {
                         
                         const offerCategory = offer.getAttribute('data-category');
-                        // const offerRate = offer.getAttribute('data-rate');
-                        // const offerStatus = offer.getAttribute('data-status');
+                        const offerRate = offer.getAttribute('data-rate');
+                        const offerStatus = offer.getAttribute('data-status');
 
-                        //console.log(offerCategory+' / '+offerRate+' / '+offerStatus);
+                        console.log(offerCategory+' / '+offerRate+' / '+offerStatus);
 
                         if (category==='all' || category === offerCategory) {
                             offer.style.removeProperty('display');
