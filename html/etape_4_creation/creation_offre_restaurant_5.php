@@ -30,7 +30,7 @@ if (!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])) {
     // Vérifier si une ou plusieurs sessions nécessaires ne sont pas définies
     if (!isset($_SESSION['crea_offre']) || !isset($_SESSION['crea_offre2']) || !isset($_SESSION['crea_offre3']) || !isset($_SESSION['crea_offre4'])) {
 
-        // Vérifier si SEULEMENT $_SESSION['crea_offre3'] manque
+        // Cas où SEULEMENT $_SESSION['crea_offre3'] manque
         if (!isset($_SESSION['crea_offre3']) 
             && isset($_SESSION['crea_offre']) 
             && isset($_SESSION['crea_offre2']) 
@@ -42,11 +42,14 @@ if (!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])) {
                 header('location: ../etape_3_boost/creation_offre_restaurant_4.php');
                 exit;
             }
-        } else {
-            // Si une autre session manque ou si les conditions ne sont pas respectées, rediriger vers la page principale
-            header('location: ../creation_offre.php');
-            exit;
+
+            // Si l'utilisateur n'est pas professionnel privé, continuer normalement
+            return; // NE PAS REDIRIGER, cas normal
         }
+
+        // Si une autre session manque, rediriger vers creation_offre.php
+        header('location: ../creation_offre.php');
+        exit;
     }
 }
 
