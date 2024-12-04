@@ -2103,7 +2103,7 @@ main.main_poster_avis .message-erreur {
 
     main.main_poster_avis .poster_un_avis_textarea {
         width: 100%;
-        height: 20vh;
+        height: 10vh;
         padding: 15px;
         margin: 0vh 0;
         border: 1px solid #f3f8ff;
