@@ -32,11 +32,9 @@ $image_offre = $stmt->fetch(PDO::FETCH_NUM);
 echo "<pre>";
    var_dump($image_offre);
 echo "</pre>";
-
 echo "<pre>";
 var_dump($details_offre);
 echo "</pre>";
-
 echo "<pre>";
 var_dump($compte);
 echo "</pre>";
@@ -46,11 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      if(isset($_POST['publier'])){
          $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
          $note = isset($_POST['note']) ? $_POST['note'] : '';
-         
+
          $compte = $_SESSION['membre'];
          $code_compte = $compte['code_compte'];           
          $code_offre = $_SESSION['detail_offre']['code_offre'];
-        
+
          $erreurs = [];
          $erreur_a_afficher = [];
          if (empty($texte_avis)) {
@@ -68,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (empty($erreurs)) {
           $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
-      
+
           $creerAvis->bindParam(':texte_avis', $texte_avis);
           $creerAvis->bindParam(':note', $note, PDO::PARAM_INT);
           $creerAvis->bindParam(':code_offre', $code_offre);
@@ -77,17 +75,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
           header('location: detail_offre.php');
           exit;
-         
+
          } else {
             /*
            foreach($erreurs as $erreur){
                  echo $erreur;
            }*/
-   
+
             foreach($erreur_a_afficher as $classe_erreur){
                // echo $classe_erreur;
                  ?> 
-               
+
                  <style>
                      main.main_poster_avis .<?php echo $classe_erreur ?> {
                         display:block;
@@ -129,28 +127,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </ul>
         </nav>
       </header> 
-        
 
-  <div class="poster_un_avis_container">
+
+        <header class="header-tel header_membre">
+            <div class="logo-tel">
+                <img src="images/logoNoirVert.png" alt="PACT Logo">
+            </div>
+        </header>
+
+        <main class="main_poster_avis">
+        <div class="poster_un_avis_container">
             <div class="poster_un_avis_back_button">
                   <form id="back_button" action="detail_offre.php" method="POST">
                        <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
+                       //<input id="btn-voir-offre" class="back-button" type="submit" name="vueDetails" value="←">
                        <img src="images/Bouton_retour.png" class="back-button">
-                       <a href="voir_offres.php"><img src="images/Bouton_retour.png" class="back-button"></a>
                    </form>
             <h1 class="titre_poster_un_avis_format_tel">Publier un avis</h1>
             </div>
-   
-        <main class="main_poster_avis">
-       <header class="header">
-               <div class="logo">
-                   <form id="back_button" action="detail_offre.php" method="POST">
-                       <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
-                       <a href="voir_offres.php"><img src="images/Bouton_retour.png" class="back-button"></a>
-                   </form>
-                  <h1 class="titre_poster_un_avis_format_tel">Publier un avis</h1>
-               </div>
-           </header>
             <h1 class="poster_un_avis_titre">Récapitulatif</h1>
             <div class="poster_un_avis_recap_card">
                 <div class="poster_un_avis_info">
@@ -171,7 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form action="poster_un_avis.php" method="POST">
                <div class="poster_un_avis_section">
                    <h2 class="poster_un_avis_section_titre">Votre avis</h2>
-                  
+
                    <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
                    <p class="message-erreur avis-vide">Vous devez remplir ce champ</p>
                    <p class="message-erreur avis-trop-long">L'avis ne doit pas dépasser 500 caractères.</p>                  
@@ -179,25 +173,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                            <div class="poster_un_avis_note">
                               <h2 class="poster_un_avis_note_titre">Votre note</h2>
-                          
+
                               <fieldset class="notation">
                                          <input type="radio" id="star5" name="note" value="5" />
                                          <label for="star5" title="5 étoiles"></label>
-            
+
                                           <input type="radio" id="star4" name="note" value="4" />
                                           <label for="star4" title="4 étoiles"></label>
-            
+
                                           <input type="radio" id="star3" name="note" value="3" />
                                           <label for="star3" title="3 étoiles"></label>
-            
+
                                           <input type="radio" id="star2" name="note" value="2" />
                                           <label for="star2" title="2 étoiles"></label>
-            
+
                                           <input type="radio" id="star1" name="note" value="1" />
                                           <label for="star1" title="1 étoile"></label>
                               </fieldset>
                               <p class="message-erreur pas-de-note">Veuillez sélectionner une note valide.</p>
-                      
+
                             </div>
                        </div>
                        <p class="poster_un_avis_disclaimer">En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
@@ -224,7 +218,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <img src="images/icones/User icon.png" alt="image de Personne"></a>
         </nav>
     </main> 
-    
+
     <footer class="footer footer_membre">
         <div class="newsletter">
             <div class="newsletter-content">
