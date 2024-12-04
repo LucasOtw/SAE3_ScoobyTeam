@@ -195,13 +195,13 @@ echo "</pre>";
                 $creerAvis->bindParam(':code_compte', $code_compte);
             
                 if ($creerAvis->execute()){
-                   echo '<form id="redirectForm" action="detail_offre.php" method="POST">
+                   ?>'<form id="redirectForm" action="detail_offre.php" method="POST">
                                <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
-                         </form>
-                  <script>
-                    document.getElementById("redirectForm").submit();
-                  </script>';
-                  exit;
+                      </form>
+                     <script>
+                       document.getElementById("redirectForm").submit();
+                     </script>';
+                     exit;<?php
                 }
             } else {
                /*
