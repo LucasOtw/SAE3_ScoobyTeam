@@ -73,6 +73,13 @@ if (isset($_POST['modif_infos'])){
                              break;
                          }
                          break;
+                     case "mail":
+                         if(!filter_var($valeurNettoye, FILTER_VALIDATE_EMAIL)){
+                             $erreur[] = "L'adresse mail est invalide !";
+                             header('location: consulter_compte_membre.php');
+                             break;
+                         }
+                         break;
                  }
                  if(empty($erreur)){
                     $query = $dbh->prepare("UPDATE tripenarvor._compte SET $champ = :valeur WHERE code_compte = :code_compte");
