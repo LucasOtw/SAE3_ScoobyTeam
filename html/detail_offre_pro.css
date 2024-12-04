@@ -655,16 +655,18 @@ footer {
 }
 
 .visit-button_detailoffre {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.2s ease; /* Animation au survol */
+    cursor : pointer;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+
 }
 
 .visit-button_detailoffre:hover {
-    transform: scale(1.004);
-    /* Grossissement léger */
-    box-shadow: 0 0 5px 2px var(--orange);
-    /* Lumière fluo verte */
-    background-color: var(--orange);
-    /* Changement de couleur */
+    transform: translateY(-2px); /* Effet d'élévation au survol */
+}
+
+.visit-button_detailoffre:active {
+    transform: translateY(2px); /* Effet d'élévation au survol */
 }
 
 
