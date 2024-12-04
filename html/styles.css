@@ -2020,7 +2020,7 @@ main.main_poster_avis nav.nav-bar {
     display: none
 }
 
-main.main_poster_avis a.back-button {
+main.main_poster_avis .back-button {
     display: none;
 }
 
@@ -2175,7 +2175,7 @@ main.main_poster_avis .message-erreur {
         width: 100%;
     }
 
-    main.main_poster_avis a.back-button {
+    main.main_poster_avis .back-button {
         display: block;
     }
 
