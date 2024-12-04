@@ -67,6 +67,8 @@ $dbh = new PDO($dsn, $username, $password);
 
 $details_offre = null;
 
+var_dump($_SESSION['detail_offre']);
+
 if (!isset($_POST["vueDetails"])) {
     echo "Erreur : aucune offre"; // à remplacer
 } else if(isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])){
@@ -83,6 +85,7 @@ if (!isset($_POST["vueDetails"])) {
     }
 
     $_SESSION['detail_offre'] = $details_offre;
+    $details_offre = $_SESSION['detail_offre'];
 
     $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
 
