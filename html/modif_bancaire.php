@@ -75,15 +75,20 @@ include("recupInfosCompte.php");
             $nom = '';
             $message = '';
 
-            // Préparer la requête pour récupérer les informations bancaires
-            $query = "SELECT nom_compte, iban, bic FROM tripenarvor._compte_bancaire LIMIT 1";
-            $stmt = $pdo->query($query);
-
-            // Vérifier s'il y a des résultats
-            if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $nom = $row['nom_compte'];
-                $iban = $row['iban'];
-                $bic = $row['bic'];
+            if ($monComptePro["code_compte_bancaire"] != null)
+            {
+                // Préparer la requête pour récupérer les informations bancaires
+                $query = "SELECT nom_compte, iban, bic FROM tripenarvor._compte_bancaire where code_compte_bancaire = :code_compte_bancaire";
+                $stmt = $dbh->prepare(query);
+                $stmt->bindParam(':code_compte_bancaire', $monComptePro["code_compte_bancaire"]);
+                $stmt->execute();
+    
+                // Vérifier s'il y a des résultats
+                if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $nom = $row['nom_compte'];
+                    $iban = $row['iban'];
+                    $bic = $row['bic'];
+                }
             }
 
             // Si le formulaire est soumis
