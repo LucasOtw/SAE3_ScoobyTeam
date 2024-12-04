@@ -36,7 +36,7 @@
                 SET en_ligne = :en_ligne,
                     date_publication = CURRENT_DATE
                 WHERE code_offre = :code_offre
-                RETURNING titre_offre, en_ligne
+                RETURNING titre_offre, en_ligne, date_publication
             ");
         } else {
             // Si l'offre est hors ligne, ne pas toucher à date_publication
