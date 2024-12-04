@@ -138,7 +138,7 @@ echo "</pre>";
                        <p class="poster_un_avis_disclaimer">En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
                        <div class="poster_un_avis_buttons">
                            <form action="voir_offres.php" method="GET">
-                               <button class="poster_un_avis_btn_annuler" type="submit">Annuler</button>
+                               <button class="poster_un_avis_btn_annuler" type="cancel" onclick="window.location.href='voir_offres.php';">Annuler</button>
                            </form>
                            <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
                            <button class="poster_un_avis_btn_publier" type="submit">Publier →</button>
