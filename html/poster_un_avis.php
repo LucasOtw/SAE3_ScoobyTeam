@@ -137,11 +137,12 @@ echo "</pre>";
                        </div>
                        <p class="poster_un_avis_disclaimer">En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
                        <div class="poster_un_avis_buttons">
-                           <button class="poster_un_avis_btn_annuler" type="cancel" onclick="window.location.href='voir_offres.php';">Annuler</button>
-                           <div>
-                              <button class="poster_un_avis_btn_publier" type="submit">Publier →</button>
-                              <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
-                           </div>
+                           <form id="annuler" action="detail_offre.php" method="POST">
+                                <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
+                                <input id="btn-voir-offre" class="poster_un_avis_btn_annuler" type="submit" name="vueDetails" value="Annuler">
+                            </form>
+                           <button class="poster_un_avis_btn_publier" type="submit">Publier →</button>
+                           <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
                        </div>
                     </div>
                   </div>
