@@ -131,7 +131,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </header> 
         
 
-      <div class="poster_un_avis_back_button">
+  <div class="poster_un_avis_container">
+            <div class="poster_un_avis_back_button">
                   <form id="back_button" action="detail_offre.php" method="POST">
                        <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
                        <img src="images/Bouton_retour.png" class="back-button">
