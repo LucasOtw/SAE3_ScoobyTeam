@@ -204,6 +204,11 @@ nav.nav-bar {
 
 
 @media (max-width: 429px) {
+    .logo_tel{
+        width: 245px;
+        height: 52px;
+        margin-left: 6.5em;
+    }
     nav.nav-bar {
         width: 84vw;
         position: fixed;
