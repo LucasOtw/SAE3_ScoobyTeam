@@ -68,11 +68,11 @@ container {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    padding: 20px;
     background-color: #f0f0f0;
     border-bottom: 1px solid #e0e0e0;
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
+    height: 10em;
 }
 
 .header .logo img {
@@ -82,7 +82,7 @@ container {
 /* Profil */
 .profile {
     text-align: center;
-    margin-top:-1em;
+    margin-top:-4em;
 }
 
 .profile-img {
