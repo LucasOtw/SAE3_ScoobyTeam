@@ -60,10 +60,10 @@
             {
                 print_r($updatedRow);
             }
-        }
-        else
-        {
-            echo "Aucune mise à jour effectuée.";
+            else
+            {
+                echo "Aucune mise à jour effectuée.";
+            }
         }
         else
         {
