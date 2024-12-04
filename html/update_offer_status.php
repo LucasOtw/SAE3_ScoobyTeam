@@ -29,6 +29,20 @@
     
     // Mettre à jour la table _offre
     try {
+        
+        $query = $dbh->prepare("
+        SELECT en_ligne, date_publication
+        FROM tripenarvor._offre
+        WHERE code_offre = :code_offre
+        ");
+        $query->execute([':code_offre' => $code_offre]);
+        $currentRow = $query->fetch(PDO::FETCH_ASSOC);
+    
+        if (!$currentRow) {
+            echo "Aucune offre trouvée avec le code fourni.";
+            exit;
+        }
+        
         if ($en_ligne === 1) {
             // Si l'offre passe en ligne, mettre à jour la date_publication
             $stmt = $dbh->prepare("
