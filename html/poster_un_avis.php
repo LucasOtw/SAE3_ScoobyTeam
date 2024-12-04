@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          
          $compte = $_SESSION['membre'];
          $code_compte = $compte['code_compte'];           
-         $code_offre = $details_offre["code_offre"];
+         $code_offre = $_SESSION['detail_offre']['code_offre'];
         
          $erreurs = [];
          $erreur_a_afficher = [];
