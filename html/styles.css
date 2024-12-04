@@ -4956,6 +4956,7 @@ nav.nav-bar-tel {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-left:-1.5em;
 }
 
 .skip {
