@@ -71,6 +71,7 @@ if (!isset($_POST["vueDetails"])) {
     echo "Erreur : aucune offre"; // à remplacer
 } else if(isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])){
     //echo $_POST["uneOffre"];
+    echo "HEIN ?";
 
     // si le formulaire est bien récupéré
     if(isset($_POST['vueDetails'])){
