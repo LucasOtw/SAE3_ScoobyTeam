@@ -43,7 +43,7 @@ if (!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])) {
                 exit;
             }
         } else {
-            echo "TA MERE";
+            header('location: ../etape_3_boost/creation_offre_restaurant_4.php');
         }
     }
 }
