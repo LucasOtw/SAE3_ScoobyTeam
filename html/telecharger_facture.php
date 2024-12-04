@@ -267,6 +267,7 @@ if(!isset($_SESSION['pro'])){
             border-radius: 12px;
             box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
             height: 4.3vh;
+            box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
             transition: transform 0.2s ease;
         }
         
