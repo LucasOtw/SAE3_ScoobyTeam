@@ -82,6 +82,7 @@ container {
 /* Profil */
 .profile {
     text-align: center;
+    margin-top:-3em;
 }
 
 .profile-img {
