@@ -7,6 +7,14 @@ if(!isset($_SESSION['pro'])){
    exit;
 }
 
+if(isset($_SESSION['crea_offre'])){
+   unset($_SESSION['crea_offre']);
+   unset($_SESSION['crea_offre2']);
+   unset($_SESSION['crea_offre3']);
+   unset($_SESSION['crea_offre4']);
+   unset($_SESSION['ajoutOption']);
+}
+
 ?>
 
 <!DOCTYPE html>
