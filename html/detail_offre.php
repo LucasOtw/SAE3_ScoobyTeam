@@ -293,7 +293,12 @@ if (isset($json['results'][0])) {
             <div class="detail_offre_hotel-header">
 
                 <div class="detail_offre_hotel-info">
-                    <h1><?php echo $details_offre["titre_offre"]; ?></h1>
+                    <h1 style="
+    margin-top: -1vh;
+    display: flex;
+    position: absolute;
+    margin-left: -6vw;
+    font-size: 25px;><?php echo $details_offre["titre_offre"]; ?></h1>
 
                     <p>📍 <?php echo $adresse_offre["ville"] . ", " . $adresse_offre["code_postal"]; ?></p>
 
@@ -706,8 +711,10 @@ if (isset($json['results'][0])) {
             <a href="voir_offres.php"><img class="fleche_retour_tel" src="images/Bouton_retour.png" alt="bouton retour"></a>
             <style>
                 .fleche_retour_tel{
-                    margin-left :-7em;
-                    padding-right:5em;
+                    margin-left: -7em;
+                    padding-right: 5em;
+                    height: 3vh;
+                    margin-top: 1vh;
                 }
             </style>
             <h1>Détails</h1>
