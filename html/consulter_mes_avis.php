@@ -197,9 +197,9 @@ if (!empty($_POST['supprAvis'])){
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Publier</a></li>
-                    <li><a href="#">Historique</a></li>
+                    <li><a href="mes_offres.php">Accueil</a></li>
+                    <li><a href="creation_offre.php">Publier</a></li>
+                    <li><a href="consulter_mes_avis.php">Historique</a></li>
                 </ul>
             </div>
             <div class="link-group">
