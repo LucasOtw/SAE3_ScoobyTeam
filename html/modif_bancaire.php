@@ -79,7 +79,7 @@ include("recupInfosCompte.php");
             {
                 // Préparer la requête pour récupérer les informations bancaires
                 $query = "SELECT nom_compte, iban, bic FROM tripenarvor._compte_bancaire where code_compte_bancaire = :code_compte_bancaire";
-                $stmt = $dbh->prepare(query);
+                $stmt = $dbh->prepare($query);
                 $stmt->bindParam(':code_compte_bancaire', $monComptePro["code_compte_bancaire"]);
                 $stmt->execute();
     
