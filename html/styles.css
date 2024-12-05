@@ -3062,6 +3062,17 @@ nav.nav-bar {
         border-radius: 1000px;
         box-shadow: 0px 2px 10px rgb(156, 156, 156);
     }
+   nav.nav-bar_connexion_membre {
+        width: 84vw;
+        position: fixed;
+        bottom: 20px;
+        background-color: var(--vert-clair);
+        display: flex;
+        margin: auto 8vw;
+        justify-content: space-around;
+        border-radius: 1000px;
+        box-shadow: 0px 2px 10px rgb(156, 156, 156);
+    }
 
     footer {
         display: none;
