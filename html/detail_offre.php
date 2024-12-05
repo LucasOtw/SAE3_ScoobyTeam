@@ -302,8 +302,7 @@ if (isset($json['results'][0])) {
 
                     <p>📍 <?php echo $adresse_offre["ville"] . ", " . $adresse_offre["code_postal"]; ?></p>
 
-                    <p><i class="fas fa-clock"></i> Publié <?php echo tempsEcouleDepuisPublication($details_offre); ?>
-                    </p>
+                    <p><i class="fas fa-clock"></i> Publié <?php echo tempsEcouleDepuisPublication($details_offre); ?></p>
 
                     <!-- <div class="detail_offre_rating">
                         ⭐ 5.0 (255 avis)
