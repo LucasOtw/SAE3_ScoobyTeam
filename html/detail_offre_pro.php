@@ -293,7 +293,7 @@
 
 
 </head>
-<body onload="initMap()">
+<body onload="initMap() data-banking=<?php echo $monComptePro['code_compte_bancaire']; ?>">
 
     <!-- Détails de l'offre sur Desktop -->
     <div id="body_offre_desktop">
