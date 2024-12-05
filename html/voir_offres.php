@@ -681,10 +681,6 @@ function tempsEcouleDepuisPublication($offre){
                     // Trier les offres visibles
                     let offers = Array.from(document.querySelectorAll('.offer:not(.hidden)'));
 
-                    console.log('Price Order:', priceOrder);
-                    console.log('Note Order:', noteOrder);
-
-            
                     if (priceOrder) {
                         offers.sort((a, b) => {
                             const priceA = parseFloat(a.getAttribute('data-price')) || 0;
@@ -697,6 +693,7 @@ function tempsEcouleDepuisPublication($offre){
                         offers.sort((a, b) => {
                             const noteA = parseFloat(a.getAttribute('data-note')) || 0;
                             const noteB = parseFloat(b.getAttribute('data-note')) || 0;
+                            console.log(noteA+" "+noteB);
                             return noteOrder === 'croissantN' ? noteA - noteB : noteB - noteA;
                         });
                     }
