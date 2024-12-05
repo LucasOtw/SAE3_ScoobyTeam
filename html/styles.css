@@ -3063,7 +3063,7 @@ nav.nav-bar {
         border-radius: 1000px;
         box-shadow: 0px 2px 10px rgb(156, 156, 156);
     }
-   nav.nav-bar_connexion_membre {
+   nav-bar_connexion_membre {
         width: 84vw;
         position: fixed;
         bottom: 20px;
