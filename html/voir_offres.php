@@ -693,8 +693,15 @@ function tempsEcouleDepuisPublication($offre){
                         offers.sort((a, b) => {
                             const noteA = parseFloat(a.getAttribute('data-note')) || 0;
                             const noteB = parseFloat(b.getAttribute('data-note')) || 0;
-                            console.log(noteA+" "+noteB);
-                            return noteOrder === 'croissantN' ? noteA - noteB : noteB - noteA;
+                        
+                            // Critère principal : note
+                            const diff = noteOrder === 'croissantN' ? noteA - noteB : noteB - noteA;
+                            if (diff !== 0) return diff;
+                        
+                            // Critère secondaire (exemple : prix croissant)
+                            const priceA = parseFloat(a.getAttribute('data-price')) || 0;
+                            const priceB = parseFloat(b.getAttribute('data-price')) || 0;
+                            return priceA - priceB;
                         });
                     }
             
