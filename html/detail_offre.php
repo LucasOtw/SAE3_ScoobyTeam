@@ -742,7 +742,7 @@ if (isset($json['results'][0])) {
                 <h1 style="
     display: flex;
     position: absolute;
-    margin-left: -6vw;
+    margin-left: -4.4vw;
     margin-top: -1.4vh;
 "><?php echo $details_offre["titre_offre"]; ?></h1>
                 <a href="<?php echo $details_offre["site_web"]; ?>" class="description-link">

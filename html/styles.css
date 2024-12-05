@@ -2129,10 +2129,9 @@ main.main_poster_avis .message-erreur {
     }
 
     main.main_poster_avis .titre_poster_un_avis_format_tel {
-        display: flex;
-        margin-left: 4vm;
-        border: none;
-        color: var(--vert-clair);
+                display: flex;
+                border: none;
+                color: black;
     }
 
     main.main_poster_avis .poster_un_avis_btn_annuler {
@@ -2172,13 +2171,12 @@ main.main_poster_avis .message-erreur {
     main.main_poster_avis .poster_un_avis_btn_publier {
         background-color: var(--vert-clair);
         color: white;
-        width: 50%;
+        width: 66%;
         border-radius: 20px;
-        font-size: 21px;
+        font-size: 17px;
         margin-bottom: 10vh;
-        justify-content: center;
-        margin-right:4em;
-        margin-top:2em;
+        margin-top: 2em;
+        margin-right: 15vw;
     }
 
     main.main_poster_avis .poster_un_avis_btn_publier:hover {
