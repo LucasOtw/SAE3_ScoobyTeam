@@ -167,7 +167,7 @@ if(!empty($_POST)){
                 
                 -->
                     <div class="connexion_membre_btn_connecter_pas_de_compte">
-                        <button type="submit">Se connecter</button>
+                        <button class="se_connecter" type="submit">Se connecter</button>
                         
                         <hr>
                         <div class="connexion_membre_liens_connexion_inscription">
