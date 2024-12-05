@@ -546,7 +546,7 @@ function tempsEcouleDepuisPublication($offre){
                     <article class="offer <?php if (!empty($offre['option_en_relief']) || !empty($offre['option_a_la_une']) ){echo "en_relief";} ?>" 
                                 data-category=<?php echo $type_offre;?> 
                                 data-price="<?php echo $offre["tarif"];?>" 
-                                data-rate="<?php echo $offre["note_moyenne"]; ?>"
+                                data-rate=<?php echo $offre["note_moyenne"]; ?>
                                 location=<?php echo $villeOffre["ville"]; ?>
                                 data-status=<?php echo $dataStatusEng; ?> 
                                 data-event=<?php if(!empty($event)) { echo $event['date_'.$type_offre]; } else { echo ""; } ?> 
