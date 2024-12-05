@@ -298,7 +298,7 @@ if (isset($json['results'][0])) {
                         display: flex;
                         position: absolute;
                         margin-left: -6vw;
-                        font-size: 25px;> <?php echo $details_offre["titre_offre"]; ?></h1>
+                        font-size: 25px;"> <?php echo $details_offre["titre_offre"]; ?></h1>
 
                     <p>📍 <?php echo $adresse_offre["ville"] . ", " . $adresse_offre["code_postal"]; ?></p>
 
