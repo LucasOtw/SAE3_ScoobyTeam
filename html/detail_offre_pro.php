@@ -884,7 +884,7 @@
         var offerStatusText = document.getElementById('offer-status');
 
         // Vérifie si les conditions PHP sont respectées
-        var banking = document.querySelector('body').dataset.banking; // Extrait une donnée depuis un attribut data-* du body
+        const banking = document.querySelector('body').getAttribute('data-banking'); // Extrait une donnée depuis un attribut data-* du body
 
         console.log(banking);
         
