@@ -882,10 +882,10 @@
         var offerStatusText = document.getElementById('offer-status');
 
         // Vérifie si les conditions PHP sont respectées
-        var banking = Boolean(document.querySelector('body').dataset.banking); // Extrait une donnée depuis un attribut data-* du body
+        var banking = document.querySelector('body').dataset.banking; // Extrait une donnée depuis un attribut data-* du body
         
         // Si les conditions ne sont pas respectées, affiche un message d'erreur
-        if (!banking) {
+        if (banking == null) {
             alert("Vous devez d'abord renseigner un compte bancaire dans l'onglet 'Compte bancaire'.");
             return; // Empêche l'exécution du reste de la fonction
         }
