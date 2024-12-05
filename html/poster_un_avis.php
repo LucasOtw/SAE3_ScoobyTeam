@@ -14,6 +14,12 @@ if (isset($_SERVER['HTTP_REFERER'])) {
     echo "Aucun HTTP_REFERER disponible.";
 }
 
+if(isset($_SERVER['HTTP_REFERER'])){
+   if($_SERVER['HTTP_REFERER'] == "https://scooby-team.ventsdouest.dev/detail_offre.php"){
+      echo "ZSDEFGHJKLM";
+   }
+}
+
 // Vérifie si le formulaire a été soumis    
 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";  // Utilisateur PostgreSQL défini dans .env
