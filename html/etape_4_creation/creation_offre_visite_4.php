@@ -428,7 +428,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
         ?>
             <div class="fleche_retour">
                 <div>
-                    <a href="../etape_3_boost/creation_offre_restaurant_4.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
+                    <a href="../etape_3_boost/creation_offre_visite_4.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
                 </div>
             </div>
         
