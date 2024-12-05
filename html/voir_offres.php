@@ -694,7 +694,7 @@ function tempsEcouleDepuisPublication($offre){
                             const noteA = parseFloat(a.getAttribute('data-rate')) || 0;
                             const noteB = parseFloat(b.getAttribute('data-rate')) || 0;
 
-                            console.log(offer.getAttribute('data-category')+" "+noteA+" "+noteB);
+                            console.log(noteA+" "+noteB);
                             
                             return noteOrder === 'croissantN' ? noteA - noteB : noteB - noteA;
                         });
