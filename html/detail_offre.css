@@ -348,6 +348,7 @@ input#btn-poster-avis {
     transition: transform 0.2s ease;
     font-size: 17px;
     margin-left: 23vw;
+    text-align: center;
 
 }
 
