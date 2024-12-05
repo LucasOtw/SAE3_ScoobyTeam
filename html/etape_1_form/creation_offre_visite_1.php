@@ -163,6 +163,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                         echo "Erreur : Le fichier temporaire $nom_temp n'existe pas.<br>";
                     }
                 }
+            } else {
+                $erreurs[] = "Veuillez choisir au moins une image !";
             }
             $_SESSION['crea_offre'] = $tab_offre;
             var_dump($_SESSION['crea_offre']);
@@ -284,7 +286,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Tarif *</legend>
+                            <legend>Tarif (€) *</legend>
                             <input type="number" id="prix" name="_tarif" placeholder="Tarif *" min="0" step="0.01" required>
                         </fieldset>
                     </div>
@@ -303,7 +305,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <!-- Photos -->
                 <div class="row">
                     <div class="col">
-                        <label for="photos">Photos (facultatif)</label>
+                        <label for="photos">Photos (au moins 1 image)</label>
                         <input type="file" id="photos" name="photos[]" multiple>
                     </div>
                 </div>
@@ -311,15 +313,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <!-- Durée de la visite -->
                 <div class="row">
                     <div class="col">
-                        <fieldset>
-                            <legend style="display:block;">Date de la visite</legend>
-                            <input type="date" name="date_visite">
-                        </fieldset>
-                    </div>
-                    <div class="col">
                         <fieldset class="duree">
                             <legend style="display:block;">Durée de la visite *</legend>
                             <input type="time" id="duree" name="duree" placeholder="Durée de la visite">
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset>
+                            <legend style="display:block;">Date de la visite</legend>
+                            <input type="date" name="date_visite">
                         </fieldset>
                     </div>
                     <div class="col">
