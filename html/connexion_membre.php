@@ -116,6 +116,7 @@ if(!empty($_POST)){
                     <img src="images/logoBlanc.png" alt="PACT Logo">
             </a>
         </div>
+        <a href="voir_offres">Plus tard</a>
         
         <nav>
             <ul>
