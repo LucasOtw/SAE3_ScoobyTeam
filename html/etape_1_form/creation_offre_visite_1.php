@@ -287,7 +287,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     <div class="col">
                         <fieldset>
                             <legend>Tarif (€) *</legend>
-                            <input type="number" id="prix" name="_tarif" placeholder="Tarif *" min="0" step="0.01" required>
+                            <input type="number" id="prix" name="_tarif" placeholder="Tarif *" min="0" max="999.99" step="0.01" required>
                         </fieldset>
                     </div>
                 </div>
@@ -315,7 +315,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     <div class="col">
                         <fieldset class="duree">
                             <legend style="display:block;">Durée de la visite *</legend>
-                            <input type="time" id="duree" name="duree" placeholder="Durée de la visite">
+                            <input type="time" id="duree" name="duree" placeholder="Durée de la visite" required>
                         </fieldset>
                     </div>
                     <div class="col">
