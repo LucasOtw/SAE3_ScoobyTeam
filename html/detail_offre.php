@@ -1027,7 +1027,6 @@ if (isset($json['results'][0])) {
             cursor: pointer;
             height: 50px;
             display: flex;
-            width: 50%;
             margin-left: 6.5em;
             margin-top: -2em;
             margin-bottom: 7em;
