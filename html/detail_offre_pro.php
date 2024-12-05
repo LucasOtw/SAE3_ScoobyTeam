@@ -885,6 +885,8 @@
 
         // Vérifie si les conditions PHP sont respectées
         var banking = document.querySelector('body').dataset.banking; // Extrait une donnée depuis un attribut data-* du body
+
+        console.log(banking);
         
         // Si les conditions ne sont pas respectées, affiche un message d'erreur
         if (banking == null) {
