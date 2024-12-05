@@ -298,8 +298,9 @@ header.header-tel {
 }
 
 @media (max-width: 429px) {
-  .se_connecter{
-    margin-bottom:1.5em;
+  .btn_plus_tard{
+    text-decoration:none;
+    color:black;
   }
   .deja_compte{
     text-decoration: none;
