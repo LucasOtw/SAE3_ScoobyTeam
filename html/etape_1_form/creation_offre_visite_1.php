@@ -287,7 +287,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     <div class="col">
                         <fieldset>
                             <legend>Tarif (€) *</legend>
-                            <input type="number" id="prix" name="_tarif" placeholder="Tarif *" min="0" step="0.01" required>
+                            <input type="number" id="prix" name="_tarif" placeholder="Tarif *" min="0" max="999.99" step="0.01" required>
                         </fieldset>
                     </div>
                 </div>
