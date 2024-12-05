@@ -7,6 +7,13 @@ if(!isset($_SESSION['membre'])){
    exit;
 }
 
+if (isset($_SERVER['HTTP_REFERER'])) {
+    $referer = $_SERVER['HTTP_REFERER'];
+    echo "Vous venez de la page : $referer";
+} else {
+    echo "Aucun HTTP_REFERER disponible.";
+}
+
 // Vérifie si le formulaire a été soumis    
 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";  // Utilisateur PostgreSQL défini dans .env
