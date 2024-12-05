@@ -789,10 +789,6 @@ footer {
         transition: transform 0.2s ease-in-out;
     }
 
-    .service:hover {
-        transform: scale(1.1);
-        /* Animation au survol */
-    }
 
     @media (max-width: 768px) {
         .service {
