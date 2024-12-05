@@ -5,10 +5,6 @@ session_start();
 // var_dump($_SESSION['crea_offre']);
 // pour afficher les infos (meilleur résultat avec <pre> !)
 
-foreach($_SESSION['crea_offre']['tags'] as $tag){
-   echo $tag;
-}
-
 $mesRepas = [];
 
 if(isset($_POST['envoiFormEtape2'])){
