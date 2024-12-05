@@ -693,7 +693,9 @@ function tempsEcouleDepuisPublication($offre){
                         offers.sort((a, b) => {
                             const noteA = parseFloat(a.getAttribute('data-note')) || 0;
                             const noteB = parseFloat(b.getAttribute('data-note')) || 0;
-                        
+
+                            console.log(noteA+" "+noteB);
+                            
                             // Critère principal : note
                             const diff = noteOrder === 'croissantN' ? noteA - noteB : noteB - noteA;
                             if (diff !== 0) return diff;
