@@ -252,8 +252,6 @@
     }
 
     include("recupInfosCompte.php");
-
-    echo $monComptePro['code_compte_bancaire']
 ?>
 
 <!DOCTYPE html>
