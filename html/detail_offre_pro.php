@@ -250,6 +250,10 @@
     } else {
         echo "Adresse non trouvée.";
     }
+
+    echo "<pre>";
+    var_dump($_SESSION['pro']);
+    echo "</pre>";
 ?>
 
 <!DOCTYPE html>
