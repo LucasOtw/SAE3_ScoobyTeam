@@ -32,6 +32,7 @@
     <header class="header-tel header_membre">
         <div class="logo-tel">
             <img src="images/LogoCouleur.png" alt="PACT Logo">
+            <a class="btn_plus_tard" href="voir_offres.php">Plus tard</a>
         </div>
 
     </header>
