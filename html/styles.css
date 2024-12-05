@@ -296,7 +296,9 @@ header.header-tel {
     display: none;
     background-color: white;
 }
-
+.nav-bar_connexion_membre{
+  display:none;
+}
 @media (max-width: 429px) {
   .se_connecter{
     margin-bottom:5em;
