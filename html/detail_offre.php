@@ -741,7 +741,6 @@ if (isset($json['results'][0])) {
 <div class="titre_detail_offre_responsive">
                 <h1 style="
     display: flex;
-    position: absolute;
     margin-left: -4.4vw;
     margin-top: -1.4vh;
 "><?php echo $details_offre["titre_offre"]; ?></h1>
