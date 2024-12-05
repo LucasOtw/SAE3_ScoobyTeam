@@ -667,8 +667,6 @@ function tempsEcouleDepuisPublication($offre){
                         const offerRate = offer.getAttribute('data-rate');
                         const offerStatus = offer.getAttribute('data-status');
 
-                        console.log(offerCategory+' / '+offerRate+' / '+offerStatus);
-
                         if ((category==='all' || category === offerCategory) && 
                             (!rate || rate === offerRate || (offerRate > rate && offerRate < rate+1)) &&
                             (!status || status === offerStatus))
@@ -682,6 +680,10 @@ function tempsEcouleDepuisPublication($offre){
             
                     // Trier les offres visibles
                     let offers = Array.from(document.querySelectorAll('.offer:not(.hidden)'));
+
+                    console.log('Price Order:', priceOrder);
+                    console.log('Note Order:', noteOrder);
+
             
                     if (priceOrder) {
                         offers.sort((a, b) => {
