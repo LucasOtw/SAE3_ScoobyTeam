@@ -2046,7 +2046,10 @@ main.main_poster_avis .message-erreur {
     display:none;
   }
   .logo_tel{
-    margin-left:4.5em
+    margin-left:4.5em;
+  }
+  .logo_tel img{
+    margin-left:4.5em;
   }
     .footer_poster_avis {
         display: none;
