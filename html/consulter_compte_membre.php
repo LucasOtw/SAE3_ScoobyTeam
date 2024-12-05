@@ -428,9 +428,9 @@ if (isset($_POST['changePhoto'])) {
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Publier</a></li>
-                    <li><a href="#">Historique</a></li>
+                    <li><a href="voir_offres.php">Accueil</a></li>
+                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <li><a href="consulter_mes_avis.php">Historique</a></li>
                 </ul>
             </div>
             <div class="link-group">
