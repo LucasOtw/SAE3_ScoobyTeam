@@ -251,8 +251,10 @@
         echo "Adresse non trouvée.";
     }
 
+    include(recupInfosCompte.php);
+
     echo "<pre>";
-    var_dump($_SESSION['pro']);
+    var_dump($monComptePro);
     echo "</pre>";
 ?>
 
