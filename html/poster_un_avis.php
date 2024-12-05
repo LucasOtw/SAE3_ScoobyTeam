@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <header class="header-tel header_membre">
             <div class="logo-tel">
-                <img src="images/logoNoirVert.png" alt="PACT Logo">
+                <a href:"voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
             </div>
         </header>
 
