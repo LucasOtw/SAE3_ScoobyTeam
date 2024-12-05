@@ -885,11 +885,12 @@
 
         // Vérifie si les conditions PHP sont respectées
         const banking = document.querySelector('body').getAttribute('data-banking'); // Extrait une donnée depuis un attribut data-* du body
+        const pub = <?php echo json_encode(isset($monComptePro['num_siren'])); ?>;
 
         console.log(banking);
         
         // Si les conditions ne sont pas respectées, affiche un message d'erreur
-        if (banking == null) {
+        if (banking == null && !pub) {
             alert("Vous devez d'abord renseigner un compte bancaire dans l'onglet 'Compte bancaire'.");
             return; // Empêche l'exécution du reste de la fonction
         }
