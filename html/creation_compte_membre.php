@@ -34,6 +34,13 @@
             <img src="images/LogoCouleur.png" alt="PACT Logo">
             <a class="btn_plus_tard_crea" href="voir_offres.php">Plus tard</a>
         </div>
+        <style>
+            .btn_plus_tard_crea{
+                text-decoration:none;
+                color:black;
+                margin-top:2em;
+            }
+        </style>
 
     </header>
 
