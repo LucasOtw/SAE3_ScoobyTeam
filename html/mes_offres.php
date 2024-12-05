@@ -116,7 +116,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
                     <h3><?php echo $monOffre['titre_offre']; ?></h3>
                     <p class="category"><?php echo $monOffre['_resume']; ?></p>
                     <p class="update"><span class="update-icon">⟳</span> Update <?php echo strtolower(tempsEcouleDepuisUpdate($monOffre)) ?></p>
-                    <p class="last-update"><?php if ($monOffre['en_ligne']) { ?>Publiée <?php echo strtolower(tempsEcouleDepuisPublication($monOffre)) ?> <?php } else { echo "N'est pas publié" ; } ?></p>
+                    <p class="last-update"><?php if ($monOffre['en_ligne']) { ?>Publiée <?php echo strtolower(tempsEcouleDepuisPublication($monOffre)) ?> <?php } else { echo "N'est pas publiée" ; } ?></p>
                     <p class="offer-type"><?php echo $monOffre['nom_type']; ?></p>
                     <p class="price"><?php echo $monOffre['tarif']; ?>€</p>
                 </div>
