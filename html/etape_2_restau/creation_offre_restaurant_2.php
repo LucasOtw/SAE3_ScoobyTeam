@@ -48,7 +48,7 @@ if(isset($_POST['envoiFormEtape2'])){
 
    if(!empty($erreurs)){
       foreach($erreurs as $erreur){
-         echo $erreur;
+         echo $erreur."<br>";
       }
    } else {
       foreach($_POST['repas'] as $repas){
