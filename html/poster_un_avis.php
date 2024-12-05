@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <header class="header-tel header_membre">
             <div class="logo-tel">
-                <a href:"voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
+                <a href="voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
             </div>
         </header>
 
@@ -140,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="poster_un_avis_back_button">
                   <form id="back_button" action="detail_offre.php" method="POST">
                        <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
-                       <a href:"voir_offres.php"><img src="images/Bouton_retour.png" class="back-button"></a>
+                       <a href="voir_offres.php"><img src="images/Bouton_retour.png" class="back-button"></a>
                    </form>
             <h1 class="titre_poster_un_avis_format_tel">Publier un avis</h1>
             </div>
