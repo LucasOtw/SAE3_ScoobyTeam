@@ -83,7 +83,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             foreach($erreurs as $erreur){
                 echo $erreur;
             }
-            echo "HA";
         } else {
             // si il n'y a aucune erreur, on peut stocker les données.
             echo "<pre>";
