@@ -130,7 +130,7 @@ if(!empty($_POST)){
         <div class="logo-tel">
             <img src="images/LogoCouleur.png" alt="PACT Logo">
         </div>
-         <a class="btn_plus-tard" href="voir_offres.php">Plus tard</a>
+         <a class="btn_plus_tard" href="voir_offres.php">Plus tard</a>
     </header>
         <h3 class="connexion_membre_ravi">Ravi de vous revoir !</h3>
         
