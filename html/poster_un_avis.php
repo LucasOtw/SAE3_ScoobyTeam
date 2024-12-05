@@ -16,7 +16,7 @@ if (isset($_SERVER['HTTP_REFERER'])) {
 
 if(isset($_SERVER['HTTP_REFERER'])){
    if($_SERVER['HTTP_REFERER'] == "https://scooby-team.ventsdouest.dev/detail_offre.php"){
-      echo "ZSDEFGHJKLM";
+      $details_offre = $_SESSION['detail_offre'];
    }
 }
 
