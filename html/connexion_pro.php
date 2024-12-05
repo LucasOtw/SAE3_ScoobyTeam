@@ -8,6 +8,7 @@ echo "<pre>";
 var_dump($_SESSION);
 echo "</pre>";
 */
+echo password_hash('test', PASSWORD_DEFAULT);
 ?>
 
 <!DOCTYPE html>
