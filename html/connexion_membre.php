@@ -168,7 +168,7 @@ if(!empty($_POST)){
                 -->
                     <div class="connexion_membre_btn_connecter_pas_de_compte">
                         <button class="se_connecter" type="submit">Se connecter</button>
-                        <button type="submit">Plus Tard</button>
+                        
                         <hr>
                         <div class="connexion_membre_liens_connexion_inscription">
                             <p><span class="pas_de_compte">Pas de compte ?<a href="creation_compte_membre.php">Inscription</a></p>
@@ -184,6 +184,20 @@ if(!empty($_POST)){
             </div>
         </div>
     </main>
+    <nav class="nav-bar_connexion_membre">
+        <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
+        <a href="consulter_mes_avis.php"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
+        <a href="incitation.php"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
+        <a href="
+                <?php
+                if (isset($_SESSION["membre"]) || !empty($_SESSION["membre"])) {
+                    echo "compte_membre_tel.php";
+                } else {
+                    echo "connexion_membre.php";
+                }
+                ?>">
+            <img src="images/icones/User icon.png" alt="image de Personne"></a>
+    </nav>
 </body>
 
 </html>
