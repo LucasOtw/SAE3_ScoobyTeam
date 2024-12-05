@@ -253,10 +253,6 @@
 
     include("recupInfosCompte.php");
 
-    echo "<pre>";
-    var_dump($monComptePro);
-    echo "</pre>";
-
     echo $monComptePro['code_compte_bancaire']
 ?>
 
