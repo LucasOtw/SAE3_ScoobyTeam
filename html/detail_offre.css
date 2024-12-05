@@ -970,6 +970,9 @@ form .btn-link {
 .titre_detail_offre_responsive {
     text-align: center;
     margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .description-link {
