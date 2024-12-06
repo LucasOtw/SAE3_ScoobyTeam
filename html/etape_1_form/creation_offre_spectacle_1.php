@@ -14,13 +14,6 @@ if(!isset($_SESSION['pro'])){
     exit;
 }
 
-if(isset($_GET['logout'])){
-    session_unset();
-    session_destroy();
-    header('location: connexion_pro.php');
-    exit;
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -193,10 +186,22 @@ if(isset($_GET['logout'])){
 
                 <!-- Durée spectacle -->
                 <div class="row">
-                <div class="col">
+                    <div class="col">
                         <fieldset class="duree">
                             <legend style="display:block;">Durée du spectacle</legend>
                             <input type="time" id="duree" name="duree" placeholder="Durée du spectacle">
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset class="duree">
+                            <legend style="display:block;">Date du spectacle</legend>
+                            <input type="date" name="date" placeholder="Date du spectacle">
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset class="duree">
+                            <legend style="display: block;">Heure du spectacle</legend>
+                            <input type="time" name="duree" placeholder="Heure du spectacle">
                         </fieldset>
                     </div>
                 </div>
