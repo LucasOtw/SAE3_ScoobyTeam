@@ -179,7 +179,7 @@ if(!isset($_SESSION['pro'])){
                     <div class="col">
                         <fieldset>
                             <legend>Capacité d'accueil *</legend>
-                            <input type="number" id="capacite_accueil" name="capacite_accueil" placeholder="Capacité d'accueil *">
+                            <input type="number" id="capacite_accueil" name="capacite_accueil" placeholder="Capacité d'accueil *" required>
                         </fieldset>
                     </div>  
                 </div>
@@ -189,19 +189,19 @@ if(!isset($_SESSION['pro'])){
                     <div class="col">
                         <fieldset class="duree">
                             <legend style="display:block;">Durée du spectacle</legend>
-                            <input type="time" id="duree" name="duree" placeholder="Durée du spectacle">
+                            <input type="time" id="duree" name="duree" placeholder="Durée du spectacle" required>
                         </fieldset>
                     </div>
                     <div class="col">
                         <fieldset class="duree">
                             <legend style="display:block;">Date du spectacle</legend>
-                            <input type="date" name="date" placeholder="Date du spectacle">
+                            <input type="date" name="date" placeholder="Date du spectacle" required>
                         </fieldset>
                     </div>
                     <div class="col">
                         <fieldset class="duree">
                             <legend style="display: block;">Heure du spectacle</legend>
-                            <input type="time" name="duree" placeholder="Heure du spectacle">
+                            <input type="time" name="duree" placeholder="Heure du spectacle" required>
                         </fieldset>
                     </div>
                 </div>
@@ -211,8 +211,8 @@ if(!isset($_SESSION['pro'])){
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Résumé (facultatif)</legend>
-                            <input type="text" id="resume" name="resume" placeholder="Résumé (facultatif)">
+                            <legend>Résumé</legend>
+                            <input type="text" id="resume" name="resume" placeholder="Résumé" required>
                         </fieldset>
                     </div>
                 </div>
@@ -221,8 +221,8 @@ if(!isset($_SESSION['pro'])){
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Description (facultatif)</legend>
-                            <input type="text" id="description" name="description" placeholder="Description (facultatif)">
+                            <legend>Description</legend>
+                            <input type="text" id="description" name="description" placeholder="Description" required>
                         </fieldset>
                     </div>
                 </div>
@@ -238,34 +238,44 @@ if(!isset($_SESSION['pro'])){
                     </div>
                 </div>
 
-                <!-- Tags -->
-                <div class="row">
-                    <div class="col">
+                <?php
 
-                        <label for="tags">Tags</label>
+                $mesTags = $dbh->prepare("SELECT * FROM tripenarvor._tags WHERE visite = true");
+                $mesTags->execute();
+                $mesTags = $mesTags->fetchAll(PDO::FETCH_ASSOC);
 
-                        <div class="dropdown-container">
-                            <button type="button" class="dropdown-button">Sélectionner des tags</button>
-                            <div class="dropdown-content">
-
-                            <?php
-
-                                    foreach($dbh->query('SELECT nom_tag from tripenarvor._son_tag natural join tripenarvor._tags where restauration = true', PDO::FETCH_ASSOC) as $row)
-                                    {
-                                    ?>
-                                <label class="tag">
-                                    <input type="checkbox" name="tags" value="<?php echo $row; ?>">
-                                    <?php echo ucfirst($row); ?>
-                                </label>
-                                    <?php
-                                    }
+                ?>
+                
+                <!-- TAGS -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Checkbox
+                            </th>
+                            <th>
+                                Tag
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            foreach($mesTags as $monTag){
                                 ?>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="tags[]" value="<?php echo $monTag['code_tag'] ?>">
+                                        <!-- On peut stocker chaque valeur pour chaque checkbox cochée dans un tableau "tags[]" -->
+                                    </td>
+                                    <td>
+                                        <?php echo $monTag['nom_tag']; ?>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                        ?>
+                    </tbody>
+                </table>
 
 
                 <button type="submit" id="button_valider">
