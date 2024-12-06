@@ -240,7 +240,7 @@ if(!isset($_SESSION['pro'])){
 
                 <?php
 
-                $mesTags = $dbh->prepare("SELECT * FROM tripenarvor._tags WHERE visite = true");
+                $mesTags = $dbh->prepare("SELECT * FROM tripenarvor._tags WHERE spectacle = true");
                 $mesTags->execute();
                 $mesTags = $mesTags->fetchAll(PDO::FETCH_ASSOC);
 
