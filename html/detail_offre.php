@@ -82,8 +82,6 @@ if(isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])){
         // si on n'a pas de POST alors on ne vient pas de l'accueil, DONC il y a une session.
         $details_offre = $_SESSION['detail_offre'];
     }
-
-    $_SESSION['detail_offre'] = $details_offre;
     $details_offre = $_SESSION['detail_offre'];
 
     $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
@@ -191,6 +189,8 @@ if(isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])){
         $adresse_offre->bindValue(":code_adresse", $details_offre["code_adresse"]);
         $adresse_offre->execute();
         $adresse_offre = $adresse_offre->fetch(PDO::FETCH_ASSOC);
+
+        $_SESSION['detail_offre'] = $details_offre;
 
     }
 }
