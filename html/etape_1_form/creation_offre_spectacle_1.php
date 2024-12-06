@@ -82,7 +82,7 @@ if(!isset($_SESSION['pro'])){
                     <div class="col">
                         <fieldset>
                             <legend>Nom du spectacle *</legend>
-                            <input type="text" id="nom_offre" name="nom_offre" placeholder="Nom du spectacle *">
+                            <input type="text" id="nom_offre" name="nom_offre" placeholder="Nom du spectacle *" required>
                         </fieldset>
                     </div>
                     <div class="col">
@@ -93,28 +93,12 @@ if(!isset($_SESSION['pro'])){
                     </div>
                 </div>
 
-                <!-- Email & Phone -->
-                <div class="row">
-                    <div class="col">
-                        <fieldset>
-                            <legend>Email *</legend>
-                            <input type="email" id="email" name="email" placeholder="Email *">
-                        </fieldset>            
-                    </div>
-                    <div class="col">                     
-                        <fieldset>
-                            <legend>Téléphone *</legend>
-                            <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *">
-                        </fieldset>
-                    </div>
-                </div>
-
                 <!-- Localisation -->
                 <div class="row">
                     <div class="col">
                         <fieldset>
                             <legend>Adresse Postale *</legend>
-                            <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *">
+                            <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -132,7 +116,7 @@ if(!isset($_SESSION['pro'])){
                     <div class="col">
                         <fieldset>
                             <legend>Ville *</legend>
-                            <input type="text" id="ville" name="ville" placeholder="Ville *">
+                            <input type="text" id="ville" name="ville" placeholder="Ville *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -141,7 +125,7 @@ if(!isset($_SESSION['pro'])){
                     <div class="col">
                         <fieldset>
                             <legend>Code Postal *</legend>
-                            <input type="text" id="code_postal" name="code_postal" placeholder="Code Postal *">
+                            <input type="text" id="code_postal" name="code_postal" placeholder="Code Postal *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -151,7 +135,7 @@ if(!isset($_SESSION['pro'])){
                     <div class="col">
                         <fieldset>
                             <legend>Tarif *</legend>
-                            <input type="text" id="prix" name="prix" placeholder="Tarif *">
+                            <input type="text" id="prix" name="prix" placeholder="Tarif *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -170,7 +154,7 @@ if(!isset($_SESSION['pro'])){
                 <div class="row">
                     <div class="col">
                         <label for="photos">Photos (facultatif)</label>
-                        <input type="file" id="photos" name="photos[]" multiple>
+                        <input type="file" id="photos" name="photos[]" multiple required>
                     </div>
                 </div>
 
