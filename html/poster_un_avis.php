@@ -8,7 +8,7 @@ if(!isset($_SESSION['membre'])){
 }
 
 if(isset($_SERVER['HTTP_REFERER'])){
-   if(!isset($_POST['publier']) && $_SERVER['HTTP_REFERER'] == "https://scooby-team.ventsdouest.dev/detail_offre.php"){
+   if(isset($_POST['publier']) && $_SERVER['HTTP_REFERER'] == "https://scooby-team.ventsdouest.dev/detail_offre.php"){
       $details_offre = $_SESSION['detail_offre'];
    } else {
       header('location: voir_offres.php');
