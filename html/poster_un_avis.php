@@ -7,13 +7,21 @@ if(!isset($_SESSION['membre'])){
    exit;
 }
 
-if(isset($_SERVER['HTTP_REFERER'])){
-   if(isset($_POST['publier']) && $_SERVER['HTTP_REFERER'] == "https://scooby-team.ventsdouest.dev/detail_offre.php"){
-      $details_offre = $_SESSION['detail_offre'];
-   } else {
-      header('location: voir_offres.php');
-      exit;
-   }
+// Vérifie si HTTP_REFERER est défini
+if (isset($_SERVER['HTTP_REFERER'])) {
+    // Vérifie que la page précédente est "detail_offre.php"
+    if ($_SERVER['HTTP_REFERER'] === "https://scooby-team.ventsdouest.dev/detail_offre.php" && !isset($_POST['publier'])) {
+        // Action si les conditions sont respectées
+        $details_offre = $_SESSION['detail_offre'];
+    } else {
+        // Redirection si les conditions ne sont pas remplies
+        header('Location: voir_offres.php');
+        exit;
+    }
+} else {
+    // Redirection si aucun HTTP_REFERER n'est disponible
+    header('Location: voir_offres.php');
+    exit;
 }
 
 // Vérifie si le formulaire a été soumis    
