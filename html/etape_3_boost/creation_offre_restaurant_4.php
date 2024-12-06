@@ -97,11 +97,11 @@ if(isset($_POST['envoiForm4'])){
                                 ?>
                                 <div>
                                     <input type="radio" id="offre_premium" name="offre" value="standard" required>
-                                    <label class="label-check" for="offre_standard">Offre Standard <sup>2</sup> (<?php echo $prixOffre[0]['prix'] ?> / jour)</label>
+                                    <label class="label-check" for="offre_standard">Offre Standard <sup>2</sup> (<?php echo $prixOffre[0]['prix'] ?>€ / jour)</label>
                                 </div>
                                 <div>
                                     <input type="radio" id="offre_premium" name="offre" value="premium" required>
-                                    <label class="label-check" for="offre_premium">Offre Premium <sup>3</sup> (<?php echo $prixOffre[1]['prix'] ?>)</label>
+                                    <label class="label-check" for="offre_premium">Offre Premium <sup>3</sup> (<?php echo $prixOffre[1]['prix'] ?>€ / jour)</label>
                                 </div>
                                 <?php
                             }
