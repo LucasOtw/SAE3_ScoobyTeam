@@ -14,13 +14,6 @@ if(!isset($_SESSION['pro'])){
     exit;
 }
 
-if(isset($_GET['logout'])){
-    session_unset();
-    session_destroy();
-    header('location: connexion_pro.php');
-    exit;
-}
-
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $tab_offre = [];
 
@@ -180,7 +173,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offre Visite</title>
+    <title>Offre - Visite</title>
     <link rel="stylesheet" href="../creation_offre2.css">
 
 
