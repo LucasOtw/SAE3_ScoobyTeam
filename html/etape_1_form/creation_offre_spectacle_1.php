@@ -14,6 +14,14 @@ if(!isset($_SESSION['pro'])){
     exit;
 }
 
+echo "<pre>";
+var_dump($_SERVER);
+echo "</pre>";
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +29,7 @@ if(!isset($_SESSION['pro'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offre Activité</title>
+    <title>Offre - Spectacle</title>
     <link rel="stylesheet" href="../creation_offre2.css">
 
 
@@ -33,26 +41,9 @@ if(!isset($_SESSION['pro'])){
         </div>
         <nav>
             <ul>
-                <li><a href="../mes_offres.php" class="active">Accueil</a></li>
-                <li><a href="../creation_offre.php">Publier</a></li>
-                <?php
-                    if(isset($_SESSION["pro"]) || !empty($_SESSION["pro"])){
-                       ?>
-                       <li>
-                           <a href="../consulter_compte_pro.php">Mon compte</a>
-                       </li>
-                        <li>
-                            <a href="../connexion_pro.php?deco=true">Se déconnecter</a>
-                        </li>
-                        <?php
-                    } else {
-                        ?>
-                       <li>
-                           <a href="../connexion_pro.php">Se connecter</a>
-                       </li>
-                       <?php
-                    }
-                ?>
+                <li><a href="../mes_offres.php">Accueil</a></li>
+                <li><a href="../creation_offre.php" class="active">Publier</a></li>
+                <li><a href="../consulter_compte_pro.php">Mon compte</a></li>
             </ul>
         </nav>
     </header>
@@ -76,7 +67,7 @@ if(!isset($_SESSION['pro'])){
             <h1>Publier une offre</h1>
 
             <!-- Form Fields -->
-            <form action="" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
+            <form action="#" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
                 <!-- Establishment Name & Type -->
                 <div class="row">
                     <div class="col">
