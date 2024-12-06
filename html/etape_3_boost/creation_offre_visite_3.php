@@ -39,7 +39,7 @@ if(isset($_POST['envoiForm3'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offre Spectacle</title>
+    <title>Offre - Visite</title>
     <link rel="stylesheet" href="../creation_offre2.css">
 
 
