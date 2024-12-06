@@ -218,6 +218,8 @@ if (isset($json['results'][0])) {
 } else {
     echo "Adresse non trouvée.";
 }
+
+var_dump($details_offre);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
