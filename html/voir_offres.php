@@ -715,6 +715,7 @@ function tempsEcouleDepuisPublication($offre){
             
                 offerItems.forEach(offer => {
                     const text = offer.getAttribute('location').toLowerCase();
+                    console.log(text);
                     if (text.includes(query)) {
                         offer.classList.remove('hidden');
                     } else {
