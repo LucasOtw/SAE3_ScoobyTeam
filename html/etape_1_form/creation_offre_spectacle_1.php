@@ -9,15 +9,6 @@ $password = "philly-Congo-bry4nt";
 // Créer une instance PDO
 $dbh = new PDO($dsn, $username, $password);
 
-if(!isset($_SESSION['pro'])){
-    header('location: connexion_pro.php');
-    exit;
-}
-
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -216,8 +207,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 $mesTags = $mesTags->fetchAll(PDO::FETCH_ASSOC);
 
                 ?>
-                
-                <!-- TAGS -->
+
+                <!-- Tags -->
                 <table>
                     <thead>
                         <tr>
@@ -236,7 +227,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                                 <tr>
                                     <td>
                                         <input type="checkbox" name="tags[]" value="<?php echo $monTag['code_tag'] ?>">
-                                        <!-- On peut stocker chaque valeur pour chaque checkbox cochée dans un tableau "tags[]" -->
+                                        <!-- On peut stocker chaque valeur pour chaque checkbox cochée dans un table "tags[]" -->
                                     </td>
                                     <td>
                                         <?php echo $monTag['nom_tag']; ?>
