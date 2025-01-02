@@ -9,6 +9,32 @@ $password = "philly-Congo-bry4nt";
 // Créer une instance PDO
 $dbh = new PDO($dsn, $username, $password);
 
+if(!isset($_SESSION['pro'])){
+    header('location: connexion_pro.php');
+    exit;
+}
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $tab_offre = [];
+
+    // Récupération des champs obligatoires
+    $nomOffre = htmlspecialchars($_POST['nom_offre'] ?? '');
+    $adresse = htmlspecialchars($_POST['adresse'] ?? '');
+    $ville = htmlspecialchars($_POST['ville'] ?? '');
+    $codePostal = htmlspecialchars($_POST['code_postal'] ?? '');
+    $resume = htmlspecialchars($_POST['resume'] ?? '');
+    $description = htmlspecialchars($_POST['description'] ?? '');
+    $tarif = $_POST['prix'] ?? null;
+
+    // Récupération des champs facultatifs
+    $complementAdresse = htmlspecialchars($_POST['complement_adresse'] ?? '');
+    $lien = htmlspecialchars($_POST['lien'] ?? '');
+    $accessibilite = htmlspecialchars($_POST['accessibilite'] ?? '');
+
+    // Récupération des fichiers (images)
+    $photos = $_FILES['photos'] ?? null;
+}
+
 ?>
 
 <!DOCTYPE html>
