@@ -25,6 +25,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $resume = htmlspecialchars($_POST['resume'] ?? '');
     $description = htmlspecialchars($_POST['description'] ?? '');
     $tarif = $_POST['prix'] ?? null;
+    $capacite = $_POST['capacite_accueil'] ?? null;
+    $duree = $_POST['duree'];
+    $date_spectacle = $_POST['date'] ?? null;
+    $heure = $_POST['heure_spectacle'] ?? null;
 
     // Récupération des champs facultatifs
     $complementAdresse = htmlspecialchars($_POST['complement_adresse'] ?? '');
@@ -176,20 +180,20 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <div class="row">
                     <div class="col">
                         <fieldset class="duree">
-                            <legend style="display:block;">Durée du spectacle</legend>
+                            <legend style="display:block;">Durée du spectacle *</legend>
                             <input type="time" id="duree" name="duree" placeholder="Durée du spectacle" required>
                         </fieldset>
                     </div>
                     <div class="col">
                         <fieldset class="duree">
-                            <legend style="display:block;">Date du spectacle</legend>
+                            <legend style="display:block;">Date du spectacle *</legend>
                             <input type="date" name="date" placeholder="Date du spectacle" required>
                         </fieldset>
                     </div>
                     <div class="col">
                         <fieldset class="duree">
-                            <legend style="display: block;">Heure du spectacle</legend>
-                            <input type="time" name="duree" placeholder="Heure du spectacle" required>
+                            <legend style="display: block;">Heure du spectacle *</legend>
+                            <input type="time" name="heure_spectacle" placeholder="Heure du spectacle" required>
                         </fieldset>
                     </div>
                 </div>
