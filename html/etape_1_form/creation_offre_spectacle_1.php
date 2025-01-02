@@ -37,6 +37,45 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     // Récupération des fichiers (images)
     $photos = $_FILES['photos'] ?? null;
+
+    if(empty($nomOffre) || empty($adresse) || empty($ville) || empty($codePostal) || empty($tarif) || empty($duree) || empty($resume) || empty($description) || empty($tarif) || empty($capacite) || empty($duree) || empty($date_spectacle) || empty($heure)){
+        $erreurs[] = "Tous les champs obligatoires doivent être remplis.";
+    } else {
+         // si tous les champs obligatoires sont remplis, on procède aux vérifications
+        if (!preg_match('/^([0-9]{5}|2[AB])$/', $codePostal)) {
+            $erreurs[] = "Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B.";
+        }
+        if(!empty($ville) && !empty($codePostal)){
+            $api_codePostal = 'http://api.zippopotam.us/fr/'.trim($codePostal);
+
+            $api_codePostal = file_get_contents($api_codePostal);
+            if($api_codePostal === FALSE){
+                $erreurs[] = "Erreur lors de l'accès à l'API";
+                exit();
+            }
+            
+            $data = json_decode($api_codePostal,true);
+            $isValid = false;
+            
+            if($data && isset($data['places'])){
+                foreach($data['places'] as $place){
+                    if(stripos($place['place name'], $ville) === 0){
+                        $isValid = true;
+                        break;
+                    }
+                }
+            }
+            if(!$isValid){
+                $erreurs[] = "La ville ne correspond pas au code postal";
+                $erreurs_a_afficher[] = "erreur-ville-code-postal-incompatible";
+            }
+        }
+        if(!empty($erreurs)){
+            foreach($erreurs as $erreur){
+                echo $erreur;
+            }
+        }
+    }
 }
 
 ?>
