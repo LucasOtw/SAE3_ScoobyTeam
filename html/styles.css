@@ -3497,7 +3497,7 @@ main.creation_compte_membre > div:first-of-type{
 main.creation_compte_membre > div:first-of-type > img{
   width: 7%;
   aspect-ratio: 1 / 1;
-  margin-right: 10vw;
+  margin-right: 1vw;
 }
 
 main.creation_compte_membre .creation_compte_membre_container {
