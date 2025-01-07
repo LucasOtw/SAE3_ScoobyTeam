@@ -225,6 +225,7 @@ nav ul li a.active {
     margin-top: 3vh;
     margin-left: 3vw;
     width: 70vw;
+    margin-bottom: 10vh;
 }
 
 .avis h3 {
@@ -255,5 +256,5 @@ nav ul li a.active {
 
 .titre_signalement_2{
     margin-left: 3vw;
-    margin-top: 10vh;
+    
 }
