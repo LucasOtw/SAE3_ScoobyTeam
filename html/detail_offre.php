@@ -695,7 +695,7 @@ if (isset($json['results'][0])) {
                     | <span class="nom_avis"><?php echo $avis["prenom"] . " " . $avis["nom"]; ?></span>
                     <span class="signalement">
                     <a href="signalement.php?id_avis=<?php echo isset($avis['code_avis']) ? htmlspecialchars($avis['code_avis']) : 'invalide'; ?>" title="Signaler cet avis" style="
-    margin-left: 63vw;">
+    margin-left: 63vw; text-decoration: none">
     🚩
 </a>
 
