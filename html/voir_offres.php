@@ -14,7 +14,19 @@ if(isset($_SESSION['membre'])){
 if(isset($_SESSION['detail_offre'])){
     unset($_SESSION['detail_offre']);
 }
+try {
+    $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+    $username = "sae";
+    $password = "philly-Congo-bry4nt";
 
+    // Créer une instance PDO
+    $dbh = new PDO($dsn, $username, $password);
+} 
+catch (PDOException $e) 
+{
+    print "Erreur!: ". $e->getMessage(). "<br/>";
+    die();
+}
 $compte = $dbh->prepare('SELECT * from tripenarvor._membre where code_compte= :code_compte');
 $compte->bindValue(":code_compte",$donneesSession['code_compte']);
 $compte->execute();
@@ -376,19 +388,7 @@ function tempsEcouleDepuisPublication($offre){
         
         <section id="offers-list">
         <?php    
-            try {
-                $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-                $username = "sae";
-                $password = "philly-Congo-bry4nt";
-
-                // Créer une instance PDO
-                $dbh = new PDO($dsn, $username, $password);
-            } 
-            catch (PDOException $e) 
-            {
-                print "Erreur!: ". $e->getMessage(). "<br/>";
-                die();
-            }
+            
             // On récupère toutes les offres (titre,ville,images)
             $infosOffre = $dbh->query('SELECT * FROM tripenarvor._offre');
             $infosOffre = $infosOffre->fetchAll(PDO::FETCH_ASSOC);
