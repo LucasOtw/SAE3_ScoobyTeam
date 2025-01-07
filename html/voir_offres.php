@@ -75,14 +75,14 @@ function tempsEcouleDepuisPublication($offre){
 <div class="half-background">
         <!-- Le contenu de la page ici -->
          <div class="conteneur_titre_voir_offre">
-        <h1 class="h1_voir_offre1">Découvrez la</h1>
+        <h1 class="h1_voir_offre1">Découvrir la</h1>
         <h1 class="h1_voir_offre2">Bretagne !</h1>
 </div>
     </div>
     <!-- Code pour le pop-up --> 
     <div id="customPopup">
         <img src="images/robot_popup.png" width="50" height="70" class="customImage">
-        <p><a href="creation_compte_membre.php" class="txt_popup">Créez votre compte</a> en quelques clics et accédez à un monde de possibilités ! </p>
+        <p><a href="creation_compte_membre.php" class="txt_popup">Créer un compte</a> en quelques clics et accéder à un monde de possibilités ! </p>
         <!--<a id="connexion" href="creation_compte_membre.php">S'inscrire</a>-->
         <img id="closePopup" src="images/erreur.png" width="15" height="15">
     </div>
@@ -188,7 +188,7 @@ function tempsEcouleDepuisPublication($offre){
     
         <div class="search-bar">
             <div class="search-top">
-                <input type="text" class="search-input" placeholder="Recherchez parmi les offres" >
+                <input type="text" class="search-input" placeholder="Rechercher parmi les offres" >
             </div>
 
             <div class="search-options">
@@ -907,9 +907,9 @@ function tempsEcouleDepuisPublication($offre){
     <footer>
         <div class="newsletter">
             <div class="newsletter-content">
-                <h2>Inscrivez-vous à notre Newsletter</h2>
+                <h2>S'Inscrire à notre Newsletter</h2>
                 <p>PACT</p>
-                <p>Redécouvrez la Bretagne !</p>
+                <p>découvrir la Bretagne !</p>
                 <form class="newsletter-form">
                     <input type="email" placeholder="Votre adresse mail" required>
                     <button type="submit">S'inscrire</button>
