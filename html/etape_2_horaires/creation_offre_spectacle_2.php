@@ -1,3 +1,58 @@
+<?php
+
+ob_start();
+session_start();
+
+      if (isset($_POST['EnvoiHoraires'])) {
+          $jours = [
+              'Lundi'    => ['ouvertureL', 'fermetureL'],
+              'Mardi'    => ['ouvertureMa', 'fermetureMa'],
+              'Mercredi' => ['ouvertureMe', 'fermetureMe'],
+              'Jeudi'    => ['ouvertureJ', 'fermetureJ'],
+              'Vendredi' => ['ouvertureV', 'fermetureV'],
+              'Samedi'   => ['ouvertureS', 'fermetureS'],
+              'Dimanche' => ['ouvertureD', 'fermetureD']
+          ];
+      
+          $horaires_par_jour = [];
+          $erreurs = []; // Assurez-vous d'initialiser le tableau
+      
+          foreach ($jours as $jour => [$ouverture, $fermeture]) {
+              $horaire_ouverture = $_POST[$ouverture] ?? '';
+              $horaire_fermeture = $_POST[$fermeture] ?? '';
+      
+              if (!empty($horaire_ouverture) || !empty($horaire_fermeture)) {
+                  if (strtotime($horaire_ouverture) >= strtotime($horaire_fermeture)) {
+                      $erreurs[] = "$jour : L'heure d'ouverture doit être plus ancienne que l'heure de fermeture !";
+                  } else {
+                      $horaires_par_jour[$jour] = [
+                          'ouverture' => $horaire_ouverture,
+                          'fermeture' => $horaire_fermeture
+                      ];
+                  }
+              }
+          }
+
+          if(empty($horaires_par_jour)){
+                $erreurs[] = "Votre offre doit avoir au moins une heure d'ouverture et de fermeture !";
+          }
+      
+          if (!empty($erreurs)) {
+              foreach ($erreurs as $err) {
+                  echo $err . "<br>";
+              }
+          } else {
+              $_SESSION['crea_offre2'] = $horaires_par_jour;
+              header('location: ../etape_3_boost/creation_offre_spectacle_3.php');
+              exit;
+          }
+      }
+        
+ /*       echo '<pre>';
+        print_r($horaires_par_jour);
+        echo '</pre>'; */
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -263,7 +318,7 @@
                 </div>
 
 
-                <button type="submit" id="button_valider">
+                <button type="submit" id="button_valider" name="EnvoiHoraires">
                     Continuer <img src="../images/fleche.png" alt="Fleche" width="25px" height="25px">
                 </button>
 
