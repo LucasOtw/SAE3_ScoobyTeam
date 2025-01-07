@@ -152,7 +152,7 @@ div.header-membre nav ul li a:hover::before {
 /* Mise en forme globale */
 body {
     font-family: 'K2D', sans-serif;
-    background-color: #f4f4f9;
+    background-color: white;
     color: #333;
     margin: 0;
     padding: 0;
@@ -267,9 +267,8 @@ form button:hover {
     max-width: 1000px;
     margin: 50px auto;
     padding: 20px;
-    background-color: white;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
 }
 
 /* Réactivité mobile */
