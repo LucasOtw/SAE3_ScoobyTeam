@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
+    <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16" height="32">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacter Plateforme</title>
     <link rel="stylesheet" href="contacter_plateforme.css">
@@ -13,12 +13,12 @@
     <header class="header-pc header_membre">
         <div class="logo-pc">
             <a href="voir_offres.php">
-                    <img src="images/logoBlanc.png" alt="PACT Logo">
+                <img src="images/logoBlanc.png" alt="PACT Logo">
             </a>
         </div>
         <nav>
             <ul>
-                <li><a href="voir_offres.php" >Accueil</a></li>
+                <li><a href="voir_offres.php">Accueil</a></li>
                 <li><a href="connexion_pro.php">Publier</a></li>
                 <li><a href="#" class="active">Se connecter</a></li>
             </ul>
@@ -34,7 +34,7 @@
 
     <main>
         <div class="profile-img-container">
-            <img class="profile-img">
+            <img class="profile-img" alt="Image de profil">
             <h2>Notre priorité, c'est de vous apporter l'aide dont vous avez besoin.</h2>
         </div>
         <section class="contact-section">
@@ -60,52 +60,52 @@
             </form>
         </section>
     </main>
+
+    <footer>
+        <div class="footer-links">
+            <div class="logo">
+                <img src="images/logoBlanc.png" alt="Logo PACT">
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="#">Mentions Légales</a></li>
+                    <li><a href="#">RGPD</a></li>
+                    <li><a href="#">Nous connaître</a></li>
+                    <li><a href="#">Nos partenaires</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="voir_offres.php">Accueil</a></li>
+                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <li><a href="#">Historique</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="#">CGU</a></li>
+                    <li><a href="#">Signaler un problème</a></li>
+                    <li><a href="#">Nous contacter</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="#">Presse</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">Notre équipe</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="social-icons">
+                <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
+                <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
+                <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+                <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+            </div>
+        </div>
+    </footer>
 </body>
-
-<footer>
-    <div class="footer-links">
-        <div class="logo">
-            <img src="images/logoBlanc.png" alt="Logo PAVCT">
-        </div>
-        <div class="link-group">
-            <ul>
-                <li><a href="#">Mentions Légales</a></li>
-                <li><a href="#">RGPD</a></li>
-                <li><a href="#">Nous connaître</a></li>
-                <li><a href="#">Nos partenaires</a></li>
-            </ul>
-        </div>
-        <div class="link-group">
-            <ul>
-                <li><a href="voir_offres.php">Accueil</a></li>
-                <li><a href="connexion_pro.php">Publier</a></li>
-                <li><a href="#">Historique</a></li>
-            </ul>
-        </div>
-        <div class="link-group">
-            <ul>
-                <li><a href="#">CGU</a></li>
-                <li><a href="#">Signaler un problème</a></li>
-                <li><a href="#">Nous contacter</a></li>
-            </ul>
-        </div>
-        <div class="link-group">
-            <ul>
-                <li><a href="#">Presse</a></li>
-                <li><a href="#">Newsletter</a></li>
-                <li><a href="#">Notre équipe</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        <div class="social-icons">
-            <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
-            <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
-            <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
-            <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
-        </div>
-    </div>
-</footer>
 
 </html>
