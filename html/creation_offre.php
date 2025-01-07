@@ -55,15 +55,15 @@ if(isset($_SESSION['crea_offre'])){
             <form method="post">              
                 <label for="offre">Choisissez le type de votre offre</label>
                 <div class="type_offre_select_button">
-                    <select id="offre" name="offreChoisie" data-placeholder="Sélectionner..." required>
-                        <option value="" hidden selected>Sélectionner...</option>
+                    <select id="offre" name="offreChoisie" data-placeholder="Sélectionnez..." required>
+                        <option value="" hidden selected>Sélectionnez...</option>
                         <option value="restaurant">Restaurant</option>
                         <option value="spectacle">Spectacle</option>
                         <option value="visite">Visite</option>
                         <option value="attraction">Parc d'attraction</option>
                         <option value="activite">Activité</option>
                     </select>
-                    <button type="submit" class="button_continuer">Continuer
+                    <button type="submit" class="button_continuer">Continuez
                         <img src="images/fleche.png" alt="Fleche" width="25px" height="25px">
                     </button>
                 </div>

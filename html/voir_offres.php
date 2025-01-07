@@ -15,7 +15,9 @@ if(isset($_SESSION['detail_offre'])){
     unset($_SESSION['detail_offre']);
 }
 
-
+echo "<pre>";
+var_dump($donneesSession);
+echo "</pre>";
 function tempsEcouleDepuisPublication($offre){
     // date d'aujourd'hui
     $date_actuelle = new DateTime();
