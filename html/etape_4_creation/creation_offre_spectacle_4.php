@@ -26,6 +26,39 @@ if(!isset($_SESSION['pro'])){
     exit;
 }
 
+if (!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])) {
+    // Vérifier si une ou plusieurs sessions nécessaires ne sont pas définies
+    if (!isset($_SESSION['crea_offre']) || !isset($_SESSION['crea_offre2']) || !isset($_SESSION['crea_offre3'])) {
+
+        // Cas où SEULEMENT $_SESSION['crea_offre3'] manque
+        if (!isset($_SESSION['crea_offre3']) 
+            && isset($_SESSION['crea_offre']) 
+            && isset($_SESSION['crea_offre2']) {
+
+            // Vérifier si l'utilisateur est un professionnel privé
+            if (isset($monComptePro['num_siren'])) {
+                // Redirection obligatoire vers la page des boosts pour un professionnel privé
+                header('location: ../etape_3_boost/creation_offre_spectacle_3.php');
+                exit;
+            }
+        } else {
+            header('location: ../etape_3_boost/creation_offre_spectacle3.php');
+        }
+    }
+}
+
+$infosCB = null;
+
+// on vérifie si le pro a un compte bancaire
+if($monComptePro['code_compte_bancaire']){
+    // si le pro a un code de compte bancaire, on récupère ses infos
+    $recupInfosCB = $dbh->prepare('SELECT * FROM tripenarvor._compte_bancaire WHERE code_compte_bancaire = :code_cb');
+    $recupInfosCB->bindValue(":code_cb",$monComptePro['code_compte_bancaire']);
+    $recupInfosCB->execute();
+
+    $infosCB = $recupInfosCB->fetch(PDO::FETCH_ASSOC);
+}
+
 echo "<pre>";
 var_dump($_SESSION['crea_offre']);
 var_dump($_SESSION['crea_offre2']);
