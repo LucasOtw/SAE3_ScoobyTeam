@@ -149,6 +149,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 $tab_offre['tags'] = $mesTags;
 
                 $_SESSION['crea_offre'] = $tab_offre;
+                header('location: ../etape_2_horaires/creation_offre_spectacle_2.php');
+                exit;
             }
         }
     }
