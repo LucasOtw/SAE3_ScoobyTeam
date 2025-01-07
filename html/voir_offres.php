@@ -166,7 +166,7 @@ function tempsEcouleDepuisPublication($offre){
                         if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
                            ?>
                            <li>
-                               <a href="consulter_compte_membre.php"><?php echo $resultat['nom'] . ' ' . substr($resultat['prenom'], 0,1);?><!--<img src="<?php echo $resultat['url_image'];?>" alt="photo de profil"/>--></a>
+                               <a href="consulter_compte_membre.php"><?php echo $resultat['nom'] . ' ' . substr($resultat['prenom'], 0,1);?></a>
                            </li>
                             <?php
                         } else {
