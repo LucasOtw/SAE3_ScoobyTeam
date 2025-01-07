@@ -550,6 +550,27 @@ if(!isset($_SESSION['pro'])){
         });
     </script>
 
+ <!-- Bouton pour imprimer la facture -->
+<button id="print-btn">Imprimer la facture</button>
+
+<script>
+    // Fonction d'impression
+    document.getElementById('print-btn').addEventListener('click', () => {
+        const element = document.getElementById('facture-container'); // Conteneur cible
+
+        // Créer une fenêtre d'impression temporaire
+        const printWindow = window.open('', '_blank');
+        printWindow.document.write('<html><head><title>Impression de la facture</title></head><body>');
+        printWindow.document.write(element.outerHTML); // Copier le contenu du conteneur
+        printWindow.document.write('</body></html>');
+        printWindow.document.close(); // Nécessaire pour certains navigateurs
+        printWindow.focus(); // Mettre la fenêtre au premier plan
+        printWindow.print(); // Lancer l'impression
+        printWindow.close(); // Fermer la fenêtre après impression
+    });
+</script>
+
+
 </main>
 <footer class="footer">
     <div class="footer-links">
