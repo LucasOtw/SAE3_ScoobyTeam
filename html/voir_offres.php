@@ -1,19 +1,23 @@
 <?php
 session_start();
 
-if(isset($_GET["deco"])){
+if (isset($_GET["deco"])) {
     session_destroy();
-};
+    exit; // Ajout d'une sortie après la destruction de la session pour éviter d'autres traitements
+}
 
-if(isset($_SESSION['membre'])){
-   $donneesSession = json_encode($_SESSION['membre'],JSON_PRETTY_PRINT);
+if (isset($_SESSION['membre'])) {
+    $donneesSession = $_SESSION['membre'];
+    $donneesSessionJson = json_encode($donneesSession, JSON_PRETTY_PRINT); // Si le JSON est nécessaire
 } else {
     $donneesSession = null;
+    $donneesSessionJson = null;
 }
 
-if(isset($_SESSION['detail_offre'])){
+if (isset($_SESSION['detail_offre'])) {
     unset($_SESSION['detail_offre']);
 }
+
 try {
     $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
     $username = "sae";
@@ -21,22 +25,23 @@ try {
 
     // Créer une instance PDO
     $dbh = new PDO($dsn, $username, $password);
-} 
-catch (PDOException $e) 
-{
-    print "Erreur!: ". $e->getMessage(). "<br/>";
-    die();
+} catch (PDOException $e) {
+    die("Erreur!: " . $e->getMessage() . "<br/>");
 }
 
-//print_r($donneesSession["code_compte"]);
+// Vérifier si $donneesSession est valide avant de l'utiliser
+if ($donneesSession && isset($donneesSession["code_compte"])) {
+    $code_compte = $donneesSession["code_compte"];
+    
+    $compte = $dbh->prepare('SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte');
+    $compte->bindValue(":code_compte", $code_compte);
+    $compte->execute();
 
-
-/*
-$compte = $dbh->prepare('SELECT * from tripenarvor._membre where code_compte= :code_compte');
-$compte->bindValue(":code_compte",$donneesSession["code_compte"]);
-$compte->execute();
-*/
-
+    $resultat = $compte->fetchAll(PDO::FETCH_ASSOC);
+    print_r($resultat);
+} else {
+    echo "Code compte introuvable dans les données de session.";
+}
 
 
 function tempsEcouleDepuisPublication($offre){
@@ -162,7 +167,7 @@ function tempsEcouleDepuisPublication($offre){
                         if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
                            ?>
                            <li>
-                               <a href="consulter_compte_membre.php"><?php echo "Mon Compte" /*$compte['nom'] . substr($compte['prenom'], 0, 0)*/;?> </a>
+                               <a href="consulter_compte_membre.php"><?php echo $compte['nom'] . substr($compte['prenom'], 0, 0);?> </a>
                            </li>
                             <?php
                         } else {
