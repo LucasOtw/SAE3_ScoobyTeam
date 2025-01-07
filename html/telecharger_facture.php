@@ -580,7 +580,8 @@ if(!isset($_SESSION['pro'])){
 <button id="print-btn">Imprimer la facture</button>
 
 <!-- Bibliothèque html2canvas -->
-<script src="js/html2canvas.min.js"></script> <!-- Utilisez un chemin local -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 
 <script>
     // Fonction d'impression
