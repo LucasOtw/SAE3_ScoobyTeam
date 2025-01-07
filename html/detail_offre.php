@@ -657,6 +657,7 @@ if (isset($json['results'][0])) {
             <div class="avis-list">
     <?php
     foreach ($tout_les_avis as $avis) {
+        var_dump($avis);
         $appreciation = "";
 
         switch ($avis["note"]) {
@@ -679,11 +680,11 @@ if (isset($json['results'][0])) {
                 break;
         }
 
-        // if (!isset($avis["prenom"]) && !isset($avis["nom"]))
-        // {
-        //     $avis["prenom"] = "Utilisateur";
-        //     $avis["nom"] = "supprimé";
-        // }
+        if (!isset($avis["prenom"]) && !isset($avis["nom"]))
+        {
+            $avis["prenom"] = "Utilisateur";
+            $avis["nom"] = "supprimé";
+        }
                    
         
         ?>
