@@ -212,14 +212,12 @@ if (!empty($_POST['supprAvis'])){
             }
             
             .custom-confirm-content button:last-child {
-                padding: 14px 62px;
+                
                 background-color: #FFF;
                 color: black;
                 border: none;
                 border-radius: 16px;
                 cursor: pointer;
-                width: 223px;
-                height: 52px;
                 border: 1px #BDC426 solid;
                 margin-right: 1em;
                 box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
