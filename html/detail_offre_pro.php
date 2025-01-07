@@ -372,11 +372,11 @@
                         </div>
                     </div>
                     <div> 
-                        <h4 id="offer-state"> 
+                        <h3 id="offer-state"> 
                             <span id="offer-status"> 
                                 <?php echo $details_offre[ 'en_ligne'] ? "En Ligne" : "Hors Ligne"; ?>
                            </span>
-                        </h4>
+                        </h3>
                      </div>
 
                     <!-- <script src="toggle-button.js"></script> -->
