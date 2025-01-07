@@ -232,7 +232,7 @@ nav ul li a.active {
     margin-bottom: 10px;
     display: flex;
     align-items: center;
-    margin-left: -3vw;
+    margin-left: -2vw;
 }
 
 .avis h3::before {
