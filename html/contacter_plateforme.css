@@ -296,7 +296,7 @@ header.header-tel {
     padding: 0;
 }
 /* Style spécifique au formulaire de contact */
-.contact-form {
+.contact-section {
     background-color: white;
     padding: 40px;
     max-width: 600px;
@@ -305,22 +305,23 @@ header.header-tel {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.contact-form h2 {
+.contact-section h2 {
     text-align: center;
     margin-bottom: 20px;
     color: var(--vert-fonce);
+    font-size: 2rem;
 }
 
-.contact-form label {
+.contact-section label {
     font-size: 16px;
     color: var(--vert-fonce);
     display: block;
     margin-bottom: 5px;
 }
 
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
+.contact-section input,
+.contact-section select,
+.contact-section textarea {
     width: 100%;
     padding: 12px;
     margin: 10px 0 20px;
@@ -331,18 +332,18 @@ header.header-tel {
     color: var(--vert-fonce);
 }
 
-.contact-form select {
+.contact-section select {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
 }
 
-.contact-form textarea {
+.contact-section textarea {
     resize: vertical;
     min-height: 100px;
 }
 
-.contact-form button {
+.contact-section button {
     background-color: var(--orange);
     color: white;
     border: none;
@@ -353,28 +354,29 @@ header.header-tel {
     width: 100%;
 }
 
-.contact-form button:hover {
+.contact-section button:hover {
     background-color: var(--vert-clair);
 }
 
 /* Styles supplémentaires pour la responsivité */
 @media (max-width: 768px) {
-    .contact-form {
+    .contact-section {
         padding: 20px;
         margin: 20px auto;
     }
 
-    .contact-form h2 {
+    .contact-section h2 {
         font-size: 1.8rem;
     }
 
-    .contact-form input,
-    .contact-form select,
-    .contact-form textarea {
+    .contact-section input,
+    .contact-section select,
+    .contact-section textarea {
         font-size: 16px;
     }
 
-    .contact-form button {
+    .contact-section button {
         font-size: 14px;
     }
 }
+
