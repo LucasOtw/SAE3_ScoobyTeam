@@ -18,6 +18,8 @@
       if ($stmt->execute()) {
           // Succès
           http_response_code(200);
+          header('location: voir_offres.php');
+          exit;
           echo json_encode(['message' => 'Compte supprimé']);
       } else {
           // Échec
