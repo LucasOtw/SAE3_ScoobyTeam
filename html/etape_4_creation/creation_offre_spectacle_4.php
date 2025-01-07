@@ -409,7 +409,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offre - Restaurant</title>
+    <title>Offre - Spectacle</title>
     <link rel="stylesheet" href="creation_offre3.css?">
 </head>
 <body>
