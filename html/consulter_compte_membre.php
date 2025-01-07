@@ -241,6 +241,16 @@ $avis->bindValue(":code_compte",$compte['code_compte']);
 $avis->execute();
 $result = $avis->fetchAll(PDO::FETCH_ASSOC);
 
+$tab_avis = [];
+
+foreach($result as $res){
+    if(array_key_exists($res['titre_offre'],$tab_avis)){
+        $tab_avis[$res['titre_offre']] = [];
+    }
+    $tab_avis[$res['titre_offre']][]['content'] = $res['txt_avis'];
+    $tab_avis[$res['titre_offre']][]['note'] = $res['note'];
+}
+
 // Afficher ou utiliser $avisParOffre
 echo "<pre>";
 print_r($result);
