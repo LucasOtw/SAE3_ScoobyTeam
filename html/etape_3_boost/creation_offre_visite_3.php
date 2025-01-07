@@ -155,7 +155,8 @@ if(isset($_POST['envoiForm3'])){
 
             </form>
         </div>
-        <div class="notes">
+    </main>
+        <div class="notes_explicatives">
             <p>
                 <sup>1</sup> Offre Gratuite : Accessible aux professionnels publics ou associatifs, sans coût.
             </p>
@@ -184,6 +185,5 @@ if(isset($_POST['envoiForm3'])){
                 &nbsp;&nbsp;&nbsp;16.68€ HT, soit 20€ TTC/semaine.
             </p>
         </div>
-    </main>
 </body>
 </html>
