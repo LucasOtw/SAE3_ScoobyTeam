@@ -276,7 +276,7 @@ nav ul li a.active {
 
 
 button[type="submit"] {
-    background-color: #4CAF50; /* Couleur de fond verte */
+    background-color: var(--vert-fonce); /* Couleur de fond verte */
     color: white; /* Couleur du texte blanche */
     padding: 10px 20px; /* Espacement intérieur */
     font-size: 16px; /* Taille du texte */
@@ -285,6 +285,8 @@ button[type="submit"] {
     cursor: pointer; /* Changement du curseur au survol */
     font-family: 'K2D', sans-serif; /* Police utilisée */
     transition: background-color 0.3s ease; /* Transition pour le survol */
+    margin-top: 3vh;
+    margin-left: 3vw;
 }
 
 button[type="submit"]:hover {
