@@ -275,7 +275,7 @@ nav ul li a.active {
 }
 
 
-.btn-signalement{
+.btn-confirmer{
 margin-top: 6vh;
 margin-left: 3vw;
 }
@@ -288,15 +288,3 @@ margin-left: 3vw;
 
 }
 
-.btn-signalement {
-    background-color: #4CAF50; /* Couleur de fond */
-    color: white; /* Couleur du texte */
-    padding: 10px 20px; /* Espacement interne */
-    border: none; /* Pas de bordure */
-    border-radius: 5px; /* Bords arrondis */
-    cursor: pointer; /* Curseur en forme de main */
-}
-
-.btn-signalement:hover {
-    background-color: #45a049; /* Couleur de fond au survol */
-}
