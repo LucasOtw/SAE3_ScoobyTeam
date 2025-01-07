@@ -566,6 +566,7 @@ if (isset($_POST['dwl-data'])) {
                 .then(response => {
                     if (response.ok) {
                         alert('Compte supprimé avec succès.');
+                        $_GET["deco"]=true;
                         // Optionnel : redirection ou mise à jour de l'interface
                     } else {
                         alert('Erreur lors de la suppression du compte.');
