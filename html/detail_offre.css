@@ -523,24 +523,6 @@ input#btn-poster-avis {
     margin-left: 11em;
 }
 
-.avis-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.signalement a {
-    color: red;
-    text-decoration: none;
-    font-size: 1.2em;
-    margin-left: 10px;
-}
-
-.signalement a:hover {
-    opacity: 0.8;
-}
-
-
 .hours_desktop_detail_offre {
     margin-left: 4em;
     font-size: 20px;
