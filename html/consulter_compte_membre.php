@@ -419,7 +419,7 @@ if (isset($_POST['dwl-data'])) {
             </div>
 
         </form>
-        <form action="#">
+        <form action="#" method="POST">
             <div>
                 <input type="submit" name="dwl-data" value="Télécharger mes données">
             </div>
