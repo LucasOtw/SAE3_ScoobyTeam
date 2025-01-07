@@ -275,7 +275,15 @@ nav ul li a.active {
 }
 
 
-.button{
+.btn-signalement{
 margin-top: 6vh;
 margin-left: 3vw;
+}
+
+.btn-signalement:hover{
+
+}
+
+.btn-signalement:active{
+    
 }
