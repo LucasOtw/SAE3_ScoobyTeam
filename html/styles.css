@@ -3485,7 +3485,6 @@ main.creation_compte_membre nav ul li a.active {
 }
 
 main.creation_compte_membre > div:first-of-type{
-  border: 1px solid red;
   position: absolute;
   left: 30vw;
   float: right;
@@ -3495,6 +3494,8 @@ main.creation_compte_membre > div:first-of-type{
   align-items: center;
   padding: 0;
   width: 20vw;
+  border-radius: 2vw;
+  border: 1px solid black;
 }
 
 main.creation_compte_membre > div:first-of-type > img{
