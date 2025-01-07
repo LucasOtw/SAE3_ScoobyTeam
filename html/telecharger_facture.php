@@ -465,7 +465,7 @@ if(!isset($_SESSION['pro'])){
                      <td><?php echo $nom_type ?></td>
                      <td><?php echo number_format($prix_par_jour, 2, ',', ' ')?>€</td>
                      <td><?php echo $date_publication ?></td>
-                     <td><?php echo round($montant_ht,2) ?>€</td>
+                     <td><?php echo number_format($montant_ht,2, ',', ' ') ?>€</td>
                  </tr>
              </tbody>
          </table>
@@ -485,7 +485,7 @@ if(!isset($_SESSION['pro'])){
                     <td>En relief</td>
                     <td><?php if ($en_relief !== null ) { echo "8,34€"; } else { echo "Pas sélectionné"; }?></td>
                     <td><?php if ($en_relief !== null ) { echo "$nb_semaines_relief"; } else { echo "0"; }?></td>
-                    <td><?php if ($en_relief !== null ) { echo 8,34 * $nb_semaines_relief . "€"; } else { echo "0,00€"; }?></td>
+                    <td><?php if ($en_relief !== null ) { echo 8.34 * $nb_semaines_relief . "€"; } else { echo "0,00€"; }?></td>
                 </tr>
             
                 <tr>
@@ -499,9 +499,9 @@ if(!isset($_SESSION['pro'])){
       <?php $montant_ht_total = $montant_ht + 16.86 * $nb_semaines_une + 8.34 * $nb_semaines_relief;?>
         <div class="facture-footer">
             <div class="info-facture">
-                <p>Total HT: <?php echo round($montant_ht_total, 2) ; ?>€</p>
-                <p>TVA 20%: <?php echo round($montant_ht_total*0.20, 2); ?>€</p>
-                <p>Total TTC: <?php echo round($montant_ht_total*1.20, 2); ?>€</p>
+                <p>Total HT: <?php echo number_format($montant_ht_total, 2, ',', ' ') ; ?>€</p>
+                <p>TVA 20%: <?php echo number_format($montant_ht_total*0.20, 2, ',', ' '); ?>€</p>
+                <p>Total TTC: <?php echo number_format($montant_ht_total*1.20, 2, ',', ' '); ?>€</p>
             </div>
             <div class="payment-info">
                 <p><strong>Mode de paiement :</strong> Virement bancaire</p>
