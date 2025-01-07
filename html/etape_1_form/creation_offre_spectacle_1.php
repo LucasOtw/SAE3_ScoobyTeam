@@ -103,7 +103,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     if($_FILES['photos']['error'][$key] === 0){
                         $photos[] = [
                             'name' => $file_name,
-                            'type' = $_FILES['photos']['type'][$key],
+                            'type' => $_FILES['photos']['type'][$key],
                             'tmp_name' => $_FILES['photos']['tmp_name'][$key],
                             'size' => $_FILES['photos']['size'][$key]
                         ];
