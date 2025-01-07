@@ -56,6 +56,6 @@ session_start();
             
         </header>
     </div>
-    <h1 class="titre_signalement">Signalement</h1>
+    <h2 class="titre_signalement">Signalement</h2>
 </body>
 </html>
