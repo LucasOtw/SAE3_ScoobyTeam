@@ -679,11 +679,11 @@ if (isset($json['results'][0])) {
                 break;
         }
 
-        if (!isset($avis["prenom"]) && !isset($avis["nom"]))
-        {
-            $avis["prenom"] = "Utilisateur";
-            $avis["nom"] = "supprimé";
-        }
+        // if (!isset($avis["prenom"]) && !isset($avis["nom"]))
+        // {
+        //     $avis["prenom"] = "Utilisateur";
+        //     $avis["nom"] = "supprimé";
+        // }
                    
         
         ?>
