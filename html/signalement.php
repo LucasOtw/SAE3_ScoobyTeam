@@ -29,31 +29,19 @@ try {
 
             // Récupérer l'avis correspondant
             $avis = $stmt->fetch();
-            echo "<pre>";
-            echo "</pre>";
-            if ($avis) {
-                // Afficher les informations de l'avis trouvé
-                echo "<h3>" . htmlspecialchars($avis['note']) . ".0 | " . htmlspecialchars($avis['prenom']) . " " . htmlspecialchars($avis['nom']) . "</h3>";
-                echo "<p>" . htmlspecialchars($avis['txt_avis']) . "</p>";
-            } else {
-                // Aucun avis trouvé avec cet ID
-                echo "Aucun avis trouvé pour cet ID.";
-            }
         } else {
             // Si l'ID n'est pas un nombre valide
-            echo "L'ID d'avis est invalide.";
+            $erreur = "L'ID d'avis est invalide.";
         }
     } else {
         // Aucun ID passé dans l'URL
-        echo "Aucun ID d'avis spécifié.";
+        $erreur = "Aucun ID d'avis spécifié.";
     }
 } catch (PDOException $e) {
     // Gestion des erreurs
-    echo "Erreur de connexion ou d'exécution : " . $e->getMessage();
+    $erreur = "Erreur de connexion ou d'exécution : " . $e->getMessage();
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -75,9 +63,7 @@ try {
                 <a href="voir_offres.php">
                     <img src="images/logoBlanc.png" alt="PACT Logo">
                 </a>
-
             </div>
-            
             <nav>
                 <ul>
                     <li><a href="voir_offres.php" class="active">Accueil</a></li>
@@ -86,7 +72,7 @@ try {
                         if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
                            ?>
                            <li>
-                               <a href="consulter_compte_membre.php"><?php echo "Mon Compte" /*$compte['nom'] . substr($compte['prenom'], 0, 0)*/;?> </a>
+                               <a href="consulter_compte_membre.php"><?php echo "Mon Compte"; ?></a>
                            </li>
                             <?php
                         } else {
@@ -104,7 +90,6 @@ try {
             <div class="logo-tel">
                 <img src="images/LogoCouleur.png" alt="PACT Logo">
             </div>
-            
         </header>
     </div>
     <div class="container">
@@ -116,11 +101,15 @@ try {
         <?php else: ?>
             <div class="avis">
                 <?php 
-            echo "<h3>" . htmlspecialchars($avis['note']) . ".0 | " . htmlspecialchars($avis['prenom']) . " " . htmlspecialchars($avis['nom']) . "</h3>";
-            echo "<p>" . htmlspecialchars($avis['txt_avis']) . "</p>";
-            ?>
-                <h3><?php echo $note; ?>.0 | <?php echo $prenom . " " . $nom; ?></h3>
-                <p><?php echo $texte; ?></p>
+                    if ($avis) {
+                        // Afficher les informations de l'avis trouvé
+                        echo "<h3>" . htmlspecialchars($avis['note']) . ".0 | " . htmlspecialchars($avis['prenom']) . " " . htmlspecialchars($avis['nom']) . "</h3>";
+                        echo "<p>" . htmlspecialchars($avis['txt_avis']) . "</p>";
+                    } else {
+                        // Aucun avis trouvé avec cet ID
+                        echo "Aucun avis trouvé pour cet ID.";
+                    }
+                ?>
             </div>
             <form method="POST" action="process_signalement.php">
                 <input type="hidden" name="id_avis" value="<?php echo $idAvis; ?>">
