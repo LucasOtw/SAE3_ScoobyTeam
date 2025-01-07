@@ -130,6 +130,7 @@ function tempsEcouleDepuisPublication($offre){
                 </a>
 
             </div>
+            <h2>Bonjour Lucas !</h2>
             <nav>
                 <ul>
                     <li><a href="voir_offres.php" class="active">Accueil</a></li>
