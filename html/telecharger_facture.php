@@ -130,7 +130,6 @@ if(!isset($_SESSION['pro'])){
         }
         
         .facture-items th, .facture-items td {
-            text-align: left;
             padding: 10px;
             border: 1px solid #ddd;
         }
@@ -335,17 +334,9 @@ if(!isset($_SESSION['pro'])){
           color: #333;
       }
 
-
-
-
-
-
-
-
-
-
-
-     
+     #a_droite {
+         text-align: right;
+     }
 
     </style>
 </head>
