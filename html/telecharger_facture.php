@@ -492,7 +492,7 @@ if(!isset($_SESSION['pro'])){
                     <td>À la Une</td>
                     <td><?php if ($a_la_une !== null ) { echo "16,68€"; } else { echo "Pas sélectionné"; }?></td>
                     <td><?php if ($a_la_une !== null ) { echo "$nb_semaines_une"; } else { echo "0"; }?></td>
-                    <td><?php if ($a_la_une !== null ) { echo 16.86 * $nb_semaines_une . "€"; } else { echo "0,00€"; }?></td>
+                    <td><?php if ($a_la_une !== null ) { echo number_format(16.86 * $nb_semaines_une, 2, ',', ' ') . "€"; } else { echo "0,00€"; }?></td>
                 </tr>
             </tbody>
         </table>

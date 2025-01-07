@@ -65,6 +65,8 @@ var_dump($_SESSION['crea_offre2']);
 var_dump($_SESSION['crea_offre3']);
 echo "</pre>";
 
+$heure_formatee = (new DateTime($_SESSION['crea_offre']['heure']))->format('H:i:s');
+
 if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer_offre_gratuite'])){
 
     if(!isset($_POST['passer_cb']) && !isset($_POST['creer_offre_gratuite'])){
@@ -150,7 +152,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
         * VERIFICATION DES HORAIRES
         */
 
-        $tab_horaires = $_SESSION['crea_offre3'];
+        $tab_horaires = $_SESSION['crea_offre2'];
         // pour chaque jour
         foreach($tab_horaires as $jour => $horaire){
             /* On cherche d'abord le code horaire. */
@@ -187,32 +189,47 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
         * Si des images sont présentes dans un dossier au même nom que l'offre, on doit les insérer dans la bdd
         */
 
-        $nom_doss = str_replace(' ','',$_SESSION['crea_offre']['titre_offre']);
+        // Récupération du nom du dossier
+        $nom_doss = str_replace(' ', '', $_SESSION['crea_offre']['titre_offre']);
         $chemin = "../images/offres/{$nom_doss}";
-
-        if(file_exists($chemin)){
-            // si le chemin existe, on récupère tous les fichiers images
+        
+        if (file_exists($chemin)) {
+            // Récupération des fichiers dans le dossier
             $fichiers = scandir($chemin);
-
-            // Filtrer uniquement les images
-            $images = array_filter($fichiers, function($fichier) use ($chemin) {
+        
+            // Filtrer uniquement les fichiers image valides
+            $images = array_filter($fichiers, function ($fichier) use ($chemin) {
                 $extensions_valides = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
                 $extension = strtolower(pathinfo($fichier, PATHINFO_EXTENSION));
                 return in_array($extension, $extensions_valides) && is_file("$chemin/$fichier");
             });
-
+        
+            // Préparer la requête pour insérer une image
             $ajout_image = $dbh->prepare("INSERT INTO tripenarvor._image (url_image) VALUES (:url_image)");
-
-            // on insère chaque image (parce-que WHY NOT)
-
-            $id_image = [];
-            foreach($images as $image){
+        
+            // Préparer la vérification d'existence
+            $verif_image = $dbh->prepare("SELECT COUNT(*) FROM tripenarvor._image WHERE url_image = :url_image");
+        
+            $id_image = []; // Pour stocker les IDs des images insérées
+        
+            foreach ($images as $image) {
                 $url_image = "$chemin/$image";
-                $ajout_image->execute([
-                    ":url_image" => $url_image
-                ]);
-                $id_image[] = $dbh->lastInsertId();
+        
+                // Vérifier si l'image existe déjà dans la base
+                $verif_image->execute([":url_image" => $url_image]);
+                $exists = $verif_image->fetchColumn();
+        
+                if ($exists == 0) {
+                    // Si l'image n'existe pas, insérer dans la base
+                    $ajout_image->execute([":url_image" => $url_image]);
+        
+                    // Récupérer l'ID de l'image insérée
+                    $id_image[] = $dbh->lastInsertId();
+                }
             }
+        
+            // Debug : afficher les IDs insérés
+            var_dump($id_image);
         } else {
             die('Le chemin n existe pas');
         }
@@ -302,7 +319,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
             '_resume' => $_SESSION['crea_offre']['resume'],
             '_description' => $_SESSION['crea_offre']['description'],
             'note_moyenne' => null,
-            'tarif' => $_SESSION['crea_offre2']['tarif'],
+            'tarif' => $_SESSION['crea_offre']['tarif'],
             'en_ligne' => false,
             'nb_blacklister' => 0,
             'code_adresse' => $code_adresse,
@@ -367,7 +384,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
             $ajoutSpectacle->bindValue(":duree",$_SESSION['crea_offre']['duree']);
             $ajoutSpectacle->bindValue(":capacite_accueil",$_SESSION['crea_offre']['capacite_accueil']);
             $ajoutSpectacle->bindValue(":date_spectacle",$_SESSION['crea_offre']['date_spectacle']);
-            $ajoutSpectacle->bindValue(":heure_spectacle",$_SESSION['crea_offre']['heure']);
+            $ajoutSpectacle->bindValue(":heure_spectacle",$heure_formatee);
 
             $ajoutSpectacle->execute();
 
