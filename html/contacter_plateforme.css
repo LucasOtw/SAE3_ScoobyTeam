@@ -1,50 +1,17 @@
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    --orange: #F28322;
-    --vert-clair: #BDC426;
-    --vert-fonce: #668C3F;
-    --gris: #E8E8E8;
-}
-
-@font-face {
-    font-family: 'K2D';
-    src: url('html/polices/K2D/K2D-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'K2D';
-    src: url('./polices/K2D/K2D-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
+/*****************************************************
+                                                * Code pour la page header/footer responsive *
+                                            *****************************************************/
 
 body {
     display: flex;
     flex-direction: column;
     font-family: "K2D", sans-serif;
     min-height: 100vh;
-    /*Pour occuper toute la page*/
+    margin: 0;
+    padding: 0;
 }
 
-/****** HEADER *****/
-
-
-div.header-membre {
-    display: block;
-}
-
-div.header-pro {
-    display: none;
-}
-
-/* HEADER MEMBRE */
-
-div.header-membre header.header-pc {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -53,108 +20,82 @@ div.header-membre header.header-pc {
     color: white;
 }
 
-div.header-membre header.header-tel {
-    display: none;
-}
-
-div.header-membre .creation_compte_membre_bienvenue {
-    display: none;
-    text-align: center;
-}
-
-div.header-membre .logo-tel {
-    display: flex;
-    margin-top: 40px;
-    justify-content: center;
-}
-
-div.header-membre .logo img {
+.logo img {
     height: 60px;
     max-width: 100%;
-    /* Pour s'assurer que l'image ne dépasse pas */
 }
 
-div.header-membre nav ul {
+nav ul {
     list-style: none;
     display: flex;
     gap: 3vw;
-    /* Espace adaptable selon la largeur de l'écran */
     margin-right: 4vw;
     flex-wrap: wrap;
-    /* Permet de passer sur plusieurs lignes si nécessaire */
 }
 
-div.header-membre nav ul li a {
+nav ul li a {
     position: relative;
     text-decoration: none;
     color: white;
     font-size: 1.2rem;
-    /* Utilise des unités relatives */
     padding: 5px 10px;
     transition: color 0.3s, border-bottom 0.3s;
 }
 
-div.header-membre nav ul li a.active {
-    color: var(--vert-clair);
-}
 
-div.header-membre nav ul li a:hover {
-    color: var(--vert-clair);
-}
-
-div.header-membre .header_pro nav ul li a.active {
+.header_pro nav ul li a.active {
     color: var(--orange);
 }
 
-div.header-membre .header_pro nav ul li a:hover {
+.header_pro nav ul li a:hover {
     color: var(--orange);
 }
 
-div.header-membre nav ul li a::before {
+.header_pro nav ul li a.active {
+    color: var(--orange);
+}
+
+.header_pro nav ul li a:hover {
+    color: var(--orange);
+}
+
+.header_pro nav ul li a::before {
+    background-color: var(--orange);
+}
+
+/*MEMBRE*/
+.header_membre nav ul li a.active {
+    color: var(--vert-clair);
+}
+
+.header_membre nav ul li a:hover {
+    color: var(--vert-clair);
+}
+
+.header_membre nav ul li a.active {
+    color: var(--vert-clair);
+}
+
+.header_membre nav ul li a:hover {
+    color: var(--vert-clair);
+}
+
+.header_membre nav ul li a::before {
+    background-color: var(--vert-clair);
+}
+
+nav ul li a::before {
     content: "";
     position: absolute;
     width: 0;
     height: 2.5px;
     bottom: -2px;
-    background-color: var(--vert-clair);
     transition: width 0.3s ease;
 }
 
-div.header-membre .header_pro nav ul li a::before {
-    background-color: var(--orange);
-}
-
-div.header-membre nav ul li a:hover::before {
+nav ul li a:hover::before {
     width: 90%;
 }
-
-@media (max-width: 431px) {
-    div.header-membre header.header-pc {
-        display: none;
-    }
-
-    div.header-membre header.header-tel {
-        display: block;
-    }
-}
-
-
-
-
-@media (max-width: 431px) {
-    div.header-pro header.header-pc {
-        display: none;
-    }
-
-    div.header-pro header.header-tel {
-        display: block;
-    }
-}
-
-
-/* FOOTER */
-
-
 
 footer {
     background-color: #000;
@@ -165,12 +106,18 @@ footer {
     margin-top: auto;
 }
 
+.footer_pro .newsletter {
+    background-color: var(--orange);
+}
+
+.footer_membre .newsletter {
+    background-color: var(--vert-clair);
+}
+
 .newsletter {
     display: flex;
     flex-direction: column;
-    /* Stack les éléments sur petits écrans */
     justify-content: space-between;
-    background-color: var(--vert-clair);
     padding: 20px;
     border-radius: 20px;
     position: relative;
@@ -178,7 +125,6 @@ footer {
     z-index: 1;
     width: 90%;
     max-width: 1200px;
-    /* Limite la largeur sur grands écrans */
     margin-left: auto;
     margin-right: auto;
 }
@@ -186,19 +132,16 @@ footer {
 .newsletter-content {
     text-align: left;
     max-width: 100%;
-    /* Ajuste pour petits écrans */
 }
 
 .newsletter h2 {
     font-size: 2rem;
-    /* Taille adaptable */
     margin-bottom: 10px;
 }
 
 .newsletter-form {
     display: flex;
     flex-direction: column;
-    /* Colonne sur petits écrans */
     gap: 10px;
     margin-top: 10px;
 }
@@ -225,7 +168,6 @@ footer {
 .newsletter-image img {
     max-height: 100px;
     width: auto;
-    /* Maintien du ratio de l'image */
 }
 
 .footer-links {
@@ -249,7 +191,11 @@ footer {
     transition: color 0.3s ease;
 }
 
-.link-group ul li a:hover {
+.footer_pro .link-group ul li a:hover {
+    color: var(--orange);
+}
+
+.footer_membre .link-group ul li a:hover {
     color: var(--vert-clair);
 }
 
@@ -265,7 +211,7 @@ footer {
     margin: 0 10px;
 }
 
-/* Media queries pour l'adaptabilité */
+
 
 @media (min-width: 768px) {
     .newsletter {
@@ -296,12 +242,58 @@ footer {
 @media (min-width: 1024px) {
     nav ul {
         gap: 50px;
-        /* Réduit l'espace entre les éléments sur grands écrans */
     }
 
     footer {
         padding: 40px 80px;
     }
+}
+
+header.header-pc {
+    display: flex;
+}
+
+header.header-tel {
+    display: none;
+    background-color: white;
+}
+
+@media (max-width: 429px) {
+  .btn_plus_tard{
+    text-decoration:none;
+    color:black;
+  }
+  
+  
+  
+  .deja_compte{
+    text-decoration: none;
+    color: #BDC426;
+  }
+    header.header-pc {
+        display: none;
+    }
+
+    header.header-tel {
+        display: flex;
+        justify-content: center;
+    }
+
+    header.header-tel .logo-tel {
+        display: flex;
+        justify-content: center;
+      margin-left:4.5em;
+    }
+
+    footer {
+        display: none;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 /* Style spécifique au formulaire de contact */
 .contact-form {
