@@ -517,11 +517,21 @@ if(!isset($_SESSION['pro'])){
         </table>
       <?php $montant_ht_total = $montant_ht + 16.86 * $nb_semaines_une + 8.34 * $nb_semaines_relief;?>
         <div class="facture-footer">
-            <div class="info-facture">
-                <p>Total HT: <?php echo number_format($montant_ht_total, 2, ',', ' ') ; ?>€</p>
-                <p>TVA 20%: <?php echo number_format($montant_ht_total*0.20, 2, ',', ' '); ?>€</p>
-                <p>Total TTC: <?php echo number_format($montant_ht_total*1.20, 2, ',', ' '); ?>€</p>
-            </div>
+            <table class="info-facture">
+                <tr>
+                    <td>Total HT:</td>
+                    <td><?php echo number_format($montant_ht_total, 2, ',', ' '); ?>€</td>
+                </tr>
+                <tr>
+                    <td>TVA 20%:</td>
+                    <td><?php echo number_format($montant_ht_total*0.20, 2, ',', ' '); ?>€</td>
+                </tr>
+                <tr>
+                    <td>Total TTC:</td>
+                    <td><?php echo number_format($montant_ht_total*1.20, 2, ',', ' '); ?>€</td>
+                </tr>
+            </table>
+
             <div class="payment-info">
                 <p><strong>Mode de paiement :</strong> Virement bancaire</p>
                 <p><strong>IBAN :</strong> <?php echo $iban?></p>
