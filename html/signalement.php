@@ -153,5 +153,62 @@ try {
                 <button type="submit">Confirmer le signalement</button>
             </form>
     </div>
+    <!-- Modale de confirmation -->
+<div id="confirmationModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="popup-message">
+            <p>Votre signalement a bien été envoyé et pris en compte !</p>
+        </div>
+    </div>
+</div>
+
+<!-- Style pour la modale -->
+<style>
+    /* Styles pour la modale */
+    .modal {
+        display: none; /* Masquer la modale par défaut */
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5); /* Fond sombre */
+        overflow: auto;
+        padding-top: 60px;
+    }
+
+    .modal-content {
+        background-color: #fff;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 10px;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .popup-message {
+        text-align: center;
+        font-size: 18px;
+        color: green;
+    }
+</style>
+
 </body>
 </html>
