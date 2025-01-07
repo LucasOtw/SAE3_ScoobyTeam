@@ -35,8 +35,6 @@ if ($donneesSession && isset($donneesSession["code_compte"])) {
     $compte->execute();
 
     $resultat = $compte->fetch(PDO::FETCH_ASSOC);
-} else {
-    echo "Code compte introuvable dans les données de session.";
 }
 
 
