@@ -18,18 +18,15 @@ if (isset($_SESSION['detail_offre'])) {
     unset($_SESSION['detail_offre']);
 }
 
-try {
-    $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-    $username = "sae";
-    $password = "philly-Congo-bry4nt";
 
-    // Créer une instance PDO
-    $dbh = new PDO($dsn, $username, $password);
-} catch (PDOException $e) {
-    die("Erreur!: " . $e->getMessage() . "<br/>");
-}
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+$username = "sae";
+$password = "philly-Congo-bry4nt";
 
-// Vérifier si $donneesSession est valide avant de l'utiliser
+// Créer une instance PDO
+$dbh = new PDO($dsn, $username, $password);
+
+
 if ($donneesSession && isset($donneesSession["code_compte"])) {
     $code_compte = $donneesSession["code_compte"];
     
@@ -38,8 +35,6 @@ if ($donneesSession && isset($donneesSession["code_compte"])) {
     $compte->execute();
 
     $resultat = $compte->fetch(PDO::FETCH_ASSOC);
-} else {
-    echo "Code compte introuvable dans les données de session.";
 }
 
 
@@ -558,7 +553,7 @@ function tempsEcouleDepuisPublication($offre){
                 
                 if ($offre["en_ligne"])
                 {
-                    echo $villeOffre["ville"];
+                    /* echo $villeOffre["ville"]; */
                 ?>
                     <article class="offer <?php if (!empty($offre['option_en_relief']) || !empty($offre['option_a_la_une']) ){echo "en_relief";} ?>" 
                                 data-category=<?php echo $type_offre;?> 
