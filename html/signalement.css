@@ -209,9 +209,37 @@ nav ul li a.active {
 
 
 .avis-widget .avis-list .avis {
-    display: flex
-;
+    display: flex;
     align-items: flex-start;
     margin-bottom: 20px;
     padding-bottom: 15px;
+}
+
+
+.avis {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.avis h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.avis h3::before {
+    content: url('https://icon-library.com/images/icon-review/icon-review-9.jpg'); /* Exemple d'icône */
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.avis p {
+    margin: 0;
+    color: #666;
 }
