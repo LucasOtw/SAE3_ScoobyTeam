@@ -485,18 +485,18 @@ if(!isset($_SESSION['pro'])){
                     <td>En relief</td>
                     <td><?php if ($en_relief !== null ) { echo "8,34€"; } else { echo "Pas sélectionné"; }?></td>
                     <td><?php if ($en_relief !== null ) { echo "$nb_semaines_relief"; } else { echo "0"; }?></td>
-                    <td><?php if ($en_relief !== null ) { echo 8.34 * $nb_semaines_relief . "€"; } else { echo "0€"; }?></td>
+                    <td><?php if ($en_relief !== null ) { echo 8,34 * $nb_semaines_relief . "€"; } else { echo "0,00€"; }?></td>
                 </tr>
             
                 <tr>
                     <td>À la Une</td>
                     <td><?php if ($a_la_une !== null ) { echo "16,68€"; } else { echo "Pas sélectionné"; }?></td>
                     <td><?php if ($a_la_une !== null ) { echo "$nb_semaines_une"; } else { echo "0"; }?></td>
-                    <td><?php if ($a_la_une !== null ) { echo 16.86 * $nb_semaines_une . "€"; } else { echo "0€"; }?></td>
+                    <td><?php if ($a_la_une !== null ) { echo 16,86 * $nb_semaines_une . "€"; } else { echo "0,00€"; }?></td>
                 </tr>
             </tbody>
         </table>
-      <?php $montant_ht_total = $montant_ht + 16.86 * $nb_semaines_une + 8.34 * $nb_semaines_relief;?>
+      <?php $montant_ht_total = $montant_ht + 16,86 * $nb_semaines_une + 8,34 * $nb_semaines_relief;?>
         <div class="facture-footer">
             <div class="info-facture">
                 <p>Total HT: <?php echo round($montant_ht_total, 2) ; ?>€</p>
