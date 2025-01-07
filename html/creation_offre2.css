@@ -79,7 +79,7 @@
     font-weight: lighter;
 }
 
-.price-options, .meal-options, .boost-options, .offre-options, .duration-options {
+.price-options, .meal-options, .tarif-option, .boost-options, .offre-options, .duration-options {
     padding: 10px;
 }
 

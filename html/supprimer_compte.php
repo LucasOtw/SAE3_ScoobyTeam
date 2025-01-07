@@ -19,6 +19,9 @@
           // Succès
           http_response_code(200);
           echo json_encode(['message' => 'Compte supprimé']);
+          session_unset();
+          session_destroy();
+          header('location: voir_offres.php');
       } else {
           // Échec
           http_response_code(500);
