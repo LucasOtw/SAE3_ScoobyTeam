@@ -63,7 +63,7 @@ if(isset($_SESSION['crea_offre'])){
                         <option value="attraction">Parc d'attraction</option>
                         <option value="activite">Activité</option>
                     </select>
-                    <button type="submit" class="button_continuer">Continuer
+                    <button type="submit" class="button_continuer">Continuez
                         <img src="images/fleche.png" alt="Fleche" width="25px" height="25px">
                     </button>
                 </div>
