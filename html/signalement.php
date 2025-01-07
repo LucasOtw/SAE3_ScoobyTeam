@@ -43,6 +43,28 @@ try {
 }
 ?>
 
+<script>
+    // Fonction pour afficher la modale
+    function showConfirmation(event) {
+        event.preventDefault(); // Empêche l'envoi immédiat du formulaire
+        document.getElementById('confirmationModal').style.display = 'block'; // Affiche la modale
+    }
+
+    // Fonction pour fermer la modale
+    function closeModal() {
+        document.getElementById('confirmationModal').style.display = 'none'; // Cache la modale
+    }
+
+    // Ferme la modale si l'utilisateur clique en dehors de la fenêtre de la modale
+    window.onclick = function(event) {
+        var modal = document.getElementById('confirmationModal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
