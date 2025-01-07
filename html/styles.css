@@ -3488,7 +3488,11 @@ main.creation_compte_membre > div:first-of-type{
   border: 1px solid red;
   position: absolute;
   z-index: 2;
-  
+}
+
+main.creation_compte_membre > div:first-of-type > img{
+  width: 25%;
+  aspect-ratio: 1 / 1;
 }
 
 main.creation_compte_membre .creation_compte_membre_container {
