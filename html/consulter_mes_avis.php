@@ -154,25 +154,89 @@ if (!empty($_POST['supprAvis'])){
                             <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="confirmDelete(event)">
                         </form>
                     </h3>
-                    <!-- Remplacer &#039; par ' dans le texte de l'avis -->
                     <p class="avis"><?php echo htmlspecialchars_decode($avis["txt_avis"], ENT_QUOTES); ?></p>
                 </div>
             </div>
             
+            <!-- Boîte de dialogue personnalisée -->
+            <div id="customConfirm" class="custom-confirm">
+                <div class="custom-confirm-content">
+                    <p>Êtes-vous sûr de vouloir supprimer cet avis ?</p>
+                    <button onclick="submitForm()">Oui</button>
+                    <button onclick="closeConfirm()">Non</button>
+                </div>
+            </div>
+            
+            <style>
+            /* Style de la boîte de dialogue personnalisée */
+            .custom-confirm {
+                display: none; /* Masquer par défaut */
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 1000;
+            }
+            
+            .custom-confirm-content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                text-align: center;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .custom-confirm-content p {
+                margin-bottom: 20px;
+                font-size: 16px;
+            }
+            
+            .custom-confirm-content button {
+                margin: 0 10px;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            
+            .custom-confirm-content button:first-child {
+                background-color: #d9534f;
+                color: white;
+            }
+            
+            .custom-confirm-content button:last-child {
+                background-color: #5bc0de;
+                color: white;
+            }
+            </style>
+            
             <script>
+            let currentForm;
+            
             function confirmDelete(event) {
-                // Empêcher l'action par défaut du clic sur l'image
                 event.preventDefault();
-                
-                // Afficher une boîte de dialogue de confirmation
-                var confirmed = confirm("Êtes-vous sûr de vouloir supprimer cet avis ?");
-                
-                // Si l'utilisateur confirme, soumettre le formulaire
-                if (confirmed) {
-                    event.target.closest('form').submit();
+                currentForm = event.target.closest('form');
+                document.getElementById('customConfirm').style.display = 'block';
+            }
+            
+            function submitForm() {
+                document.getElementById('customConfirm').style.display = 'none';
+                if (currentForm) {
+                    currentForm.submit();
                 }
             }
+            
+            function closeConfirm() {
+                document.getElementById('customConfirm').style.display = 'none';
+            }
             </script>
+
 
 
         <?php endforeach; ?>
