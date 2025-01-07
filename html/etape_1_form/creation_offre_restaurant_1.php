@@ -309,10 +309,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <thead>
                         <tr>
                             <th>
-                                Checkbox
+                                Tags :
                             </th>
                             <th>
-                                Tag
+                                
                             </th>
                         </tr>
                     </thead>
