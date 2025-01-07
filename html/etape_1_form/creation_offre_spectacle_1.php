@@ -98,7 +98,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             if(isset($_FILES['photos']) && !empty($_FILES['photos']['name'][0])){
                 $photos = [];
                 // Parcourir chaque photo envoyée
-                foreach($_FILES['photos']['name'] as $ley => $file_name){
+                foreach($_FILES['photos']['name'] as $key => $file_name){
                     // Si le fichier n'est pas vide, on récupère les informations nécessaires
                     if($_FILES['photos']['error'][$key] === 0){
                         $photos[] = [

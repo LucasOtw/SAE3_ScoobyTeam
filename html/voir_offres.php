@@ -75,7 +75,7 @@ function tempsEcouleDepuisPublication($offre){
 <div class="half-background">
         <!-- Le contenu de la page ici -->
          <div class="conteneur_titre_voir_offre">
-        <h1 class="h1_voir_offre1">Découvrir la</h1>
+        <h1 class="h1_voir_offre1">Découvrez la</h1>
         <h1 class="h1_voir_offre2">Bretagne !</h1>
 </div>
     </div>
@@ -130,7 +130,7 @@ function tempsEcouleDepuisPublication($offre){
                 </a>
 
             </div>
-            <h2>Bonjour Lucas !</h2>
+            
             <nav>
                 <ul>
                     <li><a href="voir_offres.php" class="active">Accueil</a></li>
