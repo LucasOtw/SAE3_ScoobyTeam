@@ -97,7 +97,7 @@ function tempsEcouleDepuisPublication($offre){
 <div class="half-background">
         <!-- Le contenu de la page ici -->
          <div class="conteneur_titre_voir_offre">
-        <h2>Bonjour <?php echo $resultat['prenom'];?></h2>
+        <h2 class="h2_bonjour_prenom">Bonjour <?php echo $resultat['prenom'];?></h2>
         <h1 class="h1_voir_offre1">Découvrez la</h1>
         <h1 class="h1_voir_offre2">Bretagne !</h1>
 </div>
