@@ -239,9 +239,25 @@ $avis = $dbh->prepare("SELECT o.titre_offre,a.txt_avis,a.note FROM tripenarvor._
 WHERE a.code_compte = :code_compte");
 $avis->bindValue(":code_compte",$compte['code_compte']);
 $avis->execute();
-$mesAvis = $avis->fetchAll(PDO::FETCH_ASSOC);
+$result = $avis->fetchAll(PDO::FETCH_ASSOC);
+
+$avisParOffre = []; // Tableau final sous la forme "titre_offre" => [avis]
+
+foreach ($result as $row) {
+    $titreOffre = $row['titre_offre'];
+    $avis = $row['avis'];
+
+    // Ajouter l'avis au tableau sous la clé correspondant au titre de l'offre
+    if (!isset($avisParOffre[$titreOffre])) {
+        $avisParOffre[$titreOffre] = []; // Initialiser un tableau pour cette offre
+    }
+
+    $avisParOffre[$titreOffre][] = $avis; // Ajouter l'avis à l'offre
+}
+
+// Afficher ou utiliser $avisParOffre
 echo "<pre>";
-var_dump($mesAvis);
+print_r($avisParOffre);
 echo "</pre>";
 
 if (isset($_POST['dwl-data'])) {
