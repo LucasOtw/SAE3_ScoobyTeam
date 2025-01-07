@@ -305,14 +305,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ?>
 
                 <!-- Tags -->
-                <table>
+                <table class=table_tags>
                     <thead>
                         <tr>
                             <th>
-                                Checkbox
+                                Tags
                             </th>
                             <th>
-                                Tag
+                                
                             </th>
                         </tr>
                     </thead>

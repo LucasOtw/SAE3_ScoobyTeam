@@ -191,11 +191,15 @@ if (isset($_POST['modif_infos'])){
                 <input type="checkbox" id="cgu" name="cgu" required>
                 <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
             </div>
-
-            <div class="compte_membre_save_delete">
-                <a href="?deco=true" class="submit-btn1">Déconnexion</a>
-                <button type="submit" name="modif_infos" class="submit-btn3">Enregistrer</button>
+            <div class="compte_pro_save_delete_remove">
+                <button type="button" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte">Supprimer le compte</button>
+                
+                <div class="compte_pro_save_delete">
+                   <a href="?deco=true" class="submit-btn1">Déconnexion</a>
+                   <button type="submit" name="modif_infos" class="submit-btn3">Enregistrer</button>
+               </div>
             </div>
+            
         </form>
     </main>
 
@@ -244,6 +248,42 @@ if (isset($_POST['modif_infos'])){
             </div>
         </div>
     </footer>
+
+   <script>
+
+        ////////////////////////////////////////////////////////////////////////////////////
+        ///                            Supprimer compte                                  ///
+        ////////////////////////////////////////////////////////////////////////////////////
+
+        document.getElementById('btn-suppr-compte').addEventListener('click', function () {
+            const confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce compte ?");
+            if (confirmation) {
+                const compteId = <?php echo json_encode($compte['code_compte']); ?>;
+        
+                fetch('/supprimer_compte.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ id: compteId })
+                })
+                .then(response => response.json()) // Parse la réponse JSON
+                .then(data => {
+                    if (data.success) {
+                        alert('Compte supprimé avec succès.');
+                        window.location.href = '/consulter_compte_pro.php?deco=true'; // Redirection côté client
+                    } else {
+                        alert(data.message || 'Erreur lors de la suppression du compte.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur réseau ou serveur :', error);
+                    alert('Impossible de supprimer le compte.');
+                });
+            }
+        });
+    
+    </script>
 
 </body>
 </html>

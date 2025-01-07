@@ -133,9 +133,9 @@ if(isset($_POST['envoiFormEtape2'])){
 
                <!-- Tarif -->
 
-               <div>
+                <div class="tarif-option">
                   <label for="tarif">
-                     Tarif : 
+                     Tarif
                   </label>
                   <input type="number" id="tarif" name="_tarif" placeholder="00.00€" min="0" step="0.01" required>
                </div>

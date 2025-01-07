@@ -9,7 +9,7 @@
     flex-direction: column;
     /* justify-content: center; */
     /* align-items: center; */
-    padding: 20px 450px 50px 450px;
+    padding: 50px 450px 50px 450px;
 }
 
 
@@ -60,6 +60,11 @@
 .main-creation-offre2 .ferme{
     margin-left: 20px;
 }
+
+.main-creation-offre2 .table_tags{
+    padding: 0 10px;
+}
+
 
 .main-creation-offre2 .col input, .main-creation-offre2 .col select {
     width: 100%;
@@ -121,7 +126,7 @@
     margin-left: 10px;
 }
 
-.main-creation-offre2 .notes{
+.notes_explicatives{
     padding-top: 100px;
     font-size: smaller;
 }
@@ -218,6 +223,10 @@
 #jour, .main-creation-offre2 input{
     background-color: white;
     height: 42px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    border-color: var(--orange);
+    padding : 0 10px;
 }
 
 

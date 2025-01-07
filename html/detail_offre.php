@@ -5,7 +5,6 @@ if (headers_sent($file, $line)) {
 ob_start();
 session_start();
 
-
 function tempsEcouleDepuisPublication($offre)
 {
     // date d'aujourd'hui
@@ -382,8 +381,8 @@ if (isset($json['results'][0])) {
                             <?php
                         } else if ($type_offre === "spectacle") {
                             ?>
-                                    <h3 style="margin-top: 1em;">Capacité d'acceuil</h3>
-                                    <p><?php echo $details_offre["capacite_acceuil"]; ?></p>
+                                    <h3 style="margin-top: 1em;">Capacité d'accueil</h3>
+                                    <p><?php echo $details_offre["capacite_accueil"]; ?></p>
 
                                     <h3 style="margin-top: 1em;">Durée</h3>
                                     <p><?php echo $details_offre["duree"]; ?></p>
@@ -658,6 +657,7 @@ if (isset($json['results'][0])) {
             <div class="avis-list">
     <?php
     foreach ($tout_les_avis as $avis) {
+        var_dump($avis);
         $appreciation = "";
 
         switch ($avis["note"]) {
