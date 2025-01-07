@@ -380,6 +380,11 @@
                             <div class="slider-circle"></div>
                         </div>
                     </div>
+                    <p id="offer-state">L'offre est actuellement : 
+                            <span id="offer-status"> 
+                                <?php echo $details_offre[ 'en_ligne'] ? "En Ligne" : "Hors Ligne"; ?>
+                            </span>
+                        </p>
 
                     <!-- <script src="toggle-button.js"></script> -->
                     
