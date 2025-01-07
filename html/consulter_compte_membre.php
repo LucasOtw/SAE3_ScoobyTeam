@@ -261,7 +261,7 @@ if (isset($_POST['dwl-data'])) {
         'Email' => $compte['mail'],
         'Téléphone' => $compte['telephone'],
     );
-    $data['Liste_Avis'] = $mesAvis;
+    $data['Liste_Avis'] = $tab_avis;
 
     // conversion en JSON
     $jsonData = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
