@@ -291,11 +291,4 @@ button[type="submit"] {
     margin-left: 3vw;
 }
 
-button[type="submit"]:hover {
-}
-
-button[type="submit"]:active {
-    transform: scale(0.98); /* Léger effet d'appui */
-}
-
 

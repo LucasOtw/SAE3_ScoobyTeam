@@ -1,7 +1,6 @@
 <?php
 // Connexion à la base de données
 session_start();
-$compte = $_SESSION["membre"];
 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";
 $password = "philly-Congo-bry4nt";
