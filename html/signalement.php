@@ -114,6 +114,17 @@ try {
             
         <?php endif; ?>
         <h2 class="titre_signalement_2">Cause du signalement</h2>
+        <div class="type_offre_select_button">
+                    <select id="offre" name="offreChoisie" data-placeholder="Sélectionnez..." required>
+                        <option value="" hidden selected>Sélectionnez...</option>
+                        <option value="restaurant">Restaurant</option>
+                        <option value="spectacle">Spectacle</option>
+                        <option value="visite">Visite</option>
+                        <option value="attraction">Parc d'attraction</option>
+                        <option value="activite">Activité</option>
+                    </select>
+
+        </div>
         <h2 class="titre_signalement_3">Description (facultatif)</h2>
         <form method="POST" action="process_signalement.php">
                 <input type="hidden" name="id_avis" value="<?php echo $idAvis; ?>">

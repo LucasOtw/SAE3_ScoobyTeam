@@ -258,3 +258,12 @@ nav ul li a.active {
     margin-left: 3vw;
     
 }
+
+.main-creation-offre select {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    border-color: var(--orange);
+}
