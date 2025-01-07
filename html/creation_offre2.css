@@ -61,6 +61,11 @@
     margin-left: 20px;
 }
 
+.main-creation-offre2 .table_tags{
+    padding: 0 10px;
+}
+
+
 .main-creation-offre2 .col input, .main-creation-offre2 .col select {
     width: 100%;
     padding: 10px;
