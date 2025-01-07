@@ -419,11 +419,9 @@ footer {
 .half-background h1 {
     color: white;
 }
-
-.h2_bonjour_prenom {
-    color: white;
-    font-size: 2em;
-    margin-left: 12px;
+.h1_voir_offre1 {
+    margin-left: 10px;
+    font-size: 60px;
 }
 
 .h1_voir_offre1 {
