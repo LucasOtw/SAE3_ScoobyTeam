@@ -97,13 +97,13 @@ function tempsEcouleDepuisPublication($offre){
 <div class="half-background">
         <!-- Le contenu de la page ici -->
          <div class="conteneur_titre_voir_offre">  
-         <?php
-            if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
-                ?> <h1 class="h1_voir_offre_prenom"><?php echo $resultat['prenom'] . ",";?></h1><?php
-            }
-          ?>
+         
          <h1 class="h1_voir_offre1">Découvrez la</h1>
-         <h1 class="h1_voir_offre2">Bretagne !</h1>
+         <h1 class="h1_voir_offre2">Bretagne <?php
+            if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
+                echo ", " . $resultat['prenom'];?>
+            }
+          ?> !</h1>
 </div>
     </div>
     <!-- Code pour le pop-up --> 
