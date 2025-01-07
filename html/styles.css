@@ -3444,7 +3444,7 @@ nom.avis {
 }
 
 /*****************************************************
-                                                  * page consulter mes avis *
+                                                  * page création compte membre *
                                         *****************************************************/
 
 main.creation_compte_membre body {
@@ -3482,6 +3482,10 @@ main.creation_compte_membre nav ul li a {
 
 main.creation_compte_membre nav ul li a.active {
     border-bottom: 2px solid var(--vert-clair);
+}
+
+main.creation_compte_membre div:first-of-type{
+  border: 1px solid red;
 }
 
 main.creation_compte_membre .creation_compte_membre_container {
