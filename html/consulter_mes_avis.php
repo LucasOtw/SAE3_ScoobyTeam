@@ -140,98 +140,140 @@ if (!empty($_POST['supprAvis'])){
                 default: $appreciation = "Non noté"; break;
             }
             ?>
-            <div class="avis">
-                <div class="avis-content">
-                    <h3 class="avis" style="display: flex; justify-content: space-between;">
-                        <span>
-                            <?php echo htmlspecialchars($avis["note"]) . ".0 ★  $appreciation "; ?> 
-                            <br><span class="nom_avis"><?php echo htmlspecialchars($avis["prenom"]) . " " . htmlspecialchars($avis["nom"]); ?></span> 
-                            <span class="nom_visite"><?php echo htmlspecialchars($avis["titre_offre"]); ?></span>
-                        </span>
-                        <!-- Formulaire pour supprimer un avis -->
-                        <form method="POST" action="consulter_mes_avis.php" class="delete-form">
-                            <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis['code_avis']); ?>">
-                            <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="confirmDelete(event)">
-                        </form>
-                    </h3>
-                    <p class="avis"><?php echo htmlspecialchars_decode($avis["txt_avis"], ENT_QUOTES); ?></p>
-                </div>
-            </div>
-            
-            <!-- Boîte de dialogue personnalisée -->
-            <div id="customConfirm" class="custom-confirm">
-                <div class="custom-confirm-content">
-                    <p>Êtes-vous sûr de vouloir supprimer cet avis ?</p>
-                    <button onclick="submitForm()">Oui</button>
-                    <button onclick="closeConfirm()">Non</button>
-                </div>
-            </div>
-            
-            <style>
-            /* Style de la boîte de dialogue personnalisée */
-            .custom-confirm {
-                display: none; /* Masquer par défaut */
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                z-index: 1000;
-            }
-            
-            .custom-confirm-content {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: white;
-                padding: 20px;
-                border-radius: 10px;
-                text-align: center;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                border: 3px solid var(--vert-clair);
-            }
-            
-            .custom-confirm-content p {
-                margin-bottom: 20px;
-                font-size: 16px;
-            }
-            
-            .custom-confirm-content button {
-                background-color: var(--vert-clair);
-                color: white;
-                border: none;
-                border-radius: 16px;
-                cursor: pointer;
-                margin-right: 1em;
-                box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
-                transition: transform 0.2s ease;
-                text-decoration: none;
-                width: 10em;
-                height: 2em;
-            }
-            
-            
-            .custom-confirm-content button:first-child {
-                background-color: #d9534f;
-                color: white;
-            }
-            
-            .custom-confirm-content button:last-child {
-                
-                background-color: #FFF;
-                color: black;
-                border: none;
-                border-radius: 16px;
-                cursor: pointer;
-                border: 1px #BDC426 solid;
-                margin-right: 1em;
-                box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
-                transition: transform 0.2s ease;
-                text-decoration: none;
-            }
-            </style>
+           <div class="avis">
+    <div class="avis-content">
+        <h3 class="avis" style="display: flex; justify-content: space-between;">
+            <span>
+                <?php echo htmlspecialchars($avis["note"]) . ".0 ★  $appreciation "; ?> 
+                <br><span class="nom_avis"><?php echo htmlspecialchars($avis["prenom"]) . " " . htmlspecialchars($avis["nom"]); ?></span> 
+                <span class="nom_visite"><?php echo htmlspecialchars($avis["titre_offre"]); ?></span>
+            </span>
+            <!-- Formulaire pour supprimer un avis -->
+            <form method="POST" action="consulter_mes_avis.php" class="delete-form" onsubmit="return confirmDelete(event)">
+                <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis['code_avis']); ?>">
+                <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis">
+            </form>
+        </h3>
+        <p class="avis"><?php echo htmlspecialchars_decode($avis["txt_avis"], ENT_QUOTES); ?></p>
+    </div>
+</div>
+
+<!-- Boîte de dialogue personnalisée -->
+<div id="customConfirm" class="custom-confirm">
+    <div class="custom-confirm-content">
+        <p>Êtes-vous sûr de vouloir supprimer cet avis ?</p>
+        <button onclick="submitForm()">Oui</button>
+        <button onclick="closeConfirm()">Non</button>
+    </div>
+</div>
+
+<!-- Message de confirmation -->
+<div id="confirmationMessage" class="confirmation-message" style="display: none;">
+    L'avis a été supprimé avec succès.
+</div>
+
+<script>
+function confirmDelete(event) {
+    event.preventDefault(); // Empêche la soumission immédiate du formulaire
+    document.getElementById('customConfirm').style.display = 'block';
+}
+
+function closeConfirm() {
+    document.getElementById('customConfirm').style.display = 'none';
+}
+
+function submitForm() {
+    // Soumet le formulaire via JavaScript
+    document.querySelector('.delete-form').submit();
+    
+    // Simule l'affichage du message de confirmation après soumission réussie
+    document.getElementById('confirmationMessage').style.display = 'block';
+    
+    // Cache la boîte de dialogue de confirmation
+    closeConfirm();
+    
+    // Optionnel : masque le message après quelques secondes
+    setTimeout(() => {
+        document.getElementById('confirmationMessage').style.display = 'none';
+    }, 3000); // 3 secondes
+}
+</script>
+
+<style>
+/* Style de la boîte de dialogue personnalisée */
+.custom-confirm {
+    display: none; /* Masquer par défaut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.custom-confirm-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 3px solid var(--vert-clair);
+}
+
+.custom-confirm-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.custom-confirm-content button {
+    background-color: var(--vert-clair);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    margin-right: 1em;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    width: 10em;
+    height: 2em;
+}
+
+.custom-confirm-content button:first-child {
+    background-color: #d9534f;
+    color: white;
+}
+
+.custom-confirm-content button:last-child {
+    background-color: #FFF;
+    color: black;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    border: 1px #BDC426 solid;
+    margin-right: 1em;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease;
+    text-decoration: none;
+}
+
+/* Style pour le message de confirmation */
+.confirmation-message {
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #d6e9c6;
+    border-radius: 4px;
+    text-align: center;
+}
+</style>
+
             
             <script>
             let currentForm;

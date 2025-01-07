@@ -235,6 +235,15 @@ if (isset($_POST['changePhoto'])) {
 
 // TELECHARGEMENT DES DONNEES (FORMAT JSON)
 
+$avis = $dbh->prepare("SELECT o.titre_offre,a.txt_avis,a.note FROM tripenarvor._avis a JOIN tripenarvor._offre o ON a.code_offre = o.code_offre
+WHERE a.code_compte = :code_compte");
+$avis->bindValue(":code_compte",$compte['code_compte']);
+$avis->execute();
+$mesAvis = $avis->fetchAll();
+echo "<pre>";
+var_dump($mesAvis);
+echo "</pre>";
+
 if (isset($_POST['dwl-data'])) {
     // préparation des données JSON
     $data = array(
