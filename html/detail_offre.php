@@ -907,7 +907,7 @@ if (isset($json['results'][0])) {
         <div class="avis-widget">
             <div class="avis-header">
                 <h1 class="avis"><?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne,1) . "/5") ?> <span class="avis-score"> <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?></span></h1>
-                <p class="avis"><?php echo $nombre_d_avis ; ?> avis vérifié<?php if ($nombre_d_avis > 1){ echo 's'; } ?></p>
+                <p class="avis"><?php echo $nombre_d_avis ; ?> avis<?php if ($nombre_d_avis > 1){ echo 's'; } ?></p>
             </div>
             <div class="avis-list">
                     <?php
