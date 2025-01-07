@@ -4,9 +4,6 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Inclure la connexion à la base de données
-require_once 'config.php'; // Remplacez 'config.php' par votre fichier de configuration
-
 // Vérifier si 'id_avis' est présent dans l'URL
 if (isset($_GET['id_avis']) && !empty($_GET['id_avis'])) {
     $idAvis = intval($_GET['id_avis']); // Convertir en entier pour éviter les injections SQL
