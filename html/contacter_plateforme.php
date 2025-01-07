@@ -25,9 +25,11 @@
         </nav>
     </header>
     <main>
-        <div class="profile-img-container">
-            <img class="profile-img" alt="Image de profil">
-            <h2>Notre priorité, c'est de vous apporter l'aide dont vous avez besoin.</h2>
+        <div class="profile">
+            <div class="banner">
+                <img src="images/Rectangle 3.png" alt="Bannière" class="header-img">
+                <h2>Notre priorité, c'est de vous apporter l'aide dont vous avez besoin.</h2>
+            </div>
         </div>
         <section class="contact-section">
             <h2>Contactez-nous</h2>
