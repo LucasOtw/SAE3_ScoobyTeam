@@ -99,7 +99,7 @@ function tempsEcouleDepuisPublication($offre){
          <div class="conteneur_titre_voir_offre">  
          
          <h1 class="h1_voir_offre1">Découvrez la</h1>
-         <h1 class="h1_voir_offre2">Bretagne <?php
+         <h1 class="h1_voir_offre2">Bretagne<?php
             if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
                 echo ", " . $resultat['prenom'];
             }
