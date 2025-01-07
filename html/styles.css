@@ -3487,6 +3487,7 @@ main.creation_compte_membre nav ul li a.active {
 main.creation_compte_membre > div:first-of-type{
   border: 1px solid red;
   position: absolute;
+  left: 25vw;
   float: right;
   z-index: 2;
   display: flex;
