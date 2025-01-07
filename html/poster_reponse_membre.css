@@ -369,12 +369,14 @@ main.main_repondre_avis .repondre_avis_info {
 
 main.main_repondre_avis .repondre_avis_utilisateur {
     margin: 0;
+    font-size: 22px;
 }
 
 main.main_repondre_avis .repondre_avis_texte,
 main.main_repondre_avis .repondre_avis_rating {
     margin: 10px 0;
     color: #555;
+    font-size: 19px;
 }
 
 main.main_repondre_avis .repondre_avis_btn_offre {
