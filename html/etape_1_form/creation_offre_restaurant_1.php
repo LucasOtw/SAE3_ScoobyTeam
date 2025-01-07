@@ -224,8 +224,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                
                     <div class="col">
                         <fieldset>
-                            <legend>Complément d'Adresse (facultatif)</legend>
-                            <input type="text" id="complement_adresse" name="complement_adresse" placeholder="Complément d'Adresse (facultatif)">
+                            <legend>Complément d'Adresse </legend>
+                            <input type="text" id="complement_adresse" name="complement_adresse" placeholder="Complément d'Adresse ">
                         </fieldset>
                     </div>
                 </div>
@@ -253,8 +253,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Ajouter le lien du site (facultatif)</legend>
-                            <input type="url" id="lien" name="lien" placeholder="Ajouter le lien du site (facultatif)">
+                            <legend>Ajouter le lien du site </legend>
+                            <input type="url" id="lien" name="lien" placeholder="Ajouter le lien du site ">
                         </fieldset>
                     </div>  
                 </div>
@@ -292,8 +292,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Accessibilité (facultatif)</legend>
-                            <input type="text" id="accessibilite" name="accessibilite" placeholder="Accessibilité (facultatif)">
+                            <legend>Accessibilité </legend>
+                            <input type="text" id="accessibilite" name="accessibilite" placeholder="Accessibilité ">
                         </fieldset>
                     </div>
                 </div>
