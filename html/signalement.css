@@ -265,5 +265,7 @@ nav ul li a.active {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    border-color: var(--orange);
+    border-color: var(--vert-fonce);
+    margin-top: 3vh;
+    margin-left: 3vw;
 }
