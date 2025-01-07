@@ -191,7 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main class="main-creation-offre2">
 
         <div class="form-container2">
-            <h1>Publier une offre</h1>
+            <h1>Publiez une offre</h1>
 
             <!-- Form Fields -->
             <form action="#" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
