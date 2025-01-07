@@ -2407,19 +2407,49 @@ input[type="password"]::placeholder {
     text-decoration: underline;
 }
 
-.main-consulter-compte-pro .compte_membre_save_delete {
+.main_consulter_compte_membre .compte_membre_save_delete_remove {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 11em;
+}
+
+.main_consulter_compte_membre .compte_membre_save_delete {
     display: flex;
     justify-content: right;
-    /* Aligne les boutons au centre */
-    gap: 20px;
-    /* Espacement entre les boutons */
-    margin-bottom: 11em;
+    gap: 6px;
 }
 
 
 .main-consulter-compte-pro .compte_membre_save_delete a {
     text-decoration: none;
 }
+
+
+.main-consulter-compte-pro button.btn-suppr-compte{
+   display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: #000;
+    border: 1px solid#ff4d4f;
+    padding: 12px 20px;
+    font-size: 1em;
+    border-radius: 16px;
+    cursor: pointer;
+    width: 223px;
+    height: 52px;
+    padding: 15px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease; /* Animation au survol */
+}
+
+.main_consulter_compte_membre button.btn-suppr-compte:hover{
+    transform: translateY(-2px); /* Effet d'élévation au survol */
+    background-color: #ff4d4f;
+    color: white;
+
+}
+
 
 .main-consulter-compte-pro .submit-btn1,
 .main-consulter-compte-pro button.submit-btn2,
