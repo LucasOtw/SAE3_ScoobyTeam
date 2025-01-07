@@ -373,8 +373,8 @@
                     </div>
                     <div> 
                         <p id="offer-state"> 
-                            <span id="offer-status"> 
-                                <?php echo $details_offre[ 'en_ligne'] ? "En Ligne" : "Hors Ligne"; ?>
+                            <span id="offer-status"> <strong>
+                                <?php echo $details_offre[ 'en_ligne'] ? "En Ligne" : "Hors Ligne"; ?></strong>
                            </span>
                         </p>
                      </div>
