@@ -219,9 +219,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" maxlength="38" required>
                         </fieldset>
                     </div>
-                </div>
+                
 
-                <div class="row">
+               
                     <div class="col">
                         <fieldset>
                             <legend>Complément d'Adresse</legend>
@@ -271,8 +271,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Résumé (facultatif)</legend>
-                            <input type="text" id="resume" name="resume" placeholder="Résumé" required>
+                            <legend>Résumé *</legend>
+                            <input type="text" id="resume" name="resume" placeholder="Résumé *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -281,8 +281,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Description (facultatif)</legend>
-                            <input type="text" id="description" name="description" placeholder="Description" required>
+                            <legend>Description *</legend>
+                            <input type="text" id="description" name="description" placeholder="Description *" required>
                         </fieldset>
                     </div>
                 </div>
