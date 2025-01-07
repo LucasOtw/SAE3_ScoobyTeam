@@ -271,5 +271,11 @@ nav ul li a.active {
 
 .titre_signalement_3{
     margin-left: 3vw;  
-    margin-top: 10vh;
+    margin-top: 8vh;
+}
+
+
+.button{
+margin-top: 6vh;
+margin-left: 3vw;
 }
