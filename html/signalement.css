@@ -211,3 +211,12 @@ nav ul li a.active {
 .header-tel img {
     width: 100px;
 }
+
+
+.avis-widget .avis-list .avis {
+    display: flex
+;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
