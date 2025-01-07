@@ -16,15 +16,11 @@
       $stmt->bindValue(':code_compte', $compteId, PDO::PARAM_INT);
   
       if ($stmt->execute()) {
-          // Succès
           http_response_code(200);
-          header('location: voir_offres.php');
-          exit;
-          echo json_encode(['message' => 'Compte supprimé']);
+          echo json_encode(['success' => true, 'message' => 'Compte supprimé']);
       } else {
-          // Échec
           http_response_code(500);
-          echo json_encode(['message' => 'Erreur lors de la suppression']);
+          echo json_encode(['success' => false, 'message' => 'Erreur lors de la suppression']);
       }
   }
 ?>
