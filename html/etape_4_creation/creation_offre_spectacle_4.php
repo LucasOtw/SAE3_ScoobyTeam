@@ -26,7 +26,11 @@ if(!isset($_SESSION['pro'])){
     exit;
 }
 
+echo "<pre>";
 var_dump($_SESSION['crea_offre']);
+var_dump($_SESSION['crea_offre2']);
+var_dump($_SESSION['crea_offre3']);
+echo "</pre>";
   
 ?>
 <!DOCTYPE html>
