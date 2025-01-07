@@ -30,7 +30,6 @@ try {
             // Récupérer l'avis correspondant
             $avis = $stmt->fetch();
             echo "<pre>";
-            var_dump($compte);
             echo "</pre>";
             if ($avis) {
                 // Afficher les informations de l'avis trouvé
