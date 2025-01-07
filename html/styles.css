@@ -4412,7 +4412,7 @@ nav.nav-bar-tel {
 /* Style pour la case à cocher */
 .main-modif-bancaire #remember,
 #cgu {
-    accent-color: var(--vert-clair);
+    accent-color: var(--orange);
 }
 
 /* Styles pour les boutons */
