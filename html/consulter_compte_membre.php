@@ -237,17 +237,18 @@ if (isset($_POST['changePhoto'])) {
 
 if (isset($_POST['dwl-data'])) {
     // Récupération des avis
-    $avis = $dbh->prepare("SELECT o.titre_offre,a.txt_avis,a.note FROM tripenarvor._avis a JOIN tripenarvor._offre o ON a.code_offre = o.code_offre
-    WHERE a.code_compte = :code_compte");
-    $avis->bindValue(":code_compte",$compte['code_compte']);
+    $avis = $dbh->prepare("SELECT o.titre_offre, a.txt_avis, a.note FROM tripenarvor._avis a 
+                           JOIN tripenarvor._offre o ON a.code_offre = o.code_offre
+                           WHERE a.code_compte = :code_compte");
+    $avis->bindValue(":code_compte", $compte['code_compte']);
     $avis->execute();
     $result = $avis->fetchAll(PDO::FETCH_ASSOC);
-    
+
     $tab_avis = [];
     
     foreach($result as $res){
-        if(!array_key_exists($res['titre_offre'], $tab_avis)){
-            // Si la clé n'existe pas, on l'initialise avec un tableau vide
+        if (!array_key_exists($res['titre_offre'], $tab_avis)) {
+            // Si la clé n'existe pas, l'initialiser avec un tableau vide
             $tab_avis[$res['titre_offre']] = [];
         }
         
@@ -260,18 +261,18 @@ if (isset($_POST['dwl-data'])) {
             'note' => $res['note']
         ];
     }
-        
-    // préparation des données JSON
-    $data = array(
+    
+    // Préparation des données JSON
+    $data = [
         'Nom' => $monCompteMembre['nom'],
         'Prenom' => $monCompteMembre['prenom'],
         'Pseudo' => $monCompteMembre['pseudo'],
         'Email' => $compte['mail'],
         'Téléphone' => $compte['telephone'],
-    );
-    $data['Liste_Avis'] = $tab_avis;
+        'Liste_Avis' => $tab_avis
+    ];
 
-    // conversion en JSON
+    // Conversion en JSON
     $jsonData = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
     // Envoi des en-têtes pour le téléchargement
@@ -279,7 +280,7 @@ if (isset($_POST['dwl-data'])) {
     header('Content-Disposition: attachment; filename="mes_donnees_PACT.json"');
     header('Content-Length: ' . strlen($jsonData));
 
-    // envoyer les données JSON
+    // Envoyer les données JSON
     echo $jsonData;
     exit;
 }
