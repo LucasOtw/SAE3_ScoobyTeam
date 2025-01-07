@@ -368,7 +368,7 @@
 
                 if($creerMembre->execute()){
                     ?>
-                        <div>
+                        <div class="creation-success">
                             <img src="images/verifier.png" alt="Succès">
                             <h2>Compte crée avec succès !</h2>
                         </div>
