@@ -1,44 +1,47 @@
 <?php
-// Démarrer la session et gérer les erreurs
-session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
+// Connexion à la base de données
 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";
 $password = "philly-Congo-bry4nt";
 
-// Créer une instance PDO
-$dbh = new PDO($dsn, $username, $password);
+try {
+    $dbh = new PDO($dsn, $username, $password);
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Vérifier si des données ont été envoyées via POST
-if (!empty($_POST)) {
-    $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
-    $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
-}
+    // Vérifier si l'ID d'avis est passé dans l'URL
+    if (isset($_GET['id_avis']) && !empty($_GET['id_avis'])) {
+        // Sécuriser l'ID en le convertissant en entier
+        $idAvis = intval($_GET['id_avis']);
 
-// Vérifier si 'id_avis' est présent dans l'URL
-if (isset($_GET['id_avis']) && !empty($_GET['id_avis'])) {
-    $idAvis = intval($_GET['id_avis']); // Convertir en entier pour éviter les injections SQL
+        // Requête préparée avec un paramètre dynamique :id
+        $stmt = $dbh->prepare("
+            SELECT * 
+            FROM tripenarvor._avis 
+            NATURAL JOIN tripenarvor._compte 
+            WHERE code_compte=2 AND id = :id
+        ");
 
-    // Rechercher l'avis dans la base de données
-    $stmt = $dbh->prepare("SELECT * from tripenarvor._avis natural join tripenarvor._compte where code_compte=2;"); //Modification de la requete (il faut que je la refasse)
-    $stmt->execute(); // Ajouter ':' pour correspondre au paramètre SQL
-    $avis = $stmt->fetch();
+        // Exécuter la requête avec le paramètre :id
+        $stmt->execute([':id' => $idAvis]);
 
-    if ($avis) {
-        // L'avis a été trouvé
-        $note = htmlspecialchars($avis['note']);
-        $texte = htmlspecialchars($avis['txt_avis']);
-        $prenom = htmlspecialchars($avis['prenom']);
-        $nom = htmlspecialchars($avis['nom']);
+        // Récupérer l'avis correspondant
+        $avis = $stmt->fetch();
+
+        if ($avis) {
+            // Afficher les informations de l'avis trouvé
+            echo "<h3>" . htmlspecialchars($avis['note']) . ".0 | " . htmlspecialchars($avis['prenom']) . " " . htmlspecialchars($avis['nom']) . "</h3>";
+            echo "<p>" . htmlspecialchars($avis['txt_avis']) . "</p>";
+        } else {
+            // Aucun avis trouvé avec cet ID
+            echo "Aucun avis trouvé pour cet ID.";
+        }
     } else {
-        // Aucun avis trouvé
-        $erreur = "Aucun avis trouvé avec cet ID.";
+        // Aucun ID passé dans l'URL
+        echo "Aucun ID d'avis spécifié.";
     }
-} else {
-    // ID non spécifié
-    $erreur = "Aucun ID d'avis spécifié.";
+} catch (PDOException $e) {
+    // Gestion des erreurs
+    echo "Erreur de connexion ou d'exécution : " . $e->getMessage();
 }
 ?>
 
