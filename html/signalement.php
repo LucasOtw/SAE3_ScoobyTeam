@@ -11,16 +11,18 @@ $password = "philly-Congo-bry4nt";
 // Créer une instance PDO
 $dbh = new PDO($dsn, $username, $password);
 
-if(!empty($_POST)){
+// Vérifier si des données ont été envoyées via POST
+if (!empty($_POST)) {
     $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
     $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
+}
 
 // Vérifier si 'id_avis' est présent dans l'URL
 if (isset($_GET['id_avis']) && !empty($_GET['id_avis'])) {
     $idAvis = intval($_GET['id_avis']); // Convertir en entier pour éviter les injections SQL
 
     // Rechercher l'avis dans la base de données
-    $stmt = $pdo->prepare("SELECT * FROM _avis WHERE id = :id");
+    $stmt = $dbh->prepare("SELECT * FROM _avis WHERE id = :id");
     $stmt->execute(['id' => $idAvis]);
     $avis = $stmt->fetch();
 
@@ -39,6 +41,7 @@ if (isset($_GET['id_avis']) && !empty($_GET['id_avis'])) {
     $erreur = "Aucun ID d'avis spécifié.";
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
