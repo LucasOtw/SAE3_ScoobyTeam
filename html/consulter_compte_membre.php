@@ -246,11 +246,19 @@ if (isset($_POST['dwl-data'])) {
     $tab_avis = [];
     
     foreach($result as $res){
-        if(array_key_exists($res['titre_offre'],$tab_avis)){
+        if(!array_key_exists($res['titre_offre'], $tab_avis)){
+            // Si la clé n'existe pas, on l'initialise avec un tableau vide
             $tab_avis[$res['titre_offre']] = [];
         }
-        $tab_avis[$res['titre_offre']][]['content'] = $res['txt_avis'];
-        $tab_avis[$res['titre_offre']][]['note'] = $res['note'];
+        
+        // Échapper les entités HTML dans les avis
+        $content = htmlspecialchars($res['txt_avis'], ENT_QUOTES, 'UTF-8');
+        
+        // Ajouter l'avis et la note
+        $tab_avis[$res['titre_offre']][] = [
+            'content' => $content,
+            'note' => $res['note']
+        ];
     }
         
     // préparation des données JSON
