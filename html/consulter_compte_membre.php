@@ -568,11 +568,10 @@ if (isset($_POST['dwl-data'])) {
         ////////////////////////////////////////////////////////////////////////////////////
 
         document.getElementById('btn-suppr-compte').addEventListener('click', function () {
-            // Exemple d'action : afficher une confirmation
             const confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce compte ?");
             if (confirmation) {
-                // Effectuer la suppression via une requête à votre serveur
-                const compteId = <?php echo json_encode($compte['code_compte']); ?>; // Remplacez par l'ID réel du compte à supprimer
+                const compteId = <?php echo json_encode($compte['code_compte']); ?>;
+        
                 fetch('/supprimer_compte.php', {
                     method: 'POST',
                     headers: {
@@ -580,12 +579,13 @@ if (isset($_POST['dwl-data'])) {
                     },
                     body: JSON.stringify({ id: compteId })
                 })
-                .then(response => {
-                    if (response.ok) {
+                .then(response => response.json()) // Parse la réponse JSON
+                .then(data => {
+                    if (data.success) {
                         alert('Compte supprimé avec succès.');
-                        // Optionnel : redirection ou mise à jour de l'interface
+                        window.location.href = '/voir_offres.php'; // Redirection côté client
                     } else {
-                        alert('Erreur lors de la suppression du compte.');
+                        alert(data.message || 'Erreur lors de la suppression du compte.');
                     }
                 })
                 .catch(error => {
