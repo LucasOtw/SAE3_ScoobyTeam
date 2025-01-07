@@ -141,38 +141,39 @@ if (!empty($_POST['supprAvis'])){
             }
             ?>
             <div class="avis">
-    <div class="avis-content">
-        <h3 class="avis" style="display: flex; justify-content: space-between;">
-            <span>
-                <?php echo htmlspecialchars($avis["note"]) . ".0 ★  $appreciation "; ?> 
-                <br><span class="nom_avis"><?php echo htmlspecialchars($avis["prenom"]) . " " . htmlspecialchars($avis["nom"]); ?></span> 
-                <span class="nom_visite"><?php echo htmlspecialchars($avis["titre_offre"]); ?></span>
-            </span>
-            <!-- Formulaire pour supprimer un avis -->
-            <form method="POST" action="consulter_mes_avis.php" onsubmit="return confirmDelete(event)">
-                <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis['code_avis']); ?>">
-                <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="this.closest('form').submit()">
-            </form>
-        </h3>
-        <!-- Remplacer &#039; par ' dans le texte de l'avis -->
-        <p class="avis"><?php echo htmlspecialchars_decode($avis["txt_avis"], ENT_QUOTES); ?></p>
-    </div>
-</div>
+                <div class="avis-content">
+                    <h3 class="avis" style="display: flex; justify-content: space-between;">
+                        <span>
+                            <?php echo htmlspecialchars($avis["note"]) . ".0 ★  $appreciation "; ?> 
+                            <br><span class="nom_avis"><?php echo htmlspecialchars($avis["prenom"]) . " " . htmlspecialchars($avis["nom"]); ?></span> 
+                            <span class="nom_visite"><?php echo htmlspecialchars($avis["titre_offre"]); ?></span>
+                        </span>
+                        <!-- Formulaire pour supprimer un avis -->
+                        <form method="POST" action="consulter_mes_avis.php" class="delete-form">
+                            <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis['code_avis']); ?>">
+                            <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="confirmDelete(event)">
+                        </form>
+                    </h3>
+                    <!-- Remplacer &#039; par ' dans le texte de l'avis -->
+                    <p class="avis"><?php echo htmlspecialchars_decode($avis["txt_avis"], ENT_QUOTES); ?></p>
+                </div>
+            </div>
+            
+            <script>
+            function confirmDelete(event) {
+                // Empêcher l'action par défaut du clic sur l'image
+                event.preventDefault();
+                
+                // Afficher une boîte de dialogue de confirmation
+                var confirmed = confirm("Êtes-vous sûr de vouloir supprimer cet avis ?");
+                
+                // Si l'utilisateur confirme, soumettre le formulaire
+                if (confirmed) {
+                    event.target.closest('form').submit();
+                }
+            }
+            </script>
 
-<script>
-function confirmDelete(event) {
-    // Empêcher l'envoi du formulaire avant la confirmation
-    event.preventDefault();
-    
-    // Afficher un message de confirmation
-    var confirmed = confirm("Êtes-vous sûr de vouloir supprimer cet avis ?");
-    
-    // Si l'utilisateur confirme, soumettre le formulaire
-    if (confirmed) {
-        event.target.submit();
-    }
-}
-</script>
 
         <?php endforeach; ?>
     </div>

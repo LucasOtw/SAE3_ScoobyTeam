@@ -104,11 +104,12 @@ if(isset($_SESSION['aCreeUneOffre'])){
             <div class="offer-card">
                 <div class="offer-image">
                     <img src="<?php echo $monOffre['url_images'][0]; ?>" alt="Offre">
-                    <div class="offer-status">
-                        <?php if (!$monOffre["en_ligne"]) { ?>
-                            <span class="status-dot-offline"></span> Hors Ligne
-                        <?php } else { ?>
-                            <span class="status-dot-online"></span> En Ligne
+                    <div
+                        <?php if (!$monOffre["en_ligne"]) { 
+                            ?> <div class="offer-status status-offline"><p>Hors Ligne</p>
+                        <?php } 
+                            else {
+                            ?> <div class="offer-status status-online"><p>En Ligne</p>
                         <?php } ?>
                     </div>
                 </div>
