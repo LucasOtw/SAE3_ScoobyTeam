@@ -476,7 +476,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
         
                         <div class="boutons">
                             <button type="submit" name="valider" class="btn-primary">Valider</button>
-                            <button type="submit" name="passer_cb">Plus tard...</button>
+                            <button type="submit" name="passer_cb" class="btn-secondary">Plus tard...</button>
                         </div>
                     </form>
         
