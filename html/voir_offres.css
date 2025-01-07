@@ -957,7 +957,7 @@ body.menu-open #overlay {
 .search-input::placeholder {
     color: white;
     /* Couleur du texte du placeholder */
-    opacity: 0.10;
+    opacity: 0.7;
     /* Optionnel : ajoute une légère transparence */
 }
 
