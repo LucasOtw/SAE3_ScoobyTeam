@@ -233,6 +233,10 @@ if (isset($_POST['changePhoto'])) {
     exit;
 }
 
+// TELECHARGEMENT DES DONNEES (FORMAT JSON)
+$data = array();
+var_dump($_SESSION['membre']);
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
