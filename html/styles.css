@@ -3492,7 +3492,6 @@ main.creation_compte_membre > div:first-of-type{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5vh 1vw;
   width: 20vw;
   border-radius: 1vw;
   border: 1px solid black;
