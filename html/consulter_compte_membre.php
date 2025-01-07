@@ -235,28 +235,24 @@ if (isset($_POST['changePhoto'])) {
 
 // TELECHARGEMENT DES DONNEES (FORMAT JSON)
 
-$avis = $dbh->prepare("SELECT o.titre_offre,a.txt_avis,a.note FROM tripenarvor._avis a JOIN tripenarvor._offre o ON a.code_offre = o.code_offre
-WHERE a.code_compte = :code_compte");
-$avis->bindValue(":code_compte",$compte['code_compte']);
-$avis->execute();
-$result = $avis->fetchAll(PDO::FETCH_ASSOC);
-
-$tab_avis = [];
-
-foreach($result as $res){
-    if(array_key_exists($res['titre_offre'],$tab_avis)){
-        $tab_avis[$res['titre_offre']] = [];
-    }
-    $tab_avis[$res['titre_offre']][]['content'] = $res['txt_avis'];
-    $tab_avis[$res['titre_offre']][]['note'] = $res['note'];
-}
-
-// Afficher ou utiliser $avisParOffre
-echo "<pre>";
-print_r($tab_avis);
-echo "</pre>";
-
 if (isset($_POST['dwl-data'])) {
+    // Récupération des avis
+    $avis = $dbh->prepare("SELECT o.titre_offre,a.txt_avis,a.note FROM tripenarvor._avis a JOIN tripenarvor._offre o ON a.code_offre = o.code_offre
+    WHERE a.code_compte = :code_compte");
+    $avis->bindValue(":code_compte",$compte['code_compte']);
+    $avis->execute();
+    $result = $avis->fetchAll(PDO::FETCH_ASSOC);
+    
+    $tab_avis = [];
+    
+    foreach($result as $res){
+        if(array_key_exists($res['titre_offre'],$tab_avis)){
+            $tab_avis[$res['titre_offre']] = [];
+        }
+        $tab_avis[$res['titre_offre']][]['content'] = $res['txt_avis'];
+        $tab_avis[$res['titre_offre']][]['note'] = $res['note'];
+    }
+        
     // préparation des données JSON
     $data = array(
         'Nom' => $monCompteMembre['nom'],
@@ -265,6 +261,7 @@ if (isset($_POST['dwl-data'])) {
         'Email' => $compte['mail'],
         'Téléphone' => $compte['telephone'],
     );
+    $data['Liste_Avis'] = $mesAvis;
 
     // conversion en JSON
     $jsonData = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
