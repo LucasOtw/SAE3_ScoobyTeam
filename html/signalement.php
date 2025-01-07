@@ -93,7 +93,7 @@ try {
         </header>
     </div>
     <div class="container">
-        <h1>Signaler un avis</h1>
+        <h2 class="titre_signalement_1">Signaler un avis</h2>
         <?php if (isset($erreur)): ?>
             <div class="erreur">
                 <p><?php echo $erreur; ?></p>
@@ -116,6 +116,8 @@ try {
                 <button type="submit">Confirmer le signalement</button>
             </form>
         <?php endif; ?>
+        <h2 class="titre_signalement_2">Cause du signalement</h2>
+        <h2 class="titre_signalement_3">Description (facultatif)</h2>
     </div>
 </body>
 </html>
