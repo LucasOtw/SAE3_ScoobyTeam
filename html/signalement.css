@@ -255,8 +255,7 @@ nav ul li a.active {
 }
 
 .titre_signalement_2{
-    margin-left: 3vw;
-    
+    margin-left: 3vw;  
 }
 
 #offre {
@@ -268,4 +267,8 @@ nav ul li a.active {
     border-color: var(--vert-fonce);
     margin-top: 3vh;
     margin-left: 3vw;
+}
+
+.titre_signalement_3{
+    margin-left: 3vw;  
 }
