@@ -111,13 +111,14 @@ try {
                     }
                 ?>
             </div>
-            <form method="POST" action="process_signalement.php">
-                <input type="hidden" name="id_avis" value="<?php echo $idAvis; ?>">
-                <button type="submit">Confirmer le signalement</button>
-            </form>
+            
         <?php endif; ?>
         <h2 class="titre_signalement_2">Cause du signalement</h2>
         <h2 class="titre_signalement_3">Description (facultatif)</h2>
+        <form method="POST" action="process_signalement.php">
+                <input type="hidden" name="id_avis" value="<?php echo $idAvis; ?>">
+                <button type="submit">Confirmer le signalement</button>
+            </form>
     </div>
 </body>
 </html>
