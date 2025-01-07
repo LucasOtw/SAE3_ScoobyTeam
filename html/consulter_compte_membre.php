@@ -381,10 +381,6 @@ if (isset($_POST['changePhoto'])) {
                </fieldset>
             </div>
 
-            <div>
-                <input type="submit" name="download_data" value="Télécharger mes données">
-            </div>
-
             <div class="checkbox">
                 <input type="checkbox" id="cgu" name="cgu" required>
                 <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
@@ -395,6 +391,11 @@ if (isset($_POST['changePhoto'])) {
                 <button type="submit" name="modif_infos" class="submit-btn2" id="btn-enreg">Enregistrer</button>
             </div>
 
+        </form>
+        <form action="#">
+            <div>
+                <input type="submit" name="dwl-data" value="Télécharger mes données">
+            </div>
         </form>
     </main>
 
