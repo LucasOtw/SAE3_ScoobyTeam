@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $codePostal = htmlspecialchars($_POST['code_postal'] ?? '');
     $resume = htmlspecialchars($_POST['resume'] ?? '');
     $description = htmlspecialchars($_POST['description'] ?? '');
-    $tarif = $_POST['prix'] ?? null;
+    $tarif = $_POST['_tarif'] ?? null;
     $capacite = $_POST['capacite_accueil'] ?? null;
     $duree = $_POST['duree'];
     $date_spectacle = $_POST['date'] ?? null;
@@ -73,6 +73,82 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         if(!empty($erreurs)){
             foreach($erreurs as $erreur){
                 echo $erreur;
+            }
+        } else {
+            /* on ne peut pas insérer les données pour le moment...
+            Donc on les STOCKE ! :D*/
+
+            $tab_offre['titre_offre'] = $nomOffre;
+            $tab_offre['adresse'] = $adresse;
+            $tab_offre['ville'] = $ville;
+            $tab_offre['codePostal'] = $codePostal;
+            $tab_offre['resume'] = $resume;
+            $tab_offre['description'] = $description;
+            $tab_offre['capacite_accueil'] = $capacite;
+            $tab_offre['tarif'] = $tarif;
+            $tab_offre['duree'] = $duree;
+            $tab_offre['date_spectacle'] = $date_spectacle;
+            $tab_offre['heure'] = $heure;
+
+            // Récupération des champs facultatifs
+            $tab_offre['complementAdresse'] = $complementAdresse;
+            $tab_offre['lien'] = $lien;
+            $tab_offre['accessibilite'] = $accessibilite;
+
+            if(isset($_FILES['photos']) && !empty($_FILES['photos']['name'][0])){
+                $photos = [];
+                // Parcourir chaque photo envoyée
+                foreach($_FILES['photos']['name'] as $ley => $file_name){
+                    // Si le fichier n'est pas vide, on récupère les informations nécessaires
+                    if($_FILES['photos']['error'][$key] === 0){
+                        $photos[] = [
+                            'name' => $file_name,
+                            'type' = $_FILES['photos']['type'][$key],
+                            'tmp_name' => $_FILES['photos']['tmp_name'][$key],
+                            'size' => $_FILES['photos']['size'][$key]
+                        ];
+                    }
+                }
+
+                /* Le chemin est temporaire, on doit donc enregistrer directement les photos
+                dans leur propre dossier */
+
+                $nom_dossier_images = $tab_offre['titre_offre'];
+                $nom_dossier_images = str_replace(' ','',$nom_dossier_images);
+                $destination = "../images/offres/".$nom_dossier_images;
+
+                if(!file_exists($destination)){
+                    mkdir($destination, 0777, true);
+                }
+
+                foreach($photos as $photo){
+                    $nom_temp = $photo['tmp_name'];
+                    $nom_photo = $photo['name'];
+
+                    // on construit le chemin de destination complet
+                    $chemin = $destination . '/' . $nom_photo;
+
+                    if(file_exists($nom_temp)){
+                        // on déplace le fichier dans le dossier cible
+                        if(move_uploaded_file($nom_temp,$chemin)){
+                            echo "Le fichier $nom_photo a été déplacé avec succès.<br>";
+                        } else {
+                            echo "Erreur : Impossible de déplacer le fichier $nom_photo.<br>";
+                        }
+                    } else {
+                        echo "Erreur : Le fichier temporaire $nom_temp n'existe pas.<br>";
+                    }
+                }
+
+                $mesTags = [];
+                if (isset($_POST['tags']) && is_array($_POST['tags'])){
+                    foreach($_POST['tags'] as $tag){
+                        $mesTags[] = htmlspecialchars($tag);
+                    }
+                }
+                $tab_offre['tags'] = $mesTags;
+
+                $_SESSION['crea_offre'] = $tab_offre;
             }
         }
     }
@@ -182,7 +258,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     <div class="col">
                         <fieldset>
                             <legend>Tarif *</legend>
-                            <input type="text" id="prix" name="prix" placeholder="Tarif *" required>
+                            <input type="number" id="prix" name="_tarif" placeholder="Tarif *" min="0" max="999.99" step="0.01" required="">
                         </fieldset>
                     </div>
                 </div>
