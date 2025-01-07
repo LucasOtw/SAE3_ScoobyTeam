@@ -304,4 +304,58 @@ footer {
     }
 }
 
+/* Style spécifique au formulaire de contact */
+.contact-section {
+    background-color: white;
+    padding: 40px;
+    max-width: 600px;
+    margin: 50px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+.contact-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.contact-section label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact-section input,
+.contact-section select,
+.contact-section textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #333;
+}
+
+.contact-section textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.contact-section button {
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.contact-section button:hover {
+    background-color: #16a085;
+}
