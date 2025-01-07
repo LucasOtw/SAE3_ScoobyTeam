@@ -222,10 +222,6 @@
     height: 42px;
 }
 
-.duree{
-    width: 15vw;
-}
-
 
 .main-creation-offre2 fieldset:focus-within legend {
     display:inline;
