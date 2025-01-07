@@ -2407,20 +2407,20 @@ input[type="password"]::placeholder {
     text-decoration: underline;
 }
 
-.main_consulter_compte_membre .compte_membre_save_delete_remove {
+.main_consulter_compte_pro .compte_pro_save_delete_remove {
     display: flex;
     justify-content: space-between;
     margin-bottom: 11em;
 }
 
-.main_consulter_compte_membre .compte_membre_save_delete {
+.main_consulter_compte_pro .compte_pro_save_delete {
     display: flex;
     justify-content: right;
     gap: 6px;
 }
 
 
-.main-consulter-compte-pro .compte_membre_save_delete a {
+.main-consulter-compte-pro .compte_pro_save_delete a {
     text-decoration: none;
 }
 
