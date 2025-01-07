@@ -20,7 +20,7 @@ try {
             $stmt = $dbh->prepare("
                 SELECT * 
                 FROM tripenarvor._avis 
-                NATURAL JOIN tripenarvor._compte 
+                NATURAL JOIN tripenarvor._membre
                 WHERE code_compte=2 AND code_avis = :id
             ");
             
@@ -34,7 +34,7 @@ try {
             echo "</pre>";
             if ($avis) {
                 // Afficher les informations de l'avis trouvé
-                echo "<h3>" . htmlspecialchars($avis['note']) . ".0 | " . htmlspecialchars($avis['code_compte']) . " " . "</h3>";
+                echo "<h3>" . htmlspecialchars($avis['note']) . ".0 | " . htmlspecialchars($avis['prenom']) . " " . "</h3>";
                 echo "<p>" . htmlspecialchars($avis['txt_avis']) . "</p>";
             } else {
                 // Aucun avis trouvé avec cet ID
