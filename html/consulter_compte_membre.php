@@ -545,7 +545,7 @@ if (isset($_POST['dwl-data'])) {
             if (confirmation) {
                 // Effectuer la suppression via une requête à votre serveur
                 const compteId = <?php echo json_encode($compte['code_compte']); ?>; // Remplacez par l'ID réel du compte à supprimer
-                fetch('/supprimer-compte', {
+                fetch('/supprimer_compte.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
