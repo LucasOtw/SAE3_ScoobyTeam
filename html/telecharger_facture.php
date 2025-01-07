@@ -551,7 +551,7 @@ if(!isset($_SESSION['pro'])){
     </script>
 
 <!-- Bouton pour imprimer la facture -->
-<button id="download-btn">Imprimer la facture</button>
+<button id="print-btn">Imprimer la facture</button>
 
 <!-- Bibliothèque html2canvas -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
