@@ -519,17 +519,21 @@ if(!isset($_SESSION['pro'])){
         <div class="facture-footer">
             <table class="info-facture">
                 <tr>
-                    <td>Total HT:</td>
-                    <td><?php echo number_format($montant_ht_total, 2, ',', ' '); ?>€</td>
-                </tr>
-                <tr>
-                    <td>TVA 20%:</td>
-                    <td><?php echo number_format($montant_ht_total*0.20, 2, ',', ' '); ?>€</td>
-                </tr>
-                <tr>
-                    <td>Total TTC:</td>
-                    <td><?php echo number_format($montant_ht_total*1.20, 2, ',', ' '); ?>€</td>
-                </tr>
+                   <th>Description</th>
+                   <th>Montant</th>
+               </tr>
+               <tr>
+                   <td>Total HT</td>
+                   <td><?php echo number_format($montant_ht_total, 2, ',', ' '); ?>€</td>
+               </tr>
+               <tr>
+                   <td>Montant TVA (20%)</td>
+                   <td><?php echo number_format($montant_ht_total * 0.20, 2, ',', ' '); ?>€</td>
+               </tr>
+               <tr>
+                   <td>Total TTC</td>
+                   <td><?php echo number_format($montant_ht_total * 1.20, 2, ',', ' '); ?>€</td>
+               </tr>
             </table>
 
             <div class="payment-info">
