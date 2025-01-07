@@ -207,7 +207,10 @@ if (!empty($_POST['supprAvis'])){
                 box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
                 transition: transform 0.2s ease;
                 text-decoration: none;
+                width: 10em;
+                height: 2em;
             }
+            
             
             .custom-confirm-content button:first-child {
                 background-color: #d9534f;
