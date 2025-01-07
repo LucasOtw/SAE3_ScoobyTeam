@@ -328,6 +328,13 @@
                             </span>
                         </p>
                     </div>
+                    <div> 
+                        <p id="offer-state"> 
+                            <span id="offer-status"> 
+                                <?php echo $details_offre[ 'en_ligne'] ? "En Ligne" : "Hors Ligne"; ?>
+                            </span>
+                        </p>
+                    </div>
                     
 
                    
