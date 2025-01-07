@@ -187,47 +187,47 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
         * Si des images sont présentes dans un dossier au même nom que l'offre, on doit les insérer dans la bdd
         */
 
-        $nom_doss = str_replace(' ','',$_SESSION['crea_offre']['titre_offre']);
+        // Récupération du nom du dossier
+        $nom_doss = str_replace(' ', '', $_SESSION['crea_offre']['titre_offre']);
         $chemin = "../images/offres/{$nom_doss}";
-
-        if(file_exists($chemin)){
-            // si le chemin existe, on récupère tous les fichiers images
+        
+        if (file_exists($chemin)) {
+            // Récupération des fichiers dans le dossier
             $fichiers = scandir($chemin);
-
-            // Filtrer uniquement les images
-            $images = array_filter($fichiers, function($fichier) use ($chemin) {
+        
+            // Filtrer uniquement les fichiers image valides
+            $images = array_filter($fichiers, function ($fichier) use ($chemin) {
                 $extensions_valides = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
                 $extension = strtolower(pathinfo($fichier, PATHINFO_EXTENSION));
                 return in_array($extension, $extensions_valides) && is_file("$chemin/$fichier");
             });
-
+        
+            // Préparer la requête pour insérer une image
+            $ajout_image = $dbh->prepare("INSERT INTO tripenarvor._image (url_image) VALUES (:url_image)");
+        
+            // Préparer la vérification d'existence
+            $verif_image = $dbh->prepare("SELECT COUNT(*) FROM tripenarvor._image WHERE url_image = :url_image");
+        
+            $id_image = []; // Pour stocker les IDs des images insérées
+        
             foreach ($images as $image) {
                 $url_image = "$chemin/$image";
-            
-                // Vérifiez si l'image existe dans la table
-                $verif_image = $dbh->prepare("SELECT COUNT(*) FROM tripenarvor._image WHERE url_image = :url_image");
+        
+                // Vérifier si l'image existe déjà dans la base
                 $verif_image->execute([":url_image" => $url_image]);
                 $exists = $verif_image->fetchColumn();
-            
+        
                 if ($exists == 0) {
-                    // Si l'image n'existe pas, insérez-la
+                    // Si l'image n'existe pas, insérer dans la base
                     $ajout_image->execute([":url_image" => $url_image]);
+        
+                    // Récupérer l'ID de l'image insérée
                     $id_image[] = $dbh->lastInsertId();
                 }
             }
-
-            $ajout_image = $dbh->prepare("INSERT INTO tripenarvor._image (url_image) VALUES (:url_image)");
-
-            // on insère chaque image (parce-que WHY NOT)
-
-            $id_image = [];
-            foreach($images as $image){
-                $url_image = "$chemin/$image";
-                $ajout_image->execute([
-                    ":url_image" => $url_image
-                ]);
-                $id_image[] = $dbh->lastInsertId();
-            }
+        
+            // Debug : afficher les IDs insérés
+            var_dump($id_image);
         } else {
             die('Le chemin n existe pas');
         }
