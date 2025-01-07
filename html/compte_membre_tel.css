@@ -199,7 +199,7 @@ nav.nav-bar {
     background-color: #f9f9f9;
     border: none;
     border-radius: 8px;
-    color: #d9534f; /* Même couleur que les boutons danger */
+    color: black; /* Même couleur que les boutons danger */
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -208,6 +208,11 @@ nav.nav-bar {
 .btn-suppr-compte:hover {
     background-color: #f8d7da;
 }
+
+img[src="images/trash.svg"] {
+    filter: invert(41%) sepia(49%) saturate(297%) hue-rotate(81deg) brightness(92%) contrast(91%);
+}
+
 
 .action-btn.danger {
     color: #d9534f;
