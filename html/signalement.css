@@ -32,11 +32,6 @@ body {
 
 /****** HEADER *****/
 
-.titre_signalement_1 h2{
-    color : black;
-    margin-top: 10vh;
-    margin-left: 7vw;
-}
 
 div.header-membre {
     display: block;
