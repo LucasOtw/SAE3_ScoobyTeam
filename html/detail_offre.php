@@ -656,46 +656,49 @@ if (isset($json['results'][0])) {
                 <p class="avis"><?php echo $nombre_d_avis ; ?> avis vérifié<?php if ($nombre_d_avis > 1){ echo 's'; } ?></p>
             </div>
             <div class="avis-list">
-                
-                    <?php
-                    foreach ($tout_les_avis as $avis) {
-                        $appreciation = "";
-                        
-                        switch ($avis["note"]) {
-                            case '1':
-                                $appreciation = "Insatisfaisant";
-                                break;
-                        
-                            case '2':
-                                $appreciation = "Passable";
-                                break;
-                        
-                            case '3':
-                                $appreciation = "Correct";
-                                break;
-                            
-                            case '4':
-                                $appreciation = "Excellent";
-                                break;
-                        
-                            case '5':
-                                $appreciation  = "Parfait";
-                                break;
-                            
-                            default:
-                                break;
-                        }
-                        ?>
-                        <div class="avis">
-                            <div class="avis-content">
-                                <h3 class="avis"><?php echo $avis["note"] . ".0 $appreciation ";?>| <span class="nom_avis"><?php echo $avis["prenom"];?> <?php echo $avis["nom"]; ?></span></h3>
-                                <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
-                            </div>
-                        </div>
-                        <?php
-                    }
-                        ?>            
-                </div>
+    <?php
+    foreach ($tout_les_avis as $avis) {
+        $appreciation = "";
+
+        switch ($avis["note"]) {
+            case '1':
+                $appreciation = "Insatisfaisant";
+                break;
+            case '2':
+                $appreciation = "Passable";
+                break;
+            case '3':
+                $appreciation = "Correct";
+                break;
+            case '4':
+                $appreciation = "Excellent";
+                break;
+            case '5':
+                $appreciation  = "Parfait";
+                break;
+            default:
+                break;
+        }
+        ?>
+        <div class="avis">
+            <div class="avis-content">
+                <h3 class="avis">
+                    <?php echo $avis["note"] . ".0 $appreciation "; ?> 
+                    | <span class="nom_avis"><?php echo $avis["prenom"] . " " . $avis["nom"]; ?></span>
+                    <span class="signalement">
+                        <a href="signaler.php?id_avis=<?php echo $avis['id']; ?>" title="Signaler cet avis">
+                            🚩
+                        </a>
+                    </span>
+                </h3>
+                <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
+            </div>
+        </div>
+        <?php
+    }
+    ?>
+</div>
+
             </div>
         </div>
     </div>
