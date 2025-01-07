@@ -686,10 +686,10 @@ if (isset($json['results'][0])) {
                     <?php echo $avis["note"] . ".0 $appreciation "; ?> 
                     | <span class="nom_avis"><?php echo $avis["prenom"] . " " . $avis["nom"]; ?></span>
                     <span class="signalement">
-                        <a href="signalement.php?id_avis=<?php echo isset($avis['id']) ? htmlspecialchars($avis['code_avis']) : 'invalide'; ?>" title="Signaler cet avis" style="
-                            display: flex;
-                            margin-left: 6vw;
-                            text-decoration : none">🚩</a>
+                    <a href="signalement.php?id_avis=<?php echo isset($avis['code_avis']) ? htmlspecialchars($avis['code_avis']) : 'invalide'; ?>" title="Signaler cet avis">
+    🚩
+</a>
+
                     </span>
                 </h3>
                 <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
