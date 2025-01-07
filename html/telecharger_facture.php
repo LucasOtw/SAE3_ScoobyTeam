@@ -463,7 +463,7 @@ if(!isset($_SESSION['pro'])){
              <tbody>
                  <tr>
                      <td><?php echo $nom_type ?></td>
-                     <td><?php echo round(number_format($prix_par_jour, 2, ',', ' '))?>€</td>
+                     <td><?php echo number_format($prix_par_jour, 2, ',', ' ')?>€</td>
                      <td><?php echo $date_publication ?></td>
                      <td><?php echo round($montant_ht,2) ?>€</td>
                  </tr>
