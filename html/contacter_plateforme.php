@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -17,8 +16,6 @@
                     <img src="images/logoBlanc.png" alt="PACT Logo">
             </a>
         </div>
-       
-        
         <nav>
             <ul>
                 <li><a href="voir_offres.php" >Accueil</a></li>
@@ -27,18 +24,41 @@
             </ul>
         </nav>
     </header>
+
     <header class="header-tel header_membre">
         <div class="logo-tel">
             <img src="images/LogoCouleur.png" alt="PACT Logo">
         </div>
-         <a class="btn_plus_tard" href="voir_offres.php">Plus tard</a>
+        <a class="btn_plus_tard" href="voir_offres.php">Plus tard</a>
     </header>
-    <main>    
+
+    <main>
+        <section class="contact-section">
+            <h2>Contactez-nous</h2>
+            <form action="votre_script_php.php" method="POST">
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="nom" required>
+
+                <label for="prenom">Prénom :</label>
+                <input type="text" id="prenom" name="prenom" required>
+
+                <label for="bug-type">Type de problème :</label>
+                <select id="bug-type" name="bug-type" required>
+                    <option value="erreur">Erreur technique</option>
+                    <option value="fonctionnalite">Problème de fonctionnalité</option>
+                    <option value="autre">Autre</option>
+                </select>
+
+                <label for="description">Description :</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
     </main>
 </body>
 
 <footer>
-    
     <div class="footer-links">
         <div class="logo">
             <img src="images/logoBlanc.png" alt="Logo PAVCT">

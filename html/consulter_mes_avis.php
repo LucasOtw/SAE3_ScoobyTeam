@@ -203,6 +203,7 @@ if (!empty($_POST['supprAvis'])){
                 border: none;
                 border-radius: 5px;
                 cursor: pointer;
+                background-color:var(--orange);
             }
             
             .custom-confirm-content button:first-child {
@@ -211,7 +212,7 @@ if (!empty($_POST['supprAvis'])){
             }
             
             .custom-confirm-content button:last-child {
-                background-color: #5bc0de;
+                background-color: #a1a1a1;
                 color: white;
             }
             </style>
