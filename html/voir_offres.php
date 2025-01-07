@@ -14,10 +14,24 @@ if(isset($_SESSION['membre'])){
 if(isset($_SESSION['detail_offre'])){
     unset($_SESSION['detail_offre']);
 }
+try {
+    $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+    $username = "sae";
+    $password = "philly-Congo-bry4nt";
 
-echo "<pre>";
-var_dump($donneesSession);
-echo "</pre>";
+    // Créer une instance PDO
+    $dbh = new PDO($dsn, $username, $password);
+} 
+catch (PDOException $e) 
+{
+    print "Erreur!: ". $e->getMessage(). "<br/>";
+    die();
+}
+$compte = $dbh->prepare('SELECT * from tripenarvor._membre where code_compte= :code_compte');
+$compte->bindValue(":code_compte",$donneesSession['code_compte']);
+$compte->execute();
+
+
 function tempsEcouleDepuisPublication($offre){
     // date d'aujourd'hui
     $date_actuelle = new DateTime();
@@ -141,7 +155,7 @@ function tempsEcouleDepuisPublication($offre){
                         if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
                            ?>
                            <li>
-                               <a href="consulter_compte_membre.php">Mon compte</a>
+                               <a href="consulter_compte_membre.php"><?php echo $compte['nom'] . substr($compte['prenom'], 0, 0);?> </a>
                            </li>
                             <?php
                         } else {
@@ -374,19 +388,7 @@ function tempsEcouleDepuisPublication($offre){
         
         <section id="offers-list">
         <?php    
-            try {
-                $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-                $username = "sae";
-                $password = "philly-Congo-bry4nt";
-
-                // Créer une instance PDO
-                $dbh = new PDO($dsn, $username, $password);
-            } 
-            catch (PDOException $e) 
-            {
-                print "Erreur!: ". $e->getMessage(). "<br/>";
-                die();
-            }
+            
             // On récupère toutes les offres (titre,ville,images)
             $infosOffre = $dbh->query('SELECT * FROM tripenarvor._offre');
             $infosOffre = $infosOffre->fetchAll(PDO::FETCH_ASSOC);
