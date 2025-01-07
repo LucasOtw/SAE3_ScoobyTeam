@@ -236,8 +236,7 @@ if (isset($_POST['changePhoto'])) {
 // TELECHARGEMENT DES DONNEES (FORMAT JSON)
 
 if (isset($_POST['dwl-data'])) {
-    echo "test";
-    // Préparation des données
+    // Préparation des données JSON
     $data = array(
         'Nom' => $monCompteMembre['nom'],
         'Prenom' => $monCompteMembre['prenom'],
@@ -247,15 +246,15 @@ if (isset($_POST['dwl-data'])) {
         'Mot de passe' => $compte['mdp']
     );
 
-    // Conversion en JSON
+    // Convertir en JSON
     $jsonData = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
-    // Envoi des en-têtes pour forcer le téléchargement
+    // Envoi des en-têtes pour le téléchargement
     header('Content-Type: application/json');
     header('Content-Disposition: attachment; filename="donnees_utilisateur.json"');
     header('Content-Length: ' . strlen($jsonData));
 
-    // Envoi du contenu JSON
+    // Envoyer les données JSON
     echo $jsonData;
     exit;
 }
