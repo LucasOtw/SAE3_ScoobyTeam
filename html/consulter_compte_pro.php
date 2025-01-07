@@ -191,11 +191,15 @@ if (isset($_POST['modif_infos'])){
                 <input type="checkbox" id="cgu" name="cgu" required>
                 <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
             </div>
-
-            <div class="compte_membre_save_delete">
-                <a href="?deco=true" class="submit-btn1">Déconnexion</a>
-                <button type="submit" name="modif_infos" class="submit-btn3">Enregistrer</button>
+            <div class="compte_membre_save_delete_remove">
+                <button type="button" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte">Supprimer le compte</button>
+                
+                <div class="compte_membre_save_delete">
+                   <a href="?deco=true" class="submit-btn1">Déconnexion</a>
+                   <button type="submit" name="modif_infos" class="submit-btn3">Enregistrer</button>
+               </div>
             </div>
+            
         </form>
     </main>
 
