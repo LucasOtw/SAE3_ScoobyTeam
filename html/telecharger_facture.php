@@ -516,7 +516,7 @@ if(!isset($_SESSION['pro'])){
          
             <div class="signature-container" style="margin-left: 30em;margin-top: -6em;">
                 <p><strong>L'équipe PACT :</strong></p>
-                <img src="images/signature.png" style="width: 15em;">
+                <img src="images/signature.png" style="width: 15em;height:15em;">
 
             </div>
 
