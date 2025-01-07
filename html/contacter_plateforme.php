@@ -1,32 +1,3 @@
-<?php
-// Inclure le fichier pour la gestion du header (partie HTML du haut)
-include('header.php');
-
-// Si le formulaire a été soumis
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim($_POST['email']);
-    $question = trim($_POST['question']);
-
-    // Vérification de la validité des champs
-    if (filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($question)) {
-        // Destinataire du mail (ton adresse)
-        $to = 'ton-email@exemple.com';
-        $subject = 'Question depuis le formulaire de contact';
-        $message = "De: $email\n\nMessage:\n$question";
-        $headers = "From: $email";
-
-        // Envoi de l'email
-        if (mail($to, $subject, $message, $headers)) {
-            $message_sent = "Votre question a bien été envoyée !";
-        } else {
-            $message_sent = "Une erreur est survenue lors de l'envoi de votre message. Veuillez réessayer.";
-        }
-    } else {
-        $message_sent = "Veuillez remplir tous les champs correctement.";
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
