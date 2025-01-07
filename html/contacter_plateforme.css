@@ -1,10 +1,10 @@
 /* Définition des couleurs */
 :root {
-    --vert-clair: #34b55f;
-    --vert-fonce: #1d5e39;
-    --orange: #f57c00;
+    --vert-clair: #BDC426;
+    --vert-fonce: #668C3F;
+    --orange: #F28322;
+    --gris: white;
 }
-
 /* Reset général */
 * {
     box-sizing: border-box;
