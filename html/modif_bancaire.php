@@ -129,7 +129,7 @@ include("recupInfosCompte.php");
         <?php endif; ?>
 
         <form action="#" method="POST">
-            <h3>Modification des coordonnées bancaires</h3>
+            <h3>Modifiez vos coordonnées bancaires</h3>
             <div class="form-image-container">
                 <div class="form-section">
                     <div class="IBAN">
