@@ -115,6 +115,8 @@ try {
             </div>
         <?php else: ?>
             <div class="avis">
+            echo "<h3>" . htmlspecialchars($avis['note']) . ".0 | " . htmlspecialchars($avis['prenom']) . " " . htmlspecialchars($avis['nom']) . "</h3>";
+            echo "<p>" . htmlspecialchars($avis['txt_avis']) . "</p>";
                 <h3><?php echo $note; ?>.0 | <?php echo $prenom . " " . $nom; ?></h3>
                 <p><?php echo $texte; ?></p>
             </div>
