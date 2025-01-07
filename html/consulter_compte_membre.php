@@ -233,6 +233,10 @@ if (isset($_POST['changePhoto'])) {
     exit;
 }
 
+// TELECHARGEMENT DES DONNEES (FORMAT JSON)
+$data = array();
+var_dump($_SESSION['membre']);
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -392,7 +396,11 @@ if (isset($_POST['changePhoto'])) {
             </div>
 
         </form>
-        
+        <form action="#">
+            <div>
+                <input type="submit" name="dwl-data" value="Télécharger mes données">
+            </div>
+        </form>
     </main>
 
     

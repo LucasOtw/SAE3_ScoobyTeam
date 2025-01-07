@@ -321,16 +321,7 @@
 
                     <p class="update"><span class="update-icon">⟳</span> Dernière modification <?php echo tempsEcouleDepuisDerniereModif($details_offre);?></p>
                     
-                    <div> 
-                        <p id="offer-state">L'offre est actuellement : 
-                            <span id="offer-status"> 
-                                <?php echo $details_offre[ 'en_ligne'] ? "En Ligne" : "Hors Ligne"; ?>
-                            </span>
-                        </p>
-                    </div>
-                    
-
-                   
+                     
 
                      
                
@@ -380,6 +371,13 @@
                             <div class="slider-circle"></div>
                         </div>
                     </div>
+                    <div> 
+                        <p id="offer-state">L'offre est actuellement : 
+                            <span id="offer-status"> 
+                                <?php echo $details_offre[ 'en_ligne'] ? "En Ligne" : "Hors Ligne"; ?>
+                           </span>
+                        </p>
+                     </div>
 
                     <!-- <script src="toggle-button.js"></script> -->
                     
@@ -743,7 +741,7 @@
         <div class="avis-widget">
             <div class="avis-header">
                 <h1 class="avis"><?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne,1)) ?> <span class="avis-score"> <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?></span></h1>
-                <p class="avis"><?php echo $nombre_d_avis ; ?> avis vérifié<?php if ($nombre_d_avis > 1){ echo 's'; } ?></p>
+                <p class="avis"><?php echo $nombre_d_avis ; ?> avis</p>
             </div>
             <div class="avis-list">
                     <?php
