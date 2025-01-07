@@ -158,7 +158,7 @@ if(isset($_POST['envoiForm4'])){
             </form>
         </div>
     </main>
-    <div class="notes">
+    <div class="notes_explicatives">
         <p>
             <sup>1</sup> Offre Gratuite : Accessible aux professionnels publics ou associatifs, sans coût.
         </p>
