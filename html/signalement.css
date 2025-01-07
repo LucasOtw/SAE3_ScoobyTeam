@@ -224,6 +224,7 @@ nav ul li a.active {
     margin-bottom: 30vh;
     margin-top: 3vh;
     margin-left: 3vw;
+    width: 70vw;
 }
 
 .avis h3 {
@@ -231,6 +232,7 @@ nav ul li a.active {
     margin-bottom: 10px;
     display: flex;
     align-items: center;
+    margin-left: -3vw;
 }
 
 .avis h3::before {
