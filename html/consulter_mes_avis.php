@@ -203,7 +203,7 @@ if (!empty($_POST['supprAvis'])){
                 border: none;
                 border-radius: 5px;
                 cursor: pointer;
-                background-color:var(--orange);
+                background-color:var(--vert-clair);
             }
             
             .custom-confirm-content button:first-child {
