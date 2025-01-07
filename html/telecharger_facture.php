@@ -517,7 +517,7 @@ if(!isset($_SESSION['pro'])){
         </table>
       <?php $montant_ht_total = $montant_ht + 16.86 * $nb_semaines_une + 8.34 * $nb_semaines_relief;?>
         <div class="facture-footer">
-            <table class="info-facture">
+            <table class="facture-items">
                 <tr>
                    <th>Description</th>
                    <th>Montant</th>
