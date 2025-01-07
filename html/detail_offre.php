@@ -622,6 +622,8 @@ if (isset($json['results'][0])) {
             $tout_les_avis->execute();
             $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
 
+            var_dump($tout_les_avis);
+
             $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre');
             $moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
             $moyenne_note->execute(); 
@@ -657,7 +659,6 @@ if (isset($json['results'][0])) {
             <div class="avis-list">
     <?php
     foreach ($tout_les_avis as $avis) {
-        var_dump($avis);
         $appreciation = "";
 
         switch ($avis["note"]) {
