@@ -157,35 +157,36 @@ if(isset($_POST['envoiForm4'])){
 
             </form>
         </div>
-        <div class="notes">
-            <p>
-                <sup>1</sup> Offre Gratuite : Accessible aux professionnels publics ou associatifs, sans coût.
-            </p>
-            <br>
-            <p>
-                <sup>2</sup> Offre Standard (payante) : Promotion sur la plateforme avec un coût mensuel, possibilité de personnaliser l'offre via des options payantes. 
-                <br>
-                &nbsp;&nbsp;&nbsp;1.67€ HT, soit 2€ TTC/jour de publication.
-            </p>
-            <br>
-            <p>
-                <sup>3</sup> Offre Premium (payante) : Inclut tous les avantages de l'Offre Standard, avec en plus un droit de veto permettant de "blacklister" jusqu'à 3 avis sur 12 mois.
-                <br>
-                &nbsp;&nbsp;&nbsp;3.34€ HT, soit 4€ TTC/jour de publication.
-            </p>
-            <br>
-            <p>
-                <sup>4</sup> "En Relief" : Met en avant l'offre dans les listes.
-                <br>
-                &nbsp;&nbsp;&nbsp;8.34€ HT, soit 10€ TTC/semaine.
-            </p>
-            <br>
-            <p>
-                <sup>5</sup> "À la Une" : Offre une visibilité maximale en tête de la page d'accueil et dans les listes.
-                <br>
-                &nbsp;&nbsp;&nbsp;16.68€ HT, soit 20€ TTC/semaine.
-            </p>
-        </div>
     </main>
+    <div class="notes">
+        <p>
+            <sup>1</sup> Offre Gratuite : Accessible aux professionnels publics ou associatifs, sans coût.
+        </p>
+        <br>
+        <p>
+            <sup>2</sup> Offre Standard (payante) : Promotion sur la plateforme avec un coût mensuel, possibilité de personnaliser l'offre via des options payantes. 
+            <br>
+            &nbsp;&nbsp;&nbsp;1.67€ HT, soit 2€ TTC/jour de publication.
+        </p>
+        <br>
+        <p>
+            <sup>3</sup> Offre Premium (payante) : Inclut tous les avantages de l'Offre Standard, avec en plus un droit de veto permettant de "blacklister" jusqu'à 3 avis sur 12 mois.
+            <br>
+            &nbsp;&nbsp;&nbsp;3.34€ HT, soit 4€ TTC/jour de publication.
+        </p>
+        <br>
+        <p>
+            <sup>4</sup> "En Relief" : Met en avant l'offre dans les listes.
+            <br>
+            &nbsp;&nbsp;&nbsp;8.34€ HT, soit 10€ TTC/semaine.
+        </p>
+        <br>
+        <p>
+            <sup>5</sup> "À la Une" : Offre une visibilité maximale en tête de la page d'accueil et dans les listes.
+            <br>
+            &nbsp;&nbsp;&nbsp;16.68€ HT, soit 20€ TTC/semaine.
+        </p>
+    </div>
+    
 </body>
 </html>
