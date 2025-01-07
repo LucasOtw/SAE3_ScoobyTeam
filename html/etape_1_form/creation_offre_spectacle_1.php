@@ -226,9 +226,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                             <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" required>
                         </fieldset>
                     </div>
-                </div>
 
-                <div class="row">
                     <div class="col">
                         <fieldset>
                             <legend>Complément d'Adresse</legend>
@@ -244,9 +242,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                             <input type="text" id="ville" name="ville" placeholder="Ville *" required>
                         </fieldset>
                     </div>
-                </div>
-
-                <div class="row">
+   
                     <div class="col">
                         <fieldset>
                             <legend>Code Postal *</legend>
@@ -263,6 +259,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                             <input type="number" id="prix" name="_tarif" placeholder="Tarif *" min="0" max="999.99" step="0.01" required="">
                         </fieldset>
                     </div>
+ 
+
+                <!-- Capacite accueil -->
+                    <div class="col">
+                        <fieldset>
+                            <legend>Capacité d'accueil *</legend>
+                            <input type="number" id="capacite_accueil" name="capacite_accueil" placeholder="Capacité d'accueil *" required>
+                        </fieldset>
+                    </div>  
                 </div>
 
                 <!-- Lien du site -->
@@ -283,15 +288,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     </div>
                 </div>
 
-                <!-- Capacite accueil -->
-                <div class="row">
-                    <div class="col">
-                        <fieldset>
-                            <legend>Capacité d'accueil *</legend>
-                            <input type="number" id="capacite_accueil" name="capacite_accueil" placeholder="Capacité d'accueil *" required>
-                        </fieldset>
-                    </div>  
-                </div>
 
                 <!-- Durée spectacle -->
                 <div class="row">
