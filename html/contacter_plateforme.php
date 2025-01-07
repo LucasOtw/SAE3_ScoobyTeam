@@ -24,14 +24,6 @@
             </ul>
         </nav>
     </header>
-
-    <header class="header-tel header_membre">
-        <div class="logo-tel">
-            <img src="images/LogoCouleur.png" alt="PACT Logo">
-        </div>
-        <a class="btn_plus_tard" href="voir_offres.php">Plus tard</a>
-    </header>
-
     <main>
         <div class="profile-img-container">
             <img class="profile-img" alt="Image de profil">
