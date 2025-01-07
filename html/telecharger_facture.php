@@ -554,7 +554,7 @@ if(!isset($_SESSION['pro'])){
                    <td class="a_droite"><?php echo number_format($montant_ht_total, 2, ',', ' '); ?>€</td>
                </tr>
                <tr>
-                   <td>Montant TVA (20%)</td>
+                   <td>TVA (20%)</td>
                    <td class="a_droite"><?php echo number_format($montant_ht_total * 0.20, 2, ',', ' '); ?>€</td>
                </tr>
                <tr>
