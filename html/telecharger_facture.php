@@ -144,9 +144,10 @@ if(!isset($_SESSION['pro'])){
         }
 
 
-         /* Table des totaux */
+        /* Table des totaux */
         .facture-total {
-            width: 100%;
+            width: var(--table-width, 100%); /* Par défaut 100%, mais modifiable */
+            height: var(--table-height, auto); /* Par défaut auto, mais modifiable */
             border-collapse: collapse;
             margin-bottom: 3em;
             margin-top: 2em;
