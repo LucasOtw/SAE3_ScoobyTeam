@@ -378,8 +378,8 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
             }
 
             // on s'occupe d'un spectacle
-            $ajoutSpectacle = $dbh->prepare("INSERT INTO tripenarvor._offre_spectacle (id_offre,duree,capacite_accueil,date_spectacle,heure_spectacle)
-            VALUES (:id,:duree,:capacite_accueil,:date_spectacle)");
+            $ajoutSpectacle = $dbh->prepare("INSERT INTO tripenarvor._offre_spectacle (code_offre,duree,capacite_accueil,date_spectacle,heure_spectacle)
+            VALUES (:id,:duree,:capacite_accueil,:date_spectacle,:heure_spectacle)");
             $ajoutSpectacle->bindValue(":id",$id_offre);
             $ajoutSpectacle->bindValue(":duree",$_SESSION['crea_offre']['duree']);
             $ajoutSpectacle->bindValue(":capacite_accueil",$_SESSION['crea_offre']['capacite_accueil']);
