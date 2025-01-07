@@ -1,4 +1,6 @@
 <?php
+session_start();
+$compte = $_SESSION['membre'];
 // Connexion à la base de données
 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";
@@ -18,11 +20,12 @@ try {
             SELECT * 
             FROM tripenarvor._avis 
             NATURAL JOIN tripenarvor._compte 
-            WHERE code_compte=2 AND id = :id
+            WHERE code_compte=:code_compte AND id = :id
         ");
 
         // Exécuter la requête avec le paramètre :id
         $stmt->execute([':id' => $idAvis]);
+        $stmt->execute([':code_compte' => $compte['code_compte']]);
 
         // Récupérer l'avis correspondant
         $avis = $stmt->fetch();
