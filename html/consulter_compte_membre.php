@@ -583,7 +583,7 @@ if (isset($_POST['dwl-data'])) {
                 .then(data => {
                     if (data.success) {
                         alert('Compte supprimé avec succès.');
-                        window.location.href = '/voir_offres.php'; // Redirection côté client
+                        window.location.href = '/consulter_compte_membre.php?deco=true'; // Redirection côté client
                     } else {
                         alert(data.message || 'Erreur lors de la suppression du compte.');
                     }
