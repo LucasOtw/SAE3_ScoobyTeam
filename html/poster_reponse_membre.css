@@ -341,13 +341,13 @@ header.header-tel {
                                         *****************************************************/
 
 
-main.main_poster_avis .poster_un_avis_titre,
-main.main_poster_avis .poster_un_avis_section_titre {
+main.main_repondre_avis .repondre_avis_titre,
+main.main_repondre_avis .repondre_avis_section_titre {
     font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
-main.main_poster_avis .poster_un_avis_recap_card {
+main.main_repondre_avis .repondre_avis_recap_card {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -363,21 +363,21 @@ main.main_poster_avis .poster_un_avis_recap_card {
     width: 100%;
 }
 
-main.main_poster_avis .poster_un_avis_info {
+main.main_repondre_avis .repondre_avis_info {
     flex: 1;
 }
 
-main.main_poster_avis .poster_un_avis_nom {
+main.main_repondre_avis .repondre_avis_nom {
     margin: 0;
 }
 
-main.main_poster_avis .poster_un_avis_location,
-main.main_poster_avis .poster_un_avis_rating {
+main.main_repondre_avis .repondre_avis_location,
+main.main_repondre_avis .repondre_avis_rating {
     margin: 10px 0;
     color: #555;
 }
 
-main.main_poster_avis .poster_un_avis_btn_offre {
+main.main_repondre_avis .repondre_avis_btn_offre {
     margin-right: 0px;
     display: inline-block;
     font-size: 17px;
@@ -395,28 +395,28 @@ main.main_poster_avis .poster_un_avis_btn_offre {
 }
 
 
-main.main_poster_avis .poster_un_avis_btn_offre:hover {
+main.main_repondre_avis .repondre_avis_btn_offre:hover {
     transform: translateY(-2px); 
 }
 
-main.main_poster_avis .poster_un_avis_btn_offre:active {
+main.main_repondre_avis .repondre_avis_btn_offre:active {
     transform: translateY(2px); /* Effet d'appui */
 
 }
 
-main.main_poster_avis .poster_un_avis_images {
+main.main_repondre_avis .repondre_avis_images {
     display: flex;
     gap: 10px;
 }
 
-main.main_poster_avis .poster_un_avis_image {
+main.main_repondre_avis .repondre_avis_image {
     width: 130px;
     height: 133px;
     object-fit: cover;
     border-radius: 10px;
 }
 
-main.main_poster_avis .poster_un_avis_textarea {
+main.main_repondre_avis .repondre_avis_textarea {
     width: 100%;
     height: 152px;
     padding: 15px;
@@ -428,7 +428,7 @@ main.main_poster_avis .poster_un_avis_textarea {
     box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
 }
 
-main.main_poster_avis .poster_un_avis_footer {
+main.main_repondre_avis .repondre_avis_footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -436,41 +436,41 @@ main.main_poster_avis .poster_un_avis_footer {
     width: 100%;
 }
 
-/* .poster_un_avis_note {
+/* .repondre_avis_note {
 flex: 1;
 }
 
-.poster_un_avis_note_titre {
+.repondre_avis_note_titre {
 margin-bottom: 11px;
 }
 
-.poster_un_avis_stars .poster_un_avis_star {
+.repondre_avis_stars .repondre_avis_star {
 font-size: 1.5rem;
 color: #ccc;
 cursor: pointer;
 }
 
-.poster_un_avis_stars .poster_un_avis_star:hover,
-.poster_un_avis_stars .poster_un_avis_star:hover ~ .poster_un_avis_star {
+.repondre_avis_stars .repondre_avis_star:hover,
+.repondre_avis_stars .repondre_avis_star:hover ~ .repondre_avis_star {
 color: #ffc107;
 } */
 
-main.main_poster_avis .poster_un_avis_disclaimer {
+main.main_repondre_avis .repondre_avis_disclaimer {
     flex: 2;
     font-size: 0.8rem;
     color: #888;
     margin-bottom: 5vh;
 }
 
-.poster_un_avis_buttons {
+.repondre_avis_buttons {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
     margin-bottom: 12vh;
 }
 
-main.main_poster_avis .poster_un_avis_btn_annuler,
-main.main_poster_avis .poster_un_avis_btn_publier {
+main.main_repondre_avis .repondre_avis_btn_annuler,
+main.main_repondre_avis .repondre_avis_btn_publier {
     padding: 1em 2em;
     border: none;
     border-radius: 4px;
@@ -489,37 +489,37 @@ main.main_poster_avis .poster_un_avis_btn_publier {
     transition: transform 0.2s ease;
 }
 
-main.main_poster_avis .poster_un_avis_btn_annuler {
+main.main_repondre_avis .repondre_avis_btn_annuler {
     background-color: #dcdcdc;
     color: white;
 }
 
-main.main_poster_avis .poster_un_avis_btn_publier {
+main.main_repondre_avis .repondre_avis_btn_publier {
     background-color: var(--vert-clair);
     color: white;
 }
 
-main.main_poster_avis .poster_un_avis_btn_annuler:hover {
+main.main_repondre_avis .repondre_avis_btn_annuler:hover {
     transform: translateY(-2px); /* Effet d'élévation au survol */
 
 }
 
-main.main_poster_avis .poster_un_avis_btn_publier:hover {
+main.main_repondre_avis .repondre_avis_btn_publier:hover {
     transform: translateY(-2px); /* Effet d'élévation au survol */
 
 }
 
-main.main_poster_avis .poster_un_avis_btn_publier:active {
+main.main_repondre_avis .repondre_avis_btn_publier:active {
     transform: translateY(2px); /* Effet d'appui */
 }
 
-main.main_poster_avis .poster_un_avis_btn_annuler:active {
+main.main_repondre_avis .repondre_avis_btn_annuler:active {
     transform: translateY(2px); /* Effet d'élévation au survol */
 
 }
 
 
-main.main_poster_avis .notation {
+main.main_repondre_avis .notation {
     direction: rtl;
     /* Permet d'inverser l'ordre visuel des étoiles */
     unicode-bidi: bidi-override;
@@ -534,12 +534,12 @@ main.main_poster_avis .notation {
     padding: 1vh 3vw;
 }
 
-main.main_poster_avis .notation input[type="radio"] {
+main.main_repondre_avis .notation input[type="radio"] {
     display: none;
     /* Cache les boutons radio */
 }
 
-main.main_poster_avis .notation label {
+main.main_repondre_avis .notation label {
     font-size: 3rem;
     color: #ccc;
     /* Couleur des étoiles non sélectionnées */
@@ -547,43 +547,43 @@ main.main_poster_avis .notation label {
     transition: color 0.3s;
 }
 
-main.main_poster_avis .notation label:before {
+main.main_repondre_avis .notation label:before {
     content: "★";
     /* Symbole de l'étoile */
 }
 
-main.main_poster_avis .notation input[type="radio"]:checked~label {
+main.main_repondre_avis .notation input[type="radio"]:checked~label {
     color: #FFD700;
     /* Couleur des étoiles sélectionnées */
 }
 
-main.main_poster_avis .notation label:hover,
-main.main_poster_avis .notation label:hover~label {
+main.main_repondre_avis .notation label:hover,
+main.main_repondre_avis .notation label:hover~label {
     color: #FFD700;
     /* Couleur des étoiles au survol */
 }
 
-main.main_poster_avis .notation label:active {
+main.main_repondre_avis .notation label:active {
     transform: scale(1.2);
     /* Effet d'agrandissement au clic */
 }
 
 
-main.main_poster_avis nav.nav-bar {
+main.main_repondre_avis nav.nav-bar {
     display: none
 }
 
-main.main_poster_avis .back-button {
+main.main_repondre_avis .back-button {
     display: none;
 }
 
-main.main_poster_avis .poster_un_avis_container {
+main.main_repondre_avis .repondre_avis_container {
     padding: 5vh 9vw;
 }
 
 /*Code pour le format responsive de poster un avis */
 
-main.main_poster_avis .message-erreur {
+main.main_repondre_avis .message-erreur {
     color: red;
     font-size: 14px;
     display: none;
@@ -607,7 +607,7 @@ main.main_poster_avis .message-erreur {
         display: none;
     }
 
-    main.main_poster_avis .poster_un_avis_recap_card {
+    main.main_repondre_avis .repondre_avis_recap_card {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -621,7 +621,7 @@ main.main_poster_avis .message-erreur {
 
         height: 13vh;
     }
-  main.main_poster_avis .notation {
+  main.main_repondre_avis .notation {
     direction: rtl;
     unicode-bidi: bidi-override;
     display: flex;
@@ -634,41 +634,41 @@ main.main_poster_avis .message-erreur {
     border-radius: 29px;
 }
 
-    main.main_poster_avis .poster_un_avis_nom {
+    main.main_repondre_avis .repondre_avis_nom {
         font-size: 10px;
     }
 
-    main.main_poster_avis .poster_un_avis_image {
+    main.main_repondre_avis .repondre_avis_image {
         width: 11vh;
         height: 11vh;
         object-fit: cover;
         border-radius: 10px;
     }
 
-    main.main_poster_avis .poster_un_avis_buttons {
+    main.main_repondre_avis .repondre_avis_buttons {
         display: flex;
         gap: 10px;
     }
 
-    main.main_poster_avis .poster_un_avis_btn_offre {
+    main.main_repondre_avis .repondre_avis_btn_offre {
         display: none;
 
     }
 
-    main.main_poster_avis .poster_un_avis_footer {
+    main.main_repondre_avis .repondre_avis_footer {
         display: block;
     }
 
-    main.main_poster_avis .poster_un_avis_titre {
+    main.main_repondre_avis .repondre_avis_titre {
         font-size: 1.5rem;
         margin-top: 5vh;
     }
 
-    main.main_poster_avis .poster_un_avis_disclaimer {
+    main.main_repondre_avis .repondre_avis_disclaimer {
         display: none;
     }
 
-    main.main_poster_avis .poster_un_avis_textarea {
+    main.main_repondre_avis .repondre_avis_textarea {
         width: 100%;
         height: 10vh;
         padding: 15px;
@@ -680,32 +680,32 @@ main.main_poster_avis .message-erreur {
         box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
     }
 
-    main.main_poster_avis .titre_poster_un_avis_format_tel {
+    main.main_repondre_avis .titre_repondre_avis_format_tel {
                 display: flex;
                 border: none;
                 color: black;
     }
 
-    main.main_poster_avis .poster_un_avis_btn_annuler {
+    main.main_repondre_avis .repondre_avis_btn_annuler {
         display: none;
     }
 
-    main.main_poster_avis .poster_un_avis_nom {
+    main.main_repondre_avis .repondre_avis_nom {
         font-size: 15px;
     }
 
-    main.main_poster_avis .poster_un_avis_location,
-    main.main_poster_avis .poster_un_avis_rating {
+    main.main_repondre_avis .repondre_avis_location,
+    main.main_repondre_avis .repondre_avis_rating {
         display: none;
     }
 
-    main.main_poster_avis .poster_un_avis_images {
+    main.main_repondre_avis .repondre_avis_images {
         display: flex;
         gap: 10px;
         margin-left: 7vh;
     }
 
-    main.main_poster_avis .back-button {
+    main.main_repondre_avis .back-button {
         font-size: 42px;
         text-decoration: none;
         color: #333;
@@ -714,13 +714,13 @@ main.main_poster_avis .message-erreur {
         border: none;
     }
 
-    main.main_poster_avis .poster_un_avis_back_button {
+    main.main_repondre_avis .repondre_avis_back_button {
         display: flex;
         justify-content: center;
         font-size: 14px;
     }
 
-    main.main_poster_avis .poster_un_avis_btn_publier {
+    main.main_repondre_avis .repondre_avis_btn_publier {
         background-color: var(--vert-clair);
         color: white;
         width: 66%;
@@ -731,22 +731,22 @@ main.main_poster_avis .message-erreur {
         margin-right: 15vw;
     }
 
-    main.main_poster_avis .poster_un_avis_btn_publier:hover {
+    main.main_repondre_avis .repondre_avis_btn_publier:hover {
         transform: scale(1.05);
     }
 
-    main.main_poster_avis .poster_un_avis_note {
+    main.main_repondre_avis .repondre_avis_note {
         width: 100%;
     }
 
-    main.main_poster_avis .back-button {
+    main.main_repondre_avis .back-button {
         display: block;
         width:25px;
         margin-top:0.17em;
         margin-left:-1.2em;
     }
 
-    main.main_poster_avis .btn-poster-avis {
+    main.main_repondre_avis .btn-poster-avis {
         color: var(--vert-clair);
         border: none;
     }
