@@ -217,11 +217,13 @@ nav ul li a.active {
 
 
 .avis {
-    background-color: #fff;
+    background-color: #fbfbfb;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+    margin-bottom: 30vh;
+    margin-top: 3vh;
+    margin-left: 3vw;
 }
 
 .avis h3 {
