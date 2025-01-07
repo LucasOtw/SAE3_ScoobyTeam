@@ -3110,7 +3110,8 @@ nav.nav-bar {
         display: none;
     }
 
-    .main_consulter_compte_membre .submit-btn1 {
+    .main_consulter_compte_membre .submit-btn1,
+    .main_consulter_compte_membre button.btn-suppr-compte {
         display: none;
     }
 
@@ -3124,7 +3125,8 @@ nav.nav-bar {
     }
 
     .main_consulter_compte_membre .submit-btn1,
-    .main_consulter_compte_membre button.submit-btn2 {
+    .main_consulter_compte_membre button.submit-btn2,
+    .main_consulter_compte_membre button.btn-suppr-compte {
         width: 70vw;
     }
 

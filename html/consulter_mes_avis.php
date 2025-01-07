@@ -198,12 +198,15 @@ if (!empty($_POST['supprAvis'])){
             }
             
             .custom-confirm-content button {
-                margin: 0 10px;
-                padding: 10px 20px;
+                background-color: var(--vert-clair);
+                color: white;
                 border: none;
-                border-radius: 5px;
+                border-radius: 16px;
                 cursor: pointer;
-                background-color:var(--vert-clair);
+                margin-right: 1em;
+                box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+                transition: transform 0.2s ease;
+                text-decoration: none;
             }
             
             .custom-confirm-content button:first-child {
