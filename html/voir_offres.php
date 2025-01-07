@@ -18,29 +18,24 @@ if (isset($_SESSION['detail_offre'])) {
     unset($_SESSION['detail_offre']);
 }
 
-try {
-    $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-    $username = "sae";
-    $password = "philly-Congo-bry4nt";
 
-    // Créer une instance PDO
-    $dbh = new PDO($dsn, $username, $password);
-} catch (PDOException $e) {
-    die("Erreur!: " . $e->getMessage() . "<br/>");
-}
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+$username = "sae";
+$password = "philly-Congo-bry4nt";
+
+// Créer une instance PDO
+$dbh = new PDO($dsn, $username, $password);
+
 
 // Vérifier si $donneesSession est valide avant de l'utiliser
-if ($donneesSession && isset($donneesSession["code_compte"])) {
-    $code_compte = $donneesSession["code_compte"];
-    
-    $compte = $dbh->prepare('SELECT * FROM tripenarvor._membre natural join tripenarvor._sa_pp WHERE code_compte = :code_compte');
-    $compte->bindValue(":code_compte", $code_compte);
-    $compte->execute();
+$code_compte = $donneesSession["code_compte"];
 
-    $resultat = $compte->fetch(PDO::FETCH_ASSOC);
-} else {
-    echo "Code compte introuvable dans les données de session.";
-}
+$compte = $dbh->prepare('SELECT * FROM tripenarvor._membre natural join tripenarvor._sa_pp WHERE code_compte = :code_compte');
+$compte->bindValue(":code_compte", $code_compte);
+$compte->execute();
+
+$resultat = $compte->fetch(PDO::FETCH_ASSOC);
+
 
 
 function tempsEcouleDepuisPublication($offre){
