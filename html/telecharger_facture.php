@@ -337,7 +337,9 @@ if(!isset($_SESSION['pro'])){
      .a_droite {
          text-align: right;
      }
-
+     .au_milieu{
+         text-align:center;
+     }
     </style>
 </head>
 <body>
