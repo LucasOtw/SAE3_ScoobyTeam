@@ -27,15 +27,17 @@ $password = "philly-Congo-bry4nt";
 $dbh = new PDO($dsn, $username, $password);
 
 
-// Vérifier si $donneesSession est valide avant de l'utiliser
-$code_compte = $donneesSession["code_compte"];
+if ($donneesSession && isset($donneesSession["code_compte"])) {
+    $code_compte = $donneesSession["code_compte"];
+    
+    $compte = $dbh->prepare('SELECT * FROM tripenarvor._membre natural join tripenarvor._sa_pp WHERE code_compte = :code_compte');
+    $compte->bindValue(":code_compte", $code_compte);
+    $compte->execute();
 
-$compte = $dbh->prepare('SELECT * FROM tripenarvor._membre natural join tripenarvor._sa_pp WHERE code_compte = :code_compte');
-$compte->bindValue(":code_compte", $code_compte);
-$compte->execute();
-
-$resultat = $compte->fetch(PDO::FETCH_ASSOC);
-
+    $resultat = $compte->fetch(PDO::FETCH_ASSOC);
+} else {
+    echo "Code compte introuvable dans les données de session.";
+}
 
 
 function tempsEcouleDepuisPublication($offre){
