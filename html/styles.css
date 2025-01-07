@@ -3489,7 +3489,7 @@ main.creation_compte_membre > div:first-of-type{
   position: absolute;
   z-index: 2;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   width: 25vw;
 }
@@ -3497,6 +3497,7 @@ main.creation_compte_membre > div:first-of-type{
 main.creation_compte_membre > div:first-of-type > img{
   width: 7%;
   aspect-ratio: 1 / 1;
+  margin-right: 10vw;
 }
 
 main.creation_compte_membre .creation_compte_membre_container {
