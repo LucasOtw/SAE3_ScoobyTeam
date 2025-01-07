@@ -201,6 +201,21 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
                 return in_array($extension, $extensions_valides) && is_file("$chemin/$fichier");
             });
 
+            foreach ($images as $image) {
+                $url_image = "$chemin/$image";
+            
+                // Vérifiez si l'image existe dans la table
+                $verif_image = $dbh->prepare("SELECT COUNT(*) FROM tripenarvor._image WHERE url_image = :url_image");
+                $verif_image->execute([":url_image" => $url_image]);
+                $exists = $verif_image->fetchColumn();
+            
+                if ($exists == 0) {
+                    // Si l'image n'existe pas, insérez-la
+                    $ajout_image->execute([":url_image" => $url_image]);
+                    $id_image[] = $dbh->lastInsertId();
+                }
+            }
+
             $ajout_image = $dbh->prepare("INSERT INTO tripenarvor._image (url_image) VALUES (:url_image)");
 
             // on insère chaque image (parce-que WHY NOT)
