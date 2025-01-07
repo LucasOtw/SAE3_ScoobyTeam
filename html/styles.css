@@ -2768,9 +2768,9 @@ input[type="password"]::placeholder {
    display: flex;
     align-items: center;
     justify-content: center;
-    background-color: none;
-    color: #fff;
-    border: #ff4d4f;
+    background-color: white;
+    color: #000;
+    border: 1px solid#ff4d4f;
     padding: 12px 20px;
     font-size: 1em;
     border-radius: 16px;
@@ -2790,6 +2790,7 @@ input[type="password"]::placeholder {
 .main_consulter_compte_membre button.btn-suppr-compte:hover{
     transform: translateY(-2px); /* Effet d'élévation au survol */
     background-color: #ff4d4f;
+    color: white;
 
 }
 
