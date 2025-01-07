@@ -321,13 +321,14 @@
 
                     <p class="update"><span class="update-icon">⟳</span> Dernière modification <?php echo tempsEcouleDepuisDerniereModif($details_offre);?></p>
                     
-                   // <div> 
-                      //  <p id="offer-state">L'offre est actuellement : 
-                      //      <span id="offer-status"> 
-                      //          <?php echo $details_offre[ 'en_ligne'] ? "En Ligne" : "Hors Ligne"; ?>
-                      //      </span>
-                     //   </p>
-                    //</div>
+                     <div> 
+                        <p id="offer-state">L'offre est actuellement : 
+                            <span id="offer-status"> 
+                                <?php echo $details_offre[ 'en_ligne'] ? "En Ligne" : "Hors Ligne"; ?>
+                           </span>
+                        </p>
+                    </div>
+                    
                     <div> 
                         <p id="offer-state"> 
                             <span id="offer-status"> 
