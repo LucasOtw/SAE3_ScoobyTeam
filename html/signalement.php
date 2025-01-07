@@ -4,6 +4,17 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+$username = "sae";
+$password = "philly-Congo-bry4nt";
+
+// Créer une instance PDO
+$dbh = new PDO($dsn, $username, $password);
+
+if(!empty($_POST)){
+    $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
+    $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
+
 // Vérifier si 'id_avis' est présent dans l'URL
 if (isset($_GET['id_avis']) && !empty($_GET['id_avis'])) {
     $idAvis = intval($_GET['id_avis']); // Convertir en entier pour éviter les injections SQL
