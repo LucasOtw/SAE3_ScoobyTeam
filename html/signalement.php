@@ -21,7 +21,7 @@ try {
                 SELECT * 
                 FROM tripenarvor._avis 
                 NATURAL JOIN tripenarvor._compte 
-                WHERE code_compte=2 AND _code_avis = :id
+                WHERE code_compte=2 AND code_avis = :id
             ");
             
             // Lier le paramètre :id et exécuter la requête
