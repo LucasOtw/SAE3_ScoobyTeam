@@ -78,7 +78,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
     }
 
     if($_SESSION['aCreeUneOffre'] === false){
-        // on ajout d'abord la carte bancaire si elle n'existe pas
+        // on ajoute d'abord la carte bancaire si elle n'existe pas
         if(!$monComptePro['code_compte_bancaire']){
             if(isset($_POST['valider'])){
                 $ajoutCB = $dbh->prepare("INSERT INTO tripenarvor._compte_bancaire (iban,bic,nom_compte) VALUES (:iban,:bic,:nom_compte)");
