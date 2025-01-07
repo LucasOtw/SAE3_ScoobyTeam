@@ -190,6 +190,7 @@ if (!empty($_POST['supprAvis'])){
                 border-radius: 10px;
                 text-align: center;
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                border: 3px solid var(--vert-clair);
             }
             
             .custom-confirm-content p {

@@ -113,11 +113,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute; /* Active le positionnement absolu */
-    bottom: 20px; /* Place à 20px du bas */
-    right: 20px; /* Place à 20px de la droite */
-    margin-right: 340px;
-    bottom: 0px;
+    float : right;
     z-index: 10;
 }
 
