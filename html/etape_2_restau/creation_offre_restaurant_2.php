@@ -133,7 +133,7 @@ if(isset($_POST['envoiFormEtape2'])){
 
                <!-- Tarif -->
 
-               <div>
+                <div class="tarif-option">
                   <label for="tarif">
                      Tarif : 
                   </label>
