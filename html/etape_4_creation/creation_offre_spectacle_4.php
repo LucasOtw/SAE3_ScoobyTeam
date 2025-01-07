@@ -59,12 +59,6 @@ if($monComptePro['code_compte_bancaire']){
     $infosCB = $recupInfosCB->fetch(PDO::FETCH_ASSOC);
 }
 
-echo "<pre>";
-var_dump($_SESSION['crea_offre']);
-var_dump($_SESSION['crea_offre2']);
-var_dump($_SESSION['crea_offre3']);
-echo "</pre>";
-
 $heure_formatee = (new DateTime($_SESSION['crea_offre']['heure']))->format('H:i:s');
 
 if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer_offre_gratuite'])){
