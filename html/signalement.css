@@ -259,7 +259,7 @@ nav ul li a.active {
     
 }
 
-.main-creation-offre select {
+#offre {
     width: 100%;
     max-width: 300px;
     padding: 10px;
