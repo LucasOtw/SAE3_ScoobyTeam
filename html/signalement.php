@@ -20,7 +20,7 @@ try {
             SELECT * 
             FROM tripenarvor._avis 
             NATURAL JOIN tripenarvor._compte 
-            WHERE code_compte=:code_compte AND id = :id
+            WHERE code_compte=:code_compte AND code_avis = :id
         ");
 
         // Exécuter la requête avec le paramètre :id
