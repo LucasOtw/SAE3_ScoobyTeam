@@ -244,7 +244,7 @@ if(!isset($_SESSION['pro'])){
             font-size: 16px;
             font-style: italic;
             color: #007bff;
-            margin-top: 4em;
+            margin-top: 3em;
         }
         
         .thank-you p {
