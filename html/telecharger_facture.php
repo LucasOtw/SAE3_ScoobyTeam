@@ -485,7 +485,7 @@ if(!isset($_SESSION['pro'])){
                     <td>En relief</td>
                     <td><?php if ($en_relief !== null ) { echo "8,34€"; } else { echo "Pas sélectionné"; }?></td>
                     <td><?php if ($en_relief !== null ) { echo "$nb_semaines_relief"; } else { echo "0"; }?></td>
-                    <td><?php if ($en_relief !== null ) { echo 8.34 * $nb_semaines_relief . "€"; } else { echo "0,00€"; }?></td>
+                    <td><?php if ($en_relief !== null ) { echo number_format(8.34 * $nb_semaines_relief, 2, ',', ' ') . "€"; } else { echo "0,00€"; }?></td>
                 </tr>
             
                 <tr>
