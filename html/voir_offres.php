@@ -28,14 +28,14 @@ catch (PDOException $e)
     die();
 }
 
-print_r($donneesSession["code_compte"]);
+//print_r($donneesSession["code_compte"]);
 
 
-
+/*
 $compte = $dbh->prepare('SELECT * from tripenarvor._membre where code_compte= :code_compte');
 $compte->bindValue(":code_compte",$donneesSession["code_compte"]);
 $compte->execute();
-
+*/
 
 
 
