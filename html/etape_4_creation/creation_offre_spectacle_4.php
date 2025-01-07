@@ -64,6 +64,333 @@ var_dump($_SESSION['crea_offre']);
 var_dump($_SESSION['crea_offre2']);
 var_dump($_SESSION['crea_offre3']);
 echo "</pre>";
+
+if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer_offre_gratuite'])){
+
+    if(!isset($_POST['passer_cb']) && !isset($_POST['creer_offre_gratuite'])){
+        $code_iban = $_POST['IBAN'];
+        $code_BIC = $_POST['BIC'];
+        $nom_compte = $_POST['nom'];
+        if(empty($code_iban) || empty($code_BIC) || empty($nom_compte)){
+            echo "Des informations sont manquantes !";
+            exit;
+        } else {
+            if(!validerIBAN($code_iban) || !validerBIC($code_BIC)){
+                echo "IBAN ou BIC incorrect !";
+                exit;
+            }
+        }
+    }
+
+    if($_SESSION['aCreeUneOffre'] === false){
+        // on ajoute d'abord la carte bancaire si elle n'existe pas
+        if(!$monComptePro['code_compte_bancaire']){
+            if(isset($_POST['valider'])){
+                $ajoutCB = $dbh->prepare("INSERT INTO tripenarvor._compte_bancaire (iban,bic,nom_compte) VALUES (:iban,:bic,:nom_compte)");
+                $ajoutCB->bindValue(":iban",$code_iban);
+                $ajoutCB->bindValue(":bic",$code_BIC);
+                $ajoutCB->bindValue(":nom_compte",$nom_compte);
+    
+                $ajoutCB->execute();
+                $code_cb = $dbh->lastInsertId();
+    
+                // on met à jour tripenarvor._professionnel là où se trouve le code compte
+    
+                $updateCompte = $dbh->prepare("UPDATE tripenarvor._professionnel SET code_compte_bancaire = :code_cb WHERE code_compte = :code_compte");
+                $updateCompte->bindValue(":code_cb",$code_cb);
+                $updateCompte->bindValue(":code_compte",$compte['code_compte']);
+    
+                $updateCompte->execute();
+            }
+        }
+        // sinon, on ne fait rien.
+        
+        
+        $adresse_postal = $_SESSION['crea_offre']['adresse'];
+        $complement_adresse = $_SESSION['crea_offre']['complementAdresse'];
+        $code_postal = $_SESSION['crea_offre']['codePostal'];
+        $ville = $_SESSION['crea_offre']['ville'];
+
+        // on fait la vérification dans la base de données
+
+        $adresseCorrespondante = $dbh->prepare("SELECT code_adresse FROM tripenarvor._adresse
+        WHERE
+        adresse_postal = :adresse AND
+        (complement_adresse = :complement OR complement_adresse IS NULL) AND
+        code_postal = :code_postal AND
+        ville = :ville
+        ");
+        $adresseCorrespondante->bindValue(":adresse",trim($adresse_postal));
+        $adresseCorrespondante->bindValue(":complement",trim($complement_adresse));
+        $adresseCorrespondante->bindValue(":code_postal",trim($code_postal));
+        $adresseCorrespondante->bindValue(":ville",trim($ville));
+
+        $adresseCorrespondante->execute();
+        $adresseCorrespondante = $adresseCorrespondante->fetch(PDO::FETCH_ASSOC);
+
+        if($adresseCorrespondante){
+            // si on trouve une adresse exactement similaire dans la base de données
+            $code_adresse = $adresseCorrespondante['code_adresse'];
+        } else {
+            // sinon, on l'insère...
+            $ajoutAdresse = $dbh->prepare("INSERT INTO tripenarvor._adresse (adresse_postal,complement_adresse,code_postal,ville) VALUES
+            (:adresse,:complement,:code_postal,:ville)");
+            $ajoutAdresse->bindValue(":adresse",trim($adresse_postal));
+            $ajoutAdresse->bindValue(":complement",trim($complement_adresse));
+            $ajoutAdresse->bindValue(":code_postal",trim($code_postal));
+            $ajoutAdresse->bindValue(":ville",trim($ville));
+
+            $ajoutAdresse->execute();
+            // et on récupère le dernier id inséré, dans notre cas, c'est FORCEMENT le code_adresse ! :D
+            $code_adresse = $dbh->lastInsertId();
+        }
+        
+
+        /*
+        * VERIFICATION DES HORAIRES
+        */
+
+        $tab_horaires = $_SESSION['crea_offre3'];
+        // pour chaque jour
+        foreach($tab_horaires as $jour => $horaire){
+            /* On cherche d'abord le code horaire. */
+            $horaireCorrespondante = $dbh->prepare("SELECT code_horaire FROM tripenarvor._horaire
+            WHERE
+            ouverture = :ouverture AND
+            fermeture = :fermeture");
+            $horaireCorrespondante->bindValue(":ouverture",$horaire['ouverture']);
+            $horaireCorrespondante->bindValue(":fermeture",$horaire['fermeture']);
+
+            $horaireCorrespondante->execute();
+            $horaireCorrespondante = $horaireCorrespondante->fetch(PDO::FETCH_ASSOC);
+
+            if($horaireCorrespondante){
+                
+                // si une horraire correspond, on récupère son code
+                $code_horaire[strtolower($jour)] = $horaireCorrespondante['code_horaire'];
+            } else {
+
+                // sinon, on l'insère
+                $ajoutHoraire = $dbh->prepare("INSERT INTO tripenarvor._horaire (ouverture,fermeture)
+                VALUES (:ouverture,:fermeture)");
+                $ajoutHoraire->bindValue(":ouverture",$horaire['ouverture']);
+                $ajoutHoraire->bindValue(":fermeture",$horaire['fermeture']);
+
+                $ajoutHoraire->execute();
+                // on récupère le dernier id enregistré, celui du code horaire.
+                $code_horaire[strtolower($jour)] = $dbh->lastInsertId();
+            }
+        }
+
+        /*
+        * INSERTION DES IMAGES
+        * Si des images sont présentes dans un dossier au même nom que l'offre, on doit les insérer dans la bdd
+        */
+
+        $nom_doss = str_replace(' ','',$_SESSION['crea_offre']['titre_offre']);
+        $chemin = "../images/offres/{$nom_doss}";
+
+        if(file_exists($chemin)){
+            // si le chemin existe, on récupère tous les fichiers images
+            $fichiers = scandir($chemin);
+
+            // Filtrer uniquement les images
+            $images = array_filter($fichiers, function($fichier) use ($chemin) {
+                $extensions_valides = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+                $extension = strtolower(pathinfo($fichier, PATHINFO_EXTENSION));
+                return in_array($extension, $extensions_valides) && is_file("$chemin/$fichier");
+            });
+
+            $ajout_image = $dbh->prepare("INSERT INTO tripenarvor._image (url_image) VALUES (:url_image)");
+
+            // on insère chaque image (parce-que WHY NOT)
+
+            $id_image = [];
+            foreach($images as $image){
+                $url_image = "$chemin/$image";
+                $ajout_image->execute([
+                    ":url_image" => $url_image
+                ]);
+                $id_image[] = $dbh->lastInsertId();
+            }
+        } else {
+            die('Le chemin n existe pas');
+        }
+
+        /*
+        * DERNIERS AJOUTS
+        */
+
+        // on initialise la date actuelle
+        $date_offre = date('Y-m-d');
+
+        /*
+        * INSERTIONS
+        */
+
+        // on vérifie d'abord si le pro a choisi une option (SEULEMENT SI PRIVE)
+
+        if(isset($monComptePro['num_siren'])){
+            $prix_option = null;
+            switch($_SESSION['crea_offre3']['option']){
+                case "aucune":
+                    break;
+                case "en_relief":
+                    $prix_option = 10.00;
+                    break;
+                case "a_la_une":
+                    $prix_option = 20.00;
+                    break;
+            }
+    
+    
+            if($prix_option !== null){
+                // si il y a un prix d'option, il y a une option, donc on l'ajoute.
+                $nbSemaines_option = $_SESSION['crea_offre3']['duree_option'];
+                $champ_option = "option_".$_SESSION['crea_offre3']['option'];
+    
+                    // Calculer la date de fin en ajoutant les semaines
+                $date_fin = new DateTime($date_offre); // Créer une instance de DateTime
+                $date_fin->modify("+{$nbSemaines_option} weeks"); // Ajouter le nombre de semaines
+                $date_fin_option = $date_fin->format('Y-m-d'); // Formater la date de fin
+    
+                // on peut maintenant ajouter l'option
+                if($_SESSION['ajoutOption'] === null){
+                    // si la session est à null, alors on n'a pas rajouté d'option cette fois-là.
+                    $ajoutOption = $dbh->prepare("INSERT INTO tripenarvor._option (nb_semaines,date_debut,date_fin,prix) VALUES
+                    (:nb_semaines,:date_debut,:date_fin,:prix);");
+                    $ajoutOption->bindValue(":nb_semaines",$nbSemaines_option);
+                    $ajoutOption->bindValue(":date_debut",$date_offre);
+                    $ajoutOption->bindValue(":date_fin",$date_fin_option);
+                    $ajoutOption->bindValue(":prix",$prix_option);
+    
+                    if($ajoutOption->execute()){
+                        $_SESSION['ajoutOption'] = $dbh->lastInsertId();
+                    }
+                }
+            } else {
+                $champ_option = "";
+            }
+    
+            // on récupère aussi le nom du type de l'offre
+            $champ_type_offre = null;
+            switch($_SESSION['crea_offre3']['offre']){
+                case "gratuite":
+                    $champ_type_offre = "Offre Gratuite";
+                    break;
+                case "standard":
+                    $champ_type_offre = "Offre Standard";
+                    break;
+                case "premium":
+                    $champ_type_offre = "Offre Premium";
+                    break;
+            }
+            if($champ_type_offre === null){
+                echo "Erreur : le type de l'offre ne peut pas être null !";
+                exit;
+            }
+        } else {
+            $champ_type_offre = "Offre Gratuite";
+        }
+
+        // on crée un tableau pour stocker les données dynamiquement
+
+        $mon_offre = [
+            'titre_offre' => $_SESSION['crea_offre']['titre_offre'],
+            'date_publication' => $date_offre,
+            'date_derniere_modif' => $date_offre,
+            '_resume' => $_SESSION['crea_offre']['resume'],
+            '_description' => $_SESSION['crea_offre']['description'],
+            'note_moyenne' => null,
+            'tarif' => $_SESSION['crea_offre2']['tarif'],
+            'en_ligne' => false,
+            'nb_blacklister' => 0,
+            'code_adresse' => $code_adresse,
+            'professionnel' => $_SESSION['pro']['code_compte'],
+            'nom_type' => $champ_type_offre,
+        ];
+
+        if(isset($_SESSION['crea_offre']['lien']) && !empty($_SESSION['crea_offre']['lien'])){
+            $mon_offre['site_web'] = $_SESSION['crea_offre']['lien'];
+        }
+        if(isset($_SESSION['crea_offre']['accessibilite']) && !empty($_SESSION['crea_offre']['accessibilite'])){
+            $mon_offre['accessibilite'] = $_SESSION['crea_offre']['accessibilite'];
+        }
+
+        if(isset($_SESSION['crea_offre3']['option']) && !empty($_SESSION['crea_offre3']['option'])){
+            if(trim($_SESSION['crea_offre3']['option']) == "en_relief"){
+                $mon_offre['option_en_relief'] = $_SESSION['ajoutOption'];
+            } else if (trim($_SESSION['crea_offre3']['option']) == "a_la_une"){
+                $mon_offre['option_a_la_une'] = $_SESSION['ajoutOption'];
+            }
+        }
+
+        $mon_offre = array_merge($mon_offre,$code_horaire);
+
+        $mon_offre['en_ligne'] = $mon_offre['en_ligne'] ? 'true' : 'false';
+
+        // on passe à l'exécution
+
+        $columns = implode(", ", array_keys($mon_offre)); // Liste des colonnes
+        $placeholders = implode(", ", array_map(fn($key) => ":$key", array_keys($mon_offre))); // Liste des placeholders
+
+        $creation_offre_req = "INSERT INTO tripenarvor._offre ($columns) VALUES ($placeholders)";
+        $creation_offre = $dbh->prepare($creation_offre_req);
+        
+        if($creation_offre->execute($mon_offre)){
+            // on récupère son id
+            $id_offre = $dbh->lastInsertId();
+            // on lui ajoute ses images
+            $son_image = $dbh->prepare("INSERT INTO tripenarvor._son_image VALUES (:code_image,:code_offre)");
+            foreach($id_image as $code_image){
+                $son_image->execute([
+                    ":code_image" => $code_image,
+                    ":code_offre" => $id_offre
+                ]);
+            }
+            // on regarde quel type d'offre c'est (restauration, activité, ect.)
+            if(isset($_SESSION['crea_offre2']['mesRepas'])){
+                // l'offre est une offre de restauration
+                $repas = implode(", ", $_SESSION['crea_offre2']['mesRepas']);
+                $ajoutRestaurant = $dbh->prepare("INSERT INTO tripenarvor._offre_restauration (code_offre,gamme_prix,repas) VALUES(:code_offre,:gamme_prix,:repas)");
+                $ajoutRestaurant->bindValue(":code_offre",$id_offre);
+                $ajoutRestaurant->bindValue(":gamme_prix",$_SESSION['crea_offre2']['ma_gamme']);
+                $ajoutRestaurant->bindValue(":repas",$repas);
+
+                $ajoutRestaurant->execute();
+            }
+
+            // on s'occupe d'un spectacle
+            $ajoutSpectacle = $dbh->prepare("INSERT INTO tripenarvor._offre_spectacle (id_offre,duree,capacite_accueil,date_spectacle,heure_spectacle)
+            VALUES (:id,:duree,:capacite_accueil,:date_spectacle)");
+            $ajoutSpectacle->bindValue(":id",$id_offre);
+            $ajoutSpectacle->bindValue(":duree",$_SESSION['crea_offre']['duree']);
+            $ajoutSpectacle->bindValue(":capacite_accueil",$_SESSION['crea_offre']['capacite_accueil']);
+            $ajoutSpectacle->bindValue(":date_spectacle",$_SESSION['crea_offre']['date_spectacle']);
+            $ajoutSpectacle->bindValue(":heure_spectacle",$_SESSION['crea_offre']['heure']);
+
+            $ajoutSpectacle->execute();
+
+            if(isset($_SESSION['crea_offre']['tags']) && is_array($_SESSION['crea_offre']['tags'])){
+                foreach($_SESSION['crea_offre']['tags'] as $tag){
+                    try {
+                        $ajoutTag = $dbh->prepare("INSERT INTO tripenarvor._son_tag (code_tag, code_offre) VALUES (:code_tag, :code_offre)");
+                        $ajoutTag->bindValue(":code_tag", $tag);
+                        $ajoutTag->bindValue(":code_offre", $id_offre);
+                        $ajoutTag->execute();
+                    } catch (PDOException $e) {
+                        echo "Erreur lors de l'ajout du tag : " . $e->getMessage();
+                    }
+                }
+            }
+            $_SESSION['aCreeUneOffre'] = true;
+            unset($_SESSION['crea_offre']);
+            unset($_SESSION['crea_offre2']);
+            unset($_SESSION['crea_offre3']);
+            unset($_SESSION['ajoutOption']);
+        }
+    }
+}
   
 ?>
 <!DOCTYPE html>
