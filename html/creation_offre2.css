@@ -221,7 +221,7 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     border-color: var(--orange);
-    padding : 10px;
+    padding : 0 10px;
 }
 
 
