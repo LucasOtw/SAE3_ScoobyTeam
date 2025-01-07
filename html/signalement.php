@@ -29,7 +29,9 @@ try {
 
             // Récupérer l'avis correspondant
             $avis = $stmt->fetch();
-
+            echo "<pre>";
+            var_dump($compte);
+            echo "</pre>";
             if ($avis) {
                 // Afficher les informations de l'avis trouvé
                 echo "<h3>" . htmlspecialchars($avis['note']) . ".0 | " . htmlspecialchars($avis['prenom']) . " " . htmlspecialchars($avis['nom']) . "</h3>";
