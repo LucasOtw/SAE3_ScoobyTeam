@@ -679,6 +679,14 @@ if (isset($json['results'][0])) {
             default:
                 break;
         }
+
+        if (!isset($avis["prenom"] && !isset($avis["nom"])
+        {
+            $avis["prenom"] = "Utilisateur";
+            $avis["nom"] = "supprimé";
+        }
+                   
+        
         ?>
         <div class="avis">
             <div class="avis-content">

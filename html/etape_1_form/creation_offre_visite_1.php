@@ -256,16 +256,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
                 <div class="row">
                     <div class="col">
-                        <fieldset>
-                            <legend>Ville *</legend>
-                            <input type="text" id="ville" name="ville" placeholder="Ville *" required>
+                         <fieldset>
+                            <legend>Code Postal *</legend>
+                            <input type="text" id="code_postal" name="code_postal" placeholder="Code Postal *" required>
                         </fieldset>
                     </div>
 
                     <div class="col">
-                        <fieldset>
-                            <legend>Code Postal *</legend>
-                            <input type="text" id="code_postal" name="code_postal" placeholder="Code Postal *" required>
+                          <fieldset>
+                            <legend>Ville *</legend>
+                            <input type="text" id="ville" name="ville" placeholder="Ville *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -300,8 +300,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Ajouter le lien du site (facultatif)</legend>
-                            <input type="url" id="lien" name="lien" placeholder="Ajouter le lien du site (facultatif)">
+                            <legend>Ajouter le lien du site </legend>
+                            <input type="url" id="lien" name="lien" placeholder="Ajouter le lien du site ">
                         </fieldset>
                     </div>  
                 </div>
@@ -361,8 +361,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Accessibilité (facultatif)</legend>
-                            <input type="text" id="accessibilite" name="accessibilite" placeholder="Accessibilité (facultatif)">
+                            <legend>Accessibilité </legend>
+                            <input type="text" id="accessibilite" name="accessibilite" placeholder="Accessibilité ">
                         </fieldset>
                     </div>
                 </div>
