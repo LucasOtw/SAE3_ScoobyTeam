@@ -245,9 +245,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                             <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" required>
                         </fieldset>
                     </div>
-                </div>
-
-                <div class="row">
+  
                     <div class="col">
                         <fieldset>
                             <legend>Complément d'Adresse</legend>
@@ -263,9 +261,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                             <input type="text" id="ville" name="ville" placeholder="Ville *" required>
                         </fieldset>
                     </div>
-                </div>
 
-                <div class="row">
                     <div class="col">
                         <fieldset>
                             <legend>Code Postal *</legend>
@@ -280,6 +276,22 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                         <fieldset>
                             <legend>Tarif (€) *</legend>
                             <input type="number" id="prix" name="_tarif" placeholder="Tarif *" min="0" max="999.99" step="0.01" required>
+                        </fieldset>
+                    </div>
+
+
+                 <!-- Visite guidée ? -->
+
+                    <div class="col">
+                        <fieldset>
+                            <legend>Langues (Visite guidée)</legend>
+                            <input 
+                                type="text" 
+                                name="langues" 
+                                placeholder="Français, Anglais, ..." 
+                                pattern="^\s*([A-Za-zÀ-ÿ]+(\s+[A-Za-zÀ-ÿ]+)?)(\s*,\s*([A-Za-zÀ-ÿ]+(\s+[A-Za-zÀ-ÿ]+)?))*\s*$" 
+                                title="Entrez une liste de langues séparées par des virgules, ex. Français, Anglais"
+                            >
                         </fieldset>
                     </div>
                 </div>
@@ -324,29 +336,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     </div>
                 </div>
 
-                <!-- Visite guidée ? -->
-                <div class="row">
-                    <div class="col">
-                        <fieldset>
-                            <legend>Langues (Visite guidée)</legend>
-                            <input 
-                                type="text" 
-                                name="langues" 
-                                placeholder="Français, Anglais, ..." 
-                                pattern="^\s*([A-Za-zÀ-ÿ]+(\s+[A-Za-zÀ-ÿ]+)?)(\s*,\s*([A-Za-zÀ-ÿ]+(\s+[A-Za-zÀ-ÿ]+)?))*\s*$" 
-                                title="Entrez une liste de langues séparées par des virgules, ex. Français, Anglais"
-                            >
-                        </fieldset>
-                    </div>
-                </div>
-                
-
                 <!-- Résumé -->
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Résumé</legend>
-                            <input type="text" id="resume" name="resume" placeholder="Résumé" required>
+                            <legend>Résumé *</legend>
+                            <input type="text" id="resume" name="resume" placeholder="Résumé *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -355,8 +350,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Description</legend>
-                            <input type="text" id="description" name="description" placeholder="Description" required>
+                            <legend>Description *</legend>
+                            <input type="text" id="description" name="description" placeholder="Description *" required>
                         </fieldset>
                     </div>
                 </div>
