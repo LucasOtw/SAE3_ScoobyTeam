@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aide</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="contacter_plateforme.css">
 </head>
 <body>
     <!-- Header incluant le menu de navigation -->
