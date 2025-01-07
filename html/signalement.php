@@ -34,7 +34,7 @@ try {
             echo "</pre>";
             if ($avis) {
                 // Afficher les informations de l'avis trouvé
-                echo "<h3>" . htmlspecialchars($avis['note']) . ".0 | " . htmlspecialchars($avis['prenom']) . " " . htmlspecialchars($avis['nom']) . "</h3>";
+                echo "<h3>" . htmlspecialchars($avis['note']) . ".0 | " . htmlspecialchars($avis['code_compte']) . " " . "</h3>";
                 echo "<p>" . htmlspecialchars($avis['txt_avis']) . "</p>";
             } else {
                 // Aucun avis trouvé avec cet ID
