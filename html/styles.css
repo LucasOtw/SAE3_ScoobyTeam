@@ -4650,29 +4650,21 @@ nav.nav-bar-tel {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
     padding: 5px 10px;
     border-radius: 12px;
-    font-size: 12px;
-    color: black;
+    font-size: 16px;
+    color: white;
+    font-weight:bold;
     display: flex;
     align-items: center;
 }
 
 .main_mes_offres .status-dot-offline {
-    width: 8px;
-    height: 8px;
     background-color: #ff4d4f;
-    border-radius: 50%;
-    margin-right: 5px;
 }
 
 .main_mes_offres .status-dot-online {
-    width: 8px;
-    height: 8px;
-    background-color: var(--vert-clair);
-    border-radius: 50%;
-    margin-right: 5px;
+   background-color: var(--vert-clair);
 }
 
 /* Information de l'offre */
