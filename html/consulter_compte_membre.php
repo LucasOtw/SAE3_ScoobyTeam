@@ -235,7 +235,10 @@ if (isset($_POST['changePhoto'])) {
 
 // TELECHARGEMENT DES DONNEES (FORMAT JSON)
 $data = array();
-var_dump($_SESSION['membre']);
+echo "<pre>";
+var_dump($compte);
+var_dump($monCompteMembre);
+echo "</pre>";
     
 ?>
 <!DOCTYPE html>
