@@ -1,7 +1,5 @@
 <?php
 // Connexion à la base de données
-session_start();
-$compte = $_SESSION["membre"];
 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";
 $password = "philly-Congo-bry4nt";
@@ -21,7 +19,7 @@ try {
                 SELECT * 
                 FROM tripenarvor._avis 
                 NATURAL JOIN tripenarvor._compte 
-                WHERE code_compte=2 AND _code_avis = :id
+                WHERE code_compte=2 AND id = :id
             ");
             
             // Lier le paramètre :id et exécuter la requête
@@ -31,28 +29,28 @@ try {
             $avis = $stmt->fetch();
 
             if ($avis) {
-                // Afficher les informations de l'avis trouvé
-                echo "<h3>" . htmlspecialchars($avis['note']) . ".0 | " . htmlspecialchars($avis['prenom']) . " " . htmlspecialchars($avis['nom']) . "</h3>";
-                echo "<p>" . htmlspecialchars($avis['txt_avis']) . "</p>";
+                // L'avis a été trouvé, on assigne les variables
+                $note = htmlspecialchars($avis['note']);
+                $texte = htmlspecialchars($avis['txt_avis']);
+                $prenom = htmlspecialchars($avis['prenom']);
+                $nom = htmlspecialchars($avis['nom']);
             } else {
                 // Aucun avis trouvé avec cet ID
-                echo "Aucun avis trouvé pour cet ID.";
+                $erreur = "Aucun avis trouvé pour cet ID.";
             }
         } else {
             // Si l'ID n'est pas un nombre valide
-            echo "L'ID d'avis est invalide.";
+            $erreur = "L'ID d'avis est invalide.";
         }
     } else {
         // Aucun ID passé dans l'URL
-        echo "Aucun ID d'avis spécifié.";
+        $erreur = "Aucun ID d'avis spécifié.";
     }
 } catch (PDOException $e) {
-    // Gestion des erreurs
-    echo "Erreur de connexion ou d'exécution : " . $e->getMessage();
+    // Gestion des erreurs de connexion ou d'exécution
+    $erreur = "Erreur de connexion ou d'exécution : " . $e->getMessage();
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -61,60 +59,18 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Offres PACT</title>
     <link rel="stylesheet" href="signalement.css">
-    <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 </head>
 <body>
-<div class="header-membre">
-        <header class="header-pc">
-            <div class="logo-pc" style="z-index: 1">
-                <a href="voir_offres.php">
-                    <img src="images/logoBlanc.png" alt="PACT Logo">
-                </a>
-
-            </div>
-            
-            <nav>
-                <ul>
-                    <li><a href="voir_offres.php" class="active">Accueil</a></li>
-                    <li><a href="connexion_pro.php">Publier</a></li>
-                    <?php
-                        if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
-                           ?>
-                           <li>
-                               <a href="consulter_compte_membre.php"><?php echo "Mon Compte" /*$compte['nom'] . substr($compte['prenom'], 0, 0)*/;?> </a>
-                           </li>
-                            <?php
-                        } else {
-                            ?>
-                           <li>
-                               <a href="connexion_membre.php">Se connecter</a>
-                           </li>
-                           <?php
-                        }
-                    ?>
-                </ul>
-            </nav>
-        </header>
-        <header class="header-tel">
-            <div class="logo-tel">
-                <img src="images/LogoCouleur.png" alt="PACT Logo">
-            </div>
-            
-        </header>
-    </div>
     <div class="container">
         <h1>Signaler un avis</h1>
+
         <?php if (isset($erreur)): ?>
             <div class="erreur">
                 <p><?php echo $erreur; ?></p>
             </div>
         <?php else: ?>
             <div class="avis">
-                <h3><?php echo $note; ?>.0 | <?php echo $prenom . " " . $nom; ?></h3>
+                <h3><?php echo $note . ".0 | " . $prenom . " " . $nom; ?></h3>
                 <p><?php echo $texte; ?></p>
             </div>
             <form method="POST" action="process_signalement.php">
