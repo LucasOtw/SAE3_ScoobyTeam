@@ -236,6 +236,7 @@ if (isset($_POST['changePhoto'])) {
 // TELECHARGEMENT DES DONNEES (FORMAT JSON)
 
 if (isset($_POST['dwl-data'])) {
+    echo "test";
     // Préparation des données
     $data = array(
         'Nom' => $monCompteMembre['nom'],
