@@ -142,6 +142,32 @@ if(!isset($_SESSION['pro'])){
         .facture-items td {
             background-color: #f9f9f9;
         }
+
+
+         /* Table des totaux */
+        .facture-total {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 3em;
+            margin-top: 2em;
+        }
+        
+        .facture-total th, .facture-total td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        .facture-total th {
+            background-color: var(--orange);
+            color: white;
+        }
+        
+        .facture-total td {
+            background-color: #f9f9f9;
+        }
+
+
+     
         
         /* Footer de la facture */
         .facture-footer {
