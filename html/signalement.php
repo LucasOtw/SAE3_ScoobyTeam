@@ -1,7 +1,7 @@
 <?php
-session_start();
-$compte = $_SESSION['membre'];
 // Connexion à la base de données
+session_start();
+$compte = $_SESSION["membre"];
 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";
 $password = "philly-Congo-bry4nt";
@@ -12,31 +12,35 @@ try {
 
     // Vérifier si l'ID d'avis est passé dans l'URL
     if (isset($_GET['id_avis']) && !empty($_GET['id_avis'])) {
-        // Sécuriser l'ID en le convertissant en entier
-        $idAvis = intval($_GET['id_avis']);
+        $idAvis = $_GET['id_avis'];
 
-        // Requête préparée avec un paramètre dynamique :id
-        $stmt = $dbh->prepare("
-            SELECT * 
-            FROM tripenarvor._avis 
-            NATURAL JOIN tripenarvor._compte 
-            WHERE code_compte=:code_compte AND code_avis = :id
-        ");
+        // Vérifier que l'ID est un entier valide
+        if (is_numeric($idAvis) && $idAvis > 0) {
+            // Requête préparée avec un paramètre dynamique :id
+            $stmt = $dbh->prepare("
+                SELECT * 
+                FROM tripenarvor._avis 
+                NATURAL JOIN tripenarvor._compte 
+                WHERE code_compte=2 AND _code_avis = :id
+            ");
+            
+            // Lier le paramètre :id et exécuter la requête
+            $stmt->execute([':id' => $idAvis]);
 
-        // Exécuter la requête avec le paramètre :id
-        $stmt->execute([':id' => $idAvis]);
-        $stmt->execute([':code_compte' => $compte['code_compte']]);
+            // Récupérer l'avis correspondant
+            $avis = $stmt->fetch();
 
-        // Récupérer l'avis correspondant
-        $avis = $stmt->fetch();
-
-        if ($avis) {
-            // Afficher les informations de l'avis trouvé
-            echo "<h3>" . htmlspecialchars($avis['note']) . ".0 | " . htmlspecialchars($avis['prenom']) . " " . htmlspecialchars($avis['nom']) . "</h3>";
-            echo "<p>" . htmlspecialchars($avis['txt_avis']) . "</p>";
+            if ($avis) {
+                // Afficher les informations de l'avis trouvé
+                echo "<h3>" . htmlspecialchars($avis['note']) . ".0 | " . htmlspecialchars($avis['prenom']) . " " . htmlspecialchars($avis['nom']) . "</h3>";
+                echo "<p>" . htmlspecialchars($avis['txt_avis']) . "</p>";
+            } else {
+                // Aucun avis trouvé avec cet ID
+                echo "Aucun avis trouvé pour cet ID.";
+            }
         } else {
-            // Aucun avis trouvé avec cet ID
-            echo "Aucun avis trouvé pour cet ID.";
+            // Si l'ID n'est pas un nombre valide
+            echo "L'ID d'avis est invalide.";
         }
     } else {
         // Aucun ID passé dans l'URL
@@ -47,6 +51,7 @@ try {
     echo "Erreur de connexion ou d'exécution : " . $e->getMessage();
 }
 ?>
+
 
 
 <!DOCTYPE html>
