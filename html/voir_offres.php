@@ -28,7 +28,7 @@ catch (PDOException $e)
     die();
 }
 
-print_r($donneesSession["code_compte"]);
+//print_r($donneesSession["code_compte"]);
 
 
 /*
