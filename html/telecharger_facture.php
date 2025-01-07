@@ -490,7 +490,13 @@ if(!isset($_SESSION['pro'])){
                  <tr>
                      <td><?php echo $nom_type ?></td>
                      <td><?php echo number_format($prix_par_jour, 2, ',', ' ')?>€</td>
-                     <td><?php echo date('d/m/Y', strtotime($date_publication)); ?></td>
+                     <td><?php 
+                             setlocale(LC_TIME, 'fr_FR.UTF-8');
+                             $date = new DateTime($date_publication);
+                             echo strftime('%e %B %Y', $date->getTimestamp());
+                          ?>
+                     </td>
+
                      <td><?php echo number_format($montant_ht,2, ',', ' ') ?>€</td>
                  </tr>
              </tbody>
