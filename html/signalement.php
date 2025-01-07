@@ -117,11 +117,11 @@ try {
         <div class="type_offre_select_button">
                     <select id="offre" name="offreChoisie" data-placeholder="Sélectionnez..." required>
                         <option value="" hidden selected>Sélectionnez...</option>
-                        <option value="restaurant">Restaurant</option>
-                        <option value="spectacle">Spectacle</option>
-                        <option value="visite">Visite</option>
-                        <option value="attraction">Parc d'attraction</option>
-                        <option value="activite">Activité</option>
+                        <option value="restaurant">Language déplacé</option>
+                        <option value="spectacle">Harcèlement</option>
+                        <option value="visite">Diffamation</option>
+                        <option value="attraction">Spam</option>
+                        <option value="activite">Autre</option>
                     </select>
 
         </div>
