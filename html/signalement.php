@@ -22,7 +22,7 @@ if (isset($_GET['id_avis']) && !empty($_GET['id_avis'])) {
     $idAvis = intval($_GET['id_avis']); // Convertir en entier pour éviter les injections SQL
 
     // Rechercher l'avis dans la base de données
-    $stmt = $dbh->prepare("SELECT * FROM _avis WHERE id = :id");
+    $stmt = $dbh->prepare("SELECT * from tripenarvor._avis natural join tripenarvor._compte where code_compte=2;"); //Modification de la requete (il faut que je la refasse)
     $stmt->execute(['id' => $idAvis]);
     $avis = $stmt->fetch();
 
