@@ -253,7 +253,7 @@ foreach($result as $res){
 
 // Afficher ou utiliser $avisParOffre
 echo "<pre>";
-print_r($result);
+print_r($tab_avis);
 echo "</pre>";
 
 if (isset($_POST['dwl-data'])) {
