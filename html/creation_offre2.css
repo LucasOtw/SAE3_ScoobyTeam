@@ -218,6 +218,9 @@
 #jour, .main-creation-offre2 input{
     background-color: white;
     height: 42px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    border-color: var(--orange);
 }
 
 
