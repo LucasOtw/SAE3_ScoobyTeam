@@ -271,7 +271,7 @@ if (isset($_POST['modif_infos'])){
                 .then(data => {
                     if (data.success) {
                         alert('Compte supprimé avec succès.');
-                        window.location.href = '/consulter_compte_membre.php?deco=true'; // Redirection côté client
+                        window.location.href = '/consulter_compte_pro.php?deco=true'; // Redirection côté client
                     } else {
                         alert(data.message || 'Erreur lors de la suppression du compte.');
                     }
