@@ -33,6 +33,7 @@
     </header>
 
     <main>
+        <h2>Notre priorité, c'est de vous apporter l'aide dont vous avez besoin.</h2>
         <section class="contact-section">
             <h2>Contactez-nous</h2>
             <form action="votre_script_php.php" method="POST">
