@@ -3491,7 +3491,7 @@ main.creation_compte_membre > div:first-of-type{
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 5vw;
+  width: 25vw;
 }
 
 main.creation_compte_membre > div:first-of-type > img{
