@@ -126,7 +126,7 @@ try {
 
         </div>
         <h2 class="titre_signalement_3">Description (facultatif)</h2>
-        <form method="POST" action="process_signalement.php">
+        <form method="POST" action="signalement_2.html">
                 <input type="hidden" name="id_avis" value="<?php echo $idAvis; ?>">
                 <button type="submit">Confirmer le signalement</button>
             </form>
