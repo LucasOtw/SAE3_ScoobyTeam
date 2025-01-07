@@ -239,7 +239,7 @@ $avis = $dbh->prepare("SELECT o.titre_offre,a.txt_avis,a.note FROM tripenarvor._
 WHERE a.code_compte = :code_compte");
 $avis->bindValue(":code_compte",$compte['code_compte']);
 $avis->execute();
-$mesAvis = $avis->fetchAll();
+$mesAvis = $avis->fetchAll(PDO::FETCH_ASSOC);
 echo "<pre>";
 var_dump($mesAvis);
 echo "</pre>";

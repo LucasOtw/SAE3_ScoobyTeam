@@ -213,3 +213,37 @@ footer {
         display: none;
     }
 }
+.main_consulter_compte_membre .profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.main_consulter_compte_membre .banner img {
+    width: 70%;
+    height: 200px;
+    object-fit: cover;
+    margin: 30px;
+    border-radius: 20px;
+}
+
+.main_consulter_compte_membre .profile-info {
+    margin-top: -90px;
+    text-align: center;
+}
+
+.main_consulter_compte_membre .profile-info img.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 35px;
+    object-fit: cover;
+}
+
+.main_consulter_compte_membre .profile-info h1 {
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+.main_consulter_compte_membre .profile-info p {
+    font-size: 16px;
+    color: #666;
+}
