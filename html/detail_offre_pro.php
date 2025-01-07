@@ -342,7 +342,7 @@
 
                 <div class="detail_offre_price-button">
                 <div class="detail_offre_pro_info-icon-container">
-                <span class="info-icon">I</span>
+                <span class="info-icon">i</span>
                 <div class="tooltip">
                 <div class="detail_offre_option">
                 <?php
