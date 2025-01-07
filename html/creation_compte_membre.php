@@ -46,6 +46,9 @@
 
     <main class="creation_compte_membre">
         <h3 class="creation_compte_membre_bienvenue">Bienvenue !</h3>
+        <div>
+            <h1>LOL</h1>
+        </div>
         <div class="creation_compte_membre_container">
             <div class="creation_compte_membre_form-section">
                 <h1>S’inscrire</h1>
