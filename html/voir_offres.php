@@ -27,10 +27,11 @@ catch (PDOException $e)
     print "Erreur!: ". $e->getMessage(). "<br/>";
     die();
 }
+/*
 $compte = $dbh->prepare('SELECT * from tripenarvor._membre where code_compte= :code_compte');
 $compte->bindValue(":code_compte",$donneesSession['code_compte']);
 $compte->execute();
-
+*/
 
 function tempsEcouleDepuisPublication($offre){
     // date d'aujourd'hui
@@ -155,7 +156,7 @@ function tempsEcouleDepuisPublication($offre){
                         if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
                            ?>
                            <li>
-                               <a href="consulter_compte_membre.php"><?php echo $compte['nom'] /*. substr($compte['prenom'], 0, 0) */;?> </a>
+                               <a href="consulter_compte_membre.php"><?php echo "Mon Compte" /*$compte['nom'] . substr($compte['prenom'], 0, 0)*/;?> </a>
                            </li>
                             <?php
                         } else {
