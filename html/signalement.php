@@ -149,9 +149,10 @@ try {
         </div>
         <h2 class="titre_signalement_3">Description (facultatif)</h2>
         <form method="POST" action="signalement_2.html">
-                <input type="hidden" name="id_avis" value="<?php echo $idAvis; ?>">
-                <button type="submit">Confirmer le signalement</button>
-            </form>
+    <input type="hidden" name="id_avis" value="<?php echo $idAvis; ?>">
+    <button type="submit" onclick="showConfirmation(event)">Confirmer le signalement</button>
+</form>
+
     </div>
     <!-- Modale de confirmation -->
 <div id="confirmationModal" class="modal">
