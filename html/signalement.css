@@ -32,6 +32,11 @@ body {
 
 /****** HEADER *****/
 
+.titre_signalement h1{
+    color : black;
+    margin-top: 10vh;
+    margin-left: 7vw;
+}
 
 div.header-membre {
     display: block;
@@ -56,11 +61,7 @@ div.header-membre header.header-tel {
     display: none;
 }
 
-.titre_signalement h1{
-    color : black;
-    margin-top: 10vh;
-    margin-left: 7vw;
-}
+
 
 div.header-membre .creation_compte_membre_bienvenue {
     display: none;
