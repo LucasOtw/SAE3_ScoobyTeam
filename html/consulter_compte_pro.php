@@ -249,5 +249,41 @@ if (isset($_POST['modif_infos'])){
         </div>
     </footer>
 
+   <script>
+
+        ////////////////////////////////////////////////////////////////////////////////////
+        ///                            Supprimer compte                                  ///
+        ////////////////////////////////////////////////////////////////////////////////////
+
+        document.getElementById('btn-suppr-compte').addEventListener('click', function () {
+            // Exemple d'action : afficher une confirmation
+            const confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce compte ?");
+            if (confirmation) {
+                // Effectuer la suppression via une requête à votre serveur
+                const compteId = <?php echo json_encode($compte['code_compte']); ?>; // Remplacez par l'ID réel du compte à supprimer
+                fetch('/supprimer_compte.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ id: compteId })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Compte supprimé avec succès.');
+                        // Optionnel : redirection ou mise à jour de l'interface
+                    } else {
+                        alert('Erreur lors de la suppression du compte.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur réseau ou serveur :', error);
+                    alert('Impossible de supprimer le compte.');
+                });
+            }
+        });
+    
+    </script>
+
 </body>
 </html>
