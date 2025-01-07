@@ -316,8 +316,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Résumé</legend>
-                            <input type="text" id="resume" name="resume" placeholder="Résumé" required>
+                            <legend>Résumé *</legend>
+                            <input type="text" id="resume" name="resume" placeholder="Résumé *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -326,8 +326,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Description</legend>
-                            <input type="text" id="description" name="description" placeholder="Description" required>
+                            <legend>Description *</legend>
+                            <input type="text" id="description" name="description" placeholder="Description *" required>
                         </fieldset>
                     </div>
                 </div>
