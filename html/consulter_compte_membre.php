@@ -411,7 +411,8 @@ if (isset($_POST['dwl-data'])) {
                 <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
             </div>
             <div class="compte_membre_save_delete_remove">
-                <button type="remove" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte">Supprimer le compte</button>
+                <button type="button" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte">Supprimer le compte</button>
+                
                 <div class="compte_membre_save_delete">
                     <a href="?deco=true" class="submit-btn1">Déconnexion</a>
                     <button type="submit" name="modif_infos" class="submit-btn2" id="btn-enreg">Enregistrer</button>
@@ -515,25 +516,58 @@ if (isset($_POST['dwl-data'])) {
     <script>
         
         document.addEventListener('DOMContentLoaded', function() {
-        const input = document.getElementById('upload-photo');
-        const profileImg = document.querySelector('.profile-img');
-    
-        input.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file && file.type.match('image.*')) {
-                const reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    profileImg.src = e.target.result;
+            const input = document.getElementById('upload-photo');
+            const profileImg = document.querySelector('.profile-img');
+        
+            input.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file && file.type.match('image.*')) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        profileImg.src = e.target.result;
+                    }
+                    
+                    reader.readAsDataURL(file);
+                } else {
+                    profileImg.src = '';
                 }
-                
-                reader.readAsDataURL(file);
-            } else {
-                profileImg.src = '';
+            });
+        });
+
+        ////////////////////////////////////////////////////////////////////////////////////
+        ///                            Supprimer compte                                  ///
+        ////////////////////////////////////////////////////////////////////////////////////
+
+        document.getElementById('btn-suppr-compte').addEventListener('click', function () {
+            // Exemple d'action : afficher une confirmation
+            const confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce compte ?");
+            if (confirmation) {
+                // Effectuer la suppression via une requête à votre serveur
+                const compteId = <?php echo json_encode($compte['code_compte']); ?>; // Remplacez par l'ID réel du compte à supprimer
+                fetch('/supprimer-compte', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ id: compteId })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Compte supprimé avec succès.');
+                        // Optionnel : redirection ou mise à jour de l'interface
+                    } else {
+                        alert('Erreur lors de la suppression du compte.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur réseau ou serveur :', error);
+                    alert('Impossible de supprimer le compte.');
+                });
             }
         });
-    });
     
     </script>
+    
 </body>
 </html>

@@ -42,27 +42,6 @@ nav ul li a {
     transition: color 0.3s, border-bottom 0.3s;
 }
 
-
-.header_pro nav ul li a.active {
-    color: var(--orange);
-}
-
-.header_pro nav ul li a:hover {
-    color: var(--orange);
-}
-
-.header_pro nav ul li a.active {
-    color: var(--orange);
-}
-
-.header_pro nav ul li a:hover {
-    color: var(--orange);
-}
-
-.header_pro nav ul li a::before {
-    background-color: var(--orange);
-}
-
 /*MEMBRE*/
 .header_membre nav ul li a.active {
     color: var(--vert-clair);
