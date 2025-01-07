@@ -305,11 +305,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ?>
 
                 <!-- Tags -->
-                <table>
+                <table class=table_tags>
                     <thead>
                         <tr>
                             <th>
-                                Tags :
+                                Tags
                             </th>
                             <th>
                                 
