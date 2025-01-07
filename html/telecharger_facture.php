@@ -334,7 +334,7 @@ if(!isset($_SESSION['pro'])){
           color: #333;
       }
 
-     #a_droite {
+     .a_droite {
          text-align: right;
      }
 
