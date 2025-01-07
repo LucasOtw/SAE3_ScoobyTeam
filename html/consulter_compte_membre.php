@@ -237,7 +237,7 @@ if (isset($_POST['changePhoto'])) {
 $data = array();
 echo "<pre>";
 var_dump($compte);
-var_dump($monCompte);
+var_dump($monCompteMembre);
 echo "</pre>";
     
 ?>
