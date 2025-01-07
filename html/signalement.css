@@ -1,28 +1,217 @@
-
-.avis {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-}
-
-.avis h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-}
-
-.avis h3::before {
-    content: url('https://icon-library.com/images/icon-review/icon-review-9.jpg'); /* Exemple d'icône */
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-    display: inline-block;
-}
-
-.avis p {
+* {
     margin: 0;
-    color: #666;
+    padding: 0;
+    box-sizing: border-box;
+    --orange: #F28322;
+    --vert-clair: #BDC426;
+    --vert-fonce: #668C3F;
+    --gris: #E8E8E8;
+}
+
+@font-face {
+    font-family: 'K2D';
+    src: url('html/polices/K2D/K2D-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "K2D", sans-serif;
+    min-height: 100vh;
+    /*Pour occuper toute la page*/
+}
+
+/****** HEADER *****/
+
+
+div.header-membre {
+    display: block;
+}
+
+div.header-pro {
+    display: none;
+}
+
+/* HEADER MEMBRE */
+
+div.header-membre header.header-pc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 20px;
+    color: white;
+}
+
+div.header-membre header.header-tel {
+    display: none;
+}
+
+
+
+div.header-membre .creation_compte_membre_bienvenue {
+    display: none;
+    text-align: center;
+}
+
+div.header-membre .logo-tel {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+div.header-membre .logo img {
+    height: 60px;
+    max-width: 100%;
+    /* Pour s'assurer que l'image ne dépasse pas */
+}
+
+div.header-membre nav ul {
+    list-style: none;
+    display: flex;
+    gap: 3vw;
+    /* Espace adaptable selon la largeur de l'écran */
+    margin-right: 4vw;
+    flex-wrap: wrap;
+    /* Permet de passer sur plusieurs lignes si nécessaire */
+}
+
+div.header-membre nav ul li a {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    /* Utilise des unités relatives */
+    padding: 5px 10px;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+div.header-membre nav ul li a.active {
+    color: var(--vert-clair);
+}
+
+div.header-membre nav ul li a:hover {
+    color: var(--vert-clair);
+}
+
+div.header-membre .header_pro nav ul li a.active {
+    color: var(--orange);
+}
+
+div.header-membre .header_pro nav ul li a:hover {
+    color: var(--orange);
+}
+
+div.header-membre nav ul li a::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2.5px;
+    bottom: -2px;
+    background-color: var(--vert-clair);
+    transition: width 0.3s ease;
+}
+
+div.header-membre .header_pro nav ul li a::before {
+    background-color: var(--orange);
+}
+
+div.header-membre nav ul li a:hover::before {
+    width: 90%;
+}
+
+@media (max-width: 431px) {
+    div.header-membre header.header-pc {
+        display: none;
+    }
+
+    div.header-membre header.header-tel {
+        display: block;
+    }
+}
+
+
+
+/* Importation de la police K2D */
+@import url('https://fonts.googleapis.com/css2?family=K2D:wght@400;500;700&display=swap');
+
+/* Mise en forme globale */
+body {
+    font-family: 'K2D', sans-serif;
+    background-color: white;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* En-têtes et titres */
+h1, h3 {
+    color: #2c3e50;
+}
+
+/* En-tête pour les écrans de bureau */
+.header-pc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #27ae60;
+    padding: 20px;
+}
+
+/* Logo de l'en-tête */
+.logo-pc img {
+    height: 40px;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+nav ul li a.active {
+    border-bottom: 2px solid #ffffff;
+}
+
+/* En-tête pour les écrans mobiles */
+.header-tel {
+    display: none;
+    background-color: #27ae60;
+    padding: 10px;
+    text-align: center;
+}
+
+.header-tel img {
+    width: 100px;
+}
+
+
+.avis-widget .avis-list .avis {
+    display: flex
+;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
 }
