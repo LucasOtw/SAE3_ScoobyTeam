@@ -302,7 +302,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
             '_resume' => $_SESSION['crea_offre']['resume'],
             '_description' => $_SESSION['crea_offre']['description'],
             'note_moyenne' => null,
-            'tarif' => $_SESSION['crea_offre2']['tarif'],
+            'tarif' => $_SESSION['crea_offre']['tarif'],
             'en_ligne' => false,
             'nb_blacklister' => 0,
             'code_adresse' => $code_adresse,
