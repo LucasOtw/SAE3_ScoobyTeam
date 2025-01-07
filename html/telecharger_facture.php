@@ -185,7 +185,33 @@ if(!isset($_SESSION['pro'])){
             background-color:  var(--orange);
             transform: translateY(2px);
         }
-  
+
+
+     #print-btn {
+        display: block;
+        width: 200px;
+        margin: 20px auto;
+        padding: 15px;
+        font-size: 18px;
+        color: white;
+        background-color:  var(--orange);
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+    
+        #print-btn:hover {
+            background-color:  var(--orange);
+            transform: translateY(-2px);
+        }
+        
+        #print-btn:active {
+            background-color:  var(--orange);
+            transform: translateY(2px);
+        }
         .info-facture {
         width: max-content; /* Adapte la largeur au contenu */
         margin-left: auto; /* Repousse le conteneur vers la droite */
@@ -551,7 +577,7 @@ if(!isset($_SESSION['pro'])){
     </script>
 
 <!-- Bouton pour imprimer la facture -->
-<button id="download-btn">Imprimer la facture</button>
+<button id="print-btn">Imprimer la facture</button>
 
 <!-- Bibliothèque html2canvas -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
