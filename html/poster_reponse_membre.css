@@ -367,11 +367,11 @@ main.main_repondre_avis .repondre_avis_info {
     flex: 1;
 }
 
-main.main_repondre_avis .repondre_avis_nom {
+main.main_repondre_avis .repondre_avis_utilisateur {
     margin: 0;
 }
 
-main.main_repondre_avis .repondre_avis_location,
+main.main_repondre_avis .repondre_avis_texte,
 main.main_repondre_avis .repondre_avis_rating {
     margin: 10px 0;
     color: #555;
@@ -634,7 +634,7 @@ main.main_repondre_avis .message-erreur {
     border-radius: 29px;
 }
 
-    main.main_repondre_avis .repondre_avis_nom {
+    main.main_repondre_avis .repondre_avis_utilisateur {
         font-size: 10px;
     }
 
@@ -690,11 +690,11 @@ main.main_repondre_avis .message-erreur {
         display: none;
     }
 
-    main.main_repondre_avis .repondre_avis_nom {
+    main.main_repondre_avis .repondre_avis_utilisateur {
         font-size: 15px;
     }
 
-    main.main_repondre_avis .repondre_avis_location,
+    main.main_repondre_avis .repondre_avis_texte,
     main.main_repondre_avis .repondre_avis_rating {
         display: none;
     }
