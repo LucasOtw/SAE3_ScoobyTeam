@@ -56,7 +56,7 @@ div.header-membre header.header-tel {
     display: none;
 }
 
-.titre_signalement{
+.titre_signalement h1{
     color : black;
     margin-top: 10vh;
     margin-left: 7vw;
