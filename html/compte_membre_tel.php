@@ -197,9 +197,10 @@ if (isset($_POST['changePhoto'])) {
                     <img src="images/Vector_14.png" alt="Logout Icon"> Déconnexion
                 </button>
             </a>
-             <a href="#">
-                <button type="button" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte">
-                    <img src="images/trash.svg" alt="Logout Icon"> Supprimer mon compte    
+
+            <a href="?deco=true">
+                <button class="action-btn">
+                    <img src="images/trash.svg" alt="Logout Icon"> Supprimer mon compte
                 </button>
             </a>
         </main>
