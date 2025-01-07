@@ -30,7 +30,7 @@ $dbh = new PDO($dsn, $username, $password);
 if ($donneesSession && isset($donneesSession["code_compte"])) {
     $code_compte = $donneesSession["code_compte"];
     
-    $compte = $dbh->prepare('SELECT * FROM tripenarvor._membre natural join tripenarvor._sa_pp WHERE code_compte = :code_compte');
+    $compte = $dbh->prepare('SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte');
     $compte->bindValue(":code_compte", $code_compte);
     $compte->execute();
 
