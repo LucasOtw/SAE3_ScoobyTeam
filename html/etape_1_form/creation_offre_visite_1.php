@@ -256,16 +256,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
                 <div class="row">
                     <div class="col">
-                        <fieldset>
-                            <legend>Ville *</legend>
-                            <input type="text" id="ville" name="ville" placeholder="Ville *" required>
+                         <fieldset>
+                            <legend>Code Postal *</legend>
+                            <input type="text" id="code_postal" name="code_postal" placeholder="Code Postal *" required>
                         </fieldset>
                     </div>
 
                     <div class="col">
-                        <fieldset>
-                            <legend>Code Postal *</legend>
-                            <input type="text" id="code_postal" name="code_postal" placeholder="Code Postal *" required>
+                          <fieldset>
+                            <legend>Ville *</legend>
+                            <input type="text" id="ville" name="ville" placeholder="Ville *" required>
                         </fieldset>
                     </div>
                 </div>
