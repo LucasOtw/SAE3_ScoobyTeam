@@ -129,7 +129,7 @@ include("recupInfosCompte.php");
         <?php endif; ?>
 
         <form action="#" method="POST">
-            <h3>Modification des coordonnées bancaires</h3>
+            <h3>Modifiez vos coordonnées bancaires</h3>
             <div class="form-image-container">
                 <div class="form-section">
                     <div class="IBAN">
@@ -160,7 +160,7 @@ include("recupInfosCompte.php");
                 <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
             </div>
             <div class="compte_membre_save_delete">
-                <button type="submit" class="submit-btn2">Modifier vos coordonnées</button>
+                <button type="submit" class="submit-btn2">Modifiez vos coordonnées</button>
             </div>
         </form> 
     </main>

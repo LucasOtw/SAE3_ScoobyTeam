@@ -37,7 +37,7 @@ if ($donneesSession && isset($donneesSession["code_compte"])) {
     $compte->bindValue(":code_compte", $code_compte);
     $compte->execute();
 
-    $resultat = $compte->fetchAll(PDO::FETCH_ASSOC);
+    $resultat = $compte->fetch(PDO::FETCH_ASSOC);
     print_r($resultat);
 } else {
     echo "Code compte introuvable dans les données de session.";
@@ -167,7 +167,7 @@ function tempsEcouleDepuisPublication($offre){
                         if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
                            ?>
                            <li>
-                               <a href="consulter_compte_membre.php"><?php echo $compte['nom']?> </a>
+                               <a href="consulter_compte_membre.php"><?php echo $resultat['nom']?> </a>
                            </li>
                             <?php
                         } else {
