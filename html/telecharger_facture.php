@@ -550,25 +550,34 @@ if(!isset($_SESSION['pro'])){
         });
     </script>
 
- <!-- Bouton pour imprimer la facture -->
+<!-- Bouton pour imprimer la facture -->
 <button id="print-btn">Imprimer la facture</button>
+
+<!-- Bibliothèque html2canvas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <script>
     // Fonction d'impression
     document.getElementById('print-btn').addEventListener('click', () => {
         const element = document.getElementById('facture-container'); // Conteneur cible
 
-        // Créer une fenêtre d'impression temporaire
-        const printWindow = window.open('', '_blank');
-        printWindow.document.write('<html><head><title>Impression de la facture</title></head><body>');
-        printWindow.document.write(element.outerHTML); // Copier le contenu du conteneur
-        printWindow.document.write('</body></html>');
-        printWindow.document.close(); // Nécessaire pour certains navigateurs
-        printWindow.focus(); // Mettre la fenêtre au premier plan
-        printWindow.print(); // Lancer l'impression
-        printWindow.close(); // Fermer la fenêtre après impression
+        // Générer une capture en JPEG
+        html2canvas(element).then((canvas) => {
+            const imgData = canvas.toDataURL('image/jpeg', 1.0); // Convertir en image JPEG
+
+            // Créer une fenêtre d'impression temporaire
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write('<html><head><title>Impression de la facture</title></head><body>');
+            printWindow.document.write('<img src="' + imgData + '" style="width: 100%;"/>'); // Ajouter l'image JPEG
+            printWindow.document.write('</body></html>');
+            printWindow.document.close(); // Nécessaire pour certains navigateurs
+            printWindow.focus(); // Mettre la fenêtre au premier plan
+            printWindow.print(); // Lancer l'impression
+            printWindow.close(); // Fermer la fenêtre après impression
+        });
     });
 </script>
+
 
 
 </main>
