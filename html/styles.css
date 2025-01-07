@@ -3489,7 +3489,7 @@ main.creation_compte_membre > div:first-of-type{
   position: absolute;
   z-index: 2;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
