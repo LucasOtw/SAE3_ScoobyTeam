@@ -56,6 +56,10 @@ div.header-membre header.header-tel {
     display: none;
 }
 
+.titre_signalement{
+    color : black;
+}
+
 div.header-membre .creation_compte_membre_bienvenue {
     display: none;
     text-align: center;
