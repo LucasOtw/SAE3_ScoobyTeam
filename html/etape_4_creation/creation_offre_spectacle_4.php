@@ -222,8 +222,6 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
                 }
             }
         
-            // Debug : afficher les IDs insérés
-            var_dump($id_image);
         } else {
             die('Le chemin n existe pas');
         }
