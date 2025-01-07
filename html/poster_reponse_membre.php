@@ -146,11 +146,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                        <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
                        <a href="detail_offre.php"><img src="images/Bouton_retour.png" class="back-button"></a>
                    </form>
-            <h1 class="titre_repondre_avis_format_tel">Publier un avis</h1>
+            <h1 class="titre_repondre_avis_format_tel">Répondre à un avis</h1>
             </div>
             <h1 class="repondre_avis_titre">Récapitulatif</h1>
             <div class="repondre_avis_recap">
-               
+               <div class="repondre_avis_utilisateur">Sellier Maël</div>
+               <div class="repondre_avis_texte">Vraiment bien !</div>
             </div>
 
             <form action="repondre_avis.php" method="POST">
