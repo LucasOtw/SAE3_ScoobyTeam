@@ -243,7 +243,6 @@ if (isset($_POST['dwl-data'])) {
         'Pseudo' => $monCompteMembre['pseudo'],
         'Email' => $compte['mail'],
         'Téléphone' => $compte['telephone'],
-        'Mot de passe' => $compte['mdp']
     );
 
     // conversion en JSON
