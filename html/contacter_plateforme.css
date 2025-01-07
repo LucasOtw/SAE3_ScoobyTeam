@@ -303,9 +303,8 @@ footer {
         padding: 40px 80px;
     }
 }
-
 /* Style spécifique au formulaire de contact */
-.contact-section {
+.contact-form {
     background-color: white;
     padding: 40px;
     max-width: 600px;
@@ -314,22 +313,22 @@ footer {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.contact-section h2 {
+.contact-form h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #2c3e50;
+    color: var(--vert-fonce);
 }
 
-.contact-section label {
+.contact-form label {
     font-size: 16px;
-    color: #333;
+    color: var(--vert-fonce);
     display: block;
     margin-bottom: 5px;
 }
 
-.contact-section input,
-.contact-section select,
-.contact-section textarea {
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
     width: 100%;
     padding: 12px;
     margin: 10px 0 20px;
@@ -337,16 +336,22 @@ footer {
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 14px;
-    color: #333;
+    color: var(--vert-fonce);
 }
 
-.contact-section textarea {
+.contact-form select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.contact-form textarea {
     resize: vertical;
     min-height: 100px;
 }
 
-.contact-section button {
-    background-color: #1abc9c;
+.contact-form button {
+    background-color: var(--orange);
     color: white;
     border: none;
     padding: 12px 20px;
@@ -356,6 +361,28 @@ footer {
     width: 100%;
 }
 
-.contact-section button:hover {
-    background-color: #16a085;
+.contact-form button:hover {
+    background-color: var(--vert-clair);
+}
+
+/* Styles supplémentaires pour la responsivité */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .contact-form h2 {
+        font-size: 1.8rem;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+        font-size: 16px;
+    }
+
+    .contact-form button {
+        font-size: 14px;
+    }
 }
