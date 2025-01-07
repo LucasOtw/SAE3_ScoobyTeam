@@ -46,10 +46,6 @@
 
     <main class="creation_compte_membre">
         <h3 class="creation_compte_membre_bienvenue">Bienvenue !</h3>
-        <div>
-            <img src="images/verifier.png" alt="Succès">
-            <h2>Compte crée avec succès !</h2>
-        </div>
         <div class="creation_compte_membre_container">
             <div class="creation_compte_membre_form-section">
                 <h1>S’inscrire</h1>
@@ -371,7 +367,12 @@
                 $creerMembre->bindParam(':pseudo', $pseudo);
 
                 if($creerMembre->execute()){
-                    echo "Le compte Membre a été crée avec succès";
+                    ?>
+                        <div>
+                            <img src="images/verifier.png" alt="Succès">
+                            <h2>Compte crée avec succès !</h2>
+                        </div>
+                    <?php
                 }
 
     
