@@ -580,8 +580,7 @@ if(!isset($_SESSION['pro'])){
 <button id="print-btn">Imprimer la facture</button>
 
 <!-- Bibliothèque html2canvas -->
-<script src="js/html2canvas.min.js"></script>
-
+<script src="js/html2canvas.min.js"></script> <!-- Utilisez un chemin local -->
 
 <script>
     // Fonction d'impression
@@ -589,7 +588,7 @@ if(!isset($_SESSION['pro'])){
         const element = document.getElementById('facture-container'); // Conteneur cible
 
         // Générer une capture en JPEG
-        html2canvas(element).then((canvas) => {
+        html2canvas(element, { useCORS: true }).then((canvas) => {
             const imgData = canvas.toDataURL('image/jpeg', 1.0); // Convertir en image JPEG
 
             // Créer une fenêtre d'impression temporaire
@@ -601,9 +600,13 @@ if(!isset($_SESSION['pro'])){
             printWindow.focus(); // Mettre la fenêtre au premier plan
             printWindow.print(); // Lancer l'impression
             printWindow.close(); // Fermer la fenêtre après impression
+        }).catch((error) => {
+            console.error('Erreur lors de la génération de l\'image :', error);
+            alert('Impossible de générer l\'image pour l\'impression.');
         });
     });
 </script>
+
 
 
 
