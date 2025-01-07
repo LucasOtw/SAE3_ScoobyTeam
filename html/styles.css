@@ -3490,10 +3490,11 @@ main.creation_compte_membre > div:first-of-type{
   z-index: 2;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 main.creation_compte_membre > div:first-of-type > img{
-  width: 10%;
+  width: 7%;
   aspect-ratio: 1 / 1;
 }
 
