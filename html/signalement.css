@@ -292,11 +292,9 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #45a049; /* Couleur légèrement plus foncée au survol */
 }
 
 button[type="submit"]:active {
-    background-color: #3e8e41; /* Couleur encore plus foncée lors du clic */
     transform: scale(0.98); /* Léger effet d'appui */
 }
 
