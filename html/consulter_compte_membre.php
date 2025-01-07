@@ -252,8 +252,8 @@ if (isset($_POST['dwl-data'])) {
             $tab_avis[$res['titre_offre']] = [];
         }
         
-        // Échapper les entités HTML dans les avis
-        $content = htmlspecialchars($res['txt_avis'], ENT_QUOTES, 'UTF-8');
+        // Décoder les entités HTML dans les avis
+        $content = html_entity_decode($res['txt_avis'], ENT_QUOTES, 'UTF-8');
         
         // Ajouter l'avis et la note
         $tab_avis[$res['titre_offre']][] = [
@@ -261,6 +261,7 @@ if (isset($_POST['dwl-data'])) {
             'note' => $res['note']
         ];
     }
+
     
     // Préparation des données JSON
     $data = [
