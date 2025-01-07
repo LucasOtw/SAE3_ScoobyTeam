@@ -61,7 +61,7 @@ if($monComptePro['code_compte_bancaire']){
 }
 
 echo "<pre>";
-var_dump($_SESSION['crea_offre2']);
+var_dump($_SESSION['crea_offre3']);
 echo "</pre>";
 
 if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer_offre_gratuite'])){
