@@ -65,6 +65,8 @@ var_dump($_SESSION['crea_offre2']);
 var_dump($_SESSION['crea_offre3']);
 echo "</pre>";
 
+$heure_formatee = (new DateTime($_SESSION['crea_offre']['heure']))->format('H:i:s');
+
 if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer_offre_gratuite'])){
 
     if(!isset($_POST['passer_cb']) && !isset($_POST['creer_offre_gratuite'])){
@@ -382,7 +384,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
             $ajoutSpectacle->bindValue(":duree",$_SESSION['crea_offre']['duree']);
             $ajoutSpectacle->bindValue(":capacite_accueil",$_SESSION['crea_offre']['capacite_accueil']);
             $ajoutSpectacle->bindValue(":date_spectacle",$_SESSION['crea_offre']['date_spectacle']);
-            $ajoutSpectacle->bindValue(":heure_spectacle",$_SESSION['crea_offre']['heure']);
+            $ajoutSpectacle->bindValue(":heure_spectacle",$heure_formatee);
 
             $ajoutSpectacle->execute();
 
