@@ -481,9 +481,9 @@ if(!isset($_SESSION['pro'])){
              </thead>
              <tbody>
                  <tr>
-                     <td><?php echo $nom_type ?></td>
+                     <td class="au_milieu"><?php echo $nom_type ?></td>
                      <td class="a_droite"><?php echo number_format($prix_par_jour, 2, ',', ' ')?>€</td>
-                     <td class="a_droite"><?php echo date('d/m/Y', strtotime($date_publication)); ?></td>
+                     <td class="au_milieu"><?php echo date('d/m/Y', strtotime($date_publication)); ?></td>
                      <td class="a_droite"><?php echo number_format($montant_ht,2, ',', ' ') ?>€</td>
                  </tr>
              </tbody>
@@ -502,7 +502,7 @@ if(!isset($_SESSION['pro'])){
             <tbody>
                 <tr>
                     <td>En relief</td>
-                    <td class="a_droite"><?php if ($en_relief !== null ) { echo "8,34€"; } else { echo "Pas sélectionné"; }?></td>
+                    <td class="au_milieu"><?php if ($en_relief !== null ) { echo "8,34€"; } else { echo "Pas sélectionné"; }?></td>
                     <td class="a_droite"><?php if ($en_relief !== null ) { echo "$nb_semaines_relief"; } else { echo "0"; }?></td>
                     <td class="a_droite"><?php if ($en_relief !== null ) { echo number_format(8.34 * $nb_semaines_relief, 2, ',', ' ') . "€"; } else { echo "0,00€"; }?></td>
                 </tr>
