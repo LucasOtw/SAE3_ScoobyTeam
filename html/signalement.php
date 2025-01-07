@@ -4,8 +4,7 @@ ob_start();
 session_start();
 
 ?>
-
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -57,5 +56,6 @@ session_start();
             
         </header>
     </div>
+    <h1 class="titre_signalement"></h1>
 </body>
 </html>
