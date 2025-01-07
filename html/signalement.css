@@ -1,3 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --orange: #F28322;
+    --vert-clair: #BDC426;
+    --vert-fonce: #668C3F;
+    --gris: #E8E8E8;
+}
+
+@font-face {
+    font-family: 'K2D';
+    src: url('html/polices/K2D/K2D-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "K2D", sans-serif;
+    min-height: 100vh;
+    /*Pour occuper toute la page*/
+}
+
+/****** HEADER *****/
+
+.titre_signalement h1{
+    color : black;
+    margin-top: 10vh;
+    margin-left: 7vw;
+}
+
+div.header-membre {
+    display: block;
+}
+
+div.header-pro {
+    display: none;
+}
+
+/* HEADER MEMBRE */
+
+div.header-membre header.header-pc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 20px;
+    color: white;
+}
+
+div.header-membre header.header-tel {
+    display: none;
+}
+
+
+
+div.header-membre .creation_compte_membre_bienvenue {
+    display: none;
+    text-align: center;
+}
+
+div.header-membre .logo-tel {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+div.header-membre .logo img {
+    height: 60px;
+    max-width: 100%;
+    /* Pour s'assurer que l'image ne dépasse pas */
+}
+
+div.header-membre nav ul {
+    list-style: none;
+    display: flex;
+    gap: 3vw;
+    /* Espace adaptable selon la largeur de l'écran */
+    margin-right: 4vw;
+    flex-wrap: wrap;
+    /* Permet de passer sur plusieurs lignes si nécessaire */
+}
+
+div.header-membre nav ul li a {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    /* Utilise des unités relatives */
+    padding: 5px 10px;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+div.header-membre nav ul li a.active {
+    color: var(--vert-clair);
+}
+
+div.header-membre nav ul li a:hover {
+    color: var(--vert-clair);
+}
+
+div.header-membre .header_pro nav ul li a.active {
+    color: var(--orange);
+}
+
+div.header-membre .header_pro nav ul li a:hover {
+    color: var(--orange);
+}
+
+div.header-membre nav ul li a::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2.5px;
+    bottom: -2px;
+    background-color: var(--vert-clair);
+    transition: width 0.3s ease;
+}
+
+div.header-membre .header_pro nav ul li a::before {
+    background-color: var(--orange);
+}
+
+div.header-membre nav ul li a:hover::before {
+    width: 90%;
+}
+
+@media (max-width: 431px) {
+    div.header-membre header.header-pc {
+        display: none;
+    }
+
+    div.header-membre header.header-tel {
+        display: block;
+    }
+}
+
 
 
 /* Importation de la police K2D */
@@ -140,4 +286,3 @@ form button:hover {
         width: 90%;
     }
 }
-
