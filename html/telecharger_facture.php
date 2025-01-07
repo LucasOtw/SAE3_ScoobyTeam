@@ -496,7 +496,7 @@ if(!isset($_SESSION['pro'])){
                 </tr>
             </tbody>
         </table>
-      <?php $montant_ht_total = $montant_ht + 16,86 * $nb_semaines_une + 8,34 * $nb_semaines_relief;?>
+      <?php $montant_ht_total = $montant_ht + 16.86 * $nb_semaines_une + 8.34 * $nb_semaines_relief;?>
         <div class="facture-footer">
             <div class="info-facture">
                 <p>Total HT: <?php echo round($montant_ht_total, 2) ; ?>€</p>
