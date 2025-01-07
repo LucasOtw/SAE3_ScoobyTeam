@@ -2407,13 +2407,14 @@ input[type="password"]::placeholder {
     text-decoration: underline;
 }
 
-.main_consulter_compte_pro .compte_pro_save_delete_remove {
+.main-consulter-compte-pro .compte_pro_save_delete_remove {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     margin-bottom: 11em;
 }
 
-.main_consulter_compte_pro .compte_pro_save_delete {
+.main-consulter-compte-pro .compte_pro_save_delete {
     display: flex;
     justify-content: right;
     gap: 6px;
