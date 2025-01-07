@@ -4659,11 +4659,11 @@ nav.nav-bar-tel {
     align-items: center;
 }
 
-.main_mes_offres .status-dot-offline {
+.main_mes_offres .status-offline {
     background-color: #ff4d4f;
 }
 
-.main_mes_offres .status-dot-online {
+.main_mes_offres .status-online {
    background-color: var(--vert-clair);
 }
 
