@@ -7,100 +7,6 @@ if(!isset($_SESSION['membre'])){
    exit;
 }
 
-// Vérifie si HTTP_REFERER est défini
-if (isset($_SERVER['HTTP_REFERER'])) {
-    // Vérifie que la page précédente est "detail_offre.php"
-    if ($_SERVER['HTTP_REFERER'] === "https://scooby-team.ventsdouest.dev/detail_offre.php" && !isset($_POST['publier'])) {
-        // Action si les conditions sont respectées
-        $details_offre = $_SESSION['detail_offre'];
-    }
-}
-
-// Vérifie si le formulaire a été soumis    
-$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-$username = "sae";  // Utilisateur PostgreSQL défini dans .env
-$password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
-
-// Créer une instance PDO avec les bons paramètres
-$dbh = new PDO($dsn, $username, $password);
-
-$stmt = $dbh->prepare('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = :code_offre;');
-$stmt->execute([':code_offre' => $details_offre["code_offre"]]);
-$image_offre = $stmt->fetch(PDO::FETCH_NUM);
-
-/*
-echo "<pre>";
-   var_dump($image_offre);
-echo "</pre>";
-echo "<pre>";
-var_dump($details_offre);
-echo "</pre>";
-echo "<pre>";
-var_dump($compte);
-echo "</pre>";
-*/
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-     if(isset($_POST['publier'])){
-        if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
-            $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
-            $note = isset($_POST['note']) ? $_POST['note'] : '';
-   
-            $compte = $_SESSION['membre'];
-            $code_compte = $compte['code_compte'];           
-            $code_offre = $_SESSION['detail_offre']['code_offre'];
-   
-            $erreurs = [];
-            $erreur_a_afficher = [];
-            if (empty($texte_avis)) {
-                $erreurs[] = "Vous devez remplir ce champ";
-                $erreur_a_afficher[] = "avis-vide";
-            } elseif (strlen($texte_avis)>500) {
-                $erreurs[] = "L'avis ne doit pas dépasser 500 caractères.";
-                $erreur_a_afficher[] = "avis-trop-long";
-            }
-   
-           if (empty($note) || !is_numeric($note) || $note < 1 || $note > 5) {
-                $erreurs[] = "Veuillez sélectionner une note valide."; 
-                $erreur_a_afficher[] = "pas-de-note";
-            }
-   
-           if (empty($erreurs)) {
-             $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
-   
-             $creerAvis->bindParam(':texte_avis', $texte_avis);
-             $creerAvis->bindParam(':note', $note, PDO::PARAM_INT);
-             $creerAvis->bindParam(':code_offre', $code_offre);
-             $creerAvis->bindParam(':code_compte', $code_compte);
-             $creerAvis->execute();
-   
-             header('location: detail_offre.php');
-             exit;
-   
-            } else {
-               /*
-              foreach($erreurs as $erreur){
-                    echo $erreur;
-              }*/
-   
-               foreach($erreur_a_afficher as $classe_erreur){
-                  // echo $classe_erreur;
-                    ?> 
-   
-                    <style>
-                        main.main_poster_avis .<?php echo $classe_erreur ?> {
-                           display:block;
-                        }         
-                       ?>
-                    </style> 
-                    <?php
-              }
-            }
-        } else {
-           echo "Vous ne pouvez pas poster d'avis sans notation ou de message !";
-        }
-     }
-}
 
 
 ?>
@@ -111,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poster un avis</title>
+    <title>Contacter Plateforme</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
