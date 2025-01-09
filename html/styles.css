@@ -3443,11 +3443,6 @@ nom.avis {
     text-decoration: none;
 }
 
-.custom-confirm-content button:last-child {
-    background-color: #d9534f;
-    color: white;
-}
-
 
 @media (max-width: 429px) {
     header.header-pc {
