@@ -648,145 +648,85 @@ if (isset($json['results'][0])) {
         </div>
         <?php
 
-        $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre AND code_avis not in (select code_reponse from tripenarvor._reponse)');
+        // Fonction pour récupérer les réponses imbriquées
+        function getResponses($dbh, $code_avis)
+        {
+            $stmt = $dbh->prepare('
+        SELECT 
+            reponse.*,
+            membre_reponse.prenom AS prenom,
+            membre_reponse.nom AS nom
+        FROM tripenarvor._reponse
+        INNER JOIN tripenarvor._avis AS reponse ON reponse.code_avis = tripenarvor._reponse.code_reponse
+        INNER JOIN tripenarvor._membre AS membre_reponse ON membre_reponse.code_compte = reponse.code_compte
+        WHERE tripenarvor._reponse.code_avis = :code_avis
+    ');
+            $stmt->bindValue(':code_avis', $code_avis, PDO::PARAM_INT);
+            $stmt->execute();
+            $reponses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Récursivité : Ajouter les sous-réponses
+            foreach ($reponses as &$reponse) {
+                $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_reponse']);
+            }
+            return $reponses;
+        }
+
+        // Fonction pour afficher les avis récursivement
+        function afficherAvis($avis, $niveau = 0)
+        {
+            $marge = $niveau * 5; // Indentation pour les réponses
+
+            // Avis ou réponse principale
+            echo '<div class="avis" style="margin-left:' . $marge . 'vw">';
+            echo '<div class="avis-content">';
+            echo '<h3 class="avis">';
+            if ($niveau > 0) {
+                echo '<div class="note_prenom">Réponse à ' . htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']) . ' | <span class="nom_avis">' . htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']) . '</span></div>';
+            } else {
+                echo '<div class="note_prenom">' . htmlspecialchars($avis['note']) . '.0 | <span class="nom_avis">' . htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']) . '</span></div>';
+            }
+            echo '<div class="signalement_repondre">';
+            echo '<span class="signalement">';
+            echo '<a href="signalement_membre.php?id_avis=' . htmlspecialchars($avis['code_avis']) . '" title="Signaler cet avis" style="text-decoration: none">🚩</a>';
+            echo '</span>';
+            echo '<form action="poster_reponse_membre.php" method="POST">';
+            echo '<input type="hidden" name="unAvis" value="' . htmlspecialchars(serialize($avis)) . '">';
+            echo '<input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">';
+            echo '</form>';
+            echo '</div>';
+            echo '</h3>';
+            echo '<p class="avis">' . htmlspecialchars($avis['txt_avis']) . '</p>';
+            echo '</div>';
+            echo '</div>';
+
+            // Réponses imbriquées
+            if (!empty($avis['sous_reponses'])) {
+                foreach ($avis['sous_reponses'] as $sous_reponse) {
+                    afficherAvis($sous_reponse, $niveau + 1);
+                }
+            }
+        }
+
+        // Récupérer tous les avis principaux
+        $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre AND code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse)');
         $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
         $tout_les_avis->execute();
         $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
 
-        if ($tout_les_avis == null) {
-            $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis WHERE code_offre = :code_offre');
-            $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-            $tout_les_avis->execute();
-            $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
+        // Récupérer les réponses imbriquées pour chaque avis principal
+        foreach ($tout_les_avis as &$avis) {
+            $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
         }
 
-        $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre and note<>0');
-        $moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-        $moyenne_note->execute();
-        $note_moyenne = $moyenne_note->fetchColumn();
-
-        $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis WHERE code_offre = :code_offre');
-        $nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-        $nb_avis->execute();
-        $nombre_d_avis = $nb_avis->fetchColumn();
-
-        $appreciationGenerale = "";
-
-        if ($note_moyenne <= 1) {
-            $appreciationGenerale = "À éviter";
-        } elseif ($note_moyenne <= 2) {
-            $appreciationGenerale = "Peut mieux faire";
-        } elseif ($note_moyenne <= 3) {
-            $appreciationGenerale = "Correct";
-        } elseif ($note_moyenne <= 4) {
-            $appreciationGenerale = "Très Bien";
-        } elseif ($note_moyenne <= 5) {
-            $appreciationGenerale = "Exceptionnel";
-        } else {
-            $appreciationGenerale = "Valeur hors échelle";
+        // Affichage
+        foreach ($tout_les_avis as $avis) {
+            afficherAvis($avis);
         }
-
         ?>
-        <div class="avis-widget">
-            <div class="avis-header">
-                <h1 class="avis"><?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5") ?> <span class="avis-score"> <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?></span></h1>
-                <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
-            </div>
-            <div class="avis-list">
-                <?php
-                foreach ($tout_les_avis as $avis) {
-                    $appreciation = "";
-
-                    switch ($avis["note"]) {
-                        case '1':
-                            $appreciation = "Insatisfaisant";
-                            break;
-                        case '2':
-                            $appreciation = "Passable";
-                            break;
-                        case '3':
-                            $appreciation = "Correct";
-                            break;
-                        case '4':
-                            $appreciation = "Excellent";
-                            break;
-                        case '5':
-                            $appreciation  = "Parfait";
-                            break;
-                        default:
-                            break;
-                    }
-
-                    if (!isset($avis["prenom"]) && !isset($avis["nom"])) {
-                        $avis["prenom"] = "Utilisateur";
-                        $avis["nom"] = "supprimé";
-                    }
 
 
-                ?>
-                    <div class="avis">
-                        <div class="avis-content">
-                            <h3 class="avis">
-
-                                <div class="note_prenom"><?php echo $avis["note"] . ".0 $appreciation "; ?> | <span class="nom_avis"><?php echo $avis["prenom"] . " " . $avis["nom"]; ?></span></div>
-                                
-                                <div class="signalement_repondre">
-                                    <span class="signalement">
-                                        <a href="signalement_membre.php?id_avis=<?php echo isset($avis['code_avis']) ? htmlspecialchars($avis['code_avis']) : 'invalide'; ?>" title="Signaler cet avis" style="text-decoration: none">🚩</a>
-                                    </span>
-                                    <form action="poster_reponse_membre.php" method="POST">
-                                        <input type="hidden" name="unAvis"
-                                            value="<?php echo htmlspecialchars(serialize($avis)); ?>">
-                                        <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
-                                    </form>
-                                </div>
-                            </h3>
-                            <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
-                            <?php
-
-                    $reponses = $dbh->prepare('select * from tripenarvor._reponse 
-                                            INNER JOIN tripenarvor._avis as base ON base.code_avis = tripenarvor._reponse.code_avis
-                                            INNER JOIN tripenarvor._avis as reponse ON reponse.code_avis = tripenarvor._reponse.code_reponse
-                                            INNER JOIN tripenarvor._membre as membre_reponse ON membre_reponse.code_compte = reponse.code_compte
-                                            where base.code_avis = :code_avis;');
-                    $reponses->bindValue(':code_avis', $avis['code_avis']);
-                    $reponses->execute();
-                    $reponses = $reponses->fetchAll(PDO::FETCH_ASSOC);
-
-                    foreach ($reponses as $reponse) {
-                    ?>
-                        <div class="avis" style="margin-left:5vw">
-                            <div class="avis-content">
-                                <h3 class="avis">
-
-                                    <div class="note_prenom"><?php echo "Réponse à " . $avis['prenom'] . " " . $avis['nom'] ?> | <span class="nom_avis"><?php echo $reponse["prenom"] . " " . $reponse["nom"]; ?></span></div>
-
-
-
-                                    <div class="signalement_repondre">
-                                        <span class="signalement">
-                                            <a href="signalement_membre.php?id_avis=<?php echo isset($reponse['code_avis']) ? htmlspecialchars($reponse['code_avis']) : 'invalide'; ?>" title="Signaler cet avis" style="text-decoration: none">🚩</a>
-                                        </span>
-                                        <form action="poster_reponse_membre.php" method="POST">
-                                            <input type="hidden" name="unAvis"
-                                                value="<?php echo htmlspecialchars(serialize($reponse)); ?>">
-                                            <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
-                                        </form>
-                                    </div>
-
-                                </h3>
-                                <p class="avis"><?php echo $reponse["txt_avis"]; ?></p>
-                            </div>
-                        </div>
-                    <?php } ?>
-                        </div>
-                    </div>
-                <?php
-                }
-                ?>
-            </div>
-
-        </div>
+    </div>
     </div>
     </div>
 
