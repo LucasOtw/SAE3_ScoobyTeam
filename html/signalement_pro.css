@@ -283,7 +283,7 @@ nav ul li a.active {
 button[type="submit"] {
     font-size: 17px;
     padding: 10px 20px;
-    background-color: var(--vert-clair);
+    background-color: var(--orange);
     color: white;
     border: none;
     border-radius: 16px;
@@ -324,7 +324,7 @@ button[type="submit"] {
     button[type="submit"] {
         font-size: 17px;
         padding: 10px 20px;
-        background-color: var(--vert-clair);
+        background-color: var(--orange);
         color: white;
         border: none;
         border-radius: 16px;
