@@ -37,15 +37,6 @@
                 <a href="detail_offre.php"><img src="images/Bouton_retour.png" class="back-button"></a>
                 <h1 class="titre_poster_un_avis_format_tel">Besoin d'aide ?</h1>
             </div>
-            <h1 class="poster_un_avis_titre">Récapitulatif</h1>
-            <div class="poster_un_avis_recap_card">
-                <div class="poster_un_avis_info">
-                    <form id="form-voir-offre" action="detail_offre.php" method="POST">
-                        <input id="btn-voir-offre" class="poster_un_avis_btn_offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
-                    </form>
-                </div>
-                <div class="poster_un_avis_images"></div>
-            </div>
 
             <form action="poster_un_avis.php" method="POST">
                 <div class="poster_un_avis_section">
