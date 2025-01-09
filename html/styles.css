@@ -2814,8 +2814,13 @@ input[type="password"]::placeholder {
     transition: transform 0.2s ease; /* Animation au survol */
 }
 
+.main_consulter_compte_membre supprimer-download {
+  display: flex;
+  gap: 6px;
+}
+
 .main_consulter_compte_membre button.submit-btn2:hover, 
-.main_consulter_compte_membre .btn-dwl-data {
+.main_consulter_compte_membre .btn-dwl-data:hover {
     transform: translateY(-2px); /* Effet d'élévation au survol */
 
 }
