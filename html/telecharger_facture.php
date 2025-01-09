@@ -517,14 +517,17 @@ if(!isset($_SESSION['pro'])){
                          </tr>
                       <?php
                    }
+                   if ($a_la_une != null){
+                      ?>
+                      <tr>
+                         <td class="au_milieu">A la Une</td>
+                         <td class="a_droite">168,68€</td>
+                         <td class="a_droite"><?php echo $nb_semaines_une; ?></td>
+                         <td class="a_droite"><?php echo number_format(16.86 * $nb_semaines_une, 2, ',',' ') . "€" ?></td>
+                      </tr>
+                      <?php
+                   }
                 ?>
-            
-                <tr>
-                    <td class="au_milieu">À la Une</td>
-                    <td class="a_droite"> <?php if ($a_la_une !== null ) { echo "16,68€"; } else { echo "Pas sélectionné"; }?></td>
-                    <td class="a_droite"> <?php if ($a_la_une !== null ) { echo "$nb_semaines_une"; } else { echo "0"; }?></td>
-                    <td class="a_droite"> <?php if ($a_la_une !== null ) { echo number_format(16.86 * $nb_semaines_une, 2, ',', ' ') . "€"; } else { echo "0,00€"; }?></td>
-                </tr>
             </tbody>
         </table>
       <?php $montant_ht_total = $montant_ht + 16.86 * $nb_semaines_une + 8.34 * $nb_semaines_relief;?>
