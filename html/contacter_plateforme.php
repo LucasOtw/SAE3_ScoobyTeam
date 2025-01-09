@@ -56,7 +56,7 @@
                     <div class="poster_un_avis_footer">
                         <p class="poster_un_avis_disclaimer">En nous envoyant votre question, vous acceptez les conditions générales d'utilisation (CGU).</p>
                         <div class="poster_un_avis_buttons">
-                            <button class="poster_un_avis_btn_publier" type="submit" name="publier">Publier →</button>
+                            <button class="poster_un_avis_btn_publier" type="submit" name="publier">Envoyer →</button>
                         </div>
                     </div>
                 </div>
