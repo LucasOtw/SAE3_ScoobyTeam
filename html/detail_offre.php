@@ -686,7 +686,32 @@ if (isset($json['results'][0])) {
         } else {
             $appreciationGenerale = "Valeur hors échelle";
         }
+// Fonction pour récupérer toutes les réponses, y compris les réponses aux réponses (récursivité)
+function getResponses($dbh, $code_avis) {
+    // Correction de la requête SQL avec la table _membre pour les prénoms et noms
+    $stmt = $dbh->prepare('
+        SELECT 
+            reponse.*,
+            membre_reponse.prenom AS prenom_reponse,
+            membre_reponse.nom AS nom_reponse,
+            membre_base.prenom AS prenom_base,
+            membre_base.nom AS nom_base
+        FROM tripenarvor._reponse
+        INNER JOIN tripenarvor._avis AS reponse ON reponse.code_avis = tripenarvor._reponse.code_reponse
+        INNER JOIN tripenarvor._membre AS membre_reponse ON membre_reponse.code_compte = reponse.code_compte
+        INNER JOIN tripenarvor._avis AS base ON base.code_avis = tripenarvor._reponse.code_avis
+        INNER JOIN tripenarvor._membre AS membre_base ON membre_base.code_compte = base.code_compte
+        WHERE tripenarvor._reponse.code_avis = :code_avis
+    ');
+    $stmt->bindValue(':code_avis', $code_avis, PDO::PARAM_INT);
+    $stmt->execute();
+    $reponses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    foreach ($reponses as &$reponse) {
+        $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_avis']); // Ajoute les sous-réponses
+    }
+    return $reponses;
+}
 // Fonction pour afficher les avis et les réponses récursivement
 function afficherAvis($avis, $niveau = 0) {
     $marge = $niveau * 5; // Indentation pour les réponses
