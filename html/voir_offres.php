@@ -495,6 +495,97 @@ function tempsEcouleDepuisPublication($offre){
 
 
 
+        <div class="vu-recemment-titre-carrousel">
+            <h2 class="titre-vu-recemment">Vu récemment</h2>
+    
+            <div class="vu-recemment-carrousel">
+                <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft()">&#8249;</button>
+                <section class="vu-recemment">
+                <?php
+                    try {
+                        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+                        $username = "sae";
+                        $password = "philly-Congo-bry4nt";
+        
+                        // Créer une instance PDO
+                        $dbh = new PDO($dsn, $username, $password);
+                    } 
+                    catch (PDOException $e) 
+                    {
+                        print "Erreur!: ". $e->getMessage(). "<br/>";
+                        die();
+                    }
+                    // On récupère toutes les offres (titre,ville,images)
+                    $infosOffre = $dbh->query('SELECT * FROM tripenarvor._offre');
+                    $infosOffre = $infosOffre->fetchAll(PDO::FETCH_ASSOC);
+        
+                    foreach($infosOffre as $offre){
+                        // Récupérer la ville
+                        $villeOffre = $dbh->prepare('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
+                        $villeOffre->bindParam(":code_adresse", $offre["code_adresse"]);
+                        $villeOffre->execute();
+                        $villeOffre = $villeOffre->fetch(); // Récupérer la ville (ou NULL si pas trouvé)
+                        
+                        // Récupérer les images
+                        $imagesOffre = $dbh->prepare('SELECT code_image FROM tripenarvor._son_image WHERE code_offre = :code_offre');
+                        $imagesOffre->bindParam(":code_offre", $offre["code_offre"]);
+                        $imagesOffre->execute();
+                        
+                        // on recupère toutes les images sous forme de tableau
+                        $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
+        
+                        if(!empty($images)){ // si le tableau n'est pas vide...
+                            /* On récupère uniquement la première image.
+                            Une offre peut avoir plusieurs images. Mais on n'en affiche qu'une seule sur cette page.
+                            On pourrait afficher aléatoirement chaque image, mais on serait vite perdus...*/
+                                            
+                            $recupLienImage = $dbh->prepare('SELECT url_image FROM tripenarvor._image WHERE code_image = :code_image');
+                            $recupLienImage->bindValue(":code_image",$images[0]['code_image']);
+                            $recupLienImage->execute();
+            
+                            $offre_image = $recupLienImage->fetch(PDO::FETCH_ASSOC);
+                        } else {
+                            $offre_image = "";
+                        }
+                        if (!empty($offre["option_a_la_une"]))
+                        {
+                            if ($offre["en_ligne"])
+                            {
+                            ?>
+                                
+                                    <article class="card-vu-recemment">
+                                        <form id="form-voir-offre" action="detail_offre.php" method="POST" class="form-voir-offre">
+                                            <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
+                                            <div class="image-background-card-vu-recemment">
+                                                <img src="<?php echo './'.$offre_image['url_image']; ?>" alt="">
+                                                <div class="raison-sociale-card-vu-recemment">
+                                                    <p><?php echo $offre["titre_offre"]; ?></p>
+                                                   
+                                                    <!-- Le bouton est maintenant juste après le texte dans la même zone -->
+                                                    <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
+                                                </div>
+                                                
+                                            </div>
+                                        </form>
+                                    </article>
+                                    
+                            <?php
+                            }
+                        }
+                    }
+                ?>
+                </section>
+                <button class="card-scroll-btn card-scroll-btn-right" onclick="scrollcontentRight()">&#8250;</button>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
 
 
 
