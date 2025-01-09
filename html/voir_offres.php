@@ -677,7 +677,11 @@ function tempsEcouleDepuisPublication($offre){
                         } else {
                             $offre_image = "";
                         }
-                        if (!empty($offre["option_a_la_une"]))
+
+                        $consulter = $dbh->prepare('select * from tripenarvor._consulter where code_compte = :code_compte and code_offre = :code_offre');
+                        $consulter->execute(['code_compte' => $_SESSION['membre']['code_compte'], ':code_offre' => $offre["code_offre"]]);
+                        
+                        if (!empty($consulter))
                         {
                             if ($offre["en_ligne"])
                             {
