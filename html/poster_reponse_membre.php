@@ -50,6 +50,9 @@ echo "</pre>";*/
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      if(isset($_POST['repondreAvis'])){
+         echo "Tu es un sorcier, Quentin.";
+      }
      if(isset($_POST['publier'])){
         if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
             $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
