@@ -34,7 +34,7 @@ if (!empty($_POST['supprAvis'])){
     <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes Avis</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?">
 </head>
 <body>
     <div class="header_membre">
