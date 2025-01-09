@@ -647,11 +647,9 @@ if (isset($json['results'][0])) {
             </iframe>
         </div>
         <?php
-
-        // Fonction pour récupérer les réponses imbriquées
-        function getResponses($dbh, $code_avis)
-        {
-            $stmt = $dbh->prepare('
+// Fonction pour récupérer les réponses imbriquées
+function getResponses($dbh, $code_avis) {
+    $stmt = $dbh->prepare('
         SELECT 
             reponse.*,
             membre_reponse.prenom AS prenom,
@@ -661,69 +659,77 @@ if (isset($json['results'][0])) {
         INNER JOIN tripenarvor._membre AS membre_reponse ON membre_reponse.code_compte = reponse.code_compte
         WHERE tripenarvor._reponse.code_avis = :code_avis
     ');
-            $stmt->bindValue(':code_avis', $code_avis, PDO::PARAM_INT);
-            $stmt->execute();
-            $reponses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->bindValue(':code_avis', $code_avis, PDO::PARAM_INT);
+    $stmt->execute();
+    $reponses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            // Récursivité : Ajouter les sous-réponses
-            foreach ($reponses as &$reponse) {
-                $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_reponse']);
-            }
-            return $reponses;
+    // Récursivité : Ajouter les sous-réponses
+    foreach ($reponses as &$reponse) {
+        $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_reponse']);
+    }
+    return $reponses;
+}
+
+// Fonction pour afficher les avis récursivement
+function afficherAvis($avis, $niveau = 0) {
+    $marge = $niveau * 5; // Indentation pour les réponses
+
+    // Avis ou réponse principale
+    echo '<div class="avis" style="margin-left:' . $marge . 'vw">';
+    echo '<div class="avis-content">';
+    echo '<h3 class="avis">';
+    if ($niveau > 0) {
+        echo '<div class="note_prenom">Réponse à ' . htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']) . ' | <span class="nom_avis">' . htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']) . '</span></div>';
+    } else {
+        echo '<div class="note_prenom">' . htmlspecialchars($avis['note']) . '.0 | <span class="nom_avis">' . htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']) . '</span></div>';
+    }
+    echo '<div class="signalement_repondre">';
+    echo '<span class="signalement">';
+    echo '<a href="signalement_membre.php?id_avis=' . htmlspecialchars($avis['code_avis']) . '" title="Signaler cet avis" style="text-decoration: none">🚩</a>';
+    echo '</span>';
+    echo '<form action="poster_reponse_membre.php" method="POST">';
+    echo '<input type="hidden" name="unAvis" value="' . htmlspecialchars(serialize($avis)) . '">';
+    echo '<input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">';
+    echo '</form>';
+    echo '</div>';
+    echo '</h3>';
+    echo '<p class="avis">' . htmlspecialchars($avis['txt_avis']) . '</p>';
+    echo '</div>';
+    echo '</div>';
+
+    // Réponses imbriquées
+    if (!empty($avis['sous_reponses'])) {
+        foreach ($avis['sous_reponses'] as $sous_reponse) {
+            afficherAvis($sous_reponse, $niveau + 1);
         }
+    }
+}
 
-        // Fonction pour afficher les avis récursivement
-        function afficherAvis($avis, $niveau = 0)
-        {
-            $marge = $niveau * 5; // Indentation pour les réponses
+// Récupérer tous les avis principaux
+$tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre AND code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse)');
+$tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+$tout_les_avis->execute();
+$tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
 
-            // Avis ou réponse principale
-            echo '<div class="avis" style="margin-left:' . $marge . 'vw">';
-            echo '<div class="avis-content">';
-            echo '<h3 class="avis">';
-            if ($niveau > 0) {
-                echo '<div class="note_prenom">Réponse à ' . htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']) . ' | <span class="nom_avis">' . htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']) . '</span></div>';
-            } else {
-                echo '<div class="note_prenom">' . htmlspecialchars($avis['note']) . '.0 | <span class="nom_avis">' . htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']) . '</span></div>';
-            }
-            echo '<div class="signalement_repondre">';
-            echo '<span class="signalement">';
-            echo '<a href="signalement_membre.php?id_avis=' . htmlspecialchars($avis['code_avis']) . '" title="Signaler cet avis" style="text-decoration: none">🚩</a>';
-            echo '</span>';
-            echo '<form action="poster_reponse_membre.php" method="POST">';
-            echo '<input type="hidden" name="unAvis" value="' . htmlspecialchars(serialize($avis)) . '">';
-            echo '<input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">';
-            echo '</form>';
-            echo '</div>';
-            echo '</h3>';
-            echo '<p class="avis">' . htmlspecialchars($avis['txt_avis']) . '</p>';
-            echo '</div>';
-            echo '</div>';
+// Récupérer les réponses imbriquées pour chaque avis principal
+foreach ($tout_les_avis as &$avis) {
+    $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
+}
 
-            // Réponses imbriquées
-            if (!empty($avis['sous_reponses'])) {
-                foreach ($avis['sous_reponses'] as $sous_reponse) {
-                    afficherAvis($sous_reponse, $niveau + 1);
-                }
-            }
-        }
+// Affichage
+echo '<div class="avis-widget">';
+echo '<div class="avis-header">';
+echo '<h1 class="avis">' . ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5") . ' <span class="avis-score"> ' . ($note_moyenne === null ? "" : $appreciationGenerale) . '</span></h1>';
+echo '<p class="avis">' . $nombre_d_avis . ' avis</p>';
+echo '</div>';
+echo '<div class="avis-list">';
+foreach ($tout_les_avis as $avis) {
+    afficherAvis($avis);
+}
+echo '</div>';
+echo '</div>';
+?>
 
-        // Récupérer tous les avis principaux
-        $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre AND code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse)');
-        $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-        $tout_les_avis->execute();
-        $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
-
-        // Récupérer les réponses imbriquées pour chaque avis principal
-        foreach ($tout_les_avis as &$avis) {
-            $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
-        }
-
-        // Affichage
-        foreach ($tout_les_avis as $avis) {
-            afficherAvis($avis);
-        }
-        ?>
 
 
     </div>
