@@ -713,8 +713,6 @@ function getResponses($dbh, $code_avis) {
     return $reponses;
 }
 
-
-
 // Fonction pour afficher les avis et les réponses récursivement
 function afficherAvis($avis, $niveau = 0) {
     $marge = $niveau * 5; // Indentation pour les réponses
@@ -792,6 +790,7 @@ foreach ($tout_les_avis as &$avis) {
 <?php
 // Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
 ?>
+
 
 
 
