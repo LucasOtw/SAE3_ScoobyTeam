@@ -697,11 +697,6 @@ main.main_repondre_avis .message-erreur {
         font-size: 15px;
     }
 
-    main.main_repondre_avis .repondre_avis_texte,
-    main.main_repondre_avis .repondre_avis_rating {
-        display: none;
-    }
-
     main.main_repondre_avis .repondre_avis_images {
         display: flex;
         gap: 10px;
