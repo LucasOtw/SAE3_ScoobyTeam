@@ -241,6 +241,9 @@ require __DIR__ . '/../vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+require 'path/to/PHPMailer/src/Exception.php';
+require 'path/to/PHPMailer/src/PHPMailer.php';
+require 'path/to/PHPMailer/src/SMTP.php';
 
 
 // TELECHARGEMENT DES DONNEES (FORMAT JSON)
@@ -303,8 +306,6 @@ if (isset($_POST['dwl-data'])) {
         $filePath = __DIR__ . '/mes_donnees_PACT.json';
         file_put_contents($filePath, $jsonData);
         $mail->addAttachment($filePath, 'mes_donnees_PACT.json');
-        $mail->SMTPDebug = 2; // Mettre 0 pour désactiver une fois corrigé
-        $mail->Debugoutput = 'html';
 
         
 
