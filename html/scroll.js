@@ -10,6 +10,11 @@ function scrollcontentRight(class) {
     container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
 }
 
+function scrollcontentRightR() {
+    const container = document.querySelector('.vu-recemment');
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+}
+
 function toggleInfoBox() {
     const infoBox = document.getElementById("infoBox");
     const arrow = document.querySelector(".arrow");
