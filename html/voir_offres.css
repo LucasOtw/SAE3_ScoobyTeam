@@ -1353,6 +1353,7 @@ body.menu-open #overlay {
         color: #BDC426;
         text-decoration: none;
     }
+
     .icon-localisation {
         color: var(--vert-clair);
         font-size: 1.2em;
