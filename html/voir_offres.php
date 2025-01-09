@@ -396,8 +396,10 @@ function tempsEcouleDepuisPublication($offre){
 
 
 
-
-        <h2 class="titre-les-offres">Nouveautés</h2>
+        <div class="titres-offres">
+            <h2 class="titre-les-offres">Nouveautés</h2>
+            <h4 class="voir-plus">Voir toutes les offres</h4>
+        </div>
         
         <section id="offers-list">
         <?php    
