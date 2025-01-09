@@ -300,9 +300,14 @@ if (isset($_POST['dwl-data'])) {
         $mail->addReplyTo('support@example.com', 'Support');
 
         // Ajout de la pièce jointe
-        $filePath = 'mes_donnees_PACT.json';
-        file_put_contents($filePath, $jsonData); // Sauvegarder le fichier temporairement
-        $mail->addAttachment($filePath);
+        $filePath = __DIR__ . '/mes_donnees_PACT.json';
+        file_put_contents($filePath, $jsonData);
+        $mail->addAttachment($filePath, 'mes_donnees_PACT.json');
+        $mail->SMTPDebug = 2; // Mettre 0 pour désactiver une fois corrigé
+        $mail->Debugoutput = 'html';
+
+        
+
 
         // Contenu de l'e-mail
         $mail->isHTML(true);
