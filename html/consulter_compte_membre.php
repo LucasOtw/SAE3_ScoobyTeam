@@ -421,7 +421,7 @@ if (isset($_POST['dwl-data'])) {
 
             <fieldset>
                 <legend>Adresse Postale *</legend>
-                <input type="text" id="adresse_postal" name="adresse_postal" value="<?php echo $_adresse['adresse_postal']; ?>" placeholder="Adresse Postale *" required>
+                <input type="text" id="adresse_postal" name="adresse_postal" value="<?php echo $_adresse['adresse_postal']; ?>" placeholder="Adresse Postale *" required maxlength="64">
             </fieldset>
            
             <div class="crea_pro_mail_tel">
