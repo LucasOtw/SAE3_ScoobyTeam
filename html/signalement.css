@@ -302,14 +302,10 @@ button[type="submit"] {
     box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
 }
 
-
-
-
-@media screen and (min-width: 429px) {
-    .container{
+.container{
         margin-left: 12vw;
-    }
 }
+
 
 @media screen and (max-width: 429px) {
     .avis {
