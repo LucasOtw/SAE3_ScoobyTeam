@@ -31,6 +31,37 @@ body {
 }
 
 /****** HEADER *****/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 20px;
+    color: white;
+}
+
+.logo img {
+    height: 60px;
+    max-width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 3vw;
+    margin-right: 4vw;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
 
 
 .header_pro nav ul li a.active {
