@@ -732,7 +732,7 @@ if (isset($json['results'][0])) {
                                 
                                 <div class="signalement_repondre">
                                     <span class="signalement">
-                                        <a href="signalement_membre.php?id_avis=<?php echo isset($avis['code_avis']) ? htmlspecialchars($avis['code_avis']) : 'invalide'; ?>" title="Signaler cet avis" style="margin-left: 63vw; text-decoration: none">🚩</a>
+                                        <a href="signalement_membre.php?id_avis=<?php echo isset($avis['code_avis']) ? htmlspecialchars($avis['code_avis']) : 'invalide'; ?>" title="Signaler cet avis" style="text-decoration: none">🚩</a>
                                     </span>
                                     <form action="poster_reponse_membre.php" method="POST">
                                         <input type="hidden" name="unAvis"
@@ -767,7 +767,7 @@ if (isset($json['results'][0])) {
 
                                     <div class="signalement_repondre">
                                         <span class="signalement">
-                                            <a href="signalement_membre.php?id_avis=<?php echo isset($reponse['code_avis']) ? htmlspecialchars($reponse['code_avis']) : 'invalide'; ?>" title="Signaler cet avis" style="margin-left: 63vw; text-decoration: none">🚩</a>
+                                            <a href="signalement_membre.php?id_avis=<?php echo isset($reponse['code_avis']) ? htmlspecialchars($reponse['code_avis']) : 'invalide'; ?>" title="Signaler cet avis" style="text-decoration: none">🚩</a>
                                         </span>
                                         <form action="poster_reponse_membre.php" method="POST">
                                             <input type="hidden" name="unAvis"
