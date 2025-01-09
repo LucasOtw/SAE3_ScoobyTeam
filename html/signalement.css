@@ -41,6 +41,10 @@ div.header-pro {
     display: none;
 }
 
+.container{
+    margin-left: 12vw;
+}
+
 /* HEADER MEMBRE */
 
 div.header-membre header.header-pc {
@@ -137,9 +141,7 @@ div.header-membre nav ul li a:hover::before {
     div.header-membre header.header-tel {
         display: block;
     }
-    .container{
-        margin-left: 12vw;
-}
+    
 }
 
 
