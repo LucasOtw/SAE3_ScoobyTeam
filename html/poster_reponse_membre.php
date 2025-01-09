@@ -7,16 +7,12 @@ if(!isset($_SESSION['membre'])){
    exit;
 }
 
-// Vérifie si HTTP_REFERER est défini
-if (isset($_SERVER['HTTP_REFERER'])) {
-    // Vérifie que la page précédente est "detail_offre.php"
-    if ($_SERVER['HTTP_REFERER'] === "https://scooby-team.ventsdouest.dev/detail_offre.php" && !isset($_POST['publier'])) {
-        // Action si les conditions sont respectées
-        // $details_offre = $_SESSION['detail_offre'];
-        $avis = $_SESSION['avis'];
-    }
+if (isset($_SESSION['avis'])) {
+    $avis = $_SESSION['avis'];
+} else {
+    $avis = null; // Ou une valeur par défaut
+    // Vous pouvez aussi afficher un message d'erreur si nécessaire
 }
-
 // Vérifie si le formulaire a été soumis    
 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";  // Utilisateur PostgreSQL défini dans .env
@@ -29,6 +25,11 @@ $dbh = new PDO($dsn, $username, $password);
 $stmt->execute([':code_offre' => $details_offre["code_offre"]]);
 $image_offre = $stmt->fetch(PDO::FETCH_NUM);
 */
+
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
+
 
 echo "<pre>";
    var_dump($avis);
