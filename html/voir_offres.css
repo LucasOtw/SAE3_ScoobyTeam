@@ -1321,6 +1321,7 @@ body.menu-open #overlay {
 
 #customPopup p {
     width: 75%;
+    display:none;
 }
     .half-background {
         height: 50vh;
