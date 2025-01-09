@@ -751,7 +751,7 @@ if (isset($json['results'][0])) {
                                             where base.code_avis = :code_avis;');
                     $reponses->bindValue(':code_avis', $avis['code_avis']);
                     $reponses->execute();
-                    $reponses = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
+                    $reponses = $reponses->fetchAll(PDO::FETCH_ASSOC);
 
                     foreach ($reponses as $reponse) {
                     ?>
