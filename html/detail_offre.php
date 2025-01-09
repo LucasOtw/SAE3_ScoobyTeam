@@ -673,30 +673,35 @@ function getResponses($dbh, $code_avis) {
 // Fonction pour afficher les avis et les réponses récursivement
 function afficherAvis($avis, $niveau = 0) {
     $marge = $niveau * 5; // Indentation pour les réponses
+    ?>
+    <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
+        <div class="avis-content">
+            <h3 class="avis">
+                <?php if ($niveau > 0): ?>
+                    <div class="note_prenom">
+                        Réponse à <?php echo htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']); ?> |
+                        <span class="nom_avis"><?php echo htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']); ?></span>
+                    </div>
+                <?php else: ?>
+                    <div class="note_prenom">
+                        <?php echo htmlspecialchars($avis['note']) . '.0'; ?> | <span class="nom_avis"><?php echo htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']); ?></span>
+                    </div>
+                <?php endif; ?>
+                <div class="signalement_repondre">
+                    <span class="signalement">
+                        <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>" title="Signaler cet avis" style="text-decoration: none">🚩</a>
+                    </span>
+                    <form action="poster_reponse_membre.php" method="POST">
+                        <input type="hidden" name="unAvis" value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                        <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
+                    </form>
+                </div>
+            </h3>
+            <p class="avis"><?php echo htmlspecialchars($avis['txt_avis']); ?></p>
+        </div>
+    </div>
 
-    // Affichage de l'avis ou de la réponse principale
-    echo '<div class="avis" style="margin-left:' . $marge . 'vw">';
-    echo '<div class="avis-content">';
-    echo '<h3 class="avis">';
-    if ($niveau > 0) {
-        echo '<div class="note_prenom">Réponse à ' . htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']) . ' | <span class="nom_avis">' . htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']) . '</span></div>';
-    } else {
-        echo '<div class="note_prenom">' . htmlspecialchars($avis['note']) . '.0 | <span class="nom_avis">' . htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']) . '</span></div>';
-    }
-    echo '<div class="signalement_repondre">';
-    echo '<span class="signalement">';
-    echo '<a href="signalement_membre.php?id_avis=' . htmlspecialchars($avis['code_avis']) . '" title="Signaler cet avis" style="text-decoration: none">🚩</a>';
-    echo '</span>';
-    echo '<form action="poster_reponse_membre.php" method="POST">';
-    echo '<input type="hidden" name="unAvis" value="' . htmlspecialchars(serialize($avis)) . '">';
-    echo '<input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">';
-    echo '</form>';
-    echo '</div>';
-    echo '</h3>';
-    echo '<p class="avis">' . htmlspecialchars($avis['txt_avis']) . '</p>';
-    echo '</div>';
-    echo '</div>';
-
+    <?php
     // Afficher les sous-réponses
     if (!empty($avis['sous_reponses'])) {
         foreach ($avis['sous_reponses'] as $sous_reponse) {
@@ -717,17 +722,29 @@ foreach ($tout_les_avis as &$avis) {
 }
 
 // Affichage des avis et de leurs réponses (y compris les sous-réponses)
-echo '<div class="avis-widget">';
-echo '<div class="avis-header">';
-echo '<h1 class="avis">' . ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5") . ' <span class="avis-score"> ' . ($note_moyenne === null ? "" : $appreciationGenerale) . '</span></h1>';
-echo '<p class="avis">' . $nombre_d_avis . ' avis</p>';
-echo '</div>';
-echo '<div class="avis-list">';
-foreach ($tout_les_avis as $avis) {
-    afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
-}
-echo '</div>';
-echo '</div>';
+?>
+
+<div class="avis-widget">
+    <div class="avis-header">
+        <h1 class="avis">
+            <?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5"); ?> 
+            <span class="avis-score"> 
+                <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?>
+            </span>
+        </h1>
+        <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
+    </div>
+    <div class="avis-list">
+        <?php
+        foreach ($tout_les_avis as $avis) {
+            afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
+        }
+        ?>
+    </div>
+</div>
+
+<?php
+// Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
 ?>
 
 
