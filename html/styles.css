@@ -5344,7 +5344,7 @@ select.prenom_contacter_plateforme {
 }
 
 .theme_contacter_plateforme:focus {
-    background-color: #fff;
+    background-color: #f3f8ff;
     outline: none;
 }
 
