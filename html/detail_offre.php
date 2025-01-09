@@ -687,7 +687,6 @@ if (isset($json['results'][0])) {
             $appreciationGenerale = "Valeur hors échelle";
         }
 
-   <?php
 // Fonction pour récupérer toutes les réponses, y compris les réponses aux réponses (récursivité)
 function getResponses($dbh, $code_avis) {
     $stmt = $dbh->prepare('
