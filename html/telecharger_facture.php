@@ -506,12 +506,18 @@ if(!isset($_SESSION['pro'])){
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="au_milieu">En relief</td>
-                    <td class="a_droite"><?php if ($en_relief !== null ) { echo "8,34€"; } else { echo "Pas sélectionné"; }?></td>
-                    <td class="a_droite"><?php if ($en_relief !== null ) { echo "$nb_semaines_relief"; } else { echo "0"; }?></td>
-                    <td class="a_droite"><?php if ($en_relief !== null ) { echo number_format(8.34 * $nb_semaines_relief, 2, ',', ' ') . "€"; } else { echo "0,00€"; }?></td>
-                </tr>
+                <?php
+                   if($en_relief !== null){
+                      ?>
+                         <tr>
+                            <td class="au_milieu">En relief</td>
+                            <td class="a_droite">8,34€</td>
+                            <td class="a_droite"><?php echo $nb_semaines_relief; ?></td>
+                            <td class="a_droite"><?php echo number_format(8.34 * $nb_semaines_relief, 2, ',',' ') . "€"; ?></td>
+                         </tr>
+                      <?php
+                   }
+                ?>
             
                 <tr>
                     <td class="au_milieu">À la Une</td>
