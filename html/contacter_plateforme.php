@@ -49,7 +49,7 @@
                 
                     <label for="theme">Thème de votre question :</label>
                         <select id="theme" name="theme" class="theme_contacter_plateforme" required>
-                            <option value="">--Choisir un thème--</option>
+                            <option value="">Choisir un thème</option>
                             <option value="general">Général</option>
                             <option value="compte">Mon Compte</option>
                             <option value="offres">Offres</option>
