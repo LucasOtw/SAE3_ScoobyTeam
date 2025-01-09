@@ -35,7 +35,7 @@
         <div class="poster_un_avis_container">
             <div class="poster_un_avis_back_button">
                 <a href="detail_offre.php"><img src="images/Bouton_retour.png" class="back-button"></a>
-                <h1 class="titre_poster_un_avis_format_tel">Besoin d'aide ?</h1>
+                <h1 class="titre_poster_un_avis_format_tel">Contactez nous !</h1>
             </div>
 
             <form action="poster_un_avis.php" method="POST">
