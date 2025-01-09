@@ -290,7 +290,6 @@ button[type="submit"] {
     margin-top: 3vh;
     margin-left: 3vw;
 }
-
 footer {
     background-color: #000;
     color: rgb(0, 0, 0);
@@ -299,15 +298,12 @@ footer {
     width: 100%;
     margin-top: auto;
 }
-
 .footer_pro .newsletter {
     background-color: var(--orange);
 }
-
 .footer_membre .newsletter {
     background-color: var(--vert-clair);
 }
-
 .newsletter {
     display: flex;
     flex-direction: column;
@@ -322,24 +318,20 @@ footer {
     margin-left: auto;
     margin-right: auto;
 }
-
 .newsletter-content {
     text-align: left;
     max-width: 100%;
 }
-
 .newsletter h2 {
     font-size: 2rem;
     margin-bottom: 10px;
 }
-
 .newsletter-form {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-top: 10px;
 }
-
 .newsletter-form button {
     background-color: #112211;
     color: white;
@@ -347,59 +339,48 @@ footer {
     border-radius: 5px;
     cursor: pointer;
 }
-
 .newsletter-form input,
 .newsletter-form button {
     padding: 10px;
     border: none;
     border-radius: 5px;
 }
-
 .newsletter-form input {
     flex-grow: 1;
 }
-
 .newsletter-image img {
     max-height: 100px;
     width: auto;
 }
-
 .footer-links {
     display: flex;
     flex-direction: column;
     gap: 20px;
     margin: 20px 0;
 }
-
 .link-group ul {
     list-style: none;
 }
-
 .link-group ul li {
     margin-bottom: 10px;
 }
-
 .link-group ul li a {
     color: white;
     text-decoration: none;
     transition: color 0.3s ease;
 }
-
 .footer_pro .link-group ul li a:hover {
     color: var(--orange);
 }
-
 .footer_membre .link-group ul li a:hover {
     color: var(--vert-clair);
 }
-
 .footer-bottom {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
 }
-
 .social-icons a img {
     width: 24px;
     margin: 0 10px;
