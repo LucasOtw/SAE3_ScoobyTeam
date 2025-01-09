@@ -1,4 +1,4 @@
-/*****************************************************
+ /*****************************************************
             * Code général pour les pages *
 *****************************************************/
 
@@ -1334,6 +1334,12 @@ form .btn-link {
     margin: 0;
     font-size: 1.1em;
     color: #333;
+    display: flex;
+    justify-content: space-between;
+}
+
+.avis-widget .avis-content .note_prenom {
+    display: flex;
 }
 
 .avis-widget .avis-content h3.avis span.nom_avis {
@@ -1351,6 +1357,9 @@ form .btn-link {
     font-size: 0.9em;
 }
 
+.avis-widget .avis-content .signalement_repondre {
+           display: flex;
+}
 
 /* Styles pour les écrans de 429px et moins */
 @media (max-width: 429px) {
