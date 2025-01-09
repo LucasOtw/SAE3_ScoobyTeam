@@ -110,3 +110,22 @@ nav ul li a::before {
 nav ul li a:hover::before {
     width: 90%;
 }
+
+@media (min-width: 1024px) {
+    nav ul {
+        gap: 50px;
+    }
+
+    footer {
+        padding: 40px 80px;
+    }
+}
+
+header.header-pc {
+    display: flex;
+}
+
+header.header-tel {
+    display: none;
+    background-color: white;
+}
