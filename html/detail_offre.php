@@ -748,6 +748,7 @@ if (isset($json['results'][0])) {
                     $reponses = $dbh->prepare('select * from tripenarvor._reponse 
                                             INNER JOIN tripenarvor._avis as base ON base.code_avis = tripenarvor._reponse.code_avis
                                             INNER JOIN tripenarvor._avis as reponse ON reponse.code_avis = tripenarvor._reponse.code_reponse
+                                            INNER JOIN tripenarvor._membre as membre_reponse ON membre_reponse.code_compte = reponse.code_compte
                                             where base.code_avis = :code_avis;');
                     $reponses->bindValue(':code_avis', $avis['code_avis']);
                     $reponses->execute();
