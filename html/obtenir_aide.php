@@ -26,12 +26,13 @@
         </nav>
       </header> 
 
-
         <header class="header-tel header_membre">
             <div class="logo-tel">
                 <a href="voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
             </div>
         </header>
+        <img src="images/faq.png" alt="Image pour la page des questions/aides">
+
 </body>
 </html>
 
