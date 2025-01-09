@@ -129,3 +129,13 @@ header.header-tel {
     display: none;
     background-color: white;
 }
+
+@media (min-width: 429px) {
+    nav ul {
+        gap: 50px;  
+    }
+
+    footer {
+        padding: 40px 80px;
+    }
+}
