@@ -300,17 +300,17 @@ if (isset($json['results'][0])) {
                     <li><a href="connexion_pro.php">Publier</a></li>
                     <?php
                     if (isset($_SESSION["membre"]) || !empty($_SESSION["membre"])) {
-                    ?>
+                        ?>
                         <li>
                             <a href="consulter_compte_membre.php">Mon compte</a>
                         </li>
-                    <?php
+                        <?php
                     } else {
-                    ?>
+                        ?>
                         <li>
                             <a href="connexion_membre.php">Se connecter</a>
                         </li>
-                    <?php
+                        <?php
                     }
                     ?>
                 </ul>
@@ -329,7 +329,8 @@ if (isset($json['results'][0])) {
 
                     <p>📍 <?php echo $adresse_offre["ville"] . ", " . $adresse_offre["code_postal"]; ?></p>
 
-                    <p><i class="fas fa-clock"></i> Publié <?php echo tempsEcouleDepuisPublication($details_offre); ?></p>
+                    <p><i class="fas fa-clock"></i> Publié <?php echo tempsEcouleDepuisPublication($details_offre); ?>
+                    </p>
 
                     <!-- <div class="detail_offre_rating">
                         ⭐ 5.0 (255 avis)
@@ -346,7 +347,9 @@ if (isset($json['results'][0])) {
                             <input id="btn-poster-avis" type="submit" name="posterAvis" value="Poster un avis">
                         </form>
 
-                        <?php if (!empty($details_offre["site_web"])) { ?> <a href="<?php echo $details_offre["site_web"]; ?>"><button class="visit-button_detailoffre">Voir le site ➔</button></a> <?php } ?>
+                        <?php if (!empty($details_offre["site_web"])) { ?> <a
+                                href="<?php echo $details_offre["site_web"]; ?>"><button
+                                    class="visit-button_detailoffre">Voir le site ➔</button></a> <?php } ?>
                     </div>
                 </div>
 
@@ -358,7 +361,7 @@ if (isset($json['results'][0])) {
                 <section class="a-la-une">
                     <?php
                     foreach ($images_offre as $photo) {
-                    ?>
+                        ?>
 
                         <article class="card-a-la-une">
                             <div class="image-background-card-a-la-une">
@@ -366,7 +369,7 @@ if (isset($json['results'][0])) {
                             </div>
                         </article>
 
-                    <?php
+                        <?php
                     }
                     ?>
                 </section>
@@ -395,52 +398,52 @@ if (isset($json['results'][0])) {
 
                         <?php
                         if ($type_offre === "restauration") {
-                        ?>
+                            ?>
                             <h3 style="margin-top: 1em;">Repas</h3>
                             <p><?php echo $details_offre["repas"]; ?></p>
 
                             <h3 style="margin-top: 1em;">Gamme de prix</h3>
                             <p><?php echo $details_offre["gamme_prix"]; ?></p>
-                        <?php
+                            <?php
                         } else if ($type_offre === "parc_attractions") {
-                        ?>
-                            <h3 style="margin-top: 1em;">Age requis</h3>
-                            <p><?php echo $details_offre["age_requis"]; ?></p>
+                            ?>
+                                <h3 style="margin-top: 1em;">Age requis</h3>
+                                <p><?php echo $details_offre["age_requis"]; ?></p>
 
-                            <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
-                            <p><?php echo $details_offre["nombre_attractions"]; ?></p>
-                        <?php
+                                <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
+                                <p><?php echo $details_offre["nombre_attractions"]; ?></p>
+                            <?php
                         } else if ($type_offre === "spectacle") {
-                        ?>
-                            <h3 style="margin-top: 1em;">Capacité d'accueil</h3>
-                            <p><?php echo $details_offre["capacite_accueil"]; ?></p>
+                            ?>
+                                    <h3 style="margin-top: 1em;">Capacité d'accueil</h3>
+                                    <p><?php echo $details_offre["capacite_accueil"]; ?></p>
 
-                            <h3 style="margin-top: 1em;">Durée</h3>
-                            <p><?php echo $details_offre["duree"]; ?></p>
+                                    <h3 style="margin-top: 1em;">Durée</h3>
+                                    <p><?php echo $details_offre["duree"]; ?></p>
 
-                        <?php
+                            <?php
                         } else if ($type_offre === "visite") {
-                        ?>
-                            <h3 style="margin-top: 1em;">Visite Guidée</h3>
-                            <p>Oui</p>
+                            ?>
+                                        <h3 style="margin-top: 1em;">Visite Guidée</h3>
+                                        <p>Oui</p>
 
-                            <h3 style="margin-top: 1em;">Durée</h3>
-                            <p><?php echo $details_offre["duree"]; ?></p>
-                        <?php
+                                        <h3 style="margin-top: 1em;">Durée</h3>
+                                        <p><?php echo $details_offre["duree"]; ?></p>
+                            <?php
                         } else if ($type_offre === "activite") {
-                        ?>
-                            <h3 style="margin-top: 1em;">Durée</h3>
-                            <p><?php echo $details_offre["duree"]; ?></p>
+                            ?>
+                                            <h3 style="margin-top: 1em;">Durée</h3>
+                                            <p><?php echo $details_offre["duree"]; ?></p>
 
-                            <h3 style="margin-top: 1em;">Age requis</h3>
-                            <p><?php echo $details_offre["age_requis"]; ?></p>
+                                            <h3 style="margin-top: 1em;">Age requis</h3>
+                                            <p><?php echo $details_offre["age_requis"]; ?></p>
 
-                            <h3 style="margin-top: 1em;">Prestations incluses</h3>
-                            <p><?php echo $details_offre["prestations_incluses"]; ?></p>
+                                            <h3 style="margin-top: 1em;">Prestations incluses</h3>
+                                            <p><?php echo $details_offre["prestations_incluses"]; ?></p>
 
-                            <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
-                            <p><?php echo $details_offre["prestations_non_incluses"]; ?></p>
-                        <?php
+                                            <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
+                                            <p><?php echo $details_offre["prestations_non_incluses"]; ?></p>
+                            <?php
                         }
                         ?>
 
@@ -458,11 +461,11 @@ if (isset($json['results'][0])) {
 
                 <?php
                 foreach ($tags_offre as $tag) {
-                ?>
+                    ?>
                     <div class="detail_offre_icon">
                         <p><?php echo $tag[0]; ?></p>
                     </div>
-                <?php
+                    <?php
                 }
                 ?>
 
@@ -473,7 +476,7 @@ if (isset($json['results'][0])) {
 
         <?php
         if ($type_offre === "restauration") {
-        ?>
+            ?>
             <div class="Detail_offre_periode">
                 <h2>Périodes d'ouverture</h2>
                 <p>
@@ -491,115 +494,115 @@ if (isset($json['results'][0])) {
                     ?>
                 </p>
             </div>
-        <?php
+            <?php
         } else if ($type_offre === "parc_attractions") {
-        ?>
-            <div class="Detail_offre_periode">
-                <h2>Périodes d'ouverture</h2>
-                <p>
-                    <?php
-                    // Vérifiez si les champs date_ouverture et date_fermeture existent et ne sont pas vides
-                    if (!empty($details_offre["date_ouverture"]) && !empty($details_offre["date_fermeture"])) {
-                        // Formatez les dates d'ouverture et de fermeture
-                        $date_ouverture = date("j F Y", strtotime($details_offre["date_ouverture"]));
-                        $date_fermeture = date("j F Y", strtotime($details_offre["date_fermeture"]));
-                        echo "De <span>$date_ouverture</span> à <span>$date_fermeture</span>";
-                    } else {
-                        // Si les champs sont vides, afficher "Ouvert toute l'année"
-                        echo "Ouvert toute l'année";
-                    }
-                    ?>
-                </p>
-            </div>
-        <?php
+            ?>
+                <div class="Detail_offre_periode">
+                    <h2>Périodes d'ouverture</h2>
+                    <p>
+                        <?php
+                        // Vérifiez si les champs date_ouverture et date_fermeture existent et ne sont pas vides
+                        if (!empty($details_offre["date_ouverture"]) && !empty($details_offre["date_fermeture"])) {
+                            // Formatez les dates d'ouverture et de fermeture
+                            $date_ouverture = date("j F Y", strtotime($details_offre["date_ouverture"]));
+                            $date_fermeture = date("j F Y", strtotime($details_offre["date_fermeture"]));
+                            echo "De <span>$date_ouverture</span> à <span>$date_fermeture</span>";
+                        } else {
+                            // Si les champs sont vides, afficher "Ouvert toute l'année"
+                            echo "Ouvert toute l'année";
+                        }
+                        ?>
+                    </p>
+                </div>
+            <?php
         } else if ($type_offre === "spectacle") {
-        ?>
+            ?>
 
-            <div class="Detail_offre_horaire">
-                <h2>Horaire du Spectacle</h2>
-                <p>Date :
-                    <span>
-                        <?php
-                        // Vérifiez si la date est définie et non nulle
-                        if (isset($details_offre["date_spectacle"])) {
-                            // Formatez la date SQL (YYYY-MM-DD) en format lisible
-                            echo date("l, j F Y", strtotime($details_offre["date_spectacle"]));
-                        } else {
-                            echo "Date non disponible";
-                        }
-                        ?>
-                    </span>
-                </p>
-                <p>Heure :
-                    <span>
-                        <?php
-                        // Vérifiez si l'heure est définie et non nulle
-                        if (isset($details_offre["heure_spectacle"])) {
-                            // Formatez l'heure SQL (HH:MM:SS) en format lisible
-                            echo date("H\h i", strtotime($details_offre["heure_spectacle"]));
-                        } else {
-                            echo "Heure non disponible";
-                        }
-                        ?>
-                    </span>
-                </p>
-            </div>
+                    <div class="Detail_offre_horaire">
+                        <h2>Horaire du Spectacle</h2>
+                        <p>Date :
+                            <span>
+                            <?php
+                            // Vérifiez si la date est définie et non nulle
+                            if (isset($details_offre["date_spectacle"])) {
+                                // Formatez la date SQL (YYYY-MM-DD) en format lisible
+                                echo date("l, j F Y", strtotime($details_offre["date_spectacle"]));
+                            } else {
+                                echo "Date non disponible";
+                            }
+                            ?>
+                            </span>
+                        </p>
+                        <p>Heure :
+                            <span>
+                            <?php
+                            // Vérifiez si l'heure est définie et non nulle
+                            if (isset($details_offre["heure_spectacle"])) {
+                                // Formatez l'heure SQL (HH:MM:SS) en format lisible
+                                echo date("H\h i", strtotime($details_offre["heure_spectacle"]));
+                            } else {
+                                echo "Heure non disponible";
+                            }
+                            ?>
+                            </span>
+                        </p>
+                    </div>
 
-        <?php
+            <?php
         } else if ($type_offre === "visite") {
-        ?>
+            ?>
 
-            <div class="Detail_offre_horaire">
-                <h2>Horaire de la Visite</h2>
-                <p>Date :
-                    <span>
-                        <?php
-                        // Vérifiez si la date est définie et non nulle
-                        if (isset($details_offre["date_visite"])) {
-                            // Formatez la date SQL (YYYY-MM-DD) en format lisible
-                            echo date("l, j F Y", strtotime($details_offre["date_visite"]));
-                        } else {
-                            echo "Date non disponible";
-                        }
-                        ?>
-                    </span>
-                </p>
-                <p>Heure :
-                    <span>
-                        <?php
-                        // Vérifiez si l'heure est définie et non nulle
-                        if (isset($details_offre["heure_visite"])) {
-                            // Formatez l'heure SQL (HH:MM:SS) en format lisible
-                            echo date("H\h i", strtotime($details_offre["heure_visite"]));
-                        } else {
-                            echo "Heure non disponible";
-                        }
-                        ?>
-                    </span>
-                </p>
-            </div>
+                        <div class="Detail_offre_horaire">
+                            <h2>Horaire de la Visite</h2>
+                            <p>Date :
+                                <span>
+                            <?php
+                            // Vérifiez si la date est définie et non nulle
+                            if (isset($details_offre["date_visite"])) {
+                                // Formatez la date SQL (YYYY-MM-DD) en format lisible
+                                echo date("l, j F Y", strtotime($details_offre["date_visite"]));
+                            } else {
+                                echo "Date non disponible";
+                            }
+                            ?>
+                                </span>
+                            </p>
+                            <p>Heure :
+                                <span>
+                            <?php
+                            // Vérifiez si l'heure est définie et non nulle
+                            if (isset($details_offre["heure_visite"])) {
+                                // Formatez l'heure SQL (HH:MM:SS) en format lisible
+                                echo date("H\h i", strtotime($details_offre["heure_visite"]));
+                            } else {
+                                echo "Heure non disponible";
+                            }
+                            ?>
+                                </span>
+                            </p>
+                        </div>
 
-        <?php
+            <?php
         } else if ($type_offre === "activite") {
-        ?>
-            <div class="Detail_offre_periode">
-                <h2>Périodes d'ouverture</h2>
-                <p>
-                    <?php
-                    // Vérifiez si les champs date_ouverture et date_fermeture existent et ne sont pas vides
-                    if (!empty($details_offre["date_ouverture"]) && !empty($details_offre["date_fermeture"])) {
-                        // Formatez les dates d'ouverture et de fermeture
-                        $date_ouverture = date("j F Y", strtotime($details_offre["date_ouverture"]));
-                        $date_fermeture = date("j F Y", strtotime($details_offre["date_fermeture"]));
-                        echo "De <span>$date_ouverture</span> à <span>$date_fermeture</span>";
-                    } else {
-                        // Si les champs sont vides, afficher "Ouvert toute l'année"
-                        echo "Ouvert toute l'année";
-                    }
-                    ?>
-                </p>
-            </div>
-        <?php
+            ?>
+                            <div class="Detail_offre_periode">
+                                <h2>Périodes d'ouverture</h2>
+                                <p>
+                        <?php
+                        // Vérifiez si les champs date_ouverture et date_fermeture existent et ne sont pas vides
+                        if (!empty($details_offre["date_ouverture"]) && !empty($details_offre["date_fermeture"])) {
+                            // Formatez les dates d'ouverture et de fermeture
+                            $date_ouverture = date("j F Y", strtotime($details_offre["date_ouverture"]));
+                            $date_fermeture = date("j F Y", strtotime($details_offre["date_fermeture"]));
+                            echo "De <span>$date_ouverture</span> à <span>$date_fermeture</span>";
+                        } else {
+                            // Si les champs sont vides, afficher "Ouvert toute l'année"
+                            echo "Ouvert toute l'année";
+                        }
+                        ?>
+                                </p>
+                            </div>
+            <?php
         }
         ?>
 
@@ -615,7 +618,7 @@ if (isset($json['results'][0])) {
             !empty($h_samedi["ouverture"]) ||
             !empty($h_dimanche["ouverture"])
         ) {
-        ?>
+            ?>
             <div class="Detail_offre_ouverture_global_desktop">
 
                 <h2>Horaires</h2>
@@ -630,7 +633,7 @@ if (isset($json['results'][0])) {
                 </ul>
 
             </div>
-        <?php
+            <?php
         }
         ?>
 
@@ -648,38 +651,39 @@ if (isset($json['results'][0])) {
         </div>
 
         <?php
-// Récupérer la moyenne des notes
-$moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre and note<>0');
-$moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-$moyenne_note->execute();
-$note_moyenne = $moyenne_note->fetchColumn();
+        // Récupérer la moyenne des notes
+        $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre and note<>0');
+        $moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+        $moyenne_note->execute();
+        $note_moyenne = $moyenne_note->fetchColumn();
 
-// Récupérer le nombre d'avis
-$nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis WHERE code_offre = :code_offre');
-$nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-$nb_avis->execute();
-$nombre_d_avis = $nb_avis->fetchColumn();
+        // Récupérer le nombre d'avis
+        $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis WHERE code_offre = :code_offre');
+        $nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+        $nb_avis->execute();
+        $nombre_d_avis = $nb_avis->fetchColumn();
 
-$appreciationGenerale = "";
+        $appreciationGenerale = "";
 
-// Déterminer l'appréciation générale selon la note moyenne
-if ($note_moyenne <= 1) {
-    $appreciationGenerale = "À éviter";
-} elseif ($note_moyenne <= 2) {
-    $appreciationGenerale = "Peut mieux faire";
-} elseif ($note_moyenne <= 3) {
-    $appreciationGenerale = "Correct";
-} elseif ($note_moyenne <= 4) {
-    $appreciationGenerale = "Très Bien";
-} elseif ($note_moyenne <= 5) {
-    $appreciationGenerale = "Exceptionnel";
-} else {
-    $appreciationGenerale = "Valeur hors échelle";
-}
+        // Déterminer l'appréciation générale selon la note moyenne
+        if ($note_moyenne <= 1) {
+            $appreciationGenerale = "À éviter";
+        } elseif ($note_moyenne <= 2) {
+            $appreciationGenerale = "Peut mieux faire";
+        } elseif ($note_moyenne <= 3) {
+            $appreciationGenerale = "Correct";
+        } elseif ($note_moyenne <= 4) {
+            $appreciationGenerale = "Très Bien";
+        } elseif ($note_moyenne <= 5) {
+            $appreciationGenerale = "Exceptionnel";
+        } else {
+            $appreciationGenerale = "Valeur hors échelle";
+        }
 
-// Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
-function getResponses($dbh, $code_avis) {
-    $stmt = $dbh->prepare('
+        // Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
+        function getResponses($dbh, $code_avis)
+        {
+            $stmt = $dbh->prepare('
         SELECT 
             reponse.*,
             membre_reponse.prenom AS prenom,
@@ -689,65 +693,70 @@ function getResponses($dbh, $code_avis) {
         LEFT JOIN tripenarvor._membre AS membre_reponse ON membre_reponse.code_compte = reponse.code_compte
         WHERE tripenarvor._reponse.code_avis = :code_avis
     ');
-    $stmt->bindValue(':code_avis', $code_avis, PDO::PARAM_INT);
-    $stmt->execute();
-    $reponses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt->bindValue(':code_avis', $code_avis, PDO::PARAM_INT);
+            $stmt->execute();
+            $reponses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Récursivité : Ajouter les sous-réponses (réponses aux réponses)
-    foreach ($reponses as &$reponse) {
-        $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_avis']); // Ajoute les sous-réponses
-    }
-    return $reponses;
-}
-
-// Fonction pour afficher les avis et les réponses récursivement
-function afficherAvis($avis, $niveau = 0) {
-    // Vérification du prénom et nom
-    $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur supprimé";
-    $nom = !empty($avis['nom']) ? $avis['nom'] : "supprimé";
-    
-    // Calcul du margin-left pour indenter les réponses
-    $marge = $niveau * 5; // Indentation pour les réponses
-    ?>
-    <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
-        <div class="avis-content">
-            <h3 class="avis">
-                <?php if ($niveau > 0): ?>
-                    <div class="note_prenom">
-                        Réponse à <?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?> |
-                        <span class="nom_avis"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
-                    </div>
-                <?php else: ?>
-                    <div class="note_prenom">
-                        <?php echo htmlspecialchars($avis['note']) . '.0'; ?> | 
-                        <span class="nom_avis"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
-                    </div>
-                <?php endif; ?>
-                <div class="signalement_repondre">
-                    <span class="signalement">
-                        <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>" title="Signaler cet avis" style="text-decoration: none">🚩</a>
-                    </span>
-                    <form action="poster_reponse_membre.php" method="POST">
-                        <input type="hidden" name="unAvis" value="<?php echo htmlspecialchars(serialize($avis)); ?>">
-                        <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
-                    </form>
-                </div>
-            </h3>
-            <p class="avis"><?php echo htmlspecialchars($avis['txt_avis']); ?></p>
-        </div>
-    </div>
-
-    <?php
-    // Afficher les sous-réponses en premier si elles existent
-    if (!empty($avis['sous_reponses'])) {
-        foreach ($avis['sous_reponses'] as $sous_reponse) {
-            afficherAvis($sous_reponse, $niveau + 1); // Augmente le niveau d'indentation pour les sous-réponses
+            // Récursivité : Ajouter les sous-réponses (réponses aux réponses)
+            foreach ($reponses as &$reponse) {
+                $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_avis']); // Ajoute les sous-réponses
+            }
+            return $reponses;
         }
-    }
-}
 
-// Récupérer tous les avis principaux (sans réponses déjà existantes)
-$tout_les_avis = $dbh->prepare('SELECT * 
+        // Fonction pour afficher les avis et les réponses récursivement
+        function afficherAvis($avis, $niveau = 0)
+        {
+            // Vérification du prénom et nom
+            $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur supprimé";
+            $nom = !empty($avis['nom']) ? $avis['nom'] : "supprimé";
+
+            // Calcul du margin-left pour indenter les réponses
+            $marge = $niveau * 5; // Indentation pour les réponses
+            ?>
+            <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
+                <div class="avis-content">
+                    <h3 class="avis">
+                        <?php if ($niveau > 0): ?>
+                            <div class="note_prenom">
+                                Réponse à <?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?> |
+                                <span
+                                    class="nom_avis"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                            </div>
+                        <?php else: ?>
+                            <div class="note_prenom">
+                                <?php echo htmlspecialchars($avis['note']) . '.0'; ?> |
+                                <span
+                                    class="nom_avis"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                            </div>
+                        <?php endif; ?>
+                        <div class="signalement_repondre">
+                            <span class="signalement">
+                                <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
+                                    title="Signaler cet avis" style="text-decoration: none">🚩</a>
+                            </span>
+                            <form action="poster_reponse_membre.php" method="POST">
+                                <input type="hidden" name="unAvis"
+                                    value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                                <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
+                            </form>
+                        </div>
+                    </h3>
+                    <p class="avis"><?php echo htmlspecialchars($avis['txt_avis']); ?></p>
+                </div>
+            </div>
+
+            <?php
+            // Afficher les sous-réponses en premier si elles existent
+            if (!empty($avis['sous_reponses'])) {
+                foreach ($avis['sous_reponses'] as $sous_reponse) {
+                    afficherAvis($sous_reponse, $niveau + 1); // Augmente le niveau d'indentation pour les sous-réponses
+                }
+            }
+        }
+
+        // Récupérer tous les avis principaux (sans réponses déjà existantes)
+        $tout_les_avis = $dbh->prepare('SELECT * 
 FROM tripenarvor._avis
 LEFT JOIN tripenarvor.membre 
     ON tripenarvor._avis.code_compte = tripenarvor.membre.code_compte
@@ -760,52 +769,52 @@ WHERE code_offre = :code_offre
        AND tripenarvor.membre.code_compte IS NULL)
   );
 ');
-$tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-$tout_les_avis->execute();
-$tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
+        $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+        $tout_les_avis->execute();
+        $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
 
-// Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
-foreach ($tout_les_avis as &$avis) {
-    // Vérification si l'utilisateur est supprimé
-    if (empty($avis['prenom']) && empty($avis['nom'])) {
-        $avis['prenom'] = "Utilisateur supprimé";
-        $avis['nom'] = "supprimé";
-    }
-    // Récupération des réponses pour l'avis principal
-    $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
-}
-
-// Affichage des avis et de leurs réponses (y compris les sous-réponses)
-?>
-
-<div class="avis-widget">
-    <div class="avis-header">
-        <h1 class="avis">
-            <?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5"); ?> 
-            <span class="avis-score"> 
-                <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?>
-            </span>
-        </h1>
-        <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
-    </div>
-    <div class="avis-list">
-        <?php
-        foreach ($tout_les_avis as $avis) {
-            afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
+        // Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
+        foreach ($tout_les_avis as &$avis) {
+            // Vérification si l'utilisateur est supprimé
+            if (empty($avis['prenom']) && empty($avis['nom'])) {
+                $avis['prenom'] = "Utilisateur supprimé";
+                $avis['nom'] = "supprimé";
+            }
+            // Récupération des réponses pour l'avis principal
+            $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
         }
+
+        // Affichage des avis et de leurs réponses (y compris les sous-réponses)
         ?>
-    </div>
-</div>
 
-<?php
-// Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
-?>
+        <div class="avis-widget">
+            <div class="avis-header">
+                <h1 class="avis">
+                    <?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5"); ?>
+                    <span class="avis-score">
+                        <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?>
+                    </span>
+                </h1>
+                <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
+            </div>
+            <div class="avis-list">
+                <?php
+                foreach ($tout_les_avis as $avis) {
+                    afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
+                }
+                ?>
+            </div>
+        </div>
+
+        <?php
+        // Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
+        ?>
 
 
 
 
 
-        
+
 
 
 
@@ -817,7 +826,8 @@ foreach ($tout_les_avis as &$avis) {
     <!-- Détails de l'offre sur MOBILE -->
     <div id="body_offre_mobile">
         <header class="header_tel">
-            <a href="voir_offres.php"><img class="fleche_retour_tel" src="images/Bouton_retour.png" alt="bouton retour"></a>
+            <a href="voir_offres.php"><img class="fleche_retour_tel" src="images/Bouton_retour.png"
+                    alt="bouton retour"></a>
             <style>
                 .fleche_retour_tel {
                     margin-left: -7em;
@@ -834,11 +844,11 @@ foreach ($tout_les_avis as &$avis) {
             <div class="carousel-images">
                 <?php
                 foreach ($images_offre as $photo) {
-                ?>
+                    ?>
 
                     <img src="<?php echo $photo[0]; ?>" alt="">
 
-                <?php
+                    <?php
                 }
                 ?>
             </div>
@@ -854,7 +864,8 @@ foreach ($tout_les_avis as &$avis) {
     margin-top: -1.4vh;
 "><?php echo $details_offre["titre_offre"]; ?></h1>
             <a href="<?php echo $details_offre["site_web"]; ?>" class="description-link">
-                <?php if (!empty($details_offre["site_web"])) { ?> <a href="<?php echo $details_offre["site_web"]; ?>" class="description-link">
+                <?php if (!empty($details_offre["site_web"])) { ?> <a href="<?php echo $details_offre["site_web"]; ?>"
+                        class="description-link">
                         <h3>Site Web</h3>
                     </a> <?php } ?>
             </a>
@@ -897,51 +908,51 @@ foreach ($tout_les_avis as &$avis) {
             <h2>Nos services</h2>
             <?php
             if ($type_offre === "restauration") {
-            ?>
+                ?>
                 <h3 style="margin-top: 1em;">Repas</h3>
                 <p class="detail_offre_resumer"><?php echo $details_offre["repas"]; ?></p>
 
                 <h3 style="margin-top: 1em;">Gamme de prix</h3>
                 <p class="detail_offre_resumer"><?php echo $details_offre["gamme_prix"]; ?></p>
-            <?php
+                <?php
             } else if ($type_offre === "parc_attractions") {
-            ?>
-                <h3 style="margin-top: 1em;">Age requis</h3>
-                <p class="detail_offre_resumer"><?php echo $details_offre["age_requis"]; ?></p>
+                ?>
+                    <h3 style="margin-top: 1em;">Age requis</h3>
+                    <p class="detail_offre_resumer"><?php echo $details_offre["age_requis"]; ?></p>
 
-                <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
-                <p class="detail_offre_resumer"><?php echo $details_offre["nombre_attractions"]; ?></p>
-            <?php
+                    <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
+                    <p class="detail_offre_resumer"><?php echo $details_offre["nombre_attractions"]; ?></p>
+                <?php
             } else if ($type_offre === "spectacle") {
-            ?>
-                <h3 style="margin-top: 1em;">Capacité d'acceuil</h3>
-                <p class="detail_offre_resumer"><?php echo $details_offre["capacite_acceuil"]; ?></p>
+                ?>
+                        <h3 style="margin-top: 1em;">Capacité d'acceuil</h3>
+                        <p class="detail_offre_resumer"><?php echo $details_offre["capacite_acceuil"]; ?></p>
 
-                <h3 style="margin-top: 1em;">Durée</h3>
-                <p class="detail_offre_resumer"><?php echo $details_offre["duree"]; ?></p>
-            <?php
+                        <h3 style="margin-top: 1em;">Durée</h3>
+                        <p class="detail_offre_resumer"><?php echo $details_offre["duree"]; ?></p>
+                <?php
             } else if ($type_offre === "visite") {
-            ?>
-                <h3 style="margin-top: 1em;">Visite Guidée</h3>
-                <p class="detail_offre_resumer">Oui</p>
+                ?>
+                            <h3 style="margin-top: 1em;">Visite Guidée</h3>
+                            <p class="detail_offre_resumer">Oui</p>
 
-                <h3 style="margin-top: 1em;">Durée</h3>
-                <p class="detail_offre_resumer"><?php echo $details_offre["duree"]; ?></p>
-            <?php
+                            <h3 style="margin-top: 1em;">Durée</h3>
+                            <p class="detail_offre_resumer"><?php echo $details_offre["duree"]; ?></p>
+                <?php
             } else if ($type_offre === "activite") {
-            ?>
-                <h3 style="margin-top: 1em;">Durée</h3>
-                <p class="detail_offre_resumer"><?php echo $details_offre["duree"]; ?></p>
+                ?>
+                                <h3 style="margin-top: 1em;">Durée</h3>
+                                <p class="detail_offre_resumer"><?php echo $details_offre["duree"]; ?></p>
 
-                <h3 style="margin-top: 1em;">Age requis</h3>
-                <p class="detail_offre_resumer"><?php echo $details_offre["age_requis"]; ?></p>
+                                <h3 style="margin-top: 1em;">Age requis</h3>
+                                <p class="detail_offre_resumer"><?php echo $details_offre["age_requis"]; ?></p>
 
-                <h3 style="margin-top: 1em;">Prestations incluses</h3>
-                <p class="detail_offre_resumer"><?php echo $details_offre["prestations_incluses"]; ?></p>
+                                <h3 style="margin-top: 1em;">Prestations incluses</h3>
+                                <p class="detail_offre_resumer"><?php echo $details_offre["prestations_incluses"]; ?></p>
 
-                <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
-                <p class="detail_offre_resumer"><?php echo $details_offre["prestations_non_incluses"]; ?></p>
-            <?php
+                                <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
+                                <p class="detail_offre_resumer"><?php echo $details_offre["prestations_non_incluses"]; ?></p>
+                <?php
             }
             ?>
 
@@ -964,11 +975,11 @@ foreach ($tout_les_avis as &$avis) {
             <div class="services">
                 <?php
                 foreach ($tags_offre as $tag) {
-                ?>
+                    ?>
                     <div class="service">
                         <p><?php echo $tag[0]; ?></p>
                     </div>
-                <?php
+                    <?php
                 }
                 ?>
             </div>
@@ -984,7 +995,7 @@ foreach ($tout_les_avis as &$avis) {
             !empty($h_samedi["ouverture"]) ||
             !empty($h_dimanche["ouverture"])
         ) {
-        ?>
+            ?>
             <div class="Detail_offre_ouverture_global">
 
                 <h3>Horaires</h3>
@@ -1004,7 +1015,7 @@ foreach ($tout_les_avis as &$avis) {
 
 
 
-        <?php
+            <?php
         }
         ?>
 
@@ -1017,7 +1028,9 @@ foreach ($tout_les_avis as &$avis) {
         </div>
         <div class="avis-widget">
             <div class="avis-header">
-                <h1 class="avis"><?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5") ?> <span class="avis-score"> <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?></span></h1>
+                <h1 class="avis"><?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5") ?>
+                    <span class="avis-score">
+                        <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?></span></h1>
                 <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
             </div>
             <div class="avis-list">
@@ -1043,7 +1056,7 @@ foreach ($tout_les_avis as &$avis) {
                             break;
 
                         case '5':
-                            $appreciation  = "Parfait";
+                            $appreciation = "Parfait";
                             break;
 
                         default:
@@ -1055,15 +1068,16 @@ foreach ($tout_les_avis as &$avis) {
                         $avis["nom"] = "supprimé";
                     }
 
-                ?>
+                    ?>
                     <div class="avis">
 
                         <div class="avis-content">
-                            <h3 class="avis"><?php echo $avis["note"] . ".0 $appreciation "; ?>| <span class="nom_avis"><?php echo $avis["prenom"]; ?> <?php echo $avis["nom"]; ?></span></h3>
+                            <h3 class="avis"><?php echo $avis["note"] . ".0 $appreciation "; ?>| <span
+                                    class="nom_avis"><?php echo $avis["prenom"]; ?>     <?php echo $avis["nom"]; ?></span></h3>
                             <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
                         </div>
                     </div>
-                <?php
+                    <?php
                 }
                 ?>
             </div>
