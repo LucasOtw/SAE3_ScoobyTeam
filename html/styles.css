@@ -2814,7 +2814,7 @@ input[type="password"]::placeholder {
     transition: transform 0.2s ease; /* Animation au survol */
 }
 
-.main_consulter_compte_membre supprimer-download {
+.main_consulter_compte_membre div.supprimer-download {
   display: flex;
   gap: 6px;
 }
