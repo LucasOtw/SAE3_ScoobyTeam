@@ -41,35 +41,45 @@
             </svg>
         </button>
     </div>
-    <div class="faq-container">
-        <h1 class="faq-title">Questions fréquentes (FAQ)</h1>
-        <ul class="faq-list">
-            <li class="faq-item">
+<div class="faq-container">
+    <h1 class="faq-title">Questions fréquentes (FAQ)</h1>
+    <ul class="faq-list">
+        <li class="faq-item">
+            <a href="consulter_compte_membre.php">
                 <span>Comment modifier mes informations</span>
                 <span class="faq-arrow">›</span>
-            </li>
-            <li class="faq-item">
+            </a>
+        </li>
+        <li class="faq-item">
+            <a href="signalement_membre.php">
                 <span>Comment signaler un avis</span>
                 <span class="faq-arrow">›</span>
-            </li>
-            <li class="faq-item">
+            </a>
+        </li>
+        <li class="faq-item">
+            <a href="modif_mdp_membre.php">
                 <span>J’ai un problème avec mon mot de passe</span>
                 <span class="faq-arrow">›</span>
-            </li>
-        </ul>
+            </a>
+        </li>
+    </ul>
 
-        <h2 class="faq-subtitle">Nous contacter</h2>
-        <ul class="faq-list">
-            <li class="faq-item">
+    <h2 class="faq-subtitle">Nous contacter</h2>
+    <ul class="faq-list">
+        <li class="faq-item">
+            <a href="contacter_plateforme.php">
                 <span>Nous envoyer un mail</span>
                 <span class="faq-arrow">›</span>
-            </li>
-            <li class="faq-item">
-                <span>Comment accéder à l’offre en ligne</span>
+            </a>
+        </li>
+        <li class="faq-item">
+            <a href="creation_offre.php">
+                <span>Comment créer une offre</span>
                 <span class="faq-arrow">›</span>
-            </li>
-        </ul>
-    </div>
+            </a>
+        </li>
+    </ul>
+</div>
     <footer>   
         <div class="footer-links">
             <div class="logo">
