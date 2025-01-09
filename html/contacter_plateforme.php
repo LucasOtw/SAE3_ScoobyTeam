@@ -12,70 +12,64 @@
 <body>
     <header class="header-pc header_membre">
         <div class="logo-pc">
-           <a href="voir_offres.html">
-            <img src="images/logoBlanc.png" alt="PACT Logo">
-         </a>
-
+            <a href="voir_offres.php">
+                <img src="images/logoBlanc.png" alt="PACT Logo">
+            </a>
         </div>
         <nav>
             <ul>
-                <li><a href="voir_offres.html">Accueil</a></li>
-                <li><a href="connexion_pro.html">Publier</a></li>
-                <li><a href="consulter_compte_membre.html" class="active">Mon Compte</a></li>
+                <li><a href="voir_offres.php">Accueil</a></li>
+                <li><a href="connexion_pro.php">Publier</a></li>
+                <li><a href="consulter_compte_membre.php" class="active">Mon Compte</a></li>
             </ul>
         </nav>
-      </header> 
+    </header>
 
-        <header class="header-tel header_membre">
-            <div class="logo-tel">
-                <a href="voir_offres.html"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
-            </div>
-        </header>
+    <header class="header-tel header_membre">
+        <div class="logo-tel">
+            <a href="voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
+        </div>
+    </header>
 
-        <main class="main_contacter_plateforme">
-        <div class="contacter_plateforme_container">
-            <div class="contacter_plateforme_back_button">
-                  <form id="back_button" action="detail_offre.html" method="POST">
-                       <a href="detail_offre.html"><img src="images/Bouton_retour.png" class="back-button"></a>
-                   </form>
-            <h1 class="titre_contacter_plateforme_format_tel">Besoin d'aide ?</h1>
+    <main class="main_poster_avis">
+        <div class="poster_un_avis_container">
+            <div class="poster_un_avis_back_button">
+                <a href="detail_offre.php"><img src="images/Bouton_retour.png" class="back-button"></a>
+                <h1 class="titre_poster_un_avis_format_tel">Besoin d'aide ?</h1>
             </div>
-            <h1 class="contacter_plateforme_titre">Récapitulatif</h1>
-            <div class="contacter_plateforme_recap_card">
-                <div class="contacter_plateforme_info">
-                    <form id="form-voir-offre" action="detail_offre.html" method="POST">
-                       <input id="btn-voir-offre" class="contacter_plateforme_btn_offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
-                   </form>
+            <h1 class="poster_un_avis_titre">Récapitulatif</h1>
+            <div class="poster_un_avis_recap_card">
+                <div class="poster_un_avis_info">
+                    <form id="form-voir-offre" action="detail_offre.php" method="POST">
+                        <input id="btn-voir-offre" class="poster_un_avis_btn_offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
+                    </form>
                 </div>
-                <div class="contacter_plateforme_images">
-                </div>
+                <div class="poster_un_avis_images"></div>
             </div>
 
-            <form action="poster_un_avis.html" method="POST">
-               <div class="contacter_plateforme_section">
-                   <h2 class="contacter_plateforme_section_titre">Votre question</h2>
-
-                   <textarea placeholder="Écrivez votre avis ici..." class="contacter_plateforme_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
-                   <p class="message-erreur avis-vide">Vous devez remplir ce champ</p>
-                   <p class="message-erreur avis-trop-long">La question ne doit pas dépasser 500 caractères.</p>                  
-                   <div class="contacter_plateforme_footer">
-
-                       <p class="contacter_plateforme_disclaimer">En nous envoyant votre question, vous acceptez les conditions générales d'utilisation (CGU).</p>
-                       <div class="contacter_plateforme_buttons">
-                           <button class="contacter_plateforme_btn_publier" type="submit" name="publier">Publier &#8594;</button>
-                       </div>
+            <form action="poster_un_avis.php" method="POST">
+                <div class="poster_un_avis_section">
+                    <h2 class="poster_un_avis_section_titre">Votre question</h2>
+                    <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
+                    <p class="message-erreur avis-vide">Vous devez remplir ce champ</p>
+                    <p class="message-erreur avis-trop-long">La question ne doit pas dépasser 500 caractères.</p>
+                    <div class="poster_un_avis_footer">
+                        <p class="poster_un_avis_disclaimer">En nous envoyant votre question, vous acceptez les conditions générales d'utilisation (CGU).</p>
+                        <div class="poster_un_avis_buttons">
+                            <button class="poster_un_avis_btn_publier" type="submit" name="publier">Publier →</button>
+                        </div>
                     </div>
-                  </div>
-               </div>
+                </div>
             </form>
+        </div>
+
         <nav class="nav-bar">
-            <a href="voir_offres.html"><img src="images/icones/House icon.png" alt="image de maison"></a>
-            <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
-            <a href="#"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
-            <a href="consulter_compte_membre.html">
-                <img src="images/icones/User icon.png" alt="image de Personne"></a>
+            <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="Accueil"></a>
+            <a href="#"><img src="images/icones/Recent icon.png" alt="Historique"></a>
+            <a href="#"><img src="images/icones/Croix icon.png" alt="Ajouter"></a>
+            <a href="consulter_compte_membre.php"><img src="images/icones/User icon.png" alt="Mon compte"></a>
         </nav>
-    </main> 
+    </main>
 
     <footer class="footer footer_membre">
         <div class="newsletter">
