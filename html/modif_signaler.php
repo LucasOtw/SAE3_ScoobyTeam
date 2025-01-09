@@ -7,8 +7,12 @@ try {
     if (isset($data['id'])) {
         $id_avis = intval($data['id']);
 
-        // Connexion à la base de données
-        $dbh = new PDO('mysql:host=localhost;dbname=your_database', 'username', 'password');
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+        $username = "sae";
+        $password = "philly-Congo-bry4nt";
+      
+        // Créer une instance PDO
+        $dbh = new PDO($dsn, $username, $password);
 
         // Modification dans la base de données
         $stmt = $dbh->prepare('UPDATE _avis SET signaler = TRUE WHERE code_avis = :id');
