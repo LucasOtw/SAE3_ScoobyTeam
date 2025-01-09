@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $question = htmlspecialchars($_POST['textAreaAvis']);
     
     // Destinataire de l'email
-    $destinataire = "adresse_email@example.com"; // Remplacer par l'adresse à laquelle tu veux envoyer les messages
+    $destinataire = "valentin.samson@etudiant.univ-rennes.fr"; // Remplacer par l'adresse à laquelle tu veux envoyer les messages
     
     // Sujet de l'email
     $sujet = "Demande de contact de " . $prenom . " " . $nom;
