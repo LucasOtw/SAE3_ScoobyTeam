@@ -5277,6 +5277,31 @@ nav.nav-bar_consulter_mes_avis img {
 
 
 
+.input-field {
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 1.5vh;
+    width: 100%;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.input-field:focus {
+    background-color: #fff;
+    outline: none;
+}
+
+select.input-field {
+    appearance: none;
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3E%3Cpath d="M2 4l6 6 6-6z"%3E%3C/path%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1rem;
+}
+
+
 
 
 
