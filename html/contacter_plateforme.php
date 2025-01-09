@@ -69,37 +69,15 @@ if(!isset($_SESSION['membre'])){
 
             <form action="poster_un_avis.php" method="POST">
                <div class="poster_un_avis_section">
-                   <h2 class="poster_un_avis_section_titre">Votre avis</h2>
+                   <h2 class="poster_un_avis_section_titre">Votre question</h2>
 
                    <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
                    <p class="message-erreur avis-vide">Vous devez remplir ce champ</p>
-                   <p class="message-erreur avis-trop-long">L'avis ne doit pas dépasser 500 caractères.</p>                  
+                   <p class="message-erreur avis-trop-long">La question ne doit pas dépasser 500 caractères.</p>                  
                    <div class="poster_un_avis_footer">
 
-                           <div class="poster_un_avis_note">
-                              <h2 class="poster_un_avis_note_titre">Votre note</h2>
-
-                              <fieldset class="notation">
-                                         <input type="radio" id="star5" name="note" value="5" />
-                                         <label for="star5" title="5 étoiles"></label>
-
-                                          <input type="radio" id="star4" name="note" value="4" />
-                                          <label for="star4" title="4 étoiles"></label>
-
-                                          <input type="radio" id="star3" name="note" value="3" />
-                                          <label for="star3" title="3 étoiles"></label>
-
-                                          <input type="radio" id="star2" name="note" value="2" />
-                                          <label for="star2" title="2 étoiles"></label>
-
-                                          <input type="radio" id="star1" name="note" value="1" />
-                                          <label for="star1" title="1 étoile"></label>
-                              </fieldset>
-                              <p class="message-erreur pas-de-note">Veuillez sélectionner une note valide.</p>
-
-                            </div>
-                       </div>
-                       <p class="poster_un_avis_disclaimer">En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
+                        
+                       <p class="poster_un_avis_disclaimer">En nous envoyant votre question, vous acceptez les conditions générales d'utilisation (CGU).</p>
                        <div class="poster_un_avis_buttons">
                            <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
                            <button class="poster_un_avis_btn_publier" type="submit"- name="publier">Publier →</button>
