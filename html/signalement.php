@@ -47,7 +47,7 @@ try {
 <script>
     // Fonction pour afficher la modale
     function showConfirmation(event) {
-        //event.preventDefault(); // Empêche l'envoi immédiat du formulaire
+        event.preventDefault(); // Empêche l'envoi immédiat du formulaire
         document.getElementById('confirmationModal').style.display = 'block'; // Affiche la modale
     }
 
