@@ -686,17 +686,20 @@ if (isset($json['results'][0])) {
         } else {
             $appreciationGenerale = "Valeur hors échelle";
         }
-
-// Fonction pour récupérer toutes les réponses, y compris les réponses aux réponses (récursivité)
+// Fonction pour récupérer toutes les réponses, y compris les réponses aux réponses
 function getResponses($dbh, $code_avis) {
+    // Récupérer toutes les réponses liées à un avis
     $stmt = $dbh->prepare('
         SELECT 
             reponse.*,
             membre_reponse.prenom AS prenom,
-            membre_reponse.nom AS nom
+            membre_reponse.nom AS nom,
+            base.prenom AS prenom_base,
+            base.nom AS nom_base
         FROM tripenarvor._reponse
         INNER JOIN tripenarvor._avis AS reponse ON reponse.code_avis = tripenarvor._reponse.code_reponse
         INNER JOIN tripenarvor._membre AS membre_reponse ON membre_reponse.code_compte = reponse.code_compte
+        INNER JOIN tripenarvor._avis AS base ON base.code_avis = tripenarvor._reponse.code_avis
         WHERE tripenarvor._reponse.code_avis = :code_avis
     ');
     $stmt->bindValue(':code_avis', $code_avis, PDO::PARAM_INT);
@@ -719,10 +722,7 @@ function afficherAvis($avis, $niveau = 0) {
             <h3 class="avis">
                 <?php if ($niveau > 0): ?>
                     <div class="note_prenom">
-                        <?php
-                        // Affiche "Réponse à [prénom nom]" du membre initial pour une réponse
-                        echo "Réponse à " . htmlspecialchars($avis['prenom']) . " " . htmlspecialchars($avis['nom']); 
-                        ?> |
+                        Réponse à <?php echo htmlspecialchars($avis['prenom_base']) . ' ' . htmlspecialchars($avis['nom_base']); ?> |
                         <span class="nom_avis"><?php echo htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']); ?></span>
                     </div>
                 <?php else: ?>
@@ -745,7 +745,7 @@ function afficherAvis($avis, $niveau = 0) {
     </div>
 
     <?php
-    // Afficher les sous-réponses
+    // Afficher les sous-réponses en premier si elles existent
     if (!empty($avis['sous_reponses'])) {
         foreach ($avis['sous_reponses'] as $sous_reponse) {
             afficherAvis($sous_reponse, $niveau + 1); // Augmente le niveau d'indentation pour les sous-réponses
