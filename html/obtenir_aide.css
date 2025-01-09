@@ -1,0 +1,38 @@
+/*****************************************************
+            * Code général pour les pages *
+*****************************************************/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --orange: #F28322;
+    --vert-clair: #BDC426;
+    --vert-fonce: #668C3F;
+    --gris: white;
+}
+
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+html,
+body {
+    height: 100%;
+
+}
+
+body {
+    overflow-x: hidden;
+
+}
