@@ -759,16 +759,13 @@ function afficherAvis($avis, $niveau = 0) {
     </div>
 
     <?php
-    // Afficher les sous-réponses en premier si elles existent
-    if (!empty($avis['sous_reponses'])) {
-        foreach ($avis['sous_reponses'] as $sous_reponse) {
-            afficherAvis($sous_reponse, $niveau + 1); // Augmente le niveau d'indentation pour les sous-réponses
-        }
-    }
 }
 
 // Récupérer tous les avis principaux (sans réponses déjà existantes)
-$tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre AND code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse)');
+$tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis
+    LEFT JOIN tripenarvor.membre ON tripenarvor._avis.code_compte = tripenarvor.membre.code_compte
+    WHERE code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse)
+    OR tripenarvor.membre.code_compte IS NULL');
 $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
 $tout_les_avis->execute();
 $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
