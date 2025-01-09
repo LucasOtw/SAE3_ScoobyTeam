@@ -52,7 +52,7 @@ if(!isset($_SESSION['membre'])){
                        <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
                        <a href="detail_offre.php"><img src="images/Bouton_retour.png" class="back-button"></a>
                    </form>
-            <h1 class="titre_poster_un_avis_format_tel">Besoin d'aide ? Parce que notre mission, c'est de vous répondre, contactez-nous sans hésiter !</h1>
+            <h1 class="titre_poster_un_avis_format_tel">Besoin d'aide ?</h1>
             </div>
             <h1 class="poster_un_avis_titre">Récapitulatif</h1>
             <div class="poster_un_avis_recap_card">
