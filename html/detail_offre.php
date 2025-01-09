@@ -725,8 +725,11 @@ function getResponses($dbh, $code_avis) {
 // Fonction pour afficher les avis et les réponses récursivement
 function afficherAvis($avis, $niveau = 0) {
     // Vérification du prénom et nom
-    $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur supprimé";
-    $nom = !empty($avis['nom']) ? $avis['nom'] : "supprimé";
+    if (!isset($avis["prenom"]) && !isset($avis["nom"]))
+        {
+            $prenom = "Utilisateur";
+            $nom = "supprimé";
+        }
     
     // Calcul du margin-left pour indenter les réponses
     $marge = $niveau * 5; // Indentation pour les réponses
