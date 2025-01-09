@@ -681,7 +681,7 @@ if ($note_moyenne <= 1) {
 function getResponses($dbh, $code_avis) {
     $stmt = $dbh->prepare('
         SELECT 
-            reponse.*,
+            *,
             membre_reponse.prenom AS prenom,
             membre_reponse.nom AS nom
         FROM tripenarvor._reponse
