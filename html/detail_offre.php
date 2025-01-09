@@ -733,13 +733,17 @@ function afficherAvis($avis, $niveau = 0) {
                     <div class="note_prenom">
                         Réponse à 
                         <?php 
-                            // Vérifie si les clés existent, sinon affiche "Utilisateur supprimé"
-                            echo isset($avis['prenom_base']) && isset($avis['nom_base']) ? htmlspecialchars($avis['prenom_base']) . ' ' . htmlspecialchars($avis['nom_base']) : 'Utilisateur supprimé';
+                            // Vérifie si les clés existent pour l'avis principal
+                            echo isset($avis['prenom_base']) && isset($avis['nom_base']) && !empty($avis['prenom_base']) && !empty($avis['nom_base']) 
+                                ? htmlspecialchars($avis['prenom_base']) . ' ' . htmlspecialchars($avis['nom_base']) 
+                                : 'Utilisateur supprimé';
                         ?> |
                         <span class="nom_avis">
                             <?php 
-                                // Vérifie si les clés existent, sinon affiche "Utilisateur supprimé"
-                                echo isset($avis['prenom_reponse']) && isset($avis['nom_reponse']) ? htmlspecialchars($avis['prenom_reponse']) . ' ' . htmlspecialchars($avis['nom_reponse']) : 'Utilisateur supprimé';
+                                // Vérifie si les clés existent pour la réponse
+                                echo isset($avis['prenom_reponse']) && isset($avis['nom_reponse']) && !empty($avis['prenom_reponse']) && !empty($avis['nom_reponse'])
+                                    ? htmlspecialchars($avis['prenom_reponse']) . ' ' . htmlspecialchars($avis['nom_reponse'])
+                                    : 'Utilisateur supprimé';
                             ?>
                         </span>
                     </div>
@@ -748,8 +752,10 @@ function afficherAvis($avis, $niveau = 0) {
                         <?php echo htmlspecialchars($avis['note']) . '.0'; ?> | 
                         <span class="nom_avis">
                             <?php 
-                                // Vérifie si les clés existent, sinon affiche "Utilisateur supprimé"
-                                echo isset($avis['prenom_base']) && isset($avis['nom_base']) ? htmlspecialchars($avis['prenom_base']) . ' ' . htmlspecialchars($avis['nom_base']) : 'Utilisateur supprimé';
+                                // Vérifie si les clés existent pour l'avis principal
+                                echo isset($avis['prenom_base']) && isset($avis['nom_base']) && !empty($avis['prenom_base']) && !empty($avis['nom_base']) 
+                                    ? htmlspecialchars($avis['prenom_base']) . ' ' . htmlspecialchars($avis['nom_base']) 
+                                    : 'Utilisateur supprimé';
                             ?>
                         </span>
                     </div>
@@ -776,6 +782,7 @@ function afficherAvis($avis, $niveau = 0) {
         }
     }
 }
+
 
 // Récupérer tous les avis principaux
 $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre AND code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse)');
