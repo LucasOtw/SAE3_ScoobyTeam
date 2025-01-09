@@ -754,6 +754,7 @@ if (isset($json['results'][0])) {
                 $reponses = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
 
                 foreach ($reponses as $reponse) {
+                    ?>
                     <div class="avis" style="margin-left:5vw">
                         <div class="avis-content">
                             <h3 class="avis">
