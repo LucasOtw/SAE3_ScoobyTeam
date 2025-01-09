@@ -87,10 +87,9 @@ if(isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])){
     if (!empty($details_offre)) { // si l'offre existe
 
         if (isset($_SESSION["membre"]) || !empty($_SESSION["membre"])) {
-            // $consulter= $dbh->prepare('insert into tripenarvor._consulte (consulter, date_consultation, code_compte, code_offre)
-            //                             values (TRUE, NOW(), :code_compte, :code_offre);');
-            // $consulter->execute([':code_compte' => , ':code_offre' => $code_offre]);
-            var_dump($_SESSION["membre"]);
+            $consulter= $dbh->prepare('insert into tripenarvor._consulte (consulter, date_consultation, code_compte, code_offre)
+                                        values (TRUE, NOW(), :code_compte, :code_offre);');
+            $consulter->execute([':code_compte' => $_SESSION["membre"]["code_compte"], ':code_offre' => $code_offre]);
         }
         
         // Une offre a forcément au moins une image. 
