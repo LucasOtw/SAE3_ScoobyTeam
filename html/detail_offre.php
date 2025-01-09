@@ -696,37 +696,31 @@ $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
         } else {
             $appreciationGenerale = "Valeur hors échelle";
         }
+<?php
 // Fonction pour récupérer toutes les réponses, y compris les réponses aux réponses (récursivité)
 function getResponses($dbh, $code_avis) {
-    // Correction de la requête SQL avec la table _membre pour les prénoms et noms
+    // Récupérer toutes les réponses liées à un avis
     $stmt = $dbh->prepare('
         SELECT 
-    reponse.*, 
-    membre_reponse.prenom AS prenom_reponse,
-    membre_reponse.nom AS nom_reponse,
-    membre_base.prenom AS prenom_base,
-    membre_base.nom AS nom_base
-FROM tripenarvor._reponse
-INNER JOIN tripenarvor._avis AS reponse 
-    ON reponse.code_avis = tripenarvor._reponse.code_reponse
-INNER JOIN tripenarvor._membre AS membre_reponse 
-    ON membre_reponse.code_compte = reponse.code_compte
-INNER JOIN tripenarvor._avis AS base 
-    ON base.code_avis = tripenarvor._reponse.code_avis 
-INNER JOIN tripenarvor._membre AS membre_base 
-    ON membre_base.code_compte = base.code_compte
-WHERE tripenarvor._reponse.code_avis = :code_avis
-
+            reponse.*,
+            membre_reponse.prenom AS prenom,
+            membre_reponse.nom AS nom
+        FROM tripenarvor._reponse
+        INNER JOIN tripenarvor._avis AS reponse ON reponse.code_avis = tripenarvor._reponse.code_reponse
+        INNER JOIN tripenarvor._membre AS membre_reponse ON membre_reponse.code_compte = reponse.code_compte
+        WHERE tripenarvor._reponse.code_avis = :code_avis
     ');
     $stmt->bindValue(':code_avis', $code_avis, PDO::PARAM_INT);
     $stmt->execute();
     $reponses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    // Récursivité : Ajouter les sous-réponses (réponses aux réponses)
     foreach ($reponses as &$reponse) {
         $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_avis']); // Ajoute les sous-réponses
     }
     return $reponses;
 }
+
 // Fonction pour afficher les avis et les réponses récursivement
 function afficherAvis($avis, $niveau = 0) {
     $marge = $niveau * 5; // Indentation pour les réponses
@@ -736,33 +730,12 @@ function afficherAvis($avis, $niveau = 0) {
             <h3 class="avis">
                 <?php if ($niveau > 0): ?>
                     <div class="note_prenom">
-                        Réponse à 
-                        <?php 
-                            // Vérifie si les clés existent pour l'avis principal
-                            echo isset($avis['prenom_base']) && isset($avis['nom_base']) && !empty($avis['prenom_base']) && !empty($avis['nom_base']) 
-                                ? htmlspecialchars($avis['prenom_base']) . ' ' . htmlspecialchars($avis['nom_base']) 
-                                : 'Utilisateur supprimé';
-                        ?> |
-                        <span class="nom_avis">
-                            <?php 
-                                // Vérifie si les clés existent pour la réponse
-                                echo isset($avis['prenom_reponse']) && isset($avis['nom_reponse']) && !empty($avis['prenom_reponse']) && !empty($avis['nom_reponse'])
-                                    ? htmlspecialchars($avis['prenom_reponse']) . ' ' . htmlspecialchars($avis['nom_reponse'])
-                                    : 'Utilisateur supprimé';
-                            ?>
-                        </span>
+                        Réponse à <?php echo htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']); ?> |
+                        <span class="nom_avis"><?php echo htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']); ?></span>
                     </div>
                 <?php else: ?>
                     <div class="note_prenom">
-                        <?php echo htmlspecialchars($avis['note']) . '.0'; ?> | 
-                        <span class="nom_avis">
-                            <?php 
-                                // Vérifie si les clés existent pour l'avis principal
-                                echo isset($avis['prenom_base']) && isset($avis['nom_base']) && !empty($avis['prenom_base']) && !empty($avis['nom_base']) 
-                                    ? htmlspecialchars($avis['prenom_base']) . ' ' . htmlspecialchars($avis['nom_base']) 
-                                    : 'Utilisateur supprimé';
-                            ?>
-                        </span>
+                        <?php echo htmlspecialchars($avis['note']) . '.0'; ?> | <span class="nom_avis"><?php echo htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']); ?></span>
                     </div>
                 <?php endif; ?>
                 <div class="signalement_repondre">
@@ -788,16 +761,14 @@ function afficherAvis($avis, $niveau = 0) {
     }
 }
 
-
-// Récupérer tous les avis principaux
+// Récupérer tous les avis principaux (sans réponses déjà existantes)
 $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre AND code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse)');
 $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
 $tout_les_avis->execute();
 $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
 
-// Récupérer les réponses imbriquées pour chaque avis principal
+// Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
 foreach ($tout_les_avis as &$avis) {
-    // Ajouter les informations de l'auteur de l'avis principal à chaque réponse
     $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
 }
 
@@ -826,6 +797,7 @@ foreach ($tout_les_avis as &$avis) {
 <?php
 // Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
 ?>
+
 
 
 
