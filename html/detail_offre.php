@@ -730,6 +730,10 @@ function afficherAvis($avis, $niveau = 0) {
             $prenom = "Utilisateur";
             $nom = "supprimé";
         }
+    else {
+        $prenom = $avis["prenom"];
+        $nom = $avis["nom"];
+    }
     
     // Calcul du margin-left pour indenter les réponses
     $marge = $niveau * 5; // Indentation pour les réponses
