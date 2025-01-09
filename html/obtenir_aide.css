@@ -148,14 +148,13 @@ header.header-tel {
 }
 
 .faq-search-bar-container {
-    display: flex
-;
+    display: flex;
     align-items: center;
     background-color: #f0f0f0;
     border-radius: 16px;
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 78vw;
+    width: 74vw;
     margin-left: 11vw;
 }
 
@@ -191,9 +190,9 @@ header.header-tel {
 
 .faq-container {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 5vh 24vw 0;
+    width: 80vw;
 }
-
 .faq-title {
     font-size: 24px;
     font-weight: bold;
