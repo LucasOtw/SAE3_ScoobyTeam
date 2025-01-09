@@ -125,6 +125,26 @@
             </div>
         </div>
     </footer>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.querySelector(".faq-search-input");
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        searchInput.addEventListener("input", function () {
+            const filter = searchInput.value.toLowerCase();
+
+            faqItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    item.style.display = ""; // Afficher l'élément
+                } else {
+                    item.style.display = "none"; // Masquer l'élément
+                }
+            });
+        });
+    });
+</script>
+
 
 </body>
 </html>
