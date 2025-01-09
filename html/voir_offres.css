@@ -451,8 +451,9 @@ footer {
     margin-left: 8vw;
 }
 
-.toute_les_offres_main .titre-nouveautes{
+.toute_les_offres_main .titre-nouveautes, .toute_les_offres_main .titre-vu-recemment{
     margin-top: 0;
+    color: black;
     margin-left: 8vw;
 }
 
@@ -460,9 +461,6 @@ footer {
     color: white;
 }
 
-.toutes_les_offres_main .titre-nouveautes{
-    color: black;
-}
 
 .toute_les_offres_main #filter {
     display: flex;
@@ -709,29 +707,7 @@ nav.nav-bar {
 #customPopup p {
     width: 75%;
 }
-@media (max-width: 429px) {
-        #customPopup {
-            width: 90%;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
 
-        .customImage {
-            width: 40px;
-            height: 60px;
-        }
-
-        .txt_popup {
-            display: none; /* Masquer le texte */
-        }
-
-        #closePopup {
-            width: 12px;
-            height: 12px;
-        }
-    }
 body {
     margin: 0;
     font-family: 'K2D', sans-serif;
@@ -1125,19 +1101,24 @@ body.menu-open #overlay {
     margin-top: -20em;
 }
 
-.toutes_les_offres_main .nouveautes-titre-carrousel{
+.toutes_les_offres_main .nouveautes-titre-carrousel,
+.toutes_les_offres_main .nouveautes-titre-vu-recemment{
     margin-top: 0em;
 }
 
 /* Conteneur global */
-.toute_les_offres_main .a-la-une-carrousel, .toute_les_offres_main .nouveautes-carrousel{
+.toute_les_offres_main .a-la-une-carrousel, 
+.toute_les_offres_main .nouveautes-carrousel
+.toute_les_offres_main .nouveautes-vu-recemment{
     position: relative;
     display: flex;
     align-items: center;
     margin: 3vh 8vw;
 }
 
-.toute_les_offres_main .a-la-une, .toute_les_offres_main .nouveautes{
+.toute_les_offres_main .a-la-une, 
+.toute_les_offres_main .nouveautes,
+.toute_les_offres_main .vu-recemment{
     margin-left: 1em;
     display: flex;
     overflow: scroll;
@@ -1145,7 +1126,9 @@ body.menu-open #overlay {
 }
 
 /* Conteneur global */
-.toute_les_offres_main .a-la-une-carrousel, .toute_les_offres_main .nouveautes-carrousel {
+.toute_les_offres_main .a-la-une-carrousel,
+.toute_les_offres_main .nouveautes-carrousel,
+.toute_les_offres_main .vu-recemment-carrousel{
     position: relative;
     display: flex;
     align-items: center;
@@ -1154,7 +1137,9 @@ body.menu-open #overlay {
 }
 
 
-.toute_les_offres_main .a-la-une::-webkit-scrollbar, .toute_les_offres_main .nouveautes::-webkit-scrollbar {
+.toute_les_offres_main .a-la-une::-webkit-scrollbar, 
+.toute_les_offres_main .nouveautes::-webkit-scrollbar,
+.toute_les_offres_main .vu-recemment::-webkit-scrollbar{
     display: none;
 }
 
@@ -1188,7 +1173,9 @@ body.menu-open #overlay {
 
 
 /* Style de la carte */
-.toute_les_offres_main .card-a-la-une, .toute_les_offres_main .card-nouveautes {
+.toute_les_offres_main .card-a-la-une, 
+.toute_les_offres_main .card-nouveautes,
+.toute_les_offres_main .card-vu-recemment{
     width: 25em;
     min-height: 10em;
     position: relative;
@@ -1197,14 +1184,18 @@ body.menu-open #overlay {
     margin: 0 1vw;
 }
 
-.toute_les_offres_main .image-background-card-a-la-une, .toute_les_offres_main .image-background-card-nouveautes {
+.toute_les_offres_main .image-background-card-a-la-une, 
+.toute_les_offres_main .image-background-card-nouveautes,
+.toute_les_offres_main .image-background-card-vu-recemment{
     width: 25em;
     background-color: grey;
     border-radius: 1.5em;
     overflow: hidden;
 }
 
-.toute_les_offres_main .image-background-card-a-la-une img, .toute_les_offres_main .image-background-card-nouveautes img {
+.toute_les_offres_main .image-background-card-a-la-une img, 
+.toute_les_offres_main .image-background-card-nouveautes img, 
+.toute_les_offres_main .image-background-card-vu-recemment img{
     width: 100%;
     height: 15em;
     border-radius: 1.5em;
@@ -1212,7 +1203,9 @@ body.menu-open #overlay {
     display: block;
 }
 
-.toute_les_offres_main .raison-sociale-card-a-la-une, .toute_les_offres_main .raison-sociale-card-nouveautes{
+.toute_les_offres_main .raison-sociale-card-a-la-une, 
+.toute_les_offres_main .raison-sociale-card-nouveautes,
+.toute_les_offres_main .raison-sociale-card-vu-recemment{
     position: absolute;
     bottom: 10px;
     /* Positionne le texte et le bouton en bas de l'image */
@@ -1228,12 +1221,16 @@ body.menu-open #overlay {
     /* Aligne verticalement le texte et le bouton */
 }
 
-.toute_les_offres_main .raison-sociale-card-a-la-une p {
+.toute_les_offres_main .raison-sociale-card-a-la-une p,
+.toute_les_offres_main .raison-sociale-card-nouveautes p,
+.toute_les_offres_main .raison-sociale-card-vu-recemment p{
     margin: 0;
     /* Supprime la marge par défaut du paragraphe */
 }
 
-.toute_les_offres_main .raison-sociale-card-a-la-une, .toute_les_offres_main .raison-sociale-card-nouveautes{
+.toute_les_offres_main .raison-sociale-card-a-la-une, 
+.toute_les_offres_main .raison-sociale-card-nouveautes,
+.toute_les_offres_main .raison-sociale-card-vu-recemment{
     position: absolute;
     bottom: 0;
     /* Assure que le texte est en bas */
@@ -1408,12 +1405,15 @@ body.menu-open #overlay {
         display: none
     }
 
-    .toute_les_offres_main .a-la-une-carrousel,  .toute_les_offres_main .nouveautes-carrousel {
+    .toute_les_offres_main .a-la-une-carrousel, 
+    .toute_les_offres_main .nouveautes-carrousel,
+    .toute_les_offres_main .vu-recemment-carrousel{
         margin: auto
     }
 
     .toute_les_offres_main .image-background-card-a-la-une img,
-    .toute_les_offres_main .image-background-card-nouveautes img{
+    .toute_les_offres_main .image-background-card-nouveautes img,
+    .toute_les_offres_main .image-background-card-vu-recemment img{
         height: 13em;
     }
 
@@ -1451,24 +1451,30 @@ body.menu-open #overlay {
         right: 2vw;
     }
 
-    .toute_les_offres_main .card-a-la-une, .toute_les_offres_main .card-nouveautes {
+    .toute_les_offres_main .card-a-la-une, 
+    .toute_les_offres_main .card-nouveautes,
+    .toute_les_offres_main .card-vu-recemment{
         width: auto;
         overflow: visible;
     }
 
-    .toute_les_offres_main .titre-a-la-une, .toute_les_offres_main .titre-nouveautes {
+    .toute_les_offres_main .titre-a-la-une, 
+    .toute_les_offres_main .titre-nouveautes,
+    .toute_les_offres_main .titre-vu-recemment{
         color: black;
         margin-bottom: 0;
     }
 
     .toute_les_offres_main .titre-a-la-une,
     .toute_les_offres_main .titre-nouveautes,
+    .toute_les_offres_main .titre-vu-recemment,
     .toute_les_offres_main .titre-les-offres {
         margin-top: 5vh;
     }
 
     .toute_les_offres_main .image-background-card-a-la-une,
-    .toute_les_offres_main .image-background-card-nouveautes{
+    .toute_les_offres_main .image-background-card-nouveautes,
+    .toute_les_offres_main .image-background-card-vu-recemment{
         width: 22em;
     }
 
