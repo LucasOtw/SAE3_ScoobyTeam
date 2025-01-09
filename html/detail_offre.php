@@ -751,7 +751,7 @@ $tout_les_avis = $dbh->prepare('SELECT *
 FROM tripenarvor._avis
 LEFT JOIN tripenarvor.membre 
     ON tripenarvor._avis.code_compte = tripenarvor.membre.code_compte
-WHERE code_offre = 1
+WHERE code_offre = :code_offre
   AND (
       (code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse) 
        AND tripenarvor.membre.code_compte IS NOT NULL)
