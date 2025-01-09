@@ -102,6 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $avis = $_SESSION['avis'];
+var_dump($avis);
             
 ?>
 <!DOCTYPE html>
