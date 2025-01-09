@@ -1,15 +1,3 @@
-<?php
-ob_start(); // bufferisation, ça devrait marcher ?
-session_start();
-
-if(!isset($_SESSION['membre'])){
-   header('location: connexion_membre.php');
-   exit;
-}
-
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,50 +12,46 @@ if(!isset($_SESSION['membre'])){
 <body>
     <header class="header-pc header_membre">
         <div class="logo-pc">
-           <a href="voir_offres.php">
+           <a href="voir_offres.html">
             <img src="images/logoBlanc.png" alt="PACT Logo">
          </a>
 
         </div>
         <nav>
             <ul>
-                <li><a href="voir_offres.php">Accueil</a></li>
-                <li><a href="connexion_pro.php">Publier</a></li>
-                <li><a href="consulter_compte_membre.php" class="active">Mon Compte</a></li>
+                <li><a href="voir_offres.html">Accueil</a></li>
+                <li><a href="connexion_pro.html">Publier</a></li>
+                <li><a href="consulter_compte_membre.html" class="active">Mon Compte</a></li>
             </ul>
         </nav>
       </header> 
 
-
         <header class="header-tel header_membre">
             <div class="logo-tel">
-                <a href="voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
+                <a href="voir_offres.html"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
             </div>
         </header>
 
         <main class="main_poster_avis">
         <div class="poster_un_avis_container">
             <div class="poster_un_avis_back_button">
-                  <form id="back_button" action="detail_offre.php" method="POST">
-                       <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
-                       <a href="detail_offre.php"><img src="images/Bouton_retour.png" class="back-button"></a>
+                  <form id="back_button" action="detail_offre.html" method="POST">
+                       <a href="detail_offre.html"><img src="images/Bouton_retour.png" class="back-button"></a>
                    </form>
             <h1 class="titre_poster_un_avis_format_tel">Besoin d'aide ?</h1>
             </div>
             <h1 class="poster_un_avis_titre">Récapitulatif</h1>
             <div class="poster_un_avis_recap_card">
                 <div class="poster_un_avis_info">
-<!--                     <button class="poster_un_avis_btn_offre">Voir l'offre →</button> -->
-                    <form id="form-voir-offre" action="detail_offre.php" method="POST">
+                    <form id="form-voir-offre" action="detail_offre.html" method="POST">
                        <input id="btn-voir-offre" class="poster_un_avis_btn_offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
                    </form>
                 </div>
                 <div class="poster_un_avis_images">
-<!--                     <img src="images/tiallannec1.png" alt="Image 1" class="poster_un_avis_image"> -->
                 </div>
             </div>
 
-            <form action="poster_un_avis.php" method="POST">
+            <form action="poster_un_avis.html" method="POST">
                <div class="poster_un_avis_section">
                    <h2 class="poster_un_avis_section_titre">Votre question</h2>
 
@@ -76,28 +60,19 @@ if(!isset($_SESSION['membre'])){
                    <p class="message-erreur avis-trop-long">La question ne doit pas dépasser 500 caractères.</p>                  
                    <div class="poster_un_avis_footer">
 
-                        
                        <p class="poster_un_avis_disclaimer">En nous envoyant votre question, vous acceptez les conditions générales d'utilisation (CGU).</p>
                        <div class="poster_un_avis_buttons">
-                           <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
-                           <button class="poster_un_avis_btn_publier" type="submit"- name="publier">Publier →</button>
+                           <button class="poster_un_avis_btn_publier" type="submit" name="publier">Publier &#8594;</button>
                        </div>
                     </div>
                   </div>
                </div>
             </form>
         <nav class="nav-bar">
-            <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
+            <a href="voir_offres.html"><img src="images/icones/House icon.png" alt="image de maison"></a>
             <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
             <a href="#"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
-            <a href="
-                <?php
-                    if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
-                        echo "consulter_compte_membre.php";
-                    } else {
-                        echo "connexion_membre.php";
-                    }
-                ?>">
+            <a href="consulter_compte_membre.html">
                 <img src="images/icones/User icon.png" alt="image de Personne"></a>
         </nav>
     </main> 
