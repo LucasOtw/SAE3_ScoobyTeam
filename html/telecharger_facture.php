@@ -521,7 +521,7 @@ if(!isset($_SESSION['pro'])){
                       ?>
                       <tr>
                          <td class="au_milieu">A la Une</td>
-                         <td class="a_droite">168,68€</td>
+                         <td class="a_droite">16,86€</td>
                          <td class="a_droite"><?php echo $nb_semaines_une; ?></td>
                          <td class="a_droite"><?php echo number_format(16.86 * $nb_semaines_une, 2, ',',' ') . "€" ?></td>
                       </tr>
