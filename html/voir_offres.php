@@ -395,6 +395,7 @@ function tempsEcouleDepuisPublication($offre){
         </div>
 
         
+        
         <h2 class="titre-les-offres">Les offres</h2>
         
         <section id="offers-list">

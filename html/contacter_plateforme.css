@@ -1,29 +1,49 @@
-/* Définition des couleurs */
-:root {
-    --vert-clair: #BDC426;
-    --vert-fonce: #668C3F;
-    --orange: #F28322;
-    --gris: white;
-}
-/* Reset général */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    --orange: #F28322;
+    --vert-clair: #BDC426;
+    --vert-fonce: #668C3F;
+    --gris: #E8E8E8;
 }
 
-/* Style du body */
+@font-face {
+    font-family: 'K2D';
+    src: url('html/polices/K2D/K2D-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'K2D';
+    src: url('./polices/K2D/K2D-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
 body {
     display: flex;
     flex-direction: column;
     font-family: "K2D", sans-serif;
     min-height: 100vh;
-    margin: 0;
-    padding: 0;
+    /*Pour occuper toute la page*/
 }
 
-/* Header - version PC */
-header.header-pc {
+/****** HEADER *****/
+
+
+div.header-membre {
+    display: block;
+}
+
+div.header-pro {
+    display: none;
+}
+
+/* HEADER MEMBRE */
+
+div.header-membre header.header-pc {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,218 +52,241 @@ header.header-pc {
     color: white;
 }
 
-/* Logo */
-.logo img {
-    height: 60px;
-    max-width: 100%;
+div.header-membre header.header-tel {
+    display: none;
 }
 
-/* Navigation */
-nav ul {
+
+
+div.header-membre .creation_compte_membre_bienvenue {
+    display: none;
+    text-align: center;
+}
+
+div.header-membre .logo-tel {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+div.header-membre .logo img {
+    height: 60px;
+    max-width: 100%;
+    /* Pour s'assurer que l'image ne dépasse pas */
+}
+
+div.header-membre nav ul {
     list-style: none;
     display: flex;
     gap: 3vw;
+    /* Espace adaptable selon la largeur de l'écran */
     margin-right: 4vw;
     flex-wrap: wrap;
+    /* Permet de passer sur plusieurs lignes si nécessaire */
 }
 
-nav ul li a {
+div.header-membre nav ul li a {
     position: relative;
     text-decoration: none;
     color: white;
     font-size: 1.2rem;
+    /* Utilise des unités relatives */
     padding: 5px 10px;
     transition: color 0.3s, border-bottom 0.3s;
 }
 
-/* Style pour les liens actifs */
-nav ul li a.active {
+div.header-membre nav ul li a.active {
     color: var(--vert-clair);
 }
 
-nav ul li a:hover {
+div.header-membre nav ul li a:hover {
     color: var(--vert-clair);
 }
 
-nav ul li a::before {
+div.header-membre .header_pro nav ul li a.active {
+    color: var(--orange);
+}
+
+div.header-membre .header_pro nav ul li a:hover {
+    color: var(--orange);
+}
+
+div.header-membre nav ul li a::before {
     content: "";
     position: absolute;
     width: 0;
     height: 2.5px;
     bottom: -2px;
+    background-color: var(--vert-clair);
     transition: width 0.3s ease;
 }
 
-nav ul li a:hover::before {
+div.header-membre .header_pro nav ul li a::before {
+    background-color: var(--orange);
+}
+
+div.header-membre nav ul li a:hover::before {
     width: 90%;
 }
 
-/* Footer */
-footer {
-    background-color: #000;
-    padding: 40px 20px;
-    color: white;
-    text-align: left;
-    width: 100%;
-    margin-top: auto;
+@media (max-width: 431px) {
+    div.header-membre header.header-pc {
+        display: none;
+    }
+
+    div.header-membre header.header-tel {
+        display: block;
+    }
 }
 
-/* Footer liens */
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
 
-.link-group ul {
-    list-style: none;
-}
 
-.link-group ul li a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
+/* Importation de la police K2D */
+@import url('https://fonts.googleapis.com/css2?family=K2D:wght@400;500;700&display=swap');
 
-.link-group ul li a:hover {
-    color: var(--vert-clair);
-}
-
-/* Footer bas */
-.footer-bottom {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-/* Footer social icons */
-.social-icons a img {
-    width: 24px;
-    margin: 0 10px;
-}
-
-/* Contact Section */
-.contact-section {
+/* Mise en forme globale */
+body {
+    font-family: 'K2D', sans-serif;
     background-color: white;
-    padding: 40px;
-    max-width: 600px;
-    margin: 50px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
-.contact-section h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: var(--vert-fonce);
-    font-size: 2rem;
+/* En-têtes et titres */
+h1, h3 {
+    color: #2c3e50;
 }
 
-.contact-section label {
+/* En-tête pour les écrans de bureau */
+.header-pc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #27ae60;
+    padding: 20px;
+}
+
+/* Logo de l'en-tête */
+.logo-pc img {
+    height: 40px;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
     font-size: 16px;
-    color: var(--vert-fonce);
-    display: block;
-    margin-bottom: 5px;
 }
 
-.contact-section input,
-.contact-section select,
-.contact-section textarea {
+nav ul li a.active {
+    border-bottom: 2px solid #ffffff;
+}
+
+/* En-tête pour les écrans mobiles */
+.header-tel {
+    display: none;
+    background-color: #27ae60;
+    padding: 10px;
+    text-align: center;
+}
+
+.header-tel img {
+    width: 100px;
+}
+
+
+.avis-widget .avis-list .avis {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+
+.avis {
+    background-color: #fbfbfb;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30vh;
+    margin-top: 3vh;
+    margin-left: 3vw;
+    width: 70vw;
+    margin-bottom: 10vh;
+}
+
+.avis h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    margin-left: -2vw;
+}
+
+.avis h3::before {
+    content: url('https://icon-library.com/images/icon-review/icon-review-9.jpg'); /* Exemple d'icône */
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.avis p {
+    margin: 0;
+    color: #666;
+}
+
+.titre_signalement_1{
+    margin-left: 3vw;
+    margin-top: 10vh;
+}
+
+.titre_signalement_2{
+    margin-left: 3vw;  
+}
+
+#offre {
     width: 100%;
-    padding: 12px;
-    margin: 10px 0 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 14px;
-    color: var(--vert-fonce);
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    border-color: var(--vert-fonce);
+    margin-top: 3vh;
+    margin-left: 3vw;
 }
 
-.contact-section button {
-    background-color: var(--orange);
+.titre_signalement_3{
+    margin-left: 3vw;  
+    margin-top: 8vh;
+}
+
+
+button[type="submit"] {
+    font-size: 17px;
+    padding: 10px 20px;
+    background-color: var(--vert-clair);
     color: white;
     border: none;
-    padding: 12px 20px;
-    border-radius: 4px;
-    font-size: 16px;
+    border-radius: 16px;
     cursor: pointer;
-    width: 100%;
-}
-
-.contact-section button:hover {
-    background-color: var(--vert-clair);
-}
-
-/* Responsiveness */
-@media (min-width: 768px) {
-    .footer-links {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .footer-bottom {
-        flex-direction: row;
-        justify-content: space-between;
-        width: 100%;
-    }
-}
-
-@media (min-width: 1024px) {
-    nav ul {
-        gap: 50px;
-    }
-
-    footer {
-        padding: 40px 80px;
-    }
-}
-
-@media (max-width: 429px) {
-    header.header-pc {
-        display: none;
-    }
-
-    header.header-tel {
-        display: flex;
-        justify-content: center;
-        background-color: white;
-    }
-
-    footer {
-        display: none;
-    }
-}
-.main_consulter_compte_membre .profile {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.main_consulter_compte_membre .banner img {
-    width: 70%;
-    height: 200px;
-    object-fit: cover;
-    margin: 30px;
-    border-radius: 20px;
-}
-
-.main_consulter_compte_membre .profile-info {
-    margin-top: -90px;
-    text-align: center;
-}
-
-.main_consulter_compte_membre .profile-info img.profile-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 35px;
-    object-fit: cover;
-}
-
-.main_consulter_compte_membre .profile-info h1 {
-    font-size: 28px;
-    margin: 10px 0;
-}
-
-.main_consulter_compte_membre .profile-info p {
-    font-size: 16px;
-    color: #666;
+    width: 242px;
+    height: 52px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease;
+    margin-top: 3vh;
+    margin-left: 3vw;
 }

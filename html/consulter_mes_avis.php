@@ -34,7 +34,7 @@ if (!empty($_POST['supprAvis'])){
     <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes Avis</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?">
 </head>
 <body>
     <div class="header_membre">
@@ -165,75 +165,7 @@ if (!empty($_POST['supprAvis'])){
                     <button onclick="submitForm()">Oui</button>
                     <button onclick="closeConfirm()">Non</button>
                 </div>
-            </div>
-            
-            <style>
-            /* Style de la boîte de dialogue personnalisée */
-            .custom-confirm {
-                display: none; /* Masquer par défaut */
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                z-index: 1000;
-            }
-            
-            .custom-confirm-content {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: white;
-                padding: 20px;
-                border-radius: 10px;
-                text-align: center;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                border: 3px solid var(--vert-clair);
-            }
-            
-            .custom-confirm-content p {
-                margin-bottom: 20px;
-                font-size: 16px;
-            }
-            
-            .custom-confirm-content button {
-                background-color: var(--vert-clair);
-                color: white;
-                border: none;
-                border-radius: 16px;
-                cursor: pointer;
-                margin-right: 1em;
-                box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
-                transition: transform 0.2s ease;
-                text-decoration: none;
-                width: 10em;
-                height: 2em;
-            }
-            
-            
-            .custom-confirm-content button:first-child {
-                background-color: #d9534f;
-                color: white;
-            }
-            
-            .custom-confirm-content button:last-child {
-                
-                background-color: #FFF;
-                color: black;
-                border: none;
-                border-radius: 16px;
-                cursor: pointer;
-                border: 1px #BDC426 solid;
-                margin-right: 1em;
-                box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
-                transition: transform 0.2s ease;
-                text-decoration: none;
-            }
-            </style>
-
-            
+            </div>            
             <script>
             let currentForm;
             
