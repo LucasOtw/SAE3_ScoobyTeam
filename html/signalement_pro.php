@@ -151,7 +151,7 @@ try {
         </div>
         <h2 class="titre_signalement_3">Description (facultatif)</h2>
         <textarea placeholder="Écrivez votre avis ici..." class="signaler_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
-        <form method="POST" action="signalement.php">
+        <form method="POST" action="signalement_pro.php">
             <input type="hidden" name="id_avis" value="<?php echo $idAvis; ?>">
             <button type="submit" onclick="showConfirmation(event)">Confirmer le signalement</button>
         </form>
