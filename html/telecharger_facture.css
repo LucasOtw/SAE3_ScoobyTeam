@@ -399,6 +399,7 @@ footer {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    height: 118px;
 }
 
 .facture-items th, .facture-items td {
