@@ -188,3 +188,46 @@ header.header-tel {
     width: 20px;
     height: 20px;
 }
+
+.faq-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.faq-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.faq-subtitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.faq-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.faq-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.faq-item:hover {
+    color: #007BFF;
+}
+
+.faq-arrow {
+    font-size: 20px;
+    font-weight: bold;
+}

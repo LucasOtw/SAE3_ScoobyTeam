@@ -41,6 +41,35 @@
             </svg>
         </button>
     </div>
+    <div class="faq-container">
+        <h1 class="faq-title">Questions fréquentes (FAQ)</h1>
+        <ul class="faq-list">
+            <li class="faq-item">
+                <span>Comment modifier mes informations</span>
+                <span class="faq-arrow">›</span>
+            </li>
+            <li class="faq-item">
+                <span>Comment signaler un avis</span>
+                <span class="faq-arrow">›</span>
+            </li>
+            <li class="faq-item">
+                <span>J’ai un problème avec mon mot de passe</span>
+                <span class="faq-arrow">›</span>
+            </li>
+        </ul>
+
+        <h2 class="faq-subtitle">Nous contacter</h2>
+        <ul class="faq-list">
+            <li class="faq-item">
+                <span>Nous envoyer un mail</span>
+                <span class="faq-arrow">›</span>
+            </li>
+            <li class="faq-item">
+                <span>Comment accéder à l’offre en ligne</span>
+                <span class="faq-arrow">›</span>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>
 
