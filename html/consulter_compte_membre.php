@@ -235,11 +235,14 @@ if (isset($_POST['changePhoto'])) {
     exit;
 }
 
+
+require __DIR__ . '/../phpmailer/src/Exception.php';
+require __DIR__ . '/../phpmailer/src/PHPMailer.php';
+require __DIR__ . '/../phpmailer/src/SMTP.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Inclusion de PHPMailer via Composer ou manuel
-require 'vendor/autoload.php';
 
 // TELECHARGEMENT DES DONNEES (FORMAT JSON)
 if (isset($_POST['dwl-data'])) {
