@@ -681,7 +681,7 @@ if ($note_moyenne <= 1) {
 function getResponses($dbh, $code_avis) {
     $stmt = $dbh->prepare('
         SELECT 
-            *,
+            reponse.*,
             membre_reponse.prenom AS prenom,
             membre_reponse.nom AS nom
         FROM tripenarvor._reponse
@@ -699,35 +699,13 @@ function getResponses($dbh, $code_avis) {
     }
     return $reponses;
 }
-
-// Récupérer tous les avis principaux (sans réponses déjà existantes)
-$tout_les_avis = $dbh->prepare('
-    SELECT * FROM tripenarvor._avis
-    LEFT JOIN tripenarvor.membre ON tripenarvor._avis.code_compte = tripenarvor.membre.code_compte
-    WHERE (code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse)
-    OR tripenarvor.membre.code_compte IS NULL)
-');
-//    AND code_offre = :code_offre
-//$tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-$tout_les_avis->execute();
-$tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
-
-// Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
-foreach ($tout_les_avis as &$avis) {
-    // Vérification si l'utilisateur est supprimé
-    if (empty($avis['prenom']) && empty($avis['nom'])) {
-        $avis['prenom'] = "Utilisateur supprimé";
-        $avis['nom'] = "supprimé";
-    }
-    // Récupération des réponses pour l'avis principal
-    $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
-}
-
+<?php
 // Fonction pour afficher les avis et les réponses récursivement
 function afficherAvis($avis, $niveau = 0) {
+    // Vérification du prénom et nom
     $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur supprimé";
     $nom = !empty($avis['nom']) ? $avis['nom'] : "supprimé";
-
+    
     // Calcul du margin-left pour indenter les réponses
     $marge = $niveau * 5; // Indentation pour les réponses
     ?>
@@ -760,10 +738,34 @@ function afficherAvis($avis, $niveau = 0) {
     </div>
 
     <?php
+    // Afficher les sous-réponses en premier si elles existent
+    if (!empty($avis['sous_reponses'])) {
+        foreach ($avis['sous_reponses'] as $sous_reponse) {
+            afficherAvis($sous_reponse, $niveau + 1); // Augmente le niveau d'indentation pour les sous-réponses
+        }
+    }
+}
+
+// Récupérer tous les avis principaux (sans réponses déjà existantes)
+$tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre AND code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse)');
+$tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+$tout_les_avis->execute();
+$tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
+
+// Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
+foreach ($tout_les_avis as &$avis) {
+    // Vérification si l'utilisateur est supprimé
+    if (empty($avis['prenom']) && empty($avis['nom'])) {
+        $avis['prenom'] = "Utilisateur supprimé";
+        $avis['nom'] = "supprimé";
+    }
+    // Récupération des réponses pour l'avis principal
+    $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
 }
 
 // Affichage des avis et de leurs réponses (y compris les sous-réponses)
 ?>
+
 <div class="avis-widget">
     <div class="avis-header">
         <h1 class="avis">
@@ -782,6 +784,7 @@ function afficherAvis($avis, $niveau = 0) {
         ?>
     </div>
 </div>
+
 <?php
 // Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
 ?>
