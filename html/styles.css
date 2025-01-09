@@ -2777,8 +2777,7 @@ input[type="password"]::placeholder {
 
 
 .main_consulter_compte_membre button.submit-btn2,
-.main_consulter_compte_membre button.submit-btn3, 
-.main_consulter_compte_membre .btn-dwl-data{
+.main_consulter_compte_membre button.submit-btn3 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2837,7 +2836,8 @@ input[type="password"]::placeholder {
 }
 
 
-.main_consulter_compte_membre .submit-btn1 {
+.main_consulter_compte_membre .submit-btn1 
+.main_consulter_compte_membre .btn-dwl-data {
     padding: 14px 62px;
     background-color: #FFF;
     color: black;
