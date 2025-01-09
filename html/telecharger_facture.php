@@ -522,7 +522,7 @@ if(!isset($_SESSION['pro'])){
             </tbody>
         </table>
       <?php $montant_ht_total = $montant_ht + 16.86 * $nb_semaines_une + 8.34 * $nb_semaines_relief;?>
-        <div class="div_total" style="float: right;margin-left: 32.3em;margin-bottom: -2em;margin-top: -3em;>
+        <div class="div_total" style="float: right;margin-left: 32.3em;margin-bottom: -2em;margin-top: -3em;">
             <table class="facture-total">
                  <tr>
                     <th>Description</th>
