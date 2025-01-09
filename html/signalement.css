@@ -291,7 +291,7 @@ button[type="submit"] {
     margin-left: 3vw;
 }
 .signaler_un_avis_textarea {
-    width: 95%;
+    width: 80%;
     height: 18vh;
     padding: 15px;
     margin: 4vh 36px;
@@ -300,6 +300,11 @@ button[type="submit"] {
     resize: none;
     background-color: #f3f8ff;
     box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
+}
+
+.container{
+    margin-left: 12vw;
+
 }
 
 @media screen and (max-width: 429px) {
