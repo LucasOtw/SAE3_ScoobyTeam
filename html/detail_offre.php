@@ -705,8 +705,8 @@ if (isset($json['results'][0])) {
                         <a href="signalement.php?id_avis=<?php echo isset($avis['code_avis']) ? htmlspecialchars($avis['code_avis']) : 'invalide'; ?>" title="Signaler cet avis" style="margin-left: 63vw; text-decoration: none">🚩</a>
                     </span>
                     <form action="poster_reponse_membre.php" method="POST">
-                        <input type="hidden" name="uneOffre"
-                            value="<?php echo htmlspecialchars(serialize($details_offre)) . htmlspecialchars(serialize($avis)); ?>">
+                        <input type="hidden" name="unAvis"
+                            value="<?php echo htmlspecialchars(serialize($avis)); ?>">
                         <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
                     </form>
                     
