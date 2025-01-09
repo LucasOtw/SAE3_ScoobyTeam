@@ -574,6 +574,10 @@ footer {
 
 }
 
+#btn-voir-offre:hover{
+    transform: translateY(-2px);
+    cursor: pointer;
+}
 
 
 .update {
