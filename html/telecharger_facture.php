@@ -151,6 +151,7 @@ if(!isset($_SESSION['pro'])){
             border-collapse: collapse;
             margin-bottom: 3em;
             margin-top: 2em;
+            border: 3px;
         }
         
         .facture-total th, .facture-total td {
