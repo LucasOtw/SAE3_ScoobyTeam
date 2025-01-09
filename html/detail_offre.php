@@ -730,7 +730,6 @@ function afficherAvis($avis, $niveau = 0) {
             <h3 class="avis">
                 <?php if ($niveau > 0): ?>
                     <div class="note_prenom">
-                        Réponse à <?php echo htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']); ?> |
                         <span class="nom_avis"><?php echo htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']); ?></span>
                     </div>
                 <?php else: ?>
