@@ -32,6 +32,7 @@ body {
 
 /****** HEADER *****/
 
+
 div.header-membre {
     display: block;
 }
@@ -54,6 +55,8 @@ div.header-membre header.header-pc {
 div.header-membre header.header-tel {
     display: none;
 }
+
+
 
 div.header-membre .creation_compte_membre_bienvenue {
     display: none;
@@ -137,6 +140,7 @@ div.header-membre nav ul li a:hover::before {
 }
 
 
+
 /* Importation de la police K2D */
 @import url('https://fonts.googleapis.com/css2?family=K2D:wght@400;500;700&display=swap');
 
@@ -204,7 +208,7 @@ nav ul li a.active {
 }
 
 
-.contacter_plateforme-widget .contacter_plateforme-list .contacter_plateforme {
+.avis-widget .avis-list .avis {
     display: flex;
     align-items: flex-start;
     margin-bottom: 20px;
@@ -212,7 +216,7 @@ nav ul li a.active {
 }
 
 
-.contacter_plateforme {
+.avis {
     background-color: #fbfbfb;
     padding: 20px;
     border-radius: 10px;
@@ -224,7 +228,7 @@ nav ul li a.active {
     margin-bottom: 10vh;
 }
 
-.contacter_plateforme h3 {
+.avis h3 {
     font-size: 18px;
     margin-bottom: 10px;
     display: flex;
@@ -232,7 +236,7 @@ nav ul li a.active {
     margin-left: -2vw;
 }
 
-.contacter_plateforme h3::before {
+.avis h3::before {
     content: url('https://icon-library.com/images/icon-review/icon-review-9.jpg'); /* Exemple d'icône */
     width: 30px;
     height: 30px;
@@ -240,7 +244,7 @@ nav ul li a.active {
     display: inline-block;
 }
 
-.contacter_plateforme p {
+.avis p {
     margin: 0;
     color: #666;
 }
@@ -315,3 +319,88 @@ footer {
     z-index: 1;
     width: 90%;
     max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newsletter-content {
+    text-align: left;
+    max-width: 100%;
+}
+
+.newsletter h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.newsletter-form button {
+    background-color: #112211;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newsletter-form input,
+.newsletter-form button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.newsletter-form input {
+    flex-grow: 1;
+}
+
+.newsletter-image img {
+    max-height: 100px;
+    width: auto;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.link-group ul {
+    list-style: none;
+}
+
+.link-group ul li {
+    margin-bottom: 10px;
+}
+
+.link-group ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer_pro .link-group ul li a:hover {
+    color: var(--orange);
+}
+
+.footer_membre .link-group ul li a:hover {
+    color: var(--vert-clair);
+}
+
+.footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-icons a img {
+    width: 24px;
+    margin: 0 10px;
+}
