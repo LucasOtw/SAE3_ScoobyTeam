@@ -4136,7 +4136,7 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
 
 /* Style pour la case à cocher */
 .main_modif_mdp_membre #remember,
-#cgu {
+.main_modif_mdp_membre #cgu {
     accent-color: var(--vert-fonce);
 }
 
@@ -4568,7 +4568,7 @@ nav.nav-bar-tel {
 
 /* Style pour la case à cocher */
 .main-modif-bancaire #remember,
-#cgu {
+.main-modif-bancaire #cgu {
     accent-color: var(--orange);
 }
 
