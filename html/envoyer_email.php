@@ -2,7 +2,6 @@
 // Inclure PHPMailer
 require 'phpmailer/PHPMailerAutoload.php';
 
-// Vérifier que la méthode de la requête est POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
     $nom = htmlspecialchars($_POST['nom']);
@@ -11,21 +10,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $question = htmlspecialchars($_POST['textAreaAvis']);
 
     // Créer une instance de PHPMailer
-    $mail = new PHPMailer(true);
+    $mail = new PHPMailer(true); // Utilisation du mode exception
 
     try {
         // Configurer le serveur SMTP
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com'; // Serveur SMTP de Gmail
         $mail->SMTPAuth = true;
-        $mail->Username = 'harry.rajic56@gmail.com'; // Ton adresse Gmail
-        $mail->Password = 'ORD22IANJc?'; // Ton mot de passe Gmail (ou mot de passe d'application)
+        $mail->Username = 'ton_email@gmail.com'; // Ton adresse Gmail
+        $mail->Password = 'ton_mot_de_passe'; // Ton mot de passe Gmail (ou mot de passe d'application)
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
         // Définir l'expéditeur et le destinataire
         $mail->setFrom('ton_email@gmail.com', 'Nom du site');
-        $mail->addAddress('harry.rajic56@gmail.com', 'La Scooby-team');
+        $mail->addAddress('adresse_email_destinataire@example.com', 'Nom du destinataire');
 
         // Définir le sujet et le corps du message
         $mail->isHTML(false); // Si tu veux envoyer un e-mail en texte brut
@@ -40,13 +39,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ";
 
         // Envoi de l'email
-        $mail->send();
-        echo "Votre message a été envoyé avec succès.";
+        if ($mail->send()) {
+            echo "Votre message a été envoyé avec succès.";
+        } else {
+            echo "Le message n'a pas pu être envoyé. Erreur: {$mail->ErrorInfo}";
+        }
     } catch (Exception $e) {
+        // Affichage de l'erreur si PHPMailer échoue
         echo "Le message n'a pas pu être envoyé. Erreur: {$mail->ErrorInfo}";
     }
 } else {
-    // Si ce n'est pas une requête POST
-    echo "Une erreur s'est produite. Veuillez réessayer.";
+    echo "Erreur : la requête n'est pas de type POST.";
 }
 ?>
