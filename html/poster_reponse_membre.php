@@ -21,9 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          $_SESSION['avis'] = $avis;
       } else {
          if(isset($_POST['publier'])){
-            if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
+            if((isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
                $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
-               $note = isset($_POST['note']) ? $_POST['note'] : '';
             
                $compte = $_SESSION['membre'];
                $code_compte = $compte['code_compte'];           
@@ -41,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
               if (empty($erreurs)) {
                 $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
-            
+                $note = 0;
                 $creerAvis->bindParam(':texte_avis', $texte_avis);
                 $creerAvis->bindParam(':note', $note, PDO::PARAM_INT);
                 $creerAvis->bindParam(':code_offre', $code_offre);
@@ -138,7 +137,7 @@ echo "</pre>";
                <div class="repondre_avis_texte"><?php echo $avis["txt_avis"]; ?></div>
             </div>
 
-            <form action="repondre_avis.php" method="POST">
+            <form action="poster_reponse_membre.php" method="POST">
                <div class="repondre_avis_section">
                    <h2 class="repondre_avis_section_titre">Votre avis</h2>
 
