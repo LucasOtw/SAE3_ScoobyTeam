@@ -3419,7 +3419,7 @@ nom.avis {
     height: 2em;
 }
 
-.custom-confirm-content button:first-child:hover{
+.custom-confirm-content button:hover{
     background-color: #FFF;
     color: black;
 }
