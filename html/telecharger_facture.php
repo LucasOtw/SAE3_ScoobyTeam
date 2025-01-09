@@ -125,7 +125,7 @@ if(!isset($_SESSION['pro'])){
         .facture-items {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 1.5em;
+            margin-bottom: 1.8em;
             margin-top: 1em;
         }
         
