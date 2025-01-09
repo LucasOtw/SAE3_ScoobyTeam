@@ -688,6 +688,7 @@ if (isset($json['results'][0])) {
         }
 // Fonction pour récupérer toutes les réponses, y compris les réponses aux réponses (récursivité)
 function getResponses($dbh, $code_avis) {
+    // Correction de la requête SQL avec des alias appropriés
     $stmt = $dbh->prepare('
         SELECT 
             reponse.*,
@@ -711,6 +712,7 @@ function getResponses($dbh, $code_avis) {
     }
     return $reponses;
 }
+
 
 // Fonction pour afficher les avis et les réponses récursivement
 function afficherAvis($avis, $niveau = 0) {
