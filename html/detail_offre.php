@@ -648,58 +648,37 @@ if (isset($json['results'][0])) {
         </div>
 
         <?php
+// Récupérer la moyenne des notes
+$moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre and note<>0');
+$moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+$moyenne_note->execute();
+$note_moyenne = $moyenne_note->fetchColumn();
 
-        $tout_les_avis = $dbh->prepare('
-    SELECT 
-        _avis.*, 
-        membre.prenom AS prenom_base, 
-        membre.nom AS nom_base 
-    FROM tripenarvor._avis 
-    NATURAL JOIN tripenarvor.membre 
-    WHERE code_offre = :code_offre 
-    AND code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse)
-');
-$tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-$tout_les_avis->execute();
-$tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
+// Récupérer le nombre d'avis
+$nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis WHERE code_offre = :code_offre');
+$nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+$nb_avis->execute();
+$nombre_d_avis = $nb_avis->fetchColumn();
 
+$appreciationGenerale = "";
 
-        if ($tout_les_avis == null) {
-            $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis WHERE code_offre = :code_offre');
-            $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-            $tout_les_avis->execute();
-            $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
-        }
+// Déterminer l'appréciation générale selon la note moyenne
+if ($note_moyenne <= 1) {
+    $appreciationGenerale = "À éviter";
+} elseif ($note_moyenne <= 2) {
+    $appreciationGenerale = "Peut mieux faire";
+} elseif ($note_moyenne <= 3) {
+    $appreciationGenerale = "Correct";
+} elseif ($note_moyenne <= 4) {
+    $appreciationGenerale = "Très Bien";
+} elseif ($note_moyenne <= 5) {
+    $appreciationGenerale = "Exceptionnel";
+} else {
+    $appreciationGenerale = "Valeur hors échelle";
+}
 
-        $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre and note<>0');
-        $moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-        $moyenne_note->execute();
-        $note_moyenne = $moyenne_note->fetchColumn();
-
-        $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis WHERE code_offre = :code_offre');
-        $nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-        $nb_avis->execute();
-        $nombre_d_avis = $nb_avis->fetchColumn();
-
-        $appreciationGenerale = "";
-
-        if ($note_moyenne <= 1) {
-            $appreciationGenerale = "À éviter";
-        } elseif ($note_moyenne <= 2) {
-            $appreciationGenerale = "Peut mieux faire";
-        } elseif ($note_moyenne <= 3) {
-            $appreciationGenerale = "Correct";
-        } elseif ($note_moyenne <= 4) {
-            $appreciationGenerale = "Très Bien";
-        } elseif ($note_moyenne <= 5) {
-            $appreciationGenerale = "Exceptionnel";
-        } else {
-            $appreciationGenerale = "Valeur hors échelle";
-        }
-
-// Fonction pour récupérer toutes les réponses, y compris les réponses aux réponses (récursivité)
+// Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
 function getResponses($dbh, $code_avis) {
-    // Récupérer toutes les réponses liées à un avis
     $stmt = $dbh->prepare('
         SELECT 
             reponse.*,
@@ -724,9 +703,9 @@ function getResponses($dbh, $code_avis) {
 // Fonction pour afficher les avis et les réponses récursivement
 function afficherAvis($avis, $niveau = 0) {
     // Vérification du prénom et nom
-    $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur supprimé";
+    $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur";
     $nom = !empty($avis['nom']) ? $avis['nom'] : "supprimé";
-    
+
     // Calcul du margin-left pour indenter les réponses
     $marge = $niveau * 5; // Indentation pour les réponses
     ?>
@@ -757,7 +736,6 @@ function afficherAvis($avis, $niveau = 0) {
             <p class="avis"><?php echo htmlspecialchars($avis['txt_avis']); ?></p>
         </div>
     </div>
-
     <?php
 }
 
@@ -773,12 +751,11 @@ $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
 $tout_les_avis->execute();
 $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
 
-
 // Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
 foreach ($tout_les_avis as &$avis) {
     // Vérification si l'utilisateur est supprimé
     if (empty($avis['prenom']) && empty($avis['nom'])) {
-        $avis['prenom'] = "Utilisateur supprimé";
+        $avis['prenom'] = "Utilisateur";
         $avis['nom'] = "supprimé";
     }
     // Récupération des réponses pour l'avis principal
@@ -810,6 +787,7 @@ foreach ($tout_les_avis as &$avis) {
 <?php
 // Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
 ?>
+
 
 
 
