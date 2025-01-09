@@ -1,5 +1,5 @@
 <?php
-ob_start(); // bufferisation, ça devrait marcher ?
+ob_start(); // bufferisation
 session_start();
 
 if(!isset($_SESSION['membre'])){
@@ -16,83 +16,83 @@ $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
 $dbh = new PDO($dsn, $username, $password);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      if(isset($_POST['repondreAvis'])){
-         $avis = unserialize($_POST['unAvis']);
-         $_SESSION['avis'] = $avis;
-      } else {
-         if(isset($_POST['publier'])){
+    if(isset($_POST['repondreAvis'])){
+        // Désérialise les données de l'avis
+        $avis = unserialize($_POST['unAvis']);
+        $_SESSION['avis'] = $avis;
+    } else {
+        if(isset($_POST['publier'])){
             if((isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
-               $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
+                $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
             
-               $compte = $_SESSION['membre'];
-               $code_compte = $compte['code_compte'];           
-               $code_offre = $_SESSION['detail_offre']['code_offre'];
+                $compte = $_SESSION['membre'];
+                $code_compte = $compte['code_compte'];           
+                $code_offre = $_SESSION['detail_offre']['code_offre'];
             
-               $erreurs = [];
-               $erreur_a_afficher = [];
-               if (empty($texte_avis)) {
-                   $erreurs[] = "Vous devez remplir ce champ";
-                   $erreur_a_afficher[] = "avis-vide";
-               } elseif (strlen($texte_avis)>500) {
-                   $erreurs[] = "L'avis ne doit pas dépasser 500 caractères.";
-                   $erreur_a_afficher[] = "avis-trop-long";
-               }
+                $erreurs = [];
+                $erreur_a_afficher = [];
+                if (empty($texte_avis)) {
+                    $erreurs[] = "Vous devez remplir ce champ";
+                    $erreur_a_afficher[] = "avis-vide";
+                } elseif (strlen($texte_avis)>500) {
+                    $erreurs[] = "L'avis ne doit pas dépasser 500 caractères.";
+                    $erreur_a_afficher[] = "avis-trop-long";
+                }
             
-              if (empty($erreurs)) {
-                $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
-                $note = 0;
-                $creerAvis->bindParam(':texte_avis', $texte_avis);
-                $creerAvis->bindParam(':note', $note, PDO::PARAM_INT);
-                $creerAvis->bindParam(':code_offre', $code_offre);
-                $creerAvis->bindParam(':code_compte', $code_compte);
-                $creerAvis->execute();
-
-                $code_reponse = $dbh->prepare("select currval('tripenarvor._avis_code_avis_seq')");
-                $code_reponse->execute();
-                $code_reponse = $code_reponse->fetchColumn();
-
-                 
-                $creerReponse = $dbh->prepare("INSERT INTO tripenarvor._reponse (code_avis, code_reponse) values (:code_avis, :code_reponse)");
-                $creerReponse->bindParam(':code_avis', $avis['code_avis']);
-                $creerReponse->bindParam(':code_reponse', $code_reponse);
-                $creerReponse->execute();
-            
-                header('location: detail_offre.php');
-                exit;
-            
-               } else {
-                  /*
-                 foreach($erreurs as $erreur){
-                       echo $erreur;
-                 }*/
-            
-                  foreach($erreur_a_afficher as $classe_erreur){
-                     // echo $classe_erreur;
-                       ?> 
-            
-                       <style>
-                           main.main_poster_avis .<?php echo $classe_erreur ?> {
-                              display:block;
-                           }         
-                          ?>
-                       </style> 
-                       <?php
-                 }
-               }
+                if (empty($erreurs)) {
+                    // Crée l'avis dans la table _avis
+                    $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
+                    $note = 0;  // Valeur par défaut de la note (0)
+                    $creerAvis->bindParam(':texte_avis', $texte_avis);
+                    $creerAvis->bindParam(':note', $note, PDO::PARAM_INT);
+                    $creerAvis->bindParam(':code_offre', $code_offre);
+                    $creerAvis->bindParam(':code_compte', $code_compte);
+                    $creerAvis->execute();
+                    
+                    // Récupère la dernière valeur de la séquence pour le champ `code_avis`
+                    $code_avis = $dbh->lastInsertId('tripenarvor._avis_code_avis_seq');
+                    
+                    // Insère la réponse dans la table _reponse
+                    if (isset($_SESSION['avis']) && !empty($_SESSION['avis']['code_avis'])) {
+                        $avis = $_SESSION['avis'];
+                        $code_reponse = $dbh->prepare("SELECT currval('tripenarvor._avis_code_avis_seq')");
+                        $code_reponse->execute();
+                        $code_reponse = $code_reponse->fetchColumn();
+                    
+                        // Insère la réponse en associant le code_avis à la réponse
+                        $creerReponse = $dbh->prepare("INSERT INTO tripenarvor._reponse (code_avis, code_reponse) VALUES (:code_avis, :code_reponse)");
+                        $creerReponse->bindParam(':code_avis', $avis['code_avis']);
+                        $creerReponse->bindParam(':code_reponse', $code_reponse);
+                        $creerReponse->execute();
+                    } else {
+                        // Si le code_avis n'est pas valide dans la session
+                        echo "Erreur : L'avis n'est pas disponible ou mal formé.";
+                        exit;
+                    }
+                    
+                    // Redirige vers la page des détails de l'offre
+                    header('location: detail_offre.php');
+                    exit;
+                } else {
+                    // Affiche les erreurs s'il y en a
+                    foreach($erreur_a_afficher as $classe_erreur){
+                        ?> 
+                        <style>
+                            main.main_poster_avis .<?php echo $classe_erreur ?> {
+                                display: block;
+                            }
+                        </style> 
+                        <?php
+                    }
+                }
             } else {
-              echo "Vous ne pouvez pas poster d'avis sans notation ou de message !";
+                echo "Vous ne pouvez pas poster d'avis sans notation ou de message !";
             }
-         }
-      }
+        }
+    }
 }
-
-$avis = $_SESSION['avis'];
-/*
-echo "<pre>";
-var_dump($avis);
-echo "</pre>";
-            */
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
