@@ -198,7 +198,6 @@ nav ul li a.active {
 /* En-tête pour les écrans mobiles */
 .header-tel {
     display: none;
-    background-color: #27ae60;
     padding: 10px;
     text-align: center;
 }
