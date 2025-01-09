@@ -49,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $code_reponse = $dbh->prepare("select currval('tripenarvor._avis_code_avis_seq')");
                 $code_reponse->execute();
+
                  
                 $creerReponse = $dbh->prepare("INSERT INTO tripenarvor._reponse (code_avis, code_reponse) values (:code_avis, :code_reponse)");
                 $creerReponse->bindParam(':code_avis', $avis['code_avis']);
