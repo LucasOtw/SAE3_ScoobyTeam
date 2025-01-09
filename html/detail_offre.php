@@ -648,7 +648,7 @@ if (isset($json['results'][0])) {
         </div>
         <?php
 
-        $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre');
+        $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre AND code_avis not in (select code_reponse from tripenarvor._reponse)');
         $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
         $tout_les_avis->execute();
         $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
