@@ -686,7 +686,7 @@ function getResponses($dbh, $code_avis) {
             membre_reponse.nom AS nom
         FROM tripenarvor._reponse
         INNER JOIN tripenarvor._avis AS reponse ON reponse.code_avis = tripenarvor._reponse.code_reponse
-        INNER JOIN tripenarvor._membre AS membre_reponse ON membre_reponse.code_compte = reponse.code_compte
+        LEFT JOIN tripenarvor._membre AS membre_reponse ON membre_reponse.code_compte = reponse.code_compte
         WHERE tripenarvor._reponse.code_avis = :code_avis
     ');
     $stmt->bindValue(':code_avis', $code_avis, PDO::PARAM_INT);
@@ -700,10 +700,32 @@ function getResponses($dbh, $code_avis) {
     return $reponses;
 }
 
+// Récupérer tous les avis principaux (sans réponses déjà existantes)
+$tout_les_avis = $dbh->prepare('
+    SELECT * FROM tripenarvor._avis
+    LEFT JOIN tripenarvor.membre ON tripenarvor._avis.code_compte = tripenarvor.membre.code_compte
+    WHERE (code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse)
+    OR tripenarvor.membre.code_compte IS NULL)
+    AND code_offre = :code_offre
+');
+$tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+$tout_les_avis->execute();
+$tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
+
+// Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
+foreach ($tout_les_avis as &$avis) {
+    // Vérification si l'utilisateur est supprimé
+    if (empty($avis['prenom']) && empty($avis['nom'])) {
+        $avis['prenom'] = "Utilisateur supprimé";
+        $avis['nom'] = "supprimé";
+    }
+    // Récupération des réponses pour l'avis principal
+    $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
+}
+
 // Fonction pour afficher les avis et les réponses récursivement
 function afficherAvis($avis, $niveau = 0) {
-    // Vérification du prénom et nom
-    $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur";
+    $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur supprimé";
     $nom = !empty($avis['nom']) ? $avis['nom'] : "supprimé";
 
     // Calcul du margin-left pour indenter les réponses
@@ -736,35 +758,12 @@ function afficherAvis($avis, $niveau = 0) {
             <p class="avis"><?php echo htmlspecialchars($avis['txt_avis']); ?></p>
         </div>
     </div>
+
     <?php
-}
-
-// Récupérer tous les avis principaux (sans réponses déjà existantes)
-$tout_les_avis = $dbh->prepare('
-    SELECT * FROM tripenarvor._avis
-    LEFT JOIN tripenarvor.membre ON tripenarvor._avis.code_compte = tripenarvor.membre.code_compte
-    WHERE (code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse)
-    OR tripenarvor.membre.code_compte IS NULL)
-    AND code_offre = :code_offre
-');
-$tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-$tout_les_avis->execute();
-$tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
-
-// Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
-foreach ($tout_les_avis as &$avis) {
-    // Vérification si l'utilisateur est supprimé
-    if (empty($avis['prenom']) && empty($avis['nom'])) {
-        $avis['prenom'] = "Utilisateur";
-        $avis['nom'] = "supprimé";
-    }
-    // Récupération des réponses pour l'avis principal
-    $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
 }
 
 // Affichage des avis et de leurs réponses (y compris les sous-réponses)
 ?>
-
 <div class="avis-widget">
     <div class="avis-header">
         <h1 class="avis">
@@ -783,7 +782,6 @@ foreach ($tout_les_avis as &$avis) {
         ?>
     </div>
 </div>
-
 <?php
 // Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
 ?>
