@@ -108,10 +108,10 @@ function tempsEcouleDepuisPublication($offre){
     </div>
     <!-- Code pour le pop-up --> 
     <div id="customPopup">
-        <img src="images/robot_popup.png" width="50" height="70" class="customImage">
+        <img src="images/robot_popup.png" href="creation_compte_membre.php" width="50" height="70" class="customImage">
         <p><a href="creation_compte_membre.php" class="txt_popup">Créez votre compte</a> en quelques clics et accédez à un monde de possibilités ! </p>
         <!--<a id="connexion" href="creation_compte_membre.php">Inscrivez-vous</a>-->
-        <img id="closePopup" src="images/erreur.png" href="creation_compte_membre.php" width="15" height="15">
+        <img id="closePopup" src="images/erreur.png" width="15" height="15">
     </div>
 
     <script>
@@ -680,6 +680,7 @@ function tempsEcouleDepuisPublication($offre){
                         
                         $consulter = $dbh->prepare('select * from tripenarvor._consulte where code_compte = :code_compte and code_offre = :code_offre');
                         $consulter->execute(['code_compte' => $_SESSION['membre']['code_compte'], ':code_offre' => $offre["code_offre"]]);
+                        $consulter = $consulter->fetch();
 
                         var_dump($consulter);
                         
