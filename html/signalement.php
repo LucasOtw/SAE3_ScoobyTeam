@@ -47,6 +47,29 @@ try {
     function showConfirmation(event) {
         event.preventDefault(); // Empêche l'envoi immédiat du formulaire
         document.getElementById('confirmationModal').style.display = 'block'; // Affiche la modale
+
+        const avisId = <?php echo json_encode($idAvis); ?>;
+
+        fetch('/modif_signaler.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: avisId })
+        })
+        .then(response => response.json()) // Parse la réponse JSON
+        .then(data => {
+            if (data.success) {
+                alert('Avis signalé avec succès.');
+                window.location.reload(); // Recharge la page ou redirigez si nécessaire
+            } else {
+                alert(data.message || 'Erreur lors du signalement de l\'avis.');
+            }
+        })
+        .catch(error => {
+            console.error('Erreur réseau ou serveur :', error);
+            alert('Impossible de signaler l\'avis.');
+        });
     }
 
     // Fonction pour fermer la modale
