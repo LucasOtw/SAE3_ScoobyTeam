@@ -543,8 +543,7 @@ if(!isset($_SESSION['pro'])){
             </tbody>
         </table>
       <?php $montant_ht_total = $montant_ht + 16.86 * $nb_semaines_une + 8.34 * $nb_semaines_relief;?>
-        <div class="facture-footer">
-            <table class="facture-total">
+        <table class="facture-total">
                 <tr>
                    <th>Description</th>
                    <th>Montant</th>
@@ -562,6 +561,7 @@ if(!isset($_SESSION['pro'])){
                    <td class="a_droite"><?php echo number_format($montant_ht_total * 1.20, 2, ',', ' '); ?>€</td>
                </tr>
             </table>
+        <div class="facture-footer">
 
             <div class="payment-info">
                 <p><strong>Mode de paiement :</strong> Virement bancaire</p>
