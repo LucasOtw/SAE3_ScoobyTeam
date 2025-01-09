@@ -149,7 +149,7 @@ echo "</pre>";
             </div>
             <h1 class="repondre_avis_titre">Récapitulatif</h1>
             <div class="repondre_avis_recap">
-               <div class="repondre_avis_utilisateur"><?php echo $avis['nom'] . $avis['prenom'] . "    " . $avis['note']; ?><img src="images/etoile.png" alt="étoile"></div>
+               <div class="repondre_avis_utilisateur"><?php echo $avis['prenom'] . " " . $avis['nom']; ?></div>
                <div class="repondre_avis_texte"><?php echo $avis["txt_avis"]; ?></div>
             </div>
 
