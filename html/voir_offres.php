@@ -145,31 +145,6 @@ function tempsEcouleDepuisPublication($offre){
             }
         });
     </script>
-    <style>
-        @media (max-width: 429px) {
-        #customPopup {
-            width: 90%;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .customImage {
-            width: 40px;
-            height: 60px;
-        }
-
-        .txt_popup {
-            display: none; /* Masquer le texte */
-        }
-
-        #closePopup {
-            width: 12px;
-            height: 12px;
-        }
-    }
-    </style>
 
 
 
