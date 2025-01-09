@@ -441,8 +441,11 @@ if (isset($_POST['dwl-data'])) {
                 <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
             </div>
             <div class="compte_membre_save_delete_remove">
-                <button type="button" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte">Supprimer le compte</button>
-                <form action="#" method="POST">
+                <div>
+                    <button type="button" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte">Supprimer le compte</button>
+                    <form action="#" method="POST">
+                    </form>
+                </div>
                     <div>
                         <input type="submit" name="dwl-data" class="btn-dwl-data" value="Télécharger mes données">
                     </div>
