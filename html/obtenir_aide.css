@@ -195,7 +195,6 @@ header.header-tel {
     width: 90%;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .faq-title {
@@ -229,9 +228,8 @@ header.header-tel {
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
-    color: #007BFF;
+    color: #000000;
     padding: 10px 15px;
-    border: 1px solid #ddd;
     border-radius: 5px;
     transition: background-color 0.3s, box-shadow 0.3s;
 }
