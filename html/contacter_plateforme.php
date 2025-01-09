@@ -48,13 +48,13 @@
                     <input type="text" id="prenom" name="prenom" class="prenom_contacter_plateforme" placeholder="Votre prénom" required>
                 
                     <label for="theme">Thème de votre question :</label>
-                    <select id="theme" name="theme" class="input-field" required>
-                        <option value="">--Choisir un thème--</option>
-                        <option value="general">Général</option>
-                        <option value="compte">Mon Compte</option>
-                        <option value="offres">Offres</option>
-                        <option value="partenaires">Partenaires</option>
-                    </select>
+                        <select id="theme" name="theme" class="theme_contacter_plateforme" required>
+                            <option value="">--Choisir un thème--</option>
+                            <option value="general">Général</option>
+                            <option value="compte">Mon Compte</option>
+                            <option value="offres">Offres</option>
+                            <option value="partenaires">Partenaires</option>
+                        </select>
                 </div>
             </form>
 
