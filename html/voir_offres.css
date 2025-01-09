@@ -1108,8 +1108,8 @@ body.menu-open #overlay {
 
 /* Conteneur global */
 .toute_les_offres_main .a-la-une-carrousel, 
-.toute_les_offres_main .nouveautes-carrousel
-.toute_les_offres_main .nouveautes-vu-recemment{
+.toute_les_offres_main .nouveautes-carrousel,
+.toute_les_offres_main .vu-recemment-carrousel{
     position: relative;
     display: flex;
     align-items: center;
