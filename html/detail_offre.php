@@ -722,18 +722,10 @@ function getResponses($dbh, $code_avis) {
 }
 
 // Fonction pour afficher les avis et les réponses récursivement
-// Fonction pour afficher les avis et les réponses récursivement
 function afficherAvis($avis, $niveau = 0) {
     // Vérification du prénom et nom
-    if (!isset($avis["prenom"]) && !isset($avis["nom"]))
-        {
-            $prenom = "Utilisateur";
-            $nom = "supprimé";
-        }
-    else {
-        $prenom = $avis["prenom"];
-        $nom = $avis["nom"];
-    }
+    $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur supprimé";
+    $nom = !empty($avis['nom']) ? $avis['nom'] : "supprimé";
     
     // Calcul du margin-left pour indenter les réponses
     $marge = $niveau * 5; // Indentation pour les réponses
@@ -742,7 +734,10 @@ function afficherAvis($avis, $niveau = 0) {
         <div class="avis-content">
             <h3 class="avis">
                 <?php if ($niveau > 0): ?>
-                    <div class="note_prenom">Réponse | <span class="nom_avis"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span></div>
+                    <div class="note_prenom">
+                        Réponse à <?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?> |
+                        <span class="nom_avis"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                    </div>
                 <?php else: ?>
                     <div class="note_prenom">
                         <?php echo htmlspecialchars($avis['note']) . '.0'; ?> | 
@@ -780,6 +775,12 @@ $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
 
 // Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
 foreach ($tout_les_avis as &$avis) {
+    // Vérification si l'utilisateur est supprimé
+    if (empty($avis['prenom']) && empty($avis['nom'])) {
+        $avis['prenom'] = "Utilisateur supprimé";
+        $avis['nom'] = "supprimé";
+    }
+    // Récupération des réponses pour l'avis principal
     $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
 }
 
@@ -808,7 +809,6 @@ foreach ($tout_les_avis as &$avis) {
 <?php
 // Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
 ?>
-
 
 
 
