@@ -728,7 +728,7 @@ if (isset($json['results'][0])) {
                         <div class="avis-content">
                             <h3 class="avis">
 
-                                <?php echo $avis["note"] . ".0 $appreciation "; ?> | <span class="nom_avis"><?php echo $avis["prenom"] . " " . $avis["nom"]; ?></span>
+                                <div><?php echo $avis["note"] . ".0 $appreciation "; ?> | <span class="nom_avis"><?php echo $avis["prenom"] . " " . $avis["nom"]; ?></span></div>
                                 
                                 <div class="signalement_repondre">
                                     <span class="signalement">
