@@ -647,7 +647,7 @@ if (isset($json['results'][0])) {
             </iframe>
         </div>
         <?php
-// Fonction pour récupérer les réponses imbriquées
+// Fonction pour récupérer toutes les réponses, y compris les réponses aux réponses (récursivité)
 function getResponses($dbh, $code_avis) {
     $stmt = $dbh->prepare('
         SELECT 
@@ -663,18 +663,18 @@ function getResponses($dbh, $code_avis) {
     $stmt->execute();
     $reponses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Récursivité : Ajouter les sous-réponses
+    // Récursivité : Ajouter les sous-réponses (réponses aux réponses)
     foreach ($reponses as &$reponse) {
-        $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_reponse']);
+        $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_avis']); // Ajoute les sous-réponses
     }
     return $reponses;
 }
 
-// Fonction pour afficher les avis récursivement
+// Fonction pour afficher les avis et les réponses récursivement
 function afficherAvis($avis, $niveau = 0) {
     $marge = $niveau * 5; // Indentation pour les réponses
 
-    // Avis ou réponse principale
+    // Affichage de l'avis ou de la réponse principale
     echo '<div class="avis" style="margin-left:' . $marge . 'vw">';
     echo '<div class="avis-content">';
     echo '<h3 class="avis">';
@@ -697,26 +697,26 @@ function afficherAvis($avis, $niveau = 0) {
     echo '</div>';
     echo '</div>';
 
-    // Réponses imbriquées
+    // Afficher les sous-réponses
     if (!empty($avis['sous_reponses'])) {
         foreach ($avis['sous_reponses'] as $sous_reponse) {
-            afficherAvis($sous_reponse, $niveau + 1);
+            afficherAvis($sous_reponse, $niveau + 1); // Augmente le niveau d'indentation pour les sous-réponses
         }
     }
 }
 
-// Récupérer tous les avis principaux
+// Récupérer tous les avis principaux (sans réponses déjà existantes)
 $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre AND code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse)');
 $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
 $tout_les_avis->execute();
 $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
 
-// Récupérer les réponses imbriquées pour chaque avis principal
+// Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
 foreach ($tout_les_avis as &$avis) {
     $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
 }
 
-// Affichage
+// Affichage des avis et de leurs réponses (y compris les sous-réponses)
 echo '<div class="avis-widget">';
 echo '<div class="avis-header">';
 echo '<h1 class="avis">' . ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5") . ' <span class="avis-score"> ' . ($note_moyenne === null ? "" : $appreciationGenerale) . '</span></h1>';
@@ -724,11 +724,12 @@ echo '<p class="avis">' . $nombre_d_avis . ' avis</p>';
 echo '</div>';
 echo '<div class="avis-list">';
 foreach ($tout_les_avis as $avis) {
-    afficherAvis($avis);
+    afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
 }
 echo '</div>';
 echo '</div>';
 ?>
+
 
 
 
