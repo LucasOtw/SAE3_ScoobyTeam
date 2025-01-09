@@ -741,8 +741,41 @@ if (isset($json['results'][0])) {
                     
                 </h3>
                 <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
-            </div>
+            </div>        
         </div>
+                <?php 
+        
+                $reponses = $dbh->prepare('select * from tripenarvor._reponse 
+                                            INNER JOIN tripenarvor._avis as base ON base.code_avis = tripenarvor._reponse.code_avis
+                                            INNER JOIN tripenarvor._avis as reponse ON reponse.code_avis = tripenarvor._reponse.code_reponse
+                                            where base.code_avis = :code_avis;');
+                $reponses->bindValue(':code_avis', $avis['code_avis']);
+                $reponses->execute();
+                $reponses = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach ($reponses as $reponse) {
+                    <div class="avis" style="margin-left:5vw">
+                        <div class="avis-content">
+                            <h3 class="avis">
+                                
+                                <?php echo "Réponse à " . $avis['prenom'] . " " .. $avis['nom'] ?> | <span class="nom_avis"><?php echo $avis["prenom"] . " " . $avis["nom"]; ?></span>
+                            
+                                <span class="signalement">
+                                    <a href="signalement_membre.php?id_avis=<?php echo isset($avis['code_avis']) ? htmlspecialchars($avis['code_avis']) : 'invalide'; ?>" title="Signaler cet avis" style="margin-left: 63vw; text-decoration: none">🚩</a>
+                                </span>
+                                <form action="poster_reponse_membre.php" method="POST">
+                                    <input type="hidden" name="unAvis"
+                                        value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                                    <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
+                                </form>
+                                
+                            </h3>
+                            <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
+                        </div>        
+                    </div>
+                }
+        
+                ?>
         <?php
     }
     ?>
