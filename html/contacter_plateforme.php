@@ -31,37 +31,38 @@
         </div>
     </header>
 
-    <main class="main_poster_avis">
-        <div class="poster_un_avis_container">
-            <div class="poster_un_avis_back_button">
-                <a href="detail_offre.php"><img src="images/Bouton_retour.png" class="back-button"></a>
-                <h1 class="titre_poster_un_avis_format_tel">Besoin d'aide ?</h1>
+    <main class="main_contacter_plateforme">
+    <div class="contacter_plateforme_container">
+        <div class="contacter_plateforme_back_button">
+            <a href="detail_offre.php"><img src="images/Bouton_retour.png" class="back-button"></a>
+            <h1 class="titre_contacter_plateforme_format_tel">Besoin d'aide ?</h1>
+        </div>
+        <h1 class="contacter_plateforme_titre">Récapitulatif</h1>
+        <div class="contacter_plateforme_recap_card">
+            <div class="contacter_plateforme_info">
+                <form id="form-voir-offre" action="detail_offre.php" method="POST">
+                    <input id="btn-voir-offre" class="contacter_plateforme_btn_offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
+                </form>
             </div>
-            <h1 class="poster_un_avis_titre">Récapitulatif</h1>
-            <div class="poster_un_avis_recap_card">
-                <div class="poster_un_avis_info">
-                    <form id="form-voir-offre" action="detail_offre.php" method="POST">
-                        <input id="btn-voir-offre" class="poster_un_avis_btn_offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
-                    </form>
-                </div>
-                <div class="poster_un_avis_images"></div>
-            </div>
+            <div class="contacter_plateforme_images"></div>
+        </div>
 
-            <form action="poster_un_avis.php" method="POST">
-                <div class="poster_un_avis_section">
-                    <h2 class="poster_un_avis_section_titre">Votre question</h2>
-                    <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
-                    <p class="message-erreur avis-vide">Vous devez remplir ce champ</p>
-                    <p class="message-erreur avis-trop-long">La question ne doit pas dépasser 500 caractères.</p>
-                    <div class="poster_un_avis_footer">
-                        <p class="poster_un_avis_disclaimer">En nous envoyant votre question, vous acceptez les conditions générales d'utilisation (CGU).</p>
-                        <div class="poster_un_avis_buttons">
-                            <button class="poster_un_avis_btn_publier" type="submit" name="publier">Envoyer →</button>
-                        </div>
+        <form action="poster_un_avis.php" method="POST">
+            <div class="contacter_plateforme_section">
+                <h2 class="contacter_plateforme_section_titre">Votre question</h2>
+                <textarea placeholder="Écrivez votre avis ici..." class="contacter_plateforme_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
+                <p class="message-erreur avis-vide">Vous devez remplir ce champ</p>
+                <p class="message-erreur avis-trop-long">La question ne doit pas dépasser 500 caractères.</p>
+                <div class="contacter_plateforme_footer">
+                    <p class="contacter_plateforme_disclaimer">En nous envoyant votre question, vous acceptez les conditions générales d'utilisation (CGU).</p>
+                    <div class="contacter_plateforme_buttons">
+                        <button class="contacter_plateforme_btn_publier" type="submit" name="publier">Envoyer →</button>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
+    </div>
+
 
         <nav class="nav-bar">
             <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="Accueil"></a>
