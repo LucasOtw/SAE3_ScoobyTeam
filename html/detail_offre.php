@@ -659,7 +659,7 @@ if (isset($json['results'][0])) {
                 $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
             }
 
-            $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre');
+            $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre and note<>0');
             $moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
             $moyenne_note->execute(); 
             $note_moyenne = $moyenne_note->fetchColumn();
