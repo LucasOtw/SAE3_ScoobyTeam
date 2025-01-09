@@ -5267,7 +5267,90 @@ nav.nav-bar_consulter_mes_avis img {
 
 
 
+/*****************************************************
+                                                        * page contacter plateforme *
+                                        *****************************************************/
 
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 2vw;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 2vh auto;
+    max-width: 800px;
+    width: 90%;
+}
+
+.poster_un_avis_section {
+    margin-bottom: 3vh;
+}
+
+.poster_un_avis_section_titre {
+    font-size: 1.6rem;
+    margin-bottom: 1.5vh;
+    color: #333;
+    font-weight: bold;
+}
+
+label {
+    font-size: 1rem;
+    margin-bottom: 0.5vh;
+    color: #333;
+}
+
+input[type="text"],
+select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 1.5vh;
+    width: 100%;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+select:focus {
+    border-color: var(--vert-clair);
+    outline: none;
+}
+
+input::placeholder {
+    color: #bbb;
+}
+
+button[type="submit"] {
+    font-size: 17px;
+    padding: 10px 20px;
+    background-color: var(--vert-clair);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    width: 242px;
+    height: 52px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease;
+    margin-top: 2vh;
+    align-self: center;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--vert-fonce);
+}
+
+select {
+    appearance: none;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3E%3Cpath d="M2 4l6 6 6-6z"%3E%3C/path%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1rem;
+}
 
 
 
