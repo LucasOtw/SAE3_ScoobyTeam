@@ -1297,7 +1297,7 @@ body.menu-open #overlay {
     }
     .customImage{
         margin-left: 10px;
-        height: 50px;
+        height: 100px;
         width: auto;
         content: url('images/connexion_mobile2.png');
     }
