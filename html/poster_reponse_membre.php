@@ -13,6 +13,7 @@ if (isset($_SERVER['HTTP_REFERER'])) {
     if ($_SERVER['HTTP_REFERER'] === "https://scooby-team.ventsdouest.dev/detail_offre.php" && !isset($_POST['publier'])) {
         // Action si les conditions sont respectées
         $details_offre = $_SESSION['detail_offre'];
+        $avis = $_SESSION['avis'];
     }
 }
 
