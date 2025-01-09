@@ -230,6 +230,23 @@ header.header-tel {
     font-size: 20px;
     font-weight: bold;
 }
+nav ul li a::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2.5px;
+    bottom: -2px;
+    background-color: var(--orange);
+    transition: width 0.3s ease;
+}
+
+.header_pro nav ul li a::before {
+    background-color: var(--orange);
+}
+
+nav ul li a:hover::before {
+    width: 90%;
+}
 
 footer {
     background-color: #000;
@@ -240,18 +257,12 @@ footer {
     margin-top: auto;
 }
 
-.footer_pro .newsletter {
-    background-color: var(--orange);
-}
-
-.footer_membre .newsletter {
-    background-color: var(--vert-clair);
-}
-
 .newsletter {
     display: flex;
     flex-direction: column;
+    /* Stack les éléments sur petits écrans */
     justify-content: space-between;
+    background-color: var(--orange);
     padding: 20px;
     border-radius: 20px;
     position: relative;
@@ -259,6 +270,7 @@ footer {
     z-index: 1;
     width: 90%;
     max-width: 1200px;
+    /* Limite la largeur sur grands écrans */
     margin-left: auto;
     margin-right: auto;
 }
@@ -266,16 +278,19 @@ footer {
 .newsletter-content {
     text-align: left;
     max-width: 100%;
+    /* Ajuste pour petits écrans */
 }
 
 .newsletter h2 {
     font-size: 2rem;
+    /* Taille adaptable */
     margin-bottom: 10px;
 }
 
 .newsletter-form {
     display: flex;
     flex-direction: column;
+    /* Colonne sur petits écrans */
     gap: 10px;
     margin-top: 10px;
 }
@@ -302,6 +317,7 @@ footer {
 .newsletter-image img {
     max-height: 100px;
     width: auto;
+    /* Maintien du ratio de l'image */
 }
 
 .footer-links {
@@ -325,12 +341,8 @@ footer {
     transition: color 0.3s ease;
 }
 
-.footer_pro .link-group ul li a:hover {
+.link-group ul li a:hover {
     color: var(--orange);
-}
-
-.footer_membre .link-group ul li a:hover {
-    color: var(--vert-clair);
 }
 
 .footer-bottom {
@@ -343,5 +355,44 @@ footer {
 .social-icons a img {
     width: 24px;
     margin: 0 10px;
+}
+
+/* Media queries pour l'adaptabilité */
+
+@media (min-width: 768px) {
+    .newsletter {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .newsletter-content {
+        max-width: 60%;
+    }
+
+    .newsletter-form {
+        flex-direction: row;
+    }
+
+    .footer-links {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+@media (min-width: 1024px) {
+    nav ul {
+        gap: 50px;
+        /* Réduit l'espace entre les éléments sur grands écrans */
+    }
+
+    footer {
+        padding: 40px 80px;
+    }
 }
 
