@@ -451,8 +451,15 @@ footer {
     margin-left: 8vw;
 }
 
+.toute_les_offres_main .titres-offres{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-right: 8vw;
+}
+
 .toute_les_offres_main .titre-nouveautes, .toute_les_offres_main .titre-vu-recemment{
-    margin-top: 0;
+    margin-top: 12vh;
     color: black;
     margin-left: 8vw;
 }
@@ -1307,8 +1314,8 @@ body.menu-open #overlay {
     /* Position finale visible */
     opacity: 1;
     /* Complètement visible */
-    left:1.4em;
     bottom: 5em;
+    margin-right:1.5em
 }
 
 #customPopup p {

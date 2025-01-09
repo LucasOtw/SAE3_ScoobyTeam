@@ -5277,25 +5277,38 @@ nav.nav-bar_consulter_mes_avis img {
 
 
 
-.input-field {
-      width: 100%;
-      height: 75px;
-      padding: 15px;
-      margin: 10px 0;
-      border: 1px solid #f3f8ff;
-      border-radius: 29px;
-      resize: none;
-      background-color: #f3f8ff;
-      box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
-
+.nom_contacter_plateforme{
+    width: 100%;
+    height: 75px;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #f3f8ff;
+    border-radius: 29px;
+    resize: none;
+    background-color: #f3f8ff;
+    box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
 }
 
-.input-field:focus {
+.prenom_contacter_plateforme {
+    width: 100%;
+    height: 75px;
+    padding: 15px;
+    margin: 10px 0;
+    border: 50px solid pink;
+    border-radius: 29px;
+    resize: none;
+    background-color: #f3f8ff;
+    box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
+}
+
+.nom_contacter_plateforme:focus,
+.prenom_contacter_plateforme:focus {
     background-color: #fff;
     outline: none;
 }
 
-select.input-field {
+select.nom_contacter_plateforme,
+select.prenom_contacter_plateforme {
     appearance: none;
     background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3E%3Cpath d="M2 4l6 6 6-6z"%3E%3C/path%3E%3C/svg%3E');
     background-repeat: no-repeat;
@@ -5307,5 +5320,32 @@ select.input-field {
 
 
 
+.titre_contacter_nous{
+  text-align: center;
+}
 
+.theme_contacter_plateforme {
+    width: 100%;
+    height: 75px;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #f3f8ff;
+    border-radius: 29px;
+    resize: none;
+    background-color: #f3f8ff;
+    box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
+}
+
+.theme_contacter_plateforme:focus {
+    background-color: #fff;
+    outline: none;
+}
+
+select.theme_contacter_plateforme {
+    appearance: none;
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3E%3Cpath d="M2 4l6 6 6-6z"%3E%3C/path%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1rem;
+}
 

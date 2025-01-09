@@ -7,12 +7,17 @@ if(!isset($_SESSION['membre'])){
    exit;
 }
 
-if (isset($_SESSION['avis'])) {
-    $avis = $_SESSION['avis'];
-} else {
-    $avis = null; // Ou une valeur par défaut
-    // Vous pouvez aussi afficher un message d'erreur si nécessaire
+
+
+$avis = $_SESSION['avis'] ?? null;
+if ($avis === null) {
+    echo "Aucun avis trouvé dans la session.";
+    // Optionnel : Redirection ou message à l'utilisateur
 }
+
+
+
+
 // Vérifie si le formulaire a été soumis    
 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";  // Utilisateur PostgreSQL défini dans .env

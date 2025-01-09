@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacter Plateforme</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?">
 </head>
 
 <body>
@@ -31,21 +31,21 @@
         </div>
     </header>
 
-    <main class="main_poster_avis">
+        <main class="main_poster_avis">
         <div class="poster_un_avis_container">
             <div class="poster_un_avis_back_button">
                 <a href="detail_offre.php"><img src="images/Bouton_retour.png" class="back-button"></a>
-                <h1 class="titre_poster_un_avis_format_tel">Besoin d'aide ?</h1>
+                <h1 class="titre_contacter_nous">Contactez nous !</h1>
             </div>
 
-            <form action="poster_un_avis.php" method="POST">
+            <<form action="poster_un_avis.php" method="POST">
                 <div class="poster_un_avis_section">
                     <h2 class="poster_un_avis_section_titre">Vos informations</h2>
                     <label for="nom">Nom :</label>
-                    <input type="text" id="nom" name="nom" class="input-field" placeholder="Votre nom" required>
+                    <input type="text" id="nom" name="nom" class="nom_contacter_plateforme" placeholder="Votre nom" required>
                 
                     <label for="prenom">Prénom :</label>
-                    <input type="text" id="prenom" name="prenom" class="input-field" placeholder="Votre prénom" required>
+                    <input type="text" id="prenom" name="prenom" class="prenom_contacter_plateforme" placeholder="Votre prénom" required>
                 
                     <label for="theme">Thème de votre question :</label>
                     <select id="theme" name="theme" class="input-field" required>
@@ -56,6 +56,8 @@
                         <option value="partenaires">Partenaires</option>
                     </select>
                 </div>
+            </form>
+
 
 
                 <div class="poster_un_avis_section">

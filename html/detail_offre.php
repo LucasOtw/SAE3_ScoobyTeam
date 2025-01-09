@@ -702,7 +702,7 @@ if (isset($json['results'][0])) {
                     <?php echo $avis["note"] . ".0 $appreciation "; ?> | <span class="nom_avis"><?php echo $avis["prenom"] . " " . $avis["nom"]; ?></span>
                 
                     <span class="signalement">
-                        <a href="signalement.php?id_avis=<?php echo isset($avis['code_avis']) ? htmlspecialchars($avis['code_avis']) : 'invalide'; ?>" title="Signaler cet avis" style="margin-left: 63vw; text-decoration: none">🚩</a>
+                        <a href="signalement_membre.php?id_avis=<?php echo isset($avis['code_avis']) ? htmlspecialchars($avis['code_avis']) : 'invalide'; ?>" title="Signaler cet avis" style="margin-left: 63vw; text-decoration: none">🚩</a>
                     </span>
                     <form action="poster_reponse_membre.php" method="POST">
                         <input type="hidden" name="uneOffre"
