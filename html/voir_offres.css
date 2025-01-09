@@ -451,6 +451,13 @@ footer {
     margin-left: 8vw;
 }
 
+.toute_les_offres_main .titres-offres{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-right: 8vw;
+}
+
 .toute_les_offres_main .titre-nouveautes, .toute_les_offres_main .titre-vu-recemment{
     margin-top: 12vh;
     color: black;
