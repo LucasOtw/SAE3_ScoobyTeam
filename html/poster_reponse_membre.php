@@ -21,9 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          $_SESSION['avis'] = $avis;
       } else {
          if(isset($_POST['publier'])){
-            if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
+            if((isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
                $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
-               $note = isset($_POST['note']) ? $_POST['note'] : '';
             
                $compte = $_SESSION['membre'];
                $code_compte = $compte['code_compte'];           
