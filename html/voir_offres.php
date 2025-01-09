@@ -405,12 +405,12 @@ function tempsEcouleDepuisPublication($offre){
 
 
 
-        <div class="a-la-une-titre-carrousel">
-            <h2 class="titre-a-la-une">A La Une</h2>
+        <div class="nouveautes-titre-carrousel">
+            <h2 class="titre-nouveautes">Nouveautés</h2>
     
-            <div class="a-la-une-carrousel">
+            <div class="nouveautes-carrousel">
                 <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft()">&#8249;</button>
-                <section class="a-la-une">
+                <section class="nouveautes">
                 <?php
                     try {
                         $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
@@ -463,12 +463,12 @@ function tempsEcouleDepuisPublication($offre){
                             {
                             ?>
                                 
-                                    <article class="card-a-la-une">
+                                    <article class="card-nouveautes">
                                         <form id="form-voir-offre" action="detail_offre.php" method="POST" class="form-voir-offre">
                                             <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
-                                            <div class="image-background-card-a-la-une">
+                                            <div class="image-background-card-nouveautes">
                                                 <img src="<?php echo './'.$offre_image['url_image']; ?>" alt="">
-                                                <div class="raison-sociale-card-a-la-une">
+                                                <div class="raison-sociale-card-nouveautes">
                                                     <p><?php echo $offre["titre_offre"]; ?></p>
                                                    
                                                     <!-- Le bouton est maintenant juste après le texte dans la même zone -->
