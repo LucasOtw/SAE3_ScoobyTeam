@@ -706,7 +706,7 @@ if (isset($json['results'][0])) {
                     </span>
                     <form action="poster_reponse_membre.php" method="POST">
                         <input type="hidden" name="uneOffre"
-                            value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
+                            value="<?php echo htmlspecialchars(serialize($details_offre)) . htmlspecialchars(serialize($avis)); ?>">
                         <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
                     </form>
                     
