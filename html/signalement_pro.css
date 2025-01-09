@@ -33,106 +33,25 @@ body {
 /****** HEADER *****/
 
 
-div.header-membre {
-    display: block;
-}
-
-div.header-pro {
-    display: none;
-}
-
-.container{
-    margin-left: 12vw;
-}
-
-/* HEADER MEMBRE */
-
-div.header-membre header.header-pc {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #000;
-    padding: 20px;
-    color: white;
-}
-
-div.header-membre header.header-tel {
-    display: none;
-}
-
-
-
-div.header-membre .creation_compte_membre_bienvenue {
-    display: none;
-    text-align: center;
-}
-
-div.header-membre .logo-tel {
-    display: flex;
-    margin-top: 40px;
-    justify-content: center;
-}
-
-div.header-membre .logo img {
-    height: 60px;
-    max-width: 100%;
-    /* Pour s'assurer que l'image ne dépasse pas */
-}
-
-div.header-membre nav ul {
-    list-style: none;
-    display: flex;
-    gap: 3vw;
-    /* Espace adaptable selon la largeur de l'écran */
-    margin-right: 4vw;
-    flex-wrap: wrap;
-    /* Permet de passer sur plusieurs lignes si nécessaire */
-}
-
-div.header-membre nav ul li a {
-    position: relative;
-    text-decoration: none;
-    color: white;
-    font-size: 1.2rem;
-    /* Utilise des unités relatives */
-    padding: 5px 10px;
-    transition: color 0.3s, border-bottom 0.3s;
-}
-
-div.header-membre nav ul li a.active {
-    color: var(--vert-clair);
-}
-
-div.header-membre nav ul li a:hover {
-    color: var(--vert-clair);
-}
-
-div.header-membre .header_pro nav ul li a.active {
+.header_pro nav ul li a.active {
     color: var(--orange);
 }
 
-div.header-membre .header_pro nav ul li a:hover {
+.header_pro nav ul li a:hover {
     color: var(--orange);
 }
 
-div.header-membre nav ul li a::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2.5px;
-    bottom: -2px;
-    background-color: var(--vert-clair);
-    transition: width 0.3s ease;
+.header_pro nav ul li a.active {
+    color: var(--orange);
 }
 
-div.header-membre .header_pro nav ul li a::before {
+.header_pro nav ul li a:hover {
+    color: var(--orange);
+}
+
+.header_pro nav ul li a::before {
     background-color: var(--orange);
 }
-
-div.header-membre nav ul li a:hover::before {
-    width: 90%;
-}
-
 @media (max-width: 431px) {
     div.header-membre header.header-pc {
         display: none;
@@ -269,7 +188,7 @@ nav ul li a.active {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    border-color: var(--vert-fonce);
+    border-color: var(--orange);
     margin-top: 3vh;
     margin-left: 3vw;
 }
