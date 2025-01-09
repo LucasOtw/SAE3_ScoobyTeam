@@ -1001,24 +1001,6 @@ if (isset($json['results'][0])) {
                                 <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
                             </div>
                         </div>
-
-                        <?php
-                            // Vérifier s'il y a des réponses à cet avis
-                            if (isset($avis["reponses"]) && is_array($avis["reponses"])) {
-                                // Afficher chaque réponse sous l'avis avec un peu d'indentation
-                                foreach ($avis["reponses"] as $reponse) {
-                                    // La réponse peut être traitée de manière similaire à l'avis
-                                    ?>
-                                    <div class="avis-reponse" style="margin-left: 20px; padding-left: 10px; border-left: 2px solid #ccc;">
-                                        <h4 class="avis"><?php echo $reponse["note"] . ".0 " . $appreciation; ?> | 
-                                            <span class="nom_avis"><?php echo $reponse["prenom"]; ?> <?php echo $reponse["nom"]; ?></span>
-                                        </h4>
-                                        <p class="avis"><?php echo $reponse["txt_avis"]; ?></p>
-                                    </div>
-                                    <?php
-                                }
-                            }
-                            ?>
                         <?php
                     }
                         ?>            
