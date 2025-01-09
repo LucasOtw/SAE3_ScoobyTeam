@@ -51,67 +51,71 @@ echo "</pre>";*/
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       if(isset($_POST['repondreAvis'])){
-         echo "Tu es un sorcier, Quentin.";
-      }
-     if(isset($_POST['publier'])){
-        if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
-            $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
-            $note = isset($_POST['note']) ? $_POST['note'] : '';
-   
-            $compte = $_SESSION['membre'];
-            $code_compte = $compte['code_compte'];           
-            $code_offre = $_SESSION['detail_offre']['code_offre'];
-   
-            $erreurs = [];
-            $erreur_a_afficher = [];
-            if (empty($texte_avis)) {
-                $erreurs[] = "Vous devez remplir ce champ";
-                $erreur_a_afficher[] = "avis-vide";
-            } elseif (strlen($texte_avis)>500) {
-                $erreurs[] = "L'avis ne doit pas dépasser 500 caractères.";
-                $erreur_a_afficher[] = "avis-trop-long";
-            }
-   
-           if (empty($note) || !is_numeric($note) || $note < 1 || $note > 5) {
-                $erreurs[] = "Veuillez sélectionner une note valide."; 
-                $erreur_a_afficher[] = "pas-de-note";
-            }
-   
-           if (empty($erreurs)) {
-             $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
-   
-             $creerAvis->bindParam(':texte_avis', $texte_avis);
-             $creerAvis->bindParam(':note', $note, PDO::PARAM_INT);
-             $creerAvis->bindParam(':code_offre', $code_offre);
-             $creerAvis->bindParam(':code_compte', $code_compte);
-             $creerAvis->execute();
-   
-             header('location: detail_offre.php');
-             exit;
-   
+         $avis = unserialize($_POST['unAvis']);
+         echo "<pre>";
+         var_dump($avis);
+         echo "</pre>";
+      } else {
+         if(isset($_POST['publier'])){
+            if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
+               $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
+               $note = isset($_POST['note']) ? $_POST['note'] : '';
+            
+               $compte = $_SESSION['membre'];
+               $code_compte = $compte['code_compte'];           
+               $code_offre = $_SESSION['detail_offre']['code_offre'];
+            
+               $erreurs = [];
+               $erreur_a_afficher = [];
+               if (empty($texte_avis)) {
+                   $erreurs[] = "Vous devez remplir ce champ";
+                   $erreur_a_afficher[] = "avis-vide";
+               } elseif (strlen($texte_avis)>500) {
+                   $erreurs[] = "L'avis ne doit pas dépasser 500 caractères.";
+                   $erreur_a_afficher[] = "avis-trop-long";
+               }
+            
+              if (empty($note) || !is_numeric($note) || $note < 1 || $note > 5) {
+                   $erreurs[] = "Veuillez sélectionner une note valide."; 
+                   $erreur_a_afficher[] = "pas-de-note";
+               }
+            
+              if (empty($erreurs)) {
+                $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
+            
+                $creerAvis->bindParam(':texte_avis', $texte_avis);
+                $creerAvis->bindParam(':note', $note, PDO::PARAM_INT);
+                $creerAvis->bindParam(':code_offre', $code_offre);
+                $creerAvis->bindParam(':code_compte', $code_compte);
+                $creerAvis->execute();
+            
+                header('location: detail_offre.php');
+                exit;
+            
+               } else {
+                  /*
+                 foreach($erreurs as $erreur){
+                       echo $erreur;
+                 }*/
+            
+                  foreach($erreur_a_afficher as $classe_erreur){
+                     // echo $classe_erreur;
+                       ?> 
+            
+                       <style>
+                           main.main_poster_avis .<?php echo $classe_erreur ?> {
+                              display:block;
+                           }         
+                          ?>
+                       </style> 
+                       <?php
+                 }
+               }
             } else {
-               /*
-              foreach($erreurs as $erreur){
-                    echo $erreur;
-              }*/
-   
-               foreach($erreur_a_afficher as $classe_erreur){
-                  // echo $classe_erreur;
-                    ?> 
-   
-                    <style>
-                        main.main_poster_avis .<?php echo $classe_erreur ?> {
-                           display:block;
-                        }         
-                       ?>
-                    </style> 
-                    <?php
-              }
+              echo "Vous ne pouvez pas poster d'avis sans notation ou de message !";
             }
-        } else {
-           echo "Vous ne pouvez pas poster d'avis sans notation ou de message !";
-        }
-     }
+         }
+      }
 }
 
 
