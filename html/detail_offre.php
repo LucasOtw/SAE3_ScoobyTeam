@@ -86,8 +86,8 @@ if(isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])){
 
     if (!empty($details_offre)) { // si l'offre existe
 
-        try {
-            if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
+        if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
+            try {
                 $consulter = $dbh->prepare('
                     INSERT INTO tripenarvor._consulte (consulter, date_consultation, code_compte, code_offre)
                     VALUES (TRUE, NOW(), :code_compte, :code_offre);
@@ -97,14 +97,21 @@ if(isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])){
                     ':code_compte' => $_SESSION["membre"]["code_compte"], 
                     ':code_offre' => $code_offre
                 ]);
-            } else {
-                // Code à exécuter si la session "membre" n'est pas définie ou vide
+            } catch (PDOException $e) {
+                $consulter = $dbh->prepare('
+                    update tripenarvor._consulte set date_consultation = NOW() 
+                        where :code_offre = :code_offre and code_compte = :code_compte;
+                ');
+                
+                $consulter->execute([
+                    ':code_compte' => $_SESSION["membre"]["code_compte"], 
+                    ':code_offre' => $code_offre
+                ]);
+                // Ici, vous pouvez enregistrer l'erreur dans un fichier log ou en base de données
+                error_log("Erreur lors de l'insertion dans _consulte: " . $e->getMessage());
+                // Ne rien faire d'autre pour éviter l'affichage d'erreurs
+                // Vous pouvez aussi afficher un message générique à l'utilisateur si nécessaire
             }
-        } catch (PDOException $e) {
-            // Ici, vous pouvez enregistrer l'erreur dans un fichier log ou en base de données
-            error_log("Erreur lors de l'insertion dans _consulte: " . $e->getMessage());
-            // Ne rien faire d'autre pour éviter l'affichage d'erreurs
-            // Vous pouvez aussi afficher un message générique à l'utilisateur si nécessaire
         }
 
         
