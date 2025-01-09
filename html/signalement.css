@@ -137,6 +137,9 @@ div.header-membre nav ul li a:hover::before {
     div.header-membre header.header-tel {
         display: block;
     }
+    .container{
+        margin-left: 12vw;
+}
 }
 
 
@@ -300,10 +303,6 @@ button[type="submit"] {
     resize: none;
     background-color: #f3f8ff;
     box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
-}
-
-.container{
-        margin-left: 12vw;
 }
 
 
