@@ -1,6 +1,6 @@
 <?php
 // Inclure PHPMailer
-require 'phpmailer/PHPMailerAutoload.php';
+require '../phpmailer/src/PHPMailer.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
