@@ -210,7 +210,8 @@ header.header-tel {
     font-weight: bold;
     margin-top: 40px;
     margin-bottom: 20px;
-    color: #555;
+    color: black;
+    margin-left: 13.5vw;
 }
 
 .faq-list {
@@ -241,7 +242,7 @@ header.header-tel {
 
 .faq-arrow {
     font-size: 18px;
-    color: #007BFF;
+    color: var(--vert-fonce);
 }
 nav ul li a::before {
     content: "";
