@@ -15,25 +15,6 @@ $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
 // Créer une instance PDO avec les bons paramètres
 $dbh = new PDO($dsn, $username, $password);
 
-/*$stmt = $dbh->prepare('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = :code_offre;');
-$stmt->execute([':code_offre' => $details_offre["code_offre"]]);
-$image_offre = $stmt->fetch(PDO::FETCH_NUM);
-*/
-
-echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';
-
-/*
-echo "<pre>";
-var_dump($details_offre);
-echo "</pre>";
-
-echo "<pre>";
-var_dump($compte);
-echo "</pre>";*/
-
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       if(isset($_POST['repondreAvis'])){
          $avis = unserialize($_POST['unAvis']);
@@ -58,11 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                    $erreur_a_afficher[] = "avis-trop-long";
                }
             
-              if (empty($note) || !is_numeric($note) || $note < 1 || $note > 5) {
-                   $erreurs[] = "Veuillez sélectionner une note valide."; 
-                   $erreur_a_afficher[] = "pas-de-note";
-               }
-            
               if (empty($erreurs)) {
                 $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
             
@@ -71,6 +47,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $creerAvis->bindParam(':code_offre', $code_offre);
                 $creerAvis->bindParam(':code_compte', $code_compte);
                 $creerAvis->execute();
+
+                $code_reponse = $dbh->prepare(select currval('tripenarvor._avis_code_avis_seq');
+                $code_reponse->execute();
+                 
+                $creerReponse = $dbh->prepare("INSERT INTO tripenarvor._reponse (code_avis, code_reponse) values (:code_avis, :code_reponse)");
+                $creerReponse->bindParam(':code_avis', $avis['code_avis']);
+                $creerReponse->bindParam(':code_reponse', $code_reponse);
+                $creerReponse->execute();
             
                 header('location: detail_offre.php');
                 exit;
@@ -102,10 +86,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $avis = $_SESSION['avis'];
+/*
 echo "<pre>";
 var_dump($avis);
 echo "</pre>";
-            
+            */
 ?>
 <!DOCTYPE html>
 <html lang="en">
