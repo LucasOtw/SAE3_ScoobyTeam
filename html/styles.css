@@ -4858,6 +4858,7 @@ nav.nav-bar-tel {
     font-weight: bold;
     /* Rendre le texte plus visible */
     text-decoration: none;
+    margin-bottom: 20px;
 }
 
 .main_mes_offres a.button-text {
