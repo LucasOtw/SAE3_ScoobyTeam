@@ -711,6 +711,14 @@
             $tout_les_avis->execute();
             $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
 
+            if ($tout_les_avis == null)
+            {
+                $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis WHERE code_offre = :code_offre');
+                $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+                $tout_les_avis->execute();
+                $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
+            }
+
             $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre');
             $moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
             $moyenne_note->execute(); 
@@ -772,6 +780,13 @@
                             default:
                                 break;
                         }
+
+                        if (!isset($avis["prenom"]) && !isset($avis["nom"]))
+                        {
+                            $avis["prenom"] = "Utilisateur";
+                            $avis["nom"] = "supprimé";
+                        }
+                            
                         ?>
                         <div class="avis">
                             <div class="avis-content">
