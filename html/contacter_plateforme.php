@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">

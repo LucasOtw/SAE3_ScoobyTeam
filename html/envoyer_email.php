@@ -18,14 +18,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com'; // Serveur SMTP de Gmail
         $mail->SMTPAuth = true;
-        $mail->Username = 'ton_email@gmail.com'; // Ton adresse Gmail
-        $mail->Password = 'ton_mot_de_passe'; // Ton mot de passe Gmail (ou mot de passe d'application)
+        $mail->Username = 'harry.rajic56@gmail.com'; // Ton adresse Gmail
+        $mail->Password = 'ORD22IANJc?'; // Ton mot de passe Gmail (ou mot de passe d'application)
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
         // Définir l'expéditeur et le destinataire
         $mail->setFrom('ton_email@gmail.com', 'Nom du site');
-        $mail->addAddress('adresse_email_destinataire@example.com', 'Nom du destinataire');
+        $mail->addAddress('harry.rajic56@gmail.com', 'La Scooby-team');
 
         // Définir le sujet et le corps du message
         $mail->isHTML(false); // Si tu veux envoyer un e-mail en texte brut
