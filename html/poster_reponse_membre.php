@@ -12,7 +12,7 @@ if (isset($_SERVER['HTTP_REFERER'])) {
     // Vérifie que la page précédente est "detail_offre.php"
     if ($_SERVER['HTTP_REFERER'] === "https://scooby-team.ventsdouest.dev/detail_offre.php" && !isset($_POST['publier'])) {
         // Action si les conditions sont respectées
-        $details_offre = $_SESSION['detail_offre'];
+        // $details_offre = $_SESSION['detail_offre'];
         $avis = $_SESSION['avis'];
     }
 }
@@ -25,19 +25,19 @@ $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
 // Créer une instance PDO avec les bons paramètres
 $dbh = new PDO($dsn, $username, $password);
 
-$stmt = $dbh->prepare('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = :code_offre;');
+/*$stmt = $dbh->prepare('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = :code_offre;');
 $stmt->execute([':code_offre' => $details_offre["code_offre"]]);
 $image_offre = $stmt->fetch(PDO::FETCH_NUM);
-
+*/
 
 echo "<pre>";
    var_dump($avis);
 echo "</pre>";
-
+/*
 echo "<pre>";
 var_dump($details_offre);
 echo "</pre>";
-/*
+
 echo "<pre>";
 var_dump($compte);
 echo "</pre>";*/
