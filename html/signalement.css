@@ -291,7 +291,7 @@ button[type="submit"] {
     margin-left: 3vw;
 }
 
-main.main_poster_avis .poster_un_avis_textarea {
+.signaler_un_avis_textarea {
     width: 100%;
     height: 10vh;
     padding: 15px;

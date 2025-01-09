@@ -149,7 +149,7 @@ try {
 
         </div>
         <h2 class="titre_signalement_3">Description (facultatif)</h2>
-        <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
+        <textarea placeholder="Écrivez votre avis ici..." class="signaler_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
                    <p class="message-erreur avis-vide">Vous devez remplir ce champ</p>
                    <p class="message-erreur avis-trop-long">L'avis ne doit pas dépasser 500 caractères.</p> 
         <form method="POST" action="signalement.php">
