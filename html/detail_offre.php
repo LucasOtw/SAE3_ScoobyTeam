@@ -742,9 +742,7 @@ if (isset($json['results'][0])) {
                                 </div>
                             </h3>
                             <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
-                        </div>
-                    </div>
-                    <?php
+                            <?php
 
                     $reponses = $dbh->prepare('select * from tripenarvor._reponse 
                                             INNER JOIN tripenarvor._avis as base ON base.code_avis = tripenarvor._reponse.code_avis
@@ -781,6 +779,8 @@ if (isset($json['results'][0])) {
                             </div>
                         </div>
                     <?php } ?>
+                        </div>
+                    </div>
                 <?php
                 }
                 ?>
