@@ -452,7 +452,7 @@ footer {
 }
 
 .toute_les_offres_main .titre-nouveautes, .toute_les_offres_main .titre-vu-recemment{
-    margin-top: 0;
+    margin-top: 12vh;
     color: black;
     margin-left: 8vw;
 }
