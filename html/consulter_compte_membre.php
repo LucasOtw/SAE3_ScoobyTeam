@@ -141,6 +141,8 @@ if (isset($_POST['modif_infos'])){
    } else {
        echo "Aucune modification détectée.";
    }
+    header('location: consulter_compte_membre.php');
+    exit;
 }
 
 // GESTION DE LA PHOTO
