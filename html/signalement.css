@@ -302,7 +302,7 @@ button[type="submit"] {
     box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
 }
 
-@media screen and (max-width: 422px) {
+@media screen and (max-width: 429px) {
     .avis {
         background-color: #fbfbfb;
         padding: 20px;
