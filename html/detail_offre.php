@@ -722,7 +722,13 @@ function getResponses($dbh, $code_avis) {
 }
 
 // Fonction pour afficher les avis et les réponses récursivement
+// Fonction pour afficher les avis et les réponses récursivement
 function afficherAvis($avis, $niveau = 0) {
+    // Vérification du prénom et nom
+    $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur supprimé";
+    $nom = !empty($avis['nom']) ? $avis['nom'] : "supprimé";
+    
+    // Calcul du margin-left pour indenter les réponses
     $marge = $niveau * 5; // Indentation pour les réponses
     ?>
     <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
@@ -730,11 +736,13 @@ function afficherAvis($avis, $niveau = 0) {
             <h3 class="avis">
                 <?php if ($niveau > 0): ?>
                     <div class="note_prenom">
-                        <span class="nom_avis"><?php echo htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']); ?></span>
+                        Réponse à <?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?> |
+                        <span class="nom_avis"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
                     </div>
                 <?php else: ?>
                     <div class="note_prenom">
-                        <?php echo htmlspecialchars($avis['note']) . '.0'; ?> | <span class="nom_avis"><?php echo htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']); ?></span>
+                        <?php echo htmlspecialchars($avis['note']) . '.0'; ?> | 
+                        <span class="nom_avis"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
                     </div>
                 <?php endif; ?>
                 <div class="signalement_repondre">
