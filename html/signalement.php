@@ -5,6 +5,8 @@ $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";
 $password = "philly-Congo-bry4nt";
 
+var_dump($_POST);
+
 try {
     $dbh = new PDO($dsn, $username, $password);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -147,7 +149,7 @@ try {
 
         </div>
         <h2 class="titre_signalement_3">Description (facultatif)</h2>
-        <form method="POST" action="signalement_2.html">
+        <form method="POST" action="signalement.php">
     <input type="hidden" name="id_avis" value="<?php echo $idAvis; ?>">
     <button type="submit" onclick="showConfirmation(event)">Confirmer le signalement</button>
 </form>
