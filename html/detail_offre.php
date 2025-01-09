@@ -762,13 +762,17 @@ function afficherAvis($avis, $niveau = 0) {
 }
 
 // Récupérer tous les avis principaux (sans réponses déjà existantes)
-$tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis
+$tout_les_avis = $dbh->prepare('
+    SELECT * FROM tripenarvor._avis
     LEFT JOIN tripenarvor.membre ON tripenarvor._avis.code_compte = tripenarvor.membre.code_compte
-    WHERE code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse)
-    OR tripenarvor.membre.code_compte IS NULL) AND code_offre = :code_offre');
+    WHERE (code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse)
+    OR tripenarvor.membre.code_compte IS NULL)
+    AND code_offre = :code_offre
+');
 $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
 $tout_les_avis->execute();
 $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
+
 
 // Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
 foreach ($tout_les_avis as &$avis) {
