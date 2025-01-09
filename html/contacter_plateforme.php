@@ -57,16 +57,12 @@ if(!isset($_SESSION['membre'])){
             <h1 class="poster_un_avis_titre">Récapitulatif</h1>
             <div class="poster_un_avis_recap_card">
                 <div class="poster_un_avis_info">
-                    <h2 class="poster_un_avis_nom"><?php echo $details_offre["titre_offre"]; ?><!-- - <?php // echo $details_offre["titre_offre"]; ?>--></h2>
-                    <p class="poster_un_avis_location">📍 <?php echo $details_offre["ville"]; ?>, <?php echo $details_offre["code_postal"]; ?></p>
 <!--                     <button class="poster_un_avis_btn_offre">Voir l'offre →</button> -->
                     <form id="form-voir-offre" action="detail_offre.php" method="POST">
-                       <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
                        <input id="btn-voir-offre" class="poster_un_avis_btn_offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
                    </form>
                 </div>
                 <div class="poster_un_avis_images">
-                         <img src="<?php echo $image_offre[0]; ?>" alt=""  class="poster_un_avis_image"> 
 <!--                     <img src="images/tiallannec1.png" alt="Image 1" class="poster_un_avis_image"> -->
                 </div>
             </div>
