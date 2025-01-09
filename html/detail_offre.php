@@ -722,12 +722,22 @@ function afficherAvis($avis, $niveau = 0) {
             <h3 class="avis">
                 <?php if ($niveau > 0): ?>
                     <div class="note_prenom">
-                        Réponse à <?php echo htmlspecialchars($avis['prenom_base']) . ' ' . htmlspecialchars($avis['nom_base']); ?> |
-                        <span class="nom_avis"><?php echo htmlspecialchars($avis['prenom_reponse']) . ' ' . htmlspecialchars($avis['nom_reponse']); ?></span>
+                        Réponse à <?php 
+                            // Vérifier si prenom_base et nom_base existent avant de les afficher
+                            echo isset($avis['prenom_base']) ? htmlspecialchars($avis['prenom_base']) : 'Utilisateur'; 
+                            echo ' ' . (isset($avis['nom_base']) ? htmlspecialchars($avis['nom_base']) : 'supprimé'); 
+                        ?> |
+                        <span class="nom_avis"><?php 
+                            echo isset($avis['prenom_reponse']) ? htmlspecialchars($avis['prenom_reponse']) : 'Utilisateur';
+                            echo ' ' . (isset($avis['nom_reponse']) ? htmlspecialchars($avis['nom_reponse']) : 'supprimé');
+                        ?></span>
                     </div>
                 <?php else: ?>
                     <div class="note_prenom">
-                        <?php echo htmlspecialchars($avis['note']) . '.0'; ?> | <span class="nom_avis"><?php echo htmlspecialchars($avis['prenom_base']) . ' ' . htmlspecialchars($avis['nom_base']); ?></span>
+                        <?php echo htmlspecialchars($avis['note']) . '.0'; ?> | <span class="nom_avis"><?php 
+                            echo isset($avis['prenom_base']) ? htmlspecialchars($avis['prenom_base']) : 'Utilisateur';
+                            echo ' ' . (isset($avis['nom_base']) ? htmlspecialchars($avis['nom_base']) : 'supprimé'); 
+                        ?></span>
                     </div>
                 <?php endif; ?>
                 <div class="signalement_repondre">
@@ -753,43 +763,6 @@ function afficherAvis($avis, $niveau = 0) {
     }
 }
 
-// Récupérer tous les avis principaux
-$tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre AND code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse)');
-$tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-$tout_les_avis->execute();
-$tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
-
-// Récupérer les réponses imbriquées pour chaque avis principal
-foreach ($tout_les_avis as &$avis) {
-    // Ajouter les informations de l'auteur de l'avis principal à chaque réponse
-    $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
-}
-
-// Affichage des avis et de leurs réponses (y compris les sous-réponses)
-?>
-
-<div class="avis-widget">
-    <div class="avis-header">
-        <h1 class="avis">
-            <?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5"); ?> 
-            <span class="avis-score"> 
-                <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?>
-            </span>
-        </h1>
-        <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
-    </div>
-    <div class="avis-list">
-        <?php
-        foreach ($tout_les_avis as $avis) {
-            afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
-        }
-        ?>
-    </div>
-</div>
-
-<?php
-// Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
-?>
 
 
 
