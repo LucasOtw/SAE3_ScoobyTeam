@@ -31,8 +31,7 @@
                 <a href="voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
             </div>
         </header>
-        <img src="images/faq.png" alt="Image pour la page des questions/aides">
-
+        <img src="images/faq.png" alt="Image pour la page des questions/aides" class="image-aide">
 </body>
 </html>
 
