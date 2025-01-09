@@ -42,13 +42,13 @@
                 <div class="poster_un_avis_section">
                     <h2 class="poster_un_avis_section_titre">Vos informations</h2>
                     <label for="nom">Nom :</label>
-                    <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
-
+                    <input type="text" id="nom" name="nom" class="input-field" placeholder="Votre nom" required>
+                
                     <label for="prenom">Prénom :</label>
-                    <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
-
+                    <input type="text" id="prenom" name="prenom" class="input-field" placeholder="Votre prénom" required>
+                
                     <label for="theme">Thème de votre question :</label>
-                    <select id="theme" name="theme" required>
+                    <select id="theme" name="theme" class="input-field" required>
                         <option value="">--Choisir un thème--</option>
                         <option value="general">Général</option>
                         <option value="compte">Mon Compte</option>
@@ -56,6 +56,7 @@
                         <option value="partenaires">Partenaires</option>
                     </select>
                 </div>
+
 
                 <div class="poster_un_avis_section">
                     <h2 class="poster_un_avis_section_titre">Votre question</h2>
