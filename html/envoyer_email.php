@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Définir l'expéditeur et le destinataire
         $mail->setFrom('ton_email@gmail.com', 'Nom du site');
-        $mail->addAddress('adresse_email_destinataire@example.com', 'Nom du destinataire');
+        $mail->addAddress('harry.rajic56@gmail.com', 'La Scooby-team');
 
         // Définir le sujet et le corps du message
         $mail->isHTML(false); // Si tu veux envoyer un e-mail en texte brut
