@@ -688,14 +688,14 @@ if (isset($json['results'][0])) {
         }
 // Fonction pour récupérer toutes les réponses, y compris les réponses aux réponses (récursivité)
 function getResponses($dbh, $code_avis) {
-    // Correction de la requête SQL avec des alias appropriés
+    // Correction de la requête SQL avec la table _membre pour les prénoms et noms
     $stmt = $dbh->prepare('
         SELECT 
             reponse.*,
             membre_reponse.prenom AS prenom_reponse,
             membre_reponse.nom AS nom_reponse,
-            base.prenom AS prenom_base,
-            base.nom AS nom_base
+            membre_base.prenom AS prenom_base,
+            membre_base.nom AS nom_base
         FROM tripenarvor._reponse
         INNER JOIN tripenarvor._avis AS reponse ON reponse.code_avis = tripenarvor._reponse.code_reponse
         INNER JOIN tripenarvor._membre AS membre_reponse ON membre_reponse.code_compte = reponse.code_compte
@@ -712,6 +712,7 @@ function getResponses($dbh, $code_avis) {
     }
     return $reponses;
 }
+
 
 
 // Fonction pour afficher les avis et les réponses récursivement
