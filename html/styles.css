@@ -2777,7 +2777,8 @@ input[type="password"]::placeholder {
 
 
 .main_consulter_compte_membre button.submit-btn2,
-.main_consulter_compte_membre button.submit-btn3 {
+.main_consulter_compte_membre button.submit-btn3, 
+.main_consulter_compte_membre .btn-dwl-data{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2813,7 +2814,8 @@ input[type="password"]::placeholder {
     transition: transform 0.2s ease; /* Animation au survol */
 }
 
-.main_consulter_compte_membre button.submit-btn2:hover{
+.main_consulter_compte_membre button.submit-btn2:hover, 
+.main_consulter_compte_membre .btn-dwl-data {
     transform: translateY(-2px); /* Effet d'élévation au survol */
 
 }
