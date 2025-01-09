@@ -130,7 +130,6 @@ if(!isset($_SESSION['pro'])){
         }
         
         .facture-items th, .facture-items td {
-            text-align: left;
             padding: 10px;
             border: 1px solid #ddd;
         }
@@ -143,6 +142,33 @@ if(!isset($_SESSION['pro'])){
         .facture-items td {
             background-color: #f9f9f9;
         }
+
+
+        /* Table des totaux */
+        .facture-total {
+            width: var(--table-width, 30%); /* Par défaut 100%, mais modifiable */
+            height: var(--table-height, auto); /* Par défaut auto, mais modifiable */
+            border-collapse: collapse;
+            margin-bottom: 3em;
+            margin-top: 2em;
+        }
+        
+        .facture-total th, .facture-total td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        .facture-total th {
+            background-color: var(--orange);
+            color: white;
+        }
+        
+        .facture-total td {
+            background-color: #f9f9f9;
+        }
+
+
+     
         
         /* Footer de la facture */
         .facture-footer {
@@ -335,18 +361,12 @@ if(!isset($_SESSION['pro'])){
           color: #333;
       }
 
-
-
-
-
-
-
-
-
-
-
-     
-
+     .a_droite {
+         text-align: right;
+     }
+     .au_milieu{
+         text-align:center;
+     }
     </style>
 </head>
 <body>
@@ -488,10 +508,10 @@ if(!isset($_SESSION['pro'])){
              </thead>
              <tbody>
                  <tr>
-                     <td><?php echo $nom_type ?></td>
-                     <td><?php echo number_format($prix_par_jour, 2, ',', ' ')?>€</td>
-                     <td><?php echo date('d/m/Y', strtotime($date_publication)); ?></td>
-                     <td><?php echo number_format($montant_ht,2, ',', ' ') ?>€</td>
+                     <td class="au_milieu"><?php echo $nom_type ?></td>
+                     <td class="a_droite"><?php echo number_format($prix_par_jour, 2, ',', ' ')?>€</td>
+                     <td class="au_milieu"><?php echo date('d/m/Y', strtotime($date_publication)); ?></td>
+                     <td class="a_droite"><?php echo number_format($montant_ht,2, ',', ' ') ?>€</td>
                  </tr>
              </tbody>
          </table>
@@ -508,27 +528,41 @@ if(!isset($_SESSION['pro'])){
             </thead>
             <tbody>
                 <tr>
-                    <td>En relief</td>
-                    <td><?php if ($en_relief !== null ) { echo "8,34€"; } else { echo "Pas sélectionné"; }?></td>
-                    <td><?php if ($en_relief !== null ) { echo "$nb_semaines_relief"; } else { echo "0"; }?></td>
-                    <td><?php if ($en_relief !== null ) { echo number_format(8.34 * $nb_semaines_relief, 2, ',', ' ') . "€"; } else { echo "0,00€"; }?></td>
+                    <td class="au_milieu">En relief</td>
+                    <td class="au_milieu"><?php if ($en_relief !== null ) { echo "8,34€"; } else { echo "Pas sélectionné"; }?></td>
+                    <td class="a_droite"><?php if ($en_relief !== null ) { echo "$nb_semaines_relief"; } else { echo "0"; }?></td>
+                    <td class="a_droite"><?php if ($en_relief !== null ) { echo number_format(8.34 * $nb_semaines_relief, 2, ',', ' ') . "€"; } else { echo "0,00€"; }?></td>
                 </tr>
             
                 <tr>
-                    <td>À la Une</td>
-                    <td><?php if ($a_la_une !== null ) { echo "16,68€"; } else { echo "Pas sélectionné"; }?></td>
-                    <td><?php if ($a_la_une !== null ) { echo "$nb_semaines_une"; } else { echo "0"; }?></td>
-                    <td><?php if ($a_la_une !== null ) { echo number_format(16.86 * $nb_semaines_une, 2, ',', ' ') . "€"; } else { echo "0,00€"; }?></td>
+                    <td class="au_milieu">À la Une</td>
+                    <td class="a_droite"> <?php if ($a_la_une !== null ) { echo "16,68€"; } else { echo "Pas sélectionné"; }?></td>
+                    <td class="a_droite"> <?php if ($a_la_une !== null ) { echo "$nb_semaines_une"; } else { echo "0"; }?></td>
+                    <td class="a_droite"> <?php if ($a_la_une !== null ) { echo number_format(16.86 * $nb_semaines_une, 2, ',', ' ') . "€"; } else { echo "0,00€"; }?></td>
                 </tr>
             </tbody>
         </table>
       <?php $montant_ht_total = $montant_ht + 16.86 * $nb_semaines_une + 8.34 * $nb_semaines_relief;?>
         <div class="facture-footer">
-            <div class="info-facture">
-                <p>Total HT: <?php echo number_format($montant_ht_total, 2, ',', ' ') ; ?>€</p>
-                <p>TVA 20%: <?php echo number_format($montant_ht_total*0.20, 2, ',', ' '); ?>€</p>
-                <p>Total TTC: <?php echo number_format($montant_ht_total*1.20, 2, ',', ' '); ?>€</p>
-            </div>
+            <table class="facture-total">
+                <tr>
+                   <th>Description</th>
+                   <th>Montant</th>
+               </tr>
+               <tr>
+                   <td>Total HT</td>
+                   <td class="a_droite"><?php echo number_format($montant_ht_total, 2, ',', ' '); ?>€</td>
+               </tr>
+               <tr>
+                   <td>TVA (20%)</td>
+                   <td class="a_droite"><?php echo number_format($montant_ht_total * 0.20, 2, ',', ' '); ?>€</td>
+               </tr>
+               <tr>
+                   <td>Total TTC</td>
+                   <td class="a_droite"><?php echo number_format($montant_ht_total * 1.20, 2, ',', ' '); ?>€</td>
+               </tr>
+            </table>
+
             <div class="payment-info">
                 <p><strong>Mode de paiement :</strong> Virement bancaire</p>
                 <p><strong>IBAN :</strong> <?php echo $iban?></p>

@@ -622,7 +622,13 @@ if (isset($json['results'][0])) {
             $tout_les_avis->execute();
             $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
 
-            var_dump($tout_les_avis);
+            if ($tout_les_avis == null)
+            {
+                $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis WHERE code_offre = :code_offre');
+                $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+                $tout_les_avis->execute();
+                $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
+            }
 
             $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre');
             $moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
@@ -692,15 +698,13 @@ if (isset($json['results'][0])) {
         <div class="avis">
             <div class="avis-content">
                 <h3 class="avis">
-                    <?php echo $avis["note"] . ".0 $appreciation "; ?> 
-                    | <span class="nom_avis"><?php echo $avis["prenom"] . " " . $avis["nom"]; ?></span>
+                    
+                    <?php echo $avis["note"] . ".0 $appreciation "; ?> | <span class="nom_avis"><?php echo $avis["prenom"] . " " . $avis["nom"]; ?></span>
+                
                     <span class="signalement">
-                    <a href="signalement.php?id_avis=<?php echo isset($avis['code_avis']) ? htmlspecialchars($avis['code_avis']) : 'invalide'; ?>" title="Signaler cet avis" style="
-    margin-left: 63vw; text-decoration: none">
-    🚩
-</a>
-
+                        <a href="signalement.php?id_avis=<?php echo isset($avis['code_avis']) ? htmlspecialchars($avis['code_avis']) : 'invalide'; ?>" title="Signaler cet avis" style="margin-left: 63vw; text-decoration: none">🚩</a>
                     </span>
+                    
                 </h3>
                 <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
             </div>
@@ -948,6 +952,13 @@ if (isset($json['results'][0])) {
                             default:
                                 break;
                         }
+
+                        if (!isset($avis["prenom"]) && !isset($avis["nom"]))
+                        {
+                            $avis["prenom"] = "Utilisateur";
+                            $avis["nom"] = "supprimé";
+                        }
+                            
                         ?>
                         <div class="avis">
 
