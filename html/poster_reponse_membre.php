@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
             
                 $creerAvis->bindParam(':texte_avis', $texte_avis);
-                $creerAvis->bindParam(':note', $note, PDO::PARAM_INT);
+                $creerAvis->bindParam(':note', 0, PDO::PARAM_INT);
                 $creerAvis->bindParam(':code_offre', $code_offre);
                 $creerAvis->bindParam(':code_compte', $code_compte);
                 $creerAvis->execute();
