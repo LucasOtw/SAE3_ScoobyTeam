@@ -1287,6 +1287,9 @@ body.menu-open #overlay {
 }
 
 @media (max-width: 429px) {
+    #closePopup {
+        margin-top : -3em;
+    }
     .customImage{
         margin-left: 10px;
         height: 50px;
