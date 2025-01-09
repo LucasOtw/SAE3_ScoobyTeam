@@ -101,40 +101,20 @@ try {
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 </head>
 <body>
-<div class="header-membre">
-        <header class="header-pc">
-            <div class="logo-pc" style="z-index: 1">
-                <a href="voir_offres.php">
-                    <img src="images/logoBlanc.png" alt="PACT Logo">
-                </a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="voir_offres.php" class="active">Accueil</a></li>
-                    <li><a href="connexion_pro.php">Publier</a></li>
-                    <?php
-                        if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
-                           ?>
-                           <li>
-                               <a href="consulter_compte_membre.php"><?php echo "Mon Compte"; ?></a>
-                           </li>
-                            <?php
-                        } else {
-                            ?>
-                           <li>
-                               <a href="connexion_membre.php">Se connecter</a>
-                           </li>
-                           <?php
-                        }
-                    ?>
-                </ul>
-            </nav>
-        </header>
-        <header class="header-tel">
-            <div class="logo-tel">
-                <img src="images/LogoCouleur.png" alt="PACT Logo">
-            </div>
-        </header>
+<header class="header-pc header_pro">
+        <div class="logo">
+           <a href="mes_offres.php">
+            <img src="images/logo_blanc_pro.png" alt="PACT Logo">
+         </a>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="mes_offres.php">Accueil</a></li>
+                <li><a href="creation_offre.php">Publier</a></li>
+                <li><a href="consulter_compte_pro.php" class="active">Mon Compte</a></li>
+            </ul>
+        </nav>
+    </header>
     </div>
     <div class="container">
         <h2 class="titre_signalement_1">Signaler un avis</h2>
