@@ -330,5 +330,18 @@ button[type="submit"] {
         margin-top: 22vh;
         margin-left: 21vw;
     }
+
+    .signaler_un_avis_textarea {
+        width: 95%;
+        height: 18vh;
+        padding: 15px;
+        margin: 4vh 36px;
+        border: 1px solid #f3f8ff;
+        border-radius: 29px;
+        resize: none;
+        background-color: #f3f8ff;
+        box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
+    }
+    
     
 }
