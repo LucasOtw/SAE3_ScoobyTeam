@@ -7,17 +7,6 @@ if(!isset($_SESSION['membre'])){
    exit;
 }
 
-
-
-$avis = $_SESSION['avis'] ?? null;
-if ($avis === null) {
-    echo "Aucun avis trouvé dans la session.";
-    // Optionnel : Redirection ou message à l'utilisateur
-}
-
-
-
-
 // Vérifie si le formulaire a été soumis    
 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";  // Utilisateur PostgreSQL défini dans .env
@@ -35,10 +24,6 @@ echo '<pre>';
 print_r($_SESSION);
 echo '</pre>';
 
-
-echo "<pre>";
-   var_dump($avis);
-echo "</pre>";
 /*
 echo "<pre>";
 var_dump($details_offre);
@@ -52,9 +37,7 @@ echo "</pre>";*/
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       if(isset($_POST['repondreAvis'])){
          $avis = unserialize($_POST['unAvis']);
-         echo "<pre>";
-         var_dump($avis);
-         echo "</pre>";
+         $_SESSION['avis'] = $avis;
       } else {
          if(isset($_POST['publier'])){
             if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
@@ -118,7 +101,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       }
 }
 
-
+$avis = $_SESSION['avis'];
+            
 ?>
 <!DOCTYPE html>
 <html lang="en">
