@@ -792,7 +792,7 @@
                             <div class="avis-content">
                                 <h3 class="avis"><?php echo $avis["note"] . ".0 $appreciation ";?>| <span class="nom_avis"><?php echo $avis["prenom"];?> <?php echo $avis["nom"]; ?></span>
                                     <span class="signalement">
-                                        <a href="signalement_membre.php?id_avis=<?php echo isset($avis['code_avis']) ? htmlspecialchars($avis['code_avis']) : 'invalide'; ?>" title="Signaler cet avis" style="margin-left: 63vw; text-decoration: none">🚩</a>
+                                        <a href="signalement_pro.php?id_avis=<?php echo isset($avis['code_avis']) ? htmlspecialchars($avis['code_avis']) : 'invalide'; ?>" title="Signaler cet avis" style="margin-left: 63vw; text-decoration: none">🚩</a>
                                     </span>
                                 </h3>
                                 <p class="avis"><?php echo $avis["txt_avis"]; ?></p>

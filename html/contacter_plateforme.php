@@ -34,22 +34,21 @@
         <main class="main_poster_avis">
         <div class="poster_un_avis_container">
             <div class="poster_un_avis_back_button">
-                <a href="detail_offre.php"><img src="images/Bouton_retour.png" class="back-button"></a>
                 <h1 class="titre_contacter_nous">Contactez nous !</h1>
             </div>
 
-            <<form action="poster_un_avis.php" method="POST">
+            <form action="poster_un_avis.php" method="POST">
                 <div class="poster_un_avis_section">
                     <h2 class="poster_un_avis_section_titre">Vos informations</h2>
                     <label for="nom">Nom :</label>
-                    <input type="text" id="nom" name="nom" class="nom_contacter_plateforme" placeholder="Votre nom" required>
+                    <input type="text" id="nom_contacter_plateforme" name="nom" placeholder="Votre nom" required>
                 
                     <label for="prenom">Prénom :</label>
-                    <input type="text" id="prenom" name="prenom" class="prenom_contacter_plateforme" placeholder="Votre prénom" required>
+                    <input type="text" id="prenom_contacter_plateforme" name="prenom" placeholder="Votre prénom" required>
                 
                     <label for="theme">Thème de votre question :</label>
                         <select id="theme" name="theme" class="theme_contacter_plateforme" required>
-                            <option value="">--Choisir un thème--</option>
+                            <option value="">Choisir un thème</option>
                             <option value="general">Général</option>
                             <option value="compte">Mon Compte</option>
                             <option value="offres">Offres</option>
