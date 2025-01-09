@@ -696,7 +696,7 @@ $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
         } else {
             $appreciationGenerale = "Valeur hors échelle";
         }
-<?php
+
 // Fonction pour récupérer toutes les réponses, y compris les réponses aux réponses (récursivité)
 function getResponses($dbh, $code_avis) {
     // Récupérer toutes les réponses liées à un avis
