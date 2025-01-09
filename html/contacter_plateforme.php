@@ -38,14 +38,14 @@
                 <h1 class="titre_contacter_nous">Contactez nous !</h1>
             </div>
 
-            <form action="poster_un_avis.php" method="POST">
+            <<form action="poster_un_avis.php" method="POST">
                 <div class="poster_un_avis_section">
                     <h2 class="poster_un_avis_section_titre">Vos informations</h2>
                     <label for="nom">Nom :</label>
-                    <input type="text" id="nom" name="nom" class="input-field" placeholder="Votre nom" required>
+                    <input type="text" id="nom" name="nom" class="nom_contacter_plateforme" placeholder="Votre nom" required>
                 
                     <label for="prenom">Prénom :</label>
-                    <input type="text" id="prenom" name="prenom" class="input-field" placeholder="Votre prénom" required>
+                    <input type="text" id="prenom" name="prenom" class="prenom_contacter_plateforme" placeholder="Votre prénom" required>
                 
                     <label for="theme">Thème de votre question :</label>
                     <select id="theme" name="theme" class="input-field" required>
@@ -56,6 +56,8 @@
                         <option value="partenaires">Partenaires</option>
                     </select>
                 </div>
+            </form>
+
 
 
                 <div class="poster_un_avis_section">
