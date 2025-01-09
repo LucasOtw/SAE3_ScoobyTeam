@@ -205,9 +205,6 @@ function tempsEcouleDepuisPublication($offre){
 
         <div class="titres-offres">
             <h2 class="titre-les-offres">Toutes les offres</h2>
-             <a href="voir_toutes_les_offres.php">
-                <h4 class="voir-plus">Voir toutes les offres</h4>
-             </a>
         </div>
         
         <section id="offers-list">

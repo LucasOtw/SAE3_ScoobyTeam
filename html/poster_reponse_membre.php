@@ -149,15 +149,15 @@ echo "</pre>";
             </div>
             <h1 class="repondre_avis_titre">Récapitulatif</h1>
             <div class="repondre_avis_recap">
-               <div class="repondre_avis_utilisateur">Sellier Maël</div>
-               <div class="repondre_avis_texte">Vraiment bien !</div>
+               <div class="repondre_avis_utilisateur"><?php echo $avis['nom'] . $avis['prenom'] . "    " . $avis['note']; ?><img src="images/etoile.png" alt="étoile"></div>
+               <div class="repondre_avis_texte"><?php echo $avis["txt_avis"]; ?></div>
             </div>
 
             <form action="repondre_avis.php" method="POST">
                <div class="repondre_avis_section">
                    <h2 class="repondre_avis_section_titre">Votre avis</h2>
 
-                   <textarea placeholder="Écrivez votre avis ici..." class="repondre_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
+                   <textarea placeholder="Répondez ici..." class="repondre_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
                    <p class="message-erreur avis-vide">Vous devez remplir ce champ</p>
                    <p class="message-erreur avis-trop-long">L'avis ne doit pas dépasser 500 caractères.</p>                  
                   
