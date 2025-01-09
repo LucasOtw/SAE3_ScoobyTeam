@@ -1307,8 +1307,8 @@ body.menu-open #overlay {
     /* Position finale visible */
     opacity: 1;
     /* Complètement visible */
-    left:1.4em;
     bottom: 5em;
+    margin-right:1.5em
 }
 
 #customPopup p {
