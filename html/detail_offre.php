@@ -687,7 +687,7 @@ if (isset($json['results'][0])) {
             $appreciationGenerale = "Valeur hors échelle";
         }
 
-        
+   <?php
 // Fonction pour récupérer toutes les réponses, y compris les réponses aux réponses (récursivité)
 function getResponses($dbh, $code_avis) {
     $stmt = $dbh->prepare('
@@ -720,7 +720,10 @@ function afficherAvis($avis, $niveau = 0) {
             <h3 class="avis">
                 <?php if ($niveau > 0): ?>
                     <div class="note_prenom">
-                        Réponse à <?php echo htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']); ?> |
+                        <?php
+                        // Affiche "Réponse à [prénom nom]" du membre initial pour une réponse
+                        echo "Réponse à " . htmlspecialchars($avis['prenom']) . " " . htmlspecialchars($avis['nom']); 
+                        ?> |
                         <span class="nom_avis"><?php echo htmlspecialchars($avis['prenom']) . ' ' . htmlspecialchars($avis['nom']); ?></span>
                     </div>
                 <?php else: ?>
@@ -787,6 +790,7 @@ foreach ($tout_les_avis as &$avis) {
 <?php
 // Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
 ?>
+
 
 
 
