@@ -3424,7 +3424,7 @@ nom.avis {
     background-color: #FFF;
     color: black;
     border: 1px #BDC426 solid;
-    transform: translateY(-5px);
+    transform: translateY(-2px);
 }
 
 .custom-confirm-content button:last-child {
@@ -3442,7 +3442,7 @@ nom.avis {
 .custom-confirm-content button:last-child:hover{
     background-color: var(--vert-clair);
     color: white;
-    transform: translateY(-5px);
+    transform: translateY(-2px);
 }
 
 
