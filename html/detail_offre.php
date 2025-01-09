@@ -699,7 +699,7 @@ function getResponses($dbh, $code_avis) {
     }
     return $reponses;
 }
-<?php
+
 // Fonction pour afficher les avis et les réponses récursivement
 function afficherAvis($avis, $niveau = 0) {
     // Vérification du prénom et nom
