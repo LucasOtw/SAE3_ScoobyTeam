@@ -235,8 +235,13 @@ if (isset($_POST['changePhoto'])) {
     exit;
 }
 
-// TELECHARGEMENT DES DONNEES (FORMAT JSON)
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
+// Inclusion de PHPMailer via Composer ou manuel
+require 'vendor/autoload.php';
+
+// TELECHARGEMENT DES DONNEES (FORMAT JSON)
 if (isset($_POST['dwl-data'])) {
     // Récupération des avis
     $avis = $dbh->prepare("SELECT o.titre_offre, a.txt_avis, a.note FROM tripenarvor._avis a 
@@ -247,24 +252,17 @@ if (isset($_POST['dwl-data'])) {
     $result = $avis->fetchAll(PDO::FETCH_ASSOC);
 
     $tab_avis = [];
-    
-    foreach($result as $res){
+    foreach ($result as $res) {
         if (!array_key_exists($res['titre_offre'], $tab_avis)) {
-            // Si la clé n'existe pas, l'initialiser avec un tableau vide
             $tab_avis[$res['titre_offre']] = [];
         }
-        
-        // Décoder les entités HTML dans les avis
         $content = html_entity_decode($res['txt_avis'], ENT_QUOTES, 'UTF-8');
-        
-        // Ajouter l'avis et la note
         $tab_avis[$res['titre_offre']][] = [
             'content' => $content,
             'note' => $res['note']
         ];
     }
 
-    
     // Préparation des données JSON
     $data = [
         'Nom' => $monCompteMembre['nom'],
@@ -274,21 +272,56 @@ if (isset($_POST['dwl-data'])) {
         'Téléphone' => $compte['telephone'],
         'Liste_Avis' => $tab_avis
     ];
-
-    // Conversion en JSON
     $jsonData = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
     // Envoi des en-têtes pour le téléchargement
     header('Content-Type: application/json');
     header('Content-Disposition: attachment; filename="mes_donnees_PACT.json"');
     header('Content-Length: ' . strlen($jsonData));
-
-    // Envoyer les données JSON
     echo $jsonData;
+
+    // Envoi par mail
+    $mail = new PHPMailer(true);
+
+    try {
+        // Configuration de l'e-mail
+        $mail->isSMTP();
+        $mail->Host = 'smtp.example.com'; // Remplace par ton serveur SMTP
+        $mail->SMTPAuth = true;
+        $mail->Username = 'ton_adresse_email@example.com'; // Ton email
+        $mail->Password = 'ton_mot_de_passe'; // Ton mot de passe SMTP
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        $mail->setFrom('ton_adresse_email@example.com', 'Nom de ton site');
+        $mail->addAddress($compte['mail'], $monCompteMembre['prenom'] . ' ' . $monCompteMembre['nom']);
+        $mail->addReplyTo('support@example.com', 'Support');
+
+        // Ajout de la pièce jointe
+        $filePath = 'mes_donnees_PACT.json';
+        file_put_contents($filePath, $jsonData); // Sauvegarder le fichier temporairement
+        $mail->addAttachment($filePath);
+
+        // Contenu de l'e-mail
+        $mail->isHTML(true);
+        $mail->Subject = 'Vos données personnelles';
+        $mail->Body = "<p>Bonjour,</p>
+                       <p>Vous trouverez ci-joint une copie de vos données personnelles.</p>
+                       <p>Si vous avez des questions, contactez notre support.</p>";
+
+        $mail->send();
+
+        // Supprimer le fichier temporaire
+        unlink($filePath);
+
+    } catch (Exception $e) {
+        echo "Erreur lors de l'envoi de l'email : {$mail->ErrorInfo}";
+    }
+
     exit;
 }
-    
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
