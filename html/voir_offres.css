@@ -458,6 +458,11 @@ footer {
     margin-right: 8vw;
 }
 
+.toute_les_offres_main .titres-offres a{
+    text-decoration: none;
+    color: black;
+}
+
 .toute_les_offres_main .titre-nouveautes, .toute_les_offres_main .titre-vu-recemment{
     margin-top: 12vh;
     color: black;
