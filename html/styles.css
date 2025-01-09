@@ -5279,7 +5279,7 @@ nav.nav-bar_consulter_mes_avis img {
 
 
 
-.nom_contacter_plateforme{
+#nom_contacter_plateforme{
     width: 100%;
     height: 75px;
     padding: 15px;
@@ -5291,7 +5291,7 @@ nav.nav-bar_consulter_mes_avis img {
     box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
 }
 
-.prenom_contacter_plateforme {
+#prenom_contacter_plateforme {
     width: 100%;
     height: 75px;
     padding: 15px;
