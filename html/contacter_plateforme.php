@@ -49,8 +49,26 @@
 
             <form action="poster_un_avis.php" method="POST">
                 <div class="poster_un_avis_section">
+                    <h2 class="poster_un_avis_section_titre">Vos informations</h2>
+                    <label for="nom">Nom :</label>
+                    <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+
+                    <label for="prenom">Prénom :</label>
+                    <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+
+                    <label for="theme">Thème de votre question :</label>
+                    <select id="theme" name="theme" required>
+                        <option value="">--Choisir un thème--</option>
+                        <option value="general">Général</option>
+                        <option value="compte">Mon Compte</option>
+                        <option value="offres">Offres</option>
+                        <option value="partenaires">Partenaires</option>
+                    </select>
+                </div>
+
+                <div class="poster_un_avis_section">
                     <h2 class="poster_un_avis_section_titre">Votre question</h2>
-                    <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
+                    <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea" name="textAreaAvis" id="textAreaAvis" maxlength="500" required></textarea>
                     <p class="message-erreur avis-vide">Vous devez remplir ce champ</p>
                     <p class="message-erreur avis-trop-long">La question ne doit pas dépasser 500 caractères.</p>
                     <div class="poster_un_avis_footer">
@@ -62,7 +80,6 @@
                 </div>
             </form>
         </div>
-
 
         <nav class="nav-bar">
             <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="Accueil"></a>
