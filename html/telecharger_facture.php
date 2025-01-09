@@ -144,29 +144,7 @@ if(!isset($_SESSION['pro'])){
         }
 
 
-        /* Table des totaux */
-        .facture-total {
-            width: var(--table-width, 30%); /* Par défaut 100%, mais modifiable */
-            height: var(--table-height, auto); /* Par défaut auto, mais modifiable */
-            border-collapse: collapse;
-            margin-bottom: 3em;
-            margin-top: 2em;
-            border: 3px;
-        }
-        
-        .facture-total th, .facture-total td {
-            padding: 10px;
-            border: 1px solid #ddd;
-        }
-        
-        .facture-total th {
-            background-color: var(--orange);
-            color: white;
-        }
-        
-        .facture-total td {
-            background-color: #f9f9f9;
-        }
+       
 
 
      
@@ -564,6 +542,30 @@ if(!isset($_SESSION['pro'])){
                 </tr>
              </table>
         </div>
+       <style>
+         /* Table des totaux */
+        .facture-total {
+            width: var(--table-width, 30%); /* Par défaut 100%, mais modifiable */
+            height: var(--table-height, auto); /* Par défaut auto, mais modifiable */
+            border-collapse: collapse;
+            margin-bottom: 3em;
+            margin-top: 2em;
+        }
+        
+        .facture-total th, .facture-total td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        .facture-total th {
+            background-color: var(--orange);
+            color: white;
+        }
+        
+        .facture-total td {
+            background-color: #f9f9f9;
+        }
+       </style>
             
         <div class="facture-footer">
 
