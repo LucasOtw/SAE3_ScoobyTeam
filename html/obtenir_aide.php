@@ -6,6 +6,6 @@
     <title>Obtenir de l'aide</title>
 </head>
 <body>
-    
+    <h1>Obtenir de l'aide</h1>
 </body>
 </html>
