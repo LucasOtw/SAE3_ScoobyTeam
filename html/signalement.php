@@ -47,7 +47,7 @@ try {
 <script>
     // Fonction pour afficher la modale
     function showConfirmation(event) {
-        event.preventDefault(); // Empêche l'envoi immédiat du formulaire
+        //event.preventDefault(); // Empêche l'envoi immédiat du formulaire
         document.getElementById('confirmationModal').style.display = 'block'; // Affiche la modale
     }
 
@@ -150,12 +150,12 @@ try {
         </div>
         <h2 class="titre_signalement_3">Description (facultatif)</h2>
         <form method="POST" action="signalement.php">
-    <input type="hidden" name="id_avis" value="<?php echo $idAvis; ?>">
-    <button type="submit" onclick="showConfirmation(event)">Confirmer le signalement</button>
-</form>
+            <input type="hidden" name="id_avis" value="<?php echo $idAvis; ?>">
+            <button type="submit" onclick="showConfirmation(event)">Confirmer le signalement</button>
+        </form>
 
     </div>
-    <!-- Modale de confirmation -->
+    <!-- Modale de confirmatiosn -->
 <div id="confirmationModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
