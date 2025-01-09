@@ -5274,14 +5274,15 @@ nav.nav-bar_consulter_mes_avis img {
 
 input[type="text"],
 select {
-    padding: 10px;
-    font-size: 1rem;
-    margin-bottom: 1.5vh;
     width: 100%;
-    background-color: #f5f5f5; /* Même couleur que la case de description */
-    border: none; /* Pas de bordure */
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    height: 152px;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #f3f8ff;
+    border-radius: 29px;
+    resize: none;
+    background-color: #f3f8ff;
+    box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
 }
 
 input[type="text"]:focus,
