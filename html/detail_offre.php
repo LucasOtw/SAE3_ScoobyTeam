@@ -708,7 +708,7 @@ if (isset($json['results'][0])) {
         function afficherAvis($avis, $niveau = 0)
         {
             // Vérification du prénom et nom
-            $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur supprimé";
+            $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur";
             $nom = !empty($avis['nom']) ? $avis['nom'] : "supprimé";
 
             // Calcul du margin-left pour indenter les réponses
