@@ -714,6 +714,7 @@ nav.nav-bar {
     /* Position finale visible */
     opacity: 1;
     /* Complètement visible */
+    display:none;
 }
 
 #customPopup p {
