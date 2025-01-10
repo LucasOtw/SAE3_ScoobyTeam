@@ -1418,6 +1418,13 @@ form .btn-link {
         display: none;
     }
 
+    #btn-repondre-avis{
+        border: 3px;
+        color: var(--vert-clair);
+        background-color: white;
+        font-size: 26px;
+    }
+
     #body_offre_mobile {
         display: block !important;
         font-family: 'K2D';
@@ -1539,10 +1546,5 @@ form .btn-link {
         margin-top: 1em;
     }
 
-    #btn-repondre-avis{
-        border: 3px;
-        color: var(--vert-clair);
-        background-color: white;
-        font-size: 26px;
-    }
+    
 }
