@@ -18,9 +18,6 @@ if(isset($_GET['deco'])){
     }
 }
 
-
-
-
 if (isset($_POST['modif_infos'])){
     $erreur = [];
     // Récupérer les valeurs initiales (par exemple, depuis la base de données)
