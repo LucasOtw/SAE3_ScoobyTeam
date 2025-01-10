@@ -699,7 +699,18 @@ if (isset($json['results'][0])) {
 
             // Récursivité : Ajouter les sous-réponses (réponses aux réponses)
             foreach ($reponses as &$reponse) {
-                    $reponse['sous_reponses'] = getRes$appreciation = "";
+                    $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_avis']); // Ajoute les sous-réponses
+                }
+                return $reponses;
+            }
+
+        // Fonction pour afficher les avis et les réponses récursivement
+        function afficherAvis($avis, $niveau = 0)
+        {
+            // Vérification du prénom et nom
+            $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur";
+            $nom = !empty($avis['nom']) ? $avis['nom'] : "supprimé";
+            $appreciation = "";
                             
                             switch ($avis["note"]) {
                                 case '1':
@@ -724,18 +735,7 @@ if (isset($json['results'][0])) {
                                 
                                 default:
                                     break;
-                            }ponses($dbh, $reponse['code_avis']); // Ajoute les sous-réponses
-                }
-                return $reponses;
-            }
-
-        // Fonction pour afficher les avis et les réponses récursivement
-        function afficherAvis($avis, $niveau = 0)
-        {
-            // Vérification du prénom et nom
-            $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur";
-            $nom = !empty($avis['nom']) ? $avis['nom'] : "supprimé";
-            
+                            }
             // Calcul du margin-left pour indenter les réponses
             $marge = $niveau * 5; // Indentation pour les réponses
             ?>
