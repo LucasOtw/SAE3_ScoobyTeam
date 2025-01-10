@@ -51,8 +51,8 @@
                         <option value="Problème avec mon compte">Problème avec mon compte</option>
                         <option value="Problème de paiement ou facturation">Problème de paiement ou facturation</option>
                         <option value="Demande de support technique">Demande de support technique</option>
-                        <option value="Suggestion ou amélioratio">Suggestion ou amélioration</option>
-                        <option value="Partenariat ou collaborationt">Partenariat ou collaboration</option>
+                        <option value="Suggestion ou amélioration">Suggestion ou amélioration</option>
+                        <option value="Partenariat ou collaboration">Partenariat ou collaboration</option>
                         <option value="Problème avec un servic">Problème avec un service</option>
                         <option value="Demande d'annulation ou suppression de compte">Demande d'annulation ou suppression de compte</option>
                         <option value="Question sur les conditions d'utilisation">Question sur les conditions d'utilisation</option>
