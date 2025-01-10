@@ -742,7 +742,7 @@ if (isset($json['results'][0])) {
                             </form>
                         </div>
                     </h3>
-                    <p class="avis"><?php echo htmlspecialchars($avis['txt_avis']); ?></p>
+                    <p class="avis"><?php echo html_entity_decode($avis['txt_avis']); ?></p>
                 </div>
             </div>
 
