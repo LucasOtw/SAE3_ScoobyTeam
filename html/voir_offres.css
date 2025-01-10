@@ -687,7 +687,7 @@ nav.nav-bar {
     margin-left: 10px;
 }
 
-#customPopup {
+#customup {
     display: none;
     position: fixed;
     bottom: 20px;
@@ -1299,7 +1299,7 @@ body.menu-open #overlay {
         margin-left: 10px;
         height: 100px;
         width: auto;
-        content: url('images/connexion_mobile3.png');
+        content: url('images/connexion_mobile4.png');
     }
     #customPopup {
     display: none;
