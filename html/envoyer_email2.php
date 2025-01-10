@@ -35,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Contenu de l'e-mail
             $mail->isHTML(true); // Permet d'envoyer des e-mails HTML
-            $mail->Subject = 'Sujet du message';
-            $mail->Body = '<h1>Voici un e-mail envoyé avec PHPMailer</h1><p>Ceci est un message HTML.</p>';
+            $mail->Subject = 'Vos données personnelles';
+            $mail->Body = '<h1>Demande prise en compte</h1><p>Bonjour,</p><p>Nous vous confirmons que votre demande a bien été prise en compte.</p>    <p>Nous restons à votre disposition pour toute question ou assistance supplémentaire.</p><p>Cordialement,</p><p><strong>L’équipe ScoobyTeam</strong></p>';
             $mail->AltBody = 'Ceci est une version texte du message (pour les clients qui n\'affichent pas HTML).';
 
             // Envoyer l'e-mail
