@@ -106,7 +106,7 @@
 
     if(!isset($_POST["vueDetails"]))
     {
-        echo "Erreur : aucune offre"; // à remplacer
+        $details_offre = $_SESSION['detail_offre'];
     }
     else
     {
@@ -228,6 +228,8 @@
             $adresse_offre = $adresse_offre->fetch(PDO::FETCH_ASSOC);
 
         }
+
+        $_SESSION['detail_offre'] = $details_offre;
     }
 
     // Adresse que tu veux convertir
