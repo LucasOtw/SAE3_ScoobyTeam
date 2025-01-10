@@ -651,7 +651,8 @@ function tempsEcouleDepuisPublication($offre){
                         }
                         // On récupère toutes les offres (titre,ville,images)
                         $infosOffre = $dbh->query('SELECT * FROM tripenarvor._consulte natural join tripenarvor._offre 
-                                                    where code_compte = '.$_SESSION['membre']['code_compte'].' and code_offre = '.$offre["code_offre"].' order by date_publication');
+                                                    where code_compte = '.$_SESSION['membre']['code_compte'].' and code_offre = '.$offre["code_offre"].' 
+                                                    order by date_consultation');
                         $infosOffre = $infosOffre->fetchAll(PDO::FETCH_ASSOC);
             
                         foreach($infosOffre as $offre){
