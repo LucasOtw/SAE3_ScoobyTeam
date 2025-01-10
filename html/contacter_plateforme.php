@@ -232,28 +232,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
-    $(document).ready(function() {
-        $('#contactForm').on('submit', function(e) {
-            e.preventDefault(); // Empêcher la soumission classique du formulaire
-
-            var formData = $(this).serialize(); // Sérialiser les données du formulaire
-
-            $.ajax({
-                type: 'POST',
-                url: 'envoyer_email.php',
-                data: formData,
-                success: function(response) {
-                    alert('Le message a été envoyé avec succès !');
-                    // Tu peux afficher une autre popup ou un message ici si nécessaire
-                },
-                error: function() {
-                    alert('Une erreur est survenue lors de l\'envoi du message.');
-                }
-            });
-        });
-    });
-    </script>
-    <script>
         $(document).ready(function() {
     $('#contactForm').on('submit', function(e) {
         e.preventDefault(); // Empêcher la soumission classique du formulaire
