@@ -1059,11 +1059,25 @@ WHERE code_offre = :code_offre
 
         // Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
         // Afficher les sous-réponses en premier si elles existent
-        if (!empty($avis['sous_reponses'])) {
-            foreach ($avis['sous_reponses'] as $sous_reponse) {
-                afficherAvis($sous_reponse, $niveau + 1); // Augmente le niveau d'indentation pour les sous-réponses
-            }
-        }
+        
+        <div class="avis-widget">
+            <div class="avis-header">
+                <h1 class="avis">
+                    <?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5"); ?>
+                    <span class="avis-score">
+                        <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?>
+                    </span>
+                </h1>
+                <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
+            </div>
+            <div class="avis-list">
+                <?php
+                foreach ($tout_les_avis as $avis) {
+                    afficherAvis($avis, $niveau + 1); // Affiche l'avis principal et toutes les réponses imbriquées
+                }
+                ?>
+            </div>
+        </div>
 
 
 
