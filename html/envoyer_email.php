@@ -24,8 +24,8 @@ try {
     $mail->Port = 587; // Port SMTP pour TLS (587 pour Gmail)
 
     // Informations de l'expéditeur et du destinataire
-    $mail->setFrom('ton_email@gmail.com', 'Ton Nom'); // Adresse et nom de l'expéditeur
-    $mail->addAddress('destinataire@example.com', 'Nom du Destinataire'); // Adresse et nom du destinataire
+    $mail->setFrom('valentin.samson@etudiant.univ-rennes.fr', 'Ton Nom'); // Adresse et nom de l'expéditeur
+    $mail->addAddress('harry.rajic56@gmail.com', 'Nom du Destinataire'); // Adresse et nom du destinataire
 
     // Contenu de l'e-mail
     $mail->isHTML(true); // Permet d'envoyer des e-mails HTML
