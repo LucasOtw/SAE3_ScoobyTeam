@@ -709,48 +709,7 @@
             </iframe>
         </div>
 
-        <?php 
-                      
-            $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis NATURAL JOIN tripenarvor.membre WHERE code_offre = :code_offre');
-            $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-            $tout_les_avis->execute();
-            $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
-
-            if ($tout_les_avis == null)
-            {
-                $tout_les_avis = $dbh->prepare('SELECT * FROM tripenarvor._avis WHERE code_offre = :code_offre');
-                $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-                $tout_les_avis->execute();
-                $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
-            }
-
-            $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre');
-            $moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-            $moyenne_note->execute(); 
-            $note_moyenne = $moyenne_note->fetchColumn();
-
-            $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis WHERE code_offre = :code_offre');
-            $nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-            $nb_avis->execute();
-            $nombre_d_avis = $nb_avis->fetchColumn();
-
-            $appreciationGenerale = "";
-                
-            if ($note_moyenne <= 1) {
-                $appreciationGenerale = "À éviter";
-            } elseif ($note_moyenne <= 2) {
-                $appreciationGenerale = "Peut mieux faire";
-            } elseif ($note_moyenne <= 3) {
-                $appreciationGenerale = "Correct";
-            } elseif ($note_moyenne <= 4) {
-                $appreciationGenerale = "Très Bien";
-            } elseif ($note_moyenne <= 5) {
-                $appreciationGenerale = "Exceptionnel";
-            } else {
-                $appreciationGenerale = "Valeur hors échelle";
-            }
-    
-        ?>
+        
         <?php
         // Récupérer la moyenne des notes
         $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre and note<>0');
