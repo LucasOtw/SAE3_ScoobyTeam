@@ -1058,73 +1058,7 @@ WHERE code_offre = :code_offre
         }
 
         // Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
-        function getResponses($dbh, $code_avis)
-        {
-            $stmt = $dbh->prepare('
-        SELECT 
-            reponse.*,
-            membre_reponse.prenom AS prenom,
-            membre_reponse.nom AS nom
-        FROM tripenarvor._reponse
-        INNER JOIN tripenarvor._avis AS reponse ON reponse.code_avis = tripenarvor._reponse.code_reponse
-        LEFT JOIN tripenarvor._membre AS membre_reponse ON membre_reponse.code_compte = reponse.code_compte
-        WHERE tripenarvor._reponse.code_avis = :code_avis
-    ');
-            $stmt->bindValue(':code_avis', $code_avis, PDO::PARAM_INT);
-            $stmt->execute();
-            $reponses = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            // Récursivité : Ajouter les sous-réponses (réponses aux réponses)
-            foreach ($reponses as &$reponse) {
-                $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_avis']); // Ajoute les sous-réponses
-            }
-            return $reponses;
-        }
-
-        // Fonction pour afficher les avis et les réponses récursivement
-        function afficherAvis($avis, $niveau = 0)
-        {
-            // Vérification du prénom et nom
-            $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur supprimé";
-            $nom = !empty($avis['nom']) ? $avis['nom'] : "supprimé";
-
-            // Calcul du margin-left pour indenter les réponses
-            $marge = $niveau * 5; // Indentation pour les réponses
-            ?>
-            <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
-                <div class="avis-content">
-                    <h3 class="avis">
-                        <?php if ($niveau > 0): ?>
-                            <div class="note_prenom">
-                                Réponse à <?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?> |
-                                <span
-                                    class="nom_avis"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
-                            </div>
-                        <?php else: ?>
-                            <div class="note_prenom">
-                                <?php echo htmlspecialchars($avis['note']) . '.0'; ?> |
-                                <span
-                                    class="nom_avis"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
-                            </div>
-                        <?php endif; ?>
-                        <div class="signalement_repondre">
-                            <span class="signalement">
-                                <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
-                                    title="Signaler cet avis" style="text-decoration: none">🚩</a>
-                            </span>
-                            <form action="poster_reponse_membre.php" method="POST">
-                                <input type="hidden" name="unAvis"
-                                    value="<?php echo htmlspecialchars(serialize($avis)); ?>">
-                                <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
-                            </form>
-                        </div>
-                    </h3>
-                    <p class="avis"><?php echo htmlspecialchars($avis['txt_avis']); ?></p>
-                </div>
-            </div>
-
-            <?php
-            // Afficher les sous-réponses en premier si elles existent
+        // Afficher les sous-réponses en premier si elles existent
             if (!empty($avis['sous_reponses'])) {
                 foreach ($avis['sous_reponses'] as $sous_reponse) {
                     afficherAvis($sous_reponse, $niveau + 1); // Augmente le niveau d'indentation pour les sous-réponses
@@ -1132,36 +1066,7 @@ WHERE code_offre = :code_offre
             }
         }
 
-        // Récupérer tous les avis principaux (sans réponses déjà existantes)
-        $tout_les_avis = $dbh->prepare('SELECT * 
-FROM tripenarvor._avis
-LEFT JOIN tripenarvor.membre 
-    ON tripenarvor._avis.code_compte = tripenarvor.membre.code_compte
-WHERE code_offre = :code_offre
-  AND (
-      (code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse) 
-       AND tripenarvor.membre.code_compte IS NOT NULL)
-      OR 
-      (code_avis NOT IN (SELECT code_reponse FROM tripenarvor._reponse) 
-       AND tripenarvor.membre.code_compte IS NULL)
-  );
-');
-        $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-        $tout_les_avis->execute();
-        $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
-
-        // Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
-        foreach ($tout_les_avis as &$avis) {
-            // Vérification si l'utilisateur est supprimé
-            if (empty($avis['prenom']) && empty($avis['nom'])) {
-                $avis['prenom'] = "Utilisateur";
-                $avis['nom'] = "supprimé";
-            }
-            // Récupération des réponses pour l'avis principal
-            $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
-        }
-
-        // Affichage des avis et de leurs réponses (y compris les sous-réponses)
+        
         ?>
 
         <div class="avis-widget">
