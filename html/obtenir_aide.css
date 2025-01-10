@@ -408,6 +408,9 @@ footer {
     footer {
         padding: 40px 80px;
     }
+    .titre_version_mobile{
+        display : none;
+    }
 }
 
 @media screen and (max-width: 600px) {
