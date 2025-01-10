@@ -687,7 +687,7 @@ nav.nav-bar {
     margin-left: 10px;
 }
 
-#customup {
+#customPopup {
     display: none;
     position: fixed;
     bottom: 20px;
