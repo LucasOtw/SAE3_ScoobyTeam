@@ -19,7 +19,7 @@ try {
     $mail->Host = 'smtp.gmail.com'; // Adresse du serveur SMTP (par ex., Gmail)
     $mail->SMTPAuth = true; // Activer l'authentification SMTP
     $mail->Username = 'harry.rajic56@gmail.com'; // Remplace par ton adresse e-mail
-    $mail->Password = 'ORD22IANJc?'; // Remplace par le mot de passe d'application
+    $mail->Password = 'xbdh ewdv qepn ehwe'; // Remplace par le mot de passe d'application
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Type de chiffrement (TLS recommandé)
     $mail->Port = 587; // Port SMTP pour TLS (587 pour Gmail)
 
