@@ -805,13 +805,13 @@
         function afficherAvis($avis, $niveau = 0)
         {
             // Vérification du prénom et nom
-            if (!empty($avis['prenom']) && !empty($avis['nom']){
+            if (!empty($avis['prenom']) && !empty($avis['nom'])){
                 $prenom = $avis['prenom'];
                 $nom = $avis['nom'];
             } else if (!empty($avis['raison_sociale_pro']) ){
                 $prenom = $avis['raison_sociale_pro'];
                 $nom = "";
-            }
+            
             } else {
                 $prenom = "Utilisateur";
                 $nom = "supprimé"; 
