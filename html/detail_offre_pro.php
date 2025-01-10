@@ -783,15 +783,13 @@
         function getResponses($dbh, $code_avis)
         {
             $stmt = $dbh->prepare('
-        SELECT 
-            reponse.*,
-            membre_reponse.prenom AS prenom,
-            membre_reponse.nom AS nom
-        FROM tripenarvor._reponse
-        INNER JOIN tripenarvor._avis AS reponse ON reponse.code_avis = tripenarvor._reponse.code_reponse
-        LEFT JOIN tripenarvor._membre AS membre_reponse ON membre_reponse.code_compte = reponse.code_compte
-        WHERE tripenarvor._reponse.code_avis = :code_avis
-    ');
+                        SELECT reponse.*, membre_reponse.prenom AS prenom_membre, membre_reponse.nom AS nom_membre, pro_reponse.raison_sociale AS raison_sociale_pro
+                        FROM tripenarvor._reponse
+                        INNER JOIN tripenarvor._avis AS reponse ON reponse.code_avis = tripenarvor._reponse.code_reponse
+                        LEFT JOIN tripenarvor._membre AS membre_reponse ON membre_reponse.code_compte = reponse.code_compte
+                        LEFT JOIN tripenarvor._professionnel AS pro_reponse ON pro_reponse.code_compte = reponse.code_compte
+                        WHERE tripenarvor._reponse.code_avis = :code_avis
+                ');
             $stmt->bindValue(':code_avis', $code_avis, PDO::PARAM_INT);
             $stmt->execute();
             $reponses = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -807,8 +805,19 @@
         function afficherAvis($avis, $niveau = 0)
         {
             // Vérification du prénom et nom
-            $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur";
-            $nom = !empty($avis['nom']) ? $avis['nom'] : "supprimé";
+            if (!empty($avis['prenom']) && !empty($avis['nom']){
+                $prenom = $avis['prenom'];
+                $nom = $avis['nom'];
+            } else if (!empty($avis['raison_sociale_pro']) ){
+                $prenom = $avis['raison_sociale_pro'];
+                $nom = "";
+            }
+            } else {
+                $prenom = "Utilisateur";
+                $nom = "supprimé"; 
+            }
+
+
             $appreciation = "";
                         
                         switch ($avis["note"]) {
