@@ -47,20 +47,20 @@
                     <label for="theme">Thème de votre question :</label>
                     <select id="theme" name="theme" class="theme_contacter_plateforme" required>
                         <option value="">Choisir un motif</option>
-                        <option value="information">Demande d'information générale</option>
-                        <option value="compte">Problème avec mon compte</option>
-                        <option value="paiement">Problème de paiement ou facturation</option>
-                        <option value="technique">Demande de support technique</option>
-                        <option value="suggestion">Suggestion ou amélioration</option>
-                        <option value="partenariat">Partenariat ou collaboration</option>
-                        <option value="produit">Problème avec un service</option>
-                        <option value="annulation">Demande d'annulation ou suppression de compte</option>
-                        <option value="CGU">Question sur les conditions d'utilisation</option>
-                        <option value="securite">Problème lié à la sécurité</option>
-                        <option value="offres">Question sur les offres et promotions</option>
-                        <option value="fonctionnalite">Demande d'assistance pour une fonctionnalité spécifique</option>
-                        <option value="avis">Retour sur une expérience utilisateur</option>
-                        <option value="reclamation">Réclamation ou insatisfaction</option>
+                        <option value="Demande d'information générale">Demande d'information générale</option>
+                        <option value="Problème avec mon compte">Problème avec mon compte</option>
+                        <option value="Problème de paiement ou facturation">Problème de paiement ou facturation</option>
+                        <option value="Demande de support technique">Demande de support technique</option>
+                        <option value="Suggestion ou amélioratio">Suggestion ou amélioration</option>
+                        <option value="Partenariat ou collaborationt">Partenariat ou collaboration</option>
+                        <option value="Problème avec un servic">Problème avec un service</option>
+                        <option value="Demande d'annulation ou suppression de compte">Demande d'annulation ou suppression de compte</option>
+                        <option value="Question sur les conditions d'utilisation">Question sur les conditions d'utilisation</option>
+                        <option value="Problème lié à la sécurité">Problème lié à la sécurité</option>
+                        <option value="Question sur les offres et promotions">Question sur les offres et promotions</option>
+                        <option value="Demande d'assistance pour une fonctionnalité spécifique">Demande d'assistance pour une fonctionnalité spécifique</option>
+                        <option value="Retour sur une expérience utilisateur">Retour sur une expérience utilisateur</option>
+                        <option value="Réclamation ou insatisfaction">Réclamation ou insatisfaction</option>
                     </select>
                 </div>
                 <div class="poster_un_avis_section">
