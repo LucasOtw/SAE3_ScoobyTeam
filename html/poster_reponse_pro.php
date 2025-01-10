@@ -15,6 +15,12 @@ $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
 // Créer une instance PDO avec les bons paramètres
 $dbh = new PDO($dsn, $username, $password);
 
+echo "<pre>";
+var_dump($_SESSION);
+echo "</pre>";
+
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST['repondreAvis'])){
         // Désérialise les données de l'avis
