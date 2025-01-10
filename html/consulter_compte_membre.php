@@ -20,16 +20,6 @@ if(isset($_GET['deco'])){
 
 
 
-require __DIR__ . '/../vendor/autoload.php';
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require '../phpmailer/src/Exception.php';
-require '../phpmailer/src/PHPMailer.php';
-require '../phpmailer/src/SMTP.php';
-
-
 
 if (isset($_POST['modif_infos'])){
     $erreur = [];
