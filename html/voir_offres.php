@@ -661,7 +661,7 @@ function tempsEcouleDepuisPublication($offre){
                                 ORDER BY date_consultation";
                         
                         // Préparation de la requête
-                        $stmt = $pdo->prepare($sql);
+                        $stmt = $dbh->prepare($sql);
                         
                         // Liaison des paramètres
                         $stmt->bindParam(':code_compte', $_SESSION['membre']['code_compte'], PDO::PARAM_INT);
