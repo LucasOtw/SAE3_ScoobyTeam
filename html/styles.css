@@ -3150,6 +3150,10 @@ nav.nav-bar {
         display: none;
     }
 
+    .main_consulter_compte_membre .compte_membre_save_delete_remove {
+        display: block;
+    }
+  
     .main_consulter_compte_membre .submit-btn1,
     .main_consulter_compte_membre button.btn-suppr-compte {
         display: none;

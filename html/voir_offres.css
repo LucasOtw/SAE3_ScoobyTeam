@@ -1297,9 +1297,9 @@ body.menu-open #overlay {
     }
     .customImage{
         margin-left: 10px;
-        height: 100px;
+        height: 50px;
         width: auto;
-        content: url('images/connexion_mobile4.png');
+        content: url('images/robot_popup.png');
     }
     #customPopup {
     display: none;
