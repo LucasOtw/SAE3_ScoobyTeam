@@ -810,9 +810,11 @@
             if (!empty($avis['prenom']) && !empty($avis['nom'])){
                 $prenom = $avis['prenom'];
                 $nom = $avis['nom'];
+                $color = '--vert-clair';
             } else if (!empty($avis['raison_sociale_pro']) ){
                 $prenom = $avis['raison_sociale_pro'];
                 $nom = "";
+                $color = "--orange";
             
             } else {
                 $prenom = "Utilisateur";
@@ -856,13 +858,13 @@
                             <div class="note_prenom">
                                 Réponse |
                                 <span
-                                    class="nom_avis"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                                    class="nom_avis" style="color:var(<?php echo $color ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
                             </div>
                         <?php else: ?>
                             <div class="note_prenom">
                                 <?php echo htmlspecialchars($avis['note']) . '.0' . $appreciation; ?> |
                                 <span
-                                    class="nom_avis"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                                    class="nom_avis" style="color:var(<?php echo $color ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
                             </div>
                         <?php endif; ?>
                         <div class="signalement_repondre">
