@@ -25,7 +25,7 @@ try {
 
     // Informations de l'expéditeur et du destinataire
     $mail->setFrom('noreply.scoobyteam@gmail.com', 'La Scooby Team'); // Adresse et nom de l'expéditeur
-    $mail->addAddress('harry.rajic56@gmail.com', 'Nom du Destinataire'); // Adresse et nom du destinataire
+    $mail->addAddress('noreply.scoobyteam@gmail.com', 'Nom du Destinataire'); // Adresse et nom du destinataire
 
     // Contenu de l'e-mail
     $mail->isHTML(true); // Permet d'envoyer des e-mails HTML
