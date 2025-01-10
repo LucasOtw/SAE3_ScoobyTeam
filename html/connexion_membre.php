@@ -3,6 +3,7 @@
 ob_start();
 session_start();
 
+
 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";
 $password = "philly-Congo-bry4nt";

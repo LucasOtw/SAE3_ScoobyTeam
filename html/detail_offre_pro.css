@@ -1313,16 +1313,18 @@ footer {
 
 
 
-/* Encapsulation dans la classe avis-widget */
+
+
+
 .avis-widget {
     max-width: 82%;
     margin-left: 11em;
     margin-top: 5em;
-    padding: 20px;
     background-color: #fff;
     border-radius: 8px;
 }
 
+/* Header de l'élément avis */
 .avis-widget .avis-header {
     margin-bottom: 20px;
 }
@@ -1341,12 +1343,20 @@ footer {
     color: #777;
 }
 
+/* Liste des avis */
 .avis-widget .avis-list .avis {
     display: flex;
     align-items: flex-start;
     margin-bottom: 20px;
+    padding-bottom: 15px;
 }
 
+.avis-widget .avis-list .avis:last-child {
+    border-bottom: none;
+    /* Supprime la ligne après le dernier avis */
+}
+
+/* Avatar de l'avis */
 .avis-widget .avis .avatar {
     width: 60px;
     height: 60px;
@@ -1356,19 +1366,32 @@ footer {
     border: 1px solid #ddd;
 }
 
+/* Contenu des avis */
+.avis-content {
+    width: 100%;
+    border-bottom: 1px solid #000;
+    /* Ligne horizontale noire */
+}
+
 .avis-widget .avis-content h3.avis {
     margin: 0;
     font-size: 1.1em;
     color: #333;
+    display: flex;
+    justify-content: space-between;
+}
+
+.avis-widget .avis-content .note_prenom {
+    display: flex;
 }
 
 .avis-widget .avis-content h3.avis span.nom_avis {
-    color: #F28322;
+    color: #BDC426;
     margin-left: 0.5em;
 }
 
-nom.avis {
-    color: #F28322;
+.nom.avis {
+    color: #BDC426;
 }
 
 .avis-widget .avis-content p.avis {
@@ -1377,22 +1400,15 @@ nom.avis {
     font-size: 0.9em;
 }
 
-.avis-widget .avis-list .avis {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
+.avis-widget .avis-content .signalement_repondre {
+           display: flex;
 }
 
-.avis-content {
-    width: 100%;
-    border-bottom: 1px solid #000;
-    /* Ligne horizontale noire */
-}
-
-.avis-widget .avis-list .avis:last-child {
-    border-bottom: none;
-    /* Supprime la ligne après le dernier avis */
+#btn-repondre-avis {
+  border: 3px;
+  color: var(--vert-clair);
+  background-color: white;
+  font-size: 26px;
 }
 
 

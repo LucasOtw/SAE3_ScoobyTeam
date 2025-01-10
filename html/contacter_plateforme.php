@@ -35,7 +35,7 @@
                 <h1 class="titre_contacter_nous">Contactez nous !</h1>
             </div>
 
-            <form action="envoyer_mail.php" method="POST">
+            <form action="envoyer_email.php" method="POST">
                 <div class="poster_un_avis_section">
                     <h2 class="poster_un_avis_section_titre">Vos informations</h2>
                     <label for="nom">Nom :</label>
@@ -53,10 +53,6 @@
                             <option value="partenaires">Partenaires</option>
                         </select>
                 </div>
-            </form>
-
-
-
                 <div class="poster_un_avis_section">
                     <h2 class="poster_un_avis_section_titre">Votre question</h2>
                     <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea" name="textAreaAvis" id="textAreaAvis" maxlength="500" required></textarea>
@@ -70,6 +66,7 @@
                     </div>
                 </div>
             </form>
+            
         </div>
 
         <nav class="nav-bar">
