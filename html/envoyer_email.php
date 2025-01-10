@@ -7,37 +7,49 @@ require '../phpmailer/src/Exception.php';
 require '../phpmailer/src/PHPMailer.php';
 require '../phpmailer/src/SMTP.php';
 
-// Créer une instance de PHPMailer
-$mail = new PHPMailer(true);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Récupérer les données du formulaire
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $theme = $_POST['theme'];
+    $question = $_POST['textAreaAvis'];
 
-try {
-    // Activer le mode debug pour voir les erreurs détaillées
-    $mail->SMTPDebug = 0;
+    // Créer une instance de PHPMailer
+    $mail = new PHPMailer;
 
-    // Configuration du serveur SMTP
+    // Configuration de PHPMailer
     $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com'; // Adresse du serveur SMTP (par ex., Gmail)
-    $mail->SMTPAuth = true; // Activer l'authentification SMTP
-    $mail->Username = 'noreply.scoobyteam@gmail.com'; // Remplace par ton adresse e-mail
-    $mail->Password = 'yejz rjye ntfh ryjv'; // Remplace par le mot de passe d'application
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Type de chiffrement (TLS recommandé)
-    $mail->Port = 587; // Port SMTP pour TLS (587 pour Gmail)
+    $mail->Host = 'smtp.gmail.com'; // Serveur SMTP de Gmail
+    $mail->SMTPAuth = true;
+    $mail->Username = 'noreply.scoobyteam@gmail.com'; // Ton adresse email
+    $mail->Password = 'yejz rjye ntfh ryjv'; // Ton mot de passe d'application
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port = 587;
 
-    // Informations de l'expéditeur et du destinataire
-    $mail->setFrom('noreply.scoobyteam@gmail.com', 'La Scooby Team'); // Adresse et nom de l'expéditeur
-    $mail->addAddress('noreply.scoobyteam@gmail.com', 'Nom du Destinataire'); // Adresse et nom du destinataire
+    // Expéditeur et destinataire
+    $mail->setFrom('noreply.scoobyteam@gmail.com', 'La Scooby Team');
+    $mail->addAddress('noreply.scoobyteam@gmail.com', 'Nom du destinataire'); // Destinataire
 
-    // Contenu de l'e-mail
-    $mail->isHTML(true); // Permet d'envoyer des e-mails HTML
-    $mail->Subject = 'Sujet du message';
-    $mail->Body = '<h1>Voici un e-mail envoyé avec PHPMailer</h1><p>Ceci est un message HTML.</p>';
-    $mail->AltBody = 'Ceci est une version texte du message (pour les clients qui n\'affichent pas HTML).';
+    // Sujet de l'email
+    $mail->Subject = 'Nouvelle question soumise';
 
-    // Envoyer l'e-mail
-    if ($mail->send()) {
+    // Corps du message (avec toutes les infos)
+    $mail->Body    = "
+        <h2>Information reçue</h2>
+        <p><strong>Nom :</strong> $nom</p>
+        <p><strong>Prénom :</strong> $prenom</p>
+        <p><strong>Thème :</strong> $theme</p>
+        <p><strong>Question :</strong> $question</p>
+    ";
+
+    // Si tout va bien, envoi de l'email
+    if(!$mail->send()) {
+        echo 'Erreur : ' . $mail->ErrorInfo;
+    } else {
         echo 'Le message a été envoyé avec succès !';
     }
-} catch (Exception $e) {
-    echo "Erreur lors de l'envoi du message : {$mail->ErrorInfo}";
 }
 ?>
+
+
+
