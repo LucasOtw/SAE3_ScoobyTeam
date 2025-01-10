@@ -25,8 +25,8 @@ if(isset($_SESSION['aCreeUneOffre'])){
     unset($_SESSION['aCreeUneOffre']);
 }
 
-if(isset($_POST['envoiOffre'])){
-    $offre = unserialize($_POST['envoiOffre']);
+if (isset($_POST['envoiOffre'])) {
+    $offre = unserialize($_POST['uneOffre']);
     echo "<pre>";
     var_dump($offre);
     echo "</pre>";
