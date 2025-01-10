@@ -426,6 +426,11 @@ footer {
         width: 78vw;
         margin-left: 11vw;
     }
+    .titre_version_mobile{
+        margin-left: 20vw;
+        margin-top: 3vh;
+
+    }
 
 
 }
