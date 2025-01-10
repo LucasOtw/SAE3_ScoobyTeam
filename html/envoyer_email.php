@@ -1,4 +1,8 @@
 <?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Inclure les fichiers PHPMailer nécessaires
 require 'phpmailer/src/Exception.php';
 require 'phpmailer/src/PHPMailer.php';
