@@ -141,6 +141,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   echo $avis['prenom'] . " " . $avis['nom'];
                } else if (!empty($avis['raison_sociale_pro'])){
                   echo $avis['raison_sociale_pro'];
+               } else {
+                   echo "Utilisateur supprimé";
                }
                ?></div>
                <div class="repondre_avis_texte"><?php echo $avis["txt_avis"]; ?></div>
