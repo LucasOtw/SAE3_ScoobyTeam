@@ -104,23 +104,23 @@ nav ul li a {
 
 /*pro*/
 .header_pro nav ul li a.active {
-    color: var(--vert-clair);
+    color: var(--orange);
 }
 
 .header_pro nav ul li a:hover {
-    color: var(--vert-clair);
+    color: var(--orange);
 }
 
 .header_pro nav ul li a.active {
-    color: var(--vert-clair);
+    color: var(--orange);
 }
 
 .header_pro nav ul li a:hover {
-    color: var(--vert-clair);
+    color: var(--orange);
 }
 
 .header_pro nav ul li a::before {
-    background-color: var(--vert-clair);
+    background-color: var(--orange);
 }
 
 nav ul li a::before {
@@ -150,7 +150,7 @@ footer {
 }
 
 .footer_pro .newsletter {
-    background-color: var(--vert-clair);
+    background-color: var(--orange);
 }
 
 .newsletter {
@@ -235,7 +235,7 @@ footer {
 }
 
 .footer_pro .link-group ul li a:hover {
-    color: var(--vert-clair);
+    color: var(--orange);
 }
 
 .footer-bottom {
@@ -385,7 +385,7 @@ main.main_repondre_avis .repondre_avis_btn_offre {
     display: inline-block;
     font-size: 17px;
     padding: 10px 20px;
-    background-color: var(--vert-clair);
+    background-color: var(--orange);
     color: white;
     border: none;
     border-radius: 16px;
@@ -481,7 +481,7 @@ main.main_repondre_avis .repondre_avis_btn_publier {
     border-radius: 0.5em;
     font-size: 17px;
     padding: 10px 20px;
-    background-color: var(--vert-clair);
+    background-color: var(--orange);
     color: white;
     border: none;
     border-radius: 16px;
@@ -498,7 +498,7 @@ main.main_repondre_avis .repondre_avis_btn_annuler {
 }
 
 main.main_repondre_avis .repondre_avis_btn_publier {
-    background-color: var(--vert-clair);
+    background-color: var(--orange);
     color: white;
 }
 
@@ -719,7 +719,7 @@ main.main_repondre_avis .message-erreur {
     }
 
     main.main_repondre_avis .repondre_avis_btn_publier {
-        background-color: var(--vert-clair);
+        background-color: var(--orange);
         color: white;
         width: 66%;
         border-radius: 20px;
@@ -745,7 +745,7 @@ main.main_repondre_avis .message-erreur {
     }
 
     main.main_repondre_avis .btn-poster-avis {
-        color: var(--vert-clair);
+        color: var(--orange);
         border: none;
     }
 }
