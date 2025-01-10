@@ -745,7 +745,6 @@ if (isset($json['results'][0])) {
                     <p class="avis"><?php echo html_entity_decode($avis['txt_avis']); ?></p>
                 </div>
             </div>
-
             <?php
             // Afficher les sous-réponses en premier si elles existent
             if (!empty($avis['sous_reponses'])) {

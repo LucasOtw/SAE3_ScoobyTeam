@@ -1097,6 +1097,13 @@ form .btn-link {
     align-items: center;
 }
 
+#btn-repondre-avis{
+    border: 3px;
+    color: var(--vert-clair);
+    background-color: white;
+    font-size: 26px;
+}
+
 /* Section des cartes */
 .a-la-une {
     display: flex;
