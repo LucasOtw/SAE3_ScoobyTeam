@@ -1059,7 +1059,7 @@ WHERE code_offre = :code_offre
 
         // Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
         // Afficher les sous-réponses en premier si elles existent
-        
+        ?>
         <div class="avis-widget">
             <div class="avis-header">
                 <h1 class="avis">
