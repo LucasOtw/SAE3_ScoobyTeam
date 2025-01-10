@@ -42,7 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Corps du message (avec toutes les infos)
     $mail->Body = "
                 <h1>Nouvelle question d'un utilisateur</h1>
-                <p>Bonjour cher membre de la Scooby-Team : <strong>{$prenom} {$nom}</strong> vous à poser une questio.,</p>
+                <p>Bonjour cher membre de la Scooby-Team : </p>
+                <p><strong>{$prenom} {$nom}</strong> vous à poser une question.</p
                 <p>Voici le thème de la question: <strong>{$theme}</strong></p>
                 <br>
                 <p>Contenu de la question :</p>
