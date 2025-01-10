@@ -410,3 +410,10 @@ footer {
     }
 }
 
+@media screen and (max-width: 600px) {
+    header.header-pc{
+        display : none;
+    }
+
+
+}
