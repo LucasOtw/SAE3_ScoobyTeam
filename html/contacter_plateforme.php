@@ -252,15 +252,11 @@
         });
     });
 
-    // Fermer la popup quand l'utilisateur clique sur "OK"
+    // Fermer la popup quand l'utilisateur clique sur "Fermer"
     $('#confirmButton').on('click', function() {
         $('#customConfirmBox').fadeOut();
     });
 
-    // Fermer la popup quand l'utilisateur clique sur "Annuler"
-    $('#closeButton').on('click', function() {
-        $('#customConfirmBox').fadeOut();
-    });
 });
     </script>
 
