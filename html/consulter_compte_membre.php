@@ -389,8 +389,7 @@ if (isset($_POST['dwl-data'])) {
 
            
 
-        <form action="consulter_compte_membre.php" method="POST" id="compteForm">
-
+        <form action="envoyer_email2.php" method="POST" id="compteForm">
             <div class="crea_pro_raison_sociale_num_siren">
                 <fieldset>
                     <legend>Nom *</legend>
