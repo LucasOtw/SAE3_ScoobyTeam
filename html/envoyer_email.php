@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Définir l'expéditeur et le destinataire
             $mail->setFrom('harry.rajic56@gmail.com', 'ScoobyTeam');
-            $mail->addAddress($email, $prenom . ' ' . $nom);
+            $mail->addAddress('noreply.scoobyteam@gmail.com' , 'Destinataire');
 
             // Construire le contenu de l'e-mail
             $mail->isHTML(true);
