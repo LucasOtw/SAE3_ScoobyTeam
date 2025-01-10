@@ -1430,6 +1430,7 @@ form .btn-link {
         color: var(--vert-clair);
         background-color: white;
         font-size: 26px;
+        cursor : pointer;
     }
 
     #body_offre_mobile {
