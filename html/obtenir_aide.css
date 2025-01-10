@@ -397,6 +397,9 @@ footer {
         justify-content: space-between;
         width: 100%;
     }
+    .titre_version_mobile{
+        display : none;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -407,9 +410,6 @@ footer {
 
     footer {
         padding: 40px 80px;
-    }
-    .titre_version_mobile{
-        display : none;
     }
 }
 
