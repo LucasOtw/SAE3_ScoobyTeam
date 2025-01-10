@@ -674,10 +674,6 @@ function tempsEcouleDepuisPublication($offre){
                         $infosOffre = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 
                         foreach($infosOffre as $offre){
-
-                            echo "<pre>";
-                            var_dump($offre);
-                            echo "</pre>";
                             
                             // Récupérer la ville
                             $villeOffre = $dbh->prepare('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
