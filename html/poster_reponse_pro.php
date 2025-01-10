@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     }
                     
                     // Redirige vers la page des détails de l'offre
-                    header('location: detail_offre.php');
+                    header('location: detail_offre_pro.php');
                     exit;
                 } else {
                     // Affiche les erreurs s'il y en a
@@ -126,13 +126,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </nav>
         </header>
 
-
-        <header class="header-tel header_pro">
-            <div class="logo-tel">
-                <a href="voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
-            </div>
-        </header>
-
         <main class="main_repondre_avis">
         <div class="repondre_avis_container">
             <div class="repondre_avis_back_button">
@@ -140,7 +133,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <h1 class="repondre_avis_titre">Récapitulatif</h1>
             <div class="repondre_avis_recap">
-               <div class="repondre_avis_utilisateur"><?php echo $avis['prenom'] . " " . $avis['nom']; ?></div>
+               <div class="repondre_avis_utilisateur"><?php  
+   
+               if (!empty($avis['prenom']) && !empty($avis['nom'])){
+                  echo $avis['prenom'] . " " . $avis['nom'];
+               } else if (!empty($avis['raison_sociale_pro'])){
+                  echo $avis['raison_sociale_pro'];
+               }
+               ?></div>
                <div class="repondre_avis_texte"><?php echo $avis["txt_avis"]; ?></div>
             </div>
 
@@ -159,7 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                </div>
             </form>
         <nav class="nav-bar">
-            <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
+            <a href="mes_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
             <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
             <a href="#"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
             <a href="
