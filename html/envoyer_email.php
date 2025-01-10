@@ -18,14 +18,14 @@ try {
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com'; // Adresse du serveur SMTP (par ex., Gmail)
     $mail->SMTPAuth = true; // Activer l'authentification SMTP
-    $mail->Username = 'harry.rajic56@gmail.com'; // Remplace par ton adresse e-mail
-    $mail->Password = 'xbdh ewdv qepn ehwe'; // Remplace par le mot de passe d'application
+    $mail->Username = 'noreply.scoobyteam@gmail.com'; // Remplace par ton adresse e-mail
+    $mail->Password = 'yejz rjye ntfh ryjv'; // Remplace par le mot de passe d'application
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Type de chiffrement (TLS recommandé)
     $mail->Port = 587; // Port SMTP pour TLS (587 pour Gmail)
 
     // Informations de l'expéditeur et du destinataire
-    $mail->setFrom('valentin.samson@etudiant.univ-rennes.fr', 'Ton Nom'); // Adresse et nom de l'expéditeur
-    $mail->addAddress('harry.rajic56@gmail.com', 'Nom du Destinataire'); // Adresse et nom du destinataire
+    $mail->setFrom('noreply.scoobyteam@gmail.com', 'La Scooby Team'); // Adresse et nom de l'expéditeur
+    $mail->addAddress('noreply.scoobyteam@gmail.com', 'Nom du Destinataire'); // Adresse et nom du destinataire
 
     // Contenu de l'e-mail
     $mail->isHTML(true); // Permet d'envoyer des e-mails HTML
