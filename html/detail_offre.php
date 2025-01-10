@@ -750,7 +750,7 @@ if (isset($json['results'][0])) {
                             </div>
                         <?php else: ?>
                             <div class="note_prenom">
-                                <?php echo htmlspecialchars($avis['note']) . '.0'; ?> |
+                                <?php echo htmlspecialchars($avis['note']) . '.0 ' . $appreciation; ?> |
                                 <span
                                     class="nom_avis"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
                             </div>
