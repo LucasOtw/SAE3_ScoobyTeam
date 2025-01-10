@@ -12,7 +12,7 @@ $mail = new PHPMailer(true);
 
 try {
     // Activer le mode debug pour voir les erreurs détaillées
-    $mail->SMTPDebug = 2; // 0 = Désactiver, 2 = Debug complet
+    $mail->SMTPDebug = 0;
 
     // Configuration du serveur SMTP
     $mail->isSMTP();
