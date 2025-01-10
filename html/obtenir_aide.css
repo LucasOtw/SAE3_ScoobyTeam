@@ -419,5 +419,10 @@ footer {
         display : none;
     }
 
+    .faq-search-bar-container{
+        width: 78vw;
+        margin-left: 11vw;
+    }
+
 
 }
