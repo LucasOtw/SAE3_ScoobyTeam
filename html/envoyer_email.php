@@ -21,15 +21,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail = new PHPMailer(true);
 
         try {
-            // Configuration du serveur SMTP
+
+
+
+            // Configuration de PHPMailer
             $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com';
+            $mail->Host = 'smtp.gmail.com'; // Serveur SMTP de Gmail
             $mail->SMTPAuth = true;
-            $mail->Username = 'noreply.scoobyteam@gmail.com'; // Remplacez par votre e-mail
-            $mail->Password = 'yejz rjye ntfh ryjv'; // Utilisez un mot de passe d'application
+            $mail->Username = 'noreply.scoobyteam@gmail.com'; // Ton adresse email
+            $mail->Password = 'yejz rjye ntfh ryjv'; // Ton mot de passe d'application
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
-
+        
             // Définir l'expéditeur et le destinataire
             $mail->setFrom('noreply.scoobyteam@gmail.com', 'ScoobyTeam');
             $mail->addAddress('noreply.scoobyteam@gmail.com' , 'Destinataire');
