@@ -2,6 +2,7 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+var_dump(file_exists('phpmailer/src/PHPMailer.php'));
 
 // Inclure les fichiers PHPMailer nécessaires
 require '../phpmailer/src/Exception.php';
