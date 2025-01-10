@@ -40,7 +40,6 @@
     
         if (!$currentRow) {
             echo "Aucune offre trouvée avec le code fourni.";
-            exit;
         }
         
         if ($en_ligne === 1) {
