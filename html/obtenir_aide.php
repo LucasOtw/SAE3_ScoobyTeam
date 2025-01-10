@@ -30,6 +30,7 @@
                 <a href="voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
             </div>
         </header>
+        <h1 class="titre_version_mobile">Obtenir de l'aide</h1>
         <img src="images/faq.png" alt="Image pour la page des questions/aides" class="image-aide">
         <div class="faq-search-bar-container">
         <input type="text" class="faq-search-input" placeholder="Comment peut-on vous aider ?">
