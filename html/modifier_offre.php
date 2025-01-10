@@ -24,6 +24,13 @@ if (isset($_GET["filter"])) {
 if(isset($_SESSION['aCreeUneOffre'])){
     unset($_SESSION['aCreeUneOffre']);
 }
+
+if(isset($_POST['envoiOffre'])){
+    $offre = unserialize($_POST['envoiOffre']);
+    echo "<pre>";
+    var_dump($offre);
+    echo "</pre>";
+}
     
 ?>
 <!DOCTYPE html>
