@@ -29,8 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Type de chiffrement (TLS recommandé)
             $mail->Port = 587; // Port SMTP pour TLS (587 pour Gmail)
 
-            // Informations de l'expéditeur et du destinataire
-            $mail->setFrom('valentin.samson@etudiant.univ-rennes.fr', 'Ton Nom'); // Adresse et nom de l'expéditeur
+            
             $mail->addAddress($destinataireEmail, 'Utilisateur'); // Adresse et nom du destinataire
 
             // Contenu de l'e-mail
