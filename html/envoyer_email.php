@@ -19,13 +19,13 @@ try {
     $mail->Host = 'smtp.gmail.com'; // Adresse du serveur SMTP (par ex., Gmail)
     $mail->SMTPAuth = true; // Activer l'authentification SMTP
     $mail->Username = 'harry.rajic56@gmail.com'; // Remplace par ton adresse e-mail
-    $mail->Password = 'ORD22IANJc?'; // Remplace par le mot de passe d'application
+    $mail->Password = 'xbdh ewdv qepn ehwe'; // Remplace par le mot de passe d'application
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Type de chiffrement (TLS recommandé)
     $mail->Port = 587; // Port SMTP pour TLS (587 pour Gmail)
 
     // Informations de l'expéditeur et du destinataire
-    $mail->setFrom('ton_email@gmail.com', 'Ton Nom'); // Adresse et nom de l'expéditeur
-    $mail->addAddress('destinataire@example.com', 'Nom du Destinataire'); // Adresse et nom du destinataire
+    $mail->setFrom('valentin.samson@etudiant.univ-rennes.fr', 'Ton Nom'); // Adresse et nom de l'expéditeur
+    $mail->addAddress('harry.rajic56@gmail.com', 'Nom du Destinataire'); // Adresse et nom du destinataire
 
     // Contenu de l'e-mail
     $mail->isHTML(true); // Permet d'envoyer des e-mails HTML
