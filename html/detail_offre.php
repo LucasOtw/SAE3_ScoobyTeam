@@ -1026,7 +1026,7 @@ WHERE code_offre = :code_offre
                 style="border:0;margin: auto; width:85vw; height:50vh" allowfullscreen="" loading="lazy">
             </iframe>
         </div>
-        
+
         <?php
         // Récupérer la moyenne des notes
         $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre and note<>0');
@@ -1059,14 +1059,14 @@ WHERE code_offre = :code_offre
 
         // Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
         // Afficher les sous-réponses en premier si elles existent
-            if (!empty($avis['sous_reponses'])) {
-                foreach ($avis['sous_reponses'] as $sous_reponse) {
-                    afficherAvis($sous_reponse, $niveau + 1); // Augmente le niveau d'indentation pour les sous-réponses
-                }
+        if (!empty($avis['sous_reponses'])) {
+            foreach ($avis['sous_reponses'] as $sous_reponse) {
+                afficherAvis($sous_reponse, $niveau + 1); // Augmente le niveau d'indentation pour les sous-réponses
             }
         }
 
-        
+
+
         ?>
 
         <div class="avis-widget">
