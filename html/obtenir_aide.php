@@ -25,7 +25,6 @@
             </ul>
         </nav>
       </header> 
-
         <header class="header-tel header_membre">
             <div class="logo-tel">
                 <a href="voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
@@ -124,6 +123,19 @@
                 <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
             </div>
         </div>
+        <header class="header_tel">
+            <a href="voir_offres.php"><img class="fleche_retour_tel" src="images/Bouton_retour.png"
+                    alt="bouton retour"></a>
+            <style>
+                .fleche_retour_tel {
+                    margin-left: -7em;
+                    padding-right: 5em;
+                    height: 3vh;
+                    margin-top: 1vh;
+                }
+            </style>
+            <h1>Détails</h1>
+        </header>
     </footer>
     <script>
     document.addEventListener("DOMContentLoaded", function () {
