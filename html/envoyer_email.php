@@ -9,10 +9,11 @@ require '../phpmailer/src/SMTP.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $theme = $_POST['theme'];
-    $question = $_POST['textAreaAvis'];
+    $nom = htmlspecialchars($_POST['nom'], ENT_QUOTES, 'UTF-8');
+    $prenom = htmlspecialchars($_POST['prenom'], ENT_QUOTES, 'UTF-8');
+    $theme = htmlspecialchars($_POST['theme'], ENT_QUOTES, 'UTF-8');
+    $question = htmlspecialchars($_POST['textAreaAvis'], ENT_QUOTES, 'UTF-8');
+
 
     // Créer une instance de PHPMailer
     $mail = new PHPMailer;
