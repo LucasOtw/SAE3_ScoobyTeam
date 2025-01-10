@@ -1404,6 +1404,13 @@ footer {
            display: flex;
 }
 
+#btn-repondre-avis {
+  border: 3px;
+  color: var(--vert-clair);
+  background-color: white;
+  font-size: 26px;
+}
+
 
 
 
