@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail->Port = 587;
 
             // Définir l'expéditeur et le destinataire
-            $mail->setFrom('harry.rajic56@gmail.com', 'ScoobyTeam');
+            $mail->setFrom('noreply.scoobyteam@gmail.com', 'ScoobyTeam');
             $mail->addAddress('noreply.scoobyteam@gmail.com' , 'Destinataire');
 
             // Construire le contenu de l'e-mail
