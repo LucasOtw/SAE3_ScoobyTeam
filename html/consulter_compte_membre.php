@@ -235,6 +235,7 @@ if (isset($_POST['changePhoto'])) {
     exit;
 }
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
