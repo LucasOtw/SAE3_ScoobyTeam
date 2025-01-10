@@ -18,6 +18,7 @@ $dbh = new PDO($dsn, $username, $password);
 echo "<pre>";
 var_dump($_SESSION);
 echo "</pre>";
+$uneOffre = $_POST['$details_offre'];
 
 
 
@@ -154,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   
                        <div class="repondre_avis_buttons">
                            <!--<button class="repondre_avis_btn_annuler">Annuler</button>-->
-                           <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
+                           <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($uneOffre)); ?>">
                            <button class="repondre_avis_btn_publier" type="submit"- name="publier">Publier →</button>
                        </div>
                </div>
