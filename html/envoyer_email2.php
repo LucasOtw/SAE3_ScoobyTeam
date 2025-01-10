@@ -30,17 +30,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail->SMTPAuth = true;
             $mail->Username = 'noreply.scoobyteam@gmail.com'; // Remplacez par votre e-mail
             $mail->Password = 'yejz rjye ntfh ryjv'; // Utilisez un mot de passe d'application
+            $mail->Username = 'noreply.scoobyteam@gmail.com'; // Remplacez par votre e-mail
+            $mail->Password = 'yejz rjye ntfh ryjv'; // Utilisez un mot de passe d'application
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
             // Définir l'expéditeur et le destinataire
-            $mail->setFrom('harry.rajic56@gmail.com', 'ScoobyTeam');
+            //$mail->setFrom('harry.rajic56@gmail.com', 'ScoobyTeam');
             $mail->addAddress($email, $prenom . ' ' . $nom);
 
             // Construire le contenu de l'e-mail
             $mail->isHTML(true);
             $mail->Subject = 'Vos données personnelles';
-            
+
             // Corps HTML du message
             $mail->Body = "
                 <h1>Demande prise en compte</h1>
