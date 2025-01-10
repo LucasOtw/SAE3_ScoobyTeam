@@ -78,6 +78,86 @@
             </form>
             
         </div>
+        <!-- Popup de confirmation -->
+            <div class="custom-confirm" id="customConfirmBox">
+                <div class="custom-confirm-content">
+                    <p>Votre message a été envoyé avec succès !</p>
+                    <button id="confirmButton">OK</button>
+                    <button id="closeButton">Annuler</button>
+                </div>
+            </div>
+        <style>
+            /* Style de la boîte de dialogue personnalisée */
+            .custom-confirm {
+                display: none; /* Masquer par défaut */
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 1000;
+            }
+            
+            .custom-confirm-content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                text-align: center;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                border: 3px solid var(--vert-clair);
+            }
+            
+            .custom-confirm-content p {
+                margin-bottom: 20px;
+                font-size: 16px;
+            }
+            
+            .custom-confirm-content button {
+                background-color: var(--vert-clair);
+                color: white;
+                border: none;
+                border-radius: 16px;
+                border: 1px #BDC426 solid;
+                cursor: pointer;
+                margin-right: 1em;
+                box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+                transition: transform 0.2s ease;
+                text-decoration: none;
+                width: 10em;
+                height: 2em;
+            }
+            
+            .custom-confirm-content button:hover {
+                background-color: #FFF;
+                color: black;
+                border: 1px #BDC426 solid;
+                transform: translateY(-2px);
+            }
+            
+            .custom-confirm-content button:last-child {
+                background-color: #FFF;
+                color: black;
+                border: none;
+                border-radius: 16px;
+                cursor: pointer;
+                margin-right: 1em;
+                box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+                transition: transform 0.2s ease;
+                text-decoration: none;
+            }
+            
+            .custom-confirm-content button:last-child:hover {
+                background-color: var(--vert-clair);
+                color: white;
+                transform: translateY(-2px);
+            }
+
+        </style>
 
         <nav class="nav-bar">
             <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="Accueil"></a>
@@ -173,5 +253,38 @@
         });
     });
     </script>
+    <script>
+        $(document).ready(function() {
+    $('#contactForm').on('submit', function(e) {
+        e.preventDefault(); // Empêcher la soumission classique du formulaire
+
+        var formData = $(this).serialize(); // Sérialiser les données du formulaire
+
+        $.ajax({
+            type: 'POST',
+            url: 'envoyer_email.php',
+            data: formData,
+            success: function(response) {
+                // Afficher la popup de confirmation
+                $('#customConfirmBox').fadeIn();
+            },
+            error: function() {
+                alert('Une erreur est survenue lors de l\'envoi du message.');
+            }
+        });
+    });
+
+    // Fermer la popup quand l'utilisateur clique sur "OK"
+    $('#confirmButton').on('click', function() {
+        $('#customConfirmBox').fadeOut();
+    });
+
+    // Fermer la popup quand l'utilisateur clique sur "Annuler"
+    $('#closeButton').on('click', function() {
+        $('#customConfirmBox').fadeOut();
+    });
+});
+    </script>
+
 </body>
 </html>
