@@ -32,19 +32,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail->addAddress('noreply.scoobyteam@gmail.com' , 'Destinataire');
 
     // Sujet de l'email
-    $mail->Subject = 'Nouvelle question soumise';
+    $mail->Subject = 'Support Plateforme - Nouvelle question soumise';
 
+
+    // Construire le contenu de l'e-mail
+    $mail->isHTML(true);
+
+    
     // Corps du message (avec toutes les infos)
     $mail->Body = "
-                <h1>Demande prise en compte</h1>
-                <p>Bonjour <strong>{$prenom} {$nom}</strong>,</p>
-                <p>Voici les informations que nous avons reçues :</p>
-                <ul>
-                    <li><strong>Thème :</strong> {$theme}</li>
-                    <li><strong>Question :</strong> {$question}</li>
-                </ul>
-                <p>Nous vous confirmons que votre demande a bien été prise en compte.</p>
-                <p>Nous restons à votre disposition pour toute question ou assistance supplémentaire.</p>
+                <h1>Nouvelle question d'un utilisateur</h1>
+                <p>Bonjour cher membre de la Scooby-Team : </p>
+                <p><strong>{$prenom} {$nom}</strong> vous à poser une question.</p
+                <p>Voici le thème de la question: <strong>{$theme}</strong></p>
+                <br>
+                <p>Contenu de la question :</p>
+                <p><strong>{$question}</strong></p>
+                <br>
                 <p>Cordialement,</p>
                 <p><strong>L’équipe ScoobyTeam</strong></p>
             ";

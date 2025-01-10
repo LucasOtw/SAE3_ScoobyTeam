@@ -46,11 +46,21 @@
                 
                     <label for="theme">Thème de votre question :</label>
                         <select id="theme" name="theme" class="theme_contacter_plateforme" required>
-                            <option value="">Choisir un thème</option>
-                            <option value="general">Général</option>
-                            <option value="compte">Mon Compte</option>
-                            <option value="offres">Offres</option>
-                            <option value="partenaires">Partenaires</option>
+                            <option value="">Choisir un motif</option>
+                            <option value="information">Demande d'information générale</option>
+                            <option value="compte">Problème avec mon compte</option>
+                            <option value="paiement">Problème de paiement ou facturation</option>
+                            <option value="technique">Demande de support technique</option>
+                            <option value="suggestion">Suggestion ou amélioration</option>
+                            <option value="partenariat">Partenariat ou collaboration</option>
+                            <option value="produit">Problème avec un service</option>
+                            <option value="annulation">Demande d'annulation ou suppression de compte</option>
+                            <option value="CGU">Question sur les conditions d'utilisation</option>
+                            <option value="securite">Problème lié à la sécurité</option>
+                            <option value="offres">Question sur les offres et promotions</option>
+                            <option value="fonctionnalite">Demande d'assistance pour une fonctionnalité spécifique</option>
+                            <option value="avis">Retour sur une expérience utilisateur</option>
+                            <option value="reclamation">Réclamation ou insatisfaction</option>
                         </select>
                 </div>
                 <div class="poster_un_avis_section">

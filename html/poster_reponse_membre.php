@@ -91,6 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+   var_dump($avis);
 ?>
 
 <!DOCTYPE html>
@@ -135,7 +136,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <h1 class="repondre_avis_titre">Récapitulatif</h1>
             <div class="repondre_avis_recap">
-               <div class="repondre_avis_utilisateur"><?php echo $avis['prenom'] . " " . $avis['nom']; ?></div>
+               <div class="repondre_avis_utilisateur"><?php  
+               if (!empty($avis['prenom']) && !empty($avis['nom'])){
+                  echo $avis['prenom'] . " " . $avis['nom'];
+               } else if (!empty($avis['raison_sociale_pro'])){
+                  echo $avis['raison_sociale_pro'];
+               }
+               ?></div>
                <div class="repondre_avis_texte"><?php echo $avis["txt_avis"]; ?></div>
             </div>
 

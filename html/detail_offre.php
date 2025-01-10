@@ -649,8 +649,7 @@ if (isset($json['results'][0])) {
                 border: 0;
             </iframe>
         </div>
-
-        <?php
+<?php
         // Récupérer la moyenne des notes
         $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre and note<>0');
         $moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
@@ -684,58 +683,69 @@ if (isset($json['results'][0])) {
         function getResponses($dbh, $code_avis)
         {
             $stmt = $dbh->prepare('
-        SELECT 
-            reponse.*,
-            membre_reponse.prenom AS prenom,
-            membre_reponse.nom AS nom
-        FROM tripenarvor._reponse
-        INNER JOIN tripenarvor._avis AS reponse ON reponse.code_avis = tripenarvor._reponse.code_reponse
-        LEFT JOIN tripenarvor._membre AS membre_reponse ON membre_reponse.code_compte = reponse.code_compte
-        WHERE tripenarvor._reponse.code_avis = :code_avis
-    ');
+                        SELECT reponse.*, membre_reponse.prenom AS prenom_membre, membre_reponse.nom AS nom_membre, pro_reponse.raison_sociale AS raison_sociale_pro
+                        FROM tripenarvor._reponse
+                        INNER JOIN tripenarvor._avis AS reponse ON reponse.code_avis = tripenarvor._reponse.code_reponse
+                        LEFT JOIN tripenarvor._membre AS membre_reponse ON membre_reponse.code_compte = reponse.code_compte
+                        LEFT JOIN tripenarvor._professionnel AS pro_reponse ON pro_reponse.code_compte = reponse.code_compte
+                        WHERE tripenarvor._reponse.code_avis = :code_avis
+                ');
             $stmt->bindValue(':code_avis', $code_avis, PDO::PARAM_INT);
             $stmt->execute();
             $reponses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             // Récursivité : Ajouter les sous-réponses (réponses aux réponses)
             foreach ($reponses as &$reponse) {
-                    $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_avis']); // Ajoute les sous-réponses
-                }
-                return $reponses;
+                $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_avis']); // Ajoute les sous-réponses
             }
+            return $reponses;
+        }
 
         // Fonction pour afficher les avis et les réponses récursivement
         function afficherAvis($avis, $niveau = 0)
         {
             // Vérification du prénom et nom
-            $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur";
-            $nom = !empty($avis['nom']) ? $avis['nom'] : "supprimé";
+            if (!empty($avis['prenom']) && !empty($avis['nom'])){
+                $prenom = $avis['prenom'];
+                $nom = $avis['nom'];
+                $color = '--vert-clair';
+            } else if (!empty($avis['raison_sociale_pro']) ){
+                $prenom = $avis['raison_sociale_pro'];
+                $nom = "";
+                $color = "--orange";
+            
+            } else {
+                $prenom = "Utilisateur";
+                $nom = "supprimé"; 
+            }
+
+
             $appreciation = "";
+                        
+                        switch ($avis["note"]) {
+                            case '1':
+                                $appreciation = "Insatisfaisant";
+                                break;
+                        
+                            case '2':
+                                $appreciation = "Passable";
+                                break;
+                        
+                            case '3':
+                                $appreciation = "Correct";
+                                break;
                             
-                            switch ($avis["note"]) {
-                                case '1':
-                                    $appreciation = "Insatisfaisant";
-                                    break;
+                            case '4':
+                                $appreciation = "Excellent";
+                                break;
+                        
+                            case '5':
+                                $appreciation  = "Parfait";
+                                break;
                             
-                                case '2':
-                                    $appreciation = "Passable";
-                                    break;
-                            
-                                case '3':
-                                    $appreciation = "Correct";
-                                    break;
-                                
-                                case '4':
-                                    $appreciation = "Excellent";
-                                    break;
-                            
-                                case '5':
-                                    $appreciation  = "Parfait";
-                                    break;
-                                
-                                default:
-                                    break;
-                            }
+                            default:
+                                break;
+                        }
             // Calcul du margin-left pour indenter les réponses
             $marge = $niveau * 5; // Indentation pour les réponses
             ?>
@@ -746,13 +756,13 @@ if (isset($json['results'][0])) {
                             <div class="note_prenom">
                                 Réponse |
                                 <span
-                                    class="nom_avis"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                                    class="nom_avis" style="color:var(<?php echo $color ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
                             </div>
                         <?php else: ?>
                             <div class="note_prenom">
-                                <?php echo htmlspecialchars($avis['note']) . '.0 ' . $appreciation; ?> |
+                                <?php echo htmlspecialchars($avis['note']) . '.0' . $appreciation; ?> |
                                 <span
-                                    class="nom_avis"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                                    class="nom_avis" style="color:var(<?php echo $color ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
                             </div>
                         <?php endif; ?>
                         <div class="signalement_repondre">
@@ -770,6 +780,7 @@ if (isset($json['results'][0])) {
                     <p class="avis"><?php echo html_entity_decode($avis['txt_avis']); ?></p>
                 </div>
             </div>
+
             <?php
             // Afficher les sous-réponses en premier si elles existent
             if (!empty($avis['sous_reponses'])) {
@@ -833,8 +844,6 @@ WHERE code_offre = :code_offre
         <?php
         // Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
         ?>
-
-
 
 
 
