@@ -871,6 +871,8 @@
                             <form action="poster_reponse_pro.php" method="POST">
                                 <input type="hidden" name="unAvis"
                                     value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                                 <input type="hidden" name="unAvis"
+                                    value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
                                 <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
                             </form>
                         </div>
