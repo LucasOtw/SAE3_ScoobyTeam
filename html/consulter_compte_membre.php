@@ -285,50 +285,8 @@ if (isset($_POST['dwl-data'])) {
     header('Content-Type: application/json');
     header('Content-Disposition: attachment; filename="mes_donnees_PACT.json"');
     header('Content-Length: ' . strlen($jsonData));
+    
     echo $jsonData;
-
-    // Envoi par mail
-    $mail = new PHPMailer(true);
-
-    try {
-        // Configuration de l'e-mail
-        $mail->isSMTP();
-        $mail->Host = 'smtp.example.com'; // Remplace par ton serveur SMTP
-        $mail->SMTPAuth = true;
-        $mail->Username = 'ton_adresse_email@example.com'; // Ton email
-        $mail->Password = 'ton_mot_de_passe'; // Ton mot de passe SMTP
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
-
-        $mail->setFrom('ton_adresse_email@example.com', 'Nom de ton site');
-        $mail->addAddress($compte['mail'], $monCompteMembre['prenom'] . ' ' . $monCompteMembre['nom']);
-        $mail->addReplyTo('support@example.com', 'Support');
-
-        // Ajout de la pièce jointe
-        $filePath = __DIR__ . '/mes_donnees_PACT.json';
-        file_put_contents($filePath, $jsonData);
-        $mail->addAttachment($filePath, 'mes_donnees_PACT.json');
-
-        
-
-
-        // Contenu de l'e-mail
-        $mail->isHTML(true);
-        $mail->Subject = 'Vos données personnelles';
-        $mail->Body = "<p>Bonjour,</p>
-                       <p>Vous trouverez ci-joint une copie de vos données personnelles.</p>
-                       <p>Si vous avez des questions, contactez notre support.</p>";
-
-        $mail->send();
-
-        // Supprimer le fichier temporaire
-        unlink($filePath);
-
-    } catch (Exception $e) {
-        echo "Erreur lors de l'envoi de l'email : {$mail->ErrorInfo}";
-    }
-
-    exit;
 }
 ?>
 

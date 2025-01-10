@@ -657,7 +657,6 @@ function tempsEcouleDepuisPublication($offre){
                                 FROM tripenarvor._consulte 
                                 NATURAL JOIN tripenarvor._offre 
                                 WHERE code_compte = :code_compte 
-                                  AND code_offre = :code_offre
                                 ORDER BY date_consultation";
                         
                         // Préparation de la requête
@@ -665,7 +664,6 @@ function tempsEcouleDepuisPublication($offre){
                         
                         // Liaison des paramètres
                         $stmt->bindParam(':code_compte', $_SESSION['membre']['code_compte'], PDO::PARAM_INT);
-                        $stmt->bindParam(':code_offre', $offre['code_offre'], PDO::PARAM_INT);
                         
                         // Exécution
                         $stmt->execute();
@@ -676,6 +674,7 @@ function tempsEcouleDepuisPublication($offre){
                         $infosOffre = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 
                         foreach($infosOffre as $offre){
+                            
                             // Récupérer la ville
                             $villeOffre = $dbh->prepare('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
                             $villeOffre->bindParam(":code_adresse", $offre["code_adresse"]);

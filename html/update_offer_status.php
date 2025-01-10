@@ -40,7 +40,6 @@
     
         if (!$currentRow) {
             echo "Aucune offre trouvée avec le code fourni.";
-            exit;
         }
         
         if ($en_ligne === 1) {
@@ -48,7 +47,7 @@
             $stmt = $dbh->prepare("
                 UPDATE tripenarvor._offre
                 SET en_ligne = :en_ligne,
-                    date_publication = CURRENT_DATE
+                    date_publication = NOW()
                 WHERE code_offre = :code_offre
                 RETURNING titre_offre, en_ligne, date_publication
             ");
