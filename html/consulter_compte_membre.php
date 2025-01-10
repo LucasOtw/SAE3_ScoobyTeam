@@ -18,6 +18,19 @@ if(isset($_GET['deco'])){
     }
 }
 
+
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../phpmailer/src/Exception.php';
+require '../phpmailer/src/PHPMailer.php';
+require '../phpmailer/src/SMTP.php';
+
+
+
 if (isset($_POST['modif_infos'])){
     $erreur = [];
     // Récupérer les valeurs initiales (par exemple, depuis la base de données)
@@ -234,17 +247,6 @@ if (isset($_POST['changePhoto'])) {
     header('location: consulter_compte_membre.php');
     exit;
 }
-
-
-require __DIR__ . '/../vendor/autoload.php';
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require '../phpmailer/src/Exception.php';
-require '../phpmailer/src/PHPMailer.php';
-require '../phpmailer/src/SMTP.php';
-
 
 // TELECHARGEMENT DES DONNEES (FORMAT JSON)
 if (isset($_POST['dwl-data'])) {
