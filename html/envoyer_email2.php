@@ -7,17 +7,14 @@ require '../phpmailer/src/Exception.php';
 require '../phpmailer/src/PHPMailer.php';
 require '../phpmailer/src/SMTP.php';
 
-// Vérifiez si le formulaire a été soumis
+// Vérifier si le formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupérez les données du formulaire
+    // Récupérer les données du formulaire
     $email = filter_input(INPUT_POST, 'mail', FILTER_VALIDATE_EMAIL);
-    $telephone = htmlspecialchars($_POST['telephone'], ENT_QUOTES, 'UTF-8');
-    $adresse_postale = htmlspecialchars($_POST['adresse_postal'], ENT_QUOTES, 'UTF-8');
-    $code_postal = htmlspecialchars($_POST['code_postal'], ENT_QUOTES, 'UTF-8');
-    $pseudo = htmlspecialchars($_POST['pseudo'], ENT_QUOTES, 'UTF-8');
     $nom = htmlspecialchars($_POST['nom'], ENT_QUOTES, 'UTF-8');
     $prenom = htmlspecialchars($_POST['prenom'], ENT_QUOTES, 'UTF-8');
-    $ville = htmlspecialchars($_POST['ville'], ENT_QUOTES, 'UTF-8');
+    $theme = htmlspecialchars($_POST['theme'], ENT_QUOTES, 'UTF-8');
+    $question = htmlspecialchars($_POST['textAreaAvis'], ENT_QUOTES, 'UTF-8');
 
     if ($email) {
         // Créer une instance de PHPMailer
@@ -39,20 +36,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Construire le contenu de l'e-mail
             $mail->isHTML(true);
-            $mail->Subject = 'Vos données personnelles';
-            
+            $mail->Subject = 'Votre question a bien été reçue';
+
             // Corps HTML du message
             $mail->Body = "
                 <h1>Demande prise en compte</h1>
                 <p>Bonjour <strong>{$prenom} {$nom}</strong>,</p>
                 <p>Voici les informations que nous avons reçues :</p>
                 <ul>
-                    <li><strong>Email :</strong> {$email}</li>
-                    <li><strong>Téléphone :</strong> {$telephone}</li>
-                    <li><strong>Adresse postale :</strong> {$adresse_postale}</li>
-                    <li><strong>Code postal :</strong> {$code_postal}</li>
-                    <li><strong>Ville :</strong> {$ville}</li>
-                    <li><strong>Pseudo :</strong> {$pseudo}</li>
+                    <li><strong>Thème :</strong> {$theme}</li>
+                    <li><strong>Question :</strong> {$question}</li>
                 </ul>
                 <p>Nous vous confirmons que votre demande a bien été prise en compte.</p>
                 <p>Nous restons à votre disposition pour toute question ou assistance supplémentaire.</p>
@@ -63,12 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Version texte alternative
             $mail->AltBody = "Bonjour {$prenom} {$nom},\n\n" .
                 "Voici les informations que nous avons reçues :\n" .
-                "- Email : {$email}\n" .
-                "- Téléphone : {$telephone}\n" .
-                "- Adresse postale : {$adresse_postale}\n" .
-                "- Code postal : {$code_postal}\n" .
-                "- Ville : {$ville}\n" .
-                "- Pseudo : {$pseudo}\n\n" .
+                "- Thème : {$theme}\n" .
+                "- Question : {$question}\n\n" .
                 "Nous vous confirmons que votre demande a bien été prise en compte.\n" .
                 "Cordialement,\nL’équipe ScoobyTeam";
 
