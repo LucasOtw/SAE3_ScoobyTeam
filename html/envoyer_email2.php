@@ -11,13 +11,13 @@ require '../phpmailer/src/SMTP.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupérez les données du formulaire
     $email = filter_input(INPUT_POST, 'mail', FILTER_VALIDATE_EMAIL);
-    $telephone = filter_input(INPUT_POST, 'telephone', FILTER_SANITIZE_STRING);
-    $adresse_postale = filter_input(INPUT_POST, 'adresse_postal', FILTER_SANITIZE_STRING);
-    $code_postal = filter_input(INPUT_POST, 'code_postal', FILTER_SANITIZE_STRING);
-    $pseudo = filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_STRING);
-    $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);
-    $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_STRING);
-    $ville = filter_input(INPUT_POST, 'ville', FILTER_SANITIZE_STRING);
+    $telephone = htmlspecialchars($_POST['telephone'], ENT_QUOTES, 'UTF-8');
+    $adresse_postale = htmlspecialchars($_POST['adresse_postal'], ENT_QUOTES, 'UTF-8');
+    $code_postal = htmlspecialchars($_POST['code_postal'], ENT_QUOTES, 'UTF-8');
+    $pseudo = htmlspecialchars($_POST['pseudo'], ENT_QUOTES, 'UTF-8');
+    $nom = htmlspecialchars($_POST['nom'], ENT_QUOTES, 'UTF-8');
+    $prenom = htmlspecialchars($_POST['prenom'], ENT_QUOTES, 'UTF-8');
+    $ville = htmlspecialchars($_POST['ville'], ENT_QUOTES, 'UTF-8');
 
     if ($email) {
         // Créer une instance de PHPMailer
@@ -60,15 +60,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p><strong>L’équipe ScoobyTeam</strong></p>
             ";
 
-// Envoyer l'e-mail
-if ($mail->send()) {
-    echo 'Le message a été envoyé avec succès !';
-}
-} catch (Exception $e) {
-echo "Erreur lors de l'envoi du message : {$mail->ErrorInfo}";
-}
-} else {
-echo "Adresse e-mail invalide ou non fournie.";
-}
+            // Version texte alternative
+            $mail->AltBody = "Bonjour {$prenom} {$nom},\n\n" .
+                "Voici les informations que nous avons reçues :\n" .
+                "- Email : {$email}\n" .
+                "- Téléphone : {$telephone}\n" .
+                "- Adresse postale : {$adresse_postale}\n" .
+                "- Code postal : {$code_postal}\n" .
+                "- Ville : {$ville}\n" .
+                "- Pseudo : {$pseudo}\n\n" .
+                "Nous vous confirmons que votre demande a bien été prise en compte.\n" .
+                "Cordialement,\nL’équipe ScoobyTeam";
+
+            // Envoyer l'e-mail
+            if ($mail->send()) {
+                echo 'Le message a été envoyé avec succès !';
+            }
+        } catch (Exception $e) {
+            echo "Erreur lors de l'envoi du message : {$mail->ErrorInfo}";
+        }
+    } else {
+        echo "Adresse e-mail invalide ou non fournie.";
+    }
 }
 ?>
