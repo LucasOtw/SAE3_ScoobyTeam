@@ -34,13 +34,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail->Subject = 'Nouvelle question soumise';
 
     // Corps du message (avec toutes les infos)
-    $mail->Body    = "
-        <h2>Information reçue</h2>
-        <p><strong>Nom :</strong> $nom</p>
-        <p><strong>Prénom :</strong> $prenom</p>
-        <p><strong>Thème :</strong> $theme</p>
-        <p><strong>Question :</strong> $question</p>
-    ";
+    $mail->Body = "
+                <h1>Demande prise en compte</h1>
+                <p>Bonjour <strong>{$prenom} {$nom}</strong>,</p>
+                <p>Voici les informations que nous avons reçues :</p>
+                <ul>
+                    <li><strong>Thème :</strong> {$theme}</li>
+                    <li><strong>Question :</strong> {$question}</li>
+                </ul>
+                <p>Nous vous confirmons que votre demande a bien été prise en compte.</p>
+                <p>Nous restons à votre disposition pour toute question ou assistance supplémentaire.</p>
+                <p>Cordialement,</p>
+                <p><strong>L’équipe ScoobyTeam</strong></p>
+            ";
+
 
     // Si tout va bien, envoi de l'email
     if(!$mail->send()) {
