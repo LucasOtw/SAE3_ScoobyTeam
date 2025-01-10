@@ -145,9 +145,10 @@ if (!empty($_POST['supprAvis'])){
                     <h3 class="avis" style="display: flex; justify-content: space-between;">
                         <span>
                             <?php if ($avis["note"] != 0){
-                                echo htmlspecialchars($avis["note"]) . ".0 ★  $appreciation "; 
-                                else {
-                                    echo "Réponse"; ?> 
+                                    echo htmlspecialchars($avis["note"]) . ".0 ★  $appreciation "; 
+                                   else {
+                                    echo "Réponse"; 
+                                    } ?> 
                             <br><span class="nom_avis"><?php echo htmlspecialchars($avis["prenom"]) . " " . htmlspecialchars($avis["nom"]); ?></span> 
                             <span class="nom_visite"><?php echo htmlspecialchars($avis["titre_offre"]); ?></span>
                         </span>
