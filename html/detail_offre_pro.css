@@ -1406,22 +1406,10 @@ footer {
 
 #btn-repondre-avis {
   border: 3px;
-  color: var(--vert-clair);
+  color: var(--orange);
   background-color: white;
   font-size: 26px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 .toggle-button {
     position: relative;
