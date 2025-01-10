@@ -1,8 +1,16 @@
 <?php
-// Inclure PHPMailer
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+var_dump(file_exists('phpmailer/src/PHPMailer.php'));
+
+// Inclure les fichiers PHPMailer nécessaires
 require '../phpmailer/src/Exception.php';
 require '../phpmailer/src/PHPMailer.php';
 require '../phpmailer/src/SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
@@ -11,46 +19,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $theme = htmlspecialchars($_POST['theme']);
     $question = htmlspecialchars($_POST['textAreaAvis']);
 
-    // Créer une instance de PHPMailer
-    $mail = new PHPMailer(true); // Utilisation du mode exception
+    // Initialiser PHPMailer
+    $mail = new PHPMailer(true);
 
     try {
         // Configurer le serveur SMTP
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com'; // Serveur SMTP de Gmail
+        $mail->Host = 'smtp.gmail.com'; // Serveur SMTP (ici Gmail)
         $mail->SMTPAuth = true;
-        $mail->Username = 'ton_email@gmail.com'; // Ton adresse Gmail
-        $mail->Password = 'ton_mot_de_passe'; // Ton mot de passe Gmail (ou mot de passe d'application)
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Username = 'harry.rajic56@gmail.com'; // Adresse Gmail
+        $mail->Password = 'ORD22IANJc?'; // Mot de passe ou mot de passe d'application
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Sécurisation STARTTLS
         $mail->Port = 587;
 
-        // Définir l'expéditeur et le destinataire
-        $mail->setFrom('ton_email@gmail.com', 'Nom du site');
-        $mail->addAddress('adresse_email_destinataire@example.com', 'Nom du destinataire');
+        // Configurer l'expéditeur et le destinataire
+        $mail->setFrom('ton_email@gmail.com', 'Nom du site'); // L'expéditeur
+        $mail->addAddress('destinataire_email@example.com', 'Destinataire'); // Le destinataire
 
-        // Définir le sujet et le corps du message
-        $mail->isHTML(false); // Si tu veux envoyer un e-mail en texte brut
-        $mail->Subject = "Demande de contact de $prenom $nom";
-        $mail->Body = "
-        Nom : $nom
-        Prénom : $prenom
-        Thème : $theme
-        
-        Question :
-        $question
-        ";
+        // Définir le sujet et le contenu du message
+        $mail->Subject = "Demande de contact : $theme";
+        $mail->Body = "Nom : $nom\nPrénom : $prenom\nThème : $theme\n\nQuestion :\n$question";
 
-        // Envoi de l'email
-        if ($mail->send()) {
-            echo "Votre message a été envoyé avec succès.";
-        } else {
-            echo "Le message n'a pas pu être envoyé. Erreur: {$mail->ErrorInfo}";
-        }
+        // Envoyer l'e-mail
+        $mail->send();
+        echo "Le message a été envoyé avec succès.";
     } catch (Exception $e) {
-        // Affichage de l'erreur si PHPMailer échoue
-        echo "Le message n'a pas pu être envoyé. Erreur: {$mail->ErrorInfo}";
+        echo "Erreur lors de l'envoi du message : {$mail->ErrorInfo}";
     }
 } else {
-    echo "Erreur : la requête n'est pas de type POST.";
+    echo "Requête non valide.";
 }
 ?>

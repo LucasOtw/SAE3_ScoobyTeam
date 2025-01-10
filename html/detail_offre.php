@@ -708,7 +708,7 @@ if (isset($json['results'][0])) {
         function afficherAvis($avis, $niveau = 0)
         {
             // Vérification du prénom et nom
-            $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur supprimé";
+            $prenom = !empty($avis['prenom']) ? $avis['prenom'] : "Utilisateur";
             $nom = !empty($avis['nom']) ? $avis['nom'] : "supprimé";
 
             // Calcul du margin-left pour indenter les réponses
@@ -719,7 +719,7 @@ if (isset($json['results'][0])) {
                     <h3 class="avis">
                         <?php if ($niveau > 0): ?>
                             <div class="note_prenom">
-                                Réponse à <?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?> |
+                                Réponse |
                                 <span
                                     class="nom_avis"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
                             </div>
@@ -777,7 +777,7 @@ WHERE code_offre = :code_offre
         foreach ($tout_les_avis as &$avis) {
             // Vérification si l'utilisateur est supprimé
             if (empty($avis['prenom']) && empty($avis['nom'])) {
-                $avis['prenom'] = "Utilisateur supprimé";
+                $avis['prenom'] = "Utilisateur";
                 $avis['nom'] = "supprimé";
             }
             // Récupération des réponses pour l'avis principal
@@ -1026,62 +1026,85 @@ WHERE code_offre = :code_offre
                 style="border:0;margin: auto; width:85vw; height:50vh" allowfullscreen="" loading="lazy">
             </iframe>
         </div>
+
+        <?php
+        // Récupérer la moyenne des notes
+        $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre and note<>0');
+        $moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+        $moyenne_note->execute();
+        $note_moyenne = $moyenne_note->fetchColumn();
+
+        // Récupérer le nombre d'avis
+        $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis WHERE code_offre = :code_offre');
+        $nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+        $nb_avis->execute();
+        $nombre_d_avis = $nb_avis->fetchColumn();
+
+        $appreciationGenerale = "";
+
+        // Déterminer l'appréciation générale selon la note moyenne
+        if ($note_moyenne <= 1) {
+            $appreciationGenerale = "À éviter";
+        } elseif ($note_moyenne <= 2) {
+            $appreciationGenerale = "Peut mieux faire";
+        } elseif ($note_moyenne <= 3) {
+            $appreciationGenerale = "Correct";
+        } elseif ($note_moyenne <= 4) {
+            $appreciationGenerale = "Très Bien";
+        } elseif ($note_moyenne <= 5) {
+            $appreciationGenerale = "Exceptionnel";
+        } else {
+            $appreciationGenerale = "Valeur hors échelle";
+        }
+
+        // Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
+        // Afficher les sous-réponses en premier si elles existent
+        ?>
         <div class="avis-widget">
             <div class="avis-header">
-                <h1 class="avis"><?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5") ?>
+                <h1 class="avis">
+                    <?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5"); ?>
                     <span class="avis-score">
-                        <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?></span></h1>
+                        <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?>
+                    </span>
+                </h1>
                 <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
             </div>
             <div class="avis-list">
                 <?php
                 foreach ($tout_les_avis as $avis) {
-                    $appreciation = "";
-
-                    switch ($avis["note"]) {
-                        case '1':
-                            $appreciation = "Insatisfaisant";
-                            break;
-
-                        case '2':
-                            $appreciation = "Passable";
-                            break;
-
-                        case '3':
-                            $appreciation = "Correct";
-                            break;
-
-                        case '4':
-                            $appreciation = "Excellent";
-                            break;
-
-                        case '5':
-                            $appreciation = "Parfait";
-                            break;
-
-                        default:
-                            break;
-                    }
-
-                    if (!isset($avis["prenom"]) && !isset($avis["nom"])) {
-                        $avis["prenom"] = "Utilisateur";
-                        $avis["nom"] = "supprimé";
-                    }
-
-                    ?>
-                    <div class="avis">
-
-                        <div class="avis-content">
-                            <h3 class="avis"><?php echo $avis["note"] . ".0 $appreciation "; ?>| <span
-                                    class="nom_avis"><?php echo $avis["prenom"]; ?>     <?php echo $avis["nom"]; ?></span></h3>
-                            <p class="avis"><?php echo $avis["txt_avis"]; ?></p>
-                        </div>
-                    </div>
-                    <?php
+                    afficherAvis($avis, $niveau + 1); // Affiche l'avis principal et toutes les réponses imbriquées
                 }
                 ?>
             </div>
         </div>
+
+
+
+        ?>
+
+        <div class="avis-widget">
+            <div class="avis-header">
+                <h1 class="avis">
+                    <?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5"); ?>
+                    <span class="avis-score">
+                        <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?>
+                    </span>
+                </h1>
+                <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
+            </div>
+            <div class="avis-list">
+                <?php
+                foreach ($tout_les_avis as $avis) {
+                    afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
+                }
+                ?>
+            </div>
+        </div>
+
+        <?php
+        // Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
+        ?>
     </div>
     </div>
 </body>

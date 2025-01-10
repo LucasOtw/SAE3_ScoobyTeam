@@ -107,8 +107,10 @@ function tempsEcouleDepuisPublication($offre){
 </div>
     </div>
     <!-- Code pour le pop-up --> 
-    <div id="customPopup">
-        <img src="images/robot_popup.png" href="creation_compte_membre.php" width="50" height="70" class="customImage">
+    <div id="customPopup"><a href="creation_compte_membre.php">
+    <img src="images/robot_popup.png" width="50" height="70" class="customImage" alt="Robot Image">
+</a>
+
         <p><a href="creation_compte_membre.php" class="txt_popup">Créez votre compte</a> en quelques clics et accédez à un monde de possibilités ! </p>
         <!--<a id="connexion" href="creation_compte_membre.php">Inscrivez-vous</a>-->
         <img id="closePopup" src="images/erreur.png" width="15" height="15">
@@ -650,7 +652,10 @@ function tempsEcouleDepuisPublication($offre){
                             die();
                         }
                         // On récupère toutes les offres (titre,ville,images)
-                        $infosOffre = $dbh->query('SELECT * FROM tripenarvor._offre');
+                        $infosOffre = $dbh->query('SELECT * FROM tripenarvor._consulte natural join tripenarvor._offre 
+                                                    where code_compte = '.$_SESSION["membre"]["code_compte"].' and code_offre = '.$offre["code_offre"].' 
+                                                    order by date_consultation');
+                        // $infosOffre = $dbh->query('select * from tripenarvor._offre;');
                         $infosOffre = $infosOffre->fetchAll(PDO::FETCH_ASSOC);
             
                         foreach($infosOffre as $offre){
