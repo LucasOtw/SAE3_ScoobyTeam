@@ -7,8 +7,6 @@ require '../phpmailer/src/Exception.php';
 require '../phpmailer/src/PHPMailer.php';
 require '../phpmailer/src/SMTP.php';
 
-$successMessage = ''; // Initialisation de la variable pour afficher la popup
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
     $nom = htmlspecialchars($_POST['nom'], ENT_QUOTES, 'UTF-8');
@@ -38,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Construire le contenu de l'e-mail
     $mail->isHTML(true);
 
-    // Corps du message (avec toutes les infos)
+    // Corps du message
     $mail->Body = "
         <h1>Nouvelle question d'un utilisateur</h1>
         <p>Bonjour cher membre de la Scooby-Team :</p>
@@ -55,17 +53,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Essayer d'envoyer l'email
     try {
         if ($mail->send()) {
-            $successMessage = 'Le message a été envoyé avec succès !';
+            echo 'Le message a été envoyé avec succès !';
         }
     } catch (Exception $e) {
-        $successMessage = "Erreur lors de l'envoi du message : {$mail->ErrorInfo}";
+        echo "Erreur lors de l'envoi du message : {$mail->ErrorInfo}";
     }
 }
 ?>
-
-<!-- Affichage de la popup JS si le message a été envoyé -->
-<?php if ($successMessage): ?>
-    <script>
-        alert("<?php echo $successMessage; ?>");
-    </script>
-<?php endif; ?>
