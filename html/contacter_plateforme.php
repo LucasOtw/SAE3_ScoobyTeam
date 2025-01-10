@@ -82,8 +82,7 @@
             <div class="custom-confirm" id="customConfirmBox">
                 <div class="custom-confirm-content">
                     <p>Votre message a été envoyé avec succès !</p>
-                    <button id="confirmButton">OK</button>
-                    <button id="closeButton">Annuler</button>
+                    <button id="confirmButton">Fermer</button>
                 </div>
             </div>
         <style>
