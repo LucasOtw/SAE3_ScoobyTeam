@@ -54,12 +54,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ";
 
 
-    // Si tout va bien, envoi de l'email
-    if(!$mail->send()) {
-        echo 'Erreur : ' . $mail->ErrorInfo;
-    } else {
-        echo 'Le message a été envoyé avec succès !';
+ if ($mail->send()) {
+            $successMessage = 'Le message a été envoyé avec succès !';
+        }
+    } catch (Exception $e) {
+        $successMessage = "Erreur lors de l'envoi du message : {$mail->ErrorInfo}";
     }
-}
 ?>
 
+<!-- Popup JS -->
+<?php if ($successMessage): ?>
+    <script>
+        alert("<?php echo $successMessage; ?>");
+    </script>
+<?php endif; ?>
