@@ -776,7 +776,7 @@ if (isset($json['results'][0])) {
     // Afficher les sous-réponses si elles existent
     if (!empty($avis['sous_reponses'])) {
         foreach ($avis['sous_reponses'] as $sous_reponse) {
-            afficherAvis($sous_reponse, $niveau + 1); // Indentation augmentée
+            afficherAvis($sous_reponse, $niveau); // Indentation augmentée
         }
     }
 }
@@ -824,12 +824,13 @@ WHERE code_offre = :code_offre
             </div>
             <div class="avis-list">
                 <?php
-                echo $tout_les_avis[0]['txt_avis'] . "<br>";
-                echo $tout_les_avis[1]['txt_avis'] . "<br>";
-                echo $tout_les_avis[2]['txt_avis'] . "<br>";
-                echo $tout_les_avis[3]['txt_avis'] . "<br>";
+                echo "avis 0 " . $tout_les_avis[0]['txt_avis'] . "<br>";
+                echo "avis 1 " . $tout_les_avis[1]['txt_avis'] . "<br>";
+                echo "avis 2 " . $tout_les_avis[2]['txt_avis'] . "<br>";
+                echo "avis 3 " . $tout_les_avis[3]['txt_avis'] . "<br><br>";
                 foreach ($tout_les_avis as $avis) {
                     echo "texte de l'avis " . $avis['txt_avis'];
+                    
                     afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
                    
                 }
