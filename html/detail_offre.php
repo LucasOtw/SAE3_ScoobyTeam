@@ -800,7 +800,7 @@ WHERE code_offre = :code_offre
         $tout_les_avis->execute();
         $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
         echo "<pre>";
-        var_dump($tous_les_avis);    
+        var_dump($tout_les_avis);    
         echo "</pre>";
 
         // Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
