@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          echo "</pre>";
          
 
-          if ($avis['code_compte'] == $_SESSION['pro']['code_compte']){
+          if ($avis['code_compte'] == $_SESSION['membre']['code_compte']){
               $prenom = "Mon Entreprise";
               $nom = "";
               $color = "--orange";
