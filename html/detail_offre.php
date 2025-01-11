@@ -776,7 +776,7 @@ if (isset($json['results'][0])) {
     // Afficher les sous-réponses si elles existent
     if (!empty($avis['sous_reponses'])) {
         foreach ($avis['sous_reponses'] as $sous_reponse) {
-            afficherAvis($sous_reponse, $niveau); // Indentation augmentée
+            afficherAvis($sous_reponse, $niveau + 1); // Indentation augmentée
         }
     }
 }
