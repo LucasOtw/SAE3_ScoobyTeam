@@ -45,6 +45,7 @@ if ($email) {
         $mail->Port = 587;
 
         // Définir l'expéditeur et le destinataire
+        $mail->CharSet = 'UTF-8';
         //$mail->setFrom('harry.rajic56@gmail.com', 'ScoobyTeam');
         $mail->addAddress($email, $prenom . ' ' . $nom);
 
