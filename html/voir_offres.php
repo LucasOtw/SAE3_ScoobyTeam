@@ -368,6 +368,7 @@ function tempsEcouleDepuisPublication($offre){
                         {
                             if ($offre["en_ligne"])
                             {
+                                echo $offre_image['url_image'];
                             ?>
                                 
                                     <article class="card-a-la-une">
