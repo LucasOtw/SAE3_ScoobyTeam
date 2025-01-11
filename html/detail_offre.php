@@ -784,7 +784,6 @@ if (isset($json['results'][0])) {
     }
 }
 
-        array_pop($tout_les_avis);
         // Récupérer tous les avis principaux (sans réponses déjà existantes)
         $tout_les_avis = $dbh->prepare('SELECT * 
 FROM tripenarvor._avis
@@ -829,6 +828,7 @@ WHERE code_offre = :code_offre
                 <?php
                 foreach ($tout_les_avis as $avis) {
                     afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
+                    echo $avis['txt_avis'];
                 }
                 ?>
             </div>
