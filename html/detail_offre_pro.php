@@ -762,11 +762,6 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
             $appreciationGenerale = "Valeur hors échelle";
         }
 
-        echo "<pre>";
-        var_dump($_SESSION);
-        echo "</pre>";
-
-
         // Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
         function getResponses($dbh, $code_avis) {
             $stmt = $dbh->prepare('
@@ -801,7 +796,7 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
 {
     // Déterminer l'affichage selon le type d'utilisateur
     if ($avis['code_compte'] == $_SESSION['pro']['code_compte']){
-        $prenom = "Moi";
+        $prenom = "Mon Entreprise";
         $nom = "";
         $color = "--orange";
     } elseif (!empty($avis['raison_sociale_pro'])) {
