@@ -400,9 +400,9 @@ function tempsEcouleDepuisPublication($offre){
 
         <div class="titres-offres">
             <h2 class="titre-les-offres">Nouveautés</h2>
-             <a href="voir_toutes_les_offres.php">
+<!--              <a href="voir_toutes_les_offres.php">
                 <h4 class="voir-plus">Voir toutes les offres</h4>
-             </a>
+             </a> -->
         </div>
         
         <section id="offers-list">
@@ -747,6 +747,233 @@ function tempsEcouleDepuisPublication($offre){
             }
             ?>
         </div>
+
+
+        <div class="titres-offres">
+            <h2 class="titre-les-offres">Toutes les offres</h2>
+        </div>
+        
+        <section id="offers-list">
+        <?php    
+            
+            // On récupère toutes les offres (titre,ville,images)
+            $infosOffre = $dbh->query('SELECT * FROM tripenarvor._offre');
+            $infosOffre = $infosOffre->fetchAll(PDO::FETCH_ASSOC);
+
+            $traductionDate = [
+                "Monday" => "lundi",
+                "Tuesday" => "mardi",
+                "Wednesday" => "mercredi",
+                "Thursday" => "jeudi",
+                "Friday" => "vendredi",
+                "Saturday" => "samedi",
+                "Sunday" => "dimanche"
+            ];
+
+            $date = new DateTime();
+            $dateFr = $traductionDate[$date->format('l')];
+        
+            foreach($infosOffre as $offre){
+
+                
+                // Récupérer la ville
+                $villeOffre = $dbh->prepare('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
+                $villeOffre->bindParam(":code_adresse", $offre["code_adresse"]);
+                $villeOffre->execute();
+                $villeOffre = $villeOffre->fetch(); // Récupérer la ville (ou NULL si pas trouvé)
+
+                
+                $queries = [
+                    'restauration' => 'SELECT * FROM tripenarvor.offre_restauration WHERE code_offre = :code_offre',
+                    'parc_attractions' => 'SELECT * FROM tripenarvor.offre_parc_attractions WHERE code_offre = :code_offre',
+                    'spectacle' => 'SELECT * FROM tripenarvor.offre_spectacle WHERE code_offre = :code_offre',
+                    'visite' => 'SELECT * FROM tripenarvor.offre_visite WHERE code_offre = :code_offre',
+                    'activite' => 'SELECT * FROM tripenarvor.offre_activite WHERE code_offre = :code_offre'
+                ];
+                
+                $type_offre = null;
+                $details_offre = null;
+                
+                // Parcourez les requêtes et exécutez-les
+                foreach ($queries as $type => $sql) {
+                    $stmt = $dbh->prepare($sql);
+                    $stmt->bindParam(':code_offre', $offre["code_offre"], PDO::PARAM_INT);
+                    $stmt->execute();
+                    
+                    // Vérifiez si une ligne est retournée
+                    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                    if ($result) {
+                        $type_offre = $type;
+                        $details_offre = $result;
+                        break;
+                    }
+                }
+
+                
+                // Récupérer les images
+                $imagesOffre = $dbh->prepare('SELECT code_image FROM tripenarvor._son_image WHERE code_offre = :code_offre');
+                $imagesOffre->bindParam(":code_offre", $offre["code_offre"]);
+                $imagesOffre->execute();
+                
+                // on recupère toutes les images sous forme de tableau
+                $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
+
+
+                $horaireOffre = $dbh->prepare('SELECT ouverture, fermeture FROM tripenarvor._horaire WHERE code_horaire = (SELECT '.$dateFr.' FROM tripenarvor._offre WHERE code_offre = :code_offre);');
+                $horaireOffre->bindParam(":code_offre", $offre["code_offre"]);
+                $horaireOffre->execute();
+
+                $horaire = ($horaireOffre->fetch(PDO::FETCH_ASSOC));
+
+
+                if ($type_offre == 'parc_attractions' || $type_offre == 'restauration' || $type_offre == 'activite')
+                {
+                    $periodeOffre = $dbh->prepare('SELECT date_ouverture, date_fermeture FROM tripenarvor._offre_'.$type_offre.' WHERE code_offre = :code_offre;');
+                    $periodeOffre->bindParam(":code_offre", $offre["code_offre"]);
+                    $periodeOffre->execute();
+    
+                    $periode = ($periodeOffre->fetch(PDO::FETCH_ASSOC));
+                } else {
+                    $periode = "";
+                }
+                
+                
+                if (!empty($horaire))
+                {
+                    
+                    // Exemple d'horaires d'ouverture et de fermeture (remplacer par vos valeurs réelles)
+                    $ouverture = new DateTime($date->format("Y-m-d ") . $horaire["ouverture"]);  
+                    $fermeture = new DateTime($date->format("Y-m-d ") . $horaire["fermeture"]);
+                    
+                    // Comparer les horaires
+                    if ($ouverture <= $date && $fermeture > $date) {
+                        // Si on est dans l'intervalle d'ouverture
+                        $interval = $fermeture->diff($date);
+                        
+                        if (($interval->h < 1) || ($interval->h == 1 && $interval->i == 0)) {
+                            // Si la fermeture est dans moins de 1 heure
+                            $dataStatusEng = "closing-soon";
+                            $dataStatusFr = "Ferme bientôt";
+                        } else {
+                            // Si on est ouvert normalement
+                            $dataStatusEng = "open";
+                            $dataStatusFr = "Ouvert";
+                        }
+                    } elseif ($ouverture > $date || $fermeture <= $date) {
+                        // Si on est avant l'ouverture
+                        $interval = $ouverture->diff($date);
+                        
+                        if (($interval->h < 1) || ($interval->h == 1 && $interval->i == 0)) {
+                            // Si l'ouverture est dans moins de 1 heure
+                            $dataStatusEng = "opening-soon";
+                            $dataStatusFr = "Ouvre bientôt";
+                        } else {
+                            // Si on est fermé
+                            $dataStatusEng = "closed";
+                            $dataStatusFr = "Fermé";
+                        }
+                    }
+                } else if (empty($horaire)) {
+                    
+                    $dataStatusEng = "closed";
+                    $dataStatusFr = "Fermé";
+                    
+                } else if ($type_offre === 'spectacle') {
+                    // Si il n'a pas d'horaire du tt
+                    $dataStatusEng = "xx";
+                    $dataStatusFr = "xx";
+                }
+                
+
+                if ($type_offre == 'visite' || $type_offre == 'spectacle')
+                {
+                    $eventOffre = $dbh->prepare('SELECT date_'.$type_offre.', heure_'.$type_offre.' FROM tripenarvor._offre_'.$type_offre.' WHERE code_offre = :code_offre;');
+                    $eventOffre->bindParam(":code_offre", $offre["code_offre"]);
+                    $eventOffre->execute();
+    
+                    $event = ($eventOffre->fetch(PDO::FETCH_ASSOC));
+                } else {
+                    $event = "";
+                }
+                
+
+                if(!empty($images)){ // si le tableau n'est pas vide...
+                    /* On récupère uniquement la première image.
+                    Une offre peut avoir plusieurs images. Mais on n'en affiche qu'une seule sur cette page.
+                    On pourrait afficher aléatoirement chaque image, mais on serait vite perdus...*/
+                                    
+                    $recupLienImage = $dbh->prepare('SELECT url_image FROM tripenarvor._image WHERE code_image = :code_image');
+                    $recupLienImage->bindValue(":code_image",$images[0]['code_image']);
+                    $recupLienImage->execute();
+    
+                    $offre_image = $recupLienImage->fetch(PDO::FETCH_ASSOC);
+                } else {
+                    $offre_image = "";
+                }
+
+                
+                if ($offre["en_ligne"])
+                {
+                    /* echo $villeOffre["ville"]; */
+                ?>
+                    <article class="offer <?php if (!empty($offre['option_en_relief']) || !empty($offre['option_a_la_une']) ){echo "en_relief";} ?>" 
+                                data-category=<?php echo $type_offre;?> 
+                                data-price="<?php echo $offre["tarif"];?>" 
+                                data-rate=<?php echo $offre["note_moyenne"]; ?>
+                                 location="<?php echo $villeOffre["ville"]; ?>"
+                                data-status=<?php echo $dataStatusEng; ?> 
+                                data-event=<?php if(!empty($event)) { echo $event['date_'.$type_offre]; } else { echo ""; } ?> 
+                                data-period-o=<?php if(!empty($periode)) { echo $periode['date_ouverture']; } else { echo ""; } ?>
+                                data-period-c=<?php if(!empty($periode)) { echo $periode['date_fermeture']; } else { echo ""; } ?> >
+                        
+                                <img src="<?php echo "./".$offre_image['url_image']; ?>" alt="aucune image">
+                        
+                                <div class="offer-details">
+                                    <h2><?php echo $offre["titre_offre"]; ?></h2>
+                                    
+                                    <p>
+                                        <span class="iconify" data-icon="mdi:map-marker" style="color: #BDC426; font-size: 1.2em; margin-right: 5px; margin-bottom: -4px;"></span>
+                                        <?php echo $villeOffre["ville"]; ?>
+                                    </p>
+                                    
+                                    <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
+                                    
+                                    <p>
+                                        <?php 
+                                        if (!empty($offre["note_moyenne"])) { 
+                                            echo '⭐ '.$offre["note_moyenne"]; 
+                                        } else { 
+                                            echo "Aucune note"; 
+                                        } 
+                                        ?>
+                                    </p>
+                                    
+                                    <p style="color: #2DD7A4; font-weight: bold;"><?php echo $offre["tarif"]; ?>€</p>
+                                    <p>
+                                        <?php 
+                                        if ($type_offre != 'spectacle') { 
+                                            echo $dataStatusFr; 
+                                        } 
+                                        ?>
+                                    </p>
+                                    
+                                    <?php if (($type_offre == "visite" || $type_offre == "spectacle") && !empty($event['date_'.$type_offre])) { ?> 
+                                        <p><?php echo $event['date_'.$type_offre].' à '.$event['heure_'.$type_offre]; ?></p> 
+                                    <?php } ?>
+                                            
+                                    <form id="form-voir-offre" action="detail_offre.php" method="POST">
+                                        <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
+                                        <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
+                                    </form>
+                                    
+                                </div>
+                    </article>
+                <?php
+                }
+            }
+
+        ?>
+        </section>
 
         <script>
             // Récupération des éléments
