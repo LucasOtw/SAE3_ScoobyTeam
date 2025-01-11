@@ -716,16 +716,15 @@ if (isset($json['results'][0])) {
         $prenom = $avis['raison_sociale_pro'];
         $nom = "";
         $color = "--orange";
-    } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
-        // Si c'est un membre classique
-        $prenom = $avis['prenom'];
-        $nom = $avis['nom'];
-        $color = "--vert-clair";
-        
     } elseif ($avis['code_compte'] === $_SESSION["membre"]["code_compte"]){
         // Si l'utilisateur est celui qui a écrit l'avis ou la réponse
         $prenom = "Moi";
         $nom = "";
+        $color = "--vert-clair";
+    } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
+        // Si c'est un membre classique
+        $prenom = $avis['prenom'];
+        $nom = $avis['nom'];
         $color = "--vert-clair";
     } else {
         // Si l'utilisateur est supprimé
