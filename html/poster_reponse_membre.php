@@ -147,6 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               $prenom = "Utilisateur";
               $nom = "supprimé";
           }
+?>
 
         <main class="main_repondre_avis">
         <div class="repondre_avis_container">
