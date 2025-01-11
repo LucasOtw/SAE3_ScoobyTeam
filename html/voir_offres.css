@@ -1547,26 +1547,6 @@ body.menu-open #overlay {
 
 
 
-.titres-offres {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.titre-les-offres {
-    font-size: 2em;
-    color: #333;
-    margin: 0;
-}
-
-/* Section principale contenant toutes les offres */
-#offers-list-new {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3em; /* Espacement entre les cartes */
-    justify-content: center;
-    padding: 20px;
-}
-
 /* Carte d'une offre */
 .offer-new {
     background-color: white;
@@ -1576,79 +1556,23 @@ body.menu-open #overlay {
     width: 300px; /* Taille unique pour toutes les cartes */
     overflow: hidden;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Permet une organisation verticale */
+    justify-content: space-between; /* Assure que les éléments sont espacés */
+    height: 100%; /* S'assure que la hauteur est constante */
     transition: transform 0.2s ease-in-out;
-}
-
-/* Animation au survol de la carte */
-.offer-new:hover {
-    transform: scale(1.03);
-}
-
-/* Image dans la carte */
-.offer-new img {
-    width: calc(100% - 20px); /* Marge interne pour éviter que l'image colle aux bords */
-    height: 180px;
-    object-fit: cover;
-    margin: 10px;
-    border-radius: 15px;
 }
 
 /* Contenu des détails de l'offre */
 .offer-new-details {
     padding: 15px;
-}
-
-/* Titre de l'offre */
-.offer-new-details h2 {
-    font-size: 1.2em;
-    margin: 0 0 10px;
-    color: #333;
-}
-
-/* Paragraphe standard */
-.offer-new-details p {
-    margin: 5px 0;
-    font-size: 0.9em;
-    color: #666;
-}
-
-/* Icône d'emplacement */
-.offer-new-details p span {
-    vertical-align: middle;
-}
-
-/* Informations récentes (ex. temps écoulé) */
-.offer-new-details .recent {
-    font-size: 0.8em;
-    color: #2DD7A4;
-    font-style: italic;
-}
-
-/* Texte indiquant le prix */
-.offer-new-details p strong,
-.offer-new-details .price {
-    font-weight: bold;
-    color: #2DD7A4;
-    font-size: 1.1em;
+    flex-grow: 1; /* Permet aux détails de prendre de l'espace si nécessaire */
+    display: flex;
+    flex-direction: column; /* Organise les détails verticalement */
+    justify-content: space-between; /* Place le bouton en bas */
 }
 
 /* Bouton "Voir l'offre" */
 .offer-new-details form {
+    margin-top: auto; /* Pousse le bouton vers le bas de son conteneur */
     text-align: center;
-    margin-top: 10px;
-}
-
-.offer-new-details input[type="submit"] {
-    background-color: #BDC426;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-}
-
-.offer-new-details input[type="submit"]:hover {
-    background-color: #a9b51f;
 }
