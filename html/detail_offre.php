@@ -707,15 +707,10 @@ if (isset($json['results'][0])) {
             return $reponses;
         }
 
-    echo "<pre>";
-    var_dump($_SESSION["membre"]["code_compte"]);
-    echo "<pre>";
+    
         // Fonction pour afficher les avis et les réponses récursivement
-        function afficherAvis($avis, $niveau = 0)
-{
+        function afficherAvis($avis, $niveau = 0) {
 
-    
-    
     // Déterminer l'affichage selon le type d'utilisateur
     if (!empty($avis['raison_sociale_pro'])) {
         // Si c'est un professionnel
@@ -726,10 +721,6 @@ if (isset($json['results'][0])) {
         // Si c'est un membre classique
         $prenom = $avis['prenom'];
         $nom = $avis['nom'];
-        $color = "--vert-clair";
-    } elseif ($avis['code_compte'] === $_SESSION["membre"]["code_compte"]){
-        $prenom = "Moi";
-        $nom = "";
         $color = "--vert-clair";
     } else {
         // Si l'utilisateur est supprimé
