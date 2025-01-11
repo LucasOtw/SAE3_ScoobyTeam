@@ -21,12 +21,12 @@ echo "</pre>";
 // Récupérez les données du formulaire
 $email = filter_var($compte['mail'], FILTER_VALIDATE_EMAIL);
 $telephone = $compte['telephone'];
-$adresse_postale = $adresse['adresse_postal'];
-$code_postal = $adresse['code_postal'];
+$adresse_postale = $_adresse['adresse_postal'];
+$code_postal = $_adresse['code_postal'];
 $pseudo = $monCompteMembre['pseudo'];
 $nom = $monCompteMembre['nom'];
 $prenom = $monCompteMembre['prenom'];
-$ville = $adresse['ville'];
+$ville = $_adresse['ville'];
 
 if ($email) {
     // Créer une instance de PHPMailer
