@@ -1645,9 +1645,20 @@ body.menu-open #overlay {
     border-radius: 5px;
     cursor: pointer;
     font-size: 0.9em;
+    position: relative; /* Keeps the button from shifting */
+    top: 0; /* Keeps button at its original position */
 }
 
 .offer-new-details input[type="submit"]:hover {
     background-color: #a9b51f;
 } 
+
+.offer-new-details #form-voir-offre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    height: 50px; /* Ensures a fixed height for the form */
+}
+
 
