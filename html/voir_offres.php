@@ -368,7 +368,6 @@ function tempsEcouleDepuisPublication($offre){
                         {
                             if ($offre["en_ligne"])
                             {
-                                echo $offre_image['url_image'];
                             ?>
                                 
                                     <article class="card-a-la-une">
@@ -401,9 +400,6 @@ function tempsEcouleDepuisPublication($offre){
 
         <div class="titres-offres">
             <h2 class="titre-les-offres">Nouveautés</h2>
-<!--              <a href="voir_toutes_les_offres.php">
-                <h4 class="voir-plus">Voir toutes les offres</h4>
-             </a> -->
         </div>
         
         <section id="offers-list-new">
@@ -567,7 +563,6 @@ function tempsEcouleDepuisPublication($offre){
                 
                 if ($offre["en_ligne"])
                 {
-                    /* echo $villeOffre["ville"]; */
                 ?>
                     <article class="offer-new" >
                         
