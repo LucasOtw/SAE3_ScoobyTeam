@@ -1652,7 +1652,6 @@ body.menu-open #overlay {
 }
 
 .offer-new-details #form-voir-offre {
-    position: absolute;
-    bottom: 40px; left: 70px;
+    
 }
 
