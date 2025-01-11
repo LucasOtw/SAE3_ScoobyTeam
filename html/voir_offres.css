@@ -1653,7 +1653,7 @@ body.menu-open #overlay {
     background-color: #a9b51f;
 } 
 
-.offer-new-details #form-voir-offre {
+ #form-voir-offre {
     display: flex;
     justify-content: center;
     align-items: center;
