@@ -1632,12 +1632,12 @@ body.menu-open #overlay {
 }
 
 /* Bouton "Voir l'offre" */
- form {
+.offer-new-details form {
     text-align: center;
     margin-top: 10px;
 }
 
- input[type="submit"] {
+.offer-new-details input[type="submit"] {
     background-color: #BDC426;
     color: white;
     border: none;
@@ -1645,20 +1645,10 @@ body.menu-open #overlay {
     border-radius: 5px;
     cursor: pointer;
     font-size: 0.9em;
-    position: relative; /* Keeps the button from shifting */
-    top: 0; /* Keeps button at its original position */
 }
 
- input[type="submit"]:hover {
+.offer-new-details input[type="submit"]:hover {
     background-color: #a9b51f;
 } 
-
- #form-voir-offre {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 2em;
-    height: 50px; /* Ensures a fixed height for the form */
-}
 
 
