@@ -782,7 +782,7 @@ if (isset($json['results'][0])) {
 }
 
         // Récupérer tous les avis principaux (sans réponses déjà existantes)
-        $tout_les_avis = $dbh->prepare('SELECT * 
+        $tous_les_avis = $dbh->prepare('SELECT * 
 FROM tripenarvor._avis
 LEFT JOIN tripenarvor.membre 
     ON tripenarvor._avis.code_compte = tripenarvor.membre.code_compte
@@ -795,16 +795,16 @@ WHERE code_offre = :code_offre
        AND tripenarvor.membre.code_compte IS NULL)
   );
 ');
-        $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-        $tout_les_avis->execute();
-        $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
+        $tous_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+        $tous_les_avis->execute();
+        $tous_les_avis = $tous_les_avis->fetchAll(PDO::FETCH_ASSOC);
         
         echo "<pre>";
-        var_dump($tout_les_avis);    
+        var_dump($tous_les_avis);    
         echo "</pre>";
 
         // Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
-        foreach ($tout_les_avis as &$avis) {
+        foreach ($tous_les_avis as &$avis) {
             // Récupération des réponses pour l'avis principal
             $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
         }
@@ -824,7 +824,7 @@ WHERE code_offre = :code_offre
             </div>
             <div class="avis-list">
                 <?php
-                foreach ($tout_les_avis as $avis) {
+                foreach ($tous_les_avis as $avis) {
                     echo "TEST<br>";
                     echo "<pre>";
                     print_r($avis);
