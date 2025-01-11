@@ -21,14 +21,14 @@ echo "</pre>";
 // Vérifiez si le formulaire a été soumis
 if (isset($_POST['dwl-data-mail'])) {
     // Récupérez les données du formulaire
-    $email = filter_input(INPUT_POST, 'mail', FILTER_VALIDATE_EMAIL);
-    $telephone = htmlspecialchars($_POST['telephone'], ENT_QUOTES, 'UTF-8');
-    $adresse_postale = htmlspecialchars($_POST['adresse_postal'], ENT_QUOTES, 'UTF-8');
-    $code_postal = htmlspecialchars($_POST['code_postal'], ENT_QUOTES, 'UTF-8');
-    $pseudo = htmlspecialchars($_POST['pseudo'], ENT_QUOTES, 'UTF-8');
-    $nom = htmlspecialchars($_POST['nom'], ENT_QUOTES, 'UTF-8');
-    $prenom = htmlspecialchars($_POST['prenom'], ENT_QUOTES, 'UTF-8');
-    $ville = htmlspecialchars($_POST['ville'], ENT_QUOTES, 'UTF-8');
+    $email = filter_var($compte['mail'], FILTER_VALIDATE_EMAIL);
+    $telephone = $compte['telephone'];
+    $adresse_postale = $adresse['adresse_postal'];
+    $code_postal = $adresse['code_postal'];
+    $pseudo = $monCompteMembre['pseudo'];
+    $nom = $monCompteMembre['nom'];
+    $prenom = $monCompteMembre['prenom'];
+    $ville = $adresse['ville'];
 
     if ($email) {
         // Créer une instance de PHPMailer
