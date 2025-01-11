@@ -800,13 +800,13 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
         function afficherAvis($avis, $niveau = 0)
 {
     // Déterminer l'affichage selon le type d'utilisateur
-    if (!empty($avis['raison_sociale_pro'])) {
-        // Si c'est un professionnel
-        $prenom = $avis['raison_sociale_pro'];
+    if ($avis['code_compte'] == $_SESSION['pro']['code_compte']){
+        $prenom = "Moi";
         $nom = "";
         $color = "--orange";
-    } elseif ($avis['code_compte'] == $_SESSION['pro']['code_compte']){
-        $prenom = "Moi";
+    } elseif (!empty($avis['raison_sociale_pro'])) {
+        // Si c'est un professionnel
+        $prenom = $avis['raison_sociale_pro'];
         $nom = "";
         $color = "--orange";
     } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
