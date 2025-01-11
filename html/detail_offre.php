@@ -753,7 +753,7 @@ if (isset($json['results'][0])) {
                     <div class="note_prenom">
                         Réponse |
                         <span
-                            class="nom_avis" style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                            class="nom_avis" style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom) . ' code compte avis : ' . $avis['code_compte'] . ", code compte perso" . $_SESSION['membre']['code_compte']; ?></span>
                     </div>
                 <?php else: ?>
                     <div class="note_prenom">
