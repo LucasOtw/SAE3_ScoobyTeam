@@ -86,9 +86,8 @@ if ($email) {
 
         // Envoyer l'e-mail
         if ($mail->send()) {
-            //header("Location: consulter_compte_membre.php");
-            //exit;
-            echo "HAHAHA";
+            header("Location: consulter_compte_membre.php");
+            exit;
         }
     } catch (Exception $e) {
         echo "Erreur lors de l'envoi du message : {$mail->ErrorInfo}";
