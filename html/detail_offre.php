@@ -798,10 +798,6 @@ WHERE code_offre = :code_offre
         $tous_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
         $tous_les_avis->execute();
         $tous_les_avis = $tous_les_avis->fetchAll(PDO::FETCH_ASSOC);
-        
-        echo "<pre>";
-        var_dump($tous_les_avis);    
-        echo "</pre>";
 
         // Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
         foreach ($tous_les_avis as &$avis) {
@@ -824,11 +820,8 @@ WHERE code_offre = :code_offre
             </div>
             <div class="avis-list">
                 <?php
+                var_dump($tous_les_avis);
                 foreach ($tous_les_avis as $avis) {
-                    echo "TEST<br>";
-                    echo "<pre>";
-                    print_r($avis);
-                    echo "</pre>";
                     
                     afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
                    
