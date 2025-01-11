@@ -722,7 +722,7 @@ if (isset($json['results'][0])) {
         $prenom = $avis['prenom'];
         $nom = $avis['nom'];
         $color = "--vert-clair";
-    } elseif ($avis['code_compte'] = $monCompte['code_compte']){
+    } elseif ($avis['code_compte'] === $_SESSION["membre"]["code_compte"]){
         $prenom = "Moi";
         $nom = "";
         $color = "--vert-clair";
