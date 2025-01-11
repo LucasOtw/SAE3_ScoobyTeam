@@ -405,7 +405,7 @@ function tempsEcouleDepuisPublication($offre){
              </a> -->
         </div>
         
-        <section id="offers-list">
+        <section id="offers-list-new">
         <?php    
             
             // On récupère toutes les offres (titre,ville,images)
@@ -568,15 +568,7 @@ function tempsEcouleDepuisPublication($offre){
                 {
                     /* echo $villeOffre["ville"]; */
                 ?>
-                    <article class="offer <?php if (!empty($offre['option_en_relief']) || !empty($offre['option_a_la_une']) ){echo "en_relief";} ?>" 
-                                data-category=<?php echo $type_offre;?> 
-                                data-price="<?php echo $offre["tarif"];?>" 
-                                data-rate=<?php echo $offre["note_moyenne"]; ?>
-                                 location="<?php echo $villeOffre["ville"]; ?>"
-                                data-status=<?php echo $dataStatusEng; ?> 
-                                data-event=<?php if(!empty($event)) { echo $event['date_'.$type_offre]; } else { echo ""; } ?> 
-                                data-period-o=<?php if(!empty($periode)) { echo $periode['date_ouverture']; } else { echo ""; } ?>
-                                data-period-c=<?php if(!empty($periode)) { echo $periode['date_fermeture']; } else { echo ""; } ?> >
+                    <article class="offer-new" >
                         
                                 <img src="<?php echo "./".$offre_image['url_image']; ?>" alt="aucune image">
                         
