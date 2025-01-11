@@ -711,6 +711,9 @@ if (isset($json['results'][0])) {
         // Fonction pour afficher les avis et les réponses récursivement
         function afficherAvis($avis, $niveau = 0)
 {
+    echo "<pre>";
+        var_dump($tout_les_avis);    
+        echo "</pre>";
     // Déterminer l'affichage selon le type d'utilisateur
     if (!empty($avis['raison_sociale_pro'])) {
         // Si c'est un professionnel
@@ -730,11 +733,11 @@ if (isset($json['results'][0])) {
 
     // Texte de l'appréciation basé sur la note
     $appreciation = match ($avis["note"]) {
-        '1' => "Insatisfaisant",
-        '2' => "Passable",
-        '3' => "Correct",
-        '4' => "Excellent",
-        '5' => "Parfait",
+        1 => "Insatisfaisant",
+        2 => "Passable",
+        3 => "Correct",
+        4 => "Excellent",
+        5 => "Parfait",
         default => "Non noté",
     };
 
@@ -799,17 +802,10 @@ WHERE code_offre = :code_offre
         $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
         $tout_les_avis->execute();
         $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
-        echo "<pre>";
-        var_dump($tout_les_avis);    
-        echo "</pre>";
+        
 
         // Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
         foreach ($tout_les_avis as &$avis) {
-            // Vérification si l'utilisateur est supprimé
-            if (empty($avis['prenom']) && empty($avis['nom'])) {
-                $avis['prenom'] = "Utilisateur";
-                $avis['nom'] = "supprimé";
-            }
             // Récupération des réponses pour l'avis principal
             $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
         }
