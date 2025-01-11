@@ -76,7 +76,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Envoyer l'e-mail
             if ($mail->send()) {
-                echo 'bonjoir';
+                header("Location: consulter_compte_membre.php");
+
             }
         } catch (Exception $e) {
             echo "Erreur lors de l'envoi du message : {$mail->ErrorInfo}";
