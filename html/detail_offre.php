@@ -1101,8 +1101,9 @@ WHERE code_offre = :code_offre
             </div>
             <div class="avis-list">
                 <?php
-                    afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
-                }
+                    foreach($tous_les_avis as $avis){
+                        afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
+                    }
                 ?>
             </div>
         </div>
