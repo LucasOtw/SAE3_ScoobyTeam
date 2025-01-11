@@ -130,9 +130,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          <?php         
 
           if ($avis['code_compte'] == $_SESSION['membre']['code_compte']){
-              $prenom = "Mon Entreprise";
+              $prenom = "Moi";
               $nom = "";
-              $color = "--orange";
+              $color = "--vert-clair";
           } elseif (!empty($avis['raison_sociale_pro'])) {
               // Si c'est un professionnel
               $prenom = $avis['raison_sociale_pro'];
