@@ -823,14 +823,14 @@ WHERE code_offre = :code_offre
             </div>
             <div class="avis-list">
                 <?php
-                echo $tout_les_avis[0]['txt_avis'];
-                echo $tout_les_avis[1]['txt_avis'];
-                echo $tout_les_avis[2]['txt_avis'];
-                echo $tout_les_avis[3]['txt_avis'];
+                echo $tout_les_avis[0]['txt_avis'] . "<br>";
+                echo $tout_les_avis[1]['txt_avis'] . "<br>";
+                echo $tout_les_avis[2]['txt_avis'] . "<br>";
+                echo $tout_les_avis[3]['txt_avis'] . "<br>";
                 foreach ($tout_les_avis as $avis) {
-                    echo "avant : " . $avis['txt_avis'];
+                    echo "texte de l'avis " . $avis['txt_avis'];
                     afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
-                    echo "apres : " . $avis['txt_avis'];
+                   
                 }
                 ?>
             </div>
