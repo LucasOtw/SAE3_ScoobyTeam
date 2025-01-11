@@ -409,6 +409,8 @@ function tempsEcouleDepuisPublication($offre){
             $infosOffre = $dbh->query('SELECT * FROM tripenarvor._offre');
             $infosOffre = $infosOffre->fetchAll(PDO::FETCH_ASSOC);
 
+            $nbOffreAfficher=0;
+
             $traductionDate = [
                 "Monday" => "lundi",
                 "Tuesday" => "mardi",
@@ -421,9 +423,8 @@ function tempsEcouleDepuisPublication($offre){
 
             $date = new DateTime();
             $dateFr = $traductionDate[$date->format('l')];
-        
-            foreach($infosOffre as $offre){
 
+            foreach($infosOffre as $offre){
                 
                 // Récupérer la ville
                 $villeOffre = $dbh->prepare('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
@@ -561,7 +562,7 @@ function tempsEcouleDepuisPublication($offre){
                 }
 
                 
-                if ($offre["en_ligne"])
+                if ($offre["en_ligne"] || $nbOffreAfficher > 3)
                 {
                 ?>
                     <article class="offer-new" >
@@ -611,6 +612,7 @@ function tempsEcouleDepuisPublication($offre){
                     </article>
                 <?php
                 }
+                $nbOffreAfficher++;
             }
 
         ?>
