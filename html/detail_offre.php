@@ -722,6 +722,10 @@ if (isset($json['results'][0])) {
         $prenom = $avis['prenom'];
         $nom = $avis['nom'];
         $color = "--vert-clair";
+    } elseif ($avis['code_compte'] = monCompte['code_compte']){
+        $prenom = "Moi";
+        $nom = "";
+        $color = "--vert-clair";
     } else {
         // Si l'utilisateur est supprimé
         $prenom = "Utilisateur";
