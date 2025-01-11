@@ -1650,3 +1650,9 @@ body.menu-open #overlay {
 .offer-new-details input[type="submit"]:hover {
     background-color: #a9b51f;
 }
+
+.offer-new-details #form-voir-offre {
+    position: absolute;
+    top: 40px; left: 40px;
+}
+
