@@ -61,6 +61,12 @@ if (isset($_POST['envoiOffre'])) {
     </nav>
 </header>
 <body>
+    <main>
+        <!-- Infos. Générales-->
+        <div>
+            
+        </div>
+    </main>
     <footer class="footer footer_pro">
         
         <div class="footer-links">

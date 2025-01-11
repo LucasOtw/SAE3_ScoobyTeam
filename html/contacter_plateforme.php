@@ -29,13 +29,13 @@
         </div>
     </header>
 
-        <main class="main_poster_avis">
+    <main class="main_poster_avis">
         <div class="poster_un_avis_container">
             <div class="poster_un_avis_back_button">
                 <h1 class="titre_contacter_nous">Contactez nous !</h1>
             </div>
 
-            <form action="envoyer_email.php" method="POST">
+            <form id="contactForm" action="envoyer_email.php" method="POST">
                 <div class="poster_un_avis_section">
                     <h2 class="poster_un_avis_section_titre">Vos informations</h2>
                     <label for="nom">Nom :</label>
@@ -45,23 +45,23 @@
                     <input type="text" id="prenom_contacter_plateforme" name="prenom" placeholder="Votre prénom" required>
                 
                     <label for="theme">Thème de votre question :</label>
-                        <select id="theme" name="theme" class="theme_contacter_plateforme" required>
-                            <option value="">Choisir un motif</option>
-                            <option value="information">Demande d'information générale</option>
-                            <option value="compte">Problème avec mon compte</option>
-                            <option value="paiement">Problème de paiement ou facturation</option>
-                            <option value="technique">Demande de support technique</option>
-                            <option value="suggestion">Suggestion ou amélioration</option>
-                            <option value="partenariat">Partenariat ou collaboration</option>
-                            <option value="produit">Problème avec un service</option>
-                            <option value="annulation">Demande d'annulation ou suppression de compte</option>
-                            <option value="CGU">Question sur les conditions d'utilisation</option>
-                            <option value="securite">Problème lié à la sécurité</option>
-                            <option value="offres">Question sur les offres et promotions</option>
-                            <option value="fonctionnalite">Demande d'assistance pour une fonctionnalité spécifique</option>
-                            <option value="avis">Retour sur une expérience utilisateur</option>
-                            <option value="reclamation">Réclamation ou insatisfaction</option>
-                        </select>
+                    <select id="theme" name="theme" class="theme_contacter_plateforme" required>
+                        <option value="">Choisir un motif</option>
+                        <option value="Demande d'information générale">Demande d'information générale</option>
+                        <option value="Problème avec mon compte">Problème avec mon compte</option>
+                        <option value="Problème de paiement ou facturation">Problème de paiement ou facturation</option>
+                        <option value="Demande de support technique">Demande de support technique</option>
+                        <option value="Suggestion ou amélioration">Suggestion ou amélioration</option>
+                        <option value="Partenariat ou collaboration">Partenariat ou collaboration</option>
+                        <option value="Problème avec un servic">Problème avec un service</option>
+                        <option value="Demande d'annulation ou suppression de compte">Demande d'annulation ou suppression de compte</option>
+                        <option value="Question sur les conditions d'utilisation">Question sur les conditions d'utilisation</option>
+                        <option value="Problème lié à la sécurité">Problème lié à la sécurité</option>
+                        <option value="Question sur les offres et promotions">Question sur les offres et promotions</option>
+                        <option value="Demande d'assistance pour une fonctionnalité spécifique">Demande d'assistance pour une fonctionnalité spécifique</option>
+                        <option value="Retour sur une expérience utilisateur">Retour sur une expérience utilisateur</option>
+                        <option value="Réclamation ou insatisfaction">Réclamation ou insatisfaction</option>
+                    </select>
                 </div>
                 <div class="poster_un_avis_section">
                     <h2 class="poster_un_avis_section_titre">Votre question</h2>
@@ -78,6 +78,14 @@
             </form>
             
         </div>
+        <!-- Popup de confirmation -->
+            <div class="custom-confirm" id="customConfirmBox">
+                <div class="custom-confirm-content">
+                    <p>Votre message a été envoyé avec succès !</p>
+                    <button id="confirmButton">Fermer</button>
+                </div>
+            </div>
+    
 
         <nav class="nav-bar">
             <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="Accueil"></a>
@@ -147,6 +155,38 @@
             </div>
         </div>
     </footer>
-</body>
 
+    <!-- Ajouter jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+    $('#contactForm').on('submit', function(e) {
+        e.preventDefault(); // Empêcher la soumission classique du formulaire
+
+        var formData = $(this).serialize(); // Sérialiser les données du formulaire
+
+        $.ajax({
+            type: 'POST',
+            url: 'envoyer_email.php',
+            data: formData,
+            success: function(response) {
+                // Afficher la popup de confirmation
+                $('#customConfirmBox').fadeIn();
+            },
+            error: function() {
+                alert('Une erreur est survenue lors de l\'envoi du message.');
+            }
+        });
+    });
+
+    // Fermer la popup quand l'utilisateur clique sur "Fermer"
+    $('#confirmButton').on('click', function() {
+        $('#customConfirmBox').fadeOut();
+    });
+
+});
+    </script>
+
+</body>
 </html>

@@ -104,33 +104,60 @@
     // Créer une instance PDO avec les bons paramètres
     $dbh = new PDO($dsn, $username, $password);
 
-    if(!isset($_POST["vueDetails"]))
-    {
+if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
+    //echo $_POST["uneOffre"];
+
+    // si le formulaire est bien récupéré
+    if (isset($_POST['vueDetails'])) {
+        $details_offre = unserialize($_POST["uneOffre"]); // on récupère son contenu
+    } else {
+        // si on n'a pas de POST alors on ne vient pas de l'accueil, DONC il y a une session.
         $details_offre = $_SESSION['detail_offre'];
     }
-    else
-    {
 
-        // si le formulaire est bien récupéré
-        $details_offre = unserialize($_POST["uneOffre"]);// on récupère son contenu
-        echo "<pre>";
-        var_dump($details_offre);
-        echo "</pre>";
+    $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
 
-        $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
+    if (!empty($details_offre)) { // si l'offre existe
+
+        if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
+            try {
+                $consulter = $dbh->prepare('
+                    INSERT INTO tripenarvor._consulte (consulter, date_consultation, code_compte, code_offre)
+                    VALUES (TRUE, NOW(), :code_compte, :code_offre);
+                ');
+
+                $consulter->execute([
+                    ':code_compte' => $_SESSION["membre"]["code_compte"],
+                    ':code_offre' => $code_offre
+                ]);
+            } catch (PDOException $e) {
+                $consulter = $dbh->prepare('
+                    update tripenarvor._consulte set date_consultation = NOW() 
+                        where :code_offre = :code_offre and code_compte = :code_compte;
+                ');
+
+                $consulter->execute([
+                    ':code_compte' => $_SESSION["membre"]["code_compte"],
+                    ':code_offre' => $code_offre
+                ]);
+                // Ici, vous pouvez enregistrer l'erreur dans un fichier log ou en base de données
+                error_log("Erreur lors de l'insertion dans _consulte: " . $e->getMessage());
+                // Ne rien faire d'autre pour éviter l'affichage d'erreurs
+                // Vous pouvez aussi afficher un message générique à l'utilisateur si nécessaire
+            }
+        }
 
 
-        if(!empty($details_offre))
-        { // si l'offre existe
+        // Une offre a forcément au moins une image. 
+        // On récupère l'image (ou les images) associée(s)
 
-                // Une offre a forcément au moins une image. 
-                // On récupère l'image (ou les images) associée(s)
+        $stmt = $dbh->prepare('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = :code_offre;');
+        $stmt->execute([':code_offre' => $code_offre]);
+        $images_offre = $stmt->fetchAll(PDO::FETCH_NUM);
 
-            $stmt = $dbh->prepare('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = :code_offre;');
-            $stmt->execute([':code_offre' => $code_offre]);
-            $images_offre = $stmt->fetchAll(PDO::FETCH_NUM);
 
-            $tags_offre_stmt = $dbh->prepare('
+
+        $tags_offre_stmt = $dbh->prepare('
                 SELECT nom_tag 
                 FROM tripenarvor._tags 
                 WHERE code_tag IN (
@@ -139,98 +166,93 @@
                     WHERE code_offre = :code_offre
                 )
             ');
-            $tags_offre_stmt->bindValue(':code_offre', $code_offre, PDO::PARAM_INT);
-            $tags_offre_stmt->execute();
-            $tags_offre = $tags_offre_stmt->fetchAll(PDO::FETCH_NUM);
+        $tags_offre_stmt->bindValue(':code_offre', $code_offre, PDO::PARAM_INT);
+        $tags_offre_stmt->execute();
+        $tags_offre = $tags_offre_stmt->fetchAll(PDO::FETCH_NUM);
 
-
-
-            if (!empty($details_offre["lundi"]))
-            {
-                $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
-                $h_lundi = $h_lundi->fetch(PDO::FETCH_ASSOC);
-            } else { $h_lundi = null; }
-            if (!empty($details_offre["mardi"]))
-            {
-                $h_mardi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["mardi"].";");
-                $h_mardi = $h_mardi->fetch(PDO::FETCH_ASSOC);
-            } else { $h_mardi = null; }
-            if (!empty($details_offre["mercredi"]))
-            {
-                $h_mercredi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["mercredi"].";");
-                $h_mercredi = $h_mercredi->fetch(PDO::FETCH_ASSOC);
-            } else { $h_mercredi = null; }
-            if (!empty($details_offre["jeudi"]))
-            {
-                $h_jeudi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["jeudi"].";");
-                $h_jeudi = $h_jeudi->fetch(PDO::FETCH_ASSOC);
-            } else { $h_jeudi = null; }
-            if (!empty($details_offre["vendredi"]))
-            {
-                $h_vendredi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["vendredi"].";");
-                $h_vendredi = $h_vendredi->fetch(PDO::FETCH_ASSOC);
-            } else { $h_vendredi = null; }
-            if (!empty($details_offre["samedi"]))
-            {
-                $h_samedi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["samedi"].";");
-                $h_samedi = $h_samedi->fetch(PDO::FETCH_ASSOC);
-            } else { $h_samedi = null; }
-            if (!empty($details_offre["dimanche"]))
-            {
-                $h_dimanche = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["dimanche"].";");
-                $h_dimanche = $h_dimanche->fetch(PDO::FETCH_ASSOC);
-            } else { $h_dimanche = null; }
-
-            // Utilisez des requêtes préparées
-            $queries = [
-                'restauration' => 'SELECT * FROM tripenarvor.offre_restauration WHERE code_offre = :code_offre',
-                'parc_attractions' => 'SELECT * FROM tripenarvor.offre_parc_attractions WHERE code_offre = :code_offre',
-                'spectacle' => 'SELECT * FROM tripenarvor.offre_spectacle WHERE code_offre = :code_offre',
-                'visite' => 'SELECT * FROM tripenarvor.offre_visite WHERE code_offre = :code_offre',
-                'activite' => 'SELECT * FROM tripenarvor.offre_activite WHERE code_offre = :code_offre'
-            ];
-
-            $type_offre = null;
-            $details_offre = null;
-
-            // Parcourez les requêtes et exécutez-les
-            foreach ($queries as $type => $sql) {
-                $stmt = $dbh->prepare($sql);
-                $stmt->bindParam(':code_offre', $code_offre, PDO::PARAM_INT);
-                $stmt->execute();
-
-                // Vérifiez si une ligne est retournée
-                $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                if ($result) {
-                    $type_offre = $type;
-                    $details_offre = $result;
-                    break;
-                }
-            }
-
-
-            $option_en_relief = $dbh->prepare('SELECT * FROM tripenarvor._option WHERE code_option = :option_en_relief');
-            $option_en_relief->bindValue(":option_en_relief",$details_offre["option_en_relief"]);
-            $option_en_relief->execute();
-            $option_en_relief = $option_en_relief->fetch(PDO::FETCH_ASSOC);
-
-            $option_a_la_une = $dbh->prepare('SELECT * FROM tripenarvor._option WHERE code_option = :option_a_la_une');
-            $option_a_la_une->bindValue(":option_a_la_une",$details_offre["option_a_la_une"]);
-            $option_a_la_une->execute();
-            $option_a_la_une = $option_a_la_une->fetch(PDO::FETCH_ASSOC);
-
-
-            // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
-
-            $adresse_offre = $dbh->prepare('SELECT * FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
-            $adresse_offre->bindValue(":code_adresse",$details_offre["code_adresse"]);
-            $adresse_offre->execute();
-            $adresse_offre = $adresse_offre->fetch(PDO::FETCH_ASSOC);
-
+        if (!empty($details_offre["lundi"])) {
+            $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = ' . $details_offre["lundi"] . ";");
+            $h_lundi = $h_lundi->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $h_lundi = null;
         }
+        if (!empty($details_offre["mardi"])) {
+            $h_mardi = $dbh->query('select * from tripenarvor._horaire where code_horaire = ' . $details_offre["mardi"] . ";");
+            $h_mardi = $h_mardi->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $h_mardi = null;
+        }
+        if (!empty($details_offre["mercredi"])) {
+            $h_mercredi = $dbh->query('select * from tripenarvor._horaire where code_horaire = ' . $details_offre["mercredi"] . ";");
+            $h_mercredi = $h_mercredi->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $h_mercredi = null;
+        }
+        if (!empty($details_offre["jeudi"])) {
+            $h_jeudi = $dbh->query('select * from tripenarvor._horaire where code_horaire = ' . $details_offre["jeudi"] . ";");
+            $h_jeudi = $h_jeudi->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $h_jeudi = null;
+        }
+        if (!empty($details_offre["vendredi"])) {
+            $h_vendredi = $dbh->query('select * from tripenarvor._horaire where code_horaire = ' . $details_offre["vendredi"] . ";");
+            $h_vendredi = $h_vendredi->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $h_vendredi = null;
+        }
+        if (!empty($details_offre["samedi"])) {
+            $h_samedi = $dbh->query('select * from tripenarvor._horaire where code_horaire = ' . $details_offre["samedi"] . ";");
+            $h_samedi = $h_samedi->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $h_samedi = null;
+        }
+        if (!empty($details_offre["dimanche"])) {
+            $h_dimanche = $dbh->query('select * from tripenarvor._horaire where code_horaire = ' . $details_offre["dimanche"] . ";");
+            $h_dimanche = $h_dimanche->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $h_dimanche = null;
+        }
+
+        // Utilisez des requêtes préparées
+        $queries = [
+            'restauration' => 'SELECT * FROM tripenarvor.offre_restauration WHERE code_offre = :code_offre',
+            'parc_attractions' => 'SELECT * FROM tripenarvor.offre_parc_attractions WHERE code_offre = :code_offre',
+            'spectacle' => 'SELECT * FROM tripenarvor.offre_spectacle WHERE code_offre = :code_offre',
+            'visite' => 'SELECT * FROM tripenarvor.offre_visite WHERE code_offre = :code_offre',
+            'activite' => 'SELECT * FROM tripenarvor.offre_activite WHERE code_offre = :code_offre'
+        ];
+
+        $type_offre = null;
+        $details_offre = null;
+
+        // Parcourez les requêtes et exécutez-les
+        foreach ($queries as $type => $sql) {
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':code_offre', $code_offre, PDO::PARAM_INT);
+            $stmt->execute();
+
+            // Vérifiez si une ligne est retournée
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($result) {
+                $type_offre = $type;
+                $details_offre = $result;
+                break;
+            }
+        }
+
+
+
+
+        // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
+
+        $adresse_offre = $dbh->prepare('SELECT * FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
+        $adresse_offre->bindValue(":code_adresse", $details_offre["code_adresse"]);
+        $adresse_offre->execute();
+        $adresse_offre = $adresse_offre->fetch(PDO::FETCH_ASSOC);
 
         $_SESSION['detail_offre'] = $details_offre;
     }
+}
 
     // Adresse que tu veux convertir
     $adresse = $adresse_offre["adresse_postal"]." ".$adresse_offre["ville"];
@@ -718,7 +740,7 @@
         $note_moyenne = $moyenne_note->fetchColumn();
 
         // Récupérer le nombre d'avis
-        $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis WHERE code_offre = :code_offre');
+        $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis as avis_principals WHERE code_offre = :code_offre and avis_principals.code_avis not in (select code_reponse FROM tripenarvor._reponse)');
         $nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
         $nb_avis->execute();
         $nombre_d_avis = $nb_avis->fetchColumn();
@@ -741,118 +763,113 @@
         }
 
         // Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
-        function getResponses($dbh, $code_avis)
-        {
+        function getResponses($dbh, $code_avis) {
             $stmt = $dbh->prepare('
-                        SELECT reponse.*, membre_reponse.prenom AS prenom_membre, membre_reponse.nom AS nom_membre, pro_reponse.raison_sociale AS raison_sociale_pro
-                        FROM tripenarvor._reponse
-                        INNER JOIN tripenarvor._avis AS reponse ON reponse.code_avis = tripenarvor._reponse.code_reponse
-                        LEFT JOIN tripenarvor._membre AS membre_reponse ON membre_reponse.code_compte = reponse.code_compte
-                        LEFT JOIN tripenarvor._professionnel AS pro_reponse ON pro_reponse.code_compte = reponse.code_compte
-                        WHERE tripenarvor._reponse.code_avis = :code_avis
-                ');
+                SELECT 
+                    reponse.*, 
+                    COALESCE(membre_reponse.prenom, \'Utilisateur\') AS prenom,
+                    COALESCE(membre_reponse.nom, \'supprimé\') AS nom,
+                    pro_reponse.raison_sociale AS raison_sociale_pro
+                FROM tripenarvor._reponse
+                INNER JOIN tripenarvor._avis AS reponse 
+                    ON reponse.code_avis = tripenarvor._reponse.code_reponse
+                LEFT JOIN tripenarvor._membre AS membre_reponse 
+                    ON membre_reponse.code_compte = reponse.code_compte
+                LEFT JOIN tripenarvor._professionnel AS pro_reponse 
+                    ON pro_reponse.code_compte = reponse.code_compte
+                WHERE tripenarvor._reponse.code_avis = :code_avis
+            ');
             $stmt->bindValue(':code_avis', $code_avis, PDO::PARAM_INT);
             $stmt->execute();
             $reponses = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            // Récursivité : Ajouter les sous-réponses (réponses aux réponses)
+        
+            // Récursivité : Ajouter les sous-réponses
             foreach ($reponses as &$reponse) {
-                $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_avis']); // Ajoute les sous-réponses
+                $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_avis']);
             }
             return $reponses;
         }
 
+
         // Fonction pour afficher les avis et les réponses récursivement
         function afficherAvis($avis, $niveau = 0)
-        {
-            // Vérification du prénom et nom
-            if (!empty($avis['prenom']) && !empty($avis['nom'])){
-                $prenom = $avis['prenom'];
-                $nom = $avis['nom'];
-                $color = '--vert-clair';
-            } else if (!empty($avis['raison_sociale_pro']) ){
-                $prenom = $avis['raison_sociale_pro'];
-                $nom = "";
-                $color = "--orange";
-            
-            } else {
-                $prenom = "Utilisateur";
-                $nom = "supprimé"; 
-            }
+{
+    // Déterminer l'affichage selon le type d'utilisateur
+    if ($avis['code_compte'] == $_SESSION['pro']['code_compte']){
+        $prenom = "Mon Entreprise";
+        $nom = "";
+        $color = "--orange";
+    } elseif (!empty($avis['raison_sociale_pro'])) {
+        // Si c'est un professionnel
+        $prenom = $avis['raison_sociale_pro'];
+        $nom = "";
+        $color = "--orange";
+    } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
+        // Si c'est un membre classique
+        $prenom = $avis['prenom'];
+        $nom = $avis['nom'];
+        $color = "--vert-clair";    
+    } else {
+        // Si l'utilisateur est supprimé
+        $prenom = "Utilisateur";
+        $nom = "supprimé";
+    }
 
+    // Texte de l'appréciation basé sur la note
+    $appreciation = match ($avis["note"]) {
+        1 => "Insatisfaisant",
+        2 => "Passable",
+        3 => "Correct",
+        4 => "Excellent",
+        5 => "Parfait",
+        default => "Non noté",
+    };
 
-            $appreciation = "";
-                        
-                        switch ($avis["note"]) {
-                            case '1':
-                                $appreciation = "Insatisfaisant";
-                                break;
-                        
-                            case '2':
-                                $appreciation = "Passable";
-                                break;
-                        
-                            case '3':
-                                $appreciation = "Correct";
-                                break;
-                            
-                            case '4':
-                                $appreciation = "Excellent";
-                                break;
-                        
-                            case '5':
-                                $appreciation  = "Parfait";
-                                break;
-                            
-                            default:
-                                break;
-                        }
-            // Calcul du margin-left pour indenter les réponses
-            $marge = $niveau * 5; // Indentation pour les réponses
-            ?>
-            <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
-                <div class="avis-content">
-                    <h3 class="avis">
-                        <?php if ($niveau > 0): ?>
-                            <div class="note_prenom">
-                                Réponse |
-                                <span
-                                    class="nom_avis" style="color:var(<?php echo $color ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
-                            </div>
-                        <?php else: ?>
-                            <div class="note_prenom">
-                                <?php echo htmlspecialchars($avis['note']) . '.0' . $appreciation; ?> |
-                                <span
-                                    class="nom_avis" style="color:var(<?php echo $color ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
-                            </div>
-                        <?php endif; ?>
-                        <div class="signalement_repondre">
-                        <span class="signalement">
-                            <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
-                            title="Signaler cet avis" style="text-decoration: none; margin-right: 5vw; font-size: 21px;">🚩</a>
-                        </span>
-                            <form action="poster_reponse_pro.php" method="POST">
-                                <input type="hidden" name="unAvis"
-                                    value="<?php echo htmlspecialchars(serialize($avis)); ?>">
-                                <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
-                            </form>
-                        </div>
-                    </h3>
-                    <p class="avis"><?php echo html_entity_decode($avis['txt_avis']); ?></p>
+    // Calcul de la marge pour les sous-réponses
+    $marge = $niveau * 5; // Indentation
+    ?>
+    <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
+        <div class="avis-content">
+            <h3 class="avis">
+                <?php if ($niveau > 0): ?>
+                    <div class="note_prenom">
+                        Réponse |
+                        <span
+                            class="nom_avis" style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                    </div>
+                <?php else: ?>
+                    <div class="note_prenom">
+                        <?php echo htmlspecialchars($avis['note']) . '.0 ' . $appreciation . " "; ?> |
+                        <span
+                            class="nom_avis" style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                    </div>
+                <?php endif; ?>
+                <div class="signalement_repondre">
+                <span class="signalement">
+                    <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
+                       title="Signaler cet avis" style="text-decoration: none; margin-right: 5vw; font-size: 21px;">🚩</a>
+                </span>
+                    <form action="poster_reponse_pro.php" method="POST">
+                        <input type="hidden" name="unAvis"
+                               value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                        <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
+                    </form>
                 </div>
-            </div>
-
-            <?php
-            // Afficher les sous-réponses en premier si elles existent
-            if (!empty($avis['sous_reponses'])) {
-                foreach ($avis['sous_reponses'] as $sous_reponse) {
-                    afficherAvis($sous_reponse, $niveau + 1); // Augmente le niveau d'indentation pour les sous-réponses
-                }
-            }
+            </h3>
+            <p class="avis"><?php echo html_entity_decode($avis['txt_avis']); ?></p>
+        </div>
+    </div>
+    <?php
+    // Afficher les sous-réponses si elles existent
+    if (!empty($avis['sous_reponses'])) {
+        foreach ($avis['sous_reponses'] as $sous_reponse) {
+            afficherAvis($sous_reponse, $niveau + 1); // Indentation augmentée
         }
+    }
+}
 
         // Récupérer tous les avis principaux (sans réponses déjà existantes)
-        $tout_les_avis = $dbh->prepare('SELECT * 
+        $tous_les_avis = $dbh->prepare('SELECT * 
 FROM tripenarvor._avis
 LEFT JOIN tripenarvor.membre 
     ON tripenarvor._avis.code_compte = tripenarvor.membre.code_compte
@@ -865,17 +882,12 @@ WHERE code_offre = :code_offre
        AND tripenarvor.membre.code_compte IS NULL)
   );
 ');
-        $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-        $tout_les_avis->execute();
-        $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
+        $tous_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+        $tous_les_avis->execute();
+        $tous_les_avis = $tous_les_avis->fetchAll(PDO::FETCH_ASSOC);
 
         // Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
-        foreach ($tout_les_avis as &$avis) {
-            // Vérification si l'utilisateur est supprimé
-            if (empty($avis['prenom']) && empty($avis['nom'])) {
-                $avis['prenom'] = "Utilisateur";
-                $avis['nom'] = "supprimé";
-            }
+        foreach ($tous_les_avis as &$avis) {
             // Récupération des réponses pour l'avis principal
             $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
         }
@@ -895,9 +907,7 @@ WHERE code_offre = :code_offre
             </div>
             <div class="avis-list">
                 <?php
-                foreach ($tout_les_avis as $avis) {
-                    afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
-                }
+                    array_map('afficherAvis', $tous_les_avis);
                 ?>
             </div>
         </div>
@@ -905,6 +915,7 @@ WHERE code_offre = :code_offre
         <?php
         // Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
         ?>
+
 
 
 

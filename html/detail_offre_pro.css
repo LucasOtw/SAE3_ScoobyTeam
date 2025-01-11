@@ -1411,6 +1411,10 @@ footer {
   font-size: 26px;
 }
 
+#btn-repondre-avis:hover {
+   cursor: pointer;
+}
+
 .toggle-button {
     position: relative;
     display: inline-block;

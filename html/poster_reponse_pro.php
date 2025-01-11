@@ -15,12 +15,6 @@ $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
 // Créer une instance PDO avec les bons paramètres
 $dbh = new PDO($dsn, $username, $password);
 
-echo "<pre>";
-var_dump($_SESSION);
-echo "</pre>";
-
-
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST['repondreAvis'])){
         // Désérialise les données de l'avis
@@ -104,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
+    <link rel="icon" type="image/png" href="images/logoPin_orange.png" width="16px" height="32px">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poster un avis</title>
     <link rel="stylesheet" href="poster_reponse_pro.css">
@@ -125,7 +119,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </ul>
             </nav>
         </header>
-
+   <?php 
+         if ($avis['code_compte'] == $_SESSION['pro']['code_compte']){
+              $prenom = "Mon Entreprise";
+              $nom = "";
+              $color = "--orange";
+          } elseif (!empty($avis['raison_sociale_pro'])) {
+              // Si c'est un professionnel
+              $prenom = $avis['raison_sociale_pro'];
+              $nom = "";
+              $color = "--orange";
+          } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
+              // Si c'est un membre classique
+              $prenom = $avis['prenom'];
+              $nom = $avis['nom'];
+              $color = "--vert-clair";    
+          } else {
+              // Si l'utilisateur est supprimé
+              $prenom = "Utilisateur";
+              $nom = "supprimé";
+          }
+?>
         <main class="main_repondre_avis">
         <div class="repondre_avis_container">
             <div class="repondre_avis_back_button">
@@ -133,16 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <h1 class="repondre_avis_titre">Récapitulatif</h1>
             <div class="repondre_avis_recap">
-               <div class="repondre_avis_utilisateur"><?php  
-   
-               if (!empty($avis['prenom']) && !empty($avis['nom'])){
-                  echo $avis['prenom'] . " " . $avis['nom'];
-               } else if (!empty($avis['raison_sociale_pro'])){
-                  echo $avis['raison_sociale_pro'];
-               } else {
-                  echo "Utilisateur supprimé";
-               }
-               ?></div>
+               <div class="repondre_avis_utilisateur"><?php echo $prenom . " " . $nom; ?></div>
                <div class="repondre_avis_texte"><?php echo $avis["txt_avis"]; ?></div>
             </div>
 
@@ -177,21 +182,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </main> 
 
     <footer class="footer footer_pro">
-        <div class="newsletter">
-            <div class="newsletter-content">
-                <h2>Inscrivez-vous à notre Newsletter</h2>
-                <p>PACT</p>
-                <p>Redécouvrez la Bretagne !</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Votre adresse mail" required>
-                    <button type="submit">S'inscrire</button>
-                </form>
-            </div>
-            <div class="newsletter-image">
-                <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
-            </div>
-        </div>
-
         <div class="footer-links">
             <div class="logo\avis">
                 <img src="images/logoBlanc.png" alt="Logo PACT">
