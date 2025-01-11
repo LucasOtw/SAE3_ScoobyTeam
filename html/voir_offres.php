@@ -587,9 +587,7 @@ function tempsEcouleDepuisPublication($offre){
                                         <span class="iconify" data-icon="mdi:map-marker" style="color: #BDC426; font-size: 1.2em; margin-right: 5px; margin-bottom: -4px;"></span>
                                         <?php echo $villeOffre["ville"]; ?>
                                     </p>
-                                    
-                                    <span><?php echo tempsEcouleDepuisPublication($offre); ?></span>
-                                    
+
                                     <p>
                                         <?php 
                                         if (!empty($offre["note_moyenne"])) { 
@@ -599,8 +597,9 @@ function tempsEcouleDepuisPublication($offre){
                                         } 
                                         ?>
                                     </p>
-                                    
+
                                     <p style="color: #2DD7A4; font-weight: bold;"><?php echo $offre["tarif"]; ?>€</p>
+                                    
                                     <p>
                                         <?php 
                                         if ($type_offre != 'spectacle') { 
@@ -612,6 +611,8 @@ function tempsEcouleDepuisPublication($offre){
                                     <?php if (($type_offre == "visite" || $type_offre == "spectacle") && !empty($event['date_'.$type_offre])) { ?> 
                                         <p><?php echo $event['date_'.$type_offre].' à '.$event['heure_'.$type_offre]; ?></p> 
                                     <?php } ?>
+
+                                    <p class="recent">Posté récemment : <?php echo tempsEcouleDepuisPublication($offre); ?></p>
                                             
                                     <form id="form-voir-offre" action="detail_offre.php" method="POST">
                                         <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
