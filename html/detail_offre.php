@@ -726,7 +726,6 @@ if (isset($json['results'][0])) {
         // Si l'utilisateur est supprimé
         $prenom = "Utilisateur";
         $nom = "supprimé";
-        $color = "#333";
     }
 
     // Texte de l'appréciation basé sur la note
