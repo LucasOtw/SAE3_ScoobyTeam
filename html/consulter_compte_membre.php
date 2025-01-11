@@ -376,7 +376,8 @@ if (isset($_POST['dwl-data'])) {
 
            
 
-        <form action="envoyer_email2.php" method="POST" id="compteForm">
+        <form action="consulter_compte_membre.php" method="POST" id="compteForm">
+
             <div class="crea_pro_raison_sociale_num_siren">
                 <fieldset>
                     <legend>Nom *</legend>
@@ -439,18 +440,13 @@ if (isset($_POST['dwl-data'])) {
                 <div class="compte_membre_save_delete">
                     <a href="?deco=true" class="submit-btn1">Déconnexion</a>
                     <button type="submit" name="modif_infos" class="submit-btn2" id="btn-enreg">Enregistrer</button>
-                    <input type="hidden" name="mail" value="<?php echo $compte['mail']; ?>">
-                    <input type="hidden" name="telephone" value="<?php echo $compte['telephone']; ?>">
-                    <input type="hidden" name="adresse_postal" value="<?php echo $_adresse['adresse_postal']; ?>">
-                    <input type="hidden" name="code_postal" value="<?php echo $_adresse['code_postal']; ?>">
-                    <input type="hidden" name="ville" value="<?php echo $_adresse['ville']; ?>">
-                    <input type="hidden" name="pseudo" value="<?php echo $monCompteMembre['pseudo']; ?>">
-                    <input type="hidden" name="nom" value="<?php echo $monCompteMembre['nom']; ?>">
-                <input type="hidden" name="prenom" value="<?php echo $monCompteMembre['prenom']; ?>">
-    <div>
-        <input type="submit" name="dwl-data-mail" class="btn-dwl-data-mail" value="Mail">
-    </div>
+                    <button type="submit" name="envoyer_mail" class="submit-btn3" id="btn-send">Mail</button>
+                    <form action="#" method="POST">
+                        <div>
+                            <input type="submit" name="dwl-data" class="btn-dwl-data" value="Télécharger mes données">
+                        </div>
                     </form>
+                    
                 </div>
             </div>
 
