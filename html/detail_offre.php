@@ -710,7 +710,6 @@ if (isset($json['results'][0])) {
     
         // Fonction pour afficher les avis et les réponses récursivement
         function afficherAvis($avis, $niveau = 0) {
-
     // Déterminer l'affichage selon le type d'utilisateur
     if (!empty($avis['raison_sociale_pro'])) {
         // Si c'est un professionnel
@@ -724,6 +723,7 @@ if (isset($json['results'][0])) {
         $color = "--vert-clair";
         
     } elseif ($avis['code_compte'] === $_SESSION["membre"]["code_compte"]){
+        // Si l'utilisateur est celui qui a écrit l'avis ou la réponse
         $prenom = "Moi";
         $nom = "";
         $color = "--vert-clair";
@@ -785,6 +785,7 @@ if (isset($json['results'][0])) {
         }
     }
 }
+
 
         // Récupérer tous les avis principaux (sans réponses déjà existantes)
         $tous_les_avis = $dbh->prepare('SELECT * 
