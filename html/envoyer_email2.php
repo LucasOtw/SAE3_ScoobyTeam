@@ -7,6 +7,8 @@ require '../phpmailer/src/Exception.php';
 require '../phpmailer/src/PHPMailer.php';
 require '../phpmailer/src/SMTP.php';
 
+var_dump($_POST);
+
 // Vérifiez si le formulaire a été soumis
 if (isset($_POST['dwl-data-mail'])) {
     // Récupérez les données du formulaire
