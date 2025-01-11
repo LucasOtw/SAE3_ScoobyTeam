@@ -680,7 +680,7 @@ if (isset($json['results'][0])) {
         }
 
         // Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
-        function getResponses($dbh, $code_avis) 
+        function getResponses($dbh, $code_avis) {
             $stmt = $dbh->prepare('
                 SELECT 
                     reponse.*, 
