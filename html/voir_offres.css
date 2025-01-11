@@ -1545,37 +1545,18 @@ body.menu-open #overlay {
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 
- .titres-offres {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.titre-les-offres {
-    font-size: 2em;
-    color: #333;
-    margin: 0;
-}
-
-/* Section principale contenant toutes les offres */
-#offers-list-new {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3em; /* Espacement entre les cartes */
-    justify-content: center;
-    padding: 20px;
-}
-
 /* Carte d'une offre */
 .offer-new {
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px; /* Taille unique pour toutes les cartes */
+    width: 300px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     transition: transform 0.2s ease-in-out;
+    height: 400px; /* Fixed height for uniformity */
 }
 
 /* Animation au survol de la carte */
@@ -1583,60 +1564,21 @@ body.menu-open #overlay {
     transform: scale(1.03);
 }
 
-/* Image dans la carte */
-.offer-new img {
-    width: calc(100% - 20px); /* Marge interne pour éviter que l'image colle aux bords */
-    height: 180px;
-    object-fit: cover;
-    margin: 10px;
-    border-radius: 15px;
-}
-
 /* Contenu des détails de l'offre */
 .offer-new-details {
     padding: 15px;
-}
-
-/* Titre de l'offre */
-.offer-new-details h2 {
-    font-size: 1.2em;
-    margin: 0 0 10px;
-    color: #333;
-}
-
-/* Paragraphe standard */
-.offer-new-details p {
-    margin: 5px 0;
-    font-size: 0.9em;
-    color: #666;
-}
-
-/* Icône d'emplacement */
-.offer-new-details p span {
-    vertical-align: middle;
-}
-
-/* Informations récentes (ex. temps écoulé) */
-.offer-new-details .recent {
-    font-size: 0.8em;
-    color: #2DD7A4;
-    font-style: italic;
-}
-
-/* Texte indiquant le prix */
-.offer-new-details p strong,
-.offer-new-details .price {
-    font-weight: bold;
-    color: #2DD7A4;
-    font-size: 1.1em;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* This makes the details section take up available space */
 }
 
 /* Bouton "Voir l'offre" */
 .offer-new-details form {
     text-align: center;
-    margin-top: 10px;
+    margin-top: auto; /* This pushes the button to the bottom of the card */
 }
 
+/* Bouton "Voir l'offre" */
 .offer-new-details input[type="submit"] {
     background-color: #BDC426;
     color: white;
@@ -1651,7 +1593,4 @@ body.menu-open #overlay {
     background-color: #a9b51f;
 }
 
-.offer-new-details #form-voir-offre {
-    
-}
 
