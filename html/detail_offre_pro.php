@@ -800,15 +800,15 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
         $prenom = $avis['raison_sociale_pro'];
         $nom = "";
         $color = "--orange";
+    } elseif ($avis['code_compte'] == $monComptePro['code_compte']){
+        $prenom = "Moi";
+        $nom = "";
+        $color = "--orange";
     } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
         // Si c'est un membre classique
         $prenom = $avis['prenom'];
         $nom = $avis['nom'];
-        $color = "--vert-clair";
-    } elseif ($avis['code_compte'] = monCompte['code_compte']){
-        $prenom = "Moi";
-        $nom = "";
-        $color = "--orange";
+        $color = "--vert-clair";    
     } else {
         // Si l'utilisateur est supprimé
         $prenom = "Utilisateur";
