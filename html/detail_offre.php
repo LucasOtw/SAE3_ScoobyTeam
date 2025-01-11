@@ -821,7 +821,7 @@ WHERE code_offre = :code_offre
             <div class="avis-list">
                 <?php
                 echo "<pre>";
-                print_r($avis['txt_avis']);
+                print_r($tous_les_avis);
                 echo "</pre>";
                 foreach ($tous_les_avis as $avis) {
                     echo $avis['txt_avis']."<br>";
