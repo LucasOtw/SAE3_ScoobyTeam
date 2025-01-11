@@ -1092,9 +1092,10 @@ WHERE code_offre = :code_offre
             </div>
             <div class="avis-list">
                 <?php
-                    foreach($tous_les_avis as $avis){
-                        afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
-                    }
+                    echo "<pre>";
+                    print_r($tous_les_avis);
+                    echo "</pre>";
+                    array_map('afficherAvis', $tous_les_avis);
                 ?>
             </div>
         </div>
