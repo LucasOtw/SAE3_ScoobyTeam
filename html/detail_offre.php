@@ -823,7 +823,8 @@ WHERE code_offre = :code_offre
                 echo "<pre>";
                 print_r($tous_les_avis);
                 echo "</pre>";
-                foreach ($tous_les_avis as $avis) {
+                foreach ($tous_les_avis as $cle => $avis) {
+                    echo $cle."<br>";
                     echo "<pre>";
                     print_r($avis);
                     echo "</pre>";
