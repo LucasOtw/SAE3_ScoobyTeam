@@ -8,7 +8,7 @@ require '../phpmailer/src/PHPMailer.php';
 require '../phpmailer/src/SMTP.php';
 
 // Vérifiez si le formulaire a été soumis
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (isset($_POST['dwl-data-mail'])) {
     // Récupérez les données du formulaire
     $email = filter_input(INPUT_POST, 'mail', FILTER_VALIDATE_EMAIL);
     $telephone = htmlspecialchars($_POST['telephone'], ENT_QUOTES, 'UTF-8');
