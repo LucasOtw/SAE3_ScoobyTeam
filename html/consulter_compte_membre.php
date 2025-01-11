@@ -440,7 +440,11 @@ if (isset($_POST['dwl-data'])) {
                 <div class="compte_membre_save_delete">
                     <a href="?deco=true" class="submit-btn1">Déconnexion</a>
                     <button type="submit" name="modif_infos" class="submit-btn2" id="btn-enreg">Enregistrer</button>
-                    <button type="submit" name="envoyer_mail" class="submit-btn3" id="dwl-data-mail">Mail</button>
+                    <form action="envoyer_email2.php" method="POST">
+                        <div>
+                            <button type="submit" name="envoyer_mail" class="submit-btn3" id="dwl-data-mail">Mail</button>
+                        </div>
+                    </form>
                     <form action="#" method="POST">
                         <div>
                             <input type="submit" name="dwl-data" class="btn-dwl-data" value="Télécharger mes données">
