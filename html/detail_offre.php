@@ -820,6 +820,9 @@ WHERE code_offre = :code_offre
             </div>
             <div class="avis-list">
                 <?php
+                echo "<pre>";
+                print_r($avis['txt_avis']);
+                echo "</pre>";
                 foreach ($tous_les_avis as $avis) {
                     echo $avis['txt_avis']."<br>";
                     // afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
