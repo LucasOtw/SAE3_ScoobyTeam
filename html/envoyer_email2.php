@@ -12,11 +12,11 @@ require '../phpmailer/src/SMTP.php';
 
 include_once('recupInfosCompte.php');
 
-echo "<pre>";
+/* echo "<pre>";
 var_dump($compte);
 var_dump($monCompteMembre);
 var_dump($_adresse);
-echo "</pre>";
+echo "</pre>"; */
 
 // Récupérez les données du formulaire
 $email = filter_var($compte['mail'], FILTER_VALIDATE_EMAIL);
