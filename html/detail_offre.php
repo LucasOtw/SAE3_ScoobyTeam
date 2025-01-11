@@ -712,7 +712,7 @@ if (isset($json['results'][0])) {
         function afficherAvis($avis, $niveau = 0)
 {
     echo "<pre>";
-        var_dump($tout_les_avis);    
+        var_dump($avis);    
         echo "</pre>";
     // Déterminer l'affichage selon le type d'utilisateur
     if (!empty($avis['raison_sociale_pro'])) {
