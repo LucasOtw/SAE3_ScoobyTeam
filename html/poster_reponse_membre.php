@@ -127,6 +127,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <a href="voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
             </div>
         </header>
+         <?php 
+          if ($avis['code_compte'] == $_SESSION['pro']['code_compte']){
+              $prenom = "Mon Entreprise";
+              $nom = "";
+              $color = "--orange";
+          } elseif (!empty($avis['raison_sociale_pro'])) {
+              // Si c'est un professionnel
+              $prenom = $avis['raison_sociale_pro'];
+              $nom = "";
+              $color = "--orange";
+          } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
+              // Si c'est un membre classique
+              $prenom = $avis['prenom'];
+              $nom = $avis['nom'];
+              $color = "--vert-clair";    
+          } else {
+              // Si l'utilisateur est supprimé
+              $prenom = "Utilisateur";
+              $nom = "supprimé";
+          }
 
         <main class="main_repondre_avis">
         <div class="repondre_avis_container">
@@ -135,15 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <h1 class="repondre_avis_titre">Récapitulatif</h1>
             <div class="repondre_avis_recap">
-               <div class="repondre_avis_utilisateur"><?php  
-               if (!empty($avis['prenom']) && !empty($avis['nom'])){
-                  echo $avis['prenom'] . " " . $avis['nom'];
-               } else if (!empty($avis['raison_sociale_pro'])){
-                  echo $avis['raison_sociale_pro'];
-               } else {
-                   echo "Utilisateur supprimé";
-               }
-               ?></div>
+               <div class="repondre_avis_utilisateur"><?php echo $prenom . " " . $nom;?></div>
                <div class="repondre_avis_texte"><?php echo $avis["txt_avis"]; ?></div>
             </div>
 
