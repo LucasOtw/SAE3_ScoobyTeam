@@ -805,7 +805,7 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
         $prenom = $avis['raison_sociale_pro'];
         $nom = "";
         $color = "--orange";
-    } elseif ($avis['code_compte'] == $monCompte['code_compte']){
+    } elseif ($avis['code_compte'] == $_SESSION['pro']['code_compte']){
         $prenom = "Moi";
         $nom = "";
         $color = "--orange";
