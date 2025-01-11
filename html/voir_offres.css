@@ -1547,22 +1547,11 @@ body.menu-open #overlay {
 
 
 
-.titres-offres {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.titre-les-offres {
-    font-size: 2em;
-    color: #333;
-    margin: 0;
-}
-
 /* Section principale contenant toutes les offres */
 #offers-list-new {
     display: flex;
     flex-wrap: wrap;
-    gap: 3em; /* Espacement entre les cartes */
+    gap: 5em; /* Espacement entre les cartes */
     justify-content: center;
     padding: 20px;
 }
@@ -1577,6 +1566,7 @@ body.menu-open #overlay {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    justify-content: space-between; /* S'assure que les éléments sont espacés */
     transition: transform 0.2s ease-in-out;
 }
 
@@ -1597,6 +1587,10 @@ body.menu-open #overlay {
 /* Contenu des détails de l'offre */
 .offer-new-details {
     padding: 15px;
+    flex-grow: 1; /* Permet à ce conteneur de s'étendre si besoin */
+    display: flex;
+    flex-direction: column; /* Organise les éléments verticalement */
+    justify-content: space-between; /* Sépare les éléments pour que le bouton reste en bas */
 }
 
 /* Titre de l'offre */
@@ -1613,11 +1607,6 @@ body.menu-open #overlay {
     color: #666;
 }
 
-/* Icône d'emplacement */
-.offer-new-details p span {
-    vertical-align: middle;
-}
-
 /* Informations récentes (ex. temps écoulé) */
 .offer-new-details .recent {
     font-size: 0.8em;
@@ -1626,7 +1615,6 @@ body.menu-open #overlay {
 }
 
 /* Texte indiquant le prix */
-.offer-new-details p strong,
 .offer-new-details .price {
     font-weight: bold;
     color: #2DD7A4;
@@ -1635,8 +1623,8 @@ body.menu-open #overlay {
 
 /* Bouton "Voir l'offre" */
 .offer-new-details form {
-    text-align: center;
     margin-top: 10px;
+    text-align: center;
 }
 
 .offer-new-details input[type="submit"] {
