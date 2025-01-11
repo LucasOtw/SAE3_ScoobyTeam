@@ -446,8 +446,8 @@ if (isset($_POST['dwl-data'])) {
                     <input type="hidden" name="ville" value="<?php echo $_adresse['ville']; ?>">
                     <input type="hidden" name="pseudo" value="<?php echo $monCompteMembre['pseudo']; ?>">
                     <input type="hidden" name="nom" value="<?php echo $monCompteMembre['nom']; ?>">
-                    <input type="hidden" name="prenom" value="<?php echo $monCompteMembre['prenom']; ?>">
-                <div>
+                <input type="hidden" name="prenom" value="<?php echo $monCompteMembre['prenom']; ?>">
+    <div>
         <input type="submit" name="dwl-data-mail" class="btn-dwl-data-mail" value="Mail">
     </div>
                     </form>
