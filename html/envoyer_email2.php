@@ -15,7 +15,7 @@ include_once('recupInfosCompte.php');
 echo "<pre>";
 var_dump($compte);
 var_dump($monCompteMembre);
-var_dump($adresse);
+var_dump($_adresse);
 echo "</pre>";
 
 // Vérifiez si le formulaire a été soumis
