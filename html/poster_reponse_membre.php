@@ -127,11 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <a href="voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
             </div>
         </header>
-         <?php 
-         echo "<pre>";
-         var_dump($avis);
-         echo "</pre>";
-         
+         <?php         
 
           if ($avis['code_compte'] == $_SESSION['membre']['code_compte']){
               $prenom = "Mon Entreprise";
