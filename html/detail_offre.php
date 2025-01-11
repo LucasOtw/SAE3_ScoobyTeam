@@ -828,7 +828,9 @@ WHERE code_offre = :code_offre
                 echo $tout_les_avis[2]['txt_avis'];
                 echo $tout_les_avis[3]['txt_avis'];
                 foreach ($tout_les_avis as $avis) {
+                    echo "avant : " . $avis['txt_avis'];
                     afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
+                    echo "apres : " . $avis['txt_avis'];
                 }
                 ?>
             </div>
