@@ -680,44 +680,51 @@ if (isset($json['results'][0])) {
         }
 
         // Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
-        function getResponses($dbh, $code_avis)
-        {
+        function getResponses($dbh, $code_avis) 
             $stmt = $dbh->prepare('
-                        SELECT reponse.*, membre_reponse.prenom AS prenom_membre, membre_reponse.nom AS nom_membre, pro_reponse.raison_sociale AS raison_sociale_pro
-                        FROM tripenarvor._reponse
-                        INNER JOIN tripenarvor._avis AS reponse ON reponse.code_avis = tripenarvor._reponse.code_reponse
-                        LEFT JOIN tripenarvor._membre AS membre_reponse ON membre_reponse.code_compte = reponse.code_compte
-                        LEFT JOIN tripenarvor._professionnel AS pro_reponse ON pro_reponse.code_compte = reponse.code_compte
-                        WHERE tripenarvor._reponse.code_avis = :code_avis
-                ');
+                SELECT 
+                    reponse.*, 
+                    COALESCE(membre_reponse.prenom, \'Utilisateur\') AS prenom,
+                    COALESCE(membre_reponse.nom, \'supprimé\') AS nom,
+                    pro_reponse.raison_sociale AS raison_sociale_pro
+                FROM tripenarvor._reponse
+                INNER JOIN tripenarvor._avis AS reponse 
+                    ON reponse.code_avis = tripenarvor._reponse.code_reponse
+                LEFT JOIN tripenarvor._membre AS membre_reponse 
+                    ON membre_reponse.code_compte = reponse.code_compte
+                LEFT JOIN tripenarvor._professionnel AS pro_reponse 
+                    ON pro_reponse.code_compte = reponse.code_compte
+                WHERE tripenarvor._reponse.code_avis = :code_avis
+            ');
             $stmt->bindValue(':code_avis', $code_avis, PDO::PARAM_INT);
             $stmt->execute();
             $reponses = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            // Récursivité : Ajouter les sous-réponses (réponses aux réponses)
+        
+            // Récursivité : Ajouter les sous-réponses
             foreach ($reponses as &$reponse) {
-                $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_avis']); // Ajoute les sous-réponses
+                $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_avis']);
             }
             return $reponses;
         }
+
 
         // Fonction pour afficher les avis et les réponses récursivement
         function afficherAvis($avis, $niveau = 0)
         {
             // Vérification du prénom et nom
-            if (!empty($avis['prenom']) && !empty($avis['nom'])){
+            if (!empty($avis['prenom']) && !empty($avis['nom'])) {
                 $prenom = $avis['prenom'];
                 $nom = $avis['nom'];
                 $color = '--vert-clair';
-            } else if (!empty($avis['raison_sociale_pro']) ){
+            } elseif (!empty($avis['raison_sociale_pro'])) {
                 $prenom = $avis['raison_sociale_pro'];
                 $nom = "";
                 $color = "--orange";
-            
             } else {
                 $prenom = "Utilisateur";
-                $nom = "supprimé"; 
+                $nom = "supprimé";
             }
+
 
 
             $appreciation = "";
