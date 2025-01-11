@@ -710,92 +710,78 @@ if (isset($json['results'][0])) {
 
         // Fonction pour afficher les avis et les réponses récursivement
         function afficherAvis($avis, $niveau = 0)
-        {
-            // Vérification du prénom et nom
-            if (!empty($avis['prenom']) && !empty($avis['nom'])) {
-                $prenom = $avis['prenom'];
-                $nom = $avis['nom'];
-                $color = '--vert-clair';
-            } elseif (!empty($avis['raison_sociale_pro'])) {
-                $prenom = $avis['raison_sociale_pro'];
-                $nom = "";
-                $color = "--orange";
-            } else {
-                $prenom = "Utilisateur";
-                $nom = "supprimé";
-            }
+{
+    // Déterminer l'affichage selon le type d'utilisateur
+    if (!empty($avis['raison_sociale_pro'])) {
+        // Si c'est un professionnel
+        $prenom = $avis['raison_sociale_pro'];
+        $nom = "";
+        $color = "--orange";
+    } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
+        // Si c'est un membre classique
+        $prenom = $avis['prenom'];
+        $nom = $avis['nom'];
+        $color = "--vert-clair";
+    } else {
+        // Si l'utilisateur est supprimé
+        $prenom = "Utilisateur";
+        $nom = "supprimé";
+        $color = "#333";
+    }
 
+    // Texte de l'appréciation basé sur la note
+    $appreciation = match ($avis["note"]) {
+        '1' => "Insatisfaisant",
+        '2' => "Passable",
+        '3' => "Correct",
+        '4' => "Excellent",
+        '5' => "Parfait",
+        default => "Non noté",
+    };
 
-
-            $appreciation = "";
-                        
-                        switch ($avis["note"]) {
-                            case '1':
-                                $appreciation = "Insatisfaisant";
-                                break;
-                        
-                            case '2':
-                                $appreciation = "Passable";
-                                break;
-                        
-                            case '3':
-                                $appreciation = "Correct";
-                                break;
-                            
-                            case '4':
-                                $appreciation = "Excellent";
-                                break;
-                        
-                            case '5':
-                                $appreciation  = "Parfait";
-                                break;
-                            
-                            default:
-                                break;
-                        }
-            // Calcul du margin-left pour indenter les réponses
-            $marge = $niveau * 5; // Indentation pour les réponses
-            ?>
-            <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
-                <div class="avis-content">
-                    <h3 class="avis">
-                        <?php if ($niveau > 0): ?>
-                            <div class="note_prenom">
-                                Réponse |
-                                <span
-                                    class="nom_avis" style="color:var(<?php echo $color ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
-                            </div>
-                        <?php else: ?>
-                            <div class="note_prenom">
-                                <?php echo htmlspecialchars($avis['note']) . '.0 ' . $appreciation . " "; ?> |
-                                <span
-                                    class="nom_avis" style="color:var(<?php echo $color ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
-                            </div>
-                        <?php endif; ?>
-                        <div class="signalement_repondre">
-                        <span class="signalement">
-                            <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
-                            title="Signaler cet avis" style="text-decoration: none; margin-right: 5vw; font-size: 21px;">🚩</a>
-                        </span>
-                            <form action="poster_reponse_membre.php" method="POST">
-                                <input type="hidden" name="unAvis"
-                                    value="<?php echo htmlspecialchars(serialize($avis)); ?>">
-                                <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
-                            </form>
-                        </div>
-                    </h3>
-                    <p class="avis"><?php echo html_entity_decode($avis['txt_avis']); ?></p>
+    // Calcul de la marge pour les sous-réponses
+    $marge = $niveau * 5; // Indentation
+    ?>
+    <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
+        <div class="avis-content">
+            <h3 class="avis">
+                <?php if ($niveau > 0): ?>
+                    <div class="note_prenom">
+                        Réponse |
+                        <span
+                            class="nom_avis" style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                    </div>
+                <?php else: ?>
+                    <div class="note_prenom">
+                        <?php echo htmlspecialchars($avis['note']) . '.0 ' . $appreciation . " "; ?> |
+                        <span
+                            class="nom_avis" style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                    </div>
+                <?php endif; ?>
+                <div class="signalement_repondre">
+                <span class="signalement">
+                    <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
+                       title="Signaler cet avis" style="text-decoration: none; margin-right: 5vw; font-size: 21px;">🚩</a>
+                </span>
+                    <form action="poster_reponse_membre.php" method="POST">
+                        <input type="hidden" name="unAvis"
+                               value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                        <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
+                    </form>
                 </div>
-            </div>
-
-            <?php
-            // Afficher les sous-réponses en premier si elles existent
-            if (!empty($avis['sous_reponses'])) {
-                foreach ($avis['sous_reponses'] as $sous_reponse) {
-                    afficherAvis($sous_reponse, $niveau + 1); // Augmente le niveau d'indentation pour les sous-réponses
-                }
-            }
+            </h3>
+            <p class="avis"><?php echo html_entity_decode($avis['txt_avis']); ?></p>
+        </div>
+    </div>
+    <?php
+    // Afficher les sous-réponses si elles existent
+    if (!empty($avis['sous_reponses'])) {
+        foreach ($avis['sous_reponses'] as $sous_reponse) {
+            afficherAvis($sous_reponse, $niveau + 1); // Indentation augmentée
         }
+    }
+}
+
 
         // Récupérer tous les avis principaux (sans réponses déjà existantes)
         $tout_les_avis = $dbh->prepare('SELECT * 
