@@ -784,7 +784,7 @@ if (isset($json['results'][0])) {
     }
 }
 
-        
+        array_pop($tout_les_avis);
         // Récupérer tous les avis principaux (sans réponses déjà existantes)
         $tout_les_avis = $dbh->prepare('SELECT * 
 FROM tripenarvor._avis
