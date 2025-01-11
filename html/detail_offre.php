@@ -820,9 +820,6 @@ WHERE code_offre = :code_offre
             </div>
             <div class="avis-list">
                 <?php
-                    echo "<pre>";
-                    print_r($tous_les_avis);
-                    echo "</pre>";
                     array_map('afficherAvis', $tous_les_avis);
                 ?>
             </div>
@@ -1092,9 +1089,6 @@ WHERE code_offre = :code_offre
             </div>
             <div class="avis-list">
                 <?php
-                    echo "<pre>";
-                    print_r($tous_les_avis);
-                    echo "</pre>";
                     array_map('afficherAvis', $tous_les_avis);
                 ?>
             </div>
