@@ -86,5 +86,7 @@ if (isset($_POST['dwl-data-mail'])) {
     } else {
         echo "Adresse e-mail invalide ou non fournie.";
     }
+} else {
+    echo "LOL";
 }
 ?>
