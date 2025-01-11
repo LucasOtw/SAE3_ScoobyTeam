@@ -824,7 +824,7 @@ WHERE code_offre = :code_offre
                 print_r($tous_les_avis);
                 echo "</pre>";
                 foreach ($tous_les_avis as $avis) {
-                    echo $avis['txt_avis']."<br>";
+                    echo $avis['code_avis']."<br>";
                     // afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
                 }
                 ?>
