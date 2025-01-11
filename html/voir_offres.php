@@ -406,7 +406,7 @@ function tempsEcouleDepuisPublication($offre){
         <?php    
             
             // On récupère toutes les offres (titre,ville,images)
-            $infosOffre = $dbh->query('SELECT * FROM tripenarvor._offre order by date_publication;');
+            $infosOffre = $dbh->query('SELECT * FROM tripenarvor._offre order by date_publication desc;');
             $infosOffre = $infosOffre->fetchAll(PDO::FETCH_ASSOC);
 
             $nbOffreAfficher=0;
@@ -564,7 +564,6 @@ function tempsEcouleDepuisPublication($offre){
                 
                 if ($offre["en_ligne"] && $nbOffreAfficher < 5)
                 {
-                    echo $nbOffreAfficher;
                 ?>
                     <article class="offer-new" >
                         
