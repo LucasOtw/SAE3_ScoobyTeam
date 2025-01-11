@@ -824,7 +824,9 @@ WHERE code_offre = :code_offre
                     print_r($tous_les_avis);
                     echo "</pre>";
                     foreach ($tous_les_avis as $cle => $avis) {
-                        array_map(afficherAvis($avis),$avis);
+                        array_map(function($avis) {
+                            afficherAvis($avis); // Ou ajoute d'autres traitements ici
+                        }, $tous_les_avis);
                     }
                 ?>
             </div>
