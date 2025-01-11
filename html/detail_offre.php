@@ -798,9 +798,10 @@ WHERE code_offre = :code_offre
         $tout_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
         $tout_les_avis->execute();
         $tout_les_avis = $tout_les_avis->fetchAll(PDO::FETCH_ASSOC);
-        /*echo "<pre>";
+        
+        echo "<pre>";
         var_dump($tout_les_avis);    
-        echo "</pre>";*/
+        echo "</pre>";
 
         // Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
         foreach ($tout_les_avis as &$avis) {
