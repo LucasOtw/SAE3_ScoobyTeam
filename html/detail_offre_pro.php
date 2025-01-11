@@ -805,6 +805,10 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
         $prenom = $avis['prenom'];
         $nom = $avis['nom'];
         $color = "--vert-clair";
+    } elseif ($avis['code_compte'] = monCompte['code_compte']){
+        $prenom = "Moi";
+        $nom = "";
+        $color = "--orange";
     } else {
         // Si l'utilisateur est supprimé
         $prenom = "Utilisateur";
