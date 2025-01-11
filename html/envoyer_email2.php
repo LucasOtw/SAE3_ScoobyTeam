@@ -12,6 +12,10 @@ require '../phpmailer/src/SMTP.php';
 
 include_once('recupInfosCompte.php');
 
+echo "<pre>";
+var_dump($compte);
+echo "</pre>";
+
 // Vérifiez si le formulaire a été soumis
 if (isset($_POST['dwl-data-mail'])) {
     // Récupérez les données du formulaire
