@@ -648,7 +648,7 @@ function tempsEcouleDepuisPublication($offre){
                                 FROM tripenarvor._consulte 
                                 NATURAL JOIN tripenarvor._offre 
                                 WHERE code_compte = :code_compte 
-                                ORDER BY date_consultation";
+                                ORDER BY date_consultation desc";
                         
                         // Préparation de la requête
                         $stmt = $dbh->prepare($sql);
