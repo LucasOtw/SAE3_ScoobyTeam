@@ -128,6 +128,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </header>
          <?php 
+         echo "<pre>";
+         var_dump($avis);
+         echo "</pre>";
+         
+
           if ($avis['code_compte'] == $_SESSION['pro']['code_compte']){
               $prenom = "Mon Entreprise";
               $nom = "";
