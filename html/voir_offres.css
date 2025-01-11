@@ -1657,7 +1657,7 @@ body.menu-open #overlay {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    margin-bottom: 10px;
     height: 50px; /* Ensures a fixed height for the form */
 }
 
