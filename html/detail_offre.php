@@ -820,16 +820,14 @@ WHERE code_offre = :code_offre
             </div>
             <div class="avis-list">
                 <?php
-                echo "<pre>";
-                print_r($tous_les_avis);
-                echo "</pre>";
-                foreach ($tous_les_avis as $cle => $avis) {
-                    echo "TEST : ".$cle."<br>";
-                    echo "<pre>";
-                    print_r($avis);
-                    echo "</pre>";
-                    // afficherAvis($avis); // Affiche l'avis principal et toutes les réponses imbriquées
-                }
+                    foreach ($tous_les_avis as $cle => $avis) {
+                        $avisCopie = $avis; // Créer une copie
+                        echo "TEST : ".$cle."<br>";
+                        echo "<pre>";
+                        print_r($avisCopie);
+                        echo "</pre>";
+                        // afficherAvis($avisCopie);
+                    }
                 ?>
             </div>
         </div>
