@@ -104,33 +104,60 @@
     // Créer une instance PDO avec les bons paramètres
     $dbh = new PDO($dsn, $username, $password);
 
-    if(!isset($_POST["vueDetails"]))
-    {
+if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
+    //echo $_POST["uneOffre"];
+
+    // si le formulaire est bien récupéré
+    if (isset($_POST['vueDetails'])) {
+        $details_offre = unserialize($_POST["uneOffre"]); // on récupère son contenu
+    } else {
+        // si on n'a pas de POST alors on ne vient pas de l'accueil, DONC il y a une session.
         $details_offre = $_SESSION['detail_offre'];
     }
-    else
-    {
 
-        // si le formulaire est bien récupéré
-        $details_offre = unserialize($_POST["uneOffre"]);// on récupère son contenu
-        echo "<pre>";
-        var_dump($details_offre);
-        echo "</pre>";
+    $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
 
-        $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
+    if (!empty($details_offre)) { // si l'offre existe
+
+        if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
+            try {
+                $consulter = $dbh->prepare('
+                    INSERT INTO tripenarvor._consulte (consulter, date_consultation, code_compte, code_offre)
+                    VALUES (TRUE, NOW(), :code_compte, :code_offre);
+                ');
+
+                $consulter->execute([
+                    ':code_compte' => $_SESSION["membre"]["code_compte"],
+                    ':code_offre' => $code_offre
+                ]);
+            } catch (PDOException $e) {
+                $consulter = $dbh->prepare('
+                    update tripenarvor._consulte set date_consultation = NOW() 
+                        where :code_offre = :code_offre and code_compte = :code_compte;
+                ');
+
+                $consulter->execute([
+                    ':code_compte' => $_SESSION["membre"]["code_compte"],
+                    ':code_offre' => $code_offre
+                ]);
+                // Ici, vous pouvez enregistrer l'erreur dans un fichier log ou en base de données
+                error_log("Erreur lors de l'insertion dans _consulte: " . $e->getMessage());
+                // Ne rien faire d'autre pour éviter l'affichage d'erreurs
+                // Vous pouvez aussi afficher un message générique à l'utilisateur si nécessaire
+            }
+        }
 
 
-        if(!empty($details_offre))
-        { // si l'offre existe
+        // Une offre a forcément au moins une image. 
+        // On récupère l'image (ou les images) associée(s)
 
-                // Une offre a forcément au moins une image. 
-                // On récupère l'image (ou les images) associée(s)
+        $stmt = $dbh->prepare('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = :code_offre;');
+        $stmt->execute([':code_offre' => $code_offre]);
+        $images_offre = $stmt->fetchAll(PDO::FETCH_NUM);
 
-            $stmt = $dbh->prepare('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = :code_offre;');
-            $stmt->execute([':code_offre' => $code_offre]);
-            $images_offre = $stmt->fetchAll(PDO::FETCH_NUM);
 
-            $tags_offre_stmt = $dbh->prepare('
+
+        $tags_offre_stmt = $dbh->prepare('
                 SELECT nom_tag 
                 FROM tripenarvor._tags 
                 WHERE code_tag IN (
@@ -139,98 +166,93 @@
                     WHERE code_offre = :code_offre
                 )
             ');
-            $tags_offre_stmt->bindValue(':code_offre', $code_offre, PDO::PARAM_INT);
-            $tags_offre_stmt->execute();
-            $tags_offre = $tags_offre_stmt->fetchAll(PDO::FETCH_NUM);
+        $tags_offre_stmt->bindValue(':code_offre', $code_offre, PDO::PARAM_INT);
+        $tags_offre_stmt->execute();
+        $tags_offre = $tags_offre_stmt->fetchAll(PDO::FETCH_NUM);
 
-
-
-            if (!empty($details_offre["lundi"]))
-            {
-                $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["lundi"].";");
-                $h_lundi = $h_lundi->fetch(PDO::FETCH_ASSOC);
-            } else { $h_lundi = null; }
-            if (!empty($details_offre["mardi"]))
-            {
-                $h_mardi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["mardi"].";");
-                $h_mardi = $h_mardi->fetch(PDO::FETCH_ASSOC);
-            } else { $h_mardi = null; }
-            if (!empty($details_offre["mercredi"]))
-            {
-                $h_mercredi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["mercredi"].";");
-                $h_mercredi = $h_mercredi->fetch(PDO::FETCH_ASSOC);
-            } else { $h_mercredi = null; }
-            if (!empty($details_offre["jeudi"]))
-            {
-                $h_jeudi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["jeudi"].";");
-                $h_jeudi = $h_jeudi->fetch(PDO::FETCH_ASSOC);
-            } else { $h_jeudi = null; }
-            if (!empty($details_offre["vendredi"]))
-            {
-                $h_vendredi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["vendredi"].";");
-                $h_vendredi = $h_vendredi->fetch(PDO::FETCH_ASSOC);
-            } else { $h_vendredi = null; }
-            if (!empty($details_offre["samedi"]))
-            {
-                $h_samedi = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["samedi"].";");
-                $h_samedi = $h_samedi->fetch(PDO::FETCH_ASSOC);
-            } else { $h_samedi = null; }
-            if (!empty($details_offre["dimanche"]))
-            {
-                $h_dimanche = $dbh->query('select * from tripenarvor._horaire where code_horaire = '.$details_offre["dimanche"].";");
-                $h_dimanche = $h_dimanche->fetch(PDO::FETCH_ASSOC);
-            } else { $h_dimanche = null; }
-
-            // Utilisez des requêtes préparées
-            $queries = [
-                'restauration' => 'SELECT * FROM tripenarvor.offre_restauration WHERE code_offre = :code_offre',
-                'parc_attractions' => 'SELECT * FROM tripenarvor.offre_parc_attractions WHERE code_offre = :code_offre',
-                'spectacle' => 'SELECT * FROM tripenarvor.offre_spectacle WHERE code_offre = :code_offre',
-                'visite' => 'SELECT * FROM tripenarvor.offre_visite WHERE code_offre = :code_offre',
-                'activite' => 'SELECT * FROM tripenarvor.offre_activite WHERE code_offre = :code_offre'
-            ];
-
-            $type_offre = null;
-            $details_offre = null;
-
-            // Parcourez les requêtes et exécutez-les
-            foreach ($queries as $type => $sql) {
-                $stmt = $dbh->prepare($sql);
-                $stmt->bindParam(':code_offre', $code_offre, PDO::PARAM_INT);
-                $stmt->execute();
-
-                // Vérifiez si une ligne est retournée
-                $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                if ($result) {
-                    $type_offre = $type;
-                    $details_offre = $result;
-                    break;
-                }
-            }
-
-
-            $option_en_relief = $dbh->prepare('SELECT * FROM tripenarvor._option WHERE code_option = :option_en_relief');
-            $option_en_relief->bindValue(":option_en_relief",$details_offre["option_en_relief"]);
-            $option_en_relief->execute();
-            $option_en_relief = $option_en_relief->fetch(PDO::FETCH_ASSOC);
-
-            $option_a_la_une = $dbh->prepare('SELECT * FROM tripenarvor._option WHERE code_option = :option_a_la_une');
-            $option_a_la_une->bindValue(":option_a_la_une",$details_offre["option_a_la_une"]);
-            $option_a_la_une->execute();
-            $option_a_la_une = $option_a_la_une->fetch(PDO::FETCH_ASSOC);
-
-
-            // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
-
-            $adresse_offre = $dbh->prepare('SELECT * FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
-            $adresse_offre->bindValue(":code_adresse",$details_offre["code_adresse"]);
-            $adresse_offre->execute();
-            $adresse_offre = $adresse_offre->fetch(PDO::FETCH_ASSOC);
-
+        if (!empty($details_offre["lundi"])) {
+            $h_lundi = $dbh->query('select * from tripenarvor._horaire where code_horaire = ' . $details_offre["lundi"] . ";");
+            $h_lundi = $h_lundi->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $h_lundi = null;
         }
+        if (!empty($details_offre["mardi"])) {
+            $h_mardi = $dbh->query('select * from tripenarvor._horaire where code_horaire = ' . $details_offre["mardi"] . ";");
+            $h_mardi = $h_mardi->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $h_mardi = null;
+        }
+        if (!empty($details_offre["mercredi"])) {
+            $h_mercredi = $dbh->query('select * from tripenarvor._horaire where code_horaire = ' . $details_offre["mercredi"] . ";");
+            $h_mercredi = $h_mercredi->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $h_mercredi = null;
+        }
+        if (!empty($details_offre["jeudi"])) {
+            $h_jeudi = $dbh->query('select * from tripenarvor._horaire where code_horaire = ' . $details_offre["jeudi"] . ";");
+            $h_jeudi = $h_jeudi->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $h_jeudi = null;
+        }
+        if (!empty($details_offre["vendredi"])) {
+            $h_vendredi = $dbh->query('select * from tripenarvor._horaire where code_horaire = ' . $details_offre["vendredi"] . ";");
+            $h_vendredi = $h_vendredi->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $h_vendredi = null;
+        }
+        if (!empty($details_offre["samedi"])) {
+            $h_samedi = $dbh->query('select * from tripenarvor._horaire where code_horaire = ' . $details_offre["samedi"] . ";");
+            $h_samedi = $h_samedi->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $h_samedi = null;
+        }
+        if (!empty($details_offre["dimanche"])) {
+            $h_dimanche = $dbh->query('select * from tripenarvor._horaire where code_horaire = ' . $details_offre["dimanche"] . ";");
+            $h_dimanche = $h_dimanche->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $h_dimanche = null;
+        }
+
+        // Utilisez des requêtes préparées
+        $queries = [
+            'restauration' => 'SELECT * FROM tripenarvor.offre_restauration WHERE code_offre = :code_offre',
+            'parc_attractions' => 'SELECT * FROM tripenarvor.offre_parc_attractions WHERE code_offre = :code_offre',
+            'spectacle' => 'SELECT * FROM tripenarvor.offre_spectacle WHERE code_offre = :code_offre',
+            'visite' => 'SELECT * FROM tripenarvor.offre_visite WHERE code_offre = :code_offre',
+            'activite' => 'SELECT * FROM tripenarvor.offre_activite WHERE code_offre = :code_offre'
+        ];
+
+        $type_offre = null;
+        $details_offre = null;
+
+        // Parcourez les requêtes et exécutez-les
+        foreach ($queries as $type => $sql) {
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':code_offre', $code_offre, PDO::PARAM_INT);
+            $stmt->execute();
+
+            // Vérifiez si une ligne est retournée
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($result) {
+                $type_offre = $type;
+                $details_offre = $result;
+                break;
+            }
+        }
+
+
+
+
+        // On récupère aussi l'adresse indiquée, ainsi que les horaires (si non nulles)
+
+        $adresse_offre = $dbh->prepare('SELECT * FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
+        $adresse_offre->bindValue(":code_adresse", $details_offre["code_adresse"]);
+        $adresse_offre->execute();
+        $adresse_offre = $adresse_offre->fetch(PDO::FETCH_ASSOC);
 
         $_SESSION['detail_offre'] = $details_offre;
     }
+}
 
     // Adresse que tu veux convertir
     $adresse = $adresse_offre["adresse_postal"]." ".$adresse_offre["ville"];
