@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -6,6 +9,8 @@ use PHPMailer\PHPMailer\Exception;
 require '../phpmailer/src/Exception.php';
 require '../phpmailer/src/PHPMailer.php';
 require '../phpmailer/src/SMTP.php';
+
+include_once('recupInfosCompte.php');
 
 // Vérifiez si le formulaire a été soumis
 if (isset($_POST['dwl-data-mail'])) {
