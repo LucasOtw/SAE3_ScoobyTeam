@@ -707,8 +707,8 @@ if (isset($json['results'][0])) {
             return $reponses;
         }
 
-echo "<pre>";
-    var_dump($monCompte);
+    echo "<pre>";
+    var_dump($_SESSION["membre"]["code_compte"]);
     echo "<pre>";
         // Fonction pour afficher les avis et les réponses récursivement
         function afficherAvis($avis, $niveau = 0)
