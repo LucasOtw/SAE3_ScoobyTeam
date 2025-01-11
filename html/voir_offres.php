@@ -572,7 +572,7 @@ function tempsEcouleDepuisPublication($offre){
                         
                                 <img src="<?php echo "./".$offre_image['url_image']; ?>" alt="aucune image">
                         
-                                <div class="offer-details">
+                                <div class="offer-new-details">
                                     <h2><?php echo $offre["titre_offre"]; ?></h2>
                                     
                                     <p>
