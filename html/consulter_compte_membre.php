@@ -428,7 +428,7 @@ if (isset($_POST['dwl-data'])) {
                 <input type="checkbox" id="cgu" name="cgu" required>
                 <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
             </div>
-                    <div class="compte_membre_save_delete_remove">
+                   <div class="compte_membre_save_delete_remove">
             <div class="supprimer-download">
                 <!-- Bouton "Supprimer le compte" et bouton pour "Mes données" -->
                 <button type="button" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte">Supprimer le compte</button>
@@ -440,8 +440,9 @@ if (isset($_POST['dwl-data'])) {
             <div class="custom-confirm" id="popup-mes-donnees">
                 <div class="custom-confirm-content">
                     <p>Voulez-vous vraiment télécharger vos données ?</p>
-                    <button id="confirm-donnees" class="btn-confirm">Confirmer</button>
-                    <button id="cancel-donnees" class="btn-cancel">Annuler</button>
+                    <button id="confirm-donnees" class="btn-confirm">Télécharger mes données</button>
+                    <button id="cancel-donnees" class="btn-cancel">Envoyer par mail</button>
+                    <button id="close-popup" class="btn-close">Fermer</button>
                 </div>
             </div>
         </div>
@@ -453,24 +454,34 @@ if (isset($_POST['dwl-data'])) {
             const popupMesDonnees = document.getElementById("popup-mes-donnees");
             const btnConfirmDonnees = document.getElementById("confirm-donnees");
             const btnCancelDonnees = document.getElementById("cancel-donnees");
+            const btnClosePopup = document.getElementById("close-popup");
         
             // Afficher la popup lorsque l'utilisateur clique sur le bouton "Mes données"
             btnMesDonnees.addEventListener("click", () => {
                 popupMesDonnees.style.display = "block";
             });
         
-            // Masquer la popup lorsque l'utilisateur annule
-            btnCancelDonnees.addEventListener("click", () => {
+            // Masquer la popup lorsque l'utilisateur clique sur "Fermer"
+            btnClosePopup.addEventListener("click", () => {
                 popupMesDonnees.style.display = "none";
             });
         
-            // Logique à mettre en place lors de la confirmation (exemple d'action)
+            // Télécharger les données lorsque l'utilisateur clique sur "Télécharger mes données"
             btnConfirmDonnees.addEventListener("click", () => {
-                // Code pour télécharger les données ici
+                // Code pour télécharger les données
                 alert("Téléchargement des données...");
-                popupMesDonnees.style.display = "none";
+                // Tu peux utiliser une méthode de téléchargement de fichiers (par exemple, générer un fichier ZIP ou un fichier JSON)
+                popupMesDonnees.style.display = "none";  // Fermer la popup après l'action
+            });
+        
+            // Envoyer les données par email lorsque l'utilisateur clique sur "Envoyer par mail"
+            btnCancelDonnees.addEventListener("click", () => {
+                // Code pour envoyer les données par email (par exemple, utiliser un formulaire PHP ou une API pour envoyer l'email)
+                alert("Envoi des données par email...");
+                popupMesDonnees.style.display = "none";  // Fermer la popup après l'action
             });
         </script>
+
 
 
         </form>
