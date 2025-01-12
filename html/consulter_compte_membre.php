@@ -440,12 +440,7 @@ if (isset($_POST['dwl-data'])) {
             </div>
 
         </form>
-        <form action="envoyer_email2.php" method="POST">
-            <div>
-                <button type="submit" name="envoyer_mail" class="submit-btn3" id="dwl-data-mail">Mail</button>
-            </div>
-        </form>
-        <div class="custom-confirm" id="customConfirmBox">
+        <div class="custom-confirm" id="customConfirmBox" style="display: none;">
         <div class="custom-confirm-content">
           <h2>Gestion de vos données</h2>
           <p>Choisissez une action :</p>
@@ -460,6 +455,19 @@ if (isset($_POST['dwl-data'])) {
           <!-- Bouton de fermeture -->
           <button id="confirmButton" class="btn-close">Fermer</button>
         </div>
+      </div>
+    
+      <script>
+        // Ouvrir la pop-up
+        document.getElementById('dwl-data-mail').addEventListener('click', () => {
+          document.getElementById('customConfirmBox').style.display = 'block';
+        });
+    
+        // Fermer la pop-up
+        document.getElementById('confirmButton').addEventListener('click', () => {
+          document.getElementById('customConfirmBox').style.display = 'none';
+        });
+      </script>
   </div>
     </main>
 
