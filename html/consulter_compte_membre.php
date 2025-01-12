@@ -428,51 +428,54 @@ if (isset($_POST['dwl-data'])) {
                 <input type="checkbox" id="cgu" name="cgu" required>
                 <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
             </div>
-            <div class="compte_membre_save_delete_remove">
-                <div class="supprimer-download">
-                    <button type="button" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte">Supprimer le compte</button>
-                    <input type="submit" name="dwl-data" class="btn-dwl-data" value="Télécharger mes données">
-                </div>
-                <div class="compte_membre_save_delete">
-                    <a href="?deco=true" class="submit-btn1">Déconnexion</a>
-                    <button type="submit" name="modif_infos" class="submit-btn2" id="btn-enreg">Enregistrer</button>
+                    <div class="compte_membre_save_delete_remove">
+            <div class="supprimer-download">
+                <!-- Bouton "Supprimer le compte" et bouton pour "Mes données" -->
+                <button type="button" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte">Supprimer le compte</button>
+                <button type="button" name="mes-donnees" class="btn-donnees" id="btn-mes-donnees">Mes données</button>
+                <input type="submit" name="dwl-data" class="btn-dwl-data" value="Télécharger mes données">
+            </div>
+        
+            <!-- Popup qui s'affichera -->
+            <div class="custom-confirm" id="popup-mes-donnees">
+                <div class="custom-confirm-content">
+                    <p>Voulez-vous vraiment télécharger vos données ?</p>
+                    <button id="confirm-donnees" class="btn-confirm">Confirmer</button>
+                    <button id="cancel-donnees" class="btn-cancel">Annuler</button>
                 </div>
             </div>
+        </div>
+        
+        <!-- Script JavaScript pour gérer la popup -->
+        <script>
+            // Récupère les éléments du DOM
+            const btnMesDonnees = document.getElementById("btn-mes-donnees");
+            const popupMesDonnees = document.getElementById("popup-mes-donnees");
+            const btnConfirmDonnees = document.getElementById("confirm-donnees");
+            const btnCancelDonnees = document.getElementById("cancel-donnees");
+        
+            // Afficher la popup lorsque l'utilisateur clique sur le bouton "Mes données"
+            btnMesDonnees.addEventListener("click", () => {
+                popupMesDonnees.style.display = "block";
+            });
+        
+            // Masquer la popup lorsque l'utilisateur annule
+            btnCancelDonnees.addEventListener("click", () => {
+                popupMesDonnees.style.display = "none";
+            });
+        
+            // Logique à mettre en place lors de la confirmation (exemple d'action)
+            btnConfirmDonnees.addEventListener("click", () => {
+                // Code pour télécharger les données ici
+                alert("Téléchargement des données...");
+                popupMesDonnees.style.display = "none";
+            });
+        </script>
+
 
         </form>
        
-      <script>
-        $(document).ready(function () {
-          // Ouvrir la pop-up lorsque "Mail" est cliqué
-          $('#dwl-data-mail').on('click', function () {
-            $('#customConfirmBox').fadeIn();
-          });
-    
-          // Fermer la pop-up lorsque le bouton "Fermer" est cliqué
-          $('#confirmButton').on('click', function () {
-            $('#customConfirmBox').fadeOut();
-          });
-    
-          // Gestion du formulaire d'envoi de données par mail
-          $('#emailForm').on('submit', function (e) {
-            e.preventDefault(); // Empêcher la soumission classique du formulaire
-    
-            var formData = $(this).serialize(); // Sérialiser les données du formulaire
-    
-            $.ajax({
-              type: 'POST',
-              url: 'envoyer_email2.php', // Script PHP pour envoyer l'e-mail
-              data: formData,
-              success: function (response) {
-                alert('Votre e-mail a été envoyé avec succès !');
-              },
-              error: function () {
-                alert('Une erreur est survenue lors de l\'envoi de l\'e-mail.');
-              }
-            });
-          });
-        });
-      </script>
+      
   </div>
     </main>
 
