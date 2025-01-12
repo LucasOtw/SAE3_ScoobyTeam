@@ -440,32 +440,37 @@ if (isset($_POST['dwl-data'])) {
             </div>
 
         </form>
-        <div class="custom-confirm" id="customConfirmBox" style="display: none;">
-        <div class="custom-confirm-content">
-          <h2>Gestion de vos données</h2>
-          <p>Choisissez une action :</p>
-          <!-- Formulaire Télécharger -->
-          <form action="telecharger.php" method="POST">
-            <button type="submit" class="btn-download">Télécharger mes données</button>
-          </form>
-          <!-- Formulaire Envoyer -->
-          <form action="envoyer.php" method="POST">
-            <button type="submit" class="btn-send">Envoyer par e-mail</button>
-          </form>
-          <!-- Bouton de fermeture -->
-          <button id="confirmButton" class="btn-close">Fermer</button>
-        </div>
-      </div>
-    
+       
       <script>
-        // Ouvrir la pop-up
-        document.getElementById('dwl-data-mail').addEventListener('click', () => {
-          document.getElementById('customConfirmBox').style.display = 'block';
-        });
+        $(document).ready(function () {
+          // Ouvrir la pop-up lorsque "Mail" est cliqué
+          $('#dwl-data-mail').on('click', function () {
+            $('#customConfirmBox').fadeIn();
+          });
     
-        // Fermer la pop-up
-        document.getElementById('confirmButton').addEventListener('click', () => {
-          document.getElementById('customConfirmBox').style.display = 'none';
+          // Fermer la pop-up lorsque le bouton "Fermer" est cliqué
+          $('#confirmButton').on('click', function () {
+            $('#customConfirmBox').fadeOut();
+          });
+    
+          // Gestion du formulaire d'envoi de données par mail
+          $('#emailForm').on('submit', function (e) {
+            e.preventDefault(); // Empêcher la soumission classique du formulaire
+    
+            var formData = $(this).serialize(); // Sérialiser les données du formulaire
+    
+            $.ajax({
+              type: 'POST',
+              url: 'envoyer_email.php', // Script PHP pour envoyer l'e-mail
+              data: formData,
+              success: function (response) {
+                alert('Votre e-mail a été envoyé avec succès !');
+              },
+              error: function () {
+                alert('Une erreur est survenue lors de l\'envoi de l\'e-mail.');
+              }
+            });
+          });
         });
       </script>
   </div>
