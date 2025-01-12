@@ -440,7 +440,7 @@ if (isset($_POST['dwl-data'])) {
             <div class="custom-confirm" id="popup-mes-donnees">
                 <div class="custom-confirm-content">
                     <p>Que voules-vous faire ?</p>
-                    <button id="confirm-donnees" class="btn-confirm">Télécharge</button>
+                    <button id="confirm-donnees" class="btn-confirm">Télécharger</button>
                     <button id="cancel-donnees" class="btn-cancel">Mail</button>
                     <button id="close-popup" class="btn-close">Fermer</button>
                 </div>
