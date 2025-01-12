@@ -445,7 +445,22 @@ if (isset($_POST['dwl-data'])) {
                 <button type="submit" name="envoyer_mail" class="submit-btn3" id="dwl-data-mail">Mail</button>
             </div>
         </form>
-        
+        <div class="custom-confirm" id="customConfirmBox">
+        <div class="custom-confirm-content">
+          <h2>Gestion de vos données</h2>
+          <p>Choisissez une action :</p>
+          <!-- Formulaire Télécharger -->
+          <form action="telecharger.php" method="POST">
+            <button type="submit" class="btn-download">Télécharger mes données</button>
+          </form>
+          <!-- Formulaire Envoyer -->
+          <form action="envoyer.php" method="POST">
+            <button type="submit" class="btn-send">Envoyer par e-mail</button>
+          </form>
+          <!-- Bouton de fermeture -->
+          <button id="confirmButton" class="btn-close">Fermer</button>
+        </div>
+  </div>
     </main>
 
     
@@ -589,6 +604,9 @@ if (isset($_POST['dwl-data'])) {
         });
     
     </script>
+
+
+            
     
 </body>
 </html>
