@@ -168,11 +168,10 @@ INNER JOIN
                             }
                             ?>
 
-                            <br><span class="nom_avis"><?php echo htmlspecialchars($avis["avis_prenom_membre"]) . " " . htmlspecialchars($avis["avis_nom_membre"]); ?></span> 
 			    <?php 
-				if (!empty($avis['raison_sociale_pro'])) {
+				if (!empty($avis['pro_raison_sociale'])) {
 				        ?><br><span class="nom_avis" style="color:var(--orange)"><?php echo htmlspecialchars($avis["pro_raison_sociale"]) ;?></span><?php
-				    } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
+				    } elseif (!empty($avis['avis_prenom_membre']) && !empty($avis['avis_nom_membre'])) {
 				       ?><br><span class="nom_avis"><?php echo htmlspecialchars($avis["avis_prenom_membre"]) . " " . htmlspecialchars($avis["avis_nom_membre"]); ?></span><?php
 				    } else {
 				       ?><br><span class="nom_avis">Utilisateur supprimé</span><?php
