@@ -439,9 +439,9 @@ if (isset($_POST['dwl-data'])) {
             <!-- Popup qui s'affichera -->
             <div class="custom-confirm" id="popup-mes-donnees">
                 <div class="custom-confirm-content">
-                    <p>Voulez-vous vraiment télécharger vos données ?</p>
-                    <button id="confirm-donnees" class="btn-confirm">Télécharger mes données</button>
-                    <button id="cancel-donnees" class="btn-cancel">Envoyer par mail</button>
+                    <p>Que voules-vous faire ?</p>
+                    <button id="confirm-donnees" class="btn-confirm">Télécharge</button>
+                    <button id="cancel-donnees" class="btn-cancel">Mail</button>
                     <button id="close-popup" class="btn-close">Fermer</button>
                 </div>
             </div>
