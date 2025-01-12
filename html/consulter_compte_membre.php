@@ -428,12 +428,11 @@ if (isset($_POST['dwl-data'])) {
                 <input type="checkbox" id="cgu" name="cgu" required>
                 <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
             </div>
-                   <div class="compte_membre_save_delete_remove">
+                 <div class="compte_membre_save_delete_remove">
             <div class="supprimer-download">
                 <!-- Bouton "Supprimer le compte" et bouton pour "Mes données" -->
                 <button type="button" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte">Supprimer le compte</button>
                 <button type="button" name="mes-donnees" class="btn-donnees" id="btn-mes-donnees">Mes données</button>
-                <input type="submit" name="dwl-data" class="btn-dwl-data" value="Télécharger mes données">
             </div>
         
             <!-- Popup qui s'affichera -->
@@ -466,23 +465,31 @@ if (isset($_POST['dwl-data'])) {
                 popupMesDonnees.style.display = "none";
             });
         
-            // Télécharger les données lorsque l'utilisateur clique sur "Télécharger mes données"
+            // Télécharger les données lorsque l'utilisateur clique sur "Télécharger"
             btnConfirmDonnees.addEventListener("click", () => {
-                // Code pour télécharger les données
-                alert("Téléchargement des données...");
-                // Tu peux utiliser une méthode de téléchargement de fichiers (par exemple, générer un fichier ZIP ou un fichier JSON)
+                // Créer un formulaire pour soumettre la demande de téléchargement des données
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = 'telecharger_donnees.php';  // Remplacer par le chemin vers ton fichier PHP
+        
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'dwl-data';  // Ce nom doit correspondre à ce qui est vérifié dans ton code PHP
+                form.appendChild(input);
+        
+                document.body.appendChild(form);
+                form.submit();  // Soumettre le formulaire pour lancer le téléchargement
+                
                 popupMesDonnees.style.display = "none";  // Fermer la popup après l'action
             });
         
-            // Envoyer les données par email lorsque l'utilisateur clique sur "Envoyer par mail"
+            // Envoyer les données par email lorsque l'utilisateur clique sur "Mail"
             btnCancelDonnees.addEventListener("click", () => {
-                // Code pour envoyer les données par email (par exemple, utiliser un formulaire PHP ou une API pour envoyer l'email)
+                // Code pour envoyer les données par email (exemple)
                 alert("Envoi des données par email...");
                 popupMesDonnees.style.display = "none";  // Fermer la popup après l'action
             });
         </script>
-
-
 
         </form>
        
