@@ -170,7 +170,7 @@ INNER JOIN
 
 			    <?php 
 				if (!empty($avis['pro_raison_sociale'])) {
-				        ?><br><span class="nom_avis" style="color:var(--orange)"><?php echo htmlspecialchars($avis["pro_raison_sociale"]) ;?></span><?php
+				        ?><br><span class="nom_avis" style="color:var(--orange)">Mon entreprise</span><?php
 				    } elseif (!empty($avis['avis_prenom_membre']) && !empty($avis['avis_nom_membre'])) {
 				       ?><br><span class="nom_avis"><?php echo htmlspecialchars($avis["avis_prenom_membre"]) . " " . htmlspecialchars($avis["avis_nom_membre"]); ?></span><?php
 				    } else {
