@@ -143,7 +143,7 @@ INNER JOIN
         <?php foreach ($tout_les_avis as $avis): 
             // Déterminer l'appréciation en fonction de la note
             $appreciation = "";
-            switch ($avis["note"]) {
+            switch ($avis["avis_note"]) {
                 case '1': $appreciation = "Insatisfaisant"; break;
                 case '2': $appreciation = "Passable"; break;
                 case '3': $appreciation = "Correct"; break;
@@ -157,7 +157,7 @@ INNER JOIN
                     <h3 class="avis" style="display: flex; justify-content: space-between;">
                         <span>
                             <?php 
-                            if ($avis["note"] != 0) {
+                            if ($avis["avis_note"] != 0) {
                                 echo htmlspecialchars($avis["avis_note"]) . ".0 ★ " . htmlspecialchars($appreciation); 
                             } else {
                                 echo "Réponse"; 
@@ -175,7 +175,7 @@ INNER JOIN
                     <br><span class="nom_reponse"><?php echo "Mon entreprise"; ?></span>         
                     <p class="avis"><?php echo htmlspecialchars_decode($avis["reponse_txt_avis"], ENT_QUOTES); ?></p>
                     <form method="POST" action="consulter_mes_avis.php" class="delete-form">
-                            <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis['code_avis']); ?>">
+                            <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis['reponse_code_avis']); ?>">
                             <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="confirmDelete(event)">
                     </form>
                 </div>
