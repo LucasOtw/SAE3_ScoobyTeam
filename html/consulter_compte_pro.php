@@ -129,6 +129,7 @@ if (isset($_POST['modif_infos'])){
                    <li><a href="modif_bancaire.php">Compte bancaire</a></li>
                 <?php } ?>
                 <li><a href="modif_mdp_pro.php">Mot de passe et sécurité</a></li>
+                <li><a href="consulter_mes_reponse_pro.php">Mes réponses</a></li>
             </ul>
         </section>
 
