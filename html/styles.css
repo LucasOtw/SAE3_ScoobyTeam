@@ -2278,7 +2278,7 @@ fieldset[disabled] {
 }
 
 .main-consulter-compte-pro .tabs ul li a {
-    width: calc(60vw/3);
+    width: calc(60vw/4);
     font-size: 20px;
     padding: 10px 20px;
     display: inline-block;
