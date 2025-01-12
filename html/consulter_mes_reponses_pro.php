@@ -107,7 +107,8 @@ if (!empty($_POST['supprAvis'])){
     reponse.pouce_negatif AS reponse_pouce_negatif,
     reponse.signaler AS reponse_signaler,
     reponse.code_compte AS reponse_code_compte,
-    reponse.code_offre AS reponse_code_offre
+    reponse.code_offre AS reponse_code_offre,
+	offre.titre_offre
 FROM 
     tripenarvor._reponse
 INNER JOIN 
@@ -119,6 +120,9 @@ INNER JOIN
 INNER JOIN 
     tripenarvor._avis AS reponse 
     ON reponse.code_avis = tripenarvor._reponse.code_reponse
+INNER JOIN 
+    tripenarvor._offre AS offre 
+    ON offre.code_offre = avis.code_offre
 	where reponse.code_compte = :code_compte;
 ');
         $tout_les_avis->bindValue(':code_compte', $_SESSION['pro']['code_compte'], PDO::PARAM_INT);
@@ -154,7 +158,7 @@ INNER JOIN
                         <span>
                             <?php 
                             if ($avis["note"] != 0) {
-                                echo htmlspecialchars($avis["note"]) . ".0 ★ " . htmlspecialchars($appreciation); 
+                                echo htmlspecialchars($avis["avis_note"]) . ".0 ★ " . htmlspecialchars($appreciation); 
                             } else {
                                 echo "Réponse"; 
                             }
@@ -164,16 +168,16 @@ INNER JOIN
                             <span class="nom_visite"><?php echo htmlspecialchars($avis["titre_offre"]); ?></span>
                         </span>
                         <!-- Formulaire pour supprimer un avis -->
-                        <form method="POST" action="consulter_mes_avis.php" class="delete-form">
-                            <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis['code_avis']); ?>">
-                            <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="confirmDelete(event)">
-                        </form>
+                        
                     </h3>
                     <p class="avis"><?php echo htmlspecialchars_decode($avis["avis_txt_avis"], ENT_QUOTES); ?></p>
           
                     <br><span class="nom_reponse"><?php echo "Mon entreprise"; ?></span>         
                     <p class="avis"><?php echo htmlspecialchars_decode($avis["reponse_txt_avis"], ENT_QUOTES); ?></p>
-                    
+                    <form method="POST" action="consulter_mes_avis.php" class="delete-form">
+                            <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis['code_avis']); ?>">
+                            <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="confirmDelete(event)">
+                    </form>
                 </div>
             </div>
             
