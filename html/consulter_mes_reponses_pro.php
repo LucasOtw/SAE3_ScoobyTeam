@@ -119,7 +119,7 @@ INNER JOIN
 INNER JOIN 
     tripenarvor._avis AS reponse 
     ON reponse.code_avis = tripenarvor._reponse.code_reponse
-	where reponse.code_compte = 1;
+	where reponse.code_compte = :code_compte;
 ');
         $tout_les_avis->bindValue(':code_compte', $_SESSION['pro']['code_compte'], PDO::PARAM_INT);
         $tout_les_avis->execute();
