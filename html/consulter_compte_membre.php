@@ -470,7 +470,7 @@ if (isset($_POST['dwl-data'])) {
                 // Créer un formulaire pour soumettre la demande de téléchargement des données
                 const form = document.createElement('form');
                 form.method = 'POST';
-                form.action = 'telecharger_donnees.php';  // Remplacer par le chemin vers ton fichier PHP
+                form.action = 'télécharger_données.php';  // Remplacer par le chemin vers ton fichier PHP
         
                 const input = document.createElement('input');
                 input.type = 'hidden';
