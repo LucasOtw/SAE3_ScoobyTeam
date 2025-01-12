@@ -70,13 +70,13 @@ if (!empty($_POST['supprAvis'])){
     
         <section class="tabs">
             <ul>
-                <li><a href="consulter_compte_pro.php" class="active">Informations personnelles</a></li>
+                <li><a href="consulter_compte_pro.php" >Informations personnelles</a></li>
                 <li><a href="mes_offres.php" >Mes offres</a></li>
                 <?php if ( isset($monComptePro['raison_sociale'])) { ?>
                    <li><a href="modif_bancaire.php">Compte bancaire</a></li>
                 <?php } ?>
                 <li><a href="modif_mdp_pro.php">Mot de passe et sécurité</a></li>
-                <li><a href="consulter_mes_reponses_pro.php">Mes réponses</a></li>
+                <li><a href="consulter_mes_reponses_pro.php" class="active">Mes réponses</a></li>
             </ul>
         </section>
 
@@ -132,7 +132,7 @@ INNER JOIN
 
         if (count($tout_les_avis) == 0){
             ?>
-                <h2>Aucun Avis</h2>
+                <h2>Aucune réponses</h2>
             <?php
         }
         ?>
