@@ -114,9 +114,12 @@ FROM
 INNER JOIN 
     tripenarvor._avis AS avis 
     ON avis.code_avis = tripenarvor._reponse.code_avis
-INNER JOIN 
+LEFT JOIN 
     tripenarvor.membre AS membre 
     ON membre.code_compte = avis.code_compte
+LEFT JOIN 
+    tripenarvor._professionnel AS pro 
+    ON pro.code_compte = avis.code_compte
 INNER JOIN 
     tripenarvor._avis AS reponse 
     ON reponse.code_avis = tripenarvor._reponse.code_reponse
