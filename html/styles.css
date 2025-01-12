@@ -883,7 +883,7 @@ fieldset[disabled] {
 }
 
 .main_modif_mdp_pro .tabs ul li a {
-    width: calc(60vw/3);
+    width: calc(60vw/4);
     font-size: 20px;
     padding: 10px 20px;
     display: inline-block;
@@ -1180,7 +1180,7 @@ main.main-ajout-bancaire .tabs ul li {
 }
 
 main.main-ajout-bancaire .tabs ul li a {
-    width: calc(60vw/3);
+    width: calc(60vw/4);
     font-size: 20px;
     padding: 10px 20px;
     display: inline-block;
@@ -2655,7 +2655,7 @@ input[type="password"]::placeholder {
 }
 
 .main_consulter_compte_membre .tabs ul li a {
-    width: calc(60vw/3);
+    width: calc(60vw/4);
     font-size: 20px;
     padding: 10px 20px;
     display: inline-block;
@@ -3258,7 +3258,7 @@ nav.nav-bar {
 }
 
 .main_consulter_compte_membre .tabs ul li a {
-    width: calc(60vw/3);
+    width: calc(60vw/4);
     font-size: 20px;
     padding: 10px 20px;
     display: inline-block;
@@ -3957,7 +3957,7 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
 }
 
 .main_modif_mdp_membre .tabs ul li a {
-    width: calc(60vw/3);
+    width: calc(60vw/4);
     font-size: 20px;
     padding: 10px 20px;
     display: inline-block;
@@ -4328,7 +4328,7 @@ nav.nav-bar-tel {
 }
 
 .main-modif-bancaire .tabs ul li a {
-    width: calc(60vw/3);
+    width: calc(60vw/4);
     font-size: 20px;
     padding: 10px 20px;
     display: inline-block;
@@ -4703,7 +4703,7 @@ nav.nav-bar-tel {
 }
 
 .main_mes_offres .tabs ul li a {
-    width: calc(60vw/3);
+    width: calc(60vw/4);
     font-size: 20px;
     padding: 10px 20px;
     display: inline-block;
