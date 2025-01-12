@@ -428,6 +428,10 @@ if (isset($_POST['dwl-data'])) {
                 <input type="checkbox" id="cgu" name="cgu" required>
                 <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
             </div>
+             <div class="compte_membre_save_delete">
+                <a href="?deco=true" class="submit-btn1">Déconnexion</a>
+                <button type="submit" name="modif_infos" class="submit-btn2" id="btn-enreg">Enregistrer</button>
+             </div>
             <div class="compte_membre_save_delete_remove">
             <div class="supprimer-download">
                 <!-- Bouton "Supprimer le compte" et bouton pour "Mes données" -->
