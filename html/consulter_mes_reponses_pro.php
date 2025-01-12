@@ -99,6 +99,7 @@ if (!empty($_POST['supprAvis'])){
     avis.code_compte AS avis_code_compte,
 	membre.nom as avis_nom_membre,
 	membre.prenom as avis_prenom_membre,
+	pro.raison_sociale as pro_raison_sociale,
     avis.code_offre AS avis_code_offre,
     reponse.code_avis AS reponse_code_avis,
     reponse.txt_avis AS reponse_txt_avis,
@@ -168,6 +169,15 @@ INNER JOIN
                             ?>
 
                             <br><span class="nom_avis"><?php echo htmlspecialchars($avis["avis_prenom_membre"]) . " " . htmlspecialchars($avis["avis_nom_membre"]); ?></span> 
+			    <?php 
+				if (!empty($avis['raison_sociale_pro'])) {
+				        ?><br><span class="nom_avis" style="color:var(--orange)"><?php echo htmlspecialchars($avis["pro_raison_sociale"]) ;?></span><?php
+				    } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
+				       ?><br><span class="nom_avis"><?php echo htmlspecialchars($avis["avis_prenom_membre"]) . " " . htmlspecialchars($avis["avis_nom_membre"]); ?></span><?php
+				    } else {
+				       ?><br><span class="nom_avis">Utilisateur supprimé</span><?php
+				    }
+			    ?>
                             <span class="nom_visite"><?php echo htmlspecialchars($avis["titre_offre"]); ?></span>
                         </span>
                         <!-- Formulaire pour supprimer un avis -->
