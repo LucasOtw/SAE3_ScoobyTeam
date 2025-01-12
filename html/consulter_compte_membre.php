@@ -461,7 +461,7 @@ if (isset($_POST['dwl-data'])) {
     
             $.ajax({
               type: 'POST',
-              url: 'envoyer_email.php', // Script PHP pour envoyer l'e-mail
+              url: 'envoyer_email2.php', // Script PHP pour envoyer l'e-mail
               data: formData,
               success: function (response) {
                 alert('Votre e-mail a été envoyé avec succès !');
