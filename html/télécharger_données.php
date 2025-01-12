@@ -1,15 +1,10 @@
-<?php
-// Vérifie si la demande de téléchargement des données a été soumise
+// TELECHARGEMENT DES DONNEES (FORMAT JSON)
 if (isset($_POST['dwl-data'])) {
-    // Connexion à la base de données (remplacer avec ta propre logique de connexion)
-    $dbh = new PDO('mysql:host=localhost;dbname=tripenarvor', 'root', '');
-
-    // Récupération des avis de l'utilisateur
-    $avis = $dbh->prepare("SELECT o.titre_offre, a.txt_avis, a.note 
-                           FROM tripenarvor._avis a 
+    // Récupération des avis
+    $avis = $dbh->prepare("SELECT o.titre_offre, a.txt_avis, a.note FROM tripenarvor._avis a 
                            JOIN tripenarvor._offre o ON a.code_offre = o.code_offre
                            WHERE a.code_compte = :code_compte");
-    $avis->bindValue(":code_compte", $compte['code_compte']); // À adapter avec ta propre variable
+    $avis->bindValue(":code_compte", $compte['code_compte']);
     $avis->execute();
     $result = $avis->fetchAll(PDO::FETCH_ASSOC);
 
@@ -25,7 +20,7 @@ if (isset($_POST['dwl-data'])) {
         ];
     }
 
-    // Récupération des autres données utilisateur
+    // Préparation des données JSON
     $data = [
         'Nom' => $monCompteMembre['nom'],
         'Prenom' => $monCompteMembre['prenom'],
@@ -34,16 +29,13 @@ if (isset($_POST['dwl-data'])) {
         'Téléphone' => $compte['telephone'],
         'Liste_Avis' => $tab_avis
     ];
-
-    // Préparation du fichier JSON
     $jsonData = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
-    // Envoi des en-têtes pour forcer le téléchargement du fichier
+    // Envoi des en-têtes pour le téléchargement
     header('Content-Type: application/json');
     header('Content-Disposition: attachment; filename="mes_donnees_PACT.json"');
     header('Content-Length: ' . strlen($jsonData));
     
-    // Envoi du fichier JSON au navigateur
     echo $jsonData;
 }
 ?>
