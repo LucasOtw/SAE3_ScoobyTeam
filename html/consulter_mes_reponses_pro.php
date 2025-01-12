@@ -171,13 +171,14 @@ INNER JOIN
                         
                     </h3>
                     <p class="avis"><?php echo htmlspecialchars_decode($avis["avis_txt_avis"], ENT_QUOTES); ?></p>
-          
-                    <br><span class="nom_reponse"><?php echo "Mon entreprise"; ?></span>         
-                    <p class="avis"><?php echo htmlspecialchars_decode($avis["reponse_txt_avis"], ENT_QUOTES); ?></p>
-                    <form method="POST" action="consulter_mes_avis.php" class="delete-form">
-                            <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis['reponse_code_avis']); ?>">
-                            <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="confirmDelete(event)">
-                    </form>
+          	    <div class="consulter_mes_reponses_pro_reponse" style="margin-left:5vw;">
+	                    <span class="nom_reponse" style="color:var(--orange); font-weight:bold;"><?php echo "Mon entreprise"; ?></span>         
+	                    <p class="avis"><?php echo htmlspecialchars_decode($avis["reponse_txt_avis"], ENT_QUOTES); ?></p>
+	                    <form method="POST" action="consulter_mes_avis.php" class="delete-form">
+	                            <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis['reponse_code_avis']); ?>">
+	                            <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="confirmDelete(event)">
+	                    </form>
+		    </div>
                 </div>
             </div>
             
