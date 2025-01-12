@@ -176,7 +176,7 @@ INNER JOIN
 			    <div class="txt_reponse_poubelle" style="display: flex; justify-content: space-between;">
 	                    	<p class="avis"><?php echo htmlspecialchars_decode($avis["reponse_txt_avis"], ENT_QUOTES); ?></p>
 
-				<form method="POST" action="consulter_mes_avis.php" class="delete-form" style="padding:0px; width:auto; margin:0;">
+				<form method="POST" action="consulter_mes_reponses_pro.php" class="delete-form" style="padding:0px; width:auto; margin:0;">
 	                            <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis['reponse_code_avis']); ?>">
 	                        <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="confirmDelete(event)">
 	                    </form> 
