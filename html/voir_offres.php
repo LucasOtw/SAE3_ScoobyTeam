@@ -316,7 +316,7 @@ function tempsEcouleDepuisPublication($offre){
             <h2 class="titre-a-la-une">A La Une</h2>
     
             <div class="a-la-une-carrousel">
-                <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft('.a-la-une')">&#8249;</button>
+                <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeftA()">&#8249;</button>
                 <section class="a-la-une">
                 <?php
                     try {
@@ -392,7 +392,7 @@ function tempsEcouleDepuisPublication($offre){
                     }
                 ?>
                 </section>
-                <button class="card-scroll-btn card-scroll-btn-right" onclick="scrollcontentRight('.a-la-une')">&#8250;</button>
+                <button class="card-scroll-btn card-scroll-btn-right" onclick="scrollcontentRightA()">&#8250;</button>
             </div>
         </div>
 
@@ -626,7 +626,7 @@ function tempsEcouleDepuisPublication($offre){
             {
             ?>
                 <div class="vu-recemment-carrousel">
-                    <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft('.vu-recemment')">&#8249;</button>
+                    <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeftR()">&#8249;</button>
                     <section class="vu-recemment">
                     <?php
                         try {
@@ -726,7 +726,7 @@ function tempsEcouleDepuisPublication($offre){
                         }
                     ?>
                     </section>
-                    <button class="card-scroll-btn card-scroll-btn-right" onclick="scrollcontentRight('.vu-recemment')">&#8250;</button>
+                    <button class="card-scroll-btn card-scroll-btn-right" onclick="scrollcontentRight()">&#8250;</button>
                 </div>
             <?php
             } else {
