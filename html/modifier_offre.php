@@ -39,7 +39,7 @@ if (isset($_POST['envoiOffre'])) {
 
 $offre = $_SESSION['modif_offre'];
 
-// On récupère les infos de l'offre en fonction de son "type"
+/* RÉCUPÉRATION DU "TYPE DE L'OFFRE" */
 
 $tables = [
     '_offre_activite',
@@ -50,6 +50,7 @@ $tables = [
 ];
 
 $infos_offre = null;
+$type_offre = null;
 
 foreach($tables as $table){
     // on cherche les infos de l'offre dans chaque table, SI elle est présente
@@ -66,6 +67,7 @@ foreach($tables as $table){
 
     if(!empty($res)){
         $infos_offre = $res;
+        $type_offre = str_replace("_offre_",'',$table);
         break;
     }
 }
@@ -75,6 +77,12 @@ if($infos_offre !== null){
     var_dump($infos_offre);
     echo "</pre>";
 }
+
+echo "<h1>".$type_offre."</h1>";
+
+/* RÉCUPÉRATION DES TAGS */
+
+$req_tags = $dbh->prepare("");
 
 if (isset($_POST['envoi_modif'])){
 
