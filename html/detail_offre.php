@@ -761,10 +761,39 @@ if (isset($json['results'][0])) {
                             class="nom_avis" style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
                     </div>
                 <?php endif; ?>
+                <style>
+        .pouce {
+            position: relative;
+            display: inline-block;
+            width: 50px; /* Ajuster selon la taille de l'image */
+            height: 50px; /* Ajuster selon la taille de l'image */
+        }
+
+        .pouce img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: opacity 0.5s ease;
+        }
+
+        .pouce .pouce-hover {
+            opacity: 0;
+        }
+
+        .pouce:hover .pouce-hover {
+            opacity: 1;
+        }
+
+        .pouce:hover .pouce-original {
+            opacity: 0;
+        }
+    </style>
                 <div class="signalement_repondre">
                 <span class="pouce">
-                    <img src="images/pouce" alt="Image par défaut" class="default-image">
-                    <img src="image2.jpg" alt="Image au survol" class="hover-image">
+                    <img src="images/pouce_positif_blanc.png" alt="Image par défaut" class="pouce-original">
+                    <img src="images/pouce_positif_couleur.png" alt="Image au survol" class="pouce-hover">
                 </span>
                 <span class="signalement">
                     <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
