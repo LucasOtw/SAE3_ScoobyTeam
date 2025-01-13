@@ -5503,3 +5503,122 @@ select.theme_contacter_plateforme {
     background-size: 1rem;
 }
 
+
+
+
+
+
+
+
+
+
+/*****************************************************
+                                                        * page modifier offre *
+                                        *****************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Styles spécifiques au formulaire avec l'ID modif_offre */
+#modif_offre {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+#modif_offre h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+}
+
+#modif_offre label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+#modif_offre input[type="text"],
+#modif_offre input[type="email"],
+#modif_offre input[type="number"],
+#modif_offre select,
+#modif_offre textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+#modif_offre textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+#modif_offre input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+#modif_offre .checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#modif_offre .checkbox-label span {
+    font-size: 0.9em;
+    color: #666;
+}
+
+#modif_offre button[type="submit"] {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#modif_offre button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#modif_offre .form-error {
+    color: #e74c3c;
+    font-size: 0.9em;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+
+#modif_offre .form-success {
+    color: #2ecc71;
+    font-size: 1em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
