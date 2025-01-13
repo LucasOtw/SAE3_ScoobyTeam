@@ -796,47 +796,46 @@ if (isset($json['results'][0])) {
                     }
                 </style>
                     
-    
-                <script>
-                    function updateLikeDislike(action, codeAvis) {
-                        var xhr = new XMLHttpRequest();
-                        xhr.open('POST', 'update_likes.php', true);
-                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                        xhr.onload = function () {
-                            if (xhr.status === 200) {
-                                console.log(xhr.responseText);
-                            }
-                        };
-                        xhr.send('action=' + action + '&code_avis=' + codeAvis);
-                    }
-                
-                    function togglePositiveImage(codeAvis) {
-                        var action = document.getElementById('positiveImage').src.includes('blanc') ? 'like' : 'unlike';
-                        updateLikeDislike(action, codeAvis);
-                
-                        // Mise à jour visuelle
-                        document.getElementById('positiveImage').src = action === 'like' ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
-                        document.getElementById('negativeImage').src = 'images/pouce_negatif_blanc.png'; // Réinitialiser le pouce négatif
-                    }
-                
-                    function toggleNegativeImage(codeAvis) {
-                        var action = document.getElementById('negativeImage').src.includes('blanc') ? 'dislike' : 'undislike';
-                        updateLikeDislike(action, codeAvis);
-                
-                        // Mise à jour visuelle
-                        document.getElementById('negativeImage').src = action === 'dislike' ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
-                        document.getElementById('positiveImage').src = 'images/pouce_positif_blanc.png'; // Réinitialiser le pouce positif
-                    }
                 </script>
+                function updateLikeDislike(action, codeAvis) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'update_likes.php', true);
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.onload = function () {
+                        if (xhr.status === 200) {
+                            console.log(xhr.responseText);
+                        }
+                    };
+                    xhr.send('action=' + action + '&code_avis=' + codeAvis);
+                }
+                
+                function togglePositiveImage(codeAvis) {
+                    var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
+                    updateLikeDislike(action, codeAvis);
+                    
+                    // Mise à jour visuelle
+                    document.getElementById('positiveImage' + codeAvis).src = action === 'like' ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
+                    document.getElementById('negativeImage' + codeAvis).src = 'images/pouce_negatif_blanc.png'; // Réinitialiser le pouce négatif
+                }
+                
+                function toggleNegativeImage(codeAvis) {
+                    var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
+                    updateLikeDislike(action, codeAvis);
+                    
+                    // Mise à jour visuelle
+                    document.getElementById('negativeImage' + codeAvis).src = action === 'dislike' ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
+                    document.getElementById('positiveImage' + codeAvis).src = 'images/pouce_positif_blanc.png'; // Réinitialiser le pouce positif
+                }
+
                 
                 <div class="signalement_repondre">
-                    <?php echo $avis['pouce_positif'] ? $avis['pouce_positif'] . " Likes" : "Pas de Likes";?>
-                    <span class="pouce">
-                        <img id="positiveImage" src="images/pouce_positif_blanc.png" alt="Pouce positif" onclick="togglePositiveImage(123)">
-                    </span>
-                    <span class="pouce">
-                        <img id="negativeImage" src="images/pouce_negatif_blanc.png" alt="Pouce négatif" onclick="toggleNegativeImage(123)">
-                    </span>
+                    <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
+                        <img id="positiveImage<?php echo $avis['code_avis']; ?>" src="images/pouce_positif_blanc.png" alt="Pouce positif" onclick="togglePositiveImage(<?php echo $avis['code_avis']; ?>)">
+                    </div>
+                    
+                    <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
+                        <img id="negativeImage<?php echo $avis['code_avis']; ?>" src="images/pouce_negatif_blanc.png" alt="Pouce négatif" onclick="toggleNegativeImage(<?php echo $avis['code_avis']; ?>)">
+                    </div>
 
                 <span class="signalement">
                     <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
