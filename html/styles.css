@@ -3357,6 +3357,10 @@ nav.nav-bar {
     color: #777;
 }
 
+.consulter_mes_reponses_pro_reponse{
+    margin-left: 1em;
+}
+
 .avis-widget .avis-list .avis, .avis-widget .avis-list .reponse {
     display: flex;
     align-items: flex-start;
