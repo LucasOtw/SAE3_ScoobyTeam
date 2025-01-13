@@ -199,8 +199,8 @@ INNER JOIN
             </div>
             
             <!-- Boîte de dialogue personnalisée -->
-            <div id="customConfirm" class="custom-confirm">
-                <div class="custom-confirm-content">
+            <div id="customConfirm-pro" class="custom-confirm">
+                <div class="custom-confirm-content-pro">
                     <p>Êtes-vous sûr de vouloir supprimer cet avis ?</p>
                     <button onclick="submitForm()">Oui</button>
                     <button onclick="closeConfirm()">Non</button>
@@ -212,7 +212,7 @@ INNER JOIN
             function confirmDelete(event) {
                 event.preventDefault();
                 currentForm = event.target.closest('form');
-                document.getElementById('customConfirm').style.display = 'block';
+                document.getElementById('customConfirm-pro').style.display = 'block';
             }
             
             function submitForm() {
