@@ -826,6 +826,7 @@ if (isset($json['results'][0])) {
                     document.getElementById('negativeImage' + codeAvis).src = action === 'dislike' ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
                     document.getElementById('positiveImage' + codeAvis).src = 'images/pouce_positif_blanc.png'; // Réinitialiser le pouce positif
                 }
+                </script>
 
                 
                 <div class="signalement_repondre">
