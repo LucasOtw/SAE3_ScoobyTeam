@@ -29,6 +29,9 @@ if (isset($_POST['envoiOffre'])) {
     $_SESSION['modif_offre'] = unserialize($_POST['uneOffre']);
 } else if (isset($_POST['envoi_modif'])){
     echo "Titre : ".$_POST['_titre_modif']." <br>";
+    echo "<pre>";
+    var_dump($_POST);
+    echo "</pre>";
 }
 
 $offre = $_SESSION['modif_offre'];
