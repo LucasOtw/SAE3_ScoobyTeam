@@ -234,6 +234,7 @@ echo "</pre>";
 </header>
 <body>
     <main>
+        <h1 id="titre_modif_offre">Modifiez votre offre</h1>
         <form id="modif_offre" action="#" method="POST">
             <!-- Infos. Générales-->
             <div>
