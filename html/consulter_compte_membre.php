@@ -474,21 +474,26 @@ if (isset($_POST['dwl-data'])) {
                 // Soumettre le formulaire pour télécharger les données
                 const form = document.createElement("form");
                 form.method = "POST";
-                form.action = "envoyer_email2.php"; // Action vers envoyer_email2.php
-            
+                form.action = ""; // Action de la page actuelle
+        
                 const input = document.createElement("input");
                 input.type = "hidden";
                 input.name = "dwl-data";
-                input.value = "valeur_des_donnees"; // Ajoutez une valeur si nécessaire
                 form.appendChild(input);
-            
+        
                 document.body.appendChild(form);
-                form.submit(); // Envoie le formulaire pour déclencher l'action
-            
+                form.submit(); // Envoie le formulaire pour déclencher le téléchargement
+        
                 // Fermer la popup après le téléchargement
                 popupMesDonnees.style.display = "none";
             });
-
+        
+            // Envoyer les données par email lorsque l'utilisateur clique sur "Mail"
+            btnCancelDonnees.addEventListener("click", () => {
+                // Code pour envoyer les données par email (par exemple, utiliser un formulaire PHP ou une API pour envoyer l'email)
+                alert("Envoi des données par email...");
+                popupMesDonnees.style.display = "none";  // Fermer la popup après l'action
+            });
         </script>
         </form>
        
