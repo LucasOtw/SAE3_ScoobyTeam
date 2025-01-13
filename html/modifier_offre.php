@@ -38,6 +38,41 @@ if (isset($_POST['envoiOffre'])) {
 
 $offre = $_SESSION['modif_offre'];
 
+// On récupère les infos de l'offre en fonction de son "type"
+
+$tables = [
+    '_offre_activite',
+    '_offre_parc_attractions',
+    '_offre_restauration',
+    '_offre_spectacle',
+    '_offre_visite'
+];
+
+$res = null;
+
+foreach($tables as $table){
+    $requete = "SELECT t.* FROM tripenarvor.$table t JOIN tripenarvor._offre o
+    ON o.code_offre = t.code_offre
+    WHERE t.code_offre = :code_offre";
+
+    $stmt = $dbh->prepare($requete);
+    $stmt->bindValue(":code_offre",$offre['code_offre']);
+    $stmt->execute();
+
+    $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if(!empty($res)){
+        $resultat = $res;
+        break;
+    }
+}
+
+if($resultat !== null){
+    echo "<pre>";
+    var_dump($resultat);
+    echo "</pre>";
+}
+
 if (isset($_POST['envoi_modif'])){
 
     $erreurs = [];
