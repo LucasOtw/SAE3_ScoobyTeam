@@ -93,4 +93,14 @@ if ($email) {
 } else {
     echo "Adresse e-mail invalide ou non fournie.";
 }
+if ($mail->send()) {
+    // Une fois l'e-mail envoyé avec succès, rediriger pour afficher le message de succès
+    header("Location: votre_page.php?mail_sent=true");
+    exit;
+} else {
+    // Si l'envoi échoue, vous pouvez rediriger vers une page d'erreur ou afficher un message d'erreur.
+}
+
 ?>
+
+
