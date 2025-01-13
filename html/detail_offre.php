@@ -796,7 +796,7 @@ if (isset($json['results'][0])) {
                     }
                 </style>
                     
-                </script>
+                <script>
                 function updateLikeDislike(action, codeAvis) {
                     var xhr = new XMLHttpRequest();
                     xhr.open('POST', 'update_likes.php', true);
