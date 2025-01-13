@@ -5563,8 +5563,8 @@ select.theme_contacter_plateforme {
     width: 100%;
     font-size: 1rem;
     border-radius: 8px;
-    border: 1px solid #f3f8ff;
-    background-color: #f3f8ff;
+    border: 1px solid #fff;
+    background-color: #fff;
     margin-bottom: 10px;
     box-sizing: border-box;
 }
