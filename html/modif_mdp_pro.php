@@ -135,8 +135,8 @@ if (isset($_POST['modif_infos'])){
             </fieldset>
            
             <fieldset>
-                <legend>Confirmer votre nouveau mot de passe *</legend>
-                <input type="password" id="mdp_nv2" name="mdp_nv2" placeholder="Confirmer votre nouveau mot de passe *" required>
+                <legend>Confirmez votre nouveau mot de passe *</legend>
+                <input type="password" id="mdp_nv2" name="mdp_nv2" placeholder="Confirmez votre nouveau mot de passe *" required>
             </fieldset>
            
             <div class="compte_membre_save_delete">
