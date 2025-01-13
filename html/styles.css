@@ -969,7 +969,7 @@ input[type="email"] {
 
 .notification-badge {
     position: absolute;
-    top: 0;
+    top: -5px;
     right: 9px;
     width: 15px;
     height: 15px;
