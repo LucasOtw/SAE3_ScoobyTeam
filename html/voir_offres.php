@@ -626,7 +626,7 @@ function tempsEcouleDepuisPublication($offre){
             {
             ?>
                 <div class="vu-recemment-carrousel">
-                    <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft('.vu-recemment')">&#8249;</button>
+                    <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeftR()">&#8249;</button>
                     <section class="vu-recemment">
                     <?php
                         try {
@@ -726,7 +726,7 @@ function tempsEcouleDepuisPublication($offre){
                         }
                     ?>
                     </section>
-                    <button class="card-scroll-btn card-scroll-btn-right" onclick="scrollcontentRight('.vu-recemment')">&#8250;</button>
+                    <button class="card-scroll-btn card-scroll-btn-right" onclick="scrollcontentRightR()">&#8250;</button>
                 </div>
             <?php
             } else {
