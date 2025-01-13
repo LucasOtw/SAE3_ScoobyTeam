@@ -336,6 +336,15 @@ echo "</pre>";
                         </tbody>
                     </table>
                 </fieldset>
+
+                <fieldset>
+                    <legend> Services </legend>
+                    <?php
+                        if($type_offre == "restauration"){
+                            echo "DOBBY HAS NO MASTER YOU SON OF A BITCH !";
+                        }
+                    ?>
+                </fieldset>
             </div>
             <div class="btn_modif_offre">
                 <input type="submit" name="envoi_modif" value="Modifier">
