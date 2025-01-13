@@ -5560,12 +5560,16 @@ select.theme_contacter_plateforme {
 }
 
 #modif_offre input[type="text"], #modif_offre span[contenteditable="true"] {
-    border-radius: 11px;
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #f3f8ff;
+    background-color: #f3f8ff;
     border: 1px solid #fff;
     background-color: #fff;
-    margin-bottom: 41px;
+    margin-bottom: 10px;
     box-sizing: border-box;
-    padding: 10px;
+}
 
 #modif_offre input[type="text"]:focus, #modif_offre span[contenteditable="true"]:focus {
     border-color: #ff6f00;
@@ -5596,7 +5600,7 @@ select.theme_contacter_plateforme {
 
 #modif_offre span[contenteditable="true"] {
     min-height: 40px;
-    line-height: 3;
+    line-height: 1.5;
 }
 
 #modif_offre .message-erreur {
