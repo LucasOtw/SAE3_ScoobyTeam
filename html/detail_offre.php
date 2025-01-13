@@ -798,23 +798,43 @@ if (isset($json['results'][0])) {
                     
     
                 <script>
-                    var currentImage = 1;
-            
-                    function toggleImage() {
-                        var image = document.getElementById('image');
-                        if (currentImage === 1) {
-                            image.src = 'images/pouce_positif_couleur.png';  // Remplacez par le chemin de la seconde image
-                            currentImage = 2;
+                    var currentImagePositive = 1;  // Variable pour gérer l'image du pouce positif
+                    var currentImageNegative = 1;  // Variable pour gérer l'image du pouce négatif
+                
+                    // Fonction pour alterner l'image du pouce positif
+                    function togglePositiveImage() {
+                        var image = document.getElementById('positiveImage');
+                        if (currentImagePositive === 1) {
+                            image.src = 'images/pouce_positif_couleur.png';  // Remplacez par le chemin de l'image colorée
+                            currentImagePositive = 2;
                         } else {
-                            image.src = 'images/pouce_positif_blanc.png';  // Remplacez par le chemin de la première image
-                            currentImage = 1;
+                            image.src = 'images/pouce_positif_blanc.png';  // Remplacez par l'image blanche
+                            currentImagePositive = 1;
                         }
                     }
-                </script>   
+                
+                    // Fonction pour alterner l'image du pouce négatif
+                    function toggleNegativeImage() {
+                        var image = document.getElementById('negativeImage');
+                        if (currentImageNegative === 1) {
+                            image.src = 'images/pouce_negatif_couleur.png';  // Remplacez par le chemin de l'image colorée
+                            currentImageNegative = 2;
+                        } else {
+                            image.src = 'images/pouce_negatif_blanc.png';  // Remplacez par l'image blanche
+                            currentImageNegative = 1;
+                        }
+                    }
+                </script>
                 
                 <div class="signalement_repondre">
+                    <!-- Pouce positif -->
                     <span class="pouce">
-                        <img id="image" src="images/pouce_positif_blanc.png" alt="Première image" onclick="toggleImage()">
+                        <img id="positiveImage" src="images/pouce_positif_blanc.png" alt="Pouce positif" onclick="togglePositiveImage()">
+                    </span>
+
+                    <!-- Pouce négatif -->
+                    <span class="pouce">
+                        <img id="negativeImage" src="images/pouce_negatif_blanc.png" alt="Pouce négatif" onclick="toggleNegativeImage()">
                     </span>
                 <span class="signalement">
                     <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
