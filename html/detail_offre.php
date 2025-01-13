@@ -806,8 +806,8 @@ if (isset($json['results'][0])) {
                 </script>
                 <div class="signalement_repondre">
                 <span class="pouce">
-                    <img src="images/pouce_positif_blanc.png" alt="Image par défaut" class="pouce-original">
-                    <img src="images/pouce_positif_couleur.png" alt="Image au clic" class="pouce-hover">
+                    <img src="images/pouce_positif_couleur.png" alt="Image par défaut" class="pouce-original">
+                    <img src="images/pouce_positif_blanc.png" alt="Image au clic" class="pouce-hover">
                 </span>
                 <span class="signalement">
                     <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
