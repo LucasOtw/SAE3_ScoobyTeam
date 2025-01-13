@@ -52,13 +52,20 @@ if(isset($_SESSION['aCreeUneOffre'])){
             <li><a href="creation_offre.php">Publier</a></li>
             <li><a href="consulter_compte_pro.php">Mon Compte</a></li>
             <li>
-                <a href="#" class="notification-icon">
-                    <img src="images/notif.png" alt="cloche notification" class="nouvelle-image" style="
-                    margin-top: -5px;
-                    ">
-                    <span class="notification-badge"></span>
+                <a href="#" class="notification-icon" id="notification-btn">
+                <img src="images/notif.png" alt="cloche notification" class="nouvelle-image" style="margin-top: -5px;">
+                <span class="notification-badge"></span>
                 </a>
             </li>
+<div id="notification-popup" class="hidden">
+    <h3>Notifications</h3>
+    <ul>
+        <li>Nouvelle réservation effectuée</li>
+        <li>Un utilisateur a laissé un commentaire</li>
+        <li>Mise à jour du site prévue</li>
+    </ul>
+</div>
+
         </ul>
     </nav>
 </header>
@@ -195,5 +202,24 @@ if(isset($_SESSION['aCreeUneOffre'])){
         </div>
            
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const notificationBtn = document.getElementById('notification-btn');
+    const notificationPopup = document.getElementById('notification-popup');
+
+    notificationBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Empêche le comportement par défaut de l'ancre
+        notificationPopup.classList.toggle('hidden');
+    });
+
+    // Fermer le pop-up si on clique en dehors
+    document.addEventListener('click', (e) => {
+        if (!notificationPopup.contains(e.target) && !notificationBtn.contains(e.target)) {
+            notificationPopup.classList.add('hidden');
+        }
+    });
+});
+
+    </script>
 </body>
 </html>
