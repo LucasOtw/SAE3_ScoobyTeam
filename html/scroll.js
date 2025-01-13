@@ -11,22 +11,22 @@ function scrollcontentRight(class) {
 }
 
 function scrollcontentLeftA() {
-    const container2 = document.querySelector('a-la-une');
+    const container2 = document.querySelector('.a-la-une');
     container2.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
 }
 
 function scrollcontentRightA() {
-    const container2 = document.querySelector('a-la-une');
+    const container2 = document.querySelector('.a-la-une');
     container2.scrollBy({ left: scrollAmount, behavior: 'smooth' });
 }
 
 function scrollcontentLeftR() {
-    const container3 = document.querySelector('vu-recemment');
+    const container3 = document.querySelector('.vu-recemment');
     container3.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
 }
 
 function scrollcontentRightR() {
-    const container3 = document.querySelector('vu-recemment');
+    const container3 = document.querySelector('.vu-recemment');
     container3.scrollBy({ left: scrollAmount, behavior: 'smooth' });
 }
 
