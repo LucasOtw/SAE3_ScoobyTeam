@@ -45,6 +45,8 @@ if (isset($_POST['envoi_modif'])){
     if(empty($_POST['_titre_modif'])){
         $erreurs[] = "Des champs obligatoires ne sont pas remplis !";
     }
+
+    /* VÉRIFICATION DU CODE POSTAL */
     
     if(empty($erreurs)){
         $tab_offre = array(
@@ -111,19 +113,24 @@ echo "</pre>";
             <div>
                 <fieldset>
                     <legend>Titre</legend>
-                    <h1 id="titre" contenteditable="true"><?php echo $offre['titre_offre']; ?></h1>
+                    <h1 id="titre" contenteditable="true" data-sync="titre_modif"><?php echo $offre['titre_offre']; ?></h1>
                     <input type="hidden" id="titre_modif" name="_titre_modif">
                 </fieldset>
                 <fieldset>
                     <legend>Adresse</legend>
                     <label for="code_postal">Code Postal</label>
-                    <input id="code_postal" type="text" name="_code_postal" value="<?php echo $offre['code_postal']; ?>" maxlength="5" required>
+                    <input id="code_postal" type="text" data-sync="code_postal_modif" value="<?php echo $offre['code_postal']; ?>" maxlength="5" required>
                     <label for="ville">Ville</label>
-                    <input id="ville" type="text" name="_ville" value="<?php echo $offre['ville']; ?>" required>
+                    <input id="ville" type="text" data-sync="ville_modif" value="<?php echo $offre['ville']; ?>" maxlength="30" required>
                     <label for="adresse">Adresse Postale</label>
-                    <input type="text" id="adresse" name="_adresse" value="<?php echo $offre['adresse_postal'] ?>" required>
+                    <input type="text" id="adresse" data-sync="adresse_modif" value="<?php echo $offre['adresse_postal'] ?>" maxlength="64" required>
                     <label for="complement_adresse">Complément d'Adresse</label>
-                    <input type="text" id="complement_adresse" name="_complement_adresse" placeholder="Complément d'adresse" value="<?php echo $offre['complement_adresse']; ?>">
+                    <input type="text" id="complement_adresse" data-sync="comp_adresse_modif" placeholder="Complément d'adresse" value="<?php echo $offre['complement_adresse']; ?>" maxlength="64">
+
+                    <input type="hidden" id="code_postal_modif" name="_code_postal_modif">
+                    <input type="hidden" id="ville_modif" name="_ville_modif">
+                    <input type="hidden" id="adresse_modif" name="_adresse_modif">
+                    <input type="hidden" id="comp_adresse_modif" name="_comp_adresse_modif">
                 </fieldset>
             </div>
             <input type="submit" name="envoi_modif" value="Modifier">
@@ -176,13 +183,22 @@ echo "</pre>";
         </div>
            
     </footer>
-    <script>
+    <script defer>
         const form = document.getElementById('modif_offre');
-        const champTitre = document.getElementById('titre');
-        const nouveauTitre = document.getElementById('titre_modif');
-
+        
+        // Au lieu de gérer chaque champ individuellement, récupère tous les éléments avec `data-sync`
         form.addEventListener('submit', (event) => {
-            nouveauTitre.value = champTitre.innerHTML;
+            const elementsToSync = document.querySelectorAll('[data-sync]');
+            elementsToSync.forEach((element) => {
+                // Récupère l'id du champ de destination
+                const targetId = element.getAttribute('data-sync');
+                const target = document.getElementById(targetId);
+        
+                if (target) {
+                    // Utilise innerHTML pour les champs éditables ou value pour les inputs
+                    target.value = element.contentEditable === "true" ? element.innerHTML : element.value;
+                }
+            });
         });
     </script>
 </body>
