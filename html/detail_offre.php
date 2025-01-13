@@ -805,7 +805,7 @@ if (isset($json['results'][0])) {
                         if (currentImageNegative === 2) {
                             toggleNegativeImage(); // Désactiver le pouce négatif si actif
                         }
-                        var image = document.getElementById('positiveImage');
+                        var image = document.document.querySelector('.pouce<?php echo $avis['code_avis']; ?> .positiveImage');
                         var action = currentImagePositive === 1 ? 'like' : 'unlike';
                         
                         // Mise à jour de l'image
@@ -820,7 +820,7 @@ if (isset($json['results'][0])) {
                         if (currentImagePositive === 2) {
                             togglePositiveImage(); // Désactiver le pouce positif si actif
                         }
-                        var image = document.getElementById('negativeImage');
+                        var image = document.document.querySelector('.pouce<?php echo $avis['code_avis']; ?> .negativeImage');
                         var action = currentImageNegative === 1 ? 'dislike' : 'undislike';
                         
                         // Mise à jour de l'image
