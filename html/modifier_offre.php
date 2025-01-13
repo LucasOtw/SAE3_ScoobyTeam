@@ -39,22 +39,35 @@ if (isset($_POST['envoiOffre'])) {
 $offre = $_SESSION['modif_offre'];
 
 if (isset($_POST['envoi_modif'])){
-    $tab_offre = array(
-        "titre_offre" => $_POST['_titre_modif']
-    );
 
-    foreach($tab_offre as $att => $val){
-        $requete = "UPDATE tripenarvor._offre SET $att = :value WHERE code_offre = :code_offre";
-        $stmt = $dbh->prepare($requete);
+    $erreurs = [];
 
-        $stmt->bindValue(":value",$val);
-        $stmt->bindValue(":code_offre",$offre['code_offre']);
-
-        try {
-            $stmt->execute();
-            echo "Champ $att mis à jour avec succès.<br>";
-        } catch (PDOException $e) {
-            echo "Erreur lors de la mise à jour du champ $att: " . $e->getMessage() . "<br>";
+    if(empty($_POST['_titre_modif'])){
+        $erreurs[] = "Des champs obligatoires ne sont pas remplis !";
+    }
+    
+    if(empty($erreurs)){
+        $tab_offre = array(
+            "titre_offre" => $_POST['_titre_modif']
+        );
+    
+        foreach($tab_offre as $att => $val){
+            $requete = "UPDATE tripenarvor._offre SET $att = :value WHERE code_offre = :code_offre";
+            $stmt = $dbh->prepare($requete);
+    
+            $stmt->bindValue(":value",$val);
+            $stmt->bindValue(":code_offre",$offre['code_offre']);
+    
+            try {
+                $stmt->execute();
+                echo "Champ $att mis à jour avec succès.<br>";
+            } catch (PDOException $e) {
+                echo "Erreur lors de la mise à jour du champ $att: " . $e->getMessage() . "<br>";
+            }
+        }
+    } else {
+        foreach($erreurs as $err){
+            echo $err."<br>";
         }
     }
 }
@@ -104,11 +117,11 @@ echo "</pre>";
                 <fieldset>
                     <legend>Adresse</legend>
                     <label for="code_postal">Code Postal</label>
-                    <input id="code_postal" type="text" name="_code_postal" value="<?php echo $offre['code_postal']; ?>" maxlength="5">
+                    <input id="code_postal" type="text" name="_code_postal" value="<?php echo $offre['code_postal']; ?>" maxlength="5" required>
                     <label for="ville">Ville</label>
-                    <input id="ville" type="text" name="_ville" value="<?php echo $offre['ville']; ?>">
+                    <input id="ville" type="text" name="_ville" value="<?php echo $offre['ville']; ?>" required>
                     <label for="adresse">Adresse Postale</label>
-                    <input type="text" id="adresse" name="_adresse" value="<?php echo $offre['adresse_postal'] ?>">
+                    <input type="text" id="adresse" name="_adresse" value="<?php echo $offre['adresse_postal'] ?>" required>
                     <label for="complement_adresse">Complément d'Adresse</label>
                     <input type="text" id="complement_adresse" name="_complement_adresse" placeholder="Complément d'adresse" value="<?php echo $offre['complement_adresse']; ?>">
                 </fieldset>
