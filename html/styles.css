@@ -2867,7 +2867,7 @@ input[type="password"]::placeholder {
 
 .main_consulter_compte_membre div.supprimer-download {
   display: flex;
-  gap: 23px;
+  gap: 6px;
 }
 
 .main_consulter_compte_membre button.submit-btn2:hover, 
