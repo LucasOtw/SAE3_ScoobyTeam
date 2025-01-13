@@ -1267,27 +1267,28 @@ function tempsEcouleDepuisPublication($offre){
         <img src="images/icones/User icon.png" alt="image de Personne"></a>
 </nav>
     <footer>
-                <div class="newsletter">
-            <div class="newsletter-content">
-                <h2>Inscrivez-vous à notre Newsletter</h2>
-                <p>PACT</p>
-                <p>découvrez la Bretagne !</p>
-                <form class="newsletter-form" action="envoyer_email3.php" method="POST">
-                    <input type="email" name="email" placeholder="Votre adresse mail" required>
-                    <button type="submit">S'inscrire</button>
-                </form>
-            </div>
-            <div class="newsletter-image">
-                <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
-            </div>
-        </div>
-        <!-- Popup de confirmation -->
-        <div class="custom-confirm" id="newsletterConfirmBox">
-            <div class="custom-confirm-content">
-                <p>Vous êtes bien inscrit(e) à notre Newsletter !</p>
-                <button id="closeNewsletterPopup">Fermer</button>
-            </div>
-        </div>
+               <div class="newsletter">
+    <div class="newsletter-content">
+        <h2>Inscrivez-vous à notre Newsletter</h2>
+        <p>PACT</p>
+        <p>découvrez la Bretagne !</p>
+        <form class="newsletter-form" id="newsletterForm">
+            <input type="email" id="newsletterEmail" placeholder="Votre adresse mail" required>
+            <button type="submit">S'inscrire</button>
+        </form>
+    </div>
+    <div class="newsletter-image">
+        <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
+    </div>
+</div>
+
+<!-- Popup de confirmation -->
+<div class="custom-confirm" id="newsletterConfirmBox" style="display: none;">
+    <div class="custom-confirm-content">
+        <p>Vous êtes bien inscrit(e) à notre Newsletter !</p>
+        <button id="closeNewsletterPopup">Fermer</button>
+    </div>
+</div>
 
 
         
@@ -1339,17 +1340,39 @@ function tempsEcouleDepuisPublication($offre){
 </body>
 </html>
 <script>
-    // Fonction pour afficher la popup
-    function showNewsletterConfirmation() {
-        const popup = document.getElementById('newsletterConfirmBox');
-        popup.style.display = 'flex'; // Affiche la popup en mode flex
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+        const newsletterForm = document.getElementById('newsletterForm');
+        const emailInput = document.getElementById('newsletterEmail');
+        const newsletterPopup = document.getElementById('newsletterConfirmBox');
+        const closePopupButton = document.getElementById('closeNewsletterPopup');
 
-    // Fermer la popup lorsque l'utilisateur clique sur "Fermer"
-    const closeNewsletterPopup = document.getElementById('closeNewsletterPopup');
-    closeNewsletterPopup.addEventListener('click', () => {
-        const popup = document.getElementById('newsletterConfirmBox');
-        popup.style.display = 'none'; // Cache la popup
+        // Empêche le comportement par défaut du formulaire et affiche la popup
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Empêche le rechargement de la page
+
+            const email = emailInput.value.trim(); // Récupère la valeur de l'email
+            if (email) {
+                // Envoyer l'email au serveur via fetch ou XMLHttpRequest
+                fetch('envoyer_email3.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `email=${encodeURIComponent(email)}`
+                })
+                    .then(response => response.text())
+                    .then(data => {
+                        console.log(data); // Pour déboguer la réponse du serveur
+                        newsletterPopup.style.display = 'flex'; // Affiche la popup
+                    })
+                    .catch(error => {
+                        console.error('Erreur lors de l\'envoi :', error);
+                    });
+            }
+        });
+
+        // Fermer la popup lorsqu'on clique sur le bouton "Fermer"
+        closePopupButton.addEventListener('click', () => {
+            newsletterPopup.style.display = 'none';
+        });
     });
 </script>
 
