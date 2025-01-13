@@ -28,7 +28,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
 if (isset($_POST['envoiOffre'])) {
     $_SESSION['modif_offre'] = unserialize($_POST['uneOffre']);
 } else if (isset($_POST['envoi_modif'])){
-    echo "Titre : {$_POST['_titre_modif']} <br>";
+    echo "Titre : ".$_POST['_titre_modif']." <br>";
 }
 
 $offre = $_SESSION['modif_offre'];
