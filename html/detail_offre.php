@@ -798,11 +798,19 @@ if (isset($json['results'][0])) {
                     
     
                 <script>
-                    function changeImage() {
-                        var image = document.getElementById('image1');
-                        image.src = 'images/pouce_positif_couleur.png';  // Remplacez par le chemin de la nouvelle image
+                    var currentImage = 1;
+            
+                    function toggleImage() {
+                        var image = document.getElementById('image');
+                        if (currentImage === 1) {
+                            image.src = 'images/pouce_positif_couleur.png';  // Remplacez par le chemin de la seconde image
+                            currentImage = 2;
+                        } else {
+                            image.src = 'images/pouce_positif_blanc.png';  // Remplacez par le chemin de la première image
+                            currentImage = 1;
+                        }
                     }
-                </script>    
+                </script>   
                 
                 <div class="signalement_repondre">
                     <span class="pouce">
