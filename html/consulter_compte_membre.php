@@ -442,19 +442,22 @@ if (isset($_POST['dwl-data'])) {
                 </div>
                 
         
-                <!-- Popup qui s'affichera -->
-                <div class="custom-confirm" id="popup-mes-donnees">
-                    <div class="custom-confirm-content">
-                        <p>Que voulez-vous faire ?</p>
-                        <button id="confirm-donnees" class="btn-confirm">Télécharger</button>
-                        <button id="cancel-donnees" class="btn-cancel">Mail</button>
-                        <button id="close-popup" class="btn-close">Fermer</button>
-                    </div>
-                </div>
+               <!-- Popup qui s'affichera -->
+        <div class="custom-confirm" id="popup-mes-donnees">
+            <div class="custom-confirm-content">
+                <p>Que voulez-vous faire ?</p>
+                <button id="confirm-donnees" class="btn-confirm">Télécharger</button>
+                <button id="cancel-donnees" class="btn-cancel">Mail</button>
+                <button id="close-popup" class="btn-close">Fermer</button>
             </div>
         </div>
-
-            
+        
+        <!-- Message de succès (initialement masqué) -->
+        <div id="mail-success" class="creation-success" style="display:none;">
+            <img src="images/verifier.png" alt="Succès">
+            <h2>Le mail a été envoyé avec succès !</h2>
+        </div>
+        
         <script>
             // Récupère les éléments du DOM
             const btnMesDonnees = document.getElementById("btn-mes-donnees");
@@ -518,14 +521,17 @@ if (isset($_POST['dwl-data'])) {
                 popupMesDonnees.style.display = "none";
         
                 // Afficher le message de succès
-                successMessage.style.display = "block";
-        
-                // Facultatif : cacher le message après quelques secondes
-                setTimeout(() => {
-                    successMessage.style.display = "none";
-                }, 5000); // Le message disparaît après 5 secondes
+                if (successMessage) {
+                    successMessage.style.display = "block";
+                
+                    // Facultatif : cacher le message après quelques secondes
+                    setTimeout(() => {
+                        successMessage.style.display = "none";
+                    }, 5000); // Le message disparaît après 5 secondes
+                }
             });
         </script>
+
 
 
         </form>
