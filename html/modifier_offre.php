@@ -289,13 +289,17 @@ echo "</pre>";
                         </thead>
                         <tbody>
                             <?php
+                                // Extraire seulement les valeurs de 'code_tag' de $mes_tags
+                                $mes_tags_values = array_column($mes_tags, 'code_tag');
+                            
                                 foreach($tags_offre as $tag){
-                                    $isChecked = in_array($tag['code_tag'],$mes_tags);
+                                    // Vérifier si le code_tag est dans les valeurs extraites de $mes_tags
+                                    $isChecked = in_array($tag['code_tag'], $mes_tags_values);
                                     var_dump($isChecked);
                                     ?>
                                     <tr>
                                         <td>
-                                            <input type="checkbox" name="tags[]" value="<?php echo $tag['code_tag']; ?>"<?php echo $isChecked ? 'checked' : ''; ?>>
+                                            <input type="checkbox" name="tags[]" value="<?php echo $tag['code_tag']; ?>"<?php echo $isChecked ? ' checked' : ''; ?>>
                                         </td>
                                         <td>
                                             <?php echo htmlspecialchars($tag['nom_tag']) ?>
