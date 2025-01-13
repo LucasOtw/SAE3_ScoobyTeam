@@ -798,48 +798,6 @@ if (isset($json['results'][0])) {
                     
     
                 <script>
-                    var currentImagePositive = 1;  
-                    var currentImageNegative = 1;  
-                
-                    var states = {};
-
-                    function togglePositiveImage(codeAvis) {
-                        if (!states[codeAvis]) {
-                            states[codeAvis] = { currentImagePositive: 1, currentImageNegative: 1 };
-                        }
-                    
-                        if (states[codeAvis].currentImageNegative === 2) {
-                            toggleNegativeImage(codeAvis); // Désactiver le pouce négatif si actif
-                        }
-                    
-                        var image = document.getElementById('positiveImage' + codeAvis);
-                        var action = states[codeAvis].currentImagePositive === 1 ? 'like' : 'unlike';
-                    
-                        image.src = action === 'like' ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
-                        states[codeAvis].currentImagePositive = action === 'like' ? 2 : 1;
-                    
-                        updateLikeDislike(action, codeAvis);
-                    }
-                    
-                    function toggleNegativeImage(codeAvis) {
-                        if (!states[codeAvis]) {
-                            states[codeAvis] = { currentImagePositive: 1, currentImageNegative: 1 };
-                        }
-                    
-                        if (states[codeAvis].currentImagePositive === 2) {
-                            togglePositiveImage(codeAvis); // Désactiver le pouce positif si actif
-                        }
-                    
-                        var image = document.getElementById('negativeImage' + codeAvis);
-                        var action = states[codeAvis].currentImageNegative === 1 ? 'dislike' : 'undislike';
-                    
-                        image.src = action === 'dislike' ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
-                        states[codeAvis].currentImageNegative = action === 'dislike' ? 2 : 1;
-                    
-                        updateLikeDislike(action, codeAvis);
-                    }
-
-                    
                     function updateLikeDislike(action, codeAvis) {
                         var xhr = new XMLHttpRequest();
                         xhr.open('POST', 'update_likes.php', true);
@@ -849,19 +807,35 @@ if (isset($json['results'][0])) {
                                 console.log(xhr.responseText);
                             }
                         };
-                        xhr.send('action=' + action + '&codeAvis=' + codeAvis);
+                        xhr.send('action=' + action + '&code_avis=' + codeAvis);
                     }
-
+                
+                    function togglePositiveImage(codeAvis) {
+                        var action = document.getElementById('positiveImage').src.includes('blanc') ? 'like' : 'unlike';
+                        updateLikeDislike(action, codeAvis);
+                
+                        // Mise à jour visuelle
+                        document.getElementById('positiveImage').src = action === 'like' ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
+                        document.getElementById('negativeImage').src = 'images/pouce_negatif_blanc.png'; // Réinitialiser le pouce négatif
+                    }
+                
+                    function toggleNegativeImage(codeAvis) {
+                        var action = document.getElementById('negativeImage').src.includes('blanc') ? 'dislike' : 'undislike';
+                        updateLikeDislike(action, codeAvis);
+                
+                        // Mise à jour visuelle
+                        document.getElementById('negativeImage').src = action === 'dislike' ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
+                        document.getElementById('positiveImage').src = 'images/pouce_positif_blanc.png'; // Réinitialiser le pouce positif
+                    }
                 </script>
                 
                 <div class="signalement_repondre">
-                    <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
-                        <img id="positiveImage<?php echo $avis['code_avis']; ?>" src="images/pouce_positif_blanc.png" alt="Pouce positif" onclick="togglePositiveImage(<?php echo $avis['code_avis']; ?>)">
-                    </div>
-                    
-                    <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
-                        <img id="negativeImage<?php echo $avis['code_avis']; ?>" src="images/pouce_negatif_blanc.png" alt="Pouce négatif" onclick="toggleNegativeImage(<?php echo $avis['code_avis']; ?>)">
-                    </div>
+                    <span class="pouce">
+                        <img id="positiveImage" src="images/pouce_positif_blanc.png" alt="Pouce positif" onclick="togglePositiveImage(123)">
+                    </span>
+                    <span class="pouce">
+                        <img id="negativeImage" src="images/pouce_negatif_blanc.png" alt="Pouce négatif" onclick="toggleNegativeImage(123)">
+                    </span>
 
                 <span class="signalement">
                     <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
