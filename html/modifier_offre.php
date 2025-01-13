@@ -211,6 +211,16 @@ echo "</pre>";
                     <input type="hidden" id="titre_modif" name="_titre_modif">
                 </fieldset>
                 <fieldset>
+                    <legend>Infos Générales</legend>
+                    <label for="resume">Résumé (*)</label>
+                    <textarea contenteditable="true" id="resume" data-sync="resume_modif" rows="4" columns="100"><?php echo $offre['resume']; ?></textarea>
+                    <label for="description">Description (*)</label>
+                    <textarea contenteditable="true" id="description" data-sync="desc_modif" rows="7" columns="125"><?php echo $offre['description'] ?></textarea>
+
+                    <input type="hidden" id="resume_modif" name="_resume_modif">
+                    <input type="hidden" id="desc_modif" name="_desc_modif">
+                </fieldset>
+                <fieldset>
                     <legend>Adresse</legend>
                     <label for="code_postal">Code Postal</label>
                     <input id="code_postal" type="text" data-sync="code_postal_modif" value="<?php echo $offre['code_postal']; ?>" maxlength="5" required>
