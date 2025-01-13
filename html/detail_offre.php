@@ -846,8 +846,8 @@ if (isset($json['results'][0])) {
                 
                 <div class="signalement_repondre">
                     <span class="pouce">
-                        <img id="positiveImage" src="images/pouce_positif_blanc.png" alt="Pouce positif" onclick="togglePositiveImage()">
                         <?php echo isset($avis['pouce_positif']) ? $avis['pouce_positif'] . " Likes" : "Pas de Likes"; ?>
+                        <img id="positiveImage" src="images/pouce_positif_blanc.png" alt="Pouce positif" onclick="togglePositiveImage()">
                     </span>
                 
                     <span class="pouce">
