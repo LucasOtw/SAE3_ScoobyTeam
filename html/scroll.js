@@ -1,23 +1,13 @@
 const scrollAmount = 300;
 
-function scrollcontentLeft(class) {
-    const container1 = document.querySelector(class);
+function scrollcontentLeft() {
+    const container1 = document.querySelector(".a-la-une");
     container1.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
 }
 
-function scrollcontentRight(class) {
-    const container1 = document.querySelector(class);
+function scrollcontentRight() {
+    const container1 = document.querySelector(".a-la-une");
     container1.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-}
-
-function scrollcontentLeftA() {
-    const container2 = document.querySelector(".a-la-une");
-    container2.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-}
-
-function scrollcontentRightA() {
-    const container2 = document.querySelector(".a-la-une");
-    container2.scrollBy({ left: scrollAmount, behavior: 'smooth' });
 }
 
 function scrollcontentLeftR() {
