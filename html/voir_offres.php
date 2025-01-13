@@ -1272,8 +1272,8 @@ function tempsEcouleDepuisPublication($offre){
                 <h2>Inscrivez-vous à notre Newsletter</h2>
                 <p>PACT</p>
                 <p>découvrez la Bretagne !</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Votre adresse mail" required>
+                <form class="newsletter-form" action="envoyer_email3.php" method="POST">
+                    <input type="email" name="email" placeholder="Votre adresse mail" required>
                     <button type="submit">S'inscrire</button>
                 </form>
             </div>
@@ -1281,6 +1281,7 @@ function tempsEcouleDepuisPublication($offre){
                 <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
             </div>
         </div>
+
         
         <div class="footer-links">
             <div class="logo">
