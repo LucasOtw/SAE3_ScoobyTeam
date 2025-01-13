@@ -767,14 +767,15 @@ if (isset($json['results'][0])) {
                         display: inline-block;
                         width: 50px; /* Ajuster selon la taille de l'image */
                         height: 50px; /* Ajuster selon la taille de l'image */
+                        cursor: pointer;
                     }
             
                     .pouce img {
                         position: absolute;
                         top: 0;
                         left: 0;
-                        width: 1.5em;
-                        height: 1.5em;
+                        width: 100%;
+                        height: 100%;
                         transition: opacity 0.5s ease;
                     }
             
@@ -782,11 +783,11 @@ if (isset($json['results'][0])) {
                         opacity: 0;
                     }
             
-                    .pouce:hover .pouce-hover {
+                    .pouce.clicked .pouce-hover {
                         opacity: 1;
                     }
             
-                    .pouce:hover .pouce-original {
+                    .pouce.clicked .pouce-original {
                         opacity: 0;
                     }
                 </style>
