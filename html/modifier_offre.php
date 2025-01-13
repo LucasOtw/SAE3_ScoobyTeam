@@ -104,7 +104,13 @@ echo "</pre>";
                 <fieldset>
                     <legend>Adresse</legend>
                     <label for="code_postal">Code Postal</label>
-                    <input type="text" value="<?php echo $offre['code_postal']; ?>" maxlength="5">
+                    <input id="code_postal" type="text" name="_code_postal" value="<?php echo $offre['code_postal']; ?>" maxlength="5">
+                    <label for="ville">Ville</label>
+                    <input id="ville" type="text" name="_ville" value="<?php echo $offre['ville']; ?>">
+                    <label for="adresse">Adresse Postale</label>
+                    <input type="text" id="adresse" name="_adresse" value="<?php echo $offre['adresse_postal'] ?>">
+                    <label for="complement_adresse">Complément d'Adresse</label>
+                    <input type="text" id="complement_adresse" name="_complement_adresse" value="<?php echo $offre['complement_adresse']; ?>">
                 </fieldset>
             </div>
             <input type="submit" name="envoi_modif" value="Modifier">
