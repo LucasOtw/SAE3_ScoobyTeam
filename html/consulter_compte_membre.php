@@ -455,7 +455,6 @@ if (isset($_POST['dwl-data'])) {
         </div>
 
             
-            // Script JavaScript pour gérer la popup
         <script>
             // Récupère les éléments du DOM
             const btnMesDonnees = document.getElementById("btn-mes-donnees");
