@@ -7,7 +7,7 @@ $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
 
 // Get data from the AJAX request
 $action = $_POST['action'];
-$codeAvis = (int) $_POST['code_avis'];
+$codeAvis = (int) $_POST['avis']['code_avis'];
 
 if ($action === 'like') {
     $stmt = $dbh->prepare('
