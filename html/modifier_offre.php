@@ -213,9 +213,9 @@ echo "</pre>";
                 <fieldset>
                     <legend>Infos Générales</legend>
                     <label for="resume">Résumé (*)</label>
-                    <textarea contenteditable="true" id="resume" data-sync="resume_modif" rows="4" columns="100"><?php echo $offre['resume']; ?></textarea>
+                    <textarea contenteditable="true" id="resume" data-sync="resume_modif" rows="4" columns="100"><?php echo $offre['_resume']; ?></textarea>
                     <label for="description">Description (*)</label>
-                    <textarea contenteditable="true" id="description" data-sync="desc_modif" rows="7" columns="125"><?php echo $offre['description'] ?></textarea>
+                    <textarea contenteditable="true" id="description" data-sync="desc_modif" rows="7" columns="125"><?php echo $offre['_description'] ?></textarea>
 
                     <input type="hidden" id="resume_modif" name="_resume_modif">
                     <input type="hidden" id="desc_modif" name="_desc_modif">
