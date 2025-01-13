@@ -39,15 +39,11 @@ if ($email) {
         $mail->SMTPAuth = true;
         $mail->Username = 'noreply.scoobyteam@gmail.com'; // Remplacez par votre e-mail
         $mail->Password = 'yejz rjye ntfh ryjv'; // Utilisez un mot de passe d'application
-        $mail->Username = 'noreply.scoobyteam@gmail.com'; // Remplacez par votre e-mail
-        $mail->Password = 'yejz rjye ntfh ryjv'; // Utilisez un mot de passe d'application
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
         // Définir l'expéditeur et le destinataire
         $mail->CharSet = 'UTF-8';
-        //$mail->setFrom('harry.rajic56@gmail.com', 'ScoobyTeam');
-        $mail->addAddress($email, $prenom . ' ' . $nom);
 
         // Construire le contenu de l'e-mail
         $mail->isHTML(true);
