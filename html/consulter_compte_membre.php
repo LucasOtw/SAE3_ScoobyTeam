@@ -501,7 +501,7 @@ if (isset($_POST['dwl-data'])) {
                     popupMesDonnees.style.display = "none";
                 });
         
-                // Envoyer les données par e-mail lorsque l'utilisateur clique sur "Mail"
+                // Afficher le message de succès lorsque l'utilisateur clique sur "Mail"
                 btnCancelDonnees.addEventListener("click", () => {
                     // Rediriger vers la page envoyer_email2.php
                     const form = document.createElement("form");
@@ -533,6 +533,7 @@ if (isset($_POST['dwl-data'])) {
                 });
             });
         </script>
+
 
 
         </form>
