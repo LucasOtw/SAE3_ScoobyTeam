@@ -44,6 +44,8 @@ if ($email) {
 
         // Définir l'expéditeur et le destinataire
         $mail->CharSet = 'UTF-8';
+        //$mail->setFrom('noreply.scoobyteam@gmail.com', 'ScoobyTeam');
+        $mail->addAddress($email, $prenom . ' ' . $nom);
 
         // Construire le contenu de l'e-mail
         $mail->isHTML(true);
