@@ -762,34 +762,43 @@ if (isset($json['results'][0])) {
                     </div>
                 <?php endif; ?>
                 <style>
-        .pouce {
-            position: relative;
-            display: inline-block;
-            width: 50px; /* Ajuster selon la taille de l'image */
-            height: 50px; /* Ajuster selon la taille de l'image */
-        }
-
-        .pouce img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 1em;
-            height: 1em;
-            transition: opacity 0.5s ease;
-        }
-
-        .pouce .pouce-hover {
-            opacity: 0;
-        }
-
-        .pouce:hover .pouce-hover {
-            opacity: 1;
-        }
-
-        .pouce:hover .pouce-original {
-            opacity: 0;
-        }
-    </style>
+                    .pouce {
+                        position: relative;
+                        display: inline-block;
+                        width: 50px; /* Ajuster selon la taille de l'image */
+                        height: 50px; /* Ajuster selon la taille de l'image */
+                        cursor: pointer;
+                    }
+            
+                    .pouce img {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        transition: opacity 0.5s ease;
+                    }
+            
+                    .pouce .pouce-hover {
+                        opacity: 0;
+                    }
+            
+                    .pouce.clicked .pouce-hover {
+                        opacity: 1;
+                    }
+            
+                    .pouce.clicked .pouce-original {
+                        opacity: 0;
+                    }
+                </style>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const pouce = document.querySelector('.pouce');
+                        pouce.addEventListener('click', function() {
+                            this.classList.toggle('clicked');
+                        });
+                    });
+                </script>
                 <div class="signalement_repondre">
                 <span class="pouce">
                     <img src="images/pouce_positif_blanc.png" alt="Image par défaut" class="pouce-original">
