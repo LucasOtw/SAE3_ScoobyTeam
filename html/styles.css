@@ -980,7 +980,7 @@ input[type="email"] {
 #notification-popup h3 {
     margin: 0;
     padding: 10px 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #000000;
     font-size: 18px;
 }
 
@@ -992,7 +992,7 @@ input[type="email"] {
 
 #notification-popup ul li {
     padding: 8px 0;
-    border-bottom: 1px solid #f1f1f1;
+    border-bottom: 1px solid #000000;
 }
 
 #notification-popup ul li:last-child {
