@@ -1,32 +1,32 @@
 const scrollAmount = 300;
 
 function scrollcontentLeft(class) {
-    const container = document.querySelector(class);
+    const container1 = document.querySelector(class);
     container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
 }
 
 function scrollcontentRight(class) {
-    const container = document.querySelector(class);
+    const container1 = document.querySelector(class);
     container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
 }
 
 function scrollcontentLeftA() {
-    const container = document.querySelector('.a-la-une');
+    const container2 = document.querySelector('.a-la-une');
     container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
 }
 
 function scrollcontentRightA() {
-    const container = document.querySelector('.a-la-une');
+    const container2 = document.querySelector('.a-la-une');
     container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
 }
 
 function scrollcontentLeftR() {
-    const container = document.querySelector('.vu-recemment');
+    const container3 = document.querySelector('.vu-recemment');
     container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
 }
 
 function scrollcontentRightR() {
-    const container = document.querySelector('.vu-recemment');
+    const container3 = document.querySelector('.vu-recemment');
     container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
 }
 
