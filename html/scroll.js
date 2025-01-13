@@ -1,5 +1,15 @@
 const scrollAmount = 300;
 
+function scrollcontentLeftA(class) {
+    const container = document.querySelector(class);
+    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+}
+
+function scrollcontentRightA(class) {
+    const container = document.querySelector(class);
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+}
+
 function scrollcontentLeftA() {
     const container = document.querySelector('.a-la-une');
     container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
