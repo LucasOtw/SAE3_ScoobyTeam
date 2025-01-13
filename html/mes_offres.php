@@ -59,11 +59,6 @@ if(isset($_SESSION['aCreeUneOffre'])){
             </li>
 <div id="notification-popup" class="hidden">
     <h3>Notifications</h3>
-    <ul>
-        <li>Nouvelle réservation effectuée</li>
-        <li>Un utilisateur a laissé un commentaire</li>
-        <li>Mise à jour du site prévue</li>
-    </ul>
 </div>
 
         </ul>
