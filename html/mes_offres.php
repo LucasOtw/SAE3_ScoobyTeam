@@ -61,6 +61,10 @@ if(isset($_SESSION['aCreeUneOffre'])){
     <h3>Notifications</h3>
     <ul>
         <li>- Quentin Uguen à publié un commentaire sur Abbaye de Montfort</li>
+        <li>- Quentin Uguen à publié un commentaire sur Abbaye de Montfort</li>
+        <li>- Quentin Uguen à publié un commentaire sur Abbaye de Montfort</li>
+        <li>- Quentin Uguen à publié un commentaire sur Abbaye de Montfort</li>
+        <li>- Quentin Uguen à publié un commentaire sur Abbaye de Montfort</li>
     </ul>
 </div>
 
