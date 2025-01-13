@@ -1,41 +1,46 @@
 <?php
-include 'db_connection.php';  // Inclure la connexion à la base de données
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'], $_POST['code_avis'])) {
-    $action = $_POST['action'];
-    $codeAvis = (int)$_POST['code_avis'];
+// Vérifie si le formulaire a été soumis    
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+$username = "sae";  // Utilisateur PostgreSQL défini dans .env
+$password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
 
-    // Préparer la requête SQL en fonction de l'action
-    switch ($action) {
-        case 'like':
-            $query = "UPDATE Avis SET pouce_positif = pouce_positif + 1, pouce_negatif = GREATEST(0, pouce_negatif - 1) WHERE code_avis = ?";
-            break;
-        case 'dislike':
-            $query = "UPDATE Avis SET pouce_negatif = pouce_negatif + 1, pouce_positif = GREATEST(0, pouce_positif - 1) WHERE code_avis = ?";
-            break;
-        case 'unlike':
-            $query = "UPDATE Avis SET pouce_positif = GREATEST(0, pouce_positif - 1) WHERE code_avis = ?";
-            break;
-        case 'undislike':
-            $query = "UPDATE Avis SET pouce_negatif = GREATEST(0, pouce_negatif - 1) WHERE code_avis = ?";
-            break;
-        default:
-            echo "Invalid action";
-            exit;
-    }
+// Get data from the AJAX request
+$action = $_POST['action'];
+$codeAvis = (int) $_POST['code_avis'];
 
-    // Exécution de la requête préparée
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("i", $codeAvis);
+if ($action === 'like') {
+    $stmt = $dbh->prepare('
+        UPDATE tripenarvor._avis
+        SET pouce_positif = pouce_positif + 1
+        WHERE code_avis = :code_avis
+    ');
+    $stmt->bindValue(':code_avis', $codeAvis, PDO::PARAM_INT);
     $stmt->execute();
-
-    if ($stmt->affected_rows > 0) {
-        echo "Vote updated successfully";
-    } else {
-        echo "No changes made";
-    }
-
-    $stmt->close();
-    $conn->close();
+} elseif ($action === 'unlike') {
+    $stmt = $dbh->prepare('
+        UPDATE tripenarvor._avis
+        SET pouce_positif = pouce_positif - 1
+        WHERE code_avis = :code_avis
+    ');
+    $stmt->bindValue(':code_avis', $codeAvis, PDO::PARAM_INT);
+    $stmt->execute();
+} elseif ($action === 'dislike') {
+    $stmt = $dbh->prepare('
+        UPDATE tripenarvor._avis
+        SET pouce_negatif = pouce_negatif + 1
+        WHERE code_avis = :code_avis
+    ');
+    $stmt->bindValue(':code_avis', $codeAvis, PDO::PARAM_INT);
+    $stmt->execute();
+} elseif ($action === 'undislike') {
+    $stmt = $dbh->prepare('
+        UPDATE tripenarvor._avis
+        SET pouce_negatif = pouce_negatif - 1
+        WHERE code_avis = :code_avis
+    ');
+    $stmt->bindValue(':code_avis', $codeAvis, PDO::PARAM_INT);
+    $stmt->execute();
 }
+
 ?>
