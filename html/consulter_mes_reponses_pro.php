@@ -195,7 +195,7 @@ INNER JOIN
                         
                     </h3>
                     <p class="avis"><?php echo htmlspecialchars_decode($avis["avis_txt_avis"], ENT_QUOTES); ?></p>
-          	    <div class="consulter_mes_reponses_pro_reponse" style="margin-left:5vw;">
+          	    <div class="consulter_mes_reponses_pro_reponse">
 	                    <span class="nom_reponse" style="color:var(--orange); font-weight:bold;"><?php echo "Mon entreprise"; ?></span>         
 			    <div class="txt_reponse_poubelle" style="display: flex; justify-content: space-between;">
 	                    	<p class="reponse"><?php echo htmlspecialchars_decode($avis["reponse_txt_avis"], ENT_QUOTES); ?></p>
