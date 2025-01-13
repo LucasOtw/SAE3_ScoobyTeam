@@ -830,8 +830,6 @@ if (isset($json['results'][0])) {
                     <!-- Pouce positif -->
                     <span class="pouce">
                         <img id="positiveImage" src="images/pouce_positif_blanc.png" alt="Pouce positif" onclick="togglePositiveImage()">
-                        var_dump($Avis);
-                        <?php echo $Avis['pouce_positif'] ?>
                     </span>
 
                     <!-- Pouce négatif -->
