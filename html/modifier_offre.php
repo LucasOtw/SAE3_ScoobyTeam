@@ -52,8 +52,8 @@ $res = null;
 
 foreach($tables as $table){
     $requete = "SELECT t.* FROM tripenarvor.$table t JOIN tripenarvor._offre o
-    ON o.code_offre = a.code_offre
-    WHERE a.code_offre = :code_offre";
+    ON o.code_offre = t.code_offre
+    WHERE t.code_offre = :code_offre";
 
     $stmt = $dbh->prepare($requete);
     $stmt->bindValue(":code_offre",$offre['code_offre']);
