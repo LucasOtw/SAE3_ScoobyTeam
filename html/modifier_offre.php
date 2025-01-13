@@ -52,9 +52,9 @@ if (isset($_POST['envoi_modif'])){
 
         try {
             $stmt->execute();
-            echo "Champ $key mis à jour avec succès.<br>";
+            echo "Champ $att mis à jour avec succès.<br>";
         } catch (PDOException $e) {
-            echo "Erreur lors de la mise à jour du champ $key : " . $e->getMessage() . "<br>";
+            echo "Erreur lors de la mise à jour du champ $att: " . $e->getMessage() . "<br>";
         }
     }
 }
