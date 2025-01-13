@@ -669,6 +669,7 @@ if (isset($_POST['dwl-data'])) {
         });
     
     </script>
+    <script>
     // Lorsque le message est envoyé avec succès, afficher le message de succès
     function afficherMessageSucces() {
         // Trouver l'élément qui contient le message de succès
@@ -685,6 +686,7 @@ if (isset($_POST['dwl-data'])) {
     // Appel de la fonction pour afficher le message après l'envoi réussi du mail
     // Assurez-vous de l'appeler dans le callback de votre envoi PHP ou dans un appel de réussite de votre processus JavaScript.
     afficherMessageSucces();
+    </script>
 
 
 
