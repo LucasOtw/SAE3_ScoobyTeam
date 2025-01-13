@@ -5534,6 +5534,8 @@ select.theme_contacter_plateforme {
     width: 100%;
     max-width: 75%;
     margin: auto;
+    margin-top : 5em;
+    margin-bottom : 5 em;
 }
 
 #modif_offre fieldset {
