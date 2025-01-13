@@ -151,7 +151,12 @@ if (isset($_POST['envoi_modif'])){
             if(in_array($un_tag,$_POST['tags'])){
                 echo $un_tag."<br>";
             } else {
-                echo "Bruh<br>";
+                // si un tag de la table n'est pas dans le tableau...
+                // alors on le supprime de la base de données.
+                $req_del_tag = $dbh->prepare("DELETE FROM tripenarvor._son_tag WHERE code_tag = :code_tag AND code_offre = :code_offre");
+                $req_del_tag->bindValue(":code_tag",$un_tag);
+                $req_del_tag->bindValue(":code_offre",$offre['code_offre']);
+                $req_del_tag->execute();
             }
         }
         
@@ -323,7 +328,9 @@ echo "</pre>";
                     </table>
                 </fieldset>
             </div>
-            <input type="submit" name="envoi_modif" value="Modifier">
+            <div class="btn_modif_offre">
+                <input type="submit" name="envoi_modif" value="Modifier">
+            </div>
         </form>
     </main>
     <footer class="footer footer_pro">
