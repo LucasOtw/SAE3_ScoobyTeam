@@ -228,11 +228,14 @@ echo "</pre>";
             <div>
                 <fieldset>
                     <legend>Titre</legend>
+                    
                     <h1 id="titre" contenteditable="true" data-sync="titre_modif"><?php echo $offre['titre_offre']; ?></h1>
                     <input type="hidden" id="titre_modif" name="_titre_modif">
                 </fieldset>
+                
                 <fieldset>
                     <legend>Infos Générales</legend>
+                    
                     <label for="resume">Résumé (*)</label>
                     <span contenteditable="true" id="resume" data-sync="resume_modif"><?php echo $offre['_resume']; ?></span>
                     <label for="description">Description (*)</label>
@@ -244,8 +247,10 @@ echo "</pre>";
                     <input type="hidden" id="desc_modif" name="_desc_modif">
                     <input type="hidden" id="access_modif" name="_access_modif">
                 </fieldset>
+                
                 <fieldset>
                     <legend>Adresse</legend>
+                    
                     <label for="code_postal">Code Postal</label>
                     <input id="code_postal" type="text" data-sync="code_postal_modif" value="<?php echo $offre['code_postal']; ?>" maxlength="5" required>
                     <label for="ville">Ville</label>
@@ -259,6 +264,35 @@ echo "</pre>";
                     <input type="hidden" id="ville_modif" name="_ville_modif">
                     <input type="hidden" id="adresse_modif" name="_adresse_modif">
                     <input type="hidden" id="comp_adresse_modif" name="_comp_adresse_modif">
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Tags</legend>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tags</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                foreach($tags_offre as $tag){
+                                    ?>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="tags[]" value="<?php echo $tag['code_tag']; ?>">
+                                        </td>
+                                        <td>
+                                            <?php echo htmlspecialchars($tag['nom_tag']) ?>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
+                            ?>
+                        </tbody>
+                    </table>
                 </fieldset>
             </div>
             <input type="submit" name="envoi_modif" value="Modifier">
