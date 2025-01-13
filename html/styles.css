@@ -5559,10 +5559,11 @@ select.theme_contacter_plateforme {
     margin-bottom: 5px;
 }
 #titre_modif_offre {
-    font-size: 2rem;
+    font-size: 4rem;
     font-weight: bold;
     text-align: center;
-    color: #333; /* optionnel : changer la couleur du texte */
+    color: #333;
+    margin-top: 1em;
 }
 
 #modif_offre input[type="text"], #modif_offre span[contenteditable="true"] {
