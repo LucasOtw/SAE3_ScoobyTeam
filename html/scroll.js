@@ -1,13 +1,18 @@
 const scrollAmount = 300;
 
-function scrollcontentLeft(class) {
-    const container = document.querySelector(class);
+function scrollcontentLeftA() {
+    const container = document.querySelector('a-la-une');
     container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
 }
 
-function scrollcontentRight(class) {
-    const container = document.querySelector(class);
+function scrollcontentRightA() {
+    const container = document.querySelector('a-la-une');
     container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+}
+
+function scrollcontentLeftR() {
+    const container = document.querySelector('.vu-recemment');
+    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
 }
 
 function scrollcontentRightR() {
