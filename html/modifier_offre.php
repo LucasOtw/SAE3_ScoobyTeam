@@ -46,7 +46,7 @@ $tables = [
     '_offre_restauration',
     '_offre_spectacle',
     '_offre_visite'
-];*
+];
 
 $res = null;
 
