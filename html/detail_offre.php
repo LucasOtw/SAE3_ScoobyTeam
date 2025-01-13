@@ -762,6 +762,10 @@ if (isset($json['results'][0])) {
                     </div>
                 <?php endif; ?>
                 <div class="signalement_repondre">
+                <span class="pouce">
+                    <img src="images/pouce" alt="Image par défaut" class="default-image">
+                    <img src="image2.jpg" alt="Image au survol" class="hover-image">
+                </span>
                 <span class="signalement">
                     <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
                        title="Signaler cet avis" style="text-decoration: none; margin-right: 5vw; font-size: 21px;">🚩</a>
