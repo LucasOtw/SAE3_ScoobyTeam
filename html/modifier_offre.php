@@ -41,7 +41,7 @@ if (isset($_POST['envoiOffre'])) {
     );
 
     foreach($tab_offre as $att => $val){
-        $requete = "UPDATE tripenarvor._offre SET $att = :value WHERE code_offre = :code_offre;
+        $requete = "UPDATE tripenarvor._offre SET $att = :value WHERE code_offre = :code_offre";
         $stmt = $dbh->prepare($requete);
 
         $stmt->bindValue(":value",$val);
