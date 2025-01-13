@@ -5589,6 +5589,7 @@ select.theme_contacter_plateforme {
     box-sizing: border-box;
     margin-top: 13px;
     transition: background-color 0.3s ease;
+    box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
 }
 
 #modif_offre input[type="submit"]:hover {
