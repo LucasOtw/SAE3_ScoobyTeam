@@ -1360,12 +1360,18 @@ function tempsEcouleDepuisPublication($offre){
                 })
                     .then(response => response.text())
                     .then(data => {
-                        console.log(data); // Pour déboguer la réponse du serveur
-                        newsletterPopup.style.display = 'flex'; // Affiche la popup
+                        console.log(data); // Débogage
+                        if (data === 'success') {
+                            newsletterPopup.style.display = 'flex'; // Affiche la popup
+                        } else {
+                            alert("Erreur lors de l'inscription. Veuillez réessayer.");
+                        }
                     })
                     .catch(error => {
                         console.error('Erreur lors de l\'envoi :', error);
                     });
+            } else {
+                alert("Veuillez entrer une adresse email valide.");
             }
         });
 
@@ -1375,4 +1381,5 @@ function tempsEcouleDepuisPublication($offre){
         });
     });
 </script>
+
 
