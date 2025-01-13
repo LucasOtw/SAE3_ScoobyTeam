@@ -5540,9 +5540,9 @@ select.theme_contacter_plateforme {
     border: none;
     margin-bottom: 20px;
     padding: 15px;
-    background-color: #ffffff;
+    background-color: #f3f8ff;
     border-radius: 8px;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
 }
 
 #modif_offre legend {
