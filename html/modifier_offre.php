@@ -217,9 +217,11 @@ echo "</pre>";
                 <fieldset>
                     <legend>Infos Générales</legend>
                     <label for="resume">Résumé (*)</label>
-                    <div contenteditable="true" id="resume" data-sync="resume_modif" rows="4" columns="125"><?php echo $offre['_resume']; ?></div>
+                    <span contenteditable="true" id="resume" data-sync="resume_modif"><?php echo $offre['_resume']; ?></span>
                     <label for="description">Description (*)</label>
-                    <div contenteditable="true" id="description" data-sync="desc_modif" rows="4" columns="125"><?php echo $offre['_description'] ?></div>
+                    <span contenteditable="true" id="description" data-sync="desc_modif"><?php echo $offre['_description'] ?></span>
+                    <label for="accessibilite">Accessibilité</label>
+                    <span contenteditable="true" id="accessibilite" data-sync="access_modif"><?php echo $offre['accessibilite']; ?></span>
 
                     <input type="hidden" id="resume_modif" name="_resume_modif">
                     <input type="hidden" id="desc_modif" name="_desc_modif">
