@@ -434,10 +434,12 @@ if (isset($_POST['dwl-data'])) {
                 <div class="supprimer-download">
                     <!-- Bouton "Supprimer le compte" et bouton pour "Mes données" -->
                     <button type="button" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte">Supprimer le compte</button>
-                    <button type="button" name="mes-donnees" class="submit-btn2" id="btn-mes-donnees" style="margin-right: 30em;">Mes données</button>
+                    <button type="button" name="mes-donnees" class="submit-btn2" id="btn-mes-donnees"">Mes données</button>
                 </div>
-                <a href="?deco=true" class="submit-btn1">Déconnexion</a>
-                <button type="submit" name="modif_infos" class="submit-btn2" id="btn-enreg">Enregistrer</button>
+                <div class="display: flex;">
+                    <a href="?deco=true" class="submit-btn1">Déconnexion</a>
+                    <button type="submit" name="modif_infos" class="submit-btn2" id="btn-enreg">Enregistrer</button>
+                </div>
                 
         
                 <!-- Popup qui s'affichera -->
