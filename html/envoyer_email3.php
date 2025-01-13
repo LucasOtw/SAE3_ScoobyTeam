@@ -43,5 +43,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p>À bientôt,</p>
             <p><strong>L'équipe PACT</strong></p>
         ";
+        // Essayer d'envoyer l'email
+        try {
+            if ($mail->send()) {
+                echo 'Merci pour votre inscription ! Un email de confirmation a été envoyé.';
+            }
+        } catch (Exception $e) {
+            echo "Erreur lors de l'envoi de l'email : {$mail->ErrorInfo}";
+        }
+    } else {
+        echo 'Veuillez saisir une adresse email valide.';
+    }
 }
 ?>
