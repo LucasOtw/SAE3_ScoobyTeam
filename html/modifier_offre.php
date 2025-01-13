@@ -135,7 +135,7 @@ echo "</pre>";
         const nouveauTitre = document.getElementById('titre_modif');
 
         form.addEventListener('submit', (event) => {
-            champTitre.value = nouveauTitre.innerHTML;
+            nouveauTitre.value = champTitre.innerHTML;
         });
     </script>
 </body>
