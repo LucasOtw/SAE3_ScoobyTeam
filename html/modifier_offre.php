@@ -70,7 +70,7 @@ echo "</pre>";
 </header>
 <body>
     <main>
-        <form class="modif_offre" action="#" method="POST">
+        <form id="modif_offre" action="#" method="POST">
             <!-- Infos. Générales-->
             <div>
                 <fieldset>
