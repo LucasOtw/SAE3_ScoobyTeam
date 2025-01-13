@@ -150,6 +150,8 @@ if (isset($_POST['envoi_modif'])){
         foreach($valeurs_tags as $un_tag){
             if(in_array($un_tag,$_POST['tags'])){
                 echo $un_tag."<br>";
+            } else {
+                echo "Bruh<br>";
             }
         }
         
