@@ -5560,14 +5560,12 @@ select.theme_contacter_plateforme {
 }
 
 #modif_offre input[type="text"], #modif_offre span[contenteditable="true"] {
-    width: 100%;
-    font-size: 1rem;
-    border-radius: 8px;
+    border-radius: 11px;
     border: 1px solid #fff;
     background-color: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 41px;
     box-sizing: border-box;
-}
+    padding: 10px;
 
 #modif_offre input[type="text"]:focus, #modif_offre span[contenteditable="true"]:focus {
     border-color: #ff6f00;
