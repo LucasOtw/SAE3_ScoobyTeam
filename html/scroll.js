@@ -1,11 +1,11 @@
 const scrollAmount = 300;
 
-function scrollcontentLeftA(class) {
+function scrollcontentLeft(class) {
     const container = document.querySelector(class);
     container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
 }
 
-function scrollcontentRightA(class) {
+function scrollcontentRight(class) {
     const container = document.querySelector(class);
     container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
 }
