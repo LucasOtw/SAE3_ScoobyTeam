@@ -111,7 +111,7 @@ if (isset($_POST['envoi_modif'])){
             }
         }
         foreach($tab_adresse as $att => $val){
-            $requete = "UPDATE tripenarvor._offre SET $att = :value WHERE code_adresse = :code_adresse";
+            $requete = "UPDATE tripenarvor._adresse SET $att = :value WHERE code_adresse = :code_adresse";
             $stmt = $dbh->prepare($requete);
 
             $stmt->bindValue(":value",$val);
