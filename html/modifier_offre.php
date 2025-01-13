@@ -141,6 +141,8 @@ if (isset($_POST['envoi_modif'])){
     }
     
     if(empty($erreurs)){
+
+        var_dump($_POST['tags']);
         
         // table "_offre"
 
@@ -196,8 +198,6 @@ if (isset($_POST['envoi_modif'])){
             echo $err."<br>";
         }
     }
-    header('location: detail_offre_pro.php');
-    exit;
 }
 
 echo "<pre>";
@@ -294,9 +294,8 @@ echo "</pre>";
                                 $mes_tags_values = array_column($mes_tags, 'code_tag');
                             
                                 foreach($tags_offre as $tag){
-                                    // Vérifier si le code_tag est dans les valeurs extraites de $mes_tags
+                                    // On vérifie si le code_tag est déjà détenu par l'offre
                                     $isChecked = in_array($tag['code_tag'], $mes_tags_values);
-                                    var_dump($isChecked);
                                     ?>
                                     <tr>
                                         <td>
