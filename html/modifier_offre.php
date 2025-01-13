@@ -48,9 +48,11 @@ $tables = [
     '_offre_visite'
 ];
 
-$res = null;
+$infos_offre = null;
 
 foreach($tables as $table){
+    // on cherche les infos de l'offre dans chaque table, SI elle est présente
+    
     $requete = "SELECT t.* FROM tripenarvor.$table t JOIN tripenarvor._offre o
     ON o.code_offre = t.code_offre
     WHERE t.code_offre = :code_offre";
@@ -62,14 +64,14 @@ foreach($tables as $table){
     $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     if(!empty($res)){
-        $resultat = $res;
+        $infos_offre = $res;
         break;
     }
 }
 
-if($resultat !== null){
+if($infos_offre !== null){
     echo "<pre>";
-    var_dump($resultat);
+    var_dump($infos_offre);
     echo "</pre>";
 }
 
