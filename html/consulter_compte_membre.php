@@ -521,6 +521,11 @@ if (isset($_POST['dwl-data'])) {
        
       
   </div>
+    <div id="creation-success" class="creation-success" style="display:none;">
+        <img src="images/verifier.png" alt="Succès">
+        <h2>Compte créé avec succès !</h2>
+    </div>
+
     </main>
 
     
@@ -664,6 +669,23 @@ if (isset($_POST['dwl-data'])) {
         });
     
     </script>
+    // Lorsque le message est envoyé avec succès, afficher le message de succès
+    function afficherMessageSucces() {
+        // Trouver l'élément qui contient le message de succès
+        const successMessage = document.getElementById('creation-success');
+        // Afficher le message
+        successMessage.style.display = 'block';
+    
+        // Facultatif: cacher après quelques secondes
+        setTimeout(() => {
+            successMessage.style.display = 'none';
+        }, 5000); // Le message disparaît après 5 secondes
+    }
+    
+    // Appel de la fonction pour afficher le message après l'envoi réussi du mail
+    // Assurez-vous de l'appeler dans le callback de votre envoi PHP ou dans un appel de réussite de votre processus JavaScript.
+    afficherMessageSucces();
+
 
 
             
