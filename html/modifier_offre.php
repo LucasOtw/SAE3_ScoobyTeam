@@ -90,6 +90,17 @@ echo "<pre>";
 print_r($tags_offre);
 echo "</pre>";
 
+/* RÉCUPÉRATION DES TAGS DE L'OFFRE */
+
+$req_tags_offre = $dbh->prepare("SELECT code_tag FROM tripenarvor._son_tag WHERE code_offre = :code_offre");
+$req_tags_offre->bindValue(":code_offre",$offre['code_offre']);
+$req_tags_offre->execute();
+
+$mes_tags = $req_tags_offre->fetchAll(PDO::FETCH_ASSOC);
+echo "<pre>";
+print_r($mes_tags);
+echo "</pre>";
+
 if (isset($_POST['envoi_modif'])){
 
     $erreurs = [];
