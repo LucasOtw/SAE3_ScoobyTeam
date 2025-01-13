@@ -82,6 +82,13 @@ echo "<h1>".$type_offre."</h1>";
 
 /* RÉCUPÉRATION DES TAGS */
 
+$req_tags = $dbh->prepare("SELECT * FROM tripenarvor._tags WHERE $type_offre = true");
+$req_tags->execute();
+$tags_offre = $req_tags->fetchAll(PDO::FETCH_ASSOC);
+
+echo "<pre>";
+print_r($tags_offre);
+echo "</pre>";
 
 if (isset($_POST['envoi_modif'])){
 
