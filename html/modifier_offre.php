@@ -290,10 +290,11 @@ echo "</pre>";
                         <tbody>
                             <?php
                                 foreach($tags_offre as $tag){
+                                    $isChecked = in_array($tag['code_tag'],$mes_tags);
                                     ?>
                                     <tr>
                                         <td>
-                                            <input type="checkbox" name="tags[]" value="<?php echo $tag['code_tag']; ?>">
+                                            <input type="checkbox" name="tags[]" value="<?php echo $tag['code_tag']; ?>"<?php echo $isChecked ? 'checked' : ''; ?>>
                                         </td>
                                         <td>
                                             <?php echo htmlspecialchars($tag['nom_tag']) ?>
