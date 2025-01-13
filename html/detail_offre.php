@@ -845,14 +845,14 @@ if (isset($json['results'][0])) {
                 </script>
                 
                 <div class="signalement_repondre">
-                    <span class="pouce">
+                    <div class="pouce">
                         <?php echo isset($avis['pouce_positif']) ? $avis['pouce_positif'] . " Likes" : "Pas de Likes"; ?>
                         <img id="positiveImage" src="images/pouce_positif_blanc.png" alt="Pouce positif" onclick="togglePositiveImage()">
-                    </span>
+                    </div>
                 
-                    <span class="pouce">
+                    <div class="pouce">
                         <img id="negativeImage" src="images/pouce_negatif_blanc.png" alt="Pouce négatif" onclick="toggleNegativeImage()">
-                    </span>
+                    </div>
                 <span class="signalement">
                     <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
                        title="Signaler cet avis" style="text-decoration: none; margin-right: 5vw; font-size: 21px;">🚩</a>
