@@ -2,6 +2,13 @@
 ob_start();
 session_start();
 
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+$username = "sae";  // Utilisateur PostgreSQL défini dans .env
+$password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
+
+// Créer une instance PDO avec les bons paramètres
+$dbh = new PDO($dsn, $username, $password);
+
 include("recupInfosCompte.php");
 
 if (isset($_GET["deco"])) {
@@ -27,14 +34,30 @@ if(isset($_SESSION['aCreeUneOffre'])){
 
 if (isset($_POST['envoiOffre'])) {
     $_SESSION['modif_offre'] = unserialize($_POST['uneOffre']);
-} else if (isset($_POST['envoi_modif'])){
-    echo "Titre : ".$_POST['_titre_modif']." <br>";
-    echo "<pre>";
-    var_dump($_POST);
-    echo "</pre>";
 }
 
 $offre = $_SESSION['modif_offre'];
+
+if (isset($_POST['envoi_modif'])){
+    $tab_offre = array(
+        "titre_offre" => $_POST['_titre_modif']
+    );
+
+    foreach($tab_offre as $att => $val){
+        $requete = "UPDATE tripenarvor._offre SET $att = :value WHERE code_offre = :code_offre";
+        $stmt = $dbh->prepare($requete);
+
+        $stmt->bindValue(":value",$val);
+        $stmt->bindValue(":code_offre",$offre['code_offre']);
+
+        try {
+            $stmt->execute();
+            echo "Champ $att mis à jour avec succès.<br>";
+        } catch (PDOException $e) {
+            echo "Erreur lors de la mise à jour du champ $att: " . $e->getMessage() . "<br>";
+        }
+    }
+}
 
 echo "<pre>";
 var_dump($offre);

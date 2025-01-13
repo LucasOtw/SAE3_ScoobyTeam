@@ -1267,11 +1267,13 @@ function tempsEcouleDepuisPublication($offre){
         <img src="images/icones/User icon.png" alt="image de Personne"></a>
 </nav>
     <footer>
-        <div class="newsletter">
+                <div class="newsletter">
             <div class="newsletter-content">
                 <h2>Inscrivez-vous à notre Newsletter</h2>
                 <p>PACT</p>
                 <p>découvrez la Bretagne !</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Votre adresse mail" required>
                 <form class="newsletter-form" action="envoyer_email3.php" method="POST">
                     <input type="email" name="email" placeholder="Votre adresse mail" required>
                     <button type="submit">S'inscrire</button>
@@ -1281,6 +1283,14 @@ function tempsEcouleDepuisPublication($offre){
                 <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
             </div>
         </div>
+        <!-- Popup de confirmation -->
+        <div class="custom-confirm" id="newsletterConfirmBox">
+            <div class="custom-confirm-content">
+                <p>Vous êtes bien inscrit(e) à notre Newsletter !</p>
+                <button id="closeNewsletterPopup">Fermer</button>
+            </div>
+        </div>
+
 
         
         <div class="footer-links">
@@ -1330,3 +1340,18 @@ function tempsEcouleDepuisPublication($offre){
 
 </body>
 </html>
+<script>
+    // Fonction pour afficher la popup
+    function showNewsletterConfirmation() {
+        const popup = document.getElementById('newsletterConfirmBox');
+        popup.style.display = 'flex'; // Affiche la popup en mode flex
+    }
+
+    // Fermer la popup lorsque l'utilisateur clique sur "Fermer"
+    const closeNewsletterPopup = document.getElementById('closeNewsletterPopup');
+    closeNewsletterPopup.addEventListener('click', () => {
+        const popup = document.getElementById('newsletterConfirmBox');
+        popup.style.display = 'none'; // Cache la popup
+    });
+</script>
+

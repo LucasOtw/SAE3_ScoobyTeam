@@ -760,22 +760,53 @@ if (isset($json['results'][0])) {
                         <span
                             class="nom_avis" style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
                     </div>
-                <?php endif; ?>                
+                <?php endif; ?>
+                <style>
+                     .pouce {
+                        position: relative;
+                        display: inline-block;
+                        width: 50px; /* Ajuster selon la taille de l'image */
+                        height: 50px; /* Ajuster selon la taille de l'image */
+                        cursor: pointer;
+                    }
+                    .pouce img {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 1.5em;
+                        height: 1.5em; 
+                        transition: opacity 0.5s ease;
+                    }
+                    
+                    .pouce .pouce-hover {
+                        opacity: 0;
+                        z-index: 1;
+                    }
+                    
+                    .pouce .pouce-original {
+                        z-index: 2;
+                    }
+                    
+                    .pouce.clicked .pouce-hover {
+                        opacity: 1;
+                    }
+                    
+                    .pouce.clicked .pouce-original {
+                        opacity: 0;
+                    }
+                </style>
+                    
+    
                 <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const pouce = document.querySelector('.pouce');
-                        if (pouce) {
-                            pouce.addEventListener('click', function() {
-                                this.classList.toggle('clicked');
-                            });
-                        }
-                    });
-                </script>
+                    function changeImage() {
+                        var image = document.getElementById('image1');
+                        image.src = 'images/pouce_positif_couleur.png';  // Remplacez par le chemin de la nouvelle image
+                    }
+                </script>    
                 
                 <div class="signalement_repondre">
                     <span class="pouce">
-                        <img src="images/pouce_positif_blanc.png" alt="Image par défaut" class="pouce-original">
-                        <img src="images/pouce_positif_couleur.png" alt="Image au clic" class="pouce-hover">
+                        <img id="image1" src="images/pouce_positif_blanc.png" alt="Première image" onclick="changeImage()">
                     </span>
                 <span class="signalement">
                     <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
