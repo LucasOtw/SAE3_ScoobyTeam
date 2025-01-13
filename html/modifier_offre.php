@@ -37,7 +37,7 @@ if (isset($_POST['envoiOffre'])) {
     $offre = $_SESSION['modif_offre'];
 } else if (isset($_POST['envoi_modif'])){
     $tab_offre = array(
-        "titre_offre" => $_POST['_titre_modif'];
+        "titre_offre" => $_POST['_titre_modif']
     );
 
     foreach($tab_offre as $att => $val){
