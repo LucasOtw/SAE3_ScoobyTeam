@@ -800,13 +800,13 @@ if (isset($json['results'][0])) {
                 <script>
                     function changeImage() {
                         var image = document.getElementById('image1');
-                        image.src = 'image2.jpg';  // Remplacez par le chemin de la nouvelle image
+                        image.src = 'images/pouce_positif_couleur.png';  // Remplacez par le chemin de la nouvelle image
                     }
                 </script>    
                 
                 <div class="signalement_repondre">
                     <span class="pouce">
-                        <img id="image1" src="image1.jpg" alt="Première image" onclick="changeImage()">
+                        <img id="image1" src="images/pouce_positif_blanc.png" alt="Première image" onclick="changeImage()">
                     </span>
                 <span class="signalement">
                     <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
