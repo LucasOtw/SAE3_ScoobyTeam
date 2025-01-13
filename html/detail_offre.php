@@ -796,7 +796,7 @@ if (isset($json['results'][0])) {
                         opacity: 0;
                     }
                 </style>
-                <script>
+               <script>
                     document.addEventListener('DOMContentLoaded', function() {
                         const pouce = document.querySelector('.pouce');
                         pouce.addEventListener('click', function() {
