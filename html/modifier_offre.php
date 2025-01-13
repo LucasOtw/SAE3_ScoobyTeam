@@ -34,8 +34,11 @@ if(isset($_SESSION['aCreeUneOffre'])){
 
 if (isset($_POST['envoiOffre'])) {
     $_SESSION['modif_offre'] = unserialize($_POST['uneOffre']);
-    $offre = $_SESSION['modif_offre'];
-} else if (isset($_POST['envoi_modif'])){
+}
+
+$offre = $_SESSION['modif_offre'];
+
+if (isset($_POST['envoi_modif'])){
     $tab_offre = array(
         "titre_offre" => $_POST['_titre_modif']
     );
@@ -55,8 +58,6 @@ if (isset($_POST['envoiOffre'])) {
         }
     }
 }
-
-$offre = $_SESSION['modif_offre'];
 
 echo "<pre>";
 var_dump($offre);
