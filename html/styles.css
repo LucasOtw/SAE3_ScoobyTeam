@@ -3419,7 +3419,15 @@ nom.avis {
 .avis-widget .avis-content p.avis {
     margin: 5px 0 0;
     color: #555;
-    font-size: 0.9em;
+    margin-left: 1em;
+}
+
+.main-consulter-compte-pro .nom_reponse{
+    font-size: 20px;
+}
+
+.main-consulter-compte-pro .reponse{
+    font-size: 1.3em;
 }
 
 .avis-widget .avis-list .avis {
