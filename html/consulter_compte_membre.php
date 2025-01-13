@@ -433,10 +433,6 @@ if (isset($_POST['dwl-data'])) {
             <div class="compte_membre_save_delete">
                 <a href="?deco=true" class="submit-btn1">Déconnexion</a>
                 <button type="submit" name="modif_infos" class="submit-btn2" id="btn-enreg">Enregistrer</button>
-            </div>
-        
-            <!-- Section pour la suppression du compte et la gestion des données -->
-            <div class="compte_membre_save_delete">
                 <div class="supprimer-download">
                     <!-- Bouton "Supprimer le compte" et bouton pour "Mes données" -->
                     <button type="button" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte">Supprimer le compte</button>
