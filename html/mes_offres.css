@@ -138,21 +138,7 @@ footer {
     margin-right: auto;
 }
 
-.notification-icon {
-    position: relative;
-    display: inline-block;
-}
 
-.notification-badge {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 15px;
-    height: 15px;
-    background-color: red;
-    border-radius: 50%;
-    border: 2px solid white;
-}
 
 .newsletter-content {
     text-align: left;
