@@ -216,14 +216,14 @@ INNER JOIN
             }
             
             function submitForm() {
-                document.getElementById('customConfirm').style.display = 'none';
+                document.getElementById('customConfirm-pro').style.display = 'none';
                 if (currentForm) {
                     currentForm.submit();
                 }
             }
             
             function closeConfirm() {
-                document.getElementById('customConfirm').style.display = 'none';
+                document.getElementById('customConfirm-pro').style.display = 'none';
             }
             </script>
 
