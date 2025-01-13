@@ -52,7 +52,7 @@ if (!empty($_POST['supprAvis'])){
                         if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
                         ?>
                         <li>
-                            <a href="consulter_compte_membre.php" class="active">Mon compte</a>
+                            <a href="consulter_compte_membre.php" class="active">Mon Compte</a>
                         </li>
                             <?php
                         } else {

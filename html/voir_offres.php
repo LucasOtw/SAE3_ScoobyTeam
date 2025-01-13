@@ -726,7 +726,7 @@ function tempsEcouleDepuisPublication($offre){
                         }
                     ?>
                     </section>
-                    <button class="card-scroll-btn card-scroll-btn-right" onclick="scrollcontentRightR()">&#8250;</button>
+                    <button class="card-scroll-btn card-scroll-btn-right" onclick="scrollcontentRight('.vu-recemment')">&#8250;</button>
                 </div>
             <?php
             } else {
