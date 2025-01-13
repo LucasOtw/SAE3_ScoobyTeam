@@ -5561,7 +5561,6 @@ select.theme_contacter_plateforme {
 
 #modif_offre input[type="text"], #modif_offre span[contenteditable="true"] {
     width: 100%;
-    padding: 12px;
     font-size: 1rem;
     border-radius: 8px;
     border: 1px solid #f3f8ff;
