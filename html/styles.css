@@ -5578,6 +5578,20 @@ select.theme_contacter_plateforme {
     box-sizing: border-box;
     padding: 0.5em;
 }
+#modif_offre span[contenteditable="true"] {
+  width: 100%;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #f3f8ff;
+  background-color: #fff;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  padding: 0.5em;
+  display: block; /* S'assure que le texte s'affiche dans une seule boîte */
+  white-space: pre-wrap; /* Permet aux retours à la ligne de s'afficher correctement */
+  overflow-wrap: break-word; /* Permet de forcer le texte à s'ajuster dans la boîte */
+}
+
 
 #modif_offre input[type="text"]:focus, #modif_offre span[contenteditable="true"]:focus {
     border-color: #ff6f00;
