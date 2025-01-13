@@ -5569,6 +5569,7 @@ select.theme_contacter_plateforme {
     background-color: #fff;
     margin-bottom: 10px;
     box-sizing: border-box;
+    padding: 0.5em;
 }
 
 #modif_offre input[type="text"]:focus, #modif_offre span[contenteditable="true"]:focus {
@@ -5600,7 +5601,7 @@ select.theme_contacter_plateforme {
 
 #modif_offre span[contenteditable="true"] {
     min-height: 40px;
-    line-height: 1.5;
+    line-height: 3;
 }
 
 #modif_offre .message-erreur {
