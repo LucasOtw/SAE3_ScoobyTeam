@@ -291,6 +291,7 @@ echo "</pre>";
                             <?php
                                 foreach($tags_offre as $tag){
                                     $isChecked = in_array($tag['code_tag'],$mes_tags);
+                                    var_dump($isChecked);
                                     ?>
                                     <tr>
                                         <td>
