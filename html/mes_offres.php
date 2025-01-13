@@ -59,6 +59,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
             </li>
 <div id="notification-popup" class="hidden">
     <h3>Notifications</h3>
+    <li>Quentin Uguen à publié un commentaire sur Abbaye de Montfort</li>
 </div>
 
         </ul>
