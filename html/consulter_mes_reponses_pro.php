@@ -199,7 +199,7 @@ INNER JOIN
             </div>
             
             <!-- Boîte de dialogue personnalisée -->
-            <div id="customConfirm-pro" class="custom-confirm">
+            <div id="customConfirm-pro" class="custom-confirm-pro">
                 <div class="custom-confirm-content-pro">
                     <p>Êtes-vous sûr de vouloir supprimer cet avis ?</p>
                     <button onclick="submitForm()">Oui</button>
