@@ -142,21 +142,30 @@ if (isset($_POST['envoi_modif'])){
     
     if(empty($erreurs)){
 
-        // SI des tags de la table ne sont pas présents dans le tableau...
-
-        $valeurs_tags = array_column($mes_tags,'code_tag');
+        $valeurs_tags = array_column($mes_tags, 'code_tag');
         var_dump($valeurs_tags);
-
+        
+        // Première boucle : suppression des tags non sélectionnés
         foreach($valeurs_tags as $un_tag){
-            if(in_array($un_tag,$_POST['tags'])){
+            if(in_array($un_tag, $_POST['tags'])){
                 echo $un_tag."<br>";
             } else {
-                // si un tag de la table n'est pas dans le tableau...
-                // alors on le supprime de la base de données.
+                // Si un tag de la table n'est pas dans le tableau $_POST['tags'], on le supprime
                 $req_del_tag = $dbh->prepare("DELETE FROM tripenarvor._son_tag WHERE code_tag = :code_tag AND code_offre = :code_offre");
-                $req_del_tag->bindValue(":code_tag",$un_tag);
-                $req_del_tag->bindValue(":code_offre",$offre['code_offre']);
+                $req_del_tag->bindValue(":code_tag", $un_tag);
+                $req_del_tag->bindValue(":code_offre", $offre['code_offre']);
                 $req_del_tag->execute();
+            }
+        }
+        
+        // Deuxième boucle : ajout des nouveaux tags non présents dans la table
+        foreach($_POST['tags'] as $tab_tag){
+            // Si un tag de $_POST['tags'] n'est pas dans les tags existants
+            if(!in_array($tab_tag, $valeurs_tags)){
+                $req_add_tag = $dbh->prepare("INSERT INTO tripenarvor._son_tag (code_tag, code_offre) VALUES (:code_tag, :code_offre)");
+                $req_add_tag->bindValue(":code_tag", $tab_tag);
+                $req_add_tag->bindValue(":code_offre", $offre['code_offre']);
+                $req_add_tag->execute();
             }
         }
         
