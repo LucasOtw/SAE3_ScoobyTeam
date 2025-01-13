@@ -171,6 +171,8 @@ if (isset($_POST['envoi_modif'])){
             echo $err."<br>";
         }
     }
+    header('location: detail_offre_pro.php');
+    exit;
 }
 
 echo "<pre>";
