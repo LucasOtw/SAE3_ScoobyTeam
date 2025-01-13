@@ -51,8 +51,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
             <li><a href="mes_offres.php" class="active">Accueil</a></li>
             <li><a href="creation_offre.php">Publier</a></li>
             <li><a href="consulter_compte_pro.php">Mon Compte</a></li>
-            <li><img src="images/notif.png" alt="cloche notification" class="nouvelle-image"></li>
-
+            <li><a <img src="images/notif.png" alt="cloche notification" class="nouvelle-image"></a></li>
         </ul>
     </nav>
 </header>
