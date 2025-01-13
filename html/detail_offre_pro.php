@@ -853,7 +853,82 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
                             class="nom_avis" style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
                     </div>
                 <?php endif; ?>
+                <style>
+                     .pouce {
+                        position: relative;
+                        display: inline-block;
+                        width: 50px; /* Ajuster selon la taille de l'image */
+                        height: 50px; /* Ajuster selon la taille de l'image */
+                        cursor: pointer;
+                    }
+                    .pouce img {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 1.5em;
+                        height: 1.5em; 
+                        transition: opacity 0.5s ease;
+                    }
+                    
+                    .pouce .pouce-hover {
+                        opacity: 0;
+                        z-index: 1;
+                    }
+                    
+                    .pouce .pouce-original {
+                        z-index: 2;
+                    }
+                    
+                    .pouce.clicked .pouce-hover {
+                        opacity: 1;
+                    }
+                    
+                    .pouce.clicked .pouce-original {
+                        opacity: 0;
+                    }
+                </style>
+                    
+                <script>
+                function updateLikeDislike(action, codeAvis) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'update_likes.php', true);
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.onload = function () {
+                        if (xhr.status === 200) {
+                            console.log(xhr.responseText);
+                        }
+                    };
+                    xhr.send('action=' + action + '&code_avis=' + codeAvis);
+                }
+                
+                function togglePositiveImage(codeAvis) {
+                    var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
+                    updateLikeDislike(action, codeAvis);
+                    
+                    // Mise à jour visuelle
+                    document.getElementById('positiveImage' + codeAvis).src = action === 'like' ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
+                    document.getElementById('negativeImage' + codeAvis).src = 'images/pouce_negatif_blanc.png'; // Réinitialiser le pouce négatif
+                }
+                
+                function toggleNegativeImage(codeAvis) {
+                    var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
+                    updateLikeDislike(action, codeAvis);
+                    
+                    // Mise à jour visuelle
+                    document.getElementById('negativeImage' + codeAvis).src = action === 'dislike' ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
+                    document.getElementById('positiveImage' + codeAvis).src = 'images/pouce_positif_blanc.png'; // Réinitialiser le pouce positif
+                }
+                </script>
+
+                
                 <div class="signalement_repondre">
+                    <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
+                        <img id="positiveImage<?php echo $avis['code_avis']; ?>" src="images/pouce_positif_blanc.png" alt="Pouce positif" onclick="togglePositiveImage(<?php echo $avis['code_avis']; ?>)">
+                    </div>
+                    
+                    <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
+                        <img id="negativeImage<?php echo $avis['code_avis']; ?>" src="images/pouce_negatif_blanc.png" alt="Pouce négatif" onclick="toggleNegativeImage(<?php echo $avis['code_avis']; ?>)">
+                    </div>
                 <span class="signalement">
                     <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
                        title="Signaler cet avis" style="text-decoration: none; margin-right: 5vw; font-size: 21px;">🚩</a>
