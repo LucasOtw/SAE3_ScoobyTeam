@@ -101,6 +101,11 @@ echo "</pre>";
                     <h1 id="titre" contenteditable="true"><?php echo $offre['titre_offre']; ?></h1>
                     <input type="hidden" id="titre_modif" name="_titre_modif">
                 </fieldset>
+                <fieldset>
+                    <legend>Adresse</legend>
+                    <label for="code_postal">Code Postal</label>
+                    <input type="text" value="<?php echo $offre['code_postal']; ?>" maxlength="5">
+                </fieldset>
             </div>
             <input type="submit" name="envoi_modif" value="Modifier">
         </form>
