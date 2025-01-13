@@ -1,33 +1,23 @@
 const scrollAmount = 300;
 
-function scrollcontentLeft(class) {
-    const container1 = document.querySelector(class);
-    container1.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+function scrollcontentLeft() {
+    const container = document.querySelector(".a-la-une");
+    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
 }
 
-function scrollcontentRight(class) {
-    const container1 = document.querySelector(class);
-    container1.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-}
-
-function scrollcontentLeftA() {
-    const container2 = document.querySelector(".a-la-une");
-    container2.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-}
-
-function scrollcontentRightA() {
-    const container2 = document.querySelector(".a-la-une");
-    container2.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+function scrollcontentRight() {
+    const container = document.querySelector(".a-la-une");
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
 }
 
 function scrollcontentLeftR() {
-    const container3 = document.querySelector(".vu-recemment");
-    container3.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    const containerBis = document.querySelector(".vu-recemment");
+    containerBis.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
 }
 
 function scrollcontentRightR() {
-    const container3 = document.querySelector(".vu-recemment");
-    container3.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    const containerBis = document.querySelector(".vu-recemment");
+    containerBis.scrollBy({ left: scrollAmount, behavior: 'smooth' });
 }
 
 function toggleInfoBox() {

@@ -26,11 +26,19 @@ if(isset($_SESSION['aCreeUneOffre'])){
 }
 
 if (isset($_POST['envoiOffre'])) {
-    $offre = unserialize($_POST['uneOffre']);
+    $_SESSION['modif_offre'] = unserialize($_POST['uneOffre']);
+} else if (isset($_POST['envoi_modif'])){
+    echo "Titre : ".$_POST['_titre_modif']." <br>";
     echo "<pre>";
-    var_dump($offre);
+    var_dump($_POST);
     echo "</pre>";
 }
+
+$offre = $_SESSION['modif_offre'];
+
+echo "<pre>";
+var_dump($offre);
+echo "</pre>";
     
 ?>
 <!DOCTYPE html>
@@ -62,10 +70,17 @@ if (isset($_POST['envoiOffre'])) {
 </header>
 <body>
     <main>
-        <!-- Infos. Générales-->
-        <div>
-            
-        </div>
+        <form class="modif_offre" action="#" method="POST">
+            <!-- Infos. Générales-->
+            <div>
+                <fieldset>
+                    <legend>Titre</legend>
+                    <h1 id="titre" contenteditable="true"><?php echo $offre['titre_offre']; ?></h1>
+                    <input type="hidden" id="titre_modif" name="_titre_modif">
+                </fieldset>
+            </div>
+            <input type="submit" name="envoi_modif" value="Modifier">
+        </form>
     </main>
     <footer class="footer footer_pro">
         
@@ -114,5 +129,14 @@ if (isset($_POST['envoiOffre'])) {
         </div>
            
     </footer>
+    <script>
+        const form = document.getElementById('modif_offre');
+        const champTitre = document.getElementById('titre');
+        const nouveauTitre = document.getElementById('titre_modif');
+
+        form.addEventListener('submit', (event) => {
+            champTitre.value = nouveauTitre.innerHTML;
+        });
+    </script>
 </body>
 </html>
