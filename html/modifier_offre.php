@@ -341,7 +341,32 @@ echo "</pre>";
                     <legend> Services </legend>
                     <?php
                         if($type_offre == "restauration"){
-                            echo "DOBBY HAS NO MASTER YOU SON OF A BITCH !";
+                            // on récupère
+                            ?>
+                            <div class="prix_restaurant">
+                                <label for="prix">Prix</label>
+                                    <div class="radio-group">
+                                        <div>
+                                            <input type="radio" id="moins_25" name="prix" value="€" required>
+                                            <label class="label-check" for="moins_25">€ (menu à moins de 25€)</label>
+                                        </div>
+                                        <div>
+                                            <input class="label-check" type="radio" id="entre_25_40" name="prix" value="€€" required>
+                                            <label class="label-check" for="entre_25_40">€€ (entre 25€ et 40€)</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" id="plus_40" name="prix" value="€€€" required>
+                                            <label class="label-check" for="plus_40">€€€ (au-delà de 40€)</label>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="truc">
+                              <label for="tarif">
+                                 Tarif
+                              </label>
+                              <input type="number" id="tarif" name="_tarif" placeholder="00.00€" min="0" step="0.01" required>
+                           </div>
+                            <?php
                         }
                     ?>
                 </fieldset>
