@@ -5580,13 +5580,13 @@ select.theme_contacter_plateforme {
     background-color: #ff6f00;
     color: white;
     border: none;
-    border-radius: 8px;
-    padding: 20em;
+    border-radius: 32px;
+    padding: -35em;
     font-size: 1.1rem;
     cursor: pointer;
-    width: 100%;
+    width: 9%;
     box-sizing: border-box;
-    margin-top: 20px;
+    margin-top: 13px;
     transition: background-color 0.3s ease;
 }
 
