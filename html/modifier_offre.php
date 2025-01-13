@@ -47,11 +47,54 @@ if (isset($_POST['envoi_modif'])){
     }
 
     /* VÉRIFICATION DU CODE POSTAL */
+
+    if(!empty($_POST['_ville_modif']) && !empty($_POST['_code_postal_modif'])){
+
+        $ville = $_POST['_ville_modif'];
+        $codePostal = $_POST['_code_postal_modif'];
+        
+        $api_codePostal = 'http://api.zippopotam.us/fr/'.$codePostal;
+    
+        $api_codePostal = file_get_contents($api_codePostal);
+        if($api_codePostal === FALSE){
+            $erreurs[] = "Erreur lors de l'accès à l'API";
+            exit();
+        }
+        
+        $data = json_decode($api_codePostal,true);
+        $isValid = false;
+        
+        if($data && isset($data['places'])){
+            foreach($data['places'] as $place){
+                if(stripos($place['place name'], $ville) === 0){
+                    $isValid = true;
+                    break;
+                }
+            }
+        }
+        if(!$isValid){
+            $erreurs[] = "La ville ne correspond pas au code postal";
+        }
+    }
     
     if(empty($erreurs)){
+        
+        // table "_offre"
+
         $tab_offre = array(
             "titre_offre" => $_POST['_titre_modif']
         );
+        
+
+        // table "_adresse"
+        
+        $tab_adresse = array(
+            "code_postal" => $_POST['_code_postal_modif'],
+            "ville" => $_POST['_ville_modif'],
+            "adresse_postal" => $_POST['_adresse_modif'],
+            "complement_adresse" => $_POST['_comp_adresse_modif']
+        );
+        
     
         foreach($tab_offre as $att => $val){
             $requete = "UPDATE tripenarvor._offre SET $att = :value WHERE code_offre = :code_offre";
@@ -65,6 +108,20 @@ if (isset($_POST['envoi_modif'])){
                 echo "Champ $att mis à jour avec succès.<br>";
             } catch (PDOException $e) {
                 echo "Erreur lors de la mise à jour du champ $att: " . $e->getMessage() . "<br>";
+            }
+        }
+        foreach($tab_adresse as $att => $val){
+            $requete = "UPDATE tripenarvor._offre SET $att = :value WHERE code_adresse = :code_adresse";
+            $stmt = $dbh->prepare($requete);
+
+            $stmt->bindValue(":value",$val);
+            $stmt->bindValue(":code_adresse",$offre['code_adresse']);
+
+            try {
+                $stmt->execute();
+                echo "Champ $att mis à jour avec succès. <br>";
+            } catch (PDOException $e){
+                echo "Erreur lors de la mise à jour du champ $att : " . $e->getMessage() . "<br>";
             }
         }
     } else {
