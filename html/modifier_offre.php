@@ -145,9 +145,8 @@ if (isset($_POST['envoi_modif'])){
         // SI des tags de la table ne sont pas présents dans le tableau...
 
         foreach($mes_tags as $un_tag){
-            if(in_array($un_tag,$_POST['tags'])){
-                echo "TEST <br>";
-            }
+            var_dump($un_tag);
+            echo "<br>";
         }
         
         // table "_offre"
