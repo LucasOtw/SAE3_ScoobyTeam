@@ -146,6 +146,12 @@ if (isset($_POST['envoi_modif'])){
 
         $valeurs_tags = array_column($mes_tags,'code_tag');
         var_dump($valeurs_tags);
+
+        foreach($valeurs_tags as $un_tag){
+            if(in_array($un_tag,$_POST['tags'])){
+                echo $un_tag."<br>";
+            }
+        }
         
         // table "_offre"
 
