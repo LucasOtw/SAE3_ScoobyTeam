@@ -122,7 +122,8 @@ if (isset($_POST['envoi_modif'])){
         $tab_offre = array(
             "titre_offre" => $_POST['_titre_modif'],
             "_resume" => $_POST['_resume_modif'],
-            "_description" => $_POST['_desc_modif']
+            "_description" => $_POST['_desc_modif'],
+            "accessibilite" => $_POST['_access_modif']
         );
         
 
@@ -225,6 +226,7 @@ echo "</pre>";
 
                     <input type="hidden" id="resume_modif" name="_resume_modif">
                     <input type="hidden" id="desc_modif" name="_desc_modif">
+                    <input type="hidden" id="access_modif" name="_access_modif">
                 </fieldset>
                 <fieldset>
                     <legend>Adresse</legend>
