@@ -467,7 +467,7 @@ if (isset($_POST['dwl-data'])) {
                 const btnCancelDonnees = document.getElementById("cancel-donnees");
                 const btnClosePopup = document.getElementById("close-popup");
         
-                // Récupérer le message de succès
+                // Récupérer le message de succès après que le DOM ait fini de se charger
                 const successMessage = document.getElementById('mail-success');
         
                 // Afficher la popup lorsque l'utilisateur clique sur le bouton "Mes données"
@@ -523,17 +523,19 @@ if (isset($_POST['dwl-data'])) {
         
                     // Afficher le message de succès après un délai
                     setTimeout(() => {
-                        successMessage.style.display = "block"; // Affiche le message de succès
+                        // S'assurer que l'élément existe avant d'essayer de le manipuler
+                        if (successMessage) {
+                            successMessage.style.display = "block"; // Affiche le message de succès
         
-                        // Facultatif : cacher le message après quelques secondes
-                        setTimeout(() => {
-                            successMessage.style.display = "none"; // Cache le message après 5 secondes
-                        }, 5000); // Le message disparaît après 5 secondes
+                            // Facultatif : cacher le message après quelques secondes
+                            setTimeout(() => {
+                                successMessage.style.display = "none"; // Cache le message après 5 secondes
+                            }, 5000); // Le message disparaît après 5 secondes
+                        }
                     }, 1000); // Le message de succès apparaît après 1 seconde
                 });
             });
         </script>
-
 
 
         </form>
