@@ -82,7 +82,6 @@ echo "<h1>".$type_offre."</h1>";
 
 /* RÉCUPÉRATION DES TAGS */
 
-$req_tags = $dbh->prepare("");
 
 if (isset($_POST['envoi_modif'])){
 
