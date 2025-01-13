@@ -798,43 +798,58 @@ if (isset($json['results'][0])) {
                     
     
                 <script>
-                    var currentImagePositive = 1;  // Variable pour gérer l'image du pouce positif
-                    var currentImageNegative = 1;  // Variable pour gérer l'image du pouce négatif
+                    var currentImagePositive = 1;  
+                    var currentImageNegative = 1;  
                 
-                    // Fonction pour alterner l'image du pouce positif
                     function togglePositiveImage() {
-                        var image = document.getElementById('positiveImage');
-                        if (currentImagePositive === 1) {
-                            image.src = 'images/pouce_positif_couleur.png';  // Remplacez par le chemin de l'image colorée
-                            currentImagePositive = 2;
-                        } else {
-                            image.src = 'images/pouce_positif_blanc.png';  // Remplacez par l'image blanche
-                            currentImagePositive = 1;
+                        if (currentImageNegative === 2) {
+                            toggleNegativeImage(); // Désactiver le pouce négatif si actif
                         }
+                        var image = document.getElementById('positiveImage');
+                        var action = currentImagePositive === 1 ? 'like' : 'unlike';
+                        
+                        // Mise à jour de l'image
+                        image.src = action === 'like' ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
+                        currentImagePositive = action === 'like' ? 2 : 1;
+                
+                        // Envoi de la requête AJAX
+                        updateLikeDislike(action);
                     }
                 
-                    // Fonction pour alterner l'image du pouce négatif
                     function toggleNegativeImage() {
-                        var image = document.getElementById('negativeImage');
-                        if (currentImageNegative === 1) {
-                            image.src = 'images/pouce_negatif_couleur.png';  // Remplacez par le chemin de l'image colorée
-                            currentImageNegative = 2;
-                        } else {
-                            image.src = 'images/pouce_negatif_blanc.png';  // Remplacez par l'image blanche
-                            currentImageNegative = 1;
+                        if (currentImagePositive === 2) {
+                            togglePositiveImage(); // Désactiver le pouce positif si actif
                         }
+                        var image = document.getElementById('negativeImage');
+                        var action = currentImageNegative === 1 ? 'dislike' : 'undislike';
+                        
+                        // Mise à jour de l'image
+                        image.src = action === 'dislike' ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
+                        currentImageNegative = action === 'dislike' ? 2 : 1;
+                
+                        // Envoi de la requête AJAX
+                        updateLikeDislike(action);
+                    }
+                
+                    function updateLikeDislike(action) {
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', 'update_likes.php', true);
+                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                        xhr.onload = function () {
+                            if (xhr.status === 200) {
+                                console.log(xhr.responseText);
+                            }
+                        };
+                        xhr.send('action=' + action);
                     }
                 </script>
                 
                 <div class="signalement_repondre">
-                    <!-- Pouce positif -->
                     <span class="pouce">
                         <img id="positiveImage" src="images/pouce_positif_blanc.png" alt="Pouce positif" onclick="togglePositiveImage()">
-                        <?php echo $avis['pouce_positif'] ? $Avis['pouce_positif'] . " Likes" : "Pas de Likes";?>
-
+                        <?php echo isset($avis['pouce_positif']) ? $avis['pouce_positif'] . " Likes" : "Pas de Likes"; ?>
                     </span>
-
-                    <!-- Pouce négatif -->
+                
                     <span class="pouce">
                         <img id="negativeImage" src="images/pouce_negatif_blanc.png" alt="Pouce négatif" onclick="toggleNegativeImage()">
                     </span>
