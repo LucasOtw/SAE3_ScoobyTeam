@@ -5635,7 +5635,7 @@ select.theme_contacter_plateforme {
     font-size: 14px;
     display: none;
 }
-#btn_modif_offre{
+.btn_modif_offre{
     display: flex;
     justify-content: flex-end;
 }
