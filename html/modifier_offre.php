@@ -110,7 +110,7 @@ echo "</pre>";
                     <label for="adresse">Adresse Postale</label>
                     <input type="text" id="adresse" name="_adresse" value="<?php echo $offre['adresse_postal'] ?>">
                     <label for="complement_adresse">Complément d'Adresse</label>
-                    <input type="text" id="complement_adresse" name="_complement_adresse" value="<?php echo $offre['complement_adresse']; ?>">
+                    <input type="text" id="complement_adresse" name="_complement_adresse" placeholder="Complément d'adresse" value="<?php echo $offre['complement_adresse']; ?>">
                 </fieldset>
             </div>
             <input type="submit" name="envoi_modif" value="Modifier">
