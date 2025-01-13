@@ -79,7 +79,7 @@ if (isset($_POST['envoi_modif'])){
 
     $erreurs = [];
 
-    if(empty($_POST['_titre_modif'])){
+    if(empty($_POST['_titre_modif']) || empty($_POST['_resume_modif']) || empty($_POST['_desc_modif'])){
         $erreurs[] = "Des champs obligatoires ne sont pas remplis !";
     }
 
@@ -119,7 +119,9 @@ if (isset($_POST['envoi_modif'])){
         // table "_offre"
 
         $tab_offre = array(
-            "titre_offre" => $_POST['_titre_modif']
+            "titre_offre" => $_POST['_titre_modif'],
+            "_resume" => $_POST['_resume_modif'],
+            "_description" => $_POST['_desc_modif']
         );
         
 
