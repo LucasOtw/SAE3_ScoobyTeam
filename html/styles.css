@@ -5596,7 +5596,7 @@ select.theme_contacter_plateforme {
 
 #modif_offre span[contenteditable="true"] {
     min-height: 40px;
-    line-height: 1.5;
+    line-height: 3;
 }
 
 #modif_offre .message-erreur {
