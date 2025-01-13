@@ -442,91 +442,99 @@ if (isset($_POST['dwl-data'])) {
                 </div>
                 
         
-              <!-- Popup qui s'affichera -->
-                <div class="custom-confirm" id="popup-mes-donnees">
-                    <div class="custom-confirm-content">
-                        <p>Que voulez-vous faire ?</p>
-                        <button id="confirm-donnees" class="btn-confirm">Télécharger</button>
-                        <button id="cancel-donnees" class="btn-cancel">Mail</button>
-                        <button id="close-popup" class="btn-close">Fermer</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+              <!-- Message de succès (initialement masqué) -->
+    <div id="mail-success" class="creation-success">
+        <img src="images/verifier.png" alt="Succès">
+        <h2>Le mail a été envoyé avec succès !</h2>
+    </div>
 
-            
-        <script>
+    <!-- Popup qui s'affichera -->
+    <div class="custom-confirm" id="popup-mes-donnees">
+        <div class="custom-confirm-content">
+            <p>Que voulez-vous faire ?</p>
+            <button id="confirm-donnees" class="btn-confirm">Télécharger</button>
+            <button id="cancel-donnees" class="btn-cancel">Mail</button>
+            <button id="close-popup" class="btn-close">Fermer</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
             // Récupère les éléments du DOM
             const btnMesDonnees = document.getElementById("btn-mes-donnees");
             const popupMesDonnees = document.getElementById("popup-mes-donnees");
             const btnConfirmDonnees = document.getElementById("confirm-donnees");
             const btnCancelDonnees = document.getElementById("cancel-donnees");
             const btnClosePopup = document.getElementById("close-popup");
-        
+
             // Récupérer le message de succès
             const successMessage = document.getElementById('mail-success');
-        
+
             // Afficher la popup lorsque l'utilisateur clique sur le bouton "Mes données"
             btnMesDonnees.addEventListener("click", () => {
                 popupMesDonnees.style.display = "block";
             });
-        
+
             // Masquer la popup lorsque l'utilisateur clique sur "Fermer"
             btnClosePopup.addEventListener("click", () => {
                 popupMesDonnees.style.display = "none";
             });
-        
+
             // Télécharger les données lorsque l'utilisateur clique sur "Télécharger"
             btnConfirmDonnees.addEventListener("click", () => {
                 // Rediriger vers la page PHP de téléchargement
                 const form = document.createElement("form");
                 form.method = "POST";
                 form.action = ""; // La même page pour exécuter le code de téléchargement
-        
+
                 // Ajout d'un champ caché pour identifier l'action
                 const input = document.createElement("input");
                 input.type = "hidden";
                 input.name = "dwl-data";
                 input.value = "true"; // Déclencher le téléchargement
                 form.appendChild(input);
-        
+
                 document.body.appendChild(form);
                 form.submit(); // Soumet le formulaire
-        
+
                 // Fermer la popup
                 popupMesDonnees.style.display = "none";
             });
-        
+
             // Envoyer les données par e-mail lorsque l'utilisateur clique sur "Mail"
             btnCancelDonnees.addEventListener("click", () => {
                 // Rediriger vers la page envoyer_email2.php
                 const form = document.createElement("form");
                 form.method = "POST";
                 form.action = "envoyer_email2.php"; // Page qui envoie le mail
-        
+
                 // Ajout d'un champ caché pour identifier l'action (optionnel)
                 const input = document.createElement("input");
                 input.type = "hidden";
                 input.name = "send-email";
                 input.value = "true"; // Action spécifique pour envoyer un e-mail
                 form.appendChild(input);
-        
+
                 document.body.appendChild(form);
                 form.submit(); // Soumet le formulaire
-        
+
                 // Fermer la popup
                 popupMesDonnees.style.display = "none";
-        
-                // Afficher le message de succès
-                successMessage.style.display = "block";
-        
-                // Facultatif : cacher le message après quelques secondes
-                setTimeout(() => {
-                    successMessage.style.display = "none";
-                }, 5000); // Le message disparaît après 5 secondes
-            });
-        </script>
 
+                // Afficher le message de succès seulement si l'élément existe
+                if (successMessage) {
+                    successMessage.style.display = "block";
+
+                    // Facultatif : cacher le message après quelques secondes
+                    setTimeout(() => {
+                        successMessage.style.display = "none";
+                    }, 5000); // Le message disparaît après 5 secondes
+                } else {
+                    console.error('L\'élément mail-success n\'a pas été trouvé.');
+                }
+            });
+        });
+    </script>
 
         </form>
        
