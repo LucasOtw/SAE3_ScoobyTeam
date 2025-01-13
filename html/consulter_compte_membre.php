@@ -442,7 +442,7 @@ if (isset($_POST['dwl-data'])) {
                 </div>
                 
         
-              <!-- Message de succès (initialement masqué) -->
+             <!-- Message de succès (initialement masqué) -->
     <div id="mail-success" class="creation-success">
         <img src="images/verifier.png" alt="Succès">
         <h2>Le mail a été envoyé avec succès !</h2>
@@ -521,17 +521,15 @@ if (isset($_POST['dwl-data'])) {
                 // Fermer la popup
                 popupMesDonnees.style.display = "none";
 
-                // Afficher le message de succès seulement si l'élément existe
-                if (successMessage) {
+                // Afficher le message de succès après un délai
+                setTimeout(() => {
                     successMessage.style.display = "block";
 
                     // Facultatif : cacher le message après quelques secondes
                     setTimeout(() => {
                         successMessage.style.display = "none";
                     }, 5000); // Le message disparaît après 5 secondes
-                } else {
-                    console.error('L\'élément mail-success n\'a pas été trouvé.');
-                }
+                }, 1000); // Le message de succès apparaît après 1 seconde
             });
         });
     </script>
