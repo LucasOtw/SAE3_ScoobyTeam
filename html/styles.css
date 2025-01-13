@@ -3357,10 +3357,10 @@ nav.nav-bar {
     color: #777;
 }
 
-.avis-widget .avis-list .avis {
+.avis-widget .avis-list .avis, .avis-widget .avis-list .reponse {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 .nom_visite {
