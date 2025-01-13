@@ -773,8 +773,8 @@ if (isset($json['results'][0])) {
             position: absolute;
             top: 0;
             left: 0;
-            width: 2em;
-            height: 2em;
+            width: 1em;
+            height: 1em;
             transition: opacity 0.5s ease;
         }
 
