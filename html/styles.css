@@ -3701,24 +3701,31 @@ main.creation_compte_membre nav ul li a.active {
     border-bottom: 2px solid var(--vert-clair);
 }
 
-div.creation-success{
-  position: absolute;
-  left: 30vw;
-  top: 15vh;
-  float: right;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 20vw;
-  border-radius: 1vw;
-  border: 1px solid black;
+div.creation-success {
+    position: absolute;
+    left: 83vw;
+    top: 16vh;
+    float: right;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 17vw;
+    border-radius: 1vw;
+    border: 1px solid #eeeeee;
+    background-color: #eeeeee;
+    height: 6vh;
+    width: 15vw;
 }
 
-div.creation-success > img{
-  width: 15%;
-  aspect-ratio: 1 / 1;
-  margin-right: 0.5vw;
+div.creation-success h2{
+    font-size: 17px;
+}
+
+div.creation-success > img {
+    width: 6%;
+    aspect-ratio: 1 / 1;
+    margin-right: 0.5vw;
 }
 
 main.creation_compte_membre .creation_compte_membre_container {
