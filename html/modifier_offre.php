@@ -26,13 +26,16 @@ if(isset($_SESSION['aCreeUneOffre'])){
 }
 
 if (isset($_POST['envoiOffre'])) {
-    $offre = unserialize($_POST['uneOffre']);
-    echo "<pre>";
-    var_dump($offre);
-    echo "</pre>";
+    $_SESSION['modif_offre'] = unserialize($_POST['uneOffre']);
 } else if (isset($_POST['envoi_modif'])){
     echo "Titre : {$_POST['_titre_modif']} <br>";
 }
+
+$offre = $_SESSION['modif_offre'];
+
+echo "<pre>";
+var_dump($offre);
+echo "</pre>";
     
 ?>
 <!DOCTYPE html>
