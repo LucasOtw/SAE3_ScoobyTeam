@@ -439,7 +439,7 @@ if (isset($_POST['dwl-data'])) {
                 <button type="button" name="mes-donnees" class="btn-donnees" id="btn-mes-donnees">Mes données</button>
             </div>
         
-            <!-- Popup qui s'affichera -->
+           <!-- Popup qui s'affichera -->
             <div class="custom-confirm" id="popup-mes-donnees">
                 <div class="custom-confirm-content">
                     <p>Que voulez-vous faire ?</p>
@@ -448,49 +448,69 @@ if (isset($_POST['dwl-data'])) {
                     <button id="close-popup" class="btn-close">Fermer</button>
                 </div>
             </div>
-        </div>
-        
-        <!-- Script JavaScript pour gérer la popup -->
-        <script>
-            // Récupère les éléments du DOM
-            const btnMesDonnees = document.getElementById("btn-mes-donnees");
-            const popupMesDonnees = document.getElementById("popup-mes-donnees");
-            const btnConfirmDonnees = document.getElementById("confirm-donnees");
-            const btnCancelDonnees = document.getElementById("cancel-donnees");
-            const btnClosePopup = document.getElementById("close-popup");
-        
-            // Afficher la popup lorsque l'utilisateur clique sur le bouton "Mes données"
-            btnMesDonnees.addEventListener("click", () => {
-                popupMesDonnees.style.display = "block";
-            });
-        
-            // Masquer la popup lorsque l'utilisateur clique sur "Fermer"
-            btnClosePopup.addEventListener("click", () => {
-                popupMesDonnees.style.display = "none";
-            });
-        
-            // Télécharger les données lorsque l'utilisateur clique sur "Télécharger"
-            btnConfirmDonnees.addEventListener("click", () => {
-                // Rediriger vers la page envoyer_email2.php en utilisant une requête POST simulée
-                const form = document.createElement("form");
-                form.method = "POST";
-                form.action = "envoyer_email2.php"; // Chemin vers la page PHP
             
-                // Si nécessaire, ajoutez des données supplémentaires
-                const input = document.createElement("input");
-                input.type = "hidden";
-                input.name = "dwl-data";
-                input.value = "valeur_des_donnees"; // Remplacez par vos données réelles
-                form.appendChild(input);
+            <!-- Script JavaScript pour gérer la popup -->
+            <script>
+                // Récupère les éléments du DOM
+                const btnMesDonnees = document.getElementById("btn-mes-donnees");
+                const popupMesDonnees = document.getElementById("popup-mes-donnees");
+                const btnConfirmDonnees = document.getElementById("confirm-donnees");
+                const btnCancelDonnees = document.getElementById("cancel-donnees");
+                const btnClosePopup = document.getElementById("close-popup");
             
-                document.body.appendChild(form);
-                form.submit(); // Soumet le formulaire pour accéder à la page PHP
-            
-                // Optionnel : Fermer la popup après la redirection
-                popupMesDonnees.style.display = "none";
+                // Afficher la popup lorsque l'utilisateur clique sur le bouton "Mes données"
+                btnMesDonnees.addEventListener("click", () => {
+                    popupMesDonnees.style.display = "block";
                 });
+            
+                // Masquer la popup lorsque l'utilisateur clique sur "Fermer"
+                btnClosePopup.addEventListener("click", () => {
+                    popupMesDonnees.style.display = "none";
+                });
+            
+                // Télécharger les données lorsque l'utilisateur clique sur "Télécharger"
+                btnConfirmDonnees.addEventListener("click", () => {
+                    // Rediriger vers la page PHP de téléchargement
+                    const form = document.createElement("form");
+                    form.method = "POST";
+                    form.action = ""; // La même page pour exécuter le code de téléchargement
+            
+                    // Ajout d'un champ caché pour identifier l'action
+                    const input = document.createElement("input");
+                    input.type = "hidden";
+                    input.name = "dwl-data";
+                    input.value = "true"; // Déclencher le téléchargement
+                    form.appendChild(input);
+            
+                    document.body.appendChild(form);
+                    form.submit(); // Soumet le formulaire
+            
+                    // Fermer la popup
+                    popupMesDonnees.style.display = "none";
+                });
+            
+                // Envoyer les données par e-mail lorsque l'utilisateur clique sur "Mail"
+                btnCancelDonnees.addEventListener("click", () => {
+                    // Rediriger vers la page envoyer_email2.php
+                    const form = document.createElement("form");
+                    form.method = "POST";
+                    form.action = "envoyer_email2.php";
+            
+                    // Ajout d'un champ caché si nécessaire pour identifier l'action (optionnel)
+                    const input = document.createElement("input");
+                    input.type = "hidden";
+                    input.name = "send-email";
+                    input.value = "true"; // Action spécifique pour envoyer un e-mail
+                    form.appendChild(input);
+            
+                    document.body.appendChild(form);
+                    form.submit(); // Soumet le formulaire
+            
+                    // Fermer la popup
+                    popupMesDonnees.style.display = "none";
+                });
+            </script>
 
-        </script>
         </form>
        
       
