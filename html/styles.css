@@ -5956,7 +5956,6 @@ select.theme_contacter_plateforme {
 }
 
 
-
 .modif_offre .photo-cards {
     display: flex;
     flex-wrap: wrap;
@@ -5970,6 +5969,7 @@ select.theme_contacter_plateforme {
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #fff;
+    position: relative;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -5987,6 +5987,28 @@ select.theme_contacter_plateforme {
     height: auto;
     object-fit: cover;
     border-radius: 8px;
+}
+
+.modif_offre .delete-photo-form {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+}
+
+.modif_offre .delete-photo-btn {
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.modif_offre .delete-photo-btn:hover {
+    background-color: rgba(255, 0, 0, 1);
 }
 
 
