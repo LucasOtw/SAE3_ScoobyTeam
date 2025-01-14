@@ -1053,7 +1053,7 @@ input[type="email"] {
     display: inline-block;
 }
 
-.notification-badge {
+#notification-badge {
     position: absolute;
     top: -5px;
     right: 9px;
