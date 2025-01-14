@@ -894,7 +894,8 @@ if (isset($json['results'][0])) {
                             <!-- Pouce positif -->
                             <img id="positiveImage"
                                  src="images/pouce_positif_blanc.png"
-                                 alt="Pouce positif">
+                                 alt="Pouce positif"
+                                 style="cursor:not-allowed;">
                             <p id="positiveCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_positif']; ?></p>
                         </div>
                         
@@ -902,7 +903,8 @@ if (isset($json['results'][0])) {
                             <!-- Pouce négatif -->
                             <img id="negativeImage"
                                  src="images/pouce_negatif_blanc.png"
-                                 alt="Pouce négatif">
+                                 alt="Pouce négatif"
+                                 style="cursor:not-allowed;">
                             <p id="negativeCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_negatif']; ?></p>
                         </div>
                     <?php } ?>
