@@ -873,7 +873,7 @@ if (isset($json['results'][0])) {
                     }
                 ?>
                 <div class="signalement_repondre">
-                    if (isset($_SESSION['membre']['code_compte'])){
+                    <?php if (isset($_SESSION['membre']['code_compte'])){ ?>
                     <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
                         <!-- Pouce positif -->
                         <img id="positiveImage<?php echo $avis['code_avis']; ?>"
@@ -889,7 +889,7 @@ if (isset($json['results'][0])) {
                              alt="Pouce négatif" onclick="toggleNegativeImage(<?php echo $avis['code_avis']; ?>)">
                         <p id="negativeCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_negatif']; ?></p>
                     </div>
-                    } else {
+                    <?php } else { ?>
                         <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
                             <!-- Pouce positif -->
                             <img id="positiveImage"
@@ -905,7 +905,7 @@ if (isset($json['results'][0])) {
                                  alt="Pouce négatif">
                             <p id="negativeCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_negatif']; ?></p>
                         </div>
-                    }
+                    <?php } ?>
                     
 
 
