@@ -113,10 +113,10 @@ function tempsEcouleDepuisPublication($offre){
                                                     where professionnel = :code_compte ;');
             $toutes_les_notifs->bindValue(":code_compte", $monComptePro["code_compte"]);
             $toutes_les_notifs->execute();
-            $toutes_les_notifs->fetch(PDO::FETCH_ASSOC);
+            $notifs = $toutes_les_notifs->fetch(PDO::FETCH_ASSOC);
 
             echo "<pre>";
-            var_dump($toutes_les_notifs);
+            var_dump($notifs);
             echo "</pre>";
 
             // foreach ($toutes_les_notifs
