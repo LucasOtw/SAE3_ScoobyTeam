@@ -562,7 +562,13 @@ if($infos_offre !== null){
 
             </div>
             <div class="tab-content" id="photos">
-                <h1>Pas de photos</h1>
+                <?php
+                    foreach($recup_photos as $photo){
+                        ?>
+                        <img src="<?php echo $photo; ?>" alt="nope">
+                        <?php
+                    }
+                ?>
             </div>
             <div class="btn_modif_offre">
                 <input type="submit" name="envoi_modif" value="Modifier">
