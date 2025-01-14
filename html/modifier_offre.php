@@ -63,9 +63,21 @@ $codes_horaires = $req_codes->fetch(PDO::FETCH_ASSOC);
 
 // maintenant on veut les heures d'ouverture et de fermeture pour chaque code.
 
-echo "<pre>";
-var_dump($codes_horaires);
-echo "</pre>";
+foreach($codes_horaires as $jour => $code){
+    if($code == null){
+        break;
+    } else {
+        $req_horaire = $dbh->prepare("SELECT ouverture,fermeture FROM tripenarvor._horaire
+        WHERE code_horaire = :code");
+        $req_horaire->bindValue(":code",$code);
+        $req_horaire->execute();
+        $tab_horaire = $req_horaire->fetchAll(PDO::FETCH_ASSOC);
+
+        echo "<pre>";
+        var_dump($tab_horaire);
+        echo "</pre>";
+    }
+}
 
 
 /* RÉCUPÉRATION DU "TYPE DE L'OFFRE" */
