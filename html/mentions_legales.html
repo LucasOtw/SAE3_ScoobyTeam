@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Offres PACT</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mentions_legales.css">
     <link rel="icon" type="image/png" href="images/logoPin_vert.png" sizes="16x16">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,15 +14,29 @@
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>MENTIONS LÉGALES DE LA PLATEFORME PACT</h1>
-        <h2>Plateforme d'Avis et de Conseils Touristiques</h2>
+    <header class="mentions_legales-header-pc mentions_legales-header_membre">
+        <div class="mentions_legales-logo-pc">
+            <a href="voir_offres.php">
+                <img src="images/logoBlanc.png" alt="PACT Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="voir_offres.php">Accueil</a></li>
+                <li><a href="connexion_pro.php">Publier</a></li>
+                <li><a href="consulter_compte_membre.php" class="active">Mon Compte</a></li>
+            </ul>
+        </nav>
+        <header class="mentions_legales-header-tel mentions_legales-header_membre">
+            <div class="mentions_legales-logo-tel">
+                <a href="voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
+            </div>
+        </header>
     </header>
-
-    <main>
-        <section id="legal-info">
-            <h3>1. Informations légales</h3>
-            <p>
+    <main class="mentions_legales-main">
+        <section id="legal-info" class="mentions_legales-section">
+            <h3 class="mentions_legales-title">1. Informations légales</h3>
+            <p class="mentions_legales-paragraph">
                 La plateforme PACT est développée par :<br>
                 PACT, plateforme d'avis et de conseils touristiques<br>
                 Hébergée par : BigPapoo – IUT Lannion, rue Edouard Branly – Téléphone : 02 96 46 93 00<br>
@@ -31,125 +45,77 @@
             </p>
         </section>
 
-        <section id="personal-data">
-            <h3>2. Données à caractère personnel</h3>
-            <p>
+        <section id="personal-data" class="mentions_legales-section">
+            <h3 class="mentions_legales-title">2. Données à caractère personnel</h3>
+            <p class="mentions_legales-paragraph">
                 Les utilisateurs (membres et professionnels) de la plateforme fournissent des données personnelles lors de la création de comptes ou lors de l’interaction avec les fonctionnalités de PACT.
             </p>
-            <ul>
+            <ul class="mentions_legales-list">
                 <li>Nom, prénom, pseudonyme, adresse e-mail, mot de passe, numéro de téléphone, adresse postale</li>
                 <li>Pour les professionnels : informations de facturation</li>
             </ul>
-            <p>
+            <p class="mentions_legales-paragraph">
                 Ces données sont collectées aux fins de :
             </p>
-            <ul>
+            <ul class="mentions_legales-list">
                 <li>Gestion des comptes utilisateurs</li>
                 <li>Publication et consultation d’avis</li>
                 <li>Traitement des offres et options de promotion</li>
             </ul>
-            <p>
+            <p class="mentions_legales-paragraph">
                 Les utilisateurs peuvent exercer leurs droits via <a href="mailto:noreply.scoobyteam@gmail.com">noreply.scoobyteam@gmail.com</a> ou directement via la plateforme.
             </p>
         </section>
 
-        <section id="copyright">
-            <h3>3. Droit d'auteur</h3>
-            <p>
+        <section id="copyright" class="mentions_legales-section">
+            <h3 class="mentions_legales-title">3. Droit d'auteur</h3>
+            <p class="mentions_legales-paragraph">
                 Tout le contenu de la plateforme PACT est protégé par le droit d’auteur et appartient exclusivement à l’association TripEnArvor.
             </p>
         </section>
 
-        <section id="security">
-            <h3>4. Sécurité informatique</h3>
-            <p>
+        <section id="security" class="mentions_legales-section">
+            <h3 class="mentions_legales-title">4. Sécurité informatique</h3>
+            <p class="mentions_legales-paragraph">
                 PACT met en œuvre des mesures de sécurité rigoureuses pour protéger les données des utilisateurs, telles que le hachage des mots de passe et des mécanismes d’authentification avancés.
             </p>
         </section>
     </main>
 
-    <footer>
-        <div class="newsletter">
-                <div class="newsletter-content">
-                    <h2>Inscrivez-vous à notre Newsletter</h2>
-                    <p>PACT</p>
-                    <p>découvrez la Bretagne !</p>
-                    <form class="newsletter-form" id="newsletterForm">
-                        <input type="email" id="newsletterEmail" placeholder="Votre adresse mail" required>
-                        <button type="submit">S'inscrire</button>
-                    </form>
-                </div>
-                <div class="newsletter-image">
-                    <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
-                </div>
+    <footer class="mentions_legales-footer">
+        <div class="mentions_legales-newsletter">
+            <div class="mentions_legales-newsletter-content">
+                <h2>Inscrivez-vous à notre Newsletter</h2>
+                <p>PACT</p>
+                <p>découvrez la Bretagne !</p>
+                <form class="mentions_legales-newsletter-form" id="newsletterForm">
+                    <input type="email" id="newsletterEmail" placeholder="Votre adresse mail" required>
+                    <button type="submit">S'inscrire</button>
+                </form>
             </div>
+            <div class="mentions_legales-newsletter-image">
+                <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
+            </div>
+        </div>
         
-            <div id="newsletterConfirmBox" style="display: none;">
-                <div class="popup-content">
-                    <p class="popup-message"></p>
-                    <button id="closeNewsletterPopup">Fermer</button>
-                </div>
+        <div id="newsletterConfirmBox" class="mentions_legales-popup" style="display: none;">
+            <div class="mentions_legales-popup-content">
+                <p class="mentions_legales-popup-message"></p>
+                <button id="closeNewsletterPopup">Fermer</button>
             </div>
+        </div>
 
-        <div class="footer-links">
+        <div class="mentions_legales-footer-links">
             <ul>
                 <li><a href="mentions_legales.html">Mentions Légales</a></li>
                 <li><a href="#">RGPD</a></li>
                 <li><a href="#">Nous connaître</a></li>
             </ul>
         </div>
-        <div class="social-icons">
+        <div class="mentions_legales-social-icons">
             <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
             <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
             <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
         </div>
     </footer>
-
-    <script>
-        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert("Votre inscription a bien été prise en compte !");
-        });
-    </script>
 </body>
-</html>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const newsletterForm = document.getElementById('newsletterForm');
-    const emailInput = document.getElementById('newsletterEmail');
-    const newsletterPopup = document.getElementById('newsletterConfirmBox');
-    const closePopupButton = document.getElementById('closeNewsletterPopup');
-
-    newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const email = emailInput.value.trim();
-        if (email) {
-            fetch('envoyer_email3.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: `email=${encodeURIComponent(email)}`
-            })
-                .then(() => {
-                    afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
-                    
-                })
-                .catch(() => {
-                    afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
-                });
-        } else {
-            alert("Veuillez entrer une adresse email valide.");
-        }
-    });
-
-    function afficherPopup(message) {
-        newsletterPopup.querySelector('.popup-message').innerText = message;
-        newsletterPopup.style.display = 'block';
-    }
-
-    closePopupButton.addEventListener('click', () => {
-        newsletterPopup.style.display = 'none';
-    });
-});
-
-</script>
