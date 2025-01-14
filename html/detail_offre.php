@@ -835,11 +835,11 @@ if (isset($json['results'][0])) {
                     updateLikeDislike(action, codeAvis);
                 
                     // Recharge la page et scroll après un délai
-                    if (window.innerWidth <= 429) {
+                   
                         setTimeout(function() {
                             location.reload();  // Recharge la page
                         }, 200);  // Délai de 200ms avant de recharger pour s'assurer que le vote est pris en compte
-                    }
+                    
                 }
                 
                 function toggleNegativeImage(codeAvis) {
@@ -847,11 +847,10 @@ if (isset($json['results'][0])) {
                     updateLikeDislike(action, codeAvis);
                 
                     // Recharge la page et scroll après un délai
-                    if (window.innerWidth <= 429) {
                         setTimeout(function() {
                             location.reload();  // Recharge la page
                         }, 200);  // Délai de 200ms avant de recharger pour s'assurer que le vote est pris en compte
-                    }
+                    
                 }
                 
                 function updateLikeDislike(action, codeAvis) {
