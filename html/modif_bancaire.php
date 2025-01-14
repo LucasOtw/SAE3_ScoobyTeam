@@ -31,20 +31,93 @@ include("recupInfosCompte.php");
                 <li><a href="creation_offre.php">Publier</a></li>
                 <li><a href="consulter_compte_pro.php" class="active">Mon Compte</a></li>
                 <li>
-    <a href="#" class="notification-icon" id="notification-btn">
-        <img src="images/notif.png" alt="cloche notification" class="nouvelle-image" style="margin-top: -5px;">
-        <span class="notification-badge" style="display:none"></span>
-    </a>
-    <div id="notification-popup">
-        <ul>
-            <li>
-                <img src="images/user2.png" alt="photo de profil" class="profile-img">
-                <div class="notification-content">
-                    <strong>Quentin Uguen</strong>
-                    <span class="notification-location"> | Abbaye de Monfort</span>
-                    <p>Déplorable, environnement moche</p>
-                    <span class="notification-time">1 mois</span>
-                    <span class="new-notif-dot"></span>
+                <a href="#" class="notification-icon" id="notification-btn">
+                    <img src="images/notif.png" alt="cloche notification" class="nouvelle-image" style="margin-top: -5px;">
+                    <span id="notification-badge" style="display:none"></span>
+                </a>
+                <div id="notification-popup">
+                    <ul>
+                        <?php
+                        ///////////////////////////////////////////////////////////////////////////////
+                        ///                            Contenu notif                                ///
+                        ///////////////////////////////////////////////////////////////////////////////
+                        
+                        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+                        $username = "sae";
+                        $password = "philly-Congo-bry4nt";
+                        
+                        // Créer une instance PDO
+                        $dbh = new PDO($dsn, $username, $password);
+            
+                        $toutes_les_notifs = $dbh->prepare('select * from tripenarvor._notification 
+                                                                natural join tripenarvor._avis 
+                                                                natural join tripenarvor._offre 
+                                                                where professionnel = :code_compte 
+                                                                order by date_notif desc;');
+                        $toutes_les_notifs->bindValue(":code_compte", $monComptePro["code_compte"]);
+                        $toutes_les_notifs->execute();
+                        $notifs = $toutes_les_notifs->fetchAll(PDO::FETCH_ASSOC);
+
+                        $nb_notif=0;
+            
+                        // echo "<pre>";
+                        // var_dump($notifs);
+                        // echo "</pre>";
+
+                        if (empty($notifs))
+                        {
+                            echo "<p> Aucun avis n'a été posté sur vos offres </p>";
+                        }
+                        else
+                        {
+                            foreach ($notifs as $index => $notif)
+                            {
+                                
+                                $checkPP = $dbh->prepare("SELECT url_image FROM tripenarvor._sa_pp WHERE code_compte = :code_compte");
+                                $checkPP->bindValue(":code_compte",$notif['code_compte']);
+                                $checkPP->execute();
+                                
+                                $photo_profil = $checkPP->fetch(PDO::FETCH_ASSOC);
+                                if($photo_profil){
+                                  $compte_pp = $photo_profil['url_image'];
+                                } else {
+                                  $compte_pp = "images/icones/icone_compte.png";
+                                }
+                
+                                $infoCompte = $dbh->prepare('select * from tripenarvor._compte natural join tripenarvor._membre where code_compte= :code_compte;');
+                                $infoCompte->bindValue(':code_compte',$notif['code_compte']);
+                                $infoCompte->execute();
+                                $compte = $infoCompte->fetch(PDO::FETCH_ASSOC);
+                
+                                $infoOffre = $dbh->prepare('select * from tripenarvor._offre where code_offre = :code_offre;');
+                                $infoOffre->bindValue(':code_offre',$notif["code_offre"]);
+                                $infoOffre->execute();
+                                $offre = $infoOffre->fetch(PDO::FETCH_ASSOC);
+
+                                if ($nb_notif <5)
+                                {
+                                ?>
+                                
+                                    <li class="notif"
+                                        data-consult="<?php echo $notif["consulter_notif"]; ?>"
+                                        data-avis="<?php echo $notif["code_avis"]; ?>" >
+                                        <img src="<?php echo $compte_pp; ?>" alt="photo de profil" class="profile-img">
+                                        <div class="notification-content">
+                                            <strong><?php echo $compte["prenom"].' '.$compte["nom"]; ?></strong>
+                                            <span class="notification-location"> | <?php echo $notif["titre_offre"]; ?></span>
+                                            <p><?php echo $notif["txt_avis"]; ?></p>
+                                            <span class="notification-time"><?php echo tempsEcouleDepuisPublication($offre);?></span>
+                                            <span class="new-notif-dot" style="display:none"></span>
+                                        </div>
+                                    </li>
+                        
+                                <?php
+                                }
+                                $nb_notif++;
+                            }
+                        }                        
+                        ?>
+                    </ul>
                 </div>
             </li>
         </ul>
@@ -241,25 +314,85 @@ include("recupInfosCompte.php");
         };
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const notificationBtn = document.getElementById('notification-btn');
-    const notificationPopup = document.getElementById('notification-popup');
-
-    // Ajouter la classe hidden pour masquer le pop-up au démarrage
-    notificationPopup.classList.add('hidden');
-
-    notificationBtn.addEventListener('click', (e) => {
-        e.preventDefault(); // Empêche le comportement par défaut de l'ancre
-        notificationPopup.classList.toggle('hidden');
-    });
-
-    document.addEventListener('click', (e) => {
-        if (!notificationPopup.contains(e.target) && !notificationBtn.contains(e.target)) {
+       document.addEventListener('DOMContentLoaded', () => {
+            const notificationBtn = document.getElementById('notification-btn');
+            const notificationPopup = document.getElementById('notification-popup');
+            const notificationBadge = document.getElementById('notification-badge');
+        
+            // Ajouter la classe hidden pour masquer le pop-up au démarrage
             notificationPopup.classList.add('hidden');
-        }
-    });
-});
 
+            // S'assurer que notifItems contient des éléments
+            const gererNotifications = () => {
+                const notifItems = document.querySelectorAll(".notif");
+        
+                if (notifItems.length > 0) {
+                    console.log("Notification trouvée");
+                    notifItems.forEach(notif => {
+                        const consulter = notif.getAttribute('data-consult') ? 1 : 0;
+                        const newNotifDot = notif.querySelector('.new-notif-dot');
+                        const avis = notif.getAttribute('data-avis');
+                        
+                        console.log("///Consultée : ", consulter);
+                        console.log("///Avis : ", avis);
+
+                        if (consulter == 0)
+                        {
+                            newNotifDot.style.removeProperty('display');
+                            
+                            // Utilisation de fetch pour envoyer les données
+                            fetch("https://scooby-team.ventsdouest.dev/update_notif_status.php", {
+                                method: "POST",  // Méthode POST
+                                headers: {
+                                    "Content-Type": "application/x-www-form-urlencoded",  // Spécifie le type de contenu
+                                },
+                                body: new URLSearchParams({
+                                    code_avis : avis
+                                })
+                            })
+                                
+                            .then(response => {
+                                if (response.ok) {
+                                    console.log("L'état de la notif a été mis à jour avec succès.");
+                                    notif.setAttribute('data-consult', "1");
+                                } else {
+                                    console.error("Erreur lors de la mise à jour de l'état de la notif : " + response.status);
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Erreur de réseau ou autre :", error);
+                            });
+                            
+                        }
+                        else
+                        {
+                            newNotifDot.style.display = 'none';
+                        }
+                    });
+                } else {
+                    console.log("Aucune notification trouvée.");
+                }
+            };
+        
+            notificationBtn.addEventListener('click', (e) => {
+                e.preventDefault(); // Empêche le comportement par défaut de l'ancre
+                notificationPopup.classList.toggle('hidden');
+
+                if (!notificationPopup.classList.contains('hidden')) {
+                    // Appeler la fonction pour traiter les notifications lorsque le popup est visible
+                    gererNotifications();
+                }
+                
+                notificationBadge.style.display = "none";
+            });
+        
+            document.addEventListener('click', (e) => {
+                if (!notificationPopup.contains(e.target) && !notificationBtn.contains(e.target)) {
+                    notificationPopup.classList.add('hidden');
+                }
+            });
+           
+        });
 
     </script>
 </body>
