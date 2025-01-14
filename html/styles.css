@@ -6207,6 +6207,38 @@ select.theme_contacter_plateforme {
 #modif_offre input[type="number"] {
     text-align: center;
 }
+/* Checkboxes stylisées en orange */
+#modif_offre input[type="checkbox"] {
+    appearance: none; /* Supprime le style natif */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ffa500; /* Bordure orange */
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    background-color: #fff; /* Fond blanc par défaut */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* État coché */
+#modif_offre input[type="checkbox"]:checked {
+    background-color: #ffa500; /* Fond orange quand coché */
+    border-color: #e67e22; /* Bordure légèrement plus foncée */
+}
+
+/* Hover effect */
+#modif_offre input[type="checkbox"]:hover {
+    border-color: #e67e22; /* Bordure plus foncée au survol */
+}
+
+/* Alignement des labels avec les checkboxes */
+#modif_offre .checkbox-group .label-check {
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 1rem;
+    color: #555;
+    vertical-align: middle;
+}
 
 
                                         /*****************************************************
