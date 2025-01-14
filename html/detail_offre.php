@@ -287,31 +287,33 @@ if (isset($json['results'][0])) {
 
     <!-- Détails de l'offre sur Desktop -->
     <div id="body_offre_desktop">
-        <header>
-            <div class="logo">
+        <div class="header-membre">
+        <header class="header-pc">
+            <div class="logo-pc" style="z-index: 1">
                 <a href="voir_offres.php">
                     <img src="images/logoBlanc.png" alt="PACT Logo">
                 </a>
 
             </div>
+            
             <nav>
                 <ul>
                     <li><a href="voir_offres.php" class="active">Accueil</a></li>
                     <li><a href="connexion_pro.php">Publier</a></li>
                     <?php
-                    if (isset($_SESSION["membre"]) || !empty($_SESSION["membre"])) {
-                        ?>
-                        <li>
-                            <a href="consulter_compte_membre.php">Mon compte</a>
-                        </li>
-                        <?php
-                    } else {
-                        ?>
-                        <li>
-                            <a href="connexion_membre.php">Se connecter</a>
-                        </li>
-                        <?php
-                    }
+                        if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
+                           ?>
+                           <li>
+                               <a href="consulter_compte_membre.php">Mon Compte</a>
+                           </li>
+                            <?php
+                        } else {
+                            ?>
+                           <li>
+                               <a href="connexion_membre.php">Se connecter</a>
+                           </li>
+                           <?php
+                        }
                     ?>
                 </ul>
             </nav>
