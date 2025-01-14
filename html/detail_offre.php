@@ -846,10 +846,6 @@ if (isset($json['results'][0])) {
                             } else if (img.id.includes('negativeImage')) {
                                 toggleNegativeImage(codeAvis);
                             }
-
-                            if (window.innerWidth <= 429;){
-                                location.reload();
-                            }
                         });
                     });
 
