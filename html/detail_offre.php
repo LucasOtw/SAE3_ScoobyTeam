@@ -830,11 +830,10 @@ if (isset($json['results'][0])) {
                     updateLikeDislike(action, codeAvis);
                 }
                 
-                function toggleNegativeImage(codeAvis) {
+                ffunction toggleNegativeImage(codeAvis) {
                     var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
                     updateLikeDislike(action, codeAvis);
                 }
-
 
 
 
