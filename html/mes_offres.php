@@ -59,7 +59,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
     <div id="notification-popup">
         <ul>
             <li>
-                <img src="images/profile.jpg" alt="photo de profil" class="profile-img">
+                <img src="images/user2.png" alt="photo de profil" class="profile-img">
                 <div class="notification-content">
                     <strong>Quentin Uguen</strong>
                     <span class="notification-location"> | Abbaye de Monfort</span>
