@@ -99,19 +99,26 @@ if(isset($_SESSION['aCreeUneOffre'])){
                 $infoCompte = $dbh->prepare('select * from tripenarvor._compte where code_compte= :code_compte;');
                 $infoCompte->bindValue(':code_compte',$notif['code_compte']);
                 $infoCompte->execute();
-                $infoCompte = $infoCompte->fetch(PDO::FETCH_ASSOC);
-            ?>
+                $compte = $infoCompte->fetch(PDO::FETCH_ASSOC);
+
+                $infoOffre = $dbh->prepare('select * from tripenarvor._offre where code_offre = :code_offre;');
+                $infoOffre->bindValue(':code_offre',$notif["code_offre"]);
+                $infoOffre->execute();
+                $offre = $infoOffre->fetch(PDO::FETCH_ASSOC);
+                
+                ?>
+                
                 <li>
-                    <img src="images/user2.png" alt="photo de profil" class="profile-img">
+                    <img src="<?php echo $compte_pp; ?>" alt="photo de profil" class="profile-img">
                     <div class="notification-content">
-                        <strong>Quentin Uguen</strong>
-                        <span class="notification-location"> | Abbaye de Monfort</span>
-                        <p>Déplorable, environnement moche</p>
-                        <span class="notification-time">1 mois</span>
+                        <strong><?php echo $compte["prenom"]+' '+$compte["nom"]; ?></strong>
+                        <span class="notification-location"> | <?php echo $notif["titre_offre"]; ?></span>
+                        <p><?php echo $notif["txt_avis"]; ?></p>
+                        <span class="notification-time"><?php echo tempsEcouleDepuisPublication($offre);?></span>
                         <span class="new-notif-dot"></span>
                     </div>
                 </li>
-            <?php
+                <?php
             }
             ?>
         </ul>
