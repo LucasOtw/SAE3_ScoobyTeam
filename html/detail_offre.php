@@ -796,6 +796,10 @@ if (isset($json['results'][0])) {
                     }
                 </style>
                 <script>
+                if (window.innerWidth <= 429) {
+                    location.reload();
+                }
+                    
                 function updateLikeDislike(action, codeAvis) {
                     fetch("update_likes.php", {
                         method: "POST",
