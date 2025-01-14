@@ -107,18 +107,29 @@ function tempsEcouleDepuisPublication($offre){
             // Créer une instance PDO
             $dbh = new PDO($dsn, $username, $password);
 
-            $toutes_les_notifs = $dbh->prepare('select * from tripenarvor._notification where ;');
+            $toutes_les_notifs = $dbh->prepare('select * from tripenarvor._notification 
+                                                    natural join tripenarvor._avis 
+                                                    natural join tripenarvor._offre 
+                                                    where professionnel = :code_compte ;');
+            $toutes_les_notifs->bindValue(":code_compte", $monComptePro["code_compte"]);
+            $toutes_les_notifs->execute(PDO::FETCH_ASSOC);
+
+            echo "<pre>";
+            var_dump($toutes_les_notifs);
+            echo "</pre>";
+
+            // foreach ($toutes_les_notifs
             
-            $checkPP = $dbh->prepare("SELECT url_image FROM tripenarvor._sa_pp WHERE code_compte = :code_compte");
-            $checkPP->bindValue(":code_compte",$compte['code_compte']);
-            $checkPP->execute();
+            // $checkPP = $dbh->prepare("SELECT url_image FROM tripenarvor._sa_pp WHERE code_compte = :code_compte");
+            // $checkPP->bindValue(":code_compte",$compte['code_compte']);
+            // $checkPP->execute();
             
-            $photo_profil = $checkPP->fetch(PDO::FETCH_ASSOC);
-            if($photo_profil){
-              $compte_pp = $photo_profil['url_image'];
-            } else {
-              $compte_pp = "images/icones/icone_compte.png";
-            }
+            // $photo_profil = $checkPP->fetch(PDO::FETCH_ASSOC);
+            // if($photo_profil){
+            //   $compte_pp = $photo_profil['url_image'];
+            // } else {
+            //   $compte_pp = "images/icones/icone_compte.png";
+            // }
             ?>
             <li>
                 <img src="images/user2.png" alt="photo de profil" class="profile-img">
@@ -242,7 +253,7 @@ function tempsEcouleDepuisPublication($offre){
                 <ul>
                     <li><a href="voir_offres.php">Accueil</a></li>
                     <li><a href="connexion_pro.php">Publier</a></li>
-                    <li><a href="consulter_compte_pro.php">Mon Compte</a></li>
+                    <li><a href="connexion_memebre.php">Se Connecter</a></li>
                 </ul>
             </div>
             <div class="link-group">
