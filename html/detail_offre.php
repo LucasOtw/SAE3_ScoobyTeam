@@ -911,7 +911,7 @@ if (isset($json['results'][0])) {
                     }
                 ?>
                 <div class="signalement_repondre">
-                    <?php if (isset($_SESSION['membre']['code_compte']) || isset($_SESSION['membre']['code_compte']) == $avis['code_compte']){ ?>
+                    <?php if (isset($_SESSION['membre']['code_compte']) || !($_SESSION['membre']['code_compte'] == $avis['code_compte'])){ ?>
                      <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
                         <!-- Pouce positif -->
                         <img id="positiveImage<?php echo $avis['code_avis']; ?>"
