@@ -582,9 +582,8 @@ if (isset($_POST['dwl-data'])) {
             <div class="link-group">
                 <ul>
                     <li><a href="mentions_legales.html">Mentions Légales</a></li>
-                    <li><a href="#">RGPD</a></li>
-                    <li><a href="#">Nous connaître</a></li>
-                    <li><a href="#">Nos partenaires</a></li>
+                    <li><a href="cgu.html">GGU</a></li>
+                    <li><a href="cgv.html">CGV</a></li>
                 </ul>
             </div>
             <div class="link-group">
@@ -596,7 +595,7 @@ if (isset($_POST['dwl-data'])) {
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="#">CGU</a></li>
+                    <li><a href="#">Nous Connaitre</a></li>
                     <li><a href="contacter_plateforme.php">Signaler un problème</a></li>
                     <li><a href="contacter_plateforme.php">Nous contacter</a></li>
                 </ul>
