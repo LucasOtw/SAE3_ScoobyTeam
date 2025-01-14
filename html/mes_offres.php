@@ -83,6 +83,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
             // echo "</pre>";
             if (empty($notifs))
             {
+                echo '<span class="new-notif-dot"></span>';
                 echo "<p> Aucun avis n'a été posté sur vos offres </p>";
             }
             else
