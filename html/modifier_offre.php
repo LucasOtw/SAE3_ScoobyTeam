@@ -356,9 +356,7 @@ if (isset($_POST['envoi_modif'])){
 
                     if(is_dir($ancien_chemin)){
                         if(!file_exists($nouveau_chemin)){
-                            if(rename($ancien_chemin,$nouveau_chemin)){
-                                return;
-                            }
+                            rename($ancien_chemin,$nouveau_chemin);
                         }
                     }
                 }
