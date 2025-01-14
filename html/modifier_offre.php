@@ -73,11 +73,15 @@ foreach($codes_horaires as $jour => $code){
         $req_horaire->execute();
         $tab_horaire = $req_horaire->fetchAll(PDO::FETCH_ASSOC);
 
-        echo "<pre>";
-        var_dump($tab_horaire);
-        echo "</pre>";
+        $tab_horaire = $tab_horaire[0];
+        $codes_horaires[$jour]["ouverture"] = $tab_horaire["ouverture"];
+        $codes_horaires[$jour]["fermeture"] = $tab_horaire["fermeture"];
     }
 }
+
+echo "<pre>";
+var_dump($codes_horaires);
+echo "</pre>";
 
 
 /* RÉCUPÉRATION DU "TYPE DE L'OFFRE" */
