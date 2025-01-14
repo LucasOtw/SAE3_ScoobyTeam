@@ -965,6 +965,21 @@ input[type="email"] {
     display: none;
 }
 
+.new-notif-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: orange;
+    border-radius: 50%;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.notification-content {
+    position: relative;
+}
+
+
 #notification-popup {
     position: absolute;
     top: 50px;
