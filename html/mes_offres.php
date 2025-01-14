@@ -101,6 +101,10 @@ if(isset($_SESSION['aCreeUneOffre'])){
                 $infoCompte->execute();
                 $compte = $infoCompte->fetch(PDO::FETCH_ASSOC);
 
+                echo "<pre>";
+                var_dump($compte);
+                echo "</pre>";
+
                 $infoOffre = $dbh->prepare('select * from tripenarvor._offre where code_offre = :code_offre;');
                 $infoOffre->bindValue(':code_offre',$notif["code_offre"]);
                 $infoOffre->execute();
