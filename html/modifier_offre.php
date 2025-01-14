@@ -572,6 +572,23 @@ if($infos_offre !== null){
                                     <input type="time" class="duree" id="heure_spectacle" data-sync="heure_spect_modif" value="<?php echo htmlspecialchars($infos_offre['heure_spectacle']) ?>" required>
                                 </fieldset>
                             <?php
+                        case "visite" :
+                        ?>
+                            <fieldset class="interieur_modif_offre_visite>
+                                <label for="date">Date de la visite (*)</label>
+                                <input type="date" id="date" data-sync="date_modif" value="<?php echo htmlspecialchars($infos_offre['date_visite']); ?>">
+
+                                <label for="heure_visite">Heure de la visite (*)</label>
+                                <input type="time" class="duree" id="duree" data-sync="heure_visite_modif" value="<?php echo htmlspecialchars($infos_offre['heure_visite']); ?>">
+
+                                <label for="duree">Durée (*)</label>
+                                <input type="time" class="duree" id="duree" data-sync="duree_modif" value="<?php echo htmlspecialchars($infos_offre['duree']); ?>">
+
+                                <label for="langues">Langues</label>
+                                <input type="text" id="langues" data-sync="langues_modif" value="<?php echo htmlspecialchars($infos_offre['visite_guidee']); ?>">
+                                
+                            </fieldset>
+                        <?php
                     }
 
                     ?>
