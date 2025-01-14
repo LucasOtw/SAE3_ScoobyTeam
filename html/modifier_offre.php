@@ -508,7 +508,9 @@ if($infos_offre !== null){
                     foreach($jours as $jour){
                 ?>
                 <div class="horaires-row">
-                    <input type="text" id="jour" name="horaires[<?php echo $jour; ?>]" placeholder="<?php echo $jour ?>" disabled>
+                    <div class="col">
+                        <input type="text" id="jour" name="horaires[<?php echo $jour; ?>]" placeholder="<?php echo $jour ?>" disabled>
+                    </div>
 
                     <div class="col">
                         <fieldset>
