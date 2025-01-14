@@ -65,6 +65,10 @@ $req_recup_photos->execute();
 
 $recup_photos = $req_recup_photos->fetchAll(PDO::FETCH_ASSOC);
 
+echo "<pre>";
+var_dump($recup_photos);
+echo "</pre>";
+
 /* RÉCUPÉRATION DES HORAIRES */
 
 
