@@ -566,14 +566,15 @@ if($infos_offre !== null){
                 <?php
                 foreach($recup_photos as $photo){
                 ?>
-                    <div class="photo-card">
-                        <div class="photo-image">
-                            <img src="<?php echo $photo; ?>" alt="Photo">
+
+
+                    <div id="photo-cards">
+                        <div id="photo-card">
+                            <div id="photo-image">
+                                <img src="<?php echo $photo; ?>" alt="Photo">
+                            </div>
+                            <button id="delete-photo-btn">Supprimer</button>
                         </div>
-                        <form action="delete_photo.php" method="POST" class="delete-photo-form">
-                            <input type="hidden" name="photo_path" value="<?php echo $photo; ?>">
-                            <button type="submit" class="delete-photo-btn">Supprimer</button>
-                        </form>
                     </div>
                 <?php
                 }
