@@ -363,17 +363,17 @@ if (isset($_POST['envoi_modif'])){
                     // Modification dans la bdd pour toutes les images.
                     foreach($recup_photos as $image){
                         $nom_image = basename($image);
-                        $ancien_chemin = $ancien_chemin . "/" . $nom_image;
-                        $nouveau_chemin = $nouveau_chemin . "/" . $nom_image;
+                        $img_ancien = $ancien_chemin . "/" . $nom_image;
+                        $img_nouveau = $nouveau_chemin . "/" . $nom_image;
 
                         echo "<h1> C'est ici !</h1><br><pre>";
-                        var_dump($ancien_chemin);
-                        var_dump($nouveau_chemin);
+                        var_dump($img_ancien);
+                        var_dump($img_nouveau);
                         echo "</pre>";
                         
                         $req_update_image = $dbh->prepare("UPDATE tripenarvor._image SET url_image = :nouveau WHERE url_image = :ancien");
-                        $req_update_image->bindValue(":nouveau",$nouveau_chemin);
-                        $req_update_image->bindValue(":ancien",$ancien_chemin);
+                        $req_update_image->bindValue(":nouveau",$img_nouveau);
+                        $req_update_image->bindValue(":ancien",$img_ancien);
                         $req_update_image->execute();
                     }
                 }
