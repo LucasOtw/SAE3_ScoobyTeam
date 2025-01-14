@@ -253,7 +253,7 @@ if (isset($json['results'][0])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
     <title>Détail offre</title>
-    <link rel="stylesheet" href="style.css?">
+    <link rel="stylesheet" href="styles.css?">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script> <!-- Pour les icones -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
