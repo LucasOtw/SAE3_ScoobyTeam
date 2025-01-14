@@ -61,6 +61,8 @@ $req_codes->bindValue(":code_offre", $offre['code_offre']);
 $req_codes->execute();
 $jours = $req_codes->fetch(PDO::FETCH_ASSOC);
 
+echo "<h1>".$offre['code_offre']."</h1>";
+
 echo "<pre>";
 var_dump($jours);
 echo "</pre>";
