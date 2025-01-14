@@ -456,7 +456,7 @@ if($infos_offre !== null){
 
                     ?>
                 </fieldset>
-               <fieldset>
+              <fieldset>
                 <legend>Horaires</legend>
                 <?php
                     foreach($jours as $jour){
@@ -485,6 +485,7 @@ if($infos_offre !== null){
                     }
                 ?>
             </fieldset>
+
 
 
             </div>
