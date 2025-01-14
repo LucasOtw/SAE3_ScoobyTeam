@@ -5985,12 +5985,12 @@ select.theme_contacter_plateforme {
 }
 
 /* Conteneur de l'image */
-#photo-image {
+.photo-image {
     width: 100%;
     height: auto;
 }
 
-#photo-image img {
+.photo-image img {
     width: 100%;
     height: auto;
     object-fit: cover;
@@ -5998,7 +5998,7 @@ select.theme_contacter_plateforme {
     transition: opacity 0.3s, filter 0.3s;
 }
 
-#photo-image img.supprimee {
+.photo-image img.supprimee {
     opacity: 0.5;
     filter: grayscale(100%);
     transition: opacity 0.3s, filter 0.3s;
