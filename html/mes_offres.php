@@ -73,7 +73,8 @@ if(isset($_SESSION['aCreeUneOffre'])){
                         $toutes_les_notifs = $dbh->prepare('select * from tripenarvor._notification 
                                                                 natural join tripenarvor._avis 
                                                                 natural join tripenarvor._offre 
-                                                                where professionnel = :code_compte ;');
+                                                                where professionnel = :code_compte 
+                                                                order by date_notif desc;');
                         $toutes_les_notifs->bindValue(":code_compte", $monComptePro["code_compte"]);
                         $toutes_les_notifs->execute();
                         $notifs = $toutes_les_notifs->fetchAll(PDO::FETCH_ASSOC);
@@ -121,7 +122,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
                                         <span class="notification-location"> | <?php echo $notif["titre_offre"]; ?></span>
                                         <p><?php echo $notif["txt_avis"]; ?></p>
                                         <span class="notification-time"><?php echo tempsEcouleDepuisPublication($offre);?></span>
-                                        <span class="new-notif-dot"></span>
+                                        <span class="new-notif-dot" style="display:none"></span>
                                     </div>
                                 </li>
                                 <?php
@@ -281,10 +282,12 @@ if(isset($_SESSION['aCreeUneOffre'])){
                 const notifItems = document.querySelectorAll(".notif");
         
                 if (notifItems.length > 0) {
+                    console.log("Notification trouvée");
                     notifItems.forEach(notif => {
-                        console.log("Notification trouvée");
                         const consulter = notif.getAttribute('data-consult') ? 1 : 0;
-                        console.log("Consultée : ", consulter);
+                        console.log("///Consultée : ", consulter);
+
+                        offer.style.removeProperty('display');
                     });
                 } else {
                     console.log("Aucune notification trouvée.");
