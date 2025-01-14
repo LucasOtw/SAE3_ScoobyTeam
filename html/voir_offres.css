@@ -1650,5 +1650,38 @@ body.menu-open #overlay {
 .offer-new-details input[type="submit"]:hover {
     background-color: #a9b51f;
 } 
+#newsletterConfirmBox {
+    display: none; /* Cacher la popup par défaut */
+    position: fixed; /* Position fixe pour rester visible au-dessus */
+    top: 50%; /* Centrage vertical */
+    left: 50%; /* Centrage horizontal */
+    transform: translate(-50%, -50%); /* Ajustement pour centrer */
+    width: 300px; /* Largeur de la popup */
+    padding: 20px; /* Espacement interne */
+    background-color: white; /* Fond blanc pour la popup */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour effet d'élévation */
+    border-radius: 8px; /* Coins arrondis */
+    z-index: 1000; /* Au-dessus des autres éléments */
+    text-align: center; /* Centrer le texte */
+    font-family: Arial, sans-serif; /* Police simple et lisible */
+}
+
+.popup-content {
+    margin: 0; /* Supprime les marges */
+}
+
+#closeNewsletterPopup {
+    margin-top: 10px; /* Espacement au-dessus du bouton */
+    padding: 8px 16px; /* Taille du bouton */
+    background-color: #007BFF; /* Couleur bleue */
+    color: white; /* Texte blanc */
+    border: none; /* Pas de bordure */
+    border-radius: 4px; /* Coins arrondis */
+    cursor: pointer; /* Curseur de type "main" */
+}
+
+#closeNewsletterPopup:hover {
+    background-color: #0056b3; /* Couleur plus sombre au survol */
+}
 
 
