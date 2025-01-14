@@ -5762,8 +5762,6 @@ select.theme_contacter_plateforme {
   padding: 15px;
   background-color: #f3f8ff;
   border-radius: 8px;
-  border: 1px solid #d4e1f6;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #modif_offre legend {
