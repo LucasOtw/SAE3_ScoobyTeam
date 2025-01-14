@@ -5956,6 +5956,40 @@ select.theme_contacter_plateforme {
 }
 
 
+
+.modif_offre .photo-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.modif_offre .photo-card {
+    width: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: transform 0.3s ease-in-out;
+}
+
+.modif_offre .photo-card:hover {
+    transform: scale(1.05);
+}
+
+.modif_offre .photo-card .photo-image {
+    width: 100%;
+    height: auto;
+}
+
+.modif_offre .photo-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+
                                         /*****************************************************
                                                     * Code page détail d'une offre *
                                         *****************************************************/
