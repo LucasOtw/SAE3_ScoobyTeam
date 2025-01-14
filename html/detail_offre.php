@@ -796,9 +796,6 @@ if (isset($json['results'][0])) {
                     }
                 </style>
                 <script>
-                if (window.innerWidth <= 429) {
-                    location.reload();
-                }
                     
                 function updateLikeDislike(action, codeAvis) {
                     fetch("update_likes.php", {
@@ -835,11 +832,14 @@ if (isset($json['results'][0])) {
                 function togglePositiveImage(codeAvis) {
                     var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
                     updateLikeDislike(action, codeAvis);
+                    console.log("POSITIF");
                 }
                 
                 function toggleNegativeImage(codeAvis) {
                     var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
                     updateLikeDislike(action, codeAvis);
+                    console.log("NEGATIF");
+                    
                 }
 
                     document.querySelectorAll('.pouce img').forEach(img => {
