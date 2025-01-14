@@ -5731,6 +5731,13 @@ select.theme_contacter_plateforme {
     border-color: #ff6600;
     text-decoration: none;
 }
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
 
 
 
