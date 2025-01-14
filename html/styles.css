@@ -5847,12 +5847,12 @@ select.theme_contacter_plateforme {
 
 #modif_offre .horaires-section .row {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 colonnes */
     gap: 15px;
     margin-bottom: 15px;
 }
 
-#modif_offre .horaires-section .row .col {
+#modif_offre .horaires-section .col {
     display: flex;
     flex-direction: column;
 }
@@ -5889,7 +5889,7 @@ select.theme_contacter_plateforme {
     }
 
     #modif_offre .horaires-section .row {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* 1 colonne pour les petits écrans */
     }
 
     #modif_offre .horaires-section legend {
