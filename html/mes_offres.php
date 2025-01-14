@@ -119,18 +119,19 @@ if(isset($_SESSION['aCreeUneOffre'])){
                                 {
                                 ?>
                                 
-                                <li class="notif"
-                                    data-consult="<?php echo $notif["consulter_notif"]; ?>"
-                                    data-avis="<?php echo $notif["code_avis"]; ?>" >
-                                    <img src="<?php echo $compte_pp; ?>" alt="photo de profil" class="profile-img">
-                                    <div class="notification-content">
-                                        <strong><?php echo $compte["prenom"].' '.$compte["nom"]; ?></strong>
-                                        <span class="notification-location"> | <?php echo $notif["titre_offre"]; ?></span>
-                                        <p><?php echo $notif["txt_avis"]; ?></p>
-                                        <span class="notification-time"><?php echo tempsEcouleDepuisPublication($offre);?></span>
-                                        <span class="new-notif-dot" style="display:none"></span>
-                                    </div>
-                                </li>
+                                    <li class="notif"
+                                        data-consult="<?php echo $notif["consulter_notif"]; ?>"
+                                        data-avis="<?php echo $notif["code_avis"]; ?>" >
+                                        <img src="<?php echo $compte_pp; ?>" alt="photo de profil" class="profile-img">
+                                        <div class="notification-content">
+                                            <strong><?php echo $compte["prenom"].' '.$compte["nom"]; ?></strong>
+                                            <span class="notification-location"> | <?php echo $notif["titre_offre"]; ?></span>
+                                            <p><?php echo $notif["txt_avis"]; ?></p>
+                                            <span class="notification-time"><?php echo tempsEcouleDepuisPublication($offre);?></span>
+                                            <span class="new-notif-dot" style="display:none"></span>
+                                        </div>
+                                    </li>
+                        
                                 <?php
                                 }
                                 $nb_notif++;
