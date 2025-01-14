@@ -5821,7 +5821,6 @@ select.theme_contacter_plateforme {
 #modif_offre input[type="checkbox"]:checked + .label-check {
   font-weight: bold;
   color: #003366;
-  text-decoration: underline;
 }
 
 
