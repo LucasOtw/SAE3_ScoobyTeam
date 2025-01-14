@@ -1,4 +1,3 @@
-
 <?php
 if (headers_sent($file, $line)) {
     die("Les en-têtes ont déjà été envoyés dans le fichier $file à la ligne $line.");
@@ -293,6 +292,7 @@ if (isset($json['results'][0])) {
                 <a href="voir_offres.php">
                     <img src="images/logoBlanc.png" alt="PACT Logo">
                 </a>
+
             </div>
             <nav>
                 <ul>
@@ -809,31 +809,13 @@ if (isset($json['results'][0])) {
                     .then(response => response.json())
                     .then(data => {
                         if (data.status === 'success') {
-                            // Mise à jour des images en fonction du vote personnel
-                            const positiveImage = document.getElementById('positiveImage' + codeAvis);
-                            const negativeImage = document.getElementById('negativeImage' + codeAvis);
+                            // Mise à jour de l'image des pouces
+                            document.getElementById('positiveImage' + codeAvis).src = data.pouce_positif > 0 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
+                            document.getElementById('negativeImage' + codeAvis).src = data.pouce_negatif > 0 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
                 
-                            if (positiveImage) {
-                                positiveImage.src = data.user_vote === 1 
-                                    ? 'images/pouce_positif_couleur.png' 
-                                    : 'images/pouce_positif_blanc.png';
-                            }
-                            if (negativeImage) {
-                                negativeImage.src = data.user_vote === -1 
-                                    ? 'images/pouce_negatif_couleur.png' 
-                                    : 'images/pouce_negatif_blanc.png';
-                            }
-                
-                            // Mise à jour des totaux globaux
-                            const positiveCount = document.getElementById('positiveCount' + codeAvis);
-                            const negativeCount = document.getElementById('negativeCount' + codeAvis);
-                
-                            if (positiveCount) {
-                                positiveCount.textContent = data.pouce_positif;
-                            }
-                            if (negativeCount) {
-                                negativeCount.textContent = data.pouce_negatif;
-                            }
+                            // Mise à jour des nombres de votes
+                            document.getElementById('positiveCount' + codeAvis).textContent = data.pouce_positif;
+                            document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
                         } else {
                             alert(data.message);
                         }
