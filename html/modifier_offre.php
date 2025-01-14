@@ -57,7 +57,7 @@ $jours = [
 $req_codes = $dbh->prepare("SELECT lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche
                             FROM tripenarvor._offre
                             WHERE code_offre = :code_offre");
-$req_codes->bindValue(":code_offre", $code_offre);
+$req_codes->bindValue(":code_offre", $offre['code_offre']);
 $req_codes->execute();
 $jours = $req_codes->fetch(PDO::FETCH_ASSOC);
 
