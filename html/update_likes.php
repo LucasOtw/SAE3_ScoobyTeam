@@ -25,31 +25,58 @@ try {
         exit;
     }
 
-    // Construire la requête SQL en fonction de l'action
-    if ($action === 'like') {
-        $sql = "UPDATE tripenarvor._avis SET pouce_positif = pouce_positif + 1 WHERE code_avis = :code_avis";
-    } elseif ($action === 'unlike') {
-        $sql = "UPDATE tripenarvor._avis SET pouce_positif = pouce_positif - 1 WHERE code_avis = :code_avis";
-    } elseif ($action === 'dislike') {
-        $sql = "UPDATE tripenarvor._avis SET pouce_negatif = pouce_negatif + 1 WHERE code_avis = :code_avis";
-    } elseif ($action === 'undislike') {
-        $sql = "UPDATE tripenarvor._avis SET pouce_negatif = pouce_negatif - 1 WHERE code_avis = :code_avis";
+    // Récupérer l'état actuel des likes/dislikes pour cet avis
+    $stmt = $dbh->prepare("SELECT pouce_positif, pouce_negatif FROM tripenarvor._avis WHERE code_avis = :code_avis");
+    $stmt->bindValue(':code_avis', $codeAvis, PDO::PARAM_INT);
+    $stmt->execute();
+    $avis = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$avis) {
+        echo json_encode(["status" => "error", "message" => "Avis introuvable."]);
+        exit;
     }
 
-    // Préparer et exécuter la requête
-    $stmt = $dbh->prepare($sql);
+    // Définir les ajustements en fonction de l'action
+    $adjustPositive = 0;
+    $adjustNegative = 0;
+
+    switch ($action) {
+        case 'like':
+            $adjustPositive = 1;
+            if ($avis['pouce_negatif'] > 0) $adjustNegative = -1; // Si "dislike" était actif, le retirer
+            break;
+        case 'unlike':
+            $adjustPositive = -1;
+            break;
+        case 'dislike':
+            $adjustNegative = 1;
+            if ($avis['pouce_positif'] > 0) $adjustPositive = -1; // Si "like" était actif, le retirer
+            break;
+        case 'undislike':
+            $adjustNegative = -1;
+            break;
+    }
+
+    // Mettre à jour les compteurs
+    $stmt = $dbh->prepare("
+        UPDATE tripenarvor._avis 
+        SET 
+            pouce_positif = pouce_positif + :adjustPositive, 
+            pouce_negatif = pouce_negatif + :adjustNegative 
+        WHERE code_avis = :code_avis
+    ");
+    $stmt->bindValue(':adjustPositive', $adjustPositive, PDO::PARAM_INT);
+    $stmt->bindValue(':adjustNegative', $adjustNegative, PDO::PARAM_INT);
     $stmt->bindValue(':code_avis', $codeAvis, PDO::PARAM_INT);
     $stmt->execute();
 
-    // Vérifier si la mise à jour a réussi
+    // Vérifier si la mise à jour a été effectuée
     if ($stmt->rowCount() > 0) {
         echo json_encode(["status" => "success", "message" => "Mise à jour réussie."]);
     } else {
-        echo json_encode(["status" => "error", "message" => "Aucune ligne mise à jour. Code avis invalide ?"]);
+        echo json_encode(["status" => "error", "message" => "Aucune mise à jour effectuée."]);
     }
 } catch (PDOException $e) {
     // En cas d'erreur SQL
     echo json_encode(["status" => "error", "message" => "Erreur SQL : " . $e->getMessage()]);
 }
-?>
-
