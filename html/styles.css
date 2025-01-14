@@ -5995,10 +5995,16 @@ select.theme_contacter_plateforme {
     height: auto;
     object-fit: cover;
     border-radius: 8px 8px 0 0; /* Arrondi seulement en haut */
+    transition: opacity 0.3s, filter 0.3s;
+}
+
+#photo-image img.supprimee {
+    opacity: 0.5;
+    filter: grayscale(100%);
 }
 
 /* Bouton de suppression */
-#delete-photo-btn {
+.delete-photo-btn {
     width: 100%;
     background-color: #ff4d4d;
     color: white;
@@ -6012,7 +6018,7 @@ select.theme_contacter_plateforme {
     transition: background-color 0.3s ease;
 }
 
-#delete-photo-btn:hover {
+.delete-photo-btn:hover {
     background-color: #e60000;
 }
 
