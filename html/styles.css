@@ -6031,6 +6031,10 @@ select.theme_contacter_plateforme {
     transition: background-color 0.3s, color 0.3s;
 }
 
+.revese:hover{
+  background-color: #46e86c;
+}
+
 /* Carte d'ajout de photo */
 .add-photo-card {
     display: flex;
