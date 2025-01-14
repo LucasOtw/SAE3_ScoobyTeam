@@ -52,6 +52,46 @@ $jours = [
     'Dimanche'
 ];
 
+/* RÉCUPÉRATION DES HORAIRES */
+
+$req_horaires = $dbh->prepare("SELECT 
+    o.code_offre,
+    l.nom_horaire AS lundi,
+    ma.nom_horaire AS mardi,
+    me.nom_horaire AS mercredi,
+    j.nom_horaire AS jeudi,
+    v.nom_horaire AS vendredi,
+    s.nom_horaire AS samedi,
+    d.nom_horaire AS dimanche
+FROM 
+    tripenarvor._offre o
+LEFT JOIN 
+    tripenarvor._horaire l ON o.lundi = l.code_horaire
+LEFT JOIN 
+    tripenarvor._horaire ma ON o.mardi = ma.code_horaire
+LEFT JOIN 
+    tripenarvor._horaire me ON o.mercredi = me.code_horaire
+LEFT JOIN 
+    tripenarvor._horaire j ON o.jeudi = j.code_horaire
+LEFT JOIN 
+    tripenarvor._horaire v ON o.vendredi = v.code_horaire
+LEFT JOIN 
+    tripenarvor._horaire s ON o.samedi = s.code_horaire
+LEFT JOIN 
+    tripenarvor._horaire d ON o.dimanche = d.code_horaire
+WHERE 
+    o.code_horaire IS NOT NULL
+AND
+    o.code_offre = :code_offre;
+");
+$req_horaires->bindValue(":code_offre",$offre['code_offre']);
+$req_horaires->execute();
+
+$horaires_offre = $req_horaires->fetchAll(PDO::FETCH_ASSOC);
+echo "<pre>";
+var_dump($horaires_offre);
+echo "</pre>";
+
 
 /* RÉCUPÉRATION DU "TYPE DE L'OFFRE" */
 
