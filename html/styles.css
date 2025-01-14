@@ -5970,7 +5970,7 @@ select.theme_contacter_plateforme {
 }
 
 /* Carte individuelle */
-#photo-card {
+.photo-card {
     width: 300px; /* Taille fixe pour uniformité */
     border-radius: 8px;
     overflow: hidden;
@@ -5980,7 +5980,7 @@ select.theme_contacter_plateforme {
     transition: transform 0.3s ease-in-out;
 }
 
-#photo-card:hover {
+.photo-card:hover {
     transform: scale(1.05);
 }
 
