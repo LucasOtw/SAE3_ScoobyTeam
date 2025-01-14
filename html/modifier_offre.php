@@ -773,7 +773,7 @@ if($infos_offre !== null){
                     // Récupérer l'élément parent (la carte de la photo)
                     const photoCard = button.closest('.photo-card');
         
-                    // Cibler directement l'image à l'intérieur de #photo-image
+                    // Cibler directement l'image à l'intérieur de .photo-image
                     const image = photoCard.querySelector('.photo-image img');
         
                     // Vérifier si l'image est déjà marquée comme supprimée
@@ -781,17 +781,17 @@ if($infos_offre !== null){
                         // Enlever la classe et restaurer le texte du bouton
                         image.classList.remove('supprimee');
                         button.textContent = 'Supprimer';
+                        button.classList.remove('reverse'); // Enlever la classe "reverse" du bouton
                     } else {
                         // Ajouter la classe pour griser l'image et changer le texte du bouton
                         image.classList.add('supprimee');
                         button.textContent = 'Ajouter';
+                        button.classList.add('reverse'); // Ajouter la classe "reverse" au bouton
                     }
                 });
             });
         });
     </script>
-    
-
 
 </body>
 </html>
