@@ -354,7 +354,61 @@ echo "</pre>";
             <div class="tab-content" id="services">
                 <fieldset>
                     <legend> Services </legend>
-                    <h1>Bonjour je suis un service</h1>
+                    <?php
+                    <div class="price-options">
+                        <label for="prix">Prix</label>
+                            <div class="radio-group">
+                                <div>
+                                    <input type="radio" id="moins_25" name="prix" value="€" required>
+                                    <label class="label-check" for="moins_25">€ (menu à moins de 25€)</label>
+                                </div>
+                                <div>
+                                    <input class="label-check" type="radio" id="entre_25_40" name="prix" value="€€" required>
+                                    <label class="label-check" for="entre_25_40">€€ (entre 25€ et 40€)</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="plus_40" name="prix" value="€€€" required>
+                                    <label class="label-check" for="plus_40">€€€ (au-delà de 40€)</label>
+                                </div>
+                            </div>
+                    </div>
+
+               <!-- Tarif -->
+
+                    <div class="tarif-option">
+                      <label for="tarif">
+                         Tarif
+                      </label>
+                      <input type="number" id="tarif" name="_tarif" placeholder="00.00€" min="0" step="0.01" required>
+                   </div>
+    
+                    <!-- Meal Options -->
+                    <div class="meal-options">
+                        <label>Options de repas</label>
+                        <div class="checkbox-group">
+                            <div>
+                                <input type="checkbox" id="petit_dejeuner" name="repas[]" value="Petit déjeuner">
+                                <label class="label-check" for="petit_dejeuner">Petit-Déjeuner</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="brunch" name="repas[]" value="Brunch">
+                                <label class="label-check" for="brunch">Brunch</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="dejeuner" name="repas[]" value="Déjeuner" checked>
+                                <label class="label-check" for="dejeuner">Déjeuner</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="diner" name="repas[]" value="Dîner" checked>
+                                <label class="label-check" for="diner">Dîner</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="boissons" name="repas[]" value="Boissons">
+                                <label class="label-check" for="boissons">Boissons</label>
+                            </div>
+                        </div>
+                    </div>
+                    ?>
                 </fieldset>
             </div>
             <div class="tab-content" id="photos">
