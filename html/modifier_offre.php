@@ -575,12 +575,11 @@ if($infos_offre !== null){
                                 <button id="delete-photo-btn">Supprimer</button>
                                 </div>
                             
-                            </div>
-                    
-                    </div>
+                        </div>
                 <?php
                 }
                 ?>
+                </div>
                     <!-- Carte pour ajouter une photo -->
                 <div id="photo-card" class="add-photo-card">
                     <div id="add-photo">
