@@ -112,7 +112,7 @@ function tempsEcouleDepuisPublication($offre){
                                                     natural join tripenarvor._offre 
                                                     where professionnel = :code_compte ;');
             $toutes_les_notifs->bindValue(":code_compte", $monComptePro["code_compte"]);
-            $toutes_les_notifs->execute(PDO::FETCH_ASSOC);
+            $toutes_les_notifs->execute();
 
             echo "<pre>";
             var_dump($toutes_les_notifs);
