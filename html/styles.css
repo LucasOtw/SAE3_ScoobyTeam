@@ -6059,6 +6059,9 @@ select.theme_contacter_plateforme {
 #modif_offre .interieur_modif_offre_spectacle{
     box-shadow: none;
 }
+#modif_offre .interieur_modif_offre_visite{
+    box-shadow: none;
+}
 
 /* Conteneur global */
 #modif_offre .interieur_modif_offre_spectacle {
