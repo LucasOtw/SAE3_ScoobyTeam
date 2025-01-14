@@ -59,7 +59,7 @@ $req_codes = $dbh->prepare("SELECT lundi, mardi, mercredi, jeudi, vendredi, same
                             WHERE code_offre = :code_offre");
 $req_codes->bindValue(":code_offre", $offre['code_offre']);
 $req_codes->execute();
-$codes_horaires = $req_codes->fetch(PDO::FETCH_ASSOC);
+$codes_horaires = $req_codes->fetchAll(PDO::FETCH_ASSOC);
 
 // maintenant on veut les heures d'ouverture et de fermeture pour chaque code.
 
