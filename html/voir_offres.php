@@ -1282,13 +1282,13 @@ function tempsEcouleDepuisPublication($offre){
     </div>
 </div>
 
-<!-- Popup de confirmation -->
-<div class="custom-confirm" id="newsletterConfirmBox" style="display: none;">
-    <div class="custom-confirm-content">
-        <p>Vous êtes bien inscrit(e) à notre Newsletter !</p>
+<div id="newsletterConfirmBox" style="display: none;">
+    <div class="popup-content">
+        <p class="popup-message"></p>
         <button id="closeNewsletterPopup">Fermer</button>
     </div>
 </div>
+
 
 
         
