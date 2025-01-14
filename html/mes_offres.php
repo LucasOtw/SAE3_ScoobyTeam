@@ -115,7 +115,8 @@ if(isset($_SESSION['aCreeUneOffre'])){
                                 ?>
                                 
                                 <li class="notif"
-                                    data-consult="<?php echo $notif["consulter_notif"]; ?>" >
+                                    data-consult="<?php echo $notif["consulter_notif"]; ?>"
+                                    datat-avis=<?php echo $notif["code_avis"];?> >
                                     <img src="<?php echo $compte_pp; ?>" alt="photo de profil" class="profile-img">
                                     <div class="notification-content">
                                         <strong><?php echo $compte["prenom"].' '.$compte["nom"]; ?></strong>
@@ -285,12 +286,42 @@ if(isset($_SESSION['aCreeUneOffre'])){
                     console.log("Notification trouvée");
                     notifItems.forEach(notif => {
                         const consulter = notif.getAttribute('data-consult') ? 1 : 0;
+                        const newNotifDot = notif.querySelector('.new-notif-dot');
+                        const avis = notif.getAttribute('data-avis');
+                        
                         console.log("///Consultée : ", consulter);
+                        console.log("///Avis : ", avis);
 
                         if (consulter == 0)
                         {
-                            const newNotifDot = notif.querySelector('.new-notif-dot');
                             newNotifDot.style.removeProperty('display');
+                            
+                            // Utilisation de fetch pour envoyer les données
+                            fetch("https://scooby-team.ventsdouest.dev/update_notif_status.php", {
+                                method: "POST",  // Méthode POST
+                                headers: {
+                                    "Content-Type": "application/x-www-form-urlencoded",  // Spécifie le type de contenu
+                                },
+                                body: new URLSearchParams({
+                                    code_avis : avis
+                                })
+                            })
+                                
+                            .then(response => {
+                                if (response.ok) {
+                                    console.log("L'état de la notif a été mis à jour avec succès.");
+                                } else {
+                                    console.error("Erreur lors de la mise à jour de l'état de la notif : " + response.status);
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Erreur de réseau ou autre :", error);
+                            });
+                            
+                        }
+                        else
+                        {
+                            newNotifDot.style.display = 'none';
                         }
                     });
                 } else {
