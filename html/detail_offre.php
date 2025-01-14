@@ -802,23 +802,37 @@ if (isset($json['results'][0])) {
                             "Content-Type": "application/x-www-form-urlencoded",
                         },
                         body: new URLSearchParams({
-                            action: action,
-                            code_avis: codeAvis
+                            action: action,      // Action : like, unlike, dislike, undislike
+                            code_avis: codeAvis, // Code de l'avis
+                        }),
+                    })
+                        .then((response) => {
+                            if (response.ok) {
+                                return response.json();
+                            } else {
+                                throw new Error("Erreur HTTP : " + response.status);
+                            }
                         })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.status === 'success') {
-                            document.getElementById('positiveImage' + codeAvis).src = data.pouce_positif > 0 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
-                            document.getElementById('negativeImage' + codeAvis).src = data.pouce_negatif > 0 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
-                        } else {
-                            alert(data.message);
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Erreur réseau : ", error);
-                    });
+                        .then((data) => {
+                            if (data.status === "success") {
+                                console.log("Mise à jour réussie !");
+                                // Mettre à jour les compteurs et les images
+                                updateCounters(codeAvis, data.pouce_positif, data.pouce_negatif);
+                            } else {
+                                console.error("Erreur :", data.message);
+                            }
+                        })
+                        .catch((error) => {
+                            console.error("Erreur réseau :", error);
+                        });
                 }
+                
+                function updateCounters(codeAvis, poucePositif, pouceNegatif) {
+                    // Met à jour les compteurs affichés
+                    document.querySelector(`#positiveImage${codeAvis} ~ p`).textContent = poucePositif;
+                    document.querySelector(`#negativeImage${codeAvis} ~ p`).textContent = pouceNegatif;
+                }
+
                 
                 function togglePositiveImage(codeAvis) {
                     var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
@@ -829,6 +843,7 @@ if (isset($json['results'][0])) {
                     var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
                     updateLikeDislike(action, codeAvis);
                 }
+
 
 
                 </script>
