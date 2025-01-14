@@ -561,20 +561,21 @@ if($infos_offre !== null){
 
 
             </div>
-           <div class="photo-cards">
-                <?php
-                foreach($recup_photos as $photo){
-                ?>
-                    <div class="photo-card">
-                        <div class="photo-image">
-                            <img src="<?php echo $photo; ?>" alt="Photo">
+            <div class="tab-content">
+                <div class="photo-cards">
+                    <?php
+                    foreach($recup_photos as $photo){
+                    ?>
+                        <div class="photo-card">
+                            <div class="photo-image">
+                                <img src="<?php echo $photo; ?>" alt="Photo">
+                            </div>
                         </div>
-                    </div>
-                <?php
-                }
-                ?>
+                    <?php
+                    }
+                    ?>
+                </div>
             </div>
-
             <div class="btn_modif_offre">
                 <input type="submit" name="envoi_modif" value="Modifier">
             </div>
