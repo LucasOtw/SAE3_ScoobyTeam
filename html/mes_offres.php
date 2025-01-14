@@ -271,7 +271,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
        document.addEventListener('DOMContentLoaded', () => {
             const notificationBtn = document.getElementById('notification-btn');
             const notificationPopup = document.getElementById('notification-popup');
-            const notificationBadge = document.getElementByClassName('notification-badge');
+            const notificationBadge = document.getElementByClassName('notification-badge')[0];
         
             // Ajouter la classe hidden pour masquer le pop-up au démarrage
             notificationPopup.classList.add('hidden');
