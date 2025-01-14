@@ -365,6 +365,11 @@ if (isset($_POST['envoi_modif'])){
                         $nom_image = basename($image);
                         $ancien_chemin = $ancien_chemin . "/" . $nom_image;
                         $nouveau_chemin = $nouveau_chemin . "/" . $nom_image;
+
+                        echo "<h1> C'est ici !</h1><br><pre>";
+                        var_dump($ancien_chemin);
+                        var_dump($nouveau_chemin);
+                        echo "</pre>";
                         
                         $req_update_image = $dbh->prepare("UPDATE tripenarvor._image SET url_image = :nouveau WHERE url_image = :ancien");
                         $req_update_image->bindValue(":nouveau",$nouveau_chemin);
