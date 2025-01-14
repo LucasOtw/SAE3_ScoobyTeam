@@ -538,7 +538,7 @@ if($infos_offre !== null){
                             break;
                         case "spectacle" :
                             ?>
-                                <fieldset class="interieur_modif_offre_services">
+                                <fieldset class="interieur_modif_offre_spectacle">
                                     <label for="date">Date du spectacle (*)</label>
                                     <input type="date" id="date" data-sync="date_modif" value="<?php echo htmlspecialchars($infos_offre['date_spectacle']) ?>" required>
 
