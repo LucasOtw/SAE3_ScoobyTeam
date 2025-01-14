@@ -515,7 +515,12 @@ if($infos_offre !== null){
                     <div class="col">
                         <fieldset>
                             <legend>Ouverture</legend>
-                            <input type="time" id="ouverture" name="horaires[<?php echo $jour; ?>]["ouverture"]" placeholder="Ouverture">
+                            <input type="time" id="ouverture" name="horaires[<?php echo $jour; ?>]["ouverture"]" placeholder="Ouverture"
+                            <?php if($codes_horaires[$jour]['ouverture'] !== null){
+                                ?>
+                                value="<?php echo htmlspecialchars($codes_horaires[$jour]['ouverture']); ?>"
+                                <?php
+                            } ?>>
                         </fieldset>
                     </div>
                     <div class="col">
