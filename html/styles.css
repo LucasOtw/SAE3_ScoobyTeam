@@ -5623,13 +5623,13 @@ select.theme_contacter_plateforme {
     margin-bottom: 10px;
     box-sizing: border-box;
     padding: 0.5em;
-    border: 1px solid var(--orange);
+    border: 1px solid #000;
 }
 #modif_offre span[contenteditable="true"] {
   width: 100%;
   font-size: 1rem;
   border-radius: 8px;
-  border: 1px solid var(--orange);
+  border: 1px solid #000;
   background-color: #fff;
   margin-bottom: 10px;
   box-sizing: border-box;
