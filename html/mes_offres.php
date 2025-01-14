@@ -270,6 +270,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
        document.addEventListener('DOMContentLoaded', () => {
             const notificationBtn = document.getElementById('notification-btn');
             const notificationPopup = document.getElementById('notification-popup');
+            const notificationBadge = document.getElementByClassName('notification-badge');
         
             // Ajouter la classe hidden pour masquer le pop-up au démarrage
             notificationPopup.classList.add('hidden');
@@ -279,11 +280,11 @@ if(isset($_SESSION['aCreeUneOffre'])){
                 notificationPopup.classList.toggle('hidden');
             });
         
-            document.addEventListener('click', (e) => {
-                if (!notificationPopup.contains(e.target) && !notificationBtn.contains(e.target)) {
-                    notificationPopup.classList.add('hidden');
-                }
-            });
+            // document.addEventListener('click', (e) => {
+            //     if (!notificationPopup.contains(e.target) && !notificationBtn.contains(e.target)) {
+            //         notificationPopup.classList.add('hidden');
+            //     }
+            // });
            
         });
 

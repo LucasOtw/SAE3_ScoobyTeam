@@ -70,8 +70,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([':code_avis' => $codeAvis]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $poucePositif = $result['pouce_positif'] ?? 0;
-        $pouceNegatif = $result['pouce_negatif'] ?? 0;
+        // Récupérer le vote de l'utilisateur connecté
+        $stmt = $dbh->prepare("
+            SELECT pouce 
+            FROM tripenarvor._pouce 
+            WHERE code_avis = :code_avis AND code_compte = :code_compte
+        ");
+        $stmt->execute([':code_avis' => $codeAvis, ':code_compte' => $codeCompte]);
+        $userVote = $stmt->fetchColumn() ?: 0; // 0 si pas de vote
 
         // Mettre à jour les compteurs dans la table _avis
         $stmt = $dbh->prepare("UPDATE tripenarvor._avis SET pouce_positif = :pouce_positif, pouce_negatif = :pouce_negatif WHERE code_avis = :code_avis");
@@ -84,11 +90,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dbh->commit();
 
         // Réponse au frontend avec les nouveaux compteurs
+        // Calculer l'état du vote global
+
         echo json_encode([
             'status' => 'success',
-            'pouce_positif' => $poucePositif,
-            'pouce_negatif' => $pouceNegatif,
+            'pouce_positif' => $result['pouce_positif'] ?? 0,
+            'pouce_negatif' => $result['pouce_negatif'] ?? 0,
+            'user_vote' => $userVote // Retourne l'état du vote de l'utilisateur
         ]);
+
     } catch (Exception $e) {
         $dbh->rollBack();
         echo json_encode([
