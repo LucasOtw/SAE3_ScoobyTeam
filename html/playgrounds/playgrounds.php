@@ -7,19 +7,15 @@
         // Créer une instance PDO
         $dbh = new PDO($dsn, $username, $password);
 
-        $afficheUtilisateur = $dbh->query("SELECT * FROM tripenarvor._compte WHERE code_compte = 1");
-        $afficheUtilisateur = $afficheUtilisateur->fetch();
+        // UPDATE DE BDD
 
-        // Récup de ses infos compte pro :
+        $var1 = "../images/offres/MeinKraft/minecraft.jpg";
+        $var2 = "images/offres/MeinKrafte/minecraft.jpg";
 
-        $monComptePro = $dbh->query("SELECT * FROM tripenarvor._professionnel WHERE code_compte = 1");
-        $monComptePro = $monComptePro->fetch(PDO::FETCH_ASSOC);
-
-echo "<pre>";
-var_dump($afficheUtilisateur);
-echo "</pre>";
-echo "<h1> INFOS. PRO </h1>";
-echo "<pre>";
-var_dump($monComptePro);
-echo "</pre>";
+        $req = $dbh->prepare("UPDATE tripenarvor._image SET code_image = :nouv_val WHERE code_image = :ancienne_val");
+        $req->bindValue(":nouv_val",$var2);
+        $req->bindValue(":ancienne_val",$var1);
+        if($req->execute()){
+                echo "Hello Mother !";
+        }
 ?>
