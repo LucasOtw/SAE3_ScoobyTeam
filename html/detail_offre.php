@@ -763,15 +763,13 @@ if (isset($json['results'][0])) {
                 <?php endif; ?>
                 <style>
                      .pouce {
-                        position: relative;
                         display: inline-block;
                         width: 50px; /* Ajuster selon la taille de l'image */
                         height: 50px; /* Ajuster selon la taille de l'image */
                         cursor: pointer;
                     }
                     .pouce img {
-                        position: absolute;
-                        top: 0;
+                       
                         left: 0;
                         width: 1.5em;
                         height: 1.5em; 
@@ -858,7 +856,7 @@ if (isset($json['results'][0])) {
                 <div class="signalement_repondre">
                     <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
                         <img id="positiveImage<?php echo $avis['code_avis']; ?>" src="images/pouce_positif_blanc.png" alt="Pouce positif" onclick="togglePositiveImage(<?php echo $avis['code_avis']; ?>)">
-                        <p><?php echo $avis['pouce_negatif']; ?></p>           
+                        <p><?php echo $avis['pouce_positif']; ?></p>           
                     </div>
                     
                     <div class="pouce pouce<?php echo $avis['code_avis']; ?>">

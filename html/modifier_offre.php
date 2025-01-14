@@ -259,17 +259,17 @@ echo "</pre>";
 </header>
 <body>
     <main>
-    <h1 id="titre_modif_offre">Modifiez votre offre</h1>
-    <form id="modif_offre" action="#" method="POST">
-        <!-- Infos. Générales-->
-        <section class="tabs">
-            <ul>
-                <li><a href="#" class="active">Informations générales</a></li>
-                <li><a href="#">Services et horaires</a></li>
-                <li><a href="#">Photos</a></li>
-            </ul>
-        </section>
-        <div>
+        <h1 id="titre_modif_offre">Modifiez votre offre</h1>
+        <form id="modif_offre" action="#" method="POST">
+            <!-- Infos. Générales-->
+            <section class="tabs">
+                <ul>
+                    <li><a href="#" class="active" data-tab="general">Informations générales</a></li>
+                    <li><a href="#" data-tab="services">Services et horaires</a></li>
+                    <li><a href="#" data-tab="photos">Photos</a></li>
+                </ul>
+            </section>
+            <div class="tab-content active" id="general">
                 <fieldset>
                     <legend>Titre</legend>
                     
@@ -343,50 +343,15 @@ echo "</pre>";
                         </tbody>
                     </table>
                 </fieldset>
-
+            </div>
+            <div class="tab-content" id="services">
                 <fieldset>
                     <legend> Services </legend>
-                    <?php
-
-                        switch($type_offre){
-                            case "restauration":
-                                ?>
-                                <div class="prix_restaurant">
-                                    
-                                </div>
-                            <?php
-                        }
-
-                        if($type_offre == "restauration"){
-                            // on récupère
-                            ?>
-                            <div class="prix_restaurant">
-                                <label for="prix">Prix</label>
-                                    <div class="radio-group">
-                                        <div>
-                                            <input type="radio" id="moins_25" name="prix" value="€" required>
-                                            <label class="label-check" for="moins_25">€ (menu à moins de 25€)</label>
-                                        </div>
-                                        <div>
-                                            <input class="label-check" type="radio" id="entre_25_40" name="prix" value="€€" required>
-                                            <label class="label-check" for="entre_25_40">€€ (entre 25€ et 40€)</label>
-                                        </div>
-                                        <div>
-                                            <input type="radio" id="plus_40" name="prix" value="€€€" required>
-                                            <label class="label-check" for="plus_40">€€€ (au-delà de 40€)</label>
-                                        </div>
-                                    </div>
-                            </div>
-                            <div class="truc">
-                              <label for="tarif">
-                                 Tarif
-                              </label>
-                              <input type="number" id="tarif" name="_tarif" placeholder="00.00€" min="0" step="0.01" required>
-                           </div>
-                            <?php
-                        }
-                    ?>
+                    <h1>Bonjour je suis un service</h1>
                 </fieldset>
+            </div>
+            <div class="tab-content" id="photos">
+                <h1>Pas de photos</h1>
             </div>
             <div class="btn_modif_offre">
                 <input type="submit" name="envoi_modif" value="Modifier">
@@ -458,5 +423,35 @@ echo "</pre>";
             });
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.tabs a');
+            const sections = document.querySelectorAll('.tab-content');
+    
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function (e) {
+                    e.preventDefault();
+    
+                    // Supprime la classe active de tous les onglets
+                    tabs.forEach(t => t.classList.remove('active'));
+    
+                    // Ajoute la classe active à l'onglet cliqué
+                    tab.classList.add('active');
+    
+                    // Récupère l'ID de la section associée
+                    const tabId = tab.getAttribute('data-tab');
+    
+                    // Masque toutes les sections
+                    sections.forEach(section => section.classList.remove('active'));
+    
+                    // Affiche la section correspondante
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+    
+
+
 </body>
 </html>
