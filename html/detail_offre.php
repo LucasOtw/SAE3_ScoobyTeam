@@ -826,7 +826,10 @@ if (isset($json['results'][0])) {
                                     document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
                     
                                     // Scroller vers l'avis après la mise à jour
-                                    scrollToAvis('negativeImage' + codeAvis);
+                                    if (window.innerWidth <= 429) {
+                                        location.reload();
+                                        scrollToAvis('negativeImage' + codeAvis);
+                                    }
                                 } else {
                                     alert(data.message);
                                 }
@@ -841,7 +844,10 @@ if (isset($json['results'][0])) {
                         updateLikeDislike(action, codeAvis);
                     
                         // Scroll à l'avis
-                        scrollToAvis(codeAvis);
+                        if (window.innerWidth <= 429) {
+                            location.reload();
+                            scrollToAvis(codeAvis);
+                        }
                     }
                     
                     function toggleNegativeImage(codeAvis) {
@@ -849,7 +855,10 @@ if (isset($json['results'][0])) {
                         updateLikeDislike(action, codeAvis);
                     
                         // Scroll à l'avis
-                        scrollToAvis(codeAvis);
+                        if (window.innerWidth <= 429) {
+                            location.reload();
+                            scrollToAvis(codeAvis);
+                        }
                     }
 
                     
