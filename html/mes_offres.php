@@ -90,9 +90,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
                         {
                             foreach ($notifs as $index => $notif)
                             {
-                                echo "<pre>";
-                                var_dump($notif);
-                                echo "</pre>";
+                                echo $notif["code_avis"];
                                 
                                 $checkPP = $dbh->prepare("SELECT url_image FROM tripenarvor._sa_pp WHERE code_compte = :code_compte");
                                 $checkPP->bindValue(":code_compte",$notif['code_compte']);
