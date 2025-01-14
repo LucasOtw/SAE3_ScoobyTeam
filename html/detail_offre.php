@@ -837,19 +837,25 @@ if (isset($json['results'][0])) {
                     }
                     
                     function togglePositiveImage(codeAvis) {
-                        var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
+                        const action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
                         updateLikeDislike(action, codeAvis);
+                    
+                        // Scroll à l'avis
+                        scrollToAvis(codeAvis);
                     }
                     
                     function toggleNegativeImage(codeAvis) {
-                        var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
+                        const action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
                         updateLikeDislike(action, codeAvis);
-                    }
                     
-                    // Associer les événements aux images des pouces
-                    document.querySelectorAll('.pouce img').forEach(img => {
+                        // Scroll à l'avis
+                        scrollToAvis(codeAvis);
+                    }
+
+                    
+                   document.querySelectorAll('.pouce img').forEach(img => {
                         img.addEventListener('click', () => {
-                            const codeAvis = img.id.replace(/\D/g, ''); // Extraire le code de l'avis
+                            const codeAvis = img.id.replace(/\D/g, ''); // Extraire uniquement les chiffres de l'id
                             if (img.id.includes('positiveImage')) {
                                 togglePositiveImage(codeAvis);
                             } else if (img.id.includes('negativeImage')) {
@@ -857,18 +863,22 @@ if (isset($json['results'][0])) {
                             }
                         });
                     });
+
                     
-                    function scrollToAvis(id) {
-                        const element = document.getElementById(id);
+                    function scrollToAvis(codeAvis) {
+                        // Utilisation de la classe pouce avec codeAvis pour cibler le premier élément correspondant
+                        const element = document.querySelector('.pouce' + codeAvis);
                         if (element) {
+                            console.log("Défilement vers l'avis avec codeAvis :", codeAvis);
                             element.scrollIntoView({
                                 behavior: "smooth", // Défilement fluide
-                                block: "start" // Aligner en haut de l'écran
+                                block: "start" // Aligner l'élément en haut de l'écran
                             });
                         } else {
-                            console.error(`Élément avec l'ID ${id} non trouvé.`);
+                            console.error("Aucun élément trouvé pour le codeAvis :", codeAvis);
                         }
                     }
+
 
                 </script>
 
