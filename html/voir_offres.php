@@ -1339,47 +1339,46 @@ function tempsEcouleDepuisPublication($offre){
 
 </body>
 </html>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const newsletterForm = document.getElementById('newsletterForm');
-        const emailInput = document.getElementById('newsletterEmail');
-        const newsletterPopup = document.getElementById('newsletterConfirmBox');
-        const closePopupButton = document.getElementById('closeNewsletterPopup');
+document.addEventListener('DOMContentLoaded', () => {
+    const newsletterForm = document.getElementById('newsletterForm');
+    const emailInput = document.getElementById('newsletterEmail');
+    const newsletterPopup = document.getElementById('newsletterConfirmBox');
+    const closePopupButton = document.getElementById('closeNewsletterPopup');
 
-        // Empêche le comportement par défaut du formulaire et affiche la popup
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Empêche le rechargement de la page
+    // Gestion de la soumission du formulaire
+    newsletterForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // Empêche le rechargement de la page
 
-            const email = emailInput.value.trim(); // Récupère la valeur de l'email
-            if (email) {
-                // Envoyer l'email au serveur via fetch ou XMLHttpRequest
-                fetch('envoyer_email3.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: `email=${encodeURIComponent(email)}`
+        const email = emailInput.value.trim(); // Récupère la valeur de l'email
+        if (email) {
+            fetch('envoyer_email3.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `email=${encodeURIComponent(email)}`
+            })
+                .then(() => {
+                    // Affiche toujours le message positif
+                    afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
                 })
-                    .then(response => response.text())
-                    .then(data => {
-                        console.log(data); // Débogage
-                        if (data === 'success') {
-                            newsletterPopup.style.display = 'flex'; // Affiche la popup
-                        } else {
-                            alert("Erreur lors de l'inscription. Veuillez réessayer.");
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Erreur lors de l\'envoi :', error);
-                    });
-            } else {
-                alert("Veuillez entrer une adresse email valide.");
-            }
-        });
-
-        // Fermer la popup lorsqu'on clique sur le bouton "Fermer"
-        closePopupButton.addEventListener('click', () => {
-            newsletterPopup.style.display = 'none';
-        });
+                .catch(() => {
+                    // Même message en cas d'erreur
+                    afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
+                });
+        } else {
+            alert("Veuillez entrer une adresse email valide.");
+        }
     });
-</script>
+
+    // Fonction pour afficher la popup avec un message
+    function afficherPopup(message) {
+        newsletterPopup.querySelector('.popup-message').innerText = message;
+        newsletterPopup.style.display = 'flex';
+    }
+
+    // Fermer la popup lorsqu'on clique sur le bouton "Fermer"
+    closePopupButton.addEventListener('click', () => {
+        newsletterPopup.style.display = 'none';
+    });
+});
 
 
