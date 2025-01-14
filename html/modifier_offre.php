@@ -371,6 +371,7 @@ if (isset($_POST['envoi_modif'])){
                     $img_modif = $recup_photos;
 
                     foreach($img_modif as $photo){
+                        echo "<h1>".$photo."</h1><br>";
                         $nom_image = basename($photo);
                         $nouv_lien = "../images/offres/{$nouv_dossier}/{$nom_image}";
 
