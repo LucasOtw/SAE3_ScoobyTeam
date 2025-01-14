@@ -5628,14 +5628,14 @@ select.theme_contacter_plateforme {
   width: 100%;
   font-size: 1rem;
   border-radius: 8px;
-  border: 1px solid #f3f8ff;
+  border: 1px solid var(--orange);
   background-color: #fff;
   margin-bottom: 10px;
   box-sizing: border-box;
   padding: 0.5em;
-  display: block; /* S'assure que le texte s'affiche dans une seule boîte */
-  white-space: pre-wrap; /* Permet aux retours à la ligne de s'afficher correctement */
-  overflow-wrap: break-word; /* Permet de forcer le texte à s'ajuster dans la boîte */
+  display: block;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 
 
