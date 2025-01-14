@@ -818,9 +818,6 @@ if (isset($json['results'][0])) {
                             document.getElementById('positiveCount' + codeAvis).textContent = data.pouce_positif;
                             document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
                             
-                            if (window.innerWidth <= 429;){
-                                location.reload();
-                            }
                             
                         } else {
                             alert(data.message);
@@ -848,6 +845,10 @@ if (isset($json['results'][0])) {
                                 togglePositiveImage(codeAvis);
                             } else if (img.id.includes('negativeImage')) {
                                 toggleNegativeImage(codeAvis);
+                            }
+
+                            if (window.innerWidth <= 429;){
+                                location.reload();
                             }
                         });
                     });
