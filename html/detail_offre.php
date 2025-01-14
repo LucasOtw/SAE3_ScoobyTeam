@@ -810,22 +810,11 @@ if (isset($json['results'][0])) {
                     .then(response => response.json())
                     .then(data => {
                         if (data.status === 'success') {
-                            // Mise à jour des images des pouces
-                            const positiveImage = document.getElementById('positiveImage' + codeAvis);
-                            const negativeImage = document.getElementById('negativeImage' + codeAvis);
+                            // Mise à jour de l'image des pouces
+                            document.getElementById('positiveImage' + codeAvis).src = data.pouce_positif > 0 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
+                            document.getElementById('negativeImage' + codeAvis).src = data.pouce_negatif > 0 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
                 
-                            if (data.current_vote === 1) {
-                                positiveImage.src = 'images/pouce_positif_couleur.png';
-                                negativeImage.src = 'images/pouce_negatif_blanc.png';
-                            } else if (data.current_vote === -1) {
-                                positiveImage.src = 'images/pouce_positif_blanc.png';
-                                negativeImage.src = 'images/pouce_negatif_couleur.png';
-                            } else {
-                                positiveImage.src = 'images/pouce_positif_blanc.png';
-                                negativeImage.src = 'images/pouce_negatif_blanc.png';
-                            }
-                
-                            // Mise à jour des compteurs
+                            // Mise à jour des nombres de votes
                             document.getElementById('positiveCount' + codeAvis).textContent = data.pouce_positif;
                             document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
                         } else {
@@ -838,29 +827,16 @@ if (isset($json['results'][0])) {
                 }
                 
                 function togglePositiveImage(codeAvis) {
-                    const positiveImage = document.getElementById('positiveImage' + codeAvis);
-                    const action = positiveImage.src.includes('blanc') ? 'like' : 'unlike';
+                    var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
                     updateLikeDislike(action, codeAvis);
                 }
                 
                 function toggleNegativeImage(codeAvis) {
-                    const negativeImage = document.getElementById('negativeImage' + codeAvis);
-                    const action = negativeImage.src.includes('blanc') ? 'dislike' : 'undislike';
+                    var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
                     updateLikeDislike(action, codeAvis);
                 }
+                </script>
 
-                function refreshAvis() {
-                    fetch("detail_offre.php")  // Le fichier PHP qui retourne les avis
-                        .then(response => response.text())
-                        .then(data => {
-                            // Remplacer le contenu des avis
-                            document.getElementById("avis-widget").innerHTML = data;
-                        })
-                        .catch(error => console.error("Erreur lors du rafraîchissement des avis : ", error));
-                }
-
-
-            </script>
 
                 <?php 
                     if (isset($_SESSION['membre']['code_compte'])){
