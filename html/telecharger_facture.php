@@ -676,9 +676,9 @@ if(!isset($_SESSION['pro'])){
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="voir_offres.php">Accueil</a></li>
-                    <li><a href="connexion_pro.php">Publier</a></li>
-                    <li><a href="connexion_memebre.php">Se Connecter</a></li>
+                    <li><a href="mes_offres.php">Accueil</a></li>
+                    <li><a href="creation_offre.php">Publier</a></li>
+                    <li><a href="consulter_compte_pro.php">Mon Compte</a></li>
                 </ul>
             </div>
             <div class="link-group">
