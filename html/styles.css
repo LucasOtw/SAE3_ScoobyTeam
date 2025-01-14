@@ -6098,6 +6098,115 @@ select.theme_contacter_plateforme {
     flex: 1;
 }
 
+/* Conteneur global */
+#modif_offre .interieur_modif_offre_services {
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+}
+
+/* Légende */
+#modif_offre .interieur_modif_offre_services legend {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Options de prix */
+#modif_offre .price-options {
+    margin-bottom: 20px;
+}
+
+#modif_offre .price-options label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    display: block;
+}
+
+#modif_offre .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#modif_offre .radio-group div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#modif_offre .label-check {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Tarif */
+#modif_offre .tarif-option {
+    margin-bottom: 20px;
+}
+
+#modif_offre .tarif-option label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+#modif_offre .tarif-option input {
+    width: 100%;
+    max-width: 200px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Options de repas */
+#modif_offre .meal-options {
+    margin-bottom: 20px;
+}
+
+#modif_offre .meal-options label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    display: block;
+}
+
+#modif_offre .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#modif_offre .checkbox-group div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#modif_offre .checkbox-group .label-check {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Inputs */
+#modif_offre input[type="radio"],
+#modif_offre input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+#modif_offre input[type="number"] {
+    text-align: center;
+}
 
 
                                         /*****************************************************
