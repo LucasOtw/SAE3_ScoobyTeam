@@ -78,9 +78,9 @@ if(isset($_SESSION['aCreeUneOffre'])){
             $toutes_les_notifs->execute();
             $notifs = $toutes_les_notifs->fetchAll(PDO::FETCH_ASSOC);
 
-            echo "<pre>";
-            var_dump($notifs);
-            echo "</pre>";
+            // echo "<pre>";
+            // var_dump($notifs);
+            // echo "</pre>";
 
             foreach ($toutes_les_notifs as $index => $notif)
             {
