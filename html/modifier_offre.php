@@ -508,12 +508,8 @@ if($infos_offre !== null){
                     foreach($jours as $jour){
                 ?>
                 <div class="horaires-row">
-                    <div class="col">
-                        <fieldset>
-                            <legend>Jour</legend>
-                            <input type="text" id="jour" name="horaires[<?php echo $jour; ?>]" placeholder="<?php echo $jour ?>" disabled>
-                        </fieldset>
-                    </div>
+                    <input type="text" id="jour" name="horaires[<?php echo $jour; ?>]" placeholder="<?php echo $jour ?>" disabled>
+
                     <div class="col">
                         <fieldset>
                             <legend>Ouverture</legend>
