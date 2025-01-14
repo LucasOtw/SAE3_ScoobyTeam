@@ -271,7 +271,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
        document.addEventListener('DOMContentLoaded', () => {
             const notificationBtn = document.getElementById('notification-btn');
             const notificationPopup = document.getElementById('notification-popup');
-            const notificationBadge = document.getElementByClassName('notification-badge')[0];
+            //const notificationBadge = document.getElementByClassName('notification-badge')[0];
         
             // Ajouter la classe hidden pour masquer le pop-up au démarrage
             notificationPopup.classList.add('hidden');
@@ -279,7 +279,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
             notificationBtn.addEventListener('click', (e) => {
                 e.preventDefault(); // Empêche le comportement par défaut de l'ancre
                 notificationPopup.classList.toggle('hidden');
-                notificationBadge.style.display = "none";
+                //notificationBadge.style.display = "none";
             });
         
             document.addEventListener('click', (e) => {
