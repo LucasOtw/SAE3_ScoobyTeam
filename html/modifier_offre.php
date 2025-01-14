@@ -42,6 +42,7 @@ $offre = $_SESSION['modif_offre'];
 
 /* TABLEAU DES JOURS */
 
+
 $jours = [
     'lundi',
     'mardi',
@@ -52,7 +53,20 @@ $jours = [
     'dimanche'
 ];
 
+
+/* RÉCUPÉRATION DES PHOTOS */
+
+$req_recup_photos = $dbh->prepare("SELECT url_image FROM tripenarvor._image WHERE code_Image IN
+(
+SELECT code_Image FROM tripenarvor._son_image WHERE code_offre = :code_offre
+)");
+$req_recup_photos->bindValue(":code_offre",$offre['code_offre']);
+$req_recup_photos->execute();
+
+$recup_photos = $req_recup_photos->fetchAll(PDO::FETCH_ASSOC);
+
 /* RÉCUPÉRATION DES HORAIRES */
+
 
 // Récupération des codes horaires pour chaque jour
 $req_codes = $dbh->prepare("SELECT lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche
