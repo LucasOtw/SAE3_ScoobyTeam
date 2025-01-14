@@ -832,6 +832,7 @@ if (isset($json['results'][0])) {
                     document.querySelector(`#positiveImage${codeAvis} ~ p`).textContent = poucePositif;
                     document.querySelector(`#negativeImage${codeAvis} ~ p`).textContent = pouceNegatif;
                 }
+
                 
                 function togglePositiveImage(codeAvis) {
                     var positiveImage = document.getElementById('positiveImage' + codeAvis);
