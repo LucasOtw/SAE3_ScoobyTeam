@@ -855,8 +855,11 @@ if (isset($json['results'][0])) {
                             const codeAvis = img.id.replace(/\D/g, ''); // Extraire le code de l'avis
                             if (img.id.includes('positiveImage')) {
                                 togglePositiveImage(codeAvis);
+                                console.log("TEST");
                             } else if (img.id.includes('negativeImage')) {
                                 toggleNegativeImage(codeAvis);
+                                console.log("TEST2");
+                                
                             }
                         });
                     });
