@@ -423,5 +423,35 @@ echo "</pre>";
             });
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.tabs a');
+            const sections = document.querySelectorAll('.tab-content');
+    
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function (e) {
+                    e.preventDefault();
+    
+                    // Supprime la classe active de tous les onglets
+                    tabs.forEach(t => t.classList.remove('active'));
+    
+                    // Ajoute la classe active à l'onglet cliqué
+                    tab.classList.add('active');
+    
+                    // Récupère l'ID de la section associée
+                    const tabId = tab.getAttribute('data-tab');
+    
+                    // Masque toutes les sections
+                    sections.forEach(section => section.classList.remove('active'));
+    
+                    // Affiche la section correspondante
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+    
+
+
 </body>
 </html>
