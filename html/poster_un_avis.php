@@ -226,19 +226,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <footer class="footer footer_membre">
         <div class="newsletter">
-            <div class="newsletter-content">
-                <h2>Inscrivez-vous à notre Newsletter</h2>
-                <p>PACT</p>
-                <p>Redécouvrez la Bretagne !</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Votre adresse mail" required>
-                    <button type="submit">S'inscrire</button>
-                </form>
-            </div>
-            <div class="newsletter-image">
-                <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
-            </div>
+        <div class="newsletter-content">
+            <h2>Inscrivez-vous à notre Newsletter</h2>
+            <p>PACT</p>
+            <p>découvrez la Bretagne !</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" id="newsletterEmail" placeholder="Votre adresse mail" required>
+                <button type="submit">S'inscrire</button>
+            </form>
         </div>
+        <div class="newsletter-image">
+            <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
+        </div>
+    </div>
+
+    <div id="newsletterConfirmBox" style="display: none;">
+        <div class="popup-content">
+            <p class="popup-message"></p>
+            <button id="closeNewsletterPopup">Fermer</button>
+        </div>
+    </div>
 
         <div class="footer-links">
             <div class="logo\avis">
@@ -285,5 +292,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </footer>
 </body>
-
 </html>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const newsletterForm = document.getElementById('newsletterForm');
+    const emailInput = document.getElementById('newsletterEmail');
+    const newsletterPopup = document.getElementById('newsletterConfirmBox');
+    const closePopupButton = document.getElementById('closeNewsletterPopup');
+
+    newsletterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const email = emailInput.value.trim();
+        if (email) {
+            fetch('envoyer_email3.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `email=${encodeURIComponent(email)}`
+            })
+                .then(() => {
+                    afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
+                    
+                })
+                .catch(() => {
+                    afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
+                });
+        } else {
+            alert("Veuillez entrer une adresse email valide.");
+        }
+    });
+
+    function afficherPopup(message) {
+        newsletterPopup.querySelector('.popup-message').innerText = message;
+        newsletterPopup.style.display = 'block';
+    }
+
+    closePopupButton.addEventListener('click', () => {
+        newsletterPopup.style.display = 'none';
+    });
+});
+
+</script>
+
+
