@@ -1324,9 +1324,9 @@ WHERE code_offre = :code_offre
         <div class="newsletter-content">
             <h2>Inscrivez-vous à notre Newsletter</h2>
             <p>PACT</p>
-            <p>Redécouvrez la Bretagne !</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Votre adresse mail" required>
+            <p>découvrez la Bretagne !</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" id="newsletterEmail" placeholder="Votre adresse mail" required>
                 <button type="submit">S'inscrire</button>
             </form>
         </div>
@@ -1334,6 +1334,7 @@ WHERE code_offre = :code_offre
             <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
         </div>
     </div>
+
     <div id="newsletterConfirmBox" style="display: none;">
         <div class="popup-content">
             <p class="popup-message"></p>
