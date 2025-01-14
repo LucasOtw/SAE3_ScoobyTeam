@@ -58,6 +58,7 @@ $req_horaires = $dbh->prepare("SELECT * FROM tripenarvor._horaire WHERE code_hor
 SELECT lundi,mardi,mercredi,jeudi,vendredi,samedi,dimanche FROM tripenarvor._offre
 WHERE code_offre = :code_offre
 )");
+$req_horaires->bindValue(":code_offre",$offre['code_offre']);
 $req_horaires->execute();
 $req_horaires = $req_horaires->fetchAll(PDO::FETCH_ASSOC);
 
