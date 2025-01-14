@@ -562,32 +562,32 @@ if($infos_offre !== null){
 
             </div>
             <div class="tab-content" id="photos">
-            <div class="photo-cards">
-                <?php
-                foreach($recup_photos as $photo){
-                ?>
-
-                    <div id="photo-cards">
-                            <div id="photo-card">
-                            <div id="photo-image">
-                                <img src="<?php echo $photo; ?>" alt="Photo">
+                <div class="photo-cards">
+                    <?php
+                    foreach($recup_photos as $photo){
+                    ?>
+    
+                        <div id="photo-cards">
+                                <div id="photo-card">
+                                <div id="photo-image">
+                                    <img src="<?php echo $photo; ?>" alt="Photo">
+                                </div>
+                                <button id="delete-photo-btn">Supprimer</button>
+                                </div>
+                            
                             </div>
-                            <button id="delete-photo-btn">Supprimer</button>
-                            </div>
-                        
-                        </div>
-                
-                </div>
+                    
+                    </div>
                 <?php
                 }
                 ?>
                     <!-- Carte pour ajouter une photo -->
-                        <div id="photo-card" class="add-photo-card">
-                            <div id="add-photo">
-                                <span>+</span>
-                                <p>Ajouter une photo</p>
-                            </div>
+                    <div id="photo-card" class="add-photo-card">
+                        <div id="add-photo">
+                            <span>+</span>
+                            <p>Ajouter une photo</p>
                         </div>
+                    </div>
             </div>
         </div>
 
