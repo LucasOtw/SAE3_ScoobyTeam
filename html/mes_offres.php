@@ -52,10 +52,11 @@ if(isset($_SESSION['aCreeUneOffre'])){
             <li><a href="creation_offre.php">Publier</a></li>
             <li><a href="consulter_compte_pro.php">Mon Compte</a></li>
             <li>
-    <a href="#" class="notification-icon" id="notification-btn">
-        <img src="images/notif.png" alt="cloche notification" class="nouvelle-image" style="margin-top: -5px;">
-        <span class="notification-badge" style="display:none"></span>
-    </a>
+            <a href="#" class="notification-icon" id="notification-btn">
+                <img src="images/notif.png" alt="cloche notification" class="nouvelle-image" style="margin-top: -5px;">
+                <span class="notification-badge" style="display:none"></span>
+            </a>
+            </li>
     <div id="notification-popup">
         <ul>
             <?php
