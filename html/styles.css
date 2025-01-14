@@ -5684,6 +5684,7 @@ select.theme_contacter_plateforme {
 .btn_modif_offre{
     display: flex;
     justify-content: flex-end;
+    margin-top: 4em;
 }
 @media (max-width: 768px) {
     #modif_offre {
@@ -5768,7 +5769,7 @@ select.theme_contacter_plateforme {
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #003366;
+  color: var(--orange);
 }
 
 #modif_offre label {
@@ -5848,7 +5849,7 @@ select.theme_contacter_plateforme {
 
 #modif_offre fieldset {
     padding: 15px;
-    background-color: #f3f8ff;
+    background-color: #fff;
     border-radius: 8px;
     box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
     border: none;
@@ -5957,18 +5958,18 @@ select.theme_contacter_plateforme {
 
 
 /* Conteneur principal des cartes */
-#photo-cards {
+#photos .photo-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    justify-items: center;
-    margin: 0 auto;
-    max-width: 900px; /* Limite la largeur à 3 cartes par ligne */
+    grid-template-columns: repeat(3, 1fr); /* Toujours 3 colonnes */
+    gap: 20px; /* Espacement entre les cartes */
+    justify-items: center; /* Centre les cartes */
+    max-width: 100%; /* Largeur maximum de l'ensemble */
+    margin: 0 auto; /* Centre le conteneur */
 }
 
 /* Carte individuelle */
 #photo-card {
-    width: 300px;
+    width: 300px; /* Taille fixe pour uniformité */
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -6048,6 +6049,7 @@ select.theme_contacter_plateforme {
     font-weight: bold;
     color: #333;
 }
+
 
                                         /*****************************************************
                                                     * Code page détail d'une offre *

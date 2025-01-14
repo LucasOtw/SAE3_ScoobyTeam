@@ -837,7 +837,6 @@ if (isset($json['results'][0])) {
 
 
 
-
                 </script>
                 <?php 
                     $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";

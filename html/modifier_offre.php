@@ -215,6 +215,16 @@ if (isset($_POST['envoi_modif'])){
         }
     }
 
+    /* VERIFICATION DES HORAIRES */
+
+    foreach($_POST['horaires'] as $jour => $horaire){
+        if(!empty($horaire['ouverture']) && $horaire['ouverture'] != $codes_horaires[$jour]['ouverture']){
+            echo "test<br>";
+        } else {
+            echo "palindrome<br>";
+        }
+    }
+
     // Si il n'y a pas d'erreurs...
     
     if(empty($erreurs)){
@@ -533,7 +543,7 @@ if($infos_offre !== null){
                     <div class="col">
                         <fieldset>
                             <legend>Ouverture</legend>
-                            <input type="time" id="ouverture" name="horaires[<?php echo $jour; ?>]["ouverture"]" placeholder="Ouverture"
+                            <input type="time" id="ouverture" name="horaires[<?php echo $jour; ?>][ouverture]" placeholder="Ouverture"
                             <?php if(isset($codes_horaires[$jour]['ouverture']) && $codes_horaires[$jour]['ouverture'] !== null){
                                 ?>
                                 value="<?php echo htmlspecialchars($codes_horaires[$jour]['ouverture']); ?>"
@@ -544,7 +554,7 @@ if($infos_offre !== null){
                     <div class="col">
                         <fieldset>
                             <legend>Fermeture</legend>
-                            <input type="time" id="fermeture" name="horaires[<?php echo $jour; ?>]["fermeture"]" placeholder="Fermeture"
+                            <input type="time" id="fermeture" name="horaires[<?php echo $jour; ?>][fermeture]" placeholder="Fermeture"
                             <?php if(isset($codes_horaires[$jour]['fermeture']) && $codes_horaires[$jour]['fermeture'] !== null){
                                 ?>
                                 value="<?php echo htmlspecialchars($codes_horaires[$jour]['fermeture']); ?>"
@@ -562,32 +572,31 @@ if($infos_offre !== null){
 
             </div>
             <div class="tab-content" id="photos">
-            <div class="photo-cards">
-                <?php
-                foreach($recup_photos as $photo){
-                ?>
-
-                    <div id="photo-cards">
-                            <div id="photo-card">
-                            <div id="photo-image">
-                                <img src="<?php echo $photo; ?>" alt="Photo">
-                            </div>
-                            <button id="delete-photo-btn">Supprimer</button>
-                            </div>
-                        
+                <div class="photo-cards">
+                    <?php
+                    foreach($recup_photos as $photo){
+                    ?>
+    
+                        <div id="photo-cards">
+                                <div id="photo-card">
+                                <div id="photo-image">
+                                    <img src="<?php echo $photo; ?>" alt="Photo">
+                                </div>
+                                <button id="delete-photo-btn">Supprimer</button>
+                                </div>
+                            
                         </div>
-                
-                </div>
                 <?php
                 }
                 ?>
                     <!-- Carte pour ajouter une photo -->
-                        <div id="photo-card" class="add-photo-card">
-                            <div id="add-photo">
-                                <span>+</span>
-                                <p>Ajouter une photo</p>
-                            </div>
+                    <div id="photo-card" class="add-photo-card">
+                        <div id="add-photo">
+                            <span>+</span>
+                            <p>Ajouter une photo</p>
                         </div>
+                    </div>
+                </div>
             </div>
         </div>
 
