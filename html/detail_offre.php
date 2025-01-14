@@ -863,7 +863,7 @@ if (isset($json['results'][0])) {
                     
                     function scrollToAvis(codeAvis) {
                         // Ajoute un hash à l'URL pour qu'on scrolle vers l'élément après rechargement
-                        window.location.hash = 'avis' + codeAvis;
+                        window.location.hash = 'negativeImage' + codeAvis;
                     }
                     
                     // Ajoute un gestionnaire d'événement pour effectuer le scroll une fois que la page est complètement chargée
