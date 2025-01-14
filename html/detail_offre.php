@@ -796,6 +796,30 @@ if (isset($json['results'][0])) {
                     }
                 </style>
                 <script>
+                    function togglePositiveImage(codeAvis) {
+                        var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
+                        updateLikeDislike(action, codeAvis);
+                    
+                        // Recharge la page et scroll après un délai
+                        if (window.innerWidth <= 429) {
+                            setTimeout(function() {
+                                location.reload();  // Recharge la page
+                            }, 200);  // Délai de 200ms avant de recharger pour s'assurer que le vote est pris en compte
+                        }
+                    }
+                    
+                    function toggleNegativeImage(codeAvis) {
+                        var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
+                        updateLikeDislike(action, codeAvis);
+                    
+                        // Recharge la page et scroll après un délai
+                        if (window.innerWidth <= 429) {
+                            setTimeout(function() {
+                                location.reload();  // Recharge la page
+                            }, 200);  // Délai de 200ms avant de recharger pour s'assurer que le vote est pris en compte
+                        }
+                    }
+                    
                     function updateLikeDislike(action, codeAvis) {
                         fetch("update_likes.php", {
                             method: "POST",
@@ -825,30 +849,7 @@ if (isset($json['results'][0])) {
                             console.error("Erreur réseau : ", error);
                         });
                     }
-                    
-                    function togglePositiveImage(codeAvis) {
-                        var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
-                        updateLikeDislike(action, codeAvis);
-                    
-                        // Recharge la page et scroll après un délai
-                        if (window.innerWidth <= 429) {
-                            setTimeout(function() {
-                                location.reload();  // Recharge la page
-                            }, 200);  // Délai de 200ms avant de recharger pour s'assurer que le vote est pris en compte
-                        }
-                    }
-                    
-                    function toggleNegativeImage(codeAvis) {
-                        var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
-                        updateLikeDislike(action, codeAvis);
-                    
-                        // Recharge la page et scroll après un délai
-                        if (window.innerWidth <= 429) {
-                            setTimeout(function() {
-                                location.reload();  // Recharge la page
-                            }, 200);  // Délai de 200ms avant de recharger pour s'assurer que le vote est pris en compte
-                        }
-                    }
+
                     
                     document.querySelectorAll('.pouce img').forEach(img => {
                         img.addEventListener('click', (event) => {
