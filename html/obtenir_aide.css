@@ -405,7 +405,6 @@ footer {
 @media (min-width: 1024px) {
     nav ul {
         gap: 50px;
-        /* Réduit l'espace entre les éléments sur grands écrans */
     }
 
     footer {
