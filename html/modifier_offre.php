@@ -259,17 +259,17 @@ echo "</pre>";
 </header>
 <body>
     <main>
-        <h1 id="titre_modif_offre">Modifiez votre offre</h1>
-        <form id="modif_offre" action="#" method="POST">
-            <!-- Infos. Générales-->
-            <div>
-                <section class="tabs-modif_offre">
+    <h1 id="titre_modif_offre">Modifiez votre offre</h1>
+    <form id="modif_offre" action="#" method="POST">
+        <!-- Infos. Générales-->
+        <div>
+            <section class="tabs">
                 <ul>
                     <li><a href="#" class="active">Informations personnelles</a></li>
                     <li><a href="modif_mdp_membre.php">Mot de passe et sécurité</a></li>
                     <li><a href="consulter_mes_avis.php">Historique</a></li>
                 </ul>
-                </section>
+            </section>
                 <fieldset>
                     <legend>Titre</legend>
                     
