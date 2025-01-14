@@ -657,6 +657,8 @@ if($infos_offre !== null){
                             <span>+</span>
                             <p>Ajouter une photo</p>
                         </div>
+                        <!-- Champ fichier caché -->
+                        <input type="file" id="file-input" accept="image/*" style="display: none;">
                     </div>
                 </div>
             </div>
@@ -761,6 +763,9 @@ if($infos_offre !== null){
     </script>
     <script defer>
         document.addEventListener('DOMContentLoaded', () => {
+
+            // IMAGES GÉNÉRALES
+
             // Sélectionner tous les boutons "Supprimer"
             const deleteButtons = document.querySelectorAll('.delete-photo-btn');
         
@@ -789,6 +794,28 @@ if($infos_offre !== null){
                         button.classList.add('reverse'); // Ajouter la classe "reverse" au bouton
                     }
                 });
+            });
+            
+
+            // BOUTON "AJOUTER UNE PHOTO"
+            
+            // Sélectionner le conteneur cliquable et le champ fichier
+            
+            const addPhotoButton = document.getElementById('add-photo');
+            const fileInput = document.getElementById('file-input');
+    
+            // Ajouter un événement clic sur le conteneur
+            addPhotoButton.addEventListener('click', () => {
+                fileInput.click(); // Déclenche un clic sur le champ fichier
+            });
+    
+            // Gestion du choix de fichiers
+            fileInput.addEventListener('change', (event) => {
+                const files = event.target.files; // Récupérer les fichiers sélectionnés
+                if (files.length > 0) {
+                    console.log('Photo sélectionnée :', files[0].name);
+                    // Vous pouvez ici prévisualiser l'image ou effectuer une autre action
+                }
             });
         });
     </script>
