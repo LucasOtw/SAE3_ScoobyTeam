@@ -352,7 +352,7 @@ if (isset($_POST['envoi_modif'])){
 
                     $images = $recup_photos;
                     foreach($images as $image){
-                        $ancien_dossier = str_replace(' ','',$val);
+                        $ancien_dossier = str_replace(' ','',$offre['titre_offre']);
                         $nom_image = basename($image);
                         $nouveau_dossier = "images/offres/{$val}/{$nom_image}";
 
