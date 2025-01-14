@@ -1008,30 +1008,12 @@ WHERE code_offre = :code_offre
 
 
 
-        <footer class="footer_detail_avis">
-            <div class="newsletter">
-        <div class="newsletter-content">
-            <h2>Inscrivez-vous à notre Newsletter</h2>
-            <p>PACT</p>
-            <p>découvrez la Bretagne !</p>
-            <form class="newsletter-form" id="newsletterForm">
-                <input type="email" id="newsletterEmail" placeholder="Votre adresse mail" required>
-                <button type="submit">S'inscrire</button>
-            </form>
-        </div>
-        <div class="newsletter-image">
-            <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
-        </div>
-    </div>
-
-    <div id="newsletterConfirmBox" style="display: none;">
-        <div class="popup-content">
-            <p class="popup-message"></p>
-            <button id="closeNewsletterPopup">Fermer</button>
-        </div>
-    </div>
-
-             <div class="link-group">
+<footer class="footer_detail_avis">
+        <div class="footer-links">
+            <div class="logo">
+                <img src="images/logoBlanc.png" alt="Logo PAVCT">
+            </div>
+            <div class="link-group">
                 <ul>
                     <li><a href="mentions_legales.html">Mentions Légales</a></li>
                     <li><a href="#">RGPD</a></li>
@@ -1041,9 +1023,9 @@ WHERE code_offre = :code_offre
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="voir_offres.php">Accueil</a></li>
-                    <li><a href="connexion_pro.php">Publier</a></li>
-                    <li><a href="connexion_memebre.php">Se Connecter</a></li>
+                    <li><a href="mes_offres.php">Accueil</a></li>
+                    <li><a href="creation_offre.php">Publier</a></li>
+                    <li><a href="consulter_compte_pro.php">Mon Compte</a></li>
                 </ul>
             </div>
             <div class="link-group">
@@ -1062,15 +1044,15 @@ WHERE code_offre = :code_offre
             </div>
         </div>
 
-            <div class="footer-bottom">
-                <div class="social-icons">
-                    <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
-                    <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
-                    <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
-                    <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
-                </div>
+        <div class="footer-bottom">
+            <div class="social-icons">
+                <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
+                <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
+                <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+                <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
             </div>
-        </footer>
+        </div>
+    </footer>
 
     </div>
 </body>
