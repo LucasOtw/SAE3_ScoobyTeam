@@ -795,7 +795,6 @@ if (isset($json['results'][0])) {
                         opacity: 0;
                     }
                 </style>
-                    
                 <script>
                 function updateLikeDislike(action, codeAvis) {
                     fetch("update_likes.php", {
@@ -808,13 +807,27 @@ if (isset($json['results'][0])) {
                             code_avis: codeAvis
                         })
                     })
-                    .then(response => response.json())
+                    .then(response => {
+                        // Vérifier que la réponse est bien au format JSON
+                        if (!response.ok) {
+                            throw new Error("Erreur réseau ou serveur.");
+                        }
+                        return response.json();
+                    })
                     .then(data => {
                         if (data.status === 'success') {
                             // Mise à jour de l'image des pouces
-                            document.getElementById('positiveImage' + codeAvis).src = data.pouce_positif > 0 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
-                            document.getElementById('negativeImage' + codeAvis).src = data.pouce_negatif > 0 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
-                
+                            const positiveImage = document.getElementById('positiveImage' + codeAvis);
+                            const negativeImage = document.getElementById('negativeImage' + codeAvis);
+            
+                            positiveImage.src = data.pouce_positif > 0 
+                                ? 'images/pouce_positif_couleur.png' 
+                                : 'images/pouce_positif_blanc.png';
+            
+                            negativeImage.src = data.pouce_negatif > 0 
+                                ? 'images/pouce_negatif_couleur.png' 
+                                : 'images/pouce_negatif_blanc.png';
+            
                             // Mise à jour des nombres de votes
                             document.getElementById('positiveCount' + codeAvis).textContent = data.pouce_positif;
                             document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
@@ -824,16 +837,19 @@ if (isset($json['results'][0])) {
                     })
                     .catch(error => {
                         console.error("Erreur réseau : ", error);
+                        alert("Une erreur est survenue. Veuillez réessayer.");
                     });
                 }
-                
+            
                 function togglePositiveImage(codeAvis) {
-                    var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
+                    const positiveImage = document.getElementById('positiveImage' + codeAvis);
+                    const action = positiveImage.src.includes('blanc') ? 'like' : 'unlike';
                     updateLikeDislike(action, codeAvis);
                 }
-                
+            
                 function toggleNegativeImage(codeAvis) {
-                    var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
+                    const negativeImage = document.getElementById('negativeImage' + codeAvis);
+                    const action = negativeImage.src.includes('blanc') ? 'dislike' : 'undislike';
                     updateLikeDislike(action, codeAvis);
                 }
 
@@ -863,7 +879,8 @@ if (isset($json['results'][0])) {
                         <!-- Pouce positif -->
                         <img id="positiveImage<?php echo $avis['code_avis']; ?>"
                              src="<?php echo $voteState == 1 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png'; ?>"
-                             alt="Pouce positif" onclick="togglePositiveImage(<?php echo $avis['code_avis']; ?>)">
+                             alt="Pouce positif" 
+                             onclick="togglePositiveImage(<?php echo $avis['code_avis']; ?>)">
                         <p id="positiveCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_positif']; ?></p>           
                     </div>
                     
@@ -871,7 +888,8 @@ if (isset($json['results'][0])) {
                         <!-- Pouce négatif -->
                         <img id="negativeImage<?php echo $avis['code_avis']; ?>"
                              src="<?php echo $voteState == -1 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png'; ?>"
-                             alt="Pouce négatif" onclick="toggleNegativeImage(<?php echo $avis['code_avis']; ?>)">
+                             alt="Pouce négatif" 
+                             onclick="toggleNegativeImage(<?php echo $avis['code_avis']; ?>)">
                         <p id="negativeCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_negatif']; ?></p>
                     </div>
 
