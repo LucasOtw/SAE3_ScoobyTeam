@@ -1308,13 +1308,13 @@ function tempsEcouleDepuisPublication($offre){
                 <ul>
                     <li><a href="voir_offres.php">Accueil</a></li>
                     <li><a href="connexion_pro.php">Publier</a></li>
-                    <li><a href="#">Historique</a></li>
+                    <li><a href="connexion_memebre.php">Se Connecter</a></li>
                 </ul>
             </div>
             <div class="link-group">
                 <ul>
                     <li><a href="#">CGU</a></li>
-                    <li><a href="#">Signaler un problème</a></li>
+                    <li><a href="contacter_plateforme.php">Signaler un problème</a></li>
                     <li><a href="contacter_plateforme.php">Nous contacter</a></li>
                 </ul>
             </div>
