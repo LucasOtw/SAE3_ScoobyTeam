@@ -96,7 +96,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
                   $compte_pp = "images/icones/icone_compte.png";
                 }
 
-                $infoCompte = $dbh->prepare('select * from tripenarvor._compte where code_compte= :code_compte;');
+                $infoCompte = $dbh->prepare('select * from tripenarvor._compte natural join membre where code_compte= :code_compte;');
                 $infoCompte->bindValue(':code_compte',$notif['code_compte']);
                 $infoCompte->execute();
                 $compte = $infoCompte->fetch(PDO::FETCH_ASSOC);
