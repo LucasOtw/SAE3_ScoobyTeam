@@ -3041,8 +3041,8 @@ input[type="password"]::placeholder {
 }
 
 .profile-img {
-    width: 68px;
-    height: 67px;
+    width: 100px;
+    height: 100px;
     border-radius: 35px;
     object-fit: cover;
 }
