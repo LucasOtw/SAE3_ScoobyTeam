@@ -381,7 +381,7 @@ if (isset($_POST['envoi_modif'])){
 
                         $update_lien_image = $dbh->prepare("UPDATE tripenarvor._image SET url_image = :nouvelle_valeur WHERE url_image = :ancienne_valeur");
                         $update_lien_image->bindValue(":nouvelle_valeur",$nouv_lien);
-                        $update_lien_image->bindValue(":ancienne_valeur",$nom_image);
+                        $update_lien_image->bindValue(":ancienne_valeur",$photo);
                         $update_lien_image->execute();
                     }
                 }
