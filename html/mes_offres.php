@@ -114,7 +114,8 @@ if(isset($_SESSION['aCreeUneOffre'])){
                     
                     ?>
                     
-                    <li id="notif">
+                    <li id="notif"
+                        data-consult="<?php echo $notif["consulter_notif"]; ?>" >
                         <img src="<?php echo $compte_pp; ?>" alt="photo de profil" class="profile-img">
                         <div class="notification-content">
                             <strong><?php echo $compte["prenom"].' '.$compte["nom"]; ?></strong>
@@ -292,7 +293,10 @@ if(isset($_SESSION['aCreeUneOffre'])){
 
         const notifItems = document.querySelectorAll(".notif");
 
-        
+        notifItems.foreach(notif => {
+            const consulter = notif.getAttribute('data-consult');
+            console.log(consulter);
+        });
 
 
     </script>
