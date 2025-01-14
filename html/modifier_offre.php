@@ -39,6 +39,20 @@ if (isset($_POST['envoiOffre'])) {
 
 $offre = $_SESSION['modif_offre'];
 
+
+/* TABLEAU DES JOURS */
+
+$jours = [
+    'Lundi',
+    'Mardi',
+    'Mercredi',
+    'Jeudi',
+    'Vendredi',
+    'Samedi',
+    'Dimanche'
+];
+
+
 /* RÉCUPÉRATION DU "TYPE DE L'OFFRE" */
 
 $tables = [
@@ -74,7 +88,11 @@ foreach($tables as $table){
 
 echo "<h1>".$type_offre."</h1>";
 
+
+
 /* RÉCUPÉRATION DES TAGS */
+
+
 
 $req_tags = $dbh->prepare("SELECT * FROM tripenarvor._tags WHERE $type_offre = true");
 $req_tags->execute();
@@ -94,6 +112,9 @@ $mes_tags = $req_tags_offre->fetchAll(PDO::FETCH_ASSOC);
 echo "<pre>";
 print_r($mes_tags);
 echo "</pre>";
+
+
+// Si on envoie le script de modification...
 
 if (isset($_POST['envoi_modif'])){
 
@@ -133,6 +154,8 @@ if (isset($_POST['envoi_modif'])){
             $erreurs[] = "La ville ne correspond pas au code postal";
         }
     }
+
+    // Si il n'y a pas d'erreurs...
     
     if(empty($erreurs)){
 
@@ -431,6 +454,35 @@ if($infos_offre !== null){
                             <?php
                     }
 
+                    ?>
+                </fieldset>
+                <fieldset>
+                    <legend>Horaires</legend>
+                    <?php
+                        foreach($jours as $jour){
+                            ?>
+                            <div class="row">
+                                <div class="col">
+                                    <fieldset>
+                                        <legend>Jour</legend>
+                                        <input type="text" id="jour" name="jour" placeholder="<?php echo $jour ?>" disabled>
+                                    </fieldset>
+                                </div>
+                                <div class="col">
+                                    <fieldset>
+                                        <legend>Ouverture</legend>
+                                        <input type="time" id="ouverture" name="<?php echo "ouverture".$jour; ?>" placeholder="Ouverture">
+                                    </fieldset>
+                                </div >
+                                <div class="col">
+                                    <fieldset>
+                                        <legend>Fermeture</legend>
+                                        <input type="time" id="fermeture" name="<?php echo "fermeture".$jour; ?>" placeholder="Fermeture">
+                                    </fieldset>
+                                </div >
+                            </div>
+                            <?php
+                        }
                     ?>
                 </fieldset>
             </div>

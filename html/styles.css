@@ -3041,8 +3041,8 @@ input[type="password"]::placeholder {
 }
 
 .profile-img {
-    width: 68px;
-    height: 67px;
+    width: 100px;
+    height: 100px;
     border-radius: 35px;
     object-fit: cover;
 }
@@ -5762,8 +5762,6 @@ select.theme_contacter_plateforme {
   padding: 15px;
   background-color: #f3f8ff;
   border-radius: 8px;
-  border: 1px solid #d4e1f6;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #modif_offre legend {
@@ -5823,7 +5821,82 @@ select.theme_contacter_plateforme {
 #modif_offre input[type="checkbox"]:checked + .label-check {
   font-weight: bold;
   color: #003366;
-  text-decoration: underline;
+}
+#modif_offre .horaires-section {
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    background-color: #f3f8ff;
+    border-radius: 8px;
+    box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
+}
+
+#modif_offre .horaires-section fieldset {
+    border: none;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f3f8ff;
+    border-radius: 8px;
+    box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
+}
+
+#modif_offre .horaires-section legend {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+#modif_offre .horaires-section .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+#modif_offre .horaires-section .col {
+    flex: 1;
+    margin-right: 10px;
+}
+
+#modif_offre .horaires-section .col:last-child {
+    margin-right: 0;
+}
+
+#modif_offre .horaires-section input[type="text"], 
+#modif_offre .horaires-section input[type="time"] {
+    width: 100%;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #f3f8ff;
+    background-color: #fff;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    padding: 0.5em;
+}
+
+#modif_offre .horaires-section input[type="text"]:focus, 
+#modif_offre .horaires-section input[type="time"]:focus {
+    border-color: #ff6f00;
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    #modif_offre .horaires-section {
+        padding: 15px;
+    }
+
+    #modif_offre .horaires-section fieldset {
+        padding: 10px;
+    }
+
+    #modif_offre .horaires-section legend {
+        font-size: 1.3rem;
+    }
+
+    #modif_offre .horaires-section input[type="text"], 
+    #modif_offre .horaires-section input[type="time"] {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
 }
 
 

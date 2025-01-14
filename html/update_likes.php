@@ -6,6 +6,10 @@ $username = "sae";  // Utilisateur PostgreSQL défini dans .env
 $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
 $dbh = new PDO($dsn, $username, $password);
 
+session_start();
+header("Content-Type: application/json"); // Réponse en JSON
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_SESSION['membre']['code_compte'])) {
         echo json_encode([
