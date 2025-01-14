@@ -291,13 +291,21 @@ if(isset($_SESSION['aCreeUneOffre'])){
            
         });
 
-        const notifItems = document.querySelectorAll(".notif");
-
-        notifItems.foreach(notif => {
-            const consulter = notif.getAttribute('data-consult');
-            console.log(consulter);
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fonction qui sera appelée dès le chargement du DOM
+            function initNotifications() {
+                const notifItems = document.querySelectorAll(".notif");
+        
+                notifItems.forEach(notif => {  // Correction : 'foreach' => 'forEach'
+                    const consulter = notif.getAttribute('data-consult');
+                    console.log(consulter);
+                });
+            }
+        
+            // Appeler la fonction dès le début
+            initNotifications();
         });
-
 
     </script>
 </body>
