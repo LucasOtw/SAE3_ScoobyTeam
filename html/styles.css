@@ -5664,10 +5664,11 @@ select.theme_contacter_plateforme {
 }
 /* Tabs Section */
 #modif_offre .tabs {
-    display: flex;
+   display: flex;
     justify-content: center;
     margin: 30px 0;
     text-align: center;
+    margin-bottom: 5em;
 }
 
 #modif_offre .tabs ul {
