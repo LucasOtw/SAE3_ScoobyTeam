@@ -5900,6 +5900,62 @@ select.theme_contacter_plateforme {
 }
 
 
+
+
+
+
+
+
+
+
+#modif_offre .horaires-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+#modif_offre .horaires-row .col {
+    flex: 1;
+    margin-right: 10px;
+}
+
+#modif_offre .horaires-row .col:last-child {
+    margin-right: 0;
+}
+
+#modif_offre .horaires-row input[type="text"], 
+#modif_offre .horaires-row input[type="time"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+#modif_offre .horaires-row input[disabled] {
+    background-color: #f3f8ff;
+}
+
+/* Style spécifique pour le jour */
+#modif_offre .horaires-row input#jour {
+    border: none; /* Pas de bordure */
+    font-weight: bold; /* Texte en gras */
+    font-size: 1.1rem; /* Taille du texte */
+    color: black; /* Texte en noir */
+    background-color: transparent; /* Pas de fond */
+    padding: 0; /* Pas de padding */
+    margin: 0; /* Pas de marge */
+    text-align: center; /* Texte centré */
+}
+
+#modif_offre .horaires-row input[type="text"]:focus, 
+#modif_offre .horaires-row input[type="time"]:focus {
+    border-color: #ff6f00;
+    outline: none;
+}
+
+
                                         /*****************************************************
                                                     * Code page détail d'une offre *
                                         *****************************************************/
