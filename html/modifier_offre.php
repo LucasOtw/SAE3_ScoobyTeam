@@ -867,6 +867,7 @@ if($infos_offre !== null){
                 fileInput.click(); // Déclencher le sélecteur de fichier
             });
         });
+    </script>
 
 </body>
 </html>
