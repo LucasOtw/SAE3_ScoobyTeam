@@ -5846,6 +5846,14 @@ select.theme_contacter_plateforme {
     border: none;
 }
 
+#modif_offre fieldset {
+    padding: 15px;
+    background-color: #f3f8ff;
+    border-radius: 8px;
+    box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
 #modif_offre .horaires-row {
     display: flex;
     justify-content: space-between;
@@ -5861,7 +5869,8 @@ select.theme_contacter_plateforme {
     margin-right: 0;
 }
 
-#modif_offre .horaires-row input {
+#modif_offre .horaires-row input[type="text"], 
+#modif_offre .horaires-row input[type="time"] {
     width: 100%;
     padding: 10px;
     font-size: 1rem;
@@ -5880,25 +5889,15 @@ select.theme_contacter_plateforme {
     outline: none;
 }
 
-/* Style pour le champ "Jour" */
-#modif_offre .horaires-row input.jour {
-    font-size: 1.1rem; /* Taille de texte similaire à ouverture et fermeture, mais légèrement plus grande */
-    color: #000; /* Couleur du texte en noir *
-    font-weight: bold; /* Texte en gras *
-}
-
-@media (max-width: 768px) {
-    #modif_offre .horaires-row {
-        flex-direction: column;
-    }
-
-    #modif_offre .horaires-row .col {
-        margin-bottom: 10px;
-    }
-
-    #modif_offre .horaires-row input {
-        padding: 8px;
-    }
+/* Style spécifique pour le jour */
+#modif_offre .horaires-row input#jour {
+    border: none; /* Pas de bordure */
+    font-weight: bold; /* Texte en gras */
+    font-size: 1.1rem; /* Texte légèrement plus grand */
+    color: black; /* Couleur noire */
+    background-color: transparent; /* Pas de fond */
+    padding: 0; /* Pas de padding */
+    margin: 0; /* Pas de marge */
 }
 
 
