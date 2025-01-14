@@ -310,6 +310,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
                             .then(response => {
                                 if (response.ok) {
                                     console.log("L'état de la notif a été mis à jour avec succès.");
+                                    notif.setAttribute('data-consult', "1");
                                 } else {
                                     console.error("Erreur lors de la mise à jour de l'état de la notif : " + response.status);
                                 }
