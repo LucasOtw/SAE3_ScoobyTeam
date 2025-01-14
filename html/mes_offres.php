@@ -71,9 +71,6 @@ if(isset($_SESSION['aCreeUneOffre'])){
         </ul>
     </div>
 </li>
-
-
-
         </ul>
     </nav>
 </header>
