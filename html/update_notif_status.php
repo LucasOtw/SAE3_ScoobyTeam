@@ -20,17 +20,34 @@
         exit;
     }
     
-    try { 
+    try
+    {
+        
         $stmt = $dbh->prepare("
             UPDATE tripenarvor._notification
             SET consulter_notif = FALSE
             WHERE code_avis = :code_avis
         ");
+    
+        $params = [':code_avis' => $code_avis];
+        error_log("Params utilisés : " . print_r($params, true)); // Ajoute un log
+    
+        $stmt->execute($params);
+    
+        $rowsAffected = $stmt->rowCount();
+        error_log("Lignes affectées : $rowsAffected"); // Log du nombre de lignes affectées
+    
+        if ($rowsAffected > 0) {
+            echo "Mise à jour réussie : $rowsAffected ligne(s) modifiée(s).";
+        } else {
+            echo "Aucune mise à jour effectuée. Vérifiez si le code_avis existe.";
+        }
         
-        $stmt->execute([':code_avis' => $code_avis]);
-        
-    } catch (PDOException $e) {
+    }
+    catch (PDOException $e)
+    {
+        error_log("Erreur lors de la mise à jour : " . $e->getMessage());
         http_response_code(500);
-        echo "Erreur lors de la mise à jour : " . $e->getMessage();
+        echo "Erreur lors de la mise à jour.";
     }
 ?>
