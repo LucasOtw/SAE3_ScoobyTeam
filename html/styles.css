@@ -6056,7 +6056,9 @@ select.theme_contacter_plateforme {
 #modif_offre .interieur_modif_offre {
     box-shadow: none;
 }
-
+#modif_offre .interieur_modif_offre_spectacle{
+    box-shadow: none;
+}
                                         /*****************************************************
                                                     * Code page détail d'une offre *
                                         *****************************************************/
