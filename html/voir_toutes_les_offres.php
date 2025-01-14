@@ -516,3 +516,45 @@ function tempsEcouleDepuisPublication($offre){
 
 </body>
 </html>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const newsletterForm = document.getElementById('newsletterForm');
+    const emailInput = document.getElementById('newsletterEmail');
+    const newsletterPopup = document.getElementById('newsletterConfirmBox');
+    const closePopupButton = document.getElementById('closeNewsletterPopup');
+
+    newsletterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const email = emailInput.value.trim();
+        if (email) {
+            fetch('envoyer_email3.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `email=${encodeURIComponent(email)}`
+            })
+                .then(() => {
+                    afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
+                    
+                })
+                .catch(() => {
+                    afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
+                });
+        } else {
+            alert("Veuillez entrer une adresse email valide.");
+        }
+    });
+
+    function afficherPopup(message) {
+        newsletterPopup.querySelector('.popup-message').innerText = message;
+        newsletterPopup.style.display = 'block';
+    }
+
+    closePopupButton.addEventListener('click', () => {
+        newsletterPopup.style.display = 'none';
+    });
+});
+
+</script>
+
+
