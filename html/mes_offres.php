@@ -68,16 +68,6 @@ if(isset($_SESSION['aCreeUneOffre'])){
                     <span class="new-notif-dot"></span>
                 </div>
             </li>
-            <li>
-                <img src="images/user2.png" alt="photo de profil" class="profile-img">
-                <div class="notification-content">
-                    <strong>Quentin Uguen</strong>
-                    <span class="notification-location"> | Abbaye de Monfort</span>
-                    <p>Ancienne notification</p>
-                    <span class="notification-time">2 mois</span>
-                    
-                </div>
-            </li>
         </ul>
     </div>
 </li>
