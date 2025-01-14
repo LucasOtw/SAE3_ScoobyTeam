@@ -25,7 +25,7 @@
         
         $stmt = $dbh->prepare("
             UPDATE tripenarvor._notification
-            SET consulter_notif = FALSE
+            SET consulter_notif = TRUE
             WHERE code_avis = :code_avis
             RETURNING code_avis, consulter_notif
         ");
