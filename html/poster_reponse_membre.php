@@ -51,6 +51,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     
                     // Récupère la dernière valeur de la séquence pour le champ `code_avis`
                     $code_avis = $dbh->lastInsertId('tripenarvor._avis_code_avis_seq');
+
+                    $creerNotif = $dbh->("INSERT INTO tripenarvor._notification (code_avis) values (:code_avis);");
+                    $creerNotif->bindParam(':code_avis', $code_avis);
+                    $creerNotif->execute();
                     
                     // Insère la réponse dans la table _reponse
                     if (isset($_SESSION['avis']) && !empty($_SESSION['avis']['code_avis'])) {
