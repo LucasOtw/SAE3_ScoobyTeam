@@ -54,30 +54,41 @@ $jours = [
 
 /* RÉCUPÉRATION DES HORAIRES */
 
+// Récupération des codes horaires pour chaque jour
 $req_codes = $dbh->prepare("SELECT lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche
                             FROM tripenarvor._offre
                             WHERE code_offre = :code_offre");
 $req_codes->bindValue(":code_offre", $offre['code_offre']);
 $req_codes->execute();
-$codes_horaires = $req_codes->fetchAll(PDO::FETCH_ASSOC);
+$codes_horaires = $req_codes->fetch(PDO::FETCH_ASSOC); // Utiliser fetch() pour obtenir une seule ligne
 
-// maintenant on veut les heures d'ouverture et de fermeture pour chaque code.
-
+// Maintenant, on veut les heures d'ouverture et de fermeture pour chaque code
 foreach($codes_horaires as $jour => $code){
-    if($code == null){
-        break;
+    // Si le code est null, on continue
+    if ($code === null) {
+        continue;
     } else {
-        $req_horaire = $dbh->prepare("SELECT ouverture,fermeture FROM tripenarvor._horaire
-        WHERE code_horaire = :code");
-        $req_horaire->bindValue(":code",$code);
+        // Requête pour récupérer les horaires d'ouverture et de fermeture
+        $req_horaire = $dbh->prepare("SELECT ouverture, fermeture FROM tripenarvor._horaire
+                                      WHERE code_horaire = :code");
+        $req_horaire->bindValue(":code", $code);
         $req_horaire->execute();
-        $tab_horaire = $req_horaire->fetchAll(PDO::FETCH_ASSOC);
+        
+        $tab_horaire = $req_horaire->fetch(PDO::FETCH_ASSOC); // Utiliser fetch() ici aussi pour obtenir une seule ligne
 
-        $tab_horaire = $tab_horaire[0];
-        $codes_horaires[$jour]["ouverture"] = $tab_horaire["ouverture"];
-        $codes_horaires[$jour]["fermeture"] = $tab_horaire["fermeture"];
+        // Vérifier si des horaires ont été trouvés pour ce code
+        if ($tab_horaire) {
+            // Ajouter les horaires à $codes_horaires
+            $codes_horaires[$jour] = [
+                'code_horaire' => $code,
+                'ouverture' => $tab_horaire['ouverture'],
+                'fermeture' => $tab_horaire['fermeture']
+            ];
+        }
     }
 }
+
+// Debug : Afficher les horaires récupérés
 
 echo "<pre>";
 var_dump($codes_horaires);
