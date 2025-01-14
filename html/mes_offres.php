@@ -288,12 +288,8 @@ if(isset($_SESSION['aCreeUneOffre'])){
                     notificationPopup.classList.add('hidden');
                 }
             });
-           
-        });
 
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            // Fonction qui sera appelée dès le chargement du DOM
+           // Fonction qui sera appelée dès le chargement du DOM
             function initNotifications() {
                 const notifItems = document.querySelectorAll(".notif");
         
@@ -305,6 +301,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
         
             // Appeler la fonction dès le début
             initNotifications();
+           
         });
 
     </script>
