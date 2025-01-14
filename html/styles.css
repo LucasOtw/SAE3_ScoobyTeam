@@ -6053,6 +6053,159 @@ select.theme_contacter_plateforme {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Style général pour le conteneur des services */
+#modif_offre #services {
+    margin: 20px 0;
+}
+
+#modif_offre fieldset {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+#modif_offre legend {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Price Options Section */
+#modif_offre .price-options {
+    margin-bottom: 20px;
+}
+
+#modif_offre .radio-group {
+    display: flex;
+    gap: 20px;
+}
+
+#modif_offre .radio-group div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#modif_offre .label-check {
+    font-size: 1rem;
+    font-weight: normal;
+    color: #333;
+}
+
+/* Tarif Option Section */
+#modif_offre .tarif-option {
+    margin-bottom: 20px;
+}
+
+#modif_offre .tarif-option label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#modif_offre .tarif-option input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Meal Options Section */
+#modif_offre .meal-options {
+    margin-bottom: 20px;
+}
+
+#modif_offre .meal-options label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#modif_offre .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#modif_offre .checkbox-group div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#modif_offre .checkbox-group input[type="checkbox"] {
+    transform: scale(1.2);
+}
+
+/* Spectacle Options Section */
+#modif_offre #services fieldset {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #fff;
+}
+
+#modif_offre #services fieldset legend {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#modif_offre #services label {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+#modif_offre #services input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+#modif_offre #services input[type="time"],
+#modif_offre #services input[type="date"] {
+    max-width: 300px;
+}
+
+
+
+
+
+
+
+
+
+
                                         /*****************************************************
                                                     * Code page détail d'une offre *
                                         *****************************************************/
