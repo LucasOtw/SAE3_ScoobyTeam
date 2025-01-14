@@ -851,15 +851,14 @@ if (isset($json['results'][0])) {
                     }
                     
                     document.querySelectorAll('.pouce img').forEach(img => {
-                        img.addEventListener('click', () => {
-                            const codeAvis = img.id.replace(/\D/g, ''); // Extraire le code de l'avis
+                        img.addEventListener('click', (event) => {
+                            const img = event.target;  // L'image sur laquelle l'utilisateur a cliqué
+                            const codeAvis = img.id.replace(/\D/g, ''); // Extraire le code de l'avis à partir de l'ID de l'image
+                    
                             if (img.id.includes('positiveImage')) {
                                 togglePositiveImage(codeAvis);
-                                console.log("TEST");
                             } else if (img.id.includes('negativeImage')) {
                                 toggleNegativeImage(codeAvis);
-                                console.log("TEST2");
-                                
                             }
                         });
                     });
