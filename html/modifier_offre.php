@@ -646,7 +646,7 @@ if($infos_offre !== null){
                         <div id="photo-image">
                             <img src="<?php echo $photo; ?>" alt="Photo">
                         </div>
-                        <button id="delete-photo-btn">Supprimer</button>
+                        <button class="delete-photo-btn">Supprimer</button>
                     </div>
                 <?php
                 }
