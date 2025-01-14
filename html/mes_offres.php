@@ -273,12 +273,13 @@ if(isset($_SESSION['aCreeUneOffre'])){
             const notificationBtn = document.getElementById('notification-btn');
             const notificationPopup = document.getElementById('notification-popup');
             const notificationBadge = document.getElementById('notification-badge');
-           const notifItems = document.querySelectorAll(".notif");
+            const notifItems = document.querySelectorAll(".notif");
         
             // Ajouter la classe hidden pour masquer le pop-up au démarrage
             notificationPopup.classList.add('hidden');
 
-            notifItems.forEach(notif => {  // Correction : 'foreach' => 'forEach'
+            notifItems.forEach(notif => {  
+                console.log("ok");
                 const consulter = notif.getAttribute('data-consult');
                 console.log(consulter);
             });
