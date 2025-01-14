@@ -643,7 +643,7 @@ if($infos_offre !== null){
                     ?>
     
                     <div class="photo-card">
-                        <div id="photo-image">
+                        <div class="photo-image">
                             <img src="<?php echo $photo; ?>" alt="Photo">
                         </div>
                         <button class="delete-photo-btn">Supprimer</button>
@@ -760,7 +760,35 @@ if($infos_offre !== null){
         });
     </script>
     <script defer>
-        const images = document.querySelectorAll("#photo-card");
+        document.addEventListener('DOMContentLoaded', () => {
+            // Sélectionner tous les boutons "Supprimer"
+            const deleteButtons = document.querySelectorAll('.delete-photo-btn');
+        
+            // Ajouter un événement clic à chaque bouton
+            deleteButtons.forEach((button) => {
+                button.addEventListener('click', (event) => {
+                    // Empêcher l'envoi du formulaire
+                    event.preventDefault();
+        
+                    // Récupérer l'élément parent (la carte de la photo)
+                    const photoCard = button.closest('.photo-card');
+        
+                    // Cibler directement l'image à l'intérieur de #photo-image
+                    const image = photoCard.querySelector('.photo-image img');
+        
+                    // Vérifier si l'image est déjà marquée comme supprimée
+                    if (image.classList.contains('supprimee')) {
+                        // Enlever la classe et restaurer le texte du bouton
+                        image.classList.remove('supprimee');
+                        button.textContent = 'Supprimer';
+                    } else {
+                        // Ajouter la classe pour griser l'image et changer le texte du bouton
+                        image.classList.add('supprimee');
+                        button.textContent = 'Ajouter';
+                    }
+                });
+            });
+        });
     </script>
     
 
