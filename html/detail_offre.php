@@ -797,6 +797,8 @@ if (isset($json['results'][0])) {
                 </style>
                 <script>
                 function updateLikeDislike(action, codeAvis) {
+                    // Avant l'appel AJAX
+document.getElementById('positiveImage' + codeAvis).classList.add('loading');
                     fetch("update_likes.php", {
                         method: "POST",
                         headers: {
@@ -818,7 +820,9 @@ if (isset($json['results'][0])) {
                             document.getElementById('positiveCount' + codeAvis).textContent = data.pouce_positif;
                             document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
 
-                            console.log("// MIS A JOUR //");
+                            
+                            // Après réception de la réponse
+                            document.getElementById('positiveImage' + codeAvis).classList.remove('loading');
                         } else {
                             alert(data.message);
                         }
