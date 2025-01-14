@@ -262,14 +262,14 @@ echo "</pre>";
     <h1 id="titre_modif_offre">Modifiez votre offre</h1>
     <form id="modif_offre" action="#" method="POST">
         <!-- Infos. Générales-->
+        <section class="tabs">
+            <ul>
+                <li><a href="#" class="active">Informations générales</a></li>
+                <li><a href="#">Services et horaires</a></li>
+                <li><a href="#">Photos</a></li>
+            </ul>
+        </section>
         <div>
-            <section class="tabs">
-                <ul>
-                    <li><a href="#" class="active">Informations générales</a></li>
-                    <li><a href="#">Services et horaires</a></li>
-                    <li><a href="#">Photos</a></li>
-                </ul>
-            </section>
                 <fieldset>
                     <legend>Titre</legend>
                     
@@ -350,7 +350,11 @@ echo "</pre>";
 
                         switch($type_offre){
                             case "restauration":
-                                ?><?php
+                                ?>
+                                <div class="prix_restaurant">
+                                    
+                                </div>
+                            <?php
                         }
 
                         if($type_offre == "restauration"){
