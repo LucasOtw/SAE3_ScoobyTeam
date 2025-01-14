@@ -215,6 +215,16 @@ if (isset($_POST['envoi_modif'])){
         }
     }
 
+    /* VERIFICATION DES HORAIRES */
+
+    foreach($_POST['horaires'] as $jour => $horaire){
+        if(!empty($horaire['ouverture']) && $horaire['ouverture'] != $codes_horaires[$jour]['ouverture']){
+            echo "test<br>";
+        } else {
+            echo "palindrome<br>";
+        }
+    }
+
     // Si il n'y a pas d'erreurs...
     
     if(empty($erreurs)){
