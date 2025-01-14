@@ -368,7 +368,7 @@ if (isset($_POST['envoi_modif'])){
                         echo "Erreur : Le dossier '{$nom_doss}' n'existe pas.";
                     }
 
-                    $img_modif = $recup_photos
+                    $img_modif = $recup_photos;
 
                     foreach($img_modif as $photo){
                         $nom_image = basename($photo);
