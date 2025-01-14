@@ -63,7 +63,7 @@ SELECT code_Image FROM tripenarvor._son_image WHERE code_offre = :code_offre
 $req_recup_photos->bindValue(":code_offre",$offre['code_offre']);
 $req_recup_photos->execute();
 
-$recup_photos = $req_recup_photos->fetchAll(PDO::FETCH_ASSOC);
+$recup_photos = $req_recup_photos->fetchAll(PDO::FETCH_COLUMN);
 
 echo "<pre>";
 var_dump($recup_photos);
