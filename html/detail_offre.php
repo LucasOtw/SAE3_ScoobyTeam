@@ -797,8 +797,6 @@ if (isset($json['results'][0])) {
                 </style>
                 <script>
                 function updateLikeDislike(action, codeAvis) {
-                    // Avant l'appel AJAX
-document.getElementById('positiveImage' + codeAvis).classList.add('loading');
                     fetch("update_likes.php", {
                         method: "POST",
                         headers: {
@@ -820,9 +818,6 @@ document.getElementById('positiveImage' + codeAvis).classList.add('loading');
                             document.getElementById('positiveCount' + codeAvis).textContent = data.pouce_positif;
                             document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
 
-                            
-                            // Après réception de la réponse
-                            document.getElementById('positiveImage' + codeAvis).classList.remove('loading');
                         } else {
                             alert(data.message);
                         }
@@ -841,6 +836,18 @@ document.getElementById('positiveImage' + codeAvis).classList.add('loading');
                     var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
                     updateLikeDislike(action, codeAvis);
                 }
+
+                    document.querySelectorAll('.pouce img').forEach(img => {
+                        img.addEventListener('click', () => {
+                            const codeAvis = img.id.replace(/\D/g, ''); // Extraire le code de l'avis
+                            if (img.id.includes('positiveImage')) {
+                                togglePositiveImage(codeAvis);
+                            } else if (img.id.includes('negativeImage')) {
+                                toggleNegativeImage(codeAvis);
+                            }
+                        });
+                    });
+
                 </script>
 
 
@@ -870,7 +877,7 @@ document.getElementById('positiveImage' + codeAvis).classList.add('loading');
                         <!-- Pouce positif -->
                         <img id="positiveImage<?php echo $avis['code_avis']; ?>"
                              src="<?php echo $voteState == 1 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png'; ?>"
-                             alt="Pouce positif" onclick="togglePositiveImage(<?php echo $avis['code_avis']; ?>)">
+                             alt="Pouce positif">
                         <p id="positiveCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_positif']; ?></p>           
                     </div>
                 
@@ -878,7 +885,7 @@ document.getElementById('positiveImage' + codeAvis).classList.add('loading');
                         <!-- Pouce négatif -->
                         <img id="negativeImage<?php echo $avis['code_avis']; ?>"
                              src="<?php echo $voteState == -1 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png'; ?>"
-                             alt="Pouce négatif" onclick="toggleNegativeImage(<?php echo $avis['code_avis']; ?>)">
+                             alt="Pouce négatif">
                         <p id="negativeCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_negatif']; ?></p>
                     </div>
                     <?php } else { ?>
