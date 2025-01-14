@@ -82,7 +82,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
             // var_dump($notifs);
             // echo "</pre>";
 
-            foreach ($toutes_les_notifs as $index => $notif)
+            foreach ($notifs as $index => $notif)
             {
             
                 $checkPP = $dbh->prepare("SELECT url_image FROM tripenarvor._sa_pp WHERE code_compte = :code_compte");
