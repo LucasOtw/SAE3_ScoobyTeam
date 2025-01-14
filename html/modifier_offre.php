@@ -371,9 +371,11 @@ if (isset($_POST['envoi_modif'])){
                     $img_modif = $recup_photos;
 
                     foreach($img_modif as $photo){
-                        echo "<h1>".$photo."</h1><br>";
                         $nom_image = basename($photo);
                         $nouv_lien = "../images/offres/{$nouv_dossier}/{$nom_image}";
+
+                        echo "<h1>".$nom_image."</h1><br>";
+                        echo "<h1>".$nouv_lien."</h1><br>";
 
                         // on update la BDD
 
