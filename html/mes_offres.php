@@ -272,25 +272,34 @@ if(isset($_SESSION['aCreeUneOffre'])){
             const notificationBtn = document.getElementById('notification-btn');
             const notificationPopup = document.getElementById('notification-popup');
             const notificationBadge = document.getElementById('notification-badge');
-            const notifItems = document.querySelectorAll(".notif");
         
             // Ajouter la classe hidden pour masquer le pop-up au démarrage
             notificationPopup.classList.add('hidden');
 
             // S'assurer que notifItems contient des éléments
-            if (notifItems.length > 0) {
-                notifItems.forEach(notif => {  
-                    console.log("ok");
-                    const consulter = notif.getAttribute('data-consult');
-                    console.log(consulter);
-                });
-            } else {
-                console.log("Aucune notification trouvée.");
-            }
+            const gererNotifications = () => {
+                const notifItems = document.querySelectorAll(".notif");
+        
+                if (notifItems.length > 0) {
+                    notifItems.forEach(notif => {
+                        console.log("Notification trouvée");
+                        const consulter = notif.getAttribute('data-consult');
+                        console.log("Consultée : ", consulter);
+                    });
+                } else {
+                    console.log("Aucune notification trouvée.");
+                }
+            };
         
             notificationBtn.addEventListener('click', (e) => {
                 e.preventDefault(); // Empêche le comportement par défaut de l'ancre
                 notificationPopup.classList.toggle('hidden');
+
+                if (!notificationPopup.classList.contains('hidden')) {
+                    // Appeler la fonction pour traiter les notifications lorsque le popup est visible
+                    gererNotifications();
+                }
+                
                 notificationBadge.style.display = "none";
             });
         
