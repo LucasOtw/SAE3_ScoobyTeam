@@ -354,8 +354,6 @@ if (isset($_POST['envoi_modif'])){
                     $ancien_chemin = "images/offres/{$ancien_dossier}";
                     $nouveau_chemin = "images/offres/{$nouveau_dossier}";
 
-                    $
-
                     if(is_dir($ancien_chemin)){
                         if(!file_exists($nouveau_chemin)){
                             rename($ancien_chemin,$nouveau_chemin);
