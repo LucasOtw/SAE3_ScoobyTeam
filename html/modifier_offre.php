@@ -421,8 +421,12 @@ if($infos_offre !== null){
                                     <legend>?</legend>
                                     <label for="date">Date du spectacle (*)</label>
                                     <input type="date" id="date" data-sync="date_modif" value="<?php echo htmlspecialchars($infos_offre['date_spectacle']) ?>" required>
-                                    <input type="time" class="duree" data-sync="duree_modif" value="<?php echo htmlspecialchars($infos_offre['duree']) ?>" required>
-                                    <input type="time" class="duree" data-sync="heure_spect_modif" value="<?php echo htmlspecialchars($infos_offre['heure_spectacle']) ?>" required>
+
+                                    <label for="duree">Durée (*)</label>
+                                    <input type="time" class="duree" id="duree" data-sync="duree_modif" value="<?php echo htmlspecialchars($infos_offre['duree']) ?>" required>
+
+                                    <label for="heure_spectacle">Heure du spectacle (*)</label>
+                                    <input type="time" class="duree" id="heure_spectacle" data-sync="heure_spect_modif" value="<?php echo htmlspecialchars($infos_offre['heure_spectacle']) ?>" required>
                                 </fieldset>
                             <?php
                     }
