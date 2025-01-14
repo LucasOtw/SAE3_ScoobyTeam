@@ -833,21 +833,6 @@ if (isset($json['results'][0])) {
 
                 </script>
 
-                <?php 
-                    // Récupérer l'état du vote de l'utilisateur pour cet avis
-                    $codeAvis = $avis['code_avis']; // Assurez-vous que $avis contient bien le code de l'avis
-                    $codeCompte = $_SESSION['membre']['code_compte']; // L'utilisateur doit être connecté
-                    
-                    $stmt = $dbh->prepare("SELECT pouce FROM tripenarvor._pouce WHERE code_avis = :code_avis AND code_compte = :code_compte");
-                    $stmt->execute([':code_avis' => $codeAvis, ':code_compte' => $codeCompte]);
-                    $voteState = $stmt->fetchColumn();
-                    
-                    // Si aucun vote n'existe, définir le vote par défaut à 0 (ni like ni dislike)
-                    if ($voteState === false) {
-                        $voteState = 0;
-                    }
-                ?>
-
                 <div class="signalement_repondre">
                      <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
                         <!-- Pouce positif -->
