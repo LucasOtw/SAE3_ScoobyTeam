@@ -797,7 +797,7 @@ if (isset($json['results'][0])) {
                 </style>
                 <script>
                 function updateLikeDislike(action, codeAvis) {
-                    fetch("update_likes.php", {
+                    fetch("update_like.php", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/x-www-form-urlencoded",
@@ -807,42 +807,35 @@ if (isset($json['results'][0])) {
                             code_avis: codeAvis
                         })
                     })
-                    .then(response => {
-                        if (!response.ok) throw new Error("Erreur réseau ou serveur.");
-                        return response.json();
-                    })
+                    .then(response => response.json())
                     .then(data => {
-                        console.log(data);  // Ajoute ce log pour vérifier les données reçues
                         if (data.status === 'success') {
                             // Mise à jour de l'image des pouces
                             document.getElementById('positiveImage' + codeAvis).src = data.pouce_positif > 0 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
                             document.getElementById('negativeImage' + codeAvis).src = data.pouce_negatif > 0 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
-                    
+                
                             // Mise à jour des nombres de votes
                             document.getElementById('positiveCount' + codeAvis).textContent = data.pouce_positif;
                             document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
                         } else {
-                            alert(data.message);  // Affichage d'une alerte si erreur
+                            alert(data.message);
                         }
                     })
                     .catch(error => {
                         console.error("Erreur réseau : ", error);
                     });
-                    error_log("poucePositif: $poucePositif, pouceNegatif: $pouceNegatif"); // Pour vérifier les valeurs
-
                 }
-            
+                
                 function togglePositiveImage(codeAvis) {
-                    const positiveImage = document.getElementById('positiveImage' + codeAvis);
-                    const action = positiveImage.src.includes('blanc') ? 'like' : 'unlike';
+                    var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
                     updateLikeDislike(action, codeAvis);
                 }
-            
+                
                 function toggleNegativeImage(codeAvis) {
-                    const negativeImage = document.getElementById('negativeImage' + codeAvis);
-                    const action = negativeImage.src.includes('blanc') ? 'dislike' : 'undislike';
+                    var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
                     updateLikeDislike(action, codeAvis);
                 }
+
             </script>
 
                 <?php 
