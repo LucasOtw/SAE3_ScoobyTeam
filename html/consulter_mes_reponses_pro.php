@@ -109,7 +109,7 @@ if (!empty($_POST['supprAvis'])){
                                 $infoCompte = $dbh->prepare('select * from tripenarvor._compte natural join tripenarvor._membre where code_compte= :code_compte;');
                                 $infoCompte->bindValue(':code_compte',$notif['code_compte']);
                                 $infoCompte->execute();
-                                $compte = $infoCompte->fetch(PDO::FETCH_ASSOC);
+                                $compte_m = $infoCompte->fetch(PDO::FETCH_ASSOC);
                 
                                 $infoOffre = $dbh->prepare('select * from tripenarvor._offre where code_offre = :code_offre;');
                                 $infoOffre->bindValue(':code_offre',$notif["code_offre"]);
@@ -125,7 +125,7 @@ if (!empty($_POST['supprAvis'])){
                                         data-avis="<?php echo $notif["code_avis"]; ?>" >
                                         <img src="<?php echo $compte_pp; ?>" alt="photo de profil" class="profile-img">
                                         <div class="notification-content">
-                                            <strong><?php echo $compte["prenom"].' '.$compte["nom"]; ?></strong>
+                                            <strong><?php echo $compte_m["prenom"].' '.$compte_m["nom"]; ?></strong>
                                             <span class="notification-location"> | <?php echo $notif["titre_offre"]; ?></span>
                                             <p><?php echo $notif["txt_avis"]; ?></p>
                                             <span class="notification-time"><?php echo tempsEcouleDepuisPublication($offre);?></span>
