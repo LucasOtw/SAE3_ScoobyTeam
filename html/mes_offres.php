@@ -283,7 +283,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
                 if (notifItems.length > 0) {
                     notifItems.forEach(notif => {
                         console.log("Notification trouvée");
-                        const consulter = notif.getAttribute('data-consult');
+                        const consulter = notif.getAttribute('data-consult') ? 1 : 0;
                         console.log("Consultée : ", consulter);
                     });
                 } else {
