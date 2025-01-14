@@ -218,13 +218,26 @@ if (isset($_POST['envoi_modif'])){
     /* VERIFICATION DES HORAIRES */
 
     foreach($_POST['horaires'] as $jour => $horaire){
-        if(!empty($horaire['ouverture']) && $horaire['ouverture'] != $codes_horaires[$jour]['ouverture']){
-            if(!empty($horaire['fermeture']) && $horaire['fermeture'] != $codes_horaires[$jour]['fermeture']){
+        if((!empty($horaire['ouverture']) || $horaire['ouverture'] !== null) && $horaire['ouverture'] != $codes_horaires[$jour]['ouverture']){
+            if((!empty($horaire['fermeture']) || $horaire['fermeture'] !== null) && $horaire['fermeture'] != $codes_horaires[$jour]['fermeture']){
                 if($horaire['ouverture'] > $horaire['fermeture']){
                     $erreurs[] = "Erreur : L'heure d'ouverture ne peut pas être après l'heure d'ouverture pour : {$jour}";
                     return;
                 }
                 // sinon, on prépare la requête pour mettre à jour la fermeture
+                $req_fermeture = "UPDATE tripenarvor._horaire SET fermeture = :nouv_fermeture WHERE code_horaire = :code_horaire";
+            }
+            $req_ouverture = "UPDATE tripenarvor._horaire SET ouverture = :nouv_ouverture WHERE code_horaire = :code_horaire";
+        } else {
+            if((empty($horaire['ouverture']) || $horaire['ouverture'] == null) && (empty($horaire['fermeture']) || $horaire['fermeture'] == null)){
+                // si les horaires sont vides ou nulles
+                if(!empty($codes_horaires[$jour]['ouverture']) || $codes_horaires[$jour]['ouverture'] !== null){
+                    // si il y a une horaire d'ouverture, il y aura une horaire de fermeture
+                    // on supprime donc la ligne.
+                }
+            } else {
+                $erreurs[] = "Erreur : Une horaire peut être vide UNIQUEMENT si l'autre l'est aussi : {$jour}";
+                return;
             }
         }
     }
@@ -501,11 +514,11 @@ if($infos_offre !== null){
                                         <label class="label-check" for="brunch">Brunch</label>
                                     </div>
                                     <div>
-                                        <input type="checkbox" id="dejeuner" name="repas[]" value="Déjeuner" checked>
+                                        <input type="checkbox" id="dejeuner" name="repas[]" value="Déjeuner">
                                         <label class="label-check" for="dejeuner">Déjeuner</label>
                                     </div>
                                     <div>
-                                        <input type="checkbox" id="diner" name="repas[]" value="Dîner" checked>
+                                        <input type="checkbox" id="diner" name="repas[]" value="Dîner">
                                         <label class="label-check" for="diner">Dîner</label>
                                     </div>
                                     <div>
