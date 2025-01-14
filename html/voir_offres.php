@@ -1314,8 +1314,8 @@ function tempsEcouleDepuisPublication($offre){
             <div class="link-group">
                 <ul>
                     <li><a href="#">CGU</a></li>
-                    <li><a href="contacter_plateforme.php">Signaler un problème</a></li>
-                    <li><a href="contacter_plateforme.php">Nous contacter</a></li>
+                    /*<li><a href="contacter_plateforme.php">Signaler un problème</a></li>
+                    <li><a href="contacter_plateforme.php">Nous contacter</a></li>*/
                 </ul>
             </div>
             <div class="link-group">
