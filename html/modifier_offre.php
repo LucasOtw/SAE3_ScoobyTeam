@@ -233,6 +233,7 @@ echo "</pre>";
 if($infos_offre !== null){
     echo "<pre>";
     var_dump($infos_offre);
+    $infos_offre = $infos_offre[0];
     echo "</pre>";
 }
     
