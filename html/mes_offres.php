@@ -31,7 +31,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
 ///                            Contenu notif                                ///
 ///////////////////////////////////////////////////////////////////////////////
 
-dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";
 $password = "philly-Congo-bry4nt";
 
