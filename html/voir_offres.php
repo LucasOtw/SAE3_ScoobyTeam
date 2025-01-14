@@ -1267,27 +1267,27 @@ function tempsEcouleDepuisPublication($offre){
         <img src="images/icones/User icon.png" alt="image de Personne"></a>
 </nav>
     <footer>
-               <div class="newsletter">
-    <div class="newsletter-content">
-        <h2>Inscrivez-vous à notre Newsletter</h2>
-        <p>PACT</p>
-        <p>découvrez la Bretagne !</p>
-        <form class="newsletter-form" id="newsletterForm">
-            <input type="email" id="newsletterEmail" placeholder="Votre adresse mail" required>
-            <button type="submit">S'inscrire</button>
-        </form>
+    <div class="newsletter">
+        <div class="newsletter-content">
+            <h2>Inscrivez-vous à notre Newsletter</h2>
+            <p>PACT</p>
+            <p>découvrez la Bretagne !</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" id="newsletterEmail" placeholder="Votre adresse mail" required>
+                <button type="submit">S'inscrire</button>
+            </form>
+        </div>
+        <div class="newsletter-image">
+            <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
+        </div>
     </div>
-    <div class="newsletter-image">
-        <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
-    </div>
-</div>
 
-<div id="newsletterConfirmBox" style="display: none;">
-    <div class="popup-content">
-        <p class="popup-message"></p>
-        <button id="closeNewsletterPopup">Fermer</button>
+    <div id="newsletterConfirmBox" style="display: none;">
+        <div class="popup-content">
+            <p class="popup-message"></p>
+            <button id="closeNewsletterPopup">Fermer</button>
+        </div>
     </div>
-</div>
 
 
 
