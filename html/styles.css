@@ -5958,10 +5958,12 @@ select.theme_contacter_plateforme {
 
 /* Conteneur principal des cartes */
 #photo-cards {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    justify-content: center;
+    justify-items: center;
+    margin: 0 auto;
+    max-width: 900px; /* Limite la largeur à 3 cartes par ligne */
 }
 
 /* Carte individuelle */
@@ -6011,6 +6013,41 @@ select.theme_contacter_plateforme {
     background-color: #e60000;
 }
 
+/* Carte d'ajout de photo */
+.add-photo-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    border: 2px dashed #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.add-photo-card:hover {
+    background-color: #e6e6e6;
+    border-color: #aaa;
+}
+
+#add-photo {
+    text-align: center;
+    color: #666;
+}
+
+#add-photo span {
+    font-size: 3rem;
+    font-weight: bold;
+    display: block;
+    color: #333;
+}
+
+#add-photo p {
+    margin: 0;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #333;
+}
 
                                         /*****************************************************
                                                     * Code page détail d'une offre *
