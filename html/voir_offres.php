@@ -1346,11 +1346,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const newsletterPopup = document.getElementById('newsletterConfirmBox');
     const closePopupButton = document.getElementById('closeNewsletterPopup');
 
-    // Gestion de la soumission du formulaire
     newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // Empêche le rechargement de la page
+        e.preventDefault();
 
-        const email = emailInput.value.trim(); // Récupère la valeur de l'email
+        const email = emailInput.value.trim();
         if (email) {
             fetch('envoyer_email3.php', {
                 method: 'POST',
@@ -1358,11 +1357,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: `email=${encodeURIComponent(email)}`
             })
                 .then(() => {
-                    // Affiche toujours le message positif
                     afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
                 })
                 .catch(() => {
-                    // Même message en cas d'erreur
                     afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
                 });
         } else {
@@ -1370,16 +1367,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Fonction pour afficher la popup avec un message
     function afficherPopup(message) {
         newsletterPopup.querySelector('.popup-message').innerText = message;
-        newsletterPopup.style.display = 'flex';
+        newsletterPopup.style.display = 'block';
     }
 
-    // Fermer la popup lorsqu'on clique sur le bouton "Fermer"
     closePopupButton.addEventListener('click', () => {
         newsletterPopup.style.display = 'none';
     });
 });
+
 </script>
 
