@@ -561,7 +561,7 @@ if($infos_offre !== null){
 
 
             </div>
-            <div class="tab-content">
+            <div class="tab-content" id="photos">
                 <div class="photo-cards">
                     <?php
                     foreach($recup_photos as $photo){
