@@ -350,7 +350,23 @@ if (isset($_POST['envoi_modif'])){
                     // 1) le nom du dossier des offres
                     // 2) le nom du dossier dans le chemin des images
                     $nom_doss = str_replace(' ','',$offre['titre_offre']);
-                    echo "<h1>".$nom_doss."</h1>";
+                    $nouv_dossier = str_replace(' ','',$val);
+
+                        // Chemins complets pour le renommage
+                    $ancien_chemin = "images/offres/{$nom_doss}";
+                    $nouveau_chemin = "images/offres/{$nouv_dossier}";
+                
+                    // Vérifier si l'ancien dossier existe
+                    if (is_dir($ancien_chemin)) {
+                        // Tenter de renommer le dossier
+                        if (rename($ancien_chemin, $nouveau_chemin)) {
+                            echo "Le dossier a été renommé avec succès de '{$nom_doss}' à '{$nouv_dossier}'.";
+                        } else {
+                            echo "Erreur : Impossible de renommer le dossier.";
+                        }
+                    } else {
+                        echo "Erreur : Le dossier '{$nom_doss}' n'existe pas.";
+                    }
                 }
                 
                 echo "Champ $att mis à jour avec succès.<br>";
