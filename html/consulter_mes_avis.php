@@ -237,7 +237,7 @@ if (!empty($_POST['supprAvis'])){
                 <ul>
                     <li><a href="voir_offres.php">Accueil</a></li>
                     <li><a href="connexion_pro.php">Publier</a></li>
-                    <li><a href="connexion_memebre.php">Se Connecter</a></li>
+                    <li><a href="consulter_compte_membre">Mon Compte</a></li>
                 </ul>
             </div>
             <div class="link-group">
