@@ -73,6 +73,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
              $creerAvis->bindParam(':code_offre', $code_offre);
              $creerAvis->bindParam(':code_compte', $code_compte);
              $creerAvis->execute();
+
+             $creerNotif = $dbh->("INSERT INTO tripenarvor._notification (code_avis) SELECT currval('tripenarvor._avis_code_avis_seq');");
+             $creerNotif->execute();
    
              header('location: detail_offre.php');
              exit;
