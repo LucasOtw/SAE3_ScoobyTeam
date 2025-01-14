@@ -374,7 +374,6 @@
                         </div>
                     <?php
                 }
-
     
                try {
                     // Appelle nextval pour initier la séquence
