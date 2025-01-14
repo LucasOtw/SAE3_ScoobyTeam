@@ -54,16 +54,15 @@ $jours = [
 
 /* RÉCUPÉRATION DES HORAIRES */
 
-$req_horaires = $dbh->prepare("SELECT * FROM tripenarvor._horaire WHERE code_horaire IN (
-SELECT lundi,mardi,mercredi,jeudi,vendredi,samedi,dimanche FROM tripenarvor._offre
-WHERE code_offre = :code_offre
-)");
-$req_horaires->bindValue(":code_offre",$offre['code_offre']);
-$req_horaires->execute();
-$req_horaires = $req_horaires->fetchAll(PDO::FETCH_ASSOC);
+$req_codes = $dbh->prepare("SELECT lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche
+                            FROM tripenarvor._offre
+                            WHERE code_offre = :code_offre");
+$req_codes->bindValue(":code_offre", $code_offre);
+$req_codes->execute();
+$jours = $req_codes->fetch(PDO::FETCH_ASSOC);
 
 echo "<pre>";
-var_dump($req_horaires);
+var_dump($jours;
 echo "</pre>";
 
 
