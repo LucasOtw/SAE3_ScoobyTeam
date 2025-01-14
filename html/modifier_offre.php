@@ -59,12 +59,7 @@ $req_codes = $dbh->prepare("SELECT lundi, mardi, mercredi, jeudi, vendredi, same
                             WHERE code_offre = :code_offre");
 $req_codes->bindValue(":code_offre", $offre['code_offre']);
 $req_codes->execute();
-$jours = $req_codes->fetch(PDO::FETCH_ASSOC);
-
-
-echo "<pre>";
-var_dump($jours);
-echo "</pre>";
+$codes_horaires = $req_codes->fetch(PDO::FETCH_ASSOC);
 
 
 /* RÉCUPÉRATION DU "TYPE DE L'OFFRE" */
