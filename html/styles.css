@@ -5662,3 +5662,42 @@ select.theme_contacter_plateforme {
         font-size: 1rem;
     }
 }
+/* Tabs Section */
+#modif_offre .tabs-modif_offre {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    text-align: center;
+}
+
+#modif_offre .tabs-modif_offre ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    min-width: 40vw;
+}
+
+#modif_offre .tabs-modif_offre ul li {
+    display: flex;
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+#modif_offre .tabs-modif_offre ul li a {
+    width: calc(60vw/4);
+    font-size: 20px;
+    padding: 10px 20px;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+    color: #333;
+    text-decoration: none;
+}
+#modif_offre .tabs-modif_offre ul li a.active {
+    border-color: #ff6600;
+    text-decoration: none;
+}
