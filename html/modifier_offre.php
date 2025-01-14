@@ -159,6 +159,10 @@ if (isset($_POST['envoi_modif'])){
     
     if(empty($erreurs)){
 
+        echo "<pre>";
+        var_dump($_POST['horaires']);
+        echo "</pre>";
+
         if(!empty($_POST['tags'])){
             $valeurs_tags = array_column($mes_tags, 'code_tag');
             var_dump($valeurs_tags);
@@ -465,19 +469,19 @@ if($infos_offre !== null){
                     <div class="col">
                         <fieldset>
                             <legend>Jour</legend>
-                            <input type="text" id="jour" name="jour" placeholder="<?php echo $jour ?>" disabled>
+                            <input type="text" id="jour" name="horaires[<?php echo $jour; ?>]" placeholder="<?php echo $jour ?>" disabled>
                         </fieldset>
                     </div>
                     <div class="col">
                         <fieldset>
                             <legend>Ouverture</legend>
-                            <input type="time" id="ouverture" name="<?php echo "ouverture".$jour; ?>" placeholder="Ouverture">
+                            <input type="time" id="ouverture" name="horaires[<?php echo $jour; ?>]["ouverture"]" placeholder="Ouverture">
                         </fieldset>
                     </div>
                     <div class="col">
                         <fieldset>
                             <legend>Fermeture</legend>
-                            <input type="time" id="fermeture" name="<?php echo "fermeture".$jour; ?>" placeholder="Fermeture">
+                            <input type="time" id="fermeture" name="horaires[<?php echo $jour; ?>]["fermeture"]" placeholder="Fermeture">
                         </fieldset>
                     </div>
                 </div>
