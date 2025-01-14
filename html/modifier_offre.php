@@ -217,6 +217,61 @@ if (isset($_POST['envoi_modif'])){
 
     /* VERIFICATION DES HORAIRES */
 
+    foreach ($_POST['horaires'] as $jour => $horaire) {
+        $code_horaire_existant = isset($codes_horaires[$jour]) ? $codes_horaires[$jour]['code_horaire'] : null;
+    
+        // DEBUG : Vérifie chaque étape
+        error_log("Traitement du jour : $jour | Ouverture : {$horaire['ouverture']} | Fermeture : {$horaire['fermeture']}");
+    
+        if (!empty($horaire['ouverture']) && !empty($horaire['fermeture'])) {
+            if ($horaire['ouverture'] > $horaire['fermeture']) {
+                $erreurs[] = "Erreur : L'heure d'ouverture ne peut pas être après l'heure de fermeture pour : {$jour}";
+                break; // Sort de la boucle pour éviter un problème
+            }
+    
+            if ($code_horaire_existant !== null) {
+                // Mise à jour
+                if ($horaire['ouverture'] != $codes_horaires[$jour]['ouverture']) {
+                    $req_update = $dbh->prepare("UPDATE tripenarvor._horaire SET ouverture = :ouverture WHERE code_horaire = :code_horaire");
+                    $req_update->bindValue(':ouverture', $horaire['ouverture']);
+                    $req_update->bindValue(':code_horaire', $code_horaire_existant);
+                    $req_update->execute();
+                }
+                if ($horaire['fermeture'] != $codes_horaires[$jour]['fermeture']) {
+                    $req_update = $dbh->prepare("UPDATE tripenarvor._horaire SET fermeture = :fermeture WHERE code_horaire = :code_horaire");
+                    $req_update->bindValue(':fermeture', $horaire['fermeture']);
+                    $req_update->bindValue(':code_horaire', $code_horaire_existant);
+                    $req_update->execute();
+                }
+            } else {
+                // Insertion
+                $req_insert = $dbh->prepare("INSERT INTO tripenarvor._horaire (ouverture, fermeture) VALUES (:ouverture, :fermeture) RETURNING code_horaire");
+                $req_insert->bindValue(':ouverture', $horaire['ouverture']);
+                $req_insert->bindValue(':fermeture', $horaire['fermeture']);
+                $req_insert->execute();
+                $nouveau_code_horaire = $req_insert->fetchColumn();
+    
+                $req_update_offre = $dbh->prepare("UPDATE tripenarvor._offre SET {$jour} = :code_horaire WHERE code_offre = :code_offre");
+                $req_update_offre->bindValue(':code_horaire', $nouveau_code_horaire);
+                $req_update_offre->bindValue(':code_offre', $offre['code_offre']);
+                $req_update_offre->execute();
+            }
+        } elseif (empty($horaire['ouverture']) && empty($horaire['fermeture'])) {
+            if ($code_horaire_existant !== null) {
+                $req_delete = $dbh->prepare("DELETE FROM tripenarvor._horaire WHERE code_horaire = :code_horaire");
+                $req_delete->bindValue(':code_horaire', $code_horaire_existant);
+                $req_delete->execute();
+    
+                $req_update_offre = $dbh->prepare("UPDATE tripenarvor._offre SET {$jour} = NULL WHERE code_offre = :code_offre");
+                $req_update_offre->bindValue(':code_offre', $offre['code_offre']);
+                $req_update_offre->execute();
+            }
+        } else {
+            $erreurs[] = "Erreur : Vous devez spécifier les horaires d'ouverture et de fermeture pour : {$jour}";
+            break; // Quitte la boucle pour éviter une boucle infinie
+        }
+    }
+
     // Si il n'y a pas d'erreurs...
     
     if(empty($erreurs)){
