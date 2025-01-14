@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             default => $currentVote,
         };
 
-        // Insérer ou mettre à jour le vote
+        // Si le vote est modifié ou non existant, effectuer l'insert ou la mise à jour
         if ($currentVote === false) {
             $stmt = $dbh->prepare("INSERT INTO tripenarvor._pouce (code_avis, code_compte, pouce) VALUES (:code_avis, :code_compte, :pouce)");
             $stmt->execute([':code_avis' => $codeAvis, ':code_compte' => $codeCompte, ':pouce' => $newVote]);
@@ -85,6 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'status' => 'success',
             'pouce_positif' => $poucePositif,
             'pouce_negatif' => $pouceNegatif,
+            'current_vote' => $newVote, // Envoyer l'état actuel du vote pour afficher les bonnes images
         ]);
     } catch (Exception $e) {
         $dbh->rollBack();
