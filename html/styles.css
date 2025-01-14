@@ -6023,6 +6023,10 @@ select.theme_contacter_plateforme {
     background-color: #e60000;
 }
 
+.delete-photo-btn.reverse{
+  background-color: orange;
+}
+
 /* Carte d'ajout de photo */
 .add-photo-card {
     display: flex;
