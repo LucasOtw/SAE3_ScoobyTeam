@@ -533,7 +533,7 @@ if($infos_offre !== null){
                     <div class="col">
                         <fieldset>
                             <legend>Ouverture</legend>
-                            <input type="time" id="ouverture" name="horaires[<?php echo $jour; ?>]["ouverture"]" placeholder="Ouverture"
+                            <input type="time" id="ouverture" name="horaires[<?php echo $jour; ?>][ouverture]" placeholder="Ouverture"
                             <?php if(isset($codes_horaires[$jour]['ouverture']) && $codes_horaires[$jour]['ouverture'] !== null){
                                 ?>
                                 value="<?php echo htmlspecialchars($codes_horaires[$jour]['ouverture']); ?>"
@@ -544,7 +544,7 @@ if($infos_offre !== null){
                     <div class="col">
                         <fieldset>
                             <legend>Fermeture</legend>
-                            <input type="time" id="fermeture" name="horaires[<?php echo $jour; ?>]["fermeture"]" placeholder="Fermeture"
+                            <input type="time" id="fermeture" name="horaires[<?php echo $jour; ?>][fermeture]" placeholder="Fermeture"
                             <?php if(isset($codes_horaires[$jour]['fermeture']) && $codes_horaires[$jour]['fermeture'] !== null){
                                 ?>
                                 value="<?php echo htmlspecialchars($codes_horaires[$jour]['fermeture']); ?>"
