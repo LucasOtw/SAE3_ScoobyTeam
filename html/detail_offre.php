@@ -853,7 +853,7 @@ if (isset($json['results'][0])) {
             </script>
 
                 <?php 
-                    if (isset($_SESSION['membre']['code_compte']){
+                    if (isset($_SESSION['membre']['code_compte'])){
                         $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
                         $username = "sae";  // Utilisateur PostgreSQL
                         $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL
