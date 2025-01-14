@@ -304,12 +304,14 @@ INNER JOIN
     const notificationBtn = document.getElementById('notification-btn');
     const notificationPopup = document.getElementById('notification-popup');
 
+    // Ajouter la classe hidden pour masquer le pop-up au démarrage
+    notificationPopup.classList.add('hidden');
+
     notificationBtn.addEventListener('click', (e) => {
         e.preventDefault(); // Empêche le comportement par défaut de l'ancre
         notificationPopup.classList.toggle('hidden');
     });
 
-    // Fermer le pop-up si on clique en dehors
     document.addEventListener('click', (e) => {
         if (!notificationPopup.contains(e.target) && !notificationBtn.contains(e.target)) {
             notificationPopup.classList.add('hidden');
