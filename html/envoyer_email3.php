@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Password = 'yejz rjye ntfh ryjv'; // Remplacez par un mot de passe sécurisé ou un mot de passe d'application
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
+        $mail->CharSet = 'UTF-8';
 
         $mail->setFrom('noreply.scoobyteam@gmail.com', 'ScoobyTeam');
         $mail->addAddress($email);

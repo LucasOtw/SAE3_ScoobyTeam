@@ -56,8 +56,48 @@ if(isset($_SESSION['aCreeUneOffre'])){
         <img src="images/notif.png" alt="cloche notification" class="nouvelle-image" style="margin-top: -5px;">
         <span class="notification-badge" style="display:none"></span>
     </a>
-    <div id="notification-popup">
+    <div id="notification-popup" style="display:none">
         <ul>
+            <li>
+                <img src="images/user2.png" alt="photo de profil" class="profile-img">
+                <div class="notification-content">
+                    <strong>Quentin Uguen</strong>
+                    <span class="notification-location"> | Abbaye de Monfort</span>
+                    <p>Déplorable, environnement moche</p>
+                    <span class="notification-time">1 mois</span>
+                    <span class="new-notif-dot"></span>
+                </div>
+            </li>
+            <li>
+                <img src="images/user2.png" alt="photo de profil" class="profile-img">
+                <div class="notification-content">
+                    <strong>Quentin Uguen</strong>
+                    <span class="notification-location"> | Abbaye de Monfort</span>
+                    <p>Déplorable, environnement moche</p>
+                    <span class="notification-time">1 mois</span>
+                    <span class="new-notif-dot"></span>
+                </div>
+            </li>
+            <li>
+                <img src="images/user2.png" alt="photo de profil" class="profile-img">
+                <div class="notification-content">
+                    <strong>Quentin Uguen</strong>
+                    <span class="notification-location"> | Abbaye de Monfort</span>
+                    <p>Déplorable, environnement moche</p>
+                    <span class="notification-time">1 mois</span>
+                    <span class="new-notif-dot"></span>
+                </div>
+            </li>
+            <li>
+                <img src="images/user2.png" alt="photo de profil" class="profile-img">
+                <div class="notification-content">
+                    <strong>Quentin Uguen</strong>
+                    <span class="notification-location"> | Abbaye de Monfort</span>
+                    <p>Déplorable, environnement moche</p>
+                    <span class="notification-time">1 mois</span>
+                    <span class="new-notif-dot"></span>
+                </div>
+            </li>
             <li>
                 <img src="images/user2.png" alt="photo de profil" class="profile-img">
                 <div class="notification-content">

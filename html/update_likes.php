@@ -6,8 +6,6 @@ $username = "sae";  // Utilisateur PostgreSQL défini dans .env
 $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
 $dbh = new PDO($dsn, $username, $password);
 
-session_start();
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_SESSION['membre']['code_compte'])) {
         echo json_encode([
@@ -57,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute([':pouce' => $newVote, ':code_avis' => $codeAvis, ':code_compte' => $codeCompte]);
         }
 
-        // Calculer les nouveaux compteurs
+        // Calculer les nouveaux compteurs pour la table _pouce
         $stmt = $dbh->prepare("
             SELECT 
                 SUM(CASE WHEN pouce = 1 THEN 1 ELSE 0 END) AS pouce_positif,
@@ -68,12 +66,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([':code_avis' => $codeAvis]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        $poucePositif = $result['pouce_positif'] ?? 0;
+        $pouceNegatif = $result['pouce_negatif'] ?? 0;
+
+        // Mettre à jour les compteurs dans la table _avis
+        $stmt = $dbh->prepare("UPDATE tripenarvor._avis SET pouce_positif = :pouce_positif, pouce_negatif = :pouce_negatif WHERE code_avis = :code_avis");
+        $stmt->execute([
+            ':pouce_positif' => $poucePositif,
+            ':pouce_negatif' => $pouceNegatif,
+            ':code_avis' => $codeAvis,
+        ]);
+
         $dbh->commit();
 
         echo json_encode([
             'status' => 'success',
-            'pouce_positif' => $result['pouce_positif'] ?? 0,
-            'pouce_negatif' => $result['pouce_negatif'] ?? 0,
+            'pouce_positif' => $poucePositif,
+            'pouce_negatif' => $pouceNegatif,
         ]);
     } catch (Exception $e) {
         $dbh->rollBack();
@@ -83,3 +92,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
     }
 }
+?>
