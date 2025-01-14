@@ -456,35 +456,36 @@ if($infos_offre !== null){
 
                     ?>
                 </fieldset>
-                <fieldset>
-                    <legend>Horaires</legend>
-                    <?php
-                        foreach($jours as $jour){
-                            ?>
-                            <div class="row">
-                                <div class="col">
-                                    <fieldset>
-                                        <legend>Jour</legend>
-                                        <input type="text" id="jour" name="jour" placeholder="<?php echo $jour ?>" disabled>
-                                    </fieldset>
-                                </div>
-                                <div class="col">
-                                    <fieldset>
-                                        <legend>Ouverture</legend>
-                                        <input type="time" id="ouverture" name="<?php echo "ouverture".$jour; ?>" placeholder="Ouverture">
-                                    </fieldset>
-                                </div >
-                                <div class="col">
-                                    <fieldset>
-                                        <legend>Fermeture</legend>
-                                        <input type="time" id="fermeture" name="<?php echo "fermeture".$jour; ?>" placeholder="Fermeture">
-                                    </fieldset>
-                                </div >
-                            </div>
-                            <?php
-                        }
-                    ?>
-                </fieldset>
+               <fieldset>
+                <legend>Horaires</legend>
+                <?php
+                    foreach($jours as $jour){
+                ?>
+                <div class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend>Jour</legend>
+                            <input type="text" id="jour" name="jour" placeholder="<?php echo $jour ?>" disabled>
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset>
+                            <legend>Ouverture</legend>
+                            <input type="time" id="ouverture" name="<?php echo "ouverture".$jour; ?>" placeholder="Ouverture">
+                        </fieldset>
+                    </div>
+                    <div class="col">
+                        <fieldset>
+                            <legend>Fermeture</legend>
+                            <input type="time" id="fermeture" name="<?php echo "fermeture".$jour; ?>" placeholder="Fermeture">
+                        </fieldset>
+                    </div>
+                </div>
+                <?php
+                    }
+                ?>
+            </fieldset>
+
             </div>
             <div class="tab-content" id="photos">
                 <h1>Pas de photos</h1>
