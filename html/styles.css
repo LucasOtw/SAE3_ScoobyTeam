@@ -6224,6 +6224,72 @@ select.theme_contacter_plateforme {
     color: #555;
     vertical-align: middle;
 }
+
+/* Style global pour le fieldset spécifique à la visite */
+#modif_offre .interieur_modif_offre_visite {
+    border: 1px solid #ddd; /* Bordure grise pour séparer le groupe */
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Titre du fieldset */
+#modif_offre .interieur_modif_offre_visite legend {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Labels des champs */
+#modif_offre .interieur_modif_offre_visite label {
+    display: block;
+    font-size: 1rem;
+    font-weight: normal;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Inputs de texte, date et heure */
+#modif_offre .interieur_modif_offre_visite input[type="text"],
+#modif_offre .interieur_modif_offre_visite input[type="date"],
+#modif_offre .interieur_modif_offre_visite input[type="time"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: border 0.3s ease;
+}
+
+/* Focus sur les inputs */
+#modif_offre .interieur_modif_offre_visite input[type="text"]:focus,
+#modif_offre .interieur_modif_offre_visite input[type="date"]:focus,
+#modif_offre .interieur_modif_offre_visite input[type="time"]:focus {
+    border-color: #ffa500;
+    outline: none;
+}
+
+/* Hover sur les inputs */
+#modif_offre .interieur_modif_offre_visite input[type="text"]:hover,
+#modif_offre .interieur_modif_offre_visite input[type="date"]:hover,
+#modif_offre .interieur_modif_offre_visite input[type="time"]:hover {
+    border-color: #ffa500;
+}
+
+/* Spacing pour chaque champ */
+#modif_offre .interieur_modif_offre_visite input {
+    margin-bottom: 15px; /* Espacement entre chaque champ */
+}
+
+/* Style des éléments spécifiques */
+#modif_offre .interieur_modif_offre_visite input[type="text"] {
+    font-style: italic; /* Langues en italique */
+}
+
                              /*****************************************************
                                                     * Code page détail d'une offre *
                                         *****************************************************/
