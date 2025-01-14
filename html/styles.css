@@ -6101,8 +6101,8 @@ select.theme_contacter_plateforme {
 /* Conteneur global */
 #modif_offre .interieur_modif_offre_services {
     padding: 20px;
-    background-color: #f9f9f9;
-    border: 2px solid #ccc;
+    background-color: #fff;
+    border: 2px solid #fff;
     border-radius: 10px;
 }
 
