@@ -344,6 +344,15 @@ if (isset($_POST['envoi_modif'])){
     
             try {
                 $stmt->execute();
+
+                if($att == "titre_offre"){
+                    // si on change le titre de l'offre, on va devoir changer...
+                    // 1) le nom du dossier des offres
+                    // 2) le nom du dossier dans le chemin des images
+                    $nom_doss = str_replace(' ','',$offre['titre_offre']);
+                    echo "<h1>".$nom_doss."</h1>";
+                }
+                
                 echo "Champ $att mis à jour avec succès.<br>";
             } catch (PDOException $e) {
                 echo "Erreur lors de la mise à jour du champ $att: " . $e->getMessage() . "<br>";
@@ -807,63 +816,7 @@ if($infos_offre !== null){
             addPhotoButton.addEventListener('click', () => {
                 fileInput.click(); // Déclencher le sélecteur de fichier
             });
-            
-            // Ajouter un événement pour gérer la sélection de fichiers
-            fileInput.addEventListener('change', () => {
-                const file = fileInput.files[0]; // Récupérer le fichier sélectionné
-            
-                if (file) {
-                    const formData = new FormData();
-                    formData.append('image', file); // Ajouter le fichier dans la requête
-            
-                    // Envoi de la requête AJAX
-                    fetch('upload_image_modif.php', {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            // Ajouter dynamiquement la nouvelle image
-                            const newPhotoCard = document.createElement('div');
-                            newPhotoCard.classList.add('photo-card');
-            
-                            newPhotoCard.innerHTML = `
-                                <div class="photo-image">
-                                    <img src="${data.image_url}" alt="Photo">
-                                </div>
-                                <button class="delete-photo-btn">Supprimer</button>
-                            `;
-            
-                            // Ajouter la nouvelle carte dans le conteneur
-                            photoCardsContainer.insertBefore(newPhotoCard, document.getElementById('photo-card'));
-            
-                            // Réattacher le gestionnaire d'événements pour le bouton supprimer
-                            const deleteButton = newPhotoCard.querySelector('.delete-photo-btn');
-                            deleteButton.addEventListener('click', (event) => {
-                                event.preventDefault();
-            
-                                const image = newPhotoCard.querySelector('.photo-image img');
-                                if (image.classList.contains('supprimee')) {
-                                    image.classList.remove('supprimee');
-                                    deleteButton.textContent = 'Supprimer';
-                                } else {
-                                    image.classList.add('supprimee');
-                                    deleteButton.textContent = 'Ajouter';
-                                }
-                            });
-            
-                        } else {
-                            alert('Erreur : ' + data.error);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Erreur lors du téléchargement :', error);
-                    });
-                }
-            });
         });
-    </script>
 
 </body>
 </html>
