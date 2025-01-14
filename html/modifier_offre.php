@@ -354,10 +354,24 @@ if (isset($_POST['envoi_modif'])){
                     $ancien_chemin = "images/offres/{$ancien_dossier}";
                     $nouveau_chemin = "images/offres/{$nouveau_dossier}";
 
+                    $
+
                     if(is_dir($ancien_chemin)){
                         if(!file_exists($nouveau_chemin)){
                             rename($ancien_chemin,$nouveau_chemin);
                         }
+                    }
+
+                    // Modification dans la bdd pour toutes les images.
+                    foreach($recup_photos as $image){
+                        $nom_image = basename($image);
+                        $ancien_chemin = $ancien_chemin . "/" . $nom_image;
+                        $nouveau_chemin = $nouveau_chemin . "/" . $nom_image;
+                        
+                        $req_update_image = $dbh->prepare("UPDATE tripenarvor._image SET url_image = :nouveau WHERE url_image = :ancien");
+                        $req_update_image->bindValue(":nouveau",$nouveau_chemin);
+                        $req_update_image->bindValue(":ancien",$ancien_chemin);
+                        $req_update_image->execute();
                     }
                 }
                 
