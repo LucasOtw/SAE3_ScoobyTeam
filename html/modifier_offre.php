@@ -219,9 +219,13 @@ if (isset($_POST['envoi_modif'])){
 
     foreach($_POST['horaires'] as $jour => $horaire){
         if(!empty($horaire['ouverture']) && $horaire['ouverture'] != $codes_horaires[$jour]['ouverture']){
-            echo "test<br>";
-        } else {
-            echo "palindrome<br>";
+            if(!empty($horaire['fermeture']) && $horaire['fermeture'] != $codes_horaires[$jour]['fermeture']){
+                if($horaire['ouverture'] > $horaire['fermeture']){
+                    $erreurs[] = "Erreur : L'heure d'ouverture ne peut pas être après l'heure d'ouverture pour : {$jour}";
+                    return;
+                }
+                // sinon, on prépare la requête pour mettre à jour la fermeture
+            }
         }
     }
 
@@ -341,7 +345,7 @@ if($infos_offre !== null){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="images/logoPin_orange.png" width="16px" height="32px">
-    <title>Mes offres</title>
+    <title>Modifier mon offre</title>
     <link rel="stylesheet" href="styles.css?d">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
