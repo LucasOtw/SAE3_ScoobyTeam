@@ -849,6 +849,16 @@ if (isset($json['results'][0])) {
                     updateLikeDislike(action, codeAvis);
                 }
 
+                function refreshAvis() {
+                    fetch("detail_offre.php")  // Le fichier PHP qui retourne les avis
+                        .then(response => response.text())
+                        .then(data => {
+                            // Remplacer le contenu des avis
+                            document.getElementById("avis-widget").innerHTML = data;
+                        })
+                        .catch(error => console.error("Erreur lors du rafraîchissement des avis : ", error));
+                }
+
 
             </script>
 
@@ -878,7 +888,7 @@ if (isset($json['results'][0])) {
                         <!-- Pouce positif -->
                         <img id="positiveImage<?php echo $avis['code_avis']; ?>"
                              src="<?php echo $voteState == 1 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png'; ?>"
-                             alt="Pouce positif" onclick="togglePositiveImage(<?php echo $avis['code_avis']; ?>)">
+                             alt="Pouce positif" onclick="togglePositiveImage(<?php echo $avis['code_avis']; ?>); refreshAvis()">
                         <p id="positiveCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_positif']; ?></p>
                     </div>
                     
@@ -886,7 +896,7 @@ if (isset($json['results'][0])) {
                         <!-- Pouce négatif -->
                         <img id="negativeImage<?php echo $avis['code_avis']; ?>"
                              src="<?php echo $voteState == -1 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png'; ?>"
-                             alt="Pouce négatif" onclick="toggleNegativeImage(<?php echo $avis['code_avis']; ?>)">
+                             alt="Pouce négatif" onclick="toggleNegativeImage(<?php echo $avis['code_avis']; ?>); refreshAvis();">
                         <p id="negativeCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_negatif']; ?></p>
                     </div>
                     <?php } else { ?>
