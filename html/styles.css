@@ -962,9 +962,11 @@ input[type="email"] {
     margin-bottom: 10px;
     color: #333;
 }
+
 .hidden {
     display: none;
 }
+
 
 .new-notif-dot {
     display: inline-block;
