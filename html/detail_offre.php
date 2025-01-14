@@ -832,14 +832,20 @@ if (isset($json['results'][0])) {
                 function togglePositiveImage(codeAvis) {
                     var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
                     updateLikeDislike(action, codeAvis);
-                    console.log("POSITIF");
+                    // console.log("POSITIF");
+                    if (window.innerWidth <= 429) {
+                        location.reload();
+                    }
                 }
                 
                 function toggleNegativeImage(codeAvis) {
                     var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
                     updateLikeDislike(action, codeAvis);
-                    console.log("NEGATIF");
+                    // console.log("NEGATIF");
                     
+                    if (window.innerWidth <= 429) {
+                        location.reload();
+                    }
                 }
 
                     document.querySelectorAll('.pouce img').forEach(img => {
