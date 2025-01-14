@@ -5845,20 +5845,20 @@ select.theme_contacter_plateforme {
     color: #333;
 }
 
-#modif_offre .horaires-section .row {
-    display: flex; /* Flexbox pour aligner les éléments sur une ligne */
-    align-items: center; /* Centrer verticalement */
-    justify-content: space-between; /* Espacement égal entre les éléments */
-    margin-bottom: 15px; /* Espacement entre chaque ligne */
+#modif_offre .horaires-section .horaires-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
 }
 
 #modif_offre .horaires-section .col {
     flex: 1; /* Chaque élément prend la même largeur */
-    margin-right: 15px; /* Espacement entre les colonnes */
+    margin-right: 15px;
 }
 
 #modif_offre .horaires-section .col:last-child {
-    margin-right: 0; /* Pas d'espacement pour la dernière colonne */
+    margin-right: 0;
 }
 
 #modif_offre .horaires-section .col input[type="text"], 
@@ -5873,14 +5873,14 @@ select.theme_contacter_plateforme {
     padding: 0.5em;
 }
 
+#modif_offre .horaires-section .col input[disabled] {
+    background-color: #f3f8ff;
+}
+
 #modif_offre .horaires-section input[type="text"]:focus, 
 #modif_offre .horaires-section input[type="time"]:focus {
     border-color: #ff6f00;
     outline: none;
-}
-
-#modif_offre .horaires-section .row .col input[disabled] {
-    background-color: #f3f8ff;
 }
 
 @media (max-width: 768px) {
@@ -5892,7 +5892,7 @@ select.theme_contacter_plateforme {
         padding: 10px;
     }
 
-    #modif_offre .horaires-section .row {
+    #modif_offre .horaires-section .horaires-row {
         flex-direction: column; /* Empiler les éléments sur les petits écrans */
     }
 
