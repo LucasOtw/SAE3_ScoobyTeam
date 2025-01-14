@@ -356,11 +356,9 @@ if (isset($_POST['envoi_modif'])){
                         $nom_image = basename($image);
                         $nouveau_dossier = "images/offres/{$val}/{$nom_image}";
 
-                        echo "<h1>".$ancien_dossier."<br>".$nom_image."<br>".$nouveau_dossier."</h1>";
-
-                        if (is_dir($ancien_chemin)) {
+                        if (is_dir($ancien_dossier)) {
                             if (!file_exists($nouveau_chemin)) {
-                                if (rename($ancien_chemin, $nouveau_chemin)) {
+                                if (rename($ancien_dossier, $nouveau_chemin)) {
                                     echo "Le dossier a été renommé avec succès.";
                                 } else {
                                     echo "Erreur : Impossible de renommer le dossier.";
