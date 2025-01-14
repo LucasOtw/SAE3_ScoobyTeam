@@ -1385,9 +1385,6 @@ WHERE code_offre = :code_offre
         </div>
     </div>
 </footer>
-
-
-
 </html>
 <script>
         document.addEventListener('DOMContentLoaded', () => {
