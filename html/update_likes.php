@@ -72,9 +72,9 @@ try {
 
     // Vérifier si la mise à jour a été effectuée
     if ($stmt->rowCount() > 0) {
-        echo json_encode(["status" => "success", "message" => "Mise à jour réussie."]);
+        echo json_encode(["status" => "success", "message" => "Mise a jour réussie."]);
     } else {
-        echo json_encode(["status" => "error", "message" => "Aucune mise à jour effectuée."]);
+        echo json_encode(["status" => "error", "message" => "Aucune mise a jour effectuée."]);
     }
 } catch (PDOException $e) {
     // En cas d'erreur SQL
