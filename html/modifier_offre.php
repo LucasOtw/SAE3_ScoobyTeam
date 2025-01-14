@@ -762,6 +762,9 @@ if($infos_offre !== null){
             });
         });
     </script>
+    <script defer>
+        const images = document.querySelectorAll("#photo-card");
+    </script>
     
 
 
