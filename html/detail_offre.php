@@ -802,82 +802,40 @@ if (isset($json['results'][0])) {
                             "Content-Type": "application/x-www-form-urlencoded",
                         },
                         body: new URLSearchParams({
-                            action: action,      // Action : like, unlike, dislike, undislike
-                            code_avis: codeAvis, // Code de l'avis
-                        }),
+                            action: action,
+                            code_avis: codeAvis
+                        })
                     })
-                        .then((response) => {
-                            if (response.ok) {
-                                return response.json();
-                            } else {
-                                throw new Error("Erreur HTTP : " + response.status);
-                            }
-                        })
-                        .then((data) => {
-                            if (data.status === "success") {
-                                console.log("Mise à jour réussie !");
-                                // Mettre à jour les compteurs et les images
-                                updateCounters(codeAvis, data.pouce_positif, data.pouce_negatif);
-                            } else {
-                                console.error("Erreur :", data.message);
-                            }
-                        })
-                        .catch((error) => {
-                            console.error("Erreur réseau :", error);
-                        });
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            document.getElementById('positiveImage' + codeAvis).src = data.pouce_positif > 0 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
+                            document.getElementById('negativeImage' + codeAvis).src = data.pouce_negatif > 0 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
+                        } else {
+                            alert(data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Erreur réseau : ", error);
+                    });
                 }
-                
-                function updateCounters(codeAvis, poucePositif, pouceNegatif) {
-                    // Met à jour les compteurs affichés
-                    document.querySelector(`#positiveImage${codeAvis} ~ p`).textContent = poucePositif;
-                    document.querySelector(`#negativeImage${codeAvis} ~ p`).textContent = pouceNegatif;
-                }
-
-                
-                function togglePositiveImage(codeAvis) {
-                    var positiveImage = document.getElementById('positiveImage' + codeAvis);
-                    var action = positiveImage.src.includes('blanc') ? 'like' : 'unlike';
-                    updateLikeDislike(action, codeAvis);
-                
-                    // Mise à jour visuelle
-                    positiveImage.src = action === 'like' ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
-                    document.getElementById('negativeImage' + codeAvis).src = 'images/pouce_negatif_blanc.png'; // Réinitialiser le pouce négatif
-                }
-                
-                function toggleNegativeImage(codeAvis) {
-                    var negativeImage = document.getElementById('negativeImage' + codeAvis);
-                    var action = negativeImage.src.includes('blanc') ? 'dislike' : 'undislike';
-                    updateLikeDislike(action, codeAvis);
-                
-                    // Mise à jour visuelle
-                    negativeImage.src = action === 'dislike' ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
-                    document.getElementById('positiveImage' + codeAvis).src = 'images/pouce_positif_blanc.png'; // Réinitialiser le pouce positif
-                }
-
                 
                 function togglePositiveImage(codeAvis) {
                     var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
                     updateLikeDislike(action, codeAvis);
-                
-                    // Mise à jour visuelle
-                    document.getElementById('positiveImage' + codeAvis).src = action === 'like' ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
-                    document.getElementById('negativeImage' + codeAvis).src = 'images/pouce_negatif_blanc.png'; // Réinitialiser le pouce négatif
                 }
                 
                 function toggleNegativeImage(codeAvis) {
                     var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
                     updateLikeDislike(action, codeAvis);
-                
-                    // Mise à jour visuelle
-                    document.getElementById('negativeImage' + codeAvis).src = action === 'dislike' ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
-                    document.getElementById('positiveImage' + codeAvis).src = 'images/pouce_positif_blanc.png'; // Réinitialiser le pouce positif
                 }
+
 
                 </script>
 
                 
                 <div class="signalement_repondre">
-                    <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
+                     <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
                         <!-- Pouce positif -->
                         <img id="positiveImage<?php echo $avis['code_avis']; ?>"
                             src="<?php echo $voteState == 1 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png'; ?>"
