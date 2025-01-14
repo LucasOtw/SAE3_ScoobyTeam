@@ -242,7 +242,10 @@ if (isset($_POST['envoi_modif'])){
         }
 
         if(isset($req_ouverture) && $req_ouverture !== null && !empty($req_ouverture)){
-            
+            if($codes_horaires['ouverture'] !== null && !empty($codes_horaires['ouverture'])){
+                // c'est déjà pris, donc on UPDATE
+                
+            }
         }
     }
 
@@ -536,7 +539,6 @@ if($infos_offre !== null){
                         case "spectacle" :
                             ?>
                                 <fieldset>
-                                    <legend>?</legend>
                                     <label for="date">Date du spectacle (*)</label>
                                     <input type="date" id="date" data-sync="date_modif" value="<?php echo htmlspecialchars($infos_offre['date_spectacle']) ?>" required>
 
