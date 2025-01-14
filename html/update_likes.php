@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'undislike' => 0,
             default => $currentVote,
         };
-
+        $voteState = $currentVote !== false ? $currentVote : 0;
         if ($currentVote === false) {
             // Insérer un nouveau vote
             $stmt = $dbh->prepare("INSERT INTO tripenarvor._pouce (code_avis, code_compte, pouce) VALUES (:code_avis, :code_compte, :pouce)");
