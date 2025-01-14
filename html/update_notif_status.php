@@ -27,6 +27,7 @@
             UPDATE tripenarvor._notification
             SET consulter_notif = FALSE
             WHERE code_avis = :code_avis
+            RETURNING code_avis, consulter_notif
         ");
     
         $params = [':code_avis' => $code_avis];
@@ -42,6 +43,9 @@
         } else {
             echo "Aucune mise à jour effectuée. Vérifiez si le code_avis existe.";
         }
+
+        $updatedRow = $stmt->fetch(PDO::FETCH_ASSOC);
+        print_r($updatedRow);
         
     }
     catch (PDOException $e)
