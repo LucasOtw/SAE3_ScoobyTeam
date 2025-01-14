@@ -5970,7 +5970,19 @@ select.theme_contacter_plateforme {
 }
 
 /* Carte individuelle */
+.photo-card {
+    width: 300px; /* Taille fixe pour uniformité */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
 
+.photo-card:hover {
+    transform: scale(1.05);
+}
 
 /* Conteneur de l'image */
 #photo-image {
