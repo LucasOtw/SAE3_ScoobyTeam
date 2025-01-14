@@ -835,6 +835,7 @@ if (isset($json['results'][0])) {
                     // console.log("POSITIF");
                     if (window.innerWidth <= 429) {
                         location.reload();
+                        scrollToAvis(codeAvis);
                     }
                 }
                 
@@ -845,6 +846,7 @@ if (isset($json['results'][0])) {
                     
                     if (window.innerWidth <= 429) {
                         location.reload();
+                        scrollToAvis(codeAvis);
                     }
                 }
 
@@ -858,6 +860,13 @@ if (isset($json['results'][0])) {
                             }
                         });
                     });
+
+                function scrollToAvis(id) {
+                    document.getElementById('pouce' + id).scrollIntoView({
+                        behavior: "smooth", // Défilement fluide
+                        block: "start" // Aligner en haut de l'écran
+                    });
+                }
 
                 </script>
 
