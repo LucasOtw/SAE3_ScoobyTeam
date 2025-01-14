@@ -413,6 +413,15 @@ echo "</pre>";
                                 </div>
                             </div>
                             <?php
+                            break;
+                        case "spectacle" :
+                            ?>
+                                <fieldset>
+                                    <legend>?</legend>
+                                    <label for="date">Date du spectacle (*)</label>
+                                    <input type="date" id="date" data-sync="duree_modif" value="<?php echo htmlspecialchars($infos_offre['date_spectacle']) ?>" required>
+                                </fieldset>
+                            <?php
                     }
 
                     ?>
