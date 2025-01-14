@@ -52,10 +52,11 @@ if(isset($_SESSION['aCreeUneOffre'])){
             <li><a href="creation_offre.php">Publier</a></li>
             <li><a href="consulter_compte_pro.php">Mon Compte</a></li>
             <li>
-    <a href="#" class="notification-icon" id="notification-btn">
-        <img src="images/notif.png" alt="cloche notification" class="nouvelle-image" style="margin-top: -5px;">
-        <span class="notification-badge" style="display:none"></span>
-    </a>
+            <a href="#" class="notification-icon" id="notification-btn">
+                <img src="images/notif.png" alt="cloche notification" class="nouvelle-image" style="margin-top: -5px;">
+                <span class="notification-badge" style="display:none"></span>
+            </a>
+            </li>
     <div id="notification-popup">
         <ul>
             <?php
@@ -113,7 +114,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
                     
                     ?>
                     
-                    <li>
+                    <li id="notif">
                         <img src="<?php echo $compte_pp; ?>" alt="photo de profil" class="profile-img">
                         <div class="notification-content">
                             <strong><?php echo $compte["prenom"].' '.$compte["nom"]; ?></strong>
@@ -270,7 +271,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
        document.addEventListener('DOMContentLoaded', () => {
             const notificationBtn = document.getElementById('notification-btn');
             const notificationPopup = document.getElementById('notification-popup');
-            const notificationBadge = document.getElementByClassName('notification-badge');
+            const notificationBadge = document.getElementById('notification-badge');
         
             // Ajouter la classe hidden pour masquer le pop-up au démarrage
             notificationPopup.classList.add('hidden');
@@ -278,15 +279,20 @@ if(isset($_SESSION['aCreeUneOffre'])){
             notificationBtn.addEventListener('click', (e) => {
                 e.preventDefault(); // Empêche le comportement par défaut de l'ancre
                 notificationPopup.classList.toggle('hidden');
+                notificationBadge.style.display = "none";
             });
         
-            // document.addEventListener('click', (e) => {
-            //     if (!notificationPopup.contains(e.target) && !notificationBtn.contains(e.target)) {
-            //         notificationPopup.classList.add('hidden');
-            //     }
-            // });
+            document.addEventListener('click', (e) => {
+                if (!notificationPopup.contains(e.target) && !notificationBtn.contains(e.target)) {
+                    notificationPopup.classList.add('hidden');
+                }
+            });
            
         });
+
+        const notifItems = document.querySelectorAll(".notif");
+
+        
 
 
     </script>

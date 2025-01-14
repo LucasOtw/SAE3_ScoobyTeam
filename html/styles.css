@@ -1053,7 +1053,7 @@ input[type="email"] {
     display: inline-block;
 }
 
-.notification-badge {
+#notification-badge {
     position: absolute;
     top: -5px;
     right: 9px;
@@ -6056,6 +6056,49 @@ select.theme_contacter_plateforme {
 #modif_offre .interieur_modif_offre {
     box-shadow: none;
 }
+#modif_offre .interieur_modif_offre_spectacle{
+    box-shadow: none;
+}
+
+/* Conteneur global */
+#modif_offre .interieur_modif_offre_spectacle {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+/* Chaque groupe de label + input */
+#modif_offre .interieur_modif_offre_spectacle label {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+#modif_offre .interieur_modif_offre_spectacle input {
+    width: 100%;
+    max-width: 150px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Flexbox pour aligner les colonnes */
+#modif_offre .interieur_modif_offre_spectacle > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+
 
                                         /*****************************************************
                                                     * Code page détail d'une offre *
