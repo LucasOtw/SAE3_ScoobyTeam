@@ -5846,15 +5846,19 @@ select.theme_contacter_plateforme {
 }
 
 #modif_offre .horaires-section .row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* 3 colonnes */
-    gap: 15px;
-    margin-bottom: 15px;
+    display: flex; /* Flexbox pour aligner les éléments sur une ligne */
+    align-items: center; /* Centrer verticalement */
+    justify-content: space-between; /* Espacement égal entre les éléments */
+    margin-bottom: 15px; /* Espacement entre chaque ligne */
 }
 
 #modif_offre .horaires-section .col {
-    display: flex;
-    flex-direction: column;
+    flex: 1; /* Chaque élément prend la même largeur */
+    margin-right: 15px; /* Espacement entre les colonnes */
+}
+
+#modif_offre .horaires-section .col:last-child {
+    margin-right: 0; /* Pas d'espacement pour la dernière colonne */
 }
 
 #modif_offre .horaires-section .col input[type="text"], 
@@ -5889,7 +5893,7 @@ select.theme_contacter_plateforme {
     }
 
     #modif_offre .horaires-section .row {
-        grid-template-columns: 1fr; /* 1 colonne pour les petits écrans */
+        flex-direction: column; /* Empiler les éléments sur les petits écrans */
     }
 
     #modif_offre .horaires-section legend {
