@@ -223,7 +223,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
             <div class="link-group">
                 <ul>
                     <li><a href="mes_offres.php">Accueil</a></li>
-                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <li><a href="creation_offre.php">Publier</a></li>
                     <li><a href="consulter_compte_pro.php"</a>Mon Compte</li>
                 </ul>
             </div>
