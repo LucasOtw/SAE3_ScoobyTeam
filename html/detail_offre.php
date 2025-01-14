@@ -826,7 +826,7 @@ if (isset($json['results'][0])) {
                                     document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
                     
                                     // Scroller vers l'avis après la mise à jour
-                                    scrollToAvis('avis' + codeAvis);
+                                    scrollToAvis('pouce' + codeAvis);
                                 } else {
                                     alert(data.message);
                                 }
