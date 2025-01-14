@@ -356,7 +356,6 @@ if (isset($_POST['envoi_modif'])){
 
                     if(is_dir($ancien_chemin)){
                         if(!file_exists($nouveau_chemin)){
-                            echo "<h1>ALLAH</h1>";
                             rename($ancien_chemin,$nouveau_chemin);
                         }
                     }
@@ -366,11 +365,6 @@ if (isset($_POST['envoi_modif'])){
                         $nom_image = basename($image);
                         $img_ancien = $ancien_chemin . "/" . $nom_image;
                         $img_nouveau = $nouveau_chemin . "/" . $nom_image;
-
-                        echo "<h1> C'est ici !</h1><br><pre>";
-                        var_dump($img_ancien);
-                        var_dump($img_nouveau);
-                        echo "</pre>";
                         
                         $req_update_image = $dbh->prepare("UPDATE tripenarvor._image SET url_image = :nouveau WHERE url_image = :ancien");
                         $req_update_image->bindValue(":nouveau",$img_nouveau);
