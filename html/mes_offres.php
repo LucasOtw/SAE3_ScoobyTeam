@@ -78,56 +78,62 @@ if(isset($_SESSION['aCreeUneOffre'])){
                         $toutes_les_notifs->bindValue(":code_compte", $monComptePro["code_compte"]);
                         $toutes_les_notifs->execute();
                         $notifs = $toutes_les_notifs->fetchAll(PDO::FETCH_ASSOC);
+
+                        $nb_notif=0;
             
                         // echo "<pre>";
                         // var_dump($notifs);
                         // echo "</pre>";
-                        if (empty($notifs))
+                        while ($nb_notif < 5)
                         {
-                            echo "<p> Aucun avis n'a été posté sur vos offres </p>";
-                        }
-                        else
-                        {
-                            foreach ($notifs as $index => $notif)
+                            if (empty($notifs))
                             {
-                                
-                                $checkPP = $dbh->prepare("SELECT url_image FROM tripenarvor._sa_pp WHERE code_compte = :code_compte");
-                                $checkPP->bindValue(":code_compte",$notif['code_compte']);
-                                $checkPP->execute();
-                                
-                                $photo_profil = $checkPP->fetch(PDO::FETCH_ASSOC);
-                                if($photo_profil){
-                                  $compte_pp = $photo_profil['url_image'];
-                                } else {
-                                  $compte_pp = "images/icones/icone_compte.png";
-                                }
-                
-                                $infoCompte = $dbh->prepare('select * from tripenarvor._compte natural join tripenarvor._membre where code_compte= :code_compte;');
-                                $infoCompte->bindValue(':code_compte',$notif['code_compte']);
-                                $infoCompte->execute();
-                                $compte = $infoCompte->fetch(PDO::FETCH_ASSOC);
-                
-                                $infoOffre = $dbh->prepare('select * from tripenarvor._offre where code_offre = :code_offre;');
-                                $infoOffre->bindValue(':code_offre',$notif["code_offre"]);
-                                $infoOffre->execute();
-                                $offre = $infoOffre->fetch(PDO::FETCH_ASSOC);
-                                
-                                ?>
-                                
-                                <li class="notif"
-                                    data-consult="<?php echo $notif["consulter_notif"]; ?>"
-                                    data-avis="<?php echo $notif["code_avis"]; ?>" >
-                                    <img src="<?php echo $compte_pp; ?>" alt="photo de profil" class="profile-img">
-                                    <div class="notification-content">
-                                        <strong><?php echo $compte["prenom"].' '.$compte["nom"]; ?></strong>
-                                        <span class="notification-location"> | <?php echo $notif["titre_offre"]; ?></span>
-                                        <p><?php echo $notif["txt_avis"]; ?></p>
-                                        <span class="notification-time"><?php echo tempsEcouleDepuisPublication($offre);?></span>
-                                        <span class="new-notif-dot" style="display:none"></span>
-                                    </div>
-                                </li>
-                                <?php
+                                echo "<p> Aucun avis n'a été posté sur vos offres </p>";
                             }
+                            else
+                            {
+                                foreach ($notifs as $index => $notif)
+                                {
+                                    
+                                    $checkPP = $dbh->prepare("SELECT url_image FROM tripenarvor._sa_pp WHERE code_compte = :code_compte");
+                                    $checkPP->bindValue(":code_compte",$notif['code_compte']);
+                                    $checkPP->execute();
+                                    
+                                    $photo_profil = $checkPP->fetch(PDO::FETCH_ASSOC);
+                                    if($photo_profil){
+                                      $compte_pp = $photo_profil['url_image'];
+                                    } else {
+                                      $compte_pp = "images/icones/icone_compte.png";
+                                    }
+                    
+                                    $infoCompte = $dbh->prepare('select * from tripenarvor._compte natural join tripenarvor._membre where code_compte= :code_compte;');
+                                    $infoCompte->bindValue(':code_compte',$notif['code_compte']);
+                                    $infoCompte->execute();
+                                    $compte = $infoCompte->fetch(PDO::FETCH_ASSOC);
+                    
+                                    $infoOffre = $dbh->prepare('select * from tripenarvor._offre where code_offre = :code_offre;');
+                                    $infoOffre->bindValue(':code_offre',$notif["code_offre"]);
+                                    $infoOffre->execute();
+                                    $offre = $infoOffre->fetch(PDO::FETCH_ASSOC);
+                                    
+                                    ?>
+                                    
+                                    <li class="notif"
+                                        data-consult="<?php echo $notif["consulter_notif"]; ?>"
+                                        data-avis="<?php echo $notif["code_avis"]; ?>" >
+                                        <img src="<?php echo $compte_pp; ?>" alt="photo de profil" class="profile-img">
+                                        <div class="notification-content">
+                                            <strong><?php echo $compte["prenom"].' '.$compte["nom"]; ?></strong>
+                                            <span class="notification-location"> | <?php echo $notif["titre_offre"]; ?></span>
+                                            <p><?php echo $notif["txt_avis"]; ?></p>
+                                            <span class="notification-time"><?php echo tempsEcouleDepuisPublication($offre);?></span>
+                                            <span class="new-notif-dot" style="display:none"></span>
+                                        </div>
+                                    </li>
+                                    <?php
+                                }
+                            }
+                            $nb_notif++;
                         }
                         ?>
                     </ul>
