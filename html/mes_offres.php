@@ -280,11 +280,11 @@ if(isset($_SESSION['aCreeUneOffre'])){
                 notificationPopup.classList.toggle('hidden');
             });
         
-            // document.addEventListener('click', (e) => {
-            //     if (!notificationPopup.contains(e.target) && !notificationBtn.contains(e.target)) {
-            //         notificationPopup.classList.add('hidden');
-            //     }
-            // });
+            document.addEventListener('click', (e) => {
+                if (!notificationPopup.contains(e.target) && !notificationBtn.contains(e.target)) {
+                    notificationPopup.classList.add('hidden');
+                }
+            });
            
         });
 
