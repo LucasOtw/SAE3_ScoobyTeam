@@ -461,7 +461,7 @@ if($infos_offre !== null){
                 <?php
                     foreach($jours as $jour){
                 ?>
-                <div class="row">
+                <div class="horaires-row">
                     <div class="col">
                         <fieldset>
                             <legend>Jour</legend>
@@ -485,6 +485,7 @@ if($infos_offre !== null){
                     }
                 ?>
             </fieldset>
+
 
             </div>
             <div class="tab-content" id="photos">
