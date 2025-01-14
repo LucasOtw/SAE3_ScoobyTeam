@@ -14,11 +14,12 @@
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js" defer></script>
 </head>
 <body>
-    <header class="mentions_legales-header-pc mentions_legales-header_membre">
-        <div class="mentions_legales-logo-pc">
-            <a href="voir_offres.php">
-                <img src="images/logoBlanc.png" alt="PACT Logo">
-            </a>
+    <header class="header-pc header_membre">
+        <div class="logo-pc">
+           <a href="voir_offres.php">
+            <img src="images/logoBlanc.png" alt="PACT Logo">
+         </a>
+
         </div>
         <nav>
             <ul>
@@ -27,12 +28,7 @@
                 <li><a href="consulter_compte_membre.php" class="active">Mon Compte</a></li>
             </ul>
         </nav>
-        <header class="mentions_legales-header-tel mentions_legales-header_membre">
-            <div class="mentions_legales-logo-tel">
-                <a href="voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
-            </div>
-        </header>
-    </header>
+      </header> 
     <main class="mentions_legales-main">
         <section id="legal-info" class="mentions_legales-section">
             <h3 class="mentions_legales-title">1. Informations légales</h3>
@@ -81,41 +77,62 @@
             </p>
         </section>
     </main>
+    <footer>   
+        <div class="footer-links">
+            <div class="logo">
+                <img src="images/logoBlanc.png" alt="Logo PAVCT">
+            </div>
+             <div class="link-group">
+                <ul>
+                    <li><a href="mentions_legales.html">Mentions Légales</a></li>
+                    <li><a href="#">RGPD</a></li>
+                    <li><a href="#">Nous connaître</a></li>
+                    <li><a href="#">Nos partenaires</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="voir_offres.php">Accueil</a></li>
+                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <li><a href="connexion_memebre.php">Se Connecter</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="#">CGU</a></li>
+                    <li><a href="contacter_plateforme.php">Signaler un problème</a></li>
+                    <li><a href="contacter_plateforme.php">Nous contacter</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <!--<li><a href="#">Presse</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">Notre équipe</a></li>-->
+                </ul>
+            </div>
+        </div>
 
-    <footer class="mentions_legales-footer">
-        <div class="mentions_legales-newsletter">
-            <div class="mentions_legales-newsletter-content">
-                <h2>Inscrivez-vous à notre Newsletter</h2>
-                <p>PACT</p>
-                <p>découvrez la Bretagne !</p>
-                <form class="mentions_legales-newsletter-form" id="newsletterForm">
-                    <input type="email" id="newsletterEmail" placeholder="Votre adresse mail" required>
-                    <button type="submit">S'inscrire</button>
-                </form>
-            </div>
-            <div class="mentions_legales-newsletter-image">
-                <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
+        <div class="footer-bottom">
+            <div class="social-icons">
+                <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
+                <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
+                <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+                <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
             </div>
         </div>
-        
-        <div id="newsletterConfirmBox" class="mentions_legales-popup" style="display: none;">
-            <div class="mentions_legales-popup-content">
-                <p class="mentions_legales-popup-message"></p>
-                <button id="closeNewsletterPopup">Fermer</button>
-            </div>
-        </div>
-
-        <div class="mentions_legales-footer-links">
-            <ul>
-                <li><a href="mentions_legales.html">Mentions Légales</a></li>
-                <li><a href="#">RGPD</a></li>
-                <li><a href="#">Nous connaître</a></li>
-            </ul>
-        </div>
-        <div class="mentions_legales-social-icons">
-            <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
-            <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
-            <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
-        </div>
+        <header class="header_tel">
+            <a href="voir_offres.php"><img class="fleche_retour_tel" src="images/Bouton_retour.png"
+                    alt="bouton retour"></a>
+            <style>
+                .fleche_retour_tel {
+                    margin-left: -7em;
+                    padding-right: 5em;
+                    height: 3vh;
+                    margin-top: 1vh;
+                }
+            </style>
+            <h1>Détails</h1>
+        </header>
     </footer>
 </body>

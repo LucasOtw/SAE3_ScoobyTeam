@@ -292,7 +292,6 @@ if (isset($json['results'][0])) {
                 <a href="voir_offres.php">
                     <img src="images/logoBlanc.png" alt="PACT Logo">
                 </a>
-
             </div>
             <nav>
                 <ul>
