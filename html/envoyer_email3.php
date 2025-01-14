@@ -89,15 +89,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p>Notre objectif est de vous offrir des contenus exclusifs, des informations pertinentes et des offres spéciales pour vous tenir informé des dernières nouveautés et événements de notre équipe.</p>
             <p>Voici ce que vous pouvez attendre de nos prochaines newsletters :</p>
             <ul>
-                <li><strong>Des actualités :</strong> Les dernières nouvelles de l'équipe et de nos partenaires.</li>
-                <li><strong>Des offres spéciales :</strong> Des promotions exclusives réservées à nos abonnés.</li>
-                <li><strong>Des événements à venir :</strong> Soyez les premiers informés des événements, rassemblements et compétitions auxquels nous participons.</li>
+                <li><strong>Des actualités :</strong> Les nouvelles offres de l'équipe et de nos partenaires.</li>
+                <li><strong>Des offres spéciales :</strong>Un site fait pour vous.</li>
+                <li><strong>Des événements à venir :</strong> Soyez les premiers informés des nouvelles offres.</li>
             </ul>
             <p>Restez à l'écoute pour des contenus enrichissants qui vous aideront à mieux suivre nos projets et nos succès !</p>
             <p>Nous vous remercions encore pour votre inscription. Si vous avez des questions ou des suggestions, n'hésitez pas à nous contacter à l'adresse suivante : <a href='mailto:support@pact.com'>support@pact.com</a>.</p>
-            <a href='https://www.pact.com' class='button'>Découvrez notre site web</a>
+            <a href='https://scooby-team.ventsdouest.dev' class='button'>Découvrez notre site web</a>
             <div class='footer'>
-                <p>Vous ne souhaitez plus recevoir nos emails ? <a href='https://www.pact.com/unsubscribe'>Cliquez ici pour vous désinscrire</a>.</p>
+                <p>Vous ne souhaitez plus recevoir nos emails ? <a href='https://scooby-team.ventsdouest.dev/connexion_membre.php'>Cliquez ici pour vous désinscrire</a>.</p>
                 <p>&copy; 2025 PACT. Tous droits réservés.</p>
             </div>
         </div>
