@@ -5857,7 +5857,6 @@ select.theme_contacter_plateforme {
 #modif_offre .horaires-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
 }
 
 #modif_offre .horaires-row .col {
