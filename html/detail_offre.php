@@ -796,39 +796,61 @@ if (isset($json['results'][0])) {
                     
                 <script>
                 function updateLikeDislike(action, codeAvis) {
-                    console.log("Action:", action);
-                    console.log("Code Avis:", codeAvis);
-                
-                    // Utilisation de fetch pour envoyer les données
                     fetch("update_likes.php", {
-                        method: "POST", // Méthode POST
+                        method: "POST",
                         headers: {
-                            "Content-Type": "application/x-www-form-urlencoded", // Spécifie le type de contenu
+                            "Content-Type": "application/x-www-form-urlencoded",
                         },
                         body: new URLSearchParams({
-                            action: action,      // Action : like, unlike, dislike ou undislike
-                            code_avis: codeAvis  // Code de l'avis
-                        })
+                            action: action,      // Action : like, unlike, dislike, undislike
+                            code_avis: codeAvis, // Code de l'avis
+                        }),
                     })
-                        .then(response => {
+                        .then((response) => {
                             if (response.ok) {
-                                return response.text(); // Lire le texte de la réponse
+                                return response.json();
                             } else {
-                                console.error("Erreur lors de la mise à jour : " + response.status);
                                 throw new Error("Erreur HTTP : " + response.status);
                             }
                         })
-                        .then(responseText => {
-                            console.log("Réponse du serveur :", responseText);
-                            if (responseText.trim() === "Success") {
+                        .then((data) => {
+                            if (data.status === "success") {
                                 console.log("Mise à jour réussie !");
+                                // Mettre à jour les compteurs et les images
+                                updateCounters(codeAvis, data.pouce_positif, data.pouce_negatif);
                             } else {
-                                console.error("Erreur dans la réponse du serveur :", responseText);
+                                console.error("Erreur :", data.message);
                             }
                         })
-                        .catch(error => {
-                            console.error("Erreur de réseau ou autre :", error);
+                        .catch((error) => {
+                            console.error("Erreur réseau :", error);
                         });
+                }
+                
+                function updateCounters(codeAvis, poucePositif, pouceNegatif) {
+                    // Met à jour les compteurs affichés
+                    document.querySelector(`#positiveImage${codeAvis} ~ p`).textContent = poucePositif;
+                    document.querySelector(`#negativeImage${codeAvis} ~ p`).textContent = pouceNegatif;
+                }
+                
+                function togglePositiveImage(codeAvis) {
+                    var positiveImage = document.getElementById('positiveImage' + codeAvis);
+                    var action = positiveImage.src.includes('blanc') ? 'like' : 'unlike';
+                    updateLikeDislike(action, codeAvis);
+                
+                    // Mise à jour visuelle
+                    positiveImage.src = action === 'like' ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
+                    document.getElementById('negativeImage' + codeAvis).src = 'images/pouce_negatif_blanc.png'; // Réinitialiser le pouce négatif
+                }
+                
+                function toggleNegativeImage(codeAvis) {
+                    var negativeImage = document.getElementById('negativeImage' + codeAvis);
+                    var action = negativeImage.src.includes('blanc') ? 'dislike' : 'undislike';
+                    updateLikeDislike(action, codeAvis);
+                
+                    // Mise à jour visuelle
+                    negativeImage.src = action === 'dislike' ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
+                    document.getElementById('positiveImage' + codeAvis).src = 'images/pouce_positif_blanc.png'; // Réinitialiser le pouce positif
                 }
 
                 

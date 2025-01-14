@@ -6,77 +6,80 @@ $username = "sae";  // Utilisateur PostgreSQL défini dans .env
 $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
 $dbh = new PDO($dsn, $username, $password);
 
-header("Content-Type: application/json"); // Réponse en JSON
+session_start();
 
-// Vérifier si les données POST sont présentes
-if (!isset($_POST['action']) || !isset($_POST['code_avis'])) {
-    echo json_encode(["status" => "error", "message" => "Données manquantes."]);
-    exit;
-}
-
-// Récupérer les données POST
-$action = $_POST['action'];
-$codeAvis = (int) $_POST['code_avis'];
-
-try {
-    // Vérifier que l'action est valide
-    if (!in_array($action, ['like', 'unlike', 'dislike', 'undislike'])) {
-        echo json_encode(["status" => "error", "message" => "Action non valide."]);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!isset($_SESSION['membre']['code_compte'])) {
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Vous devez être connecté pour voter.',
+        ]);
         exit;
     }
 
-    // Récupérer l'état actuel des likes/dislikes pour cet avis
-    $stmt = $dbh->prepare("SELECT pouce_positif, pouce_negatif FROM tripenarvor._avis WHERE code_avis = :code_avis");
-    $stmt->bindValue(':code_avis', $codeAvis, PDO::PARAM_INT);
-    $stmt->execute();
-    $avis = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Récupération des données POST
+    $action = $_POST['action'] ?? null;
+    $codeAvis = $_POST['code_avis'] ?? null;
+    $codeCompte = $_SESSION['membre']['code_compte'];
 
-    if (!$avis) {
-        echo json_encode(["status" => "error", "message" => "Avis introuvable."]);
+    if (!$action || !$codeAvis) {
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Données manquantes.',
+        ]);
         exit;
     }
 
-    // Définir les ajustements en fonction de l'action
-    $adjustPositive = 0;
-    $adjustNegative = 0;
+    try {
+        $dbh->beginTransaction();
 
-    switch ($action) {
-        case 'like':
-            $adjustPositive = 1;
-            if ($avis['pouce_negatif'] > 0) $adjustNegative = -1; // Si "dislike" était actif, le retirer
-            break;
-        case 'unlike':
-            $adjustPositive = -1;
-            break;
-        case 'dislike':
-            $adjustNegative = 1;
-            if ($avis['pouce_positif'] > 0) $adjustPositive = -1; // Si "like" était actif, le retirer
-            break;
-        case 'undislike':
-            $adjustNegative = -1;
-            break;
+        // Vérifier si un vote existe déjà
+        $stmt = $dbh->prepare("SELECT pouce FROM tripenarvor._pouce WHERE code_avis = :code_avis AND code_compte = :code_compte");
+        $stmt->execute([':code_avis' => $codeAvis, ':code_compte' => $codeCompte]);
+        $currentVote = $stmt->fetchColumn();
+
+        // Déterminer le nouvel état du vote
+        $newVote = match ($action) {
+            'like' => 1,
+            'unlike' => 0,
+            'dislike' => -1,
+            'undislike' => 0,
+            default => $currentVote,
+        };
+
+        if ($currentVote === false) {
+            // Insérer un nouveau vote
+            $stmt = $dbh->prepare("INSERT INTO tripenarvor._pouce (code_avis, code_compte, pouce) VALUES (:code_avis, :code_compte, :pouce)");
+            $stmt->execute([':code_avis' => $codeAvis, ':code_compte' => $codeCompte, ':pouce' => $newVote]);
+        } elseif ($currentVote !== $newVote) {
+            // Mettre à jour le vote existant
+            $stmt = $dbh->prepare("UPDATE tripenarvor._pouce SET pouce = :pouce WHERE code_avis = :code_avis AND code_compte = :code_compte");
+            $stmt->execute([':pouce' => $newVote, ':code_avis' => $codeAvis, ':code_compte' => $codeCompte]);
+        }
+
+        // Calculer les nouveaux compteurs
+        $stmt = $dbh->prepare("
+            SELECT 
+                SUM(CASE WHEN pouce = 1 THEN 1 ELSE 0 END) AS pouce_positif,
+                SUM(CASE WHEN pouce = -1 THEN 1 ELSE 0 END) AS pouce_negatif
+            FROM tripenarvor._pouce
+            WHERE code_avis = :code_avis
+        ");
+        $stmt->execute([':code_avis' => $codeAvis]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $dbh->commit();
+
+        echo json_encode([
+            'status' => 'success',
+            'pouce_positif' => $result['pouce_positif'] ?? 0,
+            'pouce_negatif' => $result['pouce_negatif'] ?? 0,
+        ]);
+    } catch (Exception $e) {
+        $dbh->rollBack();
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Erreur lors de la mise à jour des votes.',
+        ]);
     }
-
-    // Mettre à jour les compteurs
-    $stmt = $dbh->prepare("
-        UPDATE tripenarvor._avis 
-        SET 
-            pouce_positif = pouce_positif + :adjustPositive, 
-            pouce_negatif = pouce_negatif + :adjustNegative 
-        WHERE code_avis = :code_avis
-    ");
-    $stmt->bindValue(':adjustPositive', $adjustPositive, PDO::PARAM_INT);
-    $stmt->bindValue(':adjustNegative', $adjustNegative, PDO::PARAM_INT);
-    $stmt->bindValue(':code_avis', $codeAvis, PDO::PARAM_INT);
-    $stmt->execute();
-
-    // Vérifier si la mise à jour a été effectuée
-    if ($stmt->rowCount() > 0) {
-        echo json_encode(["status" => "success", "message" => "Mise a jour réussie."]);
-    } else {
-        echo json_encode(["status" => "error", "message" => "Aucune mise a jour effectuée."]);
-    }
-} catch (PDOException $e) {
-    // En cas d'erreur SQL
-    echo json_encode(["status" => "error", "message" => "Erreur SQL : " . $e->getMessage()]);
 }
