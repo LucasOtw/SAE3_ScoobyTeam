@@ -273,9 +273,15 @@ if(isset($_SESSION['aCreeUneOffre'])){
             const notificationBtn = document.getElementById('notification-btn');
             const notificationPopup = document.getElementById('notification-popup');
             const notificationBadge = document.getElementById('notification-badge');
+           const notifItems = document.querySelectorAll(".notif");
         
             // Ajouter la classe hidden pour masquer le pop-up au démarrage
             notificationPopup.classList.add('hidden');
+
+            notifItems.forEach(notif => {  // Correction : 'foreach' => 'forEach'
+                const consulter = notif.getAttribute('data-consult');
+                console.log(consulter);
+            });
         
             notificationBtn.addEventListener('click', (e) => {
                 e.preventDefault(); // Empêche le comportement par défaut de l'ancre
@@ -288,19 +294,6 @@ if(isset($_SESSION['aCreeUneOffre'])){
                     notificationPopup.classList.add('hidden');
                 }
             });
-
-           // Fonction qui sera appelée dès le chargement du DOM
-            function initNotifications() {
-                const notifItems = document.querySelectorAll(".notif");
-        
-                notifItems.forEach(notif => {  // Correction : 'foreach' => 'forEach'
-                    const consulter = notif.getAttribute('data-consult');
-                    console.log(consulter);
-                });
-            }
-        
-            // Appeler la fonction dès le début
-            initNotifications();
            
         });
 
