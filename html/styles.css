@@ -5732,3 +5732,10 @@ select.theme_contacter_plateforme {
     text-decoration: none;
 }
 
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
