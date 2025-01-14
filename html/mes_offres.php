@@ -113,7 +113,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
                     
                     ?>
                     
-                    <li>
+                    <li class="notif">
                         <img src="<?php echo $compte_pp; ?>" alt="photo de profil" class="profile-img">
                         <div class="notification-content">
                             <strong><?php echo $compte["prenom"].' '.$compte["nom"]; ?></strong>
@@ -278,6 +278,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
             notificationBtn.addEventListener('click', (e) => {
                 e.preventDefault(); // Empêche le comportement par défaut de l'ancre
                 notificationPopup.classList.toggle('hidden');
+                notificationBadge.style.display = "none";
             });
         
             document.addEventListener('click', (e) => {
@@ -287,6 +288,10 @@ if(isset($_SESSION['aCreeUneOffre'])){
             });
            
         });
+
+        const notifItems = document.querySelectorAll(".notif");
+
+        
 
 
     </script>
