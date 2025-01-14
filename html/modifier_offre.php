@@ -347,6 +347,12 @@ echo "</pre>";
                 <fieldset>
                     <legend> Services </legend>
                     <?php
+
+                        switch($type_offre){
+                            case "restauration":
+                                ?><?php
+                        }
+
                         if($type_offre == "restauration"){
                             // on récupère
                             ?>
