@@ -642,15 +642,12 @@ if($infos_offre !== null){
                     foreach($recup_photos as $photo){
                     ?>
     
-                        <div id="photo-cards">
-                                <div id="photo-card">
-                                <div id="photo-image">
-                                    <img src="<?php echo $photo; ?>" alt="Photo">
-                                </div>
-                                <button id="delete-photo-btn">Supprimer</button>
-                                </div>
-                            
+                    <div class="photo-card">
+                        <div id="photo-image">
+                            <img src="<?php echo $photo; ?>" alt="Photo">
                         </div>
+                        <button id="delete-photo-btn">Supprimer</button>
+                    </div>
                 <?php
                 }
                 ?>
