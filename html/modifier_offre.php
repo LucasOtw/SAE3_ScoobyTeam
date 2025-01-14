@@ -43,13 +43,13 @@ $offre = $_SESSION['modif_offre'];
 /* TABLEAU DES JOURS */
 
 $jours = [
-    'Lundi',
-    'Mardi',
-    'Mercredi',
-    'Jeudi',
-    'Vendredi',
-    'Samedi',
-    'Dimanche'
+    'lundi',
+    'mardi',
+    'mercredi',
+    'jeudi',
+    'vendredi',
+    'samedi',
+    'dimanche'
 ];
 
 /* RÉCUPÉRATION DES HORAIRES */
@@ -509,7 +509,7 @@ if($infos_offre !== null){
                 ?>
                 <div class="horaires-row">
                     <div class="col">
-                        <input type="text" id="jour" name="horaires[<?php echo $jour; ?>]" placeholder="<?php echo $jour ?>" disabled>
+                        <input type="text" id="jour" name="horaires[<?php echo $jour; ?>]" placeholder="<?php echo ucfirst($jour); ?>" disabled>
                     </div>
 
                     <div class="col">
