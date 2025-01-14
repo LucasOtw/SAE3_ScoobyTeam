@@ -349,6 +349,28 @@ if (isset($_POST['envoi_modif'])){
                     // si on change le titre de l'offre, on va devoir changer...
                     // 1) le nom du dossier des offres
                     // 2) le nom du dossier dans le chemin des images
+
+                    $images = $recup_photos;
+                    foreach($images as $image){
+                        $ancien_dossier = str_replace(' ','',$val);
+                        $nom_image = basename($image);
+                        $nouveau_dossier = "images/offres/{$val}/{$nom_image}";
+
+                        if (is_dir($ancien_chemin)) {
+                            if (!file_exists($nouveau_chemin)) {
+                                if (rename($ancien_chemin, $nouveau_chemin)) {
+                                    echo "Le dossier a été renommé avec succès.";
+                                } else {
+                                    echo "Erreur : Impossible de renommer le dossier.";
+                                }
+                            } else {
+                                echo "Erreur : Le nouveau nom de dossier existe déjà.";
+                            }
+                        } else {
+                            echo "Erreur : L'ancien dossier n'existe pas.";
+                        }
+                        
+                    }
                 }
                 
                 echo "Champ $att mis à jour avec succès.<br>";
