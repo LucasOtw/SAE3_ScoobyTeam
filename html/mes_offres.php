@@ -54,7 +54,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
             <li>
     <a href="#" class="notification-icon" id="notification-btn">
         <img src="images/notif.png" alt="cloche notification" class="nouvelle-image" style="margin-top: -5px;">
-        <span class="notification-badge" style="display:none"></span>
+        <span class="notification-badge"></span>
     </a>
     <div id="notification-popup">
         <ul>
