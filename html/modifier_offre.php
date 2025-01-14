@@ -582,12 +582,12 @@ if($infos_offre !== null){
                 }
                 ?>
                     <!-- Carte pour ajouter une photo -->
-                    <div id="photo-card" class="add-photo-card">
-                        <div id="add-photo">
-                            <span>+</span>
-                            <p>Ajouter une photo</p>
-                        </div>
+                <div id="photo-card" class="add-photo-card">
+                    <div id="add-photo">
+                        <span>+</span>
+                        <p>Ajouter une photo</p>
                     </div>
+                </div>
             </div>
         </div>
 
