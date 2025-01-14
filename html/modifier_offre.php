@@ -349,58 +349,6 @@ if (isset($_POST['envoi_modif'])){
                     // si on change le titre de l'offre, on va devoir changer...
                     // 1) le nom du dossier des offres
                     // 2) le nom du dossier dans le chemin des images
-                    $nom_doss = str_replace(' ','',$offre['titre_offre']);
-                    $nouv_dossier = str_replace(' ','',$val);
-
-                        // Chemins complets pour le renommage
-                    $ancien_chemin = "images/offres/{$nom_doss}";
-                    $nouveau_chemin = "images/offres/{$nouv_dossier}";
-                
-                    // Vérifier si l'ancien dossier existe
-                    if (is_dir($ancien_chemin)) {
-                        // Tenter de renommer le dossier
-                        if (rename($ancien_chemin, $nouveau_chemin)) {
-                            echo "Le dossier a été renommé avec succès de '{$nom_doss}' à '{$nouv_dossier}'.";
-                        } else {
-                            echo "Erreur : Impossible de renommer le dossier.";
-                        }
-                    } else {
-                        echo "Erreur : Le dossier '{$nom_doss}' n'existe pas.";
-                    }
-
-                    $img_modif = $recup_photos;
-
-                    foreach ($img_modif as $photo) {
-                        $nom_image = basename($photo);
-                        $nouv_lien = "../images/offres/{$nouv_dossier}/{$nom_image}";
-                    
-                        // Affichage des valeurs pour débuggage
-                        echo "<h1>Nom Image: {$nom_image}</h1><br>";
-                        echo "<h1>Nouveau Lien: {$nouv_lien}</h1><br>";
-                    
-                        // Ajout du chemin complet pour :ancienne_valeur si nécessaire
-                        $ancienne_valeur = $photo; // Peut-être qu'il faut utiliser le chemin complet ici
-                    
-                        // Debug : Vérifier les valeurs passées
-                        echo "<h1>Ancienne Valeur: {$ancienne_valeur}</h1><br>";
-                    
-                        // Préparer et exécuter la requête
-                        $update_lien_image = $dbh->prepare("
-                            UPDATE tripenarvor._image 
-                            SET url_image = :nouvelle_valeur 
-                            WHERE url_image = :ancienne_valeur
-                        ");
-                        $update_lien_image->bindValue(":nouvelle_valeur", $nouv_lien);
-                        $update_lien_image->bindValue(":ancienne_valeur", $ancienne_valeur);
-                        $update_lien_image->execute();
-                    
-                        // Vérifier si des lignes ont été affectées
-                        if ($update_lien_image->rowCount() > 0) {
-                            echo "<p>La mise à jour a réussi pour {$ancienne_valeur}</p>";
-                        } else {
-                            echo "<p>Aucune ligne mise à jour pour {$ancienne_valeur}</p>";
-                        }
-                    }
                 }
                 
                 echo "Champ $att mis à jour avec succès.<br>";
