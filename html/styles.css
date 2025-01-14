@@ -6037,7 +6037,8 @@ input#btn-poster-avis {
 
 }
 
-.iconify {
+#body_offre_desktop .iconify, 
+#body_offre_mobile .iconify{
     color: black;
     font-size: 45px;
 }
