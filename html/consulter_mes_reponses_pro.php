@@ -253,7 +253,7 @@ INNER JOIN
 
 
     </main>
-    <footer class="footer_detail_avis">
+    <footer class="footer footer_pro">
         <div class="footer-links">
             <div class="logo">
                 <img src="images/logoBlanc.png" alt="Logo PAVCT">
