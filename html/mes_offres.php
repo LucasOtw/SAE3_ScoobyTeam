@@ -115,7 +115,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
                 <li>
                     <img src="<?php echo $compte_pp; ?>" alt="photo de profil" class="profile-img">
                     <div class="notification-content">
-                        <strong><?php echo $compte["prenom"]+' '+$compte["nom"]; ?></strong>
+                        <strong><?php echo $compte["prenom"].' '.$compte["nom"]; ?></strong>
                         <span class="notification-location"> | <?php echo $notif["titre_offre"]; ?></span>
                         <p><?php echo $notif["txt_avis"]; ?></p>
                         <span class="notification-time"><?php echo tempsEcouleDepuisPublication($offre);?></span>
