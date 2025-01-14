@@ -265,9 +265,9 @@ echo "</pre>";
         <div>
             <section class="tabs">
                 <ul>
-                    <li><a href="#" class="active">Informations personnelles</a></li>
-                    <li><a href="modif_mdp_membre.php">Mot de passe et sécurité</a></li>
-                    <li><a href="consulter_mes_avis.php">Historique</a></li>
+                    <li><a href="#" class="active">Informations générales</a></li>
+                    <li><a href="#">Services et horaires</a></li>
+                    <li><a href="#">Photos</a></li>
                 </ul>
             </section>
                 <fieldset>
