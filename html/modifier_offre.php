@@ -62,7 +62,7 @@ $req_codes->execute();
 $jours = $req_codes->fetch(PDO::FETCH_ASSOC);
 
 echo "<pre>";
-var_dump($jours;
+var_dump($jours);
 echo "</pre>";
 
 
