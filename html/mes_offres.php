@@ -278,11 +278,16 @@ if(isset($_SESSION['aCreeUneOffre'])){
             // Ajouter la classe hidden pour masquer le pop-up au démarrage
             notificationPopup.classList.add('hidden');
 
-            notifItems.forEach(notif => {  
-                console.log("ok");
-                const consulter = notif.getAttribute('data-consult');
-                console.log(consulter);
-            });
+            // S'assurer que notifItems contient des éléments
+            if (notifItems.length > 0) {
+                notifItems.forEach(notif => {  
+                    console.log("ok");
+                    const consulter = notif.getAttribute('data-consult');
+                    console.log(consulter);
+                });
+            } else {
+                console.log("Aucune notification trouvée.");
+            }
         
             notificationBtn.addEventListener('click', (e) => {
                 e.preventDefault(); // Empêche le comportement par défaut de l'ancre
