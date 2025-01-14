@@ -72,12 +72,6 @@ foreach($tables as $table){
     }
 }
 
-if($infos_offre !== null){
-    echo "<pre>";
-    var_dump($infos_offre);
-    echo "</pre>";
-}
-
 echo "<h1>".$type_offre."</h1>";
 
 /* RÉCUPÉRATION DES TAGS */
@@ -235,6 +229,12 @@ if (isset($_POST['envoi_modif'])){
 echo "<pre>";
 var_dump($offre);
 echo "</pre>";
+
+if($infos_offre !== null){
+    echo "<pre>";
+    var_dump($infos_offre);
+    echo "</pre>";
+}
     
 ?>
 <!DOCTYPE html>
