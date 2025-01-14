@@ -217,37 +217,66 @@ if (isset($_POST['envoi_modif'])){
 
     /* VERIFICATION DES HORAIRES */
 
-    foreach($_POST['horaires'] as $jour => $horaire){
-        if((!empty($horaire['ouverture']) || $horaire['ouverture'] !== null) && $horaire['ouverture'] != $codes_horaires[$jour]['ouverture']){
-            if((!empty($horaire['fermeture']) || $horaire['fermeture'] !== null) && $horaire['fermeture'] != $codes_horaires[$jour]['fermeture']){
-                if($horaire['ouverture'] > $horaire['fermeture']){
-                    $erreurs[] = "Erreur : L'heure d'ouverture ne peut pas être après l'heure d'ouverture pour : {$jour}";
-                    return;
-                }
-                // sinon, on prépare la requête pour mettre à jour la fermeture
-                $req_fermeture = "UPDATE tripenarvor._horaire SET fermeture = :nouv_fermeture WHERE code_horaire = :code_horaire";
-            }
-            $req_ouverture = "UPDATE tripenarvor._horaire SET ouverture = :nouv_ouverture WHERE code_horaire = :code_horaire";
-        } else {
-            if((empty($horaire['ouverture']) || $horaire['ouverture'] == null) && (empty($horaire['fermeture']) || $horaire['fermeture'] == null)){
-                // si les horaires sont vides ou nulles
-                if(!empty($codes_horaires[$jour]['ouverture']) || $codes_horaires[$jour]['ouverture'] !== null){
-                    // si il y a une horaire d'ouverture, il y aura une horaire de fermeture
-                    // on supprime donc la ligne.
-                }
-            } else {
-                $erreurs[] = "Erreur : Une horaire peut être vide UNIQUEMENT si l'autre l'est aussi : {$jour}";
-                return;
-            }
+foreach ($_POST['horaires'] as $jour => $horaire) {
+    // Vérifier si les valeurs actuelles existent dans $codes_horaires
+    $code_horaire_existant = isset($codes_horaires[$jour]) ? $codes_horaires[$jour]['code_horaire'] : null;
+
+    // Si ouverture et fermeture sont non vides et non nulles
+    if (!empty($horaire['ouverture']) && !empty($horaire['fermeture'])) {
+        // Vérifier si ouverture est après fermeture (erreur logique)
+        if ($horaire['ouverture'] > $horaire['fermeture']) {
+            $erreurs[] = "Erreur : L'heure d'ouverture ne peut pas être après l'heure de fermeture pour : {$jour}";
+            continue; // Passer au jour suivant
         }
 
-        if(isset($req_ouverture) && $req_ouverture !== null && !empty($req_ouverture)){
-            if($codes_horaires['ouverture'] !== null && !empty($codes_horaires['ouverture'])){
-                // c'est déjà pris, donc on UPDATE
-                
+        // Si le code_horaire existe déjà, on met à jour
+        if ($code_horaire_existant !== null) {
+            // Mise à jour des horaires si les valeurs ont changé
+            if ($horaire['ouverture'] != $codes_horaires[$jour]['ouverture']) {
+                $req_update_ouverture = $dbh->prepare("UPDATE tripenarvor._horaire SET ouverture = :ouverture WHERE code_horaire = :code_horaire");
+                $req_update_ouverture->bindValue(':ouverture', $horaire['ouverture']);
+                $req_update_ouverture->bindValue(':code_horaire', $code_horaire_existant);
+                $req_update_ouverture->execute();
             }
+            if ($horaire['fermeture'] != $codes_horaires[$jour]['fermeture']) {
+                $req_update_fermeture = $dbh->prepare("UPDATE tripenarvor._horaire SET fermeture = :fermeture WHERE code_horaire = :code_horaire");
+                $req_update_fermeture->bindValue(':fermeture', $horaire['fermeture']);
+                $req_update_fermeture->bindValue(':code_horaire', $code_horaire_existant);
+                $req_update_fermeture->execute();
+            }
+        } else {
+            // Sinon, insérer une nouvelle ligne
+            $req_insert = $dbh->prepare("INSERT INTO tripenarvor._horaire (ouverture, fermeture) VALUES (:ouverture, :fermeture) RETURNING code_horaire");
+            $req_insert->bindValue(':ouverture', $horaire['ouverture']);
+            $req_insert->bindValue(':fermeture', $horaire['fermeture']);
+            $req_insert->execute();
+            $nouveau_code_horaire = $req_insert->fetchColumn(); // Récupérer le code_horaire inséré
+
+            // Mettre à jour la table tripenarvor._offre pour le jour correspondant
+            $req_update_offre = $dbh->prepare("UPDATE tripenarvor._offre SET {$jour} = :code_horaire WHERE code_offre = :code_offre");
+            $req_update_offre->bindValue(':code_horaire', $nouveau_code_horaire);
+            $req_update_offre->bindValue(':code_offre', $offre['code_offre']);
+            $req_update_offre->execute();
         }
     }
+    // Si ouverture et fermeture sont vides ou nulles
+    elseif (empty($horaire['ouverture']) && empty($horaire['fermeture'])) {
+        // Si un code_horaire existe déjà, on supprime la ligne
+        if ($code_horaire_existant !== null) {
+            $req_delete = $dbh->prepare("DELETE FROM tripenarvor._horaire WHERE code_horaire = :code_horaire");
+            $req_delete->bindValue(':code_horaire', $code_horaire_existant);
+            $req_delete->execute();
+
+            // Mettre à jour la table tripenarvor._offre pour supprimer la référence au jour
+            $req_update_offre = $dbh->prepare("UPDATE tripenarvor._offre SET {$jour} = NULL WHERE code_offre = :code_offre");
+            $req_update_offre->bindValue(':code_offre', $offre['code_offre']);
+            $req_update_offre->execute();
+        }
+    } else {
+        // Si une seule des deux (ouverture ou fermeture) est vide, erreur
+        $erreurs[] = "Erreur : Vous devez spécifier les horaires d'ouverture et de fermeture pour : {$jour}";
+    }
+}
 
     // Si il n'y a pas d'erreurs...
     
