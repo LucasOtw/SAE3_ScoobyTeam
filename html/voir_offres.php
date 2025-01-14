@@ -1339,6 +1339,7 @@ function tempsEcouleDepuisPublication($offre){
 
 </body>
 </html>
+<script>
 document.addEventListener('DOMContentLoaded', () => {
     const newsletterForm = document.getElementById('newsletterForm');
     const emailInput = document.getElementById('newsletterEmail');
@@ -1380,5 +1381,5 @@ document.addEventListener('DOMContentLoaded', () => {
         newsletterPopup.style.display = 'none';
     });
 });
-
+</script>
 
