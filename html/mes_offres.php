@@ -287,7 +287,11 @@ if(isset($_SESSION['aCreeUneOffre'])){
                         const consulter = notif.getAttribute('data-consult') ? 1 : 0;
                         console.log("///Consultée : ", consulter);
 
-                        offer.style.removeProperty('display');
+                        if (consulter == 0)
+                        {
+                            const newNotifDot = notif.querySelector('.new-notif-dot');
+                            newNotifDot.style.removeProperty('display');
+                        }
                     });
                 } else {
                     console.log("Aucune notification trouvée.");
