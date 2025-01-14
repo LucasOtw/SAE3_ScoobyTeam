@@ -6,6 +6,8 @@ require '../phpmailer/src/Exception.php';
 require '../phpmailer/src/PHPMailer.php';
 require '../phpmailer/src/SMTP.php';
 
+header('Content-Type: application/json'); // Définir la réponse comme JSON
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 
@@ -16,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'noreply.scoobyteam@gmail.com';
-        $mail->Password = 'yejz rjye ntfh ryjv';
+        $mail->Password = 'yejz rjye ntfh ryjv'; // Remplacez par un mot de passe sécurisé ou un mot de passe d'application
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
@@ -33,14 +35,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         try {
             if ($mail->send()) {
-                // Inscription réussie, afficher la popup
-                echo "<script>showNewsletterConfirmation();</script>";
+                echo json_encode(['status' => 'success']); // Réponse JSON en cas de succès
+            } else {
+                echo json_encode(['status' => 'error', 'message' => 'Erreur lors de l\'envoi de l\'email.']);
             }
         } catch (Exception $e) {
-            echo "Erreur lors de l'envoi de l'email : {$mail->ErrorInfo}";
+            echo json_encode(['status' => 'error', 'message' => $mail->ErrorInfo]);
         }
     } else {
-        echo 'Veuillez saisir une adresse email valide.';
+        echo json_encode(['status' => 'error', 'message' => 'Adresse email invalide.']);
     }
+} else {
+    echo json_encode(['status' => 'error', 'message' => 'Requête invalide.']);
 }
 ?>
