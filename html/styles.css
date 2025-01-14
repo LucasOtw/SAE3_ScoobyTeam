@@ -6052,9 +6052,7 @@ select.theme_contacter_plateforme {
     color: #333;
 }
 
-#modif_offre .interieur_modif_offre_services {
-    box-shadow: none;
-}
+
 #modif_offre .interieur_modif_offre {
     box-shadow: none;
 }
