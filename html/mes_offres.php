@@ -25,28 +25,41 @@ if(isset($_SESSION['aCreeUneOffre'])){
     unset($_SESSION['aCreeUneOffre']);
 }
 
+function tempsEcouleDepuisPublication($offre){
+    // date d'aujourd'hui
+    $date_actuelle = new DateTime();
+    // conversion de la date de publication en objet DateTime
+    $date_ajout_offre = new DateTime($offre['date_publication']);
+    // calcul de la différence en jours
+    $diff = $date_ajout_offre->diff($date_actuelle);
+    // récupération des différentes unités de temps
+    $jours = $diff->days; // total des jours de différence
+    $mois = $diff->m + ($diff->y * 12); // mois totaux
+    $annees = $diff->y;
 
+    $retour = null;
 
-///////////////////////////////////////////////////////////////////////////////
-///                            Contenu notif                                ///
-///////////////////////////////////////////////////////////////////////////////
+    // calcul du nombre de jours dans le mois précédent
+    $date_mois_precedent = clone $date_actuelle;
+    $date_mois_precedent->modify('-1 month');
+    $jours_dans_mois_precedent = (int)$date_mois_precedent->format('t'); // 't' donne le nombre de jours dans le mois
 
-$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-$username = "sae";
-$password = "philly-Congo-bry4nt";
+    if($jours == 0){
+        $retour = "Aujourd'hui";
+    } elseif($jours == 1){
+        $retour = "Hier";
+    } elseif($jours > 1 && $jours < 7){
+        $retour = $jours." jour(s)";
+    } elseif ($jours >= 7 && $jours < $jours_dans_mois_precedent){
+        $semaines = floor($jours / 7);
+        $retour = $semaines." semaine(s)";
+    } elseif ($mois < 12){
+        $retour = $mois." mois";
+    } else {
+        $retour = $annees." an(s)";
+    }
 
-// Créer une instance PDO
-$dbh = new PDO($dsn, $username, $password);
-
-$checkPP = $dbh->prepare("SELECT url_image FROM tripenarvor._sa_pp WHERE code_compte = :code_compte");
-$checkPP->bindValue(":code_compte",$compte['code_compte']);
-$checkPP->execute();
-
-$photo_profil = $checkPP->fetch(PDO::FETCH_ASSOC);
-if($photo_profil){
-  $compte_pp = $photo_profil['url_image'];
-} else {
-  $compte_pp = "images/icones/icone_compte.png";
+    return $retour;
 }
     
 ?>
@@ -82,6 +95,31 @@ if($photo_profil){
     </a>
     <div id="notification-popup">
         <ul>
+            <?php
+            ///////////////////////////////////////////////////////////////////////////////
+            ///                            Contenu notif                                ///
+            ///////////////////////////////////////////////////////////////////////////////
+            
+            $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+            $username = "sae";
+            $password = "philly-Congo-bry4nt";
+            
+            // Créer une instance PDO
+            $dbh = new PDO($dsn, $username, $password);
+
+            $toutes_les_notifs = $dbh->prepare('select * from tripenarvor._notification where ;');
+            
+            $checkPP = $dbh->prepare("SELECT url_image FROM tripenarvor._sa_pp WHERE code_compte = :code_compte");
+            $checkPP->bindValue(":code_compte",$compte['code_compte']);
+            $checkPP->execute();
+            
+            $photo_profil = $checkPP->fetch(PDO::FETCH_ASSOC);
+            if($photo_profil){
+              $compte_pp = $photo_profil['url_image'];
+            } else {
+              $compte_pp = "images/icones/icone_compte.png";
+            }
+            ?>
             <li>
                 <img src="images/user2.png" alt="photo de profil" class="profile-img">
                 <div class="notification-content">
@@ -92,46 +130,8 @@ if($photo_profil){
                     <span class="new-notif-dot"></span>
                 </div>
             </li>
-            <li>
-                <img src="images/user2.png" alt="photo de profil" class="profile-img">
-                <div class="notification-content">
-                    <strong>Quentin Uguen</strong>
-                    <span class="notification-location"> | Abbaye de Monfort</span>
-                    <p>Déplorable, environnement moche</p>
-                    <span class="notification-time">1 mois</span>
-                    <span class="new-notif-dot"></span>
-                </div>
-            </li>
-            <li>
-                <img src="images/user2.png" alt="photo de profil" class="profile-img">
-                <div class="notification-content">
-                    <strong>Quentin Uguen</strong>
-                    <span class="notification-location"> | Abbaye de Monfort</span>
-                    <p>Déplorable, environnement moche</p>
-                    <span class="notification-time">1 mois</span>
-                    <span class="new-notif-dot"></span>
-                </div>
-            </li>
-            <li>
-                <img src="images/user2.png" alt="photo de profil" class="profile-img">
-                <div class="notification-content">
-                    <strong>Quentin Uguen</strong>
-                    <span class="notification-location"> | Abbaye de Monfort</span>
-                    <p>Déplorable, environnement moche</p>
-                    <span class="notification-time">1 mois</span>
-                    <span class="new-notif-dot"></span>
-                </div>
-            </li>
-            <li>
-                <img src="images/user2.png" alt="photo de profil" class="profile-img">
-                <div class="notification-content">
-                    <strong>Quentin Uguen</strong>
-                    <span class="notification-location"> | Abbaye de Monfort</span>
-                    <p>Déplorable, environnement moche</p>
-                    <span class="notification-time">1 mois</span>
-                    <span class="new-notif-dot"></span>
-                </div>
-            </li>
+            <?php
+            ?>
         </ul>
     </div>
 </li>
