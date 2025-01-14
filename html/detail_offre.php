@@ -860,19 +860,19 @@ if (isset($json['results'][0])) {
                 ?>
                 <div class="signalement_repondre">
                     <?php if (isset($_SESSION['membre']['code_compte'])){ ?>
-                    <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
+                     <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
                         <!-- Pouce positif -->
                         <img id="positiveImage<?php echo $avis['code_avis']; ?>"
                              src="<?php echo $voteState == 1 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png'; ?>"
-                             alt="Pouce positif" onclick="togglePositiveImage(<?php echo $avis['code_avis']; ?>); refreshAvis()">
-                        <p id="positiveCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_positif']; ?></p>
+                             alt="Pouce positif" onclick="togglePositiveImage(<?php echo $avis['code_avis']; ?>)">
+                        <p id="positiveCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_positif']; ?></p>           
                     </div>
-                    
+                
                     <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
                         <!-- Pouce négatif -->
                         <img id="negativeImage<?php echo $avis['code_avis']; ?>"
                              src="<?php echo $voteState == -1 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png'; ?>"
-                             alt="Pouce négatif" onclick="toggleNegativeImage(<?php echo $avis['code_avis']; ?>); refreshAvis();">
+                             alt="Pouce négatif" onclick="toggleNegativeImage(<?php echo $avis['code_avis']; ?>)">
                         <p id="negativeCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_negatif']; ?></p>
                     </div>
                     <?php } else { ?>
