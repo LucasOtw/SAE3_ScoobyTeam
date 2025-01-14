@@ -797,7 +797,7 @@ if (isset($json['results'][0])) {
                 </style>
                 <script>
                 function updateLikeDislike(action, codeAvis) {
-                    fetch("update_like.php", {
+                    fetch("update_likes.php", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/x-www-form-urlencoded",
