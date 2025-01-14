@@ -80,8 +80,6 @@ $req_codes->bindValue(":code_offre", $offre['code_offre']);
 $req_codes->execute();
 $codes_horaires = $req_codes->fetch(PDO::FETCH_ASSOC); // Utiliser fetch() pour obtenir une seule ligne
 
-var_dump($codes_horaires);
-
 // Maintenant, on veut les heures d'ouverture et de fermeture pour chaque code
 foreach($codes_horaires as $jour => $code){
     // Si le code est null, on continue
@@ -241,6 +239,10 @@ if (isset($_POST['envoi_modif'])){
                 $erreurs[] = "Erreur : Une horaire peut être vide UNIQUEMENT si l'autre l'est aussi : {$jour}";
                 return;
             }
+        }
+
+        if(isset($req_ouverture) && $req_ouverture !== null && !empty($req_ouverture)){
+            
         }
     }
 
@@ -469,7 +471,7 @@ if($infos_offre !== null){
                 </fieldset>
             </div>
             <div class="tab-content" id="services">
-                <fieldset>
+                <fieldset class="interieur_modif_offre_services">
                     <legend> Services </legend>
                     <?php
 
@@ -560,7 +562,7 @@ if($infos_offre !== null){
                     </div>
 
                     <div class="col">
-                        <fieldset>
+                        <fieldset class="interieur_modif_offre">
                             <legend>Ouverture</legend>
                             <input type="time" id="ouverture" name="horaires[<?php echo $jour; ?>][ouverture]" placeholder="Ouverture"
                             <?php if(isset($codes_horaires[$jour]['ouverture']) && $codes_horaires[$jour]['ouverture'] !== null){
@@ -571,7 +573,7 @@ if($infos_offre !== null){
                         </fieldset>
                     </div>
                     <div class="col">
-                        <fieldset>
+                        <fieldset class="interieur_modif_offre">
                             <legend>Fermeture</legend>
                             <input type="time" id="fermeture" name="horaires[<?php echo $jour; ?>][fermeture]" placeholder="Fermeture"
                             <?php if(isset($codes_horaires[$jour]['fermeture']) && $codes_horaires[$jour]['fermeture'] !== null){
