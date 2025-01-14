@@ -6001,6 +6001,7 @@ select.theme_contacter_plateforme {
 #photo-image img.supprimee {
     opacity: 0.5;
     filter: grayscale(100%);
+    transition: opacity 0.3s, filter 0.3s;
 }
 
 /* Bouton de suppression */
