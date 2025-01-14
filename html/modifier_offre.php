@@ -345,31 +345,25 @@ if (isset($_POST['envoi_modif'])){
             try {
                 $stmt->execute();
 
-                if($att == "titre_offre"){
-                    // si on change le titre de l'offre, on va devoir changer...
-                    // 1) le nom du dossier des offres
-                    // 2) le nom du dossier dans le chemin des images
-
-                    $images = $recup_photos;
-                    foreach($images as $image){
-                        $ancien_dossier = str_replace(' ','',$offre['titre_offre']);
-                        $nom_image = basename($image);
-                        $nouveau_dossier = "images/offres/{$val}/{$nom_image}";
-
-                        if (is_dir($ancien_dossier)) {
-                            if (!file_exists($nouveau_chemin)) {
-                                if (rename($ancien_dossier, $nouveau_chemin)) {
-                                    echo "Le dossier a été renommé avec succès.";
-                                } else {
-                                    echo "Erreur : Impossible de renommer le dossier.";
-                                }
-                            } else {
-                                echo "Erreur : Le nouveau nom de dossier existe déjà.";
-                            }
+                if ($att == "titre_offre") {
+                    // Si on change le titre de l'offre
+                    $ancien_nom_dossier = str_replace(' ', '', $offre['titre_offre']); // Ancien nom sans espaces
+                    $nouveau_nom_dossier = str_replace(' ', '', $nouvelle_valeur); // Nouveau nom sans espaces
+                
+                    // Chemins complets pour le renommage
+                    $ancien_chemin = "images/offres/{$ancien_nom_dossier}";
+                    $nouveau_chemin = "images/offres/{$nouveau_nom_dossier}";
+                
+                    // Vérifier si l'ancien dossier existe
+                    if (is_dir($ancien_chemin)) {
+                        // Tenter de renommer le dossier
+                        if (rename($ancien_chemin, $nouveau_chemin)) {
+                            echo "Le dossier a été renommé avec succès de '{$ancien_nom_dossier}' à '{$nouveau_nom_dossier}'.";
                         } else {
-                            echo "Erreur : L'ancien dossier n'existe pas.";
+                            echo "Erreur : Impossible de renommer le dossier.";
                         }
-                        
+                    } else {
+                        echo "Erreur : Le dossier '{$ancien_nom_dossier}' n'existe pas.";
                     }
                 }
                 
