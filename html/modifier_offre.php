@@ -80,6 +80,8 @@ $req_codes->bindValue(":code_offre", $offre['code_offre']);
 $req_codes->execute();
 $codes_horaires = $req_codes->fetch(PDO::FETCH_ASSOC); // Utiliser fetch() pour obtenir une seule ligne
 
+var_dump($codes_horaires);
+
 // Maintenant, on veut les heures d'ouverture et de fermeture pour chaque code
 foreach($codes_horaires as $jour => $code){
     // Si le code est null, on continue
