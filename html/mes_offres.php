@@ -116,7 +116,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
                                 
                                 <li class="notif"
                                     data-consult="<?php echo $notif["consulter_notif"]; ?>"
-                                    datat-avis=<?php echo $notif["code_avis"];?> >
+                                    datat-avis="<?php echo $notif["code_avis"];?>" >
                                     <img src="<?php echo $compte_pp; ?>" alt="photo de profil" class="profile-img">
                                     <div class="notification-content">
                                         <strong><?php echo $compte["prenom"].' '.$compte["nom"]; ?></strong>
