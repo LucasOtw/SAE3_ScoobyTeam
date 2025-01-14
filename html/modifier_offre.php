@@ -573,19 +573,21 @@ if($infos_offre !== null){
                                 <img src="<?php echo $photo; ?>" alt="Photo">
                             </div>
                             <button id="delete-photo-btn">Supprimer</button>
-                        </div>
-                        <!-- Carte pour ajouter une photo -->
-                        <div id="photo-card" class="add-photo-card">
-                            <div id="add-photo">
-                                <span>+</span>
-                                <p>Ajouter une photo</p>
                             </div>
+                        
                         </div>
                 
                 </div>
                 <?php
                 }
                 ?>
+                    <!-- Carte pour ajouter une photo -->
+                        <div id="photo-card" class="add-photo-card">
+                            <div id="add-photo">
+                                <span>+</span>
+                                <p>Ajouter une photo</p>
+                            </div>
+                        </div>
             </div>
         </div>
 
