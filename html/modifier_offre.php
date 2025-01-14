@@ -572,6 +572,7 @@ if($infos_offre !== null){
                                     <input type="time" class="duree" id="heure_spectacle" data-sync="heure_spect_modif" value="<?php echo htmlspecialchars($infos_offre['heure_spectacle']) ?>" required>
                                 </fieldset>
                             <?php
+                            break;
                         case "visite" :
                         ?>
                             <fieldset class="interieur_modif_offre_visite>
@@ -589,6 +590,7 @@ if($infos_offre !== null){
                                 
                             </fieldset>
                         <?php
+                            break;
                     }
 
                     ?>
