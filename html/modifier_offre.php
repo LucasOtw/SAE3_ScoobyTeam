@@ -420,7 +420,9 @@ if($infos_offre !== null){
                                 <fieldset>
                                     <legend>?</legend>
                                     <label for="date">Date du spectacle (*)</label>
-                                    <input type="date" id="date" data-sync="duree_modif" value="<?php echo htmlspecialchars($infos_offre['date_spectacle']) ?>" required>
+                                    <input type="date" id="date" data-sync="date_modif" value="<?php echo htmlspecialchars($infos_offre['date_spectacle']) ?>" required>
+                                    <input type="time" class="duree" data-sync="duree_modif" value="<?php echo htmlspecialchars($infos_offre['duree']) ?>" required>
+                                    <input type="time" class="duree" data-sync="heure_spect_modif" value="<?php echo htmlspecialchars($infos_offre['heure_spectacle']) ?>" required>
                                 </fieldset>
                             <?php
                     }
