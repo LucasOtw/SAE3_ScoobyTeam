@@ -811,8 +811,8 @@ if (isset($json['results'][0])) {
                     .then(data => {
                         if (data.status === 'success') {
                             // Mise à jour de l'image des pouces
-                            document.getElementById('positiveImage' + codeAvis).src = data.pouce_positif > 0 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
-                            document.getElementById('negativeImage' + codeAvis).src = data.pouce_negatif > 0 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
+                            document.getElementById('positiveImage' + codeAvis).src = data.pouce_positif > 0 ? 'images/pouce_positif_couleur.png?t=' + new Date().getTime() : 'images/pouce_positif_blanc.png?t=' + new Date().getTime();
+                            document.getElementById('negativeImage' + codeAvis).src = data.pouce_negatif > 0 ? 'images/pouce_negatif_couleur.png?t=' + new Date().getTime() : 'images/pouce_negatif_blanc.png?t=' + new Date().getTime();
                 
                             // Mise à jour des nombres de votes
                             document.getElementById('positiveCount' + codeAvis).textContent = data.pouce_positif;
