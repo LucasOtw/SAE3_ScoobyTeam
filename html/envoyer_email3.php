@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li><strong>Des événements à venir :</strong> Soyez les premiers informés des nouvelles offres.</li>
             </ul>
             <p>Restez à l'écoute pour des contenus enrichissants qui vous aideront à mieux suivre nos projets et nos succès !</p>
-            <p>Nous vous remercions encore pour votre inscription. Si vous avez des questions ou des suggestions, n'hésitez pas à nous contacter à l'adresse suivante : <a href='mailto:support@pact.com'>support@pact.com</a>.</p>
+            <p>Nous vous remercions encore pour votre inscription. Si vous avez des questions ou des suggestions, n'hésitez pas à nous contacter à l'adresse suivante : <a href='mailto:noreply.scoobyteam@gmail.com'>support@pact.com</a>.</p>
             <a href='https://scooby-team.ventsdouest.dev' class='button'>Découvrez notre site web</a>
             <div class='footer'>
                 <p>Vous ne souhaitez plus recevoir nos emails ? <a href='https://scooby-team.ventsdouest.dev/connexion_membre.php'>Cliquez ici pour vous désinscrire</a>.</p>
