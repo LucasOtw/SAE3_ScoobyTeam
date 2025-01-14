@@ -24,6 +24,30 @@ if (isset($_GET["filter"])) {
 if(isset($_SESSION['aCreeUneOffre'])){
     unset($_SESSION['aCreeUneOffre']);
 }
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+///                            Contenu notif                                ///
+///////////////////////////////////////////////////////////////////////////////
+
+dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+$username = "sae";
+$password = "philly-Congo-bry4nt";
+
+// Créer une instance PDO
+$dbh = new PDO($dsn, $username, $password);
+
+$checkPP = $dbh->prepare("SELECT url_image FROM tripenarvor._sa_pp WHERE code_compte = :code_compte");
+$checkPP->bindValue(":code_compte",$compte['code_compte']);
+$checkPP->execute();
+
+$photo_profil = $checkPP->fetch(PDO::FETCH_ASSOC);
+if($photo_profil){
+  $compte_pp = $photo_profil['url_image'];
+} else {
+  $compte_pp = "images/icones/icone_compte.png";
+}
     
 ?>
 

@@ -591,7 +591,7 @@ if (isset($_POST['dwl-data'])) {
                 <ul>
                     <li><a href="voir_offres.php">Accueil</a></li>
                     <li><a href="connexion_pro.php">Publier</a></li>
-                    <li><a href="consulter_compte_membre.phpp">Mon Compte</a></li>
+                    <li><a href="consulter_compte_membre.php">Mon Compte</a></li>
                 </ul>
             </div>
             <div class="link-group">
