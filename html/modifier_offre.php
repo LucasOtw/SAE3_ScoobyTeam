@@ -367,6 +367,20 @@ if (isset($_POST['envoi_modif'])){
                     } else {
                         echo "Erreur : Le dossier '{$nom_doss}' n'existe pas.";
                     }
+
+                    $img_modif = $recup_photos
+
+                    foreach($img_modif as $photo){
+                        $nom_image = basename($photo);
+                        $nouv_lien = "../images/offres/{$nouv_dossier}/{$nom_image}";
+
+                        // on update la BDD
+
+                        $update_lien_image = $dbh->prepare("UPDATE tripenarvor._image SET url_image = :nouvelle_valeur WHERE url_image = :ancienne_valeur");
+                        $update_lien_image->bindValue(":nouvelle_valeur",$nouv_lien);
+                        $update_lien_image->bindValue(":ancienne_valeur",$nom_image);
+                        $update_lien_image->execute();
+                    }
                 }
                 
                 echo "Champ $att mis à jour avec succès.<br>";
