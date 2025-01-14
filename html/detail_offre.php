@@ -798,21 +798,46 @@ if (isset($json['results'][0])) {
                     
                 <script>
                 function updateLikeDislike(action, codeAvis) {
-                    var xhr = new XMLHttpRequest();
-                    xhr.open('POST', 'update_likes.php', true);
-                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                    xhr.onload = function () {
-                        if (xhr.status === 200) {
-                            console.log(xhr.responseText);
-                        }
-                    };
-                    xhr.send('action=' + action + '&code_avis=' + codeAvis);
+                    console.log("Action:", action);
+                    console.log("Code Avis:", codeAvis);
+                
+                    // Utilisation de fetch pour envoyer les données
+                    fetch("update_likes.php", {
+                        method: "POST", // Méthode POST
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded", // Spécifie le type de contenu
+                        },
+                        body: new URLSearchParams({
+                            action: action,      // Action : like, unlike, dislike ou undislike
+                            code_avis: codeAvis  // Code de l'avis
+                        })
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                return response.text(); // Lire le texte de la réponse
+                            } else {
+                                console.error("Erreur lors de la mise à jour : " + response.status);
+                                throw new Error("Erreur HTTP : " + response.status);
+                            }
+                        })
+                        .then(responseText => {
+                            console.log("Réponse du serveur :", responseText);
+                            if (responseText.trim() === "Success") {
+                                console.log("Mise à jour réussie !");
+                            } else {
+                                console.error("Erreur dans la réponse du serveur :", responseText);
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Erreur de réseau ou autre :", error);
+                        });
                 }
+
                 
                 function togglePositiveImage(codeAvis) {
                     var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
                     updateLikeDislike(action, codeAvis);
-                    
+                
                     // Mise à jour visuelle
                     document.getElementById('positiveImage' + codeAvis).src = action === 'like' ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
                     document.getElementById('negativeImage' + codeAvis).src = 'images/pouce_negatif_blanc.png'; // Réinitialiser le pouce négatif
@@ -821,11 +846,12 @@ if (isset($json['results'][0])) {
                 function toggleNegativeImage(codeAvis) {
                     var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
                     updateLikeDislike(action, codeAvis);
-                    
+                
                     // Mise à jour visuelle
                     document.getElementById('negativeImage' + codeAvis).src = action === 'dislike' ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
                     document.getElementById('positiveImage' + codeAvis).src = 'images/pouce_positif_blanc.png'; // Réinitialiser le pouce positif
                 }
+
                 </script>
 
                 
