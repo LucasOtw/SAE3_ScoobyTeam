@@ -6179,34 +6179,6 @@ select.theme_contacter_plateforme {
     display: block;
 }
 
-#modif_offre .checkbox-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-#modif_offre .checkbox-group div {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-#modif_offre .checkbox-group .label-check {
-    font-size: 1rem;
-    color: #555;
-}
-
-/* Inputs */
-#modif_offre input[type="radio"],
-#modif_offre input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-}
-
-#modif_offre input[type="number"] {
-    text-align: center;
-}
 /* Checkboxes stylisées en orange */
 #modif_offre input[type="checkbox"] {
     appearance: none; /* Supprime le style natif */
@@ -6217,6 +6189,7 @@ select.theme_contacter_plateforme {
     outline: none;
     cursor: pointer;
     background-color: #fff; /* Fond blanc par défaut */
+    position: relative; /* Nécessaire pour le pseudo-élément */
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -6224,6 +6197,18 @@ select.theme_contacter_plateforme {
 #modif_offre input[type="checkbox"]:checked {
     background-color: #ffa500; /* Fond orange quand coché */
     border-color: #e67e22; /* Bordure légèrement plus foncée */
+}
+
+/* Ajout de l'icône "check" */
+#modif_offre input[type="checkbox"]:checked::after {
+    content: "✔"; /* Icône "check" */
+    color: white; /* Couleur de l'icône */
+    font-size: 14px; /* Taille de l'icône */
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centre l'icône dans la checkbox */
 }
 
 /* Hover effect */
@@ -6239,9 +6224,7 @@ select.theme_contacter_plateforme {
     color: #555;
     vertical-align: middle;
 }
-
-
-                                        /*****************************************************
+                             /*****************************************************
                                                     * Code page détail d'une offre *
                                         *****************************************************/
 
