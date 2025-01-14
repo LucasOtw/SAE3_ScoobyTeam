@@ -817,6 +817,8 @@ if (isset($json['results'][0])) {
                             // Mise à jour des nombres de votes
                             document.getElementById('positiveCount' + codeAvis).textContent = data.pouce_positif;
                             document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
+
+                            console.log("// MIS A JOUR //");
                         } else {
                             alert(data.message);
                         }
