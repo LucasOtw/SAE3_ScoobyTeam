@@ -5838,6 +5838,14 @@ select.theme_contacter_plateforme {
     border: none;
 }
 
+#modif_offre fieldset {
+    padding: 15px;
+    background-color: #f3f8ff;
+    border-radius: 8px;
+    box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
 #modif_offre .horaires-row {
     display: flex;
     justify-content: space-between;
@@ -5872,13 +5880,13 @@ select.theme_contacter_plateforme {
     outline: none;
 }
 
-/* Personnalisation du champ "Jour" */
+/* Style pour le champ "Jour" */
 #modif_offre .horaires-row input.jour {
-    border: none; /* Enlever la bordure */
-    font-size: 1.2rem; /* Augmenter la taille du texte */
+    font-size: 1.1rem; /* Taille de texte similaire à ouverture et fermeture, mais légèrement plus grande */
     color: #000; /* Couleur du texte en noir */
-    background-color: transparent; /* Enlever le fond */
-    font-weight: bold; /* Mettre le texte en gras */
+    background-color: transparent; /* Fond transparent */
+    font-weight: bold; /* Texte en gras */
+    border: 1px solid #ddd; /* Ajouter une bordure semblable aux autres champs */
 }
 
 @media (max-width: 768px) {
