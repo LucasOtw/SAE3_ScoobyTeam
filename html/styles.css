@@ -5769,7 +5769,7 @@ select.theme_contacter_plateforme {
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #003366;
+  color: var(--orange);
 }
 
 #modif_offre label {
