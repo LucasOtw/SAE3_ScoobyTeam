@@ -438,11 +438,9 @@ if (isset($_POST['envoi_modif'])){
                         $ajout_photo->execute();
                         $code_image = $dbh->lastInsertId();
 
-                        echo "<h1>".$code_image."</h1><br>";
-
-                        $ajout_photo_offre = $dbh->prepare("INSERT INTO tripenarvor._son_image VALUES(:code_image,:url_image)");
+                        $ajout_photo_offre = $dbh->prepare("INSERT INTO tripenarvor._son_image VALUES(:code_offre,:code_image)");
+                        $ajout_photo_offre->bindValue(":code_offre",$offre['code_offre']);
                         $ajout_photo_offre->bindValue(":code_image",$code_image);
-                        $ajout_photo_offre->bindValue(":url_image",$chemin);
                         $ajout_photo_offre->execute();
                     } else {
                         echo "Erreur : Impossible de déplacer le fichier $nom_photo.<br>";
