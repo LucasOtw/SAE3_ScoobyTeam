@@ -94,7 +94,6 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signalement d'un avis</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="signalement.css">
     <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -137,7 +136,6 @@ try {
             </div>
         </header>
     </div>
-    <main class="main.signalement_membre">
         <div class="container">
             <h2 class="titre_signalement_1">Signaler un avis</h2>
             <?php if (isset($erreur)): ?>
@@ -235,7 +233,6 @@ try {
             color: green;
         }
     </style>
-</main>
     <footer class="footer footer_membre">
        <div class="newsletter">
         <div class="newsletter-content">
