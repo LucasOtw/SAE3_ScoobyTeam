@@ -796,73 +796,46 @@ if (isset($json['results'][0])) {
                     }
                 </style>
                 <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        document.querySelectorAll('.pouce img').forEach(img => {
-                            img.addEventListener('click', (event) => {
-                                const img = event.target; // L'image sur laquelle l'utilisateur a cliqué
-                                const codeAvis = img.id.replace(/\D/g, ''); // Extraire le code de l'avis à partir de l'ID de l'image
-                
-                                if (img.id.includes('positiveImage')) {
-                                    togglePositiveImage(codeAvis);
-                                } else if (img.id.includes('negativeImage')) {
-                                    toggleNegativeImage(codeAvis);
-                                }
-                            });
+                    function updateLikeDislike(action, codeAvis) {
+                        fetch("update_likes.php", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded",
+                            },
+                            body: new URLSearchParams({
+                                action: action,
+                                code_avis: codeAvis
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.status === 'success') {
+                                // Mise à jour de l'image des pouces
+                                document.getElementById('positiveImage' + codeAvis).src = data.pouce_positif > 0 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
+                                document.getElementById('negativeImage' + codeAvis).src = data.pouce_negatif > 0 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
+                    
+                                // Mise à jour des nombres de votes
+                                document.getElementById('positiveCount' + codeAvis).textContent = data.pouce_positif;
+                                document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
+                            } else {
+                                alert(data.message);
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Erreur réseau : ", error);
                         });
-                
-                        function togglePositiveImage(codeAvis) {
-                            var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
-                            updateLikeDislike(action, codeAvis);
-                
-                            // Vérifie la largeur de la fenêtre avant de recharger
-                            if (window.innerWidth <= 429) {
-                                setTimeout(function() {
-                                    location.reload(); // Recharge la page uniquement si la largeur est >= 429px
-                                }, 200);
-                            }
-                        }
-                
-                        function toggleNegativeImage(codeAvis) {
-                            var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
-                            updateLikeDislike(action, codeAvis);
-                
-                            // Vérifie la largeur de la fenêtre avant de recharger
-                            if (window.innerWidth <= 429) {
-                                setTimeout(function() {
-                                    location.reload(); // Recharge la page uniquement si la largeur est >= 429px
-                                }, 200);
-                            }
-                        }
-                
-                        function updateLikeDislike(action, codeAvis) {
-                            fetch("update_likes.php", {
-                                method: "POST",
-                                headers: {
-                                    "Content-Type": "application/x-www-form-urlencoded",
-                                },
-                                body: new URLSearchParams({
-                                    action: action,
-                                    code_avis: codeAvis
-                                })
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.status === 'success') {
-                                    // Mise à jour de l'image des pouces
-                                    document.getElementById('positiveImage' + codeAvis).src = data.pouce_positif > 0 ? 'images/pouce_positif_couleur.png?t=' + new Date().getTime() : 'images/pouce_positif_blanc.png?t=' + new Date().getTime();
-                                    document.getElementById('negativeImage' + codeAvis).src = data.pouce_negatif > 0 ? 'images/pouce_negatif_couleur.png?t=' + new Date().getTime() : 'images/pouce_negatif_blanc.png?t=' + new Date().getTime();
-                                
-                                    // Mise à jour des nombres de votes
-                                    document.getElementById('positiveCount' + codeAvis).textContent = data.pouce_positif;
-                                    document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
-                                } 
-                            })
-                            .catch(error => {
-                                console.error("Erreur réseau : ", error);
-                            });
-                        }
-                    });
-                </script>
+                    }
+                    
+                    function togglePositiveImage(codeAvis) {
+                        var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
+                        updateLikeDislike(action, codeAvis);
+                    }
+                    
+                    function toggleNegativeImage(codeAvis) {
+                        var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
+                        updateLikeDislike(action, codeAvis);
+                    }
+                    </script>
 
 
                 <?php 
