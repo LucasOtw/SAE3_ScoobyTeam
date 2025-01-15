@@ -732,7 +732,9 @@ function tempsEcouleDepuisPublication($offre){
             } else {
             ?>
 
-            <section class="bloc_consulter_recemment"></section>
+            <section class="bloc_consulter_recemment">
+                <p>Veuillez vous connecter pour accéder à votre historique
+            </section>
 
             <?php
                 echo "";

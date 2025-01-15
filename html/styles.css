@@ -8164,6 +8164,10 @@ footer {
     border: 1px solid #ddd;
 }
 
+.bloc_consulter_recemment p {
+    color : #919191;
+}
+
 
 .toute_les_offres_main .titres-offres{
     display: flex;
