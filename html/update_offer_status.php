@@ -41,17 +41,25 @@
         if (!$currentRow) {
             echo "Aucune offre trouvée avec le code fourni.";
         }
-        
+
+        $date = (new DateTime())->format('Y-m-d H:i:s'); // Convertir DateTime en chaîne SQL-compatible
+
         if ($en_ligne === 1) {
-            // Si l'offre passe en ligne, mettre à jour la date_publication
+            // Si l'offre passe en ligne, mettre à jour date_publication et date_derniere_modif
             $stmt = $dbh->prepare("
                 UPDATE tripenarvor._offre
                 SET en_ligne = :en_ligne,
-                    date_publication = NOW(),
-                    date_derniere_modif = NOW()
+                    date_publication = :date,
+                    date_derniere_modif = :date
                 WHERE code_offre = :code_offre
                 RETURNING titre_offre, en_ligne, date_publication
             ");
+        
+            $stmt->execute([
+                ':en_ligne' => true,
+                ':date' => $date,
+                ':code_offre' => $code_offre
+            ]);
         } else {
             // Si l'offre est hors ligne, ne pas toucher à date_publication
             $stmt = $dbh->prepare("
@@ -60,9 +68,12 @@
                 WHERE code_offre = :code_offre
                 RETURNING titre_offre, en_ligne, date_publication
             ");
-        }
         
-        $stmt->execute([':code_offre' => $code_offre, ':en_ligne' => ($en_ligne == 1) ? true : 0 ]);
+            $stmt->execute([
+                ':en_ligne' => false,
+                ':code_offre' => $code_offre
+            ]);
+        }
         
         // Récupérer le nombre de lignes modifiées
         $updatedRow = $stmt->fetch(PDO::FETCH_ASSOC);
