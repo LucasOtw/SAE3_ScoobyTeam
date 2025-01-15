@@ -888,23 +888,6 @@ WHERE code_offre = :code_offre
             // Affichage des avis et de leurs réponses (y compris les sous-réponses)
             ?>
 
-            <div class="avis-widget">
-                <div class="avis-header">
-                    <h1 class="avis">
-                        <?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5"); ?>
-                        <span class="avis-score">
-                            <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?>
-                        </span>
-                    </h1>
-                    <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
-                </div>
-                <div class="avis-list">
-                    <?php
-                    array_map('afficherAvis', $tous_les_avis);
-                    ?>
-                </div>
-            </div>
-
             <?php
             // Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
             ?>
@@ -1156,27 +1139,9 @@ WHERE code_offre = :code_offre
         // Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
         // Afficher les sous-réponses en premier si elles existent
         ?>
-        <div class="avis-widget">
-            <div class="avis-header">
-                <h1 class="avis">
-                    <?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5"); ?>
-                    <span class="avis-score">
-                        <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?>
-                    </span>
-                </h1>
-                <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
-            </div>
-            <div class="avis-list">
-                <?php
-                array_map('afficherAvis', $tous_les_avis);
-                ?>
-            </div>
-        </div>
-
-        <?php
-        // Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
-        ?>
+        
         <script>
+            // Script pour la gestion des pouces
             function updateLikeDislike(action, codeAvis) {
                 fetch("update_likes.php", {
                     method: "POST",
@@ -1232,6 +1197,22 @@ WHERE code_offre = :code_offre
         </script>
 
     </div>
+    <div class="avis-widget">
+                <div class="avis-header">
+                    <h1 class="avis">
+                        <?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5"); ?>
+                        <span class="avis-score">
+                            <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?>
+                        </span>
+                    </h1>
+                    <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
+                </div>
+                <div class="avis-list">
+                    <?php
+                    array_map('afficherAvis', $tous_les_avis);
+                    ?>
+                </div>
+            </div>
     </div>
 </body>
 

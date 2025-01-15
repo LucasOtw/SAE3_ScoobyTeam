@@ -21,6 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? null;
     $codeAvis = $_POST['code_avis'] ?? null;
     $codeCompte = $_SESSION['membre']['code_compte'];
+    $largeur = isset($_POST['largeur']) ? (int) $_POST['largeur'] : 0;
+    
+    
 
     if (!$action || !$codeAvis) {
         echo json_encode([
