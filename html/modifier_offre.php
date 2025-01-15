@@ -401,17 +401,22 @@ if (isset($_POST['envoi_modif'])){
         // GESTION DES NOUVELLES PHOTOS
 
         if(isset($nouv_images) && $nouv_images !== null){
-            $n_photos = [];
             // Parcourir chaque photo envoyée
-            foreach($_FILES['offre_nouv_images']['name'] as $key => $file_name){
-                // Si le fichier n'est pas vide, on récupère les informations nécessaires
-                if($_FILES['offre_nouv_images']['error'][$key] === 0){
-                    $photos[] = [
-                        'name' => $file_name,
-                        'type' => $_FILES['offre_nouv_images']['type'][$key],
-                        'tmp_name' => $_FILES['offre_nouv_images']['tmp_name'][$key],
-                        'size' => $_FILES['offre_nouv_images']['size'][$key]
-                    ];
+            
+                if(isset($_FILES['offre_nouv_images']) && !empty($_FILES['offre_nouv_images']['name'][0])){
+                    $photos = [];
+                    // Parcourir chaque photo envoyée
+                    foreach($_FILES['offre_nouv_images']['name'] as $key => $file_name){
+                        // Si le fichier n'est pas vide, on récupère les informations nécessaires
+                        if($_FILES['offre_nouv_images']['error'][$key] === 0){
+                            $photos[] = [
+                                'name' => $file_name,
+                                'type' => $_FILES['offre_nouv_images']['type'][$key],
+                                'tmp_name' => $_FILES['offre_nouv_images']['tmp_name'][$key],
+                                'size' => $_FILES['offre_nouv_images']['size'][$key]
+                            ];
+                        }
+                    }
 
                     $destination = "images/offres/{$nouveau_dossier}";
                     foreach($photos as $photo){
@@ -444,7 +449,6 @@ if (isset($_POST['envoi_modif'])){
                         }
                     }
                 }
-            }
         }
     } else {
         foreach($erreurs as $err){
