@@ -261,16 +261,18 @@ if (isset($_POST['envoi_modif'])){
     if(isset($_POST['_site_modif']) && $_POST['_site_modif'] !== null){
         $url = $_POST['_site_modif'];
 
-        if(!empty($url) && filter_var($url,FILTER_VALIDATE_URL)){
-            $headers = @get_headers($url);
-          
-            if ($headers && strpos($headers[0], '200') !== false) {
-                // Circulez, tout va bien..
+        if(!empty($url)){
+            if(filter_var($url,FILTER_VALIDATE_URL)){
+                $headers = @get_headers($url);
+              
+                if ($headers && strpos($headers[0], '200') !== false) {
+                    // Circulez, tout va bien..
+                } else {
+                    $erreurs[] = "L'URL n'est pas accessible.";
+                }
             } else {
-                $erreurs[] = "L'URL n'est pas accessible.";
+                $erreurs[] = "L'URL n'est pas valide.";
             }
-        } else {
-            $erreurs[] = "L'URL n'est pas valide.";
         }
     }
 
