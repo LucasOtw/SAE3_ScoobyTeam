@@ -7601,14 +7601,15 @@ form .btn-link {
             * Code pour les pouces*
 *****************************************************/
 
-
- .pouce {
+.pouce {
     display: inline-block;
     width: 50px; /* Ajuster selon la taille de l'image */
     height: 50px; /* Ajuster selon la taille de l'image */
     cursor: pointer;
 }
 .pouce img {
+   
+    left: 0;
     width: 1.5em;
     height: 1.5em; 
     transition: opacity 0.5s ease;
@@ -7629,8 +7630,6 @@ form .btn-link {
 
 .pouce.clicked .pouce-original {
     opacity: 0;
-}
-
 }
 
 
