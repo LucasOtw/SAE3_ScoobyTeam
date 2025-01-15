@@ -32,7 +32,7 @@ function tempsEcouleDepuisNotif($avis)
     // conversion de la date de publication en objet DateTime
     $date_ajout_avis = new DateTime($avis['date_notif']);
     // calcul de la différence en jours
-    $diff = $date_ajout_offre->diff($date_actuelle);
+    $diff = $date_ajout_avis->diff($date_actuelle);
     // récupération des différentes unités de temps
     $jours = $diff->days; // total des jours de différence
     $mois = $diff->m + ($diff->y * 12); // mois totaux
