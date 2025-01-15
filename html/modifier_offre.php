@@ -295,6 +295,23 @@ if (isset($_POST['envoi_modif'])){
             "_description" => $_POST['_desc_modif'],
             "accessibilite" => $_POST['_access_modif']
         );
+
+        $tab_services = null;
+
+        switch($type_offre){
+            case "restauration":
+                break;
+            case "spectacle":
+                $tab_services = array(
+                    "duree" => $_POST['_duree_modif'];
+                    "capacite_accueil" => $_POST['_capacite_acc_modif'],
+                    "date_spectacle" => $_POST['_date_modif'],
+                    "heure_spectacle" => $_POST['_heure_spec_modif']
+                );
+                break;
+            case "visite":
+                break;
+        }
         
 
         // table "_adresse"
@@ -669,6 +686,14 @@ if($infos_offre !== null){
 
                                     <label for="heure_spectacle">Heure du spectacle (*)</label>
                                     <input type="time" class="duree" id="heure_spectacle" data-sync="heure_spect_modif" value="<?php echo htmlspecialchars($infos_offre['heure_spectacle']) ?>" required>
+
+                                    <label for="capacite_accueil">Capacité d'accueil (*)</label>
+                                    <input type="number" id="capacite_accueil" data-sync="capacite_accueil_modif" value="<?php echo htmlspecialchars($infos_offre['capacite_accueil']) ?>" placeholder="Capacité d'accueil *" required>
+
+                                    <input type="hidden" id="date_modif" name="_date_modif">
+                                    <input type="hidden" id="duree_modif" name="_duree_modif">
+                                    <input type="hidden" id="heure_spect_modif" name="_heure_spect_modif">
+                                    <input type="hidden" id="capacite_accueil_modif" name="_capacite_acc_modif">
                                 </fieldset>
                             <?php
                             break;
