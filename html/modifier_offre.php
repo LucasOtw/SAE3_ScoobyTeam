@@ -687,7 +687,7 @@ if($infos_offre !== null){
                         </div> -->
                         <!-- Champ fichier caché -->
                     </div>
-                    <input type="file" id="file-input" accept="image/*">
+                    <input type="file" id="file-input" accept="image/*" style="display: block;">
                 </div>
             </div>
         </div>
