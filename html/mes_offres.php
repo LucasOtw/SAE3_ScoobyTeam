@@ -131,6 +131,13 @@ function tempsEcouleDepuisNotif($avis)
                         {
                             foreach ($notifs as $index => $notif)
                             {
+                                if ($notif["consulter_notif"])
+                                {
+                                    <script language="javascript">
+                                        const notificationBadge = document.getElementById('notification-badge');
+                                        notificationBadge.style.removeProperty('display');
+                                    </script> 
+                                }
                                 
                                 $checkPP = $dbh->prepare("SELECT url_image FROM tripenarvor._sa_pp WHERE code_compte = :code_compte");
                                 $checkPP->bindValue(":code_compte",$notif['code_compte']);
