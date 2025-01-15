@@ -136,14 +136,14 @@ try {
             </div>
         </header>
     </div>
-        <div class="container">
+        <div class="signalement-container">
             <h2 class="titre_signalement_1">Signaler un avis</h2>
             <?php if (isset($erreur)): ?>
                 <div class="erreur">
                     <p><?php echo $erreur; ?></p>
                 </div>
             <?php else: ?>
-                <div class="avis">
+                <div class="signalement-avis">
                     <?php 
                         if ($avis) {
                             // Afficher les informations de l'avis trouvé
@@ -158,7 +158,7 @@ try {
                 
             <?php endif; ?>
             <h2 class="titre_signalement_2">Cause du signalement</h2>
-            <div class="type_offre_select_button">
+            <div class="signalement-type_offre_select_button">
                         <select id="offre" name="offreChoisie" data-placeholder="Sélectionnez..." required>
                             <option value="" hidden selected>Sélectionnez...</option>
                             <option value="restaurant">Language déplacé</option>
@@ -169,7 +169,7 @@ try {
                         </select>
     
             </div>
-            <h2 class="titre_signalement_3">Description (facultatif)</h2>
+            <h2 class="signalement-titre_signalement_3">Description (facultatif)</h2>
             <textarea placeholder="Écrivez votre avis ici..." class="signaler_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
             <form method="POST" action="signalement.php">
                 <input type="hidden" name="id_avis" value="<?php echo $idAvis; ?>">
@@ -179,7 +179,7 @@ try {
         </div>
         <!-- Modale de confirmatiosn -->
     <div id="confirmationModal" class="modal">
-        <div class="modal-content">
+        <div class="signalement-modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <div class="popup-message">
                 <p>Votre signalement a bien été envoyé et pris en compte !</p>
