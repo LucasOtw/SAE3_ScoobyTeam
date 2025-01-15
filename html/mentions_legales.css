@@ -23,12 +23,12 @@
     font-style: normal;
 }
 
-a {
+.link_souligne {
     text-decoration: none;
     color: var(--vert-fonce);
 }
 
-a:hover {
+.linksouligne:hover {
     text-decoration: underline;
 }
 
