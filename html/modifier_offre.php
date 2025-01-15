@@ -135,6 +135,8 @@ foreach($tables as $table){
     }
 }
 
+echo "<h1>".$type_offre."</h1><br>";
+
 
 /* RÉCUPÉRATION DES TAGS */
 
