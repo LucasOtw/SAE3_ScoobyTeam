@@ -262,10 +262,10 @@ if (isset($_POST['envoi_modif'])){
         $url = $_POST['_site_modif'];
 
         if(filter_var($url,FILTER_VALIDATE_URL)){
-            $header = @get_headers($url);
+            $headers = @get_headers($url);
           
             if ($headers && strpos($headers[0], '200') !== false) {
-                continue;
+                // Circulez, tout va bien..
             } else {
                 $erreurs[] = "L'URL n'est pas accessible.";
             }
