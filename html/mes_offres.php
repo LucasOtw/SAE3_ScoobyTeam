@@ -24,6 +24,44 @@ if (isset($_GET["filter"])) {
 if(isset($_SESSION['aCreeUneOffre'])){
     unset($_SESSION['aCreeUneOffre']);
 }
+
+function tempsEcouleDepuisNotif($avis)
+{
+    // date d'aujourd'hui
+    $date_actuelle = new DateTime();
+    // conversion de la date de publication en objet DateTime
+    $date_ajout_avis = new DateTime($avis['date_notif']);
+    // calcul de la différence en jours
+    $diff = $date_ajout_avis->diff($date_actuelle);
+    // récupération des différentes unités de temps
+    $jours = $diff->days; // total des jours de différence
+    $mois = $diff->m + ($diff->y * 12); // mois totaux
+    $annees = $diff->y;
+
+    $retour = null;
+
+    // calcul du nombre de jours dans le mois précédent
+    $date_mois_precedent = clone $date_actuelle;
+    $date_mois_precedent->modify('-1 month');
+    $jours_dans_mois_precedent = (int)$date_mois_precedent->format('t'); // 't' donne le nombre de jours dans le mois
+
+    if($jours == 0){
+        $retour = "Aujourd'hui";
+    } elseif($jours == 1){
+        $retour = "Hier";
+    } elseif($jours > 1 && $jours < 7){
+        $retour = $jours." jour(s)";
+    } elseif ($jours >= 7 && $jours < $jours_dans_mois_precedent){
+        $semaines = floor($jours / 7);
+        $retour = $semaines." semaine(s)";
+    } elseif ($mois < 12){
+        $retour = $mois." mois";
+    } else {
+        $retour = $annees." an(s)";
+    }
+
+    return $retour;
+}
     
 ?>
 
@@ -109,11 +147,6 @@ if(isset($_SESSION['aCreeUneOffre'])){
                                 $infoCompte->bindValue(':code_compte',$notif['code_compte']);
                                 $infoCompte->execute();
                                 $compte_m = $infoCompte->fetch(PDO::FETCH_ASSOC);
-                
-                                $infoOffre = $dbh->prepare('select * from tripenarvor._offre where code_offre = :code_offre;');
-                                $infoOffre->bindValue(':code_offre',$notif["code_offre"]);
-                                $infoOffre->execute();
-                                $offre = $infoOffre->fetch(PDO::FETCH_ASSOC);
 
                                 if ($nb_notif <5)
                                 {
@@ -127,7 +160,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
                                             <strong><?php echo $compte_m["prenom"].' '.$compte_m["nom"]; ?></strong>
                                             <span class="notification-location"> | <?php echo $notif["titre_offre"]; ?></span>
                                             <p><?php echo $notif["txt_avis"]; ?></p>
-                                            <span class="notification-time"><?php echo tempsEcouleDepuisPublication($offre);?></span>
+                                            <span class="notification-time"><?php echo tempsEcouleDepuisNotif($notif);?></span>
                                             <span class="new-notif-dot" style="display:none"></span>
                                         </div>
                                     </li>
