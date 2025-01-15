@@ -733,6 +733,7 @@ function tempsEcouleDepuisPublication($offre){
             ?>
 
             <section class="bloc_consulter_recemment">
+                <img src=""
                 <p>Veuillez vous connecter pour accéder à votre historique
             </section>
 
