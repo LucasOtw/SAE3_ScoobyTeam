@@ -146,9 +146,6 @@ foreach($tables as $table){
     }
 }
 
-echo "<h1>".$type_offre."</h1>";
-
-
 
 /* RÉCUPÉRATION DES TAGS */
 
@@ -462,13 +459,21 @@ if (isset($_POST['envoi_modif'])){
                     $cleanedImages[] = $matches[0];
                 }
             }
-        
-            // Afficher le résultat pour voir si ça fonctionne
-            echo "<pre>";
-            var_dump($cleanedImages);  // Vous verrez uniquement les parties des URLs à partir de "images"
+
+            $codes_images = null;
+
+            // PREMIERE BOUCLE
+            
+            foreach($cleanedImages as $image){
+                $recup_codes_images = $dbh->prepare("SELECT code_image FROM tripenarvor._image WHERE url_image = :image");
+                $recup_codes_images->bindValue(":image",trim($image));
+                $recup_codes_images->execute();
+
+                $codes_images = $recup_codes_images->fetchAll(PDO::FETCH_ASSOC);
+            }
             echo "</pre>";
-        } else {
-            echo "<h1>ARRRRRGH</h1><br>";
+            print_r($rcodes_images);
+            echo "<pre>";
         }
 
         
