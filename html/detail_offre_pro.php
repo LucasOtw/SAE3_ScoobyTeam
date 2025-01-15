@@ -118,36 +118,7 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
     $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
 
     if (!empty($details_offre)) { // si l'offre existe
-
-        if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
-            try {
-                $consulter = $dbh->prepare('
-                    INSERT INTO tripenarvor._consulte (consulter, date_consultation, code_compte, code_offre)
-                    VALUES (TRUE, NOW(), :code_compte, :code_offre);
-                ');
-
-                $consulter->execute([
-                    ':code_compte' => $_SESSION["membre"]["code_compte"],
-                    ':code_offre' => $code_offre
-                ]);
-            } catch (PDOException $e) {
-                $consulter = $dbh->prepare('
-                    update tripenarvor._consulte set date_consultation = NOW() 
-                        where :code_offre = :code_offre and code_compte = :code_compte;
-                ');
-
-                $consulter->execute([
-                    ':code_compte' => $_SESSION["membre"]["code_compte"],
-                    ':code_offre' => $code_offre
-                ]);
-                // Ici, vous pouvez enregistrer l'erreur dans un fichier log ou en base de données
-                error_log("Erreur lors de l'insertion dans _consulte: " . $e->getMessage());
-                // Ne rien faire d'autre pour éviter l'affichage d'erreurs
-                // Vous pouvez aussi afficher un message générique à l'utilisateur si nécessaire
-            }
-        }
-
-
+                                 
         // Une offre a forcément au moins une image. 
         // On récupère l'image (ou les images) associée(s)
 
