@@ -872,6 +872,12 @@ if($infos_offre !== null){
                     // Cibler directement l'image à l'intérieur de .photo-image
                     const image = photoCard.querySelector('.photo-image img');
                     const photoSrc = image.src;
+
+                    const regex = /images\/.*/;  // Le motif pour capturer tout après "images/"
+                    const match = photoSrc.match(regex);
+                    if (match) {
+                        photoSrc = match[0]; // Garde uniquement la portion de l'URL après "images/"
+                    }
         
                     // Vérifier si l'image est déjà marquée comme supprimée
                     if (image.classList.contains('supprimee')) {
