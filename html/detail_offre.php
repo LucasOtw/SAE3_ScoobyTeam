@@ -1,3 +1,4 @@
+
 <?php
 if (headers_sent($file, $line)) {
     die("Les en-têtes ont déjà été envoyés dans le fichier $file à la ligne $line.");
@@ -795,7 +796,47 @@ if (isset($json['results'][0])) {
                         opacity: 0;
                     }
                 </style>
+                <script>
+                function updateLikeDislike(action, codeAvis) {
+                    fetch("update_likes.php", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                        },
+                        body: new URLSearchParams({
+                            action: action,
+                            code_avis: codeAvis
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            // Mise à jour de l'image des pouces
+                            document.getElementById('positiveImage' + codeAvis).src = data.pouce_positif > 0 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
+                            document.getElementById('negativeImage' + codeAvis).src = data.pouce_negatif > 0 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
                 
+                            // Mise à jour des nombres de votes
+                            document.getElementById('positiveCount' + codeAvis).textContent = data.pouce_positif;
+                            document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
+                        } else {
+                            alert(data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Erreur réseau : ", error);
+                    });
+                }
+                
+                function togglePositiveImage(codeAvis) {
+                    var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
+                    updateLikeDislike(action, codeAvis);
+                }
+                
+                function toggleNegativeImage(codeAvis) {
+                    var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
+                    updateLikeDislike(action, codeAvis);
+                }
+                </script>
 
 
                 <?php 
@@ -854,48 +895,7 @@ if (isset($json['results'][0])) {
                             <p id="negativeCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_negatif']; ?></p>
                         </div>
                     <?php } ?>
-
-                    <script>
-                function updateLikeDislike(action, codeAvis) {
-                    fetch("update_likes.php", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded",
-                        },
-                        body: new URLSearchParams({
-                            action: action,
-                            code_avis: codeAvis
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.status === 'success') {
-                            // Mise à jour de l'image des pouces
-                            document.getElementById('positiveImage' + codeAvis).src = data.pouce_positif > 0 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
-                            document.getElementById('negativeImage' + codeAvis).src = data.pouce_negatif > 0 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
-                
-                            // Mise à jour des nombres de votes
-                            document.getElementById('positiveCount' + codeAvis).textContent = data.pouce_positif;
-                            document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
-                        } else {
-                            alert(data.message);
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Erreur réseau : ", error);
-                    });
-                }
-                
-                function togglePositiveImage(codeAvis) {
-                    var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
-                    updateLikeDislike(action, codeAvis);
-                }
-                
-                function toggleNegativeImage(codeAvis) {
-                    var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
-                    updateLikeDislike(action, codeAvis);
-                }
-                </script>
+                    
 
 
                 <span class="signalement">
