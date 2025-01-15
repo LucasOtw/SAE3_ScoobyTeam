@@ -277,18 +277,16 @@ if (isset($_POST['envoi_modif'])){
     if(empty($erreurs)){
 
         echo "<pre>";
+        echo "<h1>LOL</h1>";
         var_dump($_POST['deleted_images']);
         echo "</pre>";
 
         if(!empty($_POST['tags'])){
             $valeurs_tags = array_column($mes_tags, 'code_tag');
-            var_dump($valeurs_tags);
             
             // Première boucle : suppression des tags non sélectionnés
             foreach($valeurs_tags as $un_tag){
-                if(in_array($un_tag, $_POST['tags'])){
-                    echo $un_tag."<br>";
-                } else {
+                if(i!n_array($un_tag, $_POST['tags'])){
                     // Si un tag de la table n'est pas dans le tableau $_POST['tags'], on le supprime
                     $req_del_tag = $dbh->prepare("DELETE FROM tripenarvor._son_tag WHERE code_tag = :code_tag AND code_offre = :code_offre");
                     $req_del_tag->bindValue(":code_tag", $un_tag);
