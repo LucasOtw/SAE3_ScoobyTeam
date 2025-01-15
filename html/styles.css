@@ -9993,6 +9993,82 @@ main.main_repondre_avis .message-erreur {
  .signalement-container{
         margin-left: 0;
     }
-    
-    
+}
+
+
+                          /*****************************************************
+                                      * Code page mentions légales/CGU/CGV  *
+                          *****************************************************/
+
+.mentions_legales-main {
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    margin: 50px auto 200px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    font-family: "K2D", sans-serif;
+}
+
+.mentions_legales-section {
+    margin-bottom: 20px;
+}
+
+.mentions_legales-title {
+    font-size: 1.5em;
+    color: var(--vert-fonce);
+    margin-bottom: 10px;
+}
+
+.mentions_legales-paragraph {
+    margin-bottom: 10px;
+    line-height: 1.8;
+}
+
+.mentions_legales-list {
+    margin-left: 20px;
+    list-style-type: disc;
+}
+
+ul.mentions_legales-sous-list {
+    margin-left: 40px;
+    list-style-type: disc;
+}
+
+
+/* Popup */
+.mentions_legales-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.mentions_legales-popup-content {
+    text-align: center;
+}
+
+.mentions_legales-popup-message {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.mentions_legales-popup button {
+    padding: 10px 15px;
+    background-color: #0066cc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.mentions_legales-popup button:hover {
+    background-color: #004999;
 }
