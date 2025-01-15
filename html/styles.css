@@ -2914,6 +2914,14 @@ input[type="password"]::placeholder {
     transition: transform 0.2s ease; /* Animation au survol */
 }
 
+.main_consulter_compte_membre button.submit-btn4:hover{
+    transform : translateY(-2px);
+}
+
+.main_consulter_compte_membre button.submit-btn4:active{
+    transform: translateY(2px);
+}
+
 .main_consulter_compte_membre button.btn-suppr-compte{
    display: flex;
     align-items: center;
