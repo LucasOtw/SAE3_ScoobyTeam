@@ -131,7 +131,7 @@ function tempsEcouleDepuisNotif($avis)
                         {
                             foreach ($notifs as $index => $notif)
                             {
-                                if ($notif["consulter_notif"])
+                                if (!$notif["consulter_notif"])
                                 {
                                     echo '<script language="javascript">
                                             const notificationBadge = document.getElementById("notification-badge");
