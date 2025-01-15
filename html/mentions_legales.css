@@ -23,12 +23,12 @@
     font-style: normal;
 }
 
-a {
+.link_souligne {
     text-decoration: none;
     color: var(--vert-fonce);
 }
 
-a:hover {
+.linksouligne:hover {
     text-decoration: underline;
 }
 
@@ -88,6 +88,11 @@ a:hover {
 
 .mentions_legales-list {
     margin-left: 20px;
+    list-style-type: disc;
+}
+
+.mentions_legales-sous-list {
+    margin-left: 40px;
     list-style-type: disc;
 }
 

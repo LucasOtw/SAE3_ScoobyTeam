@@ -42,24 +42,25 @@
             echo "Aucune offre trouvée avec le code fourni.";
         }
 
-        $date = (new DateTime())->format('Y-m-d H:i:s');
-
+        $dateTime = (new DateTime())->format('Y-m-d H:i:s'); // Format SQL pour timestamp
+        $date = (new DateTime())->format('Y-m-d');          // Format SQL pour date
+        
         if ($en_ligne == 1) {
-            print_r("///////////////////////ok///////////////////////");
+            print_r("///////////////////////////ok///////////////////////////");
             
             // Si l'offre passe en ligne, mettre à jour date_publication et date_derniere_modif
             $stmt = $dbh->prepare("
                 UPDATE tripenarvor._offre
                 SET en_ligne = :en_ligne,
-                    date_publication = :date,
-                    date_derniere_modif = :date
+                    date_publication = :date_publication,
+                    date_derniere_modif = :date_derniere_modif
                 WHERE code_offre = :code_offre
                 RETURNING titre_offre, en_ligne, date_publication
             ");
-        
             $stmt->execute([
                 ':en_ligne' => true,
-                ':date' => $date,
+                ':date_publication' => $dateTime,    // Valeur timestamp
+                ':date_derniere_modif' => $date,    // Valeur date
                 ':code_offre' => $code_offre
             ]);
         } else {
@@ -70,12 +71,12 @@
                 WHERE code_offre = :code_offre
                 RETURNING titre_offre, en_ligne, date_publication
             ");
-        
             $stmt->execute([
-                ':en_ligne' => 0,
+                ':en_ligne' => false,
                 ':code_offre' => $code_offre
             ]);
         }
+
         
         // Récupérer le nombre de lignes modifiées
         $updatedRow = $stmt->fetch(PDO::FETCH_ASSOC);
