@@ -180,8 +180,6 @@ if (isset($_POST['envoi_modif'])){
 
     $erreurs = [];
 
-    $photos = $_FILES['offre_nouv_images'] ?? null;
-
     if(empty($_POST['_titre_modif']) || empty($_POST['_resume_modif']) || empty($_POST['_desc_modif'])){
         $erreurs[] = "Des champs obligatoires ne sont pas remplis !";
     }
