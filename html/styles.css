@@ -9934,8 +9934,8 @@ main.main_repondre_avis .message-erreur {
     height: 52px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2s ease;
-    margin-top: 3vh;
-    margin-left: 3vw;
+    margin-left: 68vw;
+    margin-bottom: 16vh;
 }
 .signaler_un_avis_textarea {
     width: 80%;
