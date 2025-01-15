@@ -431,6 +431,17 @@ if (isset($_POST['envoi_modif'])){
                     // on déplace le fichier dans le dossier cible
                     if(move_uploaded_file($nom_temp,$chemin)){
                         echo "Le fichier $nom_photo a été déplacé avec succès.<br>";
+
+                        // on met directement à jour la bdd
+                        $ajout_photo = $dbh->prepare("INSERT INTO tripenarvor._image (url_image) VALUES(:url_image)");
+                        $ajout_photo->bindValue(":url_image",$chemin);
+                        $ajout_photo->execute();
+                        $code_image = $dbh->lastInsertId();
+
+                        $ajout_photo_offre = $dbh->prepare("INSERT INTO tripenarvor._son_image VALUES(:code_image,:url_image)");
+                        $ajout_photo_offre->bindValue(":code_image",$code_image);
+                        $ajout_photo_offre->bindValue(":url_image",$url_image);
+                        $ajout_photo_offre->execute();
                     } else {
                         echo "Erreur : Impossible de déplacer le fichier $nom_photo.<br>";
                     }
