@@ -280,7 +280,7 @@ if (isset($_POST['envoi_modif'])){
                $tab_services = array(
                    "gamme_prix" => $prix,
                     "repas" => $_POST['repas']
-               ) 
+               );
             }
         
             break;
