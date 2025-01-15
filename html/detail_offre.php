@@ -818,7 +818,7 @@ if (isset($json['results'][0])) {
                             document.getElementById('positiveCount' + codeAvis).textContent = data.pouce_positif;
                             document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
 
-                            location.reload();
+                            // location.reload();
 
                         } else {
                             alert(data.message);
