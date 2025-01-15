@@ -343,7 +343,6 @@ if (isset($_POST['envoi_modif'])){
                     }
                 }
                 
-                echo "Champ $att mis à jour avec succès.<br>";
             } catch (PDOException $e) {
                 echo "Erreur lors de la mise à jour du champ $att: " . $e->getMessage() . "<br>";
             }
@@ -357,7 +356,6 @@ if (isset($_POST['envoi_modif'])){
 
             try {
                 $stmt->execute();
-                echo "Champ $att mis à jour avec succès. <br>";
             } catch (PDOException $e){
                 echo "Erreur lors de la mise à jour du champ $att : " . $e->getMessage() . "<br>";
             }
@@ -396,7 +394,6 @@ if (isset($_POST['envoi_modif'])){
                 if(file_exists($nom_temp)){
                     // on déplace le fichier dans le dossier cible
                     if(move_uploaded_file($nom_temp,$chemin)){
-                        echo "Le fichier $nom_photo a été déplacé avec succès.<br>";
 
                         // on met directement à jour la bdd
                         $ajout_photo = $dbh->prepare("INSERT INTO tripenarvor._image (url_image) VALUES(:url_image)");
@@ -420,7 +417,6 @@ if (isset($_POST['envoi_modif'])){
         // GESTION DE LA SUPPRESSION DES PHOTOS
 
         if (isset($_POST['deleted_images']) && !empty($_POST['deleted_images'])) {
-            echo "Bonjour<br>";
             // Récupérer les images envoyées dans le champ caché
             $deletedImages = json_decode($_POST['deleted_images'], true);
             
