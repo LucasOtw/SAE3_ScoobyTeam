@@ -136,7 +136,6 @@ try {
             </div>
         </header>
     </div>
-    <main class="main.signalement_membre">
         <div class="container">
             <h2 class="titre_signalement_1">Signaler un avis</h2>
             <?php if (isset($erreur)): ?>
@@ -234,7 +233,6 @@ try {
             color: green;
         }
     </style>
-</main>
     <footer class="footer footer_membre">
        <div class="newsletter">
         <div class="newsletter-content">
