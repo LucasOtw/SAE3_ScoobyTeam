@@ -731,14 +731,7 @@ function tempsEcouleDepuisPublication($offre){
             <?php
             } else {
             ?>
-
-            <?php
-                echo "<h2> C'est ici l'image Lucas </h2>";
-            }
-            ?>
         </div>
-
-
         <div class="titres-offres">
             <h2 class="titre-les-offres">Toutes les offres</h2>
         </div>
