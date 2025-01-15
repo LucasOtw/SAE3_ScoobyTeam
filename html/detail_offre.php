@@ -874,9 +874,7 @@ if (isset($json['results'][0])) {
                             // Mise à jour des nombres de votes
                             document.getElementById('positiveCount' + codeAvis).textContent = data.pouce_positif;
                             document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
-                        } else {
-                            alert(data.message);
-                        }
+                        } 
                     })
                     .catch(error => {
                         console.error("Erreur réseau : ", error);
@@ -1508,8 +1506,7 @@ WHERE code_offre = :code_offre
                         .catch(() => {
                             afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
                         });
-                } else {
-                    alert("Veuillez entrer une adresse email valide.");
+                }
                 }
             });
         
