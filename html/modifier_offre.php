@@ -639,7 +639,7 @@ if($infos_offre !== null){
                         if($type_offre !== "restauration"){
                             ?>
                             <label for="tarif">Tarif (*)</label>
-                            <input type="number" id="tarif" name="_tarif" placeholder="00.00€" min="0" step="0.01" required>
+                            <input type="number" id="tarif" name="_tarif" value="<?php echo $offre['tarif'] ?>" placeholder="00.00€" min="0" step="0.01" required>
                             <?php
                         }
                     ?>
@@ -733,7 +733,7 @@ if($infos_offre !== null){
                               <label for="tarif">
                                  Tarif
                               </label>
-                              <input type="number" id="tarif" name="_tarif" placeholder="00.00€" min="0" step="0.01" required>
+                              <input type="number" id="tarif" name="_tarif" value="<?php echo $offre['tarif']; ?>" placeholder="00.00€" min="0" step="0.01" required>
                            </div>
         
                         <!-- Meal Options -->
