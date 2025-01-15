@@ -463,6 +463,7 @@ if (isset($_POST['envoi_modif'])){
             $codes_images = null;
 
             // PREMIERE BOUCLE
+            // Sert à récupérer le code de chaque image
             
             foreach($cleanedImages as $image){
                 $recup_codes_images = $dbh->prepare("SELECT code_image FROM tripenarvor._image WHERE url_image = :image");
@@ -472,9 +473,26 @@ if (isset($_POST['envoi_modif'])){
                 $codes_images = $recup_codes_images->fetchAll(PDO::FETCH_ASSOC);
                 $codes_images = array_column($codes_images,'code_image');
             }
-            echo "</pre>";
-            print_r($codes_images);
-            echo "<pre>";
+
+            // DEUXIEME BOUCLE
+            // Sert à supprimer l'image dans _son_image
+            foreach($codes_images as $code_image){
+                $del_son_image = $dbh->prepare("DELETE FROM tripenarvor._son_image WHERE code_image = :code_image");
+                $del_son_image->bindValue(":code_image",$code_image);
+                $del_son_image->execute();
+            }
+
+            // TROISIEME BOUCLE
+            // Sert à supprimer l'image dans _image et dans le dossier
+            foreach($cleanedImages as $image){
+                // le dossier existe forcément, l'image aussi.
+
+                unlink($image);
+                
+                $del_image = $dbh->prepare("DELETE FROM tripenarvor._image WHERE url_image = :url");
+                $del_image->bindValue(":url",$image);
+                $del_image->execute();
+            }
         }
 
         
