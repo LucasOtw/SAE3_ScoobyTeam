@@ -8172,7 +8172,7 @@ footer {
     text-decoration: none;
 }
 
-.bloc_consulter_recemment_a a {
+a.bloc_consulter_recemment_a {
     text-decoration: none;
 }
 
