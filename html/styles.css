@@ -9861,7 +9861,7 @@ main.main_repondre_avis .message-erreur {
 }
 
 
-  .avis {
+  .signalement-avis {
     background-color: #fbfbfb;
     padding: 20px;
     border-radius: 10px;
@@ -9873,7 +9873,7 @@ main.main_repondre_avis .message-erreur {
     margin-bottom: 10vh;
 }
 
-  .avis h3 {
+  .signalement-avis h3 {
     font-size: 18px;
     margin-bottom: 10px;
     display: flex;
@@ -9881,14 +9881,14 @@ main.main_repondre_avis .message-erreur {
     margin-left: -2vw;
 }
 
-  .avis h3::before {
+  .signalement-avis h3::before {
     content: url('https://icon-library.com/images/icon-review/icon-review-9.jpg'); /* Exemple d'icône */
     width: 30px;
     height: 30px;
     margin-right: 10px;
     display: inline-block;
 }
-.avis p {
+.signalement-avis p {
     margin: 0;
     color: #666;
 }
@@ -9948,7 +9948,7 @@ button[type="submit"] {
 
 
 @media screen and (max-width: 429px) {
-.avis {
+.signalement-avis {
         background-color: #fbfbfb;
         padding: 20px;
         border-radius: 10px;
@@ -9987,7 +9987,7 @@ button[type="submit"] {
         box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
     }
 
- .container{
+ .signalement-container{
         margin-left: 0;
     }
     
