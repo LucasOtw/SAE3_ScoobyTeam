@@ -447,6 +447,7 @@ if (isset($_POST['envoi_modif'])){
         // GESTION DE LA SUPPRESSION DES PHOTOS
 
         if (isset($_POST['deleted_images']) && !empty($_POST['deleted_images'])) {
+            echo "Bonjour<br>";
             // Récupérer les images envoyées dans le champ caché
             $deletedImages = json_decode($_POST['deleted_images'], true);
             
@@ -466,6 +467,8 @@ if (isset($_POST['envoi_modif'])){
             echo "<pre>";
             var_dump($cleanedImages);  // Vous verrez uniquement les parties des URLs à partir de "images"
             echo "</pre>";
+        } else {
+            echo "<h1>ARRRRRGH</h1><br>";
         }
 
         
