@@ -731,7 +731,7 @@ function tempsEcouleDepuisPublication($offre){
             <?php
             } else {
             ?>
-            <a href="connexion_membre.php">
+            <a class="bloc_consulter_recemment_a" href="connexion_membre.php">
             <section class="bloc_consulter_recemment">
                 <img src="images/introuvable.png" alt="image pour la connexion">
                 <p>Veuillez vous connecter pour accéder à votre historique
