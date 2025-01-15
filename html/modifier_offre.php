@@ -276,11 +276,6 @@ if (isset($_POST['envoi_modif'])){
     
     if(empty($erreurs)){
 
-        echo "<pre>";
-        echo "<h1>LOL</h1>";
-        var_dump($_POST['deleted_images']);
-        echo "</pre>";
-
         if(!empty($_POST['tags'])){
             $valeurs_tags = array_column($mes_tags, 'code_tag');
             
@@ -450,6 +445,28 @@ if (isset($_POST['envoi_modif'])){
         }
 
         // GESTION DE LA SUPPRESSION DES PHOTOS
+
+        if (isset($_POST['deleted_images']) && !empty($_POST['deleted_images'])) {
+            // Récupérer les images envoyées dans le champ caché
+            $deletedImages = json_decode($_POST['deleted_images'], true);
+            
+            // Tableau pour stocker les URLs modifiées
+            $cleanedImages = [];
+            
+            // Parcourir les URLs et les modifier
+            foreach ($deletedImages as $photoSrc) {
+                // Utiliser une expression régulière pour obtenir tout ce qui suit "images"
+                if (preg_match('/images\/.*/', $photoSrc, $matches)) {
+                    // Ajouter la partie "images" et après à notre tableau
+                    $cleanedImages[] = $matches[0];
+                }
+            }
+        
+            // Afficher le résultat pour voir si ça fonctionne
+            echo "<pre>";
+            var_dump($cleanedImages);  // Vous verrez uniquement les parties des URLs à partir de "images"
+            echo "</pre>";
+        }
 
         
     } else {
