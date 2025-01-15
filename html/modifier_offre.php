@@ -470,6 +470,7 @@ if (isset($_POST['envoi_modif'])){
                 $recup_codes_images->execute();
 
                 $codes_images = $recup_codes_images->fetchAll(PDO::FETCH_ASSOC);
+                $codes_images = array_column($codes_images);
             }
             echo "</pre>";
             print_r($codes_images);
