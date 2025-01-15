@@ -879,7 +879,7 @@ if (isset($json['results'][0])) {
                     
 
 
-                <span class="signalement">
+                <span class="signalement_avis_offre">
                     <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
                        title="Signaler cet avis" style="text-decoration: none; margin-right: 5vw; font-size: 21px;">🚩</a>
                 </span>
