@@ -236,7 +236,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
             <div class="logo">
                 <img src="images/logoBlanc.png" alt="Logo PAVCT">
             </div>
-             <div class="link-group">
+            <div class="link-group">
                 <ul>
                     <li><a href="mentions_legales.html">Mentions Légales</a></li>
                     <li><a href="cgu.html">GGU</a></li>
@@ -247,7 +247,7 @@ if(isset($_SESSION['aCreeUneOffre'])){
                 <ul>
                     <li><a href="mes_offres.php">Accueil</a></li>
                     <li><a href="creation_offre.php">Publier</a></li>
-                    <li><a href="consulter_compte_pro.php"</a>Mon Compte</li>
+                    <li><a href="consulter_compte_pro.php">Mon Compte</a></li>
                 </ul>
             </div>
             <div class="link-group">
