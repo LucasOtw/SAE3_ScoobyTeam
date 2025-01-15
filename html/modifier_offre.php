@@ -297,10 +297,19 @@ if (isset($_POST['envoi_modif'])){
             );
             break;
         case "visite":
+            $date_visite = $_POST['_date_modif'];
+    
+            if (!empty($date_visite)) {
+                // Reformater la date si elle n'est pas au bon format
+                $date_visite = date('Y-m-d', strtotime($date_visite));
+            } else {
+                $date_visite = null;
+            }
+        
             $tab_services = array(
                 "duree" => $_POST['_duree_modif'],
                 "visite_guidee" => $_POST['_langues_modif'],
-                "date_visite" => $_POST['_date_modif'],
+                "date_visite" => $date_visite,
                 "heure_visite" => $_POST['_heure_visite_modif']
             );
             break;
