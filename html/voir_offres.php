@@ -735,7 +735,7 @@ function tempsEcouleDepuisPublication($offre){
             <section class="bloc_consulter_recemment"></section>
 
             <?php
-                echo "<h2> C'est ici l'image Lucas </h2>";
+                echo "";
             }
             ?>
         </div>
