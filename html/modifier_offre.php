@@ -303,7 +303,7 @@ if (isset($_POST['envoi_modif'])){
                 break;
             case "spectacle":
                 $tab_services = array(
-                    "duree" => $_POST['_duree_modif'];
+                    "duree" => $_POST['_duree_modif'],
                     "capacite_accueil" => $_POST['_capacite_acc_modif'],
                     "date_spectacle" => $_POST['_date_modif'],
                     "heure_spectacle" => $_POST['_heure_spec_modif']
