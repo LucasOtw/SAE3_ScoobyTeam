@@ -100,7 +100,7 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
             } catch (PDOException $e) {
                 $consulter = $dbh->prepare('
                     update tripenarvor._consulte set date_consultation = NOW() 
-                        where :code_offre = :code_offre and code_compte = :code_compte;
+                        where code_offre = :code_offre and code_compte = :code_compte;
                 ');
 
                 $consulter->execute([
