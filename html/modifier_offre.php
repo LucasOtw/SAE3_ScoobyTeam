@@ -256,6 +256,24 @@ if (isset($_POST['envoi_modif'])){
         }
     }
 
+    // VERIFICATION DE L'URL
+
+    if(isset($_POST['_site_modif']) && $_POST['_site_modif'] !== null){
+        $url = $_POST['_site_modif'];
+
+        if(filter_var($url,FILTER_VALIDATE_URL)){
+            $header = @get_headers($url);
+          
+            if ($headers && strpos($headers[0], '200') !== false) {
+                continue;
+            } else {
+                $erreurs[] = "L'URL n'est pas accessible.";
+            }
+        } else {
+            $erreurs[] = "L'URL n'est pas valide.";
+        }
+    }
+
     $tab_services = null;
 
     switch($type_offre){
@@ -365,15 +383,15 @@ if (isset($_POST['envoi_modif'])){
             "titre_offre" => $_POST['_titre_modif'],
             "_resume" => $_POST['_resume_modif'],
             "_description" => $_POST['_desc_modif'],
-            "accessibilite" => $_POST['_access_modif']
+            "accessibilite" => $_POST['_access_modif'],
+            "site_web" => $_POST['_site_modif'];
         );
 
         // si on modifie le prix, on doit le mettre à jour..
         
         if (isset($_POST['_tarif']) && $_POST['_tarif'] != null && !empty($_POST['_tarif'])) {
             $tab_offre["tarif"] = $_POST['_tarif'];
-        }
-        
+        }        
 
         // table "_adresse"
         
@@ -644,9 +662,12 @@ if($infos_offre !== null){
                         }
                     ?>
 
+                    <input type="text" data-sync="site_modif" value="<?php echo $offre['site_web']; ?>">
+
                     <input type="hidden" id="resume_modif" name="_resume_modif">
                     <input type="hidden" id="desc_modif" name="_desc_modif">
                     <input type="hidden" id="access_modif" name="_access_modif">
+                    <input type="hidden" id="site_modif" name="_site_modif">
                 </fieldset>
                 
                 <fieldset>
