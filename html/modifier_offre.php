@@ -270,7 +270,7 @@ if (isset($_POST['envoi_modif'])){
                     }
                     break;
                 case "€€€":
-                    if($tarif < 40€){
+                    if($tarif < 40){
                         $erreurs[] = "Prix : {$prix} : le tarif doit être supérieur ou égal à 40€ !";
                     }
                     break;
