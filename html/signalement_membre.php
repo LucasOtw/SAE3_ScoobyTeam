@@ -173,7 +173,7 @@ try {
             <textarea placeholder="Écrivez votre avis ici..." class="signaler_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
             <form method="POST" action="signalement.php">
                 <input type="hidden" name="id_avis" value="<?php echo $idAvis; ?>">
-                <button type="submit" onclick="showConfirmation(event)">Confirmer le signalement</button>
+                <button class="signalement" type="submit" onclick="showConfirmation(event)">Confirmer le signalement</button>
             </form>
     
         </div>
@@ -252,7 +252,7 @@ try {
     <div id="newsletterConfirmBox" style="display: none;">
         <div class="popup-content">
             <p class="popup-message"></p>
-            <button id="closeNewsletterPopup">Fermer</button>
+            <button class="signalement" id="closeNewsletterPopup">Fermer</button>
         </div>
     </div>
 
