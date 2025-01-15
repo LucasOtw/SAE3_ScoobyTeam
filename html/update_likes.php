@@ -12,13 +12,12 @@ if (!isset($_SESSION['membre']['code_compte'])) {
 
 // Connexion à la base de données
 $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-$username = "sae";  // Utilisateur PostgreSQL défini dans .env
-$password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
+$username = "sae";
+$password = "philly-Congo-bry4nt";
 $dbh = new PDO($dsn, $username, $password);
 
 // Vérifie si la requête est une méthode POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupération des données POST
     $action = $_POST['action'] ?? null;
     $codeAvis = $_POST['code_avis'] ?? null;
     $codeCompte = $_SESSION['membre']['code_compte'];
@@ -34,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $dbh->beginTransaction();
 
-        // Vérifier si un vote existe déjà pour cet avis et cet utilisateur
+        // Vérifie si un vote existe déjà pour cet avis et cet utilisateur
         $stmt = $dbh->prepare("SELECT pouce FROM tripenarvor._pouce WHERE code_avis = :code_avis AND code_compte = :code_compte");
         $stmt->execute([':code_avis' => $codeAvis, ':code_compte' => $codeCompte]);
         $currentVote = $stmt->fetchColumn();
@@ -48,18 +47,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             default => $currentVote,
         };
 
-        // Insérer ou mettre à jour le vote
+        // Si le vote est modifié ou non existant, effectuer l'insert ou la mise à jour
         if ($currentVote === false) {
-            // Insérer un nouveau vote
             $stmt = $dbh->prepare("INSERT INTO tripenarvor._pouce (code_avis, code_compte, pouce) VALUES (:code_avis, :code_compte, :pouce)");
             $stmt->execute([':code_avis' => $codeAvis, ':code_compte' => $codeCompte, ':pouce' => $newVote]);
         } elseif ($currentVote !== $newVote) {
-            // Mettre à jour le vote existant
             $stmt = $dbh->prepare("UPDATE tripenarvor._pouce SET pouce = :pouce WHERE code_avis = :code_avis AND code_compte = :code_compte");
             $stmt->execute([':pouce' => $newVote, ':code_avis' => $codeAvis, ':code_compte' => $codeCompte]);
         }
 
-        // Calculer les nouveaux compteurs pour la table _pouce
+        // Calculer les nouveaux compteurs de pouces pour l'avis
         $stmt = $dbh->prepare("
             SELECT 
                 SUM(CASE WHEN pouce = 1 THEN 1 ELSE 0 END) AS pouce_positif,
@@ -88,6 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'status' => 'success',
             'pouce_positif' => $poucePositif,
             'pouce_negatif' => $pouceNegatif,
+            'current_vote' => $newVote, // Envoyer l'état actuel du vote pour afficher les bonnes images
         ]);
     } catch (Exception $e) {
         $dbh->rollBack();
