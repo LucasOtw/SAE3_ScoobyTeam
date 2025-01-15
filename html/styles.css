@@ -9853,7 +9853,7 @@ main.main_repondre_avis .message-erreur {
 
 
 
-main.signalement_membre .avis-widget .avis-list .avis {
+ .avis-widget .avis-list .avis {
     display: flex;
     align-items: flex-start;
     margin-bottom: 20px;
@@ -9861,7 +9861,7 @@ main.signalement_membre .avis-widget .avis-list .avis {
 }
 
 
-main.signalement_membre  .avis {
+  .avis {
     background-color: #fbfbfb;
     padding: 20px;
     border-radius: 10px;
@@ -9873,7 +9873,7 @@ main.signalement_membre  .avis {
     margin-bottom: 10vh;
 }
 
-main.signalement_membre  .avis h3 {
+  .avis h3 {
     font-size: 18px;
     margin-bottom: 10px;
     display: flex;
@@ -9881,29 +9881,28 @@ main.signalement_membre  .avis h3 {
     margin-left: -2vw;
 }
 
-main.signalement_membre  .avis h3::before {
+  .avis h3::before {
     content: url('https://icon-library.com/images/icon-review/icon-review-9.jpg'); /* Exemple d'icône */
     width: 30px;
     height: 30px;
     margin-right: 10px;
     display: inline-block;
 }
-
-main.signalement_membre  .avis p {
+.avis p {
     margin: 0;
     color: #666;
 }
 
-main.signalement_membre  .titre_signalement_1{
+.titre_signalement_1{
     margin-left: 3vw;
     margin-top: 10vh;
 }
 
-main.signalement_membre  .titre_signalement_2{
+.titre_signalement_2{
     margin-left: 3vw;  
 }
 
-main.signalement_membre  #offre {
+#offre {
     width: 100%;
     max-width: 300px;
     padding: 10px;
@@ -9914,13 +9913,13 @@ main.signalement_membre  #offre {
     margin-left: 3vw;
 }
 
-main.signalement_membre  .titre_signalement_3{
+.titre_signalement_3{
     margin-left: 3vw;  
     margin-top: 8vh;
 }
 
 
-main.signalement_membre  button[type="submit"] {
+button[type="submit"] {
     font-size: 17px;
     padding: 10px 20px;
     background-color: var(--vert-clair);
@@ -9935,7 +9934,7 @@ main.signalement_membre  button[type="submit"] {
     margin-top: 3vh;
     margin-left: 3vw;
 }
-main.signalement_membre  .signaler_un_avis_textarea {
+.signaler_un_avis_textarea {
     width: 80%;
     height: 18vh;
     padding: 15px;
@@ -9949,7 +9948,7 @@ main.signalement_membre  .signaler_un_avis_textarea {
 
 
 @media screen and (max-width: 429px) {
-    main.signalement_membre  .avis {
+.avis {
         background-color: #fbfbfb;
         padding: 20px;
         border-radius: 10px;
@@ -9961,7 +9960,7 @@ main.signalement_membre  .signaler_un_avis_textarea {
         margin-bottom: 10vh;
     }
 
-main.signalement_membre  button[type="submit"] {
+button[type="submit"] {
         font-size: 17px;
         padding: 10px 20px;
         background-color: var(--vert-clair);
@@ -9976,8 +9975,7 @@ main.signalement_membre  button[type="submit"] {
         margin-top: 1vh;
         margin-left: 21vw;
     }
-
- main.signalement_membre  .signaler_un_avis_textarea {
+.signaler_un_avis_textarea {
         width: 95%;
         height: 18vh;
         padding: 15px;
@@ -9989,17 +9987,9 @@ main.signalement_membre  button[type="submit"] {
         box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
     }
 
- main.signalement_membre  .container{
+ .container{
         margin-left: 0;
     }
     
     
 }
-
-
-
-
-
-
-
-                        
