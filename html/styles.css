@@ -8156,12 +8156,13 @@ footer {
 }
 
 .bloc_consulter_recemment{
-    background-color: red;
+    background-color: white;
     height: 23vh;
     width: 58vw;
     margin-left: 8vw;
     margin-top: 3vh;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius : 15px;
 }
 
 
