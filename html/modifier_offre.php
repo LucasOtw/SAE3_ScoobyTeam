@@ -384,7 +384,7 @@ if (isset($_POST['envoi_modif'])){
             "_resume" => $_POST['_resume_modif'],
             "_description" => $_POST['_desc_modif'],
             "accessibilite" => $_POST['_access_modif'],
-            "site_web" => $_POST['_site_modif'];
+            "site_web" => $_POST['_site_modif']
         );
 
         // si on modifie le prix, on doit le mettre à jour..
