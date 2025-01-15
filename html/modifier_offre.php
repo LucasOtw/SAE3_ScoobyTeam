@@ -418,7 +418,7 @@ if($infos_offre !== null){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="images/logoPin_orange.png" width="16px" height="32px">
     <title>Modifier mon offre</title>
-    <link rel="stylesheet" href="styles.css?da">
+    <link rel="stylesheet" href="styles.css?daz">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
@@ -438,7 +438,6 @@ if($infos_offre !== null){
         </ul>
     </nav>
 </header>
-<body>
     <main>
         <h1 id="titre_modif_offre">Modifiez votre offre</h1>
         <form id="modif_offre" action="#" method="POST">
