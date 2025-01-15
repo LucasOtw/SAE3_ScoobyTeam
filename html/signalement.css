@@ -174,7 +174,8 @@ h1, h3 {
 
 /* Logo de l'en-tête */
 .logo-pc img {
-    height: 40px;
+    width:237px;
+    height: 84px;
 }
 
 /* Navigation */
