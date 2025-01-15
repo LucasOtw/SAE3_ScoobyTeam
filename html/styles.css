@@ -2937,8 +2937,7 @@ input[type="password"]::placeholder {
   gap: 6px;
 }
 
-.main_consulter_compte_membre button.submit-btn2:hover
-main_consulter_compte_membre button.submit-btn4:hover, 
+.main_consulter_compte_membre button.submit-btn2:hover, 
 .main_consulter_compte_membre .btn-dwl-data:hover {
     transform: translateY(-2px); /* Effet d'élévation au survol */
 
