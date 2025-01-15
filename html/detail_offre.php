@@ -288,217 +288,199 @@ if (isset($json['results'][0])) {
     <!-- Détails de l'offre sur Desktop -->
     <div id="body_offre_desktop">
         <div class="header-membre">
-        <header class="header-pc">
-            <div class="logo-pc" style="z-index: 1">
-                <a href="voir_offres.php">
-                    <img src="images/logoBlanc.png" alt="PACT Logo">
-                </a>
+            <header class="header-pc">
+                <div class="logo-pc" style="z-index: 1">
+                    <a href="voir_offres.php">
+                        <img src="images/logoBlanc.png" alt="PACT Logo">
+                    </a>
 
-            </div>
-            
-            <nav>
-                <ul>
-                    <li><a href="voir_offres.php" class="active">Accueil</a></li>
-                    <li><a href="connexion_pro.php">Publier</a></li>
-                    <?php
-                        if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
-                           ?>
-                           <li>
-                               <a href="consulter_compte_membre.php">Mon Compte</a>
-                           </li>
+                </div>
+
+                <nav>
+                    <ul>
+                        <li><a href="voir_offres.php" class="active">Accueil</a></li>
+                        <li><a href="connexion_pro.php">Publier</a></li>
+                        <?php
+                        if (isset($_SESSION["membre"]) || !empty($_SESSION["membre"])) {
+                            ?>
+                            <li>
+                                <a href="consulter_compte_membre.php">Mon Compte</a>
+                            </li>
                             <?php
                         } else {
                             ?>
-                           <li>
-                               <a href="connexion_membre.php">Se connecter</a>
-                           </li>
-                           <?php
+                            <li>
+                                <a href="connexion_membre.php">Se connecter</a>
+                            </li>
+                            <?php
                         }
-                    ?>
-                </ul>
-            </nav>
-        </header>
+                        ?>
+                    </ul>
+                </nav>
+            </header>
 
-        <div class="detail_offre_hotel-detail">
+            <div class="detail_offre_hotel-detail">
 
-            <div class="detail_offre_hotel-header">
+                <div class="detail_offre_hotel-header">
 
-                <div class="detail_offre_hotel-info">
-                    <h1 style="
+                    <div class="detail_offre_hotel-info">
+                        <h1 style="
                         margin-top: -1vh;
                         display: flex;
                         font-size: 25px;"> <?php echo $details_offre["titre_offre"]; ?></h1>
 
-                    <p>📍 <?php echo $adresse_offre["ville"] . ", " . $adresse_offre["code_postal"]; ?></p>
+                        <p>📍 <?php echo $adresse_offre["ville"] . ", " . $adresse_offre["code_postal"]; ?></p>
 
-                    <p><i class="fas fa-clock"></i> Publié <?php echo tempsEcouleDepuisPublication($details_offre); ?>
-                    </p>
+                        <p><i class="fas fa-clock"></i> Publié
+                            <?php echo tempsEcouleDepuisPublication($details_offre); ?>
+                        </p>
 
-                    <!-- <div class="detail_offre_rating">
+                        <!-- <div class="detail_offre_rating">
                         ⭐ 5.0 (255 avis)
                     </div> -->
-                </div>
-
-                <div class="detail_offre_price-button">
-
-                    <p class="detail_offre_price"><?php echo $details_offre["tarif"]; ?>€</p>
-                    <div class="btn-poster-avis-voir-site">
-                        <form action="poster_un_avis.php" method="POST">
-                            <input type="hidden" name="uneOffre"
-                                value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
-                            <input id="btn-poster-avis" type="submit" name="posterAvis" value="Poster un avis">
-                        </form>
-
-                        <?php if (!empty($details_offre["site_web"])) { ?> <a
-                                href="<?php echo $details_offre["site_web"]; ?>"><button
-                                    class="visit-button_detailoffre">Voir le site ➔</button></a> <?php } ?>
                     </div>
+
+                    <div class="detail_offre_price-button">
+
+                        <p class="detail_offre_price"><?php echo $details_offre["tarif"]; ?>€</p>
+                        <div class="btn-poster-avis-voir-site">
+                            <form action="poster_un_avis.php" method="POST">
+                                <input type="hidden" name="uneOffre"
+                                    value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
+                                <input id="btn-poster-avis" type="submit" name="posterAvis" value="Poster un avis">
+                            </form>
+
+                            <?php if (!empty($details_offre["site_web"])) { ?> <a
+                                    href="<?php echo $details_offre["site_web"]; ?>"><button
+                                        class="visit-button_detailoffre">Voir le site ➔</button></a> <?php } ?>
+                        </div>
+                    </div>
+
                 </div>
 
-            </div>
+                <div class="a-la-une-wrapper">
 
-            <div class="a-la-une-wrapper">
-
-                <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft()">&#8249;</button>
-                <section class="a-la-une">
-                    <?php
-                    foreach ($images_offre as $photo) {
-                        ?>
-
-                        <article class="card-a-la-une">
-                            <div class="image-background-card-a-la-une">
-                                <img src="<?php echo $photo[0]; ?>" alt="">
-                            </div>
-                        </article>
-
+                    <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft()">&#8249;</button>
+                    <section class="a-la-une">
                         <?php
-                    }
-                    ?>
-                </section>
-
-                <button class="card-scroll-btn card-scroll-btn-right" onclick="scrollcontentRight()">&#8250;</button>
-
-            </div>
-
-            <div class="detail_offre_description">
-
-                <h2>Résumé</h2>
-                <p><?php echo $details_offre["_resume"]; ?></p>
-
-                <h2>Description</h2>
-                <p><?php echo $details_offre["_description"]; ?></p>
-
-                <h2>Nos services</h2>
-                <div class="info-dropdown">
-
-                    <button class="info-button" onclick="toggleInfoBox()">
-                        Détails
-                        <span class="arrow">&#9662;</span>
-                    </button>
-                    <div class="info-box" id="infoBox"
-                        style="max-height: 0; padding: 0; overflow: hidden; width: 25.5em; transition: max-height 0.3s ease, padding 0.3s ease;">
-
-                        <?php
-                        if ($type_offre === "restauration") {
+                        foreach ($images_offre as $photo) {
                             ?>
-                            <h3 style="margin-top: 1em;">Repas</h3>
-                            <p><?php echo $details_offre["repas"]; ?></p>
 
-                            <h3 style="margin-top: 1em;">Gamme de prix</h3>
-                            <p><?php echo $details_offre["gamme_prix"]; ?></p>
-                            <?php
-                        } else if ($type_offre === "parc_attractions") {
-                            ?>
-                                <h3 style="margin-top: 1em;">Age requis</h3>
-                                <p><?php echo $details_offre["age_requis"]; ?></p>
+                            <article class="card-a-la-une">
+                                <div class="image-background-card-a-la-une">
+                                    <img src="<?php echo $photo[0]; ?>" alt="">
+                                </div>
+                            </article>
 
-                                <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
-                                <p><?php echo $details_offre["nombre_attractions"]; ?></p>
-                            <?php
-                        } else if ($type_offre === "spectacle") {
-                            ?>
-                                    <h3 style="margin-top: 1em;">Capacité d'accueil</h3>
-                                    <p><?php echo $details_offre["capacite_accueil"]; ?></p>
-
-                                    <h3 style="margin-top: 1em;">Durée</h3>
-                                    <p><?php echo $details_offre["duree"]; ?></p>
-
-                            <?php
-                        } else if ($type_offre === "visite") {
-                            ?>
-                                        <h3 style="margin-top: 1em;">Visite Guidée</h3>
-                                        <p>Oui</p>
-
-                                        <h3 style="margin-top: 1em;">Durée</h3>
-                                        <p><?php echo $details_offre["duree"]; ?></p>
-                            <?php
-                        } else if ($type_offre === "activite") {
-                            ?>
-                                            <h3 style="margin-top: 1em;">Durée</h3>
-                                            <p><?php echo $details_offre["duree"]; ?></p>
-
-                                            <h3 style="margin-top: 1em;">Age requis</h3>
-                                            <p><?php echo $details_offre["age_requis"]; ?></p>
-
-                                            <h3 style="margin-top: 1em;">Prestations incluses</h3>
-                                            <p><?php echo $details_offre["prestations_incluses"]; ?></p>
-
-                                            <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
-                                            <p><?php echo $details_offre["prestations_non_incluses"]; ?></p>
                             <?php
                         }
                         ?>
+                    </section>
 
+                    <button class="card-scroll-btn card-scroll-btn-right"
+                        onclick="scrollcontentRight()">&#8250;</button>
+
+                </div>
+
+                <div class="detail_offre_description">
+
+                    <h2>Résumé</h2>
+                    <p><?php echo $details_offre["_resume"]; ?></p>
+
+                    <h2>Description</h2>
+                    <p><?php echo $details_offre["_description"]; ?></p>
+
+                    <h2>Nos services</h2>
+                    <div class="info-dropdown">
+
+                        <button class="info-button" onclick="toggleInfoBox()">
+                            Détails
+                            <span class="arrow">&#9662;</span>
+                        </button>
+                        <div class="info-box" id="infoBox"
+                            style="max-height: 0; padding: 0; overflow: hidden; width: 25.5em; transition: max-height 0.3s ease, padding 0.3s ease;">
+
+                            <?php
+                            if ($type_offre === "restauration") {
+                                ?>
+                                <h3 style="margin-top: 1em;">Repas</h3>
+                                <p><?php echo $details_offre["repas"]; ?></p>
+
+                                <h3 style="margin-top: 1em;">Gamme de prix</h3>
+                                <p><?php echo $details_offre["gamme_prix"]; ?></p>
+                                <?php
+                            } else if ($type_offre === "parc_attractions") {
+                                ?>
+                                    <h3 style="margin-top: 1em;">Age requis</h3>
+                                    <p><?php echo $details_offre["age_requis"]; ?></p>
+
+                                    <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
+                                    <p><?php echo $details_offre["nombre_attractions"]; ?></p>
+                                <?php
+                            } else if ($type_offre === "spectacle") {
+                                ?>
+                                        <h3 style="margin-top: 1em;">Capacité d'accueil</h3>
+                                        <p><?php echo $details_offre["capacite_accueil"]; ?></p>
+
+                                        <h3 style="margin-top: 1em;">Durée</h3>
+                                        <p><?php echo $details_offre["duree"]; ?></p>
+
+                                <?php
+                            } else if ($type_offre === "visite") {
+                                ?>
+                                            <h3 style="margin-top: 1em;">Visite Guidée</h3>
+                                            <p>Oui</p>
+
+                                            <h3 style="margin-top: 1em;">Durée</h3>
+                                            <p><?php echo $details_offre["duree"]; ?></p>
+                                <?php
+                            } else if ($type_offre === "activite") {
+                                ?>
+                                                <h3 style="margin-top: 1em;">Durée</h3>
+                                                <p><?php echo $details_offre["duree"]; ?></p>
+
+                                                <h3 style="margin-top: 1em;">Age requis</h3>
+                                                <p><?php echo $details_offre["age_requis"]; ?></p>
+
+                                                <h3 style="margin-top: 1em;">Prestations incluses</h3>
+                                                <p><?php echo $details_offre["prestations_incluses"]; ?></p>
+
+                                                <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
+                                                <p><?php echo $details_offre["prestations_non_incluses"]; ?></p>
+                                <?php
+                            }
+                            ?>
+
+                        </div>
                     </div>
+                </div>
+
+                <div class="accessibilite_infos_detail_offre">
+                    <h2>Accessibilité</h2>
+                    <p><?php echo $details_offre["accessibilite"]; ?></p>
+                </div>
+
+                <div class="detail_offre_icons">
+                    <h2 style="margin-left: 0.1em;">Tags</h2>
+
+                    <?php
+                    foreach ($tags_offre as $tag) {
+                        ?>
+                        <div class="detail_offre_icon">
+                            <p><?php echo $tag[0]; ?></p>
+                        </div>
+                        <?php
+                    }
+                    ?>
+
+
+
                 </div>
             </div>
 
-            <div class="accessibilite_infos_detail_offre">
-                <h2>Accessibilité</h2>
-                <p><?php echo $details_offre["accessibilite"]; ?></p>
-            </div>
-
-            <div class="detail_offre_icons">
-                <h2 style="margin-left: 0.1em;">Tags</h2>
-
-                <?php
-                foreach ($tags_offre as $tag) {
-                    ?>
-                    <div class="detail_offre_icon">
-                        <p><?php echo $tag[0]; ?></p>
-                    </div>
-                    <?php
-                }
-                ?>
-
-
-
-            </div>
-        </div>
-
-        <?php
-        if ($type_offre === "restauration") {
-            ?>
-            <div class="Detail_offre_periode">
-                <h2>Périodes d'ouverture</h2>
-                <p>
-                    <?php
-                    // Vérifiez si les champs date_ouverture et date_fermeture existent et ne sont pas vides
-                    if (!empty($details_offre["date_ouverture"]) && !empty($details_offre["date_fermeture"])) {
-                        // Formatez les dates d'ouverture et de fermeture
-                        $date_ouverture = date("j F Y", strtotime($details_offre["date_ouverture"]));
-                        $date_fermeture = date("j F Y", strtotime($details_offre["date_fermeture"]));
-                        echo "De <span>$date_ouverture</span> à <span>$date_fermeture</span>";
-                    } else {
-                        // Si les champs sont vides, afficher "Ouvert toute l'année"
-                        echo "Ouvert toute l'année";
-                    }
-                    ?>
-                </p>
-            </div>
             <?php
-        } else if ($type_offre === "parc_attractions") {
-            ?>
+            if ($type_offre === "restauration") {
+                ?>
                 <div class="Detail_offre_periode">
                     <h2>Périodes d'ouverture</h2>
                     <p>
@@ -516,174 +498,195 @@ if (isset($json['results'][0])) {
                         ?>
                     </p>
                 </div>
-            <?php
-        } else if ($type_offre === "spectacle") {
-            ?>
-
-                    <div class="Detail_offre_horaire">
-                        <h2>Horaire du Spectacle</h2>
-                        <p>Date :
-                            <span>
+                <?php
+            } else if ($type_offre === "parc_attractions") {
+                ?>
+                    <div class="Detail_offre_periode">
+                        <h2>Périodes d'ouverture</h2>
+                        <p>
                             <?php
-                            // Vérifiez si la date est définie et non nulle
-                            if (isset($details_offre["date_spectacle"])) {
-                                // Formatez la date SQL (YYYY-MM-DD) en format lisible
-                                echo date("l, j F Y", strtotime($details_offre["date_spectacle"]));
+                            // Vérifiez si les champs date_ouverture et date_fermeture existent et ne sont pas vides
+                            if (!empty($details_offre["date_ouverture"]) && !empty($details_offre["date_fermeture"])) {
+                                // Formatez les dates d'ouverture et de fermeture
+                                $date_ouverture = date("j F Y", strtotime($details_offre["date_ouverture"]));
+                                $date_fermeture = date("j F Y", strtotime($details_offre["date_fermeture"]));
+                                echo "De <span>$date_ouverture</span> à <span>$date_fermeture</span>";
                             } else {
-                                echo "Date non disponible";
+                                // Si les champs sont vides, afficher "Ouvert toute l'année"
+                                echo "Ouvert toute l'année";
                             }
                             ?>
-                            </span>
-                        </p>
-                        <p>Heure :
-                            <span>
-                            <?php
-                            // Vérifiez si l'heure est définie et non nulle
-                            if (isset($details_offre["heure_spectacle"])) {
-                                // Formatez l'heure SQL (HH:MM:SS) en format lisible
-                                echo date("H\h i", strtotime($details_offre["heure_spectacle"]));
-                            } else {
-                                echo "Heure non disponible";
-                            }
-                            ?>
-                            </span>
                         </p>
                     </div>
-
-            <?php
-        } else if ($type_offre === "visite") {
-            ?>
+                <?php
+            } else if ($type_offre === "spectacle") {
+                ?>
 
                         <div class="Detail_offre_horaire">
-                            <h2>Horaire de la Visite</h2>
+                            <h2>Horaire du Spectacle</h2>
                             <p>Date :
                                 <span>
-                            <?php
-                            // Vérifiez si la date est définie et non nulle
-                            if (isset($details_offre["date_visite"])) {
-                                // Formatez la date SQL (YYYY-MM-DD) en format lisible
-                                echo date("l, j F Y", strtotime($details_offre["date_visite"]));
-                            } else {
-                                echo "Date non disponible";
-                            }
-                            ?>
+                                <?php
+                                // Vérifiez si la date est définie et non nulle
+                                if (isset($details_offre["date_spectacle"])) {
+                                    // Formatez la date SQL (YYYY-MM-DD) en format lisible
+                                    echo date("l, j F Y", strtotime($details_offre["date_spectacle"]));
+                                } else {
+                                    echo "Date non disponible";
+                                }
+                                ?>
                                 </span>
                             </p>
                             <p>Heure :
                                 <span>
-                            <?php
-                            // Vérifiez si l'heure est définie et non nulle
-                            if (isset($details_offre["heure_visite"])) {
-                                // Formatez l'heure SQL (HH:MM:SS) en format lisible
-                                echo date("H\h i", strtotime($details_offre["heure_visite"]));
-                            } else {
-                                echo "Heure non disponible";
-                            }
-                            ?>
+                                <?php
+                                // Vérifiez si l'heure est définie et non nulle
+                                if (isset($details_offre["heure_spectacle"])) {
+                                    // Formatez l'heure SQL (HH:MM:SS) en format lisible
+                                    echo date("H\h i", strtotime($details_offre["heure_spectacle"]));
+                                } else {
+                                    echo "Heure non disponible";
+                                }
+                                ?>
                                 </span>
                             </p>
                         </div>
 
-            <?php
-        } else if ($type_offre === "activite") {
-            ?>
-                            <div class="Detail_offre_periode">
-                                <h2>Périodes d'ouverture</h2>
-                                <p>
-                        <?php
-                        // Vérifiez si les champs date_ouverture et date_fermeture existent et ne sont pas vides
-                        if (!empty($details_offre["date_ouverture"]) && !empty($details_offre["date_fermeture"])) {
-                            // Formatez les dates d'ouverture et de fermeture
-                            $date_ouverture = date("j F Y", strtotime($details_offre["date_ouverture"]));
-                            $date_fermeture = date("j F Y", strtotime($details_offre["date_fermeture"]));
-                            echo "De <span>$date_ouverture</span> à <span>$date_fermeture</span>";
-                        } else {
-                            // Si les champs sont vides, afficher "Ouvert toute l'année"
-                            echo "Ouvert toute l'année";
-                        }
-                        ?>
+                <?php
+            } else if ($type_offre === "visite") {
+                ?>
+
+                            <div class="Detail_offre_horaire">
+                                <h2>Horaire de la Visite</h2>
+                                <p>Date :
+                                    <span>
+                                <?php
+                                // Vérifiez si la date est définie et non nulle
+                                if (isset($details_offre["date_visite"])) {
+                                    // Formatez la date SQL (YYYY-MM-DD) en format lisible
+                                    echo date("l, j F Y", strtotime($details_offre["date_visite"]));
+                                } else {
+                                    echo "Date non disponible";
+                                }
+                                ?>
+                                    </span>
+                                </p>
+                                <p>Heure :
+                                    <span>
+                                <?php
+                                // Vérifiez si l'heure est définie et non nulle
+                                if (isset($details_offre["heure_visite"])) {
+                                    // Formatez l'heure SQL (HH:MM:SS) en format lisible
+                                    echo date("H\h i", strtotime($details_offre["heure_visite"]));
+                                } else {
+                                    echo "Heure non disponible";
+                                }
+                                ?>
+                                    </span>
                                 </p>
                             </div>
-            <?php
-        }
-        ?>
 
-
-
-        <?php
-        if (
-            !empty($h_lundi["ouverture"]) ||
-            !empty($h_mardi["ouverture"]) ||
-            !empty($h_mercredi["ouverture"]) ||
-            !empty($h_jeudi["ouverture"]) ||
-            !empty($h_vendredi["ouverture"]) ||
-            !empty($h_samedi["ouverture"]) ||
-            !empty($h_dimanche["ouverture"])
-        ) {
+                <?php
+            } else if ($type_offre === "activite") {
+                ?>
+                                <div class="Detail_offre_periode">
+                                    <h2>Périodes d'ouverture</h2>
+                                    <p>
+                            <?php
+                            // Vérifiez si les champs date_ouverture et date_fermeture existent et ne sont pas vides
+                            if (!empty($details_offre["date_ouverture"]) && !empty($details_offre["date_fermeture"])) {
+                                // Formatez les dates d'ouverture et de fermeture
+                                $date_ouverture = date("j F Y", strtotime($details_offre["date_ouverture"]));
+                                $date_fermeture = date("j F Y", strtotime($details_offre["date_fermeture"]));
+                                echo "De <span>$date_ouverture</span> à <span>$date_fermeture</span>";
+                            } else {
+                                // Si les champs sont vides, afficher "Ouvert toute l'année"
+                                echo "Ouvert toute l'année";
+                            }
+                            ?>
+                                    </p>
+                                </div>
+                <?php
+            }
             ?>
-            <div class="Detail_offre_ouverture_global_desktop">
 
-                <h2>Horaires</h2>
-                <ul class="hours_desktop_detail_offre">
-                    <li><span>Lundi</span><?php echo afficherHoraire($h_lundi); ?></li>
-                    <li><span>Mardi</span><?php echo afficherHoraire($h_mardi); ?></li>
-                    <li><span>Mercredi</span><?php echo afficherHoraire($h_mercredi); ?></li>
-                    <li><span>Jeudi</span><?php echo afficherHoraire($h_jeudi); ?></li>
-                    <li><span>Vendredi</span><?php echo afficherHoraire($h_vendredi); ?></li>
-                    <li><span>Samedi</span><?php echo afficherHoraire($h_samedi); ?></li>
-                    <li><span>Dimanche</span><?php echo afficherHoraire($h_dimanche); ?></li>
-                </ul>
 
+
+            <?php
+            if (
+                !empty($h_lundi["ouverture"]) ||
+                !empty($h_mardi["ouverture"]) ||
+                !empty($h_mercredi["ouverture"]) ||
+                !empty($h_jeudi["ouverture"]) ||
+                !empty($h_vendredi["ouverture"]) ||
+                !empty($h_samedi["ouverture"]) ||
+                !empty($h_dimanche["ouverture"])
+            ) {
+                ?>
+                <div class="Detail_offre_ouverture_global_desktop">
+
+                    <h2>Horaires</h2>
+                    <ul class="hours_desktop_detail_offre">
+                        <li><span>Lundi</span><?php echo afficherHoraire($h_lundi); ?></li>
+                        <li><span>Mardi</span><?php echo afficherHoraire($h_mardi); ?></li>
+                        <li><span>Mercredi</span><?php echo afficherHoraire($h_mercredi); ?></li>
+                        <li><span>Jeudi</span><?php echo afficherHoraire($h_jeudi); ?></li>
+                        <li><span>Vendredi</span><?php echo afficherHoraire($h_vendredi); ?></li>
+                        <li><span>Samedi</span><?php echo afficherHoraire($h_samedi); ?></li>
+                        <li><span>Dimanche</span><?php echo afficherHoraire($h_dimanche); ?></li>
+                    </ul>
+
+                </div>
+                <?php
+            }
+            ?>
+
+
+
+
+
+            <div class="detail_offre_localisation">
+                <h2>Localisation</h2>
+                <iframe class="map-frame"
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig&q=<?php echo $latitude; ?>,<?php echo $longitude; ?>"
+                    style="border:0;margin: auto 11em; width: 79vw; height:70vh" allowfullscreen="" loading="lazy">
+                    border: 0;
+                </iframe>
             </div>
             <?php
-        }
-        ?>
+            // Récupérer la moyenne des notes
+            $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre and note<>0');
+            $moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+            $moyenne_note->execute();
+            $note_moyenne = $moyenne_note->fetchColumn();
 
+            // Récupérer le nombre d'avis
+            $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis as avis_principals WHERE code_offre = :code_offre and avis_principals.code_avis not in (select code_reponse FROM tripenarvor._reponse)');
+            $nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+            $nb_avis->execute();
+            $nombre_d_avis = $nb_avis->fetchColumn();
 
+            $appreciationGenerale = "";
 
+            // Déterminer l'appréciation générale selon la note moyenne
+            if ($note_moyenne <= 1) {
+                $appreciationGenerale = "À éviter";
+            } elseif ($note_moyenne <= 2) {
+                $appreciationGenerale = "Peut mieux faire";
+            } elseif ($note_moyenne <= 3) {
+                $appreciationGenerale = "Correct";
+            } elseif ($note_moyenne <= 4) {
+                $appreciationGenerale = "Très Bien";
+            } elseif ($note_moyenne <= 5) {
+                $appreciationGenerale = "Exceptionnel";
+            } else {
+                $appreciationGenerale = "Valeur hors échelle";
+            }
 
-
-        <div class="detail_offre_localisation">
-            <h2>Localisation</h2>
-            <iframe class="map-frame"
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig&q=<?php echo $latitude; ?>,<?php echo $longitude; ?>"
-                style="border:0;margin: auto 11em; width: 79vw; height:70vh" allowfullscreen="" loading="lazy">
-                border: 0;
-            </iframe>
-        </div>
-<?php
-        // Récupérer la moyenne des notes
-        $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre and note<>0');
-        $moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-        $moyenne_note->execute();
-        $note_moyenne = $moyenne_note->fetchColumn();
-
-        // Récupérer le nombre d'avis
-        $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis as avis_principals WHERE code_offre = :code_offre and avis_principals.code_avis not in (select code_reponse FROM tripenarvor._reponse)');
-        $nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-        $nb_avis->execute();
-        $nombre_d_avis = $nb_avis->fetchColumn();
-
-        $appreciationGenerale = "";
-
-        // Déterminer l'appréciation générale selon la note moyenne
-        if ($note_moyenne <= 1) {
-            $appreciationGenerale = "À éviter";
-        } elseif ($note_moyenne <= 2) {
-            $appreciationGenerale = "Peut mieux faire";
-        } elseif ($note_moyenne <= 3) {
-            $appreciationGenerale = "Correct";
-        } elseif ($note_moyenne <= 4) {
-            $appreciationGenerale = "Très Bien";
-        } elseif ($note_moyenne <= 5) {
-            $appreciationGenerale = "Exceptionnel";
-        } else {
-            $appreciationGenerale = "Valeur hors échelle";
-        }
-
-        // Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
-        function getResponses($dbh, $code_avis) {
-            $stmt = $dbh->prepare('
+            // Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
+            function getResponses($dbh, $code_avis)
+            {
+                $stmt = $dbh->prepare('
                 SELECT 
                     reponse.*, 
                     COALESCE(membre_reponse.prenom, \'Utilisateur\') AS prenom,
@@ -698,160 +701,168 @@ if (isset($json['results'][0])) {
                     ON pro_reponse.code_compte = reponse.code_compte
                 WHERE tripenarvor._reponse.code_avis = :code_avis
             ');
-            $stmt->bindValue(':code_avis', $code_avis, PDO::PARAM_INT);
-            $stmt->execute();
-            $reponses = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
-            // Récursivité : Ajouter les sous-réponses
-            foreach ($reponses as &$reponse) {
-                $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_avis']);
+                $stmt->bindValue(':code_avis', $code_avis, PDO::PARAM_INT);
+                $stmt->execute();
+                $reponses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                // Récursivité : Ajouter les sous-réponses
+                foreach ($reponses as &$reponse) {
+                    $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_avis']);
+                }
+                return $reponses;
             }
-            return $reponses;
-        }
 
-    
-        // Fonction pour afficher les avis et les réponses récursivement
-        function afficherAvis($avis, $niveau = 0) {
-    // Déterminer l'affichage selon le type d'utilisateur
-    if (!empty($avis['raison_sociale_pro'])) {
-        // Si c'est un professionnel
-        $prenom = $avis['raison_sociale_pro'];
-        $nom = "";
-        $color = "--orange";
-    } elseif (isset($_SESSION["membre"]["code_compte"]) && $avis['code_compte'] == $_SESSION["membre"]["code_compte"]){
-        // Si l'utilisateur est celui qui a écrit l'avis ou la réponse
-        $prenom = "Moi";
-        $nom = "";
-        $color = "--vert-clair";
-    } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
-        // Si c'est un membre classique
-        $prenom = $avis['prenom'];
-        $nom = $avis['nom'];
-        $color = "--vert-clair";
-    } else {
-        // Si l'utilisateur est supprimé
-        $prenom = "Utilisateur";
-        $nom = "supprimé";
-    }
 
-    // Texte de l'appréciation basé sur la note
-    $appreciation = match ($avis["note"]) {
-        1 => "Insatisfaisant",
-        2 => "Passable",
-        3 => "Correct",
-        4 => "Excellent",
-        5 => "Parfait",
-        default => "Non noté",
-    };
+            // Fonction pour afficher les avis et les réponses récursivement
+            function afficherAvis($avis, $niveau = 0)
+            {
+                // Déterminer l'affichage selon le type d'utilisateur
+                if (!empty($avis['raison_sociale_pro'])) {
+                    // Si c'est un professionnel
+                    $prenom = $avis['raison_sociale_pro'];
+                    $nom = "";
+                    $color = "--orange";
+                } elseif (isset($_SESSION["membre"]["code_compte"]) && $avis['code_compte'] == $_SESSION["membre"]["code_compte"]) {
+                    // Si l'utilisateur est celui qui a écrit l'avis ou la réponse
+                    $prenom = "Moi";
+                    $nom = "";
+                    $color = "--vert-clair";
+                } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
+                    // Si c'est un membre classique
+                    $prenom = $avis['prenom'];
+                    $nom = $avis['nom'];
+                    $color = "--vert-clair";
+                } else {
+                    // Si l'utilisateur est supprimé
+                    $prenom = "Utilisateur";
+                    $nom = "supprimé";
+                }
 
-    // Calcul de la marge pour les sous-réponses
-    $marge = $niveau * 5; // Indentation
-    ?>
-    <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
-        <div class="avis-content">
-            <h3 class="avis">
-                <?php if ($niveau > 0): ?>
-                    <div class="note_prenom">
-                        Réponse |
-                        <span
-                            class="nom_avis" style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
-                    </div>
-                <?php else: ?>
-                    <div class="note_prenom">
-                        <?php echo htmlspecialchars($avis['note']) . '.0 ' . $appreciation . " "; ?> |
-                        <span
-                            class="nom_avis" style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
-                    </div>
-                <?php endif; ?>
+                // Texte de l'appréciation basé sur la note
+                $appreciation = match ($avis["note"]) {
+                    1 => "Insatisfaisant",
+                    2 => "Passable",
+                    3 => "Correct",
+                    4 => "Excellent",
+                    5 => "Parfait",
+                    default => "Non noté",
+                };
 
-                
-
-                <?php 
-                    if (isset($_SESSION['membre']['code_compte'])){
-                        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-                        $username = "sae";  // Utilisateur PostgreSQL
-                        $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL
-                        $dbh = new PDO($dsn, $username, $password);
-                        // Récupérer l'état du vote de l'utilisateur pour cet avis
-                        $codeAvis = $avis['code_avis']; // Assurez-vous que $avis contient bien le code de l'avis
-                        $codeCompte = $_SESSION['membre']['code_compte']; // L'utilisateur doit être connecté
-                        
-                        $stmt = $dbh->prepare("SELECT pouce FROM tripenarvor._pouce WHERE code_avis = :code_avis AND code_compte = :code_compte");
-                        $stmt->execute([':code_avis' => $codeAvis, ':code_compte' => $codeCompte]);
-                        $voteState = $stmt->fetchColumn();
-                        
-                        // Si aucun vote n'existe, définir le vote par défaut à 0 (ni like ni dislike)
-                        if ($voteState === false) {
-                            $voteState = 0;
-                        }
-                    }
+                // Calcul de la marge pour les sous-réponses
+                $marge = $niveau * 5; // Indentation
                 ?>
-                <div class="signalement_repondre">
-                    <?php if (isset($_SESSION['membre']['code_compte'])){ ?>
-                     <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
-                        <!-- Pouce positif -->
-                        <img id="positiveImage<?php echo $avis['code_avis']; ?>"
-                             src="<?php echo $voteState == 1 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png'; ?>"
-                             alt="Pouce positif" onclick="togglePositiveImage(<?php echo $avis['code_avis']; ?>)">
-                        <p id="positiveCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_positif']; ?></p>           
-                    </div>
-                
-                    <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
-                        <!-- Pouce négatif -->
-                        <img id="negativeImage<?php echo $avis['code_avis']; ?>"
-                             src="<?php echo $voteState == -1 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png'; ?>"
-                             alt="Pouce négatif" onclick="toggleNegativeImage(<?php echo $avis['code_avis']; ?>)">
-                        <p id="negativeCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_negatif']; ?></p>
-                    </div>
-                    <?php } else { ?>
-                        <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
-                            <!-- Pouce positif -->
-                            <img id="positiveImage"
-                                 src="images/pouce_positif_blanc.png"
-                                 alt="Pouce positif"
-                                 style="cursor:not-allowed;">
-                            <p id="positiveCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_positif']; ?></p>
-                        </div>
+                <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
+                    <div class="avis-content">
+                        <h3 class="avis">
+                            <?php if ($niveau > 0): ?>
+                                <div class="note_prenom">
+                                    Réponse |
+                                    <span class="nom_avis"
+                                        style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                                </div>
+                            <?php else: ?>
+                                <div class="note_prenom">
+                                    <?php echo htmlspecialchars($avis['note']) . '.0 ' . $appreciation . " "; ?> |
+                                    <span class="nom_avis"
+                                        style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                                </div>
+                            <?php endif; ?>
+
+
+
+                            <?php
+                            if (isset($_SESSION['membre']['code_compte'])) {
+                                $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+                                $username = "sae";  // Utilisateur PostgreSQL
+                                $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL
+                                $dbh = new PDO($dsn, $username, $password);
+                                // Récupérer l'état du vote de l'utilisateur pour cet avis
+                                $codeAvis = $avis['code_avis']; // Assurez-vous que $avis contient bien le code de l'avis
+                                $codeCompte = $_SESSION['membre']['code_compte']; // L'utilisateur doit être connecté
                         
-                        <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
-                            <!-- Pouce négatif -->
-                            <img id="negativeImage"
-                                 src="images/pouce_negatif_blanc.png"
-                                 alt="Pouce négatif"
-                                 style="cursor:not-allowed;">
-                            <p id="negativeCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_negatif']; ?></p>
-                        </div>
-                    <?php } ?>
-                    
-                    
+                                $stmt = $dbh->prepare("SELECT pouce FROM tripenarvor._pouce WHERE code_avis = :code_avis AND code_compte = :code_compte");
+                                $stmt->execute([':code_avis' => $codeAvis, ':code_compte' => $codeCompte]);
+                                $voteState = $stmt->fetchColumn();
+
+                                // Si aucun vote n'existe, définir le vote par défaut à 0 (ni like ni dislike)
+                                if ($voteState === false) {
+                                    $voteState = 0;
+                                }
+                            }
+                            ?>
+                            <div class="signalement_repondre">
+                                <?php if (isset($_SESSION['membre']['code_compte'])) { ?>
+                                    <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
+                                        <!-- Pouce positif -->
+                                        <img id="positiveImage<?php echo $avis['code_avis']; ?>"
+                                            src="<?php echo $voteState == 1 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png'; ?>"
+                                            alt="Pouce positif"
+                                            onclick="togglePositiveImage(<?php echo $avis['code_avis']; ?>)">
+                                        <p id="positiveCount<?php echo $avis['code_avis']; ?>">
+                                            <?php echo $avis['pouce_positif']; ?>
+                                        </p>
+                                    </div>
+
+                                    <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
+                                        <!-- Pouce négatif -->
+                                        <img id="negativeImage<?php echo $avis['code_avis']; ?>"
+                                            src="<?php echo $voteState == -1 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png'; ?>"
+                                            alt="Pouce négatif"
+                                            onclick="toggleNegativeImage(<?php echo $avis['code_avis']; ?>)">
+                                        <p id="negativeCount<?php echo $avis['code_avis']; ?>">
+                                            <?php echo $avis['pouce_negatif']; ?>
+                                        </p>
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
+                                        <!-- Pouce positif -->
+                                        <img id="positiveImage" src="images/pouce_positif_blanc.png" alt="Pouce positif"
+                                            style="cursor:not-allowed;">
+                                        <p id="positiveCount<?php echo $avis['code_avis']; ?>">
+                                            <?php echo $avis['pouce_positif']; ?>
+                                        </p>
+                                    </div>
+
+                                    <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
+                                        <!-- Pouce négatif -->
+                                        <img id="negativeImage" src="images/pouce_negatif_blanc.png" alt="Pouce négatif"
+                                            style="cursor:not-allowed;">
+                                        <p id="negativeCount<?php echo $avis['code_avis']; ?>">
+                                            <?php echo $avis['pouce_negatif']; ?>
+                                        </p>
+                                    </div>
+                                <?php } ?>
 
 
-                <span class="signalement_avis_offre">
-                    <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
-                       title="Signaler cet avis" style="text-decoration: none; margin-right: 5vw; font-size: 21px;">🚩</a>
-                </span>
-                    <form action="poster_reponse_membre.php" method="POST">
-                        <input type="hidden" name="unAvis"
-                               value="<?php echo htmlspecialchars(serialize($avis)); ?>">
-                        <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
-                    </form>
+
+
+                                <span class="signalement_avis_offre">
+                                    <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
+                                        title="Signaler cet avis"
+                                        style="text-decoration: none; margin-right: 5vw; font-size: 21px;">🚩</a>
+                                </span>
+                                <form action="poster_reponse_membre.php" method="POST">
+                                    <input type="hidden" name="unAvis"
+                                        value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                                    <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
+                                </form>
+                            </div>
+                        </h3>
+                        <p class="avis"><?php echo html_entity_decode($avis['txt_avis']); ?></p>
+                    </div>
                 </div>
-            </h3>
-            <p class="avis"><?php echo html_entity_decode($avis['txt_avis']); ?></p>
-        </div>
-    </div>
-    <?php
-    // Afficher les sous-réponses si elles existent
-    if (!empty($avis['sous_reponses'])) {
-        foreach ($avis['sous_reponses'] as $sous_reponse) {
-            afficherAvis($sous_reponse, $niveau + 1); // Indentation augmentée
-        }
-    }
-}
+                <?php
+                // Afficher les sous-réponses si elles existent
+                if (!empty($avis['sous_reponses'])) {
+                    foreach ($avis['sous_reponses'] as $sous_reponse) {
+                        afficherAvis($sous_reponse, $niveau + 1); // Indentation augmentée
+                    }
+                }
+            }
 
 
-        // Récupérer tous les avis principaux (sans réponses déjà existantes)
-        $tous_les_avis = $dbh->prepare('SELECT * 
+            // Récupérer tous les avis principaux (sans réponses déjà existantes)
+            $tous_les_avis = $dbh->prepare('SELECT * 
 FROM tripenarvor._avis
 LEFT JOIN tripenarvor.membre 
     ON tripenarvor._avis.code_compte = tripenarvor.membre.code_compte
@@ -864,100 +875,46 @@ WHERE code_offre = :code_offre
        AND tripenarvor.membre.code_compte IS NULL)
   );
 ');
-        $tous_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-        $tous_les_avis->execute();
-        $tous_les_avis = $tous_les_avis->fetchAll(PDO::FETCH_ASSOC);
+            $tous_les_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+            $tous_les_avis->execute();
+            $tous_les_avis = $tous_les_avis->fetchAll(PDO::FETCH_ASSOC);
 
-        // Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
-        foreach ($tous_les_avis as &$avis) {
-            // Récupération des réponses pour l'avis principal
-            $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
-        }
+            // Récupérer les réponses imbriquées pour chaque avis principal et les sous-réponses
+            foreach ($tous_les_avis as &$avis) {
+                // Récupération des réponses pour l'avis principal
+                $avis['sous_reponses'] = getResponses($dbh, $avis['code_avis']);
+            }
 
-        // Affichage des avis et de leurs réponses (y compris les sous-réponses)
-        ?>
+            // Affichage des avis et de leurs réponses (y compris les sous-réponses)
+            ?>
 
-        <div class="avis-widget">
-            <div class="avis-header">
-                <h1 class="avis">
-                    <?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5"); ?>
-                    <span class="avis-score">
-                        <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?>
-                    </span>
-                </h1>
-                <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
-            </div>
-            <div class="avis-list">
-                <?php
+            <div class="avis-widget">
+                <div class="avis-header">
+                    <h1 class="avis">
+                        <?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5"); ?>
+                        <span class="avis-score">
+                            <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?>
+                        </span>
+                    </h1>
+                    <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
+                </div>
+                <div class="avis-list">
+                    <?php
                     array_map('afficherAvis', $tous_les_avis);
-                ?>
+                    ?>
+                </div>
             </div>
+
+            <?php
+            // Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
+            ?>
+
+
+
+
+
+
         </div>
-
-        <?php
-        // Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
-        ?>
-
-<script>
-                        function updateLikeDislike(action, codeAvis) {
-                            fetch("update_likes.php", {
-                                method: "POST",
-                                headers: {
-                                    "Content-Type": "application/x-www-form-urlencoded",
-                                },
-                                body: new URLSearchParams({
-                                    action: action,
-                                    code_avis: codeAvis
-                                })
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.status === 'success') {
-                                    // Mise à jour des images des pouces
-                                    const positiveImage = document.getElementById('positiveImage' + codeAvis);
-                                    const negativeImage = document.getElementById('negativeImage' + codeAvis);
-                        
-                                    if (data.current_vote === 1) {
-                                        positiveImage.src = 'images/pouce_positif_couleur.png';
-                                        negativeImage.src = 'images/pouce_negatif_blanc.png';
-                                    } else if (data.current_vote === -1) {
-                                        positiveImage.src = 'images/pouce_positif_blanc.png';
-                                        negativeImage.src = 'images/pouce_negatif_couleur.png';
-                                    } else {
-                                        positiveImage.src = 'images/pouce_positif_blanc.png';
-                                        negativeImage.src = 'images/pouce_negatif_blanc.png';
-                                    }
-                        
-                                    // Mise à jour des compteurs
-                                    document.getElementById('positiveCount' + codeAvis).textContent = data.pouce_positif;
-                                    document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
-                                } else {
-                                    alert(data.message);
-                                }
-                            })
-                            .catch(error => {
-                                console.error("Erreur réseau : ", error);
-                            });
-                        }
-                        
-                        function togglePositiveImage(codeAvis) {
-                            const positiveImage = document.getElementById('positiveImage' + codeAvis);
-                            const action = positiveImage.src.includes('blanc') ? 'like' : 'unlike';
-                            updateLikeDislike(action, codeAvis);
-                        }
-                        
-                        function toggleNegativeImage(codeAvis) {
-                            const negativeImage = document.getElementById('negativeImage' + codeAvis);
-                            const action = negativeImage.src.includes('blanc') ? 'dislike' : 'undislike';
-                            updateLikeDislike(action, codeAvis);
-                        }
-                    </script>
-
-
-
-
-
-    </div>
     </div>
     </div>
 
@@ -1211,7 +1168,7 @@ WHERE code_offre = :code_offre
             </div>
             <div class="avis-list">
                 <?php
-                    array_map('afficherAvis', $tous_les_avis);
+                array_map('afficherAvis', $tous_les_avis);
                 ?>
             </div>
         </div>
@@ -1219,6 +1176,61 @@ WHERE code_offre = :code_offre
         <?php
         // Le PHP est maintenant fermé et le HTML est structuré de manière lisible.
         ?>
+        <script>
+            function updateLikeDislike(action, codeAvis) {
+                fetch("update_likes.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    body: new URLSearchParams({
+                        action: action,
+                        code_avis: codeAvis
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            // Mise à jour des images des pouces
+                            const positiveImage = document.getElementById('positiveImage' + codeAvis);
+                            const negativeImage = document.getElementById('negativeImage' + codeAvis);
+
+                            if (data.current_vote === 1) {
+                                positiveImage.src = 'images/pouce_positif_couleur.png';
+                                negativeImage.src = 'images/pouce_negatif_blanc.png';
+                            } else if (data.current_vote === -1) {
+                                positiveImage.src = 'images/pouce_positif_blanc.png';
+                                negativeImage.src = 'images/pouce_negatif_couleur.png';
+                            } else {
+                                positiveImage.src = 'images/pouce_positif_blanc.png';
+                                negativeImage.src = 'images/pouce_negatif_blanc.png';
+                            }
+
+                            // Mise à jour des compteurs
+                            document.getElementById('positiveCount' + codeAvis).textContent = data.pouce_positif;
+                            document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
+                        } else {
+                            alert(data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Erreur réseau : ", error);
+                    });
+            }
+
+            function togglePositiveImage(codeAvis) {
+                const positiveImage = document.getElementById('positiveImage' + codeAvis);
+                const action = positiveImage.src.includes('blanc') ? 'like' : 'unlike';
+                updateLikeDislike(action, codeAvis);
+            }
+
+            function toggleNegativeImage(codeAvis) {
+                const negativeImage = document.getElementById('negativeImage' + codeAvis);
+                const action = negativeImage.src.includes('blanc') ? 'dislike' : 'undislike';
+                updateLikeDislike(action, codeAvis);
+            }
+        </script>
+
     </div>
     </div>
 </body>
@@ -1356,54 +1368,54 @@ WHERE code_offre = :code_offre
             <button id="closeNewsletterPopup">Fermer</button>
         </div>
     </div>
-        
+
     <div class="footer-links">
-            <div class="logo">
-                <img src="images/logoBlanc.png" alt="Logo PAVCT">
-            </div>
-            <div class="link-group">
-                <ul>
-                    <li><a href="mentions_legales.html">Mentions Légales</a></li>
-                    <li><a href="cgu.html">GGU</a></li>
-                    <li><a href="cgv.html">CGV</a></li>
-                </ul>
-            </div>
-            <div class="link-group">
-                <ul>
-                    <li><a href="voir_offres.php">Accueil</a></li>
-                    <li><a href="connexion_pro.php">Publier</a></li>
-                    <?php
-                    if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
-                        ?>
-                        <li>
-                            <a href="consulter_compte_membre.php">Mon Compte</a>
-                        </li>
-                        <?php
-                    } else {
-                        ?>
-                        <li>
-                            <a href="connexion_membre.php">Se connecter</a>
-                        </li>
-                        <?php
-                    }
+        <div class="logo">
+            <img src="images/logoBlanc.png" alt="Logo PAVCT">
+        </div>
+        <div class="link-group">
+            <ul>
+                <li><a href="mentions_legales.html">Mentions Légales</a></li>
+                <li><a href="cgu.html">GGU</a></li>
+                <li><a href="cgv.html">CGV</a></li>
+            </ul>
+        </div>
+        <div class="link-group">
+            <ul>
+                <li><a href="voir_offres.php">Accueil</a></li>
+                <li><a href="connexion_pro.php">Publier</a></li>
+                <?php
+                if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
                     ?>
-                </ul>
-            </div>
-            <div class="link-group">
-                <ul>
-                    <li><a href="#">Nous Connaitre</a></li>
-                    <li><a href="contacter_plateforme.php">Signaler un problème</a></li>
-                    <li><a href="contacter_plateforme.php">Nous contacter</a></li>
-                </ul>
-            </div>
-            <div class="link-group">
-                <ul>
-                    <!--<li><a href="#">Presse</a></li>
+                    <li>
+                        <a href="consulter_compte_membre.php">Mon Compte</a>
+                    </li>
+                    <?php
+                } else {
+                    ?>
+                    <li>
+                        <a href="connexion_membre.php">Se connecter</a>
+                    </li>
+                    <?php
+                }
+                ?>
+            </ul>
+        </div>
+        <div class="link-group">
+            <ul>
+                <li><a href="#">Nous Connaitre</a></li>
+                <li><a href="contacter_plateforme.php">Signaler un problème</a></li>
+                <li><a href="contacter_plateforme.php">Nous contacter</a></li>
+            </ul>
+        </div>
+        <div class="link-group">
+            <ul>
+                <!--<li><a href="#">Presse</a></li>
                     <li><a href="#">Newsletter</a></li>
                     <li><a href="#">Notre équipe</a></li>-->
-                </ul>
-            </div>
+            </ul>
         </div>
+    </div>
 
     <div class="footer-bottom">
         <div class="social-icons">
@@ -1414,42 +1426,43 @@ WHERE code_offre = :code_offre
         </div>
     </div>
 </footer>
+
 </html>
 <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const newsletterForm = document.getElementById('newsletterForm');
-            const emailInput = document.getElementById('newsletterEmail');
-            const newsletterPopup = document.getElementById('newsletterConfirmBox');
-            const closePopupButton = document.getElementById('closeNewsletterPopup');
-        
-            newsletterForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-        
-                const email = emailInput.value.trim();
-                if (email) {
-                    fetch('envoyer_email3.php', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body: `email=${encodeURIComponent(email)}`
+    document.addEventListener('DOMContentLoaded', () => {
+        const newsletterForm = document.getElementById('newsletterForm');
+        const emailInput = document.getElementById('newsletterEmail');
+        const newsletterPopup = document.getElementById('newsletterConfirmBox');
+        const closePopupButton = document.getElementById('closeNewsletterPopup');
+
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const email = emailInput.value.trim();
+            if (email) {
+                fetch('envoyer_email3.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `email=${encodeURIComponent(email)}`
+                })
+                    .then(() => {
+                        afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
+
                     })
-                        .then(() => {
-                            afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
-                            
-                        })
-                        .catch(() => {
-                            afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
-                        });
-                }
-                }
-            });
-        
-            function afficherPopup(message) {
-                newsletterPopup.querySelector('.popup-message').innerText = message;
-                newsletterPopup.style.display = 'block';
+                    .catch(() => {
+                        afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
+                    });
             }
-        
-            closePopupButton.addEventListener('click', () => {
-                newsletterPopup.style.display = 'none';
+        }
             });
+
+    function afficherPopup(message) {
+        newsletterPopup.querySelector('.popup-message').innerText = message;
+        newsletterPopup.style.display = 'block';
+    }
+
+    closePopupButton.addEventListener('click', () => {
+        newsletterPopup.style.display = 'none';
+    });
         });
-        </script>
+</script>
