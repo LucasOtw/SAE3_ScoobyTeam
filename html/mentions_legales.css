@@ -69,6 +69,10 @@
     margin: 20px auto;
     max-width: 800px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    font-family: "K2D", sans-serif;
+    min-height: 100vh;
 }
 
 .mentions_legales-section {
@@ -207,14 +211,6 @@ ul.mentions_legales-sous-list {
     background-color: #004999;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    font-family: "K2D", sans-serif;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-}
 
 header {
     display: flex;
