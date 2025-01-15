@@ -733,7 +733,7 @@ function tempsEcouleDepuisPublication($offre){
             ?>
 
             <section class="bloc_consulter_recemment">
-                <img src=""
+                <img src="images/introuvable.png" alt="image pour la connexion">
                 <p>Veuillez vous connecter pour accéder à votre historique
             </section>
 
