@@ -8172,6 +8172,10 @@ footer {
     text-decoration: none;
 }
 
+.bloc_consulter_recemment a {
+    text-decoration: none;
+}
+
 .bloc_consulter_recemment img{
     height: 19vh;
     margin-top: 2vh;
