@@ -397,6 +397,10 @@ if (isset($_POST['envoi_modif'])){
         
         // GESTION DES NOUVELLES PHOTOS
 
+        echo "<pre>";
+        var_dump($_FILES['offre_nouv_images']);
+        echo "</pre>";
+
         if(isset($_FILES['offre_nouv_images']) && !empty($_FILES['offre_nouv_images']['name'][0])){
             $photos = [];
             // Parcourir chaque photo envoyée
