@@ -281,10 +281,18 @@ if (isset($_POST['envoi_modif'])){
             }
 
             if(empty($erreurs)){
-               $tab_services = array(
-                   "gamme_prix" => $prix,
-                    "repas" => $_POST['repas']
-               );
+                $repas = isset($_POST['repas']) || !empty($_POST['repas']) || $_POST['repas'] !== null ? $_POST['repas'] : null;
+
+                if(empty($repas) || $repas == null){
+                    $erreurs[] = "Erreur : Une case n'a pas été cochée dans 'Services et Horaires' pour une offre de restauration.";
+                    break;
+                } else {
+                    $chaine_repas = implode(", ",$repas);
+                    $tab_services = array(
+                       "gamme_prix" => $prix,
+                       "repas" => $chaine_repas
+                   );
+                }
             }
         
             break;
