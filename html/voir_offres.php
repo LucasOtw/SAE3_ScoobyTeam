@@ -253,9 +253,6 @@ function tempsEcouleDepuisPublication($offre){
             <button id="closeMenu" class="close-btn">&times;</button>
             <h2>Filtres</h2>
             
-            <!-- Lieu -->
-            <label for="voir_offres_lieu">Lieu</label>
-            <input type="text" id="location" placeholder="Ex : Lannion">
     
             <!-- Note générale des avis -->
             <label for="select-rate">Note générale des avis</label>
