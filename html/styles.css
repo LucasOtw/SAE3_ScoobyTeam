@@ -8161,10 +8161,18 @@ footer {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius : 15px;
     border: 1px solid #ddd;
+    display : flex;
+    
 }
 
 .bloc_consulter_recemment p {
     color : #919191;
+}
+
+.bloc_consulter_recemment img{
+    height: 19vh;
+    margin-top: 2vh;
+    margin-left: 2vh;
 }
 
 
