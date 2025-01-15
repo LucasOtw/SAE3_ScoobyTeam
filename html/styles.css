@@ -9389,3 +9389,426 @@ body.menu-open #overlay {
 }
 
 
+
+
+
+
+                          /*****************************************************
+                                      * Code page  repondre Avis  *
+                          *****************************************************/
+
+
+
+
+
+
+
+main.main_repondre_avis .repondre_avis_titre,
+main.main_repondre_avis .repondre_avis_section_titre {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+main.main_repondre_avis .repondre_avis_recap_card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    width: 100%;
+    border: 1px solid #f3f8ff;
+    border-radius: 29px;
+    resize: none;
+    background-color: #f3f8ff;
+    box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+main.main_repondre_avis .repondre_avis_info {
+    flex: 1;
+}
+
+main.main_repondre_avis .repondre_avis_utilisateur {
+    margin-left: 2vw;
+    font-size: 22px;
+}
+
+main.main_repondre_avis .repondre_avis_texte,
+main.main_repondre_avis .repondre_avis_rating {
+    margin: 10px 0;
+    margin-left: 4vw;
+    color: #555;
+    font-size: 19px;
+}
+
+main.main_repondre_avis .repondre_avis_btn_offre {
+    margin-right: 0px;
+    display: inline-block;
+    font-size: 17px;
+    padding: 10px 20px;
+    background-color: var(--vert-clair);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    width: 223px;
+    height: 52px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease;
+    /* Animation au survol */
+}
+
+
+main.main_repondre_avis .repondre_avis_btn_offre:hover {
+    transform: translateY(-2px); 
+}
+
+main.main_repondre_avis .repondre_avis_btn_offre:active {
+    transform: translateY(2px); /* Effet d'appui */
+
+}
+
+main.main_repondre_avis .repondre_avis_images {
+    display: flex;
+    gap: 10px;
+}
+
+main.main_repondre_avis .repondre_avis_image {
+    width: 130px;
+    height: 133px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+main.main_repondre_avis .repondre_avis_textarea {
+    width: 100%;
+    height: 152px;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #f3f8ff;
+    border-radius: 29px;
+    resize: none;
+    background-color: #f3f8ff;
+    box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
+}
+
+main.main_repondre_avis .repondre_avis_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* .repondre_avis_note {
+flex: 1;
+}
+
+.repondre_avis_note_titre {
+margin-bottom: 11px;
+}
+
+.repondre_avis_stars .repondre_avis_star {
+font-size: 1.5rem;
+color: #ccc;
+cursor: pointer;
+}
+
+.repondre_avis_stars .repondre_avis_star:hover,
+.repondre_avis_stars .repondre_avis_star:hover ~ .repondre_avis_star {
+color: #ffc107;
+} */
+
+main.main_repondre_avis .repondre_avis_disclaimer {
+    flex: 2;
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 5vh;
+}
+
+.repondre_avis_buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 12vh;
+}
+
+main.main_repondre_avis .repondre_avis_btn_annuler,
+main.main_repondre_avis .repondre_avis_btn_publier {
+    padding: 1em 2em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    border-radius: 0.5em;
+    font-size: 17px;
+    padding: 10px 20px;
+    background-color: var(--vert-clair);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    width: 223px;
+    height: 52px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease;
+}
+
+main.main_repondre_avis .repondre_avis_btn_annuler {
+    background-color: #dcdcdc;
+    color: white;
+}
+
+main.main_repondre_avis .repondre_avis_btn_publier {
+    background-color: var(--vert-clair);
+    color: white;
+}
+
+main.main_repondre_avis .repondre_avis_btn_annuler:hover {
+    transform: translateY(-2px); /* Effet d'élévation au survol */
+
+}
+
+main.main_repondre_avis .repondre_avis_btn_publier:hover {
+    transform: translateY(-2px); /* Effet d'élévation au survol */
+
+}
+
+main.main_repondre_avis .repondre_avis_btn_publier:active {
+    transform: translateY(2px); /* Effet d'appui */
+}
+
+main.main_repondre_avis .repondre_avis_btn_annuler:active {
+    transform: translateY(2px); /* Effet d'élévation au survol */
+
+}
+
+
+main.main_repondre_avis .notation {
+    direction: rtl;
+    /* Permet d'inverser l'ordre visuel des étoiles */
+    unicode-bidi: bidi-override;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin: 10px 0;
+    background-color: #f3f8ff;
+    border: 1px solid #f3f8ff;
+    border-radius: 29px;
+    padding: 1vh 3vw;
+}
+
+main.main_repondre_avis .notation input[type="radio"] {
+    display: none;
+    /* Cache les boutons radio */
+}
+
+main.main_repondre_avis .notation label {
+    font-size: 3rem;
+    color: #ccc;
+    /* Couleur des étoiles non sélectionnées */
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+main.main_repondre_avis .notation label:before {
+    content: "★";
+    /* Symbole de l'étoile */
+}
+
+main.main_repondre_avis .notation input[type="radio"]:checked~label {
+    color: #FFD700;
+    /* Couleur des étoiles sélectionnées */
+}
+
+main.main_repondre_avis .notation label:hover,
+main.main_repondre_avis .notation label:hover~label {
+    color: #FFD700;
+    /* Couleur des étoiles au survol */
+}
+
+main.main_repondre_avis .notation label:active {
+    transform: scale(1.2);
+    /* Effet d'agrandissement au clic */
+}
+
+
+main.main_repondre_avis nav.nav-bar {
+    display: none
+}
+
+main.main_repondre_avis .back-button {
+    display: none;
+}
+
+main.main_repondre_avis .repondre_avis_container {
+    padding: 5vh 9vw;
+}
+
+/*Code pour le format responsive de poster un avis */
+
+main.main_repondre_avis .message-erreur {
+    color: red;
+    font-size: 14px;
+    display: none;
+}
+
+@media (max-width: 429px) {
+  .profile-img-container{
+    display:none;
+  }
+  .logo_tel{
+    margin-left:4.5em;
+  }
+  .logo_tel img{
+    margin-left:4.5em;
+  }
+    .footer_poster_avis {
+        display: none;
+    }
+
+    header.header-pc {
+        display: none;
+    }
+
+    main.main_repondre_avis .repondre_avis_recap_card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #f3f8ff;
+        border-radius: 29px;
+        resize: none;
+        background-color: #f3f8ff;
+        box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
+
+        height: 13vh;
+    }
+  main.main_repondre_avis .notation {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+    background-color: #f3f8ff;
+    border: 1px solid #f3f8ff;
+    border-radius: 29px;
+}
+
+    main.main_repondre_avis .repondre_avis_utilisateur {
+        font-size: 10px;
+    }
+
+    main.main_repondre_avis .repondre_avis_image {
+        width: 11vh;
+        height: 11vh;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    main.main_repondre_avis .repondre_avis_buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    main.main_repondre_avis .repondre_avis_btn_offre {
+        display: none;
+
+    }
+
+    main.main_repondre_avis .repondre_avis_footer {
+        display: block;
+    }
+
+    main.main_repondre_avis .repondre_avis_titre {
+        font-size: 1.5rem;
+        margin-top: 5vh;
+    }
+
+    main.main_repondre_avis .repondre_avis_disclaimer {
+        display: none;
+    }
+
+    main.main_repondre_avis .repondre_avis_textarea {
+        width: 100%;
+        height: 10vh;
+        padding: 15px;
+        margin: 0vh 0;
+        border: 1px solid #f3f8ff;
+        border-radius: 29px;
+        resize: none;
+        background-color: #f3f8ff;
+        box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
+    }
+
+    main.main_repondre_avis .titre_repondre_avis_format_tel {
+                display: flex;
+                border: none;
+                color: black;
+    }
+
+    main.main_repondre_avis .repondre_avis_btn_annuler {
+        display: none;
+    }
+
+    main.main_repondre_avis .repondre_avis_utilisateur {
+        font-size: 15px;
+    }
+
+    main.main_repondre_avis .repondre_avis_images {
+        display: flex;
+        gap: 10px;
+        margin-left: 7vh;
+    }
+
+    main.main_repondre_avis .back-button {
+        font-size: 42px;
+        text-decoration: none;
+        color: #333;
+        margin-top: -0.2em;
+        background: none;
+        border: none;
+    }
+
+    main.main_repondre_avis .repondre_avis_back_button {
+        display: flex;
+        justify-content: center;
+        font-size: 14px;
+    }
+
+    main.main_repondre_avis .repondre_avis_btn_publier {
+        background-color: var(--vert-clair);
+        color: white;
+        width: 66%;
+        border-radius: 20px;
+        font-size: 17px;
+        margin-bottom: 10vh;
+        margin-top: 2em;
+        margin-right: 15vw;
+    }
+
+    main.main_repondre_avis .repondre_avis_btn_publier:hover {
+        transform: scale(1.05);
+    }
+
+    main.main_repondre_avis .repondre_avis_note {
+        width: 100%;
+    }
+
+    main.main_repondre_avis .back-button {
+        display: block;
+        width:25px;
+        margin-top:0.17em;
+        margin-left:-1.2em;
+    }
+
+    main.main_repondre_avis .btn-poster-avis {
+        color: var(--vert-clair);
+        border: none;
+    }
+}
+
