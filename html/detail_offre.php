@@ -811,15 +811,12 @@ if (isset($json['results'][0])) {
                     .then(data => {
                         if (data.status === 'success') {
                             // Mise à jour de l'image des pouces
-                            document.getElementById('positiveImage' + codeAvis).src = data.pouce_positif > 0 ? 'images/pouce_positif_couleur.png?t=' + new Date().getTime() : 'images/pouce_positif_blanc.png?t=' + new Date().getTime();
-                            document.getElementById('negativeImage' + codeAvis).src = data.pouce_negatif > 0 ? 'images/pouce_negatif_couleur.png?t=' + new Date().getTime() : 'images/pouce_negatif_blanc.png?t=' + new Date().getTime();
+                            document.getElementById('positiveImage' + codeAvis).src = data.pouce_positif > 0 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png';
+                            document.getElementById('negativeImage' + codeAvis).src = data.pouce_negatif > 0 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png';
                 
                             // Mise à jour des nombres de votes
                             document.getElementById('positiveCount' + codeAvis).textContent = data.pouce_positif;
                             document.getElementById('negativeCount' + codeAvis).textContent = data.pouce_negatif;
-
-                            // location.reload();
-
                         } else {
                             alert(data.message);
                         }
@@ -832,38 +829,12 @@ if (isset($json['results'][0])) {
                 function togglePositiveImage(codeAvis) {
                     var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
                     updateLikeDislike(action, codeAvis);
-                
-                    // // Ajoute l'ancre dans l'URL pour scroller après le rechargement
-                    // window.location.hash = 'negativeImage' + codeAvis;
-                
-                    // setTimeout(function() {
-                    //     location.reload();
-                    // }, 200);
                 }
                 
                 function toggleNegativeImage(codeAvis) {
                     var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
                     updateLikeDislike(action, codeAvis);
-                
-                    // Ajoute l'ancre dans l'URL pour scroller après le rechargement
-                    // window.location.hash = 'negativeImage' + codeAvis;
-                
-                    // setTimeout(function() {
-                    //     location.reload();
-                    // }, 200);
                 }
-
-                    document.querySelectorAll('.pouce img').forEach(img => {
-                        img.addEventListener('click', () => {
-                            const codeAvis = img.id.replace(/\D/g, ''); // Extraire le code de l'avis
-                            if (img.id.includes('positiveImage')) {
-                                togglePositiveImage(codeAvis);
-                            } else if (img.id.includes('negativeImage')) {
-                                toggleNegativeImage(codeAvis);
-                            }
-                        });
-                    });
-
                 </script>
 
 
@@ -893,7 +864,7 @@ if (isset($json['results'][0])) {
                         <!-- Pouce positif -->
                         <img id="positiveImage<?php echo $avis['code_avis']; ?>"
                              src="<?php echo $voteState == 1 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png'; ?>"
-                             alt="Pouce positif">
+                             alt="Pouce positif" onclick="togglePositiveImage(<?php echo $avis['code_avis']; ?>)">
                         <p id="positiveCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_positif']; ?></p>           
                     </div>
                 
@@ -901,7 +872,7 @@ if (isset($json['results'][0])) {
                         <!-- Pouce négatif -->
                         <img id="negativeImage<?php echo $avis['code_avis']; ?>"
                              src="<?php echo $voteState == -1 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png'; ?>"
-                             alt="Pouce négatif">
+                             alt="Pouce négatif" onclick="toggleNegativeImage(<?php echo $avis['code_avis']; ?>)">
                         <p id="negativeCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_negatif']; ?></p>
                     </div>
                     <?php } else { ?>
