@@ -9293,7 +9293,7 @@ body.menu-open #overlay {
 #offers-list-new {
     display: flex;
     flex-wrap: wrap;
-    gap: 3em; /* Espacement entre les cartes */
+    gap: 2em; /* Espacement entre les cartes */
     justify-content: center;
     padding: 20px;
 }
