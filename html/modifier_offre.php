@@ -472,7 +472,7 @@ if (isset($_POST['envoi_modif'])){
                 $codes_images = $recup_codes_images->fetchAll(PDO::FETCH_ASSOC);
             }
             echo "</pre>";
-            print_r($rcodes_images);
+            print_r($codes_images);
             echo "<pre>";
         }
 
