@@ -15,7 +15,7 @@ try {
         $dbh = new PDO($dsn, $username, $password);
 
         // Modification dans la base de données
-        $stmt = $dbh->prepare('UPDATE _avis SET signaler = TRUE WHERE code_avis = :id');
+        $stmt = $dbh->prepare('UPDATE tripenarvor._avis SET signaler = TRUE WHERE code_avis = :id');
         $stmt->bindValue(':id', $id_avis, PDO::PARAM_INT);
 
         if ($stmt->execute()) {
