@@ -261,7 +261,7 @@ if (isset($_POST['envoi_modif'])){
     if(isset($_POST['_site_modif']) && $_POST['_site_modif'] !== null){
         $url = $_POST['_site_modif'];
 
-        if(filter_var($url,FILTER_VALIDATE_URL)){
+        if(!empty($url) && filter_var($url,FILTER_VALIDATE_URL)){
             $headers = @get_headers($url);
           
             if ($headers && strpos($headers[0], '200') !== false) {
