@@ -9919,7 +9919,7 @@ main.main_repondre_avis .message-erreur {
 }
 
 
-button[type="submit"] {
+.signalement{
     font-size: 17px;
     padding: 10px 20px;
     background-color: var(--vert-clair);
@@ -9960,7 +9960,7 @@ button[type="submit"] {
         margin-bottom: 10vh;
     }
 
-button[type="submit"] {
+.signalement {
         font-size: 17px;
         padding: 10px 20px;
         background-color: var(--vert-clair);
