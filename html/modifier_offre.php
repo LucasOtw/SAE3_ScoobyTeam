@@ -65,10 +65,6 @@ $req_recup_photos->execute();
 
 $recup_photos = $req_recup_photos->fetchAll(PDO::FETCH_COLUMN);
 
-echo "<pre>";
-var_dump($recup_photos);
-echo "</pre>";
-
 /* RÉCUPÉRATION DES HORAIRES */
 
 
@@ -105,13 +101,6 @@ foreach($codes_horaires as $jour => $code){
         }
     }
 }
-
-// Debug : Afficher les horaires récupérés
-
-echo "<pre>";
-var_dump($codes_horaires);
-echo "</pre>";
-
 
 /* RÉCUPÉRATION DU "TYPE DE L'OFFRE" */
 
@@ -155,10 +144,6 @@ $req_tags = $dbh->prepare("SELECT * FROM tripenarvor._tags WHERE $type_offre = t
 $req_tags->execute();
 $tags_offre = $req_tags->fetchAll(PDO::FETCH_ASSOC);
 
-echo "<pre>";
-print_r($tags_offre);
-echo "</pre>";
-
 /* RÉCUPÉRATION DES TAGS DE L'OFFRE */
 
 $req_tags_offre = $dbh->prepare("SELECT code_tag FROM tripenarvor._son_tag WHERE code_offre = :code_offre");
@@ -166,10 +151,6 @@ $req_tags_offre->bindValue(":code_offre",$offre['code_offre']);
 $req_tags_offre->execute();
 
 $mes_tags = $req_tags_offre->fetchAll(PDO::FETCH_ASSOC);
-echo "<pre>";
-print_r($mes_tags);
-echo "</pre>";
-
 
 // Si on envoie le script de modification...
 
@@ -327,7 +308,6 @@ if (isset($_POST['envoi_modif'])){
         foreach($tab_offre as $att => $val){
             $requete = "UPDATE tripenarvor._offre SET $att = :value WHERE code_offre = :code_offre";
             $stmt = $dbh->prepare($requete);
-            print_r($requete);
     
             $stmt->bindValue(":value",$val);
             $stmt->bindValue(":code_offre",$offre['code_offre']);
@@ -384,10 +364,6 @@ if (isset($_POST['envoi_modif'])){
         }
         
         // GESTION DES NOUVELLES PHOTOS
-
-        echo "<pre>";
-        var_dump($_FILES['offre_nouv_images']);
-        echo "</pre>";
 
         if(isset($_FILES['offre_nouv_images']) && !empty($_FILES['offre_nouv_images']['name'][0])){
             $photos = [];
@@ -503,15 +479,8 @@ if (isset($_POST['envoi_modif'])){
     }
 }
 
-echo "<pre>";
-var_dump($offre);
-echo "</pre>";
-
 if($infos_offre !== null){
-    echo "<pre>";
-    var_dump($infos_offre);
     $infos_offre = $infos_offre[0];
-    echo "</pre>";
 }
     
 ?>
