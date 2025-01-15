@@ -252,6 +252,55 @@ if (isset($_POST['envoi_modif'])){
         }
     }
 
+    $tab_services = null;
+
+    switch($type_offre){
+        case "restauration":
+            $prix = $_POST['prix'];
+            $tarif = $_POST['tarif'];
+            switch($prix){
+                case "€":
+                    if($tarif < 0 || $tarif >= 25){
+                        $erreurs[] = "Prix : {$prix} : le tarif doit être compris entre 0 et 25€ (exclus) !";
+                    }
+                    break;
+                case "€€":
+                    if($tarif < 25 || $tarif >= 40){
+                        $erreurs[] = "Prix : {$prix} : le tarif doit être compris entre 25 et 40€ (exclus) !";
+                    }
+                    break;
+                case "€€€":
+                    if($tarif < 40€){
+                        $erreurs[] = "Prix : {$prix} : le tarif doit être supérieur ou égal à 40€ !";
+                    }
+                    break;
+            }
+
+            if(empty($erreurs)){
+               $tab_services = array(
+                   "gamme_prix" => $prix,
+                    "repas" => $_POST['repas']
+               ) 
+            }
+        
+            break;
+        case "spectacle":
+            $tab_services = array(
+                "duree" => $_POST['_duree_modif'],
+                "capacite_accueil" => $_POST['_capacite_acc_modif'],
+                "date_spectacle" => $_POST['_date_modif'],
+                "heure_spectacle" => $_POST['_heure_spec_modif']
+            );
+            break;
+        case "visite":
+            
+            break;
+    }
+
+    echo "<pre>";
+    var_dump($infos_offre);
+    echo "</pre>";
+
     // Si il n'y a pas d'erreurs...
     
     if(empty($erreurs)){
@@ -295,23 +344,6 @@ if (isset($_POST['envoi_modif'])){
             "_description" => $_POST['_desc_modif'],
             "accessibilite" => $_POST['_access_modif']
         );
-
-        $tab_services = null;
-
-        switch($type_offre){
-            case "restauration":
-                break;
-            case "spectacle":
-                $tab_services = array(
-                    "duree" => $_POST['_duree_modif'],
-                    "capacite_accueil" => $_POST['_capacite_acc_modif'],
-                    "date_spectacle" => $_POST['_date_modif'],
-                    "heure_spectacle" => $_POST['_heure_spec_modif']
-                );
-                break;
-            case "visite":
-                break;
-        }
         
 
         // table "_adresse"
