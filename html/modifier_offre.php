@@ -297,7 +297,12 @@ if (isset($_POST['envoi_modif'])){
             );
             break;
         case "visite":
-            
+            $tab_services = array(
+                "duree" => $_POST['_duree_modif'],
+                "visite_guidee" => $_POST['_langues_modif'],
+                "date_visite" => $_POST['_date_modif'],
+                "heure_visite" => $_POST['_heure_visite_modif']
+            );
             break;
     }
 
@@ -354,7 +359,8 @@ if (isset($_POST['envoi_modif'])){
             "adresse_postal" => $_POST['_adresse_modif'],
             "complement_adresse" => $_POST['_comp_adresse_modif']
         );
-        
+
+        // GESTION DES INFOS GENERALES
     
         foreach($tab_offre as $att => $val){
             $requete = "UPDATE tripenarvor._offre SET $att = :value WHERE code_offre = :code_offre";
@@ -398,6 +404,9 @@ if (isset($_POST['envoi_modif'])){
                 echo "Erreur lors de la mise à jour du champ $att: " . $e->getMessage() . "<br>";
             }
         }
+
+        // MODIFICATION DE L'ADRESSE
+            
         foreach($tab_adresse as $att => $val){
             $requete = "UPDATE tripenarvor._adresse SET $att = :value WHERE code_adresse = :code_adresse";
             $stmt = $dbh->prepare($requete);
@@ -410,6 +419,19 @@ if (isset($_POST['envoi_modif'])){
             } catch (PDOException $e){
                 echo "Erreur lors de la mise à jour du champ $att : " . $e->getMessage() . "<br>";
             }
+        }
+
+        // GESTION DES SERVICES
+
+        $table_bdd_services = "_offre_".$type_offre;
+        
+        foreach($tab_services as $att => $val){
+            $requete = "UPDATE $table_bdd_services SET $att = :value WHERE code_offre = :code_offre";
+            $stmt = $dbh->prepare($requete);
+
+            $stmt->bindValue(":value",$val);
+            $stmt->bindValue(":code_offre",$offre['code_offre']);
+            $stmt->execute();
         }
         
         // GESTION DES NOUVELLES PHOTOS
@@ -743,6 +765,11 @@ if($infos_offre !== null){
 
                                 <label for="langues">Langues</label>
                                 <input type="text" id="langues" data-sync="langues_modif" value="<?php echo htmlspecialchars($infos_offre['visite_guidee']); ?>">
+
+                                <input type="hidden" id="date_modif" name="_date_modif">
+                                <input type="hidden" id="heure_visite_modif" name="_heure_visite_modif">
+                                <input type="hidden" id="duree_modif" name="_duree_modif">
+                                <input type="hidden" id="langues_modif" name="_langues_modif">
                                 
                             </fieldset>
                         <?php
