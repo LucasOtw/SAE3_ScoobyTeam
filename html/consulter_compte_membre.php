@@ -340,9 +340,9 @@ if (isset($_POST['dwl-data'])) {
                 </label>
                 <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden required>
                 <button type="submit" class="modif_photo" name="changePhoto">Enregistrer</button>
-                <h1><?php echo $monCompteMembre['prenom']." ".$monCompteMembre['nom']." (".$monCompteMembre['pseudo'].")"; ?></h1>
-                <p><?php echo $compte['mail']; ?> | <?php echo trim(preg_replace('/(\d{2})/', '$1 ', $compte['telephone'])); ?></p>
             </form>
+            <h1><?php echo $monCompteMembre['prenom']." ".$monCompteMembre['nom']." (".$monCompteMembre['pseudo'].")"; ?></h1>
+            <p><?php echo $compte['mail']; ?> | <?php echo trim(preg_replace('/(\d{2})/', '$1 ', $compte['telephone'])); ?></p>
     </div>
 
         <style>
