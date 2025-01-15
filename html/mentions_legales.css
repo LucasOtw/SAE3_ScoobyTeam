@@ -91,7 +91,7 @@
     list-style-type: disc;
 }
 
-.mentions_legales-sous-list {
+ul.mentions_legales-sous-list {
     margin-left: 40px;
     list-style-type: disc;
 }

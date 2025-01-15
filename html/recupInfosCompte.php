@@ -125,6 +125,7 @@
         $date_actuelle = new DateTime();
         // conversion de la date de publication en objet DateTime
         $date_ajout_offre = new DateTime($offre['date_publication']);
+        $date_ajout_offre = new DateTime($date_ajout_offre->format('Y-m-d'));
         // calcul de la différence en jours
         $diff = $date_ajout_offre->diff($date_actuelle);
         // récupération des différentes unités de temps
