@@ -263,6 +263,17 @@ if (isset($_POST['envoi_modif'])){
 
         if(!empty($url)){
             if(filter_var($url,FILTER_VALIDATE_URL)){
+
+                $options = [
+                    "http" => [
+                        "method" => "HEAD", // HEAD au lieu de GET
+                        "follow_location" => 1 // Suivre les redirections
+                    ]
+                ];
+                $context = stream_context_create($options);
+                $headers = @get_headers($url, 1, $context);
+                
+                
                 $headers = @get_headers($url);
               
                 if ($headers && strpos($headers[0], '200') !== false) {
