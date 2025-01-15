@@ -261,7 +261,8 @@ if (isset($_POST['envoi_modif'])){
     switch($type_offre){
         case "restauration":
             $prix = $_POST['prix'];
-            $tarif = $_POST['tarif'];
+            $tarif = $_POST['_tarif'];
+            echo "<h1>$tarif</h1>";
             switch($prix){
                 case "€":
                     if($tarif < 0 || $tarif >= 25){
