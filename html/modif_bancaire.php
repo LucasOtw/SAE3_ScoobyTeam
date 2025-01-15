@@ -304,6 +304,7 @@ include("recupInfosCompte.php");
 
     <script>
         document.getElementById('bankForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Empêche le rechargement de la page
             var alertBox = document.getElementById('alert');
             if (alertBox) {
                 alertBox.classList.add('show');
@@ -311,6 +312,8 @@ include("recupInfosCompte.php");
                     alertBox.classList.remove('show');
                 }, 3000);
             }
+    
+            // Vous pouvez ajouter ici la logique pour envoyer les données via AJAX si nécessaire.
         });
     
         function closeAlert() {
