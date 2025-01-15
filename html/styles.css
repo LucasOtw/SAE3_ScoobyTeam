@@ -7596,7 +7596,7 @@ form .btn-link {
         margin-top: 1em;
     }
 
-
+}
  /*****************************************************
             * Code pour les pouces*
 *****************************************************/
@@ -7631,7 +7631,7 @@ form .btn-link {
 .pouce.clicked .pouce-original {
     opacity: 0;
 }
-}
+
 
 
 
