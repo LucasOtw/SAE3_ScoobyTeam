@@ -216,12 +216,11 @@ include("recupInfosCompte.php");
 
         <?php if ($message): ?>
             <div class="alert" id="alert">
-                <span class="close-btn" onclick="closeAlert()">&times;</span>
                 <?php echo $message; ?>
             </div>
         <?php endif; ?>
-        
-        <form action="#" method="POST" id="bankForm">
+
+        <form action="#" method="POST">
             <h3>Modifiez vos coordonnées bancaires</h3>
             <div class="form-image-container">
                 <div class="form-section">
@@ -255,7 +254,7 @@ include("recupInfosCompte.php");
             <div class="compte_membre_save_delete">
                 <button type="submit" class="submit-btn2">Modifiez vos coordonnées</button>
             </div>
-        </form>
+        </form> 
     </main>
     <footer class="footer footer_pro">
         <div class="footer-links">
@@ -303,25 +302,15 @@ include("recupInfosCompte.php");
     </footer>
 
     <script>
-        document.getElementById('bankForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Empêche le rechargement de la page
+        window.onload = function () {
             var alertBox = document.getElementById('alert');
             if (alertBox) {
-                alertBox.classList.add('show');
+                alertBox.style.display = 'block';
                 setTimeout(function () {
-                    alertBox.classList.remove('show');
+                    alertBox.style.display = 'none';
                 }, 3000);
             }
-    
-            // Vous pouvez ajouter ici la logique pour envoyer les données via AJAX si nécessaire.
-        });
-    
-        function closeAlert() {
-            var alertBox = document.getElementById('alert');
-            if (alertBox) {
-                alertBox.classList.remove('show');
-            }
-        }
+        };
     </script>
     <script>
        document.addEventListener('DOMContentLoaded', () => {
