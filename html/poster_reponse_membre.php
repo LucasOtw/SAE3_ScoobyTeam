@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poster un avis</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="poster_reponse_membre.css">
 </head>
 
 <body>
