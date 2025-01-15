@@ -635,6 +635,11 @@ if($infos_offre !== null){
                     <label for="accessibilite">Accessibilité</label>
                     <span contenteditable="true" placeholder="Accessibilité" id="accessibilite" data-sync="access_modif"><?php echo $offre['accessibilite'] ?? ""; ?></span>
 
+                    if($type_offre !== "restauration"){
+                        <label for="tarif">Tarif (*)</label>
+                        <input type="number" id="tarif" name="_tarif" placeholder="00.00€" min="0" step="0.01" required>
+                    }
+
                     <input type="hidden" id="resume_modif" name="_resume_modif">
                     <input type="hidden" id="desc_modif" name="_desc_modif">
                     <input type="hidden" id="access_modif" name="_access_modif">
