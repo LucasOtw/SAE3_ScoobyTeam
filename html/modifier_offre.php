@@ -687,8 +687,8 @@ if($infos_offre !== null){
                             <p>Ajouter une photo</p>
                         </div>
                         <!-- Champ fichier caché -->
-                        <input type="file" id="file-input" accept="image/*" style="display: none;">
                     </div>
+                    <input type="file" id="file-input" accept="image/*">
                 </div>
             </div>
         </div>
@@ -824,67 +824,6 @@ if($infos_offre !== null){
                     }
                 });
             });
-            
-
-            // BOUTON "AJOUTER UNE PHOTO"
-            
-                const addPhotoButton = document.getElementById('add-photo');
-                const fileInput = document.getElementById('file-input');
-                const photoCardsContainer = document.querySelector('.photo-cards');
-                const offreTitre = "<?php echo $offre['titre_offre']; ?>"; // Récupérer le titre de l'offre en PHP
-            
-                // Ajouter un événement clic pour déclencher le champ fichier
-                addPhotoButton.addEventListener('click', () => {
-                    fileInput.click(); // Déclencher le sélecteur de fichier
-                });
-            
-                // Ajouter un événement "change" pour détecter quand un fichier est sélectionné
-                fileInput.addEventListener('change', async () => {
-                    const files = fileInput.files; // Récupérer les fichiers sélectionnés
-                    if (files.length > 0) {
-                        const formData = new FormData(); // Créer un objet FormData
-            
-                        // Ajouter chaque fichier au FormData
-                        for (const file of files) {
-                            formData.append('photos[]', file); // 'photos[]' est le nom du champ
-                        }
-            
-                        // Ajouter le titre de l'offre au FormData
-                        formData.append('titre_offre', offreTitre);
-            
-                        try {
-                            // Envoyer les données via fetch
-                            const response = await fetch('upload_photos.php', {
-                                method: 'POST',
-                                body: formData,
-                            });
-            
-                            if (response.ok) {
-                                const data = await response.json(); // Supposons que le serveur retourne un JSON
-                                console.log(data);
-            
-                                // Ajouter dynamiquement les nouvelles photos dans l'interface
-                                if (data.success && data.photos) {
-                                    data.photos.forEach((photoUrl) => {
-                                        const photoCard = document.createElement('div');
-                                        photoCard.className = 'photo-card';
-                                        photoCard.innerHTML = `
-                                            <div class="photo-image">
-                                                <img src="${photoUrl}" alt="Photo">
-                                            </div>
-                                            <button class="delete-photo-btn">Supprimer</button>
-                                        `;
-                                        photoCardsContainer.insertBefore(photoCard, addPhotoButton.parentNode);
-                                    });
-                                }
-                            } else {
-                                console.error('Erreur lors de l\'upload des photos.');
-                            }
-                        } catch (error) {
-                            console.error('Erreur réseau ou problème avec la requête Fetch :', error);
-                        }
-                    }
-                });
         });
     </script>
 
