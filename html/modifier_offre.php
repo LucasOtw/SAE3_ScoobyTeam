@@ -276,19 +276,12 @@ if (isset($_POST['envoi_modif'])){
     
     if(empty($erreurs)){
 
-        echo "<pre>";
-        var_dump($_POST['horaires']);
-        echo "</pre>";
-
         if(!empty($_POST['tags'])){
             $valeurs_tags = array_column($mes_tags, 'code_tag');
-            var_dump($valeurs_tags);
             
             // Première boucle : suppression des tags non sélectionnés
             foreach($valeurs_tags as $un_tag){
-                if(in_array($un_tag, $_POST['tags'])){
-                    echo $un_tag."<br>";
-                } else {
+                if(!in_array($un_tag, $_POST['tags'])){
                     // Si un tag de la table n'est pas dans le tableau $_POST['tags'], on le supprime
                     $req_del_tag = $dbh->prepare("DELETE FROM tripenarvor._son_tag WHERE code_tag = :code_tag AND code_offre = :code_offre");
                     $req_del_tag->bindValue(":code_tag", $un_tag);
@@ -449,6 +442,33 @@ if (isset($_POST['envoi_modif'])){
                     echo "Erreur : Le fichier temporaire $nom_temp n'existe pas.<br>";
                 }
             }
+        }
+
+        // GESTION DE LA SUPPRESSION DES PHOTOS
+
+        if (isset($_POST['deleted_images']) && !empty($_POST['deleted_images'])) {
+            echo "Bonjour<br>";
+            // Récupérer les images envoyées dans le champ caché
+            $deletedImages = json_decode($_POST['deleted_images'], true);
+            
+            // Tableau pour stocker les URLs modifiées
+            $cleanedImages = [];
+            
+            // Parcourir les URLs et les modifier
+            foreach ($deletedImages as $photoSrc) {
+                // Utiliser une expression régulière pour obtenir tout ce qui suit "images"
+                if (preg_match('/images\/.*/', $photoSrc, $matches)) {
+                    // Ajouter la partie "images" et après à notre tableau
+                    $cleanedImages[] = $matches[0];
+                }
+            }
+        
+            // Afficher le résultat pour voir si ça fonctionne
+            echo "<pre>";
+            var_dump($cleanedImages);  // Vous verrez uniquement les parties des URLs à partir de "images"
+            echo "</pre>";
+        } else {
+            echo "<h1>ARRRRRGH</h1><br>";
         }
 
         
@@ -745,9 +765,9 @@ if($infos_offre !== null){
                             <span>+</span>
                             <p>Ajouter une photo</p>
                         </div> -->
-                        <!-- Champ fichier caché -->
                     </div>
                     <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple style="display: block;">
+                    <input type="hidden" name="deleted_images" id="deleted-images">
                 </div>
             </div>
         </div>
@@ -856,6 +876,9 @@ if($infos_offre !== null){
 
             // Sélectionner tous les boutons "Supprimer"
             const deleteButtons = document.querySelectorAll('.delete-photo-btn');
+            const deletedImagesField = document.getElementById('deleted-images');
+
+            let deletedImages = [];
         
             // Ajouter un événement clic à chaque bouton
             deleteButtons.forEach((button) => {
@@ -868,6 +891,7 @@ if($infos_offre !== null){
         
                     // Cibler directement l'image à l'intérieur de .photo-image
                     const image = photoCard.querySelector('.photo-image img');
+                    const photoSrc = image.src;
         
                     // Vérifier si l'image est déjà marquée comme supprimée
                     if (image.classList.contains('supprimee')) {
@@ -875,12 +899,22 @@ if($infos_offre !== null){
                         image.classList.remove('supprimee');
                         button.textContent = 'Supprimer';
                         button.classList.remove('reverse'); // Enlever la classe "reverse" du bouton
+
+                        const indexPhoto = deletedImages.indexOf(photoSrc);
+
+                        if(indexPhoto !== -1){
+                            deletedImages.splice(index,1);
+                        }
+                        
                     } else {
                         // Ajouter la classe pour griser l'image et changer le texte du bouton
                         image.classList.add('supprimee');
                         button.textContent = 'Ajouter';
                         button.classList.add('reverse'); // Ajouter la classe "reverse" au bouton
+
+                        deletedImages.push(photoSrc);
                     }
+                    deletedImagesField.value = JSON.stringify(deletedImages);
                 });
             });
         });
