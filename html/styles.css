@@ -2942,7 +2942,7 @@ input[type="password"]::placeholder {
 
 .main_consulter_compte_membre div.supprimer-download {
   display: flex;
-  gap: 6px;
+  gap: 21vw;
 }
 
 .main_consulter_compte_membre button.submit-btn2:hover, 
