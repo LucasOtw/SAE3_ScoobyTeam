@@ -366,6 +366,12 @@ if (isset($_POST['envoi_modif'])){
             "_description" => $_POST['_desc_modif'],
             "accessibilite" => $_POST['_access_modif']
         );
+
+        // si on modifie le prix, on doit le mettre à jour..
+        
+        if (isset($_POST['_tarif']) && $_POST['_tarif'] != null && !empty($_POST['_tarif'])) {
+            $tab_offre["tarif"] = $_POST['_tarif'];
+        }
         
 
         // table "_adresse"
