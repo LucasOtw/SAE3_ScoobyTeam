@@ -8162,11 +8162,13 @@ footer {
     border-radius : 15px;
     border: 1px solid #ddd;
     display : flex;
-    
+
 }
 
 .bloc_consulter_recemment p {
-    color : #919191;
+    color: #919191;
+    margin-top: 10vh;
+    margin-left: 3vw;
 }
 
 .bloc_consulter_recemment img{
