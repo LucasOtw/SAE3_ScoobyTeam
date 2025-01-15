@@ -25,7 +25,6 @@
 
 .link_souligne {
     text-decoration: none;
-    color: var(--vert-fonce);
 }
 
 .linksouligne:hover {
@@ -412,4 +411,3 @@ footer {
     width: 24px;
     margin: 0 10px;
 }
-
