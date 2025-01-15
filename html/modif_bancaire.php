@@ -216,6 +216,7 @@ include("recupInfosCompte.php");
 
         <?php if ($message): ?>
             <div class="alert" id="alert">
+                <span class="close-btn" onclick="closeAlert()">&times;</span>
                 <?php echo $message; ?>
             </div>
         <?php endif; ?>
@@ -305,12 +306,19 @@ include("recupInfosCompte.php");
         window.onload = function () {
             var alertBox = document.getElementById('alert');
             if (alertBox) {
-                alertBox.style.display = 'block';
+                alertBox.classList.add('show');
                 setTimeout(function () {
-                    alertBox.style.display = 'none';
+                    alertBox.classList.remove('show');
                 }, 3000);
             }
         };
+    
+        function closeAlert() {
+            var alertBox = document.getElementById('alert');
+            if (alertBox) {
+                alertBox.classList.remove('show');
+            }
+        }
     </script>
     <script>
        document.addEventListener('DOMContentLoaded', () => {
