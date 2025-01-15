@@ -833,12 +833,12 @@ if (isset($json['results'][0])) {
                     var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
                     updateLikeDislike(action, codeAvis);
                 
-                    // Ajoute l'ancre dans l'URL pour scroller après le rechargement
-                    window.location.hash = 'negativeImage' + codeAvis;
+                    // // Ajoute l'ancre dans l'URL pour scroller après le rechargement
+                    // window.location.hash = 'negativeImage' + codeAvis;
                 
-                    setTimeout(function() {
-                        location.reload();
-                    }, 200);
+                    // setTimeout(function() {
+                    //     location.reload();
+                    // }, 200);
                 }
                 
                 function toggleNegativeImage(codeAvis) {
@@ -846,11 +846,11 @@ if (isset($json['results'][0])) {
                     updateLikeDislike(action, codeAvis);
                 
                     // Ajoute l'ancre dans l'URL pour scroller après le rechargement
-                    window.location.hash = 'negativeImage' + codeAvis;
+                    // window.location.hash = 'negativeImage' + codeAvis;
                 
-                    setTimeout(function() {
-                        location.reload();
-                    }, 200);
+                    // setTimeout(function() {
+                    //     location.reload();
+                    // }, 200);
                 }
 
                     document.querySelectorAll('.pouce img').forEach(img => {
