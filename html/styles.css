@@ -8161,6 +8161,7 @@ footer {
     width: 58vw;
     margin-left: 8vw;
     margin-top: 3vh;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 
