@@ -815,7 +815,7 @@ if (isset($json['results'][0])) {
                             updateLikeDislike(action, codeAvis);
                 
                             // Vérifie la largeur de la fenêtre avant de recharger
-                            if (window.innerWidth >= 429) {
+                            if (window.innerWidth <= 429) {
                                 setTimeout(function() {
                                     location.reload(); // Recharge la page uniquement si la largeur est >= 429px
                                 }, 200);
@@ -827,7 +827,7 @@ if (isset($json['results'][0])) {
                             updateLikeDislike(action, codeAvis);
                 
                             // Vérifie la largeur de la fenêtre avant de recharger
-                            if (window.innerWidth >= 429) {
+                            if (window.innerWidth <= 429) {
                                 setTimeout(function() {
                                     location.reload(); // Recharge la page uniquement si la largeur est >= 429px
                                 }, 200);
