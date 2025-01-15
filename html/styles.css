@@ -4701,7 +4701,7 @@ nav.nav-bar-tel {
         position: fixed;
         top: 20px;
         right: 20px;
-        background-color: #f44336;
+        background-color:var(--orange);
         color: white;
         padding: 20px;
         border-radius: 5px;
