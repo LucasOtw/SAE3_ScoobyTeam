@@ -832,11 +832,25 @@ if (isset($json['results'][0])) {
                 function togglePositiveImage(codeAvis) {
                     var action = document.getElementById('positiveImage' + codeAvis).src.includes('blanc') ? 'like' : 'unlike';
                     updateLikeDislike(action, codeAvis);
+                
+                    // Ajoute l'ancre dans l'URL pour scroller après le rechargement
+                    window.location.hash = 'negativeImage' + codeAvis;
+                
+                    setTimeout(function() {
+                        location.reload();
+                    }, 200);
                 }
                 
                 function toggleNegativeImage(codeAvis) {
                     var action = document.getElementById('negativeImage' + codeAvis).src.includes('blanc') ? 'dislike' : 'undislike';
                     updateLikeDislike(action, codeAvis);
+                
+                    // Ajoute l'ancre dans l'URL pour scroller après le rechargement
+                    window.location.hash = 'negativeImage' + codeAvis;
+                
+                    setTimeout(function() {
+                        location.reload();
+                    }, 200);
                 }
 
                     document.querySelectorAll('.pouce img').forEach(img => {
