@@ -135,6 +135,10 @@ foreach($tables as $table){
     }
 }
 
+echo "<pre>";
+var_dump($infos_offre);
+echo "</pre>";
+
 echo "<h1>".$type_offre."</h1><br>";
 
 
@@ -296,10 +300,6 @@ if (isset($_POST['envoi_modif'])){
             
             break;
     }
-
-    echo "<pre>";
-    var_dump($infos_offre);
-    echo "</pre>";
 
     // Si il n'y a pas d'erreurs...
     
