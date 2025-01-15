@@ -180,6 +180,8 @@ if (isset($_POST['envoi_modif'])){
 
     $erreurs = [];
 
+    $nouv_images = $_FILES['offre_nouv_images'] ?? null;
+
     if(empty($_POST['_titre_modif']) || empty($_POST['_resume_modif']) || empty($_POST['_desc_modif'])){
         $erreurs[] = "Des champs obligatoires ne sont pas remplis !";
     }
@@ -333,6 +335,9 @@ if (isset($_POST['envoi_modif'])){
             "complement_adresse" => $_POST['_comp_adresse_modif']
         );
         
+
+        $nouveau_dossier = null;
+        
     
         foreach($tab_offre as $att => $val){
             $requete = "UPDATE tripenarvor._offre SET $att = :value WHERE code_offre = :code_offre";
@@ -349,7 +354,7 @@ if (isset($_POST['envoi_modif'])){
                     // Modifier le nom du dossier
 
                     $ancien_dossier = str_replace(' ','',$offre['titre_offre']);
-                    $nouveau_dossier = $val;
+                    $nouveau_dossier = str_replace(' ','',$val);
 
                     $ancien_chemin = "images/offres/{$ancien_dossier}";
                     $nouveau_chemin = "images/offres/{$nouveau_dossier}";
@@ -390,6 +395,55 @@ if (isset($_POST['envoi_modif'])){
                 echo "Champ $att mis à jour avec succès. <br>";
             } catch (PDOException $e){
                 echo "Erreur lors de la mise à jour du champ $att : " . $e->getMessage() . "<br>";
+            }
+        }
+        
+        // GESTION DES NOUVELLES PHOTOS
+
+        if(isset($nouv_images) && $nouv_images !== null){
+            $n_photos = [];
+            // Parcourir chaque photo envoyée
+            foreach($_FILES['offre_nouv_images']['name'] as $key => $file_name){
+                // Si le fichier n'est pas vide, on récupère les informations nécessaires
+                if($_FILES['offre_nouv_images']['error'][$key] === 0){
+                    $photos[] = [
+                        'name' => $file_name,
+                        'type' => $_FILES['offre_nouv_images']['type'][$key],
+                        'tmp_name' => $_FILES['offre_nouv_images']['tmp_name'][$key],
+                        'size' => $_FILES['offre_nouv_images']['size'][$key]
+                    ];
+
+                    $destination = "images/offres/{$nouveau_dossier}";
+                    foreach($photos as $photo){
+                        $nom_temp = $photo['tmp_name'];
+                        $nom_photo = $photo['name'];
+    
+                        // on construit le chemin de destination complet
+                        $chemin = $destination . '/' . $nom_photo;
+    
+                        if(file_exists($nom_temp)){
+                            // on déplace le fichier dans le dossier cible
+                            if(move_uploaded_file($nom_temp,$chemin)){
+                                echo "Le fichier $nom_photo a été déplacé avec succès.<br>";
+
+                                // on ajoute directement dans la bdd.
+                                $ajout_photo = $dbh->prepare("INSERT INTO tripenarvor._image (url_image) VALUES (:url_image)");
+                                $ajout_photo->bindValue(":url_image",$chemin);
+                                $ajout_photo->execute();
+                                $code_image = $dbh->lastInsertId();
+
+                                $ajout_photo_offre = $dbh->prepare("INSERT INTO tripenarvor._son_image VALUES (:code_offre,:code_image)");
+                                $ajout_photo_offre->bindValue(":code_offre",$offre['code_offre']);
+                                $ajout_photo_offre->bindValue(":code_image",$code_image);
+                                $ajout_photo_offre->execute();
+                            } else {
+                                echo "Erreur : Impossible de déplacer le fichier $nom_photo.<br>";
+                            }
+                        } else {
+                            echo "Erreur : Le fichier temporaire $nom_temp n'existe pas.<br>";
+                        }
+                    }
+                }
             }
         }
     } else {
@@ -687,7 +741,7 @@ if($infos_offre !== null){
                         </div> -->
                         <!-- Champ fichier caché -->
                     </div>
-                    <input type="file" id="file-input" accept="image/*" style="display: block;">
+                    <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" style="display: block;">
                 </div>
             </div>
         </div>
