@@ -879,22 +879,22 @@ if($infos_offre !== null){
                         image.classList.remove('supprimee');
                         button.textContent = 'Supprimer';
                         button.classList.remove('reverse'); // Enlever la classe "reverse" du bouton
+
+                        const indexPhoto = deletedImages.indexOf(photoSrc);
+
+                        if(indexPhoto !== -1){
+                            deletedImages.splice(index,1);
+                        }
                         
-                        deletedImages.push(photoSrc);
-                        deletedImagesField.value = JSON.stringify(deletedImages);
                     } else {
                         // Ajouter la classe pour griser l'image et changer le texte du bouton
                         image.classList.add('supprimee');
                         button.textContent = 'Ajouter';
                         button.classList.add('reverse'); // Ajouter la classe "reverse" au bouton
 
-                        const indexPhoto = deletedImages.indexOf(photoSrc);
-
-                        if(indexPhoto !== -1){
-                            deletedImages.splice(index,1);
-                            deletedImagesField.value = JSON.stringify(deletedImages);
-                        }
+                        deletedImages.push(photoSrc);
                     }
+                    deletedImagesField.value = JSON.stringify(deletedImages);
                 });
             });
         });
