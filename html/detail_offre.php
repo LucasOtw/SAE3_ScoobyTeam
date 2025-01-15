@@ -763,41 +763,9 @@ if (isset($json['results'][0])) {
                             class="nom_avis" style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
                     </div>
                 <?php endif; ?>
-                <style>
-                     .pouce {
-                        display: inline-block;
-                        width: 50px; /* Ajuster selon la taille de l'image */
-                        height: 50px; /* Ajuster selon la taille de l'image */
-                        cursor: pointer;
-                    }
-                    .pouce img {
-                       
-                        left: 0;
-                        width: 1.5em;
-                        height: 1.5em; 
-                        transition: opacity 0.5s ease;
-                    }
-                    
-                    .pouce .pouce-hover {
-                        opacity: 0;
-                        z-index: 1;
-                    }
-                    
-                    .pouce .pouce-original {
-                        z-index: 2;
-                    }
-                    
-                    .pouce.clicked .pouce-hover {
-                        opacity: 1;
-                    }
-                    
-                    .pouce.clicked .pouce-original {
-                        opacity: 0;
-                    }
-                </style>
                 <script>
                 function updateLikeDislike(action, codeAvis) {
-                    fetch("update_like.php", {
+                    fetch("update_likes.php", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/x-www-form-urlencoded",

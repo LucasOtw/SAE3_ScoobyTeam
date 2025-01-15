@@ -44,7 +44,9 @@
 
         $date = (new DateTime())->format('Y-m-d H:i:s');
 
-        if ($en_ligne === 1) {
+        if ($en_ligne == 1) {
+            print_r("///////////////////////ok///////////////////////");
+            
             // Si l'offre passe en ligne, mettre à jour date_publication et date_derniere_modif
             $stmt = $dbh->prepare("
                 UPDATE tripenarvor._offre
