@@ -584,6 +584,14 @@ if (isset($_POST['envoi_modif'])){
             }
         }
 
+        // à la fin, tout roule, on peut donc mettre à jour la date de la dernière modification :)
+
+        $today = date("Y-m-d");
+
+        $update_modif_pub = $dbh->prepare("UPDATE tripenarvor._offre SET date_derniere_modif = :date WHERE code_offre = :code_offre");
+        $update_modif_pub->bindValue(":date",$today);
+        $update_modif_pub->bindValue(":code_offre",$offre['code_offre']);
+        $update_modif_pub->execute();
         
     } else {
         foreach($erreurs as $err){
