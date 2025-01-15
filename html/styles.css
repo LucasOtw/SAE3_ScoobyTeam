@@ -5991,11 +5991,11 @@ select.theme_contacter_plateforme {
 }
 
 .photo-image img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px 8px 0 0; /* Arrondi seulement en haut */
-    transition: opacity 0.3s, filter 0.3s;
+   width: 299px;
+  height: 163px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+  transition: opacity 0.3s, filter 0.3s;
 }
 
 .photo-image img.supprimee {
