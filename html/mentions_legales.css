@@ -347,7 +347,6 @@ header.header-tel {
     display: flex;
     flex-direction: column;
     font-family: "K2D", sans-serif;
-    min-height: 100vh;
 }
 
 .mentions_legales-section {
