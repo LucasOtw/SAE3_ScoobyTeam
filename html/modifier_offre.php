@@ -423,7 +423,7 @@ if (isset($_POST['envoi_modif'])){
 
         // GESTION DES SERVICES
 
-        $table_bdd_services = "_offre_".$type_offre;
+        $table_bdd_services = "tripenarvor._offre_".$type_offre;
         
         foreach($tab_services as $att => $val){
             $requete = "UPDATE $table_bdd_services SET $att = :value WHERE code_offre = :code_offre";
