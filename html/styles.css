@@ -2895,6 +2895,25 @@ input[type="password"]::placeholder {
     transition: transform 0.2s ease; /* Animation au survol */
 }
 
+
+.main_consulter_compte_membre button.submit-btn4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    border: var(--vert-clair);
+    padding: 12px 20px;
+    font-size: 1em;
+    border-radius: 16px;
+    cursor: pointer;
+    width: 223px;
+    height: 52px;
+    padding: 15px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease; /* Animation au survol */
+}
+
 .main_consulter_compte_membre button.btn-suppr-compte{
    display: flex;
     align-items: center;
@@ -2918,7 +2937,8 @@ input[type="password"]::placeholder {
   gap: 6px;
 }
 
-.main_consulter_compte_membre button.submit-btn2:hover, 
+.main_consulter_compte_membre button.submit-btn2:hover
+main_consulter_compte_membre button.submit-btn4:hover, 
 .main_consulter_compte_membre .btn-dwl-data:hover {
     transform: translateY(-2px); /* Effet d'élévation au survol */
 
@@ -2931,7 +2951,8 @@ input[type="password"]::placeholder {
 
 }
 
-.main_consulter_compte_membre button.submit-btn2:active{
+.main_consulter_compte_membre button.submit-btn2:active,
+.main_consulter_compte_membre button.submit-btn4:active{
     transform: translateY(2px); /* Effet d'appui */
 }
 
