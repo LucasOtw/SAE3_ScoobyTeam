@@ -220,8 +220,8 @@ include("recupInfosCompte.php");
                 <?php echo $message; ?>
             </div>
         <?php endif; ?>
-
-        <form action="#" method="POST">
+        
+        <form action="#" method="POST" id="bankForm">
             <h3>Modifiez vos coordonnées bancaires</h3>
             <div class="form-image-container">
                 <div class="form-section">
@@ -255,7 +255,7 @@ include("recupInfosCompte.php");
             <div class="compte_membre_save_delete">
                 <button type="submit" class="submit-btn2">Modifiez vos coordonnées</button>
             </div>
-        </form> 
+        </form>
     </main>
     <footer class="footer footer_pro">
         <div class="footer-links">
@@ -303,7 +303,7 @@ include("recupInfosCompte.php");
     </footer>
 
     <script>
-        window.onload = function () {
+        document.getElementById('bankForm').addEventListener('submit', function (event) {
             var alertBox = document.getElementById('alert');
             if (alertBox) {
                 alertBox.classList.add('show');
@@ -311,7 +311,7 @@ include("recupInfosCompte.php");
                     alertBox.classList.remove('show');
                 }, 3000);
             }
-        };
+        });
     
         function closeAlert() {
             var alertBox = document.getElementById('alert');
