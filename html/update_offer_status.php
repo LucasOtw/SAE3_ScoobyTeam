@@ -42,7 +42,7 @@
             echo "Aucune offre trouvée avec le code fourni.";
         }
 
-        $date = (new DateTime())->format('Y-m-d H:i:s'); // Convertir DateTime en chaîne SQL-compatible
+        $date = (new DateTime())->format('Y-m-d H:i:s');
 
         if ($en_ligne === 1) {
             // Si l'offre passe en ligne, mettre à jour date_publication et date_derniere_modif
@@ -70,7 +70,7 @@
             ");
         
             $stmt->execute([
-                ':en_ligne' => false,
+                ':en_ligne' => 0,
                 ':code_offre' => $code_offre
             ]);
         }
