@@ -277,7 +277,7 @@ if (isset($_POST['envoi_modif'])){
     if(empty($erreurs)){
 
         echo "<pre>";
-        var_dump($_POST['horaires']);
+        var_dump($_POST['deleted_images']);
         echo "</pre>";
 
         if(!empty($_POST['tags'])){
@@ -450,6 +450,8 @@ if (isset($_POST['envoi_modif'])){
                 }
             }
         }
+
+        // GESTION DE LA SUPPRESSION DES PHOTOS
 
         
     } else {
@@ -745,9 +747,9 @@ if($infos_offre !== null){
                             <span>+</span>
                             <p>Ajouter une photo</p>
                         </div> -->
-                        <!-- Champ fichier caché -->
                     </div>
                     <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple style="display: block;">
+                    <input type="hidden" name="deleted_images" id="deleted-images">
                 </div>
             </div>
         </div>
@@ -856,6 +858,9 @@ if($infos_offre !== null){
 
             // Sélectionner tous les boutons "Supprimer"
             const deleteButtons = document.querySelectorAll('.delete-photo-btn');
+            const deletedImagesField = document.getElementById('deleted-images');
+
+            let deletedImages = [];
         
             // Ajouter un événement clic à chaque bouton
             deleteButtons.forEach((button) => {
@@ -868,6 +873,7 @@ if($infos_offre !== null){
         
                     // Cibler directement l'image à l'intérieur de .photo-image
                     const image = photoCard.querySelector('.photo-image img');
+                    const photoSrc = image.src;
         
                     // Vérifier si l'image est déjà marquée comme supprimée
                     if (image.classList.contains('supprimee')) {
@@ -875,11 +881,21 @@ if($infos_offre !== null){
                         image.classList.remove('supprimee');
                         button.textContent = 'Supprimer';
                         button.classList.remove('reverse'); // Enlever la classe "reverse" du bouton
+                        
+                        deletedImages.push(photoSrc);
+                        deletedImagesField.value = JSON.stringify(deletedImages);
                     } else {
                         // Ajouter la classe pour griser l'image et changer le texte du bouton
                         image.classList.add('supprimee');
                         button.textContent = 'Ajouter';
                         button.classList.add('reverse'); // Ajouter la classe "reverse" au bouton
+
+                        const indexPhoto = deletedImages.indexOf(photoSrc);
+
+                        if(indexPhoto !== -1){
+                            deletedImages.splice(index,1);
+                            deletedImagesField.value = JSON.stringify(deletedImages);
+                        }
                     }
                 });
             });
