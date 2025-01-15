@@ -341,7 +341,7 @@ header.header-tel {
     padding: 20px;
     background: #fff;
     border-radius: 10px;
-    margin: 20px auto;
+    margin: 50px auto 200px auto;
     max-width: 800px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
