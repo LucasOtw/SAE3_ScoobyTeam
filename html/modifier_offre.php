@@ -426,12 +426,14 @@ if (isset($_POST['envoi_modif'])){
         $table_bdd_services = "tripenarvor._offre_".$type_offre;
         
         foreach($tab_services as $att => $val){
-            $requete = "UPDATE $table_bdd_services SET $att = :value WHERE code_offre = :code_offre";
-            $stmt = $dbh->prepare($requete);
-
-            $stmt->bindValue(":value",$val);
-            $stmt->bindValue(":code_offre",$offre['code_offre']);
-            $stmt->execute();
+            if($val !== null){
+                $requete = "UPDATE $table_bdd_services SET $att = :value WHERE code_offre = :code_offre";
+                $stmt = $dbh->prepare($requete);
+    
+                $stmt->bindValue(":value",$val);
+                $stmt->bindValue(":code_offre",$offre['code_offre']);
+                $stmt->execute();
+            }
         }
         
         // GESTION DES NOUVELLES PHOTOS
