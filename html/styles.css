@@ -8155,6 +8155,15 @@ footer {
     margin-left: 8vw;
 }
 
+.bloc_consulter_recemment{
+    background-color: red;
+    height: 23vh;
+    width: 58vw;
+    margin-left: 8vw;
+    margin-top: 3vh;
+}
+
+
 .toute_les_offres_main .titres-offres{
     display: flex;
     justify-content: space-between;
