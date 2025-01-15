@@ -489,7 +489,7 @@ if($infos_offre !== null){
 </header>
     <main>
         <h1 id="titre_modif_offre">Modifiez votre offre</h1>
-        <form id="modif_offre" action="#" method="POST">
+        <form id="modif_offre" action="#" method="POST" enctype="multipart/form-data">
             <!-- Infos. Générales-->
             <section class="tabs">
                 <ul>
@@ -736,7 +736,7 @@ if($infos_offre !== null){
                         </div> -->
                         <!-- Champ fichier caché -->
                     </div>
-                    <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" style="display: block;">
+                    <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple style="display: block;">
                 </div>
             </div>
         </div>
