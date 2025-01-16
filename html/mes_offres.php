@@ -296,15 +296,30 @@ function tempsEcouleDepuisNotif($avis)
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="mes_offres.php">Accueil</a></li>
-                    <li><a href="creation_offre.php">Publier</a></li>
-                    <li><a href="consulter_compte_pro.php">Mon Compte</a></li>
+                    <li><a href="voir_offres.php">Accueil</a></li>
+                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <?php
+                    if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
+                        ?>
+                        <li>
+                            <a href="consulter_compte_membre.php">Mon Compte</a>
+                        </li>
+                        <?php
+                    } else {
+                        ?>
+                        <li>
+                            <a href="connexion_membre.php">Se connecter</a>
+                        </li>
+                        <?php
+                    }
+                    ?>
                 </ul>
+
             </div>
             <div class="link-group">
                 <ul>
                     <li><a href="#">Nous Connaitre</a></li>
-                    <li><a href="contacter_plateforme.php">Signaler un problème</a></li>
+                    <li><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
                     <li><a href="contacter_plateforme.php">Nous contacter</a></li>
                 </ul>
             </div>
