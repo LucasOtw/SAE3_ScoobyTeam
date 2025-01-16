@@ -10665,7 +10665,10 @@ ul.mentions_legales-sous-list {
 /* Afficher l'élément uniquement sur un écran de 429px de large */
 @media (max-width: 429px) {
     .titre_version_mobile {
-        display: block!important;
+        display: block !important;
+        margin-left: 25vw;
+        font-size: 25px;
+        margin-top: 2vh;
     }
 }
 
@@ -10683,8 +10686,8 @@ ul.mentions_legales-sous-list {
     border-radius: 16px;
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 50vw;
-    margin-left: 24vw;
+    width: 82vw;
+    margin-left: 9vw;
 }
 
 .faq-search-input {
