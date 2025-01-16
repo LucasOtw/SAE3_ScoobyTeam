@@ -340,7 +340,7 @@ header.header-tel {
 
 
 /* Logo */
-.header_compte_membre_tel .logo {
+/*.header_membre .logo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -352,9 +352,9 @@ header.header-tel {
     height: 10em;
 }
 
-.header_compte_membre_tel .logo img {
+.header_membre .logo img {
     max-width: 245px;
-}
+}*/
 
 /* Profil */
 .profile {

@@ -249,7 +249,7 @@ include("recupInfosCompte.php");
             </div>
             <div class="checkbox">
                 <input type="checkbox" id="cgu" name="cgu" required>
-                <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
+                <label for="cgu">J’accepte les <a href="cgu.html">Conditions générales d’utilisation (CGU)</a></label>
             </div>
             <div class="compte_membre_save_delete">
                 <button type="submit" class="submit-btn2">Modifiez vos coordonnées</button>
