@@ -27,18 +27,17 @@ if(isset($_SESSION['crea_offre'])){
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-     <header class="header">
+    <header class="header_pro">
         <div class="logo">
-           <a href="mes_offres.php">
-                  <img src="images/logo_blanc_pro.png" alt="PACT Logo">
+            <a href="voir_offres.php">
+                    <img src="images/logo_blanc_pro.png" alt="PACT Logo">
             </a>
-      
         </div>
-        <nav class="nav">
+        <nav>
             <ul>
-                <li><a href="mes_offres.php">Accueil</a></li>
-                <li><a href="#" class="active">Publier</a></li>
-                <li><a href="consulter_compte_pro.php">Mon Compte</a></li>
+                <li><a href="voir_offres.php">Accueil</a></li>
+                <li><a href="creation_offre.php">Publier</a></li>
+                <li><a href="#" class="active">Se connecter</a></li>
             </ul>
         </nav>
     </header>
