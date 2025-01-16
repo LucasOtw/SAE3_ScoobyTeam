@@ -3344,7 +3344,7 @@ nav.nav-bar {
 
 
 .main_consulter_compte_membre .banner img {
-    width: 70%;
+    width: 62%;
     height: 200px;
     object-fit: cover;
     margin: 30px;
@@ -4135,7 +4135,7 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
 }
 
 .main_modif_mdp_membre .banner img {
-    width: 70%;
+    width: 62%;
     height: 200px;
     object-fit: cover;
     margin: 30px;
