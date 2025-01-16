@@ -340,41 +340,41 @@ header.header-tel {
 
 
 /* Profil */
-.profile {
+.main_compte_membre_tel .profile {
     text-align: center;
     margin-top:-4em;
 }
 
-.profile-img {
+.main_compte_membre_tel .profile-img {
     width: 7em;
     height: 7em;
     border-radius: 2.5em;
     object-fit: cover;
 }
 
-.profile-name {
+.main_compte_membre_tel .profile-name {
     font-size: 22px;
     font-weight: bold;
     margin: 0;
 }
 
-.profile-contact {
+.main_compte_membre_tel .profile-contact {
     font-size: 14px;
     color: #666;
     margin: 5px 0 0;
     text-decoration:none;
 }
 
-.profile {
+.main_compte_membre_tel .profile {
     text-align: center;
 }
 
-.profile-img-container {
+.main_compte_membre_tel .profile-img-container {
     position: relative;
     display: inline-block;
 }
 
-.upload-photo-button {
+.main_compte_membre_tel .upload-photo-button {
     position: absolute;
     bottom: 8em;
     right: 0em;
@@ -392,21 +392,21 @@ header.header-tel {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.upload-photo-button:hover {
+.main_compte_membre_tel .upload-photo-button:hover {
     background-color: #45a049;
 }
 
-.upload-photo-button i {
+.main_compte_membre_tel .upload-photo-button i {
     font-size: 18px;
 }
 
-input[type="file"] {
+.main_compte_membre_tel input[type="file"] {
     display: none;
 }
 
-nav.nav-bar {
+/*nav.nav-bar {
     display: none;
-}
+}*/
 
 
 /* Actions */
@@ -435,6 +435,10 @@ nav.nav-bar {
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+
+.main_compte_membre_tel a{
     text-decoration: none;
 }
 
