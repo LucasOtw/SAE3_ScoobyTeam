@@ -6566,6 +6566,7 @@ select.theme_contacter_plateforme {
     display: flex;
     justify-content: space-between;
     gap: 13px;
+    flex-direction: row-reverse;
 }
 
 .button-text.add-btn {
