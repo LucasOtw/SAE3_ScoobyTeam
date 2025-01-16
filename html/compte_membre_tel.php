@@ -121,17 +121,17 @@ if (isset($_POST['changePhoto'])) {
 
 </head>
 <body>
-    <div class="container">
-        <!-- Header Section -->
-        <header class="header">
-            <div class="logo">
-                <a href="voir_offres.php" class="logo_tel">
-                    <img src="images/LogoCouleur.png" alt="PACT Logo">
-                </a>
-            </div>
-        </header>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <a href="voir_offres.php" class="logo_tel">
+                <img src="images/LogoCouleur.png" alt="PACT Logo">
+            </a>
+        </div>
+    </header>
 
-        <!-- Profile Section -->
+    <main class="main_compte_membre_tel">
+    <!-- Profile Section -->
         <section class="profile">
             <div class="profile-img-container">
                 <img class="profile-img" src="<?php echo $compte_pp; ?>" alt="Photo de profil">
@@ -146,7 +146,7 @@ if (isset($_POST['changePhoto'])) {
         
             <h1 class="profile-name"><?php echo $monCompteMembre['prenom']." ".$monCompteMembre['nom'] ?></h1>
             <p class="profile-contact"><?php echo $compte['mail'] ?> | <?php echo $compte['telephone'] ?></p>
-</section>
+        </section>
 
 
 <script>
@@ -172,43 +172,39 @@ if (isset($_POST['changePhoto'])) {
 
 
 </script>
-
-
-        <!-- Actions Section -->
-        <main class="actions">
-            <a href="consulter_compte_membre.php">
-                <button class="action-btn">
-                    <img src="images/Vector_10.png" alt="Edit Icon"> Éditer les informations
-                </button>
-            </a>
-            <a href="modif_mdp_membre.php">
-                <button class="action-btn">
-                    <img src="images/Vector_11.png" alt="Password Icon"> Modifier mon mot de passe
-                </button>
-            </a>
-            <a href="contacter_plateforme.php">
-                <button class="action-btn">
-                    <img src="images/Vector_11.png" alt="Password Icon"> Contacter la plateforme
-                </button>
-            </a>
-            <a href="consulter_mes_avis.php">
-                <button class="action-btn">
-                    <img src="images/Vector_12.png" alt="History Icon"> Historique
-                </button>
-            </a>
-            <!--Il faudra gérer la deconnexion sur bouton"-->
-            <a href="?deco=true">
-                <button class="action-btn">
-                    <img src="images/Vector_14.png" alt="Logout Icon"> Déconnexion
-                </button>
-            </a>
-
-           <button type="button" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte">
-                <img src="images/trash.svg" alt="Trash Icon" style="width: 20px; height: 20px; margin-right: 10px;"> Supprimer mon compte
+        
+        <a href="consulter_compte_membre.php">
+            <button class="action-btn">
+                <img src="images/Vector_10.png" alt="Edit Icon"> Éditer les informations
             </button>
+        </a>
+        <a href="modif_mdp_membre.php">
+            <button class="action-btn">
+                <img src="images/Vector_11.png" alt="Password Icon"> Modifier mon mot de passe
+            </button>
+        </a>
+        <a href="contacter_plateforme.php">
+            <button class="action-btn">
+                <img src="images/Vector_11.png" alt="Password Icon"> Contacter la plateforme
+            </button>
+        </a>
+        <a href="consulter_mes_avis.php">
+            <button class="action-btn">
+                <img src="images/Vector_12.png" alt="History Icon"> Historique
+            </button>
+        </a>
+        <!--Il faudra gérer la deconnexion sur bouton"-->
+        <a href="?deco=true">
+            <button class="action-btn">
+                <img src="images/Vector_14.png" alt="Logout Icon"> Déconnexion
+            </button>
+        </a>
 
-        </main>
-    </div>
+       <button type="button" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte">
+            <img src="images/trash.svg" alt="Trash Icon" style="width: 20px; height: 20px; margin-right: 10px;"> Supprimer mon compte
+        </button>
+
+    </main>
     <nav class="nav-bar">
         <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
         <a href="consulter_mes_avis.php"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
