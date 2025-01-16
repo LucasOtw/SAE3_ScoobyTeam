@@ -42,7 +42,12 @@ echo "</pre>";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      if(isset($_POST['publier'])){
-        if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
+        if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))) {
+
+            echo "<pre>";
+            var_dump($_POST);
+            echo "</pre>";
+           
             $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
             $note = isset($_POST['note']) ? $_POST['note'] : '';
    
