@@ -10648,7 +10648,7 @@ ul.mentions_legales-sous-list {
 *****************************************************/
 .faq-search-input {
     border: none; /* Supprime la bordure existante */
-    border: 1px solid transparent; /* Ajoute une bordure transparente */
+    border: 1px solid transparent !important; /* Ajoute une bordure transparente */
 }
 
 .titre_version_mobile {
