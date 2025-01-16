@@ -6,10 +6,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    --orange : #F28322;
-    --vert-clair : #BDC426;
-    --vert-fonce : #668C3F;
-    --gris : white;
+    --orange: #F28322;
+    --vert-clair: #BDC426;
+    --vert-fonce: #668C3F;
+    --gris: white;
 }
 
 @font-face {
@@ -26,15 +26,17 @@
     font-style: normal;
 }
 
-html, body {
+html,
+body {
     height: 100%;
 
 }
 
-body{
+body {
     overflow-x: hidden;
 
 }
+
 /*****************************************************
         * Code pour la page header/footer responsive *
 *****************************************************/
@@ -59,22 +61,26 @@ header {
 
 .logo img {
     height: 60px;
-    max-width: 100%; /* Pour s'assurer que l'image ne dépasse pas */
+    max-width: 100%;
+    /* Pour s'assurer que l'image ne dépasse pas */
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 3vw; /* Espace adaptable selon la largeur de l'écran */
+    gap: 3vw;
+    /* Espace adaptable selon la largeur de l'écran */
     margin-right: 4vw;
-    flex-wrap: wrap; /* Permet de passer sur plusieurs lignes si nécessaire */
+    flex-wrap: wrap;
+    /* Permet de passer sur plusieurs lignes si nécessaire */
 }
 
 nav ul li a {
     position: relative;
     text-decoration: none;
     color: white;
-    font-size: 1.2rem; /* Utilise des unités relatives */
+    font-size: 1.2rem;
+    /* Utilise des unités relatives */
     padding: 5px 10px;
     transition: color 0.3s, border-bottom 0.3s;
 }
@@ -124,7 +130,8 @@ footer {
 
 .newsletter {
     display: flex;
-    flex-direction: column; /* Stack les éléments sur petits écrans */
+    flex-direction: column;
+    /* Stack les éléments sur petits écrans */
     justify-content: space-between;
     background-color: var(--orange);
     padding: 20px;
@@ -133,24 +140,28 @@ footer {
     margin-top: -130px;
     z-index: 1;
     width: 90%;
-    max-width: 1200px; /* Limite la largeur sur grands écrans */
+    max-width: 1200px;
+    /* Limite la largeur sur grands écrans */
     margin-left: auto;
     margin-right: auto;
 }
 
 .newsletter-content {
     text-align: left;
-    max-width: 100%; /* Ajuste pour petits écrans */
+    max-width: 100%;
+    /* Ajuste pour petits écrans */
 }
 
 .newsletter h2 {
-    font-size: 2rem; /* Taille adaptable */
+    font-size: 2rem;
+    /* Taille adaptable */
     margin-bottom: 10px;
 }
 
 .newsletter-form {
     display: flex;
-    flex-direction: column; /* Colonne sur petits écrans */
+    flex-direction: column;
+    /* Colonne sur petits écrans */
     gap: 10px;
     margin-top: 10px;
 }
@@ -163,7 +174,8 @@ footer {
     cursor: pointer;
 }
 
-.newsletter-form input, .newsletter-form button {
+.newsletter-form input,
+.newsletter-form button {
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -175,7 +187,8 @@ footer {
 
 .newsletter-image img {
     max-height: 100px;
-    width: auto; /* Maintien du ratio de l'image */
+    width: auto;
+    /* Maintien du ratio de l'image */
 }
 
 .footer-links {
@@ -222,15 +235,15 @@ footer {
         flex-direction: row;
         justify-content: space-between;
     }
-    
+
     .newsletter-content {
         max-width: 60%;
     }
-    
+
     .newsletter-form {
         flex-direction: row;
     }
-    
+
     .footer-links {
         flex-direction: row;
         justify-content: space-between;
@@ -245,21 +258,24 @@ footer {
 
 @media (min-width: 1024px) {
     nav ul {
-        gap: 50px; /* Réduit l'espace entre les éléments sur grands écrans */
+        gap: 50px;
+        /* Réduit l'espace entre les éléments sur grands écrans */
     }
 
     footer {
         padding: 40px 80px;
     }
 }
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-                                        /*****************************************************
-                                                   * Code pour la page création offre *
-                                        *****************************************************/
+
+/*****************************************************
+            * Code pour la page création offre *
+*****************************************************/
 
 /* Main container centré verticalement et horizontalement */
 .main-creation-offre {
@@ -280,18 +296,19 @@ footer {
     width: 100%;
     max-width: 600px;
     display: flex;
-    flex-direction: column; /* Alignement vertical des enfants */
-    justify-content: space-between; /* Espace entre les éléments */
+    flex-direction: column;
+    /* Alignement vertical des enfants */
+    justify-content: space-between;
+    /* Espace entre les éléments */
     height: 350px;
 }
 
 
-.main-creation-offre .form-container h1{
+.main-creation-offre .form-container h1 {
     font-size: 24px;
     color: #333;
     margin-bottom: 30px;
 }
-
 
 .main-creation-offre label {
     display: block;
@@ -312,7 +329,7 @@ footer {
 .main-creation-offre .button_continuer {
     background-color: var(--orange);
     color: white;
-    padding: 10px 20px; 
+    padding: 10px 20px;
     margin-top: 30px;
     border: none;
     text-decoration: none;
@@ -320,23 +337,24 @@ footer {
     font-size: 16px;
     font-family: inherit;
     cursor: pointer;
-    align-self: flex-end; /* Positionne le bouton à droite */
+    align-self: flex-end;
+    /* Positionne le bouton à droite */
     display: inline-flex;
     align-items: center;
 }
 
 .main-creation-offre .button_continuer img {
-    margin-left: 10px; /* Espacement entre le texte et la flèche */
+    margin-left: 10px;
+    /* Espacement entre le texte et la flèche */
 }
 
 .main-creation-offre button:hover {
     background-color: var(--orange);
 }
 
-.type_offre_select_button {
-        display: flex;
-        align-content: center;
-        justify-content: flex-start;
-        flex-direction: column;
-    
- }
+.main-creation-offre .type_offre_select_button {
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
