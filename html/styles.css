@@ -6801,6 +6801,13 @@ input#btn-poster-avis {
     color: var(--vert-clair);
 }
 
+.hours_desktop_detail_offre_pro span {
+    font-weight: bold;
+    color: var(--orange);
+}
+
+
+
 .visit-button_detailoffre:hover {
     transform: translateY(-2px);
     /* Effet d'élévation au survol */

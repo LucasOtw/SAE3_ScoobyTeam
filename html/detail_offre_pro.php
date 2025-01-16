@@ -688,7 +688,7 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
             <div class="Detail_offre_ouverture_global_desktop">
 
                 <h2>Horaires</h2>
-                <ul class="hours_desktop_detail_offre">
+                <ul class="hours_desktop_detail_offre_pro">
                     <li><span>Lundi</span><?php echo afficherHoraire($h_lundi);?></li>
                     <li><span>Mardi</span><?php echo afficherHoraire($h_mardi);?></li>
                     <li><span>Mercredi</span><?php echo afficherHoraire($h_mercredi);?></li>
