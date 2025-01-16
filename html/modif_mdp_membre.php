@@ -51,7 +51,7 @@ if (isset($_POST['modif_infos'])){
             if ($rowsAffected > 0) {
                 $modif_mdp = true;
             } else {
-                echo "Aucune mise à jour effectuée.";
+                $modif_mdp = null;
             }
 
          }
@@ -159,16 +159,22 @@ if (isset($_POST['modif_infos'])){
         </form>
           <?php
 
-            if($modif_mdp){
+            if($modif_mdp !== null){
+               if($modif_mdp == true){
+                  $img_success = "images/verifier.png";
+                  $msg_modif = "Mot de passe modifié avec succès&nbsp!";
+               } else {
+                  $img_success = "images/erreur.png";
+                  $msg_modif = "Erreur lors du changement du mot de passe&nbsp!";
+               }
                ?>
-                  <div class="creation-success" id="modif_mdp_membre">
-                      <img src="images/verifier.png" alt="Succès">
-                      <h2>Mot de passe modifié avec succès&nbsp!</h2>
-                  </div>
+               <div class="creation-success" id="modif_mdp_membre">
+                  <img src="<?php echo $img_success ?>" alt="Succès">
+                  <h2><?php echo $msg_modif; ?></h2>
+               </div>
                <?php
             }
-         
-         ?>
+            ?>
        
     </main>
    
