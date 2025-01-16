@@ -91,6 +91,7 @@ if (isset($_POST['modif_infos'])){
             if ($rowsAffected > 0) {
                $modif_mdp = true;
                $compte['mdp'] = $mdp_modif;
+               var_dump($compte['mdp']);
             } else {
                $modif_mdp = false;
             }
