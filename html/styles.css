@@ -10647,7 +10647,8 @@ ul.mentions_legales-sous-list {
             * Code pour obtenir aide *
 *****************************************************/
 .faq-search-input {
-    border: 1px solid transparent;
+    border: none; /* Supprime la bordure existante */
+    border: 1px solid transparent; /* Ajoute une bordure transparente */
 }
 
 .titre_version_mobile {
