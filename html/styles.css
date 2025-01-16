@@ -6562,6 +6562,24 @@ select.theme_contacter_plateforme {
     height: 52px;
 }
 
+.detail_offre_pro_button{
+    display: flex;
+    justify-content: space-between;
+    gap: 13px;
+}
+
+.button-text.add-btn {
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    width: 223px;
+    height: 52px;
+    border: 1px solid var(--orange);
+}
+
 input#btn-poster-avis {
     padding: 10px 20px;
     background-color: #FFF;
@@ -10812,7 +10830,7 @@ ul.mentions_legales-sous-list {
                     * Pop pup *
 *****************************************************/
 
-.info-icon-container {
+.info-icon-container_pro {
     position: relative;
     display: inline-block;
 }
@@ -10857,7 +10875,7 @@ ul.mentions_legales-sous-list {
     border-color: #333 transparent transparent transparent;
 }
 
-.info-icon-container:hover .tooltip {
+.info-icon-container_pro:hover .tooltip {
     opacity: 1;
     visibility: visible;
 }
