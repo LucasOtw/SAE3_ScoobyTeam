@@ -156,6 +156,16 @@ function tempsEcouleDepuisNotif($avis)
                                 $infoCompte->execute();
                                 $compte_m = $infoCompte->fetch(PDO::FETCH_ASSOC);
 
+                                if (!empty($compte_m['prenom']) && !empty($compte_m['nom'])) {
+                                    // Si c'est un membre classique
+                                    $prenom = $compte_m['prenom'];
+                                    $nom = $compte_m['nom'];
+                                } else {
+                                    // Si l'utilisateur est supprimé
+                                    $prenom = "Utilisateur";
+                                    $nom = "supprimé";
+                                }
+
                                 if ($nb_notif <5)
                                 {
                                 ?>
@@ -165,7 +175,7 @@ function tempsEcouleDepuisNotif($avis)
                                         data-avis="<?php echo $notif["code_avis"]; ?>" >
                                         <img src="<?php echo $compte_pp; ?>" alt="photo de profil" class="profile-img">
                                         <div class="notification-content">
-                                            <strong><?php echo $compte_m["prenom"].' '.$compte_m["nom"]; ?></strong>
+                                            <strong><?php echo $prenom.' '.$nom; ?></strong>
                                             <span class="notification-location"> | <?php echo $notif["titre_offre"]; ?></span>
                                             <p><?php echo $notif["txt_avis"]; ?></p>
                                             <span class="notification-time"><?php echo tempsEcouleDepuisNotif($notif);?></span>
