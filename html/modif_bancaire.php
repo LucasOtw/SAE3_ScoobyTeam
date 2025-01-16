@@ -311,9 +311,9 @@ function tempsEcouleDepuisNotif($avis)
     <footer class="footer footer_pro">
         <div class="footer-links">
             <div class="logo">
-                <img src="images/logoBlanc.png" alt="Logo PACT">
+                <img src="images/logoBlanc.png" alt="Logo PAVCT">
             </div>
-             <div class="link-group">
+            <div class="link-group">
                 <ul>
                     <li><a href="mentions_legales.html">Mentions Légales</a></li>
                     <li><a href="cgu.html">GGU</a></li>
@@ -322,15 +322,30 @@ function tempsEcouleDepuisNotif($avis)
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="mes_offres.php">Accueil</a></li>
-                    <li><a href="creation_offre.php">Publier</a></li>
-                    <li><a href="consulter_compte_pro.php">Mon Compte</a></li>
+                    <li><a href="voir_offres.php">Accueil</a></li>
+                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <?php
+                    if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
+                        ?>
+                        <li>
+                            <a href="consulter_compte_membre.php">Mon Compte</a>
+                        </li>
+                        <?php
+                    } else {
+                        ?>
+                        <li>
+                            <a href="connexion_membre.php">Se connecter</a>
+                        </li>
+                        <?php
+                    }
+                    ?>
                 </ul>
+
             </div>
             <div class="link-group">
                 <ul>
                     <li><a href="#">Nous Connaitre</a></li>
-                    <li><a href="contacter_plateforme.php">Signaler un problème</a></li>
+                    <li><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
                     <li><a href="contacter_plateforme.php">Nous contacter</a></li>
                 </ul>
             </div>
