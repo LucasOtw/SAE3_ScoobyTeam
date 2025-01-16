@@ -187,7 +187,12 @@ if (isset($_POST['changePhoto'])) {
         </a>
         <a href="contacter_plateforme.php">
             <button class="action-btn">
-                <img src="images/Vector_11.png" alt="Password Icon"> Contacter la plateforme
+                <img src="images/icones/phone.png" alt="Password Icon"> Contacter la plateforme
+            </button>
+        </a>
+        <a href="contacter_plateforme.php">
+            <button class="action-btn">
+                <img src="images/icones/help.png" alt="Password Icon"> Aide
             </button>
         </a>
         <a href="consulter_mes_avis.php">
