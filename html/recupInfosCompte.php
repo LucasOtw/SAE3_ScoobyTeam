@@ -11,6 +11,8 @@
   // on récupère les infos du compte actuelle
   if(isset($_SESSION['membre'])){
      $compte = $_SESSION['membre'];
+
+     var_dump($_SESSION['membre']);
     
 
     /*
