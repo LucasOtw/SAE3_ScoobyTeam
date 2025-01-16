@@ -10600,6 +10600,7 @@ ul.mentions_legales-sous-list {
     height: 7em;
     border-radius: 2.5em;
     object-fit: cover;
+    margin-right: 0;    
 }
 
 .main_compte_membre_tel .profile-name {
