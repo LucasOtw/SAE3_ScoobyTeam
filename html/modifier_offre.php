@@ -263,8 +263,8 @@ if (isset($_POST['envoi_modif'])){
 
         if(!empty($url)){
             if(filter_var($url,FILTER_VALIDATE_URL)){
-
-                $options = [
+                
+                /* $options = [
                     "http" => [
                         "method" => "HEAD", // HEAD au lieu de GET
                         "follow_location" => 1 // Suivre les redirections
@@ -280,7 +280,7 @@ if (isset($_POST['envoi_modif'])){
                     // Circulez, tout va bien..
                 } else {
                     $erreurs[] = "L'URL n'est pas accessible.";
-                }
+                } */
             } else {
                 $erreurs[] = "L'URL n'est pas valide.";
             }
