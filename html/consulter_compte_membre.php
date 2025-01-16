@@ -436,9 +436,9 @@ if (isset($_POST['dwl-data'])) {
                     <button type="button" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte">Supprimer le compte</button>
                 </div>
                 <div style="display: flex; gap:6px">
+                    <button type="button" name="mes-donnees" class="submit-btn4" id="btn-mes-donnees">Mes données</button>
                     <a href="?deco=true" class="submit-btn1">Déconnexion</a>
                     <button type="submit" name="modif_infos" class="submit-btn2" id="btn-enreg">Enregistrer</button>
-                    <button type="button" name="mes-donnees" class="submit-btn4" id="btn-mes-donnees">Mes données</button>
                 </div>
                 
         
