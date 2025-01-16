@@ -573,12 +573,12 @@ footer {
 
 }
 
-#btn-voir-offre:hover{
+#btn-voir-offre:hover {
     transform: translateY(-2px);
     cursor: pointer;
 }
 
-#btn-voir-offre:active{
+#btn-voir-offre:active {
     transform: translateY(-2px);
     cursor: pointer;
 }
@@ -661,19 +661,22 @@ footer {
 }
 
 .visit-button_detailoffre {
-    transition: transform 0.2s ease; /* Animation au survol */
-    cursor : pointer;
+    transition: transform 0.2s ease;
+    /* Animation au survol */
+    cursor: pointer;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     margin-left: 30px;
 
 }
 
 .visit-button_detailoffre:hover {
-    transform: translateY(-2px); /* Effet d'élévation au survol */
+    transform: translateY(-2px);
+    /* Effet d'élévation au survol */
 }
 
 .visit-button_detailoffre:active {
-    transform: translateY(2px); /* Effet d'élévation au survol */
+    transform: translateY(2px);
+    /* Effet d'élévation au survol */
 }
 
 
@@ -1090,6 +1093,7 @@ footer {
     margin: 0;
     /* Enlève la marge par défaut */
 }
+
 /* Conteneur global */
 .a-la-une-wrapper {
     position: relative;
@@ -1406,18 +1410,18 @@ footer {
 }
 
 .avis-widget .avis-content .signalement_repondre {
-           display: flex;
+    display: flex;
 }
 
 #btn-repondre-avis {
-  border: 3px;
-  color: var(--orange);
-  background-color: white;
-  font-size: 26px;
+    border: 3px;
+    color: var(--orange);
+    background-color: white;
+    font-size: 26px;
 }
 
 #btn-repondre-avis:hover {
-   cursor: pointer;
+    cursor: pointer;
 }
 
 .toggle-button {
