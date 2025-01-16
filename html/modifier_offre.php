@@ -714,7 +714,7 @@ if($infos_offre !== null){
                     <table>
                         <thead>
                             <tr>
-                                <th>Tags</th>
+                                <th></th>
                                 <th></th>
                             </tr>
                         </thead>
