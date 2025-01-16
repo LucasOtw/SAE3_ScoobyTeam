@@ -8373,6 +8373,8 @@ a.bloc_consulter_recemment_a {
 
 .bloc_consulter_recemment img {
     height: 15vw;
+    max-height: 170px;
+    min-height: 100px;
 }
 
 
