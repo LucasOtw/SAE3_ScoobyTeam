@@ -8351,20 +8351,18 @@ footer {
 
 .bloc_consulter_recemment {
     background-color: white;
-    height: 23vh;
-    width: 50vw;
-    margin-left: 8vw;
-    margin-top: 3vh;
+    margin: auto 8vw;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
     border: 1px solid #ddd;
     display: flex;
-
+    align-items: center;
+    flex-direction: row;
+    padding: 20px;
 }
 
 .bloc_consulter_recemment p {
     color: #919191;
-    margin-top: 10vh;
     margin-left: 3vw;
     text-decoration: none;
 }
@@ -8374,9 +8372,7 @@ a.bloc_consulter_recemment_a {
 }
 
 .bloc_consulter_recemment img {
-    height: 19vh;
-    margin-top: 2vh;
-    margin-left: 2vh;
+    height: 15vw;
 }
 
 
