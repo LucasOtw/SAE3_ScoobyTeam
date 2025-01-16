@@ -77,7 +77,6 @@ if (isset($_POST['modif_infos'])){
    // Mettre à jour seulement les champs modifiés
    if (!empty($champsModifies))
    {
-      echo password_hash($champsModifies['mdp_actuel'], PASSWORD_DEFAULT);
       if (password_verify($champsModifies['mdp_actuel'],$valeursInitiales['mdp']))
       {
          if (trim($champsModifies['mdp_nv1']) === trim($champsModifies['mdp_nv2']))
