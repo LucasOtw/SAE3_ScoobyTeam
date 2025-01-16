@@ -135,13 +135,6 @@ foreach($tables as $table){
     }
 }
 
-echo "<pre>";
-var_dump($infos_offre);
-echo "</pre>";
-
-echo "<h1>".$type_offre."</h1><br>";
-
-
 /* RÉCUPÉRATION DES TAGS */
 
 
@@ -607,6 +600,9 @@ if (isset($_POST['envoi_modif'])){
         $update_modif_pub->bindValue(":date",$today);
         $update_modif_pub->bindValue(":code_offre",$offre['code_offre']);
         $update_modif_pub->execute();
+
+        header("location: detail_offre_pro.php");
+        exit;
         
     } else {
         foreach($erreurs as $err){
@@ -994,12 +990,6 @@ if($infos_offre !== null){
                     target.value = element.contentEditable === "true" ? element.innerHTML : element.value;
                 }
             });
-            const radioGroup = document.querySelector('input[name="prix"]:checked');
-            if (!radioGroup) {
-                alert('Veuillez sélectionner une option de prix.');
-                document.querySelector('input[name="prix"]').focus();
-                event.preventDefault();
-            }
         });
     </script>
     <script>

@@ -9111,7 +9111,7 @@ body.menu-open #overlay {
     opacity: 1;
     /* Complètement visible */
     bottom: 5em;
-    margin-right:1.5em
+    margin-right:1.5em;
     left:2em;
 }
 
@@ -10124,8 +10124,286 @@ ul.mentions_legales-sous-list {
 
 
 
+<<<<<<< HEAD
 
 
+                                        /*****************************************************
+                                                   * Code pour la page création offre *
+                                        *****************************************************/
+
+/* Main container centré verticalement et horizontalement */
+.main-creation-offre {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Formulaire centré avec une boîte */
+.main-creation-offre .form-container {
+    background-color: white;
+    padding: 40px;
+    margin-bottom: 3em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column; /* Alignement vertical des enfants */
+    justify-content: space-between; /* Espace entre les éléments */
+    height: 350px;
+}
+
+
+.main-creation-offre .form-container h1{
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+
+.main-creation-offre label {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    color: #555;
+}
+
+.main-creation-offre select {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    border-color: var(--orange);
+}
+
+.main-creation-offre .button_continuer {
+    background-color: var(--orange);
+    color: white;
+    padding: 10px 20px; 
+    margin-top: 30px;
+    border: none;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    align-self: flex-end; /* Positionne le bouton à droite */
+    display: inline-flex;
+    align-items: center;
+}
+
+.main-creation-offre .button_continuer img {
+    margin-left: 10px; /* Espacement entre le texte et la flèche */
+}
+
+.main-creation-offre button:hover {
+    background-color: var(--orange);
+}
+
+.type_offre_select_button {
+        display: flex;
+        align-content: center;
+        justify-content: flex-start;
+        flex-direction: column;
+    
+ }
+=======
+/*****************************************************
+            * Code page télécharger une facture  *
+*****************************************************/
+
+/* Profile Section */
+.main-telecharger-facture .profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.main-telecharger-facture .banner img {
+    width: 70%;
+    height: 200px;
+    object-fit: cover;
+    margin: 30px;
+    border-radius: 20px;
+}
+
+.main-telecharger-facture .profile-info {
+    margin-top: -90px;
+    text-align: center;
+}
+
+.main-telecharger-facture .profile-info img.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 35px;
+    object-fit: cover;
+}
+
+.main-telecharger-facture .profile-info h1 {
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+.main-telecharger-facture .profile-info p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Tabs Section */
+.main-telecharger-facture .tabs {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.main-telecharger-facture .tabs ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    min-width: 40vw;
+}
+
+.main-telecharger-facture .tabs ul li {
+    display: flex;
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+.main-telecharger-facture .tabs ul li a {
+    width: calc(60vw/3);
+    font-size: 20px;
+    padding: 10px 20px;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+    color: #333;
+    text-decoration: none;
+}
+
+.main-telecharger-facture .tabs ul li a.active {
+    border-color: #ff6600;
+    text-decoration: none;
+}
+
+           
+/* Container principal */
+.main-telecharger-facture .facture-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Header de la facture */
+.main-telecharger-facture .facture-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.main-telecharger-facture .facture-header .logo img {
+    max-height: 50px;
+}
+
+.main-telecharger-facture .facture-title h1 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+}
+
+.main-telecharger-facture .facture-title p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Informations entreprise et client */
+.main-telecharger-facture .facture-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.main-telecharger-facture .facture-info .info {
+    width: 48%;
+}
+
+.main-telecharger-facture .facture-info .info h3 {
+    font-size: 18px;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.main-telecharger-facture .facture-info .info p {
+    font-size: 14px;
+    color: #555;
+    margin: 3px 0;
+}
+
+/* Table des items */
+.main-telecharger-facture .facture-items {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    height: 118px;
+}
+
+.main-telecharger-facture .facture-items th, .facture-items td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.main-telecharger-facture .facture-items th {
+    background-color: #007bff;
+    color: white;
+}
+
+.main-telecharger-facture .facture-items td {
+    background-color: #f9f9f9;
+}
+
+/* Footer de la facture */
+.main-telecharger-facture .facture-footer {
+    margin-top: 20px;
+}
+
+.main-telecharger-facture .facture-footer p {
+    font-size: 16px;
+    color: #333;
+}
+
+.main-telecharger-facture .signature-line {
+    border-top: 1px solid #333;
+    margin-top: 30px;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.main-telecharger-facture .dropdown-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.main-telecharger-facture .dropdown {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+>>>>>>> c14e6d72a1731453d02895120fccdcaad1076620
                                         /*****************************************************
                                                    * Code pour la page création offre *
                                         *****************************************************/
