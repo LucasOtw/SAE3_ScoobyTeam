@@ -8,7 +8,7 @@ var_dump($_SESSION);
 echo "</pre>";
 */
 
-echo password_hash("test",PASSWORD_DEFAULT);
+// echo password_hash("test",PASSWORD_DEFAULT);
 
 ?>
 
