@@ -234,7 +234,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <ul>
                     <li><a href="voir_offres.php">Accueil</a></li>
                     <li><a href="connexion_pro.php">Publier</a></li>
-                    <li><a href="connexion_memebre.php">Se Connecter</a></li>
+                    <li><a href="connexion_membre.php">Se Connecter</a></li>
                 </ul>
             </div>
             <div class="link-group">
