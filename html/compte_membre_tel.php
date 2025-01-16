@@ -123,11 +123,13 @@ if (isset($_POST['changePhoto'])) {
 <body>
     <!-- Header Section -->
     <div class="header_membre">
-        <div  class="logo-tel">
-            <a href="voir_offres.php">
-                <img src="images/LogoCouleur.png" alt="PACT Logo">
-            </a>
-        </div>
+        <header class="header-tel">
+            <div  class="logo-tel">
+                <a href="voir_offres.php">
+                    <img src="images/LogoCouleur.png" alt="PACT Logo">
+                </a>
+            </div>
+        </header>
     </div>
 
     <main class="main_compte_membre_tel">
