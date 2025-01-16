@@ -35,9 +35,9 @@ if(isset($_SESSION['crea_offre'])){
         </div>
         <nav>
             <ul>
-                <li><a href="voir_offres.php">Accueil</a></li>
+                <li><a href="mes_offres.php">Accueil</a></li>
                 <li><a href="creation_offre.php" class="active">Publier</a></li>
-                <li><a href="connexion_pro.php">Se connecter</a></li>
+                <li><a href="consulter_compte_pro.php">Se connecter</a></li>
             </ul>
         </nav>
     </header>
