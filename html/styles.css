@@ -11490,6 +11490,10 @@ ul.mentions_legales-sous-list {
     padding : 0 10px;
 }
 
+.main-creation-offre2 input[type="file"]{
+    display: block;
+}
+
 
 .main-creation-offre2 fieldset:focus-within legend {
     display:inline;
