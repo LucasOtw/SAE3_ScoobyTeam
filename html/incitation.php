@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -36,7 +40,7 @@
       <a href="incitation.php"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
       <a href="
         <?php
-            if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
+            if(isset($_SESSION["membre"])){
                 echo 'consulter_compte_membre.php';
             } else {
                 echo 'connexion_membre.php';

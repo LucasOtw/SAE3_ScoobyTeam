@@ -373,6 +373,7 @@
                             <h2>Compte crée avec succès&nbsp!</h2>
                         </div>
                     <?php
+                    
                 }
     
                try {
