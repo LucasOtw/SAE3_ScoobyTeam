@@ -147,7 +147,14 @@ try {
                     <?php 
                         if ($avis) {
                             // Afficher les informations de l'avis trouvé
-                            echo "<h3>" . htmlspecialchars($avis['note']) . ".0 | " . htmlspecialchars($avis['prenom']) . " " . htmlspecialchars($avis['nom']) . "</h3>";
+                            if (htmlspecialchars($avis['note']) == 0)
+                            {
+                                $note_avis='Réponse';
+                            } else {
+                                $note_avis=htmlspecialchars($avis['note']).".0";
+                            }
+                            
+                            echo "<h3>" . $note_avis . " | " . htmlspecialchars($avis['prenom']) . " " . htmlspecialchars($avis['nom']) . "</h3>";
                             echo "<p>" . $avis['txt_avis'] . "</p>";
                         } else {
                             // Aucun avis trouvé avec cet ID

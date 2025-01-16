@@ -681,7 +681,8 @@ if($infos_offre !== null){
                         }
                     ?>
 
-                    <input type="text" data-sync="site_modif" value="<?php echo $offre['site_web']; ?>">
+                    <label for="url_site">Site Web</label>
+                    <input type="text" id="url_site" data-sync="site_modif" value="<?php echo $offre['site_web']; ?>">
 
                     <input type="hidden" id="resume_modif" name="_resume_modif">
                     <input type="hidden" id="desc_modif" name="_desc_modif">
