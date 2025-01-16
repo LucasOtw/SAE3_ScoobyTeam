@@ -100,7 +100,11 @@ if (isset($_POST['modif_infos'])){
                $modif_mdp = false;
             }
 
+         } else {
+            $modif_mdp = false;
          }
+      } else {
+         $modif_mdp = false;
       }
        // echo "Les informations ont été mises à jour.";
        include("recupInfosCompte.php");
