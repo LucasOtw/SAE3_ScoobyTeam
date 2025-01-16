@@ -135,13 +135,6 @@ foreach($tables as $table){
     }
 }
 
-echo "<pre>";
-var_dump($infos_offre);
-echo "</pre>";
-
-echo "<h1>".$type_offre."</h1><br>";
-
-
 /* RÉCUPÉRATION DES TAGS */
 
 
@@ -607,6 +600,9 @@ if (isset($_POST['envoi_modif'])){
         $update_modif_pub->bindValue(":date",$today);
         $update_modif_pub->bindValue(":code_offre",$offre['code_offre']);
         $update_modif_pub->execute();
+
+        header("location: detail_offre_pro.php");
+        exit;
         
     } else {
         foreach($erreurs as $err){
@@ -761,7 +757,7 @@ if($infos_offre !== null){
                                         <label class="label-check" for="moins_25">€ (menu à moins de 25€)</label>
                                     </div>
                                     <div>
-                                        <input class="label-check" type="radio" id="entre_25_40" name="prix" value="€€" required>
+                                        <input type="radio" id="entre_25_40" name="prix" value="€€" required>
                                         <label class="label-check" for="entre_25_40">€€ (entre 25€ et 40€)</label>
                                     </div>
                                     <div>
