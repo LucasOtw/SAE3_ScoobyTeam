@@ -1959,6 +1959,7 @@ main.main_poster_avis .poster_un_avis_btn_offre {
     border-radius: 16px;
     cursor: pointer;
     width: 15vw;
+    max-width: 220px;
     height: 52px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2s ease;
@@ -2056,6 +2057,7 @@ main.main_poster_avis .poster_un_avis_btn_publier {
     border-radius: 16px;
     cursor: pointer;
     width: 15vw;
+    max-width: 220px;
     height: 52px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2s ease;
@@ -2561,6 +2563,7 @@ input[type="password"]::placeholder {
     border-radius: 16px;
     cursor: pointer;
     width: 15vw;
+    max-width: 220px;
     height: 52px;
     padding: 15px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
@@ -2938,6 +2941,7 @@ input[type="password"]::placeholder {
     border-radius: 16px;
     cursor: pointer;
     width: 15vw;
+    max-width: 220px;
     height: 52px;
     padding: 15px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
@@ -2958,6 +2962,7 @@ input[type="password"]::placeholder {
     border-radius: 16px;
     cursor: pointer;
     width: 15vw;
+    max-width: 220px;
     height: 52px;
     padding: 15px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
@@ -2985,6 +2990,7 @@ input[type="password"]::placeholder {
     border-radius: 16px;
     cursor: pointer;
     width: 15vw;
+    max-width: 220px;
     height: 52px;
     padding: 15px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
@@ -3027,6 +3033,7 @@ input[type="password"]::placeholder {
     border-radius: 16px;
     cursor: pointer;
     width: 15vw;
+    max-width: 220px;
     height: 52px;
     border: 1px #BDC426 solid;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
@@ -3860,6 +3867,7 @@ div.creation-success {
     background-color: #eeeeee;
     height: 6vh;
     width: 15vw;
+    max-width: 220px;
 }
 
 div.creation-success h2 {
@@ -4442,6 +4450,7 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
     background-color: var(--vert-clair);
     border: none;
     width: 15vw;
+    max-width: 220px;
     height: 52px;
     color: white;
     border-radius: 16px;
@@ -5778,6 +5787,7 @@ select.theme_contacter_plateforme {
     border-radius: 16px;
     cursor: pointer;
     width: 15vw;
+    max-width: 220px;
     height: 52px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2s ease;
@@ -6537,6 +6547,7 @@ select.theme_contacter_plateforme {
     border-radius: 16px;
     cursor: pointer;
     width: 15vw;
+    max-width: 220px;
     height: 52px;
 }
 
@@ -8436,6 +8447,7 @@ a.bloc_consulter_recemment_a {
 
 .toute_les_offres_main .offer img {
     width: 15vw;
+    max-width: 220px;
     border-radius: 15px;
     object-fit: cover;
     margin: 0.5vw 1vw;
@@ -8493,6 +8505,7 @@ a.bloc_consulter_recemment_a {
     background-color: var(--vert-clair);
     color: #fff;
     width: 15vw;
+    max-width: 220px;
     height: 52px;
     padding: 1.25vh 1.75vw;
     border: none;
@@ -9717,6 +9730,7 @@ main.main_repondre_avis .repondre_avis_btn_offre {
     border-radius: 16px;
     cursor: pointer;
     width: 15vw;
+    max-width: 220px;
     height: 52px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2s ease;
@@ -9823,6 +9837,7 @@ main.main_repondre_avis .repondre_avis_btn_publier {
     border-radius: 16px;
     cursor: pointer;
     width: 15vw;
+    max-width: 220px;
     height: 52px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2s ease;
