@@ -7,7 +7,7 @@ if(!isset($_SESSION['membre'])){
    exit;
 }
 
-$details_offre = unserialize($_SESSION["detail_offre"]);
+$details_offre = $_SESSION["detail_offre"];
 
 // Vérifie si HTTP_REFERER est défini
 if (isset($_SERVER['HTTP_REFERER'])) {
