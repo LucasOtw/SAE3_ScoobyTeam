@@ -6573,6 +6573,14 @@ select.theme_contacter_plateforme {
     height: 52px;
 }
 
+.visit-button_detailoffre_pro {
+    margin-right: 0px;
+    display: inline-block;
+    font-size: 17px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease;
+}
+
 .detail_offre_pro_button{
     display: flex;
     justify-content: space-between;
