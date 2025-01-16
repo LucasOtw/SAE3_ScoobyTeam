@@ -76,6 +76,10 @@ if (isset($_POST['modif_infos'])){
    
    // Mettre à jour seulement les champs modifiés
    if (!empty($champsModifies))
+      echo "<pre>";
+      var_dump($champsModifies);
+      var_dump($valeursInitiales['mdp']);
+      echo "</pre>";
    {
       if (password_verify($champsModifies['mdp_actuel'],$valeursInitiales['mdp']))
       {
