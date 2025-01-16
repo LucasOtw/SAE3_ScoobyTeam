@@ -578,6 +578,11 @@ footer {
     cursor: pointer;
 }
 
+#btn-voir-offre:active{
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+
 
 .update {
     font-size: 12px;
