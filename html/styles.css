@@ -2449,7 +2449,7 @@ input[type="text"],
 input[type="email"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #f1f1f1;
     border-radius: 5px;
     font-size: 14px;
 }
