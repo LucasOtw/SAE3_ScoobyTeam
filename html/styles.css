@@ -4710,7 +4710,7 @@ nav.nav-bar-tel {
     font-size: 1em;
     border-radius: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: transform 0.2s ease; /* Animation au survol */
     width: 28%;
     height: 8%;
     padding: 15px;
@@ -4718,6 +4718,15 @@ nav.nav-bar-tel {
     /* Ajout de l'ombre */
 
 }
+
+.main-modif-bancaire button.submit-btn2:hover{
+    transform: translateY(-2px); /* Effet d'appui */
+}
+
+.main-modif-bancaire button.submit-btn2:active{
+    transform: translateY(2px); /* Effet d'appui */
+}
+
 
 .main-modif-bancaire button.submit-btn1 {
     background-color: white;
@@ -4865,7 +4874,7 @@ nav.nav-bar-tel {
 
 
 
-/*****************************************************
+                                        /*****************************************************
                                                         * Code page  Mes offres *
                                         *****************************************************/
 
@@ -5259,9 +5268,7 @@ nav.nav-bar-tel {
 /* Effet au survol */
 .main_mes_offres .button-HorsLigne:hover {
     transform: scale(1.05);
-    /* Légère mise en avant */
     transition: 0.3s ease;
-    /* Animation douce */
     text-align: center;
 }
 
