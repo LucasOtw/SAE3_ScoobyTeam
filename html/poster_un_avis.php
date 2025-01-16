@@ -102,12 +102,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               }
             }
         } else {
-           
-            echo '<script language="javascript">
-                    function afficherPOPup() {
-                        $("#customConfirmBox").fadeIn();     
-                     }
-                  </script>';
+           ?>
+
+            <script>
+   
+               $(document).ready(function() {
+                  
+                  function afficherPOPup() {
+                     $("#customConfirmBox").fadeIn();     
+                  }
+                  
+                  // Fermer la popup quand l'utilisateur clique sur "Fermer"
+                  $('#confirmButton').on('click', function() {
+                     $('#customConfirmBox').fadeOut();
+                  });
+               });
+               
+            </script>
+
+           <?php
         }
      }
 }
@@ -324,17 +337,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </footer>
 </body>
 </html>
-<script>
-   
-   $(document).ready(function() {
-      
-      // Fermer la popup quand l'utilisateur clique sur "Fermer"
-      $('#confirmButton').on('click', function() {
-         $('#customConfirmBox').fadeOut();
-      });
-   });
-   
-</script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const newsletterForm = document.getElementById('newsletterForm');
