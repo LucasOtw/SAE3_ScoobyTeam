@@ -10656,14 +10656,20 @@ ul.mentions_legales-sous-list {
 /*****************************************************
             * Code pour obtenir aide *
 *****************************************************/
+.faq-search-input {
+    border: none; /* Supprime la bordure existante */
+    border: 1px solid transparent !important; /* Ajoute une bordure transparente */
+}
 
+.titre_version_mobile {
+    display: none!important;
+}
 
-
-
-@media (min-width: 1024px) {
-           .titre_versino_mobile{
-                      display:none;
-           }
+/* Afficher l'élément uniquement sur un écran de 429px de large */
+@media (max-width: 429px) {
+    .titre_version_mobile {
+        display: block!important;
+    }
 }
 
 .image-aide {
