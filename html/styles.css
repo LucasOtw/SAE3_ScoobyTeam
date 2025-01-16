@@ -3368,7 +3368,7 @@ nav.nav-bar {
     }
 
     .main_consulter_compte_membre .compte_membre_save_delete {
-        justify-content: space-around;
+        display: block;
         gap: 20px;
     }
 
