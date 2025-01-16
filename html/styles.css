@@ -10882,10 +10882,11 @@ ul.mentions_legales-sous-list {
     border-color: #333 transparent transparent transparent;
 }
 
-.info-icon-container_pro:hover .tooltip {
+.detail_offre_pro_info-icon-container:hover .tooltip {
     opacity: 1;
     visibility: visible;
 }
+
 
 /*****************************************************
             * Code pour compte membre tel *
@@ -11972,4 +11973,30 @@ ul.mentions_legales-sous-list {
 #body_offre_desktop .slider.active .slider-circle {
     transform: translateX(38px);
     /* Déplace le cercle de 60px vers la droite */
+}
+
+.detail_offre_pro_info-icon-container {
+    position: relative;
+    display: inline-block;
+}
+
+.info-icon {
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.detail_offre_hotel-info .update{
+    font-size: 1.2em;
+    color: #ff6600;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
 }

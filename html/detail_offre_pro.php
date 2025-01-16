@@ -1,109 +1,108 @@
 <?php
-    if (headers_sent($file, $line)) {
-        die("Les en-têtes ont déjà été envoyés dans le fichier $file à la ligne $line.");
-    }
-    ob_start();
-    session_start();
+if (headers_sent($file, $line)) {
+    die("Les en-têtes ont déjà été envoyés dans le fichier $file à la ligne $line.");
+}
+ob_start();
+session_start();
 
 
-    function tempsEcouleDepuisPublication($offre){
-        // date d'aujourd'hui
-        $date_actuelle = new DateTime();
-        // conversion de la date de publication en objet DateTime
-        $date_ajout_offre = new DateTime($offre['date_publication']);
-        $date_ajout_offre = new DateTime($date_ajout_offre->format('Y-m-d'));
-        // calcul de la différence en jours
-        $diff = $date_ajout_offre->diff($date_actuelle);
-        // récupération des différentes unités de temps
-        $jours = $diff->days; // total des jours de différence
-        $mois = $diff->m + ($diff->y * 12); // mois totaux
-        $annees = $diff->y;
+function tempsEcouleDepuisPublication($offre)
+{
+    // date d'aujourd'hui
+    $date_actuelle = new DateTime();
+    // conversion de la date de publication en objet DateTime
+    $date_ajout_offre = new DateTime($offre['date_publication']);
+    $date_ajout_offre = new DateTime($date_ajout_offre->format('Y-m-d'));
+    // calcul de la différence en jours
+    $diff = $date_ajout_offre->diff($date_actuelle);
+    // récupération des différentes unités de temps
+    $jours = $diff->days; // total des jours de différence
+    $mois = $diff->m + ($diff->y * 12); // mois totaux
+    $annees = $diff->y;
 
-        $retour = null;
+    $retour = null;
 
-        // calcul du nombre de jours dans le mois précédent
-        $date_mois_precedent = clone $date_actuelle;
-        $date_mois_precedent->modify('-1 month');
-        $jours_dans_mois_precedent = (int)$date_mois_precedent->format('t'); // 't' donne le nombre de jours dans le mois
+    // calcul du nombre de jours dans le mois précédent
+    $date_mois_precedent = clone $date_actuelle;
+    $date_mois_precedent->modify('-1 month');
+    $jours_dans_mois_precedent = (int) $date_mois_precedent->format('t'); // 't' donne le nombre de jours dans le mois
 
-        if($jours == 0){
-            $retour = "Aujourd'hui";
-        } elseif($jours == 1){
-            $retour = "Hier";
-        } elseif($jours > 1 && $jours < 7){
-            $retour = "il y a ".$jours." jour(s)";
-        } elseif ($jours >= 7 && $jours < $jours_dans_mois_precedent){
-            $semaines = floor($jours / 7);
-            $retour = "il y a ".$semaines." semaine(s)";
-        } elseif ($mois < 12){
-            $retour = "il y a ".$mois." mois";
-        } else {
-            $retour = "il y a ".$annees." an(s)";
-        }
-
-        return $retour;
+    if ($jours == 0) {
+        $retour = "Aujourd'hui";
+    } elseif ($jours == 1) {
+        $retour = "Hier";
+    } elseif ($jours > 1 && $jours < 7) {
+        $retour = "il y a " . $jours . " jour(s)";
+    } elseif ($jours >= 7 && $jours < $jours_dans_mois_precedent) {
+        $semaines = floor($jours / 7);
+        $retour = "il y a " . $semaines . " semaine(s)";
+    } elseif ($mois < 12) {
+        $retour = "il y a " . $mois . " mois";
+    } else {
+        $retour = "il y a " . $annees . " an(s)";
     }
 
-    function tempsEcouleDepuisDerniereModif($offre){
-            // date d'aujourd'hui
-            $date_actuelle = new DateTime();
-            // conversion de la date de publication en objet DateTime
-            $date_modif_offre = new DateTime($offre['date_derniere_modif']);
-            // calcul de la différence en jours
-            $diff = $date_modif_offre->diff($date_actuelle);
-            // récupération des différentes unités de temps
-            $jours = $diff->days; // total des jours de différence
-            $mois = $diff->m + ($diff->y * 12); // mois totaux
-            $annees = $diff->y;
+    return $retour;
+}
 
-            $retour = null;
+function tempsEcouleDepuisDerniereModif($offre)
+{
+    // date d'aujourd'hui
+    $date_actuelle = new DateTime();
+    // conversion de la date de publication en objet DateTime
+    $date_modif_offre = new DateTime($offre['date_derniere_modif']);
+    // calcul de la différence en jours
+    $diff = $date_modif_offre->diff($date_actuelle);
+    // récupération des différentes unités de temps
+    $jours = $diff->days; // total des jours de différence
+    $mois = $diff->m + ($diff->y * 12); // mois totaux
+    $annees = $diff->y;
 
-            // calcul du nombre de jours dans le mois précédent
-            $date_mois_precedent = clone $date_actuelle;
-            $date_mois_precedent->modify('-1 month');
-            $jours_dans_mois_precedent = (int)$date_mois_precedent->format('t'); // 't' donne le nombre de jours dans le mois
+    $retour = null;
 
-            if($jours == 0){
-                $retour = "Aujourd'hui";
-            } elseif($jours == 1){
-                $retour = "Hier";
-            } elseif($jours > 1 && $jours < 7){
-                $retour = "il y a ".$jours." jour(s)";
-            } elseif ($jours >= 7 && $jours < $jours_dans_mois_precedent){
-                $semaines = floor($jours / 7);
-                $retour = "il y a ".$semaines." semaine(s)";
-            } elseif ($mois < 12){
-                $retour = "il y a ".$mois." mois";
-            } else {
-                $retour = "il y a ".$annees." an(s)";
-            }
+    // calcul du nombre de jours dans le mois précédent
+    $date_mois_precedent = clone $date_actuelle;
+    $date_mois_precedent->modify('-1 month');
+    $jours_dans_mois_precedent = (int) $date_mois_precedent->format('t'); // 't' donne le nombre de jours dans le mois
 
-            return $retour;
+    if ($jours == 0) {
+        $retour = "Aujourd'hui";
+    } elseif ($jours == 1) {
+        $retour = "Hier";
+    } elseif ($jours > 1 && $jours < 7) {
+        $retour = "il y a " . $jours . " jour(s)";
+    } elseif ($jours >= 7 && $jours < $jours_dans_mois_precedent) {
+        $semaines = floor($jours / 7);
+        $retour = "il y a " . $semaines . " semaine(s)";
+    } elseif ($mois < 12) {
+        $retour = "il y a " . $mois . " mois";
+    } else {
+        $retour = "il y a " . $annees . " an(s)";
     }
 
-    function afficherHoraire($jour)
-    {
-        if (!empty($jour["ouverture"]))
-        {
-            $dateTimeO = DateTime::createFromFormat('H:i:s', $jour["ouverture"]);
-            $dateTimeF = DateTime::createFromFormat('H:i:s', $jour["fermeture"]);
+    return $retour;
+}
 
-            $horaire = ": ".$dateTimeO->format('H')."h".$dateTimeO->format('i')." - ".$dateTimeF->format('H')."h".$dateTimeF->format('i');
-        }
-        else
-        {
-            $horaire = ": Fermé";
-        }
-        return $horaire;
+function afficherHoraire($jour)
+{
+    if (!empty($jour["ouverture"])) {
+        $dateTimeO = DateTime::createFromFormat('H:i:s', $jour["ouverture"]);
+        $dateTimeF = DateTime::createFromFormat('H:i:s', $jour["fermeture"]);
+
+        $horaire = ": " . $dateTimeO->format('H') . "h" . $dateTimeO->format('i') . " - " . $dateTimeF->format('H') . "h" . $dateTimeF->format('i');
+    } else {
+        $horaire = ": Fermé";
     }
+    return $horaire;
+}
 
-    // Vérifie si le formulaire a été soumis    
-    $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-    $username = "sae";  // Utilisateur PostgreSQL défini dans .env
-    $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
+// Vérifie si le formulaire a été soumis    
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+$username = "sae";  // Utilisateur PostgreSQL défini dans .env
+$password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
 
-    // Créer une instance PDO avec les bons paramètres
-    $dbh = new PDO($dsn, $username, $password);
+// Créer une instance PDO avec les bons paramètres
+$dbh = new PDO($dsn, $username, $password);
 
 if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
     //echo $_POST["uneOffre"];
@@ -119,7 +118,7 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
     $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
 
     if (!empty($details_offre)) { // si l'offre existe
-                                 
+
         // Une offre a forcément au moins une image. 
         // On récupère l'image (ou les images) associée(s)
 
@@ -212,14 +211,14 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
             }
         }
 
-        
+
         $option_en_relief = $dbh->prepare('SELECT * FROM tripenarvor._option WHERE code_option = :option_en_relief');
-        $option_en_relief->bindValue(":option_en_relief",$details_offre["option_en_relief"]);
+        $option_en_relief->bindValue(":option_en_relief", $details_offre["option_en_relief"]);
         $option_en_relief->execute();
         $option_en_relief = $option_en_relief->fetch(PDO::FETCH_ASSOC);
-        
+
         $option_a_la_une = $dbh->prepare('SELECT * FROM tripenarvor._option WHERE code_option = :option_a_la_une');
-        $option_a_la_une->bindValue(":option_a_la_une",$details_offre["option_a_la_une"]);
+        $option_a_la_une->bindValue(":option_a_la_une", $details_offre["option_a_la_une"]);
         $option_a_la_une->execute();
         $option_a_la_une = $option_a_la_une->fetch(PDO::FETCH_ASSOC);
 
@@ -235,35 +234,36 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
     }
 }
 
-    // Adresse que tu veux convertir
-    $adresse = $adresse_offre["adresse_postal"]." ".$adresse_offre["ville"];
+// Adresse que tu veux convertir
+$adresse = $adresse_offre["adresse_postal"] . " " . $adresse_offre["ville"];
 
-    // Encode l'adresse pour l'URL
-    $adresse_enc = urlencode($adresse);
+// Encode l'adresse pour l'URL
+$adresse_enc = urlencode($adresse);
 
-    // Clé API Google obtenue après inscription
-    $api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig";
+// Clé API Google obtenue après inscription
+$api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig";
 
-    // URL de l'API Geocoding
-    $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
+// URL de l'API Geocoding
+$url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
 
-    // Appel de l'API Google Geocoding
-    $response = file_get_contents($url);
-    $json = json_decode($response, true);
+// Appel de l'API Google Geocoding
+$response = file_get_contents($url);
+$json = json_decode($response, true);
 
-    // Vérifie si la réponse contient des résultats
-    if(isset($json['results'][0])) {
-        $latitude = $json['results'][0]['geometry']['location']['lat'];
-        $longitude = $json['results'][0]['geometry']['location']['lng'];
-    } else {
-        echo "Adresse non trouvée.";
-    }
+// Vérifie si la réponse contient des résultats
+if (isset($json['results'][0])) {
+    $latitude = $json['results'][0]['geometry']['location']['lat'];
+    $longitude = $json['results'][0]['geometry']['location']['lng'];
+} else {
+    echo "Adresse non trouvée.";
+}
 
-    include("recupInfosCompte.php");
+include("recupInfosCompte.php");
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -279,10 +279,10 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
         rel="stylesheet">
     <script src="scroll.js"></script>
 
-    
+
     <script>
         function initMap() {
-            var location = {lat: <?php echo $latitude; ?>, lng: <?php echo $longitude; ?>};
+            var location = { lat: <?php echo $latitude; ?>, lng: <?php echo $longitude; ?> };
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 15,
                 center: location
@@ -292,47 +292,45 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
                 map: map
             });
         }
-                
+
     </script>
 
 
 </head>
-<body onload="initMap()" data-banking=<?php echo $monComptePro['code_compte_bancaire']; ?> >
+
+<body onload="initMap()" data-banking=<?php echo $monComptePro['code_compte_bancaire']; ?>>
 
     <!-- Détails de l'offre sur Desktop -->
     <div id="body_offre_desktop">
         <header>
             <div class="logo">
                 <a href="mes_offres.php">
-                  <img src="images/logo_blanc_pro.png" alt="PACT Logo">
+                    <img src="images/logo_blanc_pro.png" alt="PACT Logo">
                 </a>
             </div>
             <nav>
                 <ul>
-                <li><a href="mes_offres.php">Accueil</a></li>
-                <li><a href="creation_offre.php">Publier</a></li>
-                <li><a href="consulter_compte_pro.php" class="active">Mon Compte</a></li>
-            </ul>
+                    <li><a href="mes_offres.php">Accueil</a></li>
+                    <li><a href="creation_offre.php">Publier</a></li>
+                    <li><a href="consulter_compte_pro.php" class="active">Mon Compte</a></li>
+                </ul>
             </nav>
         </header>
-        
+
         <div class="detail_offre_hotel-detail">
 
             <div class="detail_offre_hotel-header">
 
                 <div class="detail_offre_hotel-info">
-                    <h1><?php echo $details_offre["titre_offre"];?></h1>
+                    <h1><?php echo $details_offre["titre_offre"]; ?></h1>
 
-                    <p><?php echo $adresse_offre["ville"].", ".$adresse_offre["code_postal"];?></p>
+                    <p><?php echo $adresse_offre["ville"] . ", " . $adresse_offre["code_postal"]; ?></p>
 
-                    <p><i class="fas fa-clock"></i> Publié <?php echo tempsEcouleDepuisPublication($details_offre);?></p>
+                    <p><i class="fas fa-clock"></i> Publié <?php echo tempsEcouleDepuisPublication($details_offre); ?>
+                    </p>
 
-                    <p class="update"><span class="update-icon">⟳</span> Dernière modification <?php echo tempsEcouleDepuisDerniereModif($details_offre);?></p>
-                    
-                  
-
-                     
-               
+                    <p class="update"><span class="update-icon">⟳</span> Dernière modification
+                        <?php echo tempsEcouleDepuisDerniereModif($details_offre); ?></p>
 
                     <!-- <div class="detail_offre_rating">
                         ⭐ 5.0 (255 avis)
@@ -340,68 +338,70 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
                 </div>
 
                 <div class="detail_offre_price-button">
-                <div class="detail_offre_pro_info-icon-container">
-                <span class="info-icon">i</span>
-                <div class="tooltip">
-                <div class="detail_offre_option">
-                <?php
-                    if ($option_a_la_une !== false)
-                    {
-                ?>
-                        <h3>Option à la une</h3>
-                        <p>Début de l'option : <?php echo $option_a_la_une["date_debut"];?></p>
-                        <p>Fin de l'option : <?php echo $option_a_la_une["date_fin"];?></p>
-                        <p>Duree de l'option : <?php echo $option_a_la_une["nb_semaines"];?></p>
-                        <p>Prix de l'option : <?php echo $option_a_la_une["prix"];?></p>
-                <?php
-                    }
-                    if ($option_en_relief !== false)
-                    {
-                ?>
-                        <h3>Option en relief</h3>
-                        <p>Début de l'option : <?php echo $option_en_relief["date_debut"];?></p>
-                        <p>Fin de l'option : <?php echo $option_en_relief["date_fin"];?></p>
-                        <p>Duree de l'option : <?php echo $option_en_relief["nb_semaines"];?></p>
-                        <p>Prix de l'option : <?php echo $option_en_relief["prix"];?></p>
-                <?php
-                    }
-                ?>
-            </div>
+                    <div class="detail_offre_pro_info-icon-container">
+                        <span class="info-icon">i</span>
+                        <div class="tooltip">
+                            <div class="detail_offre_option">
+                                <?php
+                                if ($option_a_la_une !== false) {
+                                    ?>
+                                    <h3>Option à la une</h3>
+                                    <p>Début de l'option : <?php echo $option_a_la_une["date_debut"]; ?></p>
+                                    <p>Fin de l'option : <?php echo $option_a_la_une["date_fin"]; ?></p>
+                                    <p>Duree de l'option : <?php echo $option_a_la_une["nb_semaines"]; ?></p>
+                                    <p>Prix de l'option : <?php echo $option_a_la_une["prix"]; ?></p>
+                                    <?php
+                                }
+                                if ($option_en_relief !== false) {
+                                    ?>
+                                    <h3>Option en relief</h3>
+                                    <p>Début de l'option : <?php echo $option_en_relief["date_debut"]; ?></p>
+                                    <p>Fin de l'option : <?php echo $option_en_relief["date_fin"]; ?></p>
+                                    <p>Duree de l'option : <?php echo $option_en_relief["nb_semaines"]; ?></p>
+                                    <p>Prix de l'option : <?php echo $option_en_relief["prix"]; ?></p>
+                                    <?php
+                                }
+                                ?>
+                            </div>
 
-                </div>
-                </div>
-                    
+                        </div>
+                    </div>
+
                     <!--toogle button pour mise en ligne/ hors ligne -->
-                    
+
                     <!-- Bouton slider -->
                     <div class="slider-container">
                         <div class="slider" id="slider-toggle" onclick="toggleSlider()">
                             <div class="slider-circle"></div>
                         </div>
                     </div>
-                    <div> 
-                        <h3 id="offer-state"> 
-                            <span id="offer-status"> 
-                                <?php echo $details_offre[ 'en_ligne'] ? "En Ligne" : "Hors Ligne"; ?>
-                           </span>
+                    <div>
+                        <h3 id="offer-state">
+                            <span id="offer-status">
+                                <?php echo $details_offre['en_ligne'] ? "En Ligne" : "Hors Ligne"; ?>
+                            </span>
                         </h3>
-                     </div>
+                    </div>
 
                     <!-- <script src="toggle-button.js"></script> -->
-                    
-                    <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
-                    <div class="detail_offre_pro_button">                        
-                    <?php if (!empty($details_offre["site_web"])) { ?> <a href="<?php echo $details_offre["site_web"]; ?>" target="_blank"><button class="visit-button_detailoffre_pro">Voir le site ➔</button></a> <?php } ?>
-                    <form id="add-btn" action="modifier_offre.php" method="POST">
-                        <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
-                        <input id="btn-voir-offre" class="button-text add-btn" type="submit" name="envoiOffre" value="Modifier votre offre">
-                    </form>
+
+                    <p class="detail_offre_price"><?php echo $details_offre["tarif"]; ?>€</p>
+                    <div class="detail_offre_pro_button">
+                        <?php if (!empty($details_offre["site_web"])) { ?> <a
+                                href="<?php echo $details_offre["site_web"]; ?>" target="_blank"><button
+                                    class="visit-button_detailoffre_pro">Voir le site ➔</button></a> <?php } ?>
+                        <form id="add-btn" action="modifier_offre.php" method="POST">
+                            <input type="hidden" name="uneOffre"
+                                value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
+                            <input id="btn-voir-offre" class="button-text add-btn" type="submit" name="envoiOffre"
+                                value="Modifier votre offre">
+                        </form>
 
 
-                     
 
-                    <span id="offerStatus"></span>
-                       
+
+                        <span id="offerStatus"></span>
+
                     </div>
                 </div>
 
@@ -411,20 +411,19 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
 
                 <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft()">&#8249;</button>
                 <section class="a-la-une">
-                <?php
-                foreach ($images_offre as $photo)
-                {
-                ?>
+                    <?php
+                    foreach ($images_offre as $photo) {
+                        ?>
 
-                    <article class="card-a-la-une">
-                        <div class="image-background-card-a-la-une">
-                            <img src="<?php echo $photo[0];?>" alt="">
-                        </div>
-                    </article>
+                        <article class="card-a-la-une">
+                            <div class="image-background-card-a-la-une">
+                                <img src="<?php echo $photo[0]; ?>" alt="">
+                            </div>
+                        </article>
 
-                <?php
-                }
-                ?> 
+                        <?php
+                    }
+                    ?>
                 </section>
 
                 <button class="card-scroll-btn card-scroll-btn-right" onclick="scrollcontentRight()">&#8250;</button>
@@ -433,82 +432,74 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
 
             <div class="detail_offre_description">
 
-                    <h2>Résumé</h2>
-                    <p><?php echo $details_offre["_resume"]; ?></p>
+                <h2>Résumé</h2>
+                <p><?php echo $details_offre["_resume"]; ?></p>
 
-                    <h2>Description</h2>
-                    <p><?php echo $details_offre["_description"]; ?></p>
+                <h2>Description</h2>
+                <p><?php echo $details_offre["_description"]; ?></p>
 
-                    <h2>Nos services</h2>
-                        <div class="info-dropdown">
+                <h2>Nos services</h2>
+                <div class="info-dropdown">
 
-                            <button class="info-button" onclick="toggleInfoBox()">
-                                Détails
-                                <span class="arrow">&#9662;</span>
-                            </button>
-                            <div class="info-box" id="infoBox" style="max-height: 0; padding: 0; overflow: hidden; width: 25.5em; transition: max-height 0.3s ease, padding 0.3s ease;">
+                    <button class="info-button" onclick="toggleInfoBox()">
+                        Détails
+                        <span class="arrow">&#9662;</span>
+                    </button>
+                    <div class="info-box" id="infoBox"
+                        style="max-height: 0; padding: 0; overflow: hidden; width: 25.5em; transition: max-height 0.3s ease, padding 0.3s ease;">
 
-                                <?php
-                                if ($type_offre === "restauration")
-                                {
-                                ?>
-                                    <h3 style="margin-top: 1em;">Repas</h3>
-                                    <p><?php echo $details_offre["repas"];?></p>
+                        <?php
+                        if ($type_offre === "restauration") {
+                            ?>
+                            <h3 style="margin-top: 1em;">Repas</h3>
+                            <p><?php echo $details_offre["repas"]; ?></p>
 
-                                    <h3 style="margin-top: 1em;">Gamme de prix</h3>
-                                    <p><?php echo $details_offre["gamme_prix"];?></p>
-                                <?php
-                                }
-                                else if ($type_offre === "parc_attractions")
-                                {
-                                ?>
-                                    <h3 style="margin-top: 1em;">Age requis</h3>
-                                    <p><?php echo $details_offre["age_requis"];?></p>
+                            <h3 style="margin-top: 1em;">Gamme de prix</h3>
+                            <p><?php echo $details_offre["gamme_prix"]; ?></p>
+                            <?php
+                        } else if ($type_offre === "parc_attractions") {
+                            ?>
+                                <h3 style="margin-top: 1em;">Age requis</h3>
+                                <p><?php echo $details_offre["age_requis"]; ?></p>
 
-                                    <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
-                                    <p><?php echo $details_offre["nombre_attractions"];?></p>
-                                <?php
-                                }
-                                else if ($type_offre === "spectacle")
-                                {
-                                ?>
+                                <h3 style="margin-top: 1em;">Nombre d'attractions</h3>
+                                <p><?php echo $details_offre["nombre_attractions"]; ?></p>
+                            <?php
+                        } else if ($type_offre === "spectacle") {
+                            ?>
                                     <h3 style="margin-top: 1em;">Capacité d'accueil</h3>
-                                    <p><?php echo $details_offre["capacite_accueil"];?></p>
+                                    <p><?php echo $details_offre["capacite_accueil"]; ?></p>
 
                                     <h3 style="margin-top: 1em;">Durée</h3>
-                                    <p><?php echo $details_offre["duree"];?></p>
-                                <?php
-                                }
-                                else if ($type_offre === "visite")
-                                {
-                                ?>
-                                    <h3 style="margin-top: 1em;">Visite Guidée</h3>
-                                    <p>Oui</p>
+                                    <p><?php echo $details_offre["duree"]; ?></p>
+                            <?php
+                        } else if ($type_offre === "visite") {
+                            ?>
+                                        <h3 style="margin-top: 1em;">Visite Guidée</h3>
+                                        <p>Oui</p>
 
-                                    <h3 style="margin-top: 1em;">Durée</h3>
-                                    <p><?php echo $details_offre["duree"];?></p>
-                                <?php
-                                }
-                                else if  ($type_offre === "activite")
-                                {
-                                ?>
-                                    <h3 style="margin-top: 1em;">Durée</h3>
-                                    <p><?php echo $details_offre["duree"];?></p>
+                                        <h3 style="margin-top: 1em;">Durée</h3>
+                                        <p><?php echo $details_offre["duree"]; ?></p>
+                            <?php
+                        } else if ($type_offre === "activite") {
+                            ?>
+                                            <h3 style="margin-top: 1em;">Durée</h3>
+                                            <p><?php echo $details_offre["duree"]; ?></p>
 
-                                    <h3 style="margin-top: 1em;">Age requis</h3>
-                                    <p><?php echo $details_offre["age_requis"];?></p>
+                                            <h3 style="margin-top: 1em;">Age requis</h3>
+                                            <p><?php echo $details_offre["age_requis"]; ?></p>
 
-                                    <h3 style="margin-top: 1em;">Prestations incluses</h3>
-                                    <p><?php echo $details_offre["prestations_incluses"];?></p>
+                                            <h3 style="margin-top: 1em;">Prestations incluses</h3>
+                                            <p><?php echo $details_offre["prestations_incluses"]; ?></p>
 
-                                    <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
-                                    <p><?php echo $details_offre["prestations_non_incluses"];?></p>
-                                <?php
-                                }
-                                ?>
+                                            <h3 style="margin-top: 1em;">Prestations non-incluses</h3>
+                                            <p><?php echo $details_offre["prestations_non_incluses"]; ?></p>
+                            <?php
+                        }
+                        ?>
 
-                            </div>
-                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="accessibilite_infos_detail_offre">
@@ -519,15 +510,15 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
             <div class="detail_offre_icons">
                 <h2 style="margin-left: 0.1em;">Tags</h2>
 
-            <?php
-            foreach ($tags_offre as $tag) {
-            ?>
-                <div class="detail_offre_icon">
-                    <p><?php echo htmlspecialchars($tag[0]); ?></p>
-                </div>
-            <?php
-            }
-            ?>
+                <?php
+                foreach ($tags_offre as $tag) {
+                    ?>
+                    <div class="detail_offre_icon">
+                        <p><?php echo htmlspecialchars($tag[0]); ?></p>
+                    </div>
+                    <?php
+                }
+                ?>
 
 
 
@@ -535,9 +526,8 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
         </div>
 
         <?php
-        if ($type_offre === "restauration")
-        {
-        ?>
+        if ($type_offre === "restauration") {
+            ?>
             <div class="Detail_offre_periode">
                 <h2>Périodes d'ouverture</h2>
                 <p>
@@ -555,136 +545,129 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
                     ?>
                 </p>
             </div>
-        <?php
-        }
-        else if ($type_offre === "parc_attractions")
-        {
-        ?>
-            <div class="Detail_offre_periode">
-                <h2>Périodes d'ouverture</h2>
-                <p>
-                    <?php
-                    // Vérifiez si les champs date_ouverture et date_fermeture existent et ne sont pas vides
-                    if (!empty($details_offre["date_ouverture"]) && !empty($details_offre["date_fermeture"])) {
-                        // Formatez les dates d'ouverture et de fermeture
-                        $date_ouverture = date("j F Y", strtotime($details_offre["date_ouverture"]));
-                        $date_fermeture = date("j F Y", strtotime($details_offre["date_fermeture"]));
-                        echo "De <span>$date_ouverture</span> à <span>$date_fermeture</span>";
-                    } else {
-                        // Si les champs sont vides, afficher "Ouvert toute l'année"
-                        echo "Ouvert toute l'année";
-                    }
-                    ?>
-                </p>
-            </div>
-        <?php
-        }
-        else if ($type_offre === "spectacle")
-        {
-        ?>
-            
-            <div class="Detail_offre_horaire">
-                <h2>Horaire du Spectacle</h2>
-                <p>Date : 
-                    <span>
-                        <?php 
+            <?php
+        } else if ($type_offre === "parc_attractions") {
+            ?>
+                <div class="Detail_offre_periode">
+                    <h2>Périodes d'ouverture</h2>
+                    <p>
+                        <?php
+                        // Vérifiez si les champs date_ouverture et date_fermeture existent et ne sont pas vides
+                        if (!empty($details_offre["date_ouverture"]) && !empty($details_offre["date_fermeture"])) {
+                            // Formatez les dates d'ouverture et de fermeture
+                            $date_ouverture = date("j F Y", strtotime($details_offre["date_ouverture"]));
+                            $date_fermeture = date("j F Y", strtotime($details_offre["date_fermeture"]));
+                            echo "De <span>$date_ouverture</span> à <span>$date_fermeture</span>";
+                        } else {
+                            // Si les champs sont vides, afficher "Ouvert toute l'année"
+                            echo "Ouvert toute l'année";
+                        }
+                        ?>
+                    </p>
+                </div>
+            <?php
+        } else if ($type_offre === "spectacle") {
+            ?>
+
+                    <div class="Detail_offre_horaire">
+                        <h2>Horaire du Spectacle</h2>
+                        <p>Date :
+                            <span>
+                        <?php
                         // Vérifiez si la date est définie et non nulle
                         if (isset($details_offre["date_spectacle"])) {
                             // Formatez la date SQL (YYYY-MM-DD) en format lisible
-                            echo date("l, j F Y", strtotime($details_offre["date_spectacle"])); 
+                            echo date("l, j F Y", strtotime($details_offre["date_spectacle"]));
                         } else {
                             echo "Date non disponible";
                         }
                         ?>
-                    </span>
-                </p>
-                <p>Heure : 
-                    <span>
-                        <?php 
+                            </span>
+                        </p>
+                        <p>Heure :
+                            <span>
+                        <?php
                         // Vérifiez si l'heure est définie et non nulle
                         if (isset($details_offre["heure_spectacle"])) {
                             // Formatez l'heure SQL (HH:MM:SS) en format lisible
-                            echo date("H\h i", strtotime($details_offre["heure_spectacle"])); 
+                            echo date("H\h i", strtotime($details_offre["heure_spectacle"]));
                         } else {
                             echo "Heure non disponible";
                         }
                         ?>
-                    </span>
-                </p>
-            </div>
-        
-        <?php
-        }
-        else if ($type_offre === "visite")
-        {
-        ?>
-            
-            <div class="Detail_offre_horaire">
-                <h2>Horaire de la Visite</h2>
-                <p>Date : 
-                    <span>
-                        <?php 
+                            </span>
+                        </p>
+                    </div>
+
+            <?php
+        } else if ($type_offre === "visite") {
+            ?>
+
+                        <div class="Detail_offre_horaire">
+                            <h2>Horaire de la Visite</h2>
+                            <p>Date :
+                                <span>
+                        <?php
                         // Vérifiez si la date est définie et non nulle
                         if (isset($details_offre["date_visite"])) {
                             // Formatez la date SQL (YYYY-MM-DD) en format lisible
-                            echo date("l, j F Y", strtotime($details_offre["date_visite"])); 
+                            echo date("l, j F Y", strtotime($details_offre["date_visite"]));
                         } else {
                             echo "Date non disponible";
                         }
                         ?>
-                    </span>
-                </p>
-                <p>Heure : 
-                    <span>
-                        <?php 
+                                </span>
+                            </p>
+                            <p>Heure :
+                                <span>
+                        <?php
                         // Vérifiez si l'heure est définie et non nulle
                         if (isset($details_offre["heure_visite"])) {
                             // Formatez l'heure SQL (HH:MM:SS) en format lisible
-                            echo date("H\h i", strtotime($details_offre["heure_visite"])); 
+                            echo date("H\h i", strtotime($details_offre["heure_visite"]));
                         } else {
                             echo "Heure non disponible";
                         }
                         ?>
-                    </span>
-                </p>
-            </div>
-        
-        <?php
-        }
-        else if  ($type_offre === "activite")
-        {
-        ?>
-            <div class="Detail_offre_periode">
-                <h2>Périodes d'ouverture</h2>
-                <p>
-                    <?php
-                    // Vérifiez si les champs date_ouverture et date_fermeture existent et ne sont pas vides
-                    if (!empty($details_offre["date_ouverture"]) && !empty($details_offre["date_fermeture"])) {
-                        // Formatez les dates d'ouverture et de fermeture
-                        $date_ouverture = date("j F Y", strtotime($details_offre["date_ouverture"]));
-                        $date_fermeture = date("j F Y", strtotime($details_offre["date_fermeture"]));
-                        echo "De <span>$date_ouverture</span> à <span>$date_fermeture</span>";
-                    } else {
-                        // Si les champs sont vides, afficher "Ouvert toute l'année"
-                        echo "Ouvert toute l'année";
-                    }
-                    ?>
-                </p>
-            </div>
-        <?php
+                                </span>
+                            </p>
+                        </div>
+
+            <?php
+        } else if ($type_offre === "activite") {
+            ?>
+                            <div class="Detail_offre_periode">
+                                <h2>Périodes d'ouverture</h2>
+                                <p>
+                        <?php
+                        // Vérifiez si les champs date_ouverture et date_fermeture existent et ne sont pas vides
+                        if (!empty($details_offre["date_ouverture"]) && !empty($details_offre["date_fermeture"])) {
+                            // Formatez les dates d'ouverture et de fermeture
+                            $date_ouverture = date("j F Y", strtotime($details_offre["date_ouverture"]));
+                            $date_fermeture = date("j F Y", strtotime($details_offre["date_fermeture"]));
+                            echo "De <span>$date_ouverture</span> à <span>$date_fermeture</span>";
+                        } else {
+                            // Si les champs sont vides, afficher "Ouvert toute l'année"
+                            echo "Ouvert toute l'année";
+                        }
+                        ?>
+                                </p>
+                            </div>
+            <?php
         }
         ?>
-        
+
         <?php
-        if (!empty($h_lundi["ouverture"]) || 
-           !empty($h_mardi["ouverture"]) ||
-           !empty($h_mercredi["ouverture"]) ||
-           !empty($h_jeudi["ouverture"]) ||
-           !empty($h_vendredi["ouverture"]) ||
-           !empty($h_samedi["ouverture"]) ||
-           !empty($h_dimanche["ouverture"]))
-        {
-        ?>
+        if (
+            !empty($h_lundi["ouverture"]) ||
+            !empty($h_mardi["ouverture"]) ||
+            !empty($h_mercredi["ouverture"]) ||
+            !empty($h_jeudi["ouverture"]) ||
+            !empty($h_vendredi["ouverture"]) ||
+            !empty($h_samedi["ouverture"]) ||
+            !empty($h_dimanche["ouverture"])
+        ) {
+            ?>
             <div class="Detail_offre_ouverture_global_desktop">
 
                 <h2>Horaires</h2>
@@ -699,20 +682,20 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
                 </ul>
 
             </div>
-        <?php
+            <?php
         }
         ?>
 
         <div class="detail_offre_localisation">
             <h2>Localisation</h2>
             <iframe class="map-frame"
-                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig&q=<?php echo $latitude; ?>,<?php echo $longitude; ?>"
-                    style="border:0;margin: auto 11em; width: 79vw; height:70vh" allowfullscreen="" loading="lazy">
-                    border: 0;
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig&q=<?php echo $latitude; ?>,<?php echo $longitude; ?>"
+                style="border:0;margin: auto 11em; width: 79vw; height:70vh" allowfullscreen="" loading="lazy">
+                border: 0;
             </iframe>
         </div>
 
-        
+
         <?php
         // Récupérer la moyenne des notes
         $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre and note<>0');
@@ -744,7 +727,8 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
         }
 
         // Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
-        function getResponses($dbh, $code_avis) {
+        function getResponses($dbh, $code_avis)
+        {
             $stmt = $dbh->prepare('
                 SELECT 
                     reponse.*, 
@@ -763,7 +747,7 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
             $stmt->bindValue(':code_avis', $code_avis, PDO::PARAM_INT);
             $stmt->execute();
             $reponses = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
+
             // Récursivité : Ajouter les sous-réponses
             foreach ($reponses as &$reponse) {
                 $reponse['sous_reponses'] = getResponses($dbh, $reponse['code_avis']);
@@ -774,129 +758,131 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
 
         // Fonction pour afficher les avis et les réponses récursivement
         function afficherAvis($avis, $niveau = 0)
-{
-    // Déterminer l'affichage selon le type d'utilisateur
-    if ($avis['code_compte'] == $_SESSION['pro']['code_compte']){
-        $prenom = "Mon Entreprise";
-        $nom = "";
-        $color = "--orange";
-    } elseif (!empty($avis['raison_sociale_pro'])) {
-        // Si c'est un professionnel
-        $prenom = $avis['raison_sociale_pro'];
-        $nom = "";
-        $color = "--orange";
-    } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
-        // Si c'est un membre classique
-        $prenom = $avis['prenom'];
-        $nom = $avis['nom'];
-        $color = "--vert-clair";    
-    } else {
-        // Si l'utilisateur est supprimé
-        $prenom = "Utilisateur";
-        $nom = "supprimé";
-    }
+        {
+            // Déterminer l'affichage selon le type d'utilisateur
+            if ($avis['code_compte'] == $_SESSION['pro']['code_compte']) {
+                $prenom = "Mon Entreprise";
+                $nom = "";
+                $color = "--orange";
+            } elseif (!empty($avis['raison_sociale_pro'])) {
+                // Si c'est un professionnel
+                $prenom = $avis['raison_sociale_pro'];
+                $nom = "";
+                $color = "--orange";
+            } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
+                // Si c'est un membre classique
+                $prenom = $avis['prenom'];
+                $nom = $avis['nom'];
+                $color = "--vert-clair";
+            } else {
+                // Si l'utilisateur est supprimé
+                $prenom = "Utilisateur";
+                $nom = "supprimé";
+            }
 
-    // Texte de l'appréciation basé sur la note
-    $appreciation = match ($avis["note"]) {
-        1 => "Insatisfaisant",
-        2 => "Passable",
-        3 => "Correct",
-        4 => "Excellent",
-        5 => "Parfait",
-        default => "Non noté",
-    };
+            // Texte de l'appréciation basé sur la note
+            $appreciation = match ($avis["note"]) {
+                1 => "Insatisfaisant",
+                2 => "Passable",
+                3 => "Correct",
+                4 => "Excellent",
+                5 => "Parfait",
+                default => "Non noté",
+            };
 
-    // Calcul de la marge pour les sous-réponses
-    $marge = $niveau * 5; // Indentation
-    ?>
-    <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
-        <div class="avis-content">
-            <h3 class="avis">
-                <?php if ($niveau > 0): ?>
-                    <div class="note_prenom">
-                        Réponse |
-                        <span
-                            class="nom_avis" style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
-                    </div>
-                <?php else: ?>
-                    <div class="note_prenom">
-                        <?php echo htmlspecialchars($avis['note']) . '.0 ' . $appreciation . " "; ?> |
-                        <span
-                            class="nom_avis" style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
-                    </div>
-                <?php endif; ?>
-                <style>
-                    .pouce {
-                        display: inline-block;
-                        width: 50px; /* Ajuster selon la taille de l'image */
-                        height: 50px; /* Ajuster selon la taille de l'image */
-                        cursor: pointer;
-                    }
-                    .pouce img {
-                    
-                        left: 0;
-                        width: 1.5em;
-                        height: 1.5em; 
-                        transition: opacity 0.5s ease;
-                    }
+            // Calcul de la marge pour les sous-réponses
+            $marge = $niveau * 5; // Indentation
+            ?>
+            <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
+                <div class="avis-content">
+                    <h3 class="avis">
+                        <?php if ($niveau > 0): ?>
+                            <div class="note_prenom">
+                                Réponse |
+                                <span class="nom_avis"
+                                    style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                            </div>
+                        <?php else: ?>
+                            <div class="note_prenom">
+                                <?php echo htmlspecialchars($avis['note']) . '.0 ' . $appreciation . " "; ?> |
+                                <span class="nom_avis"
+                                    style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                            </div>
+                        <?php endif; ?>
+                        <style>
+                            .pouce {
+                                display: inline-block;
+                                width: 50px;
+                                /* Ajuster selon la taille de l'image */
+                                height: 50px;
+                                /* Ajuster selon la taille de l'image */
+                                cursor: pointer;
+                            }
 
-                    .pouce .pouce-hover {
-                        opacity: 0;
-                        z-index: 1;
-                    }
+                            .pouce img {
 
-                    .pouce .pouce-original {
-                        z-index: 2;
-                    }
+                                left: 0;
+                                width: 1.5em;
+                                height: 1.5em;
+                                transition: opacity 0.5s ease;
+                            }
 
-                    .pouce.clicked .pouce-hover {
-                        opacity: 1;
-                    }
+                            .pouce .pouce-hover {
+                                opacity: 0;
+                                z-index: 1;
+                            }
 
-                    .pouce.clicked .pouce-original {
-                        opacity: 0;
-                    }
-                </style>
-                <div class="signalement_repondre">
-                    <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
-                            <!-- Pouce positif -->
-                            <img id="positiveImage"
-                                 src="images/pouce_positif_blanc.png"
-                                 alt="Pouce positif"
-                                 style="cursor:not-allowed;">
-                            <p id="positiveCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_positif']; ?></p>
+                            .pouce .pouce-original {
+                                z-index: 2;
+                            }
+
+                            .pouce.clicked .pouce-hover {
+                                opacity: 1;
+                            }
+
+                            .pouce.clicked .pouce-original {
+                                opacity: 0;
+                            }
+                        </style>
+                        <div class="signalement_repondre">
+                            <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
+                                <!-- Pouce positif -->
+                                <img id="positiveImage" src="images/pouce_positif_blanc.png" alt="Pouce positif"
+                                    style="cursor:not-allowed;">
+                                <p id="positiveCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_positif']; ?>
+                                </p>
+                            </div>
+
+                            <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
+                                <!-- Pouce négatif -->
+                                <img id="negativeImage" src="images/pouce_negatif_blanc.png" alt="Pouce négatif"
+                                    style="cursor:not-allowed;">
+                                <p id="negativeCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_negatif']; ?>
+                                </p>
+                            </div>
+                            <span class="signalement">
+                                <a href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
+                                    title="Signaler cet avis"
+                                    style="text-decoration: none; margin-right: 2vw; font-size: 21px;">🚩</a>
+                            </span>
+                            <form action="poster_reponse_pro.php" method="POST">
+                                <input type="hidden" name="unAvis"
+                                    value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                                <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
+                            </form>
                         </div>
-                        
-                        <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
-                            <!-- Pouce négatif -->
-                            <img id="negativeImage"
-                                 src="images/pouce_negatif_blanc.png"
-                                 alt="Pouce négatif"
-                                 style="cursor:not-allowed;">
-                            <p id="negativeCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_negatif']; ?></p>
-                        </div>
-                <span class="signalement">
-                    <a href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
-                       title="Signaler cet avis" style="text-decoration: none; margin-right: 2vw; font-size: 21px;">🚩</a>
-                </span>
-                    <form action="poster_reponse_pro.php" method="POST">
-                        <input type="hidden" name="unAvis"
-                               value="<?php echo htmlspecialchars(serialize($avis)); ?>">
-                        <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
-                    </form>
+                    </h3>
+                    <p class="avis"><?php echo html_entity_decode($avis['txt_avis']); ?></p>
                 </div>
-            </h3>
-            <p class="avis"><?php echo html_entity_decode($avis['txt_avis']); ?></p>
-        </div>
-    </div>
-    <?php
-    // Afficher les sous-réponses si elles existent
-    if (!empty($avis['sous_reponses'])) {
-        foreach ($avis['sous_reponses'] as $sous_reponse) {
-            afficherAvis($sous_reponse, $niveau + 1); // Indentation augmentée
+            </div>
+            <?php
+            // Afficher les sous-réponses si elles existent
+            if (!empty($avis['sous_reponses'])) {
+                foreach ($avis['sous_reponses'] as $sous_reponse) {
+                    afficherAvis($sous_reponse, $niveau + 1); // Indentation augmentée
+                }
+            }
         }
-    }
-}
 
         // Récupérer tous les avis principaux (sans réponses déjà existantes)
         $tous_les_avis = $dbh->prepare('SELECT * 
@@ -937,7 +923,7 @@ WHERE code_offre = :code_offre
             </div>
             <div class="avis-list">
                 <?php
-                    array_map('afficherAvis', $tous_les_avis);
+                array_map('afficherAvis', $tous_les_avis);
                 ?>
             </div>
         </div>
@@ -954,72 +940,72 @@ WHERE code_offre = :code_offre
 
 
 
-<footer class="footer_detail_avis">
-        <div class="footer-links">
-            <div class="logo">
-                <img src="images/logoBlanc.png" alt="Logo PAVCT">
-            </div>
-            <div class="link-group">
-                <ul>
-                    <li><a href="mentions_legales.html">Mentions Légales</a></li>
-                    <li><a href="cgu.html">GGU</a></li>
-                    <li><a href="cgv.html">CGV</a></li>
-                </ul>
-            </div>
-            <div class="link-group">
-                <ul>
-                    <li><a href="voir_offres.php">Accueil</a></li>
-                    <li><a href="connexion_pro.php">Publier</a></li>
-                    <?php
-                    if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
-                        ?>
-                        <li>
-                            <a href="consulter_compte_membre.php">Mon Compte</a>
-                        </li>
+        <footer class="footer_detail_avis">
+            <div class="footer-links">
+                <div class="logo">
+                    <img src="images/logoBlanc.png" alt="Logo PAVCT">
+                </div>
+                <div class="link-group">
+                    <ul>
+                        <li><a href="mentions_legales.html">Mentions Légales</a></li>
+                        <li><a href="cgu.html">GGU</a></li>
+                        <li><a href="cgv.html">CGV</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <ul>
+                        <li><a href="voir_offres.php">Accueil</a></li>
+                        <li><a href="connexion_pro.php">Publier</a></li>
                         <?php
-                    } else {
+                        if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
+                            ?>
+                            <li>
+                                <a href="consulter_compte_membre.php">Mon Compte</a>
+                            </li>
+                            <?php
+                        } else {
+                            ?>
+                            <li>
+                                <a href="connexion_membre.php">Se connecter</a>
+                            </li>
+                            <?php
+                        }
                         ?>
-                        <li>
-                            <a href="connexion_membre.php">Se connecter</a>
-                        </li>
-                        <?php
-                    }
-                    ?>
-                </ul>
+                    </ul>
 
-            </div>
-            <div class="link-group">
-                <ul>
-                    <li><a href="#">Nous Connaitre</a></li>
-                    <li><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
-                    <li><a href="contacter_plateforme.php">Nous contacter</a></li>
-                </ul>
-            </div>
-            <div class="link-group">
-                <ul>
-                    <!--<li><a href="#">Presse</a></li>
+                </div>
+                <div class="link-group">
+                    <ul>
+                        <li><a href="#">Nous Connaitre</a></li>
+                        <li><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
+                        <li><a href="contacter_plateforme.php">Nous contacter</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <ul>
+                        <!--<li><a href="#">Presse</a></li>
                     <li><a href="#">Newsletter</a></li>
                     <li><a href="#">Notre équipe</a></li>-->
-                </ul>
+                    </ul>
+                </div>
             </div>
-        </div>
 
-        <div class="footer-bottom">
-            <div class="social-icons">
-                <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
-                <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
-                <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
-                <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+            <div class="footer-bottom">
+                <div class="social-icons">
+                    <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
+                    <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
+                    <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+                    <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 
     </div>
 </body>
 
 <script>
     // Initialisation du slider en fonction de $details_offre['en_ligne']
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         var slider = document.querySelector('.slider');
         var offerStatusText = document.getElementById('offer-status');
 
@@ -1046,23 +1032,23 @@ WHERE code_offre = :code_offre
         const pub = <?php echo json_encode(isset($monComptePro['num_siren'])); ?>;
 
         console.log(banking);
-        
+
         // Si les conditions ne sont pas respectées, affiche un message d'erreur
         if (banking == null && !pub) {
             alert("Vous devez d'abord renseigner un compte bancaire dans l'onglet 'Compte bancaire'.");
             return; // Empêche l'exécution du reste de la fonction
         }
-        
+
         // Bascule la classe 'active'
         slider.classList.toggle('active');
-        
+
         // Vérifie si le bouton est activé ou non
         var isOnline = slider.classList.contains('active');
         var newStatus = isOnline ? "En Ligne" : "Hors Ligne";
-        
+
         // Met à jour le texte de l'état
         offerStatusText.textContent = newStatus;
-    
+
         // Envoie l'état à PHP via AJAX
         updateOfferState(isOnline);
     }
@@ -1070,10 +1056,10 @@ WHERE code_offre = :code_offre
     // Fonction AJAX pour mettre à jour l'état de l'offre avec fetch
     function updateOfferState(isOnline) {
         var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
-        
+
         console.log("Etat: " + (isOnline ? 1 : 0));
         console.log("Code offre: " + codeOffre);
-        
+
         // Utilisation de fetch pour envoyer les données
         fetch("https://scooby-team.ventsdouest.dev/update_offer_status.php", {
             method: "POST",  // Méthode POST
@@ -1085,17 +1071,17 @@ WHERE code_offre = :code_offre
                 code_offre: codeOffre        // Envoie le code de l'offre
             })
         })
-            
-        .then(response => {
-            if (response.ok) {
-                console.log("L'état de l'offre a été mis à jour avec succès.");
-            } else {
-                console.error("Erreur lors de la mise à jour de l'état de l'offre : " + response.status);
-            }
-        })
-        .catch(error => {
-            console.error("Erreur de réseau ou autre :", error);
-        });
+
+            .then(response => {
+                if (response.ok) {
+                    console.log("L'état de l'offre a été mis à jour avec succès.");
+                } else {
+                    console.error("Erreur lors de la mise à jour de l'état de l'offre : " + response.status);
+                }
+            })
+            .catch(error => {
+                console.error("Erreur de réseau ou autre :", error);
+            });
     }
 </script>
 
@@ -1105,44 +1091,44 @@ WHERE code_offre = :code_offre
     const imagesTrack = document.querySelector(".carousel-images");
     const images = document.querySelectorAll(".carousel-images img");
     const totalSlides = images.length;
-    
+
     let currentIndex = 0;
-    
+
     // Gère les boutons
     function updateCarousel() {
         const translateX = -currentIndex * 100;
         imagesTrack.style.transform = `translateX(${translateX}%)`;
     }
-    
+
     function prevSlide() {
         if (currentIndex > 0) {
             currentIndex--;
             updateCarousel();
         }
     }
-    
+
     function nextSlide() {
         if (currentIndex < totalSlides - 1) {
             currentIndex++;
             updateCarousel();
         }
     }
-    
+
     // Gère les gestes tactiles
     let startX = 0;
     let isDragging = false;
-    
+
     imagesTrack.addEventListener("touchstart", (e) => {
         startX = e.touches[0].clientX;
         isDragging = true;
     });
-    
+
     imagesTrack.addEventListener("touchmove", (e) => {
         if (!isDragging) return;
-    
+
         const currentX = e.touches[0].clientX;
         const deltaX = currentX - startX;
-    
+
         if (deltaX > 50 && currentIndex > 0) {
             prevSlide();
             isDragging = false;
@@ -1151,49 +1137,50 @@ WHERE code_offre = :code_offre
             isDragging = false;
         }
     });
-    
+
     imagesTrack.addEventListener("touchend", () => {
         isDragging = false;
     });
 </script>
+
 </html>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const newsletterForm = document.getElementById('newsletterForm');
-    const emailInput = document.getElementById('newsletterEmail');
-    const newsletterPopup = document.getElementById('newsletterConfirmBox');
-    const closePopupButton = document.getElementById('closeNewsletterPopup');
+    document.addEventListener('DOMContentLoaded', () => {
+        const newsletterForm = document.getElementById('newsletterForm');
+        const emailInput = document.getElementById('newsletterEmail');
+        const newsletterPopup = document.getElementById('newsletterConfirmBox');
+        const closePopupButton = document.getElementById('closeNewsletterPopup');
 
-    newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-        const email = emailInput.value.trim();
-        if (email) {
-            fetch('envoyer_email3.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: `email=${encodeURIComponent(email)}`
-            })
-                .then(() => {
-                    afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
-                    
+            const email = emailInput.value.trim();
+            if (email) {
+                fetch('envoyer_email3.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `email=${encodeURIComponent(email)}`
                 })
-                .catch(() => {
-                    afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
-                });
-        } else {
-            alert("Veuillez entrer une adresse email valide.");
+                    .then(() => {
+                        afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
+
+                    })
+                    .catch(() => {
+                        afficherPopup("Votre inscription à la newsletter a bien été prise en compte !");
+                    });
+            } else {
+                alert("Veuillez entrer une adresse email valide.");
+            }
+        });
+
+        function afficherPopup(message) {
+            newsletterPopup.querySelector('.popup-message').innerText = message;
+            newsletterPopup.style.display = 'block';
         }
-    });
 
-    function afficherPopup(message) {
-        newsletterPopup.querySelector('.popup-message').innerText = message;
-        newsletterPopup.style.display = 'block';
-    }
-
-    closePopupButton.addEventListener('click', () => {
-        newsletterPopup.style.display = 'none';
+        closePopupButton.addEventListener('click', () => {
+            newsletterPopup.style.display = 'none';
+        });
     });
-});
 
 </script>
