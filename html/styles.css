@@ -11406,7 +11406,7 @@ ul.mentions_legales-sous-list {
 }
 
 /* Styles pour l'image des étapes */
-.main-creation-offre2 #etapes {
+#etapes {
     max-width: 100%; /* Pour s'assurer que l'image est responsive */
     height: auto; /* Conserve le ratio d'aspect */
 }
