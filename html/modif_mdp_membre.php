@@ -226,7 +226,7 @@ if (isset($_POST['modif_infos'])){
       ?>
          <div class="creation-success">
              <img src="images/verifier.png" alt="Succès">
-             <h2>Compte crée avec succès&nbsp!</h2>
+             <h2>Mot de passe modifié avec succès&nbsp!</h2>
          </div>
       <?php
    }
