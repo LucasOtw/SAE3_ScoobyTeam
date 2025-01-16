@@ -102,7 +102,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               }
             }
         } else {
-           echo "Vous ne pouvez pas poster d'avis sans notation ou de message !";
+           ?>
+           <!-- Popup de confirmation -->
+            <div class="custom-confirm" id="customConfirmBox">
+                <div class="custom-confirm-content">
+                    <p>Votre message a été envoyé avec succès !</p>
+                    <button id="confirmButton">Fermer</button>
+                </div>
+            </div>
+           <?php
         }
      }
 }
