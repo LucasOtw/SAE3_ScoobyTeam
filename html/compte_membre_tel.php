@@ -122,7 +122,7 @@ if (isset($_POST['changePhoto'])) {
 </head>
 <body>
     <!-- Header Section -->
-    <div class="header_membre">
+    <div class="header-membre">
         <header class="header-tel">
             <div  class="logo-tel">
                 <a href="voir_offres.php">
