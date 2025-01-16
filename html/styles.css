@@ -11393,7 +11393,7 @@ ul.mentions_legales-sous-list {
 }
 
 /* Conteneur pour l'image et le toggle */
-.main-creation-offre2 .header-controls {
+.header-controls {
     display: flex;
     align-items: center; /* Aligne verticalement au centre */
     justify-content: space-between; /* Espacement entre l'image et le toggle */
