@@ -24,7 +24,7 @@ if(isset($_SESSION['crea_offre'])){
     <link rel="icon" type="image/png" href="images/logoPin_orange.png" width="16px" height="32px">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Création offre</title>
-    <link rel="stylesheet" href="creation_offre.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
      <header class="header">
@@ -60,8 +60,6 @@ if(isset($_SESSION['crea_offre'])){
                         <option value="restaurant">Restaurant</option>
                         <option value="spectacle">Spectacle</option>
                         <option value="visite">Visite</option>
-                        <option value="attraction">Parc d'attraction</option>
-                        <option value="activite">Activité</option>
                     </select>
                     <button type="submit" class="button_continuer">Continuez
                         <img src="images/fleche.png" alt="Fleche" width="25px" height="25px">

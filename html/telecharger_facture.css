@@ -337,7 +337,7 @@ footer {
 
            
 /* Container principal */
-.facture-container {
+.main-telecharger-facture .facture-container {
     max-width: 800px;
     margin: auto;
     padding: 20px;
@@ -349,96 +349,96 @@ footer {
 }
 
 /* Header de la facture */
-.facture-header {
+.main-telecharger-facture .facture-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.facture-header .logo img {
+.main-telecharger-facture .facture-header .logo img {
     max-height: 50px;
 }
 
-.facture-title h1 {
+.main-telecharger-facture .facture-title h1 {
     font-size: 24px;
     color: #333;
     margin: 0;
 }
 
-.facture-title p {
+.main-telecharger-facture .facture-title p {
     font-size: 16px;
     color: #555;
 }
 
 /* Informations entreprise et client */
-.facture-info {
+.main-telecharger-facture .facture-info {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.facture-info .info {
+.main-telecharger-facture .facture-info .info {
     width: 48%;
 }
 
-.facture-info .info h3 {
+.main-telecharger-facture .facture-info .info h3 {
     font-size: 18px;
     color: #333;
     margin: 0 0 10px 0;
 }
 
-.facture-info .info p {
+.main-telecharger-facture .facture-info .info p {
     font-size: 14px;
     color: #555;
     margin: 3px 0;
 }
 
 /* Table des items */
-.facture-items {
+.main-telecharger-facture .facture-items {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
     height: 118px;
 }
 
-.facture-items th, .facture-items td {
+.main-telecharger-facture .facture-items th, .facture-items td {
     padding: 10px;
     border: 1px solid #ddd;
 }
 
-.facture-items th {
+.main-telecharger-facture .facture-items th {
     background-color: #007bff;
     color: white;
 }
 
-.facture-items td {
+.main-telecharger-facture .facture-items td {
     background-color: #f9f9f9;
 }
 
 /* Footer de la facture */
-.facture-footer {
+.main-telecharger-facture .facture-footer {
     margin-top: 20px;
 }
 
-.facture-footer p {
+.main-telecharger-facture .facture-footer p {
     font-size: 16px;
     color: #333;
 }
 
-.signature-line {
+.main-telecharger-facture .signature-line {
     border-top: 1px solid #333;
     margin-top: 30px;
     width: 50%;
     margin-bottom: 20px;
 }
 
-.dropdown-container {
+.main-telecharger-facture .dropdown-container {
     margin-top: 20px;
     text-align: center;
 }
 
-.dropdown {
+.main-telecharger-facture .dropdown {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -446,7 +446,3 @@ footer {
     background-color: #f9f9f9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-
-
-           
