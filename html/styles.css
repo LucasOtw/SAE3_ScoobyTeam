@@ -12048,8 +12048,7 @@ ul.mentions_legales-sous-list {
 
 
 /* NOTIF PHOTO */
-
-.notification-popup .notif .profile-img {
+#notification-popup > ul > li > img.profile-img{
     width: 80px;
     height: 80px;
     border-radius: 15px;
