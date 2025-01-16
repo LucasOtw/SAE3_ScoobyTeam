@@ -5654,6 +5654,7 @@ select.prenom_contacter_plateforme {
 
 .titre_contacter_nous {
     text-align: center;
+    margin-bottom: 4vh;
 }
 
 .theme_contacter_plateforme {
