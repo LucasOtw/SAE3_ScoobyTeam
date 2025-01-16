@@ -58,10 +58,6 @@ function tempsEcouleDepuisNotif($avis)
 }
 
 if (isset($_POST['modif_infos'])){
-    // Récupérer les valeurs initiales (par exemple, depuis la base de données)
-   $valeursInitiales = [
-       'mdp' => $compte['mdp'],
-   ];
    
    // Champs modifiés
    $champsModifies = [];
@@ -70,7 +66,7 @@ if (isset($_POST['modif_infos'])){
    foreach ($_POST as $champ => $valeur) {
       if ($champ != 'modif_infos')
       {
-         $champsModifies[$champ] = $valeur;
+         $champsModifies[$champ] = trim($valeur);
       }
    }
    
@@ -79,9 +75,9 @@ if (isset($_POST['modif_infos'])){
    {
       echo "<pre>";
       var_dump($champsModifies);
-      var_dump($valeursInitiales['mdp']);
+      var_dump($compte['mdp']);
       echo "</pre>";
-      if (password_verify($champsModifies['mdp_actuel'],$valeursInitiales['mdp']))
+      if (password_verify($champsModifies['mdp_actuel'],$compte['mdp']))
       {
          if (trim($champsModifies['mdp_nv1']) === trim($champsModifies['mdp_nv2']))
          {
