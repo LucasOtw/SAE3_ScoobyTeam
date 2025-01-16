@@ -225,5 +225,34 @@ if (isset($_POST['changePhoto'])) {
         ?>">
         <img src="images/icones/User icon.png" alt="image de Personne"></a>
     </nav>
+    <script>
+        document.getElementById('btn-suppr-compte').addEventListener('click', function () {
+            const confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce compte ?");
+            if (confirmation) {
+                const compteId = <?php echo json_encode($compte['code_compte']); ?>;
+        
+                fetch('/supprimer_compte.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ id: compteId })
+                })
+                .then(response => response.json()) // Parse la réponse JSON
+                .then(data => {
+                    if (data.success) {
+                        alert('Compte supprimé avec succès.');
+                        window.location.href = '/compte_membre_tel.php?deco=true'; // Redirection côté client
+                    } else {
+                        alert(data.message || 'Erreur lors de la suppression du compte.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur réseau ou serveur :', error);
+                    alert('Impossible de supprimer le compte.');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
