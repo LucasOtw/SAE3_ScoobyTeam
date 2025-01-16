@@ -73,10 +73,6 @@ if (isset($_POST['modif_infos'])){
    // Mettre à jour seulement les champs modifiés
    if (!empty($champsModifies))
    {
-      echo "<pre>";
-      var_dump($champsModifies);
-      var_dump($compte['mdp']);
-      echo "</pre>";
       if (password_verify($champsModifies['mdp_actuel'],$compte['mdp']))
       {
          if (trim($champsModifies['mdp_nv1']) === trim($champsModifies['mdp_nv2']))
@@ -90,7 +86,7 @@ if (isset($_POST['modif_infos'])){
             $rowsAffected = $query->rowCount();
             if ($rowsAffected > 0) {
                $modif_mdp = true;
-               $_SESSION['membre']['mdp'] = $mdp_modif;
+               $_SESSION['pro']['mdp'] = $mdp_modif;
             } else {
                $modif_mdp = false;
             }
