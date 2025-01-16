@@ -6412,6 +6412,7 @@ select.theme_contacter_plateforme {
 
 .btn-poster-avis-voir-site {
     display: flex;
+    gap: 1em;
 }
 
 .visit-button_detailoffre {
@@ -6434,7 +6435,6 @@ input#btn-poster-avis {
     cursor: pointer;
     height: 52px;
     border: 1px #BDC426 solid;
-    margin-right: 1em;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2s ease;
     font-size: 17px;
