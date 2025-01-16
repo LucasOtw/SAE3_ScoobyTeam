@@ -10875,10 +10875,11 @@ ul.mentions_legales-sous-list {
     border-color: #333 transparent transparent transparent;
 }
 
-.info-icon-container_pro:hover .tooltip {
+.detail_offre_pro_info-icon-container:hover .tooltip {
     opacity: 1;
     visibility: visible;
 }
+
 
 /*****************************************************
             * Code pour compte membre tel *
