@@ -206,7 +206,7 @@ if (isset($_POST['changePhoto'])) {
             </button>
         </a>
 
-       <button type="button" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte">
+       <button type="button" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte" style="margin-bottom: 12vh;"> 
             <img src="images/trash.svg" alt="Trash Icon" style="width: 20px; height: 20px; margin-right: 10px;"> Supprimer mon compte
         </button>
 
