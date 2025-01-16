@@ -66,7 +66,7 @@ if (isset($_POST['modif_infos'])){
    foreach ($_POST as $champ => $valeur) {
       if ($champ != 'modif_infos')
       {
-         $champsModifies[$champ] = $valeur;
+         $champsModifies[$champ] = trim($valeur);
       }
    }
    
