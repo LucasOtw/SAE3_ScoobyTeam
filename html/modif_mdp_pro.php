@@ -69,10 +69,6 @@ if (isset($_POST['modif_infos'])){
          $champsModifies[$champ] = trim($valeur);
       }
    }
-
-   if!(empty($champModifies)){
-      if(password_verify($champsModifies['mdp_actuel'])){}
-   }
    
    // Mettre à jour seulement les champs modifiés
    if (!empty($champsModifies))
