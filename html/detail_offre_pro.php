@@ -330,7 +330,8 @@ include("recupInfosCompte.php");
                     </p>
 
                     <p class="update"><span class="update-icon">⟳</span> Dernière modification
-                        <?php echo tempsEcouleDepuisDerniereModif($details_offre); ?></p>
+                        <?php echo tempsEcouleDepuisDerniereModif($details_offre); ?>
+                    </p>
 
                     <!-- <div class="detail_offre_rating">
                         ⭐ 5.0 (255 avis)
@@ -573,28 +574,28 @@ include("recupInfosCompte.php");
                         <h2>Horaire du Spectacle</h2>
                         <p>Date :
                             <span>
-                        <?php
-                        // Vérifiez si la date est définie et non nulle
-                        if (isset($details_offre["date_spectacle"])) {
-                            // Formatez la date SQL (YYYY-MM-DD) en format lisible
-                            echo date("l, j F Y", strtotime($details_offre["date_spectacle"]));
-                        } else {
-                            echo "Date non disponible";
-                        }
-                        ?>
+                            <?php
+                            // Vérifiez si la date est définie et non nulle
+                            if (isset($details_offre["date_spectacle"])) {
+                                // Formatez la date SQL (YYYY-MM-DD) en format lisible
+                                echo date("l, j F Y", strtotime($details_offre["date_spectacle"]));
+                            } else {
+                                echo "Date non disponible";
+                            }
+                            ?>
                             </span>
                         </p>
                         <p>Heure :
                             <span>
-                        <?php
-                        // Vérifiez si l'heure est définie et non nulle
-                        if (isset($details_offre["heure_spectacle"])) {
-                            // Formatez l'heure SQL (HH:MM:SS) en format lisible
-                            echo date("H\h i", strtotime($details_offre["heure_spectacle"]));
-                        } else {
-                            echo "Heure non disponible";
-                        }
-                        ?>
+                            <?php
+                            // Vérifiez si l'heure est définie et non nulle
+                            if (isset($details_offre["heure_spectacle"])) {
+                                // Formatez l'heure SQL (HH:MM:SS) en format lisible
+                                echo date("H\h i", strtotime($details_offre["heure_spectacle"]));
+                            } else {
+                                echo "Heure non disponible";
+                            }
+                            ?>
                             </span>
                         </p>
                     </div>
@@ -607,28 +608,28 @@ include("recupInfosCompte.php");
                             <h2>Horaire de la Visite</h2>
                             <p>Date :
                                 <span>
-                        <?php
-                        // Vérifiez si la date est définie et non nulle
-                        if (isset($details_offre["date_visite"])) {
-                            // Formatez la date SQL (YYYY-MM-DD) en format lisible
-                            echo date("l, j F Y", strtotime($details_offre["date_visite"]));
-                        } else {
-                            echo "Date non disponible";
-                        }
-                        ?>
+                            <?php
+                            // Vérifiez si la date est définie et non nulle
+                            if (isset($details_offre["date_visite"])) {
+                                // Formatez la date SQL (YYYY-MM-DD) en format lisible
+                                echo date("l, j F Y", strtotime($details_offre["date_visite"]));
+                            } else {
+                                echo "Date non disponible";
+                            }
+                            ?>
                                 </span>
                             </p>
                             <p>Heure :
                                 <span>
-                        <?php
-                        // Vérifiez si l'heure est définie et non nulle
-                        if (isset($details_offre["heure_visite"])) {
-                            // Formatez l'heure SQL (HH:MM:SS) en format lisible
-                            echo date("H\h i", strtotime($details_offre["heure_visite"]));
-                        } else {
-                            echo "Heure non disponible";
-                        }
-                        ?>
+                            <?php
+                            // Vérifiez si l'heure est définie et non nulle
+                            if (isset($details_offre["heure_visite"])) {
+                                // Formatez l'heure SQL (HH:MM:SS) en format lisible
+                                echo date("H\h i", strtotime($details_offre["heure_visite"]));
+                            } else {
+                                echo "Heure non disponible";
+                            }
+                            ?>
                                 </span>
                             </p>
                         </div>
@@ -860,7 +861,8 @@ include("recupInfosCompte.php");
                                 <p id="negativeCount<?php echo $avis['code_avis']; ?>"><?php echo $avis['pouce_negatif']; ?>
                                 </p>
                             </div>
-                            <span class="signalement">
+
+                            <span class="signalement_avis_offre">
                                 <a href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
                                     title="Signaler cet avis"
                                     style="text-decoration: none; margin-right: 2vw; font-size: 21px;">🚩</a>
