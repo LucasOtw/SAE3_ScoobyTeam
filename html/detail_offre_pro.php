@@ -941,65 +941,64 @@ WHERE code_offre = :code_offre
 
 
 
-
-        <footer class="footer_detail_avis">
-            <div class="footer-links">
-                <div class="logo">
-                    <img src="images/logoBlanc.png" alt="Logo PAVCT">
-                </div>
-                <div class="link-group">
-                    <ul>
-                        <li><a href="mentions_legales.html">Mentions Légales</a></li>
-                        <li><a href="cgu.html">GGU</a></li>
-                        <li><a href="cgv.html">CGV</a></li>
-                    </ul>
-                </div>
-                <div class="link-group">
-                    <ul>
-                        <li><a href="voir_offres.php">Accueil</a></li>
-                        <li><a href="connexion_pro.php">Publier</a></li>
-                        <?php
-                        if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
-                            ?>
-                            <li>
-                                <a href="consulter_compte_membre.php">Mon Compte</a>
-                            </li>
-                            <?php
-                        } else {
-                            ?>
-                            <li>
-                                <a href="connexion_membre.php">Se connecter</a>
-                            </li>
-                            <?php
-                        }
+        <footer>
+        <div class="footer-links">
+            <div class="logo">
+                <img src="images/logoBlanc.png" alt="Logo PAVCT">
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="mentions_legales.html">Mentions Légales</a></li>
+                    <li><a href="cgu.html">GGU</a></li>
+                    <li><a href="cgv.html">CGV</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="voir_offres.php">Accueil</a></li>
+                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <?php
+                    if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
                         ?>
-                    </ul>
+                        <li>
+                            <a href="consulter_compte_membre.php">Mon Compte</a>
+                        </li>
+                        <?php
+                    } else {
+                        ?>
+                        <li>
+                            <a href="connexion_membre.php">Se connecter</a>
+                        </li>
+                        <?php
+                    }
+                    ?>
+                </ul>
 
-                </div>
-                <div class="link-group">
-                    <ul>
-                        <li><a href="#">Nous Connaitre</a></li>
-                        <li><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
-                        <li><a href="contacter_plateforme.php">Nous contacter</a></li>
-                    </ul>
-                </div>
-                <div class="link-group">
-                    <ul>
-                        <!--<li><a href="#">Presse</a></li>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="#">Nous Connaitre</a></li>
+                    <li><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
+                    <li><a href="contacter_plateforme.php">Nous contacter</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <!--<li><a href="#">Presse</a></li>
                     <li><a href="#">Newsletter</a></li>
                     <li><a href="#">Notre équipe</a></li>-->
-                    </ul>
-                </div>
+                </ul>
             </div>
+        </div>
 
-            <div class="footer-bottom">
-                <div class="social-icons">
-                    <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
-                    <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
-                    <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
-                    <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
-                </div>
+        <div class="footer-bottom">
+            <div class="social-icons">
+                <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
+                <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
+                <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+                <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
             </div>
+        </div>
         </footer>
 
     </div>
