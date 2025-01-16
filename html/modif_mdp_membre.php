@@ -35,7 +35,6 @@ if (isset($_POST['modif_infos'])){
    // Mettre à jour seulement les champs modifiés
    if (!empty($champsModifies))
    {
-      echo password_hash($champsModifies['mdp_actuel'], PASSWORD_DEFAULT);
       if (password_verify($champsModifies['mdp_actuel'],$valeursInitiales['mdp']))
       {
          if (trim($champsModifies['mdp_nv1']) === trim($champsModifies['mdp_nv2']))
@@ -48,7 +47,7 @@ if (isset($_POST['modif_infos'])){
                 
             $rowsAffected = $query->rowCount();
             if ($rowsAffected > 0) {
-                echo "$rowsAffected ligne(s) mise(s) à jour avec succès.";
+                echo "Mot de passe mis à jour avec succès !";
             } else {
                 echo "Aucune mise à jour effectuée.";
             }
