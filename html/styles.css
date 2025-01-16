@@ -2303,6 +2303,7 @@ main.main_poster_avis .message-erreur {
         display: flex;
         justify-content: center;
         font-size: 14px;
+        margin-top: -3vh;
     }
 
     main.main_poster_avis .poster_un_avis_btn_publier {
