@@ -3279,6 +3279,11 @@ nav.nav-bar {
     /* Effet d'élévation au survol */
 }
 
+.main_consulter_compte_membre .donnees_deco_enreg{
+    display: flex; 
+    gap:6px
+}
+
 @media (max-width: 429px) {
     div.header-membre header.header-pc {
         display: none;
@@ -3354,7 +3359,9 @@ nav.nav-bar {
         display: none;
     }
 
-
+    .main_consulter_compte_membre .donnees_deco_enreg{
+        flex-direction: column;
+    }
 
     .main_consulter_compte_membre .profile .profile-info {
         display: none;
@@ -3365,11 +3372,14 @@ nav.nav-bar {
         gap: 20px;
     }
 
+    
+
     .main_consulter_compte_membre .submit-btn1,
     .main_consulter_compte_membre button.submit-btn2,
-    .main_consulter_compte_membre button.btn-suppr-compte {
-        width: 70vw;
-        display: none;
+    .main_consulter_compte_membre button.btn-suppr-compte, 
+    .main_consulter_compte_membre button.submit-btn4 {
+        width: 100%;
+        max-width: auto;
     }
 
     .main_consulter_compte_membre .edit-profil {
