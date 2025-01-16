@@ -11694,6 +11694,9 @@ ul.mentions_legales-sous-list {
 
 }
 
+.main-creation-offre3 #cgu {
+    accent-color: var(--orange);
+}
 .main-creation-offre3 .checkbox {
     margin: 10px 0;
     padding: 10px;
