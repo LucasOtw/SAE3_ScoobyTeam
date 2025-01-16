@@ -6792,6 +6792,14 @@ input#btn-poster-avis {
     margin-left: 1.4em;
 }
 
+.hours_desktop_detail_offre_pro li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    margin-left: 1.4em;
+}
+
 .hours_desktop_detail_offre li:last-child {
     border-bottom: none;
 }
