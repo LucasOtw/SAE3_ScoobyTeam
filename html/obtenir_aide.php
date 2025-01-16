@@ -31,6 +31,7 @@
             </div>
         </header>
         <h1 class="titre_version_mobile">Obtenir de l'aide</h1>
+        
         <img src="images/faq.png" alt="Image pour la page des questions/aides" class="image-aide">
         <div class="faq-search-bar-container">
         <input type="text" class="faq-search-input" placeholder="Comment peut-on vous aider ?">
@@ -138,11 +139,16 @@
             </div>
         </div>
         <header class="header_tel">
-        <div class="poster_un_avis_container">
-            <div class="poster_un_avis_back_button">
-                <a href="<?php echo $_SERVER['HTTP_REFERER']?>" style="position: absolute; top: 50px; left: 5vw; margin-top: 3vh;">
-                        <img src="images/Bouton_retour.png" alt="bouton retour">
-                </a>
+            <a href="voir_offres.php"><img class="fleche_retour_tel" src="images/Bouton_retour.png"
+                    alt="bouton retour"></a>
+            <style>
+                .fleche_retour_tel {
+                    margin-left: -7em;
+                    padding-right: 5em;
+                    height: 3vh;
+                    margin-top: 1vh;
+                }
+            </style>
         </header>
     </footer>
     <script>
