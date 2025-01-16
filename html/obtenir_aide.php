@@ -42,6 +42,9 @@
         </button>
     </div>
 <div class="faq-container">
+    <a href="<?php echo $_SERVER['HTTP_REFERER']?>" style="position: absolute; top: 50px; left: 5vw; margin-top: 3vh;">
+            <img src="images/Bouton_retour.png" alt="bouton retour">
+    </a>
     <h1 class="faq-title">Questions fréquentes (FAQ)</h1>
     <ul class="faq-list">
         <li class="faq-item">
