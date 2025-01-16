@@ -877,7 +877,7 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
                         </div>
                 <span class="signalement">
                     <a href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
-                       title="Signaler cet avis" style="text-decoration: none; margin-right: 5vw; font-size: 21px;">🚩</a>
+                       title="Signaler cet avis" style="text-decoration: none; margin-right: 2vw; font-size: 21px;">🚩</a>
                 </span>
                     <form action="poster_reponse_pro.php" method="POST">
                         <input type="hidden" name="unAvis"
