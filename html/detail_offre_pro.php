@@ -391,7 +391,7 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
                     
                     <p class="detail_offre_price"><?php echo $details_offre["tarif"];?>€</p>
                     <div class="detail_offre_pro_button">                        
-                    <?php if (!empty($details_offre["site_web"])) { ?> <a href="<?php echo $details_offre["site_web"]; ?>" target="_blank"><button class="visit-button_detailoffre">Voir le site ➔</button></a> <?php } ?>
+                    <?php if (!empty($details_offre["site_web"])) { ?> <a href="<?php echo $details_offre["site_web"]; ?>" target="_blank"><button class="visit-button_detailoffre_pro">Voir le site ➔</button></a> <?php } ?>
                     <form id="add-btn" action="modifier_offre.php" method="POST">
                         <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
                         <input id="btn-voir-offre" class="button-text add-btn" type="submit" name="envoiOffre" value="Modifier votre offre">
