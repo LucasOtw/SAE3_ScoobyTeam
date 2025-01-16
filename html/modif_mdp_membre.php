@@ -61,6 +61,7 @@ if (isset($_POST['modif_infos'])){
          }
       } else {
          $modif_mdp = false;
+         echo "Test";
       }
        // echo "Les informations ont été mises à jour.";
        include("recupInfosCompte.php");
