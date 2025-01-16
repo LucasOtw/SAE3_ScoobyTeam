@@ -4332,7 +4332,7 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
 }
 
 .main_modif_mdp_membre #modif_mdp_membre{
-           background-color: orange;
+    width: 30vw;
 }
 
 
