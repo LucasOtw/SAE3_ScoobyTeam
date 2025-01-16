@@ -10447,7 +10447,7 @@ ul.mentions_legales-sous-list {
 }
 
 .main-telecharger-facture .facture-items th {
-    background-color: #007bff;
+    background-color: var(--orange);
     color: white;
 }
 
