@@ -1028,6 +1028,7 @@ input[type="email"] {
 
 .notification-content {
     flex: 1;
+    margin-left: 10px;
 }
 
 #notification-popup>ul {
@@ -1070,6 +1071,13 @@ input[type="email"] {
     height: 15px;
     background-color: red;
     border-radius: 50%;
+}
+
+.notification-popup .notif .profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 15px;
+    object-fit: cover;
 }
 
 
