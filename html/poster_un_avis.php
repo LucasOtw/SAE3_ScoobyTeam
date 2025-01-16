@@ -102,10 +102,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               }
             }
         } else {
-            echo "ok";
            
             echo '<script language="javascript">
-                    afficherPOPup();
+                    function afficherPOPup() {
+                        $("#customConfirmBox").fadeIn();     
+                     }
                   </script>';
         }
      }
@@ -326,10 +327,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <script>
    
    $(document).ready(function() {
-      
-      function afficherPOPup() {
-         $('#customConfirmBox').fadeIn();     
-      }
       
       // Fermer la popup quand l'utilisateur clique sur "Fermer"
       $('#confirmButton').on('click', function() {
