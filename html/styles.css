@@ -5276,8 +5276,7 @@ nav.nav-bar-tel {
 .main_mes_offres .button-container {
     display: flex;
     gap: 10px;
-    /* Espace entre les boutons */
-    margin-left: 20em;
+    justify-content: center;
     flex-direction: row;
 }
 
