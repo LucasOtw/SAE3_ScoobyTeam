@@ -1073,12 +1073,6 @@ input[type="email"] {
     border-radius: 50%;
 }
 
-.notification-popup .notif .profile-img {
-    width: 80px;
-    height: 80px;
-    border-radius: 15px;
-    object-fit: cover;
-}
 
 
 
@@ -12048,4 +12042,16 @@ ul.mentions_legales-sous-list {
     margin-bottom: 5px;
     display: flex;
     align-items: center;
+}
+
+
+
+
+/* NOTIF PHOTO */
+
+.notification-popup .notif .profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 15px;
+    object-fit: cover;
 }
