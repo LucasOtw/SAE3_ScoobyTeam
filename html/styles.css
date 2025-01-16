@@ -10649,13 +10649,13 @@ ul.mentions_legales-sous-list {
 
 
 .titre_version_mobile {
-    display: none;
+    display: none!important;
 }
 
 /* Afficher l'élément uniquement sur un écran de 429px de large */
 @media (max-width: 429px) {
     .titre_version_mobile {
-        display: block;
+        display: block!important;
     }
 }
 
