@@ -6551,9 +6551,9 @@ select.theme_contacter_plateforme {
     gap: 1em;
 }
 
-.visit-button_detailoffre {
+.visit-button_detailoffre_pro {
     padding: 10px 20px;
-    background-color: var(--vert-clair);
+    background-color: var(--orange);
     color: white;
     border: none;
     border-radius: 16px;
