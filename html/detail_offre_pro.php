@@ -302,17 +302,115 @@ include("recupInfosCompte.php");
 
     <!-- Détails de l'offre sur Desktop -->
     <div id="body_offre_desktop">
-        <header>
+        <header class="header-pc header_pro">
             <div class="logo">
                 <a href="mes_offres.php">
                     <img src="images/logo_blanc_pro.png" alt="PACT Logo">
                 </a>
             </div>
-            <nav>
+            <nav class="nav">
                 <ul>
-                    <li><a href="mes_offres.php">Accueil</a></li>
+                    <li><a href="mes_offres.php" class="active">Accueil</a></li>
                     <li><a href="creation_offre.php">Publier</a></li>
-                    <li><a href="consulter_compte_pro.php" class="active">Mon Compte</a></li>
+                    <li><a href="consulter_compte_pro.php">Mon Compte</a></li>
+                    <li>
+                        <a href="#" class="notification-icon" id="notification-btn">
+                            <img src="images/notif.png" alt="cloche notification" class="nouvelle-image"
+                                style="margin-top: -5px;">
+                            <span id="notification-badge" style="display:none"></span>
+                        </a>
+                        <div id="notification-popup">
+                            <ul>
+                                <?php
+                                ///////////////////////////////////////////////////////////////////////////////
+                                ///                            Contenu notif                                ///
+                                ///////////////////////////////////////////////////////////////////////////////
+                                
+                                $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+                                $username = "sae";
+                                $password = "philly-Congo-bry4nt";
+
+                                // Créer une instance PDO
+                                $dbh = new PDO($dsn, $username, $password);
+
+                                $toutes_les_notifs = $dbh->prepare('select * from tripenarvor._notification 
+                                                                natural join tripenarvor._avis 
+                                                                natural join tripenarvor._offre 
+                                                                where professionnel = :code_compte 
+                                                                order by date_notif desc;');
+                                $toutes_les_notifs->bindValue(":code_compte", $monComptePro["code_compte"]);
+                                $toutes_les_notifs->execute();
+                                $notifs = $toutes_les_notifs->fetchAll(PDO::FETCH_ASSOC);
+
+                                $nb_notif = 0;
+
+                                // echo "<pre>";
+                                // var_dump($notifs);
+                                // echo "</pre>";
+                                
+                                if (empty($notifs)) {
+                                    echo "<p> Aucun avis n'a été posté sur vos offres </p>";
+                                } else {
+                                    foreach ($notifs as $index => $notif) {
+                                        if (!$notif["consulter_notif"]) {
+                                            echo '<script language="javascript">
+                                            const notificationBadge = document.getElementById("notification-badge");
+                                            notificationBadge.style.removeProperty("display");
+                                          </script>';
+                                        }
+
+                                        $checkPP = $dbh->prepare("SELECT url_image FROM tripenarvor._sa_pp WHERE code_compte = :code_compte");
+                                        $checkPP->bindValue(":code_compte", $notif['code_compte']);
+                                        $checkPP->execute();
+
+                                        $photo_profil = $checkPP->fetch(PDO::FETCH_ASSOC);
+                                        if ($photo_profil) {
+                                            $compte_pp = $photo_profil['url_image'];
+                                        } else {
+                                            $compte_pp = "images/icones/icone_compte.png";
+                                        }
+
+                                        $infoCompte = $dbh->prepare('select * from tripenarvor._compte natural join tripenarvor._membre where code_compte= :code_compte;');
+                                        $infoCompte->bindValue(':code_compte', $notif['code_compte']);
+                                        $infoCompte->execute();
+                                        $compte_m = $infoCompte->fetch(PDO::FETCH_ASSOC);
+
+                                        if (!empty($compte_m['prenom']) && !empty($compte_m['nom'])) {
+                                            // Si c'est un membre classique
+                                            $prenom = $compte_m['prenom'];
+                                            $nom = $compte_m['nom'];
+                                        } else {
+                                            // Si l'utilisateur est supprimé
+                                            $prenom = "Utilisateur";
+                                            $nom = "supprimé";
+                                        }
+
+                                        if ($nb_notif < 5) {
+                                            ?>
+
+                                            <li class="notif" data-consult="<?php echo $notif["consulter_notif"]; ?>"
+                                                data-avis="<?php echo $notif["code_avis"]; ?>">
+                                                <img src="<?php echo $compte_pp; ?>" alt="photo de profil" class="profile-img">
+                                                <div class="notification-content">
+                                                    <strong><?php echo $prenom . ' ' . $nom; ?></strong>
+                                                    <span class="notification-location"> |
+                                                        <?php echo $notif["titre_offre"]; ?></span>
+                                                    <p><?php echo $notif["txt_avis"]; ?></p>
+                                                    <span
+                                                        class="notification-time"><?php echo tempsEcouleDepuisNotif($notif); ?></span>
+                                                    <span class="new-notif-dot" style="display:none"></span>
+                                                </div>
+                                            </li>
+
+                                            <?php
+                                        }
+                                        $nb_notif++;
+                                    }
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </header>
@@ -673,13 +771,13 @@ include("recupInfosCompte.php");
 
                 <h2>Horaires</h2>
                 <ul class="hours_desktop_detail_offre_pro">
-                    <li><span>Lundi</span><?php echo afficherHoraire($h_lundi);?></li>
-                    <li><span>Mardi</span><?php echo afficherHoraire($h_mardi);?></li>
-                    <li><span>Mercredi</span><?php echo afficherHoraire($h_mercredi);?></li>
-                    <li><span>Jeudi</span><?php echo afficherHoraire($h_jeudi);?></li>
-                    <li><span>Vendredi</span><?php echo afficherHoraire($h_vendredi);?></li>
-                    <li><span>Samedi</span><?php echo afficherHoraire($h_samedi);?></li>
-                    <li><span>Dimanche</span><?php echo afficherHoraire($h_dimanche);?></li>
+                    <li><span>Lundi</span><?php echo afficherHoraire($h_lundi); ?></li>
+                    <li><span>Mardi</span><?php echo afficherHoraire($h_mardi); ?></li>
+                    <li><span>Mercredi</span><?php echo afficherHoraire($h_mercredi); ?></li>
+                    <li><span>Jeudi</span><?php echo afficherHoraire($h_jeudi); ?></li>
+                    <li><span>Vendredi</span><?php echo afficherHoraire($h_vendredi); ?></li>
+                    <li><span>Samedi</span><?php echo afficherHoraire($h_samedi); ?></li>
+                    <li><span>Dimanche</span><?php echo afficherHoraire($h_dimanche); ?></li>
                 </ul>
 
             </div>
