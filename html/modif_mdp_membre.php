@@ -157,6 +157,18 @@ if (isset($_POST['modif_infos'])){
                 <button type="submit" name="modif_infos" class="submit-btn2">Enregistrer</button>
             </div>
         </form>
+          <?php
+
+            if($modif_mdp){
+               ?>
+                  <div class="creation-success" id="modif_mdp_membre">
+                      <img src="images/verifier.png" alt="Succès">
+                      <h2>Mot de passe modifié avec succès&nbsp!</h2>
+                  </div>
+               <?php
+            }
+         
+         ?>
        
     </main>
    
@@ -220,18 +232,6 @@ if (isset($_POST['modif_infos'])){
             </div>
         </div>
     </footer>
-   <?php
-
-   if($modif_mdp){
-      ?>
-         <div class="creation-success">
-             <img src="images/verifier.png" alt="Succès">
-             <h2>Mot de passe modifié avec succès&nbsp!</h2>
-         </div>
-      <?php
-   }
-
-   ?>
    
 </body>
 </html>
