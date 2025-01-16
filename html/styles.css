@@ -1962,8 +1962,7 @@ main.main_poster_avis .poster_un_avis_btn_offre {
     border: none;
     border-radius: 16px;
     cursor: pointer;
-    width: 15vw;
-    max-width: 220px;
+    width: 223px;
     height: 52px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2s ease;
@@ -2060,7 +2059,7 @@ main.main_poster_avis .poster_un_avis_btn_publier {
     border: none;
     border-radius: 16px;
     cursor: pointer;
-    width: 15vw;
+    width: 223px;
     max-width: 220px;
     height: 52px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
@@ -3880,8 +3879,7 @@ div.creation-success {
     border: 1px solid #eeeeee;
     background-color: #eeeeee;
     height: 6vh;
-    width: 15vw;
-    max-width: 220px;
+    width: 223px;
 }
 
 div.creation-success h2 {
@@ -5800,8 +5798,7 @@ select.theme_contacter_plateforme {
     border: none;
     border-radius: 16px;
     cursor: pointer;
-    width: 15vw;
-    max-width: 220px;
+    width: 223px;
     height: 52px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2s ease;
@@ -6560,8 +6557,7 @@ select.theme_contacter_plateforme {
     border: none;
     border-radius: 16px;
     cursor: pointer;
-    width: 15vw;
-    max-width: 220px;
+    width: 223px;
     height: 52px;
 }
 
@@ -8388,6 +8384,7 @@ footer {
     align-items: center;
     flex-direction: row;
     padding: 20px;
+    max-width: 800px;
 }
 
 .bloc_consulter_recemment p {
@@ -8398,6 +8395,7 @@ footer {
 
 a.bloc_consulter_recemment_a {
     text-decoration: none;
+
 }
 
 .bloc_consulter_recemment img {
@@ -8464,8 +8462,7 @@ a.bloc_consulter_recemment_a {
 }
 
 .toute_les_offres_main .offer img {
-    width: 15vw;
-    max-width: 220px;
+    width: 223px;
     border-radius: 15px;
     object-fit: cover;
     margin: 0.5vw 1vw;
@@ -8522,8 +8519,7 @@ a.bloc_consulter_recemment_a {
 .toute_les_offres_main #offers-list>article>div>form>input[type="submit"] {
     background-color: var(--vert-clair);
     color: #fff;
-    width: 15vw;
-    max-width: 220px;
+    width: 223px;
     height: 52px;
     padding: 1.25vh 1.75vw;
     border: none;
@@ -9747,8 +9743,7 @@ main.main_repondre_avis .repondre_avis_btn_offre {
     border: none;
     border-radius: 16px;
     cursor: pointer;
-    width: 15vw;
-    max-width: 220px;
+    width: 223px;
     height: 52px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2s ease;
@@ -9854,8 +9849,7 @@ main.main_repondre_avis .repondre_avis_btn_publier {
     border: none;
     border-radius: 16px;
     cursor: pointer;
-    width: 15vw;
-    max-width: 220px;
+    width: 223px;
     height: 52px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2s ease;
