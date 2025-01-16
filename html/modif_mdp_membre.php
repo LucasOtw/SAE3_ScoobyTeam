@@ -51,10 +51,14 @@ if (isset($_POST['modif_infos'])){
             if ($rowsAffected > 0) {
                 $modif_mdp = true;
             } else {
-                $modif_mdp = null;
+                $modif_mdp = false;
             }
 
+         } else {
+            $modif_mdp = false;
          }
+      } else {
+         $modif_mdp = false;
       }
        // echo "Les informations ont été mises à jour.";
        include("recupInfosCompte.php");
