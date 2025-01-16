@@ -10830,7 +10830,7 @@ ul.mentions_legales-sous-list {
                     * Pop pup *
 *****************************************************/
 
-.info-icon-container {
+.info-icon-container_pro {
     position: relative;
     display: inline-block;
 }
@@ -10875,7 +10875,7 @@ ul.mentions_legales-sous-list {
     border-color: #333 transparent transparent transparent;
 }
 
-.info-icon-container:hover .tooltip {
+.info-icon-container_pro:hover .tooltip {
     opacity: 1;
     visibility: visible;
 }
