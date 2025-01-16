@@ -31,6 +31,7 @@ function tempsEcouleDepuisNotif($avis)
     $date_actuelle = new DateTime();
     // conversion de la date de publication en objet DateTime
     $date_ajout_avis = new DateTime($avis['date_notif']);
+    $date_ajout_avis = new DateTime($date_ajout_avis->format('Y-m-d'));
     // calcul de la différence en jours
     $diff = $date_ajout_avis->diff($date_actuelle);
     // récupération des différentes unités de temps
