@@ -7,11 +7,7 @@ if(!isset($_SESSION['membre'])){
    exit;
 }
 
-echo "<pre>";
-var_dump($_POST);
-echo "</pre>";
-
-$details_offre = unserialize($_POST["uneOffre"]);
+$details_offre = unserialize($_SESSION["detail_offre"]);
 
 // Vérifie si HTTP_REFERER est défini
 if (isset($_SERVER['HTTP_REFERER'])) {
