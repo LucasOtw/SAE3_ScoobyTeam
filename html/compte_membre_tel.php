@@ -128,7 +128,7 @@ if (isset($_POST['changePhoto'])) {
                 <img src="images/LogoCouleur.png" alt="PACT Logo">
             </a>
         </div>
-    </header>
+    </div>
 
     <main class="main_compte_membre_tel">
     <!-- Profile Section -->
