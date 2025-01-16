@@ -797,7 +797,7 @@ if (isset($json['results'][0])) {
                                         <img id="positiveImage<?php echo $avis['code_avis']; ?>"
                                             src="<?php echo $voteState == 1 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png'; ?>"
                                             alt="Pouce positif"
-                                            onclick="togglePositiveImage(<?php echo $avis['code_avis']; ?>)">
+                                            >
                                         <p id="positiveCount<?php echo $avis['code_avis']; ?>">
                                             <?php echo $avis['pouce_positif']; ?>
                                         </p>
@@ -808,7 +808,7 @@ if (isset($json['results'][0])) {
                                         <img id="negativeImage<?php echo $avis['code_avis']; ?>"
                                             src="<?php echo $voteState == -1 ? 'images/pouce_negatif_couleur.png' : 'images/pouce_negatif_blanc.png'; ?>"
                                             alt="Pouce négatif"
-                                            onclick="toggleNegativeImage(<?php echo $avis['code_avis']; ?>)">
+                                            >
                                         <p id="negativeCount<?php echo $avis['code_avis']; ?>">
                                             <?php echo $avis['pouce_negatif']; ?>
                                         </p>
@@ -1194,7 +1194,18 @@ WHERE code_offre = :code_offre
                 const action = negativeImage.src.includes('blanc') ? 'dislike' : 'undislike';
                 updateLikeDislike(action, codeAvis);
             }
-        </script>
+
+            document.addEventListener('DOMContentLoaded', () => {
+                for (const codeAvis in userVotes) {
+                    const vote = userVotes[codeAvis];
+                    if (vote === 'like') {
+                        document.getElementById(`positiveImage${codeAvis}`).src = 'images/pouce_positif_couleur.png';
+                    } else if (vote === 'dislike') {
+                        document.getElementById(`negativeImage${codeAvis}`).src = 'images/pouce_negatif_couleur.png';
+                    }
+                }
+            });
+                </script>
 
     </div>
     <div class="avis-widget">
