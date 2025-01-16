@@ -117,6 +117,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   $('#confirmButton').on('click', function() {
                      $('#customConfirmBox').fadeOut();
                   });
+
+                  afficherPOPup();
+                  
                });
                
             </script>
