@@ -190,7 +190,7 @@ if (isset($_POST['changePhoto'])) {
                 <img src="images/icones/phone.png" alt="Password Icon"> Contacter la plateforme
             </button>
         </a>
-        <a href="contacter_plateforme.php">
+        <a href="obtenir_aide.php">
             <button class="action-btn">
                 <img src="images/icones/help.png" alt="Password Icon"> Aide
             </button>
