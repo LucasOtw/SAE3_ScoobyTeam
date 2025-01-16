@@ -47,7 +47,6 @@ body {
 }
 
 header {
-display : none;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -111,7 +110,6 @@ nav ul li a::before {
 nav ul li a:hover::before {
     width: 90%;
 }
-
 @media (min-width: 1024px) {
     nav ul {
         gap: 50px;
