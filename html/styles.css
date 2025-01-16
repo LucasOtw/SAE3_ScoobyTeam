@@ -8463,7 +8463,6 @@ a.bloc_consulter_recemment_a {
 
 .toute_les_offres_main .offer img {
     width: 223px;
-    max-width: 220px;
     border-radius: 15px;
     object-fit: cover;
     margin: 0.5vw 1vw;
