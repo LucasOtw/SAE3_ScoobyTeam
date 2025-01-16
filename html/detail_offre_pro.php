@@ -302,17 +302,17 @@ include("recupInfosCompte.php");
 
     <!-- Détails de l'offre sur Desktop -->
     <div id="body_offre_desktop">
-        <header>
+        <header class="header-pc header_pro">
             <div class="logo">
                 <a href="mes_offres.php">
                     <img src="images/logo_blanc_pro.png" alt="PACT Logo">
                 </a>
             </div>
-            <nav>
+            <nav class="nav">
                 <ul>
-                    <li><a href="mes_offres.php">Accueil</a></li>
+                    <li><a href="mes_offres.php" class="active">Accueil</a></li>
                     <li><a href="creation_offre.php">Publier</a></li>
-                    <li><a href="consulter_compte_pro.php" class="active">Mon Compte</a></li>
+                    <li><a href="consulter_compte_pro.php">Mon Compte</a></li>
                 </ul>
             </nav>
         </header>
@@ -673,13 +673,13 @@ include("recupInfosCompte.php");
 
                 <h2>Horaires</h2>
                 <ul class="hours_desktop_detail_offre_pro">
-                    <li><span>Lundi</span><?php echo afficherHoraire($h_lundi);?></li>
-                    <li><span>Mardi</span><?php echo afficherHoraire($h_mardi);?></li>
-                    <li><span>Mercredi</span><?php echo afficherHoraire($h_mercredi);?></li>
-                    <li><span>Jeudi</span><?php echo afficherHoraire($h_jeudi);?></li>
-                    <li><span>Vendredi</span><?php echo afficherHoraire($h_vendredi);?></li>
-                    <li><span>Samedi</span><?php echo afficherHoraire($h_samedi);?></li>
-                    <li><span>Dimanche</span><?php echo afficherHoraire($h_dimanche);?></li>
+                    <li><span>Lundi</span><?php echo afficherHoraire($h_lundi); ?></li>
+                    <li><span>Mardi</span><?php echo afficherHoraire($h_mardi); ?></li>
+                    <li><span>Mercredi</span><?php echo afficherHoraire($h_mercredi); ?></li>
+                    <li><span>Jeudi</span><?php echo afficherHoraire($h_jeudi); ?></li>
+                    <li><span>Vendredi</span><?php echo afficherHoraire($h_vendredi); ?></li>
+                    <li><span>Samedi</span><?php echo afficherHoraire($h_samedi); ?></li>
+                    <li><span>Dimanche</span><?php echo afficherHoraire($h_dimanche); ?></li>
                 </ul>
 
             </div>
@@ -941,65 +941,64 @@ WHERE code_offre = :code_offre
 
 
 
-
-        <footer class="footer_detail_avis">
-            <div class="footer-links">
-                <div class="logo">
-                    <img src="images/logoBlanc.png" alt="Logo PAVCT">
-                </div>
-                <div class="link-group">
-                    <ul>
-                        <li><a href="mentions_legales.html">Mentions Légales</a></li>
-                        <li><a href="cgu.html">GGU</a></li>
-                        <li><a href="cgv.html">CGV</a></li>
-                    </ul>
-                </div>
-                <div class="link-group">
-                    <ul>
-                        <li><a href="voir_offres.php">Accueil</a></li>
-                        <li><a href="connexion_pro.php">Publier</a></li>
-                        <?php
-                        if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
-                            ?>
-                            <li>
-                                <a href="consulter_compte_membre.php">Mon Compte</a>
-                            </li>
-                            <?php
-                        } else {
-                            ?>
-                            <li>
-                                <a href="connexion_membre.php">Se connecter</a>
-                            </li>
-                            <?php
-                        }
+        <footer>
+        <div class="footer-links">
+            <div class="logo">
+                <img src="images/logoBlanc.png" alt="Logo PAVCT">
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="mentions_legales.html">Mentions Légales</a></li>
+                    <li><a href="cgu.html">GGU</a></li>
+                    <li><a href="cgv.html">CGV</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="voir_offres.php">Accueil</a></li>
+                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <?php
+                    if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
                         ?>
-                    </ul>
+                        <li>
+                            <a href="consulter_compte_membre.php">Mon Compte</a>
+                        </li>
+                        <?php
+                    } else {
+                        ?>
+                        <li>
+                            <a href="connexion_membre.php">Se connecter</a>
+                        </li>
+                        <?php
+                    }
+                    ?>
+                </ul>
 
-                </div>
-                <div class="link-group">
-                    <ul>
-                        <li><a href="#">Nous Connaitre</a></li>
-                        <li><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
-                        <li><a href="contacter_plateforme.php">Nous contacter</a></li>
-                    </ul>
-                </div>
-                <div class="link-group">
-                    <ul>
-                        <!--<li><a href="#">Presse</a></li>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="#">Nous Connaitre</a></li>
+                    <li><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
+                    <li><a href="contacter_plateforme.php">Nous contacter</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <!--<li><a href="#">Presse</a></li>
                     <li><a href="#">Newsletter</a></li>
                     <li><a href="#">Notre équipe</a></li>-->
-                    </ul>
-                </div>
+                </ul>
             </div>
+        </div>
 
-            <div class="footer-bottom">
-                <div class="social-icons">
-                    <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
-                    <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
-                    <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
-                    <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
-                </div>
+        <div class="footer-bottom">
+            <div class="social-icons">
+                <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
+                <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
+                <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+                <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
             </div>
+        </div>
         </footer>
 
     </div>
