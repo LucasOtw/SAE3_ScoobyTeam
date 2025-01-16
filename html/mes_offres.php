@@ -265,7 +265,7 @@ function tempsEcouleDepuisNotif($avis)
                 </div>
                 <form id="add-btn" action="detail_offre_pro.php" method="POST">
                     <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($monOffre)); ?>">
-                    <input id="btn-voir-offre" class="button-text add-btn" type="submit" name="vueDetails" value="+">
+                    <input id="btn-voir-offre" class="button-text add-btn_pro" type="submit" name="vueDetails" value="+">
                 </form>
             </div>
             <?php

@@ -5197,7 +5197,7 @@ nav.nav-bar-tel {
 }
 
 /* Bouton d'ajout */
-.main_mes_offres .add-btn {
+.main_mes_offres .add-btn_pro {
     position: absolute;
     bottom: 15px;
     right: 15px;
@@ -5217,7 +5217,7 @@ nav.nav-bar-tel {
     transition: background-color 0.3s;
 }
 
-.main_mes_offres .add-btn:hover {
+.main_mes_offres .add-btn_pro:hover {
     background-color: #e65a00;
 }
 
