@@ -3379,7 +3379,7 @@ nav.nav-bar {
     .main_consulter_compte_membre button.btn-suppr-compte, 
     .main_consulter_compte_membre button.submit-btn4 {
         width: 100%;
-        max-width: auto;
+        max-width: none;
     }
 
     .main_consulter_compte_membre .edit-profil {
