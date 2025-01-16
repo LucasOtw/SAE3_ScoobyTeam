@@ -6562,7 +6562,8 @@ select.theme_contacter_plateforme {
     height: 52px;
 }
 
-.button-text add-btn{
+
+.button-text.add-btn {
     padding: 10px 20px;
     background-color: white;
     color: black;
@@ -6571,7 +6572,7 @@ select.theme_contacter_plateforme {
     cursor: pointer;
     width: 223px;
     height: 52px;
-    border : 1px solid var(--orange);
+    border: 1px solid var(--orange);
 }
 
 input#btn-poster-avis {
