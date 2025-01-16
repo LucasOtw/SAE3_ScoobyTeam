@@ -3320,7 +3320,8 @@ nav.nav-bar {
     }
 
     .main_consulter_compte_membre #compteForm {
-        width: auto;
+        width: 73vw;
+        margin-left: 8vw;
     }
 
 
@@ -3794,7 +3795,7 @@ nom.avis {
     }
 
     .edit-profil h1 {
-        margin-left: 6vw;
+        margin-left: -1vw;
     }
 
     .avis-list {
