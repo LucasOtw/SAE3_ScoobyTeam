@@ -186,6 +186,13 @@ if (isset($_POST['modif_infos'])){
                         {
                             foreach ($notifs as $index => $notif)
                             {
+                                if (!$notif["consulter_notif"])
+                                {
+                                    echo '<script language="javascript">
+                                            const notificationBadge = document.getElementById("notification-badge");
+                                            notificationBadge.style.removeProperty("display");
+                                          </script>';
+                                }
                                 
                                 $checkPP = $dbh->prepare("SELECT url_image FROM tripenarvor._sa_pp WHERE code_compte = :code_compte");
                                 $checkPP->bindValue(":code_compte",$notif['code_compte']);
@@ -202,11 +209,16 @@ if (isset($_POST['modif_infos'])){
                                 $infoCompte->bindValue(':code_compte',$notif['code_compte']);
                                 $infoCompte->execute();
                                 $compte_m = $infoCompte->fetch(PDO::FETCH_ASSOC);
-                
-                                $infoOffre = $dbh->prepare('select * from tripenarvor._offre where code_offre = :code_offre;');
-                                $infoOffre->bindValue(':code_offre',$notif["code_offre"]);
-                                $infoOffre->execute();
-                                $offre = $infoOffre->fetch(PDO::FETCH_ASSOC);
+
+                                if (!empty($compte_m['prenom']) && !empty($compte_m['nom'])) {
+                                    // Si c'est un membre classique
+                                    $prenom = $compte_m['prenom'];
+                                    $nom = $compte_m['nom'];
+                                } else {
+                                    // Si l'utilisateur est supprimé
+                                    $prenom = "Utilisateur";
+                                    $nom = "supprimé";
+                                }
 
                                 if ($nb_notif <5)
                                 {
@@ -217,10 +229,10 @@ if (isset($_POST['modif_infos'])){
                                         data-avis="<?php echo $notif["code_avis"]; ?>" >
                                         <img src="<?php echo $compte_pp; ?>" alt="photo de profil" class="profile-img">
                                         <div class="notification-content">
-                                            <strong><?php echo $compte_m["prenom"].' '.$compte_m["nom"]; ?></strong>
+                                            <strong><?php echo $prenom.' '.$nom; ?></strong>
                                             <span class="notification-location"> | <?php echo $notif["titre_offre"]; ?></span>
                                             <p><?php echo $notif["txt_avis"]; ?></p>
-                                            <span class="notification-time"><?php echo tempsEcouleDepuisPublication($offre);?></span>
+                                            <span class="notification-time"><?php echo tempsEcouleDepuisNotif($notif);?></span>
                                             <span class="new-notif-dot" style="display:none"></span>
                                         </div>
                                     </li>
