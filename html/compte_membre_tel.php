@@ -122,7 +122,7 @@ if (isset($_POST['changePhoto'])) {
 </head>
 <body>
     <!-- Header Section -->
-    <header class="header">
+    <header class="header_membre">
         <div class="logo">
             <a href="voir_offres.php" class="logo_tel">
                 <img src="images/LogoCouleur.png" alt="PACT Logo">
@@ -193,7 +193,6 @@ if (isset($_POST['changePhoto'])) {
                 <img src="images/Vector_12.png" alt="History Icon"> Historique
             </button>
         </a>
-        <!--Il faudra gérer la deconnexion sur bouton"-->
         <a href="?deco=true">
             <button class="action-btn">
                 <img src="images/Vector_14.png" alt="Logout Icon"> Déconnexion
@@ -206,18 +205,18 @@ if (isset($_POST['changePhoto'])) {
 
     </main>
     <nav class="nav-bar">
-        <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
-        <a href="consulter_mes_avis.php"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
-        <a href="incitation.php"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
-        <a href="
-                <?php
-                if (isset($_SESSION["membre"]) || !empty($_SESSION["membre"])) {
-                    echo "compte_membre_tel.php";
-                } else {
-                    echo "connexion_membre.php";
-                }
-                ?>">
-            <img src="images/icones/User icon.png" alt="image de Personne"></a>
+    <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
+    <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
+    <a href="#"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
+    <a href="
+        <?php
+            if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
+                echo "consulter_compte_membre.php";
+            } else {
+                echo "connexion_membre.php";
+            }
+        ?>">
+        <img src="images/icones/User icon.png" alt="image de Personne"></a>
     </nav>
 </body>
 </html>
