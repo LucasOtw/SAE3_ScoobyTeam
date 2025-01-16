@@ -16,6 +16,8 @@ if(!isset($_SESSION['pro'])){
    exit;
 }
 
+$modif_mdp = null;
+
 function tempsEcouleDepuisNotif($avis)
 {
     // date d'aujourd'hui
@@ -93,9 +95,9 @@ if (isset($_POST['modif_infos'])){
                 
             $rowsAffected = $query->rowCount();
             if ($rowsAffected > 0) {
-                echo "$rowsAffected ligne(s) mise(s) à jour avec succès.";
+               $modif_mdp = true;
             } else {
-                echo "Aucune mise à jour effectuée.";
+               $modif_mdp = false;
             }
 
          }
@@ -285,6 +287,25 @@ if (isset($_POST['modif_infos'])){
                 <button type="submit" name="modif_infos" class="submit-btn2">Enregistrer</button>
             </div>
         </form>
+
+         <?php
+
+            if($modif_mdp !== null){
+               if($modif_mdp == true){
+                  $img_success = "images/verifier.png";
+                  $msg_modif = "Mot de passe modifié avec succès&nbsp!";
+               } else {
+                  $img_success = "images/erreur.png";
+                  $msg_modif = "Erreur lors du changement du mot de passe&nbsp!";
+               }
+               ?>
+               <div class="creation-success" id="modif_mdp_membre">
+                  <img src="<?php echo $img_success ?>" alt="Succès">
+                  <h2><?php echo $msg_modif; ?></h2>
+               </div>
+               <?php
+            }
+         ?>
        
     </main>
 
