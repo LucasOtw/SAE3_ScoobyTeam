@@ -104,6 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
            echo "ok";
            ?>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
             <script>
    
