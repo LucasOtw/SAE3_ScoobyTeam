@@ -322,7 +322,6 @@ header.header-tel {
     header.header-tel .logo-tel {
         display: flex;
         justify-content: center;
-      margin-left:4.5em;
     }
 
     footer {
