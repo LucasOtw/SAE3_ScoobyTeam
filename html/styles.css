@@ -10646,7 +10646,9 @@ ul.mentions_legales-sous-list {
 /*****************************************************
             * Code pour obtenir aide *
 *****************************************************/
-
+.faq-search-input {
+    border: 1px solid transparent;
+}
 
 .titre_version_mobile {
     display: none!important;
