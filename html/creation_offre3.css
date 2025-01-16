@@ -339,7 +339,7 @@ footer {
     display: inline-block;
     background-color: #F28322;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre élégante */
-    margin-top; 5em;
+    margin-top: 5em;
 }
 
 .back-link:hover {

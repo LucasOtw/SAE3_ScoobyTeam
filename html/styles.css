@@ -1030,7 +1030,7 @@ input[type="email"] {
     flex: 1;
 }
 
-#notification-popup > ul {
+#notification-popup>ul {
     gap: 25px
 }
 
@@ -3283,9 +3283,9 @@ nav.nav-bar {
     /* Effet d'élévation au survol */
 }
 
-.main_consulter_compte_membre .donnees_deco_enreg{
-    display: flex; 
-    gap:6px
+.main_consulter_compte_membre .donnees_deco_enreg {
+    display: flex;
+    gap: 6px
 }
 
 @media (max-width: 429px) {
@@ -3364,7 +3364,7 @@ nav.nav-bar {
         display: none;
     }
 
-    .main_consulter_compte_membre .donnees_deco_enreg{
+    .main_consulter_compte_membre .donnees_deco_enreg {
         flex-direction: column;
     }
 
@@ -3377,11 +3377,11 @@ nav.nav-bar {
         gap: 20px;
     }
 
-    
+
 
     .main_consulter_compte_membre .submit-btn1,
     .main_consulter_compte_membre button.submit-btn2,
-    .main_consulter_compte_membre button.btn-suppr-compte, 
+    .main_consulter_compte_membre button.btn-suppr-compte,
     .main_consulter_compte_membre button.submit-btn4 {
         width: 100%;
         max-width: none;
@@ -8040,7 +8040,7 @@ div.header-membre nav ul li a::before {
 }
 
 nav ul li a.notification-icon::before {
-    content : none;
+    content: none;
 }
 
 div.header-membre .header_pro nav ul li a::before {
@@ -10657,12 +10657,14 @@ ul.mentions_legales-sous-list {
             * Code pour obtenir aide *
 *****************************************************/
 .faq-search-input {
-    border: none; /* Supprime la bordure existante */
-    border: 1px solid transparent !important; /* Ajoute une bordure transparente */
+    border: none;
+    /* Supprime la bordure existante */
+    border: 1px solid transparent !important;
+    /* Ajoute une bordure transparente */
 }
 
 .titre_version_mobile {
-    display: none!important;
+    display: none !important;
 }
 
 /* Afficher l'élément uniquement sur un écran de 429px de large */
@@ -11283,10 +11285,10 @@ ul.mentions_legales-sous-list {
     position: relative;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    
+
 }
 
-.fleche_retour{
+.fleche_retour {
     padding: 30px 0 10px 70px;
 }
 
@@ -11297,11 +11299,11 @@ ul.mentions_legales-sous-list {
     padding: 10px;
 }
 
-.main-creation-offre2 h2{
+.main-creation-offre2 h2 {
     padding: 10px;
 }
 
-.main-creation-offre2 h3{
+.main-creation-offre2 h3 {
     padding: 10px;
 }
 
@@ -11318,16 +11320,17 @@ ul.mentions_legales-sous-list {
     padding: 10px;
 }
 
-.main-creation-offre2 .ferme{
+.main-creation-offre2 .ferme {
     margin-left: 20px;
 }
 
-.main-creation-offre2 .table_tags{
+.main-creation-offre2 .table_tags {
     padding: 0 10px;
 }
 
 
-.main-creation-offre2 .col input, .main-creation-offre2 .col select {
+.main-creation-offre2 .col input,
+.main-creation-offre2 .col select {
     width: 100%;
     padding: 10px;
     border: 1px solid var(--orange);
@@ -11345,23 +11348,31 @@ ul.mentions_legales-sous-list {
     font-weight: lighter;
 }
 
-.main-creation-offre2 .price-options, .meal-options, .tarif-option, .boost-options, .offre-options, .duration-options {
+.main-creation-offre2 .price-options,
+.meal-options,
+.tarif-option,
+.boost-options,
+.offre-options,
+.duration-options {
     padding: 10px;
 }
 
-.main-creation-offre2 .radio-group, .main-creation-offre2 .checkbox-group {
+.main-creation-offre2 .radio-group,
+.main-creation-offre2 .checkbox-group {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     align-items: center;
 }
 
-.main-creation-offre2 .radio-group div, .main-creation-offre2 .checkbox-group div {
+.main-creation-offre2 .radio-group div,
+.main-creation-offre2 .checkbox-group div {
     display: flex;
     align-items: center;
 }
 
-.main-creation-offre2 input[type="radio"], .main-creation-offre2 input[type="checkbox"] {
+.main-creation-offre2 input[type="radio"],
+.main-creation-offre2 input[type="checkbox"] {
     margin-right: 10px;
 }
 
@@ -11379,7 +11390,7 @@ ul.mentions_legales-sous-list {
     display: flex;
     align-items: center;
     justify-content: center;
-    float : right;
+    float: right;
     z-index: 10;
 }
 
@@ -11387,7 +11398,7 @@ ul.mentions_legales-sous-list {
     margin-left: 10px;
 }
 
-.notes_explicatives{
+.notes_explicatives {
     padding-top: 100px;
     font-size: smaller;
 }
@@ -11395,20 +11406,25 @@ ul.mentions_legales-sous-list {
 /* Conteneur pour l'image et le toggle */
 .header-controls {
     display: flex;
-    align-items: center; /* Aligne verticalement au centre */
-    justify-content: space-between; /* Espacement entre l'image et le toggle */
-    padding: 20px 20px 0px 70px; /* Optionnel : espacement autour du conteneur */
+    align-items: center;
+    /* Aligne verticalement au centre */
+    justify-content: space-between;
+    /* Espacement entre l'image et le toggle */
+    padding: 20px 20px 0px 70px;
+    /* Optionnel : espacement autour du conteneur */
 }
 
-.main-creation-offre2 .ferme{
+.main-creation-offre2 .ferme {
     display: flex;
     align-items: center;
 }
 
 /* Styles pour l'image des étapes */
 #etapes {
-    max-width: 100%; /* Pour s'assurer que l'image est responsive */
-    height: auto; /* Conserve le ratio d'aspect */
+    max-width: 100%;
+    /* Pour s'assurer que l'image est responsive */
+    height: auto;
+    /* Conserve le ratio d'aspect */
 }
 
 .main-creation-offre2 .switch {
@@ -11451,12 +11467,13 @@ ul.mentions_legales-sous-list {
     border-radius: 50%;
 }
 
-.main-creation-offre2 input:checked + .slider {
+.main-creation-offre2 input:checked+.slider {
     background-color: #ffa500;
 }
 
-.main-creation-offre2 input:checked + .slider:before {
-    transform: translateX(22px); /* Ajusté pour ajouter un espace de 4px à droite */
+.main-creation-offre2 input:checked+.slider:before {
+    transform: translateX(22px);
+    /* Ajusté pour ajouter un espace de 4px à droite */
     background-color: white;
 }
 
@@ -11465,7 +11482,8 @@ ul.mentions_legales-sous-list {
     border: 0px solid #ccc;
     border-radius: 5px;
     position: relative;
-    padding-top: 0; /* Enlève le padding en haut */
+    padding-top: 0;
+    /* Enlève le padding en haut */
 }
 
 .main-creation-offre2 legend {
@@ -11474,38 +11492,40 @@ ul.mentions_legales-sous-list {
     color: #333;
     background-color: white;
     position: absolute;
-    top: -10px; 
-    left: 10px; 
+    top: -10px;
+    left: 10px;
     z-index: 2;
     display: none;
 
 }
 
-.main-creation-offre2 #jour, .main-creation-offre2 input{
+.main-creation-offre2 #jour,
+.main-creation-offre2 input {
     background-color: white;
     height: 42px;
     border: 1px solid #ddd;
     border-radius: 5px;
     border-color: var(--orange);
-    padding : 0 10px;
+    padding: 0 10px;
 }
 
-.main-creation-offre2 input[type="file"]{
+.main-creation-offre2 input[type="file"] {
     display: block;
 }
 
 
 .main-creation-offre2 fieldset:focus-within legend {
-    display:inline;
+    display: inline;
     transition: ease-out 0.3s;
-} 
+}
 
 .main-creation-offre2 fieldset input::placeholder {
     padding-left: 10px;
-} 
+}
+
 .main-creation-offre2 fieldset input:focus::placeholder {
     color: rgba(0, 0, 0, 0);
-} 
+}
 
 
 .main-creation-offre2 .dropdown-container {
@@ -11539,9 +11559,12 @@ ul.mentions_legales-sous-list {
 }
 
 .main-creation-offre2 .dropdown-content label {
-    display: flex; /* Flexbox pour aligner les items */
-    align-items: center; /* Aligne verticalement le texte et la checkbox */
-    padding: 8px 10px; /* Ajustement du padding */
+    display: flex;
+    /* Flexbox pour aligner les items */
+    align-items: center;
+    /* Aligne verticalement le texte et la checkbox */
+    padding: 8px 10px;
+    /* Ajustement du padding */
     cursor: pointer;
 }
 
@@ -11551,8 +11574,10 @@ ul.mentions_legales-sous-list {
 
 .main-creation-offre2 .dropdown-content input[type="checkbox"] {
     margin-right: 10px;
-    transform: scale(0.8); /* Diminue la taille de la checkbox */
-    cursor: pointer; /* Ajoute un curseur pointer pour la checkbox */
+    transform: scale(0.8);
+    /* Diminue la taille de la checkbox */
+    cursor: pointer;
+    /* Ajoute un curseur pointer pour la checkbox */
 }
 
 
@@ -11561,11 +11586,12 @@ ul.mentions_legales-sous-list {
 
 }
 
-.main-creation-offre2 .tag{
+.main-creation-offre2 .tag {
     margin-bottom: 0;
     font-weight: lighter;
 }
-.main-creation-offre2 .container{
+
+.main-creation-offre2 .container {
     padding: 0;
 }
 
@@ -11577,4 +11603,266 @@ ul.mentions_legales-sous-list {
     .main-creation-offre2 .row {
         flex-direction: column;
     }
+}
+
+
+
+
+/*****************************************************
+                                                    * Code pour la page paiement *
+                                        *****************************************************/
+
+
+
+.main-creation-offre3 {
+    padding: 20px 70px 50px 60px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.main-creation-offre3 a {
+    text-decoration: none;
+}
+
+.fleche_retour {
+    padding: 30px 0 10px 70px;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    /* Aligne verticalement au centre */
+    justify-content: space-between;
+    /* Espacement entre l'image et le toggle */
+    padding: 20px 20px 0px 70px;
+    /* Optionnel : espacement autour du conteneur */
+}
+
+.main-creation-offre3 h1 {
+    margin-bottom: 20px;
+    font-size: 30px;
+    padding: 0 10px;
+}
+
+.main-creation-offre3 h2 {
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+.main-creation-offre3 form {
+    width: 50%;
+}
+
+.main-creation-offre3 .form_carte {
+    display: flex;
+}
+
+.main-creation-offre3 .form_carte .carte img {
+    padding: 0 20px 0px 150px;
+}
+
+
+.main-creation-offre3 .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.main-creation-offre3 .col {
+    flex: 1;
+    padding: 10px;
+}
+
+.main-creation-offre3 .col input,
+.col select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--orange);
+    border-radius: 5px;
+    background-color: white;
+}
+
+
+.main-creation-offre3 .checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.main-creation-offre3 .checkbox label {
+    margin-left: 10px;
+
+}
+
+.main-creation-offre3 .checkbox {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.main-creation-offre3 button {
+    width: 50%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: "K2D", sans-serif;
+}
+
+.main-creation-offre3 .boutons {
+    display: flex;
+}
+
+.main-creation-offre3 .btn-primary {
+    background-color: #FF7A00;
+    color: white;
+    margin: 10px;
+}
+
+.main-creation-offre3 .btn-secondary {
+    margin: 10px;
+}
+
+.main-creation-offre3 .terms {
+    margin-top: 15px;
+    margin-left: 10px;
+    font-size: 12px;
+    color: #777;
+}
+
+.main-creation-offre3 fieldset {
+    border: 0px solid var(--orange);
+    border-radius: 5px;
+    position: relative;
+    padding-top: 0;
+    /* Enlève le padding en haut */
+}
+
+.main-creation-offre3 legend {
+    font-size: 14px;
+    padding: 0 10px;
+    color: #333;
+    background-color: white;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    z-index: 2;
+    display: none;
+}
+
+.main-creation-offre3 fieldset:focus-within legend {
+    display: inline;
+    transition: ease-out 0.3s;
+}
+
+.main-creation-offre3 fieldset input::placeholder {
+    padding-left: 10px;
+}
+
+.main-creation-offre3 fieldset input:focus::placeholder {
+    color: rgba(0, 0, 0, 0);
+}
+
+/* Style pour l'image */
+.success-icon {
+    display: block;
+    margin: 0 auto 20px;
+    width: 100px;
+    /* Taille ajustée pour s'adapter au design */
+    height: auto;
+    margin-top: 5em;
+}
+
+/* Conteneur global pour centrer les éléments */
+.success-message,
+.back-link {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Style pour le message de succès */
+.success-message {
+    font-size: 2rem;
+    color: #4caf50;
+    /* Vert pour succès */
+    margin-bottom: 3em;
+}
+
+/* Style pour le lien */
+.back-link {
+    font-size: 1rem;
+    color: #FFFFFF;
+    text-decoration: none;
+    border: 2px solid #F28322;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    background-color: #F28322;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Ombre élégante */
+    margin-top: 5em;
+}
+
+.back-link:hover {
+    background-color: #BD671C;
+    color: #fff;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    /* Espace entre les boutons */
+    align-items: center;
+}
+
+.button-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3em;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    /* Espace entre les boutons */
+}
+
+.back-link-offres {
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #fff;
+    color: #F28322;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid #F28322;
+}
+
+.back-link-facture {
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #F28322;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.back-link-offres:hover {
+    background-color: #fff;
+    color: #F28322;
+    border: 1px solid #F28322;
+}
+
+.back-link-facture:hover {
+    background-color: #F28322;
+    color: #fff;
 }
