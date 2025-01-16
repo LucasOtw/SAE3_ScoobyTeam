@@ -137,6 +137,9 @@ try {
         </header>
     </div>
         <div class="signalement-container">
+            <a href="<?php echo $_SERVER['HTTP_REFERER']?>">
+                    <img src="images/Bouton_retour.png" alt="bouton retour">
+            </a>
             <h2 class="titre_signalement_1">Signaler un avis</h2>
             <?php if (isset($erreur)): ?>
                 <div class="erreur">

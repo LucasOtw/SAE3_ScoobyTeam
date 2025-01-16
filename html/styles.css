@@ -4152,10 +4152,6 @@ main.creation_compte_membre .creation_compte_membre_bienvenue {
         width: auto;
     }
 
-    main.creation_compte_membre .checkbox {
-        
-    }
-
     main.creation_compte_membre .creation_compte_membre_container {
         margin: auto;
         padding-top: 0;
@@ -10201,7 +10197,7 @@ main.main_repondre_avis .message-erreur {
 
 .titre_signalement_3 {
     margin-left: 3vw;
-    margin-top: 8vh;
+    margin-top: 3vh;
 }
 
 
@@ -10240,11 +10236,10 @@ main.main_repondre_avis .message-erreur {
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin-bottom: 30vh;
         margin-top: 3vh;
         margin-left: 3vw;
         width: 95vw;
-        margin-bottom: 10vh;
+        margin-bottom: 3vh;
     }
 
     .signalement {

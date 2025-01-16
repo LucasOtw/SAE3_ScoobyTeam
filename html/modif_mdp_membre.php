@@ -41,15 +41,17 @@ if (isset($_POST['modif_infos'])){
       {
          if (trim($champsModifies['mdp_nv1']) === trim($champsModifies['mdp_nv2']))
          {
+            $modif_mdp = password_hash($champsModifies['mdp_nv1'], PASSWORD_DEFAULT);
             $query = $dbh->prepare("UPDATE tripenarvor._compte SET mdp = :valeur WHERE code_compte = :code_compte");
             $query->execute([
-                'valeur' => password_hash($champsModifies['mdp_nv1'], PASSWORD_DEFAULT),
+                'valeur' => $modif_mdp,
                 'code_compte' => $compte['code_compte']
             ]);
                 
             $rowsAffected = $query->rowCount();
             if ($rowsAffected > 0) {
                 $modif_mdp = true;
+                $_SESSION['membre']['mdp'] = $modif_mdp;
             } else {
                 $modif_mdp = false;
             }
