@@ -110,9 +110,6 @@ nav ul li a::before {
 nav ul li a:hover::before {
     width: 90%;
 }
-header.header_tel{
-           display:none;
-}
 @media (min-width: 1024px) {
     nav ul {
         gap: 50px;
