@@ -9865,6 +9865,10 @@ main.main_repondre_avis .repondre_avis_btn_publier {
     background-color: var(--vert-clair);
     color: white;
 }
+main.main_repondre_avis .repondre_avis_btn_publier-pro {
+    background-color: var(--orange);
+    color: white;
+}
 
 main.main_repondre_avis .repondre_avis_btn_annuler:hover {
     transform: translateY(-2px);

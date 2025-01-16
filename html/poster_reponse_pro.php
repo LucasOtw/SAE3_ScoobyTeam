@@ -161,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   
                        <div class="repondre_avis_buttons">
                            <!--<button class="repondre_avis_btn_annuler">Annuler</button>-->
-                           <button class="repondre_avis_btn_publier" type="submit"- name="publier">Publier →</button>
+                           <button class="repondre_avis_btn_publier-pro" type="submit"- name="publier">Publier →</button>
                        </div>
                </div>
             </form>
