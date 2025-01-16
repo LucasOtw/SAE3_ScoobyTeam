@@ -7,6 +7,10 @@ if(!isset($_SESSION['membre'])){
    exit;
 }
 
+echo "<pre>";
+var_dump($_SESSION);
+echo "</pre>";
+
 // Vérifie si HTTP_REFERER est défini
 if (isset($_SERVER['HTTP_REFERER'])) {
     // Vérifie que la page précédente est "detail_offre.php"
@@ -43,10 +47,6 @@ echo "</pre>";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      if(isset($_POST['publier'])){
         if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))) {
-
-            echo "<pre>";
-            var_dump($_SESSION);
-            echo "</pre>";
            
             $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
             $note = isset($_POST['note']) ? $_POST['note'] : '';
