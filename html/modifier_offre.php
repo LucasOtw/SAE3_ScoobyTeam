@@ -936,31 +936,45 @@ if($infos_offre !== null){
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="#">Mentions Légales</a></li>
-                    <li><a href="#">RGPD</a></li>
-                    <li><a href="#">Nous connaître</a></li>
-                    <li><a href="#">Nos partenaires</a></li>
+                    <li><a href="mentions_legales.html">Mentions Légales</a></li>
+                    <li><a href="cgu.html">GGU</a></li>
+                    <li><a href="cgv.html">CGV</a></li>
                 </ul>
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="mes_offres.php">Accueil</a></li>
+                    <li><a href="voir_offres.php">Accueil</a></li>
                     <li><a href="connexion_pro.php">Publier</a></li>
-                    <li><a href="#">Historique</a></li>
+                    <?php
+                    if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
+                        ?>
+                        <li>
+                            <a href="consulter_compte_membre.php">Mon Compte</a>
+                        </li>
+                        <?php
+                    } else {
+                        ?>
+                        <li>
+                            <a href="connexion_membre.php">Se connecter</a>
+                        </li>
+                        <?php
+                    }
+                    ?>
+                </ul>
+
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="#">Nous Connaitre</a></li>
+                    <li><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
+                    <li><a href="contacter_plateforme.php">Nous contacter</a></li>
                 </ul>
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="#">CGU</a></li>
-                    <li><a href="#">Signaler un problème</a></li>
-                    <li><a href="#">Nous contacter</a></li>
-                </ul>
-            </div>
-            <div class="link-group">
-                <ul>
-                    <li><a href="#">Presse</a></li>
+                    <!--<li><a href="#">Presse</a></li>
                     <li><a href="#">Newsletter</a></li>
-                    <li><a href="#">Notre équipe</a></li>
+                    <li><a href="#">Notre équipe</a></li>-->
                 </ul>
             </div>
         </div>
