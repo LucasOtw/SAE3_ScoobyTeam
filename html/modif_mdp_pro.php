@@ -90,7 +90,6 @@ if (isset($_POST['modif_infos'])){
             $rowsAffected = $query->rowCount();
             if ($rowsAffected > 0) {
                $modif_mdp = true;
-               $_SESSION['membre']['mdp'] = $mdp_modif;
             } else {
                $modif_mdp = false;
             }
