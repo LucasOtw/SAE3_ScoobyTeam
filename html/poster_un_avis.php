@@ -102,12 +102,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               }
             }
         } else {
-           
-            echo '<script language="javascript">
-                    function afficherPOPup() {
-                        $("#customConfirmBox").fadeIn();     
-                     }
-                  </script>';
+           // echo "ok";
+           ?>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+            <script>
+   
+               $(document).ready(function() {
+                  
+                  function afficherPOPup() {
+                     $("#customConfirmBox").fadeIn();     
+                  }
+                  
+                  // Fermer la popup quand l'utilisateur clique sur "Fermer"
+                  $('#confirmButton').on('click', function() {
+                     $('#customConfirmBox').fadeOut();
+                  });
+
+                  afficherPOPup();
+                  
+               });
+               
+            </script>
+
+           <?php
         }
      }
 }
@@ -175,6 +193,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
 
+              <!-- Popup de confirmation -->
+            <div class="custom-confirm" id="customConfirmBox">
+                <div class="custom-confirm-content">
+                    <p>Vous ne pouvez pas poster d'avis sans notation ou de message !</p>
+                    <button id="confirmButton">Fermer</button>
+                </div>
+            </div>
+
             <form  id="avisForm" action="poster_un_avis.php" method="POST">
                <div class="poster_un_avis_section">
                    <h2 class="poster_un_avis_section_titre">Votre avis</h2>
@@ -216,14 +242,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   </div>
                </div>
             </form>
-
-       <!-- Popup de confirmation -->
-         <div class="custom-confirm" id="customConfirmBox">
-             <div class="custom-confirm-content">
-                 <p>Votre message a été envoyé avec succès !</p>
-                 <button id="confirmButton">Fermer</button>
-             </div>
-         </div>
            
         <nav class="nav-bar">
             <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
@@ -324,17 +342,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </footer>
 </body>
 </html>
-<script>
-   
-   $(document).ready(function() {
-      
-      // Fermer la popup quand l'utilisateur clique sur "Fermer"
-      $('#confirmButton').on('click', function() {
-         $('#customConfirmBox').fadeOut();
-      });
-   });
-   
-</script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const newsletterForm = document.getElementById('newsletterForm');
