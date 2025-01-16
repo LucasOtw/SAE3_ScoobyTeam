@@ -1331,7 +1331,7 @@ function tempsEcouleDepuisPublication($offre){
             <div class="link-group">
                 <ul>
                     <li><a href="#">Nous Connaitre</a></li>
-                    <li><a href="contacter_plateforme.php">Signaler un problème</a></li>
+                    <li><a href="obtenir_aide.php">Obtenior de l'aide</a></li>
                     <li><a href="contacter_plateforme.php">Nous contacter</a></li>
                 </ul>
             </div>
