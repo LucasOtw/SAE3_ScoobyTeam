@@ -16,6 +16,8 @@ if(!isset($_SESSION['membre'])){
    exit;
 }
 
+$modif_mdp = null;
+
 if (isset($_POST['modif_infos'])){
     // Récupérer les valeurs initiales (par exemple, depuis la base de données)
    $valeursInitiales = [
@@ -47,7 +49,7 @@ if (isset($_POST['modif_infos'])){
                 
             $rowsAffected = $query->rowCount();
             if ($rowsAffected > 0) {
-                echo "Mot de passe mis à jour avec succès !";
+                $modif_mdp = true;
             } else {
                 echo "Aucune mise à jour effectuée.";
             }
@@ -218,6 +220,18 @@ if (isset($_POST['modif_infos'])){
             </div>
         </div>
     </footer>
+   <?php
+
+   if($modif_mdp){
+      ?>
+         <div class="creation-success">
+             <img src="images/verifier.png" alt="Succès">
+             <h2>Compte crée avec succès&nbsp!</h2>
+         </div>
+      <?php
+   }
+
+   ?>
    
 </body>
 </html>
