@@ -4734,8 +4734,7 @@ nav.nav-bar-tel {
     color: black;
 }
 
-.main-modif-bancaire button.submit-btn1:hover,
-.main-modif-bancaire button.submit-btn2:hover {
+.main-modif-bancaire button.submit-btn1:hover{
     background-color: var(--orange-hover);
     /* Ajoute une couleur de survol pour les deux boutons */
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
