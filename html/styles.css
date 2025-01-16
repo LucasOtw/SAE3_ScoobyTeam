@@ -1019,15 +1019,19 @@ input[type="email"] {
     border-bottom: none;
 }
 
-.profile-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+.li.notif .profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 15px;
     margin-right: 10px;
 }
 
 .notification-content {
     flex: 1;
+}
+
+#notification-popup > ul {
+    gap: 25px
 }
 
 .notification-content strong {
@@ -8038,6 +8042,10 @@ div.header-membre nav ul li a::before {
     bottom: -2px;
     background-color: var(--vert-clair);
     transition: width 0.3s ease;
+}
+
+div.header-membre nav ul li a.notification-icon::before {
+    content : none;
 }
 
 div.header-membre .header_pro nav ul li a::before {
