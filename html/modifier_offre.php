@@ -994,12 +994,6 @@ if($infos_offre !== null){
                     target.value = element.contentEditable === "true" ? element.innerHTML : element.value;
                 }
             });
-            const radioGroup = document.querySelector('input[name="prix"]:checked');
-            if (!radioGroup) {
-                alert('Veuillez sélectionner une option de prix.');
-                document.querySelector('input[name="prix"]').focus();
-                event.preventDefault();
-            }
         });
     </script>
     <script>
