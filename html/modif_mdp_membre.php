@@ -27,9 +27,10 @@ if (isset($_POST['modif_infos'])){
    foreach ($_POST as $champ => $valeur) {
       if ($champ != 'modif_infos')
       {
-         $champsModifies[$champ] = $valeur;
+         $champsModifies[$champ] = trim($valeur);
       }
    }
+   
    // Mettre à jour seulement les champs modifiés
    if (!empty($champsModifies))
    {
@@ -37,27 +38,26 @@ if (isset($_POST['modif_infos'])){
       {
          if (trim($champsModifies['mdp_nv1']) === trim($champsModifies['mdp_nv2']))
          {
-            $modif_mdp = password_hash($champsModifies['mdp_nv1'], PASSWORD_DEFAULT);
+            $mdp_modif = password_hash($champsModifies['mdp_nv1'], PASSWORD_DEFAULT);
             $query = $dbh->prepare("UPDATE tripenarvor._compte SET mdp = :valeur WHERE code_compte = :code_compte");
-            $query->execute([
-                'valeur' => $modif_mdp,
-                'code_compte' => $compte['code_compte']
-            ]);
+            $query->bindValue(":valeur",$mdp_modif);
+            $query->bindValue(":code_compte",$compte['code_compte']);
+            $query->execute();
                 
             $rowsAffected = $query->rowCount();
             if ($rowsAffected > 0) {
-                $modif_mdp = true;
-                $_SESSION['membre']['mdp'] = $modif_mdp;
+               $modif_mdp = true;
+               $_SESSION['membre']['mdp'] = $mdp_modif;
             } else {
-                $modif_mdp = false;
+               $modif_mdp = false;
             }
 
          } else {
             $modif_mdp = false;
          }
       } else {
-         $modif_mdp = false;
          echo "Test";
+         $modif_mdp = false;
       }
        // echo "Les informations ont été mises à jour.";
        include("recupInfosCompte.php");
