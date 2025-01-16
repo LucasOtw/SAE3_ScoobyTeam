@@ -19,10 +19,6 @@ if(!isset($_SESSION['membre'])){
 $modif_mdp = null;
 
 if (isset($_POST['modif_infos'])){
-    // Récupérer les valeurs initiales (par exemple, depuis la base de données)
-   $valeursInitiales = [
-       'mdp' => $compte['mdp'],
-   ];
    
    // Champs modifiés
    $champsModifies = [];
@@ -37,7 +33,7 @@ if (isset($_POST['modif_infos'])){
    // Mettre à jour seulement les champs modifiés
    if (!empty($champsModifies))
    {
-      if (password_verify($champsModifies['mdp_actuel'],$valeursInitiales['mdp']))
+      if (password_verify($champsModifies['mdp_actuel'],$compte['mdp']))
       {
          if (trim($champsModifies['mdp_nv1']) === trim($champsModifies['mdp_nv2']))
          {
