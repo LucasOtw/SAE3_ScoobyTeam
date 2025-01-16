@@ -8,7 +8,7 @@ if(!isset($_SESSION['membre'])){
 }
 
 echo "<pre>";
-var_dump($_SESSION);
+var_dump($_POST);
 echo "</pre>";
 
 // Vérifie si HTTP_REFERER est défini
