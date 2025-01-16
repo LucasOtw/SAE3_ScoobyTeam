@@ -3384,7 +3384,7 @@ nav.nav-bar {
 
     .main_consulter_compte_membre .edit-profil {
         display: flex;
-        gap: 60px;
+        gap: 35px;
         margin: 20px;
         justify-content: flex-start;
         align-items: center;
