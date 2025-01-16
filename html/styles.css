@@ -11894,3 +11894,57 @@ ul.mentions_legales-sous-list {
     background-color: #F28322;
     color: #fff;
 }
+
+
+
+
+
+
+/*****************************************************
+            * Code pour details offre_pro *
+*****************************************************/
+
+
+/* Conteneur du slider */
+.body_offre_desktop .slider-container {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    right: 0;
+    margin: 10px auto;
+}
+
+/* Style du slider (fond du bouton) */
+.body_offre_desktop .slider {
+    width: 76px;
+    height: 37px;
+    background-color: #ccc;
+    border-radius: 30px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Le cercle du slider */
+.body_offre_desktop .slider-circle {
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    transition: transform 0.3s ease;
+}
+
+/* Quand le slider est activé (sur la droite) */
+.body_offre_desktop .slider.active {
+    background-color: var(--orange);
+    /* orange lorsque activé */
+}
+
+/* Quand le cercle se déplace sur la droite */
+.body_offre_desktop .slider.active .slider-circle {
+    transform: translateX(38px);
+    /* Déplace le cercle de 60px vers la droite */
+}

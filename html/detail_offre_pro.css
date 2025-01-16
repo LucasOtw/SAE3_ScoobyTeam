@@ -573,12 +573,12 @@ footer {
 
 }
 
-#btn-voir-offre:hover{
+#btn-voir-offre:hover {
     transform: translateY(-2px);
     cursor: pointer;
 }
 
-#btn-voir-offre:active{
+#btn-voir-offre:active {
     transform: translateY(-2px);
     cursor: pointer;
 }
@@ -661,19 +661,22 @@ footer {
 }
 
 .visit-button_detailoffre {
-    transition: transform 0.2s ease; /* Animation au survol */
-    cursor : pointer;
+    transition: transform 0.2s ease;
+    /* Animation au survol */
+    cursor: pointer;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     margin-left: 30px;
 
 }
 
 .visit-button_detailoffre:hover {
-    transform: translateY(-2px); /* Effet d'élévation au survol */
+    transform: translateY(-2px);
+    /* Effet d'élévation au survol */
 }
 
 .visit-button_detailoffre:active {
-    transform: translateY(2px); /* Effet d'élévation au survol */
+    transform: translateY(2px);
+    /* Effet d'élévation au survol */
 }
 
 
@@ -1090,6 +1093,7 @@ footer {
     margin: 0;
     /* Enlève la marge par défaut */
 }
+
 /* Conteneur global */
 .a-la-une-wrapper {
     position: relative;
@@ -1271,7 +1275,7 @@ footer {
 }
 
 /* Conteneur du slider */
-.slider-container {
+.body_offre_desktop .slider-container {
     display: flex;
     justify-content: flex-end;
     position: relative;
@@ -1280,7 +1284,7 @@ footer {
 }
 
 /* Style du slider (fond du bouton) */
-.slider {
+.body_offre_desktop .slider {
     width: 76px;
     height: 37px;
     background-color: #ccc;
@@ -1291,7 +1295,7 @@ footer {
 }
 
 /* Le cercle du slider */
-.slider-circle {
+.body_offre_desktop .slider-circle {
     width: 25px;
     height: 25px;
     background-color: white;
@@ -1303,13 +1307,13 @@ footer {
 }
 
 /* Quand le slider est activé (sur la droite) */
-.slider.active {
+.body_offre_desktop .slider.active {
     background-color: var(--orange);
     /* orange lorsque activé */
 }
 
 /* Quand le cercle se déplace sur la droite */
-.slider.active .slider-circle {
+.body_offre_desktop .slider.active .slider-circle {
     transform: translateX(38px);
     /* Déplace le cercle de 60px vers la droite */
 }
@@ -1406,18 +1410,18 @@ footer {
 }
 
 .avis-widget .avis-content .signalement_repondre {
-           display: flex;
+    display: flex;
 }
 
 #btn-repondre-avis {
-  border: 3px;
-  color: var(--orange);
-  background-color: white;
-  font-size: 26px;
+    border: 3px;
+    color: var(--orange);
+    background-color: white;
+    font-size: 26px;
 }
 
 #btn-repondre-avis:hover {
-   cursor: pointer;
+    cursor: pointer;
 }
 
 .toggle-button {
