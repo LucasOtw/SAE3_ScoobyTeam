@@ -6562,6 +6562,11 @@ select.theme_contacter_plateforme {
     height: 52px;
 }
 
+.detail_offre_pro_button{
+    display: flex;
+    justify-content: space-between;
+    gap: 13px;
+}
 
 .button-text.add-btn {
     padding: 10px 20px;
