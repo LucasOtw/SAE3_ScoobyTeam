@@ -746,7 +746,7 @@ function tempsEcouleDepuisPublication($offre){
             <h2 class="titre-les-offres">Toutes les offres</h2>
         </div>
         
-        <section id="offers-list">
+        <section id="offers-list" style="margin-bottom: 12vh;">
         <?php    
             
             // On récupère toutes les offres (titre,ville,images)
