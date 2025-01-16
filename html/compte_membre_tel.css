@@ -1,3 +1,4 @@
+
 /*****************************************************
             * Code général pour les pages *
 *****************************************************/
@@ -337,44 +338,59 @@ header.header-tel {
 }
 
 
+/* Logo */
+.header .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #e0e0e0;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    height: 10em;
+}
 
+.header .logo img {
+    max-width: 245px;
+}
 
 /* Profil */
-.main_compte_membre_tel .profile {
+.profile {
     text-align: center;
     margin-top:-4em;
 }
 
-.main_compte_membre_tel .profile-img {
+.profile-img {
     width: 7em;
     height: 7em;
     border-radius: 2.5em;
     object-fit: cover;
 }
 
-.main_compte_membre_tel .profile-name {
+.profile-name {
     font-size: 22px;
     font-weight: bold;
     margin: 0;
 }
 
-.main_compte_membre_tel .profile-contact {
+.profile-contact {
     font-size: 14px;
     color: #666;
     margin: 5px 0 0;
     text-decoration:none;
 }
 
-.main_compte_membre_tel .profile {
+.profile {
     text-align: center;
 }
 
-.main_compte_membre_tel .profile-img-container {
+.profile-img-container {
     position: relative;
     display: inline-block;
 }
 
-.main_compte_membre_tel .upload-photo-button {
+.upload-photo-button {
     position: absolute;
     bottom: 8em;
     right: 0em;
@@ -392,40 +408,40 @@ header.header-tel {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.main_compte_membre_tel .upload-photo-button:hover {
+.upload-photo-button:hover {
     background-color: #45a049;
 }
 
-.main_compte_membre_tel .upload-photo-button i {
+.upload-photo-button i {
     font-size: 18px;
 }
 
-.main_compte_membre_tel input[type="file"] {
+input[type="file"] {
     display: none;
 }
 
-/*nav.nav-bar {
+nav.nav-bar {
     display: none;
-}*/
+}
 
 
 /* Actions */
-.main_compte_membre_tel {
+.actions {
     padding: 20px;
 }
 
-.main_compte_membre_tel a {
+.actions a {
     text-decoration: none;
     color: black;
 }
 
-.main_compte_membre_tel .action-btn {
+.action-btn {
     display: flex;
     align-items: center;
     justify-content: start;
     width: 100%;
     padding: 15px;
-    margin: 10px 0 10px 0;
+    margin-bottom: 10px;
     font-size: 16px;
     font-weight: 500;
     background-color: #f9f9f9;
@@ -438,20 +454,16 @@ header.header-tel {
     text-decoration: none;
 }
 
-.main_compte_membre_tel a{
-    text-decoration: none;
-}
-
-.main_compte_membre_tel .action-btn img {
+.action-btn img {
     width: 20px;
     height: 20px;
     margin-right: 10px;
 }
 
-.main_compte_membre_tel .action-btn:hover {
+.action-btn:hover {
     background-color: #e9e9e9;
 }
-.main_compte_membre_tel .btn-suppr-compte {
+.btn-suppr-compte {
     display: flex;
     align-items: center;
     justify-content: start;
@@ -469,31 +481,62 @@ header.header-tel {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.main_compte_membre_tel .btn-suppr-compte:hover {
+.btn-suppr-compte:hover {
     background-color: #e9e9e9;
 }
 
-.main_compte_membre_tel img[src="images/trash.svg"] {
+img[src="images/trash.svg"] {
     filter: invert(41%) sepia(49%) saturate(297%) hue-rotate(81deg) brightness(92%) contrast(91%);
 }
 
 
-.main_compte_membre_tel .action-btn.danger {
+.action-btn.danger {
     color: #d9534f;
     font-weight: bold;
 }
 
-.main_compte_membre_tel .action-btn.danger:hover {
+.action-btn.danger:hover {
     background-color: #f8d7da;
 }
 
 
-.main_compte_membre_tel .profile-img-container {
+.profile-img-container {
     position: relative;
 }
 
 
-.main_compte_membre_tel .modif_photo{
+@media (max-width: 429px) {
+    .logo_tel{
+        width: 245px;
+        margin-top:-3em;
+        margin-left:0.5em;
+    }
+    nav.nav-bar {
+        width: 84vw;
+        position: fixed;
+        bottom: 20px;
+        background-color: var(--vert-clair);
+        display: flex;
+        margin: auto 8vw;
+        justify-content: space-around;
+        border-radius: 1000px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+
+
+    nav.nav-bar a {
+        display: flex;
+        align-items: center;
+        margin: 10px auto;
+    }
+
+    a:visited {
+        color: inherit;
+    }
+}
+
+.modif_photo{
     border-radius: 2.5em;
     background-color: #BDC426;
     border: none;
