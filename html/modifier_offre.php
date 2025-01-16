@@ -509,6 +509,10 @@ if (isset($_POST['envoi_modif'])){
             $n_doss = str_replace(' ','',$tab_offre['titre_offre']);
             $destination = "images/offres/{$n_doss}";
 
+            if(!file_exists($destination)){
+                mkdir($destination);
+            }
+
             foreach($photos as $photo){
                 $nom_temp = $photo['tmp_name'];
                 $nom_photo = $photo['name'];
