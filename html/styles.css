@@ -2544,6 +2544,21 @@ input[type="password"]::placeholder {
     transition: transform 0.2s ease; /* Animation au survol */
 }
 
+.main-consulter-compte-pro button.btn-suppr-compte:hover{
+    transform: translateY(-2px); /* Effet d'élévation au survol */
+    background-color: #ff4d4f;
+    color: white;
+}
+
+.main-consulter-compte-pro button.btn-suppr-compte:active{
+    transform: translateY(2px); /* Effet d'élévation au survol */
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border : 1px solid red;
+}
+
+
+
 .main_consulter_compte_membre button.btn-suppr-compte:hover{
     transform: translateY(-2px); /* Effet d'élévation au survol */
     background-color: #ff4d4f;
