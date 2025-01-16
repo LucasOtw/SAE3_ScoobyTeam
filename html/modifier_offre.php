@@ -761,7 +761,7 @@ if($infos_offre !== null){
                                         <label class="label-check" for="moins_25">€ (menu à moins de 25€)</label>
                                     </div>
                                     <div>
-                                        <input class="label-check" type="radio" id="entre_25_40" name="prix" value="€€" required>
+                                        <input type="radio" id="entre_25_40" name="prix" value="€€" required>
                                         <label class="label-check" for="entre_25_40">€€ (entre 25€ et 40€)</label>
                                     </div>
                                     <div>
@@ -994,6 +994,12 @@ if($infos_offre !== null){
                     target.value = element.contentEditable === "true" ? element.innerHTML : element.value;
                 }
             });
+            const radioGroup = document.querySelector('input[name="prix"]:checked');
+            if (!radioGroup) {
+                alert('Veuillez sélectionner une option de prix.');
+                document.querySelector('input[name="prix"]').focus();
+                event.preventDefault();
+            }
         });
     </script>
     <script>
