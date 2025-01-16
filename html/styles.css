@@ -9361,17 +9361,17 @@ body.menu-open #overlay {
 
     h1_voir_offre1,
     h1_voir_offre2 {
-        display: none
+        display: none;
     }
 
     .half-background {
-        display: none
+        display: none;
     }
 
     .toute_les_offres_main .a-la-une-carrousel,
     .toute_les_offres_main .nouveautes-carrousel,
     .toute_les_offres_main .vu-recemment-carrousel {
-        margin: auto
+        margin: 1em;
     }
 
     .toute_les_offres_main .image-background-card-a-la-une img,
