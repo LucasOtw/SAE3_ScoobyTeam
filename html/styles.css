@@ -11906,7 +11906,7 @@ ul.mentions_legales-sous-list {
 
 
 /* Conteneur du slider */
-.body_offre_desktop .slider-container {
+#body_offre_desktop .slider-container {
     display: flex;
     justify-content: flex-end;
     position: relative;
@@ -11915,7 +11915,7 @@ ul.mentions_legales-sous-list {
 }
 
 /* Style du slider (fond du bouton) */
-.body_offre_desktop .slider {
+#body_offre_desktop .slider {
     width: 76px;
     height: 37px;
     background-color: #ccc;
@@ -11926,7 +11926,7 @@ ul.mentions_legales-sous-list {
 }
 
 /* Le cercle du slider */
-.body_offre_desktop .slider-circle {
+#body_offre_desktop .slider-circle {
     width: 25px;
     height: 25px;
     background-color: white;
@@ -11938,13 +11938,13 @@ ul.mentions_legales-sous-list {
 }
 
 /* Quand le slider est activé (sur la droite) */
-.body_offre_desktop .slider.active {
+#body_offre_desktop .slider.active {
     background-color: var(--orange);
     /* orange lorsque activé */
 }
 
 /* Quand le cercle se déplace sur la droite */
-.body_offre_desktop .slider.active .slider-circle {
+#body_offre_desktop .slider.active .slider-circle {
     transform: translateX(38px);
     /* Déplace le cercle de 60px vers la droite */
 }
