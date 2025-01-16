@@ -3299,6 +3299,11 @@ nav.nav-bar {
         display: none;
     }
 
+    @media (min-width: 429px) {
+        button.submit-btn2{
+            display: none;
+        }
+
     .main_consulter_compte_membre .profile .profile-info {
         display: none;
     }
