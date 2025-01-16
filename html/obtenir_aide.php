@@ -135,7 +135,6 @@
                     margin-top: 1vh;
                 }
             </style>
-            <h1>Détails</h1>
         </header>
     </footer>
     <script>
