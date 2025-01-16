@@ -11,6 +11,8 @@ echo "<pre>";
 var_dump($_POST);
 echo "</pre>";
 
+$details_offre = unserialize($_POST["uneOffre"]);
+
 // Vérifie si HTTP_REFERER est défini
 if (isset($_SERVER['HTTP_REFERER'])) {
     // Vérifie que la page précédente est "detail_offre.php"
