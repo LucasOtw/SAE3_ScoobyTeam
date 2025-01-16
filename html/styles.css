@@ -2303,6 +2303,7 @@ main.main_poster_avis .message-erreur {
         display: flex;
         justify-content: center;
         font-size: 14px;
+        margin-top: -3vh;
     }
 
     main.main_poster_avis .poster_un_avis_btn_publier {
@@ -3319,7 +3320,8 @@ nav.nav-bar {
     }
 
     .main_consulter_compte_membre #compteForm {
-        width: auto;
+        width: 73vw;
+        margin-left: 8vw;
     }
 
 
@@ -3793,7 +3795,7 @@ nom.avis {
     }
 
     .edit-profil h1 {
-        margin-left: 6vw;
+        margin-left: -1vw;
     }
 
     .avis-list {
@@ -5654,6 +5656,7 @@ select.prenom_contacter_plateforme {
 
 .titre_contacter_nous {
     text-align: center;
+    margin-bottom: 4vh;
 }
 
 .theme_contacter_plateforme {
@@ -9693,7 +9696,7 @@ body.menu-open #overlay {
 main.main_repondre_avis .repondre_avis_titre,
 main.main_repondre_avis .repondre_avis_section_titre {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 main.main_repondre_avis .repondre_avis_recap_card {
@@ -9790,7 +9793,7 @@ main.main_repondre_avis .repondre_avis_footer {
 }
 
 main.main_repondre_avis .repondre_avis_recap {
-
+    margin-bottom: 4vh;
     padding: 15px;
     border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
