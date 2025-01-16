@@ -5278,6 +5278,7 @@ nav.nav-bar-tel {
     gap: 10px;
     /* Espace entre les boutons */
     margin-left: 20em;
+    flex-direction: row;
 }
 
 
@@ -5372,6 +5373,8 @@ nav.nav-bar-tel {
 .main_mes_offres .vos_offres {
     padding-left: 13.5em;
 }
+
+
 
 .button-factures {
     display: flex;
