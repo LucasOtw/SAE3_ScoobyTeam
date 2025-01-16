@@ -8044,7 +8044,7 @@ div.header-membre nav ul li a::before {
     transition: width 0.3s ease;
 }
 
-div.header-membre nav ul li a.notification-icon::before {
+nav ul li a.notification-icon::before {
     content : none;
 }
 
