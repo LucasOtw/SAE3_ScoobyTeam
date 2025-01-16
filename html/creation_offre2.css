@@ -14,7 +14,7 @@
 
 
 /* Form Container */
-.main-creation-offre2 .form-container2 {
+.form-container2 {
     background-color: white;
     padding: 40px;
     border-radius: 8px;
@@ -29,7 +29,7 @@
     padding: 30px 0 10px 70px;
 }
 
-.main-creation-offre2 .form-container2 h1 {
+.form-container2 h1 {
     font-size: 24px;
     color: #000000;
     margin-bottom: 10px;
@@ -84,7 +84,7 @@
     font-weight: lighter;
 }
 
-.main-creation-offre2 .price-options, .meal-options, .tarif-option, .boost-options, .offre-options, .duration-options {
+.price-options, .meal-options, .tarif-option, .boost-options, .offre-options, .duration-options {
     padding: 10px;
 }
 
@@ -107,7 +107,7 @@
 /* Submit Button */
 
 
-.main-creation-offre2 #button_valider {
+#button_valider {
     background-color: var(--orange);
     color: white;
     padding: 10px 50px;
@@ -122,24 +122,24 @@
     z-index: 10;
 }
 
-.main-creation-offre2 #button_valider img {
+#button_valider img {
     margin-left: 10px;
 }
 
-.main-creation-offre2 .notes_explicatives{
+.notes_explicatives{
     padding-top: 100px;
     font-size: smaller;
 }
 
 /* Conteneur pour l'image et le toggle */
-.main-creation-offre2 .header-controls {
+.header-controls {
     display: flex;
     align-items: center; /* Aligne verticalement au centre */
     justify-content: space-between; /* Espacement entre l'image et le toggle */
     padding: 20px 20px 0px 70px; /* Optionnel : espacement autour du conteneur */
 }
 
-.main-creation-offre2 .ferme{
+.ferme{
     display: flex;
     align-items: center;
 }
@@ -220,7 +220,7 @@
 
 }
 
-.main-creation-offre2 #jour, .main-creation-offre2 input{
+#jour, .main-creation-offre2 input{
     background-color: white;
     height: 42px;
     border: 1px solid #ddd;
@@ -243,13 +243,13 @@
 } 
 
 
-.main-creation-offre2 .dropdown-container {
+.dropdown-container {
     position: relative;
     display: inline-block;
     width: 100%;
 }
 
-.main-creation-offre2 .dropdown-button {
+.dropdown-button {
     width: 100%;
     padding: 10px;
     background-color: #f0f0f0;
@@ -260,7 +260,7 @@
     font-size: 16px;
 }
 
-.main-creation-offre2 .dropdown-content {
+.dropdown-content {
     display: none;
     position: absolute;
     background-color: #fff;
@@ -273,25 +273,25 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.main-creation-offre2 .dropdown-content label {
+.dropdown-content label {
     display: flex; /* Flexbox pour aligner les items */
     align-items: center; /* Aligne verticalement le texte et la checkbox */
     padding: 8px 10px; /* Ajustement du padding */
     cursor: pointer;
 }
 
-.main-creation-offre2 .dropdown-content label:hover {
+.dropdown-content label:hover {
     background-color: #f0f0f0;
 }
 
-.main-creation-offre2 .dropdown-content input[type="checkbox"] {
+.dropdown-content input[type="checkbox"] {
     margin-right: 10px;
     transform: scale(0.8); /* Diminue la taille de la checkbox */
     cursor: pointer; /* Ajoute un curseur pointer pour la checkbox */
 }
 
 
-.main-creation-offre2 .show {
+.show {
     display: flex;
 
 }
@@ -306,7 +306,7 @@
 
 /* Media Queries for Mobile Responsiveness */
 @media (max-width: 768px) {
-    .main-creation-offre2 .row {
+    .row {
         flex-direction: column;
     }
 }
