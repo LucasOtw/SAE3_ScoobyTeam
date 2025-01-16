@@ -1,4 +1,5 @@
 
+
 /*****************************************************
             * Code général pour les pages *
 *****************************************************/
@@ -339,7 +340,7 @@ header.header-tel {
 
 
 /* Logo */
-.header .logo {
+/*.header_membre .logo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -351,9 +352,9 @@ header.header-tel {
     height: 10em;
 }
 
-.header .logo img {
+.header_membre .logo img {
     max-width: 245px;
-}
+}*/
 
 /* Profil */
 .profile {
@@ -426,11 +427,11 @@ nav.nav-bar {
 
 
 /* Actions */
-.actions {
+.main_compte_membre_tel {
     padding: 20px;
 }
 
-.actions a {
+.main_compte_membre_tel a {
     text-decoration: none;
     color: black;
 }
@@ -451,6 +452,10 @@ nav.nav-bar {
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+
+.main_compte_membre_tel a{
     text-decoration: none;
 }
 
