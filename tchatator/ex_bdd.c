@@ -3,7 +3,7 @@
 #include <libpq-fe.h>  // Bibliothèque PostgreSQL
 
 int main() {
-    const char *conninfo = "host=postgresdb port=5432 dbname=sae user=sae password=philly-Congo-bry4nt";
+    const char *conninfo = "host=172.20.0.2 port=5432 dbname=sae user=sae password=philly-Congo-bry4nt";
     PGconn *conn = NULL;
     PGresult *res = NULL;
 
