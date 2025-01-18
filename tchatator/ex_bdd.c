@@ -3,13 +3,13 @@
 #include <libpq-fe.h>  // Bibliothèque PostgreSQL
 
 int main() {
-    const char *conninfo = "host=172.20.0.2 port=5432 dbname=sae user=sae password=philly-Congo-bry4nt";
+    const char *conninfo = "host=scooby-team.ventsdouest.dev port=5432 dbname=sae user=sae password=philly-Congo-bry4nt";
     PGconn *conn = NULL;
     PGresult *res = NULL;
 
     // Connexion à la base de données PostgreSQL
     conn = PQconnectdb(conninfo);
-
+    printf("%d", PQstatus(conn) != CONNECTION_OK);
     // Vérification de la connexion
     if (PQstatus(conn) != CONNECTION_OK) {
         fprintf(stderr, "Échec de la connexion : %s", PQerrorMessage(conn));
