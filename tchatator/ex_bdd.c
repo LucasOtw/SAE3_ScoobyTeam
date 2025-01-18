@@ -9,7 +9,6 @@ int main() {
 
     // Connexion à la base de données PostgreSQL
     conn = PQconnectdb(conninfo);
-    printf("%d", PQstatus(conn) != CONNECTION_OK);
     // Vérification de la connexion
     if (PQstatus(conn) != CONNECTION_OK) {
         fprintf(stderr, "Échec de la connexion : %s", PQerrorMessage(conn));
