@@ -227,10 +227,10 @@ $adresse = $adresse_offre["adresse_postal"] . " " . $adresse_offre["ville"];
 // Encode l'adresse pour l'URL
 $adresse_enc = urlencode($adresse);
 
-require_once __DIR__ . '/../../vendor/autoload.php'; // Inclure l'autoloader de Composer
+require_once '../vendor/autoload.php'; // Inclure l'autoloader de Composer
 
 // Spécifier le chemin du fichier .env
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../..'); // Remonte de deux niveaux depuis le script
+$dotenv = Dotenv\Dotenv::createImmutable('../'); // Remonte de deux niveaux depuis le script
 $dotenv->load();
 
 // Tester si la variable est chargée
