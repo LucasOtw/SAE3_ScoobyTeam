@@ -231,6 +231,9 @@ $adresse_enc = urlencode($adresse);
 require '../vendor/autoload.php';
 
 print_r($_ENV);
+
+echo class_exists('Dotenv\Dotenv') ? 'Dotenv is loaded' : 'Dotenv is not loaded';
+
 /*
 // Charge le fichier .env depuis /docker/sae/data/web
 $dotenv = Dotenv\Dotenv::createImmutable('/docker/sae/data/web');
