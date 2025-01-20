@@ -230,6 +230,8 @@ $adresse_enc = urlencode($adresse);
 
 require '../vendor/autoload.php';
 
+print_r($_ENV);
+/*
 // Charge le fichier .env depuis /docker/sae/data/web
 $dotenv = Dotenv\Dotenv::createImmutable('/docker/sae/data/web');
 $dotenv->load();
@@ -240,7 +242,7 @@ if ($api_key) {
     echo "API_KEY est chargé avec succès : " . $api_key;
 } else {
     echo "API_KEY n'est pas chargé.";
-}
+}*/
 
 
 
