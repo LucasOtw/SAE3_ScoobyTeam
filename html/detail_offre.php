@@ -228,7 +228,7 @@ $adresse = $adresse_offre["adresse_postal"] . " " . $adresse_offre["ville"];
 $adresse_enc = urlencode($adresse);
 
 // Clé API Google obtenue après inscription
-//Securisée
+// Securisation
 require '../vendor/autoload.php';
 
 Dotenv\Dotenv::createImmutable(__DIR__)->load();
