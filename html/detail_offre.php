@@ -228,21 +228,20 @@ $adresse = $adresse_offre["adresse_postal"] . " " . $adresse_offre["ville"];
 $adresse_enc = urlencode($adresse);
 
 
-
-if (file_exists('/var/www/html/.env')) {
-    echo "Le fichier .env est présent et accessible.";
-} else {
-    echo "Le fichier .env n'est pas trouvé ou inaccessible.";
-}
-
-// Clé API Google obtenue après inscription
-// Securisation
-/*
 require '../vendor/autoload.php';
 
-Dotenv\Dotenv::createImmutable(__DIR__)->load();
+// Charge le fichier .env depuis /docker/sae/data/web
+Dotenv\Dotenv::createImmutable('/docker/sae/data/web')->load();
 
+// Vérifie la variable API_KEY
 $api_key = getenv('API_KEY');
+
+if ($api_key) {
+    echo "API_KEY est chargé avec succès : " . $api_key;
+} else {
+    echo "API_KEY n'est pas chargé.";
+}
+
 
 
 // URL de l'API Geocoding
@@ -259,7 +258,7 @@ if (isset($json['results'][0])) {
 } else {
     echo "Adresse non trouvée.";
 }
-    */
+    
 ?>
 <!DOCTYPE html>
 <html lang="fr">
