@@ -228,7 +228,14 @@ $adresse = $adresse_offre["adresse_postal"] . " " . $adresse_offre["ville"];
 $adresse_enc = urlencode($adresse);
 
 // Clé API Google obtenue après inscription
-$api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig";
+//Securisée
+require 'vendor/autoload.php';
+
+Dotenv\Dotenv::createImmutable(__DIR__)->load();
+
+$api_key = getenv('API_KEY');
+
+
 
 // URL de l'API Geocoding
 $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
