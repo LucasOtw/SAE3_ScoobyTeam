@@ -231,7 +231,7 @@ $adresse_enc = urlencode($adresse);
 // Securisation
 require '../vendor/autoload.php';
 
-Dotenv\Dotenv::createImmutable(__DIR__)->load();
+Dotenv\Dotenv::createImmutable('/var/www/html')->load();
 
 $api_key = getenv('API_KEY');
 
