@@ -228,7 +228,7 @@ $adresse = $adresse_offre["adresse_postal"] . " " . $adresse_offre["ville"];
 $adresse_enc = urlencode($adresse);
 
 
-require '../vendor/autoload.php';
+require 'vendor/autoload.php';
 
 print_r($_ENV);
 /*
