@@ -227,8 +227,17 @@ $adresse = $adresse_offre["adresse_postal"] . " " . $adresse_offre["ville"];
 // Encode l'adresse pour l'URL
 $adresse_enc = urlencode($adresse);
 
+
+
+if (file_exists('/var/www/html/.env')) {
+    echo "Le fichier .env est présent et accessible.";
+} else {
+    echo "Le fichier .env n'est pas trouvé ou inaccessible.";
+}
+
 // Clé API Google obtenue après inscription
 // Securisation
+/*
 require '../vendor/autoload.php';
 
 Dotenv\Dotenv::createImmutable(__DIR__)->load();
@@ -250,6 +259,7 @@ if (isset($json['results'][0])) {
 } else {
     echo "Adresse non trouvée.";
 }
+    */
 ?>
 <!DOCTYPE html>
 <html lang="fr">
