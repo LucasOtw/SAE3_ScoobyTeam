@@ -227,26 +227,20 @@ $adresse = $adresse_offre["adresse_postal"] . " " . $adresse_offre["ville"];
 // Encode l'adresse pour l'URL
 $adresse_enc = urlencode($adresse);
 
+require_once __DIR__ . '/../../vendor/autoload.php'; // Inclure l'autoloader de Composer
 
-require '../vendor/autoload.php';
-
-print_r($_ENV['API_KEY']);
-
-echo class_exists('Dotenv\Dotenv') ? 'Dotenv is loaded' : 'Dotenv is not loaded';
-
-/*
-// Charge le fichier .env depuis /docker/sae/data/web
-$dotenv = Dotenv\Dotenv::createImmutable('/docker/sae/data/web');
+// Spécifier le chemin du fichier .env
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../..'); // Remonte de deux niveaux depuis le script
 $dotenv->load();
-// Vérifie la variable API_KEY
-$api_key = getenv('API_KEY');
 
-if ($api_key) {
-    echo "API_KEY est chargé avec succès : " . $api_key;
+// Tester si la variable est chargée
+if (getenv('API_KEY')) {
+    echo 'API_KEY: ' . getenv('API_KEY'); // Affiche la valeur de API_KEY
 } else {
-    echo "API_KEY n'est pas chargé.";
-}*/
+    echo 'API_KEY not loaded.';
+}
 
+$api_key = getenv('API_KEY');
 
 
 // URL de l'API Geocoding
