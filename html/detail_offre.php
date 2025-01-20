@@ -229,7 +229,7 @@ $adresse_enc = urlencode($adresse);
 
 // Clé API Google obtenue après inscription
 //Securisée
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 Dotenv\Dotenv::createImmutable(__DIR__)->load();
 
