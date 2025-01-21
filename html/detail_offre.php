@@ -233,7 +233,7 @@ try {
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
     $dotenv->load();
 
-    $api_key = getenv('API_KEY');
+    $api_key = $_ENV['API_KEY']);
     if (!$api_key) {
         echo "API_KEY is empty or not loaded.";
     } else {
