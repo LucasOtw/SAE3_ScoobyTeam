@@ -229,19 +229,9 @@ $adresse_enc = urlencode($adresse);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-try {
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-    $dotenv->load();
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
 
-    $api_key = $_ENV['API_KEY'];
-    if (!$api_key) {
-        echo "API_KEY is empty or not loaded.";
-    } else {
-        echo "API_KEY: $api_key";
-    }
-} catch (Exception $e) {
-    echo "Error loading .env file: " . $e->getMessage();
-}
 // URL de l'API Geocoding
 //$url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
 $url="https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=$api_key";
