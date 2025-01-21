@@ -230,7 +230,7 @@ $adresse_enc = urlencode($adresse);
 require_once '../vendor/autoload.php'; 
 
 // Spécifier le chemin du fichier .env
-$dotenv = Dotenv\Dotenv::createImmutable('../.env'); 
+$dotenv = Dotenv\Dotenv::createImmutable('../'); 
 $dotenv->load();
 
 
