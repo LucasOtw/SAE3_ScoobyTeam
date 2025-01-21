@@ -227,7 +227,7 @@ $adresse = $adresse_offre["adresse_postal"] . " " . $adresse_offre["ville"];
 // Encode l'adresse pour l'URL
 $adresse_enc = urlencode($adresse);
 
-require_once '../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 try {
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
