@@ -236,11 +236,11 @@ $dotenv->load();
 
 $api_key = getenv('API_KEY');
 
-echo $api_key;
 
 
 // URL de l'API Geocoding
-$url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
+//$url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
+$url="https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=$api_key";
 
 // Appel de l'API Google Geocoding
 $response = file_get_contents($url);
