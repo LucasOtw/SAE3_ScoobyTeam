@@ -236,7 +236,7 @@ $dotenv->load();
 
 $api_key = getenv('API_KEY');
 
-
+echo "clé API: $api_key";
 
 // URL de l'API Geocoding
 //$url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
