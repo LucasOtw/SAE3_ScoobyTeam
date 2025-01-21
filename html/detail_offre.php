@@ -227,18 +227,12 @@ $adresse = $adresse_offre["adresse_postal"] . " " . $adresse_offre["ville"];
 // Encode l'adresse pour l'URL
 $adresse_enc = urlencode($adresse);
 
-require_once '../vendor/autoload.php'; // Inclure l'autoloader de Composer
+require_once '../vendor/autoload.php'; 
 
 // Spécifier le chemin du fichier .env
-$dotenv = Dotenv\Dotenv::createImmutable('../'); // Remonte de deux niveaux depuis le script
+$dotenv = Dotenv\Dotenv::createImmutable('../.env'); 
 $dotenv->load();
 
-// Tester si la variable est chargée
-if (getenv('API_KEY')) {
-    echo 'API_KEY: ' . getenv('API_KEY'); // Affiche la valeur de API_KEY
-} else {
-    echo 'API_KEY not loaded.';
-}
 
 $api_key = getenv('API_KEY');
 
