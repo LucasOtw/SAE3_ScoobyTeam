@@ -227,17 +227,21 @@ $adresse = $adresse_offre["adresse_postal"] . " " . $adresse_offre["ville"];
 // Encode l'adresse pour l'URL
 $adresse_enc = urlencode($adresse);
 
-require_once '../vendor/autoload.php'; 
+require_once '../vendor/autoload.php';
 
-// Spécifier le chemin du fichier .env
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
+try {
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+    $dotenv->load();
 
-
-$api_key = getenv('API_KEY');
-
-echo "clé API: $api_key";
-
+    $api_key = getenv('API_KEY');
+    if (!$api_key) {
+        echo "API_KEY is empty or not loaded.";
+    } else {
+        echo "API_KEY: $api_key";
+    }
+} catch (Exception $e) {
+    echo "Error loading .env file: " . $e->getMessage();
+}
 // URL de l'API Geocoding
 //$url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
 $url="https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=$api_key";
