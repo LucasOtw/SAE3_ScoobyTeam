@@ -11,18 +11,17 @@
 
 #include "config.h"
 #include "bdd.h"
+#include "fonct.h"
 
 
 
 
 int main()
 {
-    int sock, cnx, ret, size;
+    int sock, cnx, ret, size, len;
     struct sockaddr_in addr, conn_addr;
 
-    char buffer[BUFFER_SIZE], query[1024];; // Buffer pour lire les données
-    int len;
-    int ping_count = 0;
+    char buffer[BUFFER_SIZE], query[1024], txt_log[100]; // Buffer pour lire les données
 
     PGconn *conn = connect_to_db();
     if (conn == NULL) {
@@ -53,7 +52,11 @@ int main()
             exit(-1);
         }
 
-        printf("Connexion acceptée\n");
+        // Récupération de l'adresse IP du client
+        char client_ip[INET_ADDRSTRLEN]; // Buffer pour stocker l'adresse IP
+        inet_ntop(AF_INET, &(conn_addr.sin_addr), client_ip, INET_ADDRSTRLEN);
+
+        printf("Connexion acceptée de l'adresse IP : %s\n", client_ip);
         memset(buffer, 0, sizeof(buffer));
 
 
@@ -66,8 +69,13 @@ int main()
             exit(-1);
         }
 
-        buffer[LEN_API] = '\0'; 
-        printf("Cle API reçu du client : %s\n", buffer);
+        char api_key[LEN_API + 1]; // Variable pour stocker la clé API reçue
+
+        buffer[LEN_API] = '\0'; // S'assurer que le buffer est une chaîne correctement terminée
+        strncpy(api_key, buffer, LEN_API); // Copier la clé API dans la variable
+        api_key[LEN_API] = '\0'; // Terminer la chaîne pour être sûr
+
+        printf("Clé API reçue du client : %s\n", api_key);
 
 
         UserInfo* user_info = generate_and_return_token(buffer, conn);
@@ -99,6 +107,8 @@ int main()
                     if (strncmp(buffer, "BYE BYE", 7) == 0) {
 
                         send(cnx, "Connexion terminée\n", 20, 0);
+                        snprintf(txt_log, sizeof(txt_log), "BYE BYE %s",user_info->token);
+                        insert_logs(api_key, client_ip, txt_log);
 
                         snprintf(query, sizeof(query), "update tripenarvor._token set is_active = FALSE where token = '%s'", user_info->token);
                         // printf("Requête SQL exécutée : %s\n", query);
@@ -118,7 +128,7 @@ int main()
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "REGEN", 5) == 0) {
 
-                        snprintf(query, sizeof(query), "select id_token, is_active, api_key from tripenarvor._token where token = '%s'", user_info->token);
+                        snprintf(query, sizeof(query), "select id_token, is_active from tripenarvor._token where token = '%s'", user_info->token);
                         // printf("Requête SQL exécutée : %s\n", query);
 
                         PGresult *res = PQexec(conn, query);
@@ -129,12 +139,10 @@ int main()
                         }
 
                         bool active_token;                  // État actif/inactif du token
-                        char my_api_key[36];                // Clé API associée au token
                         char type_user_bdd[15];             // Nom de la table cible (membre ou professionnel)
 
                         // Extraction des colonnes spécifiques
                         active_token = PQgetvalue(res, 0, 1); // is_active
-                        strcpy(my_api_key, PQgetvalue(res, 0, 2)); // api_key
 
                         // printf("type_user récupéré : %s\n", type_user);
 
@@ -154,7 +162,7 @@ int main()
                             printf("Nouvelle clé API générée\n");
                             snprintf(query, sizeof(query),
                                     "update tripenarvor._%s set api_key = tripenarvor.generate_api_key('%s') where api_key = '%s'",
-                                    type_user_bdd, first_char, my_api_key);
+                                    type_user_bdd, first_char, api_key);
 
                             // printf("Requête SQL exécutée : %s\n", query);
 

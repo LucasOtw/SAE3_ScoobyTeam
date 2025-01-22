@@ -27,7 +27,7 @@ MAX_MIN=12
 MAX_HOUR=90
 
 # Fichier de logs où les informations liées aux opérations ou aux erreurs du serveur sont stockées.
-LOG_LINKS="logs.txt"
+LOG_LINKS=logs.txt
 
 # Identifiant unique pour l'API d'administration.
 API_ADMIN=A-5f4d3c2b
