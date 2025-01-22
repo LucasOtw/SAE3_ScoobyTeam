@@ -33,6 +33,6 @@ int prepare_socket(int *ret, int *sock, struct sockaddr_in *addr);
 // Fonction qui connecte le user et qui renvoie le token
 UserInfo* generate_and_return_token(const char *buffer, PGconn *conn);
 
-void insert_logs(const char *api_key, const char *ip_address, const char *message)
+void insert_logs(const char *api_key, const char *ip_address, const char *message);
 
 #endif

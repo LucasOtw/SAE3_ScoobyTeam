@@ -71,7 +71,7 @@ int main()
 
 
         UserInfo* user_info = generate_and_return_token(buffer, conn);
-        if (user_info->token != NULL) {
+        if (user_info->token[0] != '\0') {
             char txt_env[60];
             snprintf(txt_env, sizeof(txt_env), "Vous êtes connecté, voici votre token : %s\n", user_info->token);
             
@@ -174,10 +174,52 @@ int main()
                     /// MSG...................................................................................
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "MSG", 3) == 0) {
+                        // SELECT CLÉ API
+                        snprintf(query, sizeof(query), "select api_key from tripenarvor._token where token = '%s'", user_info->token);
+                        // printf("Requête SQL exécutée : %s\n", query);
+
+                        PGresult *res = PQexec(conn, query);
+                        if (PQresultStatus(res) != PGRES_TUPLES_OK) {
+                            fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
+                            PQclear(res);
+                            return EXIT_FAILURE;
+                        }
+
+                        char my_api_key[36]; // Clé API associée au token
+
+                        // Extraction des colonnes spécifiques
+                        strcpy(my_api_key, PQgetvalue(res, 0, 2)); // api_key
+
+                        PQclear(res);
+
                         int id_dest;
                         char txt[1000];
+
+                        snprintf(query, sizeof(query),
+                                    "select code_compte from tripenarvor._membre Natural JOIN tripenarvor._token where api_key = '%s'", my_api_key);
+                        PGresult *res_update = PQexec(conn, query);
+
+                        int id_emetteur = atoi(PQgetvalue(res_update, 0, 0));
+
+                        PQclear(res_update);
+
                         if (sscanf(buffer, "MSG %d %s", &id_dest, txt) == 1) {
-                             
+                            // ENVOI DU MSG
+                            snprintf(query, sizeof(query),
+                                    "insert into tripenarvor._message (code_emetteur, code_destinataire, contenu) values (%d, %d, %s)",
+                                    id_emetteur, id_dest, txt);
+
+
+                            PGresult *res_update = PQexec(conn, query);
+                            if (PQresultStatus(res_update) != PGRES_COMMAND_OK) {
+                                fprintf(stderr, "Échec de l'enregistrement du message : %s\n", PQerrorMessage(conn));
+                                PQclear(res_update);
+                                return EXIT_FAILURE;
+                            }
+                            PQclear(res_update);
+
+
+
                         } else {
                             send(cnx, "Erreur de format : MSG <id_destinataire> '<contenu du message>'\n", 17, 0);
                         }
