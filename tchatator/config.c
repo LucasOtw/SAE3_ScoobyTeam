@@ -182,3 +182,36 @@ UserInfo* generate_and_return_token(const char *buffer, PGconn *conn) {
     free(userInfo); // Nettoyage en cas d'échec
     return NULL;
 }
+
+
+
+void insert_logs(const char *api_key, const char *ip_address, const char *message) {
+    if (LOG_LINKS == NULL) {
+        fprintf(stderr, "Erreur : LOG_LINKS n'est pas défini dans config.h\n");
+        return;
+    }
+
+    FILE *log_file = fopen(LOG_LINKS, "a"); // Ouverture en mode ajout
+    if (log_file == NULL) {
+        perror("Erreur lors de l'ouverture du fichier de log");
+        return;
+    }
+
+    // Obtenir la date et l'heure actuelles
+    time_t now = time(NULL);
+    struct tm *time_info = localtime(&now);
+
+    if (time_info == NULL) {
+        perror("Erreur lors de la récupération de la date et de l'heure");
+        fclose(log_file);
+        return;
+    }
+
+    char timestamp[20];
+    strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", time_info);
+
+    // Écrire la ligne de log dans le fichier
+    fprintf(log_file, "[%s] API_KEY: %s, IP: %s, Message: %s\n", timestamp, api_key, ip_address, message);
+
+    fclose(log_file); // Fermer le fichier
+}
