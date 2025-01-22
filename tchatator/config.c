@@ -113,61 +113,72 @@ int prepare_socket(int *ret, int *sock, struct sockaddr_in *addr) {
 }
 
 
-const char* generate_and_return_token(const char *buffer, PGconn *conn) {
-    static char token[50]; // Taille suffisante pour contenir le token
-    char query[512];  // Déclare la variable query avec une taille suffisante
-    char new_user[10];
+
+UserInfo* generate_and_return_token(const char *buffer, PGconn *conn) {
+    UserInfo *userInfo = malloc(sizeof(UserInfo)); // Allouer dynamiquement la structure
+    if (userInfo == NULL) {
+        perror("Erreur d'allocation mémoire pour UserInfo");
+        return NULL;
+    }
+
+    char query[512];
 
     if (strcmp(buffer, API_ADMIN) == 0 || buffer[0] == 'M' || buffer[0] == 'P') {
         if (strcmp(buffer, API_ADMIN) != 0) {
-            char *generated_token = generate_token();  // Génère un token
+            char *generated_token = generate_token(); // Génère un token
 
             if (buffer[0] == 'M') {
-                strcpy(new_user, "MEMBRE");
+                strcpy(userInfo->new_user, "MEMBRE");
 
                 snprintf(query, sizeof(query), "select * from tripenarvor._membre where api_key = '%s'", buffer);
                 PGresult *res = PQexec(conn, query);
                 if (PQresultStatus(res) != PGRES_TUPLES_OK) {
-                    perror("La clé API n'existe pas ");
+                    fprintf(stderr, "La clé API n'existe pas : %s\n", PQerrorMessage(conn));
                     PQclear(res);
+                    free(userInfo);
+                    free(generated_token);
                     return NULL;
                 }
                 PQclear(res);
             } else if (buffer[0] == 'P') {
-                strcpy(new_user, "PRO");
+                strcpy(userInfo->new_user, "PRO");
 
                 snprintf(query, sizeof(query), "select * from tripenarvor._professionnel where api_key = '%s'", buffer);
                 PGresult *res = PQexec(conn, query);
                 if (PQresultStatus(res) != PGRES_TUPLES_OK) {
-                    perror("La clé API n'existe pas ");
+                    fprintf(stderr, "La clé API n'existe pas : %s\n", PQerrorMessage(conn));
                     PQclear(res);
+                    free(userInfo);
+                    free(generated_token);
                     return NULL;
                 }
                 PQclear(res);
             }
 
-            // Insertion du token dans la base de données
             snprintf(query, sizeof(query),
                      "insert into tripenarvor._token (api_key, token, type_utilisateur, created_at, expires_at)"
-                     "values ('%s', '%s', '%s', NOW(), NOW() + INTERVAL '1 day') returning token;", buffer, generated_token, new_user);
+                     "values ('%s', '%s', '%s', NOW(), NOW() + INTERVAL '1 day') returning token;", 
+                     buffer, generated_token, userInfo->new_user);
 
             free(generated_token);
             PGresult *res = PQexec(conn, query);
             if (PQresultStatus(res) != PGRES_TUPLES_OK) {
                 fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
                 PQclear(res);
+                free(userInfo);
                 return NULL;
             }
 
-            // Récupérer le token de la requête SQL
-            snprintf(token, sizeof(token), "%s", PQgetvalue(res, 0, 0));
+            snprintf(userInfo->token, sizeof(userInfo->token), "%s", PQgetvalue(res, 0, 0));
             PQclear(res);
         } else {
-            snprintf(token, sizeof(token), "a1");
+            snprintf(userInfo->token, sizeof(userInfo->token), "a1");
+            strcpy(userInfo->new_user, "ADMIN");
         }
 
-        return token;
+        return userInfo; // Retourner l'adresse de la structure allouée
     }
-    
-    return NULL;  // Si la condition initiale n'est pas remplie, retourner NULL
+
+    free(userInfo); // Nettoyage en cas d'échec
+    return NULL;
 }

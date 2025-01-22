@@ -3,6 +3,7 @@
 
 #include <libpq-fe.h> // Bibliothèque PostgreSQL
 
+
 // Fonction pour me connecter à la bdd
 PGconn* connect_to_db();
 

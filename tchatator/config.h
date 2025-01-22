@@ -1,6 +1,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+#include <netinet/in.h>
 #include <libpq-fe.h> // Bibliothèque PostgreSQL
 
 // Déclaration des variables globales
@@ -17,6 +18,12 @@ extern char LOG_LINKS[256];      // Chemin du fichier de logs
 extern char API_ADMIN[36];       // Identifiant unique pour l'API de l'admin
 extern int LEN_API;              // Taille clés API
 
+typedef struct {
+    char token[10];
+    char new_user[15];
+} UserInfo;
+
+
 // Fonction pour charger les paramètres à partir du fichier "param.txt"
 int load_config(const char *filename);
 
@@ -24,6 +31,6 @@ int load_config(const char *filename);
 int prepare_socket(int *ret, int *sock, struct sockaddr_in *addr);
 
 // Fonction qui connecte le user et qui renvoie le token
-const char* generate_and_return_token(const char *buffer, PGconn *conn);
+UserInfo* generate_and_return_token(const char *buffer, PGconn *conn);
 
 #endif

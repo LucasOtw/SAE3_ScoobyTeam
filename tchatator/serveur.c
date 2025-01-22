@@ -14,6 +14,7 @@
 
 
 
+
 int main()
 {
     int sock, cnx, ret, size;
@@ -39,9 +40,8 @@ int main()
         exit(EXIT_FAILURE);
     }
 
-    while(1)
+    while(1) // while(1) pour garder le serveur allume malgre que le client quitte
     {
-        // Possible while(1) pour garder le serveur allume malgre que le client quitte
     
         printf("=>En attente d'une connexion...\n");
         size = sizeof(conn_addr);
@@ -57,9 +57,6 @@ int main()
         memset(buffer, 0, sizeof(buffer));
 
 
-
-
-
         printf("En attente de la cle API...\n");
         len = recv(cnx, buffer, sizeof(buffer) - 1, 0);
         if (len == -1)
@@ -72,10 +69,11 @@ int main()
         buffer[LEN_API] = '\0'; 
         printf("Cle API reçu du client : %s\n", buffer);
 
-        const char *token = generate_and_return_token(buffer, conn);
-        if (token != NULL) {
+
+        UserInfo* user_info = generate_and_return_token(buffer, conn);
+        if (user_info->token != NULL) {
             char txt_env[60];
-            snprintf(txt_env, sizeof(txt_env), "Vous êtes connecté, voici votre token : %s\n", token);
+            snprintf(txt_env, sizeof(txt_env), "Vous êtes connecté, voici votre token : %s\n", user_info->token);
             
             int tk = send(cnx, txt_env, strlen(txt_env), 0);
             if (tk == -1) {
@@ -95,10 +93,14 @@ int main()
                     buffer[ret] = '\0'; // Terminaison de chaîne
                     printf("Données reçues : %s\n", buffer);
 
+                    //////////////////////////////////////////////////////////////////////////////////////////
+                    /// BYE BYE...............................................................................
+                    //////////////////////////////////////////////////////////////////////////////////////////
                     if (strncmp(buffer, "BYE BYE", 7) == 0) {
+
                         send(cnx, "Connexion terminée\n", 20, 0);
 
-                        snprintf(query, sizeof(query), "update tripenarvor._token set is_active = FALSE where token = '%s'", token);
+                        snprintf(query, sizeof(query), "update tripenarvor._token set is_active = FALSE where token = '%s'", user_info->token);
                         // printf("Requête SQL exécutée : %s\n", query);
 
                         PGresult *res = PQexec(conn, query);
@@ -110,74 +112,80 @@ int main()
                         }
 
                         break;
-                    } else if (strncmp(buffer, "REGEN", 5) == 0) {
-                        char my_token[6];
-                        if( sscanf(buffer, "REGEN %5s", my_token) == 1)
-                        {
+                    }
+                    //////////////////////////////////////////////////////////////////////////////////////////
+                    /// REGEN.................................................................................
+                    //////////////////////////////////////////////////////////////////////////////////////////
+                    else if (strncmp(buffer, "REGEN", 5) == 0) {
 
-                            snprintf(query, sizeof(query), "select id_token, type_utilisateur, is_active, api_key from tripenarvor._token where token = '%s'", my_token);
-                            // printf("Requête SQL exécutée : %s\n", query);
+                        snprintf(query, sizeof(query), "select id_token, is_active, api_key from tripenarvor._token where token = '%s'", user_info->token);
+                        // printf("Requête SQL exécutée : %s\n", query);
 
-                            PGresult *res = PQexec(conn, query);
-                            if (PQresultStatus(res) != PGRES_TUPLES_OK) {
-                                fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
-                                PQclear(res);
-                                return EXIT_FAILURE;
-                            }
-
-                            char my_token[6];                   // Token récupéré de la commande
-                            char type_user[15];                 // Type d'utilisateur (Membre ou Professionnel)
-                            bool active_token;                  // État actif/inactif du token
-                            char my_api_key[36];                // Clé API associée au token
-                            char type_user_bdd[15];             // Nom de la table cible (membre ou professionnel)
-
-                            // Extraction des colonnes spécifiques
-                            strcpy(type_user, PQgetvalue(res, 0, 1)); // type_utilisateur
-                            active_token = PQgetvalue(res, 0, 2); // is_active
-                            strcpy(my_api_key, PQgetvalue(res, 0, 3)); // api_key
-
-                            // printf("type_user récupéré : %s\n", type_user);
-
-                            if (strcmp(type_user, "MEMBRE") == 0) {
-                                strcpy(type_user_bdd, "membre");
-                            } else if (strcmp(type_user, "PRO") == 0) {
-                                strcpy(type_user_bdd, "professionnel");
-                            }
-
-                            // printf("type_user : %s, active_token : %d, my_api_key : %s, type_user_bdd : %s\n", type_user, active_token, my_api_key, type_user_bdd);
-
-                            if (active_token) {
-                                char first_char[2] = {type_user[0], '\0'};
-                                // printf("Premier caractère de type_user : %s\n", first_char);
-
-                                send(cnx, "Votre clé API a été changée\n", sizeof("Votre clé API a été changée\n"), 0);
-                                printf("Nouvelle clé API générée\n");
-                                snprintf(query, sizeof(query),
-                                        "update tripenarvor._%s set api_key = tripenarvor.generate_api_key('%s') where api_key = '%s'",
-                                        type_user_bdd, first_char, my_api_key);
-
-                                // printf("Requête SQL exécutée : %s\n", query);
-
-                                PGresult *res_update = PQexec(conn, query);
-                                if (PQresultStatus(res_update) != PGRES_COMMAND_OK) {
-                                    fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
-                                    PQclear(res_update);
-                                    return EXIT_FAILURE;
-                                }
-                                PQclear(res_update);
-                            } else {
-                                send(cnx, "Votre token n'est plus valide\n", 31, 0);
-                            }
-
-                        } else {
-                            send(cnx, "Erreur de format : REGEN <token>\n", 34, 0);
+                        PGresult *res = PQexec(conn, query);
+                        if (PQresultStatus(res) != PGRES_TUPLES_OK) {
+                            fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
+                            PQclear(res);
+                            return EXIT_FAILURE;
                         }
 
+                        bool active_token;                  // État actif/inactif du token
+                        char my_api_key[36];                // Clé API associée au token
+                        char type_user_bdd[15];             // Nom de la table cible (membre ou professionnel)
+
+                        // Extraction des colonnes spécifiques
+                        active_token = PQgetvalue(res, 0, 1); // is_active
+                        strcpy(my_api_key, PQgetvalue(res, 0, 2)); // api_key
+
+                        // printf("type_user récupéré : %s\n", type_user);
+
+                        if (strcmp(user_info->new_user, "MEMBRE") == 0) {
+                            strcpy(type_user_bdd, "membre");
+                        } else if (strcmp(user_info->new_user, "PRO") == 0) {
+                            strcpy(type_user_bdd, "professionnel");
+                        }
+
+                        // printf("type_user : %s, active_token : %d, my_api_key : %s, type_user_bdd : %s\n", user_info->new_user, active_token, my_api_key, type_user_bdd);
+
+                        if (active_token) {
+                            char first_char[2] = {user_info->new_user[0], '\0'};
+                            // printf("Premier caractère de type_user : %s\n", first_char);
+
+                            send(cnx, "Votre clé API a été changée\n", sizeof("Votre clé API a été changée\n"), 0);
+                            printf("Nouvelle clé API générée\n");
+                            snprintf(query, sizeof(query),
+                                    "update tripenarvor._%s set api_key = tripenarvor.generate_api_key('%s') where api_key = '%s'",
+                                    type_user_bdd, first_char, my_api_key);
+
+                            // printf("Requête SQL exécutée : %s\n", query);
+
+                            PGresult *res_update = PQexec(conn, query);
+                            if (PQresultStatus(res_update) != PGRES_COMMAND_OK) {
+                                fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
+                                PQclear(res_update);
+                                return EXIT_FAILURE;
+                            }
+                            PQclear(res_update);
+                        } else {
+                            send(cnx, "Votre token n'est plus valide\n", 31, 0);
+                        }
+
+                    }
+                    //////////////////////////////////////////////////////////////////////////////////////////
+                    /// MSG...................................................................................
+                    //////////////////////////////////////////////////////////////////////////////////////////
+                    else if (strncmp(buffer, "MSG", 3) == 0) {
+                        int id_dest;
+                        char txt[1000];
+                        if (sscanf(buffer, "MSG %d %s", &id_dest, txt) == 1) {
+                             
+                        } else {
+                            send(cnx, "Erreur de format : MSG <id_destinataire> '<contenu du message>'\n", 17, 0);
+                        }
                     } else {
                             send(cnx, "Commande inconnue\n", 19, 0);
                     }
                 } else {
-                    perror("Erreur lors de la lecture");
+                    perror("Erreur lors de la lecture\n");
                     break;
                 }
             }
