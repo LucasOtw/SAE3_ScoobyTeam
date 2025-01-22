@@ -160,10 +160,12 @@ int main()
 
                             send(cnx, "Votre clé API a été changée\n", sizeof("Votre clé API a été changée\n"), 0);
                             printf("Nouvelle clé API générée\n");
+                            snprintf(txt_log, sizeof(txt_log), "REGEN %s",user_info->token);
+                            insert_logs(api_key, client_ip, txt_log);
+
                             snprintf(query, sizeof(query),
                                     "update tripenarvor._%s set api_key = tripenarvor.generate_api_key('%s') where api_key = '%s'",
                                     type_user_bdd, first_char, api_key);
-
                             // printf("Requête SQL exécutée : %s\n", query);
 
                             PGresult *res_update = PQexec(conn, query);
