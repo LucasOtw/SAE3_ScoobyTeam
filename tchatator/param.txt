@@ -1,0 +1,36 @@
+
+# Adresse IP du serveur (spécifie où le serveur écoute, ici sur localhost).
+SERVER_IP="127.0.0.1"
+
+# Port sur lequel le serveur écoute les connexions entrantes.
+SERVER_PORT=8080
+
+# Nombre de connexions en attente dans la file d'attente du serveur avant qu'elles ne soient traitées.
+NB_BACKLOG=5
+
+# Durée du bannissement en heures.
+BAN_DUR=24
+
+# Limite du nombre de messages qu'on peut afficher.
+NB_MESS=20
+
+# Limite caractères d'un message.
+LEN_MESS=1000
+
+# Taille du tampon de données.
+BUFFER_SIZE=1024
+
+# Limite en minutes de messages envoyés.
+MAX_MIN=12
+
+# Limite en heures de messages envoyés.
+MAX_HOUR=90
+
+# Fichier de logs où les informations liées aux opérations ou aux erreurs du serveur sont stockées.
+LOG_LINKS=logs.txt
+
+# Identifiant unique pour l'API d'administration.
+API_ADMIN=A-5f4d3c2b
+
+# Taille des clés API
+LEN_API=10
