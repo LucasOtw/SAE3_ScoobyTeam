@@ -184,29 +184,12 @@ int main()
                     /// MSG...................................................................................
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "MSG", 3) == 0) {
-                        // SELECT CLÉ API
-                        snprintf(query, sizeof(query), "select api_key from tripenarvor._token where token = '%s'", user_info->token);
-                        // printf("Requête SQL exécutée : %s\n", query);
-
-                        PGresult *res = PQexec(conn, query);
-                        if (PQresultStatus(res) != PGRES_TUPLES_OK) {
-                            fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
-                            PQclear(res);
-                            return EXIT_FAILURE;
-                        }
-
-                        char my_api_key[36]; // Clé API associée au token
-
-                        // Extraction des colonnes spécifiques
-                        strcpy(my_api_key, PQgetvalue(res, 0, 2)); // api_key
-
-                        PQclear(res);
-
+                        
                         int id_dest;
                         char txt[1000];
 
                         snprintf(query, sizeof(query),
-                                    "select code_compte from tripenarvor._membre Natural JOIN tripenarvor._token where api_key = '%s'", my_api_key);
+                                    "select code_compte from tripenarvor._membre Natural JOIN tripenarvor._token where api_key = '%s'", api_key);
                         PGresult *res_update = PQexec(conn, query);
 
                         int id_emetteur = atoi(PQgetvalue(res_update, 0, 0));
