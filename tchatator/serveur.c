@@ -21,7 +21,7 @@ int main()
     int sock, cnx, ret, size, len;
     struct sockaddr_in addr, conn_addr;
 
-    char buffer[BUFFER_SIZE], query[1024], txt_log[100]; // Buffer pour lire les données
+    char buffer[BUFFER_SIZE], query[2000], txt_log[100]; // Buffer pour lire les données
 
     PGconn *conn = connect_to_db();
     if (conn == NULL) {
@@ -78,7 +78,7 @@ int main()
         printf("Clé API reçue du client : %s\n", api_key);
 
 
-        UserInfo* user_info = generate_and_return_token(buffer, conn);
+        UserInfo* user_info = generate_and_return_token(api_key, conn);
         if (user_info->token[0] != '\0') {
             char txt_env[60];
             snprintf(txt_env, sizeof(txt_env), "Vous êtes connecté, voici votre token : %s\n", user_info->token);
