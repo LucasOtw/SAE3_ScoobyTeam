@@ -5,6 +5,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
+#include <time.h>
 #include <libpq-fe.h> // Bibliothèque PostgreSQL
 
 #include "config.h"
@@ -114,7 +115,7 @@ int prepare_socket(int *ret, int *sock, struct sockaddr_in *addr) {
 
 
 
-UserInfo* generate_and_return_token(const char *buffer, PGconn *conn) {
+UserInfo* generate_and_return_token(const char *api_key, PGconn *conn) {
     UserInfo *userInfo = malloc(sizeof(UserInfo)); // Allouer dynamiquement la structure
     if (userInfo == NULL) {
         perror("Erreur d'allocation mémoire pour UserInfo");
@@ -123,14 +124,14 @@ UserInfo* generate_and_return_token(const char *buffer, PGconn *conn) {
 
     char query[512];
 
-    if (strcmp(buffer, API_ADMIN) == 0 || buffer[0] == 'M' || buffer[0] == 'P') {
-        if (strcmp(buffer, API_ADMIN) != 0) {
+    if (strcmp(api_key, API_ADMIN) == 0 || api_key[0] == 'M' || api_key[0] == 'P') {
+        if (strcmp(api_key, API_ADMIN) != 0) {
             char *generated_token = generate_token(); // Génère un token
 
-            if (buffer[0] == 'M') {
+            if (api_key[0] == 'M') {
                 strcpy(userInfo->new_user, "MEMBRE");
 
-                snprintf(query, sizeof(query), "select * from tripenarvor._membre where api_key = '%s'", buffer);
+                snprintf(query, sizeof(query), "select * from tripenarvor._membre where api_key = '%s'", api_key);
                 PGresult *res = PQexec(conn, query);
                 if (PQresultStatus(res) != PGRES_TUPLES_OK) {
                     fprintf(stderr, "La clé API n'existe pas : %s\n", PQerrorMessage(conn));
@@ -140,10 +141,10 @@ UserInfo* generate_and_return_token(const char *buffer, PGconn *conn) {
                     return NULL;
                 }
                 PQclear(res);
-            } else if (buffer[0] == 'P') {
+            } else if (api_key[0] == 'P') {
                 strcpy(userInfo->new_user, "PRO");
 
-                snprintf(query, sizeof(query), "select * from tripenarvor._professionnel where api_key = '%s'", buffer);
+                snprintf(query, sizeof(query), "select * from tripenarvor._professionnel where api_key = '%s'", api_key);
                 PGresult *res = PQexec(conn, query);
                 if (PQresultStatus(res) != PGRES_TUPLES_OK) {
                     fprintf(stderr, "La clé API n'existe pas : %s\n", PQerrorMessage(conn));
@@ -158,7 +159,7 @@ UserInfo* generate_and_return_token(const char *buffer, PGconn *conn) {
             snprintf(query, sizeof(query),
                      "insert into tripenarvor._token (api_key, token, type_utilisateur, created_at, expires_at)"
                      "values ('%s', '%s', '%s', NOW(), NOW() + INTERVAL '1 day') returning token;", 
-                     buffer, generated_token, userInfo->new_user);
+                     api_key, generated_token, userInfo->new_user);
 
             free(generated_token);
             PGresult *res = PQexec(conn, query);
