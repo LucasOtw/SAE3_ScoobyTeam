@@ -187,6 +187,7 @@ int main()
                         
                         int id_dest;
                         char txt[1000];
+                        int offset = 0;
 
                         snprintf(query, sizeof(query),
                                     "select code_compte from tripenarvor._membre Natural JOIN tripenarvor._token where api_key = '%s'", api_key);
@@ -196,11 +197,30 @@ int main()
 
                         PQclear(res_update);
 
-                        if (sscanf(buffer, "MSG %d %s", &id_dest, txt) == 1) {
+                        if (sscanf(buffer, "MSG %d %n", &id_dest, &offset) == 1) {
+
+                            printf("ID destinataire : %d\n", id_dest);   // Affiche : 123
+                            printf("Offset : %d\n", offset);             // Affiche : 7
+
+                            // Pointeur vers la partie restante du message
+                            char *message = buffer + offset;
+                            printf("Message : %s\n", message);
+
+                            snprintf(txt, sizeof(txt), "%s", buffer + offset);
+
+                            // Retirer les espaces et les apostrophes en trop si nécessaire
+                            char *start = txt;
+                            while (*start == ' ') start++; // Supprimer les espaces en début
+                            char *end = start + strlen(start) - 1;
+                            while (end > start && (*end == ' ' || *end == '\'')) {
+                                *end = '\0';
+                                end--;
+                            }
+
                             // ENVOI DU MSG
                             snprintf(query, sizeof(query),
-                                    "insert into tripenarvor._message (code_emetteur, code_destinataire, contenu) values (%d, %d, %s)",
-                                    id_emetteur, id_dest, txt);
+                                    "insert into tripenarvor._message (code_emetteur, code_destinataire, contenu) values (%d, %d, '%s')",
+                                    id_emetteur, id_dest, start);
 
 
                             PGresult *res_update = PQexec(conn, query);
@@ -214,7 +234,7 @@ int main()
 
 
                         } else {
-                            send(cnx, "Erreur de format : MSG <id_destinataire> '<contenu du message>'\n", 17, 0);
+                            send(cnx, "Erreur de format : MSG <id_destinataire> '<contenu du message>'\n", 65, 0);
                         }
                     } else {
                             send(cnx, "Commande inconnue\n", 19, 0);
