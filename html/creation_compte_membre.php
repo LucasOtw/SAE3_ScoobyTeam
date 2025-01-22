@@ -359,7 +359,7 @@
                     $codeCompte = $dbh->lastInsertId();
                 }
 
-                $creerMembre = $dbh->prepare("INSERT INTO tripenarvor._membre VALUES (:code_compte,:nom,:prenom,:pseudo)");
+                $creerMembre = $dbh->prepare("INSERT INTO tripenarvor._membre (code_compte, nom, prenom, pseudo) VALUES (:code_compte,:nom,:prenom,:pseudo)");
 
                 $creerMembre->bindParam(':code_compte',$codeCompte);
                 $creerMembre->bindParam(':nom', $nom);
