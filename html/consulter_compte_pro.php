@@ -298,6 +298,7 @@ if (isset($_POST['modif_infos'])){
             </div>
 
             <?php        
+                        //Code pour l'affichage de la clée API
                         try {
                             $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
                             $username = "sae";
@@ -307,15 +308,13 @@ if (isset($_POST['modif_infos'])){
                             $dbh = new PDO($dsn, $username, $password);
                             $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                         
-                            // Requête pour récupérer la clé API
-                            $stmt = $dbh->query('SELECT api_key FROM tripenarvor._professionnel LIMIT 1');
+                            $stmt = $dbh->query('SELECT api_key FROM tripenarvor._professionnel');
                             $result = $stmt->fetch(PDO::FETCH_ASSOC);
                         
-                            // Vérifiez si une clé API a été trouvée
                             $api_key = $result['api_key'] ?? '';
                         } catch (PDOException $e) {
                             echo "Erreur de connexion ou de requête : " . $e->getMessage();
-                            $api_key = ''; // Valeur par défaut en cas d'erreur
+                            $api_key = '';
                         }
             ?>
            
