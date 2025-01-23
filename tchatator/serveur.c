@@ -39,11 +39,12 @@ int main()
         exit(EXIT_FAILURE);
     }
 
+    size = sizeof(conn_addr);
+
     while(1) // while(1) pour garder le serveur allume malgre que le client quitte
     {
     
         printf("=>En attente d'une connexion...\n");
-        size = sizeof(conn_addr);
         cnx = accept(sock, (struct sockaddr *)&conn_addr, (socklen_t *)&size);
         if (cnx == -1)
         {
@@ -90,6 +91,9 @@ int main()
         // Passer la clé API nettoyée à la fonction de génération de token
         printf("Clé API finale envoyée à la fonction : '%s'\n", api_key);
         UserInfo* user_info = generate_and_return_token(api_key, conn);
+<<<<<<< HEAD
+        if (user_info != NULL) {
+=======
 
         if (user_info == NULL) {
             printf("Erreur lors de la génération ou de la récupération du token.\n");
@@ -106,6 +110,7 @@ int main()
             continue;
         }
         if (user_info->token[0] != '\0') {
+>>>>>>> 525021f94d427aceee075d24988ed22492889f64
             char txt_env[60];
             snprintf(txt_env, sizeof(txt_env), "Vous êtes connecté, voici votre token : %s\n", user_info->token);
             
@@ -146,6 +151,7 @@ int main()
                             PQfinish(conn); // Libérer la mémoire allouée pour la connexion
                             return EXIT_FAILURE;
                         }
+                        memset(query, 0, sizeof(query));
 
                         break;
                     }
@@ -161,8 +167,10 @@ int main()
                         if (PQresultStatus(res) != PGRES_TUPLES_OK) {
                             fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
                             PQclear(res);
+                            PQfinish(conn);
                             return EXIT_FAILURE;
                         }
+                        memset(query, 0, sizeof(query));
 
                         bool active_token;                  // État actif/inactif du token
                         char type_user_bdd[15];             // Nom de la table cible (membre ou professionnel)
@@ -201,6 +209,7 @@ int main()
                                 return EXIT_FAILURE;
                             }
                             PQclear(res_update);
+                            memset(query, 0, sizeof(query));
                         } else {
                             send(cnx, "Votre token n'est plus valide\n", 31, 0);
                         }
@@ -212,16 +221,31 @@ int main()
                     else if (strncmp(buffer, "MSG", 3) == 0) {
                         
                         int id_dest;
-                        char txt[1000];
+                        char txt[1000], type_user_bdd[15];
                         int offset = 0;
 
+                        if (strcmp(user_info->new_user, "MEMBRE") == 0) {
+                            strcpy(type_user_bdd, "membre");
+                        } else if (strcmp(user_info->new_user, "PRO") == 0) {
+                            strcpy(type_user_bdd, "professionnel");
+                        }
+
                         snprintf(query, sizeof(query),
-                                    "select code_compte from tripenarvor._membre Natural JOIN tripenarvor._token where api_key = '%s'", api_key);
-                        PGresult *res_update = PQexec(conn, query);
+                                "select code_compte from tripenarvor._%s Natural JOIN tripenarvor._token where api_key = '%s'", type_user_bdd, api_key);
+                        printf("Requête SQL exécutée : %s\n", query);
 
-                        int id_emetteur = atoi(PQgetvalue(res_update, 0, 0));
+                        PGresult *res = PQexec(conn, query);
+                        if (PQresultStatus(res) != PGRES_TUPLES_OK) {
+                            fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
+                            PQclear(res);
+                            PQfinish(conn);
+                            return EXIT_FAILURE;
+                        }
+                        memset(query, 0, sizeof(query));
 
-                        PQclear(res_update);
+                        int id_emetteur = atoi(PQgetvalue(res, 0, 0));
+
+                        PQclear(res);
 
                         if (sscanf(buffer, "MSG %d %n", &id_dest, &offset) == 1) {
 

@@ -2,9 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <stdbool.h>
 #include <libpq-fe.h> // Bibliothèque PostgreSQL
 
 #include "bdd.h"
+
+
 
 PGconn* connect_to_db() {
     // Informations de connexion codées en dur
@@ -32,6 +35,8 @@ PGconn* connect_to_db() {
     return conn;
 }
 
+
+
 char* generate_token() {
     // Définir le jeu de caractères possibles pour le token
     const char charset[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -50,4 +55,18 @@ char* generate_token() {
     token[4] = '\0'; // Ajouter un caractère nul à la fin pour en faire une chaîne de caractères valide
 
     return token;
+}
+
+
+
+// Fonction utilitaire pour exécuter une requête PostgreSQL et vérifier le résultat
+bool execute_query(PGconn *conn, const char *query) {
+    PGresult *res = PQexec(conn, query);
+    if (PQresultStatus(res) != PGRES_COMMAND_OK) {
+        fprintf(stderr, "Échec de la requête SQL : %s\n%s\n", query, PQerrorMessage(conn));
+        PQclear(res);
+        return false;
+    }
+    PQclear(res);
+    return true;
 }
