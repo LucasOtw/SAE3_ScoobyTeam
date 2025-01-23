@@ -298,26 +298,35 @@ if (isset($_POST['modif_infos'])){
             </div>
 
             <?php        
-                        //Code pour l'affichage de la clée API
-                        try {
-                            $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-                            $username = "sae";
-                            $password = "philly-Congo-bry4nt";
-                        
-                            // Créer une instance PDO
-                            $dbh = new PDO($dsn, $username, $password);
-                            $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        
-                            $stmt = $dbh->query('SELECT api_key FROM tripenarvor._professionnel');
-                            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                        
-                            $api_key = $result['api_key'] ?? '';
-                        } catch (PDOException $e) {
-                            echo "Erreur de connexion ou de requête : " . $e->getMessage();
-                            $api_key = '';
-                        }
-            ?>
-           
+      
+    // Code pour l'affichage de la clé API
+    try {
+        // Informations de connexion à la base de données
+        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+        $username = "sae";
+        $password = "philly-Congo-bry4nt";
+
+        // Créer une instance PDO
+        $dbh = new PDO($dsn, $username, $password);
+        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Préparer et exécuter l'appel à la fonction `generate_api_key`
+        $prefix = 'M'; // Préfixe pour générer la clé API
+        $stmt = $dbh->prepare('SELECT tripenarvor.generate_api_key(:prefix) AS api_key');
+        $stmt->bindParam(':prefix', $prefix, PDO::PARAM_STR);
+        $stmt->execute();
+
+        // Récupérer le résultat de la clé API générée
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $api_key = $result['api_key'] ?? '';  // Utiliser la clé générée
+
+    } catch (PDOException $e) {
+        // Gérer les erreurs de connexion ou de requête
+        echo "Erreur de connexion ou de requête : " . $e->getMessage();
+        $api_key = '';
+    }
+?>
+       
             <div class="crea_pro_raison_sociale_num_siren">
                 <fieldset>
                     <legend>Email *</legend>
@@ -358,7 +367,6 @@ if (isset($_POST['modif_infos'])){
             <input type="submit" id="btn-api" name="btn-api">
         </fieldset>
             </div>
-            
             <div class="checkbox">
                 <input type="checkbox" id="cgu" name="cgu" required>
                 <label for="cgu">J’accepte les <a href="cgu.html">Conditions générales d’utilisation (CGU)</a></label>
