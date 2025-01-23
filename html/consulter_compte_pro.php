@@ -297,6 +297,26 @@ if (isset($_POST['modif_infos'])){
                ?>
             </div>
 
+            <?php        
+                        //Code pour l'affichage de la clée API
+                        try {
+                            $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+                            $username = "sae";
+                            $password = "philly-Congo-bry4nt";
+                        
+                            // Créer une instance PDO
+                            $dbh = new PDO($dsn, $username, $password);
+                            $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        
+                            $stmt = $dbh->query('SELECT api_key FROM tripenarvor._professionnel');
+                            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                        
+                            $api_key = $result['api_key'] ?? '';
+                        } catch (PDOException $e) {
+                            echo "Erreur de connexion ou de requête : " . $e->getMessage();
+                            $api_key = '';
+                        }
+            ?>
            
             <div class="crea_pro_raison_sociale_num_siren">
                 <fieldset>
@@ -331,42 +351,11 @@ if (isset($_POST['modif_infos'])){
                     <input type="text" id="ville" name="ville" placeholder="Ville *" value="<?php echo $_adresse['ville']; ?>" required>
                 </fieldset>
             </div>
-
-           <?php
-                        ///////////////////////////////////////////////////////////////////////////////
-                        ///                            Contenu notif                                ///
-                        ///////////////////////////////////////////////////////////////////////////////
-                        
-                        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-                        $username = "sae";
-                        $password = "philly-Congo-bry4nt";
-                        
-                        // Créer une instance PDO
-                        $dbh = new PDO($dsn, $username, $password);
-            
-                        $apikey = $dbh->prepare('select api_key from tripenarvor._professionnel');
-                        $apikey->bindValue(":code_compte", $monComptePro["code_compte"]);
-                        $apikey->execute();
-                        $apikey = $apikey->fetchAll(PDO::FETCH_ASSOC);
-
-?>
-
-
-
-
-
-
-
-
-
-
-
-
             <div class="crea_pro_raison_sociale_num_siren">
             <fieldset>
-                    <legend>Clé API *</legend>
-                    <input type="text" id="apikey" name="apikey" placeholder="Clé API" value="<?php echo $compte['apikey']; ?>" required>
-                </fieldset>
+            <legend>Clé API</legend>
+            <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($api_key); ?>" readonly>
+        </fieldset>
             </div>
             
             <div class="checkbox">
