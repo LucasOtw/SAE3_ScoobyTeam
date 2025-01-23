@@ -321,7 +321,7 @@ if (isset($_POST['modif_infos'])){
             <div class="crea_pro_raison_sociale_num_siren">
                 <fieldset>
                     <legend>Code Postal *</legend>
-                    <input type="text" id="code_postal" name="code_postal" placeholder="code_postal *" value="<?php echo $_adresse['code_postal']; ?>" required>
+                    <input type="text" id="code_postal" name="code_postal" placeholder="Code Postal*" value="<?php echo $_adresse['code_postal']; ?>" required>
                 </fieldset>
                 
                 <fieldset>
