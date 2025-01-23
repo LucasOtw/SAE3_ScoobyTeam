@@ -310,7 +310,7 @@ if (isset($_POST['modif_infos'])){
                             $stmt = $dbh->query('SELECT api_key FROM tripenarvor._professionnel');
                             $result = $stmt->fetch(PDO::FETCH_ASSOC);
                         
-                            $api_key = $result['api_key'] ?? '';
+                            $api_key = $result['apikey'] ?? '';
                         } catch (PDOException $e) {
                             echo "Erreur de connexion ou de requête : " . $e->getMessage();
                             $api_key = '';
