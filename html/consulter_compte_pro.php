@@ -383,6 +383,9 @@ if (isset($_POST['modif_infos'])){
                     <input type="text" id="ville" name="ville" placeholder="Ville *" value="<?php echo $_adresse['ville']; ?>" required>
                 </fieldset>
             </div>
+        </form>
+            <form action="consulter_compte_pro.php" method="POST">
+
             <div class="crea_pro_raison_sociale_num_siren">
             <fieldset>
             <legend>Clé API</legend>
