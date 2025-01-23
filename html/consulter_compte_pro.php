@@ -320,8 +320,7 @@ if (isset($_POST['modif_infos'])){
                         // Récupérer la nouvelle clé générée
                         $new_api_key = $stmt->fetchColumn();
                         $api_key = $new_api_key ?? '';
-                        //pour eviter le regen de la cle indefiniment
-                        header("Location: " . $_SERVER['PHP_SELF']);
+                        
                         exit();
                     }
                 } catch (PDOException $e) {
