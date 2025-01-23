@@ -66,6 +66,7 @@ if (isset($_POST['modif_infos'])){
       'complement_adresse' => $_adresse['complement_adresse'],
        'code_postal' => $_adresse['code_postal'],
        'ville' => $_adresse['ville'],
+       'apikey' => $_adresse['apikey'], //Declaration pour la regen clé d'api
    ];
    
    // Champs modifiés
@@ -108,6 +109,7 @@ if (isset($_POST['modif_infos'])){
                      $_SESSION['pro'][$champ] = $valeur;  
                    }
                    break;
+            
            }
        }
        // echo "Les informations ont été mises à jour.";
@@ -332,7 +334,7 @@ if (isset($_POST['modif_infos'])){
             <div class="crea_pro_raison_sociale_num_siren">
             <fieldset>
                     <legend>Cle API *</legend>
-                    <input type="text" id="Cle API" name="Cle API" placeholder="Cle API" required>
+                    <input type="text" id="Cle API" name="Cle API" placeholder="Cle API" value="<?php echo $_adresse['apikey']; ?>" required>
                     <input type="submit" id="" name="Cle API" placeholder="Cle API *">
                 </fieldset>
             </div>
