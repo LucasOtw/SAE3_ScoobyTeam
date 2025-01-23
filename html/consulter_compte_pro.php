@@ -298,35 +298,62 @@ if (isset($_POST['modif_infos'])){
             </div>
 
             <?php        
-      
-    // Code pour l'affichage de la clé API
-    try {
-        // Informations de connexion à la base de données
-        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-        $username = "sae";
-        $password = "philly-Congo-bry4nt";
+                        //Code pour l'affichage de la clée API
+                        try {
+                            $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+                            $username = "sae";
+                            $password = "philly-Congo-bry4nt";
+                        
+                            // Créer une instance PDO
+                            $dbh = new PDO($dsn, $username, $password);
+                            $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        
+                            $stmt = $dbh->query('SELECT api_key FROM tripenarvor._professionnel');
+                            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                        
+                            $api_key = $result['api_key'] ?? '';
+                        } catch (PDOException $e) {
+                            echo "Erreur de connexion ou de requête : " . $e->getMessage();
+                            $api_key = '';
+                        }
+            ?>
 
-        // Créer une instance PDO
-        $dbh = new PDO($dsn, $username, $password);
-        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            <?php
+            // Pour la génération d'une clee api
+            $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+            $username = "sae";
+            $password = "philly-Congo-bry4nt";
 
-        // Préparer et exécuter l'appel à la fonction `generate_api_key`
-        $prefix = 'M'; // Préfixe pour générer la clé API
-        $stmt = $dbh->prepare('SELECT tripenarvor.generate_api_key(:prefix) AS api_key');
-        $stmt->bindParam(':prefix', $prefix, PDO::PARAM_STR);
-        $stmt->execute();
+            try {
+                // Créer une instance de PDO
+                $dbh = new PDO($dsn, $username, $password);
+                $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Récupérer le résultat de la clé API générée
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $api_key = $result['api_key'] ?? '';  // Utiliser la clé générée
+                // Appeler la fonction `generate_api_key` avec un préfixe
+                $prefix = 'M'; // Préfixe pour générer la clé API
+                $sql = "SELECT tripenarvor.generate_api_key(:prefix) AS api_key";
 
-    } catch (PDOException $e) {
-        // Gérer les erreurs de connexion ou de requête
-        echo "Erreur de connexion ou de requête : " . $e->getMessage();
-        $api_key = '';
-    }
-?>
-       
+                // Préparer et exécuter la requête
+                $stmt = $dbh->prepare($sql);
+                $stmt->bindParam(':prefix', $prefix, PDO::PARAM_STR);
+                $stmt->execute();
+
+                // Récupérer le résultat
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                if ($result) {
+                    $apiKey = $result['api_key'];
+                    echo "Clé API générée : " . htmlspecialchars($apiKey);
+                } else {
+                    echo "Aucune clé API générée.";
+                }
+            } catch (PDOException $e) {
+                // Gérer les erreurs de connexion ou de requête
+                echo "Erreur : " . $e->getMessage();
+            }
+            ?>
+
+           
             <div class="crea_pro_raison_sociale_num_siren">
                 <fieldset>
                     <legend>Email *</legend>
