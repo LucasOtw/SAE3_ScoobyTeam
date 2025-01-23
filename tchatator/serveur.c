@@ -61,26 +61,56 @@ int main()
         memset(buffer, 0, sizeof(buffer));
 
 
-        printf("En attente de la cle API...\n");
-        len = recv(cnx, buffer, sizeof(buffer) - 1, 0);
-        if (len == -1)
-        {
-            perror("Erreur lors de recv ");
-            PQfinish(conn);
-            exit(-1);
-        }
+
 
         char api_key[LEN_API + 1]; // Variable pour stocker la clé API reçue
 
-        buffer[LEN_API] = '\0'; // S'assurer que le buffer est une chaîne correctement terminée
-        strncpy(api_key, buffer, LEN_API); // Copier la clé API dans la variable
-        api_key[LEN_API] = '\0'; // Terminer la chaîne pour être sûr
+        printf("En attente de la cle API...\n");
 
-        printf("Clé API reçue du client : %s\n", api_key);
+        // Réception de la clé API
+        len = recv(cnx, api_key, sizeof(api_key) - 1, 0);
+        if (len <= 0) {
+            perror("Erreur lors de la réception des données");
+            close(cnx);
+            continue;
+        }
 
+        // Terminer la chaîne reçue avec un caractère nul
+        api_key[len] = '\0';
 
+        // Nettoyer la clé API en supprimant les retours à la ligne et les retours chariot
+        api_key[strcspn(api_key, "\r\n")] = '\0';
+
+        // Vérification de la validité de la clé API (facultatif)
+        if (strlen(api_key) == 0) {
+            printf("Erreur : clé API vide après nettoyage.\n");
+            close(cnx);
+            continue;
+        }
+
+        // Passer la clé API nettoyée à la fonction de génération de token
+        printf("Clé API finale envoyée à la fonction : '%s'\n", api_key);
         UserInfo* user_info = generate_and_return_token(api_key, conn);
+<<<<<<< HEAD
         if (user_info != NULL) {
+=======
+
+        if (user_info == NULL) {
+            printf("Erreur lors de la génération ou de la récupération du token.\n");
+            close(cnx);
+            continue;
+        }
+
+        // Afficher le token généré pour confirmation (facultatif)
+        printf("Token généré pour la clé API '%s' : %s\n", api_key, user_info->token);
+
+        if (user_info == NULL) {
+            perror("Erreur lors de la génération du token.");
+            close(cnx);
+            continue;
+        }
+        if (user_info->token[0] != '\0') {
+>>>>>>> 525021f94d427aceee075d24988ed22492889f64
             char txt_env[60];
             snprintf(txt_env, sizeof(txt_env), "Vous êtes connecté, voici votre token : %s\n", user_info->token);
             
@@ -265,7 +295,7 @@ int main()
                 }
             }
         } else {
-            send(cnx, "Erreur lors de la génération du token\n", 36, 0);
+            send(cnx, "Erreur lors de la génération du token\n", 39, 0);
         }
 
         printf("Déconnexion du client en cours...\n");

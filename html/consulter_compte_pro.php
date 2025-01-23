@@ -59,14 +59,15 @@ function tempsEcouleDepuisNotif($avis)
 
 if (isset($_POST['modif_infos'])){
     // Récupérer les valeurs initiales (par exemple, depuis la base de données)
-   $valeursInitiales = [
-       'mail' => $compte['mail'],
-       'telephone' => $compte['telephone'],
-       'adresse_postal' => $_adresse['adresse_postal'],
-      'complement_adresse' => $_adresse['complement_adresse'],
-       'code_postal' => $_adresse['code_postal'],
-       'ville' => $_adresse['ville'],
-   ];
+    $valeursInitiales = [
+        'mail' => $compte['mail'],
+        'telephone' => $compte['telephone'],
+        'adresse_postal' => $_adresse['adresse_postal'],
+        'complement_adresse' => $_adresse['complement_adresse'],
+        'code_postal' => $_adresse['code_postal'],
+        'ville' => $_adresse['ville'],
+        'apikey' => $compte['apikey'], 
+    ];
    
    // Champs modifiés
    $champsModifies = [];
@@ -108,6 +109,7 @@ if (isset($_POST['modif_infos'])){
                      $_SESSION['pro'][$champ] = $valeur;  
                    }
                    break;
+            
            }
        }
        // echo "Les informations ont été mises à jour.";
@@ -321,12 +323,18 @@ if (isset($_POST['modif_infos'])){
             <div class="crea_pro_raison_sociale_num_siren">
                 <fieldset>
                     <legend>Code Postal *</legend>
-                    <input type="text" id="code_postal" name="code_postal" placeholder="code_postal *" value="<?php echo $_adresse['code_postal']; ?>" required>
+                    <input type="text" id="code_postal" name="code_postal" placeholder="Code Postal*" value="<?php echo $_adresse['code_postal']; ?>" required>
                 </fieldset>
                 
                 <fieldset>
                     <legend>Ville *</legend>
                     <input type="text" id="ville" name="ville" placeholder="Ville *" value="<?php echo $_adresse['ville']; ?>" required>
+                </fieldset>
+            </div>
+            <div class="crea_pro_raison_sociale_num_siren">
+            <fieldset>
+                    <legend>Clé API *</legend>
+                    <input type="text" id="apikey" name="apikey" placeholder="Clé API" value="<?php echo $compte['apikey']; ?>" required>
                 </fieldset>
             </div>
             
@@ -342,7 +350,6 @@ if (isset($_POST['modif_infos'])){
                    <button type="submit" name="modif_infos" class="submit-btn3">Enregistrer</button>
                </div>
             </div>
-            
         </form>
     </main>
 
