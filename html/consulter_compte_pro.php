@@ -276,7 +276,6 @@ if (isset($_POST['modif_infos'])){
                 <li><a href="consulter_mes_reponses_pro.php">Mes réponses</a></li>
             </ul>
         </section>
-
         <form action="consulter_compte_pro.php" method="POST">
             <div class="crea_pro_raison_sociale_num_siren">
                 <fieldset disabled>
@@ -325,31 +324,30 @@ if (isset($_POST['modif_infos'])){
             $password = "philly-Congo-bry4nt";
 
             try {
-                // Créer une instance de PDO
+                // Créer une instance PDO
                 $dbh = new PDO($dsn, $username, $password);
                 $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                // Appeler la fonction `generate_api_key` avec un préfixe
-                $prefix = 'M'; // Préfixe pour générer la clé API
-                $sql = "SELECT tripenarvor.generate_api_key(:prefix) AS api_key";
-
-                // Préparer et exécuter la requête
-                $stmt = $dbh->prepare($sql);
-                $stmt->bindParam(':prefix', $prefix, PDO::PARAM_STR);
-                $stmt->execute();
-
-                // Récupérer le résultat
-                $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                if ($result) {
-                    $apiKey = $result['api_key'];
-                    echo "Clé API générée : " . htmlspecialchars($apiKey);
-                } else {
-                    echo "Aucune clé API générée.";
+            
+                // Vérifier si le bouton a été cliqué
+                if (isset($_POST['generate_api_key'])) {
+                    // Exemple de code pour générer une nouvelle clé API pour un utilisateur spécifique
+                    // Tu peux personnaliser ce code pour générer la clé API d'un membre ou d'un professionnel en particulier
+                    
+                    $prefix = 'M'; // Le préfixe que tu veux utiliser pour générer la clé API
+            
+                    // Appeler la fonction pour générer la clé API
+                    $stmt = $dbh->prepare('SELECT tripenarvor.generate_api_key(:prefix)');
+                    $stmt->bindParam(':prefix', $prefix, PDO::PARAM_STR);
+                    $stmt->execute();
+            
+                    // Récupérer la nouvelle clé API
+                    $new_api_key = $stmt->fetchColumn();
+            
+                    // Afficher la nouvelle clé API
+                    echo "Nouvelle clé API générée : " . $new_api_key;
                 }
             } catch (PDOException $e) {
-                // Gérer les erreurs de connexion ou de requête
-                echo "Erreur : " . $e->getMessage();
+                echo "Erreur de connexion ou de requête : " . $e->getMessage();
             }
             ?>
 
@@ -391,7 +389,7 @@ if (isset($_POST['modif_infos'])){
             <fieldset>
             <legend>Clé API</legend>
             <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($api_key); ?>" readonly>
-            <input type="submit" id="btn-api" name="btn-api">
+            <input type="submit" id="btn-api" name="generate_api_key">
         </fieldset>
             </div>
             <div class="checkbox">
