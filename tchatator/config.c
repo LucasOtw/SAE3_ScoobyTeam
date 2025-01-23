@@ -12,7 +12,6 @@
 #include "bdd.h"
 
 
-
 char SERVER_IP[16];
 int SERVER_PORT;
 int NB_BACKLOG;

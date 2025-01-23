@@ -329,6 +329,13 @@ if (isset($_POST['modif_infos'])){
                     <input type="text" id="ville" name="ville" placeholder="Ville *" value="<?php echo $_adresse['ville']; ?>" required>
                 </fieldset>
             </div>
+            <div class="crea_pro_raison_sociale_num_siren">
+            <fieldset>
+                    <legend>Ville *</legend>
+                    <input type="text" id="ville" name="ville" placeholder="Ville *" value="<?php echo $_adresse['ville']; ?>" required>
+                    <input type="submit" id="" name="Cle API" placeholder="Cle API *">
+                </fieldset>
+            </div>
             
             <div class="checkbox">
                 <input type="checkbox" id="cgu" name="cgu" required>
