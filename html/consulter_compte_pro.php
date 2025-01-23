@@ -385,7 +385,7 @@ if (isset($_POST['modif_infos'])){
             <div class="crea_pro_raison_sociale_num_siren">
             <fieldset>
             <legend>Clé API</legend>
-            <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($api_key); ?>" readonly>
+            <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo $api_key; ?>" readonly>
             <input type="submit" id="btn-api" name="generate_api_key">
         </fieldset>
             </div>
@@ -403,11 +403,10 @@ if (isset($_POST['modif_infos'])){
             </div>
         </form>
     </main>
-
     <footer class="footer footer_pro">
         <div class="footer-links">
             <div class="logo">
-                <img src="images/logoBlanc.png" alt="Logo PAVCT">
+                <img src="images/logoBlanc.png" alt="Logo PACT">
             </div>
             <div class="link-group">
                 <ul>
