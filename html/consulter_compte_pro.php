@@ -391,6 +391,8 @@ if (isset($_POST['modif_infos'])){
             <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($api_key); ?>" readonly>
             <input type="submit" id="btn-api" name="generate_api_key">
         </fieldset>
+        </form>
+        <form action="consulter_compte_pro.php" method="POST">
             </div>
             <div class="checkbox">
                 <input type="checkbox" id="cgu" name="cgu" required>
