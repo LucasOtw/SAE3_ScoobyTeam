@@ -59,15 +59,15 @@ function tempsEcouleDepuisNotif($avis)
 
 if (isset($_POST['modif_infos'])){
     // Récupérer les valeurs initiales (par exemple, depuis la base de données)
-   $valeursInitiales = [
-       'mail' => $compte['mail'],
-       'telephone' => $compte['telephone'],
-       'adresse_postal' => $_adresse['adresse_postal'],
-      'complement_adresse' => $_adresse['complement_adresse'],
-       'code_postal' => $_adresse['code_postal'],
-       'ville' => $_adresse['ville'],
-       'apikey' => $compte['apikey'], //Declaration pour la regen clé d'api
-   ];
+    $valeursInitiales = [
+        'mail' => $compte['mail'],
+        'telephone' => $compte['telephone'],
+        'adresse_postal' => $_adresse['adresse_postal'],
+        'complement_adresse' => $_adresse['complement_adresse'],
+        'code_postal' => $_adresse['code_postal'],
+        'ville' => $_adresse['ville'],
+        'apikey' => $compte['apikey'], 
+    ];
    
    // Champs modifiés
    $champsModifies = [];
@@ -333,9 +333,8 @@ if (isset($_POST['modif_infos'])){
             </div>
             <div class="crea_pro_raison_sociale_num_siren">
             <fieldset>
-                    <legend>Cle API *</legend>
-                    <input type="text" id="Cle API" name="Cle API" placeholder="Cle API" value="<?php echo $compte['apikey']; ?>" required>
-                    <input type="submit" id="" name="Cle API" placeholder="Cle API *">
+                    <legend>Clé API *</legend>
+                    <input type="text" id="apikey" name="apikey" placeholder="Clé API" value="<?php echo $compte['apikey']; ?>" required>
                 </fieldset>
             </div>
             
@@ -351,7 +350,6 @@ if (isset($_POST['modif_infos'])){
                    <button type="submit" name="modif_infos" class="submit-btn3">Enregistrer</button>
                </div>
             </div>
-            
         </form>
     </main>
 
