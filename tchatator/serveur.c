@@ -91,9 +91,6 @@ int main()
         // Passer la clé API nettoyée à la fonction de génération de token
         printf("Clé API finale envoyée à la fonction : '%s'\n", api_key);
         UserInfo* user_info = generate_and_return_token(api_key, conn);
-<<<<<<< HEAD
-        if (user_info != NULL) {
-=======
 
         if (user_info == NULL) {
             printf("Erreur lors de la génération ou de la récupération du token.\n");
@@ -110,7 +107,6 @@ int main()
             continue;
         }
         if (user_info->token[0] != '\0') {
->>>>>>> 525021f94d427aceee075d24988ed22492889f64
             char txt_env[60];
             snprintf(txt_env, sizeof(txt_env), "Vous êtes connecté, voici votre token : %s\n", user_info->token);
             
