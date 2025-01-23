@@ -355,6 +355,7 @@ if (isset($_POST['modif_infos'])){
             <fieldset>
             <legend>Clé API</legend>
             <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($api_key); ?>" readonly>
+            <input type="submit" id="btn-api" name="btn-api">
         </fieldset>
             </div>
             
