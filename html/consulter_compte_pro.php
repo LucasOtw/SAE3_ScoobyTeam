@@ -310,7 +310,7 @@ if (isset($_POST['modif_infos'])){
                             $stmt = $dbh->query('SELECT api_key FROM tripenarvor._professionnel');
                             $result = $stmt->fetch(PDO::FETCH_ASSOC);
                         
-                            $api_key = $result['apikey'] ?? '';
+                            $api_key = $result['api_key'] ?? '';
                         } catch (PDOException $e) {
                             echo "Erreur de connexion ou de requête : " . $e->getMessage();
                             $api_key = '';
@@ -327,24 +327,22 @@ if (isset($_POST['modif_infos'])){
                 // Créer une instance PDO
                 $dbh = new PDO($dsn, $username, $password);
                 $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
+
                 // Vérifier si le bouton a été cliqué
                 if (isset($_POST['generate_api_key'])) {
                     // Exemple de code pour générer une nouvelle clé API pour un utilisateur spécifique
                     // Tu peux personnaliser ce code pour générer la clé API d'un membre ou d'un professionnel en particulier
                     
                     $prefix = 'M'; // Le préfixe que tu veux utiliser pour générer la clé API
-            
+
                     // Appeler la fonction pour générer la clé API
                     $stmt = $dbh->prepare('SELECT tripenarvor.generate_api_key(:prefix)');
                     $stmt->bindParam(':prefix', $prefix, PDO::PARAM_STR);
                     $stmt->execute();
-            
+
                     // Récupérer la nouvelle clé API
                     $new_api_key = $stmt->fetchColumn();
-            
-                    // Afficher la nouvelle clé API
-                    echo "Nouvelle clé API générée : " . $new_api_key;
+                    $api_key = $result['api_key' ?? ''];
                 }
             } catch (PDOException $e) {
                 echo "Erreur de connexion ou de requête : " . $e->getMessage();
