@@ -66,7 +66,6 @@ if (isset($_POST['modif_infos'])){
         'complement_adresse' => $_adresse['complement_adresse'],
         'code_postal' => $_adresse['code_postal'],
         'ville' => $_adresse['ville'],
-        'apikey' => $compte['apikey'], 
     ];
    
    // Champs modifiés
