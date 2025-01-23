@@ -294,61 +294,37 @@ if (isset($_POST['modif_infos'])){
                }
                ?>
             </div>
-
-            <?php        
-                        //Code pour l'affichage de la clée API
-                        try {
-                            $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-                            $username = "sae";
-                            $password = "philly-Congo-bry4nt";
-                        
-                            // Créer une instance PDO
-                            $dbh = new PDO($dsn, $username, $password);
-                            $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        
-                            $stmt = $dbh->query('SELECT api_key FROM tripenarvor._professionnel');
-                            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                        
-                            $api_key = $result['api_key'] ?? '';
-                        } catch (PDOException $e) {
-                            echo "Erreur de connexion ou de requête : " . $e->getMessage();
-                            $api_key = '';
-                        }
-            ?>
-
             <?php
-            // Pour la génération d'une clee api
-            $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-            $username = "sae";
-            $password = "philly-Congo-bry4nt";
+                // Connexion à la base de données
+                $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+                $username = "sae";
+                $password = "philly-Congo-bry4nt";
+                $api_key = '';
 
-            try {
-                // Créer une instance PDO
-                $dbh = new PDO($dsn, $username, $password);
-                $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                try {
+                    $dbh = new PDO($dsn, $username, $password);
+                    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                // Vérifier si le bouton a été cliqué
-                if (isset($_POST['generate_api_key'])) {
-                    // Exemple de code pour générer une nouvelle clé API pour un utilisateur spécifique
-                    // Tu peux personnaliser ce code pour générer la clé API d'un membre ou d'un professionnel en particulier
-                    
-                    $prefix = 'M'; // Le préfixe que tu veux utiliser pour générer la clé API
+                    // Récupération initiale de la clé API
+                    $stmt = $dbh->query('SELECT api_key FROM tripenarvor._professionnel LIMIT 1');
+                    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $api_key = $result['api_key'] ?? '';
 
-                    // Appeler la fonction pour générer la clé API
-                    $stmt = $dbh->prepare('SELECT tripenarvor.generate_api_key(:prefix)');
-                    $stmt->bindParam(':prefix', $prefix, PDO::PARAM_STR);
-                    $stmt->execute();
+                    // Vérification si le bouton de génération est cliqué
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_api_key'])) {
+                        $prefix = 'M'; // Préfixe pour générer la clé
+                        $stmt = $dbh->prepare('SELECT tripenarvor.generate_api_key(:prefix)');
+                        $stmt->bindParam(':prefix', $prefix, PDO::PARAM_STR);
+                        $stmt->execute();
 
-                    // Récupérer la nouvelle clé API
-                    $new_api_key = $stmt->fetchColumn();
-                    $api_key = $result['api_key' ?? ''];
+                        // Récupérer la nouvelle clé générée
+                        $new_api_key = $stmt->fetchColumn();
+                        $api_key = $new_api_key ?? '';
+                    }
+                } catch (PDOException $e) {
+                    echo "Erreur de connexion ou de requête : " . $e->getMessage();
                 }
-            } catch (PDOException $e) {
-                echo "Erreur de connexion ou de requête : " . $e->getMessage();
-            }
-            ?>
-
-           
+            ?> 
             <div class="crea_pro_raison_sociale_num_siren">
                 <fieldset>
                     <legend>Email *</legend>
@@ -384,10 +360,10 @@ if (isset($_POST['modif_infos'])){
             </div>
             <div class="crea_pro_raison_sociale_num_siren">
             <fieldset>
-            <legend>Clé API</legend>
-            <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo $api_key; ?>" readonly>
-            <input type="submit" id="btn-api" name="generate_api_key">
-        </fieldset>
+                <legend>Clé API</legend>
+                <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($api_key); ?>" readonly>
+                <input type="submit" id="btn-api" name="generate_api_key" value="Générer une nouvelle clé">
+            </fieldset>
             </div>
             <div class="checkbox">
                 <input type="checkbox" id="cgu" name="cgu" required>
