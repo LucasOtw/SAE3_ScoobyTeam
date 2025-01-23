@@ -120,19 +120,25 @@ UserInfo* generate_and_return_token(const char *api_key, PGconn *conn) {
         perror("Erreur d'allocation mémoire pour UserInfo");
         return NULL;
     }
+    memset(userInfo, 0, sizeof(UserInfo)); // Initialiser toute la mémoire à 0
 
     char query[512];
 
     if (strcmp(api_key, API_ADMIN) == 0 || api_key[0] == 'M' || api_key[0] == 'P') {
         if (strcmp(api_key, API_ADMIN) != 0) {
             char *generated_token = generate_token(); // Génère un token
+            if (!generated_token) {
+                fprintf(stderr, "Erreur lors de la génération du token\n");
+                free(userInfo);
+                return NULL;
+            }
 
             if (api_key[0] == 'M') {
                 strcpy(userInfo->new_user, "MEMBRE");
 
-                snprintf(query, sizeof(query), "select * from tripenarvor._membre where api_key = '%s'", api_key);
+                snprintf(query, sizeof(query), "select 1 from tripenarvor._membre where api_key = '%s'", api_key);
                 PGresult *res = PQexec(conn, query);
-                if (PQresultStatus(res) != PGRES_TUPLES_OK) {
+                if (PQresultStatus(res) != PGRES_TUPLES_OK || PQntuples(res) == 0) {
                     fprintf(stderr, "La clé API n'existe pas : %s\n", PQerrorMessage(conn));
                     PQclear(res);
                     free(userInfo);
@@ -143,9 +149,9 @@ UserInfo* generate_and_return_token(const char *api_key, PGconn *conn) {
             } else if (api_key[0] == 'P') {
                 strcpy(userInfo->new_user, "PRO");
 
-                snprintf(query, sizeof(query), "select * from tripenarvor._professionnel where api_key = '%s'", api_key);
+                snprintf(query, sizeof(query), "select 1 from tripenarvor._professionnel where api_key = '%s'", api_key);
                 PGresult *res = PQexec(conn, query);
-                if (PQresultStatus(res) != PGRES_TUPLES_OK) {
+                if (PQresultStatus(res) != PGRES_TUPLES_OK || PQntuples(res) == 0) {
                     fprintf(stderr, "La clé API n'existe pas : %s\n", PQerrorMessage(conn));
                     PQclear(res);
                     free(userInfo);
@@ -160,9 +166,9 @@ UserInfo* generate_and_return_token(const char *api_key, PGconn *conn) {
                      "values ('%s', '%s', '%s', NOW(), NOW() + INTERVAL '1 day') returning token;", 
                      api_key, generated_token, userInfo->new_user);
 
-            free(generated_token);
             PGresult *res = PQexec(conn, query);
-            if (PQresultStatus(res) != PGRES_TUPLES_OK) {
+            free(generated_token);
+            if (PQresultStatus(res) != PGRES_TUPLES_OK || PQntuples(res) == 0) {
                 fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
                 PQclear(res);
                 free(userInfo);
@@ -182,6 +188,8 @@ UserInfo* generate_and_return_token(const char *api_key, PGconn *conn) {
     free(userInfo); // Nettoyage en cas d'échec
     return NULL;
 }
+
+
 
 
 
