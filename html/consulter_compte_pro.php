@@ -331,8 +331,8 @@ if (isset($_POST['modif_infos'])){
             </div>
             <div class="crea_pro_raison_sociale_num_siren">
             <fieldset>
-                    <legend>Ville *</legend>
-                    <input type="text" id="ville" name="ville" placeholder="Ville *" value="<?php echo $_adresse['ville']; ?>" required>
+                    <legend>Cle API *</legend>
+                    <input type="text" id="Cle API" name="Cle API" placeholder="Cle API" required>
                     <input type="submit" id="" name="Cle API" placeholder="Cle API *">
                 </fieldset>
             </div>
