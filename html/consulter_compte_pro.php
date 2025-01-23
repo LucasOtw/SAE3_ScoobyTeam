@@ -331,6 +331,37 @@ if (isset($_POST['modif_infos'])){
                     <input type="text" id="ville" name="ville" placeholder="Ville *" value="<?php echo $_adresse['ville']; ?>" required>
                 </fieldset>
             </div>
+
+           <?php
+                        ///////////////////////////////////////////////////////////////////////////////
+                        ///                            Contenu notif                                ///
+                        ///////////////////////////////////////////////////////////////////////////////
+                        
+                        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+                        $username = "sae";
+                        $password = "philly-Congo-bry4nt";
+                        
+                        // Créer une instance PDO
+                        $dbh = new PDO($dsn, $username, $password);
+            
+                        $apikey = $dbh->prepare('select api_key from tripenarvor._professionnel');
+                        $apikey->bindValue(":code_compte", $monComptePro["code_compte"]);
+                        $apikey->execute();
+                        $apikey = $apikey->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
             <div class="crea_pro_raison_sociale_num_siren">
             <fieldset>
                     <legend>Clé API *</legend>
