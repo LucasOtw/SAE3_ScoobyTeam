@@ -11150,6 +11150,10 @@ ul.mentions_legales-sous-list {
     margin-left: -2vw;
 }
 
+.crea_pro_raison_sociale_num_siren2{
+    display : flex;
+}
+
 .container-signalement .avis h3::before {
     content: url('https://icon-library.com/images/icon-review/icon-review-9.jpg');
     /* Exemple d'icône */
