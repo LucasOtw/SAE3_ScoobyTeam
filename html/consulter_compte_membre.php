@@ -386,7 +386,7 @@ if (isset($_POST['dwl-data'])) {
                     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                     // Récupération initiale de la clé API
-                    $stmt = $dbh->query('SELECT api_key FROM tripenarvor._professionnel LIMIT 1');
+                    $stmt = $dbh->query('SELECT api_key FROM tripenarvor._membre LIMIT 1');
                     $result = $stmt->fetch(PDO::FETCH_ASSOC);
                     $api_key = $result['api_key'] ?? '';
 
