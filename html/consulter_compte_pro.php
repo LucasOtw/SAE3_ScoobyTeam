@@ -358,7 +358,7 @@ if (isset($_POST['modif_infos'])){
                 </fieldset>
             </div>
             <div class="crea_pro_raison_sociale_num_siren">
-            <fieldset>
+            <fieldset style="display: flex;">
                 <legend>Clé API</legend>
                 <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($api_key); ?>" readonly>
                 <input type="submit" id="btn-api" name="generate_api_key" value="Générer une nouvelle clé">
