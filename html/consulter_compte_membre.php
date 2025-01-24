@@ -454,7 +454,7 @@ if (isset($_POST['dwl-data'])) {
             </div>
 
             <div class="crea_pro_raison_sociale_num_siren2">
-            <fieldset>
+            <fieldset style="display: flex;">
                 <legend>Clé API</legend>
                 <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($api_key); ?>" readonly>
                 <input type="submit" id="btn-api" name="generate_api_key" value="Générer une nouvelle clé">
