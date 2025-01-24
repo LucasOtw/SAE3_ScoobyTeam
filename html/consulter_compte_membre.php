@@ -452,7 +452,6 @@ if (isset($_POST['dwl-data'])) {
                    <input type="text" id="ville" name="ville" value="<?php echo $_adresse['ville']; ?>" placeholder="Ville *" required>
                </fieldset>
             </div>
-
             <div class="crea_pro_raison_sociale_num_siren2">
             <fieldset style="display: flex;">
                 <legend>Clé API</legend>
@@ -460,7 +459,6 @@ if (isset($_POST['dwl-data'])) {
                 <input type="submit" id="btn-api" name="generate_api_key" value="Générer une nouvelle clé">
             </fieldset>
             </div>
-
             <div class="checkbox">
                 <input type="checkbox" id="cgu" name="cgu" required>
                 <label for="cgu">J’accepte les <a href="cgu.html">Conditions générales d’utilisation (CGU)</a></label>
