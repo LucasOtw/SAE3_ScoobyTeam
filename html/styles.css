@@ -11150,6 +11150,13 @@ ul.mentions_legales-sous-list {
     margin-left: -2vw;
 }
 
+#btn-api{
+    border: 2px solid var(--orange);
+    background-color : white;
+    border-radius: 6px;
+    color : black;
+}
+
 .crea_pro_raison_sociale_num_siren2{
     display : flex;
 }
