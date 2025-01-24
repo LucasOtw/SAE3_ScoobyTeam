@@ -374,7 +374,36 @@ if (isset($_POST['dwl-data'])) {
                 </ul>
             </section>
 
-           
+            <?php
+                // Connexion à la base de données
+                $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+                $username = "sae";
+                $password = "philly-Congo-bry4nt";
+                $api_key = '';
+
+                try {
+                    $dbh = new PDO($dsn, $username, $password);
+                    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                    // Récupération initiale de la clé API
+                    $stmt = $dbh->query('SELECT api_key FROM tripenarvor._professionnel LIMIT 1');
+                    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $api_key = $result['api_key'] ?? '';
+
+                    // Vérification si le bouton de génération est cliqué
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_api_key'])) {
+                        $prefix = 'M'; // Préfixe pour générer la clé
+                        $stmt = $dbh->prepare('update tripenarvor._membre set api_key = tripenarvor.generate_api_key(:prefix) where code_compte = :code_compte');
+                        $stmt->bindParam(':prefix', $prefix, PDO::PARAM_STR);
+                        $stmt->bindParam(':code_compte', $_SESSION['membre']['code_compte']);
+                        $stmt->execute();
+
+                        // Récupérer la nouvelle clé générée
+                    }
+                } catch (PDOException $e) {
+                    echo "Erreur de connexion ou de requête : " . $e->getMessage();
+                }
+            ?> 
 
         <form action="consulter_compte_membre.php" method="POST" id="compteForm">
 
