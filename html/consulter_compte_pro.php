@@ -315,6 +315,7 @@ if (isset($_POST['modif_infos'])){
                         $prefix = 'P'; // Préfixe pour générer la clé
                         $stmt = $dbh->prepare('update tripenarvor._professionnel set api_key = tripenarvor.generate_api_key(:prefix) where code_compte = :code_compte');
                         $stmt->bindParam(':prefix', $prefix, PDO::PARAM_STR);
+                        $stmt->bindParam(':code_compte', $_SESSION['pro']['code_compte']);
                         $stmt->execute();
 
                         // Récupérer la nouvelle clé générée
