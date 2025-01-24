@@ -452,7 +452,7 @@ if (isset($_POST['dwl-data'])) {
                    <input type="text" id="ville" name="ville" value="<?php echo $_adresse['ville']; ?>" placeholder="Ville *" required>
                </fieldset>
             </div>
-            <div class="crea_pro_raison_sociale_nume_siren">
+            <div class="crea_pro_raison_sociale_num_siren">
             <fieldset>
                 <legend>Clé API</legend>
                 <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($api_key); ?>" readonly>
