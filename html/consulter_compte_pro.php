@@ -319,8 +319,6 @@ if (isset($_POST['modif_infos'])){
                         $stmt->execute();
 
                         // Récupérer la nouvelle clé générée
-                        $new_api_key = $stmt->fetchColumn();
-                        $api_key = $new_api_key ?? '';
                     }
                 } catch (PDOException $e) {
                     echo "Erreur de connexion ou de requête : " . $e->getMessage();
