@@ -78,11 +78,17 @@ int load_config(const char *filename) {
 
 // Fonction pour préparer et configurer le socket
 int prepare_socket(int *ret, int *sock, struct sockaddr_in *addr) {
+    char txt_log[256];
+
     // Création du socket
     printf("====> Préparation du socket\n");
     *sock = socket(AF_INET, SOCK_STREAM, 0);
     if (*sock == -1) {
-        perror("-> Erreur sur le socket ");
+        perror("\033[31m-> Erreur sur le socket \033[0m");
+
+        snprintf(txt_log, sizeof(txt_log), "-> Erreur sur le socket");
+        insert_logs(NULL, NULL, txt_log);
+
         return -1; // Retourne une erreur
     }
 
@@ -95,7 +101,11 @@ int prepare_socket(int *ret, int *sock, struct sockaddr_in *addr) {
     printf("===> Binding du socket\n");
     *ret = bind(*sock, (struct sockaddr *)addr, sizeof(*addr));
     if (*ret == -1) {
-        perror("-> Erreur lors du bind ");
+        perror("\033[31m-> Erreur lors du bind \033[0m");
+
+        snprintf(txt_log, sizeof(txt_log), "-> Erreur lors du bind");
+        insert_logs(NULL, NULL, txt_log);
+
         close(*sock); // Ferme le socket en cas d'erreur
         return -1;    // Retourne une erreur
     }
@@ -104,7 +114,11 @@ int prepare_socket(int *ret, int *sock, struct sockaddr_in *addr) {
     printf("==> Mise en écoute du socket\n");
     *ret = listen(*sock, 1);
     if (*ret == -1) {
-        perror("-> Erreur lors de listen ");
+        perror("\033[31m-> Erreur lors de listen \033[0m");
+
+        snprintf(txt_log, sizeof(txt_log), "-> Erreur lors de listen");
+        insert_logs(NULL, NULL, txt_log);
+
         close(*sock); // Ferme le socket en cas d'erreur
         return -1;    // Retourne une erreur
     }
@@ -117,18 +131,22 @@ int prepare_socket(int *ret, int *sock, struct sockaddr_in *addr) {
 UserInfo* generate_and_return_token(const char *api_key, PGconn *conn) {
     UserInfo *userInfo = malloc(sizeof(UserInfo)); // Allouer dynamiquement la structure
     if (userInfo == NULL) {
-        perror("Erreur d'allocation mémoire pour UserInfo");
+        perror("\033[31m-> Erreur d'allocation mémoire pour UserInfo\033[0m");
         return NULL;
     }
     memset(userInfo, 0, sizeof(UserInfo)); // Initialiser toute la mémoire à 0
 
-    char query[512];
+    char query[512], txt_log[256];
 
     if (strcmp(api_key, API_ADMIN) == 0 || api_key[0] == 'M' || api_key[0] == 'P') {
         if (strcmp(api_key, API_ADMIN) != 0) {
             char *generated_token = generate_token(); // Génère un token
             if (!generated_token) {
-                fprintf(stderr, "Erreur lors de la génération du token\n");
+                fprintf(stderr, "\033[31m-> Erreur lors de la génération du token\033[0m\n");
+
+                snprintf(txt_log, sizeof(txt_log), "-> Erreur lors de la génération du token");
+                insert_logs(NULL, NULL, txt_log);
+
                 free(userInfo);
                 return NULL;
             }
@@ -139,7 +157,11 @@ UserInfo* generate_and_return_token(const char *api_key, PGconn *conn) {
                 snprintf(query, sizeof(query), "select code_compte from tripenarvor._membre where api_key = '%s'", api_key);
                 PGresult *res = PQexec(conn, query);
                 if (PQresultStatus(res) != PGRES_TUPLES_OK || PQntuples(res) == 0) {
-                    fprintf(stderr, "La clé API n'existe pas : %s\n", PQerrorMessage(conn));
+                    fprintf(stderr, "\033[31m-> Erreur : La clé API n'existe pas\033[0m\n");
+
+                    snprintf(txt_log, sizeof(txt_log), "-> Erreur : La clé API n'existe pas");
+                    insert_logs(NULL, NULL, txt_log);
+
                     PQclear(res);
                     free(userInfo);
                     free(generated_token);
@@ -153,7 +175,11 @@ UserInfo* generate_and_return_token(const char *api_key, PGconn *conn) {
                 snprintf(query, sizeof(query), "select code_compte from tripenarvor._professionnel where api_key = '%s'", api_key);
                 PGresult *res = PQexec(conn, query);
                 if (PQresultStatus(res) != PGRES_TUPLES_OK || PQntuples(res) == 0) {
-                    fprintf(stderr, "La clé API n'existe pas : %s\n", PQerrorMessage(conn));
+                    fprintf(stderr, "\033[31m-> Erreur : La clé API n'existe pas\033[0m\n");
+
+                    snprintf(txt_log, sizeof(txt_log), "-> Erreur : La clé API n'existe pas");
+                    insert_logs(NULL, NULL, txt_log);
+
                     PQclear(res);
                     free(userInfo);
                     free(generated_token);
@@ -165,19 +191,23 @@ UserInfo* generate_and_return_token(const char *api_key, PGconn *conn) {
 
             snprintf(query, sizeof(query),
                      "insert into tripenarvor._token (api_key, token, type_utilisateur, created_at, expires_at)"
-                     "values ('%s', '%s', '%s', NOW(), NOW() + INTERVAL '1 day') returning token;", 
+                     "values ('%s', '%s', '%s', NOW(), NOW() + INTERVAL '1 hour') returning token;", 
                      api_key, generated_token, userInfo->new_user);
 
             PGresult *res = PQexec(conn, query);
-            free(generated_token);
             if (PQresultStatus(res) != PGRES_TUPLES_OK || PQntuples(res) == 0) {
-                fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
+                fprintf(stderr, "\033[31m-> Échec de l'exécution de la requête : %s\033[0m\n", PQerrorMessage(conn));
+
+                snprintf(txt_log, sizeof(txt_log), "-> Échec de l'exécution de la requête : %s\033[0m\n", PQerrorMessage(conn));
+                insert_logs(NULL, NULL, txt_log);
+
                 PQclear(res);
                 free(userInfo);
                 return NULL;
             }
 
             snprintf(userInfo->token, sizeof(userInfo->token), "%s", PQgetvalue(res, 0, 0));
+            free(generated_token);
             PQclear(res);
         } else {
             snprintf(userInfo->token, sizeof(userInfo->token), "a1");
@@ -197,13 +227,13 @@ UserInfo* generate_and_return_token(const char *api_key, PGconn *conn) {
 
 void insert_logs(const char *api_key, const char *ip_address, const char *message) {
     if (LOG_LINKS == NULL) {
-        fprintf(stderr, "Erreur : LOG_LINKS n'est pas défini dans config.h\n");
+        fprintf(stderr, "\033[33m-> Erreur : LOG_LINKS n'est pas défini dans config.h\033[0m\n");
         return;
     }
 
     FILE *log_file = fopen(LOG_LINKS, "a"); // Ouverture en mode ajout
     if (log_file == NULL) {
-        perror("Erreur lors de l'ouverture du fichier de log");
+        perror("\033[33m-> Erreur lors de l'ouverture du fichier de log\033[0m");
         return;
     }
 
@@ -212,7 +242,7 @@ void insert_logs(const char *api_key, const char *ip_address, const char *messag
     struct tm *time_info = localtime(&now);
 
     if (time_info == NULL) {
-        perror("Erreur lors de la récupération de la date et de l'heure");
+        perror("\033[33m-> Erreur lors de la récupération de la date et de l'heure\033[0m");
         fclose(log_file);
         return;
     }

@@ -7,12 +7,14 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <sys/types.h>
-#include <time.h>  // Bibliothèque PostgreSQL
+#include <time.h>
 #include <unistd.h>
 
 #include "bdd.h"
 #include "config.h"
 #include "fonct.h"
+
+#define _XOPEN_SOURCE 700 // Nécessaire pour strptime
 
 int main() {
     int sock, cnx, ret, size, len;
@@ -27,18 +29,20 @@ int main() {
 
     if (load_config("param.txt") != 0) {
         printf("\033[31m-> Erreur lors du chargement du fichier de configuration.\033[0m\n");
-        snprintf(txt_log, sizeof(txt_log),
-                "-> Erreur lors du chargement du fichier de configuration.");
+
+        snprintf(txt_log, sizeof(txt_log), "-> Erreur lors du chargement du fichier de configuration.");
         insert_logs(NULL, NULL, txt_log);
+
         PQfinish(conn);
         return -1;
     }
 
     if (prepare_socket(&ret, &sock, &addr) != 0) {
         printf("\033[31m-> Erreur : Impossible de configurer le socket.\033[0m\n");
-        snprintf(txt_log, sizeof(txt_log),
-                "-> Erreur : Impossible de configurer le socket.");
+
+        snprintf(txt_log, sizeof(txt_log), "-> Erreur : Impossible de configurer le socket.");
         insert_logs(NULL, NULL, txt_log);
+
         exit(EXIT_FAILURE);
     }
 
@@ -46,13 +50,15 @@ int main() {
 
     while (1)  // while(1) pour garder le serveur allume malgre que le client quitte
     {
-        printf("=> En attente d'une connexion...\n");
+        printf("\n=> En attente d'une connexion...\n");
+
         cnx = accept(sock, (struct sockaddr *)&conn_addr, (socklen_t *)&size);
         if (cnx == -1) {
             perror("\033[31m-> Erreur lors de accept\033[0m");
-            snprintf(txt_log, sizeof(txt_log),
-                "-> Erreur lors de accept");
+
+            snprintf(txt_log, sizeof(txt_log), "-> Erreur lors de accept");
             insert_logs(NULL, NULL, txt_log);
+
             PQfinish(conn);
             exit(-1);
         }
@@ -62,23 +68,24 @@ int main() {
         inet_ntop(AF_INET, &(conn_addr.sin_addr), client_ip, INET_ADDRSTRLEN);
 
         printf("\033[32mConnexion acceptée de l'adresse IP : %s\033[0m\n", client_ip);
-        snprintf(txt_log, sizeof(txt_log),
-                "Connexion acceptée de l'adresse IP : %s\n", client_ip);
+
+        snprintf(txt_log, sizeof(txt_log), "Connexion acceptée de l'adresse IP : %s", client_ip);
         insert_logs(NULL, client_ip, txt_log);
         
         memset(buffer, 0, sizeof(buffer));
 
         char api_key[LEN_API + 1];  // Variable pour stocker la clé API reçue
 
+        // Réception de la clé API
         printf("En attente de la cle API...\n");
 
-        // Réception de la clé API
         len = recv(cnx, api_key, sizeof(api_key) - 1, 0);
         if (len <= 0) {
             perror("\033[31m-> Erreur lors de la réception des données\033[0m");
-            snprintf(txt_log, sizeof(txt_log),
-                "-> Erreur lors de la réception des données");
+
+            snprintf(txt_log, sizeof(txt_log), "-> Erreur lors de la réception des données");
             insert_logs(NULL, client_ip, txt_log);
+
             close(cnx);
             continue;
         }
@@ -92,9 +99,10 @@ int main() {
         // Vérification de la validité de la clé API (facultatif)
         if (strlen(api_key) == 0) {
             printf("\033[31m-> Erreur : clé API vide après nettoyage.\033[0m\n");
-            snprintf(txt_log, sizeof(txt_log),
-                "-> Erreur : clé API vide après nettoyage.");
+
+            snprintf(txt_log, sizeof(txt_log), "-> Erreur : clé API vide après nettoyage.");
             insert_logs(api_key, client_ip, txt_log);
+
             close(cnx);
             continue;
         }
@@ -104,38 +112,43 @@ int main() {
         UserInfo *user_info = generate_and_return_token(api_key, conn);
 
         if (user_info == NULL) {
-            printf("\033[31m-> Erreur lors de la génération ou de la récupération du token.\033[0m\n");
-            snprintf(txt_log, sizeof(txt_log),
-                "-> Erreur lors de la génération ou de la récupération du token.");
+            printf("\033[31m-> Erreur : lors de la génération ou de la récupération du token.\033[0m\n");
+
+            snprintf(txt_log, sizeof(txt_log), "-> Erreur : lors de la génération ou de la récupération du token.");
             insert_logs(api_key, client_ip, txt_log);
+
+            send(cnx, "\033[31m-> Erreur : La clé API n'existe pas\033[0m\n", sizeof("\033[31m-> Erreur : La clé PAI n'existe pas\033[0m\n"), 0);
+
             close(cnx);
             continue;
         }
 
         // Afficher le token généré pour confirmation (facultatif)
         printf("Token généré pour la clé API '%s' : %s\n", api_key, user_info->token);
-        snprintf(txt_log, sizeof(txt_log),
-                "User connecté token généré pour la clé API '%s' : %s\n", api_key, user_info->token);
+
+        snprintf(txt_log, sizeof(txt_log), "User connecté token généré pour la clé API '%s' : %s", api_key, user_info->token);
         insert_logs(api_key, client_ip, txt_log);
 
         if (user_info == NULL) {
-            perror("\033[31m-> Erreur lors de la génération du token.\033[0m");
-            snprintf(txt_log, sizeof(txt_log),
-                "-> Erreur lors de la génération du token.");
+            perror("\033[31m-> Erreur : lors de la génération du token.\033[0m");
+
+            snprintf(txt_log, sizeof(txt_log), "-> Erreur : lors de la génération du token.");
             insert_logs(api_key, client_ip, txt_log);
+
             close(cnx);
             continue;
         }
         if (user_info->token[0] != '\0') {
             char txt_env[80];
-            snprintf(txt_env, sizeof(txt_env), "\033[32mVous êtes connecté, voici votre token : %s\033[0m\n", user_info->token);
+            snprintf(txt_env, sizeof(txt_env), "\033[32m==> Vous êtes connecté, voici votre token : %s\033[0m\n", user_info->token);
 
             int tk = send(cnx, txt_env, strlen(txt_env), 0);
             if (tk == -1) {
                 perror("-> Erreur lors de send ");
-                snprintf(txt_log, sizeof(txt_log),
-                    "-> Erreur lors de la génération du token.");
+
+                snprintf(txt_log, sizeof(txt_log), "-> Erreur lors de la génération du token.");
                 insert_logs(api_key, client_ip, txt_log);
+
                 PQfinish(conn);
                 exit(-1);
             }
@@ -148,90 +161,120 @@ int main() {
             }
 
             while (1) {
-                send(cnx, "Nouvelle commande :\n", sizeof("Nouvelle commande :\n"), 0);
+                send(cnx, "=> Nouvelle commande : ", sizeof("=> Nouvelle commande : "), 0);
                 memset(buffer, 0, sizeof(buffer));               // Réinitialiser le buffer
                 ret = recv(cnx, buffer, sizeof(buffer) - 1, 0);  // Lire les données du client
 
                 if (ret > 0) {
                     buffer[ret] = '\0';  // Terminaison de chaîne
-                    printf("Commande reçue : %s\n", buffer);
+                    printf("Commande reçue : %s", buffer);
 
                     //////////////////////////////////////////////////////////////////////////////////////////
                     /// BYE BYE
                     //////////////////////////////////////////////////////////////////////////////////////////
                     if (strncmp(buffer, "BYE BYE", 7) == 0) {
-                        send(cnx, "\033[33mConnexion terminée\033[0m\n", 20, 0);
+                        send(cnx, "\033[33mConnexion terminée\033[0m\n", sizeof("\033[33mConnexion terminée\033[0m\n"), 0);
 
                         snprintf(query, sizeof(query), "update tripenarvor._token set is_active = FALSE where token = '%s'", user_info->token);
                         // printf("Requête SQL exécutée : %s\n", query);
 
                         if (!execute_query(conn, query, api_key, client_ip)) {
-                            send(cnx, "\033[31m-> Erreur interne lors de la déconnexion.\033[0m\n", strlen("Erreur interne lors de la déconnexion.\n"), 0);
-                            break;
+                            send(cnx, "\033[31m-> Erreur interne lors de la déconnexion.\033[0m\n", strlen("\033[31m-> Erreur interne lors de la déconnexion.\033[0m\n"), 0);
+                        } else {
+                            snprintf(txt_log, sizeof(txt_log), "BYE BYE %s", user_info->token);
+                            insert_logs(api_key, client_ip, txt_log);
                         }
 
-                        snprintf(txt_log, sizeof(txt_log), "BYE BYE %s", user_info->token);
-                        insert_logs(api_key, client_ip, txt_log);
                         memset(query, 0, sizeof(query));
-
                         break;
                     }
                     //////////////////////////////////////////////////////////////////////////////////////////
                     /// REGEN
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "REGEN", 5) == 0) {
-                        snprintf(query, sizeof(query), "select id_token, is_active from tripenarvor._token where token = '%s'", user_info->token);
-                        // printf("Requête SQL exécutée : %s\n", query);
+
+
+                        snprintf(query, sizeof(query), "select id_token, is_active, expires_at from tripenarvor._token where token = '%s'", user_info->token);
 
                         PGresult *res = PQexec(conn, query);
                         if (PQresultStatus(res) != PGRES_TUPLES_OK) {
-                            fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
+                            fprintf(stderr, "\033[31m-> Échec de l'exécution de la requête : %s\033[0m\n", PQerrorMessage(conn));
+
+                            snprintf(txt_log, sizeof(txt_log), "-> Échec de l'exécution de la requête : %s", PQerrorMessage(conn));
+                            insert_logs(api_key, client_ip, txt_log);
+
                             PQclear(res);
                             PQfinish(conn);
                             return EXIT_FAILURE;
                         }
                         memset(query, 0, sizeof(query));
 
-                        bool active_token;       // État actif/inactif du token
-                        char type_user_bdd[15];  // Nom de la table cible (membre ou professionnel)
+                        struct tm expires_at;
+                        bool active_token = PQgetvalue(res, 0, 1);       // État actif/inactif du token
+                        char *expires_at_str = PQgetvalue(res, 0, 2); // Récupère la valeur de la colonne "expires_at"
 
-                        // Extraction des colonnes spécifiques
-                        active_token = PQgetvalue(res, 0, 1);  // is_active
+                        if (strptime(expires_at_str, "%Y-%m-%d %H:%M:%S", &expires_at) == NULL) {
+                            fprintf(stderr, "\033[31m-> Erreur : Impossible de parser la date expires_at : %s\033[0m\n", expires_at_str);
 
-                        // printf("type_user récupéré : %s\n", type_user);
+                            snprintf(txt_log, sizeof(txt_log), "-> Erreur : Impossible de parser la date expires_at : %s", expires_at_str);
+                            insert_logs(api_key, client_ip, txt_log);
 
-                        if (strcmp(user_info->new_user, "MEMBRE") == 0) {
-                            strcpy(type_user_bdd, "membre");
-                        } else if (strcmp(user_info->new_user, "PRO") == 0) {
-                            strcpy(type_user_bdd, "professionnel");
+                            PQclear(res);
+                            PQfinish(conn);
+                            return EXIT_FAILURE;
                         }
 
-                        // printf("type_user : %s, active_token : %d, my_api_key : %s, type_user_bdd : %s\n", user_info->new_user, active_token, my_api_key, type_user_bdd);
+                        // Convertir expires_at en time_t
+                        time_t expires_at_time = mktime(&expires_at);
+                        if (expires_at_time == -1) {
+                            fprintf(stderr, "\033[31m-> Erreur : Impossible de convertir expires_at en time_t\033[0m\n");
 
-                        if (active_token) {
+                            snprintf(txt_log, sizeof(txt_log), "-> Erreur : Impossible de convertir expires_at en time_t");
+                            insert_logs(api_key, client_ip, txt_log);
+
+                            PQclear(res);
+                            PQfinish(conn);
+                            return EXIT_FAILURE;
+                        }
+
+                        // Obtenir l'heure actuelle
+                        time_t now = time(NULL);
+                        if (now == -1) {
+                            perror("\033[31m-> Erreur lors de la récupération de l'heure actuelle\033[0m");
+
+                            snprintf(txt_log, sizeof(txt_log), "-> Erreur lors de la récupération de l'heure actuelle");
+                            insert_logs(api_key, client_ip, txt_log);
+
+                            PQclear(res);
+                            PQfinish(conn);
+                            return EXIT_FAILURE;
+                        }
+                        PQclear(res);
+
+
+                        if (active_token && difftime(expires_at_time, now) <= 0) {
                             char first_char[2] = {user_info->new_user[0], '\0'};
-                            // printf("Premier caractère de type_user : %s\n", first_char);
 
                             send(cnx, "Votre clé API a été changée\n", sizeof("Votre clé API a été changée\n"), 0);
                             printf("Nouvelle clé API générée\n");
-                            snprintf(txt_log, sizeof(txt_log), "REGEN %s", user_info->token);
-                            insert_logs(api_key, client_ip, txt_log);
 
                             snprintf(query, sizeof(query),
                                      "update tripenarvor._%s set api_key = tripenarvor.generate_api_key('%s') where api_key = '%s'",
                                      type_user_bdd, first_char, api_key);
-                            // printf("Requête SQL exécutée : %s\n", query);
 
-                            PGresult *res_update = PQexec(conn, query);
-                            if (PQresultStatus(res_update) != PGRES_COMMAND_OK) {
-                                fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
-                                PQclear(res_update);
-                                return EXIT_FAILURE;
+                            if (!execute_query(conn, query, api_key, client_ip)) {
+                                send(cnx, "\033[31m-> Erreur interne lors de la regénération de la clé d'API.\033[0m\n", strlen("\033[31m-> Erreur interne lors de la regénération de la clé d'API.\033[0m\n\n"), 0);
+                            } else {
+                                snprintf(txt_log, sizeof(txt_log), "REGEN %s", user_info->token);
+                                insert_logs(api_key, client_ip, txt_log);
                             }
-                            PQclear(res_update);
+
                             memset(query, 0, sizeof(query));
                         } else {
                             send(cnx, "Votre token n'est plus valide\n", 31, 0);
+
+                            snprintf(txt_log, sizeof(txt_log), "-> Erreur : Le token %s n'est plus valide", user_info->token);
+                            insert_logs(api_key, client_ip, txt_log);
                         }
 
                     }

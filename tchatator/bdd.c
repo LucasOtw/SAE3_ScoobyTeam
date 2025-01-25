@@ -19,7 +19,7 @@ PGconn* connect_to_db() {
     const char *password = "philly-Congo-bry4nt";
 
     // Construire la chaîne de connexion
-    char conninfo[256];
+    char conninfo[256], txt_log[256];
     snprintf(conninfo, sizeof(conninfo), "host=%s port=%d dbname=%s user=%s password=%s", 
              host, port, dbname, user, password);
 
@@ -28,7 +28,11 @@ PGconn* connect_to_db() {
 
     // Vérifier l'état de la connexion
     if (PQstatus(conn) != CONNECTION_OK) {
-        fprintf(stderr, "Échec de la connexion à la base de données : %s\n", PQerrorMessage(conn));
+        fprintf(stderr, "\033[33m-> Échec de la connexion à la base de données : %s\033[0m\n", PQerrorMessage(conn));
+
+        snprintf(txt_log, sizeof(txt_log), "-> Échec de la connexion à la base de données : %s", PQerrorMessage(conn));
+        insert_logs(NULL, NULL, txt_log);
+
         PQfinish(conn); // Libérer la mémoire allouée pour la connexion
         return NULL;
     }
@@ -66,9 +70,11 @@ bool execute_query(PGconn *conn, const char *query, char *api_key, char *client_
     PGresult *res = PQexec(conn, query);
     if (PQresultStatus(res) != PGRES_COMMAND_OK) {
         fprintf(stderr, "\033[31m-> Échec de la requête SQL : %s\n%s\033[0m\n", query, PQerrorMessage(conn));
-        PQclear(res);
-        snprintf(txt_log, sizeof(txt_log), "-> Échec de la requête SQL : %s\n%s\n", query, PQerrorMessage(conn));
+        
+        snprintf(txt_log, sizeof(txt_log), "-> Échec de la requête SQL : %s\n%s", query, PQerrorMessage(conn));
         insert_logs(api_key, client_ip, txt_log);
+
+        PQclear(res);
         return false;
     }
     PQclear(res);
