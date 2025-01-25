@@ -109,6 +109,28 @@ int main() {
                 exit(-1);
             }
 
+            char type_user_bdd[15];
+            if (strcmp(user_info->new_user, "MEMBRE") == 0) {
+                strcpy(type_user_bdd, "membre");
+            } else if (strcmp(user_info->new_user, "PRO") == 0) {
+                strcpy(type_user_bdd, "professionnel");
+            }
+
+            int id_user;
+
+            // Récupérer l'ID de l'utilisateur à partir de la base de données
+            snprintf(query, sizeof(query),
+                     "select code_compte from tripenarvor._%s Natural JOIN tripenarvor._token where api_key = '%s'", type_user_bdd, api_key);
+            PGresult *res = PQexec(conn, query);
+            if (PQresultStatus(res) != PGRES_TUPLES_OK) {
+                fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
+                PQclear(res);
+                PQfinish(conn);
+                return EXIT_FAILURE;
+            }
+            id_user = atoi(PQgetvalue(res, 0, 0));  // Extraction de l'id
+            PQclear(res);                           // Libération du résultat
+
             while (1) {
                 send(cnx, "Nouvelle commande :\n", sizeof("Nouvelle commande :\n"), 0);
                 memset(buffer, 0, sizeof(buffer));               // Réinitialiser le buffer
@@ -119,7 +141,7 @@ int main() {
                     printf("Données reçues : %s\n", buffer);
 
                     //////////////////////////////////////////////////////////////////////////////////////////
-                    /// BYE BYE...............................................................................
+                    /// BYE BYE
                     //////////////////////////////////////////////////////////////////////////////////////////
                     if (strncmp(buffer, "BYE BYE", 7) == 0) {
                         send(cnx, "Connexion terminée\n", 20, 0);
@@ -141,7 +163,7 @@ int main() {
                         break;
                     }
                     //////////////////////////////////////////////////////////////////////////////////////////
-                    /// REGEN.................................................................................
+                    /// REGEN
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "REGEN", 5) == 0) {
                         snprintf(query, sizeof(query), "select id_token, is_active from tripenarvor._token where token = '%s'", user_info->token);
@@ -200,35 +222,12 @@ int main() {
 
                     }
                     //////////////////////////////////////////////////////////////////////////////////////////
-                    /// MSG...................................................................................
+                    /// MSG
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "MSG", 3) == 0) {
                         int id_dest;
-                        char txt[1000], type_user_bdd[15];
+                        char txt[1000];
                         int offset = 0;
-
-                        if (strcmp(user_info->new_user, "MEMBRE") == 0) {
-                            strcpy(type_user_bdd, "membre");
-                        } else if (strcmp(user_info->new_user, "PRO") == 0) {
-                            strcpy(type_user_bdd, "professionnel");
-                        }
-
-                        snprintf(query, sizeof(query),
-                                 "select code_compte from tripenarvor._%s Natural JOIN tripenarvor._token where api_key = '%s'", type_user_bdd, api_key);
-                        printf("Requête SQL exécutée : %s\n", query);
-
-                        PGresult *res = PQexec(conn, query);
-                        if (PQresultStatus(res) != PGRES_TUPLES_OK) {
-                            fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
-                            PQclear(res);
-                            PQfinish(conn);
-                            return EXIT_FAILURE;
-                        }
-                        memset(query, 0, sizeof(query));
-
-                        int id_emetteur = atoi(PQgetvalue(res, 0, 0));
-
-                        PQclear(res);
 
                         if (sscanf(buffer, "MSG %d %n", &id_dest, &offset) == 1) {
                             printf("ID destinataire : %d\n", id_dest);  // Affiche : 123
@@ -252,14 +251,27 @@ int main() {
                             // ENVOI DU MSG
                             snprintf(query, sizeof(query),
                                      "insert into tripenarvor._message (code_emetteur, code_destinataire, contenu) values (%d, %d, '%s')",
-                                     id_emetteur, id_dest, start);
+                                     id_user, id_dest, start);
 
                             PGresult *res_update = PQexec(conn, query);
                             if (PQresultStatus(res_update) != PGRES_COMMAND_OK) {
+                                // Log en cas d'échec
+                                char error_message[256];
+                                snprintf(error_message, sizeof(error_message),
+                                         "Échec de l'envoi du message au compte %d : %s", id_dest, PQerrorMessage(conn));
+                                insert_logs(api_key, client_ip, error_message);
+
                                 fprintf(stderr, "Échec de l'enregistrement du message : %s\n", PQerrorMessage(conn));
                                 PQclear(res_update);
                                 return EXIT_FAILURE;
                             }
+
+                            // Log en cas de succès
+                            char success_message[256];
+                            snprintf(success_message, sizeof(success_message),
+                                     "Envoi du message au compte %d réussi", id_dest);
+                            insert_logs(api_key, client_ip, success_message);
+
                             PQclear(res_update);
 
                         } else {
@@ -267,7 +279,7 @@ int main() {
                         }
                     }
                     //////////////////////////////////////////////////////////////////////////////////////////
-                    /// MODIF ................................................................................
+                    /// MODIF
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "MDF", 3) == 0) {
                         int id_msg;
@@ -299,10 +311,9 @@ int main() {
                                 end--;
                             }
 
-                            // Obetnir Date et heure de la modif
+                            // Récupération de la date et de l'heure actuelles
                             time_t now = time(NULL);
                             struct tm *time_info = localtime(&now);
-
                             if (time_info == NULL) {
                                 perror("Erreur lors de la récupération de la date et de l'heure");
                                 return EXIT_FAILURE;
@@ -311,23 +322,156 @@ int main() {
                             char timestamp[20];
                             strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", time_info);
 
-                            // ENVOI DU MSG
+                            // Construction de la requête SQL
                             snprintf(query, sizeof(query),
-                                     "UPDATE tripenarvor._message SET contenu = '%s', horodatage_modifie = '%s', lus = 'false' WHERE id_message = %d",
+                                     "UPDATE tripenarvor._message SET contenu = '%s', horodatage_modifie = '%s', lu = 'false' WHERE id = %d",
                                      start, timestamp, id_msg);
 
+                            // Exécution de la requête
                             PGresult *res_update = PQexec(conn, query);
                             if (PQresultStatus(res_update) != PGRES_COMMAND_OK) {
+                                // Log en cas d'échec
+                                char error_message[256];
+                                snprintf(error_message, sizeof(error_message),
+                                         "Échec de la mise à jour du message ID %d : %s", id_msg, PQerrorMessage(conn));
+                                insert_logs(api_key, client_ip, error_message);
+
                                 fprintf(stderr, "Échec de l'enregistrement du message : %s\n", PQerrorMessage(conn));
                                 PQclear(res_update);
                                 return EXIT_FAILURE;
                             }
+
+                            // Log en cas de succès
+                            char success_message[256];
+                            snprintf(success_message, sizeof(success_message),
+                                     "Mise à jour réussie pour le message ID %d", id_msg);
+                            insert_logs(api_key, client_ip, success_message);
+
                             PQclear(res_update);
 
                         } else {
-                            send(cnx, "Erreur de format : MDF <id_msg> '<contenu du message>'\n", 65, 0);
+                            send(cnx, "Erreur de format : MDF <id_msg> '<contenu du message>'\n", 56, 0);
                         }
-                    } else {
+                    }
+                    //////////////////////////////////////////////////////////////////////////////////////////
+                    /// HISTORIQUE
+                    //////////////////////////////////////////////////////////////////////////////////////////
+                    else if (strncmp(buffer, "HIST", 4) == 0) {
+                        // Si la commande HIST est suivie de rien ou d'un espace
+                        if (strlen(buffer) == 4 || buffer[4] == ' ') {
+                            send(cnx, "Erreur de format : HIST <Lus|nonLus|Envoyes|Reçus>\n", 50, 0);
+                        }
+                        // Messages envoyés (messages où l'utilisateur est l'émetteur)
+                        if (strncmp(buffer, "HIST ENVOYES", 12) == 0) {
+                            snprintf(query, sizeof(query),
+                                     "SELECT id_message, contenu, horodatage, horodatage_modifie, code_destinataire, membre.nom, membre.prenom, pro.raison_sociale "
+                                     "FROM tripenarvor._message as msg "
+                                     "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_destinataire "
+                                     "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_destinataire "
+                                     "WHERE code_emetteur = %d ORDER BY horodatage DESC",
+                                     id_user);
+                        }
+                        // Messages reçus (messages où l'utilisateur est le destinataire)
+                        else if (strncmp(buffer, "HIST RECUS", 10) == 0) {
+                            snprintf(query, sizeof(query),
+                                     "BEGIN; "
+                                     // SELECT DES MESSAGES NON LUS
+                                     "SELECT id_message, contenu, horodatage, horodatage_modifie, code_emetteur, membre.nom, membre.prenom, pro.raison_sociale "
+                                     "FROM tripenarvor._message as msg "
+                                     "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_emetteur "
+                                     "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_emetteur "
+                                     "WHERE code_destinataire = %d ORDER BY horodatage DESC; "
+
+                                     // PASSAGES DES MESSAGES NON LUS EN LUS
+                                     "UPDATE tripenarvor._message "
+                                     "SET lus = true "
+                                     "WHERE code_destinataire = %d AND lus = false; "
+
+                                     "COMMIT;",
+                                     id_user, id_user);
+                        }
+                        // Messages lus (messages où l'utilisateur est destinataire et lus)
+                        else if (strncmp(buffer, "HIST LUS", 8) == 0) {
+                            snprintf(query, sizeof(query),
+                                     "SELECT id_message, contenu, horodatage, horodatage_modifie, code_emetteur, membre.nom, membre.prenom, pro.raison_sociale "
+                                     "FROM tripenarvor._message as msg "
+                                     "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_emetteur "
+                                     "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_emetteur "
+                                     "WHERE code_destinataire = %d AND lus = true ORDER BY horodatage DESC",
+                                     id_user);
+                        }
+                        // Messages non lus (messages où l'utilisateur est destinataire et non lus)
+                        else if (strncmp(buffer, "HIST NONLUS", 11) == 0) {
+                            snprintf(query, sizeof(query),
+                                     "BEGIN; "
+                                     // SELECT DES MESSAGES NON LUS
+                                     "SELECT id_message, contenu, horodatage, horodatage_modifie, code_emetteur, membre.nom, membre.prenom, pro.raison_sociale "
+                                     "FROM tripenarvor._message as msg "
+                                     "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_emetteur "
+                                     "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_emetteur "
+                                     "WHERE code_destinataire = %d AND lus = true ORDER BY horodatage DESC; "
+
+                                     // PASSAGES DES MESSAGES NON LUS EN LUS
+                                     "UPDATE tripenarvor._message "
+                                     "SET lus = true "
+                                     "WHERE code_destinataire = %d AND lus = false; "
+
+                                     "COMMIT;",
+                                     id_user, id_user);
+                        }
+
+                        PGresult *res = PQexec(conn, query);
+                        if (PQresultStatus(res) != PGRES_TUPLES_OK) {
+                            fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
+                            PQclear(res);
+                            PQfinish(conn);
+                            return EXIT_FAILURE;
+                        }
+
+                        int num_rows = PQntuples(res);
+                        if (num_rows == 0) {
+                            send(cnx, "Aucun message trouvé.\n", 23, 0);
+                        } else {
+                            char message_buffer[2048];  // Augmenter la taille du buffer pour un affichage plus large
+                            for (int i = 0; i < num_rows; i++) {
+                                const char *nom_emetteur = PQgetvalue(res, i, 5);
+                                const char *prenom_emetteur = PQgetvalue(res, i, 6);
+                                const char *raison_sociale_emetteur = PQgetvalue(res, i, 7);
+
+                                char *emetteur = NULL;  // Utiliser un pointeur vers char (pas const)
+                                if (strlen(raison_sociale_emetteur) > 0) {
+                                    emetteur = (char *)raison_sociale_emetteur;  // Utiliser la raison sociale si elle existe
+                                } else if (strlen(nom_emetteur) > 0 && strlen(prenom_emetteur) > 0) {
+                                    emetteur = (char *)malloc(strlen(nom_emetteur) + strlen(prenom_emetteur) + 2);  // +2 pour l'espace et le caractère nul
+                                    if (emetteur != NULL) {
+                                        snprintf(emetteur, strlen(nom_emetteur) + strlen(prenom_emetteur) + 2, "%s %s", prenom_emetteur, nom_emetteur);  // Concaténer prénom et nom
+                                    }
+                                } else {
+                                    emetteur = "Inconnu";  // Si aucun nom ni prénom, afficher "Inconnu"
+                                }
+
+                                snprintf(message_buffer, sizeof(message_buffer),
+                                         "\n----------------------------------------\n"
+                                         "ID du message : %s\n"
+                                         "Envoyé par : \033[1m%s\033[0m\n"
+                                         "Contenu : \033[1m%s\033[0m"
+                                         "Date de création : %s\n"
+                                         "Dernière modification : %s\n"
+                                         "----------------------------------------\n",
+                                         PQgetvalue(res, i, 0), emetteur, PQgetvalue(res, i, 1), PQgetvalue(res, i, 2), PQgetvalue(res, i, 3));
+                                send(cnx, message_buffer, strlen(message_buffer), 0);
+
+                                // Libérer la mémoire uniquement si emetteur a été alloué dynamiquement
+                                if (emetteur != NULL && emetteur != "Inconnu" && emetteur != raison_sociale_emetteur) {
+                                    free(emetteur);
+                                }
+                            }
+                        }
+                        PQclear(res);
+
+                    }
+
+                    else {
                         send(cnx, "Commande inconnue\n", 19, 0);
                     }
                 } else {
@@ -349,3 +493,47 @@ int main() {
 
     return 0;
 }
+
+/* \033[1m   --> Mettre le texte en gras (ou "intensité élevée")
+   \033[0m   --> Réinitialise le style au format par défaut (désactive le gras, italique, etc.)
+
+   \033[4m   --> Mettre le texte en souligné
+   \033[24m  --> Désactive le souligné
+
+   \033[3m   --> Mettre le texte en italique (pas supporté partout)
+   \033[23m  --> Désactive l'italique
+
+   \033[7m   --> Inverser les couleurs (texte en fond et fond en texte)
+   \033[27m  --> Désactive l'inversion des couleurs
+
+   \033[30m  --> Changer la couleur du texte en noir
+   \033[31m  --> Changer la couleur du texte en rouge
+   \033[32m  --> Changer la couleur du texte en vert
+   \033[33m  --> Changer la couleur du texte en jaune
+   \033[34m  --> Changer la couleur du texte en bleu
+   \033[35m  --> Changer la couleur du texte en magenta
+   \033[36m  --> Changer la couleur du texte en cyan
+   \033[37m  --> Changer la couleur du texte en blanc
+   \033[39m  --> Réinitialise la couleur du texte à la couleur par défaut
+
+   \033[40m  --> Changer la couleur de fond en noir
+   \033[41m  --> Changer la couleur de fond en rouge
+   \033[42m  --> Changer la couleur de fond en vert
+   \033[43m  --> Changer la couleur de fond en jaune
+   \033[44m  --> Changer la couleur de fond en bleu
+   \033[45m  --> Changer la couleur de fond en magenta
+   \033[46m  --> Changer la couleur de fond en cyan
+   \033[47m  --> Changer la couleur de fond en blanc
+   \033[49m  --> Réinitialise la couleur de fond à la couleur par défaut
+
+   \033[8m   --> Rendre le texte invisible
+   \033[28m  --> Réafficher le texte invisible
+
+   \033[9m   --> Barrer le texte
+   \033[29m  --> Désactive le barré du texte
+
+   \033[5m   --> Faire clignoter le texte (pas supporté partout)
+   \033[25m  --> Désactive le clignotement
+
+   \033[48;5;<num>m --> Couleur personnalisée du fond (ex: 48;5;82)
+   \033[38;5;<num>m --> Couleur personnalisée du texte (ex: 38;5;82) */
