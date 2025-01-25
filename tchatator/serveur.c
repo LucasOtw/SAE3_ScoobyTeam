@@ -116,21 +116,6 @@ int main() {
                 strcpy(type_user_bdd, "professionnel");
             }
 
-            int id_user;
-
-            // Récupérer l'ID de l'utilisateur à partir de la base de données
-            snprintf(query, sizeof(query),
-                     "select code_compte from tripenarvor._%s Natural JOIN tripenarvor._token where api_key = '%s'", type_user_bdd, api_key);
-            PGresult *res = PQexec(conn, query);
-            if (PQresultStatus(res) != PGRES_TUPLES_OK) {
-                fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
-                PQclear(res);
-                PQfinish(conn);
-                return EXIT_FAILURE;
-            }
-            id_user = atoi(PQgetvalue(res, 0, 0));  // Extraction de l'id
-            PQclear(res);                           // Libération du résultat
-
             while (1) {
                 send(cnx, "Nouvelle commande :\n", sizeof("Nouvelle commande :\n"), 0);
                 memset(buffer, 0, sizeof(buffer));               // Réinitialiser le buffer
@@ -251,7 +236,7 @@ int main() {
                             // ENVOI DU MSG
                             snprintf(query, sizeof(query),
                                      "insert into tripenarvor._message (code_emetteur, code_destinataire, contenu) values (%d, %d, '%s')",
-                                     id_user, id_dest, start);
+                                     user_info->id_user, id_dest, start);
 
                             PGresult *res_update = PQexec(conn, query);
                             if (PQresultStatus(res_update) != PGRES_COMMAND_OK) {
@@ -369,7 +354,7 @@ int main() {
                                      "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_destinataire "
                                      "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_destinataire "
                                      "WHERE code_emetteur = %d ORDER BY horodatage DESC",
-                                     id_user);
+                                     user_info->id_user);
                         }
                         // Messages reçus (messages où l'utilisateur est le destinataire)
                         else if (strncmp(buffer, "HIST RECUS", 10) == 0) {
@@ -388,7 +373,7 @@ int main() {
                                      "WHERE code_destinataire = %d AND lus = false; "
 
                                      "COMMIT;",
-                                     id_user, id_user);
+                                     user_info->id_user, user_info->id_user);
                         }
                         // Messages lus (messages où l'utilisateur est destinataire et lus)
                         else if (strncmp(buffer, "HIST LUS", 8) == 0) {
@@ -398,7 +383,7 @@ int main() {
                                      "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_emetteur "
                                      "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_emetteur "
                                      "WHERE code_destinataire = %d AND lus = true ORDER BY horodatage DESC",
-                                     id_user);
+                                     user_info->id_user);
                         }
                         // Messages non lus (messages où l'utilisateur est destinataire et non lus)
                         else if (strncmp(buffer, "HIST NONLUS", 11) == 0) {
@@ -417,7 +402,7 @@ int main() {
                                      "WHERE code_destinataire = %d AND lus = false; "
 
                                      "COMMIT;",
-                                     id_user, id_user);
+                                     user_info->id_user, user_info->id_user);
                         }
 
                         PGresult *res = PQexec(conn, query);
@@ -469,9 +454,7 @@ int main() {
                         }
                         PQclear(res);
 
-                    }
-
-                    else {
+                    } else {
                         send(cnx, "Commande inconnue\n", 19, 0);
                     }
                 } else {
@@ -494,7 +477,8 @@ int main() {
     return 0;
 }
 
-/* \033[1m   --> Mettre le texte en gras (ou "intensité élevée")
+/*
+   \033[1m   --> Mettre le texte en gras (ou "intensité élevée")
    \033[0m   --> Réinitialise le style au format par défaut (désactive le gras, italique, etc.)
 
    \033[4m   --> Mettre le texte en souligné
@@ -536,4 +520,5 @@ int main() {
    \033[25m  --> Désactive le clignotement
 
    \033[48;5;<num>m --> Couleur personnalisée du fond (ex: 48;5;82)
-   \033[38;5;<num>m --> Couleur personnalisée du texte (ex: 38;5;82) */
+   \033[38;5;<num>m --> Couleur personnalisée du texte (ex: 38;5;82)
+   */

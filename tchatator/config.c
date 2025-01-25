@@ -136,7 +136,7 @@ UserInfo* generate_and_return_token(const char *api_key, PGconn *conn) {
             if (api_key[0] == 'M') {
                 strcpy(userInfo->new_user, "MEMBRE");
 
-                snprintf(query, sizeof(query), "select 1 from tripenarvor._membre where api_key = '%s'", api_key);
+                snprintf(query, sizeof(query), "select code_compte from tripenarvor._membre where api_key = '%s'", api_key);
                 PGresult *res = PQexec(conn, query);
                 if (PQresultStatus(res) != PGRES_TUPLES_OK || PQntuples(res) == 0) {
                     fprintf(stderr, "La clé API n'existe pas : %s\n", PQerrorMessage(conn));
@@ -145,11 +145,12 @@ UserInfo* generate_and_return_token(const char *api_key, PGconn *conn) {
                     free(generated_token);
                     return NULL;
                 }
+                userInfo->id_user=atoi(PQgetvalue(res, 0, 0));
                 PQclear(res);
             } else if (api_key[0] == 'P') {
                 strcpy(userInfo->new_user, "PRO");
 
-                snprintf(query, sizeof(query), "select 1 from tripenarvor._professionnel where api_key = '%s'", api_key);
+                snprintf(query, sizeof(query), "select code_compte from tripenarvor._professionnel where api_key = '%s'", api_key);
                 PGresult *res = PQexec(conn, query);
                 if (PQresultStatus(res) != PGRES_TUPLES_OK || PQntuples(res) == 0) {
                     fprintf(stderr, "La clé API n'existe pas : %s\n", PQerrorMessage(conn));
@@ -158,6 +159,7 @@ UserInfo* generate_and_return_token(const char *api_key, PGconn *conn) {
                     free(generated_token);
                     return NULL;
                 }
+                userInfo->id_user=atoi(PQgetvalue(res, 0, 0));
                 PQclear(res);
             }
 

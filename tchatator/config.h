@@ -21,6 +21,7 @@ extern int LEN_API;              // Taille clés API
 typedef struct {
     char token[10];
     char new_user[15];
+    int id_user;
 } UserInfo;
 
 
