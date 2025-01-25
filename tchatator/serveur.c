@@ -342,68 +342,70 @@ int main() {
                     /// HISTORIQUE
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "HIST", 4) == 0) {
-                        // Si la commande HIST est suivie de rien ou d'un espace
-                        if (strlen(buffer) == 4 || buffer[4] == ' ') {
-                            send(cnx, "Erreur de format : HIST <Lus|nonLus|Envoyes|Reçus>\n", 50, 0);
-                        } else {// Messages envoyés (messages où l'utilisateur est l'émetteur)
-                            if (strncmp(buffer, "HIST ENVOYES", 12) == 0) {
-                                snprintf(query, sizeof(query),
-                                        "SELECT id_message, contenu, horodatage, horodatage_modifie, code_destinataire, membre.nom, membre.prenom, pro.raison_sociale "
-                                        "FROM tripenarvor._message as msg "
-                                        "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_destinataire "
-                                        "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_destinataire "
-                                        "WHERE code_emetteur = %d ORDER BY horodatage DESC",
-                                        user_info->id_user);
-                            }
-                            // Messages reçus (messages où l'utilisateur est le destinataire)
-                            else if (strncmp(buffer, "HIST RECUS", 10) == 0) {
-                                snprintf(query, sizeof(query),
-                                        "BEGIN; "
-                                        // SELECT DES MESSAGES NON LUS
-                                        "SELECT id_message, contenu, horodatage, horodatage_modifie, code_emetteur, membre.nom, membre.prenom, pro.raison_sociale "
-                                        "FROM tripenarvor._message as msg "
-                                        "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_emetteur "
-                                        "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_emetteur "
-                                        "WHERE code_destinataire = %d ORDER BY horodatage DESC; "
+                        bool executable = false;
+                        bool a_marquer_comme_lus = false;
+                        // Déterminer le type de commande HIST (envoies, recus, lus, nonlus)
+                        char command_type[20];
+                        sscanf(buffer, "HIST %19s", command_type);  // Récupère la partie après "HIST"
+                        // Switch sur le type de commande
+                        switch (command_type[0]) {
+                            case 'E':  // "HIST ENVOYES"
+                                if (strncmp(command_type, "ENVOYES", 7) == 0) {
+                                    snprintf(query, sizeof(query),
+                                             "SELECT id_message, contenu, horodatage, horodatage_modifie, code_destinataire, membre.nom, membre.prenom, pro.raison_sociale "
+                                             "FROM tripenarvor._message as msg "
+                                             "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_destinataire "
+                                             "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_destinataire "
+                                             "WHERE code_emetteur = %d ORDER BY horodatage DESC",
+                                             user_info->id_user);
+                                }
+                                executable = true;
+                                break;
+                            case 'R':  // "HIST RECUS"
+                                if (strncmp(command_type, "RECUS", 5) == 0) {
+                                    snprintf(query, sizeof(query),
+                                             "SELECT id_message, contenu, horodatage, horodatage_modifie, code_emetteur, membre.nom, membre.prenom, pro.raison_sociale "
+                                             "FROM tripenarvor._message as msg "
+                                             "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_emetteur "
+                                             "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_emetteur "
+                                             "WHERE code_destinataire = %d ORDER BY horodatage DESC; ",
+                                             user_info->id_user);
+                                }
+                                executable = true;
+                                a_marquer_comme_lus = true;
+                                break;
+                            case 'L':  // "HIST LUS"
+                                if (strncmp(command_type, "LUS", 3) == 0) {
+                                    snprintf(query, sizeof(query),
+                                             "SELECT id_message, contenu, horodatage, horodatage_modifie, code_emetteur, membre.nom, membre.prenom, pro.raison_sociale "
+                                             "FROM tripenarvor._message as msg "
+                                             "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_emetteur "
+                                             "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_emetteur "
+                                             "WHERE code_destinataire = %d AND lus = true ORDER BY horodatage DESC",
+                                             user_info->id_user);
+                                }
+                                executable = true;
+                                break;
+                            case 'N':  // "HIST NONLUS"
+                                if (strncmp(command_type, "NONLUS", 6) == 0) {
+                                    snprintf(query, sizeof(query),
+                                             "SELECT id_message, contenu, horodatage, horodatage_modifie, code_emetteur, membre.nom, membre.prenom, pro.raison_sociale "
+                                             "FROM tripenarvor._message as msg "
+                                             "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_emetteur "
+                                             "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_emetteur "
+                                             "WHERE code_destinataire = %d AND lus = false ORDER BY horodatage DESC; ",
+                                             user_info->id_user);
+                                }
+                                executable = true;
+                                a_marquer_comme_lus = true;
+                                break;
+                            default:
+                                send(cnx, "Erreur de format : HIST <LUS | NONLUS | RECUS | ENVOYES> \n", 59, 0);
+                                break;
+                        }
 
-                                        // PASSAGES DES MESSAGES NON LUS EN LUS
-                                        "UPDATE tripenarvor._message "
-                                        "SET lus = true "
-                                        "WHERE code_destinataire = %d AND lus = false; "
-
-                                        "COMMIT;",
-                                        user_info->id_user, user_info->id_user);
-                            }
-                            // Messages lus (messages où l'utilisateur est destinataire et lus)
-                            else if (strncmp(buffer, "HIST LUS", 8) == 0) {
-                                snprintf(query, sizeof(query),
-                                        "SELECT id_message, contenu, horodatage, horodatage_modifie, code_emetteur, membre.nom, membre.prenom, pro.raison_sociale "
-                                        "FROM tripenarvor._message as msg "
-                                        "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_emetteur "
-                                        "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_emetteur "
-                                        "WHERE code_destinataire = %d AND lus = true ORDER BY horodatage DESC",
-                                        user_info->id_user);
-                            }
-                            // Messages non lus (messages où l'utilisateur est destinataire et non lus)
-                            else if (strncmp(buffer, "HIST NONLUS", 11) == 0) {
-                                snprintf(query, sizeof(query),
-                                        "BEGIN; "
-                                        // SELECT DES MESSAGES NON LUS
-                                        "SELECT id_message, contenu, horodatage, horodatage_modifie, code_emetteur, membre.nom, membre.prenom, pro.raison_sociale "
-                                        "FROM tripenarvor._message as msg "
-                                        "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_emetteur "
-                                        "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_emetteur "
-                                        "WHERE code_destinataire = %d AND lus = true ORDER BY horodatage DESC; "
-
-                                        // PASSAGES DES MESSAGES NON LUS EN LUS
-                                        "UPDATE tripenarvor._message "
-                                        "SET lus = true "
-                                        "WHERE code_destinataire = %d AND lus = false; "
-
-                                        "COMMIT;",
-                                        user_info->id_user, user_info->id_user);
-                            }
-
+                        if (executable == true) {
+                            // Exécution de la requête SQL
                             PGresult *res = PQexec(conn, query);
                             if (PQresultStatus(res) != PGRES_TUPLES_OK) {
                                 fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
@@ -416,15 +418,15 @@ int main() {
                             if (num_rows == 0) {
                                 send(cnx, "Aucun message trouvé.\n", 23, 0);
                             } else {
-                                char message_buffer[2048];  // Augmenter la taille du buffer pour un affichage plus large
+                                char message_buffer[2048];
                                 for (int i = 0; i < num_rows; i++) {
                                     const char *nom_emetteur = PQgetvalue(res, i, 5);
                                     const char *prenom_emetteur = PQgetvalue(res, i, 6);
                                     const char *raison_sociale_emetteur = PQgetvalue(res, i, 7);
 
-                                    char *emetteur = NULL;  // Utiliser un pointeur vers char (pas const)
+                                    char *emetteur = NULL;
                                     if (strlen(raison_sociale_emetteur) > 0) {
-                                        emetteur = (char *)raison_sociale_emetteur;  // Utiliser la raison sociale si elle existe
+                                        emetteur = (char *)raison_sociale_emetteur;
                                     } else if (strlen(nom_emetteur) > 0 && strlen(prenom_emetteur) > 0) {
                                         emetteur = (char *)malloc(strlen(nom_emetteur) + strlen(prenom_emetteur) + 2);  // +2 pour l'espace et le caractère nul
                                         if (emetteur != NULL) {
@@ -435,23 +437,34 @@ int main() {
                                     }
 
                                     snprintf(message_buffer, sizeof(message_buffer),
-                                            "\n----------------------------------------\n"
-                                            "ID du message : %s\n"
-                                            "Envoyé par : \033[1m%s\033[0m\n"
-                                            "Contenu : \033[1m%s\033[0m"
-                                            "Date de création : %s\n"
-                                            "Dernière modification : %s\n"
-                                            "----------------------------------------\n",
-                                            PQgetvalue(res, i, 0), emetteur, PQgetvalue(res, i, 1), PQgetvalue(res, i, 2), PQgetvalue(res, i, 3));
+                                             "\n----------------------------------------\n"
+                                             "ID du message : %s\n"
+                                             "Envoyé par : \033[1m%s\033[0m\n"
+                                             "Contenu : \033[1m%s\033[0m"
+                                             "Date de création : %s\n"
+                                             "Dernière modification : %s\n"
+                                             "----------------------------------------\n",
+                                             PQgetvalue(res, i, 0), emetteur, PQgetvalue(res, i, 1), PQgetvalue(res, i, 2), PQgetvalue(res, i, 3));
                                     send(cnx, message_buffer, strlen(message_buffer), 0);
 
                                     // Libérer la mémoire uniquement si emetteur a été alloué dynamiquement
-                                    if (emetteur != NULL && emetteur != "Inconnu" && emetteur != raison_sociale_emetteur) {
+                                    if (emetteur != NULL && strcmp(emetteur, "Inconnu") != 0 && strcmp(emetteur, raison_sociale_emetteur) != 0) {
                                         free(emetteur);
                                     }
                                 }
                             }
                             PQclear(res);
+
+                            if (a_marquer_comme_lus) {
+                                // Marquer les messages comme lus après avoir traité la sélection
+                                char update_query[512];
+                                snprintf(update_query, sizeof(update_query),
+                                         "UPDATE tripenarvor._message SET lus = true WHERE code_destinataire = %d AND lus = false;",
+                                         user_info->id_user);
+
+                                // Appeler execute_query avec la requête formatée
+                                execute_query(conn, update_query);
+                            }
                         }
                     } else {
                         send(cnx, "Commande inconnue\n", 19, 0);
