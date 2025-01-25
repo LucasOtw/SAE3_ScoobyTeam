@@ -7,7 +7,9 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdbool.h>
+#include <time.h> // Bibliothèque PostgreSQL
 #include <libpq-fe.h> // Bibliothèque PostgreSQL
+
 
 #include "config.h"
 #include "bdd.h"
@@ -281,6 +283,75 @@ int main()
 
                         } else {
                             send(cnx, "Erreur de format : MSG <id_destinataire> '<contenu du message>'\n", 65, 0);
+                        }
+                    }
+                    //////////////////////////////////////////////////////////////////////////////////////////
+                    /// MODIF ................................................................................
+                    //////////////////////////////////////////////////////////////////////////////////////////
+                    else if (strncmp(buffer, "MDF", 3) == 0) {
+                        
+                        int id_msg;
+                        char txt[1000], type_user_bdd[15];
+                        int offset = 0;
+
+                        if (strcmp(user_info->new_user, "MEMBRE") == 0) {
+                            strcpy(type_user_bdd, "membre");
+                        } else if (strcmp(user_info->new_user, "PRO") == 0) {
+                            strcpy(type_user_bdd, "professionnel");
+                        }
+
+                        if (sscanf(buffer, "MDF %d %n", &id_msg, &offset) == 1) {
+
+                            printf("ID Message : %d\n", id_msg);   // Affiche : 123
+                            printf("Offset : %d\n", offset);             // Affiche : 7
+
+                            // Pointeur vers la partie restante du message
+                            char *message = buffer + offset;
+                            printf("Message : %s\n", message);
+
+                            snprintf(txt, sizeof(txt), "%s", buffer + offset);
+
+                            // Retirer les espaces et les apostrophes en trop si nécessaire
+                            char *start = txt;
+                            while (*start == ' ') start++; // Supprimer les espaces en début
+                            char *end = start + strlen(start) - 1;
+                            while (end > start && (*end == ' ' || *end == '\'')) {
+                                *end = '\0';
+                                end--;
+                            }
+
+
+                            // Obetnir Date et heure de la modif
+                            // Obtenir la date et l'heure actuelles
+                            time_t now = time(NULL);
+                            struct tm *time_info = localtime(&now);
+
+                            if (time_info == NULL) {
+                                perror("Erreur lors de la récupération de la date et de l'heure");
+                                return EXIT_FAILURE;
+                            }
+
+                            char timestamp[20];
+                            strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", time_info);
+
+                            // ENVOI DU MSG
+                            snprintf(query, sizeof(query),
+                                    "UPDATE tripenarvor._message SET contenu = '%s', horodatage_modifie = '%s', lus = 'false' WHERE id_message = %d",
+                                    start, timestamp, id_msg);
+
+
+                            PGresult *res_update = PQexec(conn, query);
+                            if (PQresultStatus(res_update) != PGRES_COMMAND_OK) {
+                                fprintf(stderr, "Échec de l'enregistrement du message : %s\n", PQerrorMessage(conn));
+                                PQclear(res_update);
+                                return EXIT_FAILURE;
+                            }
+                            PQclear(res_update);
+
+
+
+                        } else {
+                            send(cnx, "Erreur de format : MDF <id_msg> '<contenu du message>'\n", 65, 0);
                         }
                     } else {
                             send(cnx, "Commande inconnue\n", 19, 0);
