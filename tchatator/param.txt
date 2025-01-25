@@ -3,7 +3,7 @@
 SERVER_IP="127.0.0.1"
 
 # Port sur lequel le serveur écoute les connexions entrantes.
-SERVER_PORT=8081
+SERVER_PORT=8080
 
 # Nombre de connexions en attente dans la file d'attente du serveur avant qu'elles ne soient traitées.
 NB_BACKLOG=5
