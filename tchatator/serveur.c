@@ -18,7 +18,7 @@ int main() {
     int sock, cnx, ret, size, len;
     struct sockaddr_in addr, conn_addr;
 
-    char buffer[BUFFER_SIZE], query[2000], txt_log[100];  // Buffer pour lire les données
+    char buffer[BUFFER_SIZE], query[2000], txt_log[256];  // Buffer pour lire les données
 
     PGconn *conn = connect_to_db();
     if (conn == NULL) {
@@ -26,13 +26,19 @@ int main() {
     }
 
     if (load_config("param.txt") != 0) {
-        printf("Erreur lors du chargement du fichier de configuration.\n");
+        printf("\033[31m-> Erreur lors du chargement du fichier de configuration.\033[0m\n");
+        snprintf(txt_log, sizeof(txt_log),
+                "-> Erreur lors du chargement du fichier de configuration.");
+        insert_logs(NULL, NULL, txt_log);
         PQfinish(conn);
         return -1;
     }
 
     if (prepare_socket(&ret, &sock, &addr) != 0) {
-        printf("Erreur : Impossible de configurer le socket.\n");
+        printf("\033[31m-> Erreur : Impossible de configurer le socket.\033[0m\n");
+        snprintf(txt_log, sizeof(txt_log),
+                "-> Erreur : Impossible de configurer le socket.");
+        insert_logs(NULL, NULL, txt_log);
         exit(EXIT_FAILURE);
     }
 
@@ -40,10 +46,13 @@ int main() {
 
     while (1)  // while(1) pour garder le serveur allume malgre que le client quitte
     {
-        printf("=>En attente d'une connexion...\n");
+        printf("=> En attente d'une connexion...\n");
         cnx = accept(sock, (struct sockaddr *)&conn_addr, (socklen_t *)&size);
         if (cnx == -1) {
-            perror("->Erreur lors de accept ");
+            perror("\033[31m-> Erreur lors de accept\033[0m");
+            snprintf(txt_log, sizeof(txt_log),
+                "-> Erreur lors de accept");
+            insert_logs(NULL, NULL, txt_log);
             PQfinish(conn);
             exit(-1);
         }
@@ -52,7 +61,11 @@ int main() {
         char client_ip[INET_ADDRSTRLEN];  // Buffer pour stocker l'adresse IP
         inet_ntop(AF_INET, &(conn_addr.sin_addr), client_ip, INET_ADDRSTRLEN);
 
-        printf("Connexion acceptée de l'adresse IP : %s\n", client_ip);
+        printf("\033[32mConnexion acceptée de l'adresse IP : %s\033[0m\n", client_ip);
+        snprintf(txt_log, sizeof(txt_log),
+                "Connexion acceptée de l'adresse IP : %s\n", client_ip);
+        insert_logs(NULL, client_ip, txt_log);
+        
         memset(buffer, 0, sizeof(buffer));
 
         char api_key[LEN_API + 1];  // Variable pour stocker la clé API reçue
@@ -62,7 +75,10 @@ int main() {
         // Réception de la clé API
         len = recv(cnx, api_key, sizeof(api_key) - 1, 0);
         if (len <= 0) {
-            perror("Erreur lors de la réception des données");
+            perror("\033[31m-> Erreur lors de la réception des données\033[0m");
+            snprintf(txt_log, sizeof(txt_log),
+                "-> Erreur lors de la réception des données");
+            insert_logs(NULL, client_ip, txt_log);
             close(cnx);
             continue;
         }
@@ -75,7 +91,10 @@ int main() {
 
         // Vérification de la validité de la clé API (facultatif)
         if (strlen(api_key) == 0) {
-            printf("Erreur : clé API vide après nettoyage.\n");
+            printf("\033[31m-> Erreur : clé API vide après nettoyage.\033[0m\n");
+            snprintf(txt_log, sizeof(txt_log),
+                "-> Erreur : clé API vide après nettoyage.");
+            insert_logs(api_key, client_ip, txt_log);
             close(cnx);
             continue;
         }
@@ -85,26 +104,38 @@ int main() {
         UserInfo *user_info = generate_and_return_token(api_key, conn);
 
         if (user_info == NULL) {
-            printf("Erreur lors de la génération ou de la récupération du token.\n");
+            printf("\033[31m-> Erreur lors de la génération ou de la récupération du token.\033[0m\n");
+            snprintf(txt_log, sizeof(txt_log),
+                "-> Erreur lors de la génération ou de la récupération du token.");
+            insert_logs(api_key, client_ip, txt_log);
             close(cnx);
             continue;
         }
 
         // Afficher le token généré pour confirmation (facultatif)
         printf("Token généré pour la clé API '%s' : %s\n", api_key, user_info->token);
+        snprintf(txt_log, sizeof(txt_log),
+                "User connecté token généré pour la clé API '%s' : %s\n", api_key, user_info->token);
+        insert_logs(api_key, client_ip, txt_log);
 
         if (user_info == NULL) {
-            perror("Erreur lors de la génération du token.");
+            perror("\033[31m-> Erreur lors de la génération du token.\033[0m");
+            snprintf(txt_log, sizeof(txt_log),
+                "-> Erreur lors de la génération du token.");
+            insert_logs(api_key, client_ip, txt_log);
             close(cnx);
             continue;
         }
         if (user_info->token[0] != '\0') {
-            char txt_env[60];
-            snprintf(txt_env, sizeof(txt_env), "Vous êtes connecté, voici votre token : %s\n", user_info->token);
+            char txt_env[80];
+            snprintf(txt_env, sizeof(txt_env), "\033[32mVous êtes connecté, voici votre token : %s\033[0m\n", user_info->token);
 
             int tk = send(cnx, txt_env, strlen(txt_env), 0);
             if (tk == -1) {
-                perror("Erreur lors de send ");
+                perror("-> Erreur lors de send ");
+                snprintf(txt_log, sizeof(txt_log),
+                    "-> Erreur lors de la génération du token.");
+                insert_logs(api_key, client_ip, txt_log);
                 PQfinish(conn);
                 exit(-1);
             }
@@ -123,26 +154,24 @@ int main() {
 
                 if (ret > 0) {
                     buffer[ret] = '\0';  // Terminaison de chaîne
-                    printf("Données reçues : %s\n", buffer);
+                    printf("Commande reçue : %s\n", buffer);
 
                     //////////////////////////////////////////////////////////////////////////////////////////
                     /// BYE BYE
                     //////////////////////////////////////////////////////////////////////////////////////////
                     if (strncmp(buffer, "BYE BYE", 7) == 0) {
-                        send(cnx, "Connexion terminée\n", 20, 0);
-                        snprintf(txt_log, sizeof(txt_log), "BYE BYE %s", user_info->token);
-                        insert_logs(api_key, client_ip, txt_log);
+                        send(cnx, "\033[33mConnexion terminée\033[0m\n", 20, 0);
 
                         snprintf(query, sizeof(query), "update tripenarvor._token set is_active = FALSE where token = '%s'", user_info->token);
                         // printf("Requête SQL exécutée : %s\n", query);
 
-                        PGresult *res = PQexec(conn, query);
-                        if (PQresultStatus(res) != PGRES_COMMAND_OK) {
-                            fprintf(stderr, "Échec de l'exécution de la requête : %s\n", PQerrorMessage(conn));
-                            PQclear(res);    // Libérer la mémoire allouée pour le résultat
-                            PQfinish(conn);  // Libérer la mémoire allouée pour la connexion
-                            return EXIT_FAILURE;
+                        if (!execute_query(conn, query, api_key, client_ip)) {
+                            send(cnx, "\033[31m-> Erreur interne lors de la déconnexion.\033[0m\n", strlen("Erreur interne lors de la déconnexion.\n"), 0);
+                            break;
                         }
+
+                        snprintf(txt_log, sizeof(txt_log), "BYE BYE %s", user_info->token);
+                        insert_logs(api_key, client_ip, txt_log);
                         memset(query, 0, sizeof(query));
 
                         break;
@@ -241,10 +270,9 @@ int main() {
                             PGresult *res_update = PQexec(conn, query);
                             if (PQresultStatus(res_update) != PGRES_COMMAND_OK) {
                                 // Log en cas d'échec
-                                char error_message[256];
-                                snprintf(error_message, sizeof(error_message),
+                                snprintf(txt_log, sizeof(txt_log),
                                          "Échec de l'envoi du message au compte %d : %s", id_dest, PQerrorMessage(conn));
-                                insert_logs(api_key, client_ip, error_message);
+                                insert_logs(api_key, client_ip, txt_log);
 
                                 fprintf(stderr, "Échec de l'enregistrement du message : %s\n", PQerrorMessage(conn));
                                 PQclear(res_update);
@@ -309,30 +337,31 @@ int main() {
 
                             // Construction de la requête SQL
                             snprintf(query, sizeof(query),
-                                     "UPDATE tripenarvor._message SET contenu = '%s', horodatage_modifie = '%s', lu = 'false' WHERE id = %d",
+                                     "UPDATE tripenarvor._message SET contenu = '%s', horodatage_modifie = '%s', lus = 'false' WHERE id_message = %d",
                                      start, timestamp, id_msg);
 
                             // Exécution de la requête
                             PGresult *res_update = PQexec(conn, query);
                             if (PQresultStatus(res_update) != PGRES_COMMAND_OK) {
                                 // Log en cas d'échec
-                                char error_message[256];
-                                snprintf(error_message, sizeof(error_message),
+                                snprintf(txt_log, sizeof(txt_log),
                                          "Échec de la mise à jour du message ID %d : %s", id_msg, PQerrorMessage(conn));
-                                insert_logs(api_key, client_ip, error_message);
+                                insert_logs(api_key, client_ip, txt_log);
+
+                                send(cnx, "Le message n'a pas été modifié\n", sizeof("Le message n'a pas été modifié\n"), 0);
 
                                 fprintf(stderr, "Échec de l'enregistrement du message : %s\n", PQerrorMessage(conn));
                                 PQclear(res_update);
                                 return EXIT_FAILURE;
+                            } else {
+                                 // Log en cas de succès
+                                char success_message[256];
+                                snprintf(success_message, sizeof(success_message),
+                                        "Mise à jour réussie pour le message ID %d", id_msg);
+                                insert_logs(api_key, client_ip, success_message);
+
+                                PQclear(res_update);
                             }
-
-                            // Log en cas de succès
-                            char success_message[256];
-                            snprintf(success_message, sizeof(success_message),
-                                     "Mise à jour réussie pour le message ID %d", id_msg);
-                            insert_logs(api_key, client_ip, success_message);
-
-                            PQclear(res_update);
 
                         } else {
                             send(cnx, "Erreur de format : MDF <id_msg> '<contenu du message>'\n", 56, 0);
@@ -465,10 +494,10 @@ int main() {
             send(cnx, "Erreur lors de la génération du token\n", 39, 0);
         }
 
-        printf("Déconnexion du client en cours...\n");
-        send(cnx, "Vous avez été déconnecté.\n", strlen("Vous avez été déconnecté.\n"), 0);
+        printf("\033[33mDéconnexion du client en cours...\033[0m\n");
+        send(cnx, "\033[33mVous avez été déconnecté.\033[0m\n", strlen("\033[33mVous avez été déconnecté.\033[0m\n"), 0);
         close(cnx);  // Fermer le socket client
-        printf("Client déconnecté.\n");
+        printf("\033[33mClient déconnecté.\033[0m\n");
     }
 
     PQfinish(conn);

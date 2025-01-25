@@ -10,3 +10,35 @@
 [2025-01-23 17:56:17] API_KEY: M-dcfcfc85, IP: 127.0.0.1, Message: REGEN 7eqM
 [2025-01-23 17:56:28] API_KEY: M-dcfcfc85, IP: 127.0.0.1, Message: BYE BYE 7eqM
 [2025-01-25 14:27:01] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-01-25 15:41:39] API_KEY: P-fadea4ec, IP: 127.0.0.1, Message: Échec de la mise à jour du message ID 2 : ERROR:  column "id" does not exist
+LINE 2: ...e_modifie = '2025-01-25 15:41:39', lu = 'false' WHERE id = 2
+                                                                 ^
+
+[2025-01-25 15:44:49] API_KEY: P-fadea4ec, IP: 127.0.0.1, Message: Échec de la mise à jour du message ID 3 : ERROR:  column "lu" of relation "_message" does not exist
+LINE 2: ', horodatage_modifie = '2025-01-25 15:44:49', lu = 'false' ...
+                                                       ^
+
+[2025-01-25 15:47:24] API_KEY: P-fadea4ec, IP: 127.0.0.1, Message: Mise à jour réussie pour le message ID 3
+[2025-01-25 16:01:02] API_KEY: P-fadea4ec, IP: 127.0.0.1, Message: Mise à jour réussie pour le message ID 3
+[2025-01-25 16:02:42] API_KEY: P-fadea4ec, IP: 127.0.0.1, Message: Mise à jour réussie pour le message ID 3
+[2025-01-25 16:03:10] API_KEY: P-fadea4ec, IP: 127.0.0.1, Message: BYE BYE GTbo
+[2025-01-25 16:25:11] API_KEY: P-fadea4ec, IP: 127.0.0.1, Message: Mise à jour réussie pour le message ID 3
+[2025-01-25 16:25:18] API_KEY: P-fadea4ec, IP: 127.0.0.1, Message: Mise à jour réussie pour le message ID 78
+[2025-01-25 16:27:05] API_KEY: P-fadea4ec, IP: 127.0.0.1, Message: Échec de la mise à jour du message ID 3 : 
+[2025-01-25 16:27:11] API_KEY: P-fadea4ec, IP: 127.0.0.1, Message: Échec de la mise à jour du message ID 2 : 
+[2025-01-25 16:45:51] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: [32mConnexion acceptée de l'adresse IP : 127.0.0.1[0m
+
+[2025-01-25 16:46:18] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: [32mConnexion acceptée de l'adresse IP : 127.0.0.1[0m
+
+[2025-01-25 16:49:56] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: [32mConnexion acceptée de l'adresse IP : 127.0.0.1[0m
+
+[2025-01-25 17:07:15] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+
+[2025-01-25 17:07:23] API_KEY: P-fadea4ec, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-fadea4ec' : YJK1
+
+[2025-01-25 17:07:28] API_KEY: P-fadea4ec, IP: 127.0.0.1, Message: BYE BYE YJK1
+[2025-01-25 17:11:50] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+
+[2025-01-25 17:11:58] API_KEY: P-fadea4ec, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-fadea4ec' : Hcju
+
+[2025-01-25 17:12:19] API_KEY: P-fadea4ec, IP: 127.0.0.1, Message: BYE BYE Hcju

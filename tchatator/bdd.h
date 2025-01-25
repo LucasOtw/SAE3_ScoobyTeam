@@ -12,6 +12,6 @@ PGconn* connect_to_db();
 char* generate_token();
 
 // Fonction utilitaire pour exécuter une requête PostgreSQL et vérifier le résultat
-bool execute_query(PGconn *conn, const char *query);
+bool execute_query(PGconn *conn, const char *query, char *api_key, char *client_ip);
 
 #endif

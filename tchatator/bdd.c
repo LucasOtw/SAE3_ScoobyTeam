@@ -6,6 +6,7 @@
 #include <libpq-fe.h> // Bibliothèque PostgreSQL
 
 #include "bdd.h"
+#include "config.h"
 
 
 
@@ -60,11 +61,14 @@ char* generate_token() {
 
 
 // Fonction utilitaire pour exécuter une requête PostgreSQL et vérifier le résultat
-bool execute_query(PGconn *conn, const char *query) {
+bool execute_query(PGconn *conn, const char *query, char *api_key, char *client_ip) {
+    char txt_log[256];
     PGresult *res = PQexec(conn, query);
     if (PQresultStatus(res) != PGRES_COMMAND_OK) {
-        fprintf(stderr, "Échec de la requête SQL : %s\n%s\n", query, PQerrorMessage(conn));
+        fprintf(stderr, "\033[31m-> Échec de la requête SQL : %s\n%s\033[0m\n", query, PQerrorMessage(conn));
         PQclear(res);
+        snprintf(txt_log, sizeof(txt_log), "-> Échec de la requête SQL : %s\n%s\n", query, PQerrorMessage(conn));
+        insert_logs(api_key, client_ip, txt_log);
         return false;
     }
     PQclear(res);

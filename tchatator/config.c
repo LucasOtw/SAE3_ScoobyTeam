@@ -92,7 +92,7 @@ int prepare_socket(int *ret, int *sock, struct sockaddr_in *addr) {
     addr->sin_port = htons(SERVER_PORT);
 
     // Liaison du socket
-    printf("====> Binding du socket\n");
+    printf("===> Binding du socket\n");
     *ret = bind(*sock, (struct sockaddr *)addr, sizeof(*addr));
     if (*ret == -1) {
         perror("-> Erreur lors du bind ");
@@ -101,7 +101,7 @@ int prepare_socket(int *ret, int *sock, struct sockaddr_in *addr) {
     }
 
     // Mise en écoute
-    printf("====> Mise en écoute du socket\n");
+    printf("==> Mise en écoute du socket\n");
     *ret = listen(*sock, 1);
     if (*ret == -1) {
         perror("-> Erreur lors de listen ");
@@ -220,8 +220,12 @@ void insert_logs(const char *api_key, const char *ip_address, const char *messag
     char timestamp[20];
     strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", time_info);
 
+    // Déterminer les valeurs par défaut pour l'IP et la clé API si elles sont absentes
+    const char *final_api_key = (api_key != NULL && strlen(api_key) > 0) ? api_key : "UNKNOWN_API_KEY";
+    const char *final_ip_address = (ip_address != NULL && strlen(ip_address) > 0) ? ip_address : "UNKNOWN_IP";
+
     // Écrire la ligne de log dans le fichier
-    fprintf(log_file, "[%s] API_KEY: %s, IP: %s, Message: %s\n", timestamp, api_key, ip_address, message);
+    fprintf(log_file, "[%s] API_KEY: %s, IP: %s, Message: %s\n", timestamp, final_api_key, final_ip_address, message);
 
     fclose(log_file); // Fermer le fichier
 }
