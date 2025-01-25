@@ -288,7 +288,7 @@ int main() {
                             PQclear(res_update);
 
                         } else {
-                            send(cnx, "Erreur de format : MSG <id_destinataire> '<contenu du message>'\n", 65, 0);
+                            send(cnx, "\033[31mErreur de format : MSG <id_destinataire> '<contenu du message>'\n\033[39m", 65, 0);
                         }
                     }
                     //////////////////////////////////////////////////////////////////////////////////////////
@@ -364,7 +364,7 @@ int main() {
                             }
 
                         } else {
-                            send(cnx, "Erreur de format : MDF <id_msg> '<contenu du message>'\n", 56, 0);
+                            send(cnx, "\033[31mErreur de format : MDF <id_msg> '<contenu du message>'\n\033[39m", 56, 0);
                         }
                     }
                     //////////////////////////////////////////////////////////////////////////////////////////
@@ -429,7 +429,7 @@ int main() {
                                 a_marquer_comme_lus = true;
                                 break;
                             default:
-                                send(cnx, "Erreur de format : HIST <LUS | NONLUS | RECUS | ENVOYES> \n", 59, 0);
+                                send(cnx, "\033[31mErreur de format : HIST <LUS | NONLUS | RECUS | ENVOYES> \n\033[39m", 59, 0);
                                 break;
                         }
 
@@ -492,7 +492,7 @@ int main() {
                                          user_info->id_user);
 
                                 // Appeler execute_query avec la requête formatée
-                                execute_query(conn, update_query);
+                                execute_query(conn, update_query, api_key, client_ip);
                             }
                         }
                     } else {
