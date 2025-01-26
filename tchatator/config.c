@@ -6,6 +6,7 @@
 #include <netinet/in.h>
 #include <unistd.h>
 #include <time.h>
+#include <stdbool.h>
 #include <libpq-fe.h> // Bibliothèque PostgreSQL
 
 #include "config.h"
@@ -258,4 +259,74 @@ void insert_logs(const char *api_key, const char *ip_address, const char *messag
     fprintf(log_file, "[%s] API_KEY: %s, IP: %s, Message: %s\n", timestamp, final_api_key, final_ip_address, message);
 
     fclose(log_file); // Fermer le fichier
+}
+
+
+
+
+
+bool is_token_valid(PGconn *conn, const char *token, char *log_message, size_t log_size) {
+    if (conn == NULL || token == NULL) {
+        snprintf(log_message, log_size, "-> Erreur : Connexion à la base de données ou token invalide.");
+        return false;
+    }
+
+    char query[256];
+    snprintf(query, sizeof(query), "SELECT is_active, expires_at FROM tripenarvor._token WHERE token = '%s'", token);
+
+    // Exécuter la requête SQL
+    PGresult *res = PQexec(conn, query);
+    if (PQresultStatus(res) != PGRES_TUPLES_OK) {
+        snprintf(log_message, log_size, "-> Erreur lors de l'exécution de la requête : %s", PQerrorMessage(conn));
+        PQclear(res);
+        return false;
+    }
+
+    // Vérifier si le token existe dans la base de données
+    if (PQntuples(res) == 0) {
+        snprintf(log_message, log_size, "-> Erreur : Aucun token trouvé avec la valeur donnée.");
+        PQclear(res);
+        return false;
+    }
+
+    // Récupérer les valeurs depuis le résultat de la requête
+    char *is_active_str = PQgetvalue(res, 0, 0);
+    char *expires_at_str = PQgetvalue(res, 0, 1);
+
+    bool is_active = (strcmp(is_active_str, "t") == 0); // "t" représente TRUE dans PostgreSQL
+    struct tm expires_at;
+
+    // Convertir expires_at_str en struct tm
+    if (strptime(expires_at_str, "%Y-%m-%d %H:%M:%S", &expires_at) == NULL) {
+        snprintf(log_message, log_size, "-> Erreur : Impossible de parser la date expires_at : %s", expires_at_str);
+        PQclear(res);
+        return false;
+    }
+
+    // Convertir expires_at en time_t (UTC)
+    time_t expires_at_time = timegm(&expires_at); // Utilise timegm pour UTC
+    if (expires_at_time == -1) {
+        snprintf(log_message, log_size, "-> Erreur : Impossible de convertir expires_at en time_t.");
+        PQclear(res);
+        return false;
+    }
+
+    // Obtenir l'heure actuelle en UTC
+    time_t now = time(NULL); // Temps actuel en epoch
+    if (now == -1) {
+        snprintf(log_message, log_size, "-> Erreur lors de la récupération de l'heure actuelle.");
+        PQclear(res);
+        return false;
+    }
+
+    // Comparer les dates en UTC
+    if (is_active && difftime(expires_at_time, now) > 0) {
+        snprintf(log_message, log_size, "Le token est valide jusqu'à %s.", expires_at_str);
+        PQclear(res);
+        return true;
+    } else {
+        snprintf(log_message, log_size, "-> Erreur : Le token est expiré ou inactif.");
+        PQclear(res);
+        return false;
+    }
 }

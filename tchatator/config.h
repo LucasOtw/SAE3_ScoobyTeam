@@ -2,6 +2,7 @@
 #define CONFIG_H
 
 #include <netinet/in.h>
+#include <stdbool.h>
 #include <libpq-fe.h> // Bibliothèque PostgreSQL
 
 // Déclaration des variables globales
@@ -35,5 +36,7 @@ int prepare_socket(int *ret, int *sock, struct sockaddr_in *addr);
 UserInfo* generate_and_return_token(const char *buffer, PGconn *conn);
 
 void insert_logs(const char *api_key, const char *ip_address, const char *message);
+
+bool is_token_valid(PGconn *conn, const char *token, char *log_message, size_t log_size);
 
 #endif
