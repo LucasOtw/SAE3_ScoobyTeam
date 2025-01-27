@@ -140,3 +140,48 @@ DETAIL:  Key (code_de
 [2025-01-26 16:09:25] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: HIST LUS affiché
 [2025-01-26 16:09:29] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: BYE BYE Lg7p
 [2025-01-26 16:09:29] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-27 12:35:38] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-27 12:36:04] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : 95CX
+[2025-01-27 12:36:04] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
+
+[2025-01-27 12:36:17] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Suppression du message 1 réussi
+[2025-01-27 12:38:44] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-27 12:38:44] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-27 12:39:30] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-27 12:39:35] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : VqEO
+[2025-01-27 12:39:35] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
+
+[2025-01-27 12:39:41] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur de format : HIST <LUS | NONLUS | RECUS | ENVOYES>
+[2025-01-27 12:40:04] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST RECUS affiché
+[2025-01-27 12:40:22] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-27 12:45:22] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-27 12:45:27] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : EfXW
+[2025-01-27 12:45:27] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
+
+[2025-01-27 12:45:57] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-27 12:46:04] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : q690
+[2025-01-27 12:46:04] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-27 12:46:04] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-27 12:46:11] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-27 12:46:12] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : nl8Z
+[2025-01-27 12:46:12] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-27 12:46:12] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-27 12:46:27] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-27 12:46:28] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : m6CV
+[2025-01-27 12:46:28] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-27 12:46:28] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-27 12:46:45] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-27 12:46:46] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : 8V7L
+[2025-01-27 12:46:46] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
+
+[2025-01-27 12:46:54] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-27 12:46:59] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST RECUS affiché
+[2025-01-27 12:47:07] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST LUS affiché
+[2025-01-27 12:47:17] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST N affiché
+[2025-01-27 12:47:28] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST N affiché
+[2025-01-27 12:47:32] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST LUS affiché
+[2025-01-27 12:47:38] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-01-27 12:48:01] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Suppression du message 3 réussi
+
+[2025-01-27 12:49:25] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Suppression du message 2 réussi
+
