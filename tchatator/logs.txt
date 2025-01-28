@@ -187,3 +187,632 @@ DETAIL:  Key (code_de
 
 [2025-01-28 18:00:20] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
 [2025-01-28 18:00:26] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: -> Erreur lors de la réception des données
+[2025-01-28 18:49:28] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 18:49:33] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: -> Erreur lors de la réception des données
+[2025-01-28 18:55:26] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 18:58:14] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: -> Erreur lors de la réception des données
+[2025-01-28 19:02:40] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:02:55] API_KEY: LOGIN:LOGI, IP: 127.0.0.1, Message: -> Erreur : lors de la génération ou de la récupération du token.
+[2025-01-28 19:03:29] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:03:31] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: -> Erreur : clé API vide après nettoyage.
+[2025-01-28 19:05:39] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:05:44] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: -> Erreur : clé API vide après nettoyage.
+[2025-01-28 19:11:35] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:11:42] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: -> Erreur : clé API vide après nettoyage.
+[2025-01-28 19:12:39] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:12:45] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: -> Erreur : clé API vide après nettoyage.
+[2025-01-28 19:14:03] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:14:08] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: -> Erreur : clé API vide après nettoyage.
+[2025-01-28 19:14:39] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:14:47] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: -> Erreur : clé API vide après nettoyage.
+[2025-01-28 19:15:47] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:15:55] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: -> Erreur : clé API vide après nettoyage.
+[2025-01-28 19:16:05] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:16:07] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: -> Erreur : clé API vide après nettoyage.
+[2025-01-28 19:16:18] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:16:19] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: -> Erreur : clé API vide après nettoyage.
+[2025-01-28 19:17:42] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:17:47] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : lO19
+[2025-01-28 19:18:02] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-01-28 19:18:59] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-01-28 19:19:09] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-01-28 19:20:53] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 19:23:09] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 19:24:08] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:24:17] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : CEWc
+[2025-01-28 19:24:20] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-01-28 19:24:28] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-01-28 19:24:32] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-01-28 19:25:03] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 19:25:12] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:25:18] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : 69pI
+[2025-01-28 19:26:33] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 19:26:33] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 19:27:06] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 19:27:06] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 19:27:39] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:27:44] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : v7HE
+[2025-01-28 19:29:13] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:29:18] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : x3Jp
+[2025-01-28 19:29:23] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-01-28 19:30:58] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 19:30:58] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 19:31:01] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:31:06] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : YHhV
+[2025-01-28 19:31:11] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-01-28 19:31:12] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 19:31:12] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 19:31:14] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:31:16] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : 1oew
+[2025-01-28 19:31:22] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 19:32:37] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 19:32:37] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 19:32:38] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:32:49] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : 5fRn
+[2025-01-28 19:32:54] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 19:37:10] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 19:37:10] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 19:37:12] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:37:21] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : 7dWe
+[2025-01-28 19:37:25] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 19:39:48] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 19:39:48] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 19:44:52] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:45:00] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : vPcv
+[2025-01-28 19:45:05] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 19:45:39] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 19:45:39] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 19:46:23] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:46:28] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : u4gM
+[2025-01-28 19:46:34] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 19:46:34] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 19:46:43] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:46:45] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : Zeyr
+[2025-01-28 19:46:51] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 19:46:59] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:47:03] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : vz3W
+[2025-01-28 19:47:03] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 19:47:03] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 19:47:26] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:47:28] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : fTug
+[2025-01-28 19:47:28] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 19:47:28] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 19:47:32] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:47:35] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : bOz0
+[2025-01-28 19:47:35] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 19:47:35] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 19:48:03] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:48:05] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : Teox
+[2025-01-28 19:48:11] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur de format : HIST <LUS | NONLUS | RECUS | ENVOYES>
+[2025-01-28 19:48:30] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 19:48:30] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 19:49:53] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:49:58] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : xdEf
+[2025-01-28 19:50:01] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 19:50:12] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => M-8b451acb
+[2025-01-28 19:50:21] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-01-28 19:51:33] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 19:52:01] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 19:52:06] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:52:15] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : mDoK
+[2025-01-28 19:52:24] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 19:55:10] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 19:58:30] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:58:36] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : RKVT
+[2025-01-28 19:58:41] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 19:59:11] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 19:59:16] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 19:59:29] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : P22a
+[2025-01-28 19:59:54] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 20:00:11] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-01-28 20:01:58] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 20:16:50] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 20:16:50] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 20:16:56] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 20:16:56] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 20:17:09] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 20:17:15] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : rICh
+[2025-01-28 20:17:15] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 20:17:15] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 20:17:53] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 20:17:55] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : 2Bab
+[2025-01-28 20:17:55] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 20:17:55] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 20:18:21] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 20:18:22] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : MNe0
+[2025-01-28 20:18:22] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 20:18:22] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 20:18:32] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 20:18:35] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : UEFj
+[2025-01-28 20:18:42] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-01-28 20:19:15] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 20:19:51] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 20:33:39] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 20:34:05] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-8b451acb' : wZy0
+[2025-01-28 20:34:19] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Suppression du message 7 réussi
+
+[2025-01-28 20:34:52] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Suppression du message 6 réussi
+
+[2025-01-28 20:35:08] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: REGEN wZy0
+[2025-01-28 20:35:43] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: REGEN wZy0
+[2025-01-28 20:36:11] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: REGEN wZy0
+[2025-01-28 20:36:25] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 20:36:31] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => M-ce460be4
+[2025-01-28 20:36:42] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-01-28 20:36:46] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-01-28 20:36:54] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 20:37:12] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Suppression du message 5 réussi
+
+[2025-01-28 20:37:16] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 20:37:22] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 20:37:26] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Suppression du message 2 réussi
+
+[2025-01-28 20:37:27] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-01-28 20:37:50] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-01-28 20:37:57] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-01-28 20:38:00] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 20:38:56] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 20:39:03] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 20:39:32] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 20:39:41] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : C8Jc
+[2025-01-28 20:39:41] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 20:39:41] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 20:40:22] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 20:40:25] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : xkRI
+[2025-01-28 20:40:27] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 20:42:03] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 20:42:03] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 20:42:06] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 20:42:12] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : EA2G
+[2025-01-28 20:42:15] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 20:43:07] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 20:43:07] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 20:43:09] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 20:43:15] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : hjm6
+[2025-01-28 20:43:22] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 20:45:01] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 20:45:01] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 20:45:04] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 20:45:09] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : cm2o
+[2025-01-28 20:45:10] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 20:46:26] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 20:46:26] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 20:46:30] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 20:46:35] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : 2ujP
+[2025-01-28 20:46:37] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 20:49:50] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 20:50:27] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 20:50:39] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 20:50:47] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : BEbg
+[2025-01-28 20:50:47] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => dfsqfd
+[2025-01-28 21:06:14] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 21:07:48] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:07:53] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: -> Erreur : clé API vide après nettoyage.
+[2025-01-28 21:07:58] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:08:04] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : bDAs
+[2025-01-28 21:08:04] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => dsqdsq
+[2025-01-28 21:08:13] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 21:08:16] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => M-ce460bed
+[2025-01-28 21:08:56] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 21:09:02] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:09:05] API_KEY: fdsfdsfds, IP: 127.0.0.1, Message: -> Erreur : lors de la génération ou de la récupération du token.
+[2025-01-28 21:10:23] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:10:28] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : La clé API n'existe pas
+[2025-01-28 21:10:28] API_KEY: M-dfdsfdsf, IP: 127.0.0.1, Message: -> Erreur : lors de la génération ou de la récupération du token.
+[2025-01-28 21:10:43] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:10:46] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : La clé API n'existe pas
+[2025-01-28 21:10:46] API_KEY: Mdsqdsq, IP: 127.0.0.1, Message: -> Erreur : lors de la génération ou de la récupération du token.
+[2025-01-28 21:12:43] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:12:45] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : La clé API n'existe pas
+[2025-01-28 21:12:45] API_KEY: M-fds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+[2025-01-28 21:13:18] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:13:20] API_KEY: mDsqfdsq, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+[2025-01-28 21:15:11] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:15:13] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : La clé API n'existe pas
+[2025-01-28 21:15:13] API_KEY: MDFSQFHDJ, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+[2025-01-28 21:17:01] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:17:04] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : La clé API n'existe pas
+[2025-01-28 21:17:04] API_KEY: M-dsqdsq, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+[2025-01-28 21:17:47] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:17:49] API_KEY: fdsfdhsj, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+[2025-01-28 21:18:02] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:18:04] API_KEY: Fdnsjqkfbs, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+[2025-01-28 21:18:24] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:18:25] API_KEY: fdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+[2025-01-28 21:19:18] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 21:19:18] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 21:19:24] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 21:19:24] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 21:21:02] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:21:04] API_KEY: fdsfjkds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:21:41] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:21:43] API_KEY: fdsjfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:21:57] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:21:59] API_KEY: qsdfgh, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:22:52] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:22:56] API_KEY: pmolikuj, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:25:33] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:25:34] API_KEY: fdsfdsf, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:25:54] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:25:56] API_KEY: dsqfsdqsq, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:25:56] API_KEY: dsqfsdqsq, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'dsqfsdqsq' : (null)
+[2025-01-28 21:25:56] API_KEY: dsqfsdqsq, IP: 127.0.0.1, Message: -> Erreur : lors de la génération du token.
+[2025-01-28 21:32:48] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:32:50] API_KEY: fdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:32:51] API_KEY: fdfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:32:52] API_KEY: fdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:32:53] API_KEY: fdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:32:54] API_KEY: fdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:32:55] API_KEY: fdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:32:56] API_KEY: fdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:32:57] API_KEY: fsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:33:04] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : (null)
+[2025-01-28 21:33:04] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : lors de la génération du token.
+[2025-01-28 21:36:33] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:36:35] API_KEY: dqsdsqdsq, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:36:36] API_KEY: dsqdsqdsq, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:36:37] API_KEY: dqsdsqdsq, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:36:48] API_KEY: dsqdsq, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:37:42] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 21:37:42] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 21:37:55] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 21:37:55] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 21:38:14] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:38:15] API_KEY: fdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:38:17] API_KEY: fdsfdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:38:18] API_KEY: fdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:39:14] API_KEY: fdsfds, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'fdsfds' : (null)
+[2025-01-28 21:39:14] API_KEY: fdsfds, IP: 127.0.0.1, Message: -> Erreur : lors de la génération du token.
+[2025-01-28 21:39:35] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:39:37] API_KEY: dsqdsqdsq, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:39:39] API_KEY: dsqdsqdsq, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:39:40] API_KEY: dsqdsqdsq, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:40:29] API_KEY: dsqdsqdsq, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'dsqdsqdsq' : (null)
+[2025-01-28 21:40:29] API_KEY: dsqdsqdsq, IP: 127.0.0.1, Message: -> Erreur : lors de la génération du token.
+[2025-01-28 21:40:39] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:40:41] API_KEY:   ���, IP: 127.0.0.1, Message: User connecté token généré pour la clé API '  ���' : (null)
+[2025-01-28 21:40:41] API_KEY:   ���, IP: 127.0.0.1, Message: -> Erreur : lors de la génération du token.
+[2025-01-28 21:40:43] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:40:45] API_KEY: fgdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:40:45] API_KEY: fdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:40:46] API_KEY: fdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:41:01] API_KEY: dsqds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:41:02] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : (null)
+[2025-01-28 21:41:02] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : lors de la génération du token.
+[2025-01-28 21:47:46] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:47:54] API_KEY: dsqdsqj, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:49:01] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:49:03] API_KEY: fdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:49:04] API_KEY: fdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:49:06] API_KEY: fdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:49:27] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : C3rB
+[2025-01-28 21:49:42] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 21:49:43] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => dsqdsq
+[2025-01-28 21:49:57] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 21:50:57] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 21:51:06] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:51:09] API_KEY: dsqfdsq, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:51:11] API_KEY: dsdsq, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:51:26] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : uZTP
+[2025-01-28 21:51:31] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 21:52:03] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => M-ce460be4
+[2025-01-28 21:52:06] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-01-28 21:52:39] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 21:52:39] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 21:53:03] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:53:03] API_KEY: , IP: 127.0.0.1, Message: User connecté token généré pour la clé API '' : (null)
+[2025-01-28 21:53:03] API_KEY: , IP: 127.0.0.1, Message: -> Erreur : lors de la génération du token.
+[2025-01-28 21:53:35] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:53:37] API_KEY: dsqdsq, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:53:40] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : 2AaP
+[2025-01-28 21:53:49] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 21:53:54] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 8M-ce460be4
+[2025-01-28 21:53:56] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 21:54:21] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 21:54:21] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 21:54:26] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:54:34] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : raoN
+[2025-01-28 21:54:36] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 21:59:11] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 21:59:11] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 21:59:14] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:59:14] API_KEY: 0l	�, IP: 127.0.0.1, Message: User connecté token généré pour la clé API '0l	�' : raoN
+[2025-01-28 21:59:15] API_KEY: 0l	�, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => dsqdsq
+[2025-01-28 21:59:25] API_KEY: 0l	�, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 21:59:36] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 21:59:38] API_KEY: dsqcdhqsvj, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:59:38] API_KEY: bnk,l, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:59:41] API_KEY: dsqdsq, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 21:59:45] API_KEY: hgfas, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 22:00:02] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : c9iN
+[2025-01-28 22:00:19] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => M-ce460be4
+[2025-01-28 22:00:25] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 22:00:29] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 22:01:13] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 22:01:36] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:01:40] API_KEY: dsqdsqfez, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 22:01:47] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : OhZP
+[2025-01-28 22:01:49] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 22:01:53] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 22:01:53] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 22:01:54] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 22:01:54] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 22:01:55] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 22:01:55] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 22:01:55] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 22:01:55] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 22:01:56] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 22:02:13] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 22:03:04] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:03:05] API_KEY: dsqdsq, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 22:03:13] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : wAPO
+[2025-01-28 22:03:13] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 22:03:13] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 22:03:32] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:03:32] API_KEY: @����, IP: 127.0.0.1, Message: User connecté token généré pour la clé API '@����' : wAPO
+[2025-01-28 22:03:32] API_KEY: @����, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 22:03:32] API_KEY: @����, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 22:06:06] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:06:10] API_KEY: dsqdsq, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 22:06:12] API_KEY: fdsbfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 22:06:14] API_KEY: dfsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 22:07:03] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : VGcX
+[2025-01-28 22:07:15] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-01-28 22:07:47] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 22:07:56] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => LOGOUT
+
+[2025-01-28 22:08:36] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 22:08:36] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 22:08:38] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:08:38] API_KEY: �Z���, IP: 127.0.0.1, Message: User connecté token généré pour la clé API '�Z���' : VGcX
+[2025-01-28 22:08:44] API_KEY: �Z���, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => M-ce460be4
+[2025-01-28 22:08:45] API_KEY: �Z���, IP: 127.0.0.1, Message: BYE BYE VGcX
+[2025-01-28 22:08:45] API_KEY: �Z���, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 22:09:39] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:09:39] API_KEY: �Z���, IP: 127.0.0.1, Message: User connecté token généré pour la clé API '�Z���' : VGcX
+[2025-01-28 22:09:57] API_KEY: �Z���, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => M-ce460be4
+[2025-01-28 22:10:06] API_KEY: �Z���, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => M-ce460be4
+[2025-01-28 22:10:07] API_KEY: �Z���, IP: 127.0.0.1, Message: BYE BYE VGcX
+[2025-01-28 22:10:07] API_KEY: �Z���, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 22:11:25] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:11:36] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : eSOL
+[2025-01-28 22:11:40] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 22:11:54] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE eSOL
+[2025-01-28 22:11:54] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 22:14:32] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:14:32] API_KEY: ��J��, IP: 127.0.0.1, Message: User connecté token généré pour la clé API '��J��' : eSOL
+[2025-01-28 22:14:39] API_KEY: ��J��, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => M-ce460be4
+[2025-01-28 22:22:53] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:22:56] API_KEY: fdsfdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 22:23:03] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : 7Yf1
+[2025-01-28 22:23:14] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 22:24:24] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:24:26] API_KEY: dfsqfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 22:24:34] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : P50l
+[2025-01-28 22:24:38] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE P50l
+[2025-01-28 22:24:38] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 22:30:24] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:30:29] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Clé API validée pour l'adresse IP : 127.0.0.1
+[2025-01-28 22:30:29] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : mgAl
+[2025-01-28 22:30:31] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE mgAl
+[2025-01-28 22:30:31] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 22:30:42] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:30:42] API_KEY: p�, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'p�' : mgAl
+[2025-01-28 22:30:45] API_KEY: p�, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => M-ce460be4
+[2025-01-28 22:30:50] API_KEY: p�, IP: 127.0.0.1, Message: BYE BYE mgAl
+[2025-01-28 22:30:50] API_KEY: p�, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 22:30:58] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:30:58] API_KEY: p�, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'p�' : mgAl
+[2025-01-28 22:32:39] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 22:32:39] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 22:47:01] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:47:09] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: DEBUG: Clé API validée pour l'adresse IP : 127.0.0.1
+[2025-01-28 22:47:09] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : ctXW
+[2025-01-28 22:47:15] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE ctXW
+[2025-01-28 22:47:15] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+
+[2025-01-28 22:48:09] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:48:13] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: DEBUG: Clé API validée pour l'adresse IP : 127.0.0.1
+[2025-01-28 22:48:13] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : J5cB
+[2025-01-28 22:48:13] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 22:48:13] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+
+[2025-01-28 22:48:35] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:48:37] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: DEBUG: Clé API validée pour l'adresse IP : 127.0.0.1
+[2025-01-28 22:48:37] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : iYBP
+[2025-01-28 22:48:37] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 22:48:37] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+
+[2025-01-28 22:49:01] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 22:49:01] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 22:50:02] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:50:05] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: DEBUG: Clé API validée pour l'adresse IP : 127.0.0.1
+[2025-01-28 22:50:05] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : OJCI
+[2025-01-28 22:50:08] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE OJCI
+[2025-01-28 22:50:08] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+
+[2025-01-28 22:51:50] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:51:58] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: DEBUG: Clé API validée pour l'adresse IP : 127.0.0.1
+[2025-01-28 22:51:58] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : nG05
+[2025-01-28 22:52:00] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE nG05
+[2025-01-28 22:52:00] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+
+[2025-01-28 22:52:42] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:52:44] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: DEBUG: Clé API validée pour l'adresse IP : 127.0.0.1
+[2025-01-28 22:52:44] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : I5C5
+[2025-01-28 22:52:48] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE I5C5
+[2025-01-28 22:52:48] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+
+[2025-01-28 22:55:15] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:55:22] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: DEBUG: Clé API validée pour l'adresse IP : 127.0.0.1
+[2025-01-28 22:55:22] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : 0wy4
+[2025-01-28 22:55:26] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 22:55:28] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE 0wy4
+[2025-01-28 22:55:28] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+
+[2025-01-28 22:56:26] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:56:29] API_KEY: UserInfo *, IP: 127.0.0.1, Message: DEBUG: Erreur : La clé API 'UserInfo *' n'existe pas.
+[2025-01-28 22:56:29] API_KEY: user_info;, IP: 127.0.0.1, Message: DEBUG: Erreur : La clé API 'user_info;' n'existe pas.
+[2025-01-28 22:56:42] API_KEY: HIST ENVOY, IP: 127.0.0.1, Message: DEBUG: Erreur : La clé API 'HIST ENVOY' n'existe pas.
+[2025-01-28 22:56:42] API_KEY: ES, IP: 127.0.0.1, Message: DEBUG: Erreur : La clé API 'ES' n'existe pas.
+[2025-01-28 22:56:48] API_KEY: ES, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'ES' : (null)
+[2025-01-28 22:56:48] API_KEY: ES, IP: 127.0.0.1, Message: -> Erreur : lors de la génération du token.
+[2025-01-28 22:56:50] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 22:56:51] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: DEBUG: Clé API validée pour l'adresse IP : 127.0.0.1
+[2025-01-28 22:56:51] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : 58fa
+[2025-01-28 22:57:08] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 22:57:16] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE 58fa
+[2025-01-28 22:57:16] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+
+[2025-01-28 23:13:48] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 23:14:03] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : La clé API n'existe pas
+[2025-01-28 23:14:03] API_KEY: M-ce460b, IP: 127.0.0.1, Message: DEBUG: Erreur : La clé API 'M-ce460b' n'existe pas.
+[2025-01-28 23:14:54] API_KEY: BYE BYE, IP: 127.0.0.1, Message: DEBUG: Erreur : La clé API 'BYE BYE' n'existe pas.
+[2025-01-28 23:14:57] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: DEBUG: Clé API validée pour l'adresse IP : 127.0.0.1
+[2025-01-28 23:14:57] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : spYT
+[2025-01-28 23:15:01] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-01-28 23:15:02] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE spYT
+[2025-01-28 23:15:02] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+
+[2025-01-28 23:15:13] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 23:15:17] API_KEY: DsqDQdsq, IP: 127.0.0.1, Message: DEBUG: Erreur : La clé API 'DsqDQdsq' n'existe pas.
+[2025-01-28 23:17:57] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 23:17:57] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 23:18:00] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 23:18:00] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 23:18:21] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 23:18:21] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 23:18:32] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 23:18:32] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 23:18:36] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 23:18:36] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 23:18:38] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 23:18:38] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 23:19:06] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 23:19:07] API_KEY: jkl, IP: 127.0.0.1, Message: DEBUG: Erreur : La clé API 'jkl' n'existe pas.
+[2025-01-28 23:20:52] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 23:20:52] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 23:22:06] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 23:22:08] API_KEY: bjhk, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 23:22:10] API_KEY: bhjk, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 23:22:11] API_KEY: bhk, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 23:22:12] API_KEY: bhjjk, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 23:22:13] API_KEY: njk, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 23:23:00] API_KEY: njk, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'njk' : (null)
+[2025-01-28 23:23:00] API_KEY: njk, IP: 127.0.0.1, Message: -> Erreur : lors de la génération du token.
+[2025-01-28 23:23:01] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 23:23:03] API_KEY: fdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 23:23:08] API_KEY: fdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 23:23:10] API_KEY: fdsds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 23:23:40] API_KEY: fdsds, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'fdsds' : (null)
+[2025-01-28 23:23:40] API_KEY: fdsds, IP: 127.0.0.1, Message: -> Erreur : lors de la génération du token.
+[2025-01-28 23:23:42] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 23:23:43] API_KEY: dsqdsq, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 23:23:45] API_KEY: dsqds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 23:23:46] API_KEY: ds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 23:24:08] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : (null)
+[2025-01-28 23:24:08] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : lors de la génération du token.
+[2025-01-28 23:25:11] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 23:25:11] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 23:25:50] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 23:25:50] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 23:26:03] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-28 23:26:03] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-28 23:26:16] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 23:26:18] API_KEY: fdsf, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 23:26:19] API_KEY: dffe, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 23:26:21] API_KEY: fdfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 23:26:32] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : (null)
+[2025-01-28 23:26:32] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : lors de la génération du token.
+[2025-01-28 23:30:41] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 23:30:43] API_KEY: vdsvfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 23:30:44] API_KEY: fdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 23:30:45] API_KEY: fdsfds, IP: 127.0.0.1, Message: Erreur : La clé API n'existe pas
+
+[2025-01-28 23:31:07] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : KEtJ
+[2025-01-28 23:31:07] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-01-28 23:31:07] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-28 23:32:07] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 23:32:14] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : 1ei1
+[2025-01-28 23:32:21] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE 1ei1
+[2025-01-28 23:32:21] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
