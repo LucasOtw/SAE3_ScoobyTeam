@@ -185,3 +185,5 @@ DETAIL:  Key (code_de
 
 [2025-01-27 12:49:25] API_KEY: M-8b451acb, IP: 127.0.0.1, Message: Suppression du message 2 réussi
 
+[2025-01-28 18:00:20] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-28 18:00:26] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: -> Erreur lors de la réception des données

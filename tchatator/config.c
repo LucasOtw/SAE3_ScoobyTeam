@@ -1,17 +1,17 @@
+#include "config.h"
+
+#include <arpa/inet.h>
+#include <libpq-fe.h>  // Bibliothèque PostgreSQL
+#include <netinet/in.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <arpa/inet.h>
 #include <sys/socket.h>
-#include <netinet/in.h>
-#include <unistd.h>
 #include <time.h>
-#include <stdbool.h>
-#include <libpq-fe.h> // Bibliothèque PostgreSQL
+#include <unistd.h>
 
-#include "config.h"
 #include "bdd.h"
-
 
 char SERVER_IP[16];
 int SERVER_PORT;
@@ -25,8 +25,6 @@ int MAX_HOUR;
 char LOG_LINKS[256];
 char API_ADMIN[36];
 int LEN_API;
-
-
 
 // Fonction pour extraire les valeurs depuis le fichier param.txt
 int load_config(const char *filename) {
@@ -75,8 +73,6 @@ int load_config(const char *filename) {
     return 0;
 }
 
-
-
 // Fonction pour préparer et configurer le socket
 int prepare_socket(int *ret, int *sock, struct sockaddr_in *addr) {
     char txt_log[256];
@@ -90,7 +86,7 @@ int prepare_socket(int *ret, int *sock, struct sockaddr_in *addr) {
         snprintf(txt_log, sizeof(txt_log), "-> Erreur sur le socket");
         insert_logs(NULL, NULL, txt_log);
 
-        return -1; // Retourne une erreur
+        return -1;  // Retourne une erreur
     }
 
     // Configuration de l'adresse
@@ -107,8 +103,8 @@ int prepare_socket(int *ret, int *sock, struct sockaddr_in *addr) {
         snprintf(txt_log, sizeof(txt_log), "-> Erreur lors du bind");
         insert_logs(NULL, NULL, txt_log);
 
-        close(*sock); // Ferme le socket en cas d'erreur
-        return -1;    // Retourne une erreur
+        close(*sock);  // Ferme le socket en cas d'erreur
+        return -1;     // Retourne une erreur
     }
 
     // Mise en écoute
@@ -120,28 +116,26 @@ int prepare_socket(int *ret, int *sock, struct sockaddr_in *addr) {
         snprintf(txt_log, sizeof(txt_log), "-> Erreur lors de listen");
         insert_logs(NULL, NULL, txt_log);
 
-        close(*sock); // Ferme le socket en cas d'erreur
-        return -1;    // Retourne une erreur
+        close(*sock);  // Ferme le socket en cas d'erreur
+        return -1;     // Retourne une erreur
     }
 
-    return 0; // Retourne succès
+    return 0;  // Retourne succès
 }
 
-
-
-UserInfo* generate_and_return_token(const char *api_key, PGconn *conn) {
-    UserInfo *userInfo = malloc(sizeof(UserInfo)); // Allouer dynamiquement la structure
+UserInfo *generate_and_return_token(const char *api_key, PGconn *conn) {
+    UserInfo *userInfo = malloc(sizeof(UserInfo));  // Allouer dynamiquement la structure
     if (userInfo == NULL) {
         perror("\033[31m-> Erreur d'allocation mémoire pour UserInfo\033[0m");
         return NULL;
     }
-    memset(userInfo, 0, sizeof(UserInfo)); // Initialiser toute la mémoire à 0
+    memset(userInfo, 0, sizeof(UserInfo));  // Initialiser toute la mémoire à 0
 
     char query[512], txt_log[256];
 
     if (strcmp(api_key, API_ADMIN) == 0 || api_key[0] == 'M' || api_key[0] == 'P') {
         if (strcmp(api_key, API_ADMIN) != 0) {
-            char *generated_token = generate_token(); // Génère un token
+            char *generated_token = generate_token();  // Génère un token
             if (!generated_token) {
                 fprintf(stderr, "\033[31m-> Erreur lors de la génération du token\033[0m\n");
 
@@ -168,7 +162,7 @@ UserInfo* generate_and_return_token(const char *api_key, PGconn *conn) {
                     free(generated_token);
                     return NULL;
                 }
-                userInfo->id_user=atoi(PQgetvalue(res, 0, 0));
+                userInfo->id_user = atoi(PQgetvalue(res, 0, 0));
                 PQclear(res);
             } else if (api_key[0] == 'P') {
                 strcpy(userInfo->new_user, "PRO");
@@ -186,13 +180,13 @@ UserInfo* generate_and_return_token(const char *api_key, PGconn *conn) {
                     free(generated_token);
                     return NULL;
                 }
-                userInfo->id_user=atoi(PQgetvalue(res, 0, 0));
+                userInfo->id_user = atoi(PQgetvalue(res, 0, 0));
                 PQclear(res);
             }
 
             snprintf(query, sizeof(query),
                      "insert into tripenarvor._token (api_key, token, type_utilisateur, created_at, expires_at)"
-                     "values ('%s', '%s', '%s', NOW(), NOW() + INTERVAL '1 hour') returning token;", 
+                     "values ('%s', '%s', '%s', NOW(), NOW() + INTERVAL '1 hour') returning token;",
                      api_key, generated_token, userInfo->new_user);
 
             PGresult *res = PQexec(conn, query);
@@ -215,16 +209,12 @@ UserInfo* generate_and_return_token(const char *api_key, PGconn *conn) {
             strcpy(userInfo->new_user, "ADMIN");
         }
 
-        return userInfo; // Retourner l'adresse de la structure allouée
+        return userInfo;  // Retourner l'adresse de la structure allouée
     }
 
-    free(userInfo); // Nettoyage en cas d'échec
+    free(userInfo);  // Nettoyage en cas d'échec
     return NULL;
 }
-
-
-
-
 
 void insert_logs(const char *api_key, const char *ip_address, const char *message) {
     if (LOG_LINKS == NULL) {
@@ -232,7 +222,7 @@ void insert_logs(const char *api_key, const char *ip_address, const char *messag
         return;
     }
 
-    FILE *log_file = fopen(LOG_LINKS, "a"); // Ouverture en mode ajout
+    FILE *log_file = fopen(LOG_LINKS, "a");  // Ouverture en mode ajout
     if (log_file == NULL) {
         perror("\033[33m-> Erreur lors de l'ouverture du fichier de log\033[0m");
         return;
@@ -258,12 +248,8 @@ void insert_logs(const char *api_key, const char *ip_address, const char *messag
     // Écrire la ligne de log dans le fichier
     fprintf(log_file, "[%s] API_KEY: %s, IP: %s, Message: %s\n", timestamp, final_api_key, final_ip_address, message);
 
-    fclose(log_file); // Fermer le fichier
+    fclose(log_file);  // Fermer le fichier
 }
-
-
-
-
 
 bool is_token_valid(PGconn *conn, const char *token, char *log_message, size_t log_size) {
     if (conn == NULL || token == NULL) {
@@ -293,7 +279,7 @@ bool is_token_valid(PGconn *conn, const char *token, char *log_message, size_t l
     char *is_active_str = PQgetvalue(res, 0, 0);
     char *expires_at_str = PQgetvalue(res, 0, 1);
 
-    bool is_active = (strcmp(is_active_str, "t") == 0); // "t" représente TRUE dans PostgreSQL
+    bool is_active = (strcmp(is_active_str, "t") == 0);  // "t" représente TRUE dans PostgreSQL
     struct tm expires_at;
 
     // Convertir expires_at_str en struct tm
@@ -304,7 +290,7 @@ bool is_token_valid(PGconn *conn, const char *token, char *log_message, size_t l
     }
 
     // Convertir expires_at en time_t (UTC)
-    time_t expires_at_time = timegm(&expires_at); // Utilise timegm pour UTC
+    time_t expires_at_time = timegm(&expires_at);  // Utilise timegm pour UTC
     if (expires_at_time == -1) {
         snprintf(log_message, log_size, "-> Erreur : Impossible de convertir expires_at en time_t.");
         PQclear(res);
@@ -312,7 +298,7 @@ bool is_token_valid(PGconn *conn, const char *token, char *log_message, size_t l
     }
 
     // Obtenir l'heure actuelle en UTC
-    time_t now = time(NULL); // Temps actuel en epoch
+    time_t now = time(NULL);  // Temps actuel en epoch
     if (now == -1) {
         snprintf(log_message, log_size, "-> Erreur lors de la récupération de l'heure actuelle.");
         PQclear(res);
