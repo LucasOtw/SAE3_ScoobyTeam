@@ -564,9 +564,9 @@ int main() {
                             }
 
                         } else {
-                            send(cnx, "\033[31m-> Erreur de format : MDF <id_msg> '<contenu du message>'\n\033[39m", 72, 0);
+                            send(cnx, "\033[31m-> Erreur de format : SUPPR <id_msg>\n\033[39m", 54, 0);
 
-                            snprintf(txt_log, sizeof(txt_log), "-> Erreur de format : MDF <id_msg> '<contenu du message>'");
+                            snprintf(txt_log, sizeof(txt_log), "-> Erreur de format : SUPPR <id_msg>");
                             insert_logs(api_key, client_ip, txt_log);
 
                             printf("\033[31m-> Erreur Format\033[0m");
@@ -578,6 +578,18 @@ int main() {
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "BLOCK", 5) == 0) {
                     
+                    }
+                    //////////////////////////////////////////////////////////////////////////////////////////
+                    /// DEBLOQUER
+                    //////////////////////////////////////////////////////////////////////////////////////////
+                    else if (strncmp(buffer, "UNBLOCK", 7) == 0) {
+                    
+                    }
+                    //////////////////////////////////////////////////////////////////////////////////////////
+                    /// UNBAN
+                    //////////////////////////////////////////////////////////////////////////////////////////
+                    else if (strncmp(buffer, "UNBAN", 5) == 0) {
+
                     }
                     //////////////////////////////////////////////////////////////////////////////////////////
                     /// BAN
