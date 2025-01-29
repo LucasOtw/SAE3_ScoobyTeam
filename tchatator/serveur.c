@@ -16,8 +16,6 @@
 
 #define _XOPEN_SOURCE 700  // Nécessaire pour strptime
 
-UserInfo *user_info;
-
 int main() {
     int sock, cnx, ret, size, len;
     struct sockaddr_in addr, conn_addr;
@@ -80,59 +78,51 @@ int main() {
 
         // Réception de la clé API
         printf("En attente de la cle API...\n");
-        if (user_info == NULL) {
-            while (1) {
-                // Réception de la clé API
-                len = recv(cnx, api_key, sizeof(api_key) - 1, 0);
-                if (len <= 0) {
-                    // Si la réception échoue ou connexion fermée proprement
-                    if (len == 0) {
-                        printf("Connexion fermée par le client.\n");
-                    } else {
-                        perror("Erreur lors de la réception de la clé API");
-                    }
-                    close(cnx);
-                    break;
-                }
 
-                // Terminer la chaîne reçue avec un caractère nul
-                api_key[len] = '\0';
+        len = recv(cnx, api_key, sizeof(api_key) - 1, 0);
+        if (len <= 0) {
+            perror("\033[31m-> Erreur lors de la réception des données\033[0m");
 
-                // Nettoyer la clé API en supprimant les retours à la ligne et les retours chariot
-                api_key[strcspn(api_key, "\r\n")] = '\0';
+            snprintf(txt_log, sizeof(txt_log), "-> Erreur lors de la réception des données");
+            insert_logs(NULL, client_ip, txt_log);
 
-                // Vérification de la validité de la clé API
-                if (strlen(api_key) == 0) {
-                    printf("\033[31m-> Erreur : clé API vide après nettoyage.\033[0m\n");
-
-                    snprintf(txt_log, sizeof(txt_log), "-> Erreur : clé API vide après nettoyage.");
-                    insert_logs(api_key, client_ip, txt_log);
-
-                    // Demander à nouveau la clé API
-                    send(cnx, "\033[31m-> Clé API vide. Veuillez réessayer.\033[0m\n", strlen("\033[31m-> Clé API vide. Veuillez réessayer.\033[0m\n"), 0);
-                    continue;
-                }
-
-                // Passer la clé API nettoyée à la fonction de génération de token
-                user_info = generate_and_return_token(api_key, conn);
-
-                if (user_info == NULL) {
-                    printf("Erreur : La clé API n'existe pas\n");
-                    snprintf(txt_log, sizeof(txt_log), "Erreur : La clé API n'existe pas\n");
-                    insert_logs(api_key, client_ip, txt_log);
-
-                    send(cnx, "\033[31mErreur : La clé API n'existe pas\033[0m\n", strlen("\033[31mErreur : La clé API n'existe pas\033[0m\n"), 0);
-
-                    // Demander à nouveau la clé API
-                    continue;
-                } else {
-                    // Si la clé API est valide
-                    printf("Clé API validée : %s\n", api_key);
-                    send(cnx, "Clé API valide, connexion réussie\n", strlen("Clé API valide, connexion réussie\n"), 0);
-                    break;  // Sortir de la boucle si la clé est valide
-                }
-            }
+            close(cnx);
+            continue;
         }
+
+        // Terminer la chaîne reçue avec un caractère nul
+        api_key[len] = '\0';
+
+        // Nettoyer la clé API en supprimant les retours à la ligne et les retours chariot
+        api_key[strcspn(api_key, "\r\n")] = '\0';
+
+        // Vérification de la validité de la clé API (facultatif)
+        if (strlen(api_key) == 0) {
+            printf("\033[31m-> Erreur : clé API vide après nettoyage.\033[0m\n");
+
+            snprintf(txt_log, sizeof(txt_log), "-> Erreur : clé API vide après nettoyage.");
+            insert_logs(api_key, client_ip, txt_log);
+
+            close(cnx);
+            continue;
+        }
+
+        // Passer la clé API nettoyée à la fonction de génération de token
+        printf("Clé API finale envoyée à la fonction : '%s'\n", api_key);
+        UserInfo *user_info = generate_and_return_token(api_key, conn);
+
+        if (user_info == NULL) {
+            printf("\033[31m-> Erreur : lors de la génération ou de la récupération du token.\033[0m\n");
+
+            snprintf(txt_log, sizeof(txt_log), "-> Erreur : lors de la génération ou de la récupération du token.");
+            insert_logs(api_key, client_ip, txt_log);
+
+            send(cnx, "\033[31m-> Erreur : La clé API n'existe pas\033[0m\n", sizeof("\033[31m-> Erreur : La clé PAI n'existe pas\033[0m\n"), 0);
+
+            close(cnx);
+            continue;
+        }
+
         // Afficher le token généré pour confirmation (facultatif)
         printf("Token généré pour la clé API '%s' : %s\n", api_key, user_info->token);
 
@@ -506,7 +496,7 @@ int main() {
                                                      "Contenu : \033[1m%s\033[0m"
                                                      "Date de création : %s\n"
                                                      "Dernière modification : %s\n"
-                                                     "----------------------------------------\n\0",
+                                                     "----------------------------------------\n",
                                                      PQgetvalue(res, i, 0), envoyeParOuA, emetteur, PQgetvalue(res, i, 1), PQgetvalue(res, i, 2), PQgetvalue(res, i, 3));
                                             send(cnx, message_buffer, strlen(message_buffer), 0);
 
@@ -587,21 +577,25 @@ int main() {
                     /// BLOQUER
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "BLOCK", 5) == 0) {
+                    
                     }
                     //////////////////////////////////////////////////////////////////////////////////////////
                     /// DEBLOQUER
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "UNBLOCK", 7) == 0) {
+                    
                     }
                     //////////////////////////////////////////////////////////////////////////////////////////
                     /// UNBAN
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "UNBAN", 5) == 0) {
+
                     }
                     //////////////////////////////////////////////////////////////////////////////////////////
                     /// BAN
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "BAN", 3) == 0) {
+
                     } else {
                         send(cnx, "Commande inconnue\n", 19, 0);
 

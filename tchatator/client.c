@@ -28,6 +28,7 @@ void logout(int socket, int *connected);
 void delete_message(int socket);
 void regenerate_api_key(int socket);
 void deconnexion(int socket, int *connected);
+void update_message(int socket);
 
 int main() {
     int client_socket;
@@ -54,33 +55,28 @@ int main() {
         if (connected == 1) {
             print_menu();
             scanf("%d", &choice);
-            getchar();  // Consommer le caractère de nouvelle ligne
+            getchar();
 
             switch (choice) {
                 case 1:
-                    login(client_socket, &connected);
+                    send_message(client_socket);  // ENVOYER MSG
                     break;
-
                 case 2:
-                    send_message(client_socket);
+                    update_message(client_socket);  // Modifier MSG
                     break;
                 case 3:
                     delete_message(client_socket);  // Supprimer un message
                     break;
                 case 4:
-                    get_history(client_socket);
+                    get_history(client_socket);  // Historique
                     break;
 
                 case 5:
-                    regenerate_api_key(client_socket);
+                    regenerate_api_key(client_socket);  // Regn API Key
                     break;
 
                 case 6:
                     logout(client_socket, &connected);  // Déconnexion
-                    break;
-
-                case 7:
-                    close_connection(client_socket);
                     break;
 
                 default:
@@ -97,13 +93,12 @@ int main() {
 // Fonction pour afficher le menu
 void print_menu() {
     printf("\n=== Menu Client ===\n");
-    printf("1. Connexion\n");
-    printf("2. Envoyer un message\n");
+    printf("1. Envoyer un message\n");
+    printf("2. Modifier un message\n");
     printf("3. Supprimer un message\n");
     printf("4. Historique des messages\n");
     printf("5. Regénérer clé API\n");
     printf("6. Déconnexion\n");
-    printf("7. Quitter le client\n");
     printf("Votre choix : ");
 }
 
@@ -265,6 +260,36 @@ void send_message(int socket) {
     buffer[len] = '\0';
 }
 
+void update_message(int socket) {
+    char buffer[BUFFER_SIZE];
+    int id_msg;
+    char message[BUFFER_SIZE];
+
+    // Demande l'ID du destinataire
+    printf("ID du message : ");
+    scanf("%d", &id_msg);
+    getchar();  // Consomme le retour à la ligne restant
+
+    // Demande le contenu du message
+    printf("Contenu du message : ");
+    fgets(message, BUFFER_SIZE, stdin);
+    message[strcspn(message, "\n")] = 0;  // Supprime le caractère \n
+    // Formate et envoie le message au serveur
+    snprintf(buffer, sizeof(buffer), "MDF %d %s\n", id_msg, message);
+    if (send(socket, buffer, strlen(buffer), 0) == -1) {
+        perror("Erreur lors de l'envoi du message\n");
+        return;
+    }
+
+    // Reçoit et affiche la réponse du serveur
+    int len = recv(socket, buffer, sizeof(buffer) - 1, 0);
+    if (len <= 0) {
+        perror("Erreur lors de la réception de la réponse\n");
+        return;
+    }
+    buffer[len] = '\0';
+}
+
 // Fonction pour fermer la connexion
 void close_connection(int socket) {
     printf("Fermeture du programme...\n");
@@ -388,8 +413,9 @@ void logout(int socket, int *connected) {
     printf("%s\n", buffer);
     *connected = 0;  // L'utilisateur est maintenant déconnecté
 
-    // Réinitialisation de la clé API ou de tout autre état nécessaire
-    // Vous pouvez aussi réinitialiser d'autres variables ici si nécessaire
+    printf("Fermeture du programme...\n");
+    close(socket);
+    exit(EXIT_SUCCESS);
 }
 
 // Fonction pour supprimer un message
