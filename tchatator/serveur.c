@@ -75,53 +75,56 @@ int main() {
         memset(buffer, 0, sizeof(buffer));
 
         char api_key[LEN_API + 1];  // Variable pour stocker la clé API reçue
+        UserInfo *user_info;
 
-        // Réception de la clé API
-        printf("En attente de la cle API...\n");
+        do {
+            // Réception de la clé API
+            printf("En attente de la cle API...\n");
 
-        len = recv(cnx, api_key, sizeof(api_key) - 1, 0);
-        if (len <= 0) {
-            perror("\033[31m-> Erreur lors de la réception des données\033[0m");
+            len = recv(cnx, api_key, sizeof(api_key) - 1, 0);
+            if (len <= 0) {
+                perror("\033[31m-> Erreur lors de la réception des données\033[0m");
 
-            snprintf(txt_log, sizeof(txt_log), "-> Erreur lors de la réception des données");
-            insert_logs(NULL, client_ip, txt_log);
+                snprintf(txt_log, sizeof(txt_log), "-> Erreur lors de la réception des données");
+                insert_logs(NULL, client_ip, txt_log);
 
-            close(cnx);
-            continue;
-        }
+                close(cnx);
+                continue;
+            }
 
-        // Terminer la chaîne reçue avec un caractère nul
-        api_key[len] = '\0';
+            // Terminer la chaîne reçue avec un caractère nul
+            api_key[len] = '\0';
 
-        // Nettoyer la clé API en supprimant les retours à la ligne et les retours chariot
-        api_key[strcspn(api_key, "\r\n")] = '\0';
+            // Nettoyer la clé API en supprimant les retours à la ligne et les retours chariot
+            api_key[strcspn(api_key, "\r\n")] = '\0';
 
-        // Vérification de la validité de la clé API (facultatif)
-        if (strlen(api_key) == 0) {
-            printf("\033[31m-> Erreur : clé API vide après nettoyage.\033[0m\n");
+            // Vérification de la validité de la clé API (facultatif)
+            if (strlen(api_key) == 0) {
+                printf("\033[31m-> Erreur : clé API vide après nettoyage.\033[0m\n");
 
-            snprintf(txt_log, sizeof(txt_log), "-> Erreur : clé API vide après nettoyage.");
-            insert_logs(api_key, client_ip, txt_log);
+                snprintf(txt_log, sizeof(txt_log), "-> Erreur : clé API vide après nettoyage.");
+                insert_logs(api_key, client_ip, txt_log);
 
-            close(cnx);
-            continue;
-        }
+                close(cnx);
+                continue;
+            }
 
-        // Passer la clé API nettoyée à la fonction de génération de token
-        printf("Clé API finale envoyée à la fonction : '%s'\n", api_key);
-        UserInfo *user_info = generate_and_return_token(api_key, conn);
+            // Passer la clé API nettoyée à la fonction de génération de token
+            printf("Clé API finale envoyée à la fonction : '%s'\n", api_key);
+            user_info = generate_and_return_token(api_key, conn);
 
-        if (user_info == NULL) {
-            printf("\033[31m-> Erreur : lors de la génération ou de la récupération du token.\033[0m\n");
+            // if (user_info == NULL) {
+            //     printf("\033[31m-> Erreur : lors de la génération ou de la récupération du token.\033[0m\n");
 
-            snprintf(txt_log, sizeof(txt_log), "-> Erreur : lors de la génération ou de la récupération du token.");
-            insert_logs(api_key, client_ip, txt_log);
+            //     snprintf(txt_log, sizeof(txt_log), "-> Erreur : lors de la génération ou de la récupération du token.");
+            //     insert_logs(api_key, client_ip, txt_log);
 
-            send(cnx, "\033[31m-> Erreur : La clé API n'existe pas\033[0m\n", sizeof("\033[31m-> Erreur : La clé PAI n'existe pas\033[0m\n"), 0);
+            //     send(cnx, "\033[31m-> Erreur : La clé API n'existe pas\033[0m\n", sizeof("\033[31m-> Erreur : La clé API n'existe pas\033[0m\n"), 0);
 
-            close(cnx);
-            continue;
-        }
+            //     close(cnx);
+            //     continue;
+            // }
+        } while (user_info == NULL);
 
         // Afficher le token généré pour confirmation (facultatif)
         printf("Token généré pour la clé API '%s' : %s\n", api_key, user_info->token);
@@ -129,15 +132,6 @@ int main() {
         snprintf(txt_log, sizeof(txt_log), "User connecté token généré pour la clé API '%s' : %s", api_key, user_info->token);
         insert_logs(api_key, client_ip, txt_log);
 
-        if (user_info == NULL) {
-            perror("\033[31m-> Erreur : lors de la génération du token.\033[0m");
-
-            snprintf(txt_log, sizeof(txt_log), "-> Erreur : lors de la génération du token.");
-            insert_logs(api_key, client_ip, txt_log);
-
-            close(cnx);
-            continue;
-        }
         if (user_info->token[0] != '\0') {
             char txt_env[80];
             snprintf(txt_env, sizeof(txt_env), "\033[32m==> Vous êtes connecté, voici votre token : %s\033[0m\n", user_info->token);
@@ -255,12 +249,12 @@ int main() {
                                     if (!execute_query(conn, query, api_key, client_ip)) {
                                         send(cnx, "\033[31m-> Erreur interne lors de l'envoie du message.\033[0m\n", strlen("\033[31m-> Erreur interne lors de l'envoie du message.\033[0m\n"), 0);
                                     } else {
-                                        send(cnx, "Envoi du message réussi", sizeof("Envoi du message réussi"), 0);
+                                        send(cnx, "Envoi du message réussi\n", sizeof("Envoi du message réussi\n"), 0);
 
                                         snprintf(txt_log, sizeof(txt_log), "Envoi du message au compte %d réussi", id_dest);
                                         insert_logs(api_key, client_ip, txt_log);
 
-                                        printf("Envoi du message au compte %d réussi", id_dest);
+                                        printf("Envoi du message au compte %d réussi\n", id_dest);
                                     }
 
                                     memset(query, 0, sizeof(query));
@@ -286,7 +280,7 @@ int main() {
                             snprintf(txt_log, sizeof(txt_log), "-> Erreur de format : MSG <id_destinataire> '<contenu du message>'");
                             insert_logs(api_key, client_ip, txt_log);
 
-                            printf("\033[31m-> Erreur Format\033[0m");
+                            printf("\033[31m-> Erreur Format\033[0m\n");
                         }
                     }
                     //////////////////////////////////////////////////////////////////////////////////////////
@@ -309,9 +303,9 @@ int main() {
 
                             // Pointeur vers la partie restante du message
                             char *message = buffer + offset;
-                            // printf("Message : %s\n", message);
+                            printf("Message : %s\n", message);
 
-                            // snprintf(txt, sizeof(txt), "%s", buffer + offset);
+                            snprintf(txt, sizeof(txt), "%s", buffer + offset);
 
                             // Retirer les espaces et les apostrophes en trop si nécessaire
                             char *start = txt;
@@ -341,18 +335,20 @@ int main() {
                                 snprintf(query, sizeof(query),
                                          "UPDATE tripenarvor._message SET contenu = '%s', horodatage_modifie = '%s', lus = 'false' WHERE id_message = %d",
                                          start, timestamp, id_msg);
+                                
+                                printf("Query : %s\n",query);
 
                                 // Exécution de la requête
                                 if (!execute_query(conn, query, api_key, client_ip)) {
                                     send(cnx, "\033[31m-> Erreur interne lors de la modification du message.\033[0m\n", strlen("\033[31m-> Erreur interne lors de la modification du message.\033[0m\n"), 0);
                                 } else {
                                     // Log en cas de succès
-                                    send(cnx, "Modification du message réussi", sizeof("Modification du message réussi"), 0);
+                                    send(cnx, "Modification du message réussi\n", sizeof("Modification du message réussi\n"), 0);
 
                                     snprintf(txt_log, sizeof(txt_log), "Modification du message %d réussi", id_msg);
                                     insert_logs(api_key, client_ip, txt_log);
 
-                                    printf("Mise à jour réussie pour le message ID %d", id_msg);
+                                    printf("Mise à jour réussie pour le message ID %d\n", id_msg);
                                 }
                             } else {
                                 send(cnx, "\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n", strlen("\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n"), 0);
