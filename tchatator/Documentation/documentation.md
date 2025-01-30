@@ -161,6 +161,7 @@ Votre choix :
 
 Une fois connecté, le menu suivant s'affiche :
 
+```
 === Menu Admin ===
 
 1. Bloquer un utilisateur
@@ -169,7 +170,7 @@ Une fois connecté, le menu suivant s'affiche :
 4. Débannir un utilisateur
 5. Déconnexion
    Votre choix :
-
+```
 #### Action selon le choix
 
 -   **Bloquer un utilisateur :** : empêche un utilisateur d'envoyer des messages en précisant :
