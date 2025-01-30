@@ -187,29 +187,38 @@ int main() {
                     /// REGEN
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "REGEN", 5) == 0) {
-                        if (is_token_valid(conn, user_info->token, txt_log, sizeof(txt_log))) {
-                            char first_char[2] = {user_info->new_user[0], '\0'};
+                        if (strcmp(user_info->new_user, "ADMIN") != 0) {
+                            if (is_token_valid(conn, user_info->token, txt_log, sizeof(txt_log))) {
+                                char first_char[2] = {user_info->new_user[0], '\0'};
 
-                            send(cnx, "Votre clé API a été changée\n", sizeof("Votre clé API a été changée\n"), 0);
-                            printf("Nouvelle clé API générée\n");
+                                send(cnx, "Votre clé API a été changée\n", sizeof("Votre clé API a été changée\n"), 0);
+                                printf("Nouvelle clé API générée\n");
 
-                            snprintf(query, sizeof(query),
-                                     "update tripenarvor._%s set api_key = tripenarvor.generate_api_key('%s') where api_key = '%s'",
-                                     type_user_bdd, first_char, api_key);
+                                snprintf(query, sizeof(query),
+                                        "update tripenarvor._%s set api_key = tripenarvor.generate_api_key('%s') where api_key = '%s'",
+                                        type_user_bdd, first_char, api_key);
 
-                            if (!execute_query(conn, query, api_key, client_ip)) {
-                                send(cnx, "\033[31m-> Erreur interne lors de la regénération de la clé d'API.\033[0m\n", strlen("\033[31m-> Erreur interne lors de la regénération de la clé d'API.\033[0m\n\n"), 0);
+                                if (!execute_query(conn, query, api_key, client_ip)) {
+                                    send(cnx, "\033[31m-> Erreur interne lors de la regénération de la clé d'API.\033[0m\n", strlen("\033[31m-> Erreur interne lors de la regénération de la clé d'API.\033[0m\n\n"), 0);
+                                } else {
+                                    snprintf(txt_log, sizeof(txt_log), "REGEN %s", user_info->token);
+                                    insert_logs(api_key, client_ip, txt_log);
+                                }
+
+                                memset(query, 0, sizeof(query));
                             } else {
-                                snprintf(txt_log, sizeof(txt_log), "REGEN %s", user_info->token);
+                                send(cnx, "\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n", strlen("\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n"), 0);
+                                fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
+
                                 insert_logs(api_key, client_ip, txt_log);
                             }
-
-                            memset(query, 0, sizeof(query));
                         } else {
-                            send(cnx, "\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n", strlen("\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n"), 0);
-                            fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
+                            send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas regen votre clé API\033[39m\n", sizeof("\033[31m-> Erreur : Vous ne pouvez pas regen votre clé API\n\033[39m"), 0);
 
+                            snprintf(txt_log, sizeof(txt_log), "-> Erreur : Un admin peut pas regen sa cle d'API");
                             insert_logs(api_key, client_ip, txt_log);
+
+                            printf("\033[31m-> Erreur : Un admin peut pas regen sa cle d'API\033[0m\n");
                         }
 
                     }
@@ -217,92 +226,101 @@ int main() {
                     /// MSG
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "MSG", 3) == 0) {
-                        int id_dest;
-                        char txt[1000];
-                        int offset = 0;
+                        if (strcmp(user_info->new_user, "ADMIN") != 0) {
+                            int id_dest;
+                            char txt[1000];
+                            int offset = 0;
 
-                        if (sscanf(buffer, "MSG %d %n", &id_dest, &offset) == 1) {
-                        
-                            bool mess;
-                            if (strcmp(user_info->new_user, "MEMBRE") == 0) {
-                                mess = is_member_blocked_all(conn, user_info->id_user, txt_log, 2050);
-                            } else { mess = false; }
-
-                            if (!mess) {
+                            if (sscanf(buffer, "MSG %d %n", &id_dest, &offset) == 1) {
+                            
+                                bool mess;
                                 if (strcmp(user_info->new_user, "MEMBRE") == 0) {
-                                    mess = is_member_blocked_for(conn, user_info->id_user, id_dest, txt_log, 2050);
+                                    mess = is_member_blocked_all(conn, user_info->id_user, txt_log, 2050);
                                 } else { mess = false; }
 
-                                if(!mess) {
-                                        // Pointeur vers la partie restante du message
-                                        char *message = buffer + offset;
-                                        // printf("Message : %s\n", message);
+                                if (!mess) {
+                                    if (strcmp(user_info->new_user, "MEMBRE") == 0) {
+                                        mess = is_member_blocked_for(conn, user_info->id_user, id_dest, txt_log, 2050);
+                                    } else { mess = false; }
 
-                                        snprintf(txt, sizeof(txt), "%s", buffer + offset);
+                                    if(!mess) {
+                                            // Pointeur vers la partie restante du message
+                                            char *message = buffer + offset;
+                                            // printf("Message : %s\n", message);
 
-                                        // Retirer les espaces et les apostrophes en trop si nécessaire
-                                        char *start = txt;
-                                        while (*start == ' ') start++;  // Supprimer les espaces en début
-                                        char *end = start + strlen(start) - 1;
-                                        while (end > start && (*end == ' ' || *end == '\'')) {
-                                            *end = '\0';
-                                            end--;
-                                        }
+                                            snprintf(txt, sizeof(txt), "%s", buffer + offset);
 
-                                        // ENVOI DU MSG
-                                        if (is_token_valid(conn, user_info->token, txt_log, sizeof(txt_log))) {
-                                            if (user_info->id_user != id_dest) {
-                                                snprintf(query, sizeof(query),
-                                                        "insert into tripenarvor._message (code_emetteur, code_destinataire, contenu) values (%d, %d, '%s')",
-                                                        user_info->id_user, id_dest, start);
-
-                                                if (!execute_query(conn, query, api_key, client_ip)) {
-                                                    send(cnx, "\033[31m-> Erreur interne lors de l'envoie du message.\033[0m\n", strlen("\033[31m-> Erreur interne lors de l'envoie du message.\033[0m\n"), 0);
-                                                } else {
-                                                    send(cnx, "Envoi du message réussi\n", sizeof("Envoi du message réussi\n"), 0);
-
-                                                    snprintf(txt_log, sizeof(txt_log), "Envoi du message au compte %d réussi", id_dest);
-                                                    insert_logs(api_key, client_ip, txt_log);
-
-                                                    printf("Envoi du message au compte %d réussi\n", id_dest);
-                                                }
-
-                                                memset(query, 0, sizeof(query));
-                                            } else {
-                                                send(cnx, "\033[31m-> Erreur : id_dest = id_user\033[0m", sizeof("\033[31m-> Erreur : id_dest = id_user\033[0m"), 0);
-
-                                                snprintf(txt_log, sizeof(txt_log), "-> Erreur : id_dest = id_user");
-                                                insert_logs(api_key, client_ip, txt_log);
-
-                                                printf("\033[31m-> Erreur : id_dest = id_user\033[0m");
+                                            // Retirer les espaces et les apostrophes en trop si nécessaire
+                                            char *start = txt;
+                                            while (*start == ' ') start++;  // Supprimer les espaces en début
+                                            char *end = start + strlen(start) - 1;
+                                            while (end > start && (*end == ' ' || *end == '\'')) {
+                                                *end = '\0';
+                                                end--;
                                             }
 
-                                        } else {
-                                            send(cnx, "\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n", strlen("\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n"), 0);
-                                            fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
+                                            // ENVOI DU MSG
+                                            if (is_token_valid(conn, user_info->token, txt_log, sizeof(txt_log))) {
+                                                if (user_info->id_user != id_dest) {
+                                                    snprintf(query, sizeof(query),
+                                                            "insert into tripenarvor._message (code_emetteur, code_destinataire, contenu) values (%d, %d, '%s')",
+                                                            user_info->id_user, id_dest, start);
 
-                                            insert_logs(api_key, client_ip, txt_log);
-                                        }
+                                                    if (!execute_query(conn, query, api_key, client_ip)) {
+                                                        send(cnx, "\033[31m-> Erreur interne lors de l'envoie du message.\033[0m\n", strlen("\033[31m-> Erreur interne lors de l'envoie du message.\033[0m\n"), 0);
+                                                    } else {
+                                                        send(cnx, "Envoi du message réussi\n", sizeof("Envoi du message réussi\n"), 0);
+
+                                                        snprintf(txt_log, sizeof(txt_log), "Envoi du message au compte %d réussi", id_dest);
+                                                        insert_logs(api_key, client_ip, txt_log);
+
+                                                        printf("Envoi du message au compte %d réussi\n", id_dest);
+                                                    }
+
+                                                    memset(query, 0, sizeof(query));
+                                                } else {
+                                                    send(cnx, "\033[31m-> Erreur : id_dest = id_user\033[0m", sizeof("\033[31m-> Erreur : id_dest = id_user\033[0m"), 0);
+
+                                                    snprintf(txt_log, sizeof(txt_log), "-> Erreur : id_dest = id_user");
+                                                    insert_logs(api_key, client_ip, txt_log);
+
+                                                    printf("\033[31m-> Erreur : id_dest = id_user\033[0m");
+                                                }
+
+                                            } else {
+                                                send(cnx, "\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n", strlen("\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n"), 0);
+                                                fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
+
+                                                insert_logs(api_key, client_ip, txt_log);
+                                            }
+                                    } else {
+                                        send(cnx, "\033[31m-> Vous ne pouvez plus envoyer de message à ce professionnel.\33[0m\n", strlen("\033[31m-> Vous ne pouvez plus envoyer de message à ce professionnel.\33[0m\n"), 0);
+                                        fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
+
+                                        insert_logs(api_key, client_ip, txt_log);
+                                    }
                                 } else {
-                                    send(cnx, "\033[31m-> Vous ne pouvez plus envoyer de message à ce professionnel.\33[0m\n", strlen("\033[31m-> Vous ne pouvez plus envoyer de message à ce professionnel.\33[0m\n"), 0);
+                                    send(cnx, "\033[31m-> Vous ne pouvez plus envoyer de message.\33[0m\n", strlen("\033[31m-> Vous ne pouvez plus envoyer de message.\33[0m\n"), 0);
                                     fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
 
                                     insert_logs(api_key, client_ip, txt_log);
                                 }
+
                             } else {
-                                send(cnx, "\033[31m-> Vous ne pouvez plus envoyer de message.\33[0m\n", strlen("\033[31m-> Vous ne pouvez plus envoyer de message.\33[0m\n"), 0);
-                                fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
+                                send(cnx, "\033[31m-> Erreur de format : MSG <id_destinataire> '<contenu du message>'\n\033[0m", sizeof("\033[31m-> Erreur de format : MSG <id_destinataire> '<contenu du message>'\n\033[0m"), 0);
 
+                                snprintf(txt_log, sizeof(txt_log), "-> Erreur de format : MSG <id_destinataire> '<contenu du message>'");
                                 insert_logs(api_key, client_ip, txt_log);
-                            }
-                            
-                        } else {
-                            send(cnx, "\033[31m-> Erreur de format : MSG <id_destinataire> '<contenu du message>'\n\033[0m", sizeof("\033[31m-> Erreur de format : MSG <id_destinataire> '<contenu du message>'\n\033[0m"), 0);
 
-                            snprintf(txt_log, sizeof(txt_log), "-> Erreur de format : MSG <id_destinataire> '<contenu du message>'");
+                                printf("\033[31m-> Erreur Format\033[0m\n");
+                            }
+                        } else {
+                            send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas envoyer un message\033[0m\n", sizeof("\033[31m-> Erreur : Vous ne pouvez pas envoyer un message\n\033[39m"), 0);
+
+                            snprintf(txt_log, sizeof(txt_log), "-> Erreur : Un admin peut pas envoyer un message");
                             insert_logs(api_key, client_ip, txt_log);
 
-                            printf("\033[31m-> Erreur Format\033[0m\n");
+                            printf("\033[31m-> Erreur : Un admin peut pas envoyer un message\033[0m\n");
                         }
 
                     }
@@ -310,285 +328,312 @@ int main() {
                     /// MODIF
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "MDF", 3) == 0) {
-                        int id_msg;
-                        char txt[1000], type_user_bdd[15];
-                        int offset = 0;
+                        if (strcmp(user_info->new_user, "ADMIN") != 0) {
+                            int id_msg;
+                            char txt[1000], type_user_bdd[15];
+                            int offset = 0;
 
-                        if (strcmp(user_info->new_user, "MEMBRE") == 0) {
-                            strcpy(type_user_bdd, "membre");
-                        } else if (strcmp(user_info->new_user, "PRO") == 0) {
-                            strcpy(type_user_bdd, "professionnel");
-                        }
-
-                        if (sscanf(buffer, "MDF %d %n", &id_msg, &offset) == 1) {
-                            // printf("ID Message : %d\n", id_msg);  // Affiche : 123
-                            // printf("Offset : %d\n", offset);      // Affiche : 7
-
-                            // Pointeur vers la partie restante du message
-                            char *message = buffer + offset;
-                            printf("Message : %s\n", message);
-
-                            snprintf(txt, sizeof(txt), "%s", buffer + offset);
-
-                            // Retirer les espaces et les apostrophes en trop si nécessaire
-                            char *start = txt;
-                            while (*start == ' ') start++;  // Supprimer les espaces en début
-                            char *end = start + strlen(start) - 1;
-                            while (end > start && (*end == ' ' || *end == '\'')) {
-                                *end = '\0';
-                                end--;
+                            if (strcmp(user_info->new_user, "MEMBRE") == 0) {
+                                strcpy(type_user_bdd, "membre");
+                            } else if (strcmp(user_info->new_user, "PRO") == 0) {
+                                strcpy(type_user_bdd, "professionnel");
                             }
 
-                            // Récupération de la date et de l'heure actuelles
-                            time_t now = time(NULL);
-                            struct tm *time_info = localtime(&now);
-                            if (time_info == NULL) {
-                                perror("\033[31m-> Erreur lors de la récupération de la date et de l'heure\033[0m");
+                            if (sscanf(buffer, "MDF %d %n", &id_msg, &offset) == 1) {
+                                // printf("ID Message : %d\n", id_msg);  // Affiche : 123
+                                // printf("Offset : %d\n", offset);      // Affiche : 7
 
-                                snprintf(txt_log, sizeof(txt_log), "-> Erreur lors de la récupération de la date et de l'heure");
-                                insert_logs(api_key, client_ip, txt_log);
-                                return EXIT_FAILURE;
-                            }
+                                // Pointeur vers la partie restante du message
+                                char *message = buffer + offset;
+                                printf("Message : %s\n", message);
 
-                            char timestamp[20];
-                            strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", time_info);
+                                snprintf(txt, sizeof(txt), "%s", buffer + offset);
 
-                            // MDF message
-                            if (is_token_valid(conn, user_info->token, txt_log, sizeof(txt_log))) {
-                                snprintf(query, sizeof(query),
-                                         "UPDATE tripenarvor._message SET contenu = '%s', horodatage_modifie = '%s', lus = 'false' WHERE id_message = %d",
-                                         start, timestamp, id_msg);
-                                
-                                printf("Query : %s\n",query);
-
-                                // Exécution de la requête
-                                if (!execute_query(conn, query, api_key, client_ip)) {
-                                    send(cnx, "\033[31m-> Erreur interne lors de la modification du message.\033[0m\n", strlen("\033[31m-> Erreur interne lors de la modification du message.\033[0m\n"), 0);
-                                } else {
-                                    // Log en cas de succès
-                                    send(cnx, "Modification du message réussi\n", sizeof("Modification du message réussi\n"), 0);
-
-                                    snprintf(txt_log, sizeof(txt_log), "Modification du message %d réussi", id_msg);
-                                    insert_logs(api_key, client_ip, txt_log);
-
-                                    printf("Mise à jour réussie pour le message ID %d\n", id_msg);
+                                // Retirer les espaces et les apostrophes en trop si nécessaire
+                                char *start = txt;
+                                while (*start == ' ') start++;  // Supprimer les espaces en début
+                                char *end = start + strlen(start) - 1;
+                                while (end > start && (*end == ' ' || *end == '\'')) {
+                                    *end = '\0';
+                                    end--;
                                 }
+
+                                // Récupération de la date et de l'heure actuelles
+                                time_t now = time(NULL);
+                                struct tm *time_info = localtime(&now);
+                                if (time_info == NULL) {
+                                    perror("\033[31m-> Erreur lors de la récupération de la date et de l'heure\033[0m");
+
+                                    snprintf(txt_log, sizeof(txt_log), "-> Erreur lors de la récupération de la date et de l'heure");
+                                    insert_logs(api_key, client_ip, txt_log);
+                                    return EXIT_FAILURE;
+                                }
+
+                                char timestamp[20];
+                                strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", time_info);
+
+                                // MDF message
+                                if (is_token_valid(conn, user_info->token, txt_log, sizeof(txt_log))) {
+                                    snprintf(query, sizeof(query),
+                                            "UPDATE tripenarvor._message SET contenu = '%s', horodatage_modifie = '%s', lus = 'false' WHERE id_message = %d",
+                                            start, timestamp, id_msg);
+                                    
+                                    printf("Query : %s\n",query);
+
+                                    // Exécution de la requête
+                                    if (!execute_query(conn, query, api_key, client_ip)) {
+                                        send(cnx, "\033[31m-> Erreur interne lors de la modification du message.\033[0m\n", strlen("\033[31m-> Erreur interne lors de la modification du message.\033[0m\n"), 0);
+                                    } else {
+                                        // Log en cas de succès
+                                        send(cnx, "Modification du message réussi\n", sizeof("Modification du message réussi\n"), 0);
+
+                                        snprintf(txt_log, sizeof(txt_log), "Modification du message %d réussi", id_msg);
+                                        insert_logs(api_key, client_ip, txt_log);
+
+                                        printf("Mise à jour réussie pour le message ID %d\n", id_msg);
+                                    }
+                                } else {
+                                    send(cnx, "\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n", strlen("\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n"), 0);
+                                    fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
+
+                                    insert_logs(api_key, client_ip, txt_log);
+                                }
+
                             } else {
-                                send(cnx, "\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n", strlen("\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n"), 0);
-                                fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
+                                send(cnx, "\033[31m-> Erreur de format : MDF <id_msg> '<contenu du message>'\n\033[39m", 72, 0);
 
+                                snprintf(txt_log, sizeof(txt_log), "-> Erreur de format : MDF <id_msg> '<contenu du message>'");
                                 insert_logs(api_key, client_ip, txt_log);
+
+                                printf("\033[31m-> Erreur Format\033[0m");
                             }
-
                         } else {
-                            send(cnx, "\033[31m-> Erreur de format : MDF <id_msg> '<contenu du message>'\n\033[39m", 72, 0);
+                            send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas modifier un message\033[39m\n", sizeof("\033[31m-> Erreur : Vous ne pouvez pas modifier un message\n\033[39m"), 0);
 
-                            snprintf(txt_log, sizeof(txt_log), "-> Erreur de format : MDF <id_msg> '<contenu du message>'");
+                            snprintf(txt_log, sizeof(txt_log), "-> Erreur : Un admin peut pas modifier un message");
                             insert_logs(api_key, client_ip, txt_log);
 
-                            printf("\033[31m-> Erreur Format\033[0m");
+                            printf("\033[31m-> Erreur : Un admin peut pas modifier un message\033[0m\n");
                         }
                     }
                     //////////////////////////////////////////////////////////////////////////////////////////
                     /// HISTORIQUE
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "HIST", 4) == 0) {
-                        if (is_token_valid(conn, user_info->token, txt_log, sizeof(txt_log))) {
-                            bool executable = false;
-                            bool a_marquer_comme_lus = false;
-                            char envoyeParOuA[10];
-                            // Déterminer le type de commande HIST (envoies, recus, lus, nonlus)
-                            char command_type[20];
-                            sscanf(buffer, "HIST %19s", command_type);  // Récupère la partie après "HIST"
+                        if (strcmp(user_info->new_user, "ADMIN") != 0) {
+                            if (is_token_valid(conn, user_info->token, txt_log, sizeof(txt_log))) {
+                                bool executable = false;
+                                bool a_marquer_comme_lus = false;
+                                char envoyeParOuA[10];
+                                // Déterminer le type de commande HIST (envoies, recus, lus, nonlus)
+                                char command_type[20];
+                                sscanf(buffer, "HIST %19s", command_type);  // Récupère la partie après "HIST"
 
-                            // Switch sur le type de commande
-                            switch (command_type[0]) {
-                                case 'E':  // "HIST ENVOYES"
-                                    if (strncmp(command_type, "ENVOYES", 7) == 0) {
-                                        snprintf(query, sizeof(query),
-                                                 "SELECT id_message, contenu, horodatage, horodatage_modifie, code_destinataire, membre.nom, membre.prenom, pro.raison_sociale "
-                                                 "FROM tripenarvor._message as msg "
-                                                 "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_destinataire "
-                                                 "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_destinataire "
-                                                 "WHERE code_emetteur = %d AND supprime='false' ORDER BY horodatage DESC",
-                                                 user_info->id_user);
-                                    }
-                                    executable = true;
-                                    strcpy(envoyeParOuA, "à");
-                                    break;
+                                // Switch sur le type de commande
+                                switch (command_type[0]) {
+                                    case 'E':  // "HIST ENVOYES"
+                                        if (strncmp(command_type, "ENVOYES", 7) == 0) {
+                                            snprintf(query, sizeof(query),
+                                                    "SELECT id_message, contenu, horodatage, horodatage_modifie, code_destinataire, membre.nom, membre.prenom, pro.raison_sociale "
+                                                    "FROM tripenarvor._message as msg "
+                                                    "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_destinataire "
+                                                    "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_destinataire "
+                                                    "WHERE code_emetteur = %d AND supprime='false' ORDER BY horodatage DESC",
+                                                    user_info->id_user);
+                                        }
+                                        executable = true;
+                                        strcpy(envoyeParOuA, "à");
+                                        break;
 
-                                case 'R':  // "HIST RECUS"
-                                    if (strncmp(command_type, "RECUS", 5) == 0) {
-                                        snprintf(query, sizeof(query),
-                                                 "SELECT id_message, contenu, horodatage, horodatage_modifie, code_emetteur, membre.nom, membre.prenom, pro.raison_sociale "
-                                                 "FROM tripenarvor._message as msg "
-                                                 "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_emetteur "
-                                                 "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_emetteur "
-                                                 "WHERE code_destinataire = %d AND supprime='false' ORDER BY horodatage DESC; ",
-                                                 user_info->id_user);
-                                    }
-                                    executable = true;
-                                    a_marquer_comme_lus = true;
-                                    strcpy(envoyeParOuA, "par");
+                                    case 'R':  // "HIST RECUS"
+                                        if (strncmp(command_type, "RECUS", 5) == 0) {
+                                            snprintf(query, sizeof(query),
+                                                    "SELECT id_message, contenu, horodatage, horodatage_modifie, code_emetteur, membre.nom, membre.prenom, pro.raison_sociale "
+                                                    "FROM tripenarvor._message as msg "
+                                                    "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_emetteur "
+                                                    "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_emetteur "
+                                                    "WHERE code_destinataire = %d AND supprime='false' ORDER BY horodatage DESC; ",
+                                                    user_info->id_user);
+                                        }
+                                        executable = true;
+                                        a_marquer_comme_lus = true;
+                                        strcpy(envoyeParOuA, "par");
 
-                                    break;
+                                        break;
 
-                                case 'L':  // "HIST LUS"
-                                    if (strncmp(command_type, "LUS", 3) == 0) {
-                                        snprintf(query, sizeof(query),
-                                                 "SELECT id_message, contenu, horodatage, horodatage_modifie, code_emetteur, membre.nom, membre.prenom, pro.raison_sociale "
-                                                 "FROM tripenarvor._message as msg "
-                                                 "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_emetteur "
-                                                 "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_emetteur "
-                                                 "WHERE code_destinataire = %d AND lus = true AND supprime='false' ORDER BY horodatage DESC",
-                                                 user_info->id_user);
-                                    }
-                                    executable = true;
-                                    strcpy(envoyeParOuA, "par");
+                                    case 'L':  // "HIST LUS"
+                                        if (strncmp(command_type, "LUS", 3) == 0) {
+                                            snprintf(query, sizeof(query),
+                                                    "SELECT id_message, contenu, horodatage, horodatage_modifie, code_emetteur, membre.nom, membre.prenom, pro.raison_sociale "
+                                                    "FROM tripenarvor._message as msg "
+                                                    "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_emetteur "
+                                                    "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_emetteur "
+                                                    "WHERE code_destinataire = %d AND lus = true AND supprime='false' ORDER BY horodatage DESC",
+                                                    user_info->id_user);
+                                        }
+                                        executable = true;
+                                        strcpy(envoyeParOuA, "par");
 
-                                    break;
+                                        break;
 
-                                case 'N':  // "HIST NONLUS"
-                                    if (strncmp(command_type, "NONLUS", 6) == 0) {
-                                        snprintf(query, sizeof(query),
-                                                 "SELECT id_message, contenu, horodatage, horodatage_modifie, code_emetteur, membre.nom, membre.prenom, pro.raison_sociale "
-                                                 "FROM tripenarvor._message as msg "
-                                                 "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_emetteur "
-                                                 "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_emetteur "
-                                                 "WHERE code_destinataire = %d AND lus = false AND supprime='false' ORDER BY horodatage DESC; ",
-                                                 user_info->id_user);
-                                    }
-                                    executable = true;
-                                    a_marquer_comme_lus = true;
-                                    strcpy(envoyeParOuA, "par");
+                                    case 'N':  // "HIST NONLUS"
+                                        if (strncmp(command_type, "NONLUS", 6) == 0) {
+                                            snprintf(query, sizeof(query),
+                                                    "SELECT id_message, contenu, horodatage, horodatage_modifie, code_emetteur, membre.nom, membre.prenom, pro.raison_sociale "
+                                                    "FROM tripenarvor._message as msg "
+                                                    "LEFT JOIN tripenarvor._membre as membre ON membre.code_compte = msg.code_emetteur "
+                                                    "LEFT JOIN tripenarvor._professionnel as pro ON pro.code_compte = msg.code_emetteur "
+                                                    "WHERE code_destinataire = %d AND lus = false AND supprime='false' ORDER BY horodatage DESC; ",
+                                                    user_info->id_user);
+                                        }
+                                        executable = true;
+                                        a_marquer_comme_lus = true;
+                                        strcpy(envoyeParOuA, "par");
 
-                                    break;
+                                        break;
 
-                                default:
-                                    send(cnx, "\033[31m-> Erreur de format : HIST <LUS | NONLUS | RECUS | ENVOYES> \n\033[0m", sizeof("\033[31m-> Erreur de format : HIST <LUS | NONLUS | RECUS | ENVOYES> \n\033[0m"), 0);
+                                    default:
+                                        send(cnx, "\033[31m-> Erreur de format : HIST <LUS | NONLUS | RECUS | ENVOYES> \n\033[0m", sizeof("\033[31m-> Erreur de format : HIST <LUS | NONLUS | RECUS | ENVOYES> \n\033[0m"), 0);
 
-                                    snprintf(txt_log, sizeof(txt_log), "-> Erreur de format : HIST <LUS | NONLUS | RECUS | ENVOYES>");
-                                    insert_logs(api_key, client_ip, txt_log);
+                                        snprintf(txt_log, sizeof(txt_log), "-> Erreur de format : HIST <LUS | NONLUS | RECUS | ENVOYES>");
+                                        insert_logs(api_key, client_ip, txt_log);
 
-                                    printf("\033[31m-> Erreur Format\033[0m");
-                                    break;
-                            }
+                                        printf("\033[31m-> Erreur Format\033[0m");
+                                        break;
+                                }
 
-                            if (executable == true) {
-                                // Exécution de la requête SQL
-                                PGresult *res = PQexec(conn, query);
-                                if (PQresultStatus(res) != PGRES_TUPLES_OK) {
-                                    fprintf(stderr, "\033[31m-> Échec de la requête SQL : %s\n%s\033[0m\n", query, PQerrorMessage(conn));
+                                if (executable == true) {
+                                    // Exécution de la requête SQL
+                                    PGresult *res = PQexec(conn, query);
+                                    if (PQresultStatus(res) != PGRES_TUPLES_OK) {
+                                        fprintf(stderr, "\033[31m-> Échec de la requête SQL : %s\n%s\033[0m\n", query, PQerrorMessage(conn));
 
-                                    snprintf(txt_log, sizeof(txt_log), "-> Échec de la requête SQL : %s\n%s", query, PQerrorMessage(conn));
-                                    insert_logs(api_key, client_ip, txt_log);
-                                } else {
-                                    int num_rows = PQntuples(res);
-                                    if (num_rows == 0) {
-                                        send(cnx, "Aucun message trouvé.\n", 23, 0);
-
-                                        snprintf(txt_log, sizeof(txt_log), "Aucun message trouvé.");
+                                        snprintf(txt_log, sizeof(txt_log), "-> Échec de la requête SQL : %s\n%s", query, PQerrorMessage(conn));
                                         insert_logs(api_key, client_ip, txt_log);
                                     } else {
-                                        char message_buffer[2048];
-                                        for (int i = 0; i < num_rows; i++) {
-                                            const char *nom_emetteur = PQgetvalue(res, i, 5);
-                                            const char *prenom_emetteur = PQgetvalue(res, i, 6);
-                                            const char *raison_sociale_emetteur = PQgetvalue(res, i, 7);
+                                        int num_rows = PQntuples(res);
+                                        if (num_rows == 0) {
+                                            send(cnx, "Aucun message trouvé.\n", 23, 0);
 
-                                            char *emetteur = NULL;
-                                            if (strlen(raison_sociale_emetteur) > 0) {
-                                                emetteur = (char *)raison_sociale_emetteur;
-                                            } else if (strlen(nom_emetteur) > 0 && strlen(prenom_emetteur) > 0) {
-                                                emetteur = (char *)malloc(strlen(nom_emetteur) + strlen(prenom_emetteur) + 2);  // +2 pour l'espace et le caractère nul
-                                                if (emetteur != NULL) {
-                                                    snprintf(emetteur, strlen(nom_emetteur) + strlen(prenom_emetteur) + 2, "%s %s", prenom_emetteur, nom_emetteur);  // Concaténer prénom et nom
+                                            snprintf(txt_log, sizeof(txt_log), "Aucun message trouvé.");
+                                            insert_logs(api_key, client_ip, txt_log);
+                                        } else {
+                                            char message_buffer[2048];
+                                            for (int i = 0; i < num_rows; i++) {
+                                                const char *nom_emetteur = PQgetvalue(res, i, 5);
+                                                const char *prenom_emetteur = PQgetvalue(res, i, 6);
+                                                const char *raison_sociale_emetteur = PQgetvalue(res, i, 7);
+
+                                                char *emetteur = NULL;
+                                                if (strlen(raison_sociale_emetteur) > 0) {
+                                                    emetteur = (char *)raison_sociale_emetteur;
+                                                } else if (strlen(nom_emetteur) > 0 && strlen(prenom_emetteur) > 0) {
+                                                    emetteur = (char *)malloc(strlen(nom_emetteur) + strlen(prenom_emetteur) + 2);  // +2 pour l'espace et le caractère nul
+                                                    if (emetteur != NULL) {
+                                                        snprintf(emetteur, strlen(nom_emetteur) + strlen(prenom_emetteur) + 2, "%s %s", prenom_emetteur, nom_emetteur);  // Concaténer prénom et nom
+                                                    }
+                                                } else {
+                                                    emetteur = "Inconnu";  // Si aucun nom ni prénom, afficher "Inconnu"
                                                 }
-                                            } else {
-                                                emetteur = "Inconnu";  // Si aucun nom ni prénom, afficher "Inconnu"
+
+                                                snprintf(message_buffer, sizeof(message_buffer),
+                                                        "\n----------------------------------------\n"
+                                                        "ID du message : %s\n"
+                                                        "Envoyé %s : \033[1m%s\033[0m\n"
+                                                        "Contenu : \033[1m%s\033[0m"
+                                                        "Date de création : %s\n"
+                                                        "Dernière modification : %s\n"
+                                                        "----------------------------------------\n",
+                                                        PQgetvalue(res, i, 0), envoyeParOuA, emetteur, PQgetvalue(res, i, 1), PQgetvalue(res, i, 2), PQgetvalue(res, i, 3));
+                                                send(cnx, message_buffer, strlen(message_buffer), 0);
+
+                                                // Libérer la mémoire uniquement si emetteur a été alloué dynamiquement
+                                                if (emetteur != NULL && strcmp(emetteur, "Inconnu") != 0 && strcmp(emetteur, raison_sociale_emetteur) != 0) {
+                                                    free(emetteur);
+                                                }
                                             }
 
-                                            snprintf(message_buffer, sizeof(message_buffer),
-                                                     "\n----------------------------------------\n"
-                                                     "ID du message : %s\n"
-                                                     "Envoyé %s : \033[1m%s\033[0m\n"
-                                                     "Contenu : \033[1m%s\033[0m"
-                                                     "Date de création : %s\n"
-                                                     "Dernière modification : %s\n"
-                                                     "----------------------------------------\n",
-                                                     PQgetvalue(res, i, 0), envoyeParOuA, emetteur, PQgetvalue(res, i, 1), PQgetvalue(res, i, 2), PQgetvalue(res, i, 3));
-                                            send(cnx, message_buffer, strlen(message_buffer), 0);
-
-                                            // Libérer la mémoire uniquement si emetteur a été alloué dynamiquement
-                                            if (emetteur != NULL && strcmp(emetteur, "Inconnu") != 0 && strcmp(emetteur, raison_sociale_emetteur) != 0) {
-                                                free(emetteur);
-                                            }
+                                            snprintf(txt_log, sizeof(txt_log), "HIST %s affiché", command_type);
+                                            insert_logs(api_key, client_ip, txt_log);
                                         }
+                                        PQclear(res);
 
-                                        snprintf(txt_log, sizeof(txt_log), "HIST %s affiché", command_type);
-                                        insert_logs(api_key, client_ip, txt_log);
-                                    }
-                                    PQclear(res);
+                                        if (a_marquer_comme_lus) {
+                                            // Marquer les messages comme lus après avoir traité la sélection
+                                            char update_query[512];
+                                            snprintf(update_query, sizeof(update_query),
+                                                    "UPDATE tripenarvor._message SET lus = true WHERE code_destinataire = %d AND lus = false;",
+                                                    user_info->id_user);
 
-                                    if (a_marquer_comme_lus) {
-                                        // Marquer les messages comme lus après avoir traité la sélection
-                                        char update_query[512];
-                                        snprintf(update_query, sizeof(update_query),
-                                                 "UPDATE tripenarvor._message SET lus = true WHERE code_destinataire = %d AND lus = false;",
-                                                 user_info->id_user);
-
-                                        // Appeler execute_query avec la requête formatée
-                                        execute_query(conn, update_query, api_key, client_ip);
+                                            // Appeler execute_query avec la requête formatée
+                                            execute_query(conn, update_query, api_key, client_ip);
+                                        }
                                     }
                                 }
-                            }
 
-                        } else {
-                            send(cnx, "\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n", strlen("\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n"), 0);
-                            fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
-
-                            insert_logs(api_key, client_ip, txt_log);
-                        }
-                    }
-                    //////////////////////////////////////////////////////////////////////////////////////////
-                    /// SUPPR
-                    //////////////////////////////////////////////////////////////////////////////////////////
-                    else if (strncmp(buffer, "SUPPR", 5) == 0) {
-                        int id_msg;
-
-                        if (sscanf(buffer, "SUPPR %d", &id_msg) == 1) {
-                            // SUPPR message
-                            if (is_token_valid(conn, user_info->token, txt_log, sizeof(txt_log))) {
-                                snprintf(query, sizeof(query),
-                                         "UPDATE tripenarvor._message SET supprime = 'true' WHERE id_message = %d AND code_emetteur = %d",
-                                         id_msg, user_info->id_user);
-
-                                // Exécution de la requête
-                                if (!execute_query(conn, query, api_key, client_ip)) {
-                                    send(cnx, "\033[31m-> Erreur interne lors de la suppression du message.\033[0m\n", strlen("\033[31m-> Erreur interne lors de la suppression du message.\033[0m\n"), 0);
-                                } else {
-                                    // Log en cas de succès
-                                    send(cnx, "Suppression du message réussi\n", sizeof("Suppression du message réussi\n"), 0);
-
-                                    snprintf(txt_log, sizeof(txt_log), "Suppression du message %d réussi\n", id_msg);
-                                    insert_logs(api_key, client_ip, txt_log);
-
-                                    printf("Suppression réussie pour le message ID %d\n", id_msg);
-                                }
                             } else {
                                 send(cnx, "\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n", strlen("\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n"), 0);
                                 fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
 
                                 insert_logs(api_key, client_ip, txt_log);
                             }
-
                         } else {
-                            send(cnx, "\033[31m-> Erreur de format : SUPPR <id_msg>\n\033[39m", 54, 0);
+                            send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas consulter votre historique\033[39m\n", sizeof("\033[31m-> Erreur : Vous ne pouvez pas consulter votre historique\n\033[39m"), 0);
 
-                            snprintf(txt_log, sizeof(txt_log), "-> Erreur de format : SUPPR <id_msg>");
+                            snprintf(txt_log, sizeof(txt_log), "-> Erreur : Un admin peut pas consulter son historique");
                             insert_logs(api_key, client_ip, txt_log);
 
-                            printf("\033[31m-> Erreur Format\033[0m");
+                            printf("\033[31m-> Erreur : Un admin peut pas consulter son historique\033[0m\n");
+                        }
+                    }
+                    //////////////////////////////////////////////////////////////////////////////////////////
+                    /// SUPPR
+                    //////////////////////////////////////////////////////////////////////////////////////////
+                    else if (strncmp(buffer, "SUPPR", 5) == 0) {
+                        if (strcmp(user_info->new_user, "ADMIN") != 0) {
+                            int id_msg;
+
+                            if (sscanf(buffer, "SUPPR %d", &id_msg) == 1) {
+                                // SUPPR message
+                                if (is_token_valid(conn, user_info->token, txt_log, sizeof(txt_log))) {
+                                    snprintf(query, sizeof(query),
+                                            "UPDATE tripenarvor._message SET supprime = 'true' WHERE id_message = %d AND code_emetteur = %d",
+                                            id_msg, user_info->id_user);
+
+                                    // Exécution de la requête
+                                    if (!execute_query(conn, query, api_key, client_ip)) {
+                                        send(cnx, "\033[31m-> Erreur interne lors de la suppression du message.\033[0m\n", strlen("\033[31m-> Erreur interne lors de la suppression du message.\033[0m\n"), 0);
+                                    } else {
+                                        // Log en cas de succès
+                                        send(cnx, "Suppression du message réussi\n", sizeof("Suppression du message réussi\n"), 0);
+
+                                        snprintf(txt_log, sizeof(txt_log), "Suppression du message %d réussi\n", id_msg);
+                                        insert_logs(api_key, client_ip, txt_log);
+
+                                        printf("Suppression réussie pour le message ID %d\n", id_msg);
+                                    }
+                                } else {
+                                    send(cnx, "\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n", strlen("\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n"), 0);
+                                    fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
+
+                                    insert_logs(api_key, client_ip, txt_log);
+                                }
+
+                            } else {
+                                send(cnx, "\033[31m-> Erreur de format : SUPPR <id_msg>\n\033[39m", 54, 0);
+
+                                snprintf(txt_log, sizeof(txt_log), "-> Erreur de format : SUPPR <id_msg>");
+                                insert_logs(api_key, client_ip, txt_log);
+
+                                printf("\033[31m-> Erreur Format\033[0m");
+                            }
+                        } else {
+                            send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas supprimer un message\033[39m\n", sizeof("\033[31m-> Erreur : Vous ne pouvez pas supprimer un message\n\033[39m"), 0);
+
+                            snprintf(txt_log, sizeof(txt_log), "-> Erreur : Un admin peut pas supprimer un message");
+                            insert_logs(api_key, client_ip, txt_log);
+
+                            printf("\033[31m-> Erreur : Un admin peut pas supprimer un message\033[0m\n");
                         }
 
                     }

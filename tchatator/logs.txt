@@ -141,3 +141,22 @@ DETAIL:  Key (code_membre)=(1) is not present in table "_membre".
 [2025-01-30 21:29:38] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Le membre 2 est encore bloqué globalement jusqu'à 2025-01-31 20:29:09.555819.
 [2025-01-30 21:29:47] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE 76OM
 [2025-01-30 21:29:47] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-01-30 21:47:49] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-30 21:47:54] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'A-5f4d3c2b' : a1
+[2025-01-30 21:47:54] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
+
+[2025-01-30 21:47:57] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Erreur : Aucun token trouvé avec la valeur donnée.
+[2025-01-30 21:49:39] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-30 21:49:39] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-30 21:50:19] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-01-30 21:50:19] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-01-30 21:50:31] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-01-30 21:50:50] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'A-5f4d3c2b' : a1
+[2025-01-30 21:50:50] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
+
+[2025-01-30 21:50:56] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Erreur : Un admin peut pas envoyer un message
+[2025-01-30 21:51:01] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Erreur : Un admin peut pas modifier un message
+[2025-01-30 21:51:05] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Erreur : Un admin peut pas consulter son historique
+[2025-01-30 21:51:09] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Erreur : Un admin peut pas regen sa cle d'API
+[2025-01-30 21:51:19] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: BYE BYE a1
+[2025-01-30 21:51:19] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: Client déconnecté.
