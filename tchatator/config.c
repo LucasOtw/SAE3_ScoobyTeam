@@ -312,6 +312,10 @@ bool is_token_valid(PGconn *conn, const char *token, char *log_message, size_t l
         return true;
     } else {
         snprintf(log_message, log_size, "-> Erreur : Le token est expiré ou inactif.");
+
+        snprintf(query, sizeof(query), "UPDATE tripenarvor._token SET is_active = false WHERE token = '%s'", token);
+        PGresult *res = PQexec(conn, query);
+
         PQclear(res);
         return false;
     }
