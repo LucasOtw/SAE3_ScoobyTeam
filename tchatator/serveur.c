@@ -74,7 +74,8 @@ int main() {
 
         memset(buffer, 0, sizeof(buffer));
 
-        char api_key[LEN_API + 1];  // Variable pour stocker la clé API reçue
+        
+        char api_key[LEN_API + 1];
         UserInfo *user_info;
 
         do {
@@ -88,7 +89,7 @@ int main() {
                 snprintf(txt_log, sizeof(txt_log), "-> Erreur lors de la réception des données");
                 insert_logs(NULL, client_ip, txt_log);
 
-                close(cnx);
+                // close(cnx);
                 continue;
             }
 
@@ -105,7 +106,7 @@ int main() {
                 snprintf(txt_log, sizeof(txt_log), "-> Erreur : clé API vide après nettoyage.");
                 insert_logs(api_key, client_ip, txt_log);
 
-                close(cnx);
+                // close(cnx);
                 continue;
             }
 
@@ -113,17 +114,17 @@ int main() {
             printf("Clé API finale envoyée à la fonction : '%s'\n", api_key);
             user_info = generate_and_return_token(api_key, conn);
 
-            // if (user_info == NULL) {
-            //     printf("\033[31m-> Erreur : lors de la génération ou de la récupération du token.\033[0m\n");
+            if (user_info == NULL) {
+                printf("\033[31m-> Erreur : lors de la génération ou de la récupération du token.\033[0m\n\n");
 
-            //     snprintf(txt_log, sizeof(txt_log), "-> Erreur : lors de la génération ou de la récupération du token.");
-            //     insert_logs(api_key, client_ip, txt_log);
+                snprintf(txt_log, sizeof(txt_log), "-> Erreur : lors de la génération ou de la récupération du token.");
+                insert_logs(api_key, client_ip, txt_log);
 
-            //     send(cnx, "\033[31m-> Erreur : La clé API n'existe pas\033[0m\n", sizeof("\033[31m-> Erreur : La clé API n'existe pas\033[0m\n"), 0);
+                send(cnx, "\033[31m-> Erreur : La clé API n'existe pas\033[0m\n\n", sizeof("\033[31m-> Erreur : La clé API n'existe pas\033[0m\n"), 0);
 
-            //     close(cnx);
-            //     continue;
-            // }
+                // close(cnx);
+                continue;
+            }
         } while (user_info == NULL);
 
         // Afficher le token généré pour confirmation (facultatif)
