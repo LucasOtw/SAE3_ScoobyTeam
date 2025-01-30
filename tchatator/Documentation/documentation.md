@@ -4,58 +4,149 @@
 
 ### 1 | Explication du programme
 
-- Se connecter avec une clé API.
-- Envoyer des messages à d'autres utilisateurs.
-- Consulter l'historique des messages.
-- Supprimer un message.
-- Régénérer une clé API.
-- Se déconnecter et fermer la connexion.
+Le programme agit comme un client envoyant des commandes à un serveur. Il permet aux utilisateurs de :
 
-Le programme a pour but d'agir avec comme un client qui envoie des commandes à un serveur.
+-   Se connecter avec une clé API.
+-   Envoyer des messages à d'autres utilisateurs.
+-   Consulter l'historique des messages.
+-   Supprimer un message.
+-   Régénérer une clé API.
+-   Se déconnecter et fermer la connexion.
 
 ---
 
 ### 2 | Mise en marche du programme
 
-Il faut compiler le programme en c avec cette commande : 
+Pour commencer il faut installer une bibliothèque PostgreSQL
 
-```c
-gcc client.c -o client -Wall
+### **Installation selon ta distribution**
+
+-   #### **Sur Debian, Ubuntu et dérivés (ex : MX Linux)**
+
+    ```
+    sudo apt update
+    sudo apt install libpq-dev
+    ```
+
+-   #### **Sur macOS (via Homebrew)**
+
+    ```
+    brew install postgresql
+    ```
+
+Il faut compiler le programme en C avec la commande suivante :
+
+```
+gcc client.c bdd.c fonct.c config.c -o client -I/usr/include/postgresql -lpq
 ```
 
-Et ensuite l'éxecuter :
+Puis l'exécuter :
 
-```c
+```
 ./client
 ```
 
-Ici le programme vous demandera de renseigner votre clé API. Notez bien que au bout de 3 tentatives ratées, vous devrez attendre un certain temps.
+Lors de l'exécution, le programme demandera de renseigner votre clé API.  
+**Attention** : après **3 tentatives échouées**, un délai d'attente sera imposé avant de pouvoir réessayer.
 
 ---
 
-### 3 | Utilisation des commandes
+### 3 | Utilisation des commandes pour un membre
 
-Voici une liste des différentes commandes : 
+Une fois connecté, le menu suivant s'affiche :
 
-- ``` MSG < votre message>```
-- ```SUPPR <id>```
-- ```HIST```
-- ```REGEN```
-- ```BYE BYE```
+```
+=== Menu Membre ===
+1. Envoyer un message
+2. Modifier un message
+3. Supprimer un message
+4. Historique des messages
+5. Régénérer clé API
+6. Déconnexion
+Votre choix :
+```
 
-Concernant leurs rôles : 
+#### Rôle des commandes :
 
--```MSG < votre message>``` : permet d'envoyer un message
+-   **Envoyer un message** : envoi d'un message en précisant :
 
--```SUPPR <id>``` : permet de supprimer un message en indiquant son identifiant
+    -   l'ID du destinataire
+    -   le contenu du message
 
--```HIST``` : permet d'accéder à l'historique des messages envoyés
+-   **Modifier un message** : modification du contenu d'un message envoyé en précisant :
 
--```REGEN``` : Permet de générer une nouvelle clé API
+    -   l'identifiant du message à modifier
+    -   le nouveau contenu du message
 
--```BYE BYE``` : Se deconnecter et ferme proprement le programme.
+-   **Supprimer un message** : suppression d'un message en précisant :
 
+    -   l'identifiant du message à supprimer
 
+-   **Historique des messages** : permet d'accéder à l'historique des messages via le menu suivant :
 
+    ```
+    1. Voir les messages lus
+    2. Voir les messages non lus
+    3. Voir les messages reçus (lus et non lus)
+    4. Voir les messages envoyés
+    5. Retour au menu principal
+    ```
 
+-   **Régénérer clé API** : génère une nouvelle clé API.
 
+-   **Déconnexion** : ferme proprement la session et le programme.
+
+### 4 | Utilisation des commandes pour un professionnel
+
+Une fois connecté, le menu suivant s'affiche :
+
+```
+=== Menu Pro ===
+1. Envoyer un message
+2. Modifier un message
+3. Supprimer un message
+4. Historique des messages
+5. Régénérer clé API
+6. Bloquer un membre
+7. Débloquer un membre
+8. Déconnexion
+Votre choix :
+```
+
+#### Rôle des commandes :
+
+-   **Envoyer un message** : envoi d'un message en précisant :
+
+    -   l'ID du destinataire
+    -   le contenu du message
+
+-   **Modifier un message** : modification du contenu d'un message envoyé en précisant :
+
+    -   l'identifiant du message à modifier
+    -   le nouveau contenu du message
+
+-   **Supprimer un message** : suppression d'un message envoyé en précisant :
+
+    -   l'identifiant du message à supprimer
+
+-   **Historique des messages** : permet d'accéder à l'historique des messages via le menu suivant :
+
+    ```
+    1. Voir les messages lus
+    2. Voir les messages non lus
+    3. Voir les messages reçus (lus et non lus)
+    4. Voir les messages envoyés
+    5. Retour au menu principal
+    ```
+
+-   **Régénérer clé API** : génère une nouvelle clé API.
+
+-   **Bloquer un membre** : empêche un utilisateur d'envoyer des messages pendant 24H en précisant :
+
+    -   l'ID du membre à bloquer
+
+-   **Débloquer un membre** : rétablit l'accès aux messages pour un utilisateur bloqué en précisant :
+
+    -   l'ID du membre à débloquer
+
+-   **Déconnexion** : ferme proprement la session et le programme.

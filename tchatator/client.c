@@ -395,6 +395,9 @@ void update_message(int socket) {
         return;
     }
     buffer[len] = '\0';
+
+    handle_server_response(socket);
+
 }
 
 // Fonction pour fermer la connexion
@@ -456,7 +459,7 @@ void print_history_menu() {
     printf("\n=== Menu Historique ===\n");
     printf("1. Voir les messages lus\n");
     printf("2. Voir les messages non lus\n");
-    printf("3. Voir les messages reçus\n");
+    printf("3. Voir les messages reçus (lus et non lus)\n");
     printf("4. Voir les messages envoyés\n");
     printf("5. Retour au menu principal\n");
     printf("Votre choix : ");
