@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include <unistd.h>
 
 #include "bdd.h"
@@ -13,12 +14,14 @@
 #define BUFFER_SIZE 1024
 
 // Prototypes de fonctions
-void print_menu();
+void print_menu_membre();
+void print_menu_pro();
+void print_menu_admin();
 int create_client_socket();
 void configure_server_address(struct sockaddr_in *server_addr);
 void handle_server_response(int socket);
 void remove_ansi_codes(char *str);
-void login(int socket, int *connected);
+char *login(int socket, int *connected);
 void send_message(int socket);
 void close_connection(int socket);
 void get_history(int socket);
@@ -29,6 +32,12 @@ void delete_message(int socket);
 void regenerate_api_key(int socket);
 void deconnexion(int socket, int *connected);
 void update_message(int socket);
+void block_member(int socket);
+void unblock_member(int socket);
+void block(int socket);
+void unblock(int socket);
+void ban(int socket);
+void unban(int socket);
 
 int main() {
     int client_socket;
@@ -37,10 +46,9 @@ int main() {
     int connected = 0;
     // Création du socket client
     client_socket = create_client_socket();
-
     // Configuration de l'adresse du serveur
     configure_server_address(&server_addr);
-
+    char *api_key;
     // Connexion au serveur
     if (connect(client_socket, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0) {
         perror("Échec de la connexion au serveur");
@@ -53,52 +61,140 @@ int main() {
     // Boucle principale pour afficher le menu et gérer les choix
     while (1) {
         if (connected == 1) {
-            print_menu();
-            scanf("%d", &choice);
-            getchar();
+            if (api_key[0] == 'M') {
+                print_menu_membre();
+                scanf("%d", &choice);
+                getchar();
+                switch (choice) {
+                    case 1:
+                        send_message(client_socket);  // ENVOYER MSG
+                        break;
+                    case 2:
+                        update_message(client_socket);  // Modifier MSG
+                        break;
+                    case 3:
+                        delete_message(client_socket);  // Supprimer un message
+                        break;
+                    case 4:
+                        get_history(client_socket);  // Historique
+                        break;
+                    case 5:
+                        regenerate_api_key(client_socket);  // Regen API Key
+                        break;
+                    case 6:
+                        logout(client_socket, &connected);  // Déconnexion
+                        return EXIT_SUCCESS;
 
-            switch (choice) {
-                case 1:
-                    send_message(client_socket);  // ENVOYER MSG
-                    break;
-                case 2:
-                    update_message(client_socket);  // Modifier MSG
-                    break;
-                case 3:
-                    delete_message(client_socket);  // Supprimer un message
-                    break;
-                case 4:
-                    get_history(client_socket);  // Historique
-                    break;
+                        break;
 
-                case 5:
-                    regenerate_api_key(client_socket);  // Regn API Key
-                    break;
+                    default:
+                        printf("Choix invalide. Veuillez réessayer.\n");
+                }
+            } else if (api_key[0] == 'P') {
+                print_menu_pro();
+                scanf("%d", &choice);
+                getchar();
 
-                case 6:
-                    logout(client_socket, &connected);  // Déconnexion
-                    break;
+                switch (choice) {
+                    case 1:
+                        send_message(client_socket);  // ENVOYER MSG
+                        break;
+                    case 2:
+                        update_message(client_socket);  // Modifier MSG
+                        break;
+                    case 3:
+                        delete_message(client_socket);  // Supprimer un message
+                        break;
+                    case 4:
+                        get_history(client_socket);  // Historique
+                        break;
+                    case 5:
+                        regenerate_api_key(client_socket);  // Regen API Key
+                        break;
+                    case 6:
+                        block_member(client_socket);  // bloquer un membre
+                        break;
+                    case 7:
+                        unblock_member(client_socket);  // débloquer un membre
+                        break;
+                    case 8:
+                        // close_connection(client_socket);
+                        logout(client_socket, &connected);  // Déconnexion
+                        return EXIT_SUCCESS;
 
-                default:
-                    printf("Choix invalide. Veuillez réessayer.\n");
+                        break;
+                    default:
+                        printf("Choix invalide. Veuillez réessayer.\n");
+                }
+            } else if (api_key[0] == 'A') {
+                print_menu_admin();
+                scanf("%d", &choice);
+                getchar();
+
+                switch (choice) {
+                    case 1:
+                        block(client_socket);  // bloquer un membre ou un pro
+                        break;
+                    case 2:
+                        unblock(client_socket);  // débloquer un membre ou un pro
+                        break;
+                    case 3:
+                        ban(client_socket);  // ban un membre ou un pro
+                        break;
+                    case 4:
+                        unban(client_socket);  // unban un membre ou un pro
+                        break;
+                    case 5:
+                        logout(client_socket, &connected);  // Déconnexion
+                        return EXIT_SUCCESS;
+                        break;
+                    default:
+                        printf("Choix invalide. Veuillez réessayer.\n");
+                }
             }
+
         } else {
-            login(client_socket, &connected);  // L'utilisateur doit se connecter d'abord
+            api_key = login(client_socket, &connected);  // L'utilisateur doit se connecter d'abord
         }
     }
 
     return 0;
 }
 
-// Fonction pour afficher le menu
-void print_menu() {
-    printf("\n=== Menu Client ===\n");
-    printf("1. Envoyer un message\n");
-    printf("2. Modifier un message\n");
-    printf("3. Supprimer un message\n");
-    printf("4. Historique des messages\n");
-    printf("5. Regénérer clé API\n");
-    printf("6. Déconnexion\n");
+// Fonction pour afficher le menu MEMBRE
+void print_menu_membre() {
+    printf("\n\033[48;2;189;196;38m\033[38;2;0;0;0m\033[1m=== Menu Membre ===\033[0m\n");  // Bleu et gras
+    printf("\033[1m1. \033[0mEnvoyer un message\n");                                       // Gras pour le numéro
+    printf("\033[1m2. \033[0mModifier un message\n");
+    printf("\033[1m3. \033[0mSupprimer un message\n");
+    printf("\033[1m4. \033[0mHistorique des messages\n");
+    printf("\033[1m5. \033[0mRegénérer clé API\n");
+    printf("\033[1m6. \033[0mDéconnexion\n");
+    printf("Votre choix : ");
+}
+
+// Fonction pour afficher le menu PRO
+void print_menu_pro() {
+    printf("\n\033[48;2;242;131;34m\033[38;2;0;0;0m\033[1m=== Menu Pro ===\033[0m\n");  // Vert et gras
+    printf("\033[1m1. \033[0mEnvoyer un message\n");
+    printf("\033[1m2. \033[0mModifier un message\n");
+    printf("\033[1m3. \033[0mSupprimer un message\n");
+    printf("\033[1m4. \033[0mHistorique des messages\n");
+    printf("\033[1m5. \033[0mRegénérer clé API\n");
+    printf("\033[1m6. \033[0mBloquer un membre\n");
+    printf("\033[1m7. \033[0mDébloquer un membre\n");
+    printf("\033[1m8. \033[0mDéconnexion\n");
+    printf("Votre choix : ");
+}
+
+// Fonction pour afficher le menu ADMIN
+void print_menu_admin() {
+    printf("\n\033[1;31m=== Menu Admin ===\033[0m\n");  // Rouge et gras
+    printf("\033[1m1. \033[0mBloquer un membre\n");
+    printf("\033[1m2. \033[0mDébloquer un membre\n");
+    printf("\033[1m3. \033[0mBannir un membre\n");
+    printf("\033[1m4. \033[0mDébannir un membre\n");
+    printf("\033[1m5. \033[0mDéconnexion\n");
     printf("Votre choix : ");
 }
 
@@ -125,16 +221,98 @@ void configure_server_address(struct sockaddr_in *server_addr) {
 }
 
 // Fonction pour gérer la réponse du serveur
+// Fonction pour afficher une réponse du serveur avec une couleur
 void handle_server_response(int socket) {
     char buffer[BUFFER_SIZE];
     memset(buffer, 0, BUFFER_SIZE);
 
-    if (recv(socket, buffer, BUFFER_SIZE - 1, 0) < 0) {
-        perror("Erreur de réception du serveur");
+    int len = recv(socket, buffer, BUFFER_SIZE - 1, 0);
+    if (len < 0) {
+        perror("\033[1;31mErreur de réception du serveur\033[0m");  // Rouge pour l'erreur
     } else {
+        printf("\033[1;32mRéponse du serveur : \033[0m%s\n", buffer);  // Vert pour succès
     }
 }
 
+// Fonction pour afficher un message d'erreur avec couleur
+void print_error_message(const char *message) {
+    printf("\033[1;31m[ERREUR] \033[0m%s\n", message);  // Rouge pour les erreurs
+}
+
+// Fonction pour afficher un message de succès avec couleur
+void print_success_message(const char *message) {
+    printf("\033[1;32m[SUCCÈS] \033[0m%s\n", message);  // Vert pour les succès
+}
+
+// Exemple d'utilisation dans le main (lors de la connexion)
+char *login(int socket, int *connected) {
+    char buffer[1024];
+    int essais = 3;
+    char *api_key;
+    while (essais > 0) {
+        printf("\033[1mEntrez la clé API : \033[0m");
+        if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
+            perror("\033[1;31mErreur lors de la lecture de l'entrée\033[0m");
+            break;
+        }
+
+        strcpy(api_key, buffer);
+        buffer[strcspn(buffer, "\n")] = '\0';  // Supprime le retour à la ligne
+
+        if (strlen(buffer) == 0) {
+            print_error_message("Erreur : clé API vide");
+            essais--;
+            printf("Nombre d'essai(s) restant : %d\n", essais);
+            continue;
+        }
+
+        if (send(socket, buffer, strlen(buffer), 0) < 0) {
+            print_error_message("Erreur lors de l'envoi de la clé API");
+            essais--;
+            printf("Nombre d'essai(s) restant : %d\n", essais);
+            continue;
+        }
+
+        int len = recv(socket, buffer, sizeof(buffer) - 1, 0);
+        if (len < 0) {
+            print_error_message("Erreur lors de la réception de la réponse");
+            essais--;
+            printf("Nombre d'essai(s) restant : %d\n", essais);
+            continue;
+        } else if (len == 0) {
+            print_error_message("Le serveur a fermé la connexion de manière inattendue");
+            essais--;
+            printf("Nombre d'essai(s) restant : %d\n", essais);
+            continue;
+        }
+
+        buffer[len] = '\0';
+        remove_ansi_codes(buffer);
+
+        if (strstr(buffer, "Erreur : La clé API n'existe pas\n") != NULL) {
+            *connected = 0;
+            print_error_message(buffer);
+            essais--;
+            if (essais == 0) {
+                printf("\033[1;33mNombre d'essais dépassé. Veuillez réessayer dans 10 secondes.\033[0m\n");
+                for (int i = 10; i > 0; i--) {
+                    printf("\033[1;33m%d seconde(s)...\033[0m\n", i);
+                    fflush(stdout);
+                    sleep(1);
+                }
+                printf("\033[1;33mVous pouvez réessayer maintenant.\033[0m\n");
+            } else {
+                printf("Nombre d'essai(s) restant : %d\n", essais);
+            }
+            continue;
+        }
+
+        *connected = 1;
+        print_success_message(buffer);
+        break;
+    }
+    return api_key;
+}
 void remove_ansi_codes(char *str) {
     char *ptr = str;
     while (*ptr) {
@@ -152,81 +330,6 @@ void remove_ansi_codes(char *str) {
         }
     }
     *str = '\0';  // Terminer la chaîne proprement
-}
-
-void login(int socket, int *connected) {
-    char buffer[1024];
-    int essais = 3;
-
-    // Demander la clé API jusqu'à ce que l'utilisateur soit connecté ou que le nombre d'essais soit dépassé
-    while (essais > 0) {
-        printf("Entrez la clé API : ");
-        if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
-            perror("Erreur lors de la lecture de l'entrée");
-            break;
-        }
-
-        // Supprimer le retour à la ligne s'il est présent
-        buffer[strcspn(buffer, "\n")] = '\0';
-
-        // Vérifier si la clé API est vide
-        if (strlen(buffer) == 0) {
-            printf("Erreur : clé API vide\n");
-            essais--;
-            printf("Nombre d'essai(s) restant : %d\n", essais);
-            continue;
-        }
-
-        // Envoi de la clé API au serveur
-        if (send(socket, buffer, strlen(buffer), 0) < 0) {
-            perror("Erreur lors de l'envoi de la clé API");
-            essais--;
-            printf("Nombre d'essai(s) restant : %d\n", essais);
-            continue;
-        }
-
-        // Attente de la réponse du serveur
-        int len = recv(socket, buffer, sizeof(buffer) - 1, 0);
-        if (len < 0) {
-            perror("Erreur lors de la réception de la réponse");
-            essais--;
-            printf("Nombre d'essai(s) restant : %d\n", essais);
-            continue;
-        } else if (len == 0) {
-            printf("Le serveur a fermé la connexion de manière inattendue\n");
-            essais--;
-            printf("Nombre d'essai(s) restant : %d\n", essais);
-            continue;
-        }
-
-        buffer[len] = '\0';         // Terminer la chaîne proprement
-        remove_ansi_codes(buffer);  // Enlever les séquences de couleur si nécessaire
-
-        // Vérifier si la réponse contient une erreur de clé API
-        if (strstr(buffer, "Erreur : La clé API n'existe pas\n") != NULL) {
-            *connected = 0;          // L'utilisateur reste non connecté
-            printf("%s\n", buffer);  // Affiche le message d'erreur
-            essais--;
-            if (essais == 0) {
-                printf("Nombre d'essais dépassé. Veuillez réessayer dans 10 secondes.\n");
-                for (int i = 10; i > 0; i--) {
-                    printf("%d seconde(s)...\n", i);
-                    fflush(stdout);
-                    sleep(1);  // Attente d'une seconde avant de réessayer
-                }
-                // Message après le délai
-                printf("Vous pouvez réessayer maintenant.\n");
-            } else {
-                printf("Nombre d'essai(s) restant : %d\n", essais);
-            }
-            continue;  // Arrêter ici, car la clé API est invalide
-        }
-
-        // Si la clé est valide
-        *connected = 1;          // L'utilisateur est maintenant connecté
-        printf("%s\n", buffer);  // Affiche le message du serveur si clé API valide
-        break;                   // Sortir de la boucle si la connexion est réussie
-    }
 }
 
 // Fonction pour envoyer un message
@@ -258,6 +361,8 @@ void send_message(int socket) {
         return;
     }
     buffer[len] = '\0';
+
+    handle_server_response(socket);
 }
 
 void update_message(int socket) {
@@ -276,6 +381,8 @@ void update_message(int socket) {
     message[strcspn(message, "\n")] = 0;  // Supprime le caractère \n
     // Formate et envoie le message au serveur
     snprintf(buffer, sizeof(buffer), "MDF %d %s\n", id_msg, message);
+
+    printf("Message : %s", message);
     if (send(socket, buffer, strlen(buffer), 0) == -1) {
         perror("Erreur lors de l'envoi du message\n");
         return;
@@ -413,9 +520,7 @@ void logout(int socket, int *connected) {
     printf("%s\n", buffer);
     *connected = 0;  // L'utilisateur est maintenant déconnecté
 
-    printf("Fermeture du programme...\n");
-    close(socket);
-    exit(EXIT_SUCCESS);
+    printf("Vous avez été déconnecté\n");
 }
 
 // Fonction pour supprimer un message
@@ -424,7 +529,7 @@ void delete_message(int socket) {
     int id_msg;
 
     // Demande à l'utilisateur l'ID du message à supprimer
-    printf("Entrez l'ID du message à supprimer : ");
+    printf("Entrez l'ID du message à supprimer :\n");
     scanf("%d", &id_msg);
     getchar();  // Consomme le retour à la ligne restant
 
@@ -465,4 +570,21 @@ void regenerate_api_key(int socket) {
     }
     buffer[len] = '\0';      // Assurez-vous que la chaîne est terminée par un caractère nul
     printf("%s\n", buffer);  // Affiche la réponse
+}
+
+void block_member(int socket) {
+}
+void unblock_member(int socket) {
+}
+
+void block(int socket) {
+}
+
+void unblock(int socket) {
+}
+
+void ban(int socket) {
+}
+
+void unban(int socket) {
 }
