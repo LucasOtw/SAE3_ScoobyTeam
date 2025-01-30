@@ -80,3 +80,145 @@ bool execute_query(PGconn *conn, const char *query, char *api_key, char *client_
     PQclear(res);
     return true;
 }
+
+
+
+bool is_member_blocked_all(PGconn *conn, int code_membre, char *log_message, size_t log_size) {
+    if (conn == NULL) {
+        snprintf(log_message, log_size, "-> Erreur : Connexion à la base de données invalide.");
+        return false;
+    }
+
+    char query[256];
+    snprintf(query, sizeof(query), 
+             "SELECT expires_at FROM tripenarvor._blocked_all "
+             "WHERE code_membre = %d", 
+             code_membre);
+
+    PGresult *res = PQexec(conn, query);
+    if (PQresultStatus(res) != PGRES_TUPLES_OK) {
+        snprintf(log_message, log_size, "-> Erreur exécution requête : %s", PQerrorMessage(conn));
+        PQclear(res);
+        return false;
+    }
+
+    if (PQntuples(res) == 0) {
+        snprintf(log_message, log_size, "-> Aucun blocage trouvée pour le membre.");
+        PQclear(res);
+        return false; 
+    }
+
+    char *expires_at_str = PQgetvalue(res, 0, 0);
+    struct tm expires_at;
+
+    if (strptime(expires_at_str, "%Y-%m-%d %H:%M:%S", &expires_at) == NULL) {
+        snprintf(log_message, log_size, "-> Erreur parsing expires_at : %s", expires_at_str);
+        PQclear(res);
+        return false;
+    }
+
+    PQclear(res);
+
+    time_t expires_at_time = timegm(&expires_at);
+    if (expires_at_time == -1) {
+        snprintf(log_message, log_size, "-> Erreur conversion expires_at en time_t.");
+        return false;
+    }
+
+    time_t now = time(NULL);
+    struct tm now_tm;
+    gmtime_r(&now, &now_tm);
+    now = mktime(&now_tm);
+
+    if (difftime(expires_at_time, now) > 0) {
+        snprintf(log_message, log_size, "Le membre %d est encore bloqué globalement jusqu'à %s.", 
+                 code_membre, expires_at_str);
+        return true;  
+    }
+
+    snprintf(query, sizeof(query), 
+             "DELETE FROM tripenarvor._blocked_all WHERE code_membre = %d", code_membre);
+
+    res = PQexec(conn, query);
+    if (PQresultStatus(res) != PGRES_COMMAND_OK) {
+        snprintf(log_message, log_size, "-> Erreur suppression blocage : %s", PQerrorMessage(conn));
+    } else {
+        snprintf(log_message, log_size, "Blocage expiré supprimé pour le membre %d.", code_membre);
+    }
+
+    PQclear(res);
+    return false;
+}
+
+
+
+
+bool is_member_blocked_for(PGconn *conn, int code_membre, int code_professionnel, char *log_message, size_t log_size) {
+    if (conn == NULL) {
+        snprintf(log_message, log_size, "-> Erreur : Connexion à la base de données invalide.");
+        return false;
+    }
+
+    char query[256];
+    snprintf(query, sizeof(query), 
+             "SELECT expires_at FROM tripenarvor._blocked_for "
+             "WHERE code_membre = %d AND code_professionnel = %d", 
+             code_membre, code_professionnel);
+
+    PGresult *res = PQexec(conn, query);
+    if (PQresultStatus(res) != PGRES_TUPLES_OK) {
+        snprintf(log_message, log_size, "-> Erreur exécution requête : %s", PQerrorMessage(conn));
+        PQclear(res);
+        return false;
+    }
+
+    if (PQntuples(res) == 0) {
+        snprintf(log_message, log_size, "-> Aucun blocage trouvée pour le membre.");
+        PQclear(res);
+        return false; 
+    }
+
+    char *expires_at_str = PQgetvalue(res, 0, 0);
+    struct tm expires_at;
+
+    if (strptime(expires_at_str, "%Y-%m-%d %H:%M:%S", &expires_at) == NULL) {
+        snprintf(log_message, log_size, "-> Erreur parsing expires_at : %s", expires_at_str);
+        PQclear(res);
+        return false;
+    }
+    
+    PQclear(res);
+
+    time_t expires_at_time = timegm(&expires_at);
+    if (expires_at_time == -1) {
+        snprintf(log_message, log_size, "-> Erreur conversion expires_at en time_t.");
+        return false;
+    }
+
+    time_t now = time(NULL);
+    struct tm now_tm;
+    gmtime_r(&now, &now_tm);
+    now = mktime(&now_tm);
+
+    if (difftime(expires_at_time, now) > 0) {
+        snprintf(log_message, log_size, "Le membre %d est encore bloqué par le professionnel %d jusqu'à %s.", 
+                 code_membre, code_professionnel, expires_at_str);
+        return true;  
+    }
+
+    snprintf(query, sizeof(query), 
+             "DELETE FROM tripenarvor._blocked_for "
+             "WHERE code_membre = %d AND code_professionnel = %d", 
+             code_membre, code_professionnel);
+
+    res = PQexec(conn, query);
+    if (PQresultStatus(res) != PGRES_COMMAND_OK) {
+        snprintf(log_message, log_size, "-> Erreur suppression blocage : %s", PQerrorMessage(conn));
+    } else {
+        snprintf(log_message, log_size, "Blocage expiré supprimé pour le membre %d par le professionnel %d.", 
+                 code_membre, code_professionnel);
+    }
+
+    PQclear(res);
+    return false;
+}

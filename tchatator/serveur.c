@@ -222,59 +222,80 @@ int main() {
                         int offset = 0;
 
                         if (sscanf(buffer, "MSG %d %n", &id_dest, &offset) == 1) {
-                            // printf("ID destinataire : %d\n", id_dest);  // Affiche : 123
-                            // printf("Offset : %d\n", offset);            // Affiche : 7
+                        
+                            bool mess;
+                            if (strcmp(user_info->new_user, "MEMBRE") == 0) {
+                                mess = is_member_blocked_all(conn, user_info->id_user, txt_log, 2050);
+                            } else { mess = false; }
 
-                            // Pointeur vers la partie restante du message
-                            char *message = buffer + offset;
-                            // printf("Message : %s\n", message);
+                            if (!mess) {
+                                if (strcmp(user_info->new_user, "MEMBRE") == 0) {
+                                    mess = is_member_blocked_for(conn, user_info->id_user, id_dest, txt_log, 2050);
+                                } else { mess = false; }
 
-                            snprintf(txt, sizeof(txt), "%s", buffer + offset);
+                                if(!mess) {
+                                        // Pointeur vers la partie restante du message
+                                        char *message = buffer + offset;
+                                        // printf("Message : %s\n", message);
 
-                            // Retirer les espaces et les apostrophes en trop si nécessaire
-                            char *start = txt;
-                            while (*start == ' ') start++;  // Supprimer les espaces en début
-                            char *end = start + strlen(start) - 1;
-                            while (end > start && (*end == ' ' || *end == '\'')) {
-                                *end = '\0';
-                                end--;
-                            }
+                                        snprintf(txt, sizeof(txt), "%s", buffer + offset);
 
-                            // ENVOI DU MSG
-                            if (is_token_valid(conn, user_info->token, txt_log, sizeof(txt_log))) {
-                                if (user_info->id_user != id_dest) {
-                                    snprintf(query, sizeof(query),
-                                             "insert into tripenarvor._message (code_emetteur, code_destinataire, contenu) values (%d, %d, '%s')",
-                                             user_info->id_user, id_dest, start);
+                                        // Retirer les espaces et les apostrophes en trop si nécessaire
+                                        char *start = txt;
+                                        while (*start == ' ') start++;  // Supprimer les espaces en début
+                                        char *end = start + strlen(start) - 1;
+                                        while (end > start && (*end == ' ' || *end == '\'')) {
+                                            *end = '\0';
+                                            end--;
+                                        }
 
-                                    if (!execute_query(conn, query, api_key, client_ip)) {
-                                        send(cnx, "\033[31m-> Erreur interne lors de l'envoie du message.\033[0m\n", strlen("\033[31m-> Erreur interne lors de l'envoie du message.\033[0m\n"), 0);
-                                    } else {
-                                        send(cnx, "Envoi du message réussi\n", sizeof("Envoi du message réussi\n"), 0);
+                                        // ENVOI DU MSG
+                                        if (is_token_valid(conn, user_info->token, txt_log, sizeof(txt_log))) {
+                                            if (user_info->id_user != id_dest) {
+                                                snprintf(query, sizeof(query),
+                                                        "insert into tripenarvor._message (code_emetteur, code_destinataire, contenu) values (%d, %d, '%s')",
+                                                        user_info->id_user, id_dest, start);
 
-                                        snprintf(txt_log, sizeof(txt_log), "Envoi du message au compte %d réussi", id_dest);
-                                        insert_logs(api_key, client_ip, txt_log);
+                                                if (!execute_query(conn, query, api_key, client_ip)) {
+                                                    send(cnx, "\033[31m-> Erreur interne lors de l'envoie du message.\033[0m\n", strlen("\033[31m-> Erreur interne lors de l'envoie du message.\033[0m\n"), 0);
+                                                } else {
+                                                    send(cnx, "Envoi du message réussi\n", sizeof("Envoi du message réussi\n"), 0);
 
-                                        printf("Envoi du message au compte %d réussi\n", id_dest);
-                                    }
+                                                    snprintf(txt_log, sizeof(txt_log), "Envoi du message au compte %d réussi", id_dest);
+                                                    insert_logs(api_key, client_ip, txt_log);
 
-                                    memset(query, 0, sizeof(query));
+                                                    printf("Envoi du message au compte %d réussi\n", id_dest);
+                                                }
+
+                                                memset(query, 0, sizeof(query));
+                                            } else {
+                                                send(cnx, "\033[31m-> Erreur : id_dest = id_user\033[0m", sizeof("\033[31m-> Erreur : id_dest = id_user\033[0m"), 0);
+
+                                                snprintf(txt_log, sizeof(txt_log), "-> Erreur : id_dest = id_user");
+                                                insert_logs(api_key, client_ip, txt_log);
+
+                                                printf("\033[31m-> Erreur : id_dest = id_user\033[0m");
+                                            }
+
+                                        } else {
+                                            send(cnx, "\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n", strlen("\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n"), 0);
+                                            fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
+
+                                            insert_logs(api_key, client_ip, txt_log);
+                                        }
                                 } else {
-                                    send(cnx, "\033[31m-> Erreur : id_dest = id_user\033[0m", sizeof("\033[31m-> Erreur : id_dest = id_user\033[0m"), 0);
+                                    send(cnx, "\033[31m-> Vous ne pouvez plus envoyer de message à ce professionnel.\33[0m\n", strlen("\033[31m-> Vous ne pouvez plus envoyer de message à ce professionnel.\33[0m\n"), 0);
+                                    fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
 
-                                    snprintf(txt_log, sizeof(txt_log), "-> Erreur : id_dest = id_user");
                                     insert_logs(api_key, client_ip, txt_log);
-
-                                    printf("\033[31m-> Erreur : id_dest = id_user\033[0m");
                                 }
-
                             } else {
-                                send(cnx, "\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n", strlen("\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n"), 0);
+                                send(cnx, "\033[31m-> Vous ne pouvez plus envoyer de message.\33[0m\n", strlen("\033[31m-> Vous ne pouvez plus envoyer de message.\33[0m\n"), 0);
                                 fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
 
                                 insert_logs(api_key, client_ip, txt_log);
                             }
-
+                            
                         } else {
                             send(cnx, "\033[31m-> Erreur de format : MSG <id_destinataire> '<contenu du message>'\n\033[0m", sizeof("\033[31m-> Erreur de format : MSG <id_destinataire> '<contenu du message>'\n\033[0m"), 0);
 
@@ -283,6 +304,7 @@ int main() {
 
                             printf("\033[31m-> Erreur Format\033[0m\n");
                         }
+
                     }
                     //////////////////////////////////////////////////////////////////////////////////////////
                     /// MODIF
@@ -742,19 +764,19 @@ int main() {
                                     printf("Débannissement réussie pour le membre ID %d par un admin\n", id_membre);
                                 }
                             } else if (strcmp(user_info->new_user, "PRO") == 0) {
-                                send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas débannir un utilisateur\n\033[39m", 72, 0);
+                                send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas débannir un utilisateur\n\033[39m", sizeof("\033[31m-> Erreur : Vous ne pouvez pas débannir un utilisateur\n\033[39m"), 0);
 
                                 snprintf(txt_log, sizeof(txt_log), "-> Erreur : Un professionnel ne peut pas débannir un utilisateur");
                                 insert_logs(api_key, client_ip, txt_log);
 
-                                printf("\033[31m-> Erreur : Un professionnel ne peut pas débannir un utilisateur\033[0m");
+                                printf("\033[31m-> Erreur : Un professionnel ne peut pas débannir un utilisateur\033[0m\n");
                             } else {
-                                send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas débannir un utilisateur\n\033[39m", 72, 0);
+                                send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas débannir un utilisateur\n\033[39m", sizeof("\033[31m-> Erreur : Vous ne pouvez pas débannir un utilisateur\n\033[39m"), 0);
 
                                 snprintf(txt_log, sizeof(txt_log), "-> Erreur : Un membre ne peut pas débannir un utilisateur");
                                 insert_logs(api_key, client_ip, txt_log);
 
-                                printf("\033[31m-> Erreur : Un membre ne peut pas débannir un utilisateur\033[0m");
+                                printf("\033[31m-> Erreur : Un membre ne peut pas débannir un utilisateur\033[0m\n");
                             }
 
                         } else {
@@ -795,19 +817,19 @@ int main() {
                                     printf("Bannissement réussie pour le membre ID %d par un admin\n", id_membre);
                                 }
                             } else if (strcmp(user_info->new_user, "PRO") == 0) {
-                                send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas bannir un utilisateur\n\033[39m", 70, 0);
+                                send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas bannir un utilisateur\033[39m\n", sizeof("\033[31m-> Erreur : Vous ne pouvez pas bannir un utilisateur\n\033[39m"), 0);
 
                                 snprintf(txt_log, sizeof(txt_log), "-> Erreur : Un professionnel ne peut pas bannir un utilisateur");
                                 insert_logs(api_key, client_ip, txt_log);
 
-                                printf("\033[31m-> Erreur : Un professionnel ne peut pas bannir un utilisateur\033[0m");
+                                printf("\033[31m-> Erreur : Un professionnel ne peut pas bannir un utilisateur\033[0\n");
                             } else {
-                                send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas bannir un utilisateur\n\033[39m", 70, 0);
+                                send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas bannir un utilisateur\n\033[39m", sizeof("\033[31m-> Erreur : Vous ne pouvez pas bannir un utilisateur\n\033[39m"), 0);
 
                                 snprintf(txt_log, sizeof(txt_log), "-> Erreur : Un membre ne peut pas bannir un utilisateur");
                                 insert_logs(api_key, client_ip, txt_log);
 
-                                printf("\033[31m-> Erreur : Un membre ne peut pas bannir un utilisateur\033[0m");
+                                printf("\033[31m-> Erreur : Un membre ne peut pas bannir un utilisateur\033[0m\n");
                             }
 
                         } else {
