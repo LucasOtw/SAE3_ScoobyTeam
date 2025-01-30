@@ -725,7 +725,7 @@ int main() {
                             {
                                 // UNBAN admin -> membre
                                 snprintf(query, sizeof(query),
-                                        "delete from tripenarvor._banned_all where code_membre=%d;"
+                                        "delete from tripenarvor._banned where code_membre=%d;"
                                         , id_membre);
                                 
 
@@ -742,31 +742,12 @@ int main() {
                                     printf("Débannissement réussie pour le membre ID %d par un admin\n", id_membre);
                                 }
                             } else if (strcmp(user_info->new_user, "PRO") == 0) {
-                                // UNBAN pro -> membre
-                                if (is_token_valid(conn, user_info->token, txt_log, sizeof(txt_log))) {
-                                    snprintf(query, sizeof(query),
-                                        "delete from tripenarvor._banned_for where code_membre=%d;"
-                                        , id_membre);
-                                    
+                                send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas débannir un utilisateur\n\033[39m", 72, 0);
 
-                                    // Exécution de la requête
-                                    if (!execute_query(conn, query, api_key, client_ip)) {
-                                        send(cnx, "\033[31m-> Erreur interne lors du débannissement du membre.\033[0m\n", strlen("\033[31m-> Erreur interne lors du débannissement du membre.\033[0m\n"), 0);
-                                    } else {
-                                        // Log en cas de succès
-                                        send(cnx, "Débannissement du membre réussi\n", sizeof("Débannissement du membre réussi\n"), 0);
+                                snprintf(txt_log, sizeof(txt_log), "-> Erreur : Un professionnel ne peut pas débannir un utilisateur");
+                                insert_logs(api_key, client_ip, txt_log);
 
-                                        snprintf(txt_log, sizeof(txt_log), "Débannissement du membre %d réussi par un professionnel", id_membre);
-                                        insert_logs(api_key, client_ip, txt_log);
-
-                                        printf("Débannissement réussie pour le membre ID %d par un professionnel\n", id_membre);
-                                    }
-                                } else {
-                                    send(cnx, "\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n", strlen("\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n"), 0);
-                                    fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
-
-                                    insert_logs(api_key, client_ip, txt_log);
-                                }
+                                printf("\033[31m-> Erreur : Un professionnel ne peut pas débannir un utilisateur\033[0m");
                             } else {
                                 send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas débannir un utilisateur\n\033[39m", 72, 0);
 
@@ -797,7 +778,7 @@ int main() {
                             {
                                 // BAN admin -> membre
                                 snprintf(query, sizeof(query),
-                                        "insert into tripenarvor._banned_all (code_membre) values (%d);"
+                                        "insert into tripenarvor._banned (code_membre) values (%d);"
                                         , id_membre);
                                 
 
@@ -814,31 +795,12 @@ int main() {
                                     printf("Bannissement réussie pour le membre ID %d par un admin\n", id_membre);
                                 }
                             } else if (strcmp(user_info->new_user, "PRO") == 0) {
-                                // BAN pro -> membre
-                                if (is_token_valid(conn, user_info->token, txt_log, sizeof(txt_log))) {
-                                    snprintf(query, sizeof(query),
-                                            "insert into tripenarvor._banned_for (code_membre, code_professionnel) values (%d, %d);"
-                                            , id_membre, user_info->id_user);
-                                    
+                                send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas bannir un utilisateur\n\033[39m", 70, 0);
 
-                                    // Exécution de la requête
-                                    if (!execute_query(conn, query, api_key, client_ip)) {
-                                        send(cnx, "\033[31m-> Erreur interne lors du blocage du membre.\033[0m\n", strlen("\033[31m-> Erreur interne lors du blocage du membre.\033[0m\n"), 0);
-                                    } else {
-                                        // Log en cas de succès
-                                        send(cnx, "Bannissement du membre réussi\n", sizeof("Bannissement du membre réussi\n"), 0);
+                                snprintf(txt_log, sizeof(txt_log), "-> Erreur : Un professionnel ne peut pas bannir un utilisateur");
+                                insert_logs(api_key, client_ip, txt_log);
 
-                                        snprintf(txt_log, sizeof(txt_log), "Bannissement du membre %d réussi par un professionnel", id_membre);
-                                        insert_logs(api_key, client_ip, txt_log);
-
-                                        printf("Bannissement réussie pour le membre ID %d par un professionnel\n", id_membre);
-                                    }
-                                } else {
-                                    send(cnx, "\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n", strlen("\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n"), 0);
-                                    fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
-
-                                    insert_logs(api_key, client_ip, txt_log);
-                                }
+                                printf("\033[31m-> Erreur : Un professionnel ne peut pas bannir un utilisateur\033[0m");
                             } else {
                                 send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas bannir un utilisateur\n\033[39m", 70, 0);
 
