@@ -112,10 +112,10 @@ int main() {
                         regenerate_api_key(client_socket);  // Regen API Key
                         break;
                     case 6:
-                        block_member(client_socket);  // bloquer un membre
+                        block(client_socket);  // bloquer un membre
                         break;
                     case 7:
-                        unblock_member(client_socket);  // débloquer un membre
+                        unblock(client_socket);  // débloquer un membre
                         break;
                     case 8:
                         // close_connection(client_socket);
@@ -575,19 +575,101 @@ void regenerate_api_key(int socket) {
     printf("%s\n", buffer);  // Affiche la réponse
 }
 
-void block_member(int socket) {
-}
-void unblock_member(int socket) {
-}
-
 void block(int socket) {
+    char buffer[BUFFER_SIZE];
+    int id_user;
+
+    // Demande à l'utilisateur l'ID de l'utilisateur à bloquer
+    printf("Entrez l'ID de l'utilisateur à bloquer :\n");
+    scanf("%d", &id_user);
+    getchar();  // Consomme le retour à la ligne restant
+
+    // Envoie la commande BLOCK avec l'ID de l'utilisateur
+    snprintf(buffer, sizeof(buffer), "BLOCK %d\n", id_user);
+    if (send(socket, buffer, strlen(buffer), 0) == -1) {
+        perror("Erreur lors de l'envoi de la commande BLOCK");
+        return;
+    }
+
+    // Reçoit et affiche la réponse du serveur
+    int len = recv(socket, buffer, sizeof(buffer) - 1, 0);
+    if (len <= 0) {
+        perror("Erreur lors de la réception de la réponse");
+        return;
+    }
+    buffer[len] = '\0';
+
+    printf("%s\n", buffer);  // Affiche la réponse du serveur
 }
 
 void unblock(int socket) {
+    char buffer[BUFFER_SIZE];
+    int id_user;
+
+    printf("Entrez l'ID de l'utilisateur à débloquer :\n");
+    scanf("%d", &id_user);
+    getchar();
+
+    snprintf(buffer, sizeof(buffer), "UNBLOCK %d\n", id_user);
+    if (send(socket, buffer, strlen(buffer), 0) == -1) {
+        perror("Erreur lors de l'envoi de la commande UNBLOCK");
+        return;
+    }
+
+    int len = recv(socket, buffer, sizeof(buffer) - 1, 0);
+    if (len <= 0) {
+        perror("Erreur lors de la réception de la réponse");
+        return;
+    }
+    buffer[len] = '\0';
+
+    printf("%s\n", buffer);
 }
 
 void ban(int socket) {
+    char buffer[BUFFER_SIZE];
+    int id_user;
+
+    printf("Entrez l'ID de l'utilisateur à bannir :\n");
+    scanf("%d", &id_user);
+    getchar();
+
+    snprintf(buffer, sizeof(buffer), "BAN %d\n", id_user);
+    if (send(socket, buffer, strlen(buffer), 0) == -1) {
+        perror("Erreur lors de l'envoi de la commande BAN");
+        return;
+    }
+
+    int len = recv(socket, buffer, sizeof(buffer) - 1, 0);
+    if (len <= 0) {
+        perror("Erreur lors de la réception de la réponse");
+        return;
+    }
+    buffer[len] = '\0';
+
+    printf("%s\n", buffer);
 }
 
 void unban(int socket) {
+    char buffer[BUFFER_SIZE];
+    int id_user;
+
+    printf("Entrez l'ID de l'utilisateur à débannir :\n");
+    scanf("%d", &id_user);
+    getchar();
+
+    snprintf(buffer, sizeof(buffer), "UNBAN %d\n", id_user);
+    if (send(socket, buffer, strlen(buffer), 0) == -1) {
+        perror("Erreur lors de l'envoi de la commande UNBAN");
+        return;
+    }
+
+    int len = recv(socket, buffer, sizeof(buffer) - 1, 0);
+    if (len <= 0) {
+        perror("Erreur lors de la réception de la réponse");
+        return;
+    }
+    buffer[len] = '\0';
+
+    printf("%s\n", buffer);
 }
