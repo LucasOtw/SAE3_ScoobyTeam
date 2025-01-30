@@ -574,25 +574,288 @@ int main() {
                     /// BLOQUER
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "BLOCK", 5) == 0) {
+                        int id_membre;
+
+                        if (sscanf(buffer, "BLOCK %d", &id_membre) == 1) {
+                            if (strcmp(user_info->new_user, "ADMIN") == 0)
+                            {
+                                // BLOCK admin -> membre
+                                snprintf(query, sizeof(query),
+                                        "insert into tripenarvor._blocked_all (code_membre, blocked_at, expires_at) values (%d, now(), now() + interval '%d hour');"
+                                        , id_membre, BAN_DUR);
+                                
+
+                                // Exécution de la requête
+                                if (!execute_query(conn, query, api_key, client_ip)) {
+                                    send(cnx, "\033[31m-> Erreur interne lors du blocage du membre.\033[0m\n", strlen("\033[31m-> Erreur interne lors du blocage du membre.\033[0m\n"), 0);
+                                } else {
+                                    // Log en cas de succès
+                                    send(cnx, "Blocage du membre réussi\n", sizeof("Blocage du membre réussi\n"), 0);
+
+                                    snprintf(txt_log, sizeof(txt_log), "Blocage du membre %d réussi par un admin", id_membre);
+                                    insert_logs(api_key, client_ip, txt_log);
+
+                                    printf("Blocage réussie pour le membre ID %d par un admin\n", id_membre);
+                                }
+                            } else if (strcmp(user_info->new_user, "PRO") == 0) {
+                                // BLOCK pro -> membre
+                                if (is_token_valid(conn, user_info->token, txt_log, sizeof(txt_log))) {
+                                    snprintf(query, sizeof(query),
+                                            "insert into tripenarvor._blocked_for (code_membre, code_professionnel, blocked_at, expires_at) values (%d, %d, now(), now() + interval '%d hour');"
+                                            , id_membre, user_info->id_user, BAN_DUR);
+
+
+                                    // Exécution de la requête
+                                    if (!execute_query(conn, query, api_key, client_ip)) {
+                                        send(cnx, "\033[31m-> Erreur interne lors du blocage du membre.\033[0m\n", strlen("\033[31m-> Erreur interne lors du blocage du membre.\033[0m\n"), 0);
+                                    } else {
+                                        // Log en cas de succès
+                                        send(cnx, "Blocage du membre réussi\n", sizeof("Blocage du membre réussi\n"), 0);
+
+                                        snprintf(txt_log, sizeof(txt_log), "Blocage du membre %d réussi par un professionnel", id_membre);
+                                        insert_logs(api_key, client_ip, txt_log);
+
+                                        printf("Blocage réussie pour le membre ID %d par un professionnel\n", id_membre);
+                                    }
+                                } else {
+                                    send(cnx, "\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n", strlen("\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n"), 0);
+                                    fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
+
+                                    insert_logs(api_key, client_ip, txt_log);
+                                }
+                            } else {
+                                send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas bloquer un utilisateur\n\033[39m", 71, 0);
+
+                                snprintf(txt_log, sizeof(txt_log), "-> Erreur : Un membre ne peut pas bloquer un utilisateur");
+                                insert_logs(api_key, client_ip, txt_log);
+
+                                printf("\033[31m-> Erreur : Un membre ne peut pas bloquer un utilisateur\033[0m");
+                            }
+
+                        } else {
+                            send(cnx, "\033[31m-> Erreur de format : BLOCK <id_membre>\n\033[39m", 57, 0);
+
+                            snprintf(txt_log, sizeof(txt_log), "-> Erreur de format : BLOCK <id_membre>");
+                            insert_logs(api_key, client_ip, txt_log);
+
+                            printf("\033[31m-> Erreur Format\033[0m");
+                        }
                     
                     }
                     //////////////////////////////////////////////////////////////////////////////////////////
                     /// DEBLOQUER
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "UNBLOCK", 7) == 0) {
+                        int id_membre;
+
+                        if (sscanf(buffer, "UNBLOCK %d", &id_membre) == 1) {
+                            if (strcmp(user_info->new_user, "ADMIN") == 0)
+                            {
+                                // UNBLOCK admin -> membre
+                                snprintf(query, sizeof(query),
+                                        "delete from tripenarvor._blocked_all where code_membre=%d;"
+                                        , id_membre);
+                                
+
+                                // Exécution de la requête
+                                if (!execute_query(conn, query, api_key, client_ip)) {
+                                    send(cnx, "\033[31m-> Erreur interne lors du déblocage du membre.\033[0m\n", strlen("\033[31m-> Erreur interne lors du déblocage du membre.\033[0m\n"), 0);
+                                } else {
+                                    // Log en cas de succès
+                                    send(cnx, "Déblocage du membre réussi\n", sizeof("Déblocage du membre réussi\n"), 0);
+
+                                    snprintf(txt_log, sizeof(txt_log), "Déblocage du membre %d réussi par un admin", id_membre);
+                                    insert_logs(api_key, client_ip, txt_log);
+
+                                    printf("Déblocage réussie pour le membre ID %d par un admin\n", id_membre);
+                                }
+                            } else if (strcmp(user_info->new_user, "PRO") == 0) {
+                                // UNBLOCK pro -> membre
+                                if (is_token_valid(conn, user_info->token, txt_log, sizeof(txt_log))) {
+                                    snprintf(query, sizeof(query),
+                                        "delete from tripenarvor._blocked_for where code_membre=%d;"
+                                        , id_membre);
+                                    
+
+                                    // Exécution de la requête
+                                    if (!execute_query(conn, query, api_key, client_ip)) {
+                                        send(cnx, "\033[31m-> Erreur interne lors du déblocage du membre.\033[0m\n", strlen("\033[31m-> Erreur interne lors du déblocage du membre.\033[0m\n"), 0);
+                                    } else {
+                                        // Log en cas de succès
+                                        send(cnx, "Déblocage du membre réussi\n", sizeof("Déblocage du membre réussi\n"), 0);
+
+                                        snprintf(txt_log, sizeof(txt_log), "Déblocage du membre %d réussi par un professionnel", id_membre);
+                                        insert_logs(api_key, client_ip, txt_log);
+
+                                        printf("Déblocage réussie pour le membre ID %d par un professionnel\n", id_membre);
+                                    }
+                                } else {
+                                    send(cnx, "\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n", strlen("\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n"), 0);
+                                    fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
+
+                                    insert_logs(api_key, client_ip, txt_log);
+                                }
+                            } else {
+                                send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas débloquer un utilisateur\n\033[39m", 73, 0);
+
+                                snprintf(txt_log, sizeof(txt_log), "-> Erreur : Un membre ne peut pas débloquer un utilisateur");
+                                insert_logs(api_key, client_ip, txt_log);
+
+                                printf("\033[31m-> Erreur : Un membre ne peut pas débloquer un utilisateur\033[0m");
+                            }
+
+                        } else {
+                            send(cnx, "\033[31m-> Erreur de format : UNBLOCK <id_membre>\n\033[39m", 59, 0);
+
+                            snprintf(txt_log, sizeof(txt_log), "-> Erreur de format : UNBLOCK <id_membre>");
+                            insert_logs(api_key, client_ip, txt_log);
+
+                            printf("\033[31m-> Erreur Format\033[0m");
+                        }
                     
                     }
                     //////////////////////////////////////////////////////////////////////////////////////////
                     /// UNBAN
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "UNBAN", 5) == 0) {
+                        int id_membre;
+
+                        if (sscanf(buffer, "UNBAN %d", &id_membre) == 1) {
+                            if (strcmp(user_info->new_user, "ADMIN") == 0)
+                            {
+                                // UNBAN admin -> membre
+                                snprintf(query, sizeof(query),
+                                        "delete from tripenarvor._banned_all where code_membre=%d;"
+                                        , id_membre);
+                                
+
+                                // Exécution de la requête
+                                if (!execute_query(conn, query, api_key, client_ip)) {
+                                    send(cnx, "\033[31m-> Erreur interne lors du débannissement du membre.\033[0m\n", strlen("\033[31m-> Erreur interne lors du débannissement du membre.\033[0m\n"), 0);
+                                } else {
+                                    // Log en cas de succès
+                                    send(cnx, "Débannissement du membre réussi\n", sizeof("Débannissement du membre réussi\n"), 0);
+
+                                    snprintf(txt_log, sizeof(txt_log), "Débannissement du membre %d réussi par un admin", id_membre);
+                                    insert_logs(api_key, client_ip, txt_log);
+
+                                    printf("Débannissement réussie pour le membre ID %d par un admin\n", id_membre);
+                                }
+                            } else if (strcmp(user_info->new_user, "PRO") == 0) {
+                                // UNBAN pro -> membre
+                                if (is_token_valid(conn, user_info->token, txt_log, sizeof(txt_log))) {
+                                    snprintf(query, sizeof(query),
+                                        "delete from tripenarvor._banned_for where code_membre=%d;"
+                                        , id_membre);
+                                    
+
+                                    // Exécution de la requête
+                                    if (!execute_query(conn, query, api_key, client_ip)) {
+                                        send(cnx, "\033[31m-> Erreur interne lors du débannissement du membre.\033[0m\n", strlen("\033[31m-> Erreur interne lors du débannissement du membre.\033[0m\n"), 0);
+                                    } else {
+                                        // Log en cas de succès
+                                        send(cnx, "Débannissement du membre réussi\n", sizeof("Débannissement du membre réussi\n"), 0);
+
+                                        snprintf(txt_log, sizeof(txt_log), "Débannissement du membre %d réussi par un professionnel", id_membre);
+                                        insert_logs(api_key, client_ip, txt_log);
+
+                                        printf("Débannissement réussie pour le membre ID %d par un professionnel\n", id_membre);
+                                    }
+                                } else {
+                                    send(cnx, "\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n", strlen("\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n"), 0);
+                                    fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
+
+                                    insert_logs(api_key, client_ip, txt_log);
+                                }
+                            } else {
+                                send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas débannir un utilisateur\n\033[39m", 72, 0);
+
+                                snprintf(txt_log, sizeof(txt_log), "-> Erreur : Un membre ne peut pas débannir un utilisateur");
+                                insert_logs(api_key, client_ip, txt_log);
+
+                                printf("\033[31m-> Erreur : Un membre ne peut pas débannir un utilisateur\033[0m");
+                            }
+
+                        } else {
+                            send(cnx, "\033[31m-> Erreur de format : UNBAN <id_membre>\n\033[39m", 57, 0);
+
+                            snprintf(txt_log, sizeof(txt_log), "-> Erreur de format : UNBAN <id_membre>");
+                            insert_logs(api_key, client_ip, txt_log);
+
+                            printf("\033[31m-> Erreur Format\033[0m");
+                        }
 
                     }
                     //////////////////////////////////////////////////////////////////////////////////////////
                     /// BAN
                     //////////////////////////////////////////////////////////////////////////////////////////
                     else if (strncmp(buffer, "BAN", 3) == 0) {
+                        int id_membre;
 
+                        if (sscanf(buffer, "BAN %d", &id_membre) == 1) {
+                            if (strcmp(user_info->new_user, "ADMIN") == 0)
+                            {
+                                // BAN admin -> membre
+                                snprintf(query, sizeof(query),
+                                        "insert into tripenarvor._banned_all (code_membre) values (%d);"
+                                        , id_membre);
+                                
+
+                                // Exécution de la requête
+                                if (!execute_query(conn, query, api_key, client_ip)) {
+                                    send(cnx, "\033[31m-> Erreur interne lors du bannissement du membre.\033[0m\n", strlen("\033[31m-> Erreur interne lors du bannissement du membre.\033[0m\n"), 0);
+                                } else {
+                                    // Log en cas de succès
+                                    send(cnx, "Bannissement du membre réussi\n", sizeof("Bannissement du membre réussi\n"), 0);
+
+                                    snprintf(txt_log, sizeof(txt_log), "Bannissement du membre %d réussi par un admin", id_membre);
+                                    insert_logs(api_key, client_ip, txt_log);
+
+                                    printf("Bannissement réussie pour le membre ID %d par un admin\n", id_membre);
+                                }
+                            } else if (strcmp(user_info->new_user, "PRO") == 0) {
+                                // BAN pro -> membre
+                                if (is_token_valid(conn, user_info->token, txt_log, sizeof(txt_log))) {
+                                    snprintf(query, sizeof(query),
+                                            "insert into tripenarvor._banned_for (code_membre, code_professionnel) values (%d, %d);"
+                                            , id_membre, user_info->id_user);
+                                    
+
+                                    // Exécution de la requête
+                                    if (!execute_query(conn, query, api_key, client_ip)) {
+                                        send(cnx, "\033[31m-> Erreur interne lors du blocage du membre.\033[0m\n", strlen("\033[31m-> Erreur interne lors du blocage du membre.\033[0m\n"), 0);
+                                    } else {
+                                        // Log en cas de succès
+                                        send(cnx, "Bannissement du membre réussi\n", sizeof("Bannissement du membre réussi\n"), 0);
+
+                                        snprintf(txt_log, sizeof(txt_log), "Bannissement du membre %d réussi par un professionnel", id_membre);
+                                        insert_logs(api_key, client_ip, txt_log);
+
+                                        printf("Bannissement réussie pour le membre ID %d par un professionnel\n", id_membre);
+                                    }
+                                } else {
+                                    send(cnx, "\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n", strlen("\033[31m-> Erreur : Votre token n'est plus actif.\33[0m\n"), 0);
+                                    fprintf(stderr, "\033[31m%s\033[0m\n", txt_log);
+
+                                    insert_logs(api_key, client_ip, txt_log);
+                                }
+                            } else {
+                                send(cnx, "\033[31m-> Erreur : Vous ne pouvez pas bannir un utilisateur\n\033[39m", 70, 0);
+
+                                snprintf(txt_log, sizeof(txt_log), "-> Erreur : Un membre ne peut pas bannir un utilisateur");
+                                insert_logs(api_key, client_ip, txt_log);
+
+                                printf("\033[31m-> Erreur : Un membre ne peut pas bannir un utilisateur\033[0m");
+                            }
+
+                        } else {
+                            send(cnx, "\033[31m-> Erreur de format : BAN <id_membre>\n\033[39m", 55, 0);
+
+                            snprintf(txt_log, sizeof(txt_log), "-> Erreur de format : BAN <id_membre>");
+                            insert_logs(api_key, client_ip, txt_log);
+
+                            printf("\033[31m-> Erreur Format\033[0m");
+                        }
                     } else {
                         send(cnx, "Commande inconnue\n", 19, 0);
 
@@ -608,6 +871,7 @@ int main() {
                     break;
                 }
             }
+
         } else {
             send(cnx, "\033[31m-> Erreur lors de la génération du token\033[0m\n", sizeof("\033[31m-> Erreur lors de la génération du token\033[0m\n"), 0);
 
