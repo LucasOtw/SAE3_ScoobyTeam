@@ -15,7 +15,13 @@ Le programme agit comme un client envoyant des commandes à un serveur. Il perme
 
 ---
 
-### 2 | Mise en marche du programme
+### 2 | Prérequis
+
+Un serveur Tchatator en cours d'exécution.
+Une clé API valide.
+Un système Linux avec gcc installé pour la compilation.
+
+### 3 | Mise en marche du programme
 
 Pour commencer il faut installer une bibliothèque PostgreSQL
 
@@ -51,7 +57,7 @@ Lors de l'exécution, le programme demandera de renseigner votre clé API.
 
 ---
 
-### 3 | Utilisation des commandes pour un membre
+### 4 | Utilisation des commandes pour un membre
 
 Une fois connecté, le menu suivant s'affiche :
 
@@ -66,7 +72,7 @@ Une fois connecté, le menu suivant s'affiche :
 Votre choix :
 ```
 
-#### Rôle des commandes :
+#### Action selon le choix :
 
 -   **Envoyer un message** : envoi d'un message en précisant :
 
@@ -96,7 +102,7 @@ Votre choix :
 
 -   **Déconnexion** : ferme proprement la session et le programme.
 
-### 4 | Utilisation des commandes pour un professionnel
+### 5 | Utilisation des commandes pour un professionnel
 
 Une fois connecté, le menu suivant s'affiche :
 
@@ -113,7 +119,7 @@ Une fois connecté, le menu suivant s'affiche :
 Votre choix :
 ```
 
-#### Rôle des commandes :
+#### Action selon le choix :
 
 -   **Envoyer un message** : envoi d'un message en précisant :
 
@@ -150,3 +156,34 @@ Votre choix :
     -   l'ID du membre à débloquer
 
 -   **Déconnexion** : ferme proprement la session et le programme.
+
+### 6 | Utilisation des commandes pour un administrateur
+
+Une fois connecté, le menu suivant s'affiche :
+
+=== Menu Admin ===
+
+1. Bloquer un utilisateur
+2. Débloquer un utilisateur
+3. Bannir un utilisateur
+4. Débannir un utilisateur
+5. Déconnexion
+   Votre choix :
+
+#### Action selon le choix
+
+-   **Bloquer un utilisateur :** : empêche un utilisateur d'envoyer des messages en précisant :
+    -   l'ID de l'utisateur à bloquer
+-   **Débloquer un utilisateur :** : rétablit l'accès aux messages pour un utilisateur bloqué en précisant :
+
+    -   l'ID de l'utisateur à débloquer
+
+-   **Bannir un utilisateur :** : interdit définitivement un utilisateur d'utiliser la plateforme en précisant :
+
+    -   l'ID de l'utisateur à bannir
+
+-   **Débannir un utilisateur :** : annule un bannissement d'un utilisateur en précisant :
+
+    -   l'ID de l'utisateur à débannir
+
+-   **Déconnexion :** ferme proprement la session et le programme.
