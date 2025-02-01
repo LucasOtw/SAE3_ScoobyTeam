@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <time.h>
 #include <unistd.h>
+#include <getopt.h>
 
 #include "bdd.h"
 #include "config.h"
@@ -16,11 +17,34 @@
 
 #define _XOPEN_SOURCE 700  // Nécessaire pour strptime
 
-int main() {
-    int sock, cnx, ret, size, len;
-    struct sockaddr_in addr, conn_addr;
+int main(int argc, char *argv[]) {
+    int sock, cnx, ret, size, len, opt;
+    char buffer[BUFFER_SIZE], query[2000], txt_log[2050];
+    bool verbose = false;
 
-    char buffer[BUFFER_SIZE], query[2000], txt_log[2050];  // Buffer pour lire les données
+    struct sockaddr_in addr, conn_addr;
+    struct option long_options[] = {
+        {"help", no_argument, NULL, 'h'},
+        {"verbose", no_argument, NULL, 'v'},
+        {0, 0, 0, 0} // Fin de la liste
+    };
+    
+    size = sizeof(conn_addr);
+
+    while ((opt = getopt_long(argc, argv, "hvf:", long_options, NULL)) != -1) {
+        switch (opt) {
+            case 'h':
+                printf("Usage: %s [--help] [--verbose] \n", argv[0]);
+                return 0;
+            case 'v':
+                printf("\033[34m======= Verbose activé =======\033[0m\n");
+                VERBOSE=true;
+                break;
+            case '?':
+                printf("Option inconnue : %s\n", argv[optind - 1]);
+                return 1;
+        }
+    }
 
     PGconn *conn = connect_to_db();
     if (conn == NULL) {
@@ -45,8 +69,6 @@ int main() {
 
         exit(EXIT_FAILURE);
     }
-
-    size = sizeof(conn_addr);
 
     while (1)  // while(1) pour garder le serveur allume malgre que le client quitte
     {
@@ -83,7 +105,7 @@ int main() {
 
             do {
                 // Réception de la clé API
-                printf("En attente de la cle API...\n");
+                printf("> En attente de la cle API...\n");
 
                 len = recv(cnx, api_key, sizeof(api_key) - 1, 0);
                 if (len <= 0) {
@@ -98,13 +120,13 @@ int main() {
                 }
 
                 // Traitement si la réception est réussie
-                printf("Réussi : len: %d\n", len);
+                // printf("Réussi : len: %d\n", len);
                 api_key[len] = '\0';  // S'assurer que la clé API est bien terminée
                 api_key[strcspn(api_key, "\r\n")] = '\0';
-                printf("Clé API après nettoyage : '%s'\n", api_key);
+                // printf("Clé API après nettoyage : '%s'\n", api_key);
 
                 // Si la clé API est valide, continuer avec la génération du token
-                printf("Clé API envoyée à la fonction : '%s'\n", api_key);
+                // printf("Clé API envoyée à la fonction : '%s'\n", api_key);
 
                 user_info = generate_and_return_token(api_key, conn);
 
@@ -118,13 +140,10 @@ int main() {
                 }
             } while (user_info == NULL);
 
-            // Si le token a été généré avec succès
-            printf("Token généré pour la clé API : '%s'\n", user_info->token);
-
         } while (user_info == NULL);
 
         // Afficher le token généré pour confirmation (facultatif)
-        printf("Token généré pour la clé API '%s' : %s\n", api_key, user_info->token);
+        printf("\033[32mToken généré pour la clé API '%s' : %s\n\033[0m", api_key, user_info->token);
 
         snprintf(txt_log, sizeof(txt_log), "User connecté token généré pour la clé API '%s' : %s", api_key, user_info->token);
         insert_logs(api_key, client_ip, txt_log);
@@ -152,9 +171,13 @@ int main() {
             }
 
             while (1) {
-                send(cnx, "=> Nouvelle commande : ", sizeof("=> Nouvelle commande : "), 0);
-                memset(buffer, 0, sizeof(buffer));               // Réinitialiser le buffer
-                ret = recv(cnx, buffer, sizeof(buffer) - 1, 0);  // Lire les données du client
+                send(cnx, "=> Nouvelle commande : ", strlen("=> Nouvelle commande : "), 0);
+
+                do {
+                    memset(buffer, 0, sizeof(buffer));               
+                    ret = recv(cnx, buffer, sizeof(buffer) - 1, 0);
+
+                } while (ret > 0 && (buffer[0] == '\n' || buffer[0] == '\r'));
 
                 if (ret > 0) {
                     buffer[ret] = '\0';  // Terminaison de chaîne
