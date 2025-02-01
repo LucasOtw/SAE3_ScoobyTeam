@@ -1,0 +1,36 @@
+[2025-02-01 18:15:33] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 18:15:46] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : D5ee
+[2025-02-01 18:15:47] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Erreur : Le membre 2 est banni.
+[2025-02-01 18:15:47] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-01 18:22:01] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 18:22:17] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : 7q85
+[2025-02-01 18:22:17] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Erreur : Le membre 2 est banni.
+[2025-02-01 18:22:17] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-01 18:22:17] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Échec de la requête SQL : DELETE FROM tripenarvor._token WHERE token=7q85
+ERROR:  trailing junk after numeric literal at or near "7q"
+LINE 1: DELETE FROM tripenarvor._token WHERE token=7q85
+                                                   ^
+
+[2025-02-01 18:23:13] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 18:23:25] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'A-5f4d3c2b' : a1
+[2025-02-01 18:23:28] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: Débannissement du membre 2 réussi par un admin
+[2025-02-01 18:23:31] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: BYE BYE a1
+[2025-02-01 18:23:31] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-01 18:23:31] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Échec de la requête SQL : DELETE FROM tripenarvor._token WHERE token=a1
+ERROR:  column "a1" does not exist
+LINE 1: DELETE FROM tripenarvor._token WHERE token=a1
+                                                   ^
+
+[2025-02-01 18:23:43] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 18:23:52] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : 309r
+[2025-02-01 18:23:56] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE 309r
+[2025-02-01 18:23:56] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-01 18:23:57] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Échec de la requête SQL : DELETE FROM tripenarvor._token WHERE token=309r
+ERROR:  trailing junk after numeric literal at or near "309r"
+LINE 1: DELETE FROM tripenarvor._token WHERE token=309r
+                                                   ^
+
+[2025-02-01 18:26:34] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 18:26:42] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : CxuO
+[2025-02-01 18:26:47] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE CxuO
+[2025-02-01 18:26:47] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.

@@ -173,7 +173,7 @@ bool is_member_blocked_for(PGconn *conn, int code_membre, int code_professionnel
     }
 
     if (PQntuples(res) == 0) {
-        snprintf(log_message, log_size, "-> Aucun blocage trouvée pour le membre.");
+        snprintf(log_message, log_size, "Aucun blocage trouvée pour le membre.");
         PQclear(res);
         return false; 
     }
@@ -201,7 +201,7 @@ bool is_member_blocked_for(PGconn *conn, int code_membre, int code_professionnel
     now = mktime(&now_tm);
 
     if (difftime(expires_at_time, now) > 0) {
-        snprintf(log_message, log_size, "Le membre %d est encore bloqué par le professionnel %d jusqu'à %s.", 
+        snprintf(log_message, log_size, "-> Erreur : Le membre %d est encore bloqué par le professionnel %d jusqu'à %s.", 
                  code_membre, code_professionnel, expires_at_str);
         return true;  
     }
@@ -221,4 +221,38 @@ bool is_member_blocked_for(PGconn *conn, int code_membre, int code_professionnel
 
     PQclear(res);
     return false;
+}
+
+
+
+
+bool is_member_banned(PGconn *conn, int code_membre, char *log_message, size_t log_size) {
+    if (conn == NULL) {
+        snprintf(log_message, log_size, "-> Erreur : Connexion à la base de données invalide.");
+        return false;
+    }
+
+    char query[256];
+    snprintf(query, sizeof(query), 
+             "SELECT * FROM tripenarvor._banned "
+             "WHERE code_membre = %d", 
+             code_membre);
+
+    PGresult *res = PQexec(conn, query);
+    if (PQresultStatus(res) != PGRES_TUPLES_OK) {
+        snprintf(log_message, log_size, "-> Erreur exécution requête : %s", PQerrorMessage(conn));
+        PQclear(res);
+        return false;
+    }
+
+    if (PQntuples(res) == 0) {
+        snprintf(log_message, log_size, "Aucun bannissement trouvée pour le membre.");
+        PQclear(res);
+        return false; 
+    }
+
+    snprintf(log_message, log_size, "-> Erreur : Le membre %d est banni.", code_membre);
+
+    PQclear(res);
+    return true;  
 }

@@ -18,4 +18,6 @@ bool is_member_blocked_all(PGconn *conn, int code_membre, char *log_message, siz
 
 bool is_member_blocked_for(PGconn *conn, int code_membre, int code_professionnel, char *log_message, size_t log_size);
 
+bool is_member_banned(PGconn *conn, int code_membre, char *log_message, size_t log_size);
+
 #endif
