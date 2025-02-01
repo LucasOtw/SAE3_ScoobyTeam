@@ -160,3 +160,35 @@ DETAIL:  Key (code_membre)=(1) is not present in table "_membre".
 [2025-01-30 21:51:09] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Erreur : Un admin peut pas regen sa cle d'API
 [2025-01-30 21:51:19] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: BYE BYE a1
 [2025-01-30 21:51:19] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-01 15:21:02] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 15:21:23] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : Nw8C
+[2025-02-01 15:21:25] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-01 15:21:36] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 15:21:38] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : pJ3w
+[2025-02-01 15:21:38] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-01 15:21:38] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-01 15:21:55] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 15:21:59] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : jj5c
+[2025-02-01 15:22:01] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-01 15:23:59] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 15:24:11] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : m7Kx
+[2025-02-01 15:24:11] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-01 15:24:11] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-01 15:24:21] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 15:24:22] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : BmYk
+[2025-02-01 15:24:22] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-01 15:24:22] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-01 15:24:39] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 15:24:41] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : xCY1
+[2025-02-01 15:24:48] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE xCY1
+[2025-02-01 15:24:48] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-01 15:24:50] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 15:25:08] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-13c356a8' : wsZZ
+[2025-02-01 15:25:10] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-01 15:25:44] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 15:25:53] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-13c356a8' : K0gt
+[2025-02-01 15:27:03] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: BYE BYE K0gt
+[2025-02-01 15:27:03] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-01 15:27:06] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 15:27:12] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : Ny5c
+[2025-02-01 15:27:16] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
