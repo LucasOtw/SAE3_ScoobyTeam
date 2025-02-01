@@ -14,6 +14,7 @@
 #define BUFFER_SIZE 1024
 
 // Prototypes de fonctions
+void print_tchatator();
 void print_menu_membre();
 void print_menu_pro();
 void print_menu_admin();
@@ -55,6 +56,7 @@ int main() {
         close(client_socket);
         exit(EXIT_FAILURE);
     }
+    print_tchatator();
 
     printf("Connecté au serveur à %s:%d\n", SERVER_IP, SERVER_PORT);
 
@@ -159,6 +161,13 @@ int main() {
     }
 
     return 0;
+}
+void print_tchatator() {
+    printf(" _____    _           _        _   \n");
+    printf("|_   _|__| |__   __ _| |_ __ _| |_ ___  _ __\n");
+    printf("  | |/ __| '_ \\ / _` | __/ _` | __/ _ \\| '__|\n");
+    printf("  | | (__| | | | (_| | || (_| | || (_) | |\n");
+    printf("  |_|\\___|_| |_|\\__,_|\\__\\__,_|\\__\\___/|_|\n\n");
 }
 
 // Fonction pour afficher le menu MEMBRE
@@ -397,7 +406,6 @@ void update_message(int socket) {
     buffer[len] = '\0';
 
     handle_server_response(socket);
-
 }
 
 // Fonction pour fermer la connexion
