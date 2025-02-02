@@ -57,7 +57,7 @@ Le programme prend en charge des **options de ligne de commande** pour modifier 
 | Option | Description |
 |--------|------------|
 | `-h`, `--help` | Affiche l'aide et la syntaxe des commandes. |
-| `-v`, `--verbose` | Active le mode **verbeux**, affichant plus de détails dans le terminal. |
+| `-v`, `--verbose` | Active le mode **verbeux**, affichant chaque ligne des logs dans le terminal. |
 
 ### **Exemples d'utilisation**
 - **Afficher l'aide :**  
