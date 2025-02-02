@@ -18,7 +18,7 @@ NB_MESS=20
 LEN_MESS=1000
 
 # Taille du tampon de données.
-BUFFER_SIZE=1024
+BUFFER_SIZE=2000
 
 # Limite en minutes de messages envoyés.
 MAX_MIN=12

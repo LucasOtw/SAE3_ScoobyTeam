@@ -10,4 +10,8 @@ int disconnect_user(UserInfo *user_info, PGconn *conn, int cnx);
 
 int handle_token_update(UserInfo *user_info, PGconn *conn, int cnx);
 
+void afficher_infos_clients();
+
+void afficher_infos_pros();
+
 #endif

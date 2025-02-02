@@ -45,3 +45,20 @@ LINE 1: DELETE FROM tripenarvor._token WHERE token=309r
 [2025-02-01 23:39:14] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Aucun message trouvé.
 [2025-02-01 23:39:24] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: BYE BYE VA6f
 [2025-02-01 23:39:24] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 19:26:27] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 19:26:49] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : fpkP
+[2025-02-02 19:27:33] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 19:28:01] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 19:28:15] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-02 19:28:15] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 19:28:17] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 19:28:20] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : Ov01
+[2025-02-02 19:28:50] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-02-02 19:28:57] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-02-02 19:29:04] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-02-02 19:29:11] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 19:40:14] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 19:40:27] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 19:41:04] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 19:42:02] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 19:47:46] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
