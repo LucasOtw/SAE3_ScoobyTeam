@@ -34,3 +34,14 @@ LINE 1: DELETE FROM tripenarvor._token WHERE token=309r
 [2025-02-01 18:26:42] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : CxuO
 [2025-02-01 18:26:47] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE CxuO
 [2025-02-01 18:26:47] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-01 23:36:50] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 23:37:35] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : O5WJ
+[2025-02-01 23:37:56] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-01 23:38:00] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE O5WJ
+[2025-02-01 23:38:00] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-01 23:38:05] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 23:38:20] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-13c356a8' : VA6f
+[2025-02-01 23:38:27] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: HIST NONLUS affiché
+[2025-02-01 23:39:14] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-02-01 23:39:24] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: BYE BYE VA6f
+[2025-02-01 23:39:24] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Client déconnecté.
