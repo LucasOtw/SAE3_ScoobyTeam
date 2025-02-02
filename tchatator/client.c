@@ -14,6 +14,7 @@
 #define BUFFER_SIZE 1024
 
 // Prototypes de fonctions
+void print_tchatator();
 void print_menu_membre();
 void print_menu_pro();
 void print_menu_admin();
@@ -55,6 +56,7 @@ int main() {
         close(client_socket);
         exit(EXIT_FAILURE);
     }
+    print_tchatator();
 
     printf("Connecté au serveur à %s:%d\n", SERVER_IP, SERVER_PORT);
 
@@ -67,21 +69,24 @@ int main() {
                 getchar();
                 switch (choice) {
                     case 1:
-                        send_message(client_socket);  // ENVOYER MSG
+                        afficher_infos_pros();  // ENVOYER MSG
                         break;
                     case 2:
-                        update_message(client_socket);  // Modifier MSG
+                        send_message(client_socket);  // ENVOYER MSG
                         break;
                     case 3:
-                        delete_message(client_socket);  // Supprimer un message
+                        update_message(client_socket);  // Modifier MSG
                         break;
                     case 4:
-                        get_history(client_socket);  // Historique
+                        delete_message(client_socket);  // Supprimer un message
                         break;
                     case 5:
-                        regenerate_api_key(client_socket);  // Regen API Key
+                        get_history(client_socket);  // Historique
                         break;
                     case 6:
+                        regenerate_api_key(client_socket);  // Regen API Key
+                        break;
+                    case 7:
                         logout(client_socket, &connected);  // Déconnexion
                         return EXIT_SUCCESS;
 
@@ -97,27 +102,30 @@ int main() {
 
                 switch (choice) {
                     case 1:
-                        send_message(client_socket);  // ENVOYER MSG
+                        afficher_infos_clients();  // ENVOYER MSG
                         break;
                     case 2:
-                        update_message(client_socket);  // Modifier MSG
+                        send_message(client_socket);  // ENVOYER MSG
                         break;
                     case 3:
-                        delete_message(client_socket);  // Supprimer un message
+                        update_message(client_socket);  // Modifier MSG
                         break;
                     case 4:
-                        get_history(client_socket);  // Historique
+                        delete_message(client_socket);  // Supprimer un message
                         break;
                     case 5:
-                        regenerate_api_key(client_socket);  // Regen API Key
+                        get_history(client_socket);  // Historique
                         break;
                     case 6:
-                        block_member(client_socket);  // bloquer un membre
+                        regenerate_api_key(client_socket);  // Regen API Key
                         break;
                     case 7:
-                        unblock_member(client_socket);  // débloquer un membre
+                        block(client_socket);  // bloquer un membre
                         break;
                     case 8:
+                        unblock(client_socket);  // débloquer un membre
+                        break;
+                    case 9:
                         // close_connection(client_socket);
                         logout(client_socket, &connected);  // Déconnexion
                         return EXIT_SUCCESS;
@@ -160,30 +168,39 @@ int main() {
 
     return 0;
 }
+void print_tchatator() {
+    printf(" _____    _           _        _   \n");
+    printf("|_   _|__| |__   __ _| |_ __ _| |_ ___  _ __\n");
+    printf("  | |/ __| '_ \\ / _` | __/ _` | __/ _ \\| '__|\n");
+    printf("  | | (__| | | | (_| | || (_| | || (_) | |\n");
+    printf("  |_|\\___|_| |_|\\__,_|\\__\\__,_|\\__\\___/|_|\n\n");
+}
 
 // Fonction pour afficher le menu MEMBRE
 void print_menu_membre() {
     printf("\n\033[48;2;189;196;38m\033[38;2;0;0;0m\033[1m=== Menu Membre ===\033[0m\n");  // Bleu et gras
-    printf("\033[1m1. \033[0mEnvoyer un message\n");                                       // Gras pour le numéro
-    printf("\033[1m2. \033[0mModifier un message\n");
-    printf("\033[1m3. \033[0mSupprimer un message\n");
-    printf("\033[1m4. \033[0mHistorique des messages\n");
-    printf("\033[1m5. \033[0mRegénérer clé API\n");
-    printf("\033[1m6. \033[0mDéconnexion\n");
+    printf("\033[1m1. \033[0mAfficher l'annuaire des professionnels\n");                                      // Gras pour le numéro
+    printf("\033[1m2. \033[0mEnvoyer un message\n");                                       // Gras pour le numéro
+    printf("\033[1m3. \033[0mModifier un message\n");
+    printf("\033[1m4. \033[0mSupprimer un message\n");
+    printf("\033[1m5. \033[0mHistorique des messages\n");
+    printf("\033[1m6. \033[0mRegénérer clé API\n");
+    printf("\033[1m7. \033[0mDéconnexion\n");
     printf("Votre choix : ");
 }
 
 // Fonction pour afficher le menu PRO
 void print_menu_pro() {
     printf("\n\033[48;2;242;131;34m\033[38;2;0;0;0m\033[1m=== Menu Pro ===\033[0m\n");  // Vert et gras
-    printf("\033[1m1. \033[0mEnvoyer un message\n");
-    printf("\033[1m2. \033[0mModifier un message\n");
-    printf("\033[1m3. \033[0mSupprimer un message\n");
-    printf("\033[1m4. \033[0mHistorique des messages\n");
-    printf("\033[1m5. \033[0mRegénérer clé API\n");
-    printf("\033[1m6. \033[0mBloquer un membre\n");
-    printf("\033[1m7. \033[0mDébloquer un membre\n");
-    printf("\033[1m8. \033[0mDéconnexion\n");
+    printf("\033[1m1. \033[0mAfficher l'annuaire des membres\n");
+    printf("\033[1m2. \033[0mEnvoyer un message\n");
+    printf("\033[1m3. \033[0mModifier un message\n");
+    printf("\033[1m4. \033[0mSupprimer un message\n");
+    printf("\033[1m5. \033[0mHistorique des messages\n");
+    printf("\033[1m6. \033[0mRegénérer clé API\n");
+    printf("\033[1m7. \033[0mBloquer un membre\n");
+    printf("\033[1m8. \033[0mDébloquer un membre\n");
+    printf("\033[1m9. \033[0mDéconnexion\n");
     printf("Votre choix : ");
 }
 
@@ -395,6 +412,8 @@ void update_message(int socket) {
         return;
     }
     buffer[len] = '\0';
+
+    handle_server_response(socket);
 }
 
 // Fonction pour fermer la connexion
@@ -456,7 +475,7 @@ void print_history_menu() {
     printf("\n=== Menu Historique ===\n");
     printf("1. Voir les messages lus\n");
     printf("2. Voir les messages non lus\n");
-    printf("3. Voir les messages reçus\n");
+    printf("3. Voir les messages reçus (lus et non lus)\n");
     printf("4. Voir les messages envoyés\n");
     printf("5. Retour au menu principal\n");
     printf("Votre choix : ");
@@ -572,19 +591,101 @@ void regenerate_api_key(int socket) {
     printf("%s\n", buffer);  // Affiche la réponse
 }
 
-void block_member(int socket) {
-}
-void unblock_member(int socket) {
-}
-
 void block(int socket) {
+    char buffer[BUFFER_SIZE];
+    int id_user;
+
+    // Demande à l'utilisateur l'ID de l'utilisateur à bloquer
+    printf("Entrez l'ID de l'utilisateur à bloquer :\n");
+    scanf("%d", &id_user);
+    getchar();  // Consomme le retour à la ligne restant
+
+    // Envoie la commande BLOCK avec l'ID de l'utilisateur
+    snprintf(buffer, sizeof(buffer), "BLOCK %d\n", id_user);
+    if (send(socket, buffer, strlen(buffer), 0) == -1) {
+        perror("Erreur lors de l'envoi de la commande BLOCK");
+        return;
+    }
+
+    // Reçoit et affiche la réponse du serveur
+    int len = recv(socket, buffer, sizeof(buffer) - 1, 0);
+    if (len <= 0) {
+        perror("Erreur lors de la réception de la réponse");
+        return;
+    }
+    buffer[len] = '\0';
+
+    printf("%s\n", buffer);  // Affiche la réponse du serveur
 }
 
 void unblock(int socket) {
+    char buffer[BUFFER_SIZE];
+    int id_user;
+
+    printf("Entrez l'ID de l'utilisateur à débloquer :\n");
+    scanf("%d", &id_user);
+    getchar();
+
+    snprintf(buffer, sizeof(buffer), "UNBLOCK %d\n", id_user);
+    if (send(socket, buffer, strlen(buffer), 0) == -1) {
+        perror("Erreur lors de l'envoi de la commande UNBLOCK");
+        return;
+    }
+
+    int len = recv(socket, buffer, sizeof(buffer) - 1, 0);
+    if (len <= 0) {
+        perror("Erreur lors de la réception de la réponse");
+        return;
+    }
+    buffer[len] = '\0';
+
+    printf("%s\n", buffer);
 }
 
 void ban(int socket) {
+    char buffer[BUFFER_SIZE];
+    int id_user;
+
+    printf("Entrez l'ID de l'utilisateur à bannir :\n");
+    scanf("%d", &id_user);
+    getchar();
+
+    snprintf(buffer, sizeof(buffer), "BAN %d\n", id_user);
+    if (send(socket, buffer, strlen(buffer), 0) == -1) {
+        perror("Erreur lors de l'envoi de la commande BAN");
+        return;
+    }
+
+    int len = recv(socket, buffer, sizeof(buffer) - 1, 0);
+    if (len <= 0) {
+        perror("Erreur lors de la réception de la réponse");
+        return;
+    }
+    buffer[len] = '\0';
+
+    printf("%s\n", buffer);
 }
 
 void unban(int socket) {
+    char buffer[BUFFER_SIZE];
+    int id_user;
+
+    printf("Entrez l'ID de l'utilisateur à débannir :\n");
+    scanf("%d", &id_user);
+    getchar();
+
+    snprintf(buffer, sizeof(buffer), "UNBAN %d\n", id_user);
+    if (send(socket, buffer, strlen(buffer), 0) == -1) {
+        perror("Erreur lors de l'envoi de la commande UNBAN");
+        return;
+    }
+
+    int len = recv(socket, buffer, sizeof(buffer) - 1, 0);
+    if (len <= 0) {
+        perror("Erreur lors de la réception de la réponse");
+        return;
+    }
+    buffer[len] = '\0';
+
+    printf("%s\n", buffer);
 }

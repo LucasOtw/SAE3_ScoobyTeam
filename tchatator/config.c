@@ -25,6 +25,7 @@ int MAX_HOUR;
 char LOG_LINKS[256];
 char API_ADMIN[36];
 int LEN_API;
+bool VERBOSE = false;
 
 // Fonction pour extraire les valeurs depuis le fichier param.txt
 int load_config(const char *filename) {
@@ -248,6 +249,11 @@ void insert_logs(const char *api_key, const char *ip_address, const char *messag
     // Écrire la ligne de log dans le fichier
     fprintf(log_file, "[%s] API_KEY: %s, IP: %s, Message: %s\n", timestamp, final_api_key, final_ip_address, message);
 
+    if (VERBOSE)
+    {
+        printf("[%s] API_KEY: %s, IP: %s, Message: %s\n", timestamp, final_api_key, final_ip_address, message);
+    }
+
     fclose(log_file);  // Fermer le fichier
 }
 
@@ -312,6 +318,10 @@ bool is_token_valid(PGconn *conn, const char *token, char *log_message, size_t l
         return true;
     } else {
         snprintf(log_message, log_size, "-> Erreur : Le token est expiré ou inactif.");
+
+        snprintf(query, sizeof(query), "UPDATE tripenarvor._token SET is_active = false WHERE token = '%s'", token);
+        PGresult *res = PQexec(conn, query);
+
         PQclear(res);
         return false;
     }

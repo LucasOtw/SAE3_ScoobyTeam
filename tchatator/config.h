@@ -18,6 +18,7 @@ extern int MAX_HOUR;         // Limite en heures de messages envoyés
 extern char LOG_LINKS[256];  // Chemin du fichier de logs
 extern char API_ADMIN[36];   // Identifiant unique pour l'API de l'admin
 extern int LEN_API;          // Taille clés API
+extern bool VERBOSE;
 
 typedef struct {
     char token[10];
