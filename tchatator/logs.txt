@@ -62,3 +62,275 @@
 [2025-02-02 20:29:23] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
 [2025-02-02 20:30:05] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE 7Vuv
 [2025-02-02 20:30:05] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 20:36:28] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 20:36:39] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : HGT3
+[2025-02-02 20:36:39] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-02 20:36:39] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 20:38:25] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 20:38:29] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : URED
+[2025-02-02 20:39:34] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE URED
+[2025-02-02 20:39:34] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 20:39:37] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 20:39:42] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : ctyq
+[2025-02-02 20:39:58] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 20:40:09] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-02-02 20:40:09] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-02-02 20:40:42] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
+[2025-02-02 20:40:42] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
+[2025-02-02 20:41:41] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 20:41:43] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : 1amu
+[2025-02-02 20:41:59] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-02-02 20:42:05] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-02-02 21:34:21] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 21:34:38] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : C9Gs
+[2025-02-02 21:34:57] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE C9Gs
+[2025-02-02 21:34:57] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 21:36:24] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 21:36:39] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : a6Ja
+[2025-02-02 21:37:32] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 21:37:49] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 21:38:14] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE a6Ja
+[2025-02-02 21:38:14] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 21:38:40] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 21:38:52] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-1c1e79bd' : QRTs
+[2025-02-02 21:39:17] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: HIST NONLUS affiché
+[2025-02-02 21:39:28] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-02-02 21:39:56] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: -> Échec de la requête SQL : insert into tripenarvor._message (code_emetteur, code_destinataire, contenu) values (1, 2, 'je ne suis pas d'accord
+')
+ERROR:  syntax error at or near "accord"
+LINE 1: ...estinataire, contenu) values (1, 2, 'je ne suis pas d
+[2025-02-02 21:40:14] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-02 21:40:14] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 21:43:43] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 21:44:00] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : mvig
+[2025-02-02 21:44:40] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 21:44:46] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-02 21:44:46] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 21:45:56] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 21:46:08] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : AGtd
+[2025-02-02 21:46:39] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 21:46:48] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 21:46:53] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE AGtd
+[2025-02-02 21:46:53] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 21:47:00] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 21:47:09] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-1c1e79bd' : zKPa
+[2025-02-02 21:47:24] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: HIST NONLUS affiché
+[2025-02-02 21:47:45] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-02 21:47:45] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 21:50:28] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 21:50:43] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : G6Dt
+[2025-02-02 21:51:12] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-02 21:51:12] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 21:51:57] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 21:51:59] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : w6RJ
+[2025-02-02 21:52:04] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE w6RJ
+[2025-02-02 21:52:04] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 21:53:40] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 21:53:54] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : 2Kw9
+[2025-02-02 21:54:43] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 21:54:56] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 21:55:00] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE 2Kw9
+[2025-02-02 21:55:00] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 21:55:03] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 21:55:10] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-1c1e79bd' : ITfd
+[2025-02-02 21:55:32] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: HIST NONLUS affiché
+[2025-02-02 21:55:38] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-02-02 21:56:08] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: Envoi du message au compte 2 réussi
+[2025-02-02 21:56:24] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: Blocage du membre 2 réussi par un professionnel
+[2025-02-02 21:56:37] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: BYE BYE ITfd
+[2025-02-02 21:56:37] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 21:56:40] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 21:56:46] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : Bue9
+[2025-02-02 21:57:01] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Erreur : Le membre 2 est encore bloqué par le professionnel 1 jusqu'à 2025-02-03 20:56:27.610819.
+[2025-02-02 21:57:10] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 21:57:37] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Modification du message 26 réussi
+[2025-02-02 21:57:56] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST RECUS affiché
+[2025-02-02 21:58:04] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE Bue9
+[2025-02-02 21:58:04] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 21:58:11] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 21:58:13] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-1c1e79bd' : oiwY
+[2025-02-02 21:58:25] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 21:58:30] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: Suppression du message 27 réussi
+
+[2025-02-02 21:58:35] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-02-02 21:58:47] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: Déblocage du membre 2 réussi par un professionnel
+[2025-02-02 21:59:06] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-02 22:17:57] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 22:18:04] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-1c1e79bd' : Us2X
+[2025-02-02 22:18:07] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: Blocage du membre 2 réussi par un professionnel
+[2025-02-02 22:18:12] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: BYE BYE Us2X
+[2025-02-02 22:18:12] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 22:18:15] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 22:18:21] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : 2sFK
+[2025-02-02 22:18:26] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Erreur : Le membre 2 est encore bloqué par le professionnel 1 jusqu'à 2025-02-03 21:18:08.259701.
+[2025-02-02 22:18:41] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE 2sFK
+[2025-02-02 22:18:41] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 22:38:13] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 22:38:22] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : V95Y
+[2025-02-02 22:38:52] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 22:39:03] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE V95Y
+[2025-02-02 22:39:03] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 22:39:05] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 22:39:12] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-1c1e79bd' : L85n
+[2025-02-02 22:39:28] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: HIST NONLUS affiché
+[2025-02-02 22:39:36] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-02-02 22:39:57] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: Envoi du message au compte 2 réussi
+[2025-02-02 22:40:07] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 22:40:22] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-02 22:41:28] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 22:41:33] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : xX1y
+[2025-02-02 22:41:37] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 22:41:49] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE xX1y
+[2025-02-02 22:41:49] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 22:43:03] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 22:43:16] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : 405R
+[2025-02-02 22:43:48] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 22:43:57] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 22:44:03] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 22:44:26] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Suppression du message 1 réussi
+
+[2025-02-02 22:45:15] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE 405R
+[2025-02-02 22:45:15] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 22:49:44] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 22:49:53] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : DkXm
+[2025-02-02 22:50:20] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 22:50:32] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 22:50:36] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 22:50:38] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 22:50:40] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 22:50:45] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 22:51:00] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: REGEN DkXm
+[2025-02-02 22:52:35] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-02 22:54:08] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 22:54:21] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : La clé API n'existe pas
+[2025-02-02 22:54:21] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Erreur : la clé API est invalide ou le token n'a pas pu être généré.
+[2025-02-02 22:54:38] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : La clé API n'existe pas
+[2025-02-02 22:54:38] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Erreur : la clé API est invalide ou le token n'a pas pu être généré.
+[2025-02-02 22:54:39] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : La clé API n'existe pas
+[2025-02-02 22:54:39] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Erreur : la clé API est invalide ou le token n'a pas pu être généré.
+[2025-02-02 22:54:58] API_KEY: M-901f2ffa, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-901f2ffa' : nYmx
+[2025-02-02 22:55:32] API_KEY: M-901f2ffa, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 22:55:44] API_KEY: M-901f2ffa, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 22:56:09] API_KEY: M-901f2ffa, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 22:56:16] API_KEY: M-901f2ffa, IP: 127.0.0.1, Message: Suppression du message 1 réussi
+
+[2025-02-02 22:57:07] API_KEY: M-901f2ffa, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-02 22:58:22] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 22:58:32] API_KEY: M-901f2ffa, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-901f2ffa' : 2pVp
+[2025-02-02 22:58:34] API_KEY: M-901f2ffa, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 22:58:36] API_KEY: M-901f2ffa, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 22:58:38] API_KEY: M-901f2ffa, IP: 127.0.0.1, Message: REGEN 2pVp
+[2025-02-02 22:58:49] API_KEY: M-901f2ffa, IP: 127.0.0.1, Message: Modification du message 4 réussi
+[2025-02-02 23:00:20] API_KEY: M-901f2ffa, IP: 127.0.0.1, Message: BYE BYE 2pVp
+[2025-02-02 23:00:20] API_KEY: M-901f2ffa, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 23:00:23] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 23:00:32] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : La clé API n'existe pas
+[2025-02-02 23:00:32] API_KEY: M-901f2ffa, IP: 127.0.0.1, Message: -> Erreur : la clé API est invalide ou le token n'a pas pu être généré.
+[2025-02-02 23:00:40] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-e8bfce28' : kRC3
+[2025-02-02 23:00:44] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:00:46] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-02 23:00:46] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 23:06:39] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 23:06:55] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-e8bfce28' : yD8J
+[2025-02-02 23:07:19] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 23:07:33] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:07:52] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Modification du message 5 réussi
+[2025-02-02 23:08:12] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:08:21] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: BYE BYE yD8J
+[2025-02-02 23:08:21] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 23:08:30] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 23:08:32] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-e8bfce28' : LL9Y
+[2025-02-02 23:08:34] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:08:40] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-02 23:08:40] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 23:09:42] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 23:09:54] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-e8bfce28' : CAsE
+[2025-02-02 23:10:39] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 23:10:41] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:10:43] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:10:47] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: BYE BYE CAsE
+[2025-02-02 23:10:47] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 23:10:47] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 23:10:49] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-e8bfce28' : zsKY
+[2025-02-02 23:10:52] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:11:03] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: BYE BYE zsKY
+[2025-02-02 23:11:03] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 23:13:03] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 23:13:13] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-e8bfce28' : BQ9h
+[2025-02-02 23:13:28] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: BYE BYE BQ9h
+[2025-02-02 23:13:28] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 23:16:52] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 23:17:05] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-e8bfce28' : PQfy
+[2025-02-02 23:17:29] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 23:17:39] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: BYE BYE PQfy
+[2025-02-02 23:17:39] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 23:17:43] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 23:17:49] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-1c1e79bd' : fWO5
+[2025-02-02 23:18:03] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: HIST NONLUS affiché
+[2025-02-02 23:18:21] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: Envoi du message au compte 2 réussi
+[2025-02-02 23:18:51] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: BYE BYE fWO5
+[2025-02-02 23:18:51] API_KEY: P-1c1e79bd, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 23:19:05] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 23:19:12] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-e8bfce28' : 8NxD
+[2025-02-02 23:19:18] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 23:19:24] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:19:26] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: BYE BYE 8NxD
+[2025-02-02 23:19:26] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 23:19:27] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 23:19:37] API_KEY: DefaultApiKey, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'DefaultApiKey' : 8NxD
+[2025-02-02 23:22:21] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 23:22:30] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-e8bfce28' : XVVm
+[2025-02-02 23:22:42] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 23:22:45] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:22:49] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Suppression du message 1 réussi
+
+[2025-02-02 23:24:57] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: BYE BYE XVVm
+[2025-02-02 23:24:57] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 23:25:07] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 23:25:16] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-e8bfce28' : n73e
+[2025-02-02 23:25:28] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 23:25:32] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:25:41] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: BYE BYE n73e
+[2025-02-02 23:25:41] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 23:27:30] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 23:27:36] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-e8bfce28' : pUn2
+[2025-02-02 23:27:46] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 23:27:51] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:27:56] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: BYE BYE pUn2
+[2025-02-02 23:27:56] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 23:28:52] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 23:29:01] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-e8bfce28' : KZta
+[2025-02-02 23:29:07] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 23:29:15] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:29:18] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Suppression du message 44 réussi
+
+[2025-02-02 23:29:51] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: BYE BYE KZta
+[2025-02-02 23:29:51] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 23:29:54] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 23:29:57] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-e8bfce28' : vm1e
+[2025-02-02 23:30:10] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 23:30:13] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:30:30] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: BYE BYE vm1e
+[2025-02-02 23:30:30] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 23:31:17] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 23:31:20] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-e8bfce28' : 7X86
+[2025-02-02 23:31:22] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:31:25] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: BYE BYE 7X86
+[2025-02-02 23:31:25] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 23:31:45] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 23:31:46] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-e8bfce28' : oamQ
+[2025-02-02 23:31:48] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:31:52] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-02-02 23:31:59] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: BYE BYE oamQ
+[2025-02-02 23:31:59] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 23:32:32] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 23:32:34] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-e8bfce28' : KTcU
+[2025-02-02 23:32:36] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:32:48] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 23:32:50] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:32:54] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:32:58] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 23:33:13] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
+[2025-02-02 23:34:07] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 23:37:01] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-02 23:37:01] API_KEY: M-e8bfce28, IP: 127.0.0.1, Message: Client déconnecté.

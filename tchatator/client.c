@@ -379,12 +379,12 @@ void send_message(int socket) {
     }
 
     // Reçoit et affiche la réponse du serveur
-    int len = recv(socket, buffer, sizeof(buffer) - 1, 0);
-    if (len <= 0) {
-        perror("Erreur lors de la réception de la réponse\n");
-        return;
-    }
-    buffer[len] = '\0';
+    // int len = recv(socket, buffer, sizeof(buffer) - 1, 0);
+    // if (len <= 0) {
+    //     perror("Erreur lors de la réception de la réponse\n");
+    //     return;
+    // }
+    // buffer[len] = '\0';
 
     handle_server_response(socket);
 }
@@ -406,19 +406,19 @@ void update_message(int socket) {
     // Formate et envoie le message au serveur
     snprintf(buffer, sizeof(buffer), "MDF %d %s\n", id_msg, message);
 
-    printf("Message : %s", message);
+    printf("Message : %s\n", message);
     if (send(socket, buffer, strlen(buffer), 0) == -1) {
         perror("Erreur lors de l'envoi du message\n");
         return;
     }
 
     // Reçoit et affiche la réponse du serveur
-    int len = recv(socket, buffer, sizeof(buffer) - 1, 0);
-    if (len <= 0) {
-        perror("Erreur lors de la réception de la réponse\n");
-        return;
-    }
-    buffer[len] = '\0';
+    // int len = recv(socket, buffer, sizeof(buffer) - 1, 0);
+    // if (len <= 0) {
+    //     perror("Erreur lors de la réception de la réponse\n");
+    //     return;
+    // }
+    // buffer[len] = '\0';
 
     handle_server_response(socket);
 }
@@ -491,29 +491,24 @@ void handle_server_response_history(int socket) {
     memset(buffer, 0, sizeof(buffer));
 
     int len;
-    //printf("Attente des données de l'historique...\n");
+    //printf(" Attente des messages de l'historique...\n");
 
-    while (1) {
-        len = recv(socket, buffer, BUFFER_SIZE - 1, 0);
-        if (len < 0) {
-            perror("Erreur lors de la réception de l'historique (recv a échoué)");
-            break;
-        }
-        if (len == 0) {
-            //printf("Fin de la transmission de l'historique\n");
-            break;
-        }
-
-        buffer[len] = '\0';  // Assurer que la chaîne est bien terminée
-        //printf("Reçu (%d octets) : %s\n", len, buffer);
+    while ((len = recv(socket, buffer, BUFFER_SIZE - 1, 0)) > 0) {
+        //buffer[len] = '\0';  // Assurer la terminaison de la chaîne
 
         if (strstr(buffer, "Nouvelle commande") != NULL) {
-            //printf("Fin de l'historique détecté.\n");
+            //printf(" Fin de l'historique reçue.\n");
             break;
         }
 
         printf("%s\n", buffer);
-        memset(buffer, 0, sizeof(buffer));
+        fflush(stdout);  // **Forcer l'affichage immédiat**
+
+        memset(buffer, 0, BUFFER_SIZE);
+    }
+
+    if (len < 0) {
+        perror("Erreur lors de la réception de l'historique (recv a échoué)");
     }
 }
 
