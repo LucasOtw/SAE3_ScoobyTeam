@@ -173,7 +173,7 @@ void afficher_infos_pros() {
         char *raison_sociale = PQgetvalue(res, i, 1);
 
         // Afficher les informations des clients
-        printf("ID %s | %sn", code_compte, raison_sociale);
+        printf("ID %s | %s\n", code_compte, raison_sociale);
     }
     printf("----------------------------------------\n");
     PQclear(res);
