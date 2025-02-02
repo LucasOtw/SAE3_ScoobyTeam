@@ -265,7 +265,12 @@ void print_success_message(const char *message) {
 char *login(int socket, int *connected) {
     char buffer[1024];
     int essais = 3;
-    char *api_key;
+    char *api_key = malloc(sizeof(buffer));
+    if (api_key == NULL) {
+        perror("Erreur d'allocation mémoire");
+        return NULL;
+    }
+
     while (essais > 0) {
         printf("\033[1mEntrez la clé API : \033[0m");
         if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
@@ -328,8 +333,10 @@ char *login(int socket, int *connected) {
         print_success_message(buffer);
         break;
     }
+
     return api_key;
 }
+
 void remove_ansi_codes(char *str) {
     char *ptr = str;
     while (*ptr) {

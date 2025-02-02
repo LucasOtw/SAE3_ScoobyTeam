@@ -1,0 +1,22 @@
+[2025-02-02 19:50:25] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 19:56:17] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 19:56:26] API_KEY: DefaultApiKey, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'DefaultApiKey' : 
+[2025-02-02 19:56:26] API_KEY: DefaultApiKey, IP: 127.0.0.1, Message: -> Erreur lors de la génération du token
+[2025-02-02 19:59:13] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 19:59:23] API_KEY: DefaultApiKey, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'DefaultApiKey' : 
+[2025-02-02 19:59:23] API_KEY: DefaultApiKey, IP: 127.0.0.1, Message: -> Erreur lors de la génération du token
+[2025-02-02 19:59:37] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 19:59:49] API_KEY: DefaultApiKey, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'DefaultApiKey' : 
+[2025-02-02 19:59:49] API_KEY: DefaultApiKey, IP: 127.0.0.1, Message: -> Erreur lors de la génération du token
+[2025-02-02 20:00:02] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 20:00:04] API_KEY: DefaultApiKey, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'DefaultApiKey' : 
+[2025-02-02 20:00:04] API_KEY: DefaultApiKey, IP: 127.0.0.1, Message: -> Erreur lors de la génération du token
+[2025-02-02 20:02:10] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 20:02:18] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : N7ef
+[2025-02-02 20:02:31] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 20:02:41] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Suppression du message 4 réussi
+
+[2025-02-02 20:03:00] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Aucun message trouvé.
+[2025-02-02 20:03:11] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 20:03:30] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE N7ef
+[2025-02-02 20:03:30] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
