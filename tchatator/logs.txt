@@ -1,194 +1,36 @@
-[2025-01-30 19:05:53] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-01-30 19:06:09] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : 74Xh
-[2025-01-30 19:06:09] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
+[2025-02-01 18:15:33] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 18:15:46] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : D5ee
+[2025-02-01 18:15:47] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Erreur : Le membre 2 est banni.
+[2025-02-01 18:15:47] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-01 18:22:01] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 18:22:17] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : 7q85
+[2025-02-01 18:22:17] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Erreur : Le membre 2 est banni.
+[2025-02-01 18:22:17] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-01 18:22:17] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Échec de la requête SQL : DELETE FROM tripenarvor._token WHERE token=7q85
+ERROR:  trailing junk after numeric literal at or near "7q"
+LINE 1: DELETE FROM tripenarvor._token WHERE token=7q85
+                                                   ^
 
-[2025-01-30 19:06:17] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Un membre ne peut pas bannir un utilisateur
-[2025-01-30 19:06:21] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur de format : BAN <id_membre>
-[2025-01-30 19:06:58] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur de format : BLOCK <id_membre>
-[2025-01-30 19:09:06] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur de format : UNBLOCK <id_membre>
-[2025-01-30 19:09:08] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur de format : UNBAN <id_membre>
-[2025-01-30 19:09:18] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Un membre ne peut pas bannir un utilisateur
-[2025-01-30 19:09:26] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Un membre ne peut pas débannir un utilisateur
-[2025-01-30 19:09:32] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur de format : UNBLOCK <id_membre>
-[2025-01-30 19:09:39] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Un membre ne peut pas bloquer un utilisateur
-[2025-01-30 19:09:55] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur de format : UNBLOCK <id_membre>
-[2025-01-30 19:10:59] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE 74Xh
-[2025-01-30 19:10:59] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
-[2025-01-30 19:11:02] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-01-30 19:11:18] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-13c356a8' : rqgC
-[2025-01-30 19:11:18] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
+[2025-02-01 18:23:13] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 18:23:25] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'A-5f4d3c2b' : a1
+[2025-02-01 18:23:28] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: Débannissement du membre 2 réussi par un admin
+[2025-02-01 18:23:31] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: BYE BYE a1
+[2025-02-01 18:23:31] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-01 18:23:31] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Échec de la requête SQL : DELETE FROM tripenarvor._token WHERE token=a1
+ERROR:  column "a1" does not exist
+LINE 1: DELETE FROM tripenarvor._token WHERE token=a1
+                                                   ^
 
-[2025-01-30 19:11:23] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: -> Échec de la requête SQL : insert into tripenarvor._banned_for (code_membre, code_professionnel) values (1, 1);
-ERROR:  relation "tripenarvor._banned_for" does not exist
-LINE 1: insert into tripenarvor._banned_for (code_membre, code_profe...
-         
-[2025-01-30 19:11:26] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: -> Échec de la requête SQL : insert into tripenarvor._banned_for (code_membre, code_professionnel) values (2, 1);
-ERROR:  relation "tripenarvor._banned_for" does not exist
-LINE 1: insert into tripenarvor._banned_for (code_membre, code_profe...
-         
-[2025-01-30 19:11:53] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: -> Échec de la requête SQL : insert into tripenarvor._banned_for (code_membre, code_professionnel) values (5, 1);
-ERROR:  relation "tripenarvor._banned_for" does not exist
-LINE 1: insert into tripenarvor._banned_for (code_membre, code_profe...
-         
-[2025-01-30 19:11:57] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: BYE BYE rqgC
-[2025-01-30 19:11:57] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Client déconnecté.
-[2025-01-30 19:16:33] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-01-30 19:16:34] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-13c356a8' : qvi6
-[2025-01-30 19:16:34] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
+[2025-02-01 18:23:43] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 18:23:52] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : 309r
+[2025-02-01 18:23:56] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE 309r
+[2025-02-01 18:23:56] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-01 18:23:57] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Échec de la requête SQL : DELETE FROM tripenarvor._token WHERE token=309r
+ERROR:  trailing junk after numeric literal at or near "309r"
+LINE 1: DELETE FROM tripenarvor._token WHERE token=309r
+                                                   ^
 
-[2025-01-30 19:16:40] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Bannissement du membre 2 réussi par un professionnel
-[2025-01-30 19:17:15] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Blocage du membre 2 réussi par un professionnel
-[2025-01-30 19:17:34] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Débannissement du membre 2 réussi par un professionnel
-[2025-01-30 19:17:38] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Débannissement du membre 2 réussi par un professionnel
-[2025-01-30 19:18:10] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Déblocage du membre 2 réussi par un professionnel
-[2025-01-30 19:18:14] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Déblocage du membre 2 réussi par un professionnel
-[2025-01-30 19:18:29] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: BYE BYE qvi6
-[2025-01-30 19:18:29] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Client déconnecté.
-[2025-01-30 19:18:45] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-01-30 19:18:47] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'A-5f4d3c2b' : a1
-[2025-01-30 19:18:47] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
-
-[2025-01-30 19:18:57] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: Bannissement du membre 2 réussi par un admin
-[2025-01-30 19:19:05] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Échec de la requête SQL : insert into tripenarvor._banned_all (code_membre) values (1);
-ERROR:  insert or update on table "_banned_all" violates foreign key constraint "_banned_all_fk_membre"
-DETAIL:  Key (code_membre)=(1) is not present in table "_m
-[2025-01-30 19:19:28] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: Débannissement du membre 2 réussi par un admin
-[2025-01-30 19:19:38] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: Blocage du membre 2 réussi par un admin
-[2025-01-30 19:19:57] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: Déblocage du membre 2 réussi par un admin
-[2025-01-30 19:20:06] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: BYE BYE a1
-[2025-01-30 19:20:06] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: Client déconnecté.
-[2025-01-30 20:00:27] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-01-30 20:00:39] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-13c356a8' : 5RQf
-[2025-01-30 20:00:39] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
-
-[2025-01-30 20:01:21] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
-
-[2025-01-30 20:01:38] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Envoi du message au compte 2 réussi
-[2025-01-30 20:01:57] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: HIST ENVOYES affiché
-[2025-01-30 20:02:22] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Modification du message 2 réussi
-[2025-01-30 20:02:27] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: HIST ENVOYES affiché
-[2025-01-30 20:03:07] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Modification du message 17 réussi
-[2025-01-30 20:03:11] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: HIST ENVOYES affiché
-[2025-01-30 20:03:21] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: BYE BYE 5RQf
-[2025-01-30 20:03:21] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Client déconnecté.
-[2025-01-30 20:03:23] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-01-30 20:03:37] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : 7AN6
-[2025-01-30 20:03:37] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
-
-[2025-01-30 20:03:45] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: HIST NONLUS affiché
-[2025-01-30 20:03:55] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Aucun message trouvé.
-[2025-01-30 20:03:59] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: HIST LUS affiché
-[2025-01-30 20:04:02] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: HIST RECUS affiché
-[2025-01-30 20:04:35] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE 7AN6
-[2025-01-30 20:04:35] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
-[2025-01-30 21:10:51] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-01-30 21:11:10] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-13c356a8' : Q5UO
-[2025-01-30 21:11:10] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
-
-[2025-01-30 21:11:16] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: -> Erreur : Un professionnel ne peut pas bannir un utilisateur
-[2025-01-30 21:11:25] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: -> Erreur : Un professionnel ne peut pas débannir un utilisateur
-[2025-01-30 21:14:42] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Blocage du membre 2 réussi par un professionnel
-[2025-01-30 21:14:50] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: BYE BYE Q5UO
-[2025-01-30 21:14:50] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Client déconnecté.
-[2025-01-30 21:14:53] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-01-30 21:15:17] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : rdMo
-[2025-01-30 21:15:17] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
-
-[2025-01-30 21:15:22] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur de format : MSG <id_destinataire> '<contenu du message>'
-[2025-01-30 21:15:40] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Échec de la requête SQL : insert into tripenarvor._message (code_emetteur, code_destinataire, contenu) values (2, 5, 'tg toi
-')
-ERROR:  insert or update on table "_message" violates foreign key constraint "_message_fk_destinataire"
-DETAIL:  Key (cod
-[2025-01-30 21:15:50] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur de format : MSG <id_destinataire> '<contenu du message>'
-[2025-01-30 21:27:21] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-01-30 21:27:23] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : JZbA
-[2025-01-30 21:27:23] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
-
-[2025-01-30 21:27:32] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Le membre 2 est encore bloqué par le professionnel 1 jusqu'à 2025-01-31 20:14:44.455205.
-[2025-01-30 21:27:45] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE JZbA
-[2025-01-30 21:27:45] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
-[2025-01-30 21:27:46] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-01-30 21:28:06] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-13c356a8' : KR5L
-[2025-01-30 21:28:06] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
-
-[2025-01-30 21:28:09] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: -> Erreur : Un professionnel ne peut pas débannir un utilisateur
-[2025-01-30 21:28:17] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Déblocage du membre 2 réussi par un professionnel
-[2025-01-30 21:28:19] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: BYE BYE KR5L
-[2025-01-30 21:28:19] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Client déconnecté.
-[2025-01-30 21:28:21] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-01-30 21:28:32] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : rv0I
-[2025-01-30 21:28:32] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
-
-[2025-01-30 21:28:36] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Envoi du message au compte 1 réussi
-[2025-01-30 21:28:43] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE rv0I
-[2025-01-30 21:28:43] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
-[2025-01-30 21:28:50] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-01-30 21:28:51] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'A-5f4d3c2b' : a1
-[2025-01-30 21:28:51] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
-
-[2025-01-30 21:28:56] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: Bannissement du membre 2 réussi par un admin
-[2025-01-30 21:28:59] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Échec de la requête SQL : insert into tripenarvor._banned (code_membre) values (1);
-ERROR:  insert or update on table "_banned" violates foreign key constraint "_banned_all_fk_membre"
-DETAIL:  Key (code_membre)=(1) is not present in table "_membre".
-
-[2025-01-30 21:29:06] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: Blocage du membre 2 réussi par un admin
-[2025-01-30 21:29:09] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: BYE BYE a1
-[2025-01-30 21:29:09] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: Client déconnecté.
-[2025-01-30 21:29:22] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-01-30 21:29:31] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : 76OM
-[2025-01-30 21:29:31] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
-
-[2025-01-30 21:29:38] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Le membre 2 est encore bloqué globalement jusqu'à 2025-01-31 20:29:09.555819.
-[2025-01-30 21:29:47] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE 76OM
-[2025-01-30 21:29:47] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
-[2025-01-30 21:47:49] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-01-30 21:47:54] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'A-5f4d3c2b' : a1
-[2025-01-30 21:47:54] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
-
-[2025-01-30 21:47:57] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Erreur : Aucun token trouvé avec la valeur donnée.
-[2025-01-30 21:49:39] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
-[2025-01-30 21:49:39] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
-[2025-01-30 21:50:19] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur lors du bind
-[2025-01-30 21:50:19] API_KEY: UNKNOWN_API_KEY, IP: UNKNOWN_IP, Message: -> Erreur : Impossible de configurer le socket.
-[2025-01-30 21:50:31] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-01-30 21:50:50] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'A-5f4d3c2b' : a1
-[2025-01-30 21:50:50] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Erreur : Commande inconnue => 
-
-[2025-01-30 21:50:56] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Erreur : Un admin peut pas envoyer un message
-[2025-01-30 21:51:01] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Erreur : Un admin peut pas modifier un message
-[2025-01-30 21:51:05] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Erreur : Un admin peut pas consulter son historique
-[2025-01-30 21:51:09] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: -> Erreur : Un admin peut pas regen sa cle d'API
-[2025-01-30 21:51:19] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: BYE BYE a1
-[2025-01-30 21:51:19] API_KEY: A-5f4d3c2b, IP: 127.0.0.1, Message: Client déconnecté.
-[2025-02-01 15:21:02] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-02-01 15:21:23] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : Nw8C
-[2025-02-01 15:21:25] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
-[2025-02-01 15:21:36] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-02-01 15:21:38] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : pJ3w
-[2025-02-01 15:21:38] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
-[2025-02-01 15:21:38] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
-[2025-02-01 15:21:55] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-02-01 15:21:59] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : jj5c
-[2025-02-01 15:22:01] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
-[2025-02-01 15:23:59] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-02-01 15:24:11] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : m7Kx
-[2025-02-01 15:24:11] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
-[2025-02-01 15:24:11] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
-[2025-02-01 15:24:21] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-02-01 15:24:22] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : BmYk
-[2025-02-01 15:24:22] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
-[2025-02-01 15:24:22] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
-[2025-02-01 15:24:39] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-02-01 15:24:41] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : xCY1
-[2025-02-01 15:24:48] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: BYE BYE xCY1
-[2025-02-01 15:24:48] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: Client déconnecté.
-[2025-02-01 15:24:50] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-02-01 15:25:08] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-13c356a8' : wsZZ
-[2025-02-01 15:25:10] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
-[2025-02-01 15:25:44] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-02-01 15:25:53] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'P-13c356a8' : K0gt
-[2025-02-01 15:27:03] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: BYE BYE K0gt
-[2025-02-01 15:27:03] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Client déconnecté.
-[2025-02-01 15:27:06] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
-[2025-02-01 15:27:12] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-ce460be4' : Ny5c
-[2025-02-01 15:27:16] API_KEY: M-ce460be4, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-01 18:26:34] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-01 18:26:42] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : CxuO
+[2025-02-01 18:26:47] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE CxuO
+[2025-02-01 18:26:47] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
