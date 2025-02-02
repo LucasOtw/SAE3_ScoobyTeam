@@ -11,6 +11,7 @@ Le programme agit comme un client envoyant des commandes à un serveur. Il perme
 -   Consulter l'historique des messages.
 -   Supprimer un message.
 -   Régénérer une clé API.
+-   Afficher l'annuaire des utilisateurs.
 -   Se déconnecter et fermer la connexion.
 
 ---
@@ -63,16 +64,23 @@ Une fois connecté, le menu suivant s'affiche :
 
 ```
 === Menu Membre ===
-1. Envoyer un message
-2. Modifier un message
-3. Supprimer un message
-4. Historique des messages
-5. Régénérer clé API
-6. Déconnexion
+1. Afficher l'annuaire des professionnels
+2. Envoyer un message
+3. Modifier un message
+4. Supprimer un message
+5. Historique des messages
+6. Régénérer clé API
+7. Déconnexion
 Votre choix :
 ```
 
 #### Action selon le choix :
+
+-   **Afficher l'annuaire des professionnels** : affiche la liste des professionnels sous la forme suivante :
+    
+    ```
+    ID n° | Raison Sociale
+    ```
 
 -   **Envoyer un message** : envoi d'un message en précisant :
 
@@ -108,18 +116,25 @@ Une fois connecté, le menu suivant s'affiche :
 
 ```
 === Menu Pro ===
-1. Envoyer un message
-2. Modifier un message
-3. Supprimer un message
-4. Historique des messages
-5. Régénérer clé API
-6. Bloquer un membre
-7. Débloquer un membre
-8. Déconnexion
+1. Afficher l'annuaire des membres
+2. Envoyer un message
+3. Modifier un message
+4. Supprimer un message
+5. Historique des messages
+6. Régénérer clé API
+7. Bloquer un membre
+8. Débloquer un membre
+9. Déconnexion
 Votre choix :
 ```
 
 #### Action selon le choix :
+
+-   **Afficher l'annuaire des membres** : affiche la liste des membres sous la forme suivante :
+    
+    ```
+    ID n° | Nom Prénom
+    ```
 
 -   **Envoyer un message** : envoi d'un message en précisant :
 
@@ -169,22 +184,24 @@ Une fois connecté, le menu suivant s'affiche :
 3. Bannir un utilisateur
 4. Débannir un utilisateur
 5. Déconnexion
-   Votre choix :
+Votre choix :
 ```
+
 #### Action selon le choix
 
--   **Bloquer un utilisateur :** : empêche un utilisateur d'envoyer des messages en précisant :
-    -   l'ID de l'utisateur à bloquer
--   **Débloquer un utilisateur :** : rétablit l'accès aux messages pour un utilisateur bloqué en précisant :
+-   **Bloquer un utilisateur** : empêche un utilisateur d'envoyer des messages en précisant :
+    -   l'ID de l'utilisateur à bloquer
+-   **Débloquer un utilisateur** : rétablit l'accès aux messages pour un utilisateur bloqué en précisant :
 
-    -   l'ID de l'utisateur à débloquer
+    -   l'ID de l'utilisateur à débloquer
 
--   **Bannir un utilisateur :** : interdit définitivement un utilisateur d'utiliser la plateforme en précisant :
+-   **Bannir un utilisateur** : interdit définitivement un utilisateur d'utiliser la plateforme en précisant :
 
-    -   l'ID de l'utisateur à bannir
+    -   l'ID de l'utilisateur à bannir
 
--   **Débannir un utilisateur :** : annule un bannissement d'un utilisateur en précisant :
+-   **Débannir un utilisateur** : annule un bannissement d'un utilisateur en précisant :
 
-    -   l'ID de l'utisateur à débannir
+    -   l'ID de l'utilisateur à débannir
 
--   **Déconnexion :** ferme proprement la session et le programme.
+-   **Déconnexion** : ferme proprement la session et le programme.
+

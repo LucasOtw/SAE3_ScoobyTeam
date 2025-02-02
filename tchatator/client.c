@@ -179,7 +179,7 @@ void print_tchatator() {
 // Fonction pour afficher le menu MEMBRE
 void print_menu_membre() {
     printf("\n\033[48;2;189;196;38m\033[38;2;0;0;0m\033[1m=== Menu Membre ===\033[0m\n");  // Bleu et gras
-    printf("\033[1m1. \033[0mAfficher l'annuaire\n");                                      // Gras pour le numéro
+    printf("\033[1m1. \033[0mAfficher l'annuaire des professionnels\n");                                      // Gras pour le numéro
     printf("\033[1m2. \033[0mEnvoyer un message\n");                                       // Gras pour le numéro
     printf("\033[1m3. \033[0mModifier un message\n");
     printf("\033[1m4. \033[0mSupprimer un message\n");
@@ -192,7 +192,7 @@ void print_menu_membre() {
 // Fonction pour afficher le menu PRO
 void print_menu_pro() {
     printf("\n\033[48;2;242;131;34m\033[38;2;0;0;0m\033[1m=== Menu Pro ===\033[0m\n");  // Vert et gras
-    printf("\033[1m1. \033[0mAfficher l'annuaire\n");
+    printf("\033[1m1. \033[0mAfficher l'annuaire des membres\n");
     printf("\033[1m2. \033[0mEnvoyer un message\n");
     printf("\033[1m3. \033[0mModifier un message\n");
     printf("\033[1m4. \033[0mSupprimer un message\n");
