@@ -6,6 +6,6 @@
 
 | Tâche                      | Antoine | Quentin | Lucas | Maël | Joseph | Valentin | Odin |
 |----------------------------|----------|----------|----------|----------|----------|----------|----------|
-| **Conception du PROTOCOLE** | 50%      | 50%      | /     | /    | /     | /     | /     |
+| **Conception du PROTOCOLE** | 60%      | 40%      | /     | /    | /     | /     | /     |
 | **Codage et tests**         | 60%      | 40%      | /     | /     | /     | /     | /     |
 | **Documentation**           | 25%      | 25%      | 25%      | 25%      | /     | /     | /     |

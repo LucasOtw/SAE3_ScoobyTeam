@@ -309,7 +309,7 @@ int main(int argc, char *argv[]) {
 
                                                     memset(query, 0, sizeof(query));
                                                 } else {
-                                                    send(cnx, "\033[31m-> Erreur : id_dest = id_user\033[0m", sizeof("\033[31m-> Erreur : id_dest = id_user\033[0m"), 0);
+                                                    send(cnx, "\033[31m-> Erreur : id_dest = id_user\033[0m\n", sizeof("\033[31m-> Erreur : id_dest = id_user\033[0m"), 0);
 
                                                     snprintf(txt_log, sizeof(txt_log), "-> Erreur : id_dest = id_user");
                                                     insert_logs(api_key, client_ip, txt_log);
