@@ -22,23 +22,23 @@
 
 ### 2 | Utilisation des commandes
 
-#### BYE BYE
+#### BYE BYE (Déconnexion)
 - **Format** : `BYE BYE`
 - **Description** : Déconnexion de l'utilisateur
 - **Disponible pour** : Tous les utilisateurs
 
 #### MSG (Message)
-- **Format** : `MSG`
+- **Format** : `MSG <id_destinataire> <message>`
 - **Description** : Envoi d'un message à un destinataire
 - **Disponible pour** : Membres et Professionnels
 
 #### MDF (Modification)
-- **Format** : `MDF`
+- **Format** : `MDF <id_message> <message>`
 - **Description** : Modification d'un message existant
 - **Disponible pour** : Membres et Professionnels
 
 #### HIST (Historique)
-- **Format** : `HIST`
+- **Format** : `HIST <NONLUS|LUS|RECUS|ENVOYES>`
 - **Types disponibles** :
   - ENVOYES : Messages envoyés
   - RECUS : Messages reçus
@@ -47,17 +47,17 @@
 - **Disponible pour** : Membres et Professionnels
 
 #### SUPPR (Suppression)
-- **Format** : `SUPPR`
+- **Format** : `SUPPR <id_message>`
 - **Description** : Suppression d'un message
 - **Disponible pour** : Membres et Professionnels
 
 #### BLOCK/UNBLOCK
-- **Format** : `BLOCK UNBLOCK`
+- **Format** : `BLOCK <id_membre> | UNBLOCK <id_membre>`
 - **Description** : Blocage/Déblocage d'un membre
 - **Disponible pour** : Administrateurs et Professionnels
 
 #### BAN/UNBAN
-- **Format** : `BAN UNBAN`
+- **Format** : `BAN <id_membre> | UNBAN <id_membre>`
 - **Description** : Bannissement/Débannissement d'un membre
 - **Disponible pour** : Administrateurs uniquement
 
