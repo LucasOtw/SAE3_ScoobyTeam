@@ -45,3 +45,14 @@ LINE 1: DELETE FROM tripenarvor._token WHERE token=309r
 [2025-02-01 23:39:14] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Aucun message trouvé.
 [2025-02-01 23:39:24] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: BYE BYE VA6f
 [2025-02-01 23:39:24] API_KEY: P-13c356a8, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 19:34:51] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 19:35:51] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : djwv
+[2025-02-02 19:35:58] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: -> Erreur lors de la lecture
+[2025-02-02 19:36:05] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 19:36:06] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: User connecté token généré pour la clé API 'M-6c9b3625' : Smh1
+[2025-02-02 19:36:16] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: HIST ENVOYES affiché
+[2025-02-02 19:37:06] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: BYE BYE Smh1
+[2025-02-02 19:37:06] API_KEY: M-6c9b3625, IP: 127.0.0.1, Message: Client déconnecté.
+[2025-02-02 19:37:08] API_KEY: UNKNOWN_API_KEY, IP: 127.0.0.1, Message: Connexion acceptée de l'adresse IP : 127.0.0.1
+[2025-02-02 19:37:10] API_KEY: s, IP: 127.0.0.1, Message: -> Erreur : la clé API est invalide ou le token n'a pas pu être généré.
+[2025-02-02 19:37:13] API_KEY: s, IP: 127.0.0.1, Message: -> Erreur : la clé API est invalide ou le token n'a pas pu être généré.
