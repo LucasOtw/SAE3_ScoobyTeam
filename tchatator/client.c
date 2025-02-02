@@ -467,14 +467,6 @@ void get_history(int socket) {
         return;
     }
 
-    // Reçoit et affiche la réponse du serveur
-    int len = recv(socket, buffer, sizeof(buffer) - 1, 0);
-    if (len <= 0) {
-        perror("Erreur lors de la réception de l'historique");
-        return;
-    }
-    buffer[len] = '\0';
-
     handle_server_response_history(socket);
 }
 
@@ -490,35 +482,37 @@ void print_history_menu() {
 
 // Fonction pour gérer la réponse du serveur
 void handle_server_response_history(int socket) {
+    if (socket < 0) {
+        perror("Erreur : socket invalide");
+        return;
+    }
+
     char buffer[BUFFER_SIZE];
-    memset(buffer, 0, BUFFER_SIZE);
+    memset(buffer, 0, sizeof(buffer));
 
     int len;
+    //printf("Attente des données de l'historique...\n");
+
     while (1) {
         len = recv(socket, buffer, BUFFER_SIZE - 1, 0);
-
         if (len < 0) {
-            perror("Erreur lors de la réception de l'historique");
+            perror("Erreur lors de la réception de l'historique (recv a échoué)");
             break;
         }
-
         if (len == 0) {
-            // Si la taille de la réponse est 0, cela signifie que le serveur a terminé l'envoi
+            //printf("Fin de la transmission de l'historique\n");
             break;
         }
 
-        buffer[len] = '\0';  // Assurez-vous que la chaîne est bien terminée
+        buffer[len] = '\0';  // Assurer que la chaîne est bien terminée
+        //printf("Reçu (%d octets) : %s\n", len, buffer);
 
-        // Vérifie si la réponse indique "nouvelle commande", on arrête alors la boucle
         if (strstr(buffer, "Nouvelle commande") != NULL) {
-            // Ignore l'affichage de ce message et sort de la boucle
+            //printf("Fin de l'historique détecté.\n");
             break;
         }
 
-        // Affiche les autres messages
         printf("%s\n", buffer);
-
-        // Réinitialisation du buffer pour la prochaine réponse
         memset(buffer, 0, sizeof(buffer));
     }
 }
@@ -529,7 +523,7 @@ void logout(int socket, int *connected) {
     char buffer[BUFFER_SIZE];
 
     // Envoi de la commande LOGOUT au serveur
-    snprintf(buffer, sizeof(buffer), "BYE BYE\n\0");
+    snprintf(buffer, sizeof(buffer), "BYE BYE\n");
     if (send(socket, buffer, strlen(buffer), 0) == -1) {
         perror("Erreur lors de l'envoi de la commande BYE BYE\n");
         return;

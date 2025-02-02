@@ -180,6 +180,11 @@ int main(int argc, char *argv[]) {
                         memset(buffer, 0, sizeof(buffer));               
                         ret = recv(cnx, buffer, sizeof(buffer) - 1, 0);
 
+                        if (ret == 0) {
+                            printf("Connexion fermée par le serveur\n");
+                            break;
+                        }
+
                     } while (ret > 0 && (buffer[0] == '\n' || buffer[0] == '\r'));
 
                     if (ret > 0) {
