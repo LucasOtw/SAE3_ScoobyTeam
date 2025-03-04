@@ -287,6 +287,7 @@ if (isset($_POST['envoi_modif'])){
             $prix = $_POST['prix'];
             $tarif = $_POST['_tarif'];
             echo "<h1>$tarif</h1>";
+            echo $prix;
             switch($prix){
                 case "€":
                     if($tarif < 0 || $tarif >= 25){
