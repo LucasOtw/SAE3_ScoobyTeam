@@ -139,8 +139,24 @@ foreach($tables as $table){
     }
 }
 
-/* RÉCUPÉRATION DES TAGS */
+switch($type_offre){
+    case "offre_restauration":
+        // on sélectionner la gamme de prix
 
+        $reqGamme = $dbh->prepare("SELECT * FROM tripenarvor._offre_restauration WHERE code_offre = :code");
+        $reqGamme->bindValue(":code",$offre['code_offre']);
+        $reqGamme->execute();
+
+        $infosOffre = $reqGamme->fetchAll(PDO::FETCH_ASSOC);
+        
+        break;
+    default:
+        break;
+}
+
+var_dump($infosOffre);
+
+/* RÉCUPÉRATION DES TAGS */
 
 
 $req_tags = $dbh->prepare("SELECT * FROM tripenarvor._tags WHERE $type_offre = true");
