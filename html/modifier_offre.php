@@ -139,10 +139,8 @@ foreach($tables as $table){
     }
 }
 
-var_dump($type_offre);
-
 switch($type_offre){
-    case "offre_restauration":
+    case "restauration":
         // on sélectionner la gamme de prix
 
         $reqGamme = $dbh->prepare("SELECT * FROM tripenarvor._offre_restauration WHERE code_offre = :code");
