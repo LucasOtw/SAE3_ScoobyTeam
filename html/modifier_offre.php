@@ -154,6 +154,8 @@ switch($type_offre){
         break;
 }
 
+var_dump($infosOffre);
+
 
 /* RÉCUPÉRATION DES TAGS */
 
