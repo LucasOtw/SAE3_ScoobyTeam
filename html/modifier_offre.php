@@ -39,7 +39,9 @@ if (isset($_POST['envoiOffre'])) {
 
 $offre = $_SESSION['modif_offre'];
 
+echo "<pre>";
 var_dump($offre);
+echo "</pre>";
 
 
 /* TABLEAU DES JOURS */
