@@ -154,7 +154,6 @@ switch($type_offre){
         break;
 }
 
-var_dump($infosOffre);
 
 /* RÉCUPÉRATION DES TAGS */
 
@@ -774,20 +773,21 @@ if($infos_offre !== null){
 
                     switch($type_offre){
                         case "restauration":
+                            $prix_defaut = $infosOffre['gamme_prix'];
                             ?>
                             <div class="price-options">
                                 <label for="prix">Prix</label>
                                 <div class="radio-group">
                                     <div>
-                                        <input type="radio" id="moins_25" name="prix" value="€" required>
+                                        <input type="radio" id="moins_25" name="prix" value="€" required <?php echo ($prix_defaut == "€") ? 'checked' : ''; ?>>
                                         <label class="label-check" for="moins_25">€ (menu à moins de 25€)</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="entre_25_40" name="prix" value="€€" required>
+                                        <input type="radio" id="entre_25_40" name="prix" value="€€" required <?php echo ($prix_defaut == "€€") ? 'checked' : ''; ?>>
                                         <label class="label-check" for="entre_25_40">€€ (entre 25€ et 40€)</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="plus_40" name="prix" value="€€€" required>
+                                        <input type="radio" id="plus_40" name="prix" value="€€€" required <?php echo ($prix_defaut == "€€€") ? 'checked' : ''; ?>>
                                         <label class="label-check" for="plus_40">€€€ (au-delà de 40€)</label>
                                     </div>
                                 </div>
