@@ -143,7 +143,7 @@ switch($type_offre){
         $reqGamme->bindValue(":code",$offre['code_offre']);
         $reqGamme->execute();
 
-        $infosOffre = $reqGamme->fetchAll(PDO::FETCH_ASSOC);
+        $infosOffre = $reqGamme->fetch(PDO::FETCH_ASSOC);
         
         break;
     default:
