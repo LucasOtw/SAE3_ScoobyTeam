@@ -809,23 +809,28 @@ if($infos_offre !== null){
                                 <label>Options de repas</label>
                                 <div class="checkbox-group">
                                     <div>
-                                        <input type="checkbox" id="petit_dejeuner" name="repas[]" value="Petit déjeuner">
+                                        <input type="checkbox" id="petit_dejeuner" name="repas[]" value="Petit déjeuner" 
+                                            <?php echo in_array("Petit déjeuner", $repas) ? 'checked' : ''; ?>>
                                         <label class="label-check" for="petit_dejeuner">Petit-Déjeuner</label>
                                     </div>
                                     <div>
-                                        <input type="checkbox" id="brunch" name="repas[]" value="Brunch">
+                                        <input type="checkbox" id="brunch" name="repas[]" value="Brunch" 
+                                            <?php echo in_array("Brunch", $repas) ? 'checked' : ''; ?>>
                                         <label class="label-check" for="brunch">Brunch</label>
                                     </div>
                                     <div>
-                                        <input type="checkbox" id="dejeuner" name="repas[]" value="Déjeuner">
+                                        <input type="checkbox" id="dejeuner" name="repas[]" value="Déjeuner" 
+                                            <?php echo in_array("Déjeuner", $repas) ? 'checked' : ''; ?>>
                                         <label class="label-check" for="dejeuner">Déjeuner</label>
                                     </div>
                                     <div>
-                                        <input type="checkbox" id="diner" name="repas[]" value="Dîner">
+                                        <input type="checkbox" id="diner" name="repas[]" value="Dîner" 
+                                            <?php echo in_array("Dîner", $repas) ? 'checked' : ''; ?>>
                                         <label class="label-check" for="diner">Dîner</label>
                                     </div>
                                     <div>
-                                        <input type="checkbox" id="boissons" name="repas[]" value="Boissons">
+                                        <input type="checkbox" id="boissons" name="repas[]" value="Boissons" 
+                                            <?php echo in_array("Boissons", $repas) ? 'checked' : ''; ?>>
                                         <label class="label-check" for="boissons">Boissons</label>
                                     </div>
                                 </div>
