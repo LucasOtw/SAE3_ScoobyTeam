@@ -152,10 +152,6 @@ switch($type_offre){
         break;
 }
 
-echo "<pre>";
-var_dump($repas);
-echo "</pre>";
-
 
 /* RÉCUPÉRATION DES TAGS */
 
