@@ -144,6 +144,7 @@ switch($type_offre){
         $reqGamme->execute();
 
         $infosOffre = $reqGamme->fetch(PDO::FETCH_ASSOC);
+        $repas = explode(",",$infosOffre['repas']);
         
         break;
     default:
@@ -151,7 +152,7 @@ switch($type_offre){
 }
 
 echo "<pre>";
-var_dump($infosOffre);
+var_dump($repas);
 echo "</pre>";
 
 
