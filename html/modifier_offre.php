@@ -144,7 +144,8 @@ switch($type_offre){
         $reqGamme->execute();
 
         $infosOffre = $reqGamme->fetch(PDO::FETCH_ASSOC);
-        $repas = trim(explode(",",$infosOffre['repas'])));
+        $repas = (explode(",",$infosOffre['repas']);
+        $repas = array_map('trim',$repas);
         
         break;
     default:
