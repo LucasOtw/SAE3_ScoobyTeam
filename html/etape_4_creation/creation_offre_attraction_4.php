@@ -28,6 +28,7 @@ if(!isset($_SESSION['pro'])){
 
 echo "<pre>";
 var_dump($_SESSION);
+echo "lol";
 echo "</pre>";
 
 if (!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])) {
