@@ -1,3 +1,40 @@
+<?php
+
+ob_start();
+session_start();
+
+include_once('../recupInfosCompte.php');
+
+if(!isset($monComptePro['num_siren'])){
+    // si le professionnel est publique, il n'a rien à faire là
+    header('location: ../etape_4_creation/creation_offre_spectacle_4.php');
+    exit;
+}
+
+// on récupère les prix de type_offre
+
+$getPrixOffre = $dbh->prepare("SELECT * FROM tripenarvor._type_offre");
+$getPrixOffre->execute();
+
+$prixOffre = $getPrixOffre->fetchAll(PDO::FETCH_ASSOC);
+
+const PRIX_RELIEF = 10.00;
+const PRIX_A_LA_UNE = 20.00;
+
+if(isset($_POST['envoiForm4'])){
+    // si le formulaire est envoyé..
+    foreach($_POST as $cle => $post){
+        if($cle !== "envoiForm4"){
+            $_SESSION["crea_offre3"][$cle] = $post;
+        }
+    }
+    if(isset($_SESSION["crea_offre3"]) && !empty($_SESSION["crea_offre3"])){
+        header('location: ../etape_4_creation/creation_offre_spectacle_4.php');
+        exit;
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -47,27 +84,25 @@
                     <label>Choix de l'offre</label>
                     <div class="radio-group">
                         <?php
-                            if ($_SESSION["compte"] != $typeOffre)
-                            {
-                        ?>
+                            if(!isset($monComptePro['num_siren'])){
+                                // si il y a un numéro SIREN, c'est un compte privé
+                                ?>
                                 <div>
-                                    <input type="radio" id="offre_gratuite" name="offre" value="gratuite">
+                                    <input type="radio" id="offre_gratuite" name="offre" value="gratuite" required>
                                     <label class="label-check" for="offre_gratuite">Offre Gratuite <sup>1</sup></label>
                                 </div>
-                            <?php
-                            }
-                            else 
-                            {
-                            ?>
+                                <?php
+                            } else {
+                                ?>
                                 <div>
-                                    <input type="radio" id="offre_standard" name="offre" value="standard">
-                                    <label class="label-check" for="offre_standard">Offre Standard <sup>2</sup> (2€/jour)</label>
+                                    <input type="radio" id="offre_premium" name="offre" value="standard" required>
+                                    <label class="label-check" for="offre_standard">Offre Standard <sup>2</sup> (<?php echo $prixOffre[0]['prix'] ?>€ / jour)</label>
                                 </div>
                                 <div>
-                                    <input type="radio" id="offre_premium" name="offre" value="premium" checked>
-                                    <label class="label-check" for="offre_premium">Offre Premium <sup>3</sup> (4€/jour)</label>
+                                    <input type="radio" id="offre_premium" name="offre" value="premium" required>
+                                    <label class="label-check" for="offre_premium">Offre Premium <sup>3</sup> (<?php echo $prixOffre[1]['prix'] ?>€ / jour)</label>
                                 </div>
-                        <?php
+                                <?php
                             }
                         ?>
                     </div>
@@ -78,16 +113,16 @@
                     <label>Options de boost (lorsque l'offre sera en ligne)</label>
                     <div class="radio-group">
                         <div>
-                            <input type="radio" id="no_boost" name="option" value="">
+                            <input type="radio" id="no_boost" name="option" value="aucune">
                             <label class="label-check" for="no_boost">Ne pas booster mon offre</label>
                         </div>
                         <div>
                             <input type="radio" id="en_relief" name="option" value="en_relief">
-                            <label class="label-check" for="relief">Offre "en Relief" <sup>4</sup> (10€/semaine)</label>
+                            <label class="label-check" for="relief">Offre "en Relief" <sup>4</sup> (<?php echo PRIX_RELIEF; ?>€/semaine)</label>
                         </div>
                         <div>
                             <input type="radio" id="a_la_une" name="option" value="a_la_une" checked>
-                            <label class="label-check" for="a_la_une">Offre "À la Une" <sup>5</sup> (20€/semaine)</label>
+                            <label class="label-check" for="a_la_une">Offre "À la Une" <sup>5</sup> (<?php echo PRIX_A_LA_UNE; ?>€/semaine)</label>
                         </div>
                     </div>
                 </div>
@@ -115,7 +150,7 @@
                     </div>
                 </div>
 
-                <button type="submit" id="button_valider">
+                <button type="submit" name="envoiForm4" id="button_valider">
                 Valider <img src="../images/fleche.png" alt="Fleche" width="25px" height="25px">
                 </button>
 
