@@ -3,6 +3,11 @@
 ob_start();
 session_start();
 
+if(!isset($_SESSION['crea_offre'])){
+    header('location: ../creation_offre.php');
+    exit;
+}
+
       if (isset($_POST['EnvoiHoraires'])) {
           $jours = [
               'Lundi'    => ['ouvertureL', 'fermetureL'],

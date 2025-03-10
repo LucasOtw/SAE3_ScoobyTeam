@@ -5,9 +5,14 @@ session_start();
 
 include_once('../recupInfosCompte.php');
 
+if(!isset($_SESSION['crea_offre'])){
+    header('location: ../creation_offre.php');
+    exit;
+}
+
 if(!isset($monComptePro['num_siren'])){
     // si le professionnel est publique, il n'a rien à faire là
-    header('location: ../etape_4_creation/creation_offre_spectacle_4.php');
+    header('location: ../etape_4_creation/creation_offre_attraction_4.php');
     exit;
 }
 
