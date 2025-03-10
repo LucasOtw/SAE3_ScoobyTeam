@@ -91,11 +91,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tab_offre['codePostal'] = $codePostal;
             $tab_offre['resume'] = $resume;
             $tab_offre['description'] = $description;
+            $tab_offre['prix'] = $tarif;
+            $tab_offre['age_requis'] = $age_mini;
             
             // Récupération des champs facultatifs
             $tab_offre['complementAdresse'] = $complementAdresse;
             $tab_offre['lien'] = $lien;
             $tab_offre['accessibilite'] = $accessibilite;
+            $tab_offre['nb_attractions'] = $nb_attractions;
             
             // Récupération des fichiers (photos) - si plusieurs fichiers sont envoyés
             if (isset($_FILES['photos']) && !empty($_FILES['photos']['name'][0])) {
@@ -153,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tab_offre["tags"] = $mesTags;
 
             $_SESSION['crea_offre'] = $tab_offre;
-            header('location: ../etape_2_restau/creation_offre_restaurant_2.php');
+            header('location: ../etape_2_horaires/creation_offre_attraction_2.php');
             exit;
         }
     }
@@ -227,13 +230,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="col">
                         <fieldset>
                             <legend>Nom du Parc *</legend>
-                            <input type="text" id="nom_offre" name="nom_offre" placeholder="Nom du Parc *">
+                            <input type="text" id="nom_offre" name="nom_offre" placeholder="Nom du Parc *" required>
                         </fieldset>
                     </div>
                     <div class="col">
                         <fieldset>
                             <legend style="display:block;">Type de l'offre</legend>
-                            <input type="text" id="type_offre" name="type_offre" placeholder="Parc d'attractions" disabled>
+                            <input type="text" id="type_offre" name="type_offre" placeholder="Parc d'attractions" disabled required>
                         </fieldset>
                     </div>
                 </div>
@@ -243,13 +246,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="col">
                         <fieldset>
                             <legend>Email *</legend>
-                            <input type="email" id="email" name="email" placeholder="Email *">
+                            <input type="email" id="email" name="email" placeholder="Email *" required>
                         </fieldset>            
                     </div>
                     <div class="col">                     
                         <fieldset>
                             <legend>Téléphone *</legend>
-                            <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *">
+                            <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -259,7 +262,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="col">
                         <fieldset>
                             <legend>Adresse Postale *</legend>
-                            <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *">
+                            <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -268,7 +271,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="col">
                         <fieldset>
                             <legend>Complément d'Adresse</legend>
-                            <input type="text" id="complement_adresse" name="complement_adresse" placeholder="Complément d'Adresse ">
+                            <input type="text" id="complement_adresse" name="complement_adresse" placeholder="Complément d'Adresse " required>
                         </fieldset>
                     </div>
                 </div>
@@ -277,7 +280,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="col">
                         <fieldset>
                             <legend>Ville *</legend>
-                            <input type="text" id="ville" name="ville" placeholder="Ville *">
+                            <input type="text" id="ville" name="ville" placeholder="Ville *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -286,7 +289,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="col">
                         <fieldset>
                             <legend>Code Postal *</legend>
-                            <input type="text" id="code_postal" name="code_postal" placeholder="Code Postal *">
+                            <input type="text" id="code_postal" name="code_postal" placeholder="Code Postal *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -296,7 +299,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="col">
                         <fieldset>
                             <legend>Tarif *</legend>
-                            <input type="text" id="prix" name="prix" placeholder="Tarif *">
+                            <input type="number" id="prix" name="prix" placeholder="Tarif *" min="0" required oninput="validity.valid||(value='');">
                         </fieldset>
                     </div>
                 </div>
@@ -314,8 +317,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <!-- Photos -->
                 <div class="row">
                     <div class="col">
-                        <label for="photos">Photos (facultatif)</label>
-                        <input type="file" id="photos" name="photos[]" multiple>
+                        <label for="photos">Photos (au moins une)</label>
+                        <input type="file" id="photos" name="photos[]" multiple required>
                     </div>
                 </div>
 
@@ -345,8 +348,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Résumé (facultatif)</legend>
-                            <input type="text" id="resume" name="resume" placeholder="Résumé (facultatif)">
+                            <legend>Résumé</legend>
+                            <input type="text" id="resume" name="resume" placeholder="Résumé" required>
                         </fieldset>
                     </div>
                 </div>
@@ -355,8 +358,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Description (facultatif)</legend>
-                            <input type="text" id="description" name="description" placeholder="Description (facultatif)">
+                            <legend>Description</legend>
+                            <input type="text" id="description" name="description" placeholder="Description" required>
                         </fieldset>
                     </div>
                 </div>
@@ -367,7 +370,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="col">
                         <fieldset>
                             <legend>Accessibilité (facultatif)</legend>
-                            <input type="text" id="accessibilite" name="accessibilite" placeholder="Accessibilité (facultatif)">
+                            <input type="text" id="accessibilite" name="accessibilite" placeholder="Accessibilité (facultatif)" required>
                         </fieldset>
                     </div>
                 </div>
