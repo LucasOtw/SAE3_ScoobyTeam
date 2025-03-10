@@ -227,12 +227,7 @@ $adresse = $adresse_offre["adresse_postal"] . " " . $adresse_offre["ville"];
 // Encode l'adresse pour l'URL
 $adresse_enc = urlencode($adresse);
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
-
-$api_key = $_ENV['API_KEY'];
+$api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig";
 
 // URL de l'API Geocoding
 $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
@@ -248,7 +243,7 @@ if (isset($json['results'][0])) {
 } else {
     echo "Adresse non trouvée.";
 }
-    
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -1144,7 +1139,7 @@ WHERE code_offre = :code_offre
         // Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
         // Afficher les sous-réponses en premier si elles existent
         ?>
-        
+
         <script>
             // Script pour la gestion des pouces
             function updateLikeDislike(action, codeAvis) {
@@ -1199,25 +1194,25 @@ WHERE code_offre = :code_offre
                 const action = negativeImage.src.includes('blanc') ? 'dislike' : 'undislike';
                 updateLikeDislike(action, codeAvis);
             }
-            </script>
+        </script>
 
     </div>
     <div class="avis-widget">
-                <div class="avis-header">
-                    <h1 class="avis">
-                        <?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5"); ?>
-                        <span class="avis-score">
-                            <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?>
-                        </span>
-                    </h1>
-                    <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
-                </div>
-                <div class="avis-list">
-                    <?php
-                    array_map('afficherAvis', $tous_les_avis);
-                    ?>
-                </div>
-            </div>
+        <div class="avis-header">
+            <h1 class="avis">
+                <?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5"); ?>
+                <span class="avis-score">
+                    <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?>
+                </span>
+            </h1>
+            <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
+        </div>
+        <div class="avis-list">
+            <?php
+            array_map('afficherAvis', $tous_les_avis);
+            ?>
+        </div>
+    </div>
     </div>
 </body>
 
@@ -1355,54 +1350,54 @@ WHERE code_offre = :code_offre
         </div>
     </div>
 
-   <div class="footer-links">
-            <div class="logo">
-                <img src="images/logoBlanc.png" alt="Logo PAVCT">
-            </div>
-            <div class="link-group">
-                <ul>
-                    <li><a href="mentions_legales.html">Mentions Légales</a></li>
-                    <li><a href="cgu.html">GGU</a></li>
-                    <li><a href="cgv.html">CGV</a></li>
-                </ul>
-            </div>
-            <div class="link-group">
-                <ul>
-                    <li><a href="voir_offres.php">Accueil</a></li>
-                    <li><a href="connexion_pro.php">Publier</a></li>
-                    <?php
-                    if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
-                        ?>
-                        <li>
-                            <a href="consulter_compte_membre.php">Mon Compte</a>
-                        </li>
-                        <?php
-                    } else {
-                        ?>
-                        <li>
-                            <a href="connexion_membre.php">Se connecter</a>
-                        </li>
-                        <?php
-                    }
+    <div class="footer-links">
+        <div class="logo">
+            <img src="images/logoBlanc.png" alt="Logo PAVCT">
+        </div>
+        <div class="link-group">
+            <ul>
+                <li><a href="mentions_legales.html">Mentions Légales</a></li>
+                <li><a href="cgu.html">GGU</a></li>
+                <li><a href="cgv.html">CGV</a></li>
+            </ul>
+        </div>
+        <div class="link-group">
+            <ul>
+                <li><a href="voir_offres.php">Accueil</a></li>
+                <li><a href="connexion_pro.php">Publier</a></li>
+                <?php
+                if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
                     ?>
-                </ul>
+                    <li>
+                        <a href="consulter_compte_membre.php">Mon Compte</a>
+                    </li>
+                    <?php
+                } else {
+                    ?>
+                    <li>
+                        <a href="connexion_membre.php">Se connecter</a>
+                    </li>
+                    <?php
+                }
+                ?>
+            </ul>
 
-            </div>
-            <div class="link-group">
-                <ul>
-                    <li><a href="#">Nous Connaitre</a></li>
-                    <li><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
-                    <li><a href="contacter_plateforme.php">Nous contacter</a></li>
-                </ul>
-            </div>
-            <div class="link-group">
-                <ul>
-                    <!--<li><a href="#">Presse</a></li>
+        </div>
+        <div class="link-group">
+            <ul>
+                <li><a href="#">Nous Connaitre</a></li>
+                <li><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
+                <li><a href="contacter_plateforme.php">Nous contacter</a></li>
+            </ul>
+        </div>
+        <div class="link-group">
+            <ul>
+                <!--<li><a href="#">Presse</a></li>
                     <li><a href="#">Newsletter</a></li>
                     <li><a href="#">Notre équipe</a></li>-->
-                </ul>
-            </div>
+            </ul>
         </div>
+    </div>
 
     <div class="footer-bottom">
         <div class="social-icons">
