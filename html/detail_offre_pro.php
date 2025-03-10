@@ -250,10 +250,6 @@ $api_key = $_ENV['API_KEY'];
 // URL de l'API Geocoding
 $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
 
-
-// URL de l'API Geocoding
-$url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
-
 // Appel de l'API Google Geocoding
 $response = file_get_contents($url);
 $json = json_decode($response, true);
