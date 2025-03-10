@@ -336,8 +336,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Nombre d'attractions (facultatif)</legend>
-                            <input type="number" id="nb_attraction" name="nb_attractions" placeholder="Nombre d'attractions (facultatif)">
+                            <legend>Nombre d'attractions</legend>
+                            <input type="number" id="nb_attraction" name="nb_attractions" placeholder="Nombre d'attractions" required>
                         </fieldset>
                     </div>  
                 </div>
