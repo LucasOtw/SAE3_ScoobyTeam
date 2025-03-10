@@ -418,8 +418,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </main>
 </body>
-<script>
-    let age_requis = document.getElementById('age');
-    age_requis.value = 0;
-</script>
 </html>
