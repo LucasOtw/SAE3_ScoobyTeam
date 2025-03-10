@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $erreurs = [];
 
     // Validation des données
-    if (empty($nomOffre) || empty($adresse) || empty($ville) || empty($codePostal) || empty($resume) || empty($description) || empty($tarif) || empty($age_mini)) {
+    if (empty($nomOffre) || empty($adresse) || empty($ville) || empty($codePostal) || empty($resume) || empty($description) || empty($tarif) || !isset($age_mini)) {
         echo "Tous les champs obligatoires doivent être remplis.";
     } else {
         // si tous les champs obligatoires sont remplis, on procède aux vérifications
