@@ -370,7 +370,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="col">
                         <fieldset>
                             <legend>Accessibilité (facultatif)</legend>
-                            <input type="text" id="accessibilite" name="accessibilite" placeholder="Accessibilité (facultatif)" required>
+                            <input type="text" id="accessibilite" name="accessibilite" placeholder="Accessibilité (facultatif)">
                         </fieldset>
                     </div>
                 </div>
