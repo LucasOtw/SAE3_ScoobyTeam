@@ -1,8 +1,8 @@
 <?php
 
-$dsn = getenv('DB_DSN') ?: $_ENV['DB_DSN'];
-$username = getenv('DB_USERNAME') ?: $_ENV['DB_USERNAME'];
-$password = getenv('DB_PASSWORD') ?: $_ENV['DB_PASSWORD'];
+$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
+$username = $_ENV['DB_USER'];
+$password = $_ENV['DB_ROOT_PASSWORD'];
 
 echo "DSN : " . $dsn;
 // Créer une instance PDO
