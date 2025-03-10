@@ -21,6 +21,8 @@ if(isset($_GET['logout'])){
     exit;
 }
 
+var_dump($_POST);
+
 ?>
 
 <!DOCTYPE html>
@@ -234,34 +236,43 @@ if(isset($_GET['logout'])){
                     </div>
                 </div>
 
+                <?php
+
+                $mesTags = $dbh->prepare("SELECT * FROM tripenarvor._tags WHERE parc_attractions = true");
+                $mesTags->execute();
+                $mesTags = $mesTags->fetchAll(PDO::FETCH_ASSOC);
+
+                ?>
+
                 <!-- Tags -->
-                <div class="row">
-                    <div class="col">
-
-                        <label for="tags">Tags</label>
-
-                        <div class="dropdown-container">
-                            <button type="button" class="dropdown-button">Sélectionner des tags</button>
-                            <div class="dropdown-content">
-
-                            <?php
-
-                                    foreach($dbh->query('SELECT nom_tag from tripenarvor._son_tag natural join tripenarvor._tags where restauration = true', PDO::FETCH_ASSOC) as $row)
-                                    {
-                                    ?>
-                                <label class="tag">
-                                    <input type="checkbox" name="tags" value="<?php echo $row; ?>">
-                                    <?php echo ucfirst($row); ?>
-                                </label>
-                                    <?php
-                                    }
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                Tags
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            foreach($mesTags as $monTag){
                                 ?>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="tags[]" value="<?php echo $monTag['code_tag'] ?>">
+                                        <!-- On peut stocker chaque valeur pour chaque checkbox cochée dans un table "tags[]" -->
+                                    </td>
+                                    <td>
+                                        <?php echo $monTag['nom_tag']; ?>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                        ?>
+                    </tbody>
+                </table>
 
                 <button type="submit" id="button_valider">
                     Continuer <img src="../images/fleche.png" alt="Fleche" width="25px" height="25px">
