@@ -361,8 +361,6 @@ if(isset($_POST['valider'])){
                     }
                 }
 
-            } else {
-                echo "Nique ta mère";
             }
         }
     }
