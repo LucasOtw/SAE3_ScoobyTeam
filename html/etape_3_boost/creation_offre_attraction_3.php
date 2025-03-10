@@ -34,7 +34,7 @@ if(isset($_POST['envoiForm4'])){
         }
     }
     if(isset($_SESSION["crea_offre3"]) && !empty($_SESSION["crea_offre3"])){
-        header('location: ../etape_4_creation/creation_offre_spectacle_4.php');
+        header('location: ../etape_4_creation/creation_offre_attraction_4.php');
         exit;
     }
 }
