@@ -30,11 +30,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $codePostal = htmlspecialchars($_POST['code_postal'] ?? '');
     $resume = htmlspecialchars($_POST['resume'] ?? '');
     $description = htmlspecialchars($_POST['description'] ?? '');
+    $tarif = htmlspecialchars($_POST['prix'] ?? '');
+    $age_mini = htmlspecialchars($_POST['age'] ?? '');
 
     // Récupération des champs facultatifs
     $complementAdresse = htmlspecialchars($_POST['complement_adresse'] ?? '');
     $lien = htmlspecialchars($_POST['lien'] ?? '');
     $accessibilite = htmlspecialchars($_POST['accessibilite'] ?? '');
+    $nb_attractions = htmlspecialchars($_POST['nb_attractions'] ?? '');
 
     // Récupération des fichiers (photos)
     $photos = $_FILES['photos'] ?? null;
@@ -42,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $erreurs = [];
 
     // Validation des données
-    if (empty($nomOffre) || empty($adresse) || empty($ville) || empty($codePostal) || empty($resume) || empty($description)) {
+    if (empty($nomOffre) || empty($adresse) || empty($ville) || empty($codePostal) || empty($resume) || empty($description) || empty($tarif) || empty($age_mini)) {
         echo "Tous les champs obligatoires doivent être remplis.";
     } else {
         // si tous les champs obligatoires sont remplis, on procède aux vérifications
@@ -321,7 +324,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="col">
                         <fieldset>
                             <legend>Age minimum requis *</legend>
-                            <input type="number" id="age" name="age" placeholder="Age minimum requis *">
+                            <input type="number" id="age" name="age" placeholder="Age minimum requis *" min="0" max="18">
                         </fieldset>
                     </div>  
                 </div>
