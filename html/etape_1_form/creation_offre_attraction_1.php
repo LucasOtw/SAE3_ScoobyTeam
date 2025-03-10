@@ -271,7 +271,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="col">
                         <fieldset>
                             <legend>Complément d'Adresse</legend>
-                            <input type="text" id="complement_adresse" name="complement_adresse" placeholder="Complément d'Adresse " required>
+                            <input type="text" id="complement_adresse" name="complement_adresse" placeholder="Complément d'Adresse ">
                         </fieldset>
                     </div>
                 </div>
