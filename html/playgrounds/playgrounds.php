@@ -3,7 +3,7 @@
 $dsn = getenv("DB_DSN");
 $username = getenv("DB_USERNAME");
 $password = getenv("DB_PASSWORD");
-echo "DSN : " + $dsn;
+echo "DSN : " . $dsn;
 // Créer une instance PDO
 $dbh = new PDO($dsn, $username, $password);
 
