@@ -43,7 +43,7 @@ session_start();
               }
           } else {
               $_SESSION['crea_offre2'] = $horaires_par_jour;
-              header('location: ../etape_3_boost/creation_offre_attraction.php');
+              header('location: ../etape_3_boost/creation_offre_attraction_3.php');
               exit;
           }
       }
