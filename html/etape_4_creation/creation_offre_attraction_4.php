@@ -43,11 +43,11 @@ if (!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])) {
             // Vérifier si l'utilisateur est un professionnel privé
             if (isset($monComptePro['num_siren'])) {
                 // Redirection obligatoire vers la page des boosts pour un professionnel privé
-                header('location: ../etape_3_boost/creation_offre_visite_3.php');
+                header('location: ../etape_3_boost/creation_offre_attraction_3.php');
                 exit;
             }
         } else {
-            header('location: ../etape_3_boost/creation_offre_visite_3.php');
+            header('location: ../etape_3_boost/creation_offre_attraction_3.php');
         }
     }
 }
@@ -88,6 +88,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
             $complement_adresse = $_SESSION['crea_offre']['complementAdresse'];
             $code_postal = $_SESSION['crea_offre']['codePostal'];
             $ville = $_SESSION['crea_offre']['ville'];
+            
 
             // on fait la vérification dans la base de données
     
@@ -294,7 +295,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
                 '_resume' => $_SESSION['crea_offre']['resume'],
                 '_description' => $_SESSION['crea_offre']['description'],
                 'note_moyenne' => null,
-                'tarif' => $_SESSION['crea_offre']['tarif'],
+                'tarif' => $_SESSION['crea_offre']['prix'],
                 'en_ligne' => false,
                 'nb_blacklister' => 0,
                 'code_adresse' => $code_adresse,
@@ -340,45 +341,26 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
                         ":code_offre" => $id_offre
                     ]);
                 }
-                // cette offre est une visite
-                if (empty($_SESSION['crea_offre']['duree'])) {
-                    $duree_visite = null;
+                // cette offre est un parc d'attraction
+                if (empty($_SESSION['crea_offre']['nb_attractions'])) {
+                    $nb_attractions = null;
                 } else {
-                    $duree_visite = $_SESSION['crea_offre']['duree'] . ":00"; // Format HH:mm:ss
+                    $nb_attractions = $_SESSION['crea_offre']['nb_attractions'];
                 }
-                
-                if (empty($_SESSION['crea_offre']['date_visite'])) {
-                    $date_visite = null;
-                } else {
-                    $date_visite = DateTime::createFromFormat('Y-m-d', $_SESSION['crea_offre']['date_visite']);
-                    $date_visite = $date_visite ? $date_visite->format('Y-m-d') : null; // Valide ou null
-                }
-                
-                if (empty($_SESSION['crea_offre']['langues'])) {
-                    $visite_guidee = null;
-                } else {
-                    $visite_guidee = $_SESSION['crea_offre']['langues'];
-                }
-                
-                if (empty($_SESSION['crea_offre']['heure_visite'])) {
-                    $heure_visite = null;
-                } else {
-                    $heure_visite = DateTime::createFromFormat('H:i', $_SESSION['crea_offre']['heure_visite']);
-                    $heure_visite = $heure_visite ? $heure_visite->format('H:i:s') : null; // Format TIME
-                }
+
+                // l'âge requis EST requis (0 min)
+                $age_requis = $_SESSION['crea_offre']['age_requis'];
                 
                 // Préparation de la requête
                 $ajoutVisite = $dbh->prepare("
-                    INSERT INTO tripenarvor._offre_visite 
-                    (code_offre, duree, visite_guidee, date_visite, heure_visite) 
-                    VALUES (:code_offre, :duree, :visite, :date_visite, :heure_visite)
+                    INSERT INTO tripenarvor._offre_parc_attractions
+                    (code_offre, nombre_attractions, age_requis)
+                    VALUES (:code_offre,:nb_attractions,:age_requis)
                 ");
                 
                 $ajoutVisite->bindValue(":code_offre", $id_offre);
-                $ajoutVisite->bindValue(":duree", $duree_visite);
-                $ajoutVisite->bindValue(":visite", $visite_guidee);
-                $ajoutVisite->bindValue(":date_visite", $date_visite);
-                $ajoutVisite->bindValue(":heure_visite", $heure_visite);
+                $ajoutVisite->bindValue(":nb_attractions", $nb_attractions);
+                $ajoutVisite->bindValue(":age_requis", $age_requis);
                 
                 $ajoutVisite->execute();
 
