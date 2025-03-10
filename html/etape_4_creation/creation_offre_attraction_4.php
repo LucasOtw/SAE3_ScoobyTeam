@@ -26,7 +26,9 @@ if(!isset($_SESSION['pro'])){
     exit;
 }
 
+echo "<pre>";
 var_dump($_SESSION);
+echo "</pre>";
 
 if (!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])) {
     // Vérifier si une ou plusieurs sessions nécessaires ne sont pas définies
