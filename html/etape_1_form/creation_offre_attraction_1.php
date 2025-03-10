@@ -21,8 +21,140 @@ if(isset($_GET['logout'])){
     exit;
 }
 
-var_dump($_POST);
-echo "teste";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $tab_offre = [];
+    // Récupération des champs obligatoires
+    $nomOffre = htmlspecialchars($_POST['nom_offre'] ?? '');
+    $adresse = htmlspecialchars($_POST['adresse'] ?? '');
+    $ville = htmlspecialchars($_POST['ville'] ?? '');
+    $codePostal = htmlspecialchars($_POST['code_postal'] ?? '');
+    $resume = htmlspecialchars($_POST['resume'] ?? '');
+    $description = htmlspecialchars($_POST['description'] ?? '');
+
+    // Récupération des champs facultatifs
+    $complementAdresse = htmlspecialchars($_POST['complement_adresse'] ?? '');
+    $lien = htmlspecialchars($_POST['lien'] ?? '');
+    $accessibilite = htmlspecialchars($_POST['accessibilite'] ?? '');
+
+    // Récupération des fichiers (photos)
+    $photos = $_FILES['photos'] ?? null;
+
+    $erreurs = [];
+
+    // Validation des données
+    if (empty($nomOffre) || empty($adresse) || empty($ville) || empty($codePostal) || empty($resume) || empty($description)) {
+        echo "Tous les champs obligatoires doivent être remplis.";
+    } else {
+        // si tous les champs obligatoires sont remplis, on procède aux vérifications
+            if (!preg_match('/^([0-9]{5}|2[AB])$/', $codePostal)) {
+                $erreurs[] = "Le code postal est invalide. Il doit comporter 5 chiffres ou être 2A ou 2B.";
+            }
+            if(!empty($ville) && !empty($codePostal)){
+                $api_codePostal = 'http://api.zippopotam.us/fr/'.trim($codePostal);
+
+                $api_codePostal = file_get_contents($api_codePostal);
+                if($api_codePostal === FALSE){
+                    $erreurs[] = "Erreur lors de l'accès à l'API";
+                    exit();
+                }
+                
+                $data = json_decode($api_codePostal,true);
+                $isValid = false;
+                
+                if($data && isset($data['places'])){
+                    foreach($data['places'] as $place){
+                        if(stripos($place['place name'], $ville) === 0){
+                            $isValid = true;
+                            break;
+                        }
+                    }
+                }
+                if(!$isValid){
+                    $erreurs[] = "La ville ne correspond pas au code postal";
+                    $erreurs_a_afficher[] = "erreur-ville-code-postal-incompatible";
+                }
+            }
+        if(!empty($erreurs)){
+            foreach($erreurs as $erreur){
+                echo $erreur;
+            }
+        } else {
+            /* on ne peut pas insérer les données pour le moment...
+            Donc on les STOCKE ! :D*/
+            
+            $tab_offre['titre_offre'] = $nomOffre;
+            $tab_offre['adresse'] = $adresse;
+            $tab_offre['ville'] = $ville;
+            $tab_offre['codePostal'] = $codePostal;
+            $tab_offre['resume'] = $resume;
+            $tab_offre['description'] = $description;
+            
+            // Récupération des champs facultatifs
+            $tab_offre['complementAdresse'] = $complementAdresse;
+            $tab_offre['lien'] = $lien;
+            $tab_offre['accessibilite'] = $accessibilite;
+            
+            // Récupération des fichiers (photos) - si plusieurs fichiers sont envoyés
+            if (isset($_FILES['photos']) && !empty($_FILES['photos']['name'][0])) {
+                $photos = [];
+                // Parcourir chaque photo envoyée
+                foreach ($_FILES['photos']['name'] as $key => $file_name) {
+                    // Si le fichier n'est pas vide, on récupère les informations nécessaires
+                    if ($_FILES['photos']['error'][$key] === 0) {
+                        $photos[] = [
+                            'name' => $file_name,
+                            'type' => $_FILES['photos']['type'][$key],
+                            'tmp_name' => $_FILES['photos']['tmp_name'][$key],
+                            'size' => $_FILES['photos']['size'][$key]
+                        ];
+                    }
+                }
+            
+                /* on n'a plus besoin de rajouter les photos dans la session
+                puisque le chemin temporaire n'est disponible que lors de l'envoi du formulaire */
+
+                $nom_dossier_images = $tab_offre['titre_offre'];
+                $nom_dossier_images = str_replace(' ','',$nom_dossier_images);
+                $destination = "../images/offres/".$nom_dossier_images;
+
+                if(!file_exists($destination)){
+                    mkdir($destination, 0777, true); // crée le dossier si il n'existe pas.
+                }
+
+                foreach($photos as $photo){
+                    $nom_temp = $photo['tmp_name'];
+                    $nom_photo = $photo['name'];
+
+                    // on construit le chemin de destination complet
+                    $chemin = $destination . '/' . $nom_photo;
+
+                    if (file_exists($nom_temp)) {
+                        // Déplacer le fichier dans le dossier cible
+                        if (move_uploaded_file($nom_temp, $chemin)) {
+                            echo "Le fichier $nom_photo a été déplacé avec succès.<br>";
+                        } else {
+                            echo "Erreur : Impossible de déplacer le fichier $nom_photo.<br>";
+                        }
+                    } else {
+                        echo "Erreur : Le fichier temporaire $nom_temp n'existe pas.<br>";
+                    }
+                }
+            }
+
+            $mesTags = [];
+            if (isset($_POST['tags']) && is_array($_POST['tags'])) {
+                foreach ($_POST['tags'] as $tag) {
+                    $mesTags[] = htmlspecialchars($tag);
+                }
+            }
+            $tab_offre["tags"] = $mesTags;
+
+            $_SESSION['crea_offre'] = $tab_offre;
+            header('location: ../etape_2_restau/creation_offre_restaurant_2.php');
+            exit;
+        }
+    }
+}
 
 ?>
 
