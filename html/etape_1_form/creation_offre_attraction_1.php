@@ -22,7 +22,7 @@ if(isset($_GET['logout'])){
 }
 
 var_dump($_POST);
-echo "test";
+echo "teste";
 
 ?>
 
