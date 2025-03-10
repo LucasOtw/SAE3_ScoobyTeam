@@ -21,6 +21,8 @@ if(isset($_GET['logout'])){
     exit;
 }
 
+var_dump($_POST);
+
 ?>
 
 <!DOCTYPE html>
