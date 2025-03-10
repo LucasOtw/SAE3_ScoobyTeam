@@ -21,6 +21,9 @@ if(isset($_GET['logout'])){
     exit;
 }
 
+# PRESTATIONS INCLUSES : NON NULL
+# PRESTATIONS NON INCLUSES : NULL
+
 ?>
 
 <!DOCTYPE html>
@@ -89,13 +92,13 @@ if(isset($_GET['logout'])){
                     <div class="col">
                         <fieldset>
                             <legend>Nom de l'activité *</legend>
-                            <input type="text" id="nom_offre" name="nom_offre" placeholder="Nom de l'activité *">
+                            <input type="text" id="nom_offre" name="nom_offre" placeholder="Nom de l'activité *" required>
                         </fieldset>
                     </div>
                     <div class="col">
                         <fieldset>
                             <legend style="display:block;">Type de l'offre</legend>
-                            <input type="text" id="type_offre" name="type_offre" placeholder="Activité" disabled>
+                            <input type="text" id="type_offre" name="type_offre" placeholder="Activité" disabled required>
                         </fieldset>
                     </div>
                 </div>
@@ -105,7 +108,7 @@ if(isset($_GET['logout'])){
                     <div class="col">
                         <fieldset>
                             <legend>Adresse Postale *</legend>
-                            <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *">
+                            <input type="text" id="adresse" name="adresse" placeholder="Adresse Postale *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -123,7 +126,7 @@ if(isset($_GET['logout'])){
                     <div class="col">
                         <fieldset>
                             <legend>Ville *</legend>
-                            <input type="text" id="ville" name="ville" placeholder="Ville *">
+                            <input type="text" id="ville" name="ville" placeholder="Ville *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -132,7 +135,7 @@ if(isset($_GET['logout'])){
                     <div class="col">
                         <fieldset>
                             <legend>Code Postal *</legend>
-                            <input type="text" id="code_postal" name="code_postal" placeholder="Code Postal *">
+                            <input type="text" id="code_postal" name="code_postal" placeholder="Code Postal *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -142,7 +145,7 @@ if(isset($_GET['logout'])){
                     <div class="col">
                         <fieldset>
                             <legend>Tarif *</legend>
-                            <input type="text" id="prix" name="prix" placeholder="Tarif *">
+                            <input type="text" id="prix" name="prix" placeholder="Tarif *" required>
                         </fieldset>
                     </div>
                 </div>
@@ -160,8 +163,8 @@ if(isset($_GET['logout'])){
                 <!-- Photos -->
                 <div class="row">
                     <div class="col">
-                        <label for="photos">Photos (facultatif)</label>
-                        <input type="file" id="photos" name="photos[]" multiple>
+                        <label for="photos">Photos (au moins une)</label>
+                        <input type="file" id="photos" name="photos[]" multiple required>
                     </div>
                 </div>
 
@@ -170,7 +173,7 @@ if(isset($_GET['logout'])){
                     <div class="col">
                         <fieldset>
                             <legend>Age minimum requis *</legend>
-                            <input type="number" id="age" name="age" placeholder="Age minimum requis *">
+                            <input type="number" id="age" name="age" placeholder="Age minimum requis *" required>
                         </fieldset>
                     </div>  
                 </div>
@@ -190,8 +193,8 @@ if(isset($_GET['logout'])){
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Résumé (facultatif)</legend>
-                            <input type="text" id="resume" name="resume" placeholder="Résumé (facultatif)">
+                            <legend>Résumé *</legend>
+                            <input type="text" id="resume" name="resume" placeholder="Résumé" required>
                         </fieldset>
                     </div>
                 </div>
@@ -200,8 +203,8 @@ if(isset($_GET['logout'])){
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Description (facultatif)</legend>
-                            <input type="text" id="description" name="description" placeholder="Description (facultatif)">
+                            <legend>Description *</legend>
+                            <input type="text" id="description" name="description" placeholder="Description" required>
                         </fieldset>
                     </div>
                 </div>
@@ -222,8 +225,8 @@ if(isset($_GET['logout'])){
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Prestations incluses (facultatif)</legend>
-                            <input type="text" id="prestations_incluses" name="prestations_incluses" placeholder="Prestations incluses (facultatif)">
+                            <legend>Prestations incluses</legend>
+                            <input type="text" id="prestations_incluses" name="prestations_incluses" placeholder="Prestations incluses (facultatif)"  required>
                         </fieldset>
                     </div>
                 </div>
@@ -239,34 +242,43 @@ if(isset($_GET['logout'])){
                     </div>
                 </div>
 
+                <?php
+                    $mesTags = $dbh->prepare('SELECT * FROM tripenarvor._tags WHERE activite = true');
+                    $mesTags->execute();
+                    $mesTags = $mesTags->fetchAll(PDO::FETCH_ASSOC);
+
+                ?>
+
                 <!-- Tags -->
-                <div class="row">
-                    <div class="col">
-
-                        <label for="tags">Tags</label>
-
-                        <div class="dropdown-container">
-                            <button type="button" class="dropdown-button">Sélectionner des tags</button>
-                            <div class="dropdown-content">
-
-                            <?php
-
-                                    foreach($dbh->query('SELECT nom_tag from tripenarvor._son_tag natural join tripenarvor._tags where restauration = true', PDO::FETCH_ASSOC) as $row)
-                                    {
-                                    ?>
-                                <label class="tag">
-                                    <input type="checkbox" name="tags" value="<?php echo $row; ?>">
-                                    <?php echo ucfirst($row); ?>
-                                </label>
-                                    <?php
-                                    }
+                <table class=table_tags>
+                    <thead>
+                        <tr>
+                            <th>
+                                Tags
+                            </th>
+                            <th>
+                                
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            foreach($mesTags as $monTag){ // pour chaque tag correspondant...
                                 ?>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="tags[]" value="<?php echo $monTag['code_tag'] ?>">
+                                        <!-- On peut stocker chaque valeur pour chaque checkbox cochée dans un tableau "tags[]" ! -->
+                                    </td>
+                                    <td>
+                                        <?php echo $monTag['nom_tag']; ?>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                        ?>
+                    </tbody>
+                </table>
 
                 <button type="submit" id="button_valider">
                     Continuer <img src="../images/fleche.png" alt="Fleche" width="25px" height="25px">
