@@ -384,7 +384,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offre - Restaurant</title>
+    <title>Offre - Visite</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -393,124 +393,100 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
             <img src="../images/logo_blanc_pro.png" alt="PACT Logo">
         </div>
         <nav>
+        <nav>
             <ul>
                 <li><a href="../mes_offres.php">Accueil</a></li>
                 <li><a href="#" class="active">Publier</a></li>
-                <li><a href="../consulter_compte_pro.php">Mon Compte</a></li>
+                <li><a href="../consulter_compte_pro.php">Mon compte</a></li>
             </ul>
         </nav>
     </header>
     <?php
-    if(isset($monComptePro['num_siren'])){
-        if(isset($_SESSION['crea_offre'])){
-        ?>
-            <div class="fleche_retour">
-                <div>
-                    <a href="../etape_3_boost/creation_offre_restaurant_4.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
-                </div>
-            </div>
-        
-            <main class="main-creation-offre3">
-        
-                <h1>Publier une offre</h1>
-                <h2>Ajouter une nouvelle carte</h2>
-        
-                <div class="form_carte">
-                    <form action="#" method="POST">
-                        <!-- Numero -->
-                        <div class="row">
-                            <div class="col">
-                                <fieldset>
-                                    <legend>IBAN *</legend>
-                                    <input type="text" id="IBAN" name="IBAN" value="<?php echo ($infosCB) ? $infosCB['iban'] : ""; ?>" placeholder="IBAN *"
-                                    <?php echo isset($monComptePro['num_siren']) && $monComptePro['num_siren'] ? "required" : ""; ?>>
-                                </fieldset>
-                            </div>
-                        </div>
-        
-                        <!-- BIC -->
-                        <div class="row">
-                            <div class="col">
-                                <fieldset>
-                                    <legend>BIC *</legend>
-                                    <input type="text" id="BIC" name="BIC" value="<?php echo ($infosCB) ? $infosCB['bic'] : ""; ?>" placeholder="BIC *"
-                                    <?php echo isset($monComptePro['num_siren']) && $monComptePro['num_siren'] ? "required" : ""; ?>>
-                                </fieldset>
-                            </div>
-                        </div>
-        
-                        <!-- Nom -->
-                        <div class="row">
-                            <div class="col">
-                                <fieldset>
-                                    <legend>Nom du compte *</legend>
-                                    <input type="text" id="nom" name="nom" value="<?php echo ($infosCB) ? $infosCB['nom_compte'] : ""; ?>" placeholder="Nom du compte *"
-                                    <?php echo isset($monComptePro['num_siren']) && $monComptePro['num_siren'] ? "required" : ""; ?>>
-                                </fieldset>
-                            </div>
-                        </div>
-        
-                        <div class="checkbox">
-                            <input type="checkbox" id="cgu" name="cgu" required>
-                            <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
-                        </div>
-        
-                        <div class="boutons">
-                            <button type="submit" name="valider" class="btn-primary">Valider</button>
-                            <button type="submit" name="passer_cb" class="btn-secondary">Plus tard...</button>
-                        </div>
-                    </form>
-        
-                    <div class="carte">
-                        <img src="../images/carte_bancaire.png" alt="carte">
-                    </div>
-                </div>
-        
-                <p class="terms">En publiant votre offre, vous acceptez les conditions générales d'utilisation (CGU).</p>
-        
-            </main>
-        <?php
-    } else {
-        ?>
-      <div class="button-container">
-          <img src="../images/verifier.png" alt="Succès" class="success-icon">
-          <h1 class="success-message">Votre offre a été créée avec succès !</h1>
-          <div class="buttons">
-              <a href="../mes_offres.php" class="back-link-offres">Retourner à "Mes offres"</a>
-              <a href="../telecharger_facture.php" class="back-link-facture">Télécharger ma facture</a>
-          </div>
-     </div>
-
-
-
-
-            <?php
-        }
-    } else {
-        if(isset($_SESSION['crea_offre'])){
-           ?>
-            <div>
-                <form action="#" method="POST">
-                    <input type="submit" name="creer_offre_gratuite" value="Créer une offre">
-                </form>
-            </div>
-           <?php
-        } else {
-            ?>
-            <div class="button-container">
-                  <img src="../images/verifier.png" alt="Succès" class="success-icon">
-                  <h1 class="success-message">Votre offre a été créée avec succès !</h1>
-                  <div class="buttons">
-                      <a href="../mes_offres.php" class="back-link-offres">Retourner à "Mes offres"</a>
-                      <a href="../telecharger_facture.php" class="back-link-facture">Télécharger ma facture</a>
-                  </div>
-             </div>
-           <?php
-        }
-        ?>
-        <?php
-    }
+    if(isset($_SESSION['crea_offre'])){
     ?>
+        <div class="fleche_retour">
+            <div>
+                <a href="../etape_3_boost/creation_offre_attraction_3.php"><img src="../images/Bouton_retour.png" alt="retour"></a>
+            </div>
+        </div>
+    
+        <main class="main-creation-offre3">
+    
+            <h1>Publier une offre</h1>
+            <h2>Ajouter une nouvelle carte</h2>
+    
+            <div class="form_carte">
+                <form action="#" method="POST">
+                    <!-- Numero -->
+                    <div class="row">
+                        <div class="col">
+                            <fieldset>
+                                <legend>IBAN *</legend>
+                                <input type="text" id="IBAN" name="IBAN" value="<?php echo ($infosCB) ? $infosCB['iban'] : ""; ?>" placeholder="IBAN *" 
+                                <?php echo isset($monComptePro['num_siren']) && $monComptePro['num_siren'] ? "required" : ""; ?>>
+                            </fieldset>
+                        </div>
+                    </div>
+    
+                    <!-- BIC -->
+                    <div class="row">
+                        <div class="col">
+                            <fieldset>
+                                <legend>BIC *</legend>
+                                <input type="text" id="BIC" name="BIC" value="<?php echo ($infosCB) ? $infosCB['bic'] : ""; ?>" placeholder="BIC *"
+                                <?php echo isset($monComptePro['num_siren']) && $monComptePro['num_siren'] ? "required" : ""; ?>>
+                            </fieldset>
+                        </div>
+                    </div>
+    
+                    <!-- Nom -->
+                    <div class="row">
+                        <div class="col">
+                            <fieldset>
+                                <legend>Nom du compte *</legend>
+                                <input type="text" id="nom" name="nom" value="<?php echo ($infosCB) ? $infosCB['nom_compte'] : ""; ?>" placeholder="Nom du compte *"
+                                <?php echo isset($monComptePro['num_siren']) && $monComptePro['num_siren'] ? "required" : ""; ?>>
+                            </fieldset>
+                        </div>
+                    </div>
+    
+                    <div class="checkbox">
+                        <input type="checkbox" id="cgu" name="cgu" required>
+                        <label for="cgu">J’accepte les <a href="#">Conditions générales d’utilisation (CGU)</a></label>
+                    </div>
+    
+                    <div class="boutons">
+                        <button type="submit" name="valider" class="btn-primary">Valider</button>
+                        <button type="submit" name="passer_cb" class="btn-secondary">Plus tard...</button>
+                    </div>
+                </form>
+    
+                <div class="carte">
+                    <img src="../images/carte_bancaire.png" alt="carte">
+                </div>
+            </div>
+    
+            <p class="terms">En publiant votre offre, vous acceptez les conditions générales d'utilisation (CGU).</p>
+    
+        </main>
+    <?php
+    } else {
+    ?>
+    <div class="button-container">
+        <img src="../images/verifier.png" alt="Succès" class="success-icon">
+        <h1 class="success-message">Votre offre a été créée avec succès !</h1>
+        <div class="buttons">
+            <a href="../mes_offres.php" class="back-link-offres">Retourner à "Mes offres"</a>
+            <a href="../telecharger_facture.php" class="back-link-facture">Télécharger ma facture</a>
+        </div>
+    </div>
+
+
+
+
+    <?php
+}    
+?>
     <!-- Footer -->
     <footer class="footer_pro">   
         <div class="footer-links">
