@@ -969,6 +969,7 @@ function tempsEcouleDepuisPublication($offre){
         </section>
 
         <script>
+        document.addEventListener("DOMContentLoaded", function() {
             // Récupération des éléments
             const offerItems = document.querySelectorAll('.offer');
             
@@ -977,7 +978,7 @@ function tempsEcouleDepuisPublication($offre){
             const searchSelect = document.querySelectorAll('.search-select');
             const container = document.querySelector('#offers-list'); 
             
-            const searchLocation = document.querySelector('#location');
+            // const searchLocation = document.querySelector('#location');
             
             const selectRate = document.querySelector('#select-rate');
             
@@ -1076,19 +1077,19 @@ function tempsEcouleDepuisPublication($offre){
             ///////////////////////////////////////////////////
             ///             Recherche de lieu               ///
             ///////////////////////////////////////////////////
-            searchLocation.addEventListener('input', () => {
-                const query = searchLocation.value.toLowerCase().trim();
+            // searchLocation.addEventListener('input', () => {
+            //     const query = searchLocation.value.toLowerCase().trim();
             
-                offerItems.forEach(offer => {
-                    const text = offer.getAttribute('location').toLowerCase();
-                    console.log(query);
-                    if (text.includes(query)) {
-                        offer.classList.remove('hidden');
-                    } else {
-                        offer.classList.add('hidden');
-                    }
-                });
-            });
+            //     offerItems.forEach(offer => {
+            //         const text = offer.getAttribute('location').toLowerCase();
+            //         console.log(query);
+            //         if (text.includes(query)) {
+            //             offer.classList.remove('hidden');
+            //         } else {
+            //             offer.classList.add('hidden');
+            //         }
+            //     });
+            // });
 
 
             ///////////////////////////////////////////////////
@@ -1122,18 +1123,15 @@ function tempsEcouleDepuisPublication($offre){
                 // Empêche price-min de dépasser price-max
                 if (parseInt(priceMinInput.value) > parseInt(priceMaxInput.value)) {
                     priceMinInput.value = priceMaxInput.value;
-                    console.log("min > max");
                 }
         
                 // Empêche price-max d'être inférieur à price-min
                 if (parseInt(priceMaxInput.value) < parseInt(priceMinInput.value)) {
                     priceMaxInput.value = priceMinInput.value;
-                    console.log("max > min");
                 }
                 
                 priceMinDisplay.textContent = priceMinInput.value;
                 priceMaxDisplay.textContent = priceMaxInput.value;
-                console.log(priceMinInput.value+" | "+priceMaxInput.value);
             }
             
             // Filtrer les offres en fonction de la fourchette de prix
@@ -1155,13 +1153,11 @@ function tempsEcouleDepuisPublication($offre){
             
             // Ajouter des événements sur les sliders
             priceMinInput.addEventListener("input", () => {
-                console.log("OK : min input");
                 updatePriceDisplay(); // Mettre à jour l'affichage des prix
                 filterOffers(); // Appliquer le filtre
             });
             
             priceMaxInput.addEventListener("input", () => {
-                console.log("OK : max input");
                 updatePriceDisplay(); // Mettre à jour l'affichage des prix
                 filterOffers(); // Appliquer le filtre
             });
@@ -1256,7 +1252,8 @@ function tempsEcouleDepuisPublication($offre){
             // Ajouter un écouteur d'événement sur les champs de date
             openingStartDate.addEventListener('change', filterByOpeningDates);
             openingEndDate.addEventListener('change', filterByOpeningDates);
-            
+
+        });
         </script>
 
     </main>

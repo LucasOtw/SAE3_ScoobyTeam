@@ -10,12 +10,6 @@ if(!isset($_SESSION['crea_offre'])){
     exit;
 }
 
-if(!isset($monComptePro['num_siren'])){
-    // si le professionnel est publique, il n'a rien à faire là
-    header('location: ../etape_4_creation/creation_offre_activite_4.php');
-    exit;
-}
-
 // on récupère les prix de type_offre
 
 $getPrixOffre = $dbh->prepare("SELECT * FROM tripenarvor._type_offre");
