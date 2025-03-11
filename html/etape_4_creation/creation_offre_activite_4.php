@@ -43,11 +43,11 @@ if (!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])) {
             // Vérifier si l'utilisateur est un professionnel privé
             if (isset($monComptePro['num_siren'])) {
                 // Redirection obligatoire vers la page des boosts pour un professionnel privé
-                header('location: ../etape_3_boost/creation_offre_attraction_3.php');
+                header('location: ../etape_3_boost/creation_offre_activite_3.php');
                 exit;
             }
         } else {
-            header('location: ../etape_3_boost/creation_offre_attraction_3.php');
+            header('location: ../etape_3_boost/creation_offre_activite_3.php');
         }
     }
 }
@@ -341,28 +341,38 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
                         ":code_offre" => $id_offre
                     ]);
                 }
-                // cette offre est un parc d'attraction
-                if (empty($_SESSION['crea_offre']['nb_attractions'])) {
-                    $nb_attractions = null;
+                // cette offre est une activité
+                # PRESTATIONS NON INCLUSES = NULL
+                # PRESTATIONS INCLUSES = NON NULL
+                if (empty($_SESSION['crea_offre']['prestations_non_incluses'])) {
+                    $prestations_n_incluses = null;
                 } else {
-                    $nb_attractions = $_SESSION['crea_offre']['nb_attractions'];
+                    $prestations_n_incluses = $_SESSION['crea_offre']['prestations_non_incluses'];
+                }
+
+                if(empty($_SESSION['crea_offre']['duree'])){
+                    $duree = null;
+                } else {
+                    $duree = $_SESSION['crea_offre']['duree'];
                 }
 
                 // l'âge requis EST requis (0 min)
                 $age_requis = $_SESSION['crea_offre']['age_requis'];
                 
                 // Préparation de la requête
-                $ajoutVisite = $dbh->prepare("
-                    INSERT INTO tripenarvor._offre_parc_attractions
-                    (code_offre, nombre_attractions, age_requis)
-                    VALUES (:code_offre,:nb_attractions,:age_requis)
+                $ajoutActivite = $dbh->prepare("
+                    INSERT INTO tripenarvor._offre_activite
+                    (code_offre, duree, age_requis, prestations_incluses, prestations_non_incluses)
+                    VALUES (:code_offre,:duree,:age_requis,:prest,:n_prest)
                 ");
                 
-                $ajoutVisite->bindValue(":code_offre", $id_offre);
-                $ajoutVisite->bindValue(":nb_attractions", $nb_attractions);
-                $ajoutVisite->bindValue(":age_requis", $age_requis);
+                $ajoutActivite->bindValue(":code_offre", $id_offre);
+                $ajoutActivite->bindValue(":duree", $duree);
+                $ajoutActivite->bindValue(":age_requis", $age_requis);
+                $ajoutActivite->bindValue(":prest",$_SESSION['crea_offre']['prestations_incluses']);
+                $ajoutActivite->bindValue(":n_prest",$prestations_n_incluses);
                 
-                $ajoutVisite->execute();
+                $ajoutActivite->execute();
 
                 if(isset($_SESSION['crea_offre']['tags']) && is_array($_SESSION['crea_offre']['tags'])){
                     foreach($_SESSION['crea_offre']['tags'] as $tag){
