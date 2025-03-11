@@ -395,7 +395,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
         }
     }
 
-
+    var_dump($monComptePro);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
