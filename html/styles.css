@@ -7988,8 +7988,47 @@ form .btn-link {
     opacity: 0;
 }
 
+/*****************************************************
+            * Code pour le menu (3 points)*
+*****************************************************/
 
+.avis .menu-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
 
+.avis .context-menu {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    background: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 150px;
+    z-index: 10;
+}
+
+.avis .context-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.avis .context-menu ul li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+
+.avis .context-menu ul li:hover {
+    background: #f0f0f0;
+}
+
+.avis .context-menu ul li:last-child {
+    border-bottom: none;
+}
 
 
 
@@ -11230,21 +11269,39 @@ ul.mentions_legales-sous-list {
     margin-left: -2vw;
 }
 
+#api{
+    position: relative;
+    left : 31.7em
+}
+
 #btn-api{
     background: url(images/icones/sync.png) no-repeat center;
-    background-size: contain;
+    background-size: 30px 30px;
     background-color: var(--vert-clair);
     border: none;
-    width: 15vw;
+    width: 3em;
     max-width: 220px;
-    height: 52px;
+    height: 3em;
     color: white;
-    border-radius: 16px;
+    border-radius: 11px;
     text-decoration: none;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2sease; 
 }
-
+#btn-api-pro{
+    background: url(images/icones/sync.png) no-repeat center;
+    background-size: 30px 30px;
+    background-color: var(--orange);
+    border: none;
+    width: 3em;
+    max-width: 220px;
+    height: 3em;
+    color: white;
+    border-radius: 11px;
+    text-decoration: none;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2sease; 
+}
 .crea_pro_raison_sociale_num_siren2{
     display : flex;
 }
