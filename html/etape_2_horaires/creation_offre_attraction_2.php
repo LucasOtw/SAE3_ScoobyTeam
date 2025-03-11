@@ -76,8 +76,8 @@ if(!isset($_SESSION['crea_offre'])){
         <nav>
             <ul>
                 <li><a href="../mes_offres.php">Accueil</a></li>
-                <li><a href="../creation_offre.php" class="active">Publier</a></li>
-                <li><a href="../informations_personnelles_pro.php">Mon Compte</a></li>
+                <li><a href="#" class="active">Publier</a></li>
+                <li><a href="../consulter_compte_pro.php">Mon compte</a></li>
             </ul>
         </nav>
     </header>

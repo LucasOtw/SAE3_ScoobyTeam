@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $erreurs = [];
 
     // Validation des données
-    if (empty($nomOffre) || empty($adresse) || empty($ville) || empty($codePostal) || empty($resume) || empty($description) || empty($tarif) || empty($age_mini)) {
+    if (empty($nomOffre) || empty($adresse) || empty($ville) || empty($codePostal) || empty($resume) || empty($description) || empty($tarif) || !isset($age_mini)) {
         echo "Tous les champs obligatoires doivent être remplis.";
     } else {
         // si tous les champs obligatoires sont remplis, on procède aux vérifications
@@ -181,26 +181,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <nav>
             <ul>
-                <li><a href="../mes_offres.php" class="active">Accueil</a></li>
-                <li><a href="../creation_offre.php">Publier</a></li>
-                <?php
-                    if(isset($_SESSION["pro"]) || !empty($_SESSION["pro"])){
-                       ?>
-                       <li>
-                           <a href="../consulter_compte_pro.php">Mon compte</a>
-                       </li>
-                        <li>
-                            <a href="../connexion_pro.php?deco=true">Se déconnecter</a>
-                        </li>
-                        <?php
-                    } else {
-                        ?>
-                       <li>
-                           <a href="../connexion_pro.php">Se connecter</a>
-                       </li>
-                       <?php
-                    }
-                ?>
+                <li><a href="../mes_offres.php">Accueil</a></li>
+                <li><a href="#" class="active">Publier</a></li>
+                <li><a href="../consulter_compte_pro.php">Mon compte</a></li>
             </ul>
         </nav>
     </header>
@@ -336,8 +319,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="row">
                     <div class="col">
                         <fieldset>
-                            <legend>Nombre d'attractions (facultatif)</legend>
-                            <input type="number" id="nb_attraction" name="nb_attractions" placeholder="Nombre d'attractions (facultatif)">
+                            <legend>Nombre d'attractions</legend>
+                            <input type="number" id="nb_attraction" name="nb_attractions" placeholder="Nombre d'attractions" required>
                         </fieldset>
                     </div>  
                 </div>

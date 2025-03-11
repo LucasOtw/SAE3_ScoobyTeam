@@ -401,10 +401,11 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
             <img src="../images/logo_blanc_pro.png" alt="PACT Logo">
         </div>
         <nav>
+        <nav>
             <ul>
                 <li><a href="../mes_offres.php">Accueil</a></li>
                 <li><a href="#" class="active">Publier</a></li>
-                <li><a href="../consulter_compte_pro.php">Mon Compte</a></li>
+                <li><a href="../consulter_compte_pro.php">Mon compte</a></li>
             </ul>
         </nav>
     </header>
