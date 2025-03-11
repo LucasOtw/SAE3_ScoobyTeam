@@ -867,35 +867,55 @@ include("recupInfosCompte.php");
                                 </p>
                             </div>
 
-                            <div class="menu-container" onclick="toggleMenu()">
-                                <img src="images/icones/ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
-                                <div class="context-menu" id="contextMenu">
-                                    <ul>
-                                        <li onclick="handleAction('Répondre')">Répondre à l'avis</li>
-                                        <li onclick="handleAction('Signaler')">Signaler l'avis</li>
-                                        <li onclick="handleAction('Blacklister')">Blacklister l'avis</li>
-                                    </ul>
+                                <div class="menu_avis">
+                                    <div class="menu-container" onclick="toggleMenu(event, this)">
+                                        <img src="ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
+                                        <div class="context-menu">
+                                            <ul>
+                                                <li onclick="handleAction('Répondre', this)">Répondre à l'avis</li>
+                                                <li onclick="handleAction('Signaler', this)">Signaler l'avis</li>
+                                                <li onclick="handleAction('Blacklister', this)">Blacklister l'avis</li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <script>
-                                function toggleMenu() {
-                                    var menu = document.getElementById('contextMenu');
-                                    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-                                }
-
-                                function handleAction(action) {
-                                    alert('Action sélectionnée : ' + action);
-                                    document.getElementById('contextMenu').style.display = 'none';
-                                }
-
-                                document.addEventListener('click', function(event) {
-                                    var menu = document.getElementById('contextMenu');
-                                    if (!event.target.closest('.menu-container')) {
+                                <div class="menu_avis">
+                                    <div class="menu-container" onclick="toggleMenu(event, this)">
+                                        <img src="ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
+                                        <div class="context-menu">
+                                            <ul>
+                                                <li onclick="handleAction('Répondre', this)">Répondre à l'avis</li>
+                                                <li onclick="handleAction('Signaler', this)">Signaler l'avis</li>
+                                                <li onclick="handleAction('Blacklister', this)">Blacklister l'avis</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <script>
+                                    function toggleMenu(event, element) {
+                                        event.stopPropagation();
+                                        closeAllMenus();
+                                        var menu = element.querySelector('.context-menu');
+                                        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+                                    }
+                            
+                                    function handleAction(action, element) {
+                                        alert('Action sélectionnée : ' + action);
+                                        var menu = element.closest('.context-menu');
                                         menu.style.display = 'none';
                                     }
-                                });
-                            </script>
+                            
+                                    function closeAllMenus() {
+                                        document.querySelectorAll('.context-menu').forEach(menu => {
+                                            menu.style.display = 'none';
+                                        });
+                                    }
+                            
+                                    document.addEventListener('click', function() {
+                                        closeAllMenus();
+                                    });
+                                </script>
                             <!-- <span class="signalement_avis_offre">
                                 <a href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
                                     title="Signaler cet avis"
