@@ -937,7 +937,7 @@ if($infos_offre !== null){
     </div>
     <input type="hidden" name="deleted_images" id="deleted-images">
 </div>
-    <h3>Photos actuelles</h3>
+    <h3>Modifier vos photos actuelles</h3>
     <div class="photo-cards">
         <?php
         foreach($recup_photos as $photo){
