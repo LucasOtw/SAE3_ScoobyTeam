@@ -18,6 +18,17 @@ if(!isset($_SESSION['membre'])){
 
 $modif_mdp = null;
 
+// Vérification si le bouton de génération est cliqué
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_api_key'])) {
+    $prefix = 'M'; // Préfixe pour générer la clé
+    $stmt = $dbh->prepare('update tripenarvor._membre set api_key = tripenarvor.generate_api_key(:prefix) where code_compte = :code_compte');
+    $stmt->bindParam(':prefix', $prefix, PDO::PARAM_STR);
+    $stmt->bindParam(':code_compte', $_SESSION['membre']['code_compte']);
+    $stmt->execute();
+
+    // Récupérer la nouvelle clé générée
+}
+
 if (isset($_POST['modif_infos'])){
    
    // Champs modifiés
@@ -137,11 +148,13 @@ if (isset($_POST['modif_infos'])){
 <!--<li><a href="historique_membre.php">Historique</a></li>-->
             </ul>
         </section>
-        <fieldset id="api">
-                <legend>Clé API</legend>
-                <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($monCompteMembre['api_key']); ?>" readonly>
-                <input type="submit" id="btn-api" name="generate_api_key" value="" alt="Regénérer la clé API">
-        </fieldset>     
+        <form action="#" method="POST">
+            <fieldset id="api">
+                    <legend>Clé API</legend>
+                    <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($monCompteMembre['api_key']); ?>" readonly>
+                    <input type="submit" id="btn-api" name="generate_api_key" value="" alt="Regénérer la clé API">
+            </fieldset>
+        <form>
         <form action="modif_mdp_membre.php" method="POST">
            <h3>Modifiez votre mot de passe</h3>
            

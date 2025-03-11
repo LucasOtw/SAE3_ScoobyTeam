@@ -185,7 +185,7 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
                 $id_image = [];
                 
                 foreach ($images as $image) {
-                    $chemin = ltrim($chemin,'../');
+                    $chemin = substr($chemin,3);
                     $url_image = "$chemin/$image";
             
                     // Vérifier si l'image existe déjà
