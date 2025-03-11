@@ -921,20 +921,6 @@ if($infos_offre !== null){
             </fieldset>
 
 
-            <h3>Ajouter de nouvelles photos</h3>
-    <div class="drop-zone" id="drop-zone">
-        <div class="drop-zone-icon">+</div>
-        <div class="drop-zone-prompt">Glissez et déposez vos images ici</div>
-        <div>ou</div>
-        <label class="button_import_image" for="file-input">Choisir des fichiers</label>
-        <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple class="file-input">
-    </div>
-    <div class="selected-files-container" id="selected-files">
-        <!-- Les fichiers sélectionnés s'afficheront ici -->
-    </div>
-    <input type="hidden" name="deleted_images" id="deleted-images">
-</div>
-        </div>
 
             </div>
             <div class="tab-content" id="photos">
@@ -954,7 +940,20 @@ if($infos_offre !== null){
         ?>
     </div>
     
-  
+    <h3>Ajouter de nouvelles photos</h3>
+    <div class="drop-zone" id="drop-zone">
+        <div class="drop-zone-icon">+</div>
+        <div class="drop-zone-prompt">Glissez et déposez vos images ici</div>
+        <div>ou</div>
+        <label class="button_import_image" for="file-input">Choisir des fichiers</label>
+        <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple class="file-input">
+    </div>
+    <div class="selected-files-container" id="selected-files">
+        <!-- Les fichiers sélectionnés s'afficheront ici -->
+    </div>
+    <input type="hidden" name="deleted_images" id="deleted-images">
+</div>
+        </div>
 
             <div class="btn_modif_offre">
                 <input type="submit" name="envoi_modif" value="Modifier">
