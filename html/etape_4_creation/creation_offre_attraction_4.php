@@ -382,6 +382,10 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
         }
     }
 
+    echo "<pre>";
+    var_dump($_SESSION);
+    echo "</pre>";
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
