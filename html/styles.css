@@ -7996,13 +7996,13 @@ form .btn-link {
             * Code pour le menu (3 points)*
 *****************************************************/
 
-.avis .menu-container {
+.avis .menu_avis .menu-container {
     position: relative;
     display: inline-block;
     cursor: pointer;
 }
 
-.avis .context-menu {
+.avis .menu_avis .context-menu {
     display: none;
     position: absolute;
     top: 0px;
@@ -8014,23 +8014,23 @@ form .btn-link {
     z-index: 10;
 }
 
-.avis .context-menu ul {
+.avis .menu_avis .context-menu ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.avis .context-menu ul li {
+.avis .menu_avis .context-menu ul li {
     padding: 10px;
     cursor: pointer;
     border-bottom: 1px solid #ddd;
 }
 
-.avis .context-menu ul li:hover {
+.avis .menu_avis .context-menu ul li:hover {
     background: #f0f0f0;
 }
 
-.avis .context-menu ul li:last-child {
+.avis .menu_avis .context-menu ul li:last-child {
     border-bottom: none;
 }
 
