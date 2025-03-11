@@ -869,19 +869,7 @@ include("recupInfosCompte.php");
 
                                 <div class="menu_avis">
                                     <div class="menu-container" onclick="toggleMenu(event, this)">
-                                        <img src="ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
-                                        <div class="context-menu">
-                                            <ul>
-                                                <li onclick="handleAction('Répondre', this)">Répondre à l'avis</li>
-                                                <li onclick="handleAction('Signaler', this)">Signaler l'avis</li>
-                                                <li onclick="handleAction('Blacklister', this)">Blacklister l'avis</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="menu_avis">
-                                    <div class="menu-container" onclick="toggleMenu(event, this)">
-                                        <img src="ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
+                                        <img src="images/icones/ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
                                         <div class="context-menu">
                                             <ul>
                                                 <li onclick="handleAction('Répondre', this)">Répondre à l'avis</li>
