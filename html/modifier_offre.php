@@ -945,7 +945,7 @@ if($infos_offre !== null){
                             <p>Ajouter une photo</p>
                         </div> -->
                     </div>
-                    <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple style="display: block;">
+                    <input class="button_import_image" type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple style="display: block;">
                     <input type="hidden" name="deleted_images" id="deleted-images">
                 </div>
             </div>

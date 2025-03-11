@@ -5780,6 +5780,11 @@ select.theme_contacter_plateforme {
     overflow-wrap: break-word;
 }
 
+.button_import_image{
+    color : blue;
+    background-color: blue;
+}
+
 
 #modif_offre input[type="text"]:focus,
 #modif_offre span[contenteditable="true"]:focus {
