@@ -152,7 +152,7 @@ if (isset($_POST['modif_infos'])){
             <fieldset id="api">
                     <legend>Clé API</legend>
                     <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($monCompteMembre['api_key']); ?>" readonly>
-                    <input type="submit" id="btn-api" name="generate_api_key" value="" alt="Regénérer la clé API">
+                    <input type="submit" id="btn-api" name="generate_api_key" value="T" alt="Regénérer la clé API">
             </fieldset>
         <form>
         <form action="modif_mdp_membre.php" method="POST">
