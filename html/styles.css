@@ -5779,7 +5779,10 @@ select.theme_contacter_plateforme {
     overflow-wrap: break-word;
 }
 
-
+.button_import_image{
+    color : blue;
+    background-color: blue;
+}
 
 .drop-zone {
     width: 100%;
@@ -7997,8 +8000,8 @@ form .btn-link {
 .avis .context-menu {
     display: none;
     position: absolute;
-    top: 0;
-    left: 100%;
+    top: 20px;
+    right: 0;
     background: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -11264,22 +11267,20 @@ ul.mentions_legales-sous-list {
     align-items: center;
     margin-left: -2vw;
 }
-#api{
-    display: flex;
-    position: relative;
-    left:31.7em;
-}
 
 #btn-api{
     background: url(images/icones/sync.png) no-repeat center;
     background-size: contain;
-    width: 35px;
-    height: 40px;
-    border: 2px solid var(--vert-clair);
-    cursor: pointer;
-    margin-left: 6px;
-    margin-top: 3px;
-    border-radius: 5px;  
+    background-color: var(--vert-clair);
+    border: none;
+    width: 4em;
+    max-width: 220px;
+    height: 4em;
+    color: white;
+    border-radius: 16px;
+    text-decoration: none;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2sease; 
 }
 
 .crea_pro_raison_sociale_num_siren2{
