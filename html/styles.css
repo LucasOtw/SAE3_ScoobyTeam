@@ -1179,7 +1179,6 @@ input[type="password"]::placeholder {
 .main_modif_mdp_pro .crea_pro_mail_tel fieldset,
 .main_modif_mdp_pro .crea_pro_raison_sociale_num_siren fieldset,
 .main_modif_mdp_pro form fieldset {
-    border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 20px;
     position: relative;
@@ -11276,7 +11275,7 @@ ul.mentions_legales-sous-list {
 #api p{
     font-size: 1.2em;
     font-weight: bolder;
-    
+
 }
 
 #btn-api{

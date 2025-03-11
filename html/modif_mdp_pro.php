@@ -262,7 +262,7 @@ if (isset($_POST['modif_infos'])){
         </section>
         <form action="#" method="POST">
             <fieldset id="api">
-                    <legend>Clé API</legend>
+                    <p>Clé API</p>
                     <input disabled type="text" id="cle_api_pro" name="cle_api" value="<?php echo htmlspecialchars($monComptePro['api_key']); ?>" readonly>
                     <input type="submit" id="btn-api-pro" name="generate_api_key" value="" alt="Regénérer la clé API" formnovalidate>
             </fieldset>
