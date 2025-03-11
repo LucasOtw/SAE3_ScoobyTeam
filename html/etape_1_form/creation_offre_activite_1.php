@@ -327,7 +327,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="col">
                         <fieldset class="duree">
                             <legend style="display:block;">Durée de l'activité</legend>
-                            <input type="time" id="duree" name="duree" placeholder="Durée de l'activité" min="00:01" oninput="validity.valid||(value='');">
+                            <input type="time" id="duree" name="duree" placeholder="Durée de l'activité" min="00:01" oninput="validity.valid||(value='00:01');">
                         </fieldset>
                     </div>
                 </div>
