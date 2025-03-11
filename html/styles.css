@@ -4303,7 +4303,7 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
 
 .main_modif_mdp_membre input[type="text"],
 .main_modif_mdp_membre input[type="email"] {
-    width: 100%;
+    width: 30%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -4411,7 +4411,6 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
 
 /* Style général pour tous les fieldsets */
 .main_modif_mdp_membre form fieldset {
-    border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 20px;
     position: relative;
