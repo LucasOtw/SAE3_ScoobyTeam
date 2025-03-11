@@ -357,13 +357,7 @@ if (isset($_POST['modif_infos'])){
                     <input type="text" id="ville" name="ville" placeholder="Ville *" value="<?php echo $_adresse['ville']; ?>" required>
                 </fieldset>
             </div>
-            <div class="crea_pro_raison_sociale_num_siren">
-            <fieldset style="display: flex;">
-                <legend>Clé API</legend>
-                <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($api_key); ?>" readonly>
-                <input type="submit" id="btn-api" name="generate_api_key" value="Générer une nouvelle clé">
-            </fieldset>
-            </div>
+            
             <div class="checkbox">
                 <input type="checkbox" id="cgu" name="cgu" required>
                 <label for="cgu">J’accepte les <a href="cgu.html">Conditions générales d’utilisation (CGU)</a></label>

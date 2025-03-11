@@ -11248,7 +11248,20 @@ ul.mentions_legales-sous-list {
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2sease; 
 }
-
+#btn-api-pro{
+    background: url(images/icones/sync.png) no-repeat center;
+    background-size: 30px 30px;
+    background-color: var(--orange);
+    border: none;
+    width: 3em;
+    max-width: 220px;
+    height: 3em;
+    color: white;
+    border-radius: 11px;
+    text-decoration: none;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2sease; 
+}
 .crea_pro_raison_sociale_num_siren2{
     display : flex;
 }

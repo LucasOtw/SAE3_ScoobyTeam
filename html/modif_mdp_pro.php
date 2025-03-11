@@ -260,7 +260,11 @@ if (isset($_POST['modif_infos'])){
                 <li><a href="consulter_mes_reponses_pro.php">Mes réponses</a></li>
             </ul>
         </section>
-
+        <fieldset id="api">
+                <legend>Clé API</legend>
+                <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($monCompteMembre['api_key']); ?>" readonly>
+                <input type="submit" id="btn-api-pro" name="generate_api_key" value="" alt="Regénérer la clé API">
+        </fieldset>
         <form action="modif_mdp_pro.php" method="POST">
            <h3>Modifiez votre mot de passe</h3>
            
