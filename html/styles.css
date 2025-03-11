@@ -6239,6 +6239,7 @@ select.theme_contacter_plateforme {
     background-color: #fff;
     position: relative;
     transition: transform 0.3s ease-in-out;
+    margin-top: 3vh;
 }
 
 .photo-card:hover {
