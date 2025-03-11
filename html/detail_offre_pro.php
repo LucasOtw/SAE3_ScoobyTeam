@@ -863,7 +863,7 @@ include("recupInfosCompte.php");
                             </div>
 
                             <div class="menu-container" onclick="toggleMenu()">
-                                <img src="images/icones/ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
+                                <img src="ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
                                 <div class="context-menu" id="contextMenu">
                                     <ul>
                                         <li onclick="handleAction('Répondre')">Répondre à l'avis</li>
