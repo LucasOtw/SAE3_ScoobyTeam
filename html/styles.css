@@ -11278,9 +11278,9 @@ ul.mentions_legales-sous-list {
     background-size: 30px 30px;
     background-color: var(--vert-clair);
     border: none;
-    width: 4em;
+    width: 3em;
     max-width: 220px;
-    height: 4em;
+    height: 3em;
     color: white;
     border-radius: 11px;
     text-decoration: none;
