@@ -11302,6 +11302,12 @@ ul.mentions_legales-sous-list {
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2sease; 
 }
+#cle_api_pro{
+    width: 30%;
+}
+
+
+
 .crea_pro_raison_sociale_num_siren2{
     display : flex;
 }
