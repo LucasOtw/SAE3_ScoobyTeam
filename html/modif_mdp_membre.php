@@ -137,7 +137,7 @@ if (isset($_POST['modif_infos'])){
 <!--<li><a href="historique_membre.php">Historique</a></li>-->
             </ul>
         </section>
-        <fieldset style="display: flex;">
+        <fieldset id="api">
                 <legend>Clé API</legend>
                 <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($monCompteMembre['api_key']); ?>" readonly>
                 <input type="submit" id="btn-api" name="generate_api_key" value="" alt="Regénérer la clé API">
