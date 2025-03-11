@@ -11136,6 +11136,11 @@ ul.mentions_legales-sous-list {
     align-items: center;
     margin-left: -2vw;
 }
+#api{
+    display: flex;
+    position: relative;
+    left:31.7em;
+}
 
 #btn-api{
     background: url(images/icones/sync.png) no-repeat center;
