@@ -5779,7 +5779,10 @@ select.theme_contacter_plateforme {
     overflow-wrap: break-word;
 }
 
-
+.button_import_image{
+    color : blue;
+    background-color: blue;
+}
 
 .drop-zone {
     width: 100%;
@@ -6126,113 +6129,6 @@ select.theme_contacter_plateforme {
 #modif_offre .horaires-row input[type="time"]:focus {
     border-color: #ff6f00;
     outline: none;
-}
-
-/* Style des cartes de photos */
-.photo-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-  margin: 20px 0;
-}
-
-.photo-card {
-  position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.photo-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.photo-image {
-  width: 100%;
-  height: 160px;
-  position: relative;
-  overflow: hidden;
-}
-
-.photo-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: filter 0.3s ease;
-}
-
-.photo-image img.supprimee {
-  filter: grayscale(100%) opacity(50%);
-}
-
-.delete-photo-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 30px;
-  height: 30px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.3s ease, background-color 0.3s ease;
-}
-
-.photo-card:hover .delete-photo-btn {
-  opacity: 1;
-}
-
-.delete-photo-btn::before,
-.delete-photo-btn::after {
-  content: '';
-  position: absolute;
-  width: 15px;
-  height: 2px;
-  background-color: #F28322;
-  transition: background-color 0.3s ease;
-}
-
-.delete-photo-btn::before {
-  transform: rotate(45deg);
-}
-
-.delete-photo-btn::after {
-  transform: rotate(-45deg);
-}
-
-.delete-photo-btn:hover {
-  background-color: #F28322;
-}
-
-.delete-photo-btn:hover::before,
-.delete-photo-btn:hover::after {
-  background-color: white;
-}
-
-.delete-photo-btn.reverse {
-  background-color: #BDC426;
-}
-
-.delete-photo-btn.reverse::before {
-  transform: rotate(0);
-  width: 10px;
-  height: 2px;
-  top: 14px;
-  left: 10px;
-}
-
-.delete-photo-btn.reverse::after {
-  transform: rotate(90deg);
-  width: 10px;
-  height: 2px;
-  top: 14px;
-  left: 10px;
 }
 
 /* Style spécifique pour le jour */
@@ -8091,47 +7987,8 @@ form .btn-link {
     opacity: 0;
 }
 
-/*****************************************************
-            * Code pour le menu (3 points)*
-*****************************************************/
 
-.avis .menu-container {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
 
-.avis .context-menu {
-    display: none;
-    position: absolute;
-    top: 20px;
-    right: 0;
-    background: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    width: 150px;
-    z-index: 10;
-}
-
-.avis .context-menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.avis .context-menu ul li {
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #ddd;
-}
-
-.avis .context-menu ul li:hover {
-    background: #f0f0f0;
-}
-
-.avis .context-menu ul li:last-child {
-    border-bottom: none;
-}
 
 
 
@@ -11370,11 +11227,6 @@ ul.mentions_legales-sous-list {
     display: flex;
     align-items: center;
     margin-left: -2vw;
-}
-#api{
-    display: flex;
-    position: relative;
-    left:31.7em;
 }
 
 #btn-api{
