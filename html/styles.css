@@ -11229,9 +11229,14 @@ ul.mentions_legales-sous-list {
     margin-left: -2vw;
 }
 
+#api{
+    position: relative;
+    left : 31.7em
+}
+
 #btn-api{
     background: url(images/icones/sync.png) no-repeat center;
-    background-size: contain;
+    background-size: 30px 30px;
     background-color: var(--vert-clair);
     border: none;
     width: 4em;
