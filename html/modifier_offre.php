@@ -945,8 +945,8 @@ if($infos_offre !== null){
         <div class="photo-card">
             <div class="photo-image">
                 <img src="<?php echo $photo; ?>" alt="Photo">
-                <button class="delete-photo-btn" title="Supprimer cette photo"></button>
             </div>
+            <button class="delete-photo-btn">Supprimer</button>
         </div>
         <?php
         }
@@ -1093,22 +1093,23 @@ if($infos_offre !== null){
         
                     // Vérifier si l'image est déjà marquée comme supprimée
                     if (image.classList.contains('supprimee')) {
-                        // Enlever la classe et restaurer l'apparence du bouton
+                        // Enlever la classe et restaurer le texte du bouton
                         image.classList.remove('supprimee');
-                        button.classList.remove('reverse'); 
-                        button.title = "Supprimer cette photo";
-        
+                        button.textContent = 'Supprimer';
+                        button.classList.remove('reverse'); // Enlever la classe "reverse" du bouton
+
                         const indexPhoto = deletedImages.indexOf(photoSrc);
-                        if(indexPhoto !== -1) {
-                            deletedImages.splice(indexPhoto, 1);
+
+                        if(indexPhoto !== -1){
+                            deletedImages.splice(index,1);
                         }
                         
                     } else {
-                        // Ajouter la classe pour griser l'image et changer l'apparence du bouton
+                        // Ajouter la classe pour griser l'image et changer le texte du bouton
                         image.classList.add('supprimee');
-                        button.classList.add('reverse'); 
-                        button.title = "Restaurer cette photo";
-        
+                        button.textContent = 'Ajouter';
+                        button.classList.add('reverse'); // Ajouter la classe "reverse" au bouton
+
                         deletedImages.push(photoSrc);
                     }
                     deletedImagesField.value = JSON.stringify(deletedImages);
