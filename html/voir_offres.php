@@ -1122,15 +1122,18 @@ function tempsEcouleDepuisPublication($offre){
                 // Empêche price-min de dépasser price-max
                 if (parseInt(priceMinInput.value) > parseInt(priceMaxInput.value)) {
                     priceMinInput.value = priceMaxInput.value;
+                    console.log("min > max");
                 }
         
                 // Empêche price-max d'être inférieur à price-min
                 if (parseInt(priceMaxInput.value) < parseInt(priceMinInput.value)) {
                     priceMaxInput.value = priceMinInput.value;
+                    console.log("max > min");
                 }
                 
                 priceMinDisplay.textContent = priceMinInput.value;
                 priceMaxDisplay.textContent = priceMaxInput.value;
+                console.log(priceMinInput.value+" | "+priceMaxInput.value);
             }
             
             // Filtrer les offres en fonction de la fourchette de prix
