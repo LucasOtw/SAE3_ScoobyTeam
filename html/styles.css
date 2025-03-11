@@ -11151,13 +11151,12 @@ ul.mentions_legales-sous-list {
 }
 
 #btn-api{
-    border: 2px solid var(--vert-clair);
-    background-color : var(--vert-clair);
-    border-radius: 16px;
-    color : white;
-    width: 16vw;
-    height: 52px;
-    font-weight: bolder;   
+    background: url('images/icones/sync.png') no-repeat center;
+        background-size: contain;
+        width: 40px; /* Ajustez selon l'image */
+        height: 40px;
+        border: none;
+        cursor: pointer;   
 }
 
 .crea_pro_raison_sociale_num_siren2{

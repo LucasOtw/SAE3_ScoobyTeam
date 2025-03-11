@@ -457,7 +457,7 @@ if (isset($_POST['dwl-data'])) {
                 <legend>Clé API</legend>
                 <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($api_key); ?>" readonly>
             </fieldset>
-            <input type="submit" id="btn-api" name="generate_api_key" value=img src="images/icones/sync.png" alt="Rafraîchir la clé API">
+            <input type="submit" id="btn-api" name="generate_api_key" value="" alt="Regénérer la clé API">
             </div>
             <div class="checkbox">
                 <input type="checkbox" id="cgu" name="cgu" required>
