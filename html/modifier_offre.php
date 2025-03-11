@@ -921,35 +921,40 @@ if($infos_offre !== null){
             </fieldset>
 
 
+            <h3>Ajouter de nouvelles photos</h3>
+    <div class="drop-zone" id="drop-zone">
+        <div class="drop-zone-icon">+</div>
+        <div class="drop-zone-prompt">Glissez et déposez vos images ici</div>
+        <div>ou</div>
+        <label class="button_import_image" for="file-input">Choisir des fichiers</label>
+        <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple class="file-input">
+    </div>
+    <div class="selected-files-container" id="selected-files">
+        <!-- Les fichiers sélectionnés s'afficheront ici -->
+    </div>
+    <input type="hidden" name="deleted_images" id="deleted-images">
+</div>
+        </div>
 
             </div>
             <div class="tab-content" id="photos">
-                <div class="photo-cards">
-                    <?php
-                    foreach($recup_photos as $photo){
-                    ?>
-    
-                    <div class="photo-card">
-                        <div class="photo-image">
-                            <img src="<?php echo $photo; ?>" alt="Photo">
-                        </div>
-                        <button class="delete-photo-btn">Supprimer</button>
-                    </div>
-                <?php
-                }
-                ?>
-                    <!-- Carte pour ajouter une photo -->
-                   <!-- <div id="photo-card" class="add-photo-card">
-                        <div id="add-photo">
-                            <span>+</span>
-                            <p>Ajouter une photo</p>
-                        </div> -->
-                    </div>
-                    <input class="button_import_image" type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple style="display: block;">
-                    <input type="hidden" name="deleted_images" id="deleted-images">
-                </div>
+    <h3>Photos actuelles</h3>
+    <div class="photo-cards">
+        <?php
+        foreach($recup_photos as $photo){
+        ?>
+        <div class="photo-card">
+            <div class="photo-image">
+                <img src="<?php echo $photo; ?>" alt="Photo">
             </div>
+            <button class="delete-photo-btn">Supprimer</button>
         </div>
+        <?php
+        }
+        ?>
+    </div>
+    
+  
 
             <div class="btn_modif_offre">
                 <input type="submit" name="envoi_modif" value="Modifier">
@@ -1112,6 +1117,113 @@ if($infos_offre !== null){
             });
         });
     </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+    const selectedFilesContainer = document.getElementById('selected-files');
 
+    // Empêcher le comportement par défaut du navigateur
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    // Ajouter des styles visuels pendant le glisser-déposer
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropZone.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, unhighlight, false);
+    });
+
+    function highlight() {
+        dropZone.classList.add('active');
+    }
+
+    function unhighlight() {
+        dropZone.classList.remove('active');
+    }
+
+    // Gérer le glisser-déposer des fichiers
+    dropZone.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        handleFiles(files);
+    }
+
+    // Gérer la sélection de fichiers via le bouton
+    fileInput.addEventListener('change', function() {
+        handleFiles(this.files);
+    });
+
+    function handleFiles(files) {
+        // Mettre à jour l'interface utilisateur
+        updateFileList(files);
+        
+        // Si vous avez besoin de prévisualiser les images
+        [...files].forEach(previewFile);
+    }
+
+    function updateFileList(files) {
+        selectedFilesContainer.innerHTML = '';
+        [...files].forEach(file => {
+            const fileElement = document.createElement('div');
+            fileElement.className = 'selected-file';
+            fileElement.innerHTML = `
+                <span>${file.name}</span>
+                <button type="button" class="remove-file">&times;</button>
+            `;
+            selectedFilesContainer.appendChild(fileElement);
+        });
+
+        // Ajouter des écouteurs d'événements pour supprimer les fichiers
+        document.querySelectorAll('.remove-file').forEach((button, index) => {
+            button.addEventListener('click', () => {
+                removeFile(index);
+            });
+        });
+    }
+
+    function removeFile(index) {
+        // Créer un nouveau FileList sans le fichier à supprimer
+        // Note: FileList est un objet en lecture seule, nous devons donc trouver une solution de contournement
+        const dt = new DataTransfer();
+        const files = fileInput.files;
+        
+        for (let i = 0; i < files.length; i++) {
+            if (i !== index) {
+                dt.items.add(files[i]);
+            }
+        }
+        
+        fileInput.files = dt.files;
+        updateFileList(fileInput.files);
+    }
+
+    function previewFile(file) {
+        // Si vous souhaitez ajouter une prévisualisation des images
+        if (file.type.match('image.*')) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // Vous pouvez ajouter du code ici pour afficher une prévisualisation de l'image
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Activer le clic sur la zone de glisser-déposer pour ouvrir la boîte de dialogue de fichiers
+    dropZone.addEventListener('click', function() {
+        fileInput.click();
+    });
+});
+</script>
 </body>
 </html>
