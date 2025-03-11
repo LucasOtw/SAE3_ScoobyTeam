@@ -8912,39 +8912,6 @@ body.menu-open #overlay {
     transition: background 0.3s ease;
 }
 
-/* Styliser la barre de progression colorée entre les deux curseurs */
-.slider-track {
-           position: absolute;
-           height: 5px;
-           background: #007bff;
-           top: 50%;
-           transform: translateY(-50%);
-           left: 0;
-           width: 100%;
-           z-index: -1;
-}
-
-/* Styles pour les sliders (curseurs) */
-input[type="range"]::-webkit-slider-thumb {
-           -webkit-appearance: none;
-           appearance: none;
-           width: 15px;
-           height: 15px;
-           background: #007bff;
-           border-radius: 50%;
-           cursor: pointer;
-           pointer-events: auto;
-}
-
-input[type="range"]::-moz-range-thumb {
-           width: 15px;
-           height: 15px;
-           background: #007bff;
-           border-radius: 50%;
-           cursor: pointer;
-           pointer-events: auto;
-}
-
 #price-slider input[type="range"]:hover {
     background: #d6d6d6;
 }
