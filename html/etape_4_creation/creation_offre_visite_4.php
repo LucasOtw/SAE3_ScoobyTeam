@@ -444,7 +444,8 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
                             <div class="col">
                                 <fieldset>
                                     <legend>IBAN *</legend>
-                                    <input type="text" id="IBAN" name="IBAN" value="<?php echo ($infosCB) ? $infosCB['iban'] : ""; ?>" placeholder="IBAN *" required>
+                                    <input type="text" id="IBAN" name="IBAN" value="<?php echo ($infosCB) ? $infosCB['iban'] : ""; ?>" placeholder="IBAN *"
+                                    <?php echo $monComptePro['num_siren'] ? "required" : ""; ?>>
                                 </fieldset>
                             </div>
                         </div>
@@ -454,7 +455,8 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
                             <div class="col">
                                 <fieldset>
                                     <legend>BIC *</legend>
-                                    <input type="text" id="BIC" name="BIC" value="<?php echo ($infosCB) ? $infosCB['bic'] : ""; ?>" placeholder="BIC *" required>
+                                    <input type="text" id="BIC" name="BIC" value="<?php echo ($infosCB) ? $infosCB['bic'] : ""; ?>" placeholder="BIC *"
+                                    <?php echo $monComptePro['num_siren'] ? "required" : ""; ?>>
                                 </fieldset>
                             </div>
                         </div>
@@ -464,7 +466,8 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
                             <div class="col">
                                 <fieldset>
                                     <legend>Nom du compte *</legend>
-                                    <input type="text" id="nom" name="nom" value="<?php echo ($infosCB) ? $infosCB['nom_compte'] : ""; ?>" placeholder="Nom du compte *" required>
+                                    <input type="text" id="nom" name="nom" value="<?php echo ($infosCB) ? $infosCB['nom_compte'] : ""; ?>" placeholder="Nom du compte *"
+                                    <?php echo $monComptePro['num_siren'] ? "required" : ""; ?>>
                                 </fieldset>
                             </div>
                         </div>
