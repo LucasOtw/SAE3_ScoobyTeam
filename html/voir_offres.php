@@ -1155,11 +1155,13 @@ function tempsEcouleDepuisPublication($offre){
             
             // Ajouter des événements sur les sliders
             priceMinInput.addEventListener("input", () => {
+                console.log("OK : min input");
                 updatePriceDisplay(); // Mettre à jour l'affichage des prix
                 filterOffers(); // Appliquer le filtre
             });
             
             priceMaxInput.addEventListener("input", () => {
+                console.log("OK : max input");
                 updatePriceDisplay(); // Mettre à jour l'affichage des prix
                 filterOffers(); // Appliquer le filtre
             });
