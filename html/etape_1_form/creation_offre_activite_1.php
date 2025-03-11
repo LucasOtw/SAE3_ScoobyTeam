@@ -317,7 +317,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="col">
                         <fieldset>
                             <legend>Age minimum requis *</legend>
-                            <input type="number" id="age" name="age" placeholder="Age minimum requis *" required oninput="validity.valid||(value='');">
+                            <input type="number" id="age" name="age" placeholder="Age minimum requis *" min="0" max="18" required oninput="validity.valid||(value='');">
                         </fieldset>
                     </div>  
                 </div>
