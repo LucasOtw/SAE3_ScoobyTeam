@@ -969,6 +969,7 @@ function tempsEcouleDepuisPublication($offre){
         </section>
 
         <script>
+        document.addEventListener("DOMContentLoaded", function() {
             // Récupération des éléments
             const offerItems = document.querySelectorAll('.offer');
             
@@ -985,7 +986,7 @@ function tempsEcouleDepuisPublication($offre){
             const priceMaxInput = document.getElementById("price-max");
             const priceMinDisplay = document.getElementById("price-min-display");
             const priceMaxDisplay = document.getElementById("price-max-display");
-
+            console.log(priceMinInput);
             console.log(priceMaxInput);
             console.log(priceMinDisplay);
             console.log(priceMaxDisplay);
@@ -1260,7 +1261,8 @@ function tempsEcouleDepuisPublication($offre){
             // Ajouter un écouteur d'événement sur les champs de date
             openingStartDate.addEventListener('change', filterByOpeningDates);
             openingEndDate.addEventListener('change', filterByOpeningDates);
-            
+
+        });
         </script>
 
     </main>
