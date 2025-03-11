@@ -3,7 +3,6 @@ ob_start(); // bufferisation, ça devrait marcher ?
 session_start();
 
 include("recupInfosCompte.php");
-var_dump($monCompteMembre);
 
 if(isset($_GET['logout'])){
    session_unset();
@@ -159,7 +158,7 @@ if (isset($_POST['modif_infos'])){
             
             <fieldset style="display: flex;">
                 <legend>Clé API</legend>
-                <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($api_key); ?>" readonly>
+                <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($monCompteMembre['api_key']); ?>" readonly>
             </fieldset>
             <input type="submit" id="btn-api" name="generate_api_key" value="" alt="Regénérer la clé API">
         
