@@ -68,7 +68,6 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
         $code_BIC = $_POST['BIC'];
         $nom_compte = $_POST['nom'];
         if(isset($monComptePro['num_siren'])){
-            echo "lol";
             if(empty($code_iban) || empty($code_BIC) || empty($nom_compte)){
                 echo "Des informations sont manquantes !";
                 exit;
