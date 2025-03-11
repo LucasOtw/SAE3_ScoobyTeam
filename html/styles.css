@@ -5752,8 +5752,7 @@ select.theme_contacter_plateforme {
     margin-top: 1em;
 }
 
-#modif_offre input[type="text"],
-#modif_offre span[contenteditable="true"] {
+#modif_offre input[type="text"], #modif_offre span[contenteditable="true"] {
     width: 100%;
     font-size: 1rem;
     border-radius: 8px;
@@ -5764,14 +5763,14 @@ select.theme_contacter_plateforme {
     margin-bottom: 10px;
     box-sizing: border-box;
     padding: 0.5em;
-    border: 1px solid #000;
+    border: 2px solid #cecece;
 }
 
 #modif_offre span[contenteditable="true"] {
     width: 100%;
     font-size: 1rem;
     border-radius: 8px;
-    border: 1px solid #000;
+    border: 2px solid #cfcfcf;
     background-color: #fff;
     margin-bottom: 10px;
     box-sizing: border-box;
