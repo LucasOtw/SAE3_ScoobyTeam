@@ -289,7 +289,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="col">
                         <fieldset>
                             <legend>Tarif *</legend>
-                            <input type="text" id="prix" name="prix" placeholder="Tarif *" required>
+                            <input type="number" id="prix" name="prix" placeholder="Tarif *" min="0" required oninput="validity.valid||(value='');">
                         </fieldset>
                     </div>
                 </div>
