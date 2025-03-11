@@ -986,7 +986,9 @@ function tempsEcouleDepuisPublication($offre){
             const priceMinDisplay = document.getElementById("price-min-display");
             const priceMaxDisplay = document.getElementById("price-max-display");
 
-            console.log(priceMinInput);
+            console.log(priceMaxInput);
+            console.log(priceMinDisplay);
+            console.log(priceMaxDisplay);
             
             const selectStatus = document.querySelector('#select-statut');
             
