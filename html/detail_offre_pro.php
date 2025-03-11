@@ -862,7 +862,36 @@ include("recupInfosCompte.php");
                                 </p>
                             </div>
 
-                            <span class="signalement_avis_offre">
+                            <div class="menu-container" onclick="toggleMenu()">
+                                <img src="ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
+                                <div class="context-menu" id="contextMenu">
+                                    <ul>
+                                        <li onclick="handleAction('Répondre')">Répondre à l'avis</li>
+                                        <li onclick="handleAction('Signaler')">Signaler l'avis</li>
+                                        <li onclick="handleAction('Blacklister')">Blacklister l'avis</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <script>
+                                function toggleMenu() {
+                                    var menu = document.getElementById('contextMenu');
+                                    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+                                }
+
+                                function handleAction(action) {
+                                    alert('Action sélectionnée : ' + action);
+                                    document.getElementById('contextMenu').style.display = 'none';
+                                }
+
+                                document.addEventListener('click', function(event) {
+                                    var menu = document.getElementById('contextMenu');
+                                    if (!event.target.closest('.menu-container')) {
+                                        menu.style.display = 'none';
+                                    }
+                                });
+                            </script>
+                            <!-- <span class="signalement_avis_offre">
                                 <a href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
                                     title="Signaler cet avis"
                                     style="text-decoration: none; margin-right: 2vw; font-size: 21px;">🚩</a>
@@ -871,7 +900,7 @@ include("recupInfosCompte.php");
                                 <input type="hidden" name="unAvis"
                                     value="<?php echo htmlspecialchars(serialize($avis)); ?>">
                                 <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
-                            </form>
+                            </form> -->
                         </div>
                     </h3>
                     <p class="avis"><?php echo html_entity_decode($avis['txt_avis']); ?></p>
