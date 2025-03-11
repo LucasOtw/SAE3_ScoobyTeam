@@ -978,7 +978,7 @@ function tempsEcouleDepuisPublication($offre){
             const searchSelect = document.querySelectorAll('.search-select');
             const container = document.querySelector('#offers-list'); 
             
-            const searchLocation = document.querySelector('#location');
+            // const searchLocation = document.querySelector('#location');
             
             const selectRate = document.querySelector('#select-rate');
             
@@ -1081,19 +1081,19 @@ function tempsEcouleDepuisPublication($offre){
             ///////////////////////////////////////////////////
             ///             Recherche de lieu               ///
             ///////////////////////////////////////////////////
-            searchLocation.addEventListener('input', () => {
-                const query = searchLocation.value.toLowerCase().trim();
+            // searchLocation.addEventListener('input', () => {
+            //     const query = searchLocation.value.toLowerCase().trim();
             
-                offerItems.forEach(offer => {
-                    const text = offer.getAttribute('location').toLowerCase();
-                    console.log(query);
-                    if (text.includes(query)) {
-                        offer.classList.remove('hidden');
-                    } else {
-                        offer.classList.add('hidden');
-                    }
-                });
-            });
+            //     offerItems.forEach(offer => {
+            //         const text = offer.getAttribute('location').toLowerCase();
+            //         console.log(query);
+            //         if (text.includes(query)) {
+            //             offer.classList.remove('hidden');
+            //         } else {
+            //             offer.classList.add('hidden');
+            //         }
+            //     });
+            // });
 
 
             ///////////////////////////////////////////////////
