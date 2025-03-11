@@ -5780,6 +5780,95 @@ select.theme_contacter_plateforme {
 }
 
 
+
+.drop-zone {
+    width: 100%;
+    height: 200px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: border 0.3s ease, background-color 0.3s ease;
+    margin-top: 23px;
+  }
+  
+  .drop-zone:hover {
+    border-color: var(--orange);
+    background-color: rgba(189, 196, 38, 0.05);
+  }
+  
+  .drop-zone.active {
+    border-color: #F28322;
+    background-color: rgba(242, 131, 34, 0.05);
+  }
+  
+  .drop-zone-prompt {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .drop-zone-icon {
+    font-size: 40px;
+    color: #ccc;
+    margin-bottom: 10px;
+  }
+  
+  .file-input {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+  }
+  
+  .button_import_image {
+    background-color: #F28322;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+  }
+  
+  .button_import_image:hover {
+    background-color: #e57417;
+  }
+  
+  .selected-files-container {
+    margin-top: 15px;
+    max-width: 100%;
+  }
+  
+  .selected-file {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    font-size: 14px;
+  }
+  
+  .selected-file span {
+    margin-right: 5px;
+  }
+  
+  .selected-file button {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+
 #modif_offre input[type="text"]:focus,
 #modif_offre span[contenteditable="true"]:focus {
     border-color: #ff6f00;
@@ -5924,7 +6013,7 @@ select.theme_contacter_plateforme {
 #modif_offre label {
     font-size: 1rem;
     font-weight: 500;
-    color: var(--orange);
+    color: #ffffff;
     margin-bottom: 8px;
     display: block;
 }
