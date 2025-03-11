@@ -156,7 +156,11 @@ if (isset($_POST['modif_infos'])){
                 <input type="password" id="mdp_nv2" name="mdp_nv2" placeholder="Confirmez votre nouveau mot de passe *" required>
             </fieldset>
             
-
+            <fieldset style="display: flex;">
+                <legend>Clé API</legend>
+                <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($api_key); ?>" readonly>
+            </fieldset>
+            <input type="submit" id="btn-api" name="generate_api_key" value="" alt="Regénérer la clé API">
         
            
             <div class="compte_membre_save_delete">

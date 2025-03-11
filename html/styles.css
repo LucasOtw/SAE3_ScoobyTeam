@@ -11172,12 +11172,15 @@ ul.mentions_legales-sous-list {
 }
 
 #btn-api{
-    background: url('images/icones/sync.png') no-repeat center;
-        background-size: contain;
-        width: 40px; /* Ajustez selon l'image */
-        height: 40px;
-        border: none;
-        cursor: pointer;   
+    background: url(images/icones/sync.png) no-repeat center;
+    background-size: contain;
+    width: 35px;
+    height: 40px;
+    border: 2px solid var(--vert-clair);
+    cursor: pointer;
+    margin-left: 6px;
+    margin-top: 3px;
+    border-radius: 5px;  
 }
 
 .crea_pro_raison_sociale_num_siren2{
