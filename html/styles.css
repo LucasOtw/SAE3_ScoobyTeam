@@ -6240,7 +6240,10 @@ select.theme_contacter_plateforme {
     position: relative;
     transition: transform 0.3s ease-in-out;
     margin-top: 3vh;
+    display : flex;
 }
+
+
 
 .photo-card:hover {
     transform: scale(1.05);
