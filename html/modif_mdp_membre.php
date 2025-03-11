@@ -3,6 +3,7 @@ ob_start(); // bufferisation, ça devrait marcher ?
 session_start();
 
 include("recupInfosCompte.php");
+var_dump($monCompteMembre);
 
 if(isset($_GET['logout'])){
    session_unset();
