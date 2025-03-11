@@ -67,13 +67,15 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
         $code_iban = $_POST['IBAN'];
         $code_BIC = $_POST['BIC'];
         $nom_compte = $_POST['nom'];
-        if(empty($code_iban) || empty($code_BIC) || empty($nom_compte)){
-            echo "Des informations sont manquantes !";
-            exit;
-        } else {
-            if(!validerIBAN($code_iban) || !validerBIC($code_BIC)){
-                echo "IBAN ou BIC incorrect !";
+        if(isset($monComptePro['num_siren'])){
+            if(empty($code_iban) || empty($code_BIC) || empty($nom_compte)){
+                echo "Des informations sont manquantes !";
                 exit;
+            } else {
+                if(!validerIBAN($code_iban) || !validerBIC($code_BIC)){
+                    echo "IBAN ou BIC incorrect !";
+                    exit;
+                }
             }
         }
     }
