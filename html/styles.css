@@ -5779,10 +5779,7 @@ select.theme_contacter_plateforme {
     overflow-wrap: break-word;
 }
 
-.button_import_image{
-    color : blue;
-    background-color: blue;
-}
+
 
 .drop-zone {
     width: 100%;
@@ -5798,10 +5795,11 @@ select.theme_contacter_plateforme {
     margin-bottom: 20px;
     cursor: pointer;
     transition: border 0.3s ease, background-color 0.3s ease;
+    margin-top: 23px;
   }
   
   .drop-zone:hover {
-    border-color: #BDC426;
+    border-color: var(--orange);
     background-color: rgba(189, 196, 38, 0.05);
   }
   
@@ -6015,7 +6013,7 @@ select.theme_contacter_plateforme {
 #modif_offre label {
     font-size: 1rem;
     font-weight: 500;
-    color: var(--orange);
+    color: #ffffff;
     margin-bottom: 8px;
     display: block;
 }
@@ -11265,6 +11263,11 @@ ul.mentions_legales-sous-list {
     display: flex;
     align-items: center;
     margin-left: -2vw;
+}
+#api{
+    display: flex;
+    position: relative;
+    left:31.7em;
 }
 
 #btn-api{

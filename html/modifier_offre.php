@@ -921,6 +921,9 @@ if($infos_offre !== null){
             </fieldset>
 
 
+
+            </div>
+            <div class="tab-content" id="photos">
             <h3>Ajouter de nouvelles photos</h3>
     <div class="drop-zone" id="drop-zone">
         <div class="drop-zone-icon">+</div>
@@ -934,11 +937,7 @@ if($infos_offre !== null){
     </div>
     <input type="hidden" name="deleted_images" id="deleted-images">
 </div>
-        </div>
-
-            </div>
-            <div class="tab-content" id="photos">
-    <h3>Photos actuelles</h3>
+    <h3>Modifier vos photos actuelles</h3>
     <div class="photo-cards">
         <?php
         foreach($recup_photos as $photo){
@@ -954,7 +953,8 @@ if($infos_offre !== null){
         ?>
     </div>
     
-  
+   
+        </div>
 
             <div class="btn_modif_offre">
                 <input type="submit" name="envoi_modif" value="Modifier">
