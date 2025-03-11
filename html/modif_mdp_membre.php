@@ -155,6 +155,13 @@ if (isset($_POST['modif_infos'])){
                 <legend>Confirmez votre nouveau mot de passe *</legend>
                 <input type="password" id="mdp_nv2" name="mdp_nv2" placeholder="Confirmez votre nouveau mot de passe *" required>
             </fieldset>
+            
+            <fieldset style="display: flex;">
+                <legend>Clé API</legend>
+                <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($api_key); ?>" readonly>
+                <input type="submit" id="btn-api" name="generate_api_key" value="Générer une nouvelle clé">
+            </fieldset>
+        
            
             <div class="compte_membre_save_delete">
                 <button type="submit" name="modif_infos" class="submit-btn2">Enregistrer</button>
