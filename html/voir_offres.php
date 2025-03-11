@@ -270,7 +270,6 @@ function tempsEcouleDepuisPublication($offre){
             <div id="price-slider">
                 <input type="range" id="price-min" name="price-min" min="0" max="200" step="10" value="0">
                 <input type="range" id="price-max" name="price-max" min="0" max="200" step="10" value="200">
-                <div class="slider-track"></div>
                 <p>
                     De : <span id="price-min-display">0</span> € à : <span id="price-max-display">200</span> €
                 </p>
