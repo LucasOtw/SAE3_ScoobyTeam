@@ -11273,7 +11273,11 @@ ul.mentions_legales-sous-list {
     margin-left: -2vw;
 }
 
-
+#api p{
+    font-size: 1.2em;
+    font-weight: bolder;
+    
+}
 
 #btn-api{
     background: url(images/icones/sync.png) no-repeat center;
