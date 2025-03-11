@@ -4303,7 +4303,7 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
 
 .main_modif_mdp_membre input[type="text"],
 .main_modif_mdp_membre input[type="email"] {
-    width: 100%;
+    width: 30%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -4411,7 +4411,6 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
 
 /* Style général pour tous les fieldsets */
 .main_modif_mdp_membre form fieldset {
-    border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 20px;
     position: relative;
@@ -8915,39 +8914,6 @@ body.menu-open #overlay {
     cursor: pointer;
     margin: 8px 0;
     transition: background 0.3s ease;
-}
-
-/* Styliser la barre de progression colorée entre les deux curseurs */
-.slider-track {
-           position: absolute;
-           height: 5px;
-           background: #007bff;
-           top: 50%;
-           transform: translateY(-50%);
-           left: 0;
-           width: 100%;
-           z-index: -1;
-}
-
-/* Styles pour les sliders (curseurs) */
-input[type="range"]::-webkit-slider-thumb {
-           -webkit-appearance: none;
-           appearance: none;
-           width: 15px;
-           height: 15px;
-           background: #007bff;
-           border-radius: 50%;
-           cursor: pointer;
-           pointer-events: auto;
-}
-
-input[type="range"]::-moz-range-thumb {
-           width: 15px;
-           height: 15px;
-           background: #007bff;
-           border-radius: 50%;
-           cursor: pointer;
-           pointer-events: auto;
 }
 
 #price-slider input[type="range"]:hover {

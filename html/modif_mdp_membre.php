@@ -137,7 +137,11 @@ if (isset($_POST['modif_infos'])){
 <!--<li><a href="historique_membre.php">Historique</a></li>-->
             </ul>
         </section>
-       
+        <fieldset style="display: flex;">
+                <legend>Clé API</legend>
+                <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($monCompteMembre['api_key']); ?>" readonly>
+                <input type="submit" id="btn-api" name="generate_api_key" value="" alt="Regénérer la clé API">
+        </fieldset>
         <form action="modif_mdp_membre.php" method="POST">
            <h3>Modifiez votre mot de passe</h3>
            
@@ -155,18 +159,13 @@ if (isset($_POST['modif_infos'])){
                 <legend>Confirmez votre nouveau mot de passe *</legend>
                 <input type="password" id="mdp_nv2" name="mdp_nv2" placeholder="Confirmez votre nouveau mot de passe *" required>
             </fieldset>
-            
-            <fieldset style="display: flex;">
-                <legend>Clé API</legend>
-                <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($api_key); ?>" readonly>
-            </fieldset>
-            <input type="submit" id="btn-api" name="generate_api_key" value="" alt="Regénérer la clé API">
-        
-           
+
             <div class="compte_membre_save_delete">
                 <button type="submit" name="modif_infos" class="submit-btn2">Enregistrer</button>
             </div>
         </form>
+
+        
           <?php
 
             if($modif_mdp !== null){

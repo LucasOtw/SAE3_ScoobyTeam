@@ -18,6 +18,17 @@ if(isset($_GET['deco'])){
     }
 }
 
+// Vérification si le bouton de génération est cliqué
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_api_key'])) {
+    $prefix = 'M'; // Préfixe pour générer la clé
+    $stmt = $dbh->prepare('update tripenarvor._membre set api_key = tripenarvor.generate_api_key(:prefix) where code_compte = :code_compte');
+    $stmt->bindParam(':prefix', $prefix, PDO::PARAM_STR);
+    $stmt->bindParam(':code_compte', $_SESSION['membre']['code_compte']);
+    $stmt->execute();
+
+    // Récupérer la nouvelle clé générée
+}
+
 if (isset($_POST['modif_infos'])){
     $erreur = [];
     // Récupérer les valeurs initiales (par exemple, depuis la base de données)
@@ -374,37 +385,6 @@ if (isset($_POST['dwl-data'])) {
                 </ul>
             </section>
 
-            <?php
-                // Connexion à la base de données
-                $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-                $username = "sae";
-                $password = "philly-Congo-bry4nt";
-                $api_key = '';
-
-                try {
-                    $dbh = new PDO($dsn, $username, $password);
-                    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                    // Récupération initiale de la clé API
-                    $stmt = $dbh->query('SELECT api_key FROM tripenarvor._membre LIMIT 1');
-                    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-                    $api_key = $result['api_key'] ?? '';
-
-                    // Vérification si le bouton de génération est cliqué
-                    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_api_key'])) {
-                        $prefix = 'M'; // Préfixe pour générer la clé
-                        $stmt = $dbh->prepare('update tripenarvor._membre set api_key = tripenarvor.generate_api_key(:prefix) where code_compte = :code_compte');
-                        $stmt->bindParam(':prefix', $prefix, PDO::PARAM_STR);
-                        $stmt->bindParam(':code_compte', $_SESSION['membre']['code_compte']);
-                        $stmt->execute();
-
-                        // Récupérer la nouvelle clé générée
-                    }
-                } catch (PDOException $e) {
-                    echo "Erreur de connexion ou de requête : " . $e->getMessage();
-                }
-            ?> 
-
         <form action="consulter_compte_membre.php" method="POST" id="compteForm">
 
             <div class="crea_pro_raison_sociale_num_siren">
@@ -452,13 +432,7 @@ if (isset($_POST['dwl-data'])) {
                    <input type="text" id="ville" name="ville" value="<?php echo $_adresse['ville']; ?>" placeholder="Ville *" required>
                </fieldset>
             </div>
-            <div class="crea_pro_raison_sociale_num_siren2">
-            <fieldset style="display: flex;">
-                <legend>Clé API</legend>
-                <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($api_key); ?>" readonly>
-            </fieldset>
-            <input type="submit" id="btn-api" name="generate_api_key" value="" alt="Regénérer la clé API">
-            </div>
+            
             <div class="checkbox">
                 <input type="checkbox" id="cgu" name="cgu" required>
                 <label for="cgu">J’accepte les <a href="cgu.html">Conditions générales d’utilisation (CGU)</a></label>
