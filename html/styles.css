@@ -5802,7 +5802,7 @@ select.theme_contacter_plateforme {
   }
   
   .drop-zone:hover {
-    border-color: #BDC426;
+    border-color: var(--orange);
     background-color: rgba(189, 196, 38, 0.05);
   }
   
