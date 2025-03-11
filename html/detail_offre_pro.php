@@ -872,8 +872,18 @@ include("recupInfosCompte.php");
                                         <img src="images/icones/ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
                                         <div class="context-menu">
                                             <ul>
-                                                <li onclick="handleAction('Répondre', this)">Répondre à l'avis</li>
-                                                <li onclick="handleAction('Signaler', this)">Signaler l'avis</li>
+                                                <li onclick="handleAction('Répondre', this)">
+                                                    <form action="poster_reponse_pro.php" method="POST">
+                                                        <input type="hidden" name="unAvis"
+                                                            value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                                                        <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="Répondre à l'avis">
+                                                    </form>
+                                                </li>
+                                                <li onclick="handleAction('Signaler', this)">
+                                                    <a href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>" title="Signaler cet avis" style="text-decoration: none; margin-right: 2vw; font-size: 21px;">
+                                                        Signaler l'avis
+                                                    </a>
+                                                </li>
                                                 <li onclick="handleAction('Blacklister', this)">Blacklister l'avis</li>
                                             </ul>
                                         </div>
