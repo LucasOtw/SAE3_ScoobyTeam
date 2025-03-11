@@ -5798,6 +5798,7 @@ select.theme_contacter_plateforme {
     margin-bottom: 20px;
     cursor: pointer;
     transition: border 0.3s ease, background-color 0.3s ease;
+    margin-top: 23px;
   }
   
   .drop-zone:hover {
@@ -6015,7 +6016,7 @@ select.theme_contacter_plateforme {
 #modif_offre label {
     font-size: 1rem;
     font-weight: 500;
-    color: var(--orange);
+    color: #ffffff;
     margin-bottom: 8px;
     display: block;
 }
