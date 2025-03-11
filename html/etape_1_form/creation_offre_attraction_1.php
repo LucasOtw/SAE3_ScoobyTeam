@@ -224,22 +224,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
 
-                <!-- Email & Phone -->
-                <div class="row">
-                    <div class="col">
-                        <fieldset>
-                            <legend>Email *</legend>
-                            <input type="email" id="email" name="email" placeholder="Email *" required>
-                        </fieldset>            
-                    </div>
-                    <div class="col">                     
-                        <fieldset>
-                            <legend>Téléphone *</legend>
-                            <input type="tel" id="telephone" name="telephone" placeholder="Téléphone *" required>
-                        </fieldset>
-                    </div>
-                </div>
-
                 <!-- Localisation -->
                 <div class="row">
                     <div class="col">
