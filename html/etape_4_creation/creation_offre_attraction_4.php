@@ -26,11 +26,6 @@ if(!isset($_SESSION['pro'])){
     exit;
 }
 
-echo "<pre>";
-var_dump($_SESSION);
-echo "lol";
-echo "</pre>";
-
 if (!isset($_POST['valider']) && !isset($_POST['valider_plus_tard'])) {
     // Vérifier si une ou plusieurs sessions nécessaires ne sont pas définies
     if (!isset($_SESSION['crea_offre']) || !isset($_SESSION['crea_offre2']) || !isset($_SESSION['crea_offre3'])) {
@@ -384,6 +379,8 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
             }
         }
     }
+
+    var_dump($monComptePro);
 
 
 ?>
