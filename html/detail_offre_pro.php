@@ -391,7 +391,7 @@ include("recupInfosCompte.php");
                         <?php if (!empty($details_offre["site_web"])) { ?> <a
                                 href="<?php echo $details_offre["site_web"]; ?>" target="_blank"><button
                                     class="visit-button_detailoffre_pro">Voir le site ➔</button></a> <?php } ?>
-                        <form id="add-btn" action="#" method="POST">
+                        <form id="del-offre" action="#" method="POST">
                             <input type="hidden" name="uneOffre"></input>
                             <input type="submit" id="btn-voir-offre" class="button-text add-btn" name="supprOffre"
                             value="Supprimer votre offre">
@@ -1228,6 +1228,13 @@ WHERE code_offre = :code_offre
         closePopupButton.addEventListener('click', () => {
             newsletterPopup.style.display = 'none';
         });
+
+        /** SUPPRESSION D'UNE OFFRE (BTN) **/
+        var del_offre = document.getElementById('del-offre');
+        del_offre.addEventListener('submit',{e} => {
+            e.preventDefault();
+            window.confirm("ALI BABA ET LES QUARANTE VIOLEURS");
+        })
     });
 
 </script>
