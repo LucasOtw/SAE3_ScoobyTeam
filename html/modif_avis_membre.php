@@ -55,12 +55,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if(isset($_POST['modifier'])){
         if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
+
+            $champsModifies = array();
+            $params = array();
+
             $n_texteAvis = trim($_POST['textAreaAvis']);
             $n_note = (int) $_POST['note'];
             $code_avis = (int) $_POST['code_avis'];
 
-            if($n_note != $_SESSION['modif_avis']['note']){
-                echo "lol";
+
+            $modifications = [];
+            $params = [];
+            
+            if ($n_note !== $_SESSION['modif_avis']['note']) {
+                $modifications[] = "note = :note";
+                $params[':note'] = $n_note;
+            }
+            
+            if ($n_texteAvis !== trim($_SESSION['modif_avis']['txt_avis'])) {
+                $modifications[] = "txt_avis = :texteAvis";
+                $params[':texteAvis'] = $n_texteAvis;
+            }
+            
+            if (!empty($modifications)) {
+                $sql = "UPDATE tripenarvor._avis SET " . implode(', ', $modifications) . " WHERE code_avis = :codeAvis";
+                $params[':codeAvis'] = $code_avis;
+            
+                $stmt = $dbh->prepare($sql);
+                $stmt->execute($params);
             }
 
         } else {
