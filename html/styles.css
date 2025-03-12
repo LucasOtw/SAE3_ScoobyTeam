@@ -8201,7 +8201,7 @@ form .btn-link {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-.texte-boite-perso{
+.texte-boite-perso, #bl-dur {
     margin-bottom:1em;
 }
 /*****************************************************
