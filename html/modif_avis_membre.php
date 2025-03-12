@@ -7,7 +7,9 @@ if(!isset($_SESSION['membre'])){
    exit;
 }
 
+echo "<pre>";
 var_dump($_SERVER);
+echo "</pre>";
 
 $details_offre = $_SESSION["detail_offre"];
 
