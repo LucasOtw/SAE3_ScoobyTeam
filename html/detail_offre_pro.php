@@ -398,7 +398,7 @@ include("recupInfosCompte.php");
                                     class="visit-button_detailoffre_pro">Voir le site ➔</button></a> <?php } ?>
                         <form id="del-offre" action="#" method="POST">
                             <input type="hidden" name="uneOffre"></input>
-                            <input type="submit" id="btn-voir-offre" class="button-text add-btn" name="supprOffre"
+                            <input type="submit" id="btn-voir-offre" class="button-text del-btn" name="supprOffre"
                             value="Supprimer votre offre">
                         </form>
                         <form id="add-btn" action="modifier_offre.php" method="POST">
@@ -1234,16 +1234,32 @@ WHERE code_offre = :code_offre
             newsletterPopup.style.display = 'none';
         });
     });
-    document.addEventListener('DOMContentLoaded',() => {
-        /** SUPPRESSION D'UNE OFFRE (BTN) **/
-        var del_offre = document.getElementById('del-offre');
-        del_offre.addEventListener('submit',(e) => {
-            e.preventDefault();
-            var del_dialog = window.confirm("Voulez-vous vraiment supprimer votre offre ?");
-            if(del_dialog){
-                alert("SUPPRESSION");
-            } 
+    document.addEventListener('DOMContentLoaded', () => {
+    /** SUPPRESSION D'UNE OFFRE (BTN) **/
+    var del_offre = document.getElementById('del-offre');
+    del_offre.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        Swal.fire({
+            title: "Êtes-vous sûr ?",
+            text: "Cette action est irréversible !",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Oui, supprimer !",
+            cancelButtonText: "Annuler"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    "Supprimé !",
+                    "Votre offre a été supprimée.",
+                    "success"
+                );
+            }
         });
-    })
+    });
+});
+
 
 </script>
