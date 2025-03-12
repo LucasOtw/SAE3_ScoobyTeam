@@ -347,6 +347,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         document.addEventListener('DOMContentLoaded',function(){
             var note = <?php echo $note; ?>;
             console.log(note);
+            console.log("test");
         });
     </script>
 </body>
