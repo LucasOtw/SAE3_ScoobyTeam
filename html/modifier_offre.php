@@ -1097,7 +1097,6 @@ if($infos_offre !== null){
                     if (image.classList.contains('supprimee')) {
                         // Enlever la classe et restaurer le texte du bouton
                         image.classList.remove('supprimee');
-                        button.textContent = 'Supprimer';
                         button.classList.remove('reverse'); // Enlever la classe "reverse" du bouton
 
                         const indexPhoto = deletedImages.indexOf(photoSrc);
