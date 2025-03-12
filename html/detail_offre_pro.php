@@ -872,19 +872,19 @@ include("recupInfosCompte.php");
                                         <img src="images/icones/ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
                                         <div class="context-menu">
                                             <ul>
-                                                <li onclick="handleAction('Répondre', this)">
+                                                <li>
                                                     <form action="poster_reponse_pro.php" method="POST">
                                                         <input type="hidden" name="unAvis"
                                                             value="<?php echo htmlspecialchars(serialize($avis)); ?>">
                                                         <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="Répondre à l'avis">
                                                     </form>
                                                 </li>
-                                                <li onclick="handleAction('Signaler', this)">
-                                                    <a href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>" title="Signaler cet avis" style="text-decoration: none; margin-right: 2vw; font-size: 21px;">
+                                                <li>
+                                                    <a href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>" title="Signaler cet avis" style="text-decoration: none; margin-right: 2vw; color: black;">
                                                         Signaler l'avis
                                                     </a>
                                                 </li>
-                                                <li onclick="handleAction('Blacklister', this)">Blacklister l'avis</li>
+                                                <li>Blacklister l'avis</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -896,12 +896,6 @@ include("recupInfosCompte.php");
                                         closeAllMenus();
                                         var menu = element.querySelector('.context-menu');
                                         menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-                                    }
-                            
-                                    function handleAction(action, element) {
-                                        alert('Action sélectionnée : ' + action);
-                                        var menu = element.closest('.context-menu');
-                                        menu.style.display = 'none';
                                     }
                             
                                     function closeAllMenus() {
