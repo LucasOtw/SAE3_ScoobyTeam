@@ -8113,7 +8113,7 @@ form .btn-link {
     /* Couleur plus sombre au survol */
 }
 
-button-text del-btn {
+.button-text.del-btn {
            display: flex;
            align-items: center;
            justify-content: center;
