@@ -185,6 +185,7 @@ $note = $avis['note'];
                        <p class="poster_un_avis_disclaimer">En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
                        <div class="poster_un_avis_buttons">
                            <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
+                           <input type="hidden" name="id_avis" value="<?php echo $avis['code_avis']; ?>">
                            <button class="poster_un_avis_btn_publier" type="submit"- name="modifier">Modifier →</button>
                        </div>
                     </div>
