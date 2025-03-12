@@ -24,7 +24,7 @@ if(!isset($_SESSION['pro'])){
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_api_key'])) {
     $prefix = 'M'; // Préfixe pour générer la clé
     try{
-        $stmt = $dbh->prepare('update tripenarvor._membre set api_key = tripenarvor.generate_api_key(:prefix) where code_compte = :code_compte');
+        $stmt = $dbh->prepare('update tripenarvor._professionnel set api_key = tripenarvor.generate_api_key(:prefix) where code_compte = :code_compte');
         $stmt->bindParam(':prefix', $prefix, PDO::PARAM_STR);
         $stmt->bindParam(':code_compte', $_SESSION['membre']['code_compte']);
         $stmt->execute();
