@@ -54,7 +54,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['modif_avis'] = $avis;
     }
     if(isset($_POST['modifier'])){
-        if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
+        $modifOk = false;
+        if($_POST['isAnswer'] == 0){
+            if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
+                $modifOk = true;
+            }
+        } else { // alors c'est une réponse
+            if(isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis'])){
+                $modifOk = true;
+            }
+        }
+
+        if($modifOk === true){
+            // si les modifications sont ok
 
             $champsModifies = array();
             $params = array();
@@ -87,27 +99,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             header('location: detail_offre.php');
             exit;
-
         } else {
             ?>
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script>
 
-            $(document).ready(function() {
-                
-                function afficherPOPup() {
-                    $("#customConfirmBox").fadeIn();     
-                }
-                
-                // Fermer la popup quand l'utilisateur clique sur "Fermer"
-                $('#confirmButton').on('click', function() {
-                    $('#customConfirmBox').fadeOut();
+                $(document).ready(function() {
+                    function afficherPOPup() {
+                        $("#customConfirmBox").fadeIn();     
+                    }   
+                    // Fermer la popup quand l'utilisateur clique sur "Fermer"
+                    $('#confirmButton').on('click', function() {
+                        $('#customConfirmBox').fadeOut();
+                    });
+                    afficherPOPup();  
                 });
 
-                afficherPOPup();
-                
-            });
-            
             </script>
             <?php
         }
@@ -234,6 +241,7 @@ $isAnswer = $isAnswer->fetchColumn();
                        <div class="poster_un_avis_buttons">
                            <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
                            <input type="hidden" name="code_avis" value="<?php echo $avis['code_avis']; ?>">
+                           <input type="hidden" name="isAnswer" value="<?php echo $isAnswer; ?>">
                            <button class="poster_un_avis_btn_publier" type="submit"- name="modifier">Modifier →</button>
                        </div>
                     </div>
