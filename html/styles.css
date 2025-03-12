@@ -1076,8 +1076,9 @@ input[type="email"] {
     border-radius: 50%;
 }
 
-
-
+.detail_offre_option {
+           display: flex;
+}
 
 .main_modif_mdp_pro input[type="password"] {
     width: 100%;
