@@ -483,6 +483,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	padding: 1px;
 	text-align: left;
 	border-radius: 12px;
+	height: 15vh;
+    width: 18vw;
 	}
 .leaflet-popup-content {
 	margin: 13px 24px 13px 20px;
@@ -523,8 +525,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	background: white;
 	color: #333;
 	box-shadow: 0 3px 14px rgba(0,0,0,0.4);
-	height: 15vh;
-    width: 18vw;
 	}
 .leaflet-container a.leaflet-popup-close-button {
 	position: absolute;

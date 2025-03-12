@@ -1231,7 +1231,7 @@ WHERE code_offre = :code_offre
 
         /** SUPPRESSION D'UNE OFFRE (BTN) **/
         var del_offre = document.getElementById('del-offre');
-        del_offre.addEventListener('submit',{e} => {
+        del_offre.addEventListener('submit',(e) => {
             e.preventDefault();
             console.log("test");
         });
