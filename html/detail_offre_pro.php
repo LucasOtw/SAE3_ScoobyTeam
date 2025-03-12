@@ -913,9 +913,12 @@ include("recupInfosCompte.php");
                                 <div id="customModal2" class="custom-modal">
                                     <div class="custom-modal-content">
                                         <p class="texte-boite-perso">Voulez-vous vraiment blacklister l'avis ?</p>
-                                        <label for="blacklistDuration">Durée :</label>
-                                        <input type="time" id="blacklistDuration" min="1" placeholder="Entrez la durée">
-                                
+                                        
+                                        <label for="blacklistDuration">Durée : </label>
+                                        <input type="datetime" id="blacklistDuration" min="1" placeholder="Entrez la durée">
+
+                                        <br>
+                                        
                                         <button id="cancelBlacklist" class="cancel-btn">Non</button>
                                         <button id="confirmBlacklist" class="confirm-btn">Oui</button>
                                     </div>
