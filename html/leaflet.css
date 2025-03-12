@@ -473,37 +473,39 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 
 /* popup */
-
 .leaflet-popup {
-	position: absolute;
-	text-align: center;
-	margin-bottom: 20px;
-	}
-	.leaflet-popup-content-wrapper {
-		padding: 1px;
-		text-align: left;
-		border-radius: 15px;
-		height: 24vh;
-		width: 27vw;
-	}
-	.leaflet-popup-content-wrapper img {
-		width: 142% !important;
-		max-height: 136px !important;
-		left: 10%;
-		border-radius: 12px;
-		position: relative;
-		margin-left: -3vw;
-		margin-top: -0.7vh;
-		}
-	
-.leaflet-popup-content {
-    margin: 13px 24px 13px 20px;
-    line-height: 1.3;
-    font-size: 13px;
-    font-size: 1.08333em;
-    height: 14vh;
-    width: 17vw;
+    position: absolute;
+    text-align: center;
+    margin-bottom: 20px;
 }
+
+.leaflet-popup-content-wrapper {
+    padding: 1px;
+    text-align: left;
+    border-radius: 15px;
+    height: auto; /* Adapter dynamiquement */
+    width: 27vw;
+    max-width: 350px; /* Pour éviter que ça devienne trop grand sur grands écrans */
+}
+
+.leaflet-popup-content-wrapper img {
+    width: 100%; /* Adapter à la largeur du parent */
+    max-height: 150px;
+    border-radius: 12px;
+    object-fit: cover; /* Pour éviter les déformations */
+    display: block; /* Supprime les espaces en trop */
+    margin: 0 auto; /* Centre l'image */
+}
+
+.leaflet-popup-content {
+    margin: 10px;
+    line-height: 1.3;
+    font-size: 1.1em;
+    height: auto;
+    width: 90%; /* Ajuster dynamiquement */
+    max-width: 300px;
+}
+
 .leaflet-popup-content p {
 	margin: 17px 0;
 	margin: 1.3em 0;
