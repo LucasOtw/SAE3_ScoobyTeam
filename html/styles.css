@@ -8153,7 +8153,7 @@ form .btn-link {
 .custom-modal-content {
     background-color: #fff;
     padding: 30px;
-    border: 2px solid var(--orange);
+    border: 3px solid var(--orange);
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     text-align: center;
@@ -8171,18 +8171,17 @@ form .btn-link {
 } */
 
 .confirm-btn {
-    background-color: #fff;
+    background-color: var(--orange);
     color: #000;
     width: 10em;
-    height: 2em;
-    border: 2px solid white;
+    height: 2em; 
     border-radius: 15px;
     transition: box-shadow 0.3s ease;
 }
 
 .confirm-btn:hover {
     background-color: white;
-    border: 2px solid var(--vert-clair);
+    border: 2px solid var(--orange);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
