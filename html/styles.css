@@ -1080,6 +1080,10 @@ input[type="email"] {
            display: flex;
 }
 
+.detail_offre_pro_info-icon-container h1 {
+           text-align: center;
+}
+
 .main_modif_mdp_pro input[type="password"] {
     width: 100%;
     padding: 12px;
