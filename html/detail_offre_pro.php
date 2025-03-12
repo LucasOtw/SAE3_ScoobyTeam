@@ -405,8 +405,8 @@ include("recupInfosCompte.php");
                                     <div id="customModal" class="custom-modal">
                                         <div class="custom-modal-content">
                                             <p>Voulez-vous vraiment supprimer votre offre ?</p>
-                                            <button id="confirmDelete" class="confirm-btn">Oui</button>
                                             <button id="cancelDelete" class="cancel-btn">Non</button>
+                                            <button id="confirmDelete" class="confirm-btn">Oui</button>
                                         </div>
                                     </div>
 
