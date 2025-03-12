@@ -261,7 +261,7 @@ if (isset($json['results'][0])) {
 include("recupInfosCompte.php");
 
 echo "<pre>";
-var_dump($detail_offre);
+var_dump($details_offre);
 echo "</pre>";
 ?>
 
@@ -346,7 +346,7 @@ echo "</pre>";
                     <div class="detail_offre_pro_info-icon-container">
                         <span class="info-icon">i</span>
                         <div class="tooltip">
-                            <p><?php echo $detail_offre["nom_type"]; ?></p>
+                            <p><?php echo $details_offre["nom_type"]; ?></p>
                             <div class="detail_offre_option">
                                 <?php
                                 if ($option_a_la_une !== false) {
