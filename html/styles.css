@@ -8179,12 +8179,12 @@ button {
 }
 
 .cancel-btn {
-    background-color: var(--orange); /* Rouge pour annulation */
+    background-color: red; /* Rouge pour annulation */
     color: white;
 }
 
 .cancel-btn:hover {
-    background-color: #e60000; /* Plus foncé quand on survole */
+    background-color: red; /* Plus foncé quand on survole */
 }
 
 
