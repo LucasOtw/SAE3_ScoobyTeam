@@ -404,7 +404,7 @@ include("recupInfosCompte.php");
                                     <!-- Modale personnalisée -->
                                     <div id="customModal" class="custom-modal">
                                         <div class="custom-modal-content">
-                                            <p>Voulez-vous vraiment supprimer votre offre ?</p>
+                                            <p class="texte-boite-perso">Voulez-vous vraiment supprimer votre offre ?</p>
                                             <button id="cancelDelete" class="cancel-btn">Non</button>
                                             <button id="confirmDelete" class="confirm-btn">Oui</button>
                                         </div>
