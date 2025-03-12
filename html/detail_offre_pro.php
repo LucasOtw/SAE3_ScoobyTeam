@@ -1252,7 +1252,7 @@ WHERE code_offre = :code_offre
     });
 document.addEventListener('DOMContentLoaded', () => {
     var del_offre = document.getElementById('del-offre');
-    var blacklist-avis = document.getElementById('blacklist-avis');
+    var blacklist_avis = document.getElementById('blacklist-avis');
     var modal = document.getElementById('customModal');
     var modal2 = document.getElementById('customModal2');
     var confirmDelete = document.getElementById('confirmDelete');
@@ -1288,7 +1288,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Afficher la modale lors de la soumission du formulaire
-    blacklist-avis.addEventListener('click', () => {
+    blacklist_avis.addEventListener('click', () => {
         modal2.style.display = 'flex';
     });
     
