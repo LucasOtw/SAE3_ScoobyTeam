@@ -346,8 +346,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script>
         document.addEventListener('DOMContentLoaded',function(){
             var note = <?php echo $note; ?>;
-            console.log(note);
-            console.log("test");
+            console.log(`star${note}`);
+            // on récupère une étoile en fonction de la note
         });
     </script>
 </body>
