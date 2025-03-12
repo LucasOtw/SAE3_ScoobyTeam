@@ -838,14 +838,14 @@ if (isset($json['results'][0])) {
                                         <div class="context-menu">
                                             <ul>
                                                 <li>
-                                                    <form action="poster_reponse_pro.php" method="POST">
+                                                    <form action="poster_reponse_membre.php" method="POST">
                                                         <input type="hidden" name="unAvis"
                                                             value="<?php echo htmlspecialchars(serialize($avis)); ?>">
                                                         <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="Répondre à l'avis">
                                                     </form>
                                                 </li>
                                                 <li>
-                                                    <a href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>" title="Signaler cet avis" style="text-decoration: none; margin-right: 2vw; color: black;">
+                                                    <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>" title="Signaler cet avis" style="text-decoration: none; margin-right: 2vw; color: black;">
                                                         Signaler l'avis
                                                     </a>
                                                 </li>
