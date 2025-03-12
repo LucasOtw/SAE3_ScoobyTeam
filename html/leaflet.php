@@ -22,7 +22,7 @@
     #map {
       height: 500px;
       width: 100%;
-      border: 1px solid #ccc; /* Ajouter une bordure pour mieux visualiser la carte */
+      border: 1px solid #ccc; /* Ajout d'une bordure pour mieux visualiser la carte */
     }
   </style>
 </head>
@@ -42,7 +42,7 @@
         return;
       }
 
-      console.log("Leaflet version:", L.version); // Debug
+      console.log("Leaflet version:", L.version); // Debug pour vérifier si Leaflet est chargé
 
       // Initialisation de la carte centrée sur Paris
       var map = L.map('map').setView([48.8566, 2.3522], 13);
