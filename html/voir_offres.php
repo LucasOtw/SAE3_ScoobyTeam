@@ -91,9 +91,8 @@ function tempsEcouleDepuisPublication($offre){
     <script src="filtre.js"></script>
     <script src="scroll.js"></script>
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-oFh3EvftcJg8rU0W5CfzgT82F7EVqnG/tl2CmOLVJt3OReQj1q4RMy0vlsXL+Zlt" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-VrHRq7Vl3xM1wEDxVTX9zw3O5aD3tU9fpDqzOk0voH0OWZGcwpDym7p9mDOeNcJh" crossorigin=""></script>
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 </head>
 <body>
 <div class="half-background">
