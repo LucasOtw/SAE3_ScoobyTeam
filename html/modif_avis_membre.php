@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "</pre>";
 
         $avis = unserialize($_POST['unAvis']);
-        $note = json_encode($avis['note']);
+        $_SESSION['modif_avis'] = $avis;
     }
     if(isset($_POST['modifier'])){
         if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
@@ -164,7 +164,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
      }
 }
+if(isset($_SESSION['modif_avis'])){
+    $avis = $_SESSION['modif_avis'];
+}
 
+$note = $avis['note'];
 
 ?><!DOCTYPE html>
 <html lang="en">
