@@ -945,8 +945,8 @@ if($infos_offre !== null){
         <div class="photo-card">
             <div class="photo-image">
                 <img src="<?php echo $photo; ?>" alt="Photo">
+                <button type="button" class="delete-photo-btn" title="Supprimer cette photo"></button>
             </div>
-            <button class="delete-photo-btn">Supprimer</button>
         </div>
         <?php
         }
@@ -1224,6 +1224,53 @@ document.addEventListener('DOMContentLoaded', function() {
         fileInput.click();
     });
 });
+</script>
+<script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+        // IMAGES GÉNÉRALES
+        const deleteButtons = document.querySelectorAll('.delete-photo-btn');
+        const deletedImagesField = document.getElementById('deleted-images');
+        const photosTab = document.querySelector('a[data-tab="photos"]');
+        
+        let deletedImages = [];
+    
+        // Ajouter un événement clic à chaque bouton
+        deleteButtons.forEach((button) => {
+            button.addEventListener('click', (event) => {
+                // Empêcher l'envoi du formulaire
+                event.preventDefault();
+    
+                // Récupérer l'élément parent (la carte de la photo)
+                const photoCard = button.closest('.photo-card');
+    
+                // Cibler directement l'image à l'intérieur de .photo-image
+                const image = photoCard.querySelector('.photo-image img');
+                const photoSrc = image.src;
+    
+                // Vérifier si l'image est déjà marquée comme supprimée
+                if (image.classList.contains('supprimee')) {
+                    // Enlever la classe et restaurer l'apparence du bouton
+                    image.classList.remove('supprimee');
+                    button.classList.remove('reverse');
+                    button.title = "Supprimer cette photo";
+    
+                    const indexPhoto = deletedImages.indexOf(photoSrc);
+                    if(indexPhoto !== -1) {
+                        deletedImages.splice(indexPhoto, 1);
+                    }
+                    
+                } else {
+                    // Ajouter la classe pour griser l'image et changer l'apparence du bouton
+                    image.classList.add('supprimee');
+                    button.classList.add('reverse');
+                    button.title = "Restaurer cette photo";
+    
+                    deletedImages.push(photoSrc);
+                }
+                deletedImagesField.value = JSON.stringify(deletedImages);
+            });
+        });
+    });
 </script>
 </body>
 </html>
