@@ -1234,7 +1234,12 @@ WHERE code_offre = :code_offre
         var del_offre = document.getElementById('del-offre');
         del_offre.addEventListener('submit',(e) => {
             e.preventDefault();
-            alert('test');
+            var del_dialog = window.confirm("Voulez-vous vraiment supprimer votre offre ?");
+            if(del_dialog){
+                alert("SUPPRESSION");
+            } else {
+                alert("NOPE");
+            }
         });
     })
 
