@@ -49,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "</pre>";
 
         $avis = unserialize($_POST['unAvis']);
+        $note = json_encode($avis['note']);
     }
      if(isset($_POST['publier'])){
         if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))) {
@@ -342,5 +343,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded',function(){
+            var note = <?php echo $note; ?>;
+            console.log(note);
+            console.log("test");
+        });
+    </script>
 </body>
 </html>
