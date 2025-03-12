@@ -259,6 +259,10 @@ if (isset($json['results'][0])) {
 }
 
 include("recupInfosCompte.php");
+
+echo "<pre>";
+var_dump($detail_offre);
+echo "</pre>";
 ?>
 
 <!DOCTYPE html>
@@ -342,6 +346,7 @@ include("recupInfosCompte.php");
                     <div class="detail_offre_pro_info-icon-container">
                         <span class="info-icon">i</span>
                         <div class="tooltip">
+                            <p><?php echo $detail_offre["nom_type"]; ?></p>
                             <div class="detail_offre_option">
                                 <?php
                                 if ($option_a_la_une !== false) {
@@ -1228,14 +1233,17 @@ WHERE code_offre = :code_offre
         closePopupButton.addEventListener('click', () => {
             newsletterPopup.style.display = 'none';
         });
-
+    });
+    document.addEventListener('DOMContentLoaded',() => {
         /** SUPPRESSION D'UNE OFFRE (BTN) **/
         var del_offre = document.getElementById('del-offre');
         del_offre.addEventListener('submit',(e) => {
             e.preventDefault();
-            console.log("test");
+            var del_dialog = window.confirm("Voulez-vous vraiment supprimer votre offre ?");
+            if(del_dialog){
+                alert("SUPPRESSION");
+            } 
         });
-        console.log("Form : ",del_offre);
-    });
+    })
 
 </script>

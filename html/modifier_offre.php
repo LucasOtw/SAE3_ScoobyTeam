@@ -921,37 +921,42 @@ if($infos_offre !== null){
                 ?>
             </fieldset>
 
+
+
             </div>
+            <div class="tab-content" id="photos">
+            <h3>Ajouter de nouvelles photos</h3>
+    <div class="drop-zone" id="drop-zone">
+        <div class="drop-zone-icon">+</div>
+        <div class="drop-zone-prompt">Glissez et déposez vos images ici</div>
+        <div>ou</div>
+        <label class="button_import_image" for="file-input">Choisir des fichiers</label>
+        <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple class="file-input">
+    </div>
+    <div class="selected-files-container" id="selected-files">
+        <!-- Les fichiers sélectionnés s'afficheront ici -->
+    </div>
+    <input type="hidden" name="deleted_images" id="deleted-images">
+
+    <h3>Modifier vos photos actuelles</h3>
+    <div class="photo-cards">
+        <?php
+        foreach($recup_photos as $photo){
+        ?>
+        <div class="photo-card">
+            <div class="photo-image">
+                <img src="<?php echo $photo; ?>" alt="Photo">
+            </div>
+            <button class="delete-photo-btn"></button>
         </div>
-
-
-            </div>
-            <!-- <div class="tab-content" id="photos"> -->
-                <div class="photo-cards">
-                    <?php
-                    foreach($recup_photos as $photo){
-                    ?>
-
-                    <div class="photo-card">
-                        <div class="photo-image">
-                            <img src="<?php echo $photo; ?>" alt="Photo">
-                        </div>
-                        <button class="delete-photo-btn">Supprimer</button>
-                    </div>
-                <?php
-                }
-                ?>
-                    <!-- Carte pour ajouter une photo -->
-                    <!-- <div id="photo-card" class="add-photo-card">
-                        <div id="add-photo">
-                            <span>+</span>
-                            <p>Ajouter une photo</p>
-                        </div> -->
-                    </div>
-                    <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple style="display: block;">
-                    <input type="hidden" name="deleted_images" id="deleted-images">
-                </div>
-           
+        <?php
+        }
+        ?>
+    </div>
+    </div>
+    
+   
+        </div>
 
             <div class="btn_modif_offre">
                 <input type="submit" name="envoi_modif" value="Modifier">
@@ -1103,7 +1108,6 @@ if($infos_offre !== null){
                     } else {
                         // Ajouter la classe pour griser l'image et changer le texte du bouton
                         image.classList.add('supprimee');
-                        button.textContent = 'Ajouter';
                         button.classList.add('reverse'); // Ajouter la classe "reverse" au bouton
 
                         deletedImages.push(photoSrc);
