@@ -1078,6 +1078,7 @@ input[type="email"] {
 
 .detail_offre_option {
            display: flex;
+           gap: 1em;
 }
 
 .detail_offre_pro_info-icon-container h1 {
