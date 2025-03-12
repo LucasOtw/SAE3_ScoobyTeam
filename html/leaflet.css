@@ -472,40 +472,43 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	}
 
 
-/* popup */
-.leaflet-popup {
-    position: absolute;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.leaflet-popup-content-wrapper {
-    padding: 1px;
-    text-align: left;
-    border-radius: 15px;
-    height: auto; /* Adapter dynamiquement */
-    width: 27vw;
-    max-width: 350px; /* Pour éviter que ça devienne trop grand sur grands écrans */
-}
-
-.leaflet-popup-content-wrapper img {
-    width: 100%; /* Adapter à la largeur du parent */
-    max-height: 150px;
-    border-radius: 12px;
-    object-fit: cover; /* Pour éviter les déformations */
-    display: block; /* Supprime les espaces en trop */
-    margin: 0 auto; /* Centre l'image */
-}
-
-.leaflet-popup-content {
-    margin: 10px;
-    line-height: 1.3;
-    font-size: 1.1em;
-    height: auto;
-    width: 100%;
-    max-width: 300px;
-}
-
+	.leaflet-popup {
+		position: absolute;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	
+	.leaflet-popup-content-wrapper {
+		padding: 1px;
+		text-align: left;
+		border-radius: 15px;
+		width: 27vw;
+		max-width: 350px;
+		background: white; /* Assure un fond bien visible */
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		overflow: hidden; /* Empêche les débordements */
+	}
+	
+	.leaflet-popup-content-wrapper img {
+		width: 100%;  /* L'image prend toute la largeur */
+		height: auto; /* Respecte les proportions */
+		max-height: 40%; /* Limite la hauteur pour ne pas écraser le texte */
+		border-radius: 12px 12px 0 0; /* Coins arrondis uniquement en haut */
+		object-fit: cover; /* Coupe l'image si besoin pour éviter la déformation */
+	}
+	
+	.leaflet-popup-content {
+		padding: 10px;
+		line-height: 1.3;
+		font-size: 1.1em;
+		width: 100%; /* Prend toute la largeur du conteneur */
+		text-align: left;
+		height: auto;
+		flex-grow: 1; /* Permet au texte de prendre le reste de l’espace */
+	}
+	
 .leaflet-popup-content p {
 	margin: 17px 0;
 	margin: 1.3em 0;
