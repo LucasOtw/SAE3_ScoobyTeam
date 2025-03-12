@@ -1235,6 +1235,7 @@ WHERE code_offre = :code_offre
             e.preventDefault();
             console.log("test");
         });
+        console.log("Form : ",del_offre);
     });
 
 </script>
