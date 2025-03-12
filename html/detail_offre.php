@@ -849,7 +849,12 @@ if (isset($json['results'][0])) {
                                                         Signaler l'avis
                                                     </a>
                                                 </li>
-                                                <li>Modifier l'avis</li>
+                                                <li>
+                                                    <form action="modif_avis_membre.php" method="POST">
+                                                        <input type="hidden" name="unAvis" value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                                                        <input id="btn-repondre-avis" type="submit" name="modifierAvis" value="Modifier l'avis">
+                                                    </form>
+                                                </li>
                                             </ul>
                                         </div>
                                         <img src="images/icones/ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
