@@ -1083,7 +1083,7 @@ function tempsEcouleDepuisPublication($offre){
 
             
             ///////////////////////////////////////////////////
-            ///             Recherche de lieu               ///
+            ///               Recherche de lieu               ///
             ///////////////////////////////////////////////////
             // searchLocation.addEventListener('input', () => {
             //     const query = searchLocation.value.toLowerCase().trim();
@@ -1370,21 +1370,53 @@ function tempsEcouleDepuisPublication($offre){
 
             <script>
 
-            document.addEventListener("DOMContentLoaded", function () {
-    // Création de la carte et centrage sur une position donnée (ex: Paris)
-    var map = L.map('map').setView([48.8566, 2.3522], 13);
-
-    // Ajout d'un fond de carte OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-    // Ajout d'un marqueur
-    L.marker([48.8566, 2.3522]).addTo(map)
-        .bindPopup("Paris, France")
-        .openPopup();
+document.addEventListener("DOMContentLoaded", function () {
+    const mapElement = document.getElementById('map');
+    
+    if (mapElement) {
+        try {
+            // Création de la carte et centrage sur la Bretagne
+            var map = L.map('map').setView([48.2020, -2.9326], 8);
+            
+            // Ajout d'un fond de carte OpenStreetMap
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors',
+                maxZoom: 19
+            }).addTo(map);
+            
+            // Ajouter des marqueurs pour les offres
+            <?php
+            // On récupère les adresses des offres pour les afficher sur la carte
+            try {
+                $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.* FROM tripenarvor._offre o 
+                                        JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
+                                        WHERE o.en_ligne = true');
+                $adresses = $adresses->fetchAll(PDO::FETCH_ASSOC);
+                
+                foreach($adresses as $adr) {
+                    // Vous devrez ajouter un service de géocodage pour convertir les adresses en coordonnées
+                    // Pour cet exemple, nous utilisons des coordonnées fictives basées sur le code postal
+                    $lat = 48.0 + (intval(substr($adr['code_postal'], 0, 2)) / 100);
+                    $lng = -3.0 + (intval(substr($adr['code_postal'], 2, 3)) / 100);
+                    
+                    echo "L.marker([$lat, $lng]).addTo(map)
+                          .bindPopup(\"<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
+                          . addslashes($adr['ville']) . "<br>"
+                          . $adr['tarif'] . "€\");";
+                }
+            } catch (Exception $e) {
+                echo "console.error('Erreur lors du chargement des adresses : " . addslashes($e->getMessage()) . "');";
+            }
+            ?>
+            
+            console.log("Carte Leaflet initialisée avec succès");
+        } catch (error) {
+            console.error("Erreur lors de l'initialisation de la carte :", error);
+        }
+    } else {
+        console.error("L'élément #map n'existe pas dans le DOM");
+    }
 });
-
 </script>
 
 
