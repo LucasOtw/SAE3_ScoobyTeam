@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carte Interactive</title>
-
-  <!-- Importation des fichiers Leaflet depuis ton serveur -->
-  <link rel="stylesheet" href=../leaflet/leaflet.css" />
-  <script src="../leaflet/leaflet.js"></script>
-
+  <title>Carte Interactive avec Leaflet</title>
+  
+  <!-- Chemin vers les fichiers Leaflet -->
+  <link rel="stylesheet" href="../leaflet/leaflet.css">
+  
   <style>
+    /* Style pour afficher correctement la carte */
     #map {
       height: 500px;
       width: 100%;
@@ -18,20 +18,29 @@
 </head>
 <body>
 
-  <h1>Carte Leaflet</h1>
+  <h1>Ma Carte Interactive</h1>
   <div id="map"></div>
 
+  <!-- Charger Leaflet en bas de page -->
+  <script src="../leaflet/leaflet.js"></script>
   <script>
-    // Vérification de Leaflet
-    console.log("Leaflet version:", L.version); 
+    document.addEventListener("DOMContentLoaded", function () {
+      // Vérifier si Leaflet est bien chargé
+      if (typeof L === "undefined") {
+        console.error("Leaflet n'a pas été chargé correctement !");
+        return;
+      }
 
-    // Initialisation de la carte centrée sur Paris
-    var map = L.map('map').setView([48.8566, 2.3522], 13);
+      console.log("Leaflet version:", L.version); // Debug
 
-    // Ajout d'un fond de carte OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+      // Initialisation de la carte centrée sur Paris
+      var map = L.map('map').setView([48.8566, 2.3522], 13);
+
+      // Ajouter un fond de carte OpenStreetMap
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+    });
   </script>
 
 </body>
