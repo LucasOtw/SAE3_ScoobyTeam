@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if(isset($_POST['modifier'])){
         if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
-
+            echo "lol";
         } else {
             ?>
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -78,91 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php
         }
     }
-     if(isset($_POST['publier'])){
-        if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))) {
-           
-            $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
-            $note = isset($_POST['note']) ? $_POST['note'] : '';
-   
-            $compte = $_SESSION['membre'];
-            $code_compte = $compte['code_compte'];           
-            $code_offre = $_SESSION['detail_offre']['code_offre'];
-   
-            $erreurs = [];
-            $erreur_a_afficher = [];
-            if (empty($texte_avis)) {
-                $erreurs[] = "Vous devez remplir ce champ";
-                $erreur_a_afficher[] = "avis-vide";
-            } elseif (strlen($texte_avis)>500) {
-                $erreurs[] = "L'avis ne doit pas dépasser 500 caractères.";
-                $erreur_a_afficher[] = "avis-trop-long";
-            }
-   
-           if (empty($note) || !is_numeric($note) || $note < 1 || $note > 5) {
-                $erreurs[] = "Veuillez sélectionner une note valide."; 
-                $erreur_a_afficher[] = "pas-de-note";
-            }
-   
-           if (empty($erreurs)) {
-             $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
-   
-             $creerAvis->bindParam(':texte_avis', $texte_avis);
-             $creerAvis->bindParam(':note', $note, PDO::PARAM_INT);
-             $creerAvis->bindParam(':code_offre', $code_offre);
-             $creerAvis->bindParam(':code_compte', $code_compte);
-             $creerAvis->execute();
-
-             $creerNotif = $dbh->query("INSERT INTO tripenarvor._notification (code_avis) SELECT currval('tripenarvor._avis_code_avis_seq');");
-   
-             header('location: detail_offre.php');
-             exit;
-   
-            } else {
-               /*
-              foreach($erreurs as $erreur){
-                    echo $erreur;
-              }*/
-   
-               foreach($erreur_a_afficher as $classe_erreur){
-                  // echo $classe_erreur;
-                    ?> 
-   
-                    <style>
-                        main.main_poster_avis .<?php echo $classe_erreur ?> {
-                           display:block;
-                        }         
-                       ?>
-                    </style> 
-                    <?php
-              }
-            }
-        } else {
-           // echo "ok";
-           ?>
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-            <script>
-   
-               $(document).ready(function() {
-                  
-                  function afficherPOPup() {
-                     $("#customConfirmBox").fadeIn();     
-                  }
-                  
-                  // Fermer la popup quand l'utilisateur clique sur "Fermer"
-                  $('#confirmButton').on('click', function() {
-                     $('#customConfirmBox').fadeOut();
-                  });
-
-                  afficherPOPup();
-                  
-               });
-               
-            </script>
-
-           <?php
-        }
-     }
 }
 if(isset($_SESSION['modif_avis'])){
     $avis = $_SESSION['modif_avis'];
