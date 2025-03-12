@@ -2,7 +2,9 @@
 ob_start(); // bufferisation, ça devrait marcher ?
 session_start();
 
-include("recupInfosCompte.php");
+require_once("recupInfosCompte.php");
+
+var_dump($_SESSION);
 
 if(isset($_GET['logout'])){
    session_unset();
@@ -31,8 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_api_key'])) 
     // Récupérer la nouvelle clé générée
     echo "test";
 }
-
-var_dump($_SESSION);
 
 $modif_mdp = null;
 
