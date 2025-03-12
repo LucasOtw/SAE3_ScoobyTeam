@@ -916,7 +916,7 @@ include("recupInfosCompte.php");
 
                                         <div class="blacklist-dur">
                                             <label for="blacklistDuration" id="bl-dur">Durée : </label>
-                                            <input type="datetime" id="blacklistDuration" min="1" placeholder="Entrez la durée">
+                                            <input type="datetime" id="blacklistDuration" min="1" placeholder="MM/JJ/HH/MM/SS">
                                         </div>
                                         
                                         <button id="cancelBlacklist" class="cancel-btn">Non</button>
