@@ -898,10 +898,26 @@ include("recupInfosCompte.php");
                                                         Signaler l'avis
                                                     </a>
                                                 </li>
-                                                <li>Blacklister l'avis</li>
+                                                <li>
+                                                    <div id="blacklist-avis" data-avis="<?php echo htmlspecialchars($avis['code_avis']); ?>">
+                                                        <p>Blacklister l'avis</p>
+                                                    </div>
+                                                </li>
                                             </ul>
                                         </div>
                                         <img src="images/icones/ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
+                                    </div>
+                                </div>
+
+                                <!-- Modale personnalisée -->
+                                <div id="customModal" class="custom-modal">
+                                    <div class="custom-modal-content">
+                                        <p class="texte-boite-perso">Voulez-vous vraiment blacklister l'avis ?</p>
+                                        <label for="blacklistDuration">Durée :</label>
+                                        <input type="time" id="blacklistDuration" min="1" placeholder="Entrez la durée">
+                                
+                                        <button id="cancelBlacklist" class="cancel-btn">Non</button>
+                                        <button id="confirmBlacklist" class="confirm-btn">Oui</button>
                                     </div>
                                 </div>
                             
@@ -922,17 +938,50 @@ include("recupInfosCompte.php");
                                     document.addEventListener('click', function() {
                                         closeAllMenus();
                                     });
+
+                                     // Afficher la modale lors de la soumission du formulaire
+                                    blacklist-avis.addEventListener('click', () => {
+                                        modal.style.display = 'flex';
+                                    });
+                                
+                                    // Si l'utilisateur confirme (Oui)
+                                    confirmBlacklist.addEventListener('click', () => {
+                                        modal.style.display = 'none';
+                                
+                                        var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
+                                        var codeAvis = document.querySelector('#blacklist-avis').getAttribute('data-avis');
+                                        var tps_ban = document.getElementById("blacklistDuration").value;
+                                
+                                        // Utilisation de fetch pour envoyer les données
+                                        fetch("https://scooby-team.ventsdouest.dev/update_avis_status.php", {
+                                            method: "POST",  // Méthode POST
+                                            headers: {
+                                                "Content-Type": "application/x-www-form-urlencoded",  // Spécifie le type de contenu
+                                            },
+                                            body: new URLSearchParams({
+                                                tps_ban: tps_ban,            // Envoie le temps du blacklistage
+                                                code_avis: codeAvis,         // Envoie le code de l'avis
+                                                code_offre: codeOffre        // Envoie le code de l'offre
+                                            })
+                                        })
+                                
+                                            .then(response => {
+                                                if (response.ok) {
+                                                    console.log("L'avis a bien été blacklister.");
+                                                } else {
+                                                    console.error("Erreur lors de la mise à jour de l'état de l'avis et de l'offre : " + response.status);
+                                                }
+                                            })
+                                            .catch(error => {
+                                                console.error("Erreur de réseau ou autre :", error);
+                                            });
+                                    });
+                                
+                                    // Si l'utilisateur annule (Non)
+                                    cancelBlacklist.addEventListener('click', () => {
+                                        modal.style.display = 'none';  // Cacher la modale après annulation
+                                    });
                                 </script>
-                            <!-- <span class="signalement_avis_offre">
-                                <a href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
-                                    title="Signaler cet avis"
-                                    style="text-decoration: none; margin-right: 2vw; font-size: 21px;">🚩</a>
-                            </span>
-                            <form action="poster_reponse_pro.php" method="POST">
-                                <input type="hidden" name="unAvis"
-                                    value="<?php echo htmlspecialchars(serialize($avis)); ?>">
-                                <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
-                            </form> -->
                         </div>
                     </h3>
                     <p class="avis"><?php echo html_entity_decode($avis['txt_avis']); ?></p>
