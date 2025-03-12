@@ -519,6 +519,22 @@ main.connexion_pro_main>div>div.connexion_pro_form-container>form>div.connexion_
     object-fit: cover;
 }
 
+#map {
+    height: 400px;
+    width: 100%;
+    border: 2px solid #ccc; /* Exemple de style personnalisé */
+    border-radius: 10px; /* Exemple de style personnalisé */
+}
+
+.leaflet-container {
+    background-color: #f0f0f0; /* Exemple de style personnalisé */
+}
+
+.leaflet-marker-icon {
+    filter: invert(1); /* Exemple de style personnalisé */
+}
+
+
 
 .connexion_pro_image-container {
     width: 30%;
