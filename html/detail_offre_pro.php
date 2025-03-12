@@ -938,49 +938,6 @@ include("recupInfosCompte.php");
                                     document.addEventListener('click', function() {
                                         closeAllMenus();
                                     });
-
-                                     // Afficher la modale lors de la soumission du formulaire
-                                    blacklist-avis.addEventListener('click', () => {
-                                        modal.style.display = 'flex';
-                                    });
-                                
-                                    // Si l'utilisateur confirme (Oui)
-                                    confirmBlacklist.addEventListener('click', () => {
-                                        modal.style.display = 'none';
-                                
-                                        var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
-                                        var codeAvis = document.querySelector('#blacklist-avis').getAttribute('data-avis');
-                                        var tps_ban = document.getElementById("blacklistDuration").value;
-                                
-                                        // Utilisation de fetch pour envoyer les données
-                                        fetch("https://scooby-team.ventsdouest.dev/update_avis_status.php", {
-                                            method: "POST",  // Méthode POST
-                                            headers: {
-                                                "Content-Type": "application/x-www-form-urlencoded",  // Spécifie le type de contenu
-                                            },
-                                            body: new URLSearchParams({
-                                                tps_ban: tps_ban,            // Envoie le temps du blacklistage
-                                                code_avis: codeAvis,         // Envoie le code de l'avis
-                                                code_offre: codeOffre        // Envoie le code de l'offre
-                                            })
-                                        })
-                                
-                                            .then(response => {
-                                                if (response.ok) {
-                                                    console.log("L'avis a bien été blacklister.");
-                                                } else {
-                                                    console.error("Erreur lors de la mise à jour de l'état de l'avis et de l'offre : " + response.status);
-                                                }
-                                            })
-                                            .catch(error => {
-                                                console.error("Erreur de réseau ou autre :", error);
-                                            });
-                                    });
-                                
-                                    // Si l'utilisateur annule (Non)
-                                    cancelBlacklist.addEventListener('click', () => {
-                                        modal.style.display = 'none';  // Cacher la modale après annulation
-                                    });
                                 </script>
                         </div>
                     </h3>
@@ -1325,6 +1282,47 @@ WHERE code_offre = :code_offre
     };
 });
 
+// Afficher la modale lors de la soumission du formulaire
+blacklist-avis.addEventListener('click', () => {
+    modal.style.display = 'flex';
+});
 
+// Si l'utilisateur confirme (Oui)
+confirmBlacklist.addEventListener('click', () => {
+    modal.style.display = 'none';
+
+    var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
+    var codeAvis = document.querySelector('#blacklist-avis').getAttribute('data-avis');
+    var tps_ban = document.getElementById("blacklistDuration").value;
+
+    // Utilisation de fetch pour envoyer les données
+    fetch("https://scooby-team.ventsdouest.dev/update_avis_status.php", {
+        method: "POST",  // Méthode POST
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",  // Spécifie le type de contenu
+        },
+        body: new URLSearchParams({
+            tps_ban: tps_ban,            // Envoie le temps du blacklistage
+            code_avis: codeAvis,         // Envoie le code de l'avis
+            code_offre: codeOffre        // Envoie le code de l'offre
+        })
+    })
+
+        .then(response => {
+            if (response.ok) {
+                console.log("L'avis a bien été blacklister.");
+            } else {
+                console.error("Erreur lors de la mise à jour de l'état de l'avis et de l'offre : " + response.status);
+            }
+        })
+        .catch(error => {
+            console.error("Erreur de réseau ou autre :", error);
+        });
+});
+
+// Si l'utilisateur annule (Non)
+cancelBlacklist.addEventListener('click', () => {
+    modal.style.display = 'none';  // Cacher la modale après annulation
+});
 
 </script>
