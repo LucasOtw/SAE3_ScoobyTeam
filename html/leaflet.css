@@ -1,3 +1,143 @@
+/* Généralités */
+.leaflet-container {
+    background: #f4f4f4;
+    outline-offset: 1px;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    overflow: hidden;
+    transition: background 0.3s ease;
+}
+
+.leaflet-container a {
+    color: #0078A8;
+    text-decoration: none;
+}
+
+.leaflet-container a:hover,
+.leaflet-container a:focus {
+    color: #005F7F;
+    text-decoration: underline;
+}
+
+/* Composants de la carte */
+.leaflet-pane, .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-tile-container,
+.leaflet-pane > svg, .leaflet-pane > canvas, .leaflet-zoom-box, .leaflet-image-layer, .leaflet-layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Icônes et tuiles */
+.leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow {
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.leaflet-tile::selection {
+    background: transparent;
+}
+
+.leaflet-safari .leaflet-tile {
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
+    display: block;
+}
+
+.leaflet-container .leaflet-overlay-pane svg {
+    max-width: none !important;
+    max-height: none !important;
+}
+
+.leaflet-container img.leaflet-image-layer,
+.leaflet-container .leaflet-tile {
+    width: auto;
+    padding: 0;
+    max-width: none !important;
+    max-height: none !important;
+}
+
+/* Zoom et contrôle tactile */
+.leaflet-container.leaflet-touch-zoom {
+    touch-action: pan-x pan-y;
+}
+
+.leaflet-container.leaflet-touch-drag {
+    touch-action: pinch-zoom;
+}
+
+.leaflet-container {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.leaflet-zoom-box {
+    border: 2px dotted #38f;
+    background: rgba(255,255,255,0.5);
+}
+
+/* Couches et panneaux */
+.leaflet-pane { z-index: 400; }
+.leaflet-tile-pane { z-index: 200; }
+.leaflet-overlay-pane { z-index: 400; }
+.leaflet-shadow-pane { z-index: 500; }
+.leaflet-marker-pane { z-index: 600; }
+.leaflet-tooltip-pane { z-index: 650; }
+.leaflet-popup-pane { z-index: 700; }
+
+.leaflet-map-pane canvas { z-index: 100; }
+.leaflet-map-pane svg { z-index: 200; }
+
+/* Contrôles */
+.leaflet-control {
+    position: absolute;
+    z-index: 800;
+    pointer-events: auto;
+}
+
+.leaflet-top, .leaflet-bottom {
+    position: absolute;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.leaflet-top { top: 0; }
+.leaflet-bottom { bottom: 0; }
+.leaflet-right { right: 0; }
+.leaflet-left { left: 0; }
+
+/* Animation de zoom et de fondu */
+.leaflet-fade-anim .leaflet-popup {
+    opacity: 0;
+    transition: opacity 0.2s linear;
+}
+
+.leaflet-zoom-animated {
+    transform-origin: 0 0;
+    transition: transform 0.25s cubic-bezier(0,0,0.25,1);
+}
+
+/* Curseurs */
+.leaflet-interactive {
+    cursor: pointer;
+}
+
+.leaflet-grab {
+    cursor: grab;
+}
+
+.leaflet-crosshair {
+    cursor: crosshair;
+}
+
+/* Popup */
+.leaflet-popup {
+    position: absolute;
+    text-align: center;
+    margin-bottom: 20px;
+}
 .leaflet-popup-content-wrapper {
     background: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -15,7 +155,7 @@
 }
 
 .leaflet-popup-content img {
-    width: calc(100% - 10px); /* L'image occupe presque toute la card avec une légère marge */
+    width: 95%; /* L'image occupe presque toute la card avec une légère marge */
     height: auto;
     border-radius: 6px;
     margin: 5px;
@@ -35,4 +175,77 @@
 
 .leaflet-popup-tip {
     display: none;
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    background: white;
+    color: #333;
+}
+
+/* Fermeture du popup */
+.leaflet-container a.leaflet-popup-close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    color: #757575;
+    background: transparent;
+    border: none;
+    text-align: center;
+}
+
+.leaflet-container a.leaflet-popup-close-button:hover {
+    color: #585858;
+}
+
+/* Contrôles de zoom */
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+    font: bold 18px 'Lucida Console', Monaco, monospace;
+}
+
+/* Contrôle des couches */
+.leaflet-control-layers {
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+    background: #fff;
+    border-radius: 5px;
+}
+
+.leaflet-control-layers-toggle {
+    width: 36px;
+    height: 36px;
+    background-image: url(images/layers.png);
+}
+
+.leaflet-control-layers-expanded {
+    padding: 6px 10px 6px 6px;
+    background: #fff;
+    color: #333;
+}
+
+.leaflet-control-layers-selector {
+    margin-top: 2px;
+}
+
+.leaflet-control-layers label {
+    font-size: 13px;
+}
+
+/* Attributions */
+.leaflet-container .leaflet-control-attribution {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0 5px;
+    color: #333;
+    line-height: 1.4;
+}
+
+.leaflet-control-attribution a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.leaflet-control-attribution a:hover {
+    text-decoration: underline;
 }
