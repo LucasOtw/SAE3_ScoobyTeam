@@ -3,45 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carte Interactive avec Leaflet</title>
-  <link rel="stylesheet" href="../leaflet/leaflet.css" />
+  <title>Carte Leaflet Test</title>
+  
+  <!-- Importation de Leaflet depuis un CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-oPke7gVYQ9ehGBmrcO5OgES1yx9w3qYxF8vGAUoyhXetE4hRYpJo3pBq3iDIFgGx" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-MupCzIQ2nD2X+MPlvAz4mFy5PKHeGlIpLzhfn/J+ojadCW8XG63ZB5ShJZ8pGJy5" crossorigin=""></script>
+
   <style>
-    #map { height: 500px; }
+    #map { height: 500px; width: 100%; }
   </style>
 </head>
 <body>
-  <h1>Ma Carte Interactive</h1>
+
+  <h1>Carte Test</h1>
   <div id="map"></div>
 
-  <script src="../leaflet/leaflet.js"></script>
   <script>
-    // Initialisation de la carte
-    var map = L.map('map').setView([48.8566, 2.3522], 13); // Coordonnées de Paris
+    // Vérification que Leaflet est bien chargé
+    console.log("Leaflet version:", L.version);
 
-    // Ajouter un fond de carte
+    // Initialisation de la carte
+    var map = L.map('map').setView([48.8566, 2.3522], 13); // Paris
+
+    // Ajout d'un fond de carte OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-
-    // Ajouter un marqueur à Paris
-    var markerParis = L.marker([48.8566, 2.3522]).addTo(map);
-    markerParis.bindPopup("<b>Paris</b><br>Voici la capitale de la France.").openPopup();
-
-    // Ajouter un marqueur à Lyon
-    var markerLyon = L.marker([45.75, 4.85]).addTo(map);
-    markerLyon.bindPopup("<b>Lyon</b><br>Capitale de la gastronomie.");
-
-    // Ajouter un marqueur à Marseille
-    var markerMarseille = L.marker([43.2965, 5.3698]).addTo(map);
-    markerMarseille.bindPopup("<b>Marseille</b><br>Ville portuaire et ensoleillée.");
-
-    // Ajouter un cercle autour de Paris
-    var circle = L.circle([48.8566, 2.3522], {
-      color: 'red',
-      fillColor: '#f03',
-      fillOpacity: 0.5,
-      radius: 5000
-    }).addTo(map);
   </script>
+
 </body>
 </html>
