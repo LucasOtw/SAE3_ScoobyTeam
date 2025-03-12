@@ -1233,8 +1233,8 @@ WHERE code_offre = :code_offre
         var del_offre = document.getElementById('del-offre');
         del_offre.addEventListener('submit',{e} => {
             e.preventDefault();
-            window.confirm("ALI BABA ET LES QUARANTE VIOLEURS");
-        })
+            console.log("test");
+        });
     });
 
 </script>
