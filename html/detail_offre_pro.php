@@ -1234,9 +1234,8 @@ WHERE code_offre = :code_offre
         var del_offre = document.getElementById('del-offre');
         del_offre.addEventListener('submit',(e) => {
             e.preventDefault();
-            console.log("test");
+            alert('test');
         });
-        console.log("Form : ",del_offre);
     })
 
 </script>
