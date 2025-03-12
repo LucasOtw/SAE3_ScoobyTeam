@@ -936,7 +936,7 @@ if($infos_offre !== null){
         <!-- Les fichiers sélectionnés s'afficheront ici -->
     </div>
     <input type="hidden" name="deleted_images" id="deleted-images">
-</div>
+
     <h3>Modifier vos photos actuelles</h3>
     <div class="photo-cards">
         <?php
@@ -951,6 +951,7 @@ if($infos_offre !== null){
         <?php
         }
         ?>
+    </div>
     </div>
     
    
