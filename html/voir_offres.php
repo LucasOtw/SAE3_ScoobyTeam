@@ -79,7 +79,6 @@ function tempsEcouleDepuisPublication($offre){
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Offres PACT</title>
@@ -91,7 +90,7 @@ function tempsEcouleDepuisPublication($offre){
     <script src="filtre.js"></script>
     <script src="scroll.js"></script>
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <link rel="stylesheet" href="styles.css" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 </head>
 <body>
