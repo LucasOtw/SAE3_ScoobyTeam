@@ -833,10 +833,50 @@ if (isset($json['results'][0])) {
                                     </div>
                                 <?php } ?>
 
+                                <div class="menu_avis">
+                                    <div class="menu-container" onclick="toggleMenu(event, this)">
+                                        <div class="context-menu">
+                                            <ul>
+                                                <li>
+                                                    <form action="poster_reponse_pro.php" method="POST">
+                                                        <input type="hidden" name="unAvis"
+                                                            value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                                                        <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="Répondre à l'avis">
+                                                    </form>
+                                                </li>
+                                                <li>
+                                                    <a href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>" title="Signaler cet avis" style="text-decoration: none; margin-right: 2vw; color: black;">
+                                                        Signaler l'avis
+                                                    </a>
+                                                </li>
+                                                <li>Modifier l'avis</li>
+                                            </ul>
+                                        </div>
+                                        <img src="images/icones/ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
+                                    </div>
+                                </div>
+                            
+                                <script>
+                                    function toggleMenu(event, element) {
+                                        event.stopPropagation();
+                                        closeAllMenus();
+                                        var menu = element.querySelector('.context-menu');
+                                        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+                                    }
+                            
+                                    function closeAllMenus() {
+                                        document.querySelectorAll('.context-menu').forEach(menu => {
+                                            menu.style.display = 'none';
+                                        });
+                                    }
+                            
+                                    document.addEventListener('click', function() {
+                                        closeAllMenus();
+                                    });
+                                </script>
 
 
-
-                                <span class="signalement_avis_offre">
+                                <!-- <span class="signalement_avis_offre">
                                     <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
                                         title="Signaler cet avis"
                                         style="text-decoration: none; margin-right: 2vw; font-size: 21px;">🚩</a>
@@ -845,7 +885,7 @@ if (isset($json['results'][0])) {
                                     <input type="hidden" name="unAvis"
                                         value="<?php echo htmlspecialchars(serialize($avis)); ?>">
                                     <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="↵">
-                                </form>
+                                </form> -->
                             </div>
                         </h3>
                         <p class="avis"><?php echo html_entity_decode($avis['txt_avis']); ?></p>
