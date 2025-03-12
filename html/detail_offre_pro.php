@@ -342,24 +342,29 @@ include("recupInfosCompte.php");
                     <div class="detail_offre_pro_info-icon-container">
                         <span class="info-icon">i</span>
                         <div class="tooltip">
+                            <h1><?php echo $details_offre["nom_type"]; ?></h1>
                             <div class="detail_offre_option">
                                 <?php
                                 if ($option_a_la_une !== false) {
                                     ?>
-                                    <h3>Option à la une</h3>
-                                    <p>Début de l'option : <?php echo $option_a_la_une["date_debut"]; ?></p>
-                                    <p>Fin de l'option : <?php echo $option_a_la_une["date_fin"]; ?></p>
-                                    <p>Duree de l'option : <?php echo $option_a_la_une["nb_semaines"]; ?></p>
-                                    <p>Prix de l'option : <?php echo $option_a_la_une["prix"]; ?></p>
+                                    <div>
+                                        <h3>Option à la une</h3>
+                                        <p>Début de l'option : <?php echo $option_a_la_une["date_debut"]; ?></p>
+                                        <p>Fin de l'option : <?php echo $option_a_la_une["date_fin"]; ?></p>
+                                        <p>Duree de l'option : <?php echo $option_a_la_une["nb_semaines"]; ?></p>
+                                        <p>Prix de l'option : <?php echo $option_a_la_une["prix"]; ?></p>
+                                    </div>
                                     <?php
                                 }
                                 if ($option_en_relief !== false) {
                                     ?>
-                                    <h3>Option en relief</h3>
-                                    <p>Début de l'option : <?php echo $option_en_relief["date_debut"]; ?></p>
-                                    <p>Fin de l'option : <?php echo $option_en_relief["date_fin"]; ?></p>
-                                    <p>Duree de l'option : <?php echo $option_en_relief["nb_semaines"]; ?></p>
-                                    <p>Prix de l'option : <?php echo $option_en_relief["prix"]; ?></p>
+                                    <div>
+                                        <h3>Option en relief</h3>
+                                        <p>Début de l'option : <?php echo $option_en_relief["date_debut"]; ?></p>
+                                        <p>Fin de l'option : <?php echo $option_en_relief["date_fin"]; ?></p>
+                                        <p>Duree de l'option : <?php echo $option_en_relief["nb_semaines"]; ?></p>
+                                        <p>Prix de l'option : <?php echo $option_en_relief["prix"]; ?></p>
+                                    </div>
                                     <?php
                                 }
                                 ?>
@@ -1237,9 +1242,7 @@ WHERE code_offre = :code_offre
             var del_dialog = window.confirm("Voulez-vous vraiment supprimer votre offre ?");
             if(del_dialog){
                 alert("SUPPRESSION");
-            } else {
-                alert("NOPE");
-            }
+            } 
         });
     })
 
