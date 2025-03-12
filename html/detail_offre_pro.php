@@ -396,11 +396,11 @@ include("recupInfosCompte.php");
                         <?php if (!empty($details_offre["site_web"])) { ?> <a
                                 href="<?php echo $details_offre["site_web"]; ?>" target="_blank"><button
                                     class="visit-button_detailoffre_pro">Voir le site ➔</button></a> <?php } ?>
-                        <form id="del-offre" action="#" method="POST">
-                            <input type="hidden" name="uneOffre"></input>
-                            <input type="submit" id="btn-voir-offre" class="button-text del-btn" name="supprOffre"
-                            value="Supprimer votre offre">
-                        </form>
+                                    <form id="del-offre" action="#" method="POST">
+                                        <input type="hidden" name="uneOffre">
+                                        <input type="submit" id="btn-voir-offre" class="button-text del-btn" name="supprOffre" value="Supprimer votre offre">
+                                    </form>
+
                         <form id="add-btn" action="modifier_offre.php" method="POST">
                             <input type="hidden" name="uneOffre"
                                 value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
@@ -1234,16 +1234,37 @@ WHERE code_offre = :code_offre
             newsletterPopup.style.display = 'none';
         });
     });
-    document.addEventListener('DOMContentLoaded',() => {
-        /** SUPPRESSION D'UNE OFFRE (BTN) **/
-        var del_offre = document.getElementById('del-offre');
-        del_offre.addEventListener('submit',(e) => {
-            e.preventDefault();
-            var del_dialog = window.confirm("Voulez-vous vraiment supprimer votre offre ?");
-            if(del_dialog){
-                alert("SUPPRESSION");
-            } 
-        });
-    })
+    document.addEventListener('DOMContentLoaded', () => {
+    /** SUPPRESSION D'UNE OFFRE (BTN) **/
+    var del_offre = document.getElementById('del-offre');
+    var modal = document.getElementById('myModal');
+    var confirmDelete = document.getElementById('confirmDelete');
+    var cancelDelete = document.getElementById('cancelDelete');
+    
+    del_offre.addEventListener('submit', (e) => {
+        e.preventDefault();  // Annule l'envoi du formulaire pour afficher la modale
+        modal.style.display = 'flex'; // Afficher la modale
+    });
+
+    confirmDelete.addEventListener('click', () => {
+        alert("SUPPRESSION");
+        modal.style.display = 'none'; // Fermer la modale après confirmation
+        // Tu peux ici ajouter ton code de suppression de l'offre
+        // Par exemple, envoyer une requête ou exécuter une action liée au formulaire
+        del_offre.submit();  // Soumettre le formulaire après confirmation
+    });
+
+    cancelDelete.addEventListener('click', () => {
+        modal.style.display = 'none'; // Fermer la modale après annulation
+    });
+
+    // Fermer la modale si l'utilisateur clique à l'extérieur
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+});
+
 
 </script>
