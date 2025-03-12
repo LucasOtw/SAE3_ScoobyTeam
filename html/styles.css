@@ -8172,6 +8172,7 @@ form .btn-link {
 
 .confirm-btn {
     background-color: var(--orange);
+    border:white;
     color: #000;
     width: 10em;
     height: 2em; 
@@ -8187,7 +8188,7 @@ form .btn-link {
 
 .cancel-btn {
     background-color: white;
-    border: 2px solid red;
+    border: 2px solid var(--orange);
     color: #000;
     width: 10em;
     height: 2em;
@@ -8196,7 +8197,7 @@ form .btn-link {
 }
 
 .cancel-btn:hover {
-    background-color: red;
+    background-color: var(--orange);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
