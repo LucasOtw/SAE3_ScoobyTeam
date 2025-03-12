@@ -8170,21 +8170,21 @@ button {
 }
 
 .confirm-btn {
-    background-color: #28a745; /* Vert pour confirmation */
+    background-color: var(--vert-clair); /* Vert pour confirmation */
     color: white;
 }
 
 .confirm-btn:hover {
-    background-color: #218838; /* Plus foncé quand on survole */
+    background-color: var(--vert-fonce); /* Plus foncé quand on survole */
 }
 
 .cancel-btn {
-    background-color: #dc3545; /* Rouge pour annulation */
+    background-color: var(--orange); /* Rouge pour annulation */
     color: white;
 }
 
 .cancel-btn:hover {
-    background-color: #c82333; /* Plus foncé quand on survole */
+    background-color: #e60000; /* Plus foncé quand on survole */
 }
 
 
