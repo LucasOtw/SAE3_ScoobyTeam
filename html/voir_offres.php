@@ -763,7 +763,7 @@ function tempsEcouleDepuisPublication($offre){
                 "Monday" => "lundi",
                 "Tuesday" => "mardi",
                 "Wednesday" => "mercredi",
-                "Thursday" => "jeudi",
+                "Thursday" => "jeudi", 
                 "Friday" => "vendredi",
                 "Saturday" => "samedi",
                 "Sunday" => "dimanche"
@@ -1362,10 +1362,6 @@ function tempsEcouleDepuisPublication($offre){
         </div>
     </footer>
 
-            ///////////////////////////////////////////////////
-            ///            Initialisation de la carte       ///
-            ///////////////////////////////////////////////////
-
             <script>
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -1384,23 +1380,41 @@ document.addEventListener("DOMContentLoaded", function () {
             
             // Ajouter des marqueurs pour les offres
             <?php
-            // On récupère les adresses des offres pour les afficher sur la carte
+            // On récupère les adresses des offres pour les afficher sur la carte avec leurs images
             try {
-                $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.* FROM tripenarvor._offre o 
-                                        JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
-                                        WHERE o.en_ligne = true');
+                $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
+                           (SELECT i.url_image 
+                            FROM tripenarvor._son_image si 
+                            JOIN tripenarvor._image i ON si.code_image = i.code_image 
+                            WHERE si.code_offre = o.code_offre 
+                            LIMIT 1) AS url_image
+                           FROM tripenarvor._offre o 
+                           JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
+                           WHERE o.en_ligne = true');
                 $adresses = $adresses->fetchAll(PDO::FETCH_ASSOC);
                 
                 foreach($adresses as $adr) {
-                    // Vous devrez ajouter un service de géocodage pour convertir les adresses en coordonnées
-                    // Pour cet exemple, nous utilisons des coordonnées fictives basées sur le code postal
+                    // Coordonnées fictives basées sur le code postal
                     $lat = 48.0 + (intval(substr($adr['code_postal'], 0, 2)) / 100);
                     $lng = -3.0 + (intval(substr($adr['code_postal'], 2, 3)) / 100);
                     
+                    // Créer un contenu HTML pour le popup avec l'image
+                    $popupContent = '<div class="map-popup">';
+                    
+                    // Ajouter l'image si elle existe
+                    if (!empty($adr['url_image'])) {
+                        $popupContent .= '<img src="./' . addslashes($adr['url_image']) . '" style="width:100%; max-height:120px; object-fit:cover;">';
+                    }
+                    
+                    // Ajouter les autres informations
+                    $popupContent .= '<h3>' . addslashes($adr['titre_offre']) . '</h3>' .
+                                   '<p>' . addslashes($adr['ville']) . '</p>' .
+                                   '<p class="price">' . $adr['tarif'] . '€</p>' .
+                                   '<a href="detail_offre.php?code=' . $adr['code_offre'] . '" class="view-btn">Voir l\'offre</a>' .
+                                   '</div>';
+                    
                     echo "L.marker([$lat, $lng]).addTo(map)
-                          .bindPopup(\"<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
-                          . addslashes($adr['ville']) . "<br>"
-                          . $adr['tarif'] . "€\");";
+                          .bindPopup('$popupContent');";
                 }
             } catch (Exception $e) {
                 echo "console.error('Erreur lors du chargement des adresses : " . addslashes($e->getMessage()) . "');";
