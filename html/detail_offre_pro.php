@@ -397,7 +397,7 @@ include("recupInfosCompte.php");
                                 href="<?php echo $details_offre["site_web"]; ?>" target="_blank"><button
                                     class="visit-button_detailoffre_pro">Voir le site ➔</button></a> <?php } ?>
                                     <form id="del-offre" action="#" method="POST">
-                                        <input type="hidden" name="uneOffre">
+                                        <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
                                         <input type="submit" id="btn-voir-offre" class="button-text del-btn" name="supprOffre" value="Supprimer votre offre">
                                     </form>
 
