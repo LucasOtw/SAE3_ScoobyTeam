@@ -869,7 +869,6 @@ include("recupInfosCompte.php");
 
                                 <div class="menu_avis">
                                     <div class="menu-container" onclick="toggleMenu(event, this)">
-                                        <img src="images/icones/ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
                                         <div class="context-menu">
                                             <ul>
                                                 <li>
@@ -887,6 +886,7 @@ include("recupInfosCompte.php");
                                                 <li>Blacklister l'avis</li>
                                             </ul>
                                         </div>
+                                        <img src="images/icones/ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
                                     </div>
                                 </div>
                             
