@@ -8003,8 +8003,8 @@ form .btn-link {
 .avis .menu_avis .context-menu {
     display: none;
     position: absolute;
-    top: 0px;
-    left: 100%;
+    top: -50px;
+    right: 100%;
     background: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
