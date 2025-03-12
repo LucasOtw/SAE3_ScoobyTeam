@@ -60,15 +60,15 @@ try {
             .then(response => response.json()) // Parse la réponse JSON
             .then(data => {
                 if (data.success) {
-                    alert('Avis signalé avec succès.');
+                    // alert('Avis signalé avec succès.');
                     window.location.reload(); // Recharge la page ou redirigez si nécessaire
                 } else {
-                    alert(data.message || 'Erreur lors du signalement de l\'avis.');
+                    // alert(data.message || 'Erreur lors du signalement de l\'avis.');
                 }
             })
             .catch(error => {
                 console.error('Erreur réseau ou serveur :', error);
-                alert('Impossible de signaler l\'avis.');
+                // alert('Impossible de signaler l\'avis.');
             });
     }
 
