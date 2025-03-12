@@ -746,7 +746,7 @@ function tempsEcouleDepuisPublication($offre){
             <h2 class="titre-les-offres">A proximité de moi</h2>
         </div>
 
-        <div id="map" style="height: 400px; width: 100%;"></div>
+        <div id="map" style="height: 421px; width: 82%; margin: auto"></div>
 
 
         <div class="titres-offres">
