@@ -910,7 +910,7 @@ include("recupInfosCompte.php");
                                 </div>
 
                                 <!-- Modale personnalisée -->
-                                <div id="customModal" class="custom-modal">
+                                <div id="customModal2" class="custom-modal">
                                     <div class="custom-modal-content">
                                         <p class="texte-boite-perso">Voulez-vous vraiment blacklister l'avis ?</p>
                                         <label for="blacklistDuration">Durée :</label>
@@ -1250,11 +1250,15 @@ WHERE code_offre = :code_offre
             newsletterPopup.style.display = 'none';
         });
     });
-    document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     var del_offre = document.getElementById('del-offre');
+    var blacklist-avis = document.getElementById('blacklist-avis');
     var modal = document.getElementById('customModal');
+    var modal2 = document.getElementById('customModal2');
     var confirmDelete = document.getElementById('confirmDelete');
     var cancelDelete = document.getElementById('cancelDelete');
+    var confirmBlacklist = document.getElementById('confirmBlacklist');
+    var cancelBlacklist = document.getElementById('cancelBlacklist');
     
     // Afficher la modale lors de la soumission du formulaire
     del_offre.addEventListener('submit', (e) => {
@@ -1276,53 +1280,55 @@ WHERE code_offre = :code_offre
 
     // Fermer la modale si l'utilisateur clique en dehors de la boîte
     window.onclick = function(event) {
-        if (event.target == modal) {
+        if (event.target == modal || event.target == modal2) {
             modal.style.display = 'none';
+            modal2.style.display = 'none';
         }
     };
-});
 
-// Afficher la modale lors de la soumission du formulaire
-blacklist-avis.addEventListener('click', () => {
-    modal.style.display = 'flex';
-});
 
-// Si l'utilisateur confirme (Oui)
-confirmBlacklist.addEventListener('click', () => {
-    modal.style.display = 'none';
-
-    var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
-    var codeAvis = document.querySelector('#blacklist-avis').getAttribute('data-avis');
-    var tps_ban = document.getElementById("blacklistDuration").value;
-
-    // Utilisation de fetch pour envoyer les données
-    fetch("https://scooby-team.ventsdouest.dev/update_avis_status.php", {
-        method: "POST",  // Méthode POST
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",  // Spécifie le type de contenu
-        },
-        body: new URLSearchParams({
-            tps_ban: tps_ban,            // Envoie le temps du blacklistage
-            code_avis: codeAvis,         // Envoie le code de l'avis
-            code_offre: codeOffre        // Envoie le code de l'offre
+    // Afficher la modale lors de la soumission du formulaire
+    blacklist-avis.addEventListener('click', () => {
+        modal2.style.display = 'flex';
+    });
+    
+    // Si l'utilisateur confirme (Oui)
+    confirmBlacklist.addEventListener('click', () => {
+        modal2.style.display = 'none';
+    
+        var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
+        var codeAvis = document.querySelector('#blacklist-avis').getAttribute('data-avis');
+        var tps_ban = document.getElementById("blacklistDuration").value;
+    
+        // Utilisation de fetch pour envoyer les données
+        fetch("https://scooby-team.ventsdouest.dev/update_avis_status.php", {
+            method: "POST",  // Méthode POST
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",  // Spécifie le type de contenu
+            },
+            body: new URLSearchParams({
+                tps_ban: tps_ban,            // Envoie le temps du blacklistage
+                code_avis: codeAvis,         // Envoie le code de l'avis
+                code_offre: codeOffre        // Envoie le code de l'offre
+            })
         })
-    })
-
-        .then(response => {
-            if (response.ok) {
-                console.log("L'avis a bien été blacklister.");
-            } else {
-                console.error("Erreur lors de la mise à jour de l'état de l'avis et de l'offre : " + response.status);
-            }
-        })
-        .catch(error => {
-            console.error("Erreur de réseau ou autre :", error);
-        });
-});
-
-// Si l'utilisateur annule (Non)
-cancelBlacklist.addEventListener('click', () => {
-    modal.style.display = 'none';  // Cacher la modale après annulation
+    
+            .then(response => {
+                if (response.ok) {
+                    console.log("L'avis a bien été blacklister.");
+                } else {
+                    console.error("Erreur lors de la mise à jour de l'état de l'avis et de l'offre : " + response.status);
+                }
+            })
+            .catch(error => {
+                console.error("Erreur de réseau ou autre :", error);
+            });
+    });
+    
+    // Si l'utilisateur annule (Non)
+    cancelBlacklist.addEventListener('click', () => {
+        modal2.style.display = 'none';  // Cacher la modale après annulation
+    });
 });
 
 </script>
