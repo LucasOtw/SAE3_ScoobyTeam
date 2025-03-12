@@ -19,10 +19,15 @@ if(!isset($_SESSION['pro'])){
 // Vérification si le bouton de génération est cliqué
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_api_key'])) {
     $prefix = 'M'; // Préfixe pour générer la clé
-    $stmt = $dbh->prepare('update tripenarvor._membre set api_key = tripenarvor.generate_api_key(:prefix) where code_compte = :code_compte');
-    $stmt->bindParam(':prefix', $prefix, PDO::PARAM_STR);
-    $stmt->bindParam(':code_compte', $_SESSION['membre']['code_compte']);
-    $stmt->execute();
+    try{
+        $stmt = $dbh->prepare('update tripenarvor._membre set api_key = tripenarvor.generate_api_key(:prefix) where code_compte = :code_compte');
+        $stmt->bindParam(':prefix', $prefix, PDO::PARAM_STR);
+        $stmt->bindParam(':code_compte', $_SESSION['membre']['code_compte']);
+        $stmt->execute();
+    }catch( PDOException $Exception ) {
+        // Note The Typecast To An Integer!
+        throw new PDOException( $Exception->getMessage( ) , (int)$Exception->getCode( ) );
+    }
 
     // Récupérer la nouvelle clé générée
     echo "test";
