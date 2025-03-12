@@ -43,47 +43,60 @@ try {
 ?>
 
 <script>
-    // Fonction pour afficher la modale
+    // Vérifie si l'ID de l'avis est défini avant d'attacher l'événement
+    document.addEventListener("DOMContentLoaded", function () {
+        const button = document.querySelector("button[type='submit']");
+        
+        if (button) {
+            button.addEventListener("click", function (event) {
+                showConfirmation(event);
+            });
+        }
+    });
+    
+    // Fonction pour afficher la modale uniquement si elle est déclenchée
     function showConfirmation(event) {
         event.preventDefault(); // Empêche l'envoi immédiat du formulaire
-        document.getElementById('confirmationModal').style.display = 'block'; // Affiche la modale
-
+    
+        console.log("showConfirmation triggered"); // Vérification
+    
+        document.getElementById("confirmationModal").style.display = "block";
+    
         const avisId = <?php echo json_encode($idAvis); ?>;
-
-        fetch('/modif_signaler.php', {
-            method: 'POST',
+    
+        fetch("/modif_signaler.php", {
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify({ id: avisId })
+            body: JSON.stringify({ id: avisId }),
         })
-            .then(response => response.json()) // Parse la réponse JSON
-            .then(data => {
+            .then((response) => response.json())
+            .then((data) => {
                 if (data.success) {
-                    // alert('Avis signalé avec succès.');
-                    window.location.reload(); // Recharge la page ou redirigez si nécessaire
+                    setTimeout(() => {
+                        window.location.reload(); // Recharge la page après signalement
+                    }, 2000); // Délai pour voir la modale avant rechargement
                 } else {
-                    // alert(data.message || 'Erreur lors du signalement de l\'avis.');
+                    console.error("Erreur:", data.message || "Problème lors du signalement.");
                 }
             })
-            .catch(error => {
-                console.error('Erreur réseau ou serveur :', error);
-                // alert('Impossible de signaler l\'avis.');
+            .catch((error) => {
+                console.error("Erreur réseau ou serveur :", error);
             });
     }
-
-    // Fonction pour fermer la modale
-    function closeModal() {
-        document.getElementById('confirmationModal').style.display = 'none'; // Cache la modale
-    }
-
-<!--     // Ferme la modale si l'utilisateur clique en dehors de la fenêtre de la modale
+    
+    // Fermer la modale si on clique en dehors
     window.onclick = function (event) {
-        var modal = document.getElementById('confirmationModal');
+        var modal = document.getElementById("confirmationModal");
         if (event.target === modal) {
-            modal.style.display = 'none';
+            closeModal();
         }
-    } -->
+    };
+    
+    function closeModal() {
+        document.getElementById("confirmationModal").style.display = "none";
+    }
 </script>
 
 

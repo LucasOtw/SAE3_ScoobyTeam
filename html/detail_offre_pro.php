@@ -1228,13 +1228,15 @@ WHERE code_offre = :code_offre
         closePopupButton.addEventListener('click', () => {
             newsletterPopup.style.display = 'none';
         });
-
+    });
+    document.addEventListener('DOMContentLoaded',() => {
         /** SUPPRESSION D'UNE OFFRE (BTN) **/
         var del_offre = document.getElementById('del-offre');
         del_offre.addEventListener('submit',(e) => {
             e.preventDefault();
             console.log("test");
         });
-    });
+        console.log("Form : ",del_offre);
+    })
 
 </script>
