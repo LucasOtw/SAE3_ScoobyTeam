@@ -25,13 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_api_key'])) 
         $stmt->bindParam(':code_compte', $_SESSION['membre']['code_compte']);
         $stmt->execute();
     }catch( PDOException $Exception ) {
-        // Note The Typecast To An Integer!
         throw new PDOException( $Exception->getMessage( ) , (int)$Exception->getCode( ) );
     }
 
     // Récupérer la nouvelle clé générée
     echo "test";
 }
+
+var_dump($_SESSION);
 
 $modif_mdp = null;
 
