@@ -32,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_api_key'])) 
         throw new PDOException( $Exception->getMessage( ) , (int)$Exception->getCode( ) );
     }
 
-    // Récupérer la nouvelle clé générée
-    echo "test";
+    header('location: modif_mdp_pro.php');
+    exit;
 }
 
 $modif_mdp = null;
