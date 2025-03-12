@@ -12331,3 +12331,18 @@ ul.mentions_legales-sous-list {
     border-radius: 15px;
     object-fit: cover;
 }
+
+#del-offre {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+#del-offre:hover {
+    background-color: #cc0000;
+}
