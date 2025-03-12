@@ -921,42 +921,37 @@ if($infos_offre !== null){
                 ?>
             </fieldset>
 
+            </div>
+        </div>
 
 
             </div>
-            <div class="tab-content" id="photos">
-            <h3>Ajouter de nouvelles photos</h3>
-    <div class="drop-zone" id="drop-zone">
-        <div class="drop-zone-icon">+</div>
-        <div class="drop-zone-prompt">Glissez et déposez vos images ici</div>
-        <div>ou</div>
-        <label class="button_import_image" for="file-input">Choisir des fichiers</label>
-        <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple class="file-input">
-    </div>
-    <div class="selected-files-container" id="selected-files">
-        <!-- Les fichiers sélectionnés s'afficheront ici -->
-    </div>
-    <input type="hidden" name="deleted_images" id="deleted-images">
+            <!-- <div class="tab-content" id="photos"> -->
+                <div class="photo-cards">
+                    <?php
+                    foreach($recup_photos as $photo){
+                    ?>
 
-    <h3>Modifier vos photos actuelles</h3>
-    <div class="photo-cards">
-        <?php
-        foreach($recup_photos as $photo){
-        ?>
-        <div class="photo-card">
-            <div class="photo-image">
-                <img src="<?php echo $photo; ?>" alt="Photo">
-            </div>
-            <button class="delete-photo-btn">Supprimer</button>
-        </div>
-        <?php
-        }
-        ?>
-    </div>
-    </div>
-    
-   
-        </div>
+                    <div class="photo-card">
+                        <div class="photo-image">
+                            <img src="<?php echo $photo; ?>" alt="Photo">
+                        </div>
+                        <button class="delete-photo-btn">Supprimer</button>
+                    </div>
+                <?php
+                }
+                ?>
+                    <!-- Carte pour ajouter une photo -->
+                    <!-- <div id="photo-card" class="add-photo-card">
+                        <div id="add-photo">
+                            <span>+</span>
+                            <p>Ajouter une photo</p>
+                        </div> -->
+                    </div>
+                    <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple style="display: block;">
+                    <input type="hidden" name="deleted_images" id="deleted-images">
+                </div>
+           
 
             <div class="btn_modif_offre">
                 <input type="submit" name="envoi_modif" value="Modifier">
@@ -1097,7 +1092,6 @@ if($infos_offre !== null){
                     if (image.classList.contains('supprimee')) {
                         // Enlever la classe et restaurer le texte du bouton
                         image.classList.remove('supprimee');
-                        button.textContent = 'Supprimer';
                         button.classList.remove('reverse'); // Enlever la classe "reverse" du bouton
 
                         const indexPhoto = deletedImages.indexOf(photoSrc);
