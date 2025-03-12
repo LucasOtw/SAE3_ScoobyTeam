@@ -2,6 +2,8 @@
 ob_start(); // bufferisation, ça devrait marcher ?
 session_start();
 
+require_once('recupInfosCompte.php');
+
 if(!isset($_SESSION['membre'])){
    header('location: connexion_membre.php');
    exit;
@@ -53,7 +55,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if(isset($_POST['modifier'])){
         if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
-            var_dump($_POST);
+            $n_texteAvis = trim($_POST['textAreaAvis']);
+            $n_note = (int) $_POST['note'];
+            $code_avis = (int) $_POST['code_avis'];
+
+            if($n_note != $_SESSION['modif_avis']['note']){
+                echo "lol";
+            }
+
         } else {
             ?>
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -185,7 +194,7 @@ $note = $avis['note'];
                        <p class="poster_un_avis_disclaimer">En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
                        <div class="poster_un_avis_buttons">
                            <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
-                           <input type="hidden" name="id_avis" value="<?php echo $avis['code_avis']; ?>">
+                           <input type="hidden" name="code_avis" value="<?php echo $avis['code_avis']; ?>">
                            <button class="poster_un_avis_btn_publier" type="submit"- name="modifier">Modifier →</button>
                        </div>
                     </div>
