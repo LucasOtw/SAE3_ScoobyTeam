@@ -51,6 +51,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $avis = unserialize($_POST['unAvis']);
         $note = json_encode($avis['note']);
     }
+    if(isset($_POST['modifier'])){
+        if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
+
+        } else {
+            ?>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+
+            $(document).ready(function() {
+                
+                function afficherPOPup() {
+                    $("#customConfirmBox").fadeIn();     
+                }
+                
+                // Fermer la popup quand l'utilisateur clique sur "Fermer"
+                $('#confirmButton').on('click', function() {
+                    $('#customConfirmBox').fadeOut();
+                });
+
+                afficherPOPup();
+                
+            });
+            
+            </script>
+            <?php
+        }
+    }
      if(isset($_POST['publier'])){
         if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))) {
            
@@ -239,7 +266,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                        <p class="poster_un_avis_disclaimer">En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
                        <div class="poster_un_avis_buttons">
                            <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
-                           <button class="poster_un_avis_btn_publier" type="submit"- name="publier2">Publier →</button>
+                           <button class="poster_un_avis_btn_publier" type="submit"- name="modifier">Modifier →</button>
                        </div>
                     </div>
                   </div>
