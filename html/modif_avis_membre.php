@@ -205,7 +205,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                <div class="poster_un_avis_section">
                    <h2 class="poster_un_avis_section_titre">Votre avis</h2>
 
-                   <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
+                   <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"
+                   value="<?php echo "LOL"; ?>"></textarea>
                    <p class="message-erreur avis-vide">Vous devez remplir ce champ</p>
                    <p class="message-erreur avis-trop-long">L'avis ne doit pas dépasser 500 caractères.</p>                  
                    <div class="poster_un_avis_footer">
@@ -236,7 +237,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                        <p class="poster_un_avis_disclaimer">En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
                        <div class="poster_un_avis_buttons">
                            <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
-                           <button class="poster_un_avis_btn_publier" type="submit"- name="publier">Publier →</button>
+                           <button class="poster_un_avis_btn_publier" type="submit"- name="publier2">Publier →</button>
                        </div>
                     </div>
                   </div>
