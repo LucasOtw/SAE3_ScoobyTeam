@@ -2,7 +2,11 @@
 ob_start(); // bufferisation, ça devrait marcher ?
 session_start();
 
-include("recupInfosCompte.php");
+require_once("recupInfosCompte.php");
+
+echo "<pre>";
+var_dump($_SESSION);
+echo "</pre>";
 
 if(isset($_GET['logout'])){
    session_unset();
@@ -20,9 +24,9 @@ if(!isset($_SESSION['pro'])){
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_api_key'])) {
     $prefix = 'M'; // Préfixe pour générer la clé
     try{
-        $stmt = $dbh->prepare('update tripenarvor._membre set api_key = tripenarvor.generate_api_key(:prefix) where code_compte = :code_compte');
+        $stmt = $dbh->prepare('update tripenarvor._professionnel set api_key = tripenarvor.generate_api_key(:prefix) where code_compte = :code_compte');
         $stmt->bindParam(':prefix', $prefix, PDO::PARAM_STR);
-        $stmt->bindParam(':code_compte', $_SESSION['membre']['code_compte']);
+        $stmt->bindParam(':code_compte', $_SESSION['pro']['code_compte']);
         $stmt->execute();
     }catch( PDOException $Exception ) {
         throw new PDOException( $Exception->getMessage( ) , (int)$Exception->getCode( ) );
@@ -31,8 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_api_key'])) 
     // Récupérer la nouvelle clé générée
     echo "test";
 }
-
-var_dump($_SESSION);
 
 $modif_mdp = null;
 

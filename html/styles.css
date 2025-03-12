@@ -7495,9 +7495,8 @@ form .btn-link {
 
 #btn-repondre-avis {
     border: 3px;
-    color: var(--vert-clair);
     background-color: white;
-    font-size: 26px;
+    font-size: 12px;
     cursor: pointer;
 }
 
