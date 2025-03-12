@@ -119,6 +119,16 @@ if(isset($_SESSION['modif_avis'])){
 
 $note = $avis['note'];
 
+// On vérifie si cet avis est une réponse
+
+$isAnswer = $dbh->prepare('SELECT COUNT(*) FROM tripenarvor._reponse
+WHERE code_reponse = :code_rep');
+$isAnswer->bindValue(':code_rep',$avis['code_avis']);
+$isAnswer->execute();
+
+$isAnswer = $isAnswer->fetch(PDO::FETCH_ASSOC);
+var_dump($isAnswer);
+
 ?><!DOCTYPE html>
 <html lang="en">
 
