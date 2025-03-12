@@ -486,7 +486,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		height: 24vh;
 	}
 	.leaflet-popup-content-wrapper img {
-		element.style {
 			width: 141%;
 			max-height: 136px;
 			left: 10%;
@@ -495,7 +494,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
 			margin-left: -2.8vw;
 			margin-top: -0.8vh;
 		}
-	}
 	
 .leaflet-popup-content {
     margin: 13px 24px 13px 20px;
