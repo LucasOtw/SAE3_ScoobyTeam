@@ -85,6 +85,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->execute($params);
             }
 
+            header('location: detail_offre.php');
+            exit;
+
         } else {
             ?>
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
