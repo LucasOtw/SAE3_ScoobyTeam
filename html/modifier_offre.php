@@ -921,12 +921,10 @@ if($infos_offre !== null){
                 ?>
             </fieldset>
 
-            </div>
-        </div>
 
 
             </div>
-            <!-- <div class="tab-content" id="photos"> -->
+            <div class="tab-content" id="photos">
                 <div class="photo-cards">
                     <?php
                     foreach($recup_photos as $photo){
@@ -951,6 +949,8 @@ if($infos_offre !== null){
                     <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple style="display: block;">
                     <input type="hidden" name="deleted_images" id="deleted-images">
                 </div>
+            </div>
+        
            
 
             <div class="btn_modif_offre">
