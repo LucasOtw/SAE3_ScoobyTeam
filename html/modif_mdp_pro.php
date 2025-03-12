@@ -4,7 +4,9 @@ session_start();
 
 require_once("recupInfosCompte.php");
 
+echo "<pre>";
 var_dump($_SESSION);
+echo "</pre>";
 
 if(isset($_GET['logout'])){
    session_unset();
