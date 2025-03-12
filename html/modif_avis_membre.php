@@ -349,7 +349,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             console.log(`star${note}`);
             // on récupère une étoile en fonction de la note
             const numEtoile = document.getElementById(`star${note}`);
-            console.log(numEtoile);
+            numEtoile.toggleAttribute("checked");
         });
     </script>
 </body>
