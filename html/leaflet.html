@@ -3,27 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carte Leaflet Test</title>
-  
-  <!-- Importation de Leaflet depuis un CDN -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-oPke7gVYQ9ehGBmrcO5OgES1yx9w3qYxF8vGAUoyhXetE4hRYpJo3pBq3iDIFgGx" crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-MupCzIQ2nD2X+MPlvAz4mFy5PKHeGlIpLzhfn/J+ojadCW8XG63ZB5ShJZ8pGJy5" crossorigin=""></script>
+  <title>Carte Interactive</title>
+
+  <!-- Importation des fichiers Leaflet depuis ton serveur -->
+  <link rel="stylesheet" href="../leaflet/leaflet.css" />
+  <script src="../leaflet/leaflet.js"></script>
 
   <style>
-    #map { height: 500px; width: 100%; }
+    #map {
+      height: 500px;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
 
-  <h1>Carte Test</h1>
+  <h1>Carte Leaflet</h1>
   <div id="map"></div>
 
   <script>
-    // Vérification que Leaflet est bien chargé
-    console.log("Leaflet version:", L.version);
+    // Vérification de Leaflet
+    console.log("Leaflet version:", L.version); 
 
-    // Initialisation de la carte
-    var map = L.map('map').setView([48.8566, 2.3522], 13); // Paris
+    // Initialisation de la carte centrée sur Paris
+    var map = L.map('map').setView([48.8566, 2.3522], 13);
 
     // Ajout d'un fond de carte OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
