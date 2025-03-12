@@ -3,9 +3,9 @@
 ob_start();
 session_start();
 
-if(isset($_POST)){
+if(isset($_POST['uneOffre'])){
     echo "t";
-    var_dump(unserialize($_POST));
+    var_dump(unserialize($_POST['uneOffre']));
 }
 
 ?>
