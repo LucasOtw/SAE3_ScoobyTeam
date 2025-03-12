@@ -77,13 +77,13 @@ try {
         document.getElementById('confirmationModal').style.display = 'none'; // Cache la modale
     }
 
-<!--     // Ferme la modale si l'utilisateur clique en dehors de la fenêtre de la modale
+    // Ferme la modale si l'utilisateur clique en dehors de la fenêtre de la modale
     window.onclick = function (event) {
         var modal = document.getElementById('confirmationModal');
         if (event.target === modal) {
             modal.style.display = 'none';
         }
-    } -->
+    }
 </script>
 
 
