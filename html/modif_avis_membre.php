@@ -7,7 +7,7 @@ if(!isset($_SESSION['membre'])){
    exit;
 }
 
-var_dump($_SERVER['HTTP_REFERER']);
+var_dump($_SERVER);
 
 $details_offre = $_SESSION["detail_offre"];
 
