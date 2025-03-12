@@ -1271,7 +1271,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Si l'utilisateur confirme (Oui)
     confirmDelete.addEventListener('click', () => {
-        alert("SUPPRESSION");
         modal.style.display = 'none';  // Cacher la modale après la confirmation
         del_offre.action="supprimer_offre.php";
         del_offre.submit();  // Soumettre le formulaire après la confirmation
