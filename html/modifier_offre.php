@@ -1108,7 +1108,6 @@ if($infos_offre !== null){
                     } else {
                         // Ajouter la classe pour griser l'image et changer le texte du bouton
                         image.classList.add('supprimee');
-                        button.textContent = 'Ajouter';
                         button.classList.add('reverse'); // Ajouter la classe "reverse" au bouton
 
                         deletedImages.push(photoSrc);
