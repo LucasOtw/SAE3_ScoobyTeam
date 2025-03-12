@@ -1382,12 +1382,9 @@ document.addEventListener("DOMContentLoaded", function () {
             <?php
             // On récupère les adresses des offres pour les afficher sur la carte
             try {
-                $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, i.url_image, a.* 
-FROM tripenarvor._offre o 
-JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse
-JOIN tripenarvor._offre_image oi ON o.code_offre = oi.code_offre
-JOIN tripenarvor._image i ON oi.code_image = i.code_image
-WHERE o.en_ligne = true');
+                $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.* FROM tripenarvor._offre o 
+                                        JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
+                                        WHERE o.en_ligne = true');
                 $adresses = $adresses->fetchAll(PDO::FETCH_ASSOC);
                 
                 foreach($adresses as $adr) {
