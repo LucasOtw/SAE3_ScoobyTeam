@@ -1084,6 +1084,10 @@ input[type="email"] {
            text-align: center;
 }
 
+.detail_offre_option div {
+           text-align: left;
+}
+
 .main_modif_mdp_pro input[type="password"] {
     width: 100%;
     padding: 12px;
