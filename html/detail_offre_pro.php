@@ -401,6 +401,16 @@ include("recupInfosCompte.php");
                                         <input type="submit" id="btn-voir-offre" class="button-text del-btn" name="supprOffre" value="Supprimer votre offre">
                                     </form>
 
+                                    <!-- Modale personnalisée -->
+                                    <div id="customModal" class="custom-modal">
+                                        <div class="custom-modal-content">
+                                            <p>Voulez-vous vraiment supprimer votre offre ?</p>
+                                            <button id="confirmDelete" class="confirm-btn">Oui</button>
+                                            <button id="cancelDelete" class="cancel-btn">Non</button>
+                                        </div>
+                                    </div>
+
+
                         <form id="add-btn" action="modifier_offre.php" method="POST">
                             <input type="hidden" name="uneOffre"
                                 value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
@@ -1235,36 +1245,37 @@ WHERE code_offre = :code_offre
         });
     });
     document.addEventListener('DOMContentLoaded', () => {
-    /** SUPPRESSION D'UNE OFFRE (BTN) **/
     var del_offre = document.getElementById('del-offre');
-    var modal = document.getElementById('myModal');
+    var modal = document.getElementById('customModal');
     var confirmDelete = document.getElementById('confirmDelete');
     var cancelDelete = document.getElementById('cancelDelete');
     
+    // Afficher la modale lors de la soumission du formulaire
     del_offre.addEventListener('submit', (e) => {
-        e.preventDefault();  // Annule l'envoi du formulaire pour afficher la modale
-        modal.style.display = 'flex'; // Afficher la modale
+        e.preventDefault();  // Empêcher l'envoi immédiat du formulaire
+        modal.style.display = 'flex';  // Afficher la modale
     });
 
+    // Si l'utilisateur confirme (Oui)
     confirmDelete.addEventListener('click', () => {
         alert("SUPPRESSION");
-        modal.style.display = 'none'; // Fermer la modale après confirmation
-        // Tu peux ici ajouter ton code de suppression de l'offre
-        // Par exemple, envoyer une requête ou exécuter une action liée au formulaire
-        del_offre.submit();  // Soumettre le formulaire après confirmation
+        modal.style.display = 'none';  // Cacher la modale après la confirmation
+        del_offre.submit();  // Soumettre le formulaire après la confirmation
     });
 
+    // Si l'utilisateur annule (Non)
     cancelDelete.addEventListener('click', () => {
-        modal.style.display = 'none'; // Fermer la modale après annulation
+        modal.style.display = 'none';  // Cacher la modale après annulation
     });
 
-    // Fermer la modale si l'utilisateur clique à l'extérieur
+    // Fermer la modale si l'utilisateur clique en dehors de la boîte
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = 'none';
         }
-    }
+    };
 });
+
 
 
 </script>

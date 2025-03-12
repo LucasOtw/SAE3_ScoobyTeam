@@ -8135,51 +8135,57 @@ form .btn-link {
            background-color: #ff4d4f;
            color: white;
 }
-
-/* Style de la boîte modale */
-.modal {
-    display: none;
+/* Style général pour la modale */
+.custom-modal {
+    display: none; /* Cacher la modale par défaut */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
     justify-content: center;
     align-items: center;
+    z-index: 9999; /* Assurer que la modale est au-dessus du contenu */
 }
 
-.modal-content {
+/* Contenu de la modale */
+.custom-modal-content {
     background-color: #fff;
-    padding: 20px;
+    padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     text-align: center;
-    width: 300px;
+    width: 400px; /* Largeur de la boîte */
 }
 
-.modal button {
-    margin: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+/* Boutons de confirmation et d'annulation */
+button {
+    padding: 12px 25px;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 16px;
 }
 
-.modal button:hover {
-    background-color: #0056b3;
+.confirm-btn {
+    background-color: #28a745; /* Vert pour confirmation */
+    color: white;
 }
 
-.modal button.cancel {
-    background-color: #dc3545;
+.confirm-btn:hover {
+    background-color: #218838; /* Plus foncé quand on survole */
 }
 
-.modal button.cancel:hover {
-    background-color: #c82333;
+.cancel-btn {
+    background-color: #dc3545; /* Rouge pour annulation */
+    color: white;
 }
 
+.cancel-btn:hover {
+    background-color: #c82333; /* Plus foncé quand on survole */
+}
 
 
 /*****************************************************
