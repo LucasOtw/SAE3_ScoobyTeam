@@ -8879,6 +8879,12 @@ nav.nav-bar {
     display: none;
 }
 
+.supprimee {
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
+
 /* Masquer les boutons de suppression par défaut */
 .delete-photo-btn {
   position: absolute;

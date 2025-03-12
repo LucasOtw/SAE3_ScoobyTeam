@@ -1024,207 +1024,163 @@ if($infos_offre !== null){
            
     </footer>
     <script defer>
-        const form = document.getElementById('modif_offre');
-        
-        // Au lieu de gérer chaque champ individuellement, récupère tous les éléments avec `data-sync`
-        form.addEventListener('submit', (event) => {
-            const elementsToSync = document.querySelectorAll('[data-sync]');
-            elementsToSync.forEach((element) => {
-                // Récupère l'id du champ de destination
-                const targetId = element.getAttribute('data-sync');
-                const target = document.getElementById(targetId);
-        
-                if (target) {
-                    // Utilise innerHTML pour les champs éditables ou value pour les inputs
-                    target.value = element.contentEditable === "true" ? element.innerHTML : element.value;
-                }
-            });
+    const form = document.getElementById('modif_offre');
+
+    // Synchroniser les champs éditables avec les champs cachés
+    form.addEventListener('submit', (event) => {
+        const elementsToSync = document.querySelectorAll('[data-sync]');
+        elementsToSync.forEach((element) => {
+            const targetId = element.getAttribute('data-sync');
+            const target = document.getElementById(targetId);
+            if (target) {
+                target.value = element.contentEditable === "true" ? element.innerHTML : element.value;
+            }
         });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const tabs = document.querySelectorAll('.tabs a');
-            const sections = document.querySelectorAll('.tab-content');
-    
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function (e) {
-                    e.preventDefault();
-    
-                    // Supprime la classe active de tous les onglets
-                    tabs.forEach(t => t.classList.remove('active'));
-    
-                    // Ajoute la classe active à l'onglet cliqué
-                    tab.classList.add('active');
-    
-                    // Récupère l'ID de la section associée
-                    const tabId = tab.getAttribute('data-tab');
-    
-                    // Masque toutes les sections
-                    sections.forEach(section => section.classList.remove('active'));
-    
-                    // Affiche la section correspondante
-                    document.getElementById(tabId).classList.add('active');
-                });
-            });
-        });
-    </script>
-    <script defer>
-        document.addEventListener('DOMContentLoaded', () => {
+    });
+</script>
 
-            // IMAGES GÉNÉRALES
-
-            // Sélectionner tous les boutons "Supprimer"
-            const deleteButtons = document.querySelectorAll('.delete-photo-btn');
-            const deletedImagesField = document.getElementById('deleted-images');
-
-            let deletedImages = [];
-        
-            // Ajouter un événement clic à chaque bouton
-            deleteButtons.forEach((button) => {
-                button.addEventListener('click', (event) => {
-                    // Empêcher l'envoi du formulaire
-                    event.preventDefault();
-        
-                    // Récupérer l'élément parent (la carte de la photo)
-                    const photoCard = button.closest('.photo-card');
-        
-                    // Cibler directement l'image à l'intérieur de .photo-image
-                    const image = photoCard.querySelector('.photo-image img');
-                    const photoSrc = image.src;
-        
-                    // Vérifier si l'image est déjà marquée comme supprimée
-                    if (image.classList.contains('supprimee')) {
-                        // Enlever la classe et restaurer le texte du bouton
-                        image.classList.remove('supprimee');
-                        button.textContent = 'Supprimer';
-                        button.classList.remove('reverse'); // Enlever la classe "reverse" du bouton
-
-                        const indexPhoto = deletedImages.indexOf(photoSrc);
-
-                        if(indexPhoto !== -1){
-                            deletedImages.splice(index,1);
-                        }
-                        
-                    } else {
-                        // Ajouter la classe pour griser l'image et changer le texte du bouton
-                        image.classList.add('supprimee');
-                        button.textContent = 'Ajouter';
-                        button.classList.add('reverse'); // Ajouter la classe "reverse" au bouton
-
-                        deletedImages.push(photoSrc);
-                    }
-                    deletedImagesField.value = JSON.stringify(deletedImages);
-                });
-            });
-        });
-    </script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const dropZone = document.getElementById('drop-zone');
-    const fileInput = document.getElementById('file-input');
-    const selectedFilesContainer = document.getElementById('selected-files');
+    document.addEventListener('DOMContentLoaded', function () {
+        const tabs = document.querySelectorAll('.tabs a');
+        const sections = document.querySelectorAll('.tab-content');
 
-    // Empêcher le comportement par défaut du navigateur
-    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-        dropZone.addEventListener(eventName, preventDefaults, false);
-    });
-
-    function preventDefaults(e) {
-        e.preventDefault();
-        e.stopPropagation();
-    }
-
-    // Ajouter des styles visuels pendant le glisser-déposer
-    ['dragenter', 'dragover'].forEach(eventName => {
-        dropZone.addEventListener(eventName, highlight, false);
-    });
-
-    ['dragleave', 'drop'].forEach(eventName => {
-        dropZone.addEventListener(eventName, unhighlight, false);
-    });
-
-    function highlight() {
-        dropZone.classList.add('active');
-    }
-
-    function unhighlight() {
-        dropZone.classList.remove('active');
-    }
-
-    // Gérer le glisser-déposer des fichiers
-    dropZone.addEventListener('drop', handleDrop, false);
-
-    function handleDrop(e) {
-        const dt = e.dataTransfer;
-        const files = dt.files;
-        handleFiles(files);
-    }
-
-    // Gérer la sélection de fichiers via le bouton
-    fileInput.addEventListener('change', function() {
-        handleFiles(this.files);
-    });
-
-    function handleFiles(files) {
-        // Mettre à jour l'interface utilisateur
-        updateFileList(files);
-        
-        // Si vous avez besoin de prévisualiser les images
-        [...files].forEach(previewFile);
-    }
-
-    function updateFileList(files) {
-        selectedFilesContainer.innerHTML = '';
-        [...files].forEach(file => {
-            const fileElement = document.createElement('div');
-            fileElement.className = 'selected-file';
-            fileElement.innerHTML = `
-                <span>${file.name}</span>
-                <button type="button" class="remove-file">&times;</button>
-            `;
-            selectedFilesContainer.appendChild(fileElement);
-        });
-
-        // Ajouter des écouteurs d'événements pour supprimer les fichiers
-        document.querySelectorAll('.remove-file').forEach((button, index) => {
-            button.addEventListener('click', () => {
-                removeFile(index);
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function (e) {
+                e.preventDefault();
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const tabId = tab.getAttribute('data-tab');
+                sections.forEach(section => section.classList.remove('active'));
+                document.getElementById(tabId).classList.add('active');
             });
         });
-    }
+    });
+</script>
 
-    function removeFile(index) {
-        // Créer un nouveau FileList sans le fichier à supprimer
-        // Note: FileList est un objet en lecture seule, nous devons donc trouver une solution de contournement
-        const dt = new DataTransfer();
-        const files = fileInput.files;
-        
-        for (let i = 0; i < files.length; i++) {
-            if (i !== index) {
-                dt.items.add(files[i]);
+<script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+        const deleteButtons = document.querySelectorAll('.delete-photo-btn');
+        const deletedImagesField = document.getElementById('deleted-images');
+        let deletedImages = [];
+
+        deleteButtons.forEach((button) => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault();
+                const photoCard = button.closest('.photo-card');
+                const image = photoCard.querySelector('.photo-image img');
+                const photoSrc = image.src;
+
+                if (image.classList.contains('supprimee')) {
+                    image.classList.remove('supprimee');
+                    button.textContent = 'Supprimer';
+                    button.classList.remove('reverse');
+                    const index = deletedImages.indexOf(photoSrc);
+                    if (index !== -1) {
+                        deletedImages.splice(index, 1);
+                    }
+                } else {
+                    image.classList.add('supprimee');
+                    button.textContent = 'Ajouter';
+                    button.classList.add('reverse');
+                    deletedImages.push(photoSrc);
+                }
+                deletedImagesField.value = JSON.stringify(deletedImages);
+            });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const selectedFilesContainer = document.getElementById('selected-files');
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight() {
+            dropZone.classList.add('active');
+        }
+
+        function unhighlight() {
+            dropZone.classList.remove('active');
+        }
+
+        dropZone.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        fileInput.addEventListener('change', function() {
+            handleFiles(this.files);
+        });
+
+        function handleFiles(files) {
+            updateFileList(files);
+            [...files].forEach(previewFile);
+        }
+
+        function updateFileList(files) {
+            selectedFilesContainer.innerHTML = '';
+            [...files].forEach(file => {
+                const fileElement = document.createElement('div');
+                fileElement.className = 'selected-file';
+                fileElement.innerHTML = `
+                    <span>${file.name}</span>
+                    <button type="button" class="remove-file">&times;</button>
+                `;
+                selectedFilesContainer.appendChild(fileElement);
+            });
+
+            document.querySelectorAll('.remove-file').forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    removeFile(index);
+                });
+            });
+        }
+
+        function removeFile(index) {
+            const dt = new DataTransfer();
+            const files = fileInput.files;
+            for (let i = 0; i < files.length; i++) {
+                if (i !== index) {
+                    dt.items.add(files[i]);
+                }
+            }
+            fileInput.files = dt.files;
+            updateFileList(fileInput.files);
+        }
+
+        function previewFile(file) {
+            if (file.type.match('image.*')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Vous pouvez ajouter du code ici pour afficher une prévisualisation de l'image
+                };
+                reader.readAsDataURL(file);
             }
         }
-        
-        fileInput.files = dt.files;
-        updateFileList(fileInput.files);
-    }
 
-    function previewFile(file) {
-        // Si vous souhaitez ajouter une prévisualisation des images
-        if (file.type.match('image.*')) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                // Vous pouvez ajouter du code ici pour afficher une prévisualisation de l'image
-            };
-            reader.readAsDataURL(file);
-        }
-    }
-
-    // Activer le clic sur la zone de glisser-déposer pour ouvrir la boîte de dialogue de fichiers
-    dropZone.addEventListener('click', function() {
-        fileInput.click();
+        dropZone.addEventListener('click', function() {
+            fileInput.click();
+        });
     });
-});
 </script>
-</body>
-</html>
