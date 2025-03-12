@@ -126,7 +126,7 @@ WHERE code_reponse = :code_rep');
 $isAnswer->bindValue(':code_rep',$avis['code_avis']);
 $isAnswer->execute();
 
-$isAnswer = $isAnswer->fetch(PDO::FETCH_ASSOC);
+$isAnswer = $isAnswer->fetchColumn();
 var_dump($isAnswer);
 
 ?><!DOCTYPE html>
