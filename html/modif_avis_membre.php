@@ -7,6 +7,8 @@ if(!isset($_SESSION['membre'])){
    exit;
 }
 
+var_dump($_SERVER['HTTP_REFERER']);
+
 $details_offre = $_SESSION["detail_offre"];
 
 // Vérifie si HTTP_REFERER est défini
