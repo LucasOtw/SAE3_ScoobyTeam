@@ -150,7 +150,7 @@ $note = $avis['note'];
                 </div>
             </div>
 
-            <form  id="avisForm" action="poster_un_avis.php" method="POST">
+            <form  id="avisForm" action="#" method="POST">
                <div class="poster_un_avis_section">
                    <h2 class="poster_un_avis_section_titre">Votre avis</h2>
 
