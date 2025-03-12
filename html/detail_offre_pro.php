@@ -342,7 +342,7 @@ include("recupInfosCompte.php");
                     <div class="detail_offre_pro_info-icon-container">
                         <span class="info-icon">i</span>
                         <div class="tooltip">
-                            <h1><?php echo $details_offre["nom_type"]; ?></h1>
+                            <h2><?php echo $details_offre["nom_type"]; ?></h2>
                             <div class="detail_offre_option">
                                 <?php
                                 if ($option_a_la_une !== false) {
