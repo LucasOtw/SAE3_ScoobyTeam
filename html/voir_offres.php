@@ -1364,6 +1364,30 @@ function tempsEcouleDepuisPublication($offre){
         </div>
     </footer>
 
+            ///////////////////////////////////////////////////
+            ///            Initialisation de la carte       ///
+            ///////////////////////////////////////////////////
+
+            <script>
+
+            document.addEventListener("DOMContentLoaded", function () {
+    // Création de la carte et centrage sur une position donnée (ex: Paris)
+    var map = L.map('map').setView([48.8566, 2.3522], 13);
+
+    // Ajout d'un fond de carte OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Ajout d'un marqueur
+    L.marker([48.8566, 2.3522]).addTo(map)
+        .bindPopup("Paris, France")
+        .openPopup();
+});
+
+</script>
+
+
 </body>
 </html>
 <script>
