@@ -1076,19 +1076,6 @@ input[type="email"] {
     border-radius: 50%;
 }
 
-.detail_offre_option {
-           display: flex;
-           gap: 1em;
-}
-
-.detail_offre_pro_info-icon-container h1 {
-           text-align: center;
-}
-
-.detail_offre_option div {
-           text-align: left;
-}
-
 .main_modif_mdp_pro input[type="password"] {
     width: 100%;
     padding: 12px;
@@ -11175,7 +11162,7 @@ ul.mentions_legales-sous-list {
     padding: 8px 12px;
     border-radius: 4px;
     white-space: nowrap;
-    font-size: 14px;
+    font-size: 12px;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s, visibility 0.3s;
@@ -12353,6 +12340,19 @@ ul.mentions_legales-sous-list {
     margin-bottom: 5px;
     display: flex;
     align-items: center;
+}
+
+.detail_offre_option {
+           display: flex;
+           gap: 1em;
+}
+
+.detail_offre_pro_info-icon-container h2 {
+           text-align: center;
+}
+
+.detail_offre_option div {
+           text-align: left;
 }
 
 
