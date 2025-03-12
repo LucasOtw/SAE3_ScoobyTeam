@@ -259,6 +259,10 @@ if (isset($json['results'][0])) {
 }
 
 include("recupInfosCompte.php");
+
+echo "<pre>";
+var_dump($detail_offre);
+echo "</pre>";
 ?>
 
 <!DOCTYPE html>
