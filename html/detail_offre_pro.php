@@ -396,23 +396,11 @@ include("recupInfosCompte.php");
                         <?php if (!empty($details_offre["site_web"])) { ?> <a
                                 href="<?php echo $details_offre["site_web"]; ?>" target="_blank"><button
                                     class="visit-button_detailoffre_pro">Voir le site ➔</button></a> <?php } ?>
-                                    <form id="del-offre" action="#" method="POST">
-                                        <input type="hidden" name="uneOffre">
-                                        <input type="submit" id="btn-voir-offre" class="button-text del-btn" name="supprOffre"
-                                            value="Supprimer votre offre">
-                                    </form>
-
-                                    <!-- Boîte de dialogue personnalisée -->
-                                    <div id="custom-dialog" class="dialog-overlay">
-                                        <div class="dialog-box">
-                                            <p id="dialog-message">Voulez-vous vraiment supprimer votre offre ?</p>
-                                            <div class="dialog-buttons">
-                                                <button id="confirm-btn">Oui</button>
-                                                <button id="cancel-btn">Non</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                        <form id="del-offre" action="#" method="POST">
+                            <input type="hidden" name="uneOffre"></input>
+                            <input type="submit" id="btn-voir-offre" class="button-text del-btn" name="supprOffre"
+                            value="Supprimer votre offre">
+                        </form>
                         <form id="add-btn" action="modifier_offre.php" method="POST">
                             <input type="hidden" name="uneOffre"
                                 value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
@@ -1246,31 +1234,16 @@ WHERE code_offre = :code_offre
             newsletterPopup.style.display = 'none';
         });
     });
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded',() => {
+        /** SUPPRESSION D'UNE OFFRE (BTN) **/
         var del_offre = document.getElementById('del-offre');
-        var dialog = document.getElementById('custom-dialog');
-        var dialogMessage = document.getElementById('dialog-message');
-        var confirmBtn = document.getElementById('confirm-btn');
-        var cancelBtn = document.getElementById('cancel-btn');
-
-        // Lorsque le formulaire est soumis, on empêche son envoi et on affiche la boîte de dialogue
-        del_offre.addEventListener('submit', (e) => {
-            e.preventDefault(); // Empêche l'envoi immédiat du formulaire
-            dialogMessage.textContent = "Voulez-vous vraiment supprimer votre offre ?";
-            dialog.style.display = "flex"; // Afficher la boîte de dialogue
+        del_offre.addEventListener('submit',(e) => {
+            e.preventDefault();
+            var del_dialog = window.confirm("Voulez-vous vraiment supprimer votre offre ?");
+            if(del_dialog){
+                alert("SUPPRESSION");
+            } 
         });
-
-        // Lorsque l'utilisateur confirme
-        confirmBtn.addEventListener('click', () => {
-            dialog.style.display = "none"; // Fermer la boîte de dialogue
-            del_offre.submit(); // Soumettre le formulaire pour supprimer l'offre
-        });
-
-        // Lorsque l'utilisateur annule
-        cancelBtn.addEventListener('click', () => {
-            dialog.style.display = "none"; // Fermer la boîte de dialogue sans action
-        });
-    });
-
+    })
 
 </script>
