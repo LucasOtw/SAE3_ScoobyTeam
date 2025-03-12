@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if(isset($_POST['modifier'])){
         if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
-            echo "lol";
+            var_dump($_POST);
         } else {
             ?>
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
