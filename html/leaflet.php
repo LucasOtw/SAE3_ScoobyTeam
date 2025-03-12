@@ -1,6 +1,11 @@
 <?php
   // Définir le chemin vers le dossier "leaflet" pour inclure les fichiers CSS et JS
   $leaflet_path = '../leaflet/';
+  
+  // Vérifier si les fichiers nécessaires existent
+  if (!file_exists($leaflet_path . 'leaflet.css') || !file_exists($leaflet_path . 'leaflet.js')) {
+    die('Les fichiers Leaflet nécessaires sont manquants.');
+  }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,13 +15,14 @@
   <title>Carte Interactive avec Leaflet</title>
   
   <!-- Inclure le fichier CSS de Leaflet -->
-  <?php require($leaflet_path . 'leaflet.css'); ?>
+  <?php require_once($leaflet_path . 'leaflet.css'); ?>
 
   <style>
     /* Style pour afficher correctement la carte */
     #map {
       height: 500px;
       width: 100%;
+      border: 1px solid #ccc; /* Ajouter une bordure pour mieux visualiser la carte */
     }
   </style>
 </head>
@@ -26,7 +32,7 @@
   <div id="map"></div>
 
   <!-- Inclure le fichier JS de Leaflet -->
-  <?php require($leaflet_path . 'leaflet.js'); ?>
+  <?php require_once($leaflet_path . 'leaflet.js'); ?>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -45,6 +51,11 @@
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
+
+      // Ajouter un marker sur Paris
+      L.marker([48.8566, 2.3522]).addTo(map)
+        .bindPopup('<b>Paris</b><br>Ville lumière!')
+        .openPopup();
     });
   </script>
 
