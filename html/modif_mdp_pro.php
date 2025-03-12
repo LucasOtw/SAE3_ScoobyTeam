@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_api_key'])) 
     $stmt->execute();
 
     // Récupérer la nouvelle clé générée
+    echo "test";
 }
 
 $modif_mdp = null;
