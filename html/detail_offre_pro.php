@@ -396,11 +396,21 @@ include("recupInfosCompte.php");
                         <?php if (!empty($details_offre["site_web"])) { ?> <a
                                 href="<?php echo $details_offre["site_web"]; ?>" target="_blank"><button
                                     class="visit-button_detailoffre_pro">Voir le site ➔</button></a> <?php } ?>
-                        <form id="del-offre" action="#" method="POST">
-                            <input type="hidden" name="uneOffre"></input>
-                            <input type="submit" id="btn-voir-offre" class="button-text del-btn" name="supprOffre"
-                            value="Supprimer votre offre">
-                        </form>
+                                    <form id="del-offre" action="#" method="POST">
+                                        <input type="hidden" name="uneOffre">
+                                        <input type="submit" id="btn-voir-offre" class="button-text del-btn" name="supprOffre" value="Supprimer votre offre">
+                                    </form>
+
+                                    <!-- Modale personnalisée -->
+                                    <div id="customModal" class="custom-modal">
+                                        <div class="custom-modal-content">
+                                            <p>Voulez-vous vraiment supprimer votre offre ?</p>
+                                            <button id="cancelDelete" class="cancel-btn">Non</button>
+                                            <button id="confirmDelete" class="confirm-btn">Oui</button>
+                                        </div>
+                                    </div>
+
+
                         <form id="add-btn" action="modifier_offre.php" method="POST">
                             <input type="hidden" name="uneOffre"
                                 value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
@@ -1234,16 +1244,38 @@ WHERE code_offre = :code_offre
             newsletterPopup.style.display = 'none';
         });
     });
-    document.addEventListener('DOMContentLoaded',() => {
-        /** SUPPRESSION D'UNE OFFRE (BTN) **/
-        var del_offre = document.getElementById('del-offre');
-        del_offre.addEventListener('submit',(e) => {
-            e.preventDefault();
-            var del_dialog = window.confirm("Voulez-vous vraiment supprimer votre offre ?");
-            if(del_dialog){
-                alert("SUPPRESSION");
-            } 
-        });
-    })
+    document.addEventListener('DOMContentLoaded', () => {
+    var del_offre = document.getElementById('del-offre');
+    var modal = document.getElementById('customModal');
+    var confirmDelete = document.getElementById('confirmDelete');
+    var cancelDelete = document.getElementById('cancelDelete');
+    
+    // Afficher la modale lors de la soumission du formulaire
+    del_offre.addEventListener('submit', (e) => {
+        e.preventDefault();  // Empêcher l'envoi immédiat du formulaire
+        modal.style.display = 'flex';  // Afficher la modale
+    });
+
+    // Si l'utilisateur confirme (Oui)
+    confirmDelete.addEventListener('click', () => {
+        alert("SUPPRESSION");
+        modal.style.display = 'none';  // Cacher la modale après la confirmation
+        del_offre.submit();  // Soumettre le formulaire après la confirmation
+    });
+
+    // Si l'utilisateur annule (Non)
+    cancelDelete.addEventListener('click', () => {
+        modal.style.display = 'none';  // Cacher la modale après annulation
+    });
+
+    // Fermer la modale si l'utilisateur clique en dehors de la boîte
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    };
+});
+
+
 
 </script>

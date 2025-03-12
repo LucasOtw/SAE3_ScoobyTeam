@@ -8135,7 +8135,71 @@ form .btn-link {
            background-color: #ff4d4f;
            color: white;
 }
+/* Style général pour la modale */
+.custom-modal {
+    display: none; /* Cacher la modale par défaut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Assurer que la modale est au-dessus du contenu */
+}
 
+/* Contenu de la modale */
+.custom-modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 400px; /* Largeur de la boîte */
+}
+
+/* Boutons de confirmation et d'annulation */
+/* button {
+    padding: 12px 25px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 16px;
+} */
+
+.confirm-btn {
+    background-color: #fff;
+    color: #000;
+    width: 10em;
+    height: 2em;
+    border: 2px solid white;
+    border-radius: 15px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.confirm-btn:hover {
+    background-color: white;
+    border: 2px solid var(--vert-clair);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cancel-btn {
+    background-color: red;
+    color: #000;
+    width: 10em;
+    height: 2em;
+    border: 2px solid white;
+    border-radius: 15px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.cancel-btn:hover {
+    background-color: white;
+    border: 2px solid var(--vert-clair);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
 
 
 /*****************************************************
