@@ -7768,6 +7768,14 @@ form .btn-link {
 .avis-widget .avis-content .signalement_repondre {
     display: flex;
 }
+.avis > span{
+    flex-grow: 1;
+}
+
+.avis > form {
+    display: flex;
+    align-items: center;
+}
 
 /* Styles pour les écrans de 429px et moins */
 @media (max-width: 429px) {
