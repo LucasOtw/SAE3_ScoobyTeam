@@ -239,17 +239,26 @@ $isAnswer = $isAnswer->fetchColumn();
                             <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
                             <input type="hidden" name="code_avis" value="<?php echo $avis['code_avis']; ?>">
                             <input type="hidden" name="isAnswer" value="<?php echo $isAnswer; ?>">
-                            <button class="poster_un_avis_btn_publier_pro" type="submit" name="modifier" onclick="afficherMessage()">Modifier →</button>
+                            <button class="poster_un_avis_btn_publier_pro" type="button" name="modifier" onclick="afficherMessage(event)">Modifier →</button>
                         </div>
 
                         <div id="message-container" style="display:none;">
                             <p>Votre avis va être modifié.</p>
                         </div>
+
                         <script>
-                            function afficherMessage() {
+                            function afficherMessage(event) {
+                                event.preventDefault();  // Empêche la soumission du formulaire immédiate
+                                
                                 var messageContainer = document.getElementById("message-container");
-                                messageContainer.style.display = "block"; // Affiche le message
+                                messageContainer.style.display = "block";  // Affiche le message
+                                
+                                // Si tu veux attendre quelques secondes avant de soumettre le formulaire
+                                setTimeout(function() {
+                                    document.querySelector("form").submit();  // Soumettre le formulaire après 2 secondes
+                                }, 2000);  // Délai de 2 secondes pour afficher le message avant la soumission
                             }
+
                         </script>                            
                     </div>
                   </div>
