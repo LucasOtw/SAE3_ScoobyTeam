@@ -22,25 +22,41 @@ $password = "philly-Congo-bry4nt";
 $dbh = new PDO($dsn, $username, $password);
 
 if(isset($_POST['uneOffre'])){
-    $uneOffre = unserialize($_POST['uneOffre']);
+    $codeOffre = unserialize($_POST['uneOffre']);
 
-    echo "<pre>";
-    var_dump($uneOffre);
-    echo "</pre>";
 
     // On va d'abord récupérer chaque lien d'image
 
-    $recupCodesImages = $dbh->prepare("SELECT lundi,mardi,mercredi,jeudi,vendredi,samedi,dimanche
-    FROM tripenarvor_offre WHERE code_offre = :code_offre");
-    $recupCodesImages->bindValue(':code_offre');
-    $recupCodesImages->execute();
+    $recupCodesHoraires = $dbh->prepare("SELECT lundi,mardi,mercredi,jeudi,vendredi,samedi,dimanche
+    FROM tripenarvor._offre WHERE code_offre = :code_offre");
+    $recupCodesHoraires->bindValue(':code_offre',$codeOffre);
+    $recupCodesHoraires->execute();
 
-    $codesImages = $recupCodesImages->fetchColumn();
-    $codesImages = array_filter($codesImages, function($val){
+    $codesHoraires = $recupCodesHoraires->fetch(PDO::FETCH_ASSOC);
+    $codesHoraires = array_filter($codesHoraires, function($val){
         return !is_null($val);
     });
 
-    var_dump($codesImages);
+    // $codesHoraires contient les horaires en fonction du jour
+    foreach($codesHoraires as $code){
+        // on regarde si le code est unique
+        $checkUniqueHoraire = $dbh->prepare(
+            "SELECT SUM(
+                (CASE WHEN lundi = ? THEN 1 ELSE 0 END) +
+                (CASE WHEN mardi = ? THEN 1 ELSE 0 END) +
+                (CASE WHEN mercredi = ? THEN 1 ELSE 0 END) +
+                (CASE WHEN jeudi = ? THEN 1 ELSE 0 END) +
+                (CASE WHEN vendredi = ? THEN 1 ELSE 0 END) +
+                (CASE WHEN samedi = ? THEN 1 ELSE 0 END) +
+                (CASE WHEN dimanche = ? THEN 1 ELSE 0 END)
+            ) AS total_global FROM tripenarvor._offre;"
+        );
+        $checkUniqueHoraire->execute([$code,$code,$code,$code,$code,$code,$code]);
+        $isUniqueHoraire = $checkUniqueHoraire->fetchColumn();
+
+        var_dump($isUniqueHoraire);
+
+    }
 
 } else {
     // sinon il n'a rien à faire ici

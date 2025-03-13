@@ -906,7 +906,7 @@ include("recupInfosCompte.php");
                                                 </a>
                                             </li>
                                             <li>
-                                                <div id="blacklist-avis"
+                                                <div class="blacklist-avis"
                                                     data-avis="<?php echo htmlspecialchars($avis['code_avis']); ?>">
                                                     <p>Blacklister l'avis</p>
                                                 </div>
@@ -977,6 +977,13 @@ include("recupInfosCompte.php");
                 <button id="confirmBlacklist" class="confirm-btn">Oui</button>
             </div>
         </div>
+
+        <div id="customModalError" class="custom-modal">
+            <div class="custom-modal-error-content">
+                <p class="texte-boite-perso">Vous n'avez plus de jetons pour blacklister l'avis</p>
+                    <button id="cancelBlacklistError" class="cancel-error-btn">Fermer</button>
+            </div>
+        </div>
         
         <?php
         // Récupérer tous les avis principaux (sans réponses déjà existantes)
@@ -1020,27 +1027,16 @@ WHERE code_offre = :code_offre
                     <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
                     <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
                     <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
+
+                    <?php 
+                        $jetons_restants = 3; // Valeur dynamique à modifier selon les actions de l'utilisateur
+                        echo "<p>Il vous reste $jetons_restants jeton(s).</p>"; 
+                    ?>
                 </div>
                 
-                <?php 
-                    $jetons_restants = 3; // Valeur dynamique à modifier selon les actions de l'utilisateur
-                    echo "<p>Il vous reste $jetons_restants jeton(s).</p>"; 
-                ?>
+                
 
             </div>
-
-            
-            <div class="jetons-container">
-                <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
-                <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
-                <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
-            </div>
-            
-            <?php 
-                $jetons_restants = 3; // Valeur dynamique à modifier selon les actions de l'utilisateur
-                echo "<p>Il vous reste $jetons_restants jeton(s).</p>"; 
-            ?>
-
 
             <div class="avis-list">
                 <?php
@@ -1304,13 +1300,16 @@ WHERE code_offre = :code_offre
     });
     document.addEventListener('DOMContentLoaded', () => {
         var del_offre = document.getElementById('del-offre');
-        var blacklist_avis = document.getElementById('blacklist-avis');
+        var blacklist_avis = document.querySelectorAll('blacklist-avis');
+        console.log("Nombre d'éléments .blacklist-avis trouvés :", blacklist_avis.length);
         var modal = document.getElementById('customModal');
         var modal2 = document.getElementById('customModal2');
+        var modalError = document.getElementById('customModalError');
         var confirmDelete = document.getElementById('confirmDelete');
         var cancelDelete = document.getElementById('cancelDelete');
         var confirmBlacklist = document.getElementById('confirmBlacklist');
         var cancelBlacklist = document.getElementById('cancelBlacklist');
+        var cancelBlacklistError = document.getElementById('cancelBlacklistError');
 
         // Afficher la modale lors de la soumission du formulaire
         del_offre.addEventListener('submit', (e) => {
@@ -1340,8 +1339,18 @@ WHERE code_offre = :code_offre
 
 
         // Afficher la modale lors de la soumission du formulaire
-        blacklist_avis.addEventListener('click', () => {
-            modal2.style.display = 'flex';
+        blacklist_avis.forEach(element => {
+            console.log(element);
+            element.addEventListener('click', () => {
+                var jetons = <?php echo json_encode($details_offre['nb_blacklister']); ?>;
+                console.log(jetons);
+                if (jetons + 1 < 3) {
+                    modal2.style.display = 'flex';
+                    confirmBlacklist.dataset.avis = element.getAttribute('data-avis'); // Stocker l'ID de l'avis
+                } else {
+                    modalError.style.display = 'flex';
+                }
+            });
         });
 
         // Si l'utilisateur confirme (Oui)
@@ -1380,6 +1389,10 @@ WHERE code_offre = :code_offre
         // Si l'utilisateur annule (Non)
         cancelBlacklist.addEventListener('click', () => {
             modal2.style.display = 'none';  // Cacher la modale après annulation
+        });
+
+        cancelBlacklistError.addEventListener('click', () => {
+            modalError.style.display = 'none';  // Cacher la modale après annulation
         });
     });
 
