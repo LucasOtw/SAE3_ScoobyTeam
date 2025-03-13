@@ -152,10 +152,8 @@ if(isset($_POST['uneOffre'])){
         rmdir($chemin);
     }
 
-} else {
-    // sinon il n'a rien à faire ici
-    header('location: mes_offres.php');
-    exit;
 }
+header('location: mes_offres.php');
+exit;
 
 ?>
