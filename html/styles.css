@@ -12449,3 +12449,68 @@ ul.mentions_legales-sous-list {
     object-fit: cover;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+/*****************************************************
+            * Page 404 *
+*****************************************************/
+
+/* Styles pour la page 404 */
+.page-404-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+.page-404-title {
+    font-size: 80px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.page-404-subtitle {
+    font-size: 24px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.page-404-text {
+    font-size: 18px;
+    color: #777;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+.page-404-button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.page-404-button:hover {
+    background-color: #0056b3;
+}
+
+.page-404-image {
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
