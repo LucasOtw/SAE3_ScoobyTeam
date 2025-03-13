@@ -18,12 +18,19 @@ $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";
 $password = "philly-Congo-bry4nt";
 
-// Créer une instance PDO
 $dbh = new PDO($dsn, $username, $password);
 
 if(isset($_POST['uneOffre'])){
     $codeOffre = unserialize($_POST['uneOffre']);
 
+    // On récupère le nom de l'offre, pour supprimer le dossier
+    $recupTitre = $dbh->prepare('SELECT titre_offre FROM tripenarvor._offre
+    WHERE code_offre = :code_offre');
+    $recupTitre->bindValue(':code_offre',$codeOffre);
+    $recupTitre->execute();
+
+    $titreOffre = $recupTitre->fetchColumn();
+    var_dump($titreOffre);
 
     /* RÉCUPÉRATION DE CHAQUE LIEN D'IMAGE */
 
@@ -118,7 +125,7 @@ if(isset($_POST['uneOffre'])){
         if (preg_match('#^images/offres/([^/]+)/[^/]+\.(png|jpg|jpeg|gif)$#', $chemin)){
             // si le lien ressemble à : images/offres/{doss}/img.ext, on peut la supprimer
             if(file_exists($chemin)){
-                echo "LOL";
+                // unlink($chemin); // supprime le fichier
             }
         }
     }
