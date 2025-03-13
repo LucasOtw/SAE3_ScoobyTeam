@@ -2855,7 +2855,7 @@ input[type="password"]::placeholder {
 
 
 .main_consulter_compte_membre form {
-    margin: 0 3vw;
+    margin: 0 10vw;
     border-radius: 8px;
 }
 
@@ -7773,8 +7773,7 @@ form .btn-link {
 }
 
 .avis > form {
-    display: flex;
-    align-items: center;
+    margin: 0 0; 
 }
 
 /* Styles pour les écrans de 429px et moins */
