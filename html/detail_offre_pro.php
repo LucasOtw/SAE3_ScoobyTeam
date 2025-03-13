@@ -675,6 +675,7 @@ include("recupInfosCompte.php");
                                 </p>
                             </div>
             <?php
+            echo $details_offre["nb_blacklister"];    
         }
         ?>
 
@@ -704,6 +705,7 @@ include("recupInfosCompte.php");
 
             </div>
             <?php
+            echo $details_offre["nb_blacklister"];    
         }
         ?>
 
@@ -718,6 +720,7 @@ include("recupInfosCompte.php");
 
 
         <?php
+        echo $details_offre["nb_blacklister"];    
         // Récupérer la moyenne des notes
         $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre and note<>0');
         $moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
@@ -813,9 +816,6 @@ include("recupInfosCompte.php");
 
             // Calcul de la marge pour les sous-réponses
             $marge = $niveau * 5; // Indentation
-
-            
-            echo $details_offre["nb_blacklister"];    
             ?>
             <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
                 <div class="avis-content">
