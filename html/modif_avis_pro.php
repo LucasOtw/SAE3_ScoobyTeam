@@ -92,15 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt = $dbh->prepare($sql);
                 $stmt->execute($params);
             }
-            if($modifications->execute()){
-                ?>
-                    <div class="creation-success">
-                        <img src="images/verifier.png" alt="Succès">
-                        <h2>Compte crée avec succès !</h2>
-                    </div>
-                <?php
-                
-            }
+            
             header('location: detail_offre_pro.php');
             exit;
         } else {
@@ -244,11 +236,21 @@ $isAnswer = $isAnswer->fetchColumn();
                    ?>
                        <p class="poster_un_avis_disclaimer">En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
                        <div class="poster_un_avis_buttons">
-                           <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
-                           <input type="hidden" name="code_avis" value="<?php echo $avis['code_avis']; ?>">
-                           <input type="hidden" name="isAnswer" value="<?php echo $isAnswer; ?>">
-                           <button class="poster_un_avis_btn_publier_pro" type="submit"- name="modifier">Modifier →</button>
-                       </div>
+                            <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
+                            <input type="hidden" name="code_avis" value="<?php echo $avis['code_avis']; ?>">
+                            <input type="hidden" name="isAnswer" value="<?php echo $isAnswer; ?>">
+                            <button class="poster_un_avis_btn_publier_pro" type="submit" name="modifier" onclick="afficherMessage()">Modifier →</button>
+                        </div>
+
+                        <div id="message-container" style="display:none;">
+                            <p>Votre avis va être modifié.</p>
+                        </div>
+                        <script>
+                            function afficherMessage() {
+                                var messageContainer = document.getElementById("message-container");
+                                messageContainer.style.display = "block"; // Affiche le message
+                            }
+                        </script>                            
                     </div>
                   </div>
                </div>

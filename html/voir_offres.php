@@ -1414,7 +1414,7 @@ $popupContent .= "</div>";
 // Fermeture de la div principale
 $popupContent .= "</div>";
     
-    echo "L.marker([$lat, $lng]).addTo(map)
+    echo "L.marker([$lat, $lng], {icon: customIcon}).addTo(map)
           .bindPopup(\"" . $popupContent . "\");";
 }
             ?>
@@ -1426,6 +1426,14 @@ $popupContent .= "</div>";
     } else {
         console.error("L'élément #map n'existe pas dans le DOM");
     }
+});
+
+// Dans votre script JavaScript après avoir initialisé la carte
+var customIcon = L.icon({
+    iconUrl: './assets/images/pin.png', // Chemin vers votre image de pin
+    iconSize: [30, 40], // Taille en pixels [largeur, hauteur]
+    iconAnchor: [15, 40], // Point de l'icône qui correspondra à la position du marqueur [x, y] (par rapport au coin sup. gauche)
+    popupAnchor: [0, -35] // Point à partir duquel la popup doit s'ouvrir (relatif à l'iconAnchor)
 });
 </script>
 
