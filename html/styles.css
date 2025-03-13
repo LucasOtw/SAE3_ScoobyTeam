@@ -11571,7 +11571,8 @@ ul.mentions_legales-sous-list {
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2s ease;
     margin-top: 3vh;
-    margin-left: 3vw;
+    margin-left: 68vw;
+    margin-bottom: 3em;
 }
 
 .container-signalement .signaler_un_avis_textarea {
