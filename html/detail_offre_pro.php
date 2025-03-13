@@ -1026,6 +1026,7 @@ WHERE code_offre = :code_offre
                 </div>
 
                 <div class="jetons-container">
+                    <h2>Blacklistage</h2>
                     <div class="jetons">
                         <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
                         <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
