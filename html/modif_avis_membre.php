@@ -200,7 +200,7 @@ $isAnswer = $isAnswer->fetchColumn();
                 </div>
             </div>
 
-            <form  id="avisForm" action="#" method="POST">
+            <form id="avisForm" action="#" method="POST">
                <div class="poster_un_avis_section">
                    <h2 class="poster_un_avis_section_titre">Votre avis</h2>
 
@@ -353,19 +353,19 @@ $isAnswer = $isAnswer->fetchColumn();
             // on récupère une étoile en fonction de la note
             const numEtoile = document.getElementById(`star${note}`);
             numEtoile.toggleAttribute("checked");
-        });
-        
-        var btnModif = document.getElementById('#envoiModif');
-        var formModif = document.getElementById('#avisForm');
 
-        console.log(formModif);
+            var btnModif = document.getElementById('#envoiModif');
+            var formModif = document.getElementById('#avisForm');
 
-        formModif.addEventListener('submit',function(e){
-            e.preventDefault();
-            var dialog_modif = window.confirm("Voulez-vous vraiment modifier votre avis ?");
-            if(dialog_modif){
-                formModif.submit();
-            }
+            console.log(formModif);
+
+            formModif.addEventListener('submit',function(e){
+                e.preventDefault();
+                var dialog_modif = window.confirm("Voulez-vous vraiment modifier votre avis ?");
+                if(dialog_modif){
+                    formModif.submit();
+                }
+            });
         });
     </script>
 </body>
