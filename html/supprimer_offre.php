@@ -33,7 +33,9 @@ if(isset($_POST['uneOffre'])){
     $recupCodesHoraires = $dbh->prepare("SELECT lundi,mardi,mercredi,jeudi,vendredi,samedi,dimanche
     FROM tripenarvor._offre WHERE code_offre = :code_offre");
     $recupCodesHoraires->bindValue(':code_offre',$codeOffre);
-    $recupCodesHoraires->execute();
+    if($recupCodesHoraires->execute()){
+        echo "Lol";
+    }
 
     $CodesHoraires = $recupCodesHoraires->fetch(PDO::FETCH_ASSOC);
     $CodesHoraires = array_filter($CodesHoraires, function($val){
