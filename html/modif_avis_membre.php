@@ -357,16 +357,20 @@ $isAnswer = $isAnswer->fetchColumn();
             const numEtoile = document.getElementById(`star${note}`);
             numEtoile.toggleAttribute("checked");
 
-            var btnModif = document.getElementById('envoiModif');
-            var formModif = document.getElementById('avisForm');
+            var btnModif = document.getElementById('envoiModif'); // Le bouton "modifier"
+            var formModif = document.getElementById('avisForm');  // Le formulaire
 
             console.log(formModif);
 
-            formModif.addEventListener('submit',function(e){
-                e.preventDefault();
+            // Empêcher l'envoi automatique du formulaire
+            formModif.addEventListener('submit', function(e) {
+                e.preventDefault();  // Empêche la soumission initiale du formulaire
+
                 var dialog_modif = window.confirm("Voulez-vous vraiment modifier votre avis ?");
-                if(dialog_modif){
-                    formModif.submit();
+                
+                if (dialog_modif) {
+                    // Simuler un clic sur le bouton "modifier"
+                    btnModif.click();  // Ce clic va soumettre le formulaire
                 }
             });
         });
