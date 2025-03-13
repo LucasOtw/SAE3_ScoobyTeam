@@ -157,9 +157,9 @@
 }
 
 .leaflet-popup-content img {
-    width: 95%; /* L'image occupe presque toute la card avec une légère marge */
+    width: 95%; 
     height: auto;
-    border-radius: 6px;
+    border-radius: 13px;
     margin: 5px;
 }
 
@@ -183,6 +183,7 @@
 .leaflet-popup-tip {
     background: white;
     color: #333;
+    border-radius: 15px;
 }
 
 /* Fermeture du popup */
