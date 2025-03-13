@@ -705,7 +705,7 @@ include("recupInfosCompte.php");
                 </ul>
 
             </div>
-        <?php
+            <?php
         }
         ?>
 
@@ -784,6 +784,7 @@ include("recupInfosCompte.php");
         // Fonction pour afficher les avis et les réponses récursivement
         function afficherAvis($avis, $niveau = 0)
         {
+            global $details_offre;
             // Déterminer l'affichage selon le type d'utilisateur
             if ($avis['code_compte'] == $_SESSION['pro']['code_compte']) {
                 $prenom = "Mon Entreprise";
@@ -940,7 +941,8 @@ include("recupInfosCompte.php");
                                     <p class="texte-boite-perso">Voulez-vous vraiment blacklister l'avis ?</p>
 
                                     <p class="texte-boite-perso">Après il vous restera
-                                        <?php echo $details_offre["nb_blacklister"]; ?> jeton(s)</p>
+                                        <?php echo $details_offre["nb_blacklister"]; ?> jeton(s)
+                                    </p>
 
                                     <button id="cancelBlacklist" class="cancel-btn">Non</button>
                                     <button id="confirmBlacklist" class="confirm-btn">Oui</button>
