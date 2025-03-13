@@ -95,6 +95,31 @@ if(isset($_POST['uneOffre'])){
 
     }
 
+    /* SUPPRESSION DE L'OFFRE */
+
+/*     $deleteOffre = $dbh->prepare('DELETE FROM tripenarvor._offre WHERE code_offre = :code_offre');
+    $deleteOffre->bindValue(':code_offre',$codeOffre);
+    try {
+        $deleteOffre->execute();
+        
+        if ($deleteOffre->rowCount() > 0) {
+            echo "L'offre avec le code $codeOffre a été supprimée avec succès.";
+        } else {
+            echo "Aucune offre trouvée avec le code $codeOffre.";
+        }
+    } catch (PDOException $e) {
+        die("Erreur lors de la suppression : " . $e->getMessage());
+    } */
+
+    // On supprime les images du serveur
+    foreach($liensImages as $img){
+        $chemin = ltrim("../",$img);
+
+        if (preg_match('#^images/offres/([^/]+)/[^/]+\.(png|jpg|jpeg|gif)$#', $chemin)){
+            echo "test";
+        }
+    }
+
 } else {
     // sinon il n'a rien à faire ici
     header('location: mes_offres.php');
