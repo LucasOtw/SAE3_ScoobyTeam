@@ -705,7 +705,7 @@ include("recupInfosCompte.php");
                 </ul>
 
             </div>
-            <?php
+        <?php
         }
         ?>
 
@@ -782,7 +782,7 @@ include("recupInfosCompte.php");
 
 
         // Fonction pour afficher les avis et les réponses récursivement
-        function afficherAvis($avis, $niveau = 0, $details_offre)
+        function afficherAvis($avis, $niveau = 0)
         {
             // Déterminer l'affichage selon le type d'utilisateur
             if ($avis['code_compte'] == $_SESSION['pro']['code_compte']) {
@@ -940,8 +940,7 @@ include("recupInfosCompte.php");
                                     <p class="texte-boite-perso">Voulez-vous vraiment blacklister l'avis ?</p>
 
                                     <p class="texte-boite-perso">Après il vous restera
-                                        <?php echo $details_offre["nb_blacklister"]; ?> jeton(s)
-                                    </p>
+                                        <?php echo $details_offre["nb_blacklister"]; ?> jeton(s)</p>
 
                                     <button id="cancelBlacklist" class="cancel-btn">Non</button>
                                     <button id="confirmBlacklist" class="confirm-btn">Oui</button>
@@ -975,7 +974,7 @@ include("recupInfosCompte.php");
             // Afficher les sous-réponses si elles existent
             if (!empty($avis['sous_reponses'])) {
                 foreach ($avis['sous_reponses'] as $sous_reponse) {
-                    afficherAvis($sous_reponse, $niveau + 1, $details_offre); // Indentation augmentée
+                    afficherAvis($sous_reponse, $niveau + 1); // Indentation augmentée
                 }
             }
         }
@@ -1019,7 +1018,7 @@ WHERE code_offre = :code_offre
             </div>
             <div class="avis-list">
                 <?php
-                array_map('afficherAvis', $tous_les_avis, $details_offre);
+                array_map('afficherAvis', $tous_les_avis);
                 ?>
             </div>
         </div>
