@@ -33,6 +33,9 @@ if(isset($_POST['uneOffre'])){
     $recupCodesImages->execute();
 
     $codesImages = $recupCodesImages->fetchAll(PDO::FETCH_ASSOC);
+    echo "<pre>";
+    var_dump($codesImages);
+    echo "</pre>";
     // var_dump($codesImages);
 
     $liensImages = [];
