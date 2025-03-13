@@ -906,7 +906,7 @@ include("recupInfosCompte.php");
                                                 </a>
                                             </li>
                                             <li>
-                                                <div id="blacklist-avis"
+                                                <div class="blacklist-avis"
                                                     data-avis="<?php echo htmlspecialchars($avis['code_avis']); ?>">
                                                     <p>Blacklister l'avis</p>
                                                 </div>
@@ -1298,7 +1298,7 @@ WHERE code_offre = :code_offre
     });
     document.addEventListener('DOMContentLoaded', () => {
         var del_offre = document.getElementById('del-offre');
-        var blacklist_avis = document.getElementById('blacklist-avis');
+        var blacklist_avis = document.getElementByClass('blacklist-avis');
         var modal = document.getElementById('customModal');
         var modal2 = document.getElementById('customModal2');
         var modalError = document.getElementById('customModalError');
