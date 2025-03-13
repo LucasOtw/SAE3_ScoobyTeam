@@ -1405,7 +1405,7 @@ foreach($adresses as $adr) {
     // Ajout d'une div conteneur pour tout le texte
 $popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
 $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
-               . addslashes($adr['ville']) . "<br><&nb>"
+               . addslashes($adr['ville']) . "<br><&nbsp>"
                . $adr['tarif'] . "€"
                . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
 // Fermeture de la div conteneur de texte
