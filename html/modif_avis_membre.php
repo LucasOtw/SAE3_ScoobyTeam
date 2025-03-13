@@ -363,16 +363,23 @@ $isAnswer = $isAnswer->fetchColumn();
             console.log(formModif);
 
             // Empêcher l'envoi automatique du formulaire
+            var btnModif = document.getElementById('envoiModif');  // Le bouton "modifier"
+            var formModif = document.getElementById('avisForm');   // Le formulaire
+
             formModif.addEventListener('submit', function(e) {
-                e.preventDefault();  // Empêche la soumission initiale du formulaire
+                e.preventDefault();  // Empêche l'envoi automatique du formulaire
 
                 var dialog_modif = window.confirm("Voulez-vous vraiment modifier votre avis ?");
                 
                 if (dialog_modif) {
-                    // Simuler un clic sur le bouton "modifier"
-                    btnModif.click();  // Ce clic va soumettre le formulaire
+                    // Simule un clic sur le bouton de soumission du formulaire
+                    btnModif.setAttribute("disabled", "disabled"); // Optionnel : désactive le bouton pour éviter plusieurs soumissions
+
+                    // Soumettre le formulaire en cliquant sur le bouton "modifier"
+                    btnModif.click();  // Déclenche un clic sur le bouton de soumission
                 }
             });
+
         });
     </script>
 </body>
