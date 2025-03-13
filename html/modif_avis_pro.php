@@ -46,9 +46,9 @@ echo "</pre>";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST['unAvis'])){
-        echo "<pre>";
-        var_dump(unserialize($_POST['unAvis']));
-        echo "</pre>";
+        // echo "<pre>";
+        // var_dump(unserialize($_POST['unAvis']));
+        // echo "</pre>";
 
         $avis = unserialize($_POST['unAvis']);
         $_SESSION['modif_avis'] = $avis;
