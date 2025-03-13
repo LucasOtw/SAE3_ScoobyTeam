@@ -116,7 +116,10 @@ if(isset($_POST['uneOffre'])){
         $chemin = substr($img,3);
 
         if (preg_match('#^images/offres/([^/]+)/[^/]+\.(png|jpg|jpeg|gif)$#', $chemin)){
-            echo "test";
+            // si le lien ressemble à : images/offres/{doss}/img.ext, on peut la supprimer
+            if(file_exists($chemin)){
+                echo "LOL";
+            }
         }
     }
 
