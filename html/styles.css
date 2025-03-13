@@ -12473,13 +12473,12 @@ ul.mentions_legales-sous-list {
     width: 90%;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
 /* Titre principal */
 .error-title {
-    font-size: 28px;
+    font-size: 69px;
     font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
