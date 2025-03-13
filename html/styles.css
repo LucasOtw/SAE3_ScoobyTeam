@@ -8088,6 +8088,13 @@ form .btn-link {
     border-bottom: none;
 }
 
+/* Lorsque le <li> est survolé */
+.avis .menu_avis .context-menu ul li:hover input[type="submit"] {
+    background: #f0f0f0; /* Exemple de changement de couleur */
+    border-color: #ccc; /* Exemple de bordure */
+    cursor: pointer; /* Change le curseur pour indiquer l'interaction */
+}
+
 
 
 
