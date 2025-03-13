@@ -12556,6 +12556,7 @@ ul.mentions_legales-sous-list {
 /* Liens */
 .error-item-gold {
     margin-bottom: 15px;
+    background-color: #f0f0f0;
 }
 .error-item-gold a {
     display: flex;
