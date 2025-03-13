@@ -398,7 +398,7 @@ include("recupInfosCompte.php");
                                     class="visit-button_detailoffre_pro">Voir le site ➔</button></a> <?php } ?>
                         <form id="del-offre" action="#" method="POST">
                             <input type="hidden" name="uneOffre"
-                                value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
+                                value="<?php echo htmlspecialchars(serialize($details_offre['code_offre'])); ?>">
                             <input type="submit" id="btn-voir-offre" class="button-text del-btn" name="supprOffre"
                                 value="Supprimer votre offre">
                         </form>
