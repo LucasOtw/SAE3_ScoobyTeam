@@ -12553,6 +12553,34 @@ ul.mentions_legales-sous-list {
 .error-item {
     margin-bottom: 15px;
 }
+/* Liens */
+.error-item-gold {
+    margin-bottom: 15px;
+}
+.error-item-gold a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+.error-item-gold a:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.error-item-gold a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
 
 .error-item a {
     display: flex;
