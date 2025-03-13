@@ -30,17 +30,19 @@ if(isset($_POST['uneOffre'])){
 
     // On va d'abord récupérer chaque lien d'image
 
-    $recupCodesImages = $dbh->prepare("SELECT lundi,mardi,mercredi,jeudi,vendredi,samedi,dimanche
+    $recupCodesHoraires = $dbh->prepare("SELECT lundi,mardi,mercredi,jeudi,vendredi,samedi,dimanche
     FROM tripenarvor._offre WHERE code_offre = :code_offre");
-    $recupCodesImages->bindValue(':code_offre',$codeOffre);
-    $recupCodesImages->execute();
+    $recupCodesHoraires->bindValue(':code_offre',$codeOffre);
+    if($recupCodesHoraires->execute()){
+        echo "Lol";
+    }
 
-    $codesImages = $recupCodesImages->fetchColumn();
-    $codesImages = array_filter($codesImages, function($val){
+    $CodesHoraires = $recupCodesHoraires->fetch(PDO::FETCH_ASSOC);
+    $CodesHoraires = array_filter($CodesHoraires, function($val){
         return !is_null($val);
     });
 
-    var_dump($codesImages);
+    var_dump($CodesHoraires);
 
 } else {
     // sinon il n'a rien à faire ici
