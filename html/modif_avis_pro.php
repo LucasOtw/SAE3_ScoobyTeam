@@ -335,6 +335,7 @@ $isAnswer = $isAnswer->fetchColumn();
 
             var formModif = document.getElementById('avisForm');
             console.log(formModif);
+            console.log("e");
 
             formModif.addEventListener('submit',function(e){
                 e.preventDefault();
