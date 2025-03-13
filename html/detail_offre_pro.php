@@ -909,7 +909,7 @@ include("recupInfosCompte.php");
                                                     </div>
                                                 </li>
                                                 <?php
-                                                    if($avis['code_compte'] == $_SESSION['membre']['code_compte']){
+                                                    if($avis['code_compte'] == $_SESSION['pro']['code_compte']){
                                                         ?>
                                                         <li>
                                                             <form action="modif_avis_pro.php" method="POST">
