@@ -8878,7 +8878,7 @@ a.bloc_consulter_recemment_a {
 }
 
 .toute_les_offres_main .offer img {
-    width: 223px;
+    width: 20em;
     border-radius: 15px;
     object-fit: cover;
     margin: 0.5vw 1vw;
