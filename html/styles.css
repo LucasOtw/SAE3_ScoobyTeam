@@ -7873,7 +7873,7 @@ form .btn-link {
     #btn-repondre-avis {
         border: 3px;
         color: black;
-        background-color: white;
+        background-color: transparent;
         font-size: 16px;
         cursor: pointer;
     }
