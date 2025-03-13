@@ -93,6 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->execute($params);
             }
             
+            header('location: detail_offre_pro.php');
             exit;
         } else {
             ?>
@@ -247,31 +248,28 @@ $isAnswer = $isAnswer->fetchColumn();
 
                         <script>
                             function afficherMessage(event) {
-                                event.preventDefault();  // Empêche la soumission immédiate du formulaire
+                                event.preventDefault();  // Empêche la soumission du formulaire immédiate
                                 
                                 var messageContainer = document.getElementById("message-container");
                                 messageContainer.style.display = "block";  // Affiche le message d'erreur
 
-                                // Afficher la pop-up immédiatement
+                                // Affiche la pop-up immédiatement
                                 $(document).ready(function() {
                                     function afficherPOPup() {
                                         $("#customConfirmBox").fadeIn();  // Affiche la pop-up de confirmation
                                     }
-                                    afficherPOPup();  // Affiche la pop-up après avoir cliqué sur le bouton Modifier
+                                    afficherPOPup();  // Afficher la pop-up après avoir cliqué sur le bouton
                                 });
 
                                 // Fermer la pop-up quand l'utilisateur clique sur "Fermer"
                                 $('#confirmButton').on('click', function() {
                                     $('#customConfirmBox').fadeOut();  // Ferme la pop-up
-
-                                    // Soumettre le formulaire après que la pop-up soit fermée
                                     setTimeout(function() {
-                                        document.querySelector("form").submit();  // Soumettre le formulaire
+                                        document.querySelector("form").submit();  // Soumettre le formulaire après que la pop-up soit fermée
                                     }, 500);  // Délai de 500ms pour s'assurer que la pop-up soit fermée avant la soumission
                                 });
                             }
                         </script>
-
 
      
                     </div>
