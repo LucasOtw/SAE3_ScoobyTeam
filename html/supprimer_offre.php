@@ -156,9 +156,6 @@ if(isset($_POST['uneOffre'])){
         echo "ah";
     }
 
-    header('location: mes_offres.php');
-    exit;
-
 } else {
     // sinon il n'a rien à faire ici
     header('location: mes_offres.php');
