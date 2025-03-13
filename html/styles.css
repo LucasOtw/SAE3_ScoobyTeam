@@ -12463,8 +12463,10 @@ ul.mentions_legales-sous-list {
 /*****************************************************
             * Page 404 *
 *****************************************************/
-//* Conteneur principal */
-.page-404-container {
+
+
+/* Conteneur principal */
+.error-container {
     max-width: 800px;
     margin: 5vh auto;
     padding: 20px;
@@ -12476,15 +12478,16 @@ ul.mentions_legales-sous-list {
 }
 
 /* Titre principal */
-.page-404-title {
+.error-title {
     font-size: 28px;
     font-weight: bold;
     margin-bottom: 20px;
+    text-align: center;
     color: #333;
 }
 
 /* Sous-titre */
-.page-404-subtitle {
+.error-subtitle {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
@@ -12492,7 +12495,7 @@ ul.mentions_legales-sous-list {
 }
 
 /* Texte descriptif */
-.page-404-text {
+.error-text {
     font-size: 18px;
     color: #777;
     max-width: 600px;
@@ -12500,41 +12503,39 @@ ul.mentions_legales-sous-list {
     line-height: 1.6;
 }
 
-/* Image 404 */
-.page-404-image {
+/* Image */
+.error-image {
     display: block;
-    margin: 20px auto;
+    margin: 39px auto;
     max-width: 95%;
     border-radius: 10px;
 }
 
 /* Liste d'actions */
-.page-404-actions {
+.error-list {
     list-style: none;
     padding: 0;
-    margin-top: 20px;
+    margin: 0;
 }
 
-.page-404-actions li {
+/* Liens */
+.error-item {
     margin-bottom: 15px;
 }
 
-/* Liens d'action */
-.page-404-actions a {
+.error-item a {
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
-    color: #000;
+    color: #000000;
     padding: 10px 15px;
     border-radius: 5px;
     transition: background-color 0.3s, box-shadow 0.3s;
-    background-color: #f0f0f0;
 }
 
-.page-404-actions a:hover {
-    background-color: #e0e0e0;
+.error-item a:hover {
+    background-color: #f0f0f0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 
