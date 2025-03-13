@@ -396,19 +396,21 @@ include("recupInfosCompte.php");
                         <?php if (!empty($details_offre["site_web"])) { ?> <a
                                 href="<?php echo $details_offre["site_web"]; ?>" target="_blank"><button
                                     class="visit-button_detailoffre_pro">Voir le site ➔</button></a> <?php } ?>
-                                    <form id="del-offre" action="#" method="POST">
-                                        <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
-                                        <input type="submit" id="btn-voir-offre" class="button-text del-btn" name="supprOffre" value="Supprimer votre offre">
-                                    </form>
+                        <form id="del-offre" action="#" method="POST">
+                            <input type="hidden" name="uneOffre"
+                                value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
+                            <input type="submit" id="btn-voir-offre" class="button-text del-btn" name="supprOffre"
+                                value="Supprimer votre offre">
+                        </form>
 
-                                    <!-- Modale personnalisée -->
-                                    <div id="customModal" class="custom-modal">
-                                        <div class="custom-modal-content">
-                                            <p class="texte-boite-perso">Voulez-vous vraiment supprimer votre offre ?</p>
-                                            <button id="cancelDelete" class="cancel-btn">Non</button>
-                                            <button id="confirmDelete" class="confirm-btn">Oui</button>
-                                        </div>
-                                    </div>
+                        <!-- Modale personnalisée -->
+                        <div id="customModal" class="custom-modal">
+                            <div class="custom-modal-content">
+                                <p class="texte-boite-perso">Voulez-vous vraiment supprimer votre offre ?</p>
+                                <button id="cancelDelete" class="cancel-btn">Non</button>
+                                <button id="confirmDelete" class="confirm-btn">Oui</button>
+                            </div>
+                        </div>
 
 
                         <form id="add-btn" action="modifier_offre.php" method="POST">
@@ -703,7 +705,7 @@ include("recupInfosCompte.php");
                 </ul>
 
             </div>
-            <?php  
+        <?php
         }
         ?>
 
@@ -745,7 +747,7 @@ include("recupInfosCompte.php");
             $appreciationGenerale = "Exceptionnel";
         } else {
             $appreciationGenerale = "Valeur hors échelle";
-        } 
+        }
 
         echo $details_offre["nb_blacklister"];
 
@@ -782,6 +784,7 @@ include("recupInfosCompte.php");
         // Fonction pour afficher les avis et les réponses récursivement
         function afficherAvis($avis, $niveau = 0)
         {
+            global $details_offre;
             // Déterminer l'affichage selon le type d'utilisateur
             if ($avis['code_compte'] == $_SESSION['pro']['code_compte']) {
                 $prenom = "Mon Entreprise";
@@ -815,9 +818,9 @@ include("recupInfosCompte.php");
 
             // Calcul de la marge pour les sous-réponses
             $marge = $niveau * 5; // Indentation
+        
 
-            
-            echo $details_offre["nb_blacklister"];   
+            echo $details_offre["nb_blacklister"];
             ?>
             <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
                 <div class="avis-content">
@@ -887,75 +890,82 @@ include("recupInfosCompte.php");
                                 </p>
                             </div>
 
-                                <div class="menu_avis">
-                                    <div class="menu-container" onclick="toggleMenu(event, this)">
-                                        <div class="context-menu">
-                                            <ul>
+                            <div class="menu_avis">
+                                <div class="menu-container" onclick="toggleMenu(event, this)">
+                                    <div class="context-menu">
+                                        <ul>
+                                            <li>
+                                                <form action="poster_reponse_pro.php" method="POST">
+                                                    <input type="hidden" name="unAvis"
+                                                        value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                                                    <input id="btn-repondre-avis" type="submit" name="repondreAvis"
+                                                        value="Répondre à l'avis">
+                                                </form>
+                                            </li>
+                                            <li>
+                                                <a href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
+                                                    title="Signaler cet avis"
+                                                    style="text-decoration: none; margin-right: 2vw; color: black;">
+                                                    Signaler l'avis
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <div id="blacklist-avis"
+                                                    data-avis="<?php echo htmlspecialchars($avis['code_avis']); ?>">
+                                                    <p>Blacklister l'avis</p>
+                                                </div>
+                                            </li>
+                                            <?php
+                                            if ($avis['code_compte'] == $_SESSION['pro']['code_compte']) {
+                                                ?>
                                                 <li>
-                                                    <form action="poster_reponse_pro.php" method="POST">
+                                                    <form action="modif_avis_pro.php" method="POST">
                                                         <input type="hidden" name="unAvis"
                                                             value="<?php echo htmlspecialchars(serialize($avis)); ?>">
-                                                        <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="Répondre à l'avis">
+                                                        <input id="btn-repondre-avis" type="submit" name="modifierAvis"
+                                                            value="Modifier l'avis">
                                                     </form>
                                                 </li>
-                                                <li>
-                                                    <a href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>" title="Signaler cet avis" style="text-decoration: none; margin-right: 2vw; color: black;">
-                                                        Signaler l'avis
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <div id="blacklist-avis" data-avis="<?php echo htmlspecialchars($avis['code_avis']); ?>">
-                                                        <p>Blacklister l'avis</p>
-                                                    </div>
-                                                </li>
                                                 <?php
-                                                    if($avis['code_compte'] == $_SESSION['pro']['code_compte']){
-                                                        ?>
-                                                        <li>
-                                                            <form action="modif_avis_pro.php" method="POST">
-                                                                <input type="hidden" name="unAvis" value="<?php echo htmlspecialchars(serialize($avis)); ?>">
-                                                                <input id="btn-repondre-avis" type="submit" name="modifierAvis" value="Modifier l'avis">
-                                                            </form>
-                                                        </li>
-                                                        <?php
-                                                    }
-                                                ?>
-                                            </ul>
-                                        </div>
-                                        <img src="images/icones/ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
+                                            }
+                                            ?>
+                                        </ul>
                                     </div>
+                                    <img src="images/icones/ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
                                 </div>
+                            </div>
 
-                                <!-- Modale personnalisée -->
-                                <div id="customModal2" class="custom-modal">
-                                    <div class="custom-modal-content">
-                                        <p class="texte-boite-perso">Voulez-vous vraiment blacklister l'avis ?</p>
+                            <!-- Modale personnalisée -->
+                            <div id="customModal2" class="custom-modal">
+                                <div class="custom-modal-content">
+                                    <p class="texte-boite-perso">Voulez-vous vraiment blacklister l'avis ?</p>
 
-                                        <p class="texte-boite-perso">Après il vous restera <?php echo $details_offre["nb_blacklister"]; ?> jeton(s)</p>
-                                        
-                                        <button id="cancelBlacklist" class="cancel-btn">Non</button>
-                                        <button id="confirmBlacklist" class="confirm-btn">Oui</button>
-                                    </div>
+                                    <p class="texte-boite-perso">Après il vous restera
+                                        <?php echo $details_offre["nb_blacklister"]; ?> jeton(s)</p>
+
+                                    <button id="cancelBlacklist" class="cancel-btn">Non</button>
+                                    <button id="confirmBlacklist" class="confirm-btn">Oui</button>
                                 </div>
-                            
-                                <script>
-                                    function toggleMenu(event, element) {
-                                        event.stopPropagation();
-                                        closeAllMenus();
-                                        var menu = element.querySelector('.context-menu');
-                                        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-                                    }
-                            
-                                    function closeAllMenus() {
-                                        document.querySelectorAll('.context-menu').forEach(menu => {
-                                            menu.style.display = 'none';
-                                        });
-                                    }
-                            
-                                    document.addEventListener('click', function() {
-                                        closeAllMenus();
+                            </div>
+
+                            <script>
+                                function toggleMenu(event, element) {
+                                    event.stopPropagation();
+                                    closeAllMenus();
+                                    var menu = element.querySelector('.context-menu');
+                                    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+                                }
+
+                                function closeAllMenus() {
+                                    document.querySelectorAll('.context-menu').forEach(menu => {
+                                        menu.style.display = 'none';
                                     });
-                                </script>
+                                }
+
+                                document.addEventListener('click', function () {
+                                    closeAllMenus();
+                                });
+                            </script>
                         </div>
                     </h3>
                     <p class="avis"><?php echo html_entity_decode($avis['txt_avis']); ?></p>
@@ -1267,85 +1277,85 @@ WHERE code_offre = :code_offre
             newsletterPopup.style.display = 'none';
         });
     });
-document.addEventListener('DOMContentLoaded', () => {
-    var del_offre = document.getElementById('del-offre');
-    var blacklist_avis = document.getElementById('blacklist-avis');
-    var modal = document.getElementById('customModal');
-    var modal2 = document.getElementById('customModal2');
-    var confirmDelete = document.getElementById('confirmDelete');
-    var cancelDelete = document.getElementById('cancelDelete');
-    var confirmBlacklist = document.getElementById('confirmBlacklist');
-    var cancelBlacklist = document.getElementById('cancelBlacklist');
-    
-    // Afficher la modale lors de la soumission du formulaire
-    del_offre.addEventListener('submit', (e) => {
-        e.preventDefault();  // Empêcher l'envoi immédiat du formulaire
-        modal.style.display = 'flex';  // Afficher la modale
-    });
+    document.addEventListener('DOMContentLoaded', () => {
+        var del_offre = document.getElementById('del-offre');
+        var blacklist_avis = document.getElementById('blacklist-avis');
+        var modal = document.getElementById('customModal');
+        var modal2 = document.getElementById('customModal2');
+        var confirmDelete = document.getElementById('confirmDelete');
+        var cancelDelete = document.getElementById('cancelDelete');
+        var confirmBlacklist = document.getElementById('confirmBlacklist');
+        var cancelBlacklist = document.getElementById('cancelBlacklist');
 
-    // Si l'utilisateur confirme (Oui)
-    confirmDelete.addEventListener('click', () => {
-        modal.style.display = 'none';  // Cacher la modale après la confirmation
-        del_offre.action="supprimer_offre.php";
-        del_offre.submit();  // Soumettre le formulaire après la confirmation
-    });
+        // Afficher la modale lors de la soumission du formulaire
+        del_offre.addEventListener('submit', (e) => {
+            e.preventDefault();  // Empêcher l'envoi immédiat du formulaire
+            modal.style.display = 'flex';  // Afficher la modale
+        });
 
-    // Si l'utilisateur annule (Non)
-    cancelDelete.addEventListener('click', () => {
-        modal.style.display = 'none';  // Cacher la modale après annulation
-    });
+        // Si l'utilisateur confirme (Oui)
+        confirmDelete.addEventListener('click', () => {
+            modal.style.display = 'none';  // Cacher la modale après la confirmation
+            del_offre.action = "supprimer_offre.php";
+            del_offre.submit();  // Soumettre le formulaire après la confirmation
+        });
 
-    // Fermer la modale si l'utilisateur clique en dehors de la boîte
-    window.onclick = function(event) {
-        if (event.target == modal || event.target == modal2) {
-            modal.style.display = 'none';
+        // Si l'utilisateur annule (Non)
+        cancelDelete.addEventListener('click', () => {
+            modal.style.display = 'none';  // Cacher la modale après annulation
+        });
+
+        // Fermer la modale si l'utilisateur clique en dehors de la boîte
+        window.onclick = function (event) {
+            if (event.target == modal || event.target == modal2) {
+                modal.style.display = 'none';
+                modal2.style.display = 'none';
+            }
+        };
+
+
+        // Afficher la modale lors de la soumission du formulaire
+        blacklist_avis.addEventListener('click', () => {
+            modal2.style.display = 'flex';
+        });
+
+        // Si l'utilisateur confirme (Oui)
+        confirmBlacklist.addEventListener('click', () => {
             modal2.style.display = 'none';
-        }
-    };
 
+            var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
+            var codeAvis = document.querySelector('#blacklist-avis').getAttribute('data-avis');
+            var tps_ban = document.getElementById("blacklistDuration").value;
 
-    // Afficher la modale lors de la soumission du formulaire
-    blacklist_avis.addEventListener('click', () => {
-        modal2.style.display = 'flex';
-    });
-    
-    // Si l'utilisateur confirme (Oui)
-    confirmBlacklist.addEventListener('click', () => {
-        modal2.style.display = 'none';
-    
-        var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
-        var codeAvis = document.querySelector('#blacklist-avis').getAttribute('data-avis');
-        var tps_ban = document.getElementById("blacklistDuration").value;
-    
-        // Utilisation de fetch pour envoyer les données
-        fetch("https://scooby-team.ventsdouest.dev/update_avis_status.php", {
-            method: "POST",  // Méthode POST
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded",  // Spécifie le type de contenu
-            },
-            body: new URLSearchParams({
-                tps_ban: tps_ban,            // Envoie le temps du blacklistage
-                code_avis: codeAvis,         // Envoie le code de l'avis
-                code_offre: codeOffre        // Envoie le code de l'offre
+            // Utilisation de fetch pour envoyer les données
+            fetch("https://scooby-team.ventsdouest.dev/update_avis_status.php", {
+                method: "POST",  // Méthode POST
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",  // Spécifie le type de contenu
+                },
+                body: new URLSearchParams({
+                    tps_ban: tps_ban,            // Envoie le temps du blacklistage
+                    code_avis: codeAvis,         // Envoie le code de l'avis
+                    code_offre: codeOffre        // Envoie le code de l'offre
+                })
             })
-        })
-    
-            .then(response => {
-                if (response.ok) {
-                    console.log("L'avis a bien été blacklister.");
-                } else {
-                    console.error("Erreur lors de la mise à jour de l'état de l'avis et de l'offre : " + response.status);
-                }
-            })
-            .catch(error => {
-                console.error("Erreur de réseau ou autre :", error);
-            });
+
+                .then(response => {
+                    if (response.ok) {
+                        console.log("L'avis a bien été blacklister.");
+                    } else {
+                        console.error("Erreur lors de la mise à jour de l'état de l'avis et de l'offre : " + response.status);
+                    }
+                })
+                .catch(error => {
+                    console.error("Erreur de réseau ou autre :", error);
+                });
+        });
+
+        // Si l'utilisateur annule (Non)
+        cancelBlacklist.addEventListener('click', () => {
+            modal2.style.display = 'none';  // Cacher la modale après annulation
+        });
     });
-    
-    // Si l'utilisateur annule (Non)
-    cancelBlacklist.addEventListener('click', () => {
-        modal2.style.display = 'none';  // Cacher la modale après annulation
-    });
-});
 
 </script>
