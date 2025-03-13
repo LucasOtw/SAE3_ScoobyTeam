@@ -1301,6 +1301,7 @@ WHERE code_offre = :code_offre
     document.addEventListener('DOMContentLoaded', () => {
         var del_offre = document.getElementById('del-offre');
         var blacklist_avis = document.querySelectorAll('blacklist-avis');
+        console.log("Nombre d'éléments .blacklist-avis trouvés :", blacklist_avis.length);
         var modal = document.getElementById('customModal');
         var modal2 = document.getElementById('customModal2');
         var modalError = document.getElementById('customModalError');
