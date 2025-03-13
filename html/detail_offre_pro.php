@@ -931,20 +931,6 @@ include("recupInfosCompte.php");
                                 </div>
                             </div>
 
-                            <!-- Modale personnalisée -->
-                            <div id="customModal2" class="custom-modal">
-                                <div class="custom-modal-content">
-                                    <p class="texte-boite-perso">Voulez-vous vraiment blacklister l'avis ?</p>
-
-                                    <p class="texte-boite-perso">Après il vous restera
-                                        <?php echo $details_offre["nb_blacklister"]; ?> jeton(s)
-                                    </p>
-
-                                    <button id="cancelBlacklist" class="cancel-btn">Non</button>
-                                    <button id="confirmBlacklist" class="confirm-btn">Oui</button>
-                                </div>
-                            </div>
-
                             <script>
                                 function toggleMenu(event, element) {
                                     event.stopPropagation();
@@ -976,7 +962,23 @@ include("recupInfosCompte.php");
                 }
             }
         }
+        ?>
 
+        <!-- Modale personnalisée -->
+        <div id="customModal2" class="custom-modal">
+            <div class="custom-modal-content">
+                <p class="texte-boite-perso">Voulez-vous vraiment blacklister l'avis ?</p>
+
+                <p class="texte-boite-perso">Après il vous restera
+                    <?php echo $details_offre["nb_blacklister"]; ?> jeton(s)
+                </p>
+
+                <button id="cancelBlacklist" class="cancel-btn">Non</button>
+                <button id="confirmBlacklist" class="confirm-btn">Oui</button>
+            </div>
+        </div>
+        
+        <?php
         // Récupérer tous les avis principaux (sans réponses déjà existantes)
         $tous_les_avis = $dbh->prepare('SELECT * 
 FROM tripenarvor._avis
