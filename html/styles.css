@@ -8004,7 +8004,7 @@ form .btn-link {
 /*****************************************************
             * Code pour les jetons*
 *****************************************************/
-.avis-header .jetons-container {
+/* .avis-header .jetons-container {
     display: flex;
     gap: 10px;
     float: right;
@@ -8012,13 +8012,39 @@ form .btn-link {
 .avis-header .jeton {
     width: 50px;
     height: 50px;
-}
+} */
 
-#body_offre_desktop .avis-header {
+/* #body_offre_desktop .avis-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+} */
+
+
+#body_offre_desktop .avis-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Aligne les éléments en haut */
 }
+
+.note_nb_avis {
+    display: flex;
+    flex-direction: column; /* Met les éléments en colonne */
+    align-items: flex-start; /* Aligne le texte à gauche */
+}
+
+.jetons-container {
+    display: flex;
+    flex-direction: column; /* Met les jetons au-dessus du paragraphe */
+    align-items: center; /* Centre les jetons horizontalement */
+    gap: 10px;
+}
+
+
+.jetons-container p {
+    margin-top: 10px; /* Ajoute un espace entre les jetons et le texte */
+}
+
 
 
 
