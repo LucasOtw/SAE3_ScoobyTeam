@@ -8210,6 +8210,16 @@ form .btn-link {
     width: 400px; /* Largeur de la boîte */
 }
 
+.custom-modal-error-content {
+    background-color: #fff;
+    padding: 30px;
+    border: 3px solid #ff4d4f;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 400px; /* Largeur de la boîte */
+}
+
 /* Boutons de confirmation et d'annulation */
 /* button {
     padding: 12px 25px;
@@ -8248,6 +8258,21 @@ form .btn-link {
 
 .cancel-btn:hover {
     background-color: var(--orange);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cancel-error-btn {
+    background-color: white;
+    border: 2px solid #ff4d4f;
+    color: #000;
+    width: 10em;
+    height: 2em;
+    border-radius: 15px;
+    transition: box-shadow 0.3s ease;
+}
+
+.cancel-error-btn:hover {
+    background-color: #ff4d4f;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
