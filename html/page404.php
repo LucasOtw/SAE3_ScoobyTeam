@@ -33,7 +33,7 @@
     <img src="images/404.png" alt="Erreur 404" class="error-image">
     <h2 class="error-text">Que souhaitez-vous faire ?</h2>
     <ul class="error-list">
-        <li class="error-item">
+        <li class="error-item-gold">
             <a href="javascript:history.back()">
                 <span>Revenir à la page précédente</span>
                 <span class="error-arrow">›</span>

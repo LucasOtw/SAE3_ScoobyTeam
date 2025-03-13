@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->execute($params);
             }
 
-            header('location: detail_offre.php');
+            header('location: detail_offre_pro.php');
             exit;
         } else {
             ?>
