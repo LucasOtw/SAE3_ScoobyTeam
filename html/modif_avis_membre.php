@@ -245,7 +245,8 @@ $isAnswer = $isAnswer->fetchColumn();
                            <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
                            <input type="hidden" name="code_avis" value="<?php echo $avis['code_avis']; ?>">
                            <input type="hidden" name="isAnswer" value="<?php echo $isAnswer; ?>">
-                           <button id="envoiModif" class="poster_un_avis_btn_publier" type="submit"- name="modifier">Modifier →</button>
+                           <input type="hidden" name="modifier" value="1">
+                           <button id="envoiModif" class="poster_un_avis_btn_publier" type="submit">Modifier →</button>
                        </div>
                     </div>
                   </div>
@@ -357,29 +358,18 @@ $isAnswer = $isAnswer->fetchColumn();
             const numEtoile = document.getElementById(`star${note}`);
             numEtoile.toggleAttribute("checked");
 
-            var btnModif = document.getElementById('envoiModif'); // Le bouton "modifier"
-            var formModif = document.getElementById('avisForm');  // Le formulaire
+            var btnModif = document.getElementById('envoiModif');
+            var formModif = document.getElementById('avisForm');
 
             console.log(formModif);
 
-            // Empêcher l'envoi automatique du formulaire
-            var btnModif = document.getElementById('envoiModif');  // Le bouton "modifier"
-            var formModif = document.getElementById('avisForm');   // Le formulaire
-
-            formModif.addEventListener('submit', function(e) {
-                e.preventDefault();  // Empêche l'envoi automatique du formulaire
-
+            formModif.addEventListener('submit',function(e){
+                e.preventDefault();
                 var dialog_modif = window.confirm("Voulez-vous vraiment modifier votre avis ?");
-                
-                if (dialog_modif) {
-                    // Simule un clic sur le bouton de soumission du formulaire
-                    btnModif.setAttribute("disabled", "disabled"); // Optionnel : désactive le bouton pour éviter plusieurs soumissions
-
-                    // Soumettre le formulaire en cliquant sur le bouton "modifier"
-                    btnModif.click();  // Déclenche un clic sur le bouton de soumission
+                if(dialog_modif){
+                    formModif.submit();
                 }
             });
-
         });
     </script>
 </body>
