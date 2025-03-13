@@ -1431,7 +1431,7 @@ $popupContent .= "</div>";
 // Dans votre script JavaScript après avoir initialisé la carte
 var customIcon = L.icon({
     iconUrl: './images/ping.png', // Chemin vers votre image de pin
-    iconSize: [30, 40], // Taille en pixels [largeur, hauteur]
+    iconSize: [50, 40], // Taille en pixels [largeur, hauteur]
     iconAnchor: [15, 40], // Point de l'icône qui correspondra à la position du marqueur [x, y] (par rapport au coin sup. gauche)
     popupAnchor: [0, -35] // Point à partir duquel la popup doit s'ouvrir (relatif à l'iconAnchor)
 });
