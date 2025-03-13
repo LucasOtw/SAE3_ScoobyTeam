@@ -239,11 +239,7 @@ $isAnswer = $isAnswer->fetchColumn();
                            <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
                            <input type="hidden" name="code_avis" value="<?php echo $avis['code_avis']; ?>">
                            <input type="hidden" name="isAnswer" value="<?php echo $isAnswer; ?>">
-<<<<<<< HEAD
                            <button class="poster_un_avis_btn_publier_pro" type="submit"- name="modifier">Modifier →</button>
-=======
-                           <button class="poster_un_avis_btn_publier" type="submit" name="modifier">Modifier →</button>
->>>>>>> 61f7e36a (modif_avis_membre)
                        </div>
      
                     </div>
@@ -252,7 +248,7 @@ $isAnswer = $isAnswer->fetchColumn();
             </form>
            
            
-        <nav class="nav-bar">
+        <nav class="nav-bar">modifier
             <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
             <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
             <a href="#"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
