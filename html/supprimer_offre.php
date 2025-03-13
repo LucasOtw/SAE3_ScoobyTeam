@@ -37,12 +37,31 @@ if(isset($_POST['uneOffre'])){
         echo "Lol";
     }
 
-    $CodesHoraires = $recupCodesHoraires->fetch(PDO::FETCH_ASSOC);
-    $CodesHoraires = array_filter($CodesHoraires, function($val){
+    $codesHoraires = $recupCodesHoraires->fetch(PDO::FETCH_ASSOC);
+    $codesHoraires = array_filter($codesHoraires, function($val){
         return !is_null($val);
     });
 
-    var_dump($CodesHoraires);
+    // $codesHoraires contient les horaires en fonction du jour
+    foreach($codesHoraires as $code){
+        // on regarde si le code est unique
+        $checkUniqueHoraire = $dbh->prepare(
+            "SELECT SUM(
+                (CASE WHEN lundi = ? THEN 1 ELSE 0 END) +
+                (CASE WHEN mardi = ? THEN 1 ELSE 0 END) +
+                (CASE WHEN mercredi = ? THEN 1 ELSE 0 END) +
+                (CASE WHEN jeudi = ? THEN 1 ELSE 0 END) +
+                (CASE WHEN vendredi = ? THEN 1 ELSE 0 END) +
+                (CASE WHEN samedi = ? THEN 1 ELSE 0 END) +
+                (CASE WHEN dimanche = ? THEN 1 ELSE 0 END)
+            ) AS total_global FROM tripenarvor._offre;"
+        );
+        $checkUniqueHoraire->execute([$code,$code,$code,$code,$code,$code,$code]);
+        $isUniqueHoraire = $checkUniqueHoraire->fetchColumn();
+
+        var_dump($isUniqueHoraire);
+
+    }
 
 } else {
     // sinon il n'a rien à faire ici
