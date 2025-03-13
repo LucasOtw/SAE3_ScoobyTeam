@@ -242,7 +242,7 @@ $isAnswer = $isAnswer->fetchColumn();
                            <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
                            <input type="hidden" name="code_avis" value="<?php echo $avis['code_avis']; ?>">
                            <input type="hidden" name="isAnswer" value="<?php echo $isAnswer; ?>">
-                           <button class="poster_un_avis_btn_publier" type="submit"- name="modifier">Modifier →</button>
+                           <button id="envoiModif" class="poster_un_avis_btn_publier" type="submit"- name="modifier">Modifier →</button>
                        </div>
                     </div>
                   </div>
@@ -353,6 +353,17 @@ $isAnswer = $isAnswer->fetchColumn();
             // on récupère une étoile en fonction de la note
             const numEtoile = document.getElementById(`star${note}`);
             numEtoile.toggleAttribute("checked");
+        });
+        
+        var btnModif = document.getElementById('#envoiModif');
+        var formModif = document.getElementById('#avisForm');
+
+        formModif.addEventListener('submit',function(e){
+            e.preventDefault();
+            var dialog_modif = window.confirm("Voulez-vous vraiment modifier votre avis ?");
+            if(dialog_modif){
+                formModif.submit();
+            }
         });
     </script>
 </body>
