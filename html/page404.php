@@ -26,32 +26,77 @@
     </nav>
 </header>
 
-<main class="container-404">
-    <h1>Oups ! Page introuvable</h1>
-    <p>La page que vous recherchez n'existe pas ou a été déplacée.</p>
-    <img src="images/404.png" alt="Erreur 404" class="image-404">
-    <h2>Que souhaitez-vous faire ?</h2>
+<main class="page-404-container">
+    <h1 class="page-404-title">Oups ! Page introuvable</h1>
+    <p class="page-404-subtitle">La page que vous recherchez n'existe pas ou a été déplacée.</p>
+    <img src="images/404.png" alt="Erreur 404" class="page-404-image">
+    <h2 class="page-404-text">Que souhaitez-vous faire ?</h2>
     <ul class="actions-list">
-        <li><a href="voir_offres.php">Retourner à l'accueil</a></li>
-        <li><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
-        <li><a href="contacter_plateforme.php">Nous contacter</a></li>
-        <li><a href="connexion_membre.php">Se connecter</a></li>
+        <li><a href="voir_offres.php" class="page-404-button">Retourner à l'accueil</a></li>
+        <li><a href="obtenir_aide.php" class="page-404-button">Obtenir de l'aide</a></li>
+        <li><a href="contacter_plateforme.php" class="page-404-button">Nous contacter</a></li>
+        <li><a href="connexion_membre.php" class="page-404-button">Se connecter</a></li>
     </ul>
 </main>
 
-<footer>
-    <div class="footer-links">
-        <div class="logo">
-            <img src="images/logoBlanc.png" alt="Logo PACT">
+
+<footer class="footer footer_pro">
+        <div class="footer-links">
+            <div class="logo">
+                <img src="images/logoBlanc.png" alt="Logo PAVCT">
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="mentions_legales.html">Mentions Légales</a></li>
+                    <li><a href="cgu.html">GGU</a></li>
+                    <li><a href="cgv.html">CGV</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="voir_offres.php">Accueil</a></li>
+                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <?php
+                    if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
+                        ?>
+                        <li>
+                            <a href="consulter_compte_membre.php">Mon Compte</a>
+                        </li>
+                        <?php
+                    } else {
+                        ?>
+                        <li>
+                            <a href="connexion_membre.php">Se connecter</a>
+                        </li>
+                        <?php
+                    }
+                    ?>
+                </ul>
+
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="#">Nous Connaitre</a></li>
+                    <li><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
+                    <li><a href="contacter_plateforme.php">Nous contacter</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <!--<li><a href="#">Presse</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">Notre équipe</a></li>-->
+                </ul>
+            </div>
         </div>
-        <div class="link-group">
-            <ul>
-                <li><a href="mentions_legales.html">Mentions Légales</a></li>
-                <li><a href="cgu.html">CGU</a></li>
-                <li><a href="cgv.html">CGV</a></li>
-            </ul>
+        <div class="footer-bottom">
+            <div class="social-icons">
+                <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
+                <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
+                <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+                <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 </body>
 </html>
