@@ -160,6 +160,11 @@ if (!empty($_POST['supprAvis'])){
                             <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis['code_avis']); ?>">
                             <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="confirmDelete(event)">
                         </form>
+                        <form action="modif_avis_membre.php" method="POST">
+                            <input type="hidden" name="unAvis" value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                            <input type="image" src="images/icones/modif.png" alt="Modifier l'avis" class="modif-icon" title="Modifier cet avis">
+                        </form>
+
                     </h3>
                     <p class="avis"><?php echo htmlspecialchars_decode($avis["txt_avis"], ENT_QUOTES); ?></p>
                 </div>

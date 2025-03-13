@@ -4,8 +4,8 @@ session_start();
 
 require_once('recupInfosCompte.php');
 
-if(!isset($_SESSION['membre'])){
-   header('location: connexion_membre.php');
+if(!isset($_SESSION['pro'])){
+   header('location: connexion_pro.php');
    exit;
 }
 
@@ -55,14 +55,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if(isset($_POST['modifier'])){
         $modifOk = false;
-        if($_POST['isAnswer'] == 0){
-            if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
-                $modifOk = true;
-            }
-        } else { // alors c'est une réponse
-            if(isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis'])){
-                $modifOk = true;
-            }
+
+        // Un avis pro est forcément une réponse !
+        if(isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis'])){
+            $modifOk = true;
         }
 
         if($modifOk === true){
@@ -97,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->execute($params);
             }
 
-            header('location: detail_offre.php');
+            header('location: detail_offre_pro.php');
             exit;
         } else {
             ?>
@@ -144,9 +140,10 @@ $isAnswer = $isAnswer->fetchColumn();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier  un avis</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script> <!-- Pour les icones -->
 </head>
 <body>
-    <header class="header-pc header_membre">
+    <header class="header-pc header_pro">
         <div class="logo-pc">
            <a href="voir_offres.php">
             <img src="images/logoBlanc.png" alt="PACT Logo">
@@ -155,17 +152,17 @@ $isAnswer = $isAnswer->fetchColumn();
         </div>
         <nav>
             <ul>
-                <li><a href="voir_offres.php">Accueil</a></li>
-                <li><a href="connexion_pro.php">Publier</a></li>
-                <li><a href="consulter_compte_membre.php" class="active">Mon Compte</a></li>
+                <li><a href="mes_offres.php">Accueil</a></li>
+                <li><a href="creation_offre">Publier</a></li>
+                <li><a href="consulter_compte_pro.php" class="active">Mon Compte</a></li>
             </ul>
         </nav>
       </header> 
 
 
-        <header class="header-tel header_membre">
+        <header class="header-tel header_pro">
             <div class="logo-tel">
-                <a href="voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
+                <a href="mes_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
             </div>
         </header>
         <main class="main_poster_avis">
@@ -184,7 +181,7 @@ $isAnswer = $isAnswer->fetchColumn();
                     <p class="poster_un_avis_location">📍 <?php echo $details_offre["ville"]; ?>, <?php echo $details_offre["code_postal"]; ?></p>
                     <form id="form-voir-offre" action="detail_offre.php" method="POST">
                        <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
-                       <input id="btn-voir-offre" class="poster_un_avis_btn_offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
+                       <input id="btn-voir-offre" class="poster_un_avis_btn_offre_pro" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
                    </form>
                 </div>
                 <div class="poster_un_avis_images">
@@ -242,7 +239,7 @@ $isAnswer = $isAnswer->fetchColumn();
                            <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
                            <input type="hidden" name="code_avis" value="<?php echo $avis['code_avis']; ?>">
                            <input type="hidden" name="isAnswer" value="<?php echo $isAnswer; ?>">
-                           <button class="poster_un_avis_btn_publier" type="submit"- name="modifier">Modifier →</button>
+                           <button class="poster_un_avis_btn_publier_pro" type="submit"- name="modifier">Modifier →</button>
                        </div>
                     </div>
                   </div>
@@ -255,39 +252,18 @@ $isAnswer = $isAnswer->fetchColumn();
             <a href="#"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
             <a href="
                 <?php
-                    if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
-                        echo "consulter_compte_membre.php";
+                    if(isset($_SESSION["pro"]) || !empty($_SESSION["pro"])){
+                        echo "consulter_compte_pro.php";
                     } else {
-                        echo "connexion_membre.php";
+                        echo "connexion_pro.php";
                     }
                 ?>">
                 <img src="images/icones/User icon.png" alt="image de Personne"></a>
         </nav>
     </main> 
 
-    <footer class="footer footer_membre">
-        <div class="newsletter">
-        <div class="newsletter-content">
-            <h2>Inscrivez-vous à notre Newsletter</h2>
-            <p>PACT</p>
-            <p>découvrez la Bretagne !</p>
-            <form class="newsletter-form" id="newsletterForm">
-                <input type="email" id="newsletterEmail" placeholder="Votre adresse mail" required>
-                <button type="submit">S'inscrire</button>
-            </form>
-        </div>
-        <div class="newsletter-image">
-            <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
-        </div>
-    </div>
-
-    <div id="newsletterConfirmBox" style="display: none;">
-        <div class="popup-content">
-            <p class="popup-message"></p>
-            <button id="closeNewsletterPopup">Fermer</button>
-        </div>
-    </div>
-
+    <footer class="footer footer_pro">
+        
         <div class="footer-links">
             <div class="logo\avis">
                 <img src="images/logoBlanc.png" alt="Logo PACT">
@@ -302,19 +278,19 @@ $isAnswer = $isAnswer->fetchColumn();
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="voir_offres.php">Accueil</a></li>
-                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <li><a href="mes_offres.php">Accueil</a></li>
+                    <li><a href="creation_offre.php">Publier</a></li>
                     <?php
-                    if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
+                    if (isset($_SESSION["pro"]) && !empty($_SESSION["pro"])) {
                         ?>
                         <li>
-                            <a href="consulter_compte_membre.php">Mon Compte</a>
+                            <a href="consulter_compte_pro.php">Mon Compte</a>
                         </li>
                         <?php
                     } else {
                         ?>
                         <li>
-                            <a href="connexion_membre.php">Se connecter</a>
+                            <a href="connexion_pro.php">Se connecter</a>
                         </li>
                         <?php
                     }

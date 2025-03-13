@@ -745,7 +745,7 @@ function tempsEcouleDepuisPublication($offre){
             <h2 class="titre-les-offres">A proximité de moi</h2>
         </div>
 
-        <div id="map" style="height: 421px; width: 82%; margin: auto"></div>
+        <div id="map" style="height: 618px; width: 82%; margin: auto"></div>
 
 
         <div class="titres-offres">
@@ -763,7 +763,7 @@ function tempsEcouleDepuisPublication($offre){
                 "Monday" => "lundi",
                 "Tuesday" => "mardi",
                 "Wednesday" => "mercredi",
-                "Thursday" => "jeudi",
+                "Thursday" => "jeudi", 
                 "Friday" => "vendredi",
                 "Saturday" => "samedi",
                 "Sunday" => "dimanche"
@@ -1362,10 +1362,6 @@ function tempsEcouleDepuisPublication($offre){
         </div>
     </footer>
 
-            ///////////////////////////////////////////////////
-            ///            Initialisation de la carte       ///
-            ///////////////////////////////////////////////////
-
             <script>
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -1384,27 +1380,43 @@ document.addEventListener("DOMContentLoaded", function () {
             
             // Ajouter des marqueurs pour les offres
             <?php
-            // On récupère les adresses des offres pour les afficher sur la carte
-            try {
-                $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.* FROM tripenarvor._offre o 
-                                        JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
-                                        WHERE o.en_ligne = true');
-                $adresses = $adresses->fetchAll(PDO::FETCH_ASSOC);
-                
-                foreach($adresses as $adr) {
-                    // Vous devrez ajouter un service de géocodage pour convertir les adresses en coordonnées
-                    // Pour cet exemple, nous utilisons des coordonnées fictives basées sur le code postal
-                    $lat = 48.0 + (intval(substr($adr['code_postal'], 0, 2)) / 100);
-                    $lng = -3.0 + (intval(substr($adr['code_postal'], 2, 3)) / 100);
-                    
-                    echo "L.marker([$lat, $lng]).addTo(map)
-                          .bindPopup(\"<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
-                          . addslashes($adr['ville']) . "<br>"
-                          . $adr['tarif'] . "€\");";
-                }
-            } catch (Exception $e) {
-                echo "console.error('Erreur lors du chargement des adresses : " . addslashes($e->getMessage()) . "');";
-            }
+            // Modifiez d'abord votre requête SQL pour inclure l'image
+$adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
+                       (SELECT i.url_image 
+                        FROM tripenarvor._son_image si 
+                        JOIN tripenarvor._image i ON si.code_image = i.code_image 
+                        WHERE si.code_offre = o.code_offre 
+                        LIMIT 1) AS url_image
+                       FROM tripenarvor._offre o 
+                       JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
+                       WHERE o.en_ligne = true');
+
+// Puis utilisez cette syntaxe correcte pour le marker popup
+foreach($adresses as $adr) {
+    $lat = 48.0 + (intval(substr($adr['code_postal'], 0, 2)) / 100);
+    $lng = -3.0 + (intval(substr($adr['code_postal'], 2, 3)) / 100);
+    
+    // Construction du HTML du popup avec l'image si disponible
+    $popupContent = "<div style='width:218px;'>";
+    
+    if (!empty($adr['url_image'])) {
+        $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
+    }
+    // Ajout d'une div conteneur pour tout le texte
+$popupContent .= "<div class='popup-text-container' style='display:flex; font-family='K2D', 'sans-sherif'; border-radius:0 0 5px 5px;'>";
+$popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
+               . addslashes($adr['ville']) . "<br>"
+               . $adr['tarif'] . "€"
+               . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
+// Fermeture de la div conteneur de texte
+$popupContent .= "</div>";
+
+// Fermeture de la div principale
+$popupContent .= "</div>";
+    
+    echo "L.marker([$lat, $lng]).addTo(map)
+          .bindPopup(\"" . $popupContent . "\");";
+}
             ?>
             
             console.log("Carte Leaflet initialisée avec succès");
