@@ -8028,6 +8028,7 @@ form .btn-link {
     flex-direction: column; /* Met les jetons au-dessus du paragraphe */
     align-items: center; /* Centre les jetons horizontalement */
     gap: 10px;
+    margin-bottom: 2em;
 }
 
 .jetons{
