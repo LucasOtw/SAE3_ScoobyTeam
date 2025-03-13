@@ -357,15 +357,6 @@ $isAnswer = $isAnswer->fetchColumn();
             var btnModif = document.getElementById('envoiModif');
             var formModif = document.getElementById('avisForm');
 
-            console.log(formModif);
-
-            formModif.addEventListener('submit',function(e){
-                e.preventDefault();
-                var dialog_modif = window.confirm("Voulez-vous vraiment modifier votre avis ?");
-                if(dialog_modif){
-                    formModif.submit();
-                }
-            });
         });
     </script>
 </body>
