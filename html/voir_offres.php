@@ -1400,11 +1400,13 @@ foreach($adresses as $adr) {
         $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
     }
 
+    //Correction du lien pour voir l'offre.
 $popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
 $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
                . addslashes($adr['ville']) . "<br>"
                . $adr['tarif'] . "€"
                . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
+          
 
 $popupContent .= "</div>";
 
