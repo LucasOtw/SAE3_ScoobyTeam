@@ -906,6 +906,18 @@ include("recupInfosCompte.php");
                                                         <p>Blacklister l'avis</p>
                                                     </div>
                                                 </li>
+                                                <?php
+                                                    if($avis['code_compte'] == $_SESSION['membre']['code_compte']){
+                                                        ?>
+                                                        <li>
+                                                            <form action="modif_avis_pro.php" method="POST">
+                                                                <input type="hidden" name="unAvis" value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                                                                <input id="btn-repondre-avis" type="submit" name="modifierAvis" value="Modifier l'avis">
+                                                            </form>
+                                                        </li>
+                                                        <?php
+                                                    }
+                                                ?>
                                             </ul>
                                         </div>
                                         <img src="images/icones/ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
