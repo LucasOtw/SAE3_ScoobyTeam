@@ -12588,3 +12588,61 @@ ul.mentions_legales-sous-list {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+/* Adaptation pour les écrans de téléphone */
+@media (max-width: 428px) {
+
+    /* Conteneur principal */
+    .error-container {
+        padding: 15px;
+        width: 95%;
+    }
+
+    /* Titre principal */
+    .error-title {
+        font-size: 50px;
+        margin-bottom: 15px;
+    }
+
+    /* Sous-titre */
+    .error-subtitle {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    /* Texte descriptif */
+    .error-text {
+        font-size: 18px;
+        max-width: 100%;
+        margin: 0 auto 20px;
+        line-height: 1.5;
+    }
+
+    /* Image */
+    .error-image {
+        max-width: 100%;
+        margin: 20px auto;
+    }
+
+    /* Liste d'actions */
+    .error-list {
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Liens */
+    .error-item a {
+        padding: 10px 12px;
+    }
+
+    .error-item a:hover {
+        background-color: #f9f9f9;
+    }
+
+    /* Bouton de retour */
+    .error-back-button {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 18px;
+        margin-top: 15px;
+    }
+}
