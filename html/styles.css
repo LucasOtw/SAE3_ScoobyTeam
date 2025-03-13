@@ -3559,6 +3559,10 @@ nav.nav-bar {
     /* Rouge */
 }
 
+.modif-icon{
+    width: 16px;
+}
+
 .avis-widget .avis .avatar {
     width: 60px;
     height: 60px;
