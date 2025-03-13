@@ -119,6 +119,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </script>
             <?php
         }
+    } else {
+        echo "LOL";
     }
 }
 if(isset($_SESSION['modif_avis'])){
