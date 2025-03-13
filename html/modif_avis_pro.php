@@ -242,7 +242,7 @@ $isAnswer = $isAnswer->fetchColumn();
                            <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
                            <input type="hidden" name="code_avis" value="<?php echo $avis['code_avis']; ?>">
                            <input type="hidden" name="isAnswer" value="<?php echo $isAnswer; ?>">
-                           <button class="poster_un_avis_btn_publier" type="submit"- name="modifier">Modifier →</button>
+                           <button class="poster_un_avis_btn_publier_pro" type="submit"- name="modifier">Modifier →</button>
                        </div>
                     </div>
                   </div>
