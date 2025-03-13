@@ -113,7 +113,7 @@ if(isset($_POST['uneOffre'])){
 
     // On supprime les images du serveur
     foreach($liensImages as $img){
-        $chemin = ltrim("../",$img);
+        $chemin = ltrim($img,"../");
 
         if (preg_match('#^images/offres/([^/]+)/[^/]+\.(png|jpg|jpeg|gif)$#', $chemin)){
             echo "test";
