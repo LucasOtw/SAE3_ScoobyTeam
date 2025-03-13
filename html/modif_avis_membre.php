@@ -366,7 +366,7 @@ $isAnswer = $isAnswer->fetchColumn();
                 e.preventDefault();
                 var dialog_modif = window.confirm("Voulez-vous vraiment modifier votre avis ?");
                 if(dialog_modif){
-                    btnModif.click();
+                    formModif.submit();
                 }
             });
         });
