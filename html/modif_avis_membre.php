@@ -46,9 +46,9 @@ echo "</pre>";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST['unAvis'])){
-        echo "<pre>";
-        var_dump(unserialize($_POST['unAvis']));
-        echo "</pre>";
+        // echo "<pre>";
+        // var_dump(unserialize($_POST['unAvis']));
+        // echo "</pre>";
 
         $avis = unserialize($_POST['unAvis']);
         $_SESSION['modif_avis'] = $avis;
@@ -305,19 +305,19 @@ $isAnswer = $isAnswer->fetchColumn();
                     <li><a href="voir_offres.php">Accueil</a></li>
                     <li><a href="connexion_pro.php">Publier</a></li>
                     <?php
-                    if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
-                        ?>
-                        <li>
-                            <a href="consulter_compte_membre.php">Mon Compte</a>
-                        </li>
-                        <?php
-                    } else {
-                        ?>
-                        <li>
-                            <a href="connexion_membre.php">Se connecter</a>
-                        </li>
-                        <?php
-                    }
+                        if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
+                           ?>
+                           <li>
+                               <a href="consulter_compte_membre.php">Mon Compte</a>
+                           </li>
+                            <?php
+                        } else {
+                            ?>
+                           <li>
+                               <a href="connexion_membre.php">Se connecter</a>
+                           </li>
+                           <?php
+                        }
                     ?>
                 </ul>
             </div>
