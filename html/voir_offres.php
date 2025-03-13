@@ -559,7 +559,7 @@ function tempsEcouleDepuisPublication($offre){
                 }
 
                 
-                if ($offre["en_ligne"] && $nbOffreAfficher < 5)
+                if ($offre["en_ligne"] && $nbOffreAfficher < 10)
                 {
                 ?>
                     <article class="offer-new" >
