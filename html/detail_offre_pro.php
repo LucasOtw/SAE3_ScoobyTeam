@@ -1300,7 +1300,7 @@ WHERE code_offre = :code_offre
     });
     document.addEventListener('DOMContentLoaded', () => {
         var del_offre = document.getElementById('del-offre');
-        var blacklist_avis = document.getElementByClass('blacklist-avis');
+        var blacklist_avis = document.querySelectorAll('blacklist-avis');
         var modal = document.getElementById('customModal');
         var modal2 = document.getElementById('customModal2');
         var modalError = document.getElementById('customModalError');
@@ -1338,13 +1338,16 @@ WHERE code_offre = :code_offre
 
 
         // Afficher la modale lors de la soumission du formulaire
-        blacklist_avis.addEventListener('click', () => {
-            var jetons = <?php echo json_encode($details_offre['nb_blacklister']); ?>;
-            if (jetons+1 < 3) {
-                modal2.style.display = 'flex';
-            } else {
-                modalError.style.display = 'flex';
-            }
+        blacklist_avis.forEach(element => {
+            element.addEventListener('click', () => {
+                var jetons = <?php echo json_encode($details_offre['nb_blacklister']); ?>;
+                if (jetons + 1 < 3) {
+                    modal2.style.display = 'flex';
+                    confirmBlacklist.dataset.avis = element.getAttribute('data-avis'); // Stocker l'ID de l'avis
+                } else {
+                    modalError.style.display = 'flex';
+                }
+            });
         });
 
         // Si l'utilisateur confirme (Oui)
