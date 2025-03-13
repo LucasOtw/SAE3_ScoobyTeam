@@ -42,7 +42,7 @@ if(isset($_POST['uneOffre'])){
         return !is_null($val);
     });
 
-    var_dump($codesHoraires);
+    var_dump($CodesHoraires);
 
 } else {
     // sinon il n'a rien à faire ici
