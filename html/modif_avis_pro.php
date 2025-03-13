@@ -334,6 +334,7 @@ $isAnswer = $isAnswer->fetchColumn();
             numEtoile.toggleAttribute("checked");
 
             var formModif = document.getElementById('avisForm');
+            console.log(formModif);
 
             formModif.addEventListener('submit',function(e){
                 e.preventDefault();
