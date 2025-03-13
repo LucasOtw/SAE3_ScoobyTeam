@@ -31,7 +31,7 @@ if(isset($_POST['uneOffre'])){
     // On va d'abord récupérer chaque lien d'image
 
     $recupCodesImages = $dbh->prepare("SELECT lundi,mardi,mercredi,jeudi,vendredi,samedi,dimanche
-    FROM tripenarvor_offre WHERE code_offre = :code_offre");
+    FROM tripenarvor._offre WHERE code_offre = :code_offre");
     $recupCodesImages->bindValue(':code_offre',$codeOffre);
     $recupCodesImages->execute();
 
