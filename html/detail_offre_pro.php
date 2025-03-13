@@ -747,6 +747,8 @@ include("recupInfosCompte.php");
             $appreciationGenerale = "Valeur hors échelle";
         } 
 
+        echo $details_offre["nb_blacklister"];
+
         // Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
         function getResponses($dbh, $code_avis)
         {
