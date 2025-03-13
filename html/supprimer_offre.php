@@ -29,8 +29,8 @@ if(isset($_POST['uneOffre'])){
     $recupTitre->bindValue(':code_offre',$codeOffre);
     $recupTitre->execute();
 
-    $titreOffre = $recupTitre->fetchColumn();
-    var_dump($titreOffre);
+    $titreOffre = $recupTitre->fetchColumn(); // titre de l'offre
+    $titreOffre = str_replace(' ','',$titreOffre);
 
     /* RÉCUPÉRATION DE CHAQUE LIEN D'IMAGE */
 
@@ -97,14 +97,19 @@ if(isset($_POST['uneOffre'])){
             // si le code n'est utilisé qu'une fois, on peut le supprimer dans _horaire
             $deleteHoraire = $dbh->prepare('DELETE FROM tripenarvor._horaire
             WHERE code_horaire = :code');
-            // A COMPLETER
+            $deleteHoraire->bindValue(':code',$code);
+            try{
+                $deleteHoraire->execute();
+            } catch (PDOException $e){
+                die("Erreur lors de la suppression (horaire) : ". $e->getMessage());
+            }
         }
 
     }
 
     /* SUPPRESSION DE L'OFFRE */
 
-/*     $deleteOffre = $dbh->prepare('DELETE FROM tripenarvor._offre WHERE code_offre = :code_offre');
+    $deleteOffre = $dbh->prepare('DELETE FROM tripenarvor._offre WHERE code_offre = :code_offre');
     $deleteOffre->bindValue(':code_offre',$codeOffre);
     try {
         $deleteOffre->execute();
@@ -116,7 +121,7 @@ if(isset($_POST['uneOffre'])){
         }
     } catch (PDOException $e) {
         die("Erreur lors de la suppression : " . $e->getMessage());
-    } */
+    }
 
     // On supprime les images du serveur
     foreach($liensImages as $img){
@@ -129,6 +134,14 @@ if(isset($_POST['uneOffre'])){
             }
         }
     }
+    // les images sont toutes supprimées, on peut donc supprimer le dossier
+    $chemin = "images/offres/$titreOffre";
+    if(file_exists($chemin)){
+        unlink($chemin);
+    }
+
+    header('location: mes_offres.php');
+    exit;
 
 } else {
     // sinon il n'a rien à faire ici
