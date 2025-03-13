@@ -8013,7 +8013,7 @@ form .btn-link {
     height: 50px;
 }
 
-#body_offre_desktop .avis-header {
+/* #body_offre_desktop .avis-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -8023,7 +8023,13 @@ form .btn-link {
     display: flex;
     gap: 10px;
     margin-left: auto; /* Permet de pousser la div vers la droite */
+/* }  */
+
+.avis-header .jetons-container{
+    float: right;
+    
 }
+
 
 
 
