@@ -259,8 +259,6 @@ if (isset($json['results'][0])) {
 }
 
 include("recupInfosCompte.php");
-
-echo $details_offre["nb_blacklister"];
 ?>
 
 <!DOCTYPE html>
@@ -815,6 +813,9 @@ echo $details_offre["nb_blacklister"];
 
             // Calcul de la marge pour les sous-réponses
             $marge = $niveau * 5; // Indentation
+
+            
+            echo $details_offre["nb_blacklister"];    
             ?>
             <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
                 <div class="avis-content">
