@@ -27,6 +27,7 @@
 </header>
 
 <main class="error-container">
+    <button class="error-back-button" onclick="goBack()">Revenir à la page précédente</button>
     <h1 class="error-title">Oups ! Page introuvable</h1>
     <p class="error-subtitle">La page que vous recherchez n'existe pas ou a été déplacée.</p>
     <img src="images/404.png" alt="Erreur 404" class="error-image">
@@ -103,3 +104,13 @@
 
 </body>
 </html>
+<script>
+    function goBack() {
+        if (document.referrer) {
+            window.location.href = document.referrer;
+        } else {
+            window.location.href = "index.php"; // Redirige vers l'accueil si aucune page précédente n'est trouvée
+        }
+    }
+</script>
+

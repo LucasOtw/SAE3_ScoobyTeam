@@ -703,7 +703,7 @@ include("recupInfosCompte.php");
                 </ul>
 
             </div>
-            <?php
+            <?php  
         }
         ?>
 
@@ -745,7 +745,9 @@ include("recupInfosCompte.php");
             $appreciationGenerale = "Exceptionnel";
         } else {
             $appreciationGenerale = "Valeur hors échelle";
-        }
+        } 
+
+        echo $details_offre["nb_blacklister"];
 
         // Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
         function getResponses($dbh, $code_avis)
@@ -815,7 +817,7 @@ include("recupInfosCompte.php");
             $marge = $niveau * 5; // Indentation
 
             
-            echo $details_offre["nb_blacklister"];    
+            echo $details_offre["nb_blacklister"];   
             ?>
             <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
                 <div class="avis-content">
