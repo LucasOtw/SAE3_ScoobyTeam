@@ -41,7 +41,7 @@
 
 
 
-<footer class="footer footer_pro">
+<footer class="footer footer_membre">
         <div class="footer-links">
             <div class="logo">
                 <img src="images/logoBlanc.png" alt="Logo PAVCT">
@@ -90,6 +90,7 @@
                 </ul>
             </div>
         </div>
+
         <div class="footer-bottom">
             <div class="social-icons">
                 <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
@@ -99,5 +100,6 @@
             </div>
         </div>
     </footer>
+
 </body>
 </html>
