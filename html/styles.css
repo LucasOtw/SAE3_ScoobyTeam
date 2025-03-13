@@ -8029,6 +8029,9 @@ form .btn-link {
     align-items: center; /* Centre les jetons horizontalement */
     gap: 10px;
     margin-bottom: 2em;
+    box-shadow: 5px 5px 10px 0px rgba(166, 158, 158, 0.5);
+    background-color: rgba(23, 111, 242, 0.05);
+    border-radius: 29px;
 }
 
 .jetons{
