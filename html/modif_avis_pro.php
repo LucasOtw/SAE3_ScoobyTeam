@@ -332,11 +332,11 @@ $isAnswer = $isAnswer->fetchColumn();
             // on récupère une étoile en fonction de la note
             const numEtoile = document.getElementById(`star${note}`);
             console.log(numEtoile);
-            numEtoile.toggleAttribute("checked");
+            if(numEtoile){
+                numEtoile.toggleAttribute("checked");
+            }
 
             var formModif = document.getElementById('avisForm');
-            console.log(formModif);
-            console.log("e");
 
             formModif.addEventListener('submit',function(e){
                 e.preventDefault();
