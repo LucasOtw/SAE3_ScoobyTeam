@@ -782,7 +782,7 @@ include("recupInfosCompte.php");
 
 
         // Fonction pour afficher les avis et les réponses récursivement
-        function afficherAvis($avis, $niveau = 0)
+        function afficherAvis($avis, $niveau = 0, $details_offre)
         {
             global $details_offre;
             // Déterminer l'affichage selon le type d'utilisateur
@@ -975,7 +975,7 @@ include("recupInfosCompte.php");
             // Afficher les sous-réponses si elles existent
             if (!empty($avis['sous_reponses'])) {
                 foreach ($avis['sous_reponses'] as $sous_reponse) {
-                    afficherAvis($sous_reponse, $niveau + 1); // Indentation augmentée
+                    afficherAvis($sous_reponse, $niveau + 1, $details_offre); // Indentation augmentée
                 }
             }
         }
@@ -1019,7 +1019,7 @@ WHERE code_offre = :code_offre
             </div>
             <div class="avis-list">
                 <?php
-                array_map('afficherAvis', $tous_les_avis);
+                array_map('afficherAvis', $tous_les_avis, $details_offre);
                 ?>
             </div>
         </div>

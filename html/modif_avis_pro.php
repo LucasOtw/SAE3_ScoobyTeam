@@ -144,6 +144,7 @@ $isAnswer = $isAnswer->fetchColumn();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier  un avis</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script> <!-- Pour les icones -->
 </head>
 <body>
     <header class="header-pc header_pro">
