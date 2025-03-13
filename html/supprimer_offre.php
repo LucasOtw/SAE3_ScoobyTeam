@@ -143,17 +143,13 @@ if(isset($_POST['uneOffre'])){
             // si le lien ressemble à : images/offres/{doss}/img.{ext}, on peut supprimer l'image
             if(file_exists($chemin)){
                 unlink($chemin); // supprime le fichier
-            } else {
-                echo "Merde";
             }
         }
     }
     // les images sont toutes supprimées, on peut donc supprimer le dossier
     $chemin = "images/offres/$titreOffre";
     if(file_exists($chemin)){
-        unlink($chemin);
-    } else {
-        echo "ah";
+        rmdir($chemin);
     }
 
 } else {
