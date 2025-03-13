@@ -155,8 +155,8 @@ $isAnswer = $isAnswer->fetchColumn();
         </div>
         <nav>
             <ul>
-                <li><a href="voir_offres.php">Accueil</a></li>
-                <li><a href="connexion_pro.php">Publier</a></li>
+                <li><a href="mes_offres.php">Accueil</a></li>
+                <li><a href="creation_offre">Publier</a></li>
                 <li><a href="consulter_compte_pro.php" class="active">Mon Compte</a></li>
             </ul>
         </nav>
@@ -165,7 +165,7 @@ $isAnswer = $isAnswer->fetchColumn();
 
         <header class="header-tel header_pro">
             <div class="logo-tel">
-                <a href="voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
+                <a href="mes_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo"></a>
             </div>
         </header>
         <main class="main_poster_avis">
@@ -266,28 +266,7 @@ $isAnswer = $isAnswer->fetchColumn();
     </main> 
 
     <footer class="footer footer_pro">
-        <div class="newsletter">
-        <div class="newsletter-content">
-            <h2>Inscrivez-vous à notre Newsletter</h2>
-            <p>PACT</p>
-            <p>découvrez la Bretagne !</p>
-            <form class="newsletter-form" id="newsletterForm">
-                <input type="email" id="newsletterEmail" placeholder="Votre adresse mail" required>
-                <button type="submit">S'inscrire</button>
-            </form>
-        </div>
-        <div class="newsletter-image">
-            <img src="images/Boiteauxlettres.png" alt="Boîte aux lettres">
-        </div>
-    </div>
-
-    <div id="newsletterConfirmBox" style="display: none;">
-        <div class="popup-content">
-            <p class="popup-message"></p>
-            <button id="closeNewsletterPopup">Fermer</button>
-        </div>
-    </div>
-
+        
         <div class="footer-links">
             <div class="logo\avis">
                 <img src="images/logoBlanc.png" alt="Logo PACT">
@@ -302,8 +281,8 @@ $isAnswer = $isAnswer->fetchColumn();
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="voir_offres.php">Accueil</a></li>
-                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <li><a href="mes_offres.php">Accueil</a></li>
+                    <li><a href="creation_offre.php">Publier</a></li>
                     <?php
                     if (isset($_SESSION["pro"]) && !empty($_SESSION["pro"])) {
                         ?>
