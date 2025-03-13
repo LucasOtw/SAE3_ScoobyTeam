@@ -32,7 +32,7 @@ if(isset($_POST['uneOffre'])){
     $recupCodesImages->bindValue(':code_offre',$codeOffre);
     $recupCodesImages->execute();
 
-    $codesImages = $recupCodesImages->fetchColumn();
+    $codesImages = $recupCodesImages->fetchAll(PDO::FETCH_ASSOC);
     echo "<pre>";
     var_dump($codesImages);
     echo "</pre>";
