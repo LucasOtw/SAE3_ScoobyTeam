@@ -1372,15 +1372,14 @@ document.addEventListener("DOMContentLoaded", function () {
             // Création de la carte et centrage sur la Bretagne
             var map = L.map('map').setView([48.2020, -2.9326], 8);
             
-            // Ajout d'un fond de carte OpenStreetMap
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; OpenStreetMap contributors',
-                maxZoom: 19
-            }).addTo(map);
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: '&copy; Esri',
+    maxZoom: 20
+}).addTo(map);
+
             
-            // Ajouter des marqueurs pour les offres
+
             <?php
-            // Modifiez d'abord votre requête SQL pour inclure l'image
 $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
                        (SELECT i.url_image 
                         FROM tripenarvor._son_image si 
@@ -1391,27 +1390,24 @@ $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*,
                        JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
                        WHERE o.en_ligne = true');
 
-// Puis utilisez cette syntaxe correcte pour le marker popup
 foreach($adresses as $adr) {
     $lat = 48.0 + (intval(substr($adr['code_postal'], 0, 2)) / 100);
     $lng = -3.0 + (intval(substr($adr['code_postal'], 2, 3)) / 100);
     
-    // Construction du HTML du popup avec l'image si disponible
     $popupContent = "<div style='width:218px;'>";
     
     if (!empty($adr['url_image'])) {
         $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
     }
-    // Ajout d'une div conteneur pour tout le texte
+
 $popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
 $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
                . addslashes($adr['ville']) . "<br>"
                . $adr['tarif'] . "€"
                . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
-// Fermeture de la div conteneur de texte
+
 $popupContent .= "</div>";
 
-// Fermeture de la div principale
 $popupContent .= "</div>";
     
     echo "L.marker([$lat, $lng], {icon: customIcon}).addTo(map)
@@ -1428,12 +1424,12 @@ $popupContent .= "</div>";
     }
 });
 
-// Dans votre script JavaScript après avoir initialisé la carte
+
 var customIcon = L.icon({
-    iconUrl: './images/ping.png', // Chemin vers votre image de pin
-    iconSize: [50, 40], // Taille en pixels [largeur, hauteur]
-    iconAnchor: [15, 40], // Point de l'icône qui correspondra à la position du marqueur [x, y] (par rapport au coin sup. gauche)
-    popupAnchor: [0, -35] // Point à partir duquel la popup doit s'ouvrir (relatif à l'iconAnchor)
+    iconUrl: './images/ping.png', 
+    iconSize: [50, 40], 
+    iconAnchor: [15, 40], 
+    popupAnchor: [0, -35] 
 });
 </script>
 
