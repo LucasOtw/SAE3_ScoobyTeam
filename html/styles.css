@@ -7534,20 +7534,13 @@ form .btn-link {
 
 #btn-repondre-avis {
     border: 3px;
-    background-color: white;
+    background-color: transparent;
     font-size: 16px;
     cursor: pointer;
     font-weight: bold;
     font-family: 'K2D', sans-serif;
 }
-#btn-repondre-avis:hover{
-    border: 3px;
-    background-color: #f0f0f0;
-    font-size: 16px;
-    cursor: pointer;
-    font-weight: bold;
-    font-family: 'K2D', sans-serif;
-}
+
 
 /* Section des cartes */
 .a-la-une {
@@ -8088,12 +8081,7 @@ form .btn-link {
     border-bottom: none;
 }
 
-/* Lorsque le <li> est survolé */
-.avis .menu_avis .context-menu ul li:hover input[type="submit"] {
-    background: #f0f0f0; /* Exemple de changement de couleur */
-    border-color: #ccc; /* Exemple de bordure */
-    cursor: pointer; /* Change le curseur pour indiquer l'interaction */
-}
+
 
 
 
