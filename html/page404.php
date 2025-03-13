@@ -38,6 +38,7 @@
         <li class="error-item"><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
         <li class="error-item"><a href="contacter_plateforme.php">Nous contacter</a></li>
         <li class="error-item"><a href="connexion_membre.php">Se connecter</a></li>
+        <span class="404-arrow">›</span>
     </ul>
 </main>
 
