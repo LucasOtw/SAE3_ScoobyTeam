@@ -705,7 +705,7 @@ include("recupInfosCompte.php");
                 </ul>
 
             </div>
-        <?php
+            <?php
         }
         ?>
 
@@ -749,8 +749,6 @@ include("recupInfosCompte.php");
             $appreciationGenerale = "Valeur hors échelle";
         }
 
-        echo $details_offre["nb_blacklister"];
-
         // Fonction pour récupérer les réponses, y compris les sous-réponses (récursivité)
         function getResponses($dbh, $code_avis)
         {
@@ -780,10 +778,11 @@ include("recupInfosCompte.php");
             return $reponses;
         }
 
-
+        
         // Fonction pour afficher les avis et les réponses récursivement
         function afficherAvis($avis, $niveau = 0)
         {
+            global $details_offre;
             // Déterminer l'affichage selon le type d'utilisateur
             if ($avis['code_compte'] == $_SESSION['pro']['code_compte']) {
                 $prenom = "Mon Entreprise";
@@ -818,8 +817,6 @@ include("recupInfosCompte.php");
             // Calcul de la marge pour les sous-réponses
             $marge = $niveau * 5; // Indentation
         
-
-            echo $details_offre["nb_blacklister"];
             ?>
             <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
                 <div class="avis-content">
@@ -934,19 +931,6 @@ include("recupInfosCompte.php");
                                 </div>
                             </div>
 
-                            <!-- Modale personnalisée -->
-                            <div id="customModal2" class="custom-modal">
-                                <div class="custom-modal-content">
-                                    <p class="texte-boite-perso">Voulez-vous vraiment blacklister l'avis ?</p>
-
-                                    <p class="texte-boite-perso">Après il vous restera
-                                        <?php echo $details_offre["nb_blacklister"]; ?> jeton(s)</p>
-
-                                    <button id="cancelBlacklist" class="cancel-btn">Non</button>
-                                    <button id="confirmBlacklist" class="confirm-btn">Oui</button>
-                                </div>
-                            </div>
-
                             <script>
                                 function toggleMenu(event, element) {
                                     event.stopPropagation();
@@ -978,7 +962,23 @@ include("recupInfosCompte.php");
                 }
             }
         }
+        ?>
 
+        <!-- Modale personnalisée -->
+        <div id="customModal2" class="custom-modal">
+            <div class="custom-modal-content">
+                <p class="texte-boite-perso">Voulez-vous vraiment blacklister l'avis ?</p>
+
+                <p class="texte-boite-perso">Après il vous restera
+                    <?php echo 3-(1+$details_offre["nb_blacklister"]); ?> jeton(s)
+                </p>
+
+                <button id="cancelBlacklist" class="cancel-btn">Non</button>
+                <button id="confirmBlacklist" class="confirm-btn">Oui</button>
+            </div>
+        </div>
+        
+        <?php
         // Récupérer tous les avis principaux (sans réponses déjà existantes)
         $tous_les_avis = $dbh->prepare('SELECT * 
 FROM tripenarvor._avis
