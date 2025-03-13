@@ -56,6 +56,15 @@ if(isset($_POST['uneOffre'])){
 
         var_dump($isUniqueHoraire);
 
+        if($isUniqueHoraire == 1){
+            // sinon, on n'a pas besoin de faire quoi que ce soit...
+            
+            // si le code n'est utilisé qu'une fois, on peut le supprimer dans _horaire
+            $deleteHoraire = $dbh->prepare('DELETE FROM tripenarvor._horaire
+            WHERE code_horaire = :code');
+            // A COMPLETER
+        }
+
     }
 
 } else {
