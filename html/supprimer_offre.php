@@ -143,6 +143,8 @@ if(isset($_POST['uneOffre'])){
             // si le lien ressemble à : images/offres/{doss}/img.{ext}, on peut supprimer l'image
             if(file_exists($chemin)){
                 unlink($chemin); // supprime le fichier
+            } else {
+                echo "Merde";
             }
         }
     }
@@ -150,6 +152,8 @@ if(isset($_POST['uneOffre'])){
     $chemin = "images/offres/$titreOffre";
     if(file_exists($chemin)){
         unlink($chemin);
+    } else {
+        echo "ah";
     }
 
     header('location: mes_offres.php');
