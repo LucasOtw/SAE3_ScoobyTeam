@@ -354,8 +354,8 @@ $isAnswer = $isAnswer->fetchColumn();
             const numEtoile = document.getElementById(`star${note}`);
             numEtoile.toggleAttribute("checked");
 
-            var btnModif = document.getElementById('#envoiModif');
-            var formModif = document.getElementById('#avisForm');
+            var btnModif = document.getElementById('envoiModif');
+            var formModif = document.getElementById('avisForm');
 
             console.log(formModif);
 
