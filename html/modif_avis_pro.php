@@ -234,7 +234,7 @@ $isAnswer = $isAnswer->fetchColumn();
                         <?php
                     }
                    ?>
-                       <p class="poster_un_avis_disclaimer">En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
+                       <p class="poster_un_avis_disclaimer">En modifiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
                        <div class="poster_un_avis_buttons">
                             <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
                             <input type="hidden" name="code_avis" value="<?php echo $avis['code_avis']; ?>">
@@ -242,8 +242,8 @@ $isAnswer = $isAnswer->fetchColumn();
                             <button class="poster_un_avis_btn_publier_pro" type="button" name="modifier" onclick="afficherMessage(event)">Modifier →</button>
                         </div>
 
-                        <div id="message-container" style="display:none;">
-                            <p>Votre avis va être modifié.</p>
+                        <div id="message-container" style="display:none; color: red;">
+                            <p>Erreur : Votre avis a été modifié. Veuillez réessayer.</p>
                         </div>
 
                         <script>
@@ -251,15 +251,15 @@ $isAnswer = $isAnswer->fetchColumn();
                                 event.preventDefault();  // Empêche la soumission du formulaire immédiate
                                 
                                 var messageContainer = document.getElementById("message-container");
-                                messageContainer.style.display = "block";  // Affiche le message
+                                messageContainer.style.display = "block";  // Affiche le message d'erreur
                                 
                                 // Si tu veux attendre quelques secondes avant de soumettre le formulaire
                                 setTimeout(function() {
                                     document.querySelector("form").submit();  // Soumettre le formulaire après 2 secondes
                                 }, 2000);  // Délai de 2 secondes pour afficher le message avant la soumission
                             }
-
-                        </script>                            
+                        </script>
+     
                     </div>
                   </div>
                </div>
