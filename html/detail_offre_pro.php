@@ -1015,13 +1015,15 @@ WHERE code_offre = :code_offre
 
         <div class="avis-widget">
             <div class="avis-header">
-                <h1 class="avis">
-                    <?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5"); ?>
-                    <span class="avis-score">
-                        <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?>
-                    </span>
-                </h1>
-                <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
+                <div class="note_nb_avis">
+                    <h1 class="avis">
+                        <?php echo ($note_moyenne === null ? "Pas d'avis" : round($note_moyenne, 1) . "/5"); ?>
+                        <span class="avis-score">
+                            <?php echo ($note_moyenne === null ? "" : $appreciationGenerale); ?>
+                        </span>
+                    </h1>
+                    <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
+                </div>
 
                 <div class="jetons-container">
                     <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
@@ -1033,8 +1035,6 @@ WHERE code_offre = :code_offre
                         echo "<p>Il vous reste $jetons_restants jeton(s).</p>"; 
                     ?>
                 </div>
-                
-                
 
             </div>
 
