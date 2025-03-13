@@ -25,7 +25,17 @@ if(isset($_POST['uneOffre'])){
     $codeOffre = unserialize($_POST['uneOffre']);
 
 
-    // On va d'abord récupérer chaque lien d'image
+    /* RÉCUPÉRATION DE CHAQUE LIEN D'IMAGE */
+
+    $recupCodesImages = $dbh->prepare("SELECT code_image FROM tripenarvor._son_image
+    WHERE code_offre = :code_offre");
+    $recupCodesImages->bindValue(':code_offre',$codeOffre);
+    $recupCodesImages->execute();
+
+    $codesImages = $recupCodesImages->fetchAll(PDO::FETCH_ASSOC);
+    var_dump($codesImages);
+
+    /* RÉCUPRATION ET VÉRIFICATION DE L'UNICITÉ DES CODES HORAIRES */
 
     $recupCodesHoraires = $dbh->prepare("SELECT lundi,mardi,mercredi,jeudi,vendredi,samedi,dimanche
     FROM tripenarvor._offre WHERE code_offre = :code_offre");
@@ -55,6 +65,15 @@ if(isset($_POST['uneOffre'])){
         $isUniqueHoraire = $checkUniqueHoraire->fetchColumn();
 
         var_dump($isUniqueHoraire);
+
+        if($isUniqueHoraire == 1){
+            // sinon, on n'a pas besoin de faire quoi que ce soit...
+            
+            // si le code n'est utilisé qu'une fois, on peut le supprimer dans _horaire
+            $deleteHoraire = $dbh->prepare('DELETE FROM tripenarvor._horaire
+            WHERE code_horaire = :code');
+            // A COMPLETER
+        }
 
     }
 
