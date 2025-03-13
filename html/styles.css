@@ -8013,6 +8013,19 @@ form .btn-link {
     height: 50px;
 }
 
+.body_offre_desktop .avis-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.avis-header .jetons-container {
+    display: flex;
+    gap: 10px;
+    margin-left: auto; /* Permet de pousser la div vers la droite */
+}
+
+
 
 /*****************************************************
             * Code pour les pouces*
