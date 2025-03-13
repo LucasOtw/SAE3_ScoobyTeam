@@ -1015,6 +1015,18 @@ WHERE code_offre = :code_offre
                     </span>
                 </h1>
                 <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
+
+                <div class="jetons-container">
+                    <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
+                    <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
+                    <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
+                </div>
+                
+                <?php 
+                    $jetons_restants = 3; // Valeur dynamique à modifier selon les actions de l'utilisateur
+                    echo "<p>Il vous reste $jetons_restants jeton(s).</p>"; 
+                ?>
+
             </div>
 
             
