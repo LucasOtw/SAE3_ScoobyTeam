@@ -92,7 +92,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt = $dbh->prepare($sql);
                 $stmt->execute($params);
             }
-
+            if($modifications->execute()){
+                ?>
+                    <div class="creation-success">
+                        <img src="images/verifier.png" alt="Succès">
+                        <h2>Compte crée avec succès !</h2>
+                    </div>
+                <?php
+                
+            }
             header('location: detail_offre_pro.php');
             exit;
         } else {
@@ -245,6 +253,7 @@ $isAnswer = $isAnswer->fetchColumn();
                   </div>
                </div>
             </form>
+           
            
         <nav class="nav-bar">
             <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
