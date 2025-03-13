@@ -61,15 +61,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $modifOk = true;
         }
 
-        if ($modifOk === true) {
-            // Si les modifications sont ok
+        if($modifOk === true){
+            // si les modifications sont ok
+
             $champsModifies = array();
             $params = array();
-        
+
             $n_texteAvis = trim($_POST['textAreaAvis']);
             $n_note = (int) $_POST['note'];
             $code_avis = (int) $_POST['code_avis'];
-        
+
+
             $modifications = [];
             $params = [];
             
@@ -77,24 +79,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $modifications[] = "note = :note";
                 $params[':note'] = $n_note;
             }
-        
+            
             if ($n_texteAvis !== trim($_SESSION['modif_avis']['txt_avis'])) {
                 $modifications[] = "txt_avis = :texteAvis";
                 $params[':texteAvis'] = $n_texteAvis;
             }
-        
+            
             if (!empty($modifications)) {
                 $sql = "UPDATE tripenarvor._avis SET " . implode(', ', $modifications) . " WHERE code_avis = :codeAvis";
                 $params[':codeAvis'] = $code_avis;
-        
+            
                 $stmt = $dbh->prepare($sql);
                 $stmt->execute($params);
             }
-            
-            // Ne pas rediriger immédiatement ici. La redirection sera gérée via JavaScript
-            $_SESSION['modif_avis_success'] = true;  // Utiliser une variable de session pour indiquer que la modification a réussi
-        
-        
             
             exit;
         } else {
