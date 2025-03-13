@@ -977,6 +977,13 @@ include("recupInfosCompte.php");
                 <button id="confirmBlacklist" class="confirm-btn">Oui</button>
             </div>
         </div>
+
+        <div id="customModalError" class="custom-modal">
+            <div class="custom-modal-error-content">
+                <p class="texte-boite-perso">Vous n'avez plus de jetons pour blacklister l'avis</p>
+                <button id="cancelBlacklistError" class="cancel-error-btn">Non</button>
+            </div>
+        </div>
         
         <?php
         // Récupérer tous les avis principaux (sans réponses déjà existantes)
@@ -1307,10 +1314,12 @@ WHERE code_offre = :code_offre
         var blacklist_avis = document.getElementById('blacklist-avis');
         var modal = document.getElementById('customModal');
         var modal2 = document.getElementById('customModal2');
+        var modalError = document.getElementById('customModalError');
         var confirmDelete = document.getElementById('confirmDelete');
         var cancelDelete = document.getElementById('cancelDelete');
         var confirmBlacklist = document.getElementById('confirmBlacklist');
         var cancelBlacklist = document.getElementById('cancelBlacklist');
+        var cancelBlacklistError = document.getElementById('cancelBlacklistError');
 
         // Afficher la modale lors de la soumission du formulaire
         del_offre.addEventListener('submit', (e) => {
@@ -1341,7 +1350,12 @@ WHERE code_offre = :code_offre
 
         // Afficher la modale lors de la soumission du formulaire
         blacklist_avis.addEventListener('click', () => {
-            modal2.style.display = 'flex';
+            var jetons = <?php echo json_encode($details_offre['nb_blacklister']); ?>;
+            if (jetons+1 < 3) {
+                modal2.style.display = 'flex';
+            } else {
+                modalError.style.display = 'flex';
+            }
         });
 
         // Si l'utilisateur confirme (Oui)
@@ -1380,6 +1394,10 @@ WHERE code_offre = :code_offre
         // Si l'utilisateur annule (Non)
         cancelBlacklist.addEventListener('click', () => {
             modal2.style.display = 'none';  // Cacher la modale après annulation
+        });
+
+        cancelBlacklistError.addEventListener('click', () => {
+            modalError.style.display = 'none';  // Cacher la modale après annulation
         });
     });
 
