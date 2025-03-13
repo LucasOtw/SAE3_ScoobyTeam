@@ -813,6 +813,9 @@ include("recupInfosCompte.php");
 
             // Calcul de la marge pour les sous-réponses
             $marge = $niveau * 5; // Indentation
+
+            
+            echo $details_offre["nb_blacklister"];    
             ?>
             <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
                 <div class="avis-content">
@@ -914,7 +917,7 @@ include("recupInfosCompte.php");
                                     <div class="custom-modal-content">
                                         <p class="texte-boite-perso">Voulez-vous vraiment blacklister l'avis ?</p>
 
-                                        <p class="texte-boite-perso">Après il vous restera <?php var_dump($details_offre) ; ?> jeton(s)</p>
+                                        <p class="texte-boite-perso">Après il vous restera <?php echo $details_offre["nb_blacklister"]; ?> jeton(s)</p>
                                         
                                         <button id="cancelBlacklist" class="cancel-btn">Non</button>
                                         <button id="confirmBlacklist" class="confirm-btn">Oui</button>
