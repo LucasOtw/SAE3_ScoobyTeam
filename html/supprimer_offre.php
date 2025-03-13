@@ -35,6 +35,19 @@ if(isset($_POST['uneOffre'])){
     $codesImages = $recupCodesImages->fetchAll(PDO::FETCH_ASSOC);
     var_dump($codesImages);
 
+    $liensImages = [];
+
+    foreach($codesImages as $code){
+        $recupLienImage = $dbh->prepare('SELECT url_image FROM tripenarvor._image
+        WHERE code_image = :code_image');
+        $recupLienImage->bindValue(':code_image',$code);
+        $recupLienImage->execute();
+
+        $liensImages[] = $recupLienImage->fetchColumn();
+    }
+
+    var_dump($liensImages);
+
     /* RÉCUPRATION ET VÉRIFICATION DE L'UNICITÉ DES CODES HORAIRES */
 
     $recupCodesHoraires = $dbh->prepare("SELECT lundi,mardi,mercredi,jeudi,vendredi,samedi,dimanche
