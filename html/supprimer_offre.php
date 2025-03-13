@@ -35,7 +35,7 @@ if(isset($_POST['uneOffre'])){
     $recupCodesImages->bindValue(':code_offre',$codeOffre);
     $recupCodesImages->execute();
 
-    $codesImages = $recupCodesImages->fetchColumn();
+    $codesImages = $recupCodesImages->fetch(PDO::FETCH_ASSOC);
     $codesImages = array_filter($codesImages, function($val){
         return !is_null($val);
     });
