@@ -259,6 +259,8 @@ if (isset($json['results'][0])) {
 }
 
 include("recupInfosCompte.php");
+
+echo $details_offre["nb_blacklister"];
 ?>
 
 <!DOCTYPE html>
