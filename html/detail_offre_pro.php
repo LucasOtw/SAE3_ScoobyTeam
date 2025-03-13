@@ -1026,9 +1026,11 @@ WHERE code_offre = :code_offre
                 </div>
 
                 <div class="jetons-container">
-                    <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
-                    <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
-                    <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
+                    <div class="jetons">
+                        <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
+                        <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
+                        <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
+                    </div>
 
                     <?php 
                         $jetons_restants = 3; // Valeur dynamique à modifier selon les actions de l'utilisateur
