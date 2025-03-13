@@ -26,7 +26,7 @@
     </nav>
 </header>
 
-<main class="container-404">
+<main class="page-404">
     <h1>Oups ! Page introuvable</h1>
     <p>La page que vous recherchez n'existe pas ou a été déplacée.</p>
     <img src="images/404.png" alt="Erreur 404" class="image-404">
