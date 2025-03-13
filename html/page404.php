@@ -28,12 +28,12 @@
 </header>
 
 <main class="error-container">
-    <button class="error-back-button" onclick="goBack()">Revenir à la page précédente</button>
     <h1 class="error-title">Oups ! Page introuvable</h1>
     <p class="error-subtitle">La page que vous recherchez n'existe pas ou a été déplacée.</p>
     <img src="images/404.png" alt="Erreur 404" class="error-image">
     <h2 class="error-text">Que souhaitez-vous faire ?</h2>
     <ul class="error-list">
+        <li class="error-back-button" onclick="goBack()">Revenir à la page précédente</a></li>
         <li class="error-item"><a href="voir_offres.php">Retourner à l'accueil</a></li>
         <li class="error-item"><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
         <li class="error-item"><a href="contacter_plateforme.php">Nous contacter</a></li>
