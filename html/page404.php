@@ -33,14 +33,39 @@
     <img src="images/404.png" alt="Erreur 404" class="error-image">
     <h2 class="error-text">Que souhaitez-vous faire ?</h2>
     <ul class="error-list">
-        <li class="error-back-button" onclick="goBack()">Revenir à la page précédente</a></li>
-        <li class="error-item"><a href="voir_offres.php">Retourner à l'accueil</a></li>
-        <li class="error-item"><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
-        <li class="error-item"><a href="contacter_plateforme.php">Nous contacter</a></li>
-        <li class="error-item"><a href="connexion_membre.php">Se connecter</a></li>
-        <span class="404-arrow">›</span>
+        <li class="error-item">
+            <a href="javascript:history.back()">
+                <span>Revenir à la page précédente</span>
+                <span class="error-arrow">›</span>
+            </a>
+        </li>
+        <li class="error-item">
+            <a href="voir_offres.php">
+                <span>Retourner à l'accueil</span>
+                <span class="error-arrow">›</span>
+            </a>
+        </li>
+        <li class="error-item">
+            <a href="obtenir_aide.php">
+                <span>Obtenir de l'aide</span>
+                <span class="error-arrow">›</span>
+            </a>
+        </li>
+        <li class="error-item">
+            <a href="contacter_plateforme.php">
+                <span>Nous contacter</span>
+                <span class="error-arrow">›</span>
+            </a>
+        </li>
+        <li class="error-item">
+            <a href="connexion_membre.php">
+                <span>Se connecter</span>
+                <span class="error-arrow">›</span>
+            </a>
+        </li>
     </ul>
 </main>
+
 
 
 
