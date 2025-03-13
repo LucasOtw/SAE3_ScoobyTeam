@@ -55,14 +55,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if(isset($_POST['modifier'])){
         $modifOk = false;
-        if($_POST['isAnswer'] == 0){
-            if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
-                $modifOk = true;
-            }
-        } else { // alors c'est une réponse
-            if(isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis'])){
-                $modifOk = true;
-            }
+
+        // Un avis pro est forcément une réponse !
+        if(isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis'])){
+            $modifOk = true;
         }
 
         if($modifOk === true){
