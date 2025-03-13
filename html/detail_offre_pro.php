@@ -1341,6 +1341,7 @@ WHERE code_offre = :code_offre
         blacklist_avis.forEach(element => {
             element.addEventListener('click', () => {
                 var jetons = <?php echo json_encode($details_offre['nb_blacklister']); ?>;
+                console.log(jetons)
                 if (jetons + 1 < 3) {
                     modal2.style.display = 'flex';
                     confirmBlacklist.dataset.avis = element.getAttribute('data-avis'); // Stocker l'ID de l'avis
