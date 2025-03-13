@@ -355,7 +355,9 @@ $isAnswer = $isAnswer->fetchColumn();
             var note = <?php echo $note; ?>;
             // on récupère une étoile en fonction de la note
             const numEtoile = document.getElementById(`star${note}`);
-            numEtoile.toggleAttribute("checked");
+            if(numEtoile){
+                numEtoile.toggleAttribute("checked");
+            }
 
             var formModif = document.getElementById('avisForm');
 
