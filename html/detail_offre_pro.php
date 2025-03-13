@@ -778,9 +778,7 @@ include("recupInfosCompte.php");
             return $reponses;
         }
 
-        var_dump($details_offre);
-
-        global $details_offre;
+        
         // Fonction pour afficher les avis et les réponses récursivement
         function afficherAvis($avis, $niveau = 0)
         {
