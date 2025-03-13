@@ -12471,7 +12471,8 @@ ul.mentions_legales-sous-list {
     justify-content: center;
     height: 100vh;
     text-align: center;
-    background-color: #f0f0f0;
+    background-color: #f8f9fa;
+    padding: 20px;
 }
 
 .page-404-title {
@@ -12479,6 +12480,7 @@ ul.mentions_legales-sous-list {
     font-weight: bold;
     color: #333;
     margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .page-404-subtitle {
@@ -12492,6 +12494,27 @@ ul.mentions_legales-sous-list {
     color: #777;
     max-width: 600px;
     margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.page-404-image {
+    max-width: 300px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Boutons d'actions */
+.actions-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.actions-list li {
+    margin: 10px 0;
 }
 
 .page-404-button {
@@ -12501,27 +12524,34 @@ ul.mentions_legales-sous-list {
     border-radius: 8px;
     text-decoration: none;
     font-size: 18px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, box-shadow 0.3s;
     display: inline-block;
-    margin: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .page-404-button:hover {
     background-color: #0056b3;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.page-404-image {
-    max-width: 300px;
-    margin-bottom: 20px;
+/* Responsive Design */
+@media (max-width: 600px) {
+    .page-404-title {
+        font-size: 50px;
+    }
+
+    .page-404-subtitle {
+        font-size: 20px;
+    }
+
+    .page-404-text {
+        font-size: 16px;
+    }
+
+    .page-404-button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
 }
 
-/* Ajout pour styliser la liste d'actions */
-.actions-list {
-    list-style: none;
-    padding: 0;
-}
-
-.actions-list li {
-    margin: 10px 0;
-}
 
