@@ -252,13 +252,25 @@ $isAnswer = $isAnswer->fetchColumn();
                                 
                                 var messageContainer = document.getElementById("message-container");
                                 messageContainer.style.display = "block";  // Affiche le message d'erreur
-                                
-                                // Si tu veux attendre quelques secondes avant de soumettre le formulaire
-                                setTimeout(function() {
-                                    document.querySelector("form").submit();  // Soumettre le formulaire après 2 secondes
-                                }, 2000);  // Délai de 2 secondes pour afficher le message avant la soumission
+
+                                // Affiche la pop-up immédiatement
+                                $(document).ready(function() {
+                                    function afficherPOPup() {
+                                        $("#customConfirmBox").fadeIn();  // Affiche la pop-up de confirmation
+                                    }
+                                    afficherPOPup();  // Afficher la pop-up après avoir cliqué sur le bouton
+                                });
+
+                                // Fermer la pop-up quand l'utilisateur clique sur "Fermer"
+                                $('#confirmButton').on('click', function() {
+                                    $('#customConfirmBox').fadeOut();  // Ferme la pop-up
+                                    setTimeout(function() {
+                                        document.querySelector("form").submit();  // Soumettre le formulaire après que la pop-up soit fermée
+                                    }, 500);  // Délai de 500ms pour s'assurer que la pop-up soit fermée avant la soumission
+                                });
                             }
                         </script>
+
      
                     </div>
                   </div>
