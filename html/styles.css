@@ -12463,7 +12463,6 @@ ul.mentions_legales-sous-list {
 /*****************************************************
             * Page 404 *
 *****************************************************/
-
 /* Styles pour la page 404 */
 .page-404-container {
     display: flex;
@@ -12503,6 +12502,8 @@ ul.mentions_legales-sous-list {
     text-decoration: none;
     font-size: 18px;
     transition: background-color 0.3s;
+    display: inline-block;
+    margin: 10px;
 }
 
 .page-404-button:hover {
@@ -12512,5 +12513,15 @@ ul.mentions_legales-sous-list {
 .page-404-image {
     max-width: 300px;
     margin-bottom: 20px;
+}
+
+/* Ajout pour styliser la liste d'actions */
+.actions-list {
+    list-style: none;
+    padding: 0;
+}
+
+.actions-list li {
+    margin: 10px 0;
 }
 
