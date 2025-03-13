@@ -1397,16 +1397,22 @@ foreach($adresses as $adr) {
     $lng = -3.0 + (intval(substr($adr['code_postal'], 2, 3)) / 100);
     
     // Construction du HTML du popup avec l'image si disponible
-    $popupContent = "<div style='width:200px;'>";
+    $popupContent = "<div style='width:218px;'>";
     
     if (!empty($adr['url_image'])) {
         $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
     }
-    
-    $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
-                   . addslashes($adr['ville']) . "<br>"
-                   . $adr['tarif'] . "€"
-                   . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a></div>";
+    // Ajout d'une div conteneur pour tout le texte
+$popupContent .= "<div class='popup-text-container' style='padding:8px; background-color:#f9f9f9; border-radius:0 0 5px 5px;'>";
+$popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
+               . addslashes($adr['ville']) . "<br>"
+               . $adr['tarif'] . "€"
+               . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
+// Fermeture de la div conteneur de texte
+$popupContent .= "</div>";
+
+// Fermeture de la div principale
+$popupContent .= "</div>";
     
     echo "L.marker([$lat, $lng]).addTo(map)
           .bindPopup(\"" . $popupContent . "\");";
