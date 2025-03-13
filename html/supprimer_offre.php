@@ -37,7 +37,7 @@ if(isset($_POST['uneOffre'])){
 
     $liensImages = [];
 
-    foreach($codesImages as $code){
+    foreach($codesImages as $cle => $code){
         var_dump($code);
         $recupLienImage = $dbh->prepare('SELECT url_image FROM tripenarvor._image
         WHERE code_image = :code_image');
