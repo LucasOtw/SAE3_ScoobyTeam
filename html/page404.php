@@ -26,18 +26,19 @@
     </nav>
 </header>
 
-<main class="page-404">
-    <h1>Oups ! Page introuvable</h1>
-    <p>La page que vous recherchez n'existe pas ou a été déplacée.</p>
-    <img src="images/404.png" alt="Erreur 404" class="image-404">
-    <h2>Que souhaitez-vous faire ?</h2>
+<main class="page-404-container">
+    <h1 class="page-404-title">Oups ! Page introuvable</h1>
+    <p class="page-404-subtitle">La page que vous recherchez n'existe pas ou a été déplacée.</p>
+    <img src="images/404.png" alt="Erreur 404" class="page-404-image">
+    <h2 class="page-404-text">Que souhaitez-vous faire ?</h2>
     <ul class="actions-list">
-        <li><a href="voir_offres.php">Retourner à l'accueil</a></li>
-        <li><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
-        <li><a href="contacter_plateforme.php">Nous contacter</a></li>
-        <li><a href="connexion_membre.php">Se connecter</a></li>
+        <li><a href="voir_offres.php" class="page-404-button">Retourner à l'accueil</a></li>
+        <li><a href="obtenir_aide.php" class="page-404-button">Obtenir de l'aide</a></li>
+        <li><a href="contacter_plateforme.php" class="page-404-button">Nous contacter</a></li>
+        <li><a href="connexion_membre.php" class="page-404-button">Se connecter</a></li>
     </ul>
 </main>
+
 
 <footer class="footer footer_pro">
         <div class="footer-links">
