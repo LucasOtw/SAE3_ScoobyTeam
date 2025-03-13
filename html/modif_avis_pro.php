@@ -92,8 +92,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt = $dbh->prepare($sql);
                 $stmt->execute($params);
             }
-            
-            header('location: detail_offre_pro.php');
+
+            header('location: detail_offre.php');
             exit;
         } else {
             ?>
@@ -234,43 +234,13 @@ $isAnswer = $isAnswer->fetchColumn();
                         <?php
                     }
                    ?>
-                       <p class="poster_un_avis_disclaimer">En modifiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
+                       <p class="poster_un_avis_disclaimer">En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
                        <div class="poster_un_avis_buttons">
-                            <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
-                            <input type="hidden" name="code_avis" value="<?php echo $avis['code_avis']; ?>">
-                            <input type="hidden" name="isAnswer" value="<?php echo $isAnswer; ?>">
-                            <button class="poster_un_avis_btn_publier_pro" type="button" name="modifier" onclick="afficherMessage(event)">Modifier →</button>
-                        </div>
-
-                        <div id="message-container" style="display:none; color: red;">
-                            <p>Erreur : Votre avis a été modifié. Veuillez réessayer.</p>
-                        </div>
-
-                        <script>
-                            function afficherMessage(event) {
-                                event.preventDefault();  // Empêche la soumission du formulaire immédiate
-                                
-                                var messageContainer = document.getElementById("message-container");
-                                messageContainer.style.display = "block";  // Affiche le message d'erreur
-
-                                // Affiche la pop-up immédiatement
-                                $(document).ready(function() {
-                                    function afficherPOPup() {
-                                        $("#customConfirmBox").fadeIn();  // Affiche la pop-up de confirmation
-                                    }
-                                    afficherPOPup();  // Afficher la pop-up après avoir cliqué sur le bouton
-                                });
-
-                                // Fermer la pop-up quand l'utilisateur clique sur "Fermer"
-                                $('#confirmButton').on('click', function() {
-                                    $('#customConfirmBox').fadeOut();  // Ferme la pop-up
-                                    setTimeout(function() {
-                                        document.querySelector("form").submit();  // Soumettre le formulaire après que la pop-up soit fermée
-                                    }, 500);  // Délai de 500ms pour s'assurer que la pop-up soit fermée avant la soumission
-                                });
-                            }
-                        </script>
-
+                           <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
+                           <input type="hidden" name="code_avis" value="<?php echo $avis['code_avis']; ?>">
+                           <input type="hidden" name="isAnswer" value="<?php echo $isAnswer; ?>">
+                           <button class="poster_un_avis_btn_publier" type="submit"- name="modifier">Modifier →</button>
+                       </div>
      
                     </div>
                   </div>
