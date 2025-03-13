@@ -970,7 +970,7 @@ include("recupInfosCompte.php");
                 <p class="texte-boite-perso">Voulez-vous vraiment blacklister l'avis ?</p>
 
                 <p class="texte-boite-perso">Après il vous restera
-                    <?php echo $details_offre["nb_blacklister"]; ?> jeton(s)
+                    <?php echo 3-(1+$details_offre["nb_blacklister"]); ?> jeton(s)
                 </p>
 
                 <button id="cancelBlacklist" class="cancel-btn">Non</button>
