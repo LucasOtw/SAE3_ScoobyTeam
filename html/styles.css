@@ -8032,6 +8032,7 @@ form .btn-link {
     box-shadow: 5px 5px 10px 0px rgba(166, 158, 158, 0.5);
     background-color: rgba(23, 111, 242, 0.05);
     border-radius: 29px;
+    padding: 1em;
 }
 
 .jetons{
