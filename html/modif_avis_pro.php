@@ -46,9 +46,9 @@ echo "</pre>";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST['unAvis'])){
-        echo "<pre>";
-        var_dump(unserialize($_POST['unAvis']));
-        echo "</pre>";
+        // echo "<pre>";
+        // var_dump(unserialize($_POST['unAvis']));
+        // echo "</pre>";
 
         $avis = unserialize($_POST['unAvis']);
         $_SESSION['modif_avis'] = $avis;
@@ -179,7 +179,7 @@ $isAnswer = $isAnswer->fetchColumn();
                 <div class="poster_un_avis_info">
                     <h2 class="poster_un_avis_nom"><?php echo $details_offre["titre_offre"]; ?><!-- - <?php // echo $details_offre["titre_offre"]; ?>--></h2>
                     <p class="poster_un_avis_location">📍 <?php echo $details_offre["ville"]; ?>, <?php echo $details_offre["code_postal"]; ?></p>
-                    <form id="form-voir-offre" action="detail_offre.php" method="POST">
+                    <form id="form-voir-offre" action="detail_offre_pro.php" method="POST">
                        <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
                        <input id="btn-voir-offre" class="poster_un_avis_btn_offre_pro" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
                    </form>
