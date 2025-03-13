@@ -239,6 +239,51 @@ try {
             color: green;
         }
     </style>
+    <footer class="footer footer_pro">
+        <div class="footer-links">
+            <div class="logo\avis">
+                <img src="images/logoBlanc.png" alt="Logo PACT">
+            </div>
+             <div class="link-group">
+                <ul>
+                    <li><a href="mentions_legales.html">Mentions Légales</a></li>
+                    <li><a href="#">RGPD</a></li>
+                    <li><a href="#">Nous connaître</a></li>
+                    <li><a href="#">Nos partenaires</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="voir_offres.php">Accueil</a></li>
+                    <li><a href="connexion_pro.php">Publier</a></li>
+                    <li><a href="connexion_memebre.php">Se Connecter</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <li><a href="#">CGU</a></li>
+                    <li><a href="contacter_plateforme.php">Signaler un problème</a></li>
+                    <li><a href="contacter_plateforme.php">Nous contacter</a></li>
+                </ul>
+            </div>
+            <div class="link-group">
+                <ul>
+                    <!--<li><a href="#">Presse</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">Notre équipe</a></li>-->
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="social-icons">
+                <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
+                <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
+                <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+                <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+            </div>
+        </div>
+    </footer>
 
 </body>
 

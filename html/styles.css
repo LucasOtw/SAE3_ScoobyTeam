@@ -912,7 +912,7 @@ fieldset[disabled] {
 }
 
 .main_modif_mdp_pro p {
-    color: #888;
+    color: #000;
 }
 
 .main_modif_mdp_pro .form-section {
@@ -8201,7 +8201,11 @@ form .btn-link {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-.texte-boite-perso{
+.texte-boite-perso {
+    margin-bottom:1em;
+}
+
+.blacklist-dur {
     margin-bottom:1em;
 }
 /*****************************************************
@@ -11567,7 +11571,8 @@ ul.mentions_legales-sous-list {
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2s ease;
     margin-top: 3vh;
-    margin-left: 3vw;
+    margin-left: 68vw;
+    margin-bottom: 3em;
 }
 
 .container-signalement .signaler_un_avis_textarea {

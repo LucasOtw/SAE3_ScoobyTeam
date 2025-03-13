@@ -2,6 +2,8 @@
 ob_start(); // bufferisation, ça devrait marcher ?
 session_start();
 
+require_once('recupInfosCompte.php');
+
 if(!isset($_SESSION['membre'])){
    header('location: connexion_membre.php');
    exit;
@@ -49,95 +51,89 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "</pre>";
 
         $avis = unserialize($_POST['unAvis']);
-        $note = json_encode($avis['note']);
+        $_SESSION['modif_avis'] = $avis;
     }
-     if(isset($_POST['publier'])){
-        if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))) {
-           
-            $texte_avis = trim(isset($_POST['textAreaAvis']) ? htmlspecialchars($_POST['textAreaAvis']) : '');
-            $note = isset($_POST['note']) ? $_POST['note'] : '';
-   
-            $compte = $_SESSION['membre'];
-            $code_compte = $compte['code_compte'];           
-            $code_offre = $_SESSION['detail_offre']['code_offre'];
-   
-            $erreurs = [];
-            $erreur_a_afficher = [];
-            if (empty($texte_avis)) {
-                $erreurs[] = "Vous devez remplir ce champ";
-                $erreur_a_afficher[] = "avis-vide";
-            } elseif (strlen($texte_avis)>500) {
-                $erreurs[] = "L'avis ne doit pas dépasser 500 caractères.";
-                $erreur_a_afficher[] = "avis-trop-long";
+    if(isset($_POST['modifier'])){
+        $modifOk = false;
+        if($_POST['isAnswer'] == 0){
+            if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
+                $modifOk = true;
             }
-   
-           if (empty($note) || !is_numeric($note) || $note < 1 || $note > 5) {
-                $erreurs[] = "Veuillez sélectionner une note valide."; 
-                $erreur_a_afficher[] = "pas-de-note";
+        } else { // alors c'est une réponse
+            if(isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis'])){
+                $modifOk = true;
             }
-   
-           if (empty($erreurs)) {
-             $creerAvis = $dbh->prepare("INSERT INTO tripenarvor._avis (txt_avis, note, code_compte, code_offre) VALUES (:texte_avis, :note, :code_compte, :code_offre)");
-   
-             $creerAvis->bindParam(':texte_avis', $texte_avis);
-             $creerAvis->bindParam(':note', $note, PDO::PARAM_INT);
-             $creerAvis->bindParam(':code_offre', $code_offre);
-             $creerAvis->bindParam(':code_compte', $code_compte);
-             $creerAvis->execute();
-
-             $creerNotif = $dbh->query("INSERT INTO tripenarvor._notification (code_avis) SELECT currval('tripenarvor._avis_code_avis_seq');");
-   
-             header('location: detail_offre.php');
-             exit;
-   
-            } else {
-               /*
-              foreach($erreurs as $erreur){
-                    echo $erreur;
-              }*/
-   
-               foreach($erreur_a_afficher as $classe_erreur){
-                  // echo $classe_erreur;
-                    ?> 
-   
-                    <style>
-                        main.main_poster_avis .<?php echo $classe_erreur ?> {
-                           display:block;
-                        }         
-                       ?>
-                    </style> 
-                    <?php
-              }
-            }
-        } else {
-           // echo "ok";
-           ?>
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-            <script>
-   
-               $(document).ready(function() {
-                  
-                  function afficherPOPup() {
-                     $("#customConfirmBox").fadeIn();     
-                  }
-                  
-                  // Fermer la popup quand l'utilisateur clique sur "Fermer"
-                  $('#confirmButton').on('click', function() {
-                     $('#customConfirmBox').fadeOut();
-                  });
-
-                  afficherPOPup();
-                  
-               });
-               
-            </script>
-
-           <?php
         }
-     }
+
+        if($modifOk === true){
+            // si les modifications sont ok
+
+            $champsModifies = array();
+            $params = array();
+
+            $n_texteAvis = trim($_POST['textAreaAvis']);
+            $n_note = (int) $_POST['note'];
+            $code_avis = (int) $_POST['code_avis'];
+
+
+            $modifications = [];
+            $params = [];
+            
+            if ($n_note !== $_SESSION['modif_avis']['note']) {
+                $modifications[] = "note = :note";
+                $params[':note'] = $n_note;
+            }
+            
+            if ($n_texteAvis !== trim($_SESSION['modif_avis']['txt_avis'])) {
+                $modifications[] = "txt_avis = :texteAvis";
+                $params[':texteAvis'] = $n_texteAvis;
+            }
+            
+            if (!empty($modifications)) {
+                $sql = "UPDATE tripenarvor._avis SET " . implode(', ', $modifications) . " WHERE code_avis = :codeAvis";
+                $params[':codeAvis'] = $code_avis;
+            
+                $stmt = $dbh->prepare($sql);
+                $stmt->execute($params);
+            }
+
+            header('location: detail_offre.php');
+            exit;
+        } else {
+            ?>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+
+                $(document).ready(function() {
+                    function afficherPOPup() {
+                        $("#customConfirmBox").fadeIn();     
+                    }   
+                    // Fermer la popup quand l'utilisateur clique sur "Fermer"
+                    $('#confirmButton').on('click', function() {
+                        $('#customConfirmBox').fadeOut();
+                    });
+                    afficherPOPup();  
+                });
+
+            </script>
+            <?php
+        }
+    }
+}
+if(isset($_SESSION['modif_avis'])){
+    $avis = $_SESSION['modif_avis'];
 }
 
+$note = $avis['note'];
+
+// On vérifie si cet avis est une réponse
+
+$isAnswer = $dbh->prepare('SELECT COUNT(*) FROM tripenarvor._reponse
+WHERE code_reponse = :code_rep');
+$isAnswer->bindValue(':code_rep',$avis['code_avis']);
+$isAnswer->execute();
+
+$isAnswer = $isAnswer->fetchColumn();
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -204,42 +200,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
 
-            <form  id="avisForm" action="poster_un_avis.php" method="POST">
+            <form  id="avisForm" action="#" method="POST">
                <div class="poster_un_avis_section">
                    <h2 class="poster_un_avis_section_titre">Votre avis</h2>
 
                    <textarea placeholder="Écrivez votre avis ici..." class="poster_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"><?php echo trim($avis['txt_avis']); ?></textarea>
                    <p class="message-erreur avis-vide">Vous devez remplir ce champ</p>
-                   <p class="message-erreur avis-trop-long">L'avis ne doit pas dépasser 500 caractères.</p>                  
-                   <div class="poster_un_avis_footer">
+                   <p class="message-erreur avis-trop-long">L'avis ne doit pas dépasser 500 caractères.</p>     
+                   <?php
+                    if($isAnswer === 0){
+                        ?>
+                        <div class="poster_un_avis_footer">
 
-                           <div class="poster_un_avis_note">
-                              <h2 class="poster_un_avis_note_titre">Votre note</h2>
+                            <div class="poster_un_avis_note">
+                                <h2 class="poster_un_avis_note_titre">Votre note</h2>
 
-                              <fieldset class="notation">
-                                         <input type="radio" id="star5" name="note" value="5" />
-                                         <label for="star5" title="5 étoiles"></label>
+                                <fieldset class="notation">
+                                            <input type="radio" id="star5" name="note" value="5" />
+                                            <label for="star5" title="5 étoiles"></label>
 
-                                          <input type="radio" id="star4" name="note" value="4" />
-                                          <label for="star4" title="4 étoiles"></label>
+                                            <input type="radio" id="star4" name="note" value="4" />
+                                            <label for="star4" title="4 étoiles"></label>
 
-                                          <input type="radio" id="star3" name="note" value="3" />
-                                          <label for="star3" title="3 étoiles"></label>
+                                            <input type="radio" id="star3" name="note" value="3" />
+                                            <label for="star3" title="3 étoiles"></label>
 
-                                          <input type="radio" id="star2" name="note" value="2" />
-                                          <label for="star2" title="2 étoiles"></label>
+                                            <input type="radio" id="star2" name="note" value="2" />
+                                            <label for="star2" title="2 étoiles"></label>
 
-                                          <input type="radio" id="star1" name="note" value="1" />
-                                          <label for="star1" title="1 étoile"></label>
-                              </fieldset>
-                              <p class="message-erreur pas-de-note">Veuillez sélectionner une note valide.</p>
-
+                                            <input type="radio" id="star1" name="note" value="1" />
+                                            <label for="star1" title="1 étoile"></label>
+                                </fieldset>
+                                <p class="message-erreur pas-de-note">Veuillez sélectionner une note valide.</p>
                             </div>
-                       </div>
+                        </div>
+                        <?php
+                    }
+                   ?>
                        <p class="poster_un_avis_disclaimer">En publiant votre avis, vous acceptez les conditions générales d'utilisation (CGU).</p>
                        <div class="poster_un_avis_buttons">
                            <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
-                           <button class="poster_un_avis_btn_publier" type="submit"- name="publier2">Publier →</button>
+                           <input type="hidden" name="code_avis" value="<?php echo $avis['code_avis']; ?>">
+                           <input type="hidden" name="isAnswer" value="<?php echo $isAnswer; ?>">
+                           <button class="poster_un_avis_btn_publier" type="submit"- name="modifier">Modifier →</button>
                        </div>
                     </div>
                   </div>
@@ -349,7 +352,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             console.log(`star${note}`);
             // on récupère une étoile en fonction de la note
             const numEtoile = document.getElementById(`star${note}`);
-            console.log(numEtoile);
+            numEtoile.toggleAttribute("checked");
         });
     </script>
 </body>
