@@ -98,17 +98,17 @@ if(isset($_POST['uneOffre'])){
             $deleteHoraire = $dbh->prepare('DELETE FROM tripenarvor._horaire
             WHERE code_horaire = :code');
             $deleteHoraire->bindValue(':code',$code);
-/*             try{
+            try{
                 $deleteHoraire->execute();
             } catch (PDOException $e){
                 die("Erreur lors de la suppression (horaire) : ". $e->getMessage());
-            } */
+            }
         }
     }
 
     /* SUPPRESSION DE L'OFFRE */
 
-/*     $deleteOffre = $dbh->prepare('DELETE FROM tripenarvor._offre WHERE code_offre = :code_offre');
+    $deleteOffre = $dbh->prepare('DELETE FROM tripenarvor._offre WHERE code_offre = :code_offre');
     $deleteOffre->bindValue(':code_offre',$codeOffre);
     try {
         $deleteOffre->execute();
@@ -120,11 +120,11 @@ if(isset($_POST['uneOffre'])){
         }
     } catch (PDOException $e) {
         die("Erreur lors de la suppression : " . $e->getMessage());
-    } */
+    }
 
     // On supprime les images de la BDD
 
-/*     foreach($codesImages as $code){
+    foreach($codesImages as $code){
         $deleteImage = $dbh->prepare('DELETE FROM tripenarvor._image
         WHERE code_image = :code');
         $deleteImage->bindValue(':code',$code);
@@ -133,7 +133,7 @@ if(isset($_POST['uneOffre'])){
         } catch(PDOException $e){
             die("Erreur lors de la suppression (_image) : ".$e->getMessage());
         }
-    } */
+    }
 
     // On supprime les images du serveur
     foreach($liensImages as $img){
