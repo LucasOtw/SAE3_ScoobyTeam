@@ -123,14 +123,27 @@ if(isset($_POST['uneOffre'])){
         die("Erreur lors de la suppression : " . $e->getMessage());
     }
 
+    // On supprime les images de la BDD
+
+    foreach($codesImages as $code){
+        $deleteImage = $dbh->prepare('DELETE FROM tripenarvor._image
+        WHERE code_image = :code');
+        $deleteImage->bindValue(':code',$code);
+        try{
+            $deleteImage->execute();
+        } catch(PDOException $e){
+            die("Erreur lors de la suppression (_image) : ".$e->getMessage());
+        }
+    }
+
     // On supprime les images du serveur
     foreach($liensImages as $img){
         $chemin = substr($img,3);
 
         if (preg_match('#^images/offres/([^/]+)/[^/]+\.(png|jpg|jpeg|gif)$#', $chemin)){
-            // si le lien ressemble à : images/offres/{doss}/img.ext, on peut la supprimer
+            // si le lien ressemble à : images/offres/{doss}/img.{ext}, on peut supprimer l'image
             if(file_exists($chemin)){
-                // unlink($chemin); // supprime le fichier
+            // unlink($chemin); // supprime le fichier
             }
         }
     }
