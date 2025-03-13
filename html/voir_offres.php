@@ -1403,7 +1403,7 @@ foreach($adresses as $adr) {
         $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
     }
     // Ajout d'une div conteneur pour tout le texte
-$popupContent .= "<div class='popup-text-container' style='padding:8px; display:flex; background-color:#f9f9f9; border-radius:0 0 5px 5px;'>";
+$popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px;'>";
 $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
                . addslashes($adr['ville']) . "<br>"
                . $adr['tarif'] . "€"
