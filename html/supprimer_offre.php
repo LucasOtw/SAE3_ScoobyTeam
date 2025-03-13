@@ -22,17 +22,17 @@ $password = "philly-Congo-bry4nt";
 $dbh = new PDO($dsn, $username, $password);
 
 if(isset($_POST['uneOffre'])){
-    $uneOffre = unserialize($_POST['uneOffre']);
+    $codeOffre = unserialize($_POST['uneOffre']);
 
     echo "<pre>";
-    var_dump($uneOffre);
+    var_dump($codeOffre);
     echo "</pre>";
 
     // On va d'abord récupérer chaque lien d'image
 
     $recupCodesImages = $dbh->prepare("SELECT lundi,mardi,mercredi,jeudi,vendredi,samedi,dimanche
     FROM tripenarvor_offre WHERE code_offre = :code_offre");
-    $recupCodesImages->bindValue(':code_offre');
+    $recupCodesImages->bindValue(':code_offre',$codeOffre);
     $recupCodesImages->execute();
 
     $codesImages = $recupCodesImages->fetchColumn();
