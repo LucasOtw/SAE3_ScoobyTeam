@@ -24,18 +24,13 @@ $dbh = new PDO($dsn, $username, $password);
 if(isset($_POST['uneOffre'])){
     $codeOffre = unserialize($_POST['uneOffre']);
 
-    echo "<pre>";
-    var_dump($codeOffre);
-    echo "</pre>";
 
     // On va d'abord récupérer chaque lien d'image
 
     $recupCodesHoraires = $dbh->prepare("SELECT lundi,mardi,mercredi,jeudi,vendredi,samedi,dimanche
     FROM tripenarvor._offre WHERE code_offre = :code_offre");
     $recupCodesHoraires->bindValue(':code_offre',$codeOffre);
-    if($recupCodesHoraires->execute()){
-        echo "Lol";
-    }
+    $recupCodesHoraires->execute();
 
     $codesHoraires = $recupCodesHoraires->fetch(PDO::FETCH_ASSOC);
     $codesHoraires = array_filter($codesHoraires, function($val){
