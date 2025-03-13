@@ -981,7 +981,7 @@ include("recupInfosCompte.php");
         <div id="customModalError" class="custom-modal">
             <div class="custom-modal-error-content">
                 <p class="texte-boite-perso">Vous n'avez plus de jetons pour blacklister l'avis</p>
-                <button id="cancelBlacklistError" class="cancel-error-btn">Non</button>
+                    <button id="cancelBlacklistError" class="cancel-error-btn">Fermer</button>
             </div>
         </div>
         
