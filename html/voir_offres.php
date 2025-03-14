@@ -567,41 +567,41 @@ function tempsEcouleDepuisPublication($offre){
                                 <img src="<?php echo "./".$offre_image['url_image']; ?>" alt="aucune image">
                         
                                 <div class="offer-new-details">
-                                    
-                                    <h2><?php echo $offre["titre_offre"]; ?></h2>
-                                    
-                                    <p>
-                                        <span class="iconify" data-icon="mdi:map-marker" style="color: #BDC426; font-size: 1.2em; margin-right: 5px; margin-bottom: -4px;"></span>
-                                        <?php echo $villeOffre["ville"]; ?>
-                                    </p>
-
-                                    <p>
-                                        <?php 
-                                        if (!empty($offre["note_moyenne"])) { 
-                                            echo '⭐ '.$offre["note_moyenne"]; 
-                                        } else { 
-                                            echo "Aucune note"; 
-                                        } 
-                                        ?>
-                                    </p>
-
-                                    <p style="color: #2DD7A4; font-weight: bold;"><?php echo $offre["tarif"]; ?>€</p>
-                                    
-                                    <p>
-                                        <?php 
-                                        if ($type_offre != 'spectacle') { 
-                                            echo $dataStatusFr; 
-                                        } 
-                                        ?>
-                                    </p>
-                                    
-                                    <?php if (($type_offre == "visite" || $type_offre == "spectacle") && !empty($event['date_'.$type_offre])) { ?> 
-                                        <p><?php echo $event['date_'.$type_offre].' à '.$event['heure_'.$type_offre]; ?></p> 
-                                    <?php } ?>
-
-                                    <p class="recent">Posté récemment : <?php echo tempsEcouleDepuisPublication($offre); ?></p>
-
                                     <form id="form-voir-offre" action="detail_offre.php" method="POST">
+                                        <h2><?php echo $offre["titre_offre"]; ?></h2>
+                                        
+                                        <p>
+                                            <span class="iconify" data-icon="mdi:map-marker" style="color: #BDC426; font-size: 1.2em; margin-right: 5px; margin-bottom: -4px;"></span>
+                                            <?php echo $villeOffre["ville"]; ?>
+                                        </p>
+
+                                        <p>
+                                            <?php 
+                                            if (!empty($offre["note_moyenne"])) { 
+                                                echo '⭐ '.$offre["note_moyenne"]; 
+                                            } else { 
+                                                echo "Aucune note"; 
+                                            } 
+                                            ?>
+                                        </p>
+
+                                        <p style="color: #2DD7A4; font-weight: bold;"><?php echo $offre["tarif"]; ?>€</p>
+                                        
+                                        <p>
+                                            <?php 
+                                            if ($type_offre != 'spectacle') { 
+                                                echo $dataStatusFr; 
+                                            } 
+                                            ?>
+                                        </p>
+                                        
+                                        <?php if (($type_offre == "visite" || $type_offre == "spectacle") && !empty($event['date_'.$type_offre])) { ?> 
+                                            <p><?php echo $event['date_'.$type_offre].' à '.$event['heure_'.$type_offre]; ?></p> 
+                                        <?php } ?>
+
+                                        <p class="recent">Posté récemment : <?php echo tempsEcouleDepuisPublication($offre); ?></p>
+
+                                    
                                         <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
                                         <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
                                     </form>
@@ -1363,7 +1363,7 @@ function tempsEcouleDepuisPublication($offre){
         </div>
     </footer>
     <script>
-document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
     const mapElement = document.getElementById('map');
     
     if (mapElement) {
@@ -1372,88 +1372,50 @@ document.addEventListener("DOMContentLoaded", function () {
             var map = L.map('map').setView([48.2020, -2.9326], 8);
             
             L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                attribution: '&copy; Esri',
-                maxZoom: 20
-            }).addTo(map);
+    attribution: '&copy; Esri',
+    maxZoom: 20
+}).addTo(map);
 
-            var customIcon = L.icon({
-                iconUrl: './images/ping.png', 
-                iconSize: [50, 40], 
-                iconAnchor: [15, 40], 
-                popupAnchor: [0, -35] 
-            });
+            
 
-            // Fonction pour obtenir les coordonnées GPS via Nominatim
-            async function getCoordinates(address) {
-                const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
-                try {
-                    const response = await fetch(url);
-                    const data = await response.json();
+            <?php
+$adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
+                       (SELECT i.url_image 
+                        FROM tripenarvor._son_image si 
+                        JOIN tripenarvor._image i ON si.code_image = i.code_image 
+                        WHERE si.code_offre = o.code_offre 
+                        LIMIT 1) AS url_image
+                       FROM tripenarvor._offre o 
+                       JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
+                       WHERE o.en_ligne = true');
 
-                    if (data.length > 0) {
-                        return { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon) };
-                    } else {
-                        throw new Error("Adresse introuvable");
-                    }
-                } catch (error) {
-                    console.error("Erreur de géocodage :", error);
-                    return null;
-                }
-            }
+foreach($adresses as $adr) {
+    $lat = 48.0 + (intval(substr($adr['code_postal'], 0, 2)) / 100);
+    $lng = -3.0 + (intval(substr($adr['code_postal'], 2, 3)) / 100);
+    
+    $popupContent = "<div style='width:218px;'>";
+    
+    if (!empty($adr['url_image'])) {
+        $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
+    }
 
-            // Liste des adresses à géocoder (injectées par PHP)
-            let offres = [
-                <?php
-                require_once('config.php'); // Connexion à la BDD
+    //Correction du lien pour voir l'offre.
+$popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
+$popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
+               . addslashes($adr['ville']) . "<br>"
+               . $adr['tarif'] . "€"
+               . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
+          
 
-                $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.adresse, a.ville, a.code_postal,
-                                        (SELECT i.url_image 
-                                         FROM tripenarvor._son_image si 
-                                         JOIN tripenarvor._image i ON si.code_image = i.code_image 
-                                         WHERE si.code_offre = o.code_offre 
-                                         LIMIT 1) AS url_image
-                                         FROM tripenarvor._offre o 
-                                         JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
-                                         WHERE o.en_ligne = true');
+$popupContent .= "</div>";
 
-                $offreArray = [];
-                foreach ($adresses as $adr) {
-                    $offreArray[] = [
-                        "titre" => addslashes($adr['titre_offre']),
-                        "adresse" => addslashes($adr['adresse'] . ", " . $adr['ville'] . ", " . $adr['code_postal']),
-                        "ville" => addslashes($adr['ville']),
-                        "tarif" => $adr['tarif'],
-                        "url_image" => $adr['url_image'] ? "./" . $adr['url_image'] : "",
-                        "code_offre" => $adr['code_offre']
-                    ];
-                }
-                echo json_encode($offreArray);
-                ?>
-            ];
-
-            // Géocodage et affichage des marqueurs
-            offres.forEach(offre => {
-                getCoordinates(offre.adresse).then(coords => {
-                    if (coords) {
-                        let popupContent = `<div style='width:218px;'>`;
-
-                        if (offre.url_image) {
-                            popupContent += `<img src='${offre.url_image}' style='width:100%;max-height:120px;object-fit:cover;'><br>`;
-                        }
-
-                        popupContent += `<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>
-                            <strong>${offre.titre}</strong><br>
-                            ${offre.ville}<br>
-                            ${offre.tarif}€<br>
-                            <a href='detail_offre.php?code=${offre.code_offre}' style='color:#F28322;'>Voir l'offre</a>
-                        </div></div>`;
-
-                        L.marker([coords.lat, coords.lon], {icon: customIcon}).addTo(map)
-                            .bindPopup(popupContent);
-                    }
-                });
-            });
-
+$popupContent .= "</div>";
+    
+    echo "L.marker([$lat, $lng], {icon: customIcon}).addTo(map)
+          .bindPopup(\"" . $popupContent . "\");";
+}
+            ?>
+            
             console.log("Carte Leaflet initialisée avec succès");
         } catch (error) {
             console.error("Erreur lors de l'initialisation de la carte :", error);
@@ -1461,6 +1423,14 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         console.error("L'élément #map n'existe pas dans le DOM");
     }
+});
+
+
+var customIcon = L.icon({
+    iconUrl: './images/ping.png', 
+    iconSize: [50, 40], 
+    iconAnchor: [15, 40], 
+    popupAnchor: [0, -35] 
 });
 </script>
 
