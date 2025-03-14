@@ -1362,7 +1362,7 @@ function tempsEcouleDepuisPublication($offre){
         </div>
     </footer>
     <script>
-document.addEventListener("DOMContentLoaded", async function () {
+document.addEventListener("DOMContentLoaded", function () {
     const mapElement = document.getElementById('map');
 
     if (mapElement) {
