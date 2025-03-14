@@ -544,13 +544,7 @@ if (isset($_POST['envoi_modif'])){
 
                         // on vérifie son existence dans la bdd (le chemin devant être unique)
 
-                        $checkUnique = $dbh->prepare("SELECT COUNT(*) FROM tripenarvor._image
-                        WHERE url_image = :_url");
-                        $checkUnique->bindValue(":_url",$chemin);
-                        $checkUnique->execute();
-                        
-                        $isUnique = $checkUnique->fetchColumn();
-                        if($isUnique <= 1){
+                        if($isUnique == 0){
                             // on met directement à jour la bdd
                             $ajout_photo = $dbh->prepare("INSERT INTO tripenarvor._image (url_image) VALUES(:url_image)");
                             $ajout_photo->bindValue(":url_image",$chemin);
