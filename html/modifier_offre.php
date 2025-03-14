@@ -542,16 +542,27 @@ if (isset($_POST['envoi_modif'])){
                     // on déplace le fichier dans le dossier cible
                     if(move_uploaded_file($nom_temp,$chemin)){
 
-                        // on met directement à jour la bdd
-                        $ajout_photo = $dbh->prepare("INSERT INTO tripenarvor._image (url_image) VALUES(:url_image)");
-                        $ajout_photo->bindValue(":url_image",$chemin);
-                        $ajout_photo->execute();
-                        $code_image = $dbh->lastInsertId();
+                        // on vérifie son existence dans la bdd (le chemin devant être unique)
 
-                        $ajout_photo_offre = $dbh->prepare("INSERT INTO tripenarvor._son_image VALUES(:code_image,:code_offre)");
-                        $ajout_photo_offre->bindValue(":code_image",$code_image);
-                        $ajout_photo_offre->bindValue(":code_offre",$offre['code_offre']);
-                        $ajout_photo_offre->execute();
+                        $checkUnique = $dbh->prepare("SELECT COUNT(*) FROM tripenarvor._image
+                        WHERE url_image = :_url");
+                        $checkUnique->bindValue(":_url",$chemin);
+                        $checkUnique->execute();
+                        
+                        $isUnique = $checkUnique->fetchColumn();
+                        
+                        if($isUnique == 0){
+                            // on met directement à jour la bdd
+                            $ajout_photo = $dbh->prepare("INSERT INTO tripenarvor._image (url_image) VALUES(:url_image)");
+                            $ajout_photo->bindValue(":url_image",$chemin);
+                            $ajout_photo->execute();
+                            $code_image = $dbh->lastInsertId();
+
+                            $ajout_photo_offre = $dbh->prepare("INSERT INTO tripenarvor._son_image VALUES(:code_image,:code_offre)");
+                            $ajout_photo_offre->bindValue(":code_image",$code_image);
+                            $ajout_photo_offre->bindValue(":code_offre",$offre['code_offre']);
+                            $ajout_photo_offre->execute();
+                        }
                     } else {
                         echo "Erreur : Impossible de déplacer le fichier $nom_photo.<br>";
                     }
@@ -1222,10 +1233,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Activer le clic sur la zone de glisser-déposer pour ouvrir la boîte de dialogue de fichiers
-    dropZone.addEventListener('click', function() {
-        fileInput.click();
-    });
+
 });
 </script>
 </body>

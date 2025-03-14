@@ -567,6 +567,7 @@ function tempsEcouleDepuisPublication($offre){
                                 <img src="<?php echo "./".$offre_image['url_image']; ?>" alt="aucune image">
                         
                                 <div class="offer-new-details">
+                                    
                                     <h2><?php echo $offre["titre_offre"]; ?></h2>
                                     
                                     <p>
@@ -1361,10 +1362,8 @@ function tempsEcouleDepuisPublication($offre){
             </div>
         </div>
     </footer>
-
-            <script>
-
-document.addEventListener("DOMContentLoaded", function () {
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
     const mapElement = document.getElementById('map');
     
     if (mapElement) {
@@ -1434,6 +1433,8 @@ var customIcon = L.icon({
     popupAnchor: [0, -35] 
 });
 </script>
+
+
 
 
 </body>
