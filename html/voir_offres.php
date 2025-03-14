@@ -1367,10 +1367,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (mapElement) {
         try {
-            // Création de la carte et centrage sur la Bretagne
+            // 📌 1. Initialisation de la carte dès le début
             var map = L.map('map').setView([48.2020, -2.9326], 8);
 
-            // Ajout du fond de carte
             L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
                 attribution: '&copy; Esri',
                 maxZoom: 20
@@ -1384,7 +1383,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 popupAnchor: [0, -35]
             });
 
-            // Récupération des adresses depuis PHP
+            console.log("Carte Leaflet initialisée avec succès");
+
+            // 📌 2. Récupération des données PHP en JSON
             const offres = <?php
                 $adresses = $dbh->query("SELECT o.code_offre, o.titre_offre, o.tarif, a.ville, a.rue, a.code_postal, 
                                         (SELECT i.url_image FROM tripenarvor._son_image si 
@@ -1396,7 +1397,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 echo json_encode($adresses);
             ?>;
 
-            // Fonction pour récupérer les coordonnées GPS d'une adresse
+            // 📌 3. Fonction pour récupérer les coordonnées GPS d'une adresse
             async function getCoordinates(address) {
                 const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
                 try {
@@ -1417,29 +1418,32 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
 
-            // Ajout des marqueurs sur la carte
-            for (const offre of offres) {
-                const fullAddress = `${offre.rue}, ${offre.ville}, France`;
-                const coords = await getCoordinates(fullAddress);
+            // 📌 4. Fonction asynchrone pour ajouter les marqueurs
+            async function addMarkers() {
+                for (const offre of offres) {
+                    const fullAddress = `${offre.rue}, ${offre.ville}, France`;
+                    const coords = await getCoordinates(fullAddress);
 
-                if (coords) {
-                    const popupContent = `
-                        <div style="width:218px;">
-                            ${offre.url_image ? `<img src="./${offre.url_image}" style="width:100%;max-height:120px;object-fit:cover;"><br>` : ""}
-                            <div class="popup-text-container" style="display:flex; border-radius:0 0 5px 5px; gap: 21px;">
-                                <strong>${offre.titre_offre}</strong><br>
-                                ${offre.ville}<br>
-                                ${offre.tarif}€<br>
-                                <a href="detail_offre.php?code=${offre.code_offre}" style="color:#F28322;">Voir l'offre</a>
-                            </div>
-                        </div>`;
+                    if (coords) {
+                        const popupContent = `
+                            <div style="width:218px;">
+                                ${offre.url_image ? `<img src="./${offre.url_image}" style="width:100%;max-height:120px;object-fit:cover;"><br>` : ""}
+                                <div class="popup-text-container" style="display:flex; border-radius:0 0 5px 5px; gap: 21px;">
+                                    <strong>${offre.titre_offre}</strong><br>
+                                    ${offre.ville}<br>
+                                    ${offre.tarif}€<br>
+                                    <a href="detail_offre.php?code=${offre.code_offre}" style="color:#F28322;">Voir l'offre</a>
+                                </div>
+                            </div>`;
 
-                    L.marker([coords.lat, coords.lon], { icon: customIcon }).addTo(map)
-                        .bindPopup(popupContent);
+                        L.marker([coords.lat, coords.lon], { icon: customIcon }).addTo(map)
+                            .bindPopup(popupContent);
+                    }
                 }
             }
 
-            console.log("Carte Leaflet initialisée avec succès");
+            // 📌 5. Lancer l'ajout des marqueurs après l'initialisation
+            addMarkers();
 
         } catch (error) {
             console.error("Erreur lors de l'initialisation de la carte :", error);
@@ -1448,8 +1452,8 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("L'élément #map n'existe pas dans le DOM");
     }
 });
-
 </script>
+
 
 
 
