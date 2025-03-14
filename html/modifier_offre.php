@@ -372,6 +372,14 @@ if (isset($_POST['envoi_modif'])){
                 "age_requis" => $_POST['_age_requis']
             );
             break;
+        case "activite":
+            $tab_services = array(
+                "duree" => $_POST['duree_modif'],
+                "age_requis" => $_POST['_age_requis'],
+                "prestations_incluses" => $_POST['prestations_incluses'],
+                "prestations_non_incluses" => $_POST['prestations_non_incluses']
+            );
+            break;
     }
 
     // Si il n'y a pas d'erreurs...
@@ -919,7 +927,7 @@ echo "</pre>";
                             ?>
                             <fieldset class="interieur_modif_offre_spectacle">
                                 <label for="duree">Durée (*)</label>
-                                <input type="time" class="duree" id="duree" data-sync="duree_modif" value="<?php echo htmlspecialchars($infos_offre['duree']); ?>">
+                                <input type="time" class="duree" id="duree" name="duree_modif" value="<?php echo htmlspecialchars($infos_offre['duree']); ?>">
                                 <label for="age_requis">Âge requis (*)</label>
                                 <input type="number" id="age_requis" data-sync="age_requis" name="_age_requis" value="<?php echo htmlspecialchars($infos_offre['age_requis']); ?>"
                                 min="0" max="18" oninput="validity.valid||(value='');" required>
