@@ -1028,16 +1028,23 @@ WHERE code_offre = :code_offre
                 <div class="jetons-container">
                     <h2>Blacklistage</h2>
                     <div class="jetons">
-                        <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
-                        <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
-                        <img src="images/icones/jeton.png" alt="Jeton" class="jeton">
+                        <?php
+                            $jetons_restants = 3; // Valeur dynamique à modifier selon les actions de l'utilisateur
+                            for ($i = 1; $i <= 3; $i++) {
+                                if ($i > $jetons_restants) {
+                                    echo '<img src="images/icones/jeton.png" alt="Jeton Grisé" class="jeton_grise">';
+                                } else {
+                                    echo '<img src="images/icones/jeton.png" alt="Jeton" class="jeton">';
+                                }
+                            }
+                        ?>
                     </div>
 
                     <?php 
-                        $jetons_restants = 3; // Valeur dynamique à modifier selon les actions de l'utilisateur
                         echo "<p>Il vous reste $jetons_restants jeton(s).</p>"; 
                     ?>
                 </div>
+
 
             </div>
 
@@ -1371,7 +1378,6 @@ WHERE code_offre = :code_offre
                     "Content-Type": "application/x-www-form-urlencoded",  // Spécifie le type de contenu
                 },
                 body: new URLSearchParams({
-                    tps_ban: tps_ban,            // Envoie le temps du blacklistage
                     code_avis: codeAvis,         // Envoie le code de l'avis
                     code_offre: codeOffre        // Envoie le code de l'offre
                 })

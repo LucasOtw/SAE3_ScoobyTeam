@@ -1101,10 +1101,11 @@ if($infos_offre !== null){
                         image.classList.remove('supprimee');
                         button.classList.remove('reverse'); // Enlever la classe "reverse" du bouton
 
+                        console.log('e');
                         const indexPhoto = deletedImages.indexOf(photoSrc);
 
                         if(indexPhoto !== -1){
-                            deletedImages.splice(index,1);
+                            deletedImages.splice(indexPhoto,1);
                         }
                         
                     } else {
