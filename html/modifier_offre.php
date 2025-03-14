@@ -366,6 +366,12 @@ if (isset($_POST['envoi_modif'])){
                 "heure_visite" => $_POST['_heure_visite_modif']
             );
             break;
+        case "parc_attractions":
+            $tab_services = array(
+                "nombre_attractions" => $_POST['_nombre_attractions'],
+                "age_requis" => $_POST['_age_requis']
+            );
+            break;
     }
 
     // Si il n'y a pas d'erreurs...
@@ -874,7 +880,7 @@ echo "</pre>";
                             break;
                         case "visite" :
                         ?>
-                            <fieldset class="interieur_modif_offre_visite>
+                            <fieldset class="interieur_modif_offre_visite">
                                 <label for="date">Date de la visite (*)</label>
                                 <input type="date" id="date" data-sync="date_modif" value="<?php echo htmlspecialchars($infos_offre['date_visite']); ?>">
 
@@ -894,7 +900,17 @@ echo "</pre>";
                                 
                             </fieldset>
                         <?php
-                        
+                        case "parc_attractions":
+                            ?>
+                            <fieldset>
+                                <label for="age_mini">Âge requis</label>
+                                <input type="number" id="age_requis" data-sync="age_requis" name="_age_requis" value="<?php echo htmlspecialchars($infos_offre['age_requis']); ?>"
+                                min="0" max="200" oninput="validity.valid||(value='');">
+                                <label for="nombre_attractions">Nombre d'attractions</label>
+                                <input type="number" id="nombre_attractions" data-sync="nombre_attractions" name="_nombre_attractions" value="<?php echo htmlspecialchars($infos_offre['nombre_attractions']); ?>"
+                                min="0" max="200" oninput="validity.valid||(value='');">
+                            </fieldset>
+                            <?php
                             break;
                     }
 
