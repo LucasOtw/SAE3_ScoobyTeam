@@ -240,9 +240,6 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
         $nb_blacklister = $result ? $result['nb_blacklister'] : 0;
         $jetons_restants = max(3 - $nb_blacklister, 0); // Évite d'avoir un nombre négatif
 
-        // Debug : Affichage du nombre d'avis blacklistés récupéré depuis la BDD
-        echo "<p>Debug - Nombre d'avis blacklistés : $nb_blacklister</p>";
-        echo "<p>Debug - Jetons restants calculés : $jetons_restants</p>";
 
 
         $_SESSION['detail_offre'] = $details_offre;
@@ -1044,10 +1041,9 @@ WHERE code_offre = :code_offre
                     <h2>Blacklistage</h2>
                     <div class="jetons">
                         <?php
-                            $jetons_restants = 3; // Valeur dynamique à modifier selon les actions de l'utilisateur
                             for ($i = 1; $i <= 3; $i++) {
                                 if ($i > $jetons_restants) {
-                                    echo '<img src="images/icones/jeton.png" alt="Jeton Grisé" class="jeton_grise">';
+                                    echo '<img src="images/icones/jeton-grise.png" alt="Jeton Grisé" class="jeton grise">';
                                 } else {
                                     echo '<img src="images/icones/jeton.png" alt="Jeton" class="jeton">';
                                 }
@@ -1059,6 +1055,7 @@ WHERE code_offre = :code_offre
                         echo "<p>Il vous reste $jetons_restants jeton(s).</p>"; 
                     ?>
                 </div>
+
 
 
             </div>
