@@ -30,7 +30,7 @@ $password = $_ENV['DB_ROOT_PASSWORD'] ?? '';
 $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
 
 try {
-    $pdo = new PDO($dsn, $username, $password, [
+    $dbh = new PDO($dsn, $username, $password, [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     ]);
