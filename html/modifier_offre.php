@@ -135,6 +135,8 @@ foreach($tables as $table){
     }
 }
 
+var_dump($type_offre);
+
 switch($type_offre){
     case "restauration":
         // on sélectionner la gamme de prix
@@ -892,6 +894,7 @@ echo "</pre>";
                                 
                             </fieldset>
                         <?php
+                        
                             break;
                     }
 
