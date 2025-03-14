@@ -1361,87 +1361,62 @@ function tempsEcouleDepuisPublication($offre){
             </div>
         </div>
     </footer>
-
     <script>
-document.addEventListener("DOMContentLoaded", async function () {
-    const mapElement = document.getElementById('map');
 
+document.addEventListener("DOMContentLoaded", function () {
+    const mapElement = document.getElementById('map');
+    
     if (mapElement) {
         try {
             // Création de la carte et centrage sur la Bretagne
             var map = L.map('map').setView([48.2020, -2.9326], 8);
-
-            // Ajout du fond de carte
+            
             L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                attribution: '&copy; Esri',
-                maxZoom: 20
-            }).addTo(map);
+    attribution: '&copy; Esri',
+    maxZoom: 20
+}).addTo(map);
 
-            // Icône personnalisée
-            var customIcon = L.icon({
-                iconUrl: './images/ping.png',
-                iconSize: [50, 40],
-                iconAnchor: [15, 40],
-                popupAnchor: [0, -35]
-            });
+            
 
-            // Récupération des adresses depuis PHP
-            const offres = <?php
-                $adresses = $dbh->query("SELECT o.code_offre, o.titre_offre, o.tarif, a.ville, a.rue, a.code_postal, 
-                                        (SELECT i.url_image FROM tripenarvor._son_image si 
-                                         JOIN tripenarvor._image i ON si.code_image = i.code_image 
-                                         WHERE si.code_offre = o.code_offre LIMIT 1) AS url_image
-                                        FROM tripenarvor._offre o 
-                                        JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
-                                        WHERE o.en_ligne = true")->fetchAll(PDO::FETCH_ASSOC);
-                echo json_encode($adresses);
-            ?>;
+            <?php
+$adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
+                       (SELECT i.url_image 
+                        FROM tripenarvor._son_image si 
+                        JOIN tripenarvor._image i ON si.code_image = i.code_image 
+                        WHERE si.code_offre = o.code_offre 
+                        LIMIT 1) AS url_image
+                       FROM tripenarvor._offre o 
+                       JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
+                       WHERE o.en_ligne = true');
 
-            // Fonction pour récupérer les coordonnées GPS d'une adresse
-            async function getCoordinates(address) {
-                const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
-                try {
-                    const response = await fetch(url);
-                    const data = await response.json();
+foreach($adresses as $adr) {
+    $lat = 48.0 + (intval(substr($adr['code_postal'], 0, 2)) / 100);
+    $lng = -3.0 + (intval(substr($adr['code_postal'], 2, 3)) / 100);
+    
+    $popupContent = "<div style='width:218px;'>";
+    
+    if (!empty($adr['url_image'])) {
+        $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
+    }
 
-                    if (data.length > 0) {
-                        return {
-                            lat: parseFloat(data[0].lat),
-                            lon: parseFloat(data[0].lon)
-                        };
-                    } else {
-                        throw new Error("Adresse introuvable");
-                    }
-                } catch (error) {
-                    console.error("Erreur lors du géocodage :", error);
-                    return null;
-                }
-            }
+    //Correction du lien pour voir l'offre.
+$popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
+$popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
+               . addslashes($adr['ville']) . "<br>"
+               . $adr['tarif'] . "€"
+               . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
+          
 
-            // Ajout des marqueurs sur la carte
-            for (const offre of offres) {
-                const fullAddress = `${offre.rue}, ${offre.ville}, France`;
-                const coords = await getCoordinates(fullAddress);
+$popupContent .= "</div>";
 
-                if (coords) {
-                    const popupContent = `
-                        <div style="width:218px;">
-                            ${offre.url_image ? `<img src="./${offre.url_image}" style="width:100%;max-height:120px;object-fit:cover;"><br>` : ""}
-                            <div class="popup-text-container" style="display:flex; border-radius:0 0 5px 5px; gap: 21px;">
-                                <strong>${offre.titre_offre}</strong><br>
-                                ${offre.ville}<br>
-                                ${offre.tarif}€<br>
-                                <a href="detail_offre.php?code=${offre.code_offre}" style="color:#F28322;">Voir l'offre</a>
-                            </div>
-                        </div>`;
-
-                    L.marker([coords.lat, coords.lon], { icon: customIcon }).addTo(map)
-                        .bindPopup(popupContent);
-                }
-            }
-
+$popupContent .= "</div>";
+    
+    echo "L.marker([$lat, $lng], {icon: customIcon}).addTo(map)
+          .bindPopup(\"" . $popupContent . "\");";
+}
+            ?>
+            
             console.log("Carte Leaflet initialisée avec succès");
-
         } catch (error) {
             console.error("Erreur lors de l'initialisation de la carte :", error);
         }
@@ -1449,7 +1424,16 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.error("L'élément #map n'existe pas dans le DOM");
     }
 });
+
+
+var customIcon = L.icon({
+    iconUrl: './images/ping.png', 
+    iconSize: [50, 40], 
+    iconAnchor: [15, 40], 
+    popupAnchor: [0, -35] 
+});
 </script>
+
 
 
 </body>
@@ -1492,5 +1476,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-</>
+</script>
 
