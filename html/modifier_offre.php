@@ -902,20 +902,41 @@ echo "</pre>";
                         <?php
                             break;
                         case "parc_attractions":
-                            echo "test";
                             ?>
                             <fieldset class="interieur_modif_offre_visite">
-                                <legend>Âge requis</legend>
+                                <legend>Âge requis (*)</legend>
                                 <input type="number" id="age_requis" data-sync="age_requis" name="_age_requis" value="<?php echo htmlspecialchars($infos_offre['age_requis']); ?>"
-                                min="0" max="200" oninput="validity.valid||(value='');">
+                                min="0" max="18" oninput="validity.valid||(value='');">
                             </fieldset>
                             <fieldset class="interieur_modif_offre_visite">
-                                <legend>Nombre d'attractions</legend>
+                                <legend>Nombre d'attractions (*)</legend>
                                 <input type="number" id="nombre_attractions" data-sync="nombre_attractions" name="_nombre_attractions" value="<?php echo htmlspecialchars($infos_offre['nombre_attractions']); ?>"
                                 min="0" max="200" oninput="validity.valid||(value='');">
                             </fieldset>
                             <?php
                             break;
+                        case "activite":
+                            ?>
+                            <fieldset class="interieur_modif_offre_spectacle">
+                                <label for="duree">Durée (*)</label>
+                                <input type="time" class="duree" id="duree" data-sync="duree_modif" value="<?php echo htmlspecialchars($infos_offre['duree']); ?>" required>
+                                <label for="age_requis">Âge requis (*)</label>
+                                <input type="number" id="age_requis" data-sync="age_requis" name="_age_requis" value="<?php echo htmlspecialchars($infos_offre['age_requis']); ?>"
+                                min="0" max="18" oninput="validity.valid||(value='');" required>
+                            </fieldset>
+                            <fieldset class="interieur_modif_offre_visite">
+                                <label for="prestations_incluses">
+                                    Prestations incluses (*)
+                                </label>
+                                <input type="text" id="prestations_incluses" name="prestations_incluses" data-sync="prestations_incluses"
+                                value="<?php echo htmlspecialchars($infos_offre['prestations_incluses']); ?>" required minlength="1">
+
+                                <label for="prestations_non_incluses">Prestations non incluses</label>
+                                <input type="text" id="prestations_non_incluses" name="prestations_non_incluses" data-sync="prestations_incluses"
+                                value="<?php echo htmlspecialchars($infos_offre['prestations_non_incluses']); ?>">
+                            </fieldset>
+                            
+                            <?php
                     }
 
                     ?>
