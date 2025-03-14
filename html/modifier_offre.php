@@ -901,6 +901,7 @@ echo "</pre>";
                             </fieldset>
                         <?php
                         case "parc_attractions":
+                            echo "test";
                             ?>
                             <fieldset class="interieur_modif_offre_visite">
                                 <legend>Âge requis</legend>
