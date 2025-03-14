@@ -1042,11 +1042,9 @@ WHERE code_offre = :code_offre
                     <div class="jetons">
                         <?php
                             for ($i = 1; $i <= 3; $i++) {
-                                if ($i > $jetons_restants) {
-                                    echo '<img src="images/icones/jeton.png" alt="Jeton Grisé" class="jeton_grise">';
-                                } else {
-                                    echo '<img src="images/icones/jeton.png" alt="Jeton" class="jeton">';
-                                }
+                                ?>
+                                <img src="images/icones/jeton.png" alt="jeton" <?php echo ($i > $jetons_restants ? "class=\"jeton_grise\"" : "class=\"jeton\"") ?>>
+                                <?php
                             }
                         ?>
                     </div>
