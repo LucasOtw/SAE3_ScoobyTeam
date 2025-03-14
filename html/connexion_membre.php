@@ -3,13 +3,7 @@
 ob_start();
 session_start();
 
-
-$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-$username = "sae";
-$password = "philly-Congo-bry4nt";
-
-// Créer une instance PDO
-$dbh = new PDO($dsn, $username, $password);
+require_once("config.php");
 
 if(!empty($_POST)){
     $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
