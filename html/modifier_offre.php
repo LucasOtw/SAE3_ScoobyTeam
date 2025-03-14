@@ -1092,6 +1092,8 @@ if($infos_offre !== null){
                     // Cibler directement l'image à l'intérieur de .photo-image
                     const image = photoCard.querySelector('.photo-image img');
                     const photoSrc = image.src;
+
+                    console.log(photoSrc);
         
                     // Vérifier si l'image est déjà marquée comme supprimée
                     if (image.classList.contains('supprimee')) {
