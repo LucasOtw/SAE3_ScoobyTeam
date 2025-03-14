@@ -1378,7 +1378,6 @@ WHERE code_offre = :code_offre
                     "Content-Type": "application/x-www-form-urlencoded",  // Spécifie le type de contenu
                 },
                 body: new URLSearchParams({
-                    tps_ban: tps_ban,            // Envoie le temps du blacklistage
                     code_avis: codeAvis,         // Envoie le code de l'avis
                     code_offre: codeOffre        // Envoie le code de l'offre
                 })
