@@ -232,13 +232,18 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
 
 
         // Récupération du nombre d'avis blacklistés pour cette offre
-        $stmt = $dbh->prepare("SELECT nb_blacklister FROM tripenarvor._offre WHERE code_offre = :code_offre");
-        $stmt->execute(['code_offre' => $code_offre]);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $avis_blacklistes = $dbh->prepare("SELECT nb_blacklister FROM tripenarvor._offre WHERE code_offre = :code_offre");
+        $avis_blacklistes->execute(['code_offre' => $code_offre]);
+        $result = $avis_blacklistes->fetch(PDO::FETCH_ASSOC);
 
         // Si aucune donnée n'est trouvée, on suppose que l'offre n'a pas encore utilisé de jeton
         $nb_blacklister = $result ? $result['nb_blacklister'] : 0;
         $jetons_restants = max(3 - $nb_blacklister, 0); // Évite d'avoir un nombre négatif
+
+        // Debug : Affichage du nombre d'avis blacklistés récupéré depuis la BDD
+        echo "<p>Debug - Nombre d'avis blacklistés : $nb_blacklister</p>";
+        echo "<p>Debug - Jetons restants calculés : $jetons_restants</p>";
+
 
         $_SESSION['detail_offre'] = $details_offre;
     }
