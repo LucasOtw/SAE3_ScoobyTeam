@@ -940,7 +940,7 @@ echo "</pre>";
                                 value="<?php echo htmlspecialchars($infos_offre['prestations_incluses']); ?>" required minlength="1">
 
                                 <label for="prestations_non_incluses">Prestations non incluses</label>
-                                <input type="text" id="prestations_non_incluses" name="prestations_non_incluses" data-sync="prestations_incluses"
+                                <input type="text" id="prestations_non_incluses" name="prestations_non_incluses" data-sync="prestations_non_incluses"
                                 value="<?php echo htmlspecialchars($infos_offre['prestations_non_incluses']); ?>">
                             </fieldset>
                             
