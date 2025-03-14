@@ -232,7 +232,7 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
 
 
         // Récupération du nombre d'avis blacklistés pour cette offre
-        $stmt = $pdo->prepare("SELECT nb_blacklister FROM offre WHERE id = :code_offre");
+        $stmt = $dbh->prepare("SELECT nb_blacklister FROM tripenarvor._offre WHERE code_offre = :code_offre");
         $stmt->execute(['code_offre' => $code_offre]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
