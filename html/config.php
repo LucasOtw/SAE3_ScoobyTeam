@@ -17,7 +17,7 @@ function loadEnv($path) {
 }
 
 // Charger les variables d'environnement
-loadEnv(__DIR__ . '/.env');
+loadEnv(__DIR__ . '../../../.env');
 
 // Récupération des variables d'environnement
 $host = 'postgresdb';
@@ -30,7 +30,7 @@ $password = $_ENV['DB_ROOT_PASSWORD'] ?? '';
 $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
 
 try {
-    $pdo = new PDO($dsn, $username, $password, [
+    $dbh = new PDO($dsn, $username, $password, [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     ]);
