@@ -1363,93 +1363,105 @@ function tempsEcouleDepuisPublication($offre){
     </footer>
     <script>
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM chargé, initialisation de la carte...");
+
     const mapElement = document.getElementById('map');
 
-    if (mapElement) {
-        try {
-            // 📌 1. Initialisation de la carte dès le début
-            var map = L.map('map').setView([48.2020, -2.9326], 8);
+    if (!mapElement) {
+        console.error("L'élément #map n'existe pas dans le DOM");
+        return;
+    }
 
-            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                attribution: '&copy; Esri',
-                maxZoom: 20
-            }).addTo(map);
+    try {
+        // 📌 1. Initialisation de la carte
+        var map = L.map('map').setView([48.2020, -2.9326], 8);
 
-            // Icône personnalisée
-            var customIcon = L.icon({
-                iconUrl: './images/ping.png',
-                iconSize: [50, 40],
-                iconAnchor: [15, 40],
-                popupAnchor: [0, -35]
-            });
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors',
+            maxZoom: 18
+        }).addTo(map);
 
-            console.log("Carte Leaflet initialisée avec succès");
+        console.log("Carte Leaflet initialisée avec succès");
 
-            // 📌 2. Récupération des données PHP en JSON
-            const offres = <?php
-                $adresses = $dbh->query("SELECT o.code_offre, o.titre_offre, o.tarif, a.ville, a.rue, a.code_postal, 
-                                        (SELECT i.url_image FROM tripenarvor._son_image si 
-                                         JOIN tripenarvor._image i ON si.code_image = i.code_image 
-                                         WHERE si.code_offre = o.code_offre LIMIT 1) AS url_image
-                                        FROM tripenarvor._offre o 
-                                        JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
-                                        WHERE o.en_ligne = true")->fetchAll(PDO::FETCH_ASSOC);
-                echo json_encode($adresses);
-            ?>;
+        // Icône personnalisée
+        var customIcon = L.icon({
+            iconUrl: './images/ping.png',
+            iconSize: [50, 40],
+            iconAnchor: [15, 40],
+            popupAnchor: [0, -35]
+        });
 
-            // 📌 3. Fonction pour récupérer les coordonnées GPS d'une adresse
-            async function getCoordinates(address) {
-                const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
-                try {
-                    const response = await fetch(url);
-                    const data = await response.json();
+        // 📌 2. Récupération des offres depuis PHP
+        console.log("Récupération des offres depuis PHP...");
+        const offres = <?php
+            $adresses = $dbh->query("SELECT o.code_offre, o.titre_offre, o.tarif, a.ville, a.rue, a.code_postal, 
+                                    (SELECT i.url_image FROM tripenarvor._son_image si 
+                                     JOIN tripenarvor._image i ON si.code_image = i.code_image 
+                                     WHERE si.code_offre = o.code_offre LIMIT 1) AS url_image
+                                    FROM tripenarvor._offre o 
+                                    JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
+                                    WHERE o.en_ligne = true")->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($adresses);
+        ?>;
+        console.log("Offres récupérées :", offres);
 
-                    if (data.length > 0) {
-                        return {
-                            lat: parseFloat(data[0].lat),
-                            lon: parseFloat(data[0].lon)
-                        };
-                    } else {
-                        throw new Error("Adresse introuvable");
-                    }
-                } catch (error) {
-                    console.error("Erreur lors du géocodage :", error);
+        // 📌 3. Fonction pour récupérer les coordonnées GPS d'une adresse
+        async function getCoordinates(address) {
+            console.log(`Géocodage de l'adresse : ${address}`);
+            const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.length > 0) {
+                    console.log("Coordonnées trouvées :", data[0].lat, data[0].lon);
+                    return {
+                        lat: parseFloat(data[0].lat),
+                        lon: parseFloat(data[0].lon)
+                    };
+                } else {
+                    console.warn("Adresse introuvable :", address);
                     return null;
                 }
+            } catch (error) {
+                console.error("Erreur lors du géocodage :", error);
+                return null;
             }
+        }
 
-            // 📌 4. Fonction asynchrone pour ajouter les marqueurs
-            async function addMarkers() {
-                for (const offre of offres) {
-                    const fullAddress = `${offre.rue}, ${offre.ville}, France`;
-                    const coords = await getCoordinates(fullAddress);
+        // 📌 4. Fonction asynchrone pour ajouter les marqueurs
+        async function addMarkers() {
+            console.log("Ajout des marqueurs...");
 
-                    if (coords) {
-                        const popupContent = `
-                            <div style="width:218px;">
-                                ${offre.url_image ? `<img src="./${offre.url_image}" style="width:100%;max-height:120px;object-fit:cover;"><br>` : ""}
-                                <div class="popup-text-container" style="display:flex; border-radius:0 0 5px 5px; gap: 21px;">
-                                    <strong>${offre.titre_offre}</strong><br>
-                                    ${offre.ville}<br>
-                                    ${offre.tarif}€<br>
-                                    <a href="detail_offre.php?code=${offre.code_offre}" style="color:#F28322;">Voir l'offre</a>
-                                </div>
-                            </div>`;
+            for (const offre of offres) {
+                const fullAddress = `${offre.rue}, ${offre.ville}, France`;
+                const coords = await getCoordinates(fullAddress);
 
-                        L.marker([coords.lat, coords.lon], { icon: customIcon }).addTo(map)
-                            .bindPopup(popupContent);
-                    }
+                if (coords) {
+                    const popupContent = `
+                        <div style="width:218px;">
+                            ${offre.url_image ? `<img src="./${offre.url_image}" style="width:100%;max-height:120px;object-fit:cover;"><br>` : ""}
+                            <div class="popup-text-container" style="display:flex; border-radius:0 0 5px 5px; gap: 21px;">
+                                <strong>${offre.titre_offre}</strong><br>
+                                ${offre.ville}<br>
+                                ${offre.tarif}€<br>
+                                <a href="detail_offre.php?code=${offre.code_offre}" style="color:#F28322;">Voir l'offre</a>
+                            </div>
+                        </div>`;
+
+                    L.marker([coords.lat, coords.lon], { icon: customIcon }).addTo(map)
+                        .bindPopup(popupContent);
+
+                    console.log("Marqueur ajouté :", coords.lat, coords.lon);
                 }
             }
-
-            // 📌 5. Lancer l'ajout des marqueurs après l'initialisation
-            addMarkers();
-
-        } catch (error) {
-            console.error("Erreur lors de l'initialisation de la carte :", error);
         }
-    } else {
-        console.error("L'élément #map n'existe pas dans le DOM");
+
+        // 📌 5. Lancer l'ajout des marqueurs après l'initialisation
+        addMarkers();
+
+    } catch (error) {
+        console.error("Erreur lors de l'initialisation de la carte :", error);
     }
 });
 </script>
