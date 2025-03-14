@@ -550,7 +550,7 @@ if (isset($_POST['envoi_modif'])){
                         $checkUnique->execute();
                         
                         $isUnique = $checkUnique->fetchColumn();
-                        
+
                         if($isUnique == 0){
                             // on met directement à jour la bdd
                             $ajout_photo = $dbh->prepare("INSERT INTO tripenarvor._image (url_image) VALUES(:url_image)");
@@ -942,7 +942,7 @@ if($infos_offre !== null){
         <div class="drop-zone-prompt">Glissez et déposez vos images ici</div>
         <div>ou</div>
         <label class="button_import_image" for="file-input">Choisir des fichiers</label>
-        <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple class="file-input">
+        <!--<input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple class="file-input">-->
     </div>
     <div class="selected-files-container" id="selected-files">
         <!-- Les fichiers sélectionnés s'afficheront ici -->
