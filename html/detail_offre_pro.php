@@ -1043,7 +1043,7 @@ WHERE code_offre = :code_offre
                         <?php
                             for ($i = 1; $i <= 3; $i++) {
                                 if ($i > $jetons_restants) {
-                                    echo '<img src="images/icones/jeton-grise.png" alt="Jeton Grisé" class="jeton grise">';
+                                    echo '<img src="images/icones/jeton.png" alt="Jeton Grisé" class="jeton_grise">';
                                 } else {
                                     echo '<img src="images/icones/jeton.png" alt="Jeton" class="jeton">';
                                 }
