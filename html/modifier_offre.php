@@ -907,7 +907,7 @@ echo "</pre>";
                                 <input type="number" id="age_requis" data-sync="age_requis" name="_age_requis" value="<?php echo htmlspecialchars($infos_offre['age_requis']); ?>"
                                 min="0" max="200" oninput="validity.valid||(value='');">
                             </fieldset>
-                            <fieldset>
+                            <fieldset class="interieur_modif_offre_visite">
                                 <legend>Nombre d'attractions</legend>
                                 <input type="number" id="nombre_attractions" data-sync="nombre_attractions" name="_nombre_attractions" value="<?php echo htmlspecialchars($infos_offre['nombre_attractions']); ?>"
                                 min="0" max="200" oninput="validity.valid||(value='');">
