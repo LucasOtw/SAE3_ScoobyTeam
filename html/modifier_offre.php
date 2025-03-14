@@ -902,11 +902,13 @@ echo "</pre>";
                         <?php
                         case "parc_attractions":
                             ?>
-                            <fieldset>
-                                <label for="age_mini">Âge requis</label>
+                            <fieldset class="interieur_modif_offre_visite">
+                                <legend>Âge requis</legend>
                                 <input type="number" id="age_requis" data-sync="age_requis" name="_age_requis" value="<?php echo htmlspecialchars($infos_offre['age_requis']); ?>"
                                 min="0" max="200" oninput="validity.valid||(value='');">
-                                <label for="nombre_attractions">Nombre d'attractions</label>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Nombre d'attractions</legend>
                                 <input type="number" id="nombre_attractions" data-sync="nombre_attractions" name="_nombre_attractions" value="<?php echo htmlspecialchars($infos_offre['nombre_attractions']); ?>"
                                 min="0" max="200" oninput="validity.valid||(value='');">
                             </fieldset>
