@@ -248,7 +248,7 @@ $isAnswer = $isAnswer->fetchColumn();
                </div>
             </form>
             <div id="customModal" class="custom-modal">
-                <div class="custom-confirm-content">
+                <div class="custom-modal-content">
                     <p class="texte-boite-perso">Votre réponse a été modifié avec succès !</p>
                     <button id="confirmModif" class="confirm-btn">Ok</button>
                 </div>
@@ -353,7 +353,7 @@ $isAnswer = $isAnswer->fetchColumn();
 
             confirmModif.addEventListener('click',() => {
                 modal.style.display = 'none';
-                avisForm.action="modif_avis_membre.php";
+                avisForm.action="modif_avis_pro.php";
                 avisForm.submit();
             });
 
