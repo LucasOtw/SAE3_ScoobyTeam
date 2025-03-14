@@ -647,8 +647,9 @@ if (isset($_POST['envoi_modif'])){
 if($infos_offre !== null){
     $infos_offre = $infos_offre[0];
 }
-
+echo "<pre>";
 var_dump($infos_offre);
+echo "</pre>";
     
 ?>
 <!DOCTYPE html>
