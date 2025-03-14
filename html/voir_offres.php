@@ -1449,13 +1449,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
-
-var customIcon = L.icon({
-    iconUrl: './images/ping.png', 
-    iconSize: [50, 40], 
-    iconAnchor: [15, 40], 
-    popupAnchor: [0, -35] 
-});
 </script>
 
 
