@@ -1105,7 +1105,7 @@ if($infos_offre !== null){
                         const indexPhoto = deletedImages.indexOf(photoSrc);
 
                         if(indexPhoto !== -1){
-                            deletedImages.splice(index,1);
+                            deletedImages.splice(indexPhoto,1);
                         }
                         
                     } else {
