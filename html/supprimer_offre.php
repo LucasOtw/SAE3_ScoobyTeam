@@ -18,12 +18,19 @@ $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
 $username = "sae";
 $password = "philly-Congo-bry4nt";
 
-// Créer une instance PDO
 $dbh = new PDO($dsn, $username, $password);
 
 if(isset($_POST['uneOffre'])){
     $codeOffre = unserialize($_POST['uneOffre']);
 
+    // On récupère le nom de l'offre, pour supprimer le dossier
+    $recupTitre = $dbh->prepare('SELECT titre_offre FROM tripenarvor._offre
+    WHERE code_offre = :code_offre');
+    $recupTitre->bindValue(':code_offre',$codeOffre);
+    $recupTitre->execute();
+
+    $titreOffre = $recupTitre->fetchColumn(); // titre de l'offre
+    $titreOffre = str_replace(' ','',$titreOffre);
 
     /* RÉCUPÉRATION DE CHAQUE LIEN D'IMAGE */
 
@@ -90,14 +97,18 @@ if(isset($_POST['uneOffre'])){
             // si le code n'est utilisé qu'une fois, on peut le supprimer dans _horaire
             $deleteHoraire = $dbh->prepare('DELETE FROM tripenarvor._horaire
             WHERE code_horaire = :code');
-            // A COMPLETER
+            $deleteHoraire->bindValue(':code',$code);
+            try{
+                $deleteHoraire->execute();
+            } catch (PDOException $e){
+                die("Erreur lors de la suppression (horaire) : ". $e->getMessage());
+            }
         }
-
     }
 
     /* SUPPRESSION DE L'OFFRE */
 
-/*     $deleteOffre = $dbh->prepare('DELETE FROM tripenarvor._offre WHERE code_offre = :code_offre');
+    $deleteOffre = $dbh->prepare('DELETE FROM tripenarvor._offre WHERE code_offre = :code_offre');
     $deleteOffre->bindValue(':code_offre',$codeOffre);
     try {
         $deleteOffre->execute();
@@ -109,22 +120,40 @@ if(isset($_POST['uneOffre'])){
         }
     } catch (PDOException $e) {
         die("Erreur lors de la suppression : " . $e->getMessage());
-    } */
+    }
 
-    // On supprime les images du serveur
-    foreach($liensImages as $img){
-        echo $chemin;
-        $chemin = ltrim($img,"../");
+    // On supprime les images de la BDD
 
-        if (preg_match('#^images/offres/([^/]+)/[^/]+\.(png|jpg|jpeg|gif)$#', $chemin)){
-            echo "test";
+    foreach($codesImages as $code){
+        $deleteImage = $dbh->prepare('DELETE FROM tripenarvor._image
+        WHERE code_image = :code');
+        $deleteImage->bindValue(':code',$code);
+        try{
+            $deleteImage->execute();
+        } catch(PDOException $e){
+            die("Erreur lors de la suppression (_image) : ".$e->getMessage());
         }
     }
 
-} else {
-    // sinon il n'a rien à faire ici
-    header('location: mes_offres.php');
-    exit;
+    // On supprime les images du serveur
+    foreach($liensImages as $img){
+        $chemin = substr($img,3);
+
+        if (preg_match('#^images/offres/([^/]+)/[^/]+\.(png|jpg|jpeg|gif)$#', $chemin)){
+            // si le lien ressemble à : images/offres/{doss}/img.{ext}, on peut supprimer l'image
+            if(file_exists($chemin)){
+                unlink($chemin); // supprime le fichier
+            }
+        }
+    }
+    // les images sont toutes supprimées, on peut donc supprimer le dossier
+    $chemin = "images/offres/$titreOffre";
+    if(file_exists($chemin)){
+        rmdir($chemin);
+    }
+
 }
+header('location: mes_offres.php');
+exit;
 
 ?>

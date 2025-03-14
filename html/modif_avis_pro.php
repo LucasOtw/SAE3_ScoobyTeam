@@ -197,7 +197,7 @@ $isAnswer = $isAnswer->fetchColumn();
                 </div>
             </div>
 
-            <form  id="avisForm" action="#" method="POST">
+            <form id="avisForm" action="#" method="POST">
                <div class="poster_un_avis_section">
                    <h2 class="poster_un_avis_section_titre">Votre avis</h2>
 
@@ -239,13 +239,20 @@ $isAnswer = $isAnswer->fetchColumn();
                            <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
                            <input type="hidden" name="code_avis" value="<?php echo $avis['code_avis']; ?>">
                            <input type="hidden" name="isAnswer" value="<?php echo $isAnswer; ?>">
-                           <button class="poster_un_avis_btn_publier_pro" type="submit"- name="modifier">Modifier →</button>
+                           <input type="hidden" name="modifier" value="1">
+                           <button class="poster_un_avis_btn_publier_pro" type="submit">Modifier →</button>
                        </div>
      
                     </div>
                   </div>
                </div>
             </form>
+            <div id="customModal" class="custom-modal">
+                <div class="custom-modal-content">
+                    <p class="texte-boite-perso">Votre réponse a été modifié avec succès !</p>
+                    <button id="confirmModif" class="confirm-btn">Ok</button>
+                </div>
+            </div>
            
            
         <nav class="nav-bar">modifier
@@ -330,7 +337,31 @@ $isAnswer = $isAnswer->fetchColumn();
             console.log(`star${note}`);
             // on récupère une étoile en fonction de la note
             const numEtoile = document.getElementById(`star${note}`);
-            numEtoile.toggleAttribute("checked");
+            console.log(numEtoile);
+            if(numEtoile){
+                numEtoile.toggleAttribute("checked");
+            }
+
+            var formModif = document.getElementById('avisForm');
+            var modal = document.getElementById('customModal');
+            var btnModif = document.getElementById('confirmModif');
+
+            formModif.addEventListener('submit',function(e){
+                e.preventDefault();
+                modal.style.display = 'flex';
+            });
+
+            confirmModif.addEventListener('click',() => {
+                modal.style.display = 'none';
+                avisForm.action="modif_avis_pro.php";
+                avisForm.submit();
+            });
+
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            };
         });
     </script>
 </body>

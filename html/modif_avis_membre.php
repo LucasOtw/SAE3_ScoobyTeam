@@ -54,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['modif_avis'] = $avis;
     }
     if(isset($_POST['modifier'])){
+        echo "test";
         $modifOk = false;
         if($_POST['isAnswer'] == 0){
             if((isset($_POST['note']) && !empty($_POST['note'])) && (isset($_POST['textAreaAvis']) && !empty($_POST['textAreaAvis']))){
@@ -118,6 +119,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </script>
             <?php
         }
+    } else {
+        echo "LOL";
     }
 }
 if(isset($_SESSION['modif_avis'])){
@@ -242,12 +245,19 @@ $isAnswer = $isAnswer->fetchColumn();
                            <!--<button class="poster_un_avis_btn_annuler">Annuler</button>-->
                            <input type="hidden" name="code_avis" value="<?php echo $avis['code_avis']; ?>">
                            <input type="hidden" name="isAnswer" value="<?php echo $isAnswer; ?>">
-                           <button id="envoiModif" class="poster_un_avis_btn_publier" type="submit"- name="modifier">Modifier →</button>
+                           <input type="hidden" name="modifier" value="1">
+                           <button id="envoiModif" class="poster_un_avis_btn_publier" type="submit">Modifier →</button>
                        </div>
                     </div>
                   </div>
                </div>
             </form>
+            <div id="customModal" class="custom-modal">
+                <div class="custom-confirm-content">
+                    <p class="texte-boite-perso">Votre avis a été modifié avec succès !</p>
+                    <button id="confirmModif" class="confirm-btn">Ok</button>
+                </div>
+            </div>
            
         <nav class="nav-bar">
             <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
@@ -349,14 +359,32 @@ $isAnswer = $isAnswer->fetchColumn();
     <script>
         document.addEventListener('DOMContentLoaded',function(){
             var note = <?php echo $note; ?>;
-            console.log(`star${note}`);
             // on récupère une étoile en fonction de la note
             const numEtoile = document.getElementById(`star${note}`);
-            numEtoile.toggleAttribute("checked");
+            if(numEtoile){
+                numEtoile.toggleAttribute("checked");
+            }
 
-            var btnModif = document.getElementById('envoiModif');
             var formModif = document.getElementById('avisForm');
+            var modal = document.getElementById('customModal');
+            var btnModif = document.getElementById('confirmModif');
 
+            formModif.addEventListener('submit',function(e){
+                e.preventDefault();
+                modal.style.display = 'flex';
+            });
+
+            confirmModif.addEventListener('click',() => {
+                modal.style.display = 'none';
+                avisForm.action="modif_avis_membre.php";
+                avisForm.submit();
+            });
+
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            };
         });
     </script>
 </body>
