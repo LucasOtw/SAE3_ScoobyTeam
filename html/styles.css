@@ -8040,6 +8040,12 @@ form .btn-link {
     flex-direction: row;
 }
 
+.jeton_grise {
+    opacity: 0.5;
+    filter: grayscale(100%);
+}
+
+
 .jetons-container p {
     margin-top: 10px; /* Ajoute un espace entre les jetons et le texte */
 }
