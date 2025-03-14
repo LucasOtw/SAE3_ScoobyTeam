@@ -252,6 +252,12 @@ $isAnswer = $isAnswer->fetchColumn();
                   </div>
                </div>
             </form>
+            <div id="customModal" class="custom-modal">
+                <div class="custom-modal-content">
+                    <p class="texte-boite-perso">Votre avis a été modifié avec succès !</p>
+                    <button id="confirmModif" class="confirm-btn">Ok</button>
+                </div>
+            </div>
            
         <nav class="nav-bar">
             <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
@@ -360,14 +366,25 @@ $isAnswer = $isAnswer->fetchColumn();
             }
 
             var formModif = document.getElementById('avisForm');
+            var modal = document.getElementById('customModal');
+            var btnModif = document.getElementById('confirmModif');
 
             formModif.addEventListener('submit',function(e){
                 e.preventDefault();
-                var dialog_modif = window.confirm("Voulez-vous vraiment modifier votre avis ?");
-                if(dialog_modif){
-                    formModif.submit();
-                }
+                modal.style.display = 'flex';
             });
+
+            confirmModif.addEventListener('click',() => {
+                modal.style.display = 'none';
+                avisForm.action="modif_avis_membre.php";
+                avisForm.submit();
+            });
+
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            };
         });
     </script>
 </body>
