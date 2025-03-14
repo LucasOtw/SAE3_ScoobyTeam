@@ -8040,7 +8040,7 @@ form .btn-link {
     flex-direction: row;
 }
 
-.jeton_grise {
+.jeton_grise{
     opacity: 0.5;
     filter: grayscale(100%);
     width: 50px;
