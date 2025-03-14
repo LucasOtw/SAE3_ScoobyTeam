@@ -17,7 +17,7 @@ function loadEnv($path) {
 }
 
 // Charger les variables d'environnement
-loadEnv(__DIR__ . '/.env');
+loadEnv(__DIR__ . '../../../.env');
 
 // Récupération des variables d'environnement
 $host = 'postgresdb';
