@@ -230,6 +230,16 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
         $adresse_offre->execute();
         $adresse_offre = $adresse_offre->fetch(PDO::FETCH_ASSOC);
 
+
+        // Récupération du nombre d'avis blacklistés pour cette offre
+        $stmt = $pdo->prepare("SELECT nb_blacklister FROM offre WHERE id = :code_offre");
+        $stmt->execute(['code_offre' => $code_offre]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Si aucune donnée n'est trouvée, on suppose que l'offre n'a pas encore utilisé de jeton
+        $nb_blacklister = $result ? $result['nb_blacklister'] : 0;
+        $jetons_restants = max(3 - $nb_blacklister, 0); // Évite d'avoir un nombre négatif
+
         $_SESSION['detail_offre'] = $details_offre;
     }
 }
