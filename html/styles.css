@@ -8121,6 +8121,9 @@ form .btn-link {
     list-style: none;
     margin: 0;
     padding: 0;
+    border: black solid 1px;
+    border-radius: 15px;
+    background-color: gainsboro;
 }
 
 .avis .menu_avis .context-menu ul li {
