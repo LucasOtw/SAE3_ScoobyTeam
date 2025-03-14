@@ -1363,6 +1363,16 @@ function tempsEcouleDepuisPublication($offre){
     </footer>
     <script>
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM chargé");
+    
+    if (typeof L === "undefined") {
+        console.error("Leaflet n'est pas chargé !");
+    } else {
+        console.log("Leaflet est bien chargé !");
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM chargé, initialisation de la carte...");
 
     const mapElement = document.getElementById('map');
