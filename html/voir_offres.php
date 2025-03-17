@@ -1353,6 +1353,8 @@ function tempsEcouleDepuisPublication($offre){
     <script src="https://unpkg.com/leaflet.markercluster@1.5.1/dist/leaflet.markercluster.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            console.log("script chargé");
+
             const mapElement = document.getElementById('map');
 
             if (mapElement) {
@@ -1360,25 +1362,30 @@ function tempsEcouleDepuisPublication($offre){
                     // Création de la carte et centrage sur la Bretagne
                     var map = L.map('map').setView([48.2020, -2.9326], 8);
 
+                    // Ajout du tileLayer avec proxy.php pour charger les tuiles
                     L.tileLayer('/proxy.php?z={z}&x={x}&y={y}', {
                         attribution: '&copy; Esri',
                         maxZoom: 20
                     }).addTo(map);
 
-                    // Création d'un groupe de clusters
-                    var markers = L.markerClusterGroup();
-
                     <?php
+                    // Récupération des offres et adresses depuis la base de données
                     $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
-                                           (SELECT i.url_image 
-                                            FROM tripenarvor._son_image si 
-                                            JOIN tripenarvor._image i ON si.code_image = i.code_image 
-                                            WHERE si.code_offre = o.code_offre 
-                                            LIMIT 1) AS url_image
-                                           FROM tripenarvor._offre o 
-                                           JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
-                                           WHERE o.en_ligne = true');
+                                               (SELECT i.url_image 
+                                                FROM tripenarvor._son_image si 
+                                                JOIN tripenarvor._image i ON si.code_image = i.code_image 
+                                                WHERE si.code_offre = o.code_offre 
+                                                LIMIT 1) AS url_image
+                                               FROM tripenarvor._offre o 
+                                               JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
+                                               WHERE o.en_ligne = true');
 
+                    if (!$adresses) {
+                        echo "console.error('Erreur SQL : " . $dbh->errorInfo()[2] . "');";
+                        exit;
+                    }
+
+                    // Génération des marqueurs pour chaque adresse
                     foreach ($adresses as $adr) {
                         // Construction de l'adresse complète pour le géocodage
                         $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
@@ -1397,7 +1404,7 @@ function tempsEcouleDepuisPublication($offre){
                             $longitude = $json['results'][0]['geometry']['location']['lng'];
 
                             $popupContent = "<div style='width:218px;'>";
-                            
+
                             if (!empty($adr['url_image'])) {
                                 $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
                             }
@@ -1410,18 +1417,15 @@ function tempsEcouleDepuisPublication($offre){
                             $popupContent .= "</div>";
                             $popupContent .= "</div>";
 
-                            // Ajoute le marqueur au groupe de clusters
-                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});
-                                  marker.bindPopup(\"" . $popupContent . "\");
-                                  markers.addLayer(marker);";
+                            // Ajout du marqueur sur la carte avec popup
+                            echo "L.marker([$latitude, $longitude], {icon: customIcon}).addTo(map)
+                                  .bindPopup(\"" . addslashes($popupContent) . "\");";
                         }
                     }
                     ?>
 
-                    // Ajout du groupe de clusters à la carte
-                    map.addLayer(markers);
-
                     console.log("Carte Leaflet initialisée avec succès");
+
                 } catch (error) {
                     console.error("Erreur lors de l'initialisation de la carte :", error);
                 }
@@ -1430,6 +1434,7 @@ function tempsEcouleDepuisPublication($offre){
             }
         });
 
+        // Définition de l'icône personnalisée pour les marqueurs
         var customIcon = L.icon({
             iconUrl: './images/ping.png',
             iconSize: [50, 40],
@@ -1437,7 +1442,6 @@ function tempsEcouleDepuisPublication($offre){
             popupAnchor: [0, -35]
         });
     </script>
-
 
 
 </body>
