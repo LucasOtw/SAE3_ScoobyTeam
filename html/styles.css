@@ -7542,6 +7542,16 @@ form .btn-link {
     color: black;
 }
 
+#btn-repondre-avis{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#btn-blacklist-avis {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
 
 /* Section des cartes */
 .a-la-une {
@@ -8114,7 +8124,7 @@ form .btn-link {
     right: 100%;
     background: white;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
+    border-radius: 5px;
     width: 150px;
     z-index: 10;
 }
@@ -8123,16 +8133,14 @@ form .btn-link {
     list-style: none;
     margin: 0;
     padding: 0;
-    border: black solid 1px;
-    border-radius: 15px;
-    background-color: gainsboro;
+    border-radius: 5px;
+
 }
 
 .avis .menu_avis .context-menu ul li {
     padding: 10px;
     cursor: pointer;
     border-bottom: 1px solid #ddd;
-    border-radius: 15px;
 }
 
 .avis .menu_avis .context-menu ul li:hover {
