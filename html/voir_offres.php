@@ -314,19 +314,6 @@ function tempsEcouleDepuisPublication($offre){
                 <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft()">&#8249;</button>
                 <section class="a-la-une">
                 <?php
-                    try {
-                        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-                        $username = "sae";
-                        $password = "philly-Congo-bry4nt";
-        
-                        // Créer une instance PDO
-                        $dbh = new PDO($dsn, $username, $password);
-                    } 
-                    catch (PDOException $e) 
-                    {
-                        print "Erreur!: ". $e->getMessage(). "<br/>";
-                        die();
-                    }
                     // On récupère toutes les offres (titre,ville,images)
                     $infosOffre = $dbh->query('SELECT * FROM tripenarvor._offre');
                     $infosOffre = $infosOffre->fetchAll(PDO::FETCH_ASSOC);
