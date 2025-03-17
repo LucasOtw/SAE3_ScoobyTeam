@@ -1431,17 +1431,15 @@ document.addEventListener("DOMContentLoaded", function() {
                                    WHERE o.en_ligne = true');
             $adresses = $adresses->fetchAll(PDO::FETCH_ASSOC);
 
-            $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
-            $response = file_get_contents($url);
-            $json = json_decode($response, true);
+        
 
                 
             
             foreach($adresses as $adr) {
                 // Remplacer l'API de géocodage par des coordonnées générées à partir du code postal
                 // C'est temporaire mais permettra à la carte de s'afficher
-                $lat = $json['results'][0]['geometry']['location']['lat'];
-                $lng = $json['results'][0]['geometry']['location']['lng'];
+                $lat = 48.0 + (intval(substr($adr['code_postal'], 0, 2)) / 100);
+                $lng = -3.0 + (intval(substr($adr['code_postal'], 2, 3)) / 100);
                 
                 $popupContent = "<div style='width:218px;'>";
                 
