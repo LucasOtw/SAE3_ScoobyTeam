@@ -1366,7 +1366,7 @@ foreach ($adresses as $adr) {
     $adresse_enc = urlencode($adresse_complete);
 
     // URL de l'API Geocoding
-    $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
+    //$url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
 
     // Appel de l'API Google Geocoding
     $response = file_get_contents($url);
