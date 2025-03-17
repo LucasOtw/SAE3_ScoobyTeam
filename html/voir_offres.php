@@ -1335,7 +1335,6 @@ function tempsEcouleDepuisPublication($offre){
                     }
                     ?>
                 </ul>
-
             </div>
             <div class="link-group">
                 <ul>
