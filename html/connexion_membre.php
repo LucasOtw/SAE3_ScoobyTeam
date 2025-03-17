@@ -5,6 +5,8 @@ session_start();
 
 require_once __DIR__ . ("/../.security/config.php");
 
+$dbh = new PDO($dsn,$username,$password);
+
 if(!empty($_POST)){
     $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
     $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
