@@ -1364,75 +1364,85 @@ function tempsEcouleDepuisPublication($offre){
     </footer>
     <script>
     document.addEventListener("DOMContentLoaded", function () {
-    const mapElement = document.getElementById('map');
-    
-    if (mapElement) {
-        try {
-            // Création de la carte et centrage sur la Bretagne
-            var map = L.map('map').setView([48.2020, -2.9326], 8);
-            
-            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: '&copy; Esri',
-    maxZoom: 20
-}).addTo(map);
+        const mapElement = document.getElementById('map');
 
-            
+        if (mapElement) {
+            try {
+                // Création de la carte et centrage sur la Bretagne
+                var map = L.map('map').setView([48.2020, -2.9326], 8);
 
-            <?php
-$adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
-                       (SELECT i.url_image 
-                        FROM tripenarvor._son_image si 
-                        JOIN tripenarvor._image i ON si.code_image = i.code_image 
-                        WHERE si.code_offre = o.code_offre 
-                        LIMIT 1) AS url_image
-                       FROM tripenarvor._offre o 
-                       JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
-                       WHERE o.en_ligne = true');
+                L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                    attribution: '&copy; Esri',
+                    maxZoom: 20
+                }).addTo(map);
 
-foreach($adresses as $adr) {
-    $lat = 48.0 + (intval(substr($adr['code_postal'], 0, 2)) / 100);
-    $lng = -3.0 + (intval(substr($adr['code_postal'], 2, 3)) / 100);
-    
-    $popupContent = "<div style='width:218px;'>";
-    
-    if (!empty($adr['url_image'])) {
-        $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
-    }
+                <?php
+                $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
+                                   (SELECT i.url_image 
+                                    FROM tripenarvor._son_image si 
+                                    JOIN tripenarvor._image i ON si.code_image = i.code_image 
+                                    WHERE si.code_offre = o.code_offre 
+                                    LIMIT 1) AS url_image
+                                   FROM tripenarvor._offre o 
+                                   JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
+                                   WHERE o.en_ligne = true');
 
-    //Correction du lien pour voir l'offre.
-$popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
-$popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
-               . addslashes($adr['ville']) . "<br>"
-               . $adr['tarif'] . "€"
-               . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
-          
+                $api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig"; // Votre clé API Google
 
-$popupContent .= "</div>";
+                foreach ($adresses as $adr) {
+                    // Construction de l'adresse complète pour le géocodage
+                    $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
+                    $adresse_enc = urlencode($adresse_complete);
 
-$popupContent .= "</div>";
-    
-    echo "L.marker([$lat, $lng], {icon: customIcon}).addTo(map)
-          .bindPopup(\"" . $popupContent . "\");";
-}
-            ?>
-            
-            console.log("Carte Leaflet initialisée avec succès");
-        } catch (error) {
-            console.error("Erreur lors de l'initialisation de la carte :", error);
+                    // URL de l'API Geocoding
+                    $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
+
+                    // Appel de l'API Google Geocoding
+                    $response = file_get_contents($url);
+                    $json = json_decode($response, true);
+
+                    // Vérifie si la réponse contient des résultats
+                    if (isset($json['results'][0])) {
+                        $latitude = $json['results'][0]['geometry']['location']['lat'];
+                        $longitude = $json['results'][0]['geometry']['location']['lng'];
+
+                        $popupContent = "<div style='width:218px;'>";
+                        
+                        if (!empty($adr['url_image'])) {
+                            $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
+                        }
+
+                        $popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
+                        $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
+                                       . addslashes($adr['ville']) . "<br>"
+                                       . $adr['tarif'] . "€"
+                                       . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
+                        $popupContent .= "</div>";
+                        $popupContent .= "</div>";
+
+                        echo "L.marker([$latitude, $longitude], {icon: customIcon}).addTo(map)
+                              .bindPopup(\"" . $popupContent . "\");";
+                    }
+                }
+                ?>
+
+                console.log("Carte Leaflet initialisée avec succès");
+            } catch (error) {
+                console.error("Erreur lors de l'initialisation de la carte :", error);
+            }
+        } else {
+            console.error("L'élément #map n'existe pas dans le DOM");
         }
-    } else {
-        console.error("L'élément #map n'existe pas dans le DOM");
-    }
-});
+    });
 
-
-var customIcon = L.icon({
-    iconUrl: './images/ping.png', 
-    iconSize: [50, 40], 
-    iconAnchor: [15, 40], 
-    popupAnchor: [0, -35] 
-});
+    var customIcon = L.icon({
+        iconUrl: './images/ping.png',
+        iconSize: [50, 40],
+        iconAnchor: [15, 40],
+        popupAnchor: [0, -35]
+    });
 </script>
+
 
 
 
