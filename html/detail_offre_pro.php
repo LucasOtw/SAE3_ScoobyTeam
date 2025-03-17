@@ -1378,7 +1378,6 @@ WHERE code_offre = :code_offre
 
             var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
             var codeAvis = document.querySelector('.blacklist-avis').getAttribute('data-avis');
-            var tps_ban = document.getElementById("blacklistDuration").value;
 
             // Utilisation de fetch pour envoyer les données
             fetch("https://scooby-team.ventsdouest.dev/update_avis_status.php", {
