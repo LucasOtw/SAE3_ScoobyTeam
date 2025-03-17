@@ -1487,6 +1487,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                    FROM tripenarvor._offre o 
                                    JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
                                    WHERE o.en_ligne = true');
+            $adresses = $adresses->fetchAll(PDO::FETCH_ASSOC);
             
             foreach($adresses as $adr) {
                 // Remplacer l'API de géocodage par des coordonnées générées à partir du code postal
