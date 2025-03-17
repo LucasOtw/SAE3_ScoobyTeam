@@ -1346,107 +1346,69 @@ function tempsEcouleDepuisPublication($offre){
     </footer>
 
 
-
-<?php
-// Supposons que votre connexion à la base de données soit déjà établie
-$adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
-                                   (SELECT i.url_image 
-                                    FROM tripenarvor._son_image si 
-                                    JOIN tripenarvor._image i ON si.code_image = i.code_image 
-                                    WHERE si.code_offre = o.code_offre 
-                                    LIMIT 1) AS url_image
-                                   FROM tripenarvor._offre o 
-                                   JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
-                                   WHERE o.en_ligne = true');
-
-$points = [];
-foreach ($adresses as $adr) {
-    // Construction de l'adresse complète pour le géocodage
-    $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
-    $adresse_enc = urlencode($adresse_complete);
-
-    // URL de l'API Geocoding
-    //$url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
-
-    // Appel de l'API Google Geocoding
-    $response = file_get_contents($url);
-    $json = json_decode($response, true);
-
-    // Vérifie si la réponse contient des résultats
-    if (isset($json['results'][0])) {
-        $latitude = $json['results'][0]['geometry']['location']['lat'];
-        $longitude = $json['results'][0]['geometry']['location']['lng'];
-
-        $popupContent = "<div style='width:218px;'>";
-
-        if (!empty($adr['url_image'])) {
-            $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
-        }
-
-        $popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
-        $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
-                       . addslashes($adr['ville']) . "<br>"
-                       . $adr['tarif'] . "€"
-                       . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
-        $popupContent .= "</div>";
-        $popupContent .= "</div>";
-
-        // Ajouter chaque point dans le tableau PHP
-        $points[] = [
-            'lat' => $latitude,
-            'lon' => $longitude,
-            'popup' => $popupContent
-        ];
-    }
-}
-?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carte Leaflet avec Clustering et Offres</title>
-    <link rel="stylesheet" href="leaflet.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.Default.css" />
-    <style>
-        #map {
-            height: 80vh;
-            width: 100%;
-        }
-    </style>
-</head>
-<body>
-    <div id="map"></div>
-
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet.markercluster@1.5.1/dist/leaflet.markercluster.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var map = L.map('map').setView([48.2020, -2.9326], 8);  // Coordonnées de la Bretagne
-
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const mapElement = document.getElementById('map');
+    
+    if(mapElement) {
+        try {
+            var map = L.map('map').setView([48.2020, -2.9326], 8);
+            
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; OpenStreetMap contributors'
+                attribution: '&copy; OpenStreetMap contributors',
+                maxZoom: 20
             }).addTo(map);
+            
+            <?php
+            $api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig";
+            
+            foreach($adresses as $adr) {
+                $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
+                $adresse_enc = urlencode($adresse_complete);
+                
+                $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
+                $response = file_get_contents($url);
+                $json = json_decode($response, true);
+                
+                if(isset($json['results'][0])) {
+                    $latitude = $json['results'][0]['geometry']['location']['lat'];
+                    $longitude = $json['results'][0]['geometry']['location']['lng'];
+                    
+                    $popupContent = "<div style='width:218px;'>";
+                    
+                    if(!empty($adr['url_image'])) {
+                        $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
+                    }
+                    
+                    $popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
+                    $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
+                                 . addslashes($adr['ville']) . "<br>"
+                                 . $adr['tarif'] . "€"
+                                 . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
+                    $popupContent .= "</div></div>";
+                    
+                    echo "L.marker([$latitude, $longitude]).addTo(map).bindPopup('$popupContent');";
+                }
+            }
+            ?>
+            
+            console.log("Carte Leaflet initialisée avec succès");
+        } catch(error) {
+            console.error("Erreur lors de l'initialisation de la carte :", error);
+        }
+    } else {
+        console.error("L'élément #map n'existe pas dans le DOM");
+    }
+});
 
-            // Création d'un groupe de clusters
-            var markers = L.markerClusterGroup();
-
-            // Liste de points générée par PHP
-            <?php foreach ($points as $point): ?>
-                var marker = L.marker([<?php echo $point['lat']; ?>, <?php echo $point['lon']; ?>]);
-                marker.bindPopup("<?php echo addslashes($point['popup']); ?>");
-                markers.addLayer(marker);
-            <?php endforeach; ?>
-
-            // Ajouter le groupe de clusters à la carte
-            map.addLayer(markers);
-
-            console.log("Carte Leaflet initialisée avec succès et offres ajoutées avec clustering.");
-        });
-    </script>
-</body>
-</html>
+var customIcon = L.icon({
+    iconUrl: './images/ping.png',
+    iconSize: [50, 40],
+    iconAnchor: [15, 40],
+    popupAnchor: [0, -35]
+});
+</script>
+ 
 
 
 
@@ -1495,5 +1457,79 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Vérifier si l'élément map existe
+    var mapElement = document.getElementById('map');
+    
+    if (mapElement) {
+        console.log("Élément carte trouvé, initialisation de Leaflet...");
+        
+        try {
+            var map = L.map('map').setView([48.2020, -2.9326], 8);  // Coordonnées de la Bretagne
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+            
+            // Création d'un groupe de clusters
+            var markers = L.markerClusterGroup();
+            
+            // Utiliser des coordonnées statiques pour tester
+            <?php
+            $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
+                                   (SELECT i.url_image 
+                                    FROM tripenarvor._son_image si 
+                                    JOIN tripenarvor._image i ON si.code_image = i.code_image 
+                                    WHERE si.code_offre = o.code_offre 
+                                    LIMIT 1) AS url_image
+                                   FROM tripenarvor._offre o 
+                                   JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
+                                   WHERE o.en_ligne = true');
+            
+            foreach($adresses as $adr) {
+                // Remplacer l'API de géocodage par des coordonnées générées à partir du code postal
+                // C'est temporaire mais permettra à la carte de s'afficher
+                $lat = 48.0 + (intval(substr($adr['code_postal'], 0, 2)) / 100);
+                $lng = -3.0 + (intval(substr($adr['code_postal'], 2, 3)) / 100);
+                
+                $popupContent = "<div style='width:218px;'>";
+                
+                if (!empty($adr['url_image'])) {
+                    $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
+                }
+                
+                $popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
+                $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
+                               . addslashes($adr['ville']) . "<br>"
+                               . $adr['tarif'] . "€"
+                               . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
+                $popupContent .= "</div>";
+                $popupContent .= "</div>";
+                
+                echo "var marker = L.marker([$lat, $lng]);";
+                echo "marker.bindPopup(\"" . addslashes($popupContent) . "\");";
+                echo "markers.addLayer(marker);";
+            }
+            ?>
+            
+            // Ajouter le groupe de clusters à la carte
+            map.addLayer(markers);
+            
+            // Force un recalcul de la taille de la carte
+            setTimeout(function() {
+                map.invalidateSize();
+                console.log("Carte redimensionnée");
+            }, 100);
+            
+            console.log("Carte Leaflet initialisée avec succès");
+        } catch (error) {
+            console.error("Erreur lors de l'initialisation de la carte :", error);
+        }
+    } else {
+        console.error("L'élément #map n'a pas été trouvé dans le DOM");
+    }
+});
 </script>
 
