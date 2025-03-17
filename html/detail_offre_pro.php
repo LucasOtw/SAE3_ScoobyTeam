@@ -1365,7 +1365,7 @@ WHERE code_offre = :code_offre
                 console.log(jetons);
                 if (jetons + 1 <= 3) {
                     modal2.style.display = 'flex';
-                    confirmBlacklist.dataset.avis = element.getAttribute('data-avis'); // Stocker l'ID de l'avis
+                    // confirmBlacklist.dataset.avis = element.getAttribute('data-avis'); // Stocker l'ID de l'avis
                 } else {
                     modalError.style.display = 'flex';
                 }
