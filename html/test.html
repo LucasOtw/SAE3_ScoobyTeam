@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Carte Leaflet</title>
+    <title>Test Carte Leaflet avec Clustering</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.Default.css" />
     <style>
         #map {
             height: 80vh;
@@ -16,6 +18,7 @@
     <div id="map"></div>
     
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.1/dist/leaflet.markercluster.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var map = L.map('map').setView([48.2020, -2.9326], 8);  // Coordonnées de la Bretagne
@@ -23,6 +26,9 @@
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; OpenStreetMap contributors'
             }).addTo(map);
+
+            // Création d'un groupe de clusters
+            var markers = L.markerClusterGroup();
 
             // Liste de points à afficher (20 points avec leurs coordonnées et contenu)
             var points = [
@@ -48,13 +54,17 @@
                 { lat: 50.1000, lon: -1.1000, popup: "Point 20: Une ruelle charmante." }
             ];
 
-            // Placer les marqueurs sur la carte
+            // Ajouter les marqueurs au groupe de clusters
             points.forEach(function(point) {
-                L.marker([point.lat, point.lon]).addTo(map)
-                    .bindPopup(point.popup);
+                var marker = L.marker([point.lat, point.lon]);
+                marker.bindPopup(point.popup);
+                markers.addLayer(marker);
             });
 
-            console.log("Carte Leaflet initialisée avec succès et 20 points ajoutés.");
+            // Ajouter le groupe de clusters à la carte
+            map.addLayer(markers);
+
+            console.log("Carte Leaflet initialisée avec succès et 20 points ajoutés avec clustering.");
         });
     </script>
 </body>
