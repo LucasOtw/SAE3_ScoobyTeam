@@ -770,10 +770,6 @@ if (isset($json['results'][0])) {
 
                             <?php
                             if (isset($_SESSION['membre']['code_compte'])) {
-                                $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-                                $username = "sae";  // Utilisateur PostgreSQL
-                                $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL
-                                $dbh = new PDO($dsn, $username, $password);
                                 // Récupérer l'état du vote de l'utilisateur pour cet avis
                                 $codeAvis = $avis['code_avis']; // Assurez-vous que $avis contient bien le code de l'avis
                                 $codeCompte = $_SESSION['membre']['code_compte']; // L'utilisateur doit être connecté
