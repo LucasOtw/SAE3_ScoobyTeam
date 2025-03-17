@@ -1349,6 +1349,58 @@ function tempsEcouleDepuisPublication($offre){
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.Default.css" />
     <div id="map"></div>
 
+
+
+
+
+
+
+
+
+
+
+
+    
+    <?php
+// Connexion à la base de données
+try {
+    $dbh = new PDO('mysql:host=localhost;dbname=game', 'username', 'password');
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo "Erreur de connexion : " . $e->getMessage();
+    exit;
+}
+
+// Récupération des offres depuis la base de données
+$adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
+                           (SELECT i.url_image 
+                            FROM tripenarvor._son_image si 
+                            JOIN tripenarvor._image i ON si.code_image = i.code_image 
+                            WHERE si.code_offre = o.code_offre 
+                            LIMIT 1) AS url_image
+                           FROM tripenarvor._offre o 
+                           JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
+                           WHERE o.en_ligne = true');
+
+if (!$adresses) {
+    echo "Erreur SQL : " . $dbh->errorInfo()[2];
+    exit;
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.5.1/dist/leaflet.markercluster.js"></script>
     <script>
