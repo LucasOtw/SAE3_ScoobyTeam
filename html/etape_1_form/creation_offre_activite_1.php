@@ -2,7 +2,7 @@
 ob_start();
 session_start();
 
-require_once __DIR__ . ("/../.security/config.php");
+require_once __DIR__ . ("/../../.security/config.php");
 
 // Créer une instance PDO
 $dbh = new PDO($dsn, $username, $password);
