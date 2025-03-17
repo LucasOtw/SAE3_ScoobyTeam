@@ -63,7 +63,7 @@
         $stmt = $dbh->prepare("
             UPDATE tripenarvor._avis
             SET blacklister = :blacklister,
-                date_blacklister = :date
+                date_blacklister = :date_blacklister
             WHERE code_avis = :code_avis
             RETURNING code_avis, blacklister, date_blacklister
         ");
