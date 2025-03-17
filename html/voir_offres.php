@@ -1354,7 +1354,7 @@ function tempsEcouleDepuisPublication($offre){
                 // Création de la carte et centrage sur la Bretagne
                 var map = L.map('map').setView([48.2020, -2.9326], 8);
 
-                L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                L.tileLayer('/proxy.php?z={z}&x={x}&y={y}', {
                     attribution: '&copy; Esri',
                     maxZoom: 20
                 }).addTo(map);
@@ -1370,7 +1370,7 @@ function tempsEcouleDepuisPublication($offre){
                                    JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
                                    WHERE o.en_ligne = true');
 
-                $api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig"; // Votre clé API Google
+                //$api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig"; // Votre clé API Google
 
                 foreach ($adresses as $adr) {
                     // Construction de l'adresse complète pour le géocodage

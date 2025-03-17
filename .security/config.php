@@ -17,14 +17,14 @@ function loadEnv($path) {
 }
 
 // Charger les variables d'environnement
-loadEnv(__DIR__ . '../../../.env');
+require_once(__DIR__ . '/connect_params.php');
 
 // Récupération des variables d'environnement
 $host = 'postgresdb';
-$port = $_ENV['PGDB_PORT'] ?? '5432';
-$dbname = $_ENV['DB_NAME'] ?? 'sae';
-$username = $_ENV['DB_USER'] ?? 'sae';
-$password = $_ENV['DB_ROOT_PASSWORD'] ?? '';
+$port = $PGDB_PORT ?? '5432';
+$dbname = $DB_NAME ?? 'sae';
+$username = $DB_USER ?? 'sae';
+$password = $DB_ROOT_PASSWORD ?? 'philly-Congo-bry4nt';
 
 // Chaîne de connexion
 $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
