@@ -7,7 +7,7 @@ session_start();
 //$username = "sae";
 //$password = "philly-Congo-bry4nt";
 
-require_once("../.security/config.php");
+require_once __DIR__ . ("/../.security/config.php");
 
 $dbh = new PDO($dsn,$username,$password);
 
