@@ -133,8 +133,6 @@ foreach($tables as $table){
     }
 }
 
-var_dump($type_offre);
-
 switch($type_offre){
     case "restauration":
         // on sélectionner la gamme de prix
@@ -661,9 +659,6 @@ if (isset($_POST['envoi_modif'])){
 if($infos_offre !== null){
     $infos_offre = $infos_offre[0];
 }
-echo "<pre>";
-var_dump($infos_offre);
-echo "</pre>";
     
 ?>
 <!DOCTYPE html>
