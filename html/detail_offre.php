@@ -62,7 +62,12 @@ require_once __DIR__ . ("/../.security/config.php");
 // Créer une instance PDO avec les bons paramètres
 $dbh = new PDO($dsn, $username, $password);
 
-var_dump($dbh);
+// essai dbh
+
+$test = $dbh->prepare('SELECT * FROM tripenarvor._offre_activite');
+$test->execute();
+
+var_dump($test->fetchAll(PDO::FETCH_ASSOC));
 
 $details_offre = null;
 
