@@ -1430,6 +1430,12 @@ document.addEventListener("DOMContentLoaded", function() {
                                    JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
                                    WHERE o.en_ligne = true');
             $adresses = $adresses->fetchAll(PDO::FETCH_ASSOC);
+
+            $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
+            $response = file_get_contents($url);
+            $json = json_decode($response, true);
+
+                
             
             foreach($adresses as $adr) {
                 // Remplacer l'API de géocodage par des coordonnées générées à partir du code postal
