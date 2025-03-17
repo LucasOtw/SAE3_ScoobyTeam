@@ -143,25 +143,25 @@ if(isset($_POST['envoiFormEtape2'])){
                 <!-- Meal Options -->
                 <div class="meal-options">
                     <label>Options de repas</label>
-                    <div class="checkbox-group" required>
+                    <div class="checkbox-group">
                         <div>
-                            <input type="checkbox" id="petit_dejeuner" name="repas[]" value="Petit déjeuner">
+                            <input type="checkbox" id="petit_dejeuner" name="repas[]" value="Petit déjeuner" required>
                             <label class="label-check" for="petit_dejeuner">Petit-Déjeuner</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="brunch" name="repas[]" value="Brunch">
+                            <input type="checkbox" id="brunch" name="repas[]" value="Brunch" required>
                             <label class="label-check" for="brunch">Brunch</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="dejeuner" name="repas[]" value="Déjeuner" checked>
+                            <input type="checkbox" id="dejeuner" name="repas[]" value="Déjeuner" required>
                             <label class="label-check" for="dejeuner">Déjeuner</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="diner" name="repas[]" value="Dîner" checked>
+                            <input type="checkbox" id="diner" name="repas[]" value="Dîner" required>
                             <label class="label-check" for="diner">Dîner</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="boissons" name="repas[]" value="Boissons">
+                            <input type="checkbox" id="boissons" name="repas[]" value="Boissons" required>
                             <label class="label-check" for="boissons">Boissons</label>
                         </div>
                     </div>
