@@ -1434,8 +1434,8 @@ document.addEventListener("DOMContentLoaded", function() {
             foreach($adresses as $adr) {
                 // Remplacer l'API de géocodage par des coordonnées générées à partir du code postal
                 // C'est temporaire mais permettra à la carte de s'afficher
-                $lat = 48.0 + (intval(substr($adr['code_postal'], 0, 2)) / 100);
-                $lng = -3.0 + (intval(substr($adr['code_postal'], 2, 3)) / 100);
+                $lat = $json['results'][0]['geometry']['location']['lat'];
+                $lng = $json['results'][0]['geometry']['location']['lng'];
                 
                 $popupContent = "<div style='width:218px;'>";
                 
