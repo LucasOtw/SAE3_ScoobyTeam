@@ -1407,7 +1407,7 @@ $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
                . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
           
 
-$popupContent .= "</div>";
+$popupContent .= "</div>"; //Rrmove si besoin
 
 $popupContent .= "</div>";
     
