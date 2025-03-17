@@ -1360,7 +1360,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }).addTo(map);
             
             <?php
-            $api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig";
+            $api_key = "a62b465402a64a49862f451a157e69c";
             
             foreach($adresses as $adr) {
                 $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
