@@ -915,12 +915,18 @@ include("recupInfosCompte.php");
                                                     Signaler l'avis
                                                 </a>
                                             </li>
-                                            <li>
-                                                <div class="blacklist-avis"
-                                                    data-avis="<?php echo htmlspecialchars($avis['code_avis']); ?>">
-                                                    <p>Blacklister l'avis</p>
-                                                </div>
-                                            </li>
+                                            <?php
+                                            if ($details_offre["nom_type"] == "Offre Premium") {
+                                                ?>
+                                                <li>
+                                                    <div class="blacklist-avis"
+                                                        data-avis="<?php echo htmlspecialchars($avis['code_avis']); ?>">
+                                                        <p>Blacklister l'avis</p>
+                                                    </div>
+                                                </li>
+                                                <?php
+                                            }
+                                            ?>
                                             <?php
                                             if ($avis['code_compte'] == $_SESSION['pro']['code_compte']) {
                                                 ?>
