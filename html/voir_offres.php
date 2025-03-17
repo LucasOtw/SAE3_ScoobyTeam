@@ -1496,4 +1496,78 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Vérifier si l'élément map existe
+    var mapElement = document.getElementById('map');
+    
+    if (mapElement) {
+        console.log("Élément carte trouvé, initialisation de Leaflet...");
+        
+        try {
+            var map = L.map('map').setView([48.2020, -2.9326], 8);  // Coordonnées de la Bretagne
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+            
+            // Création d'un groupe de clusters
+            var markers = L.markerClusterGroup();
+            
+            // Utiliser des coordonnées statiques pour tester
+            <?php
+            $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
+                                   (SELECT i.url_image 
+                                    FROM tripenarvor._son_image si 
+                                    JOIN tripenarvor._image i ON si.code_image = i.code_image 
+                                    WHERE si.code_offre = o.code_offre 
+                                    LIMIT 1) AS url_image
+                                   FROM tripenarvor._offre o 
+                                   JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
+                                   WHERE o.en_ligne = true');
+            
+            foreach($adresses as $adr) {
+                // Remplacer l'API de géocodage par des coordonnées générées à partir du code postal
+                // C'est temporaire mais permettra à la carte de s'afficher
+                $lat = 48.0 + (intval(substr($adr['code_postal'], 0, 2)) / 100);
+                $lng = -3.0 + (intval(substr($adr['code_postal'], 2, 3)) / 100);
+                
+                $popupContent = "<div style='width:218px;'>";
+                
+                if (!empty($adr['url_image'])) {
+                    $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
+                }
+                
+                $popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
+                $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
+                               . addslashes($adr['ville']) . "<br>"
+                               . $adr['tarif'] . "€"
+                               . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
+                $popupContent .= "</div>";
+                $popupContent .= "</div>";
+                
+                echo "var marker = L.marker([$lat, $lng]);";
+                echo "marker.bindPopup(\"" . addslashes($popupContent) . "\");";
+                echo "markers.addLayer(marker);";
+            }
+            ?>
+            
+            // Ajouter le groupe de clusters à la carte
+            map.addLayer(markers);
+            
+            // Force un recalcul de la taille de la carte
+            setTimeout(function() {
+                map.invalidateSize();
+                console.log("Carte redimensionnée");
+            }, 100);
+            
+            console.log("Carte Leaflet initialisée avec succès");
+        } catch (error) {
+            console.error("Erreur lors de l'initialisation de la carte :", error);
+        }
+    } else {
+        console.error("L'élément #map n'a pas été trouvé dans le DOM");
+    }
+});
+</script>
 
