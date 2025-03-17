@@ -176,10 +176,10 @@ if(isset($_POST['envoiFormEtape2'])){
         </div>
     </main>
     <script>
-        document.addEventListener('DOMContentLoaded', function(event){
+        document.addEventListener('DOMContentLoaded', function(){
             let form = document.getElementById('form_repas');
 
-            form.addEventListener('submit', function(){
+            form.addEventListener('submit', function(event){
                 const checkboxes = document.querySelectorAll('input[name="repas[]"');
                 let checked = false;
 
@@ -195,7 +195,7 @@ if(isset($_POST['envoiFormEtape2'])){
                 } else {
                     document.getElementById('error-checkbox').style.display = "none";
                 }
-            })
+            });
         });
     </script>
 </body>
