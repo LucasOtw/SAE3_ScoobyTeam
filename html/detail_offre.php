@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . ("/../.security/config.php");
+
 if (headers_sent($file, $line)) {
     die("Les en-têtes ont déjà été envoyés dans le fichier $file à la ligne $line.");
 }
@@ -57,10 +59,9 @@ function afficherHoraire($jour)
 }
 
 // Vérifie si le formulaire a été soumis    
-require_once __DIR__ . ("/../.security/config.php");
 
 // Créer une instance PDO avec les bons paramètres
-$dbh = new PDO($dsn, $username, $password);
+// $dbh = new PDO($dsn, $username, $password);
 
 // essai dbh
 
