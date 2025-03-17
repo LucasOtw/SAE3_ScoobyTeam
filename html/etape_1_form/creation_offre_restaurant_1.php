@@ -262,7 +262,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="row">
                     <div class="col">
                         <label for="photos">Photos (au moins une)</label>
-                        <input type="file" id="photos" name="photos[]" multiple>
+                        <input type="file" id="photos" name="photos[]" multiple required>
                     </div>
                 </div>
 

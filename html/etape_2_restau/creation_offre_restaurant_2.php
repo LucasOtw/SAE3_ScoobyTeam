@@ -143,7 +143,7 @@ if(isset($_POST['envoiFormEtape2'])){
                 <!-- Meal Options -->
                 <div class="meal-options">
                     <label>Options de repas</label>
-                    <div class="checkbox-group">
+                    <div class="checkbox-group" required>
                         <div>
                             <input type="checkbox" id="petit_dejeuner" name="repas[]" value="Petit déjeuner">
                             <label class="label-check" for="petit_dejeuner">Petit-Déjeuner</label>
