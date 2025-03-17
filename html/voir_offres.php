@@ -1345,6 +1345,9 @@ function tempsEcouleDepuisPublication($offre){
             </div>
         </div>
     </footer>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
     const mapElement = document.getElementById('map');
