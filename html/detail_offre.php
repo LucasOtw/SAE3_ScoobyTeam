@@ -1165,13 +1165,13 @@ WHERE code_offre = :code_offre
 
         <?php
         // Récupérer la moyenne des notes
-        $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre and note<>0');
+        $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre and note<>0 and blacklister<>TRUE');
         $moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
         $moyenne_note->execute();
         $note_moyenne = $moyenne_note->fetchColumn();
 
         // Récupérer le nombre d'avis
-        $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis WHERE code_offre = :code_offre');
+        $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis WHERE code_offre = :code_offre and blacklister<>TRUE');
         $nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
         $nb_avis->execute();
         $nombre_d_avis = $nb_avis->fetchColumn();
