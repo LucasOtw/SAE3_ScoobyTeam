@@ -757,7 +757,7 @@ if (isset($json['results'][0])) {
 
                 // Calcul de la marge pour les sous-réponses
                 $marge = $niveau * 5; // Indentation
-                if (!$avis["blacklister"] || ($avis["blacklister"] && $avis["code_compte"]==$_SESSION['membre']['code_compte']) ) {
+                if (!$avis["blacklister"] || ($avis["blacklister"] && isset($_SESSION['membre']) && $avis["code_compte"]==$_SESSION['membre']['code_compte']) ) {
                     ?>
                     <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
                         <div class="avis-content">
