@@ -53,7 +53,7 @@
             UPDATE tripenarvor._offre
             SET nb_blacklister = nb_blacklister + 1
             WHERE code_offre = :code_offre
-            RETURNING titre_offre, blacklister, date_blacklister
+            RETURNING titre_offre, nb_blacklister
         ");
         $stmt->execute([ ':code_offre' => $code_offre ]);
 
