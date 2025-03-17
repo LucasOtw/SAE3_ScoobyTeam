@@ -372,7 +372,7 @@ if (isset($_POST['envoi_modif'])){
             break;
         case "activite":
             $tab_services = array(
-                // "duree" => $_POST['duree_modif'],
+                "duree" => $_POST['duree_modif'],
                 "age_requis" => $_POST['_age_requis'],
                 "prestations_incluses" => $_POST['prestations_incluses'],
                 "prestations_non_incluses" => $_POST['prestations_non_incluses']
