@@ -55,7 +55,7 @@
             WHERE code_offre = :code_offre
             RETURNING titre_offre, blacklister, date_blacklister
         ");
-        $stmt->execute([ ':code_offre' => code_offre ]);
+        $stmt->execute([ ':code_offre' => $code_offre ]);
 
         $updatedRow = $stmt->fetch(PDO::FETCH_ASSOC);
         print_r($updatedRow);
