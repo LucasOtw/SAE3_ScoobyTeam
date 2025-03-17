@@ -1,28 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="test.css" crossorigin=""/>
+    <title>Test Carte Leaflet</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 80vh;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <div class="cards">
-        <article class="card">
-          <header>
-            <h2>A short heading</h2>
-          </header>
-      
-          <img
-            src="https://mdn.github.io/shared-assets/images/examples/balloons.jpg"
-            alt="Hot air balloons" />
-          <div class="content">
-            <p>
-              The idea of reaching the North Pole by means of balloons appears to have
-              been entertained many years ago.
-            </p>
-          </div>
-        </article>
-      </div>
+    <div id="map"></div>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var map = L.map('map').setView([48.2020, -2.9326], 8);  // Coordonnées de la Bretagne
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+            
+            L.marker([48.2020, -2.9326]).addTo(map)
+                .bindPopup("<b>Bienvenue en Bretagne !</b>")
+                .openPopup();
+        });
+    </script>
 </body>
 </html>
