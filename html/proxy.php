@@ -1,6 +1,6 @@
 <?php
 
-require_once (__DIR__ . "/../.security/config.php");
+require_once (__DIR__ . "/../.security/leaflet.php");
 // 🔹 Remplace VOTRE_CLE_API par ta vraie clé API
 $apiKey = $api_key;
 
