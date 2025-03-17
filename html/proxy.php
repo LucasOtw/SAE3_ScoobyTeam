@@ -1,36 +1,17 @@
 <?php
+require_once (__DIR__ . "/../.security/leaflet.php"); // Vérifie que la clé est bien incluse
 
-require_once (__DIR__ . "/../.security/leaflet.php");
-// 🔹 Remplace VOTRE_CLE_API par ta vraie clé API
-$apiKey = $api_key;
+header("Content-Type: text/plain");
 
-// 🔹 Récupérer les coordonnées {z}/{x}/{y} depuis la requête
-if (!isset($_GET['z'], $_GET['x'], $_GET['y'])) {
-    http_response_code(400);
-    echo "Paramètres manquants";
-    exit;
-}
+echo "Clé API chargée : " . ($api_key ?? "Non trouvée") . "\n";
 
-$z = intval($_GET['z']);
-$x = intval($_GET['x']);
-$y = intval($_GET['y']);
+$test_url = "https://tile.thunderforest.com/cycle/10/512/340.png?apikey=$api_key";
+echo "URL test : $test_url \n";
 
-// 🔹 Construire l'URL vers Thunderforest
-$url = "https://tile.thunderforest.com/atlas/$z/$x/$y.png?apikey=$apiKey";
-
-// 🔹 Récupérer l'image et la renvoyer
-$ch = curl_init($url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-$response = curl_exec($ch);
-$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-curl_close($ch);
-
-if ($http_code == 200) {
-    echo $response;
+$response = file_get_contents($test_url);
+if ($response === false) {
+    echo "Erreur lors du chargement des tuiles !";
 } else {
-    http_response_code($http_code);
-    echo "Erreur de chargement des tuiles";
+    echo "Tuiles chargées avec succès !";
 }
 ?>
-
