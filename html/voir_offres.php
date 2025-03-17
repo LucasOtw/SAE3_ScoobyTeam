@@ -1349,71 +1349,8 @@ function tempsEcouleDepuisPublication($offre){
 <link rel="stylesheet" href="leaflet.css" />
  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.css" />
  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.Default.css" />
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const mapElement = document.getElementById('map');
-    
-    if(mapElement) {
-        try {
-            var map = L.map('map').setView([48.2020, -2.9326], 8);
-            
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; OpenStreetMap contributors',
-                maxZoom: 20
-            }).addTo(map);
-            
-            <?php
-            $api_key = "a62b465402a64a49862f451a157e69c";
-            
-            foreach($adresses as $adr) {
-                $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
-                $adresse_enc = urlencode($adresse_complete);
-                
-                $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
-                $response = file_get_contents($url);
-                $json = json_decode($response, true);
-                
-                if(isset($json['results'][0])) {
-                    $latitude = $json['results'][0]['geometry']['location']['lat'];
-                    $longitude = $json['results'][0]['geometry']['location']['lng'];
-                    
-                    $popupContent = "<div style='width:218px;'>";
-                    
-                    if(!empty($adr['url_image'])) {
-                        $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
-                    }
-                    
-                    $popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
-                    $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
-                                 . addslashes($adr['ville']) . "<br>"
-                                 . $adr['tarif'] . "€"
-                                 . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
-                    $popupContent .= "</div></div>";
-                    
-                    echo "L.marker([$latitude, $longitude]).addTo(map).bindPopup('$popupContent');";
-                }
-            }
-            ?>
-            
-            console.log("Carte Leaflet initialisée avec succès");
-        } catch(error) {
-            console.error("Erreur lors de l'initialisation de la carte :", error);
-        }
-    } else {
-        console.error("L'élément #map n'existe pas dans le DOM");
-    }
-});
 
-var customIcon = L.icon({
-    iconUrl: './images/ping.png',
-    iconSize: [50, 40],
-    iconAnchor: [15, 40],
-    popupAnchor: [0, -35]
-});
-</script>
  
-
-
 
 
 
@@ -1460,7 +1397,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-/*</script>
+</script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     // Vérifier si l'élément map existe
@@ -1534,6 +1471,6 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
         console.error("L'élément #map n'a pas été trouvé dans le DOM");
     }
-});*/
+});
 </script>
 
