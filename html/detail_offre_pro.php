@@ -1041,22 +1041,28 @@ WHERE code_offre = :code_offre
                     <p class="avis"><?php echo $nombre_d_avis; ?> avis</p>
                 </div>
 
-                <div class="jetons-container">
-                    <h2>Blacklistage</h2>
-                    <div class="jetons">
-                        <?php
-                            for ($i = 1; $i <= 3; $i++) {
-                                ?>
-                                <img src="images/icones/jeton.png" alt="jeton" <?php echo ($i > $jetons_restants ? "class=\"jeton_grise\"" : "class=\"jeton\"") ?>>
-                                <?php
-                            }
+                <?php
+                if ($details_offre["nom_type"] == "Offre Premium") {
+                    ?>
+                    <div class="jetons-container">
+                        <h2>Blacklistage</h2>
+                        <div class="jetons">
+                            <?php
+                                for ($i = 1; $i <= 3; $i++) {
+                                    ?>
+                                    <img src="images/icones/jeton.png" alt="jeton" <?php echo ($i > $jetons_restants ? "class=\"jeton_grise\"" : "class=\"jeton\"") ?>>
+                                    <?php
+                                }
+                            ?>
+                        </div>
+    
+                        <?php 
+                            echo "<p>Il vous reste $jetons_restants jeton(s).</p>"; 
                         ?>
                     </div>
-
-                    <?php 
-                        echo "<p>Il vous reste $jetons_restants jeton(s).</p>"; 
-                    ?>
-                </div>
+                    <?php
+                    }
+                ?>
 
 
 
