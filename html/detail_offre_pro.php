@@ -97,9 +97,7 @@ function afficherHoraire($jour)
 }
 
 // Vérifie si le formulaire a été soumis    
-$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-$username = "sae";  // Utilisateur PostgreSQL défini dans .env
-$password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
+require_once __DIR__ . ("/../.security/config.php");
 
 // Créer une instance PDO avec les bons paramètres
 $dbh = new PDO($dsn, $username, $password);
@@ -1321,7 +1319,6 @@ WHERE code_offre = :code_offre
     document.addEventListener('DOMContentLoaded', () => {
         var del_offre = document.getElementById('del-offre');
         var blacklist_avis = document.querySelectorAll('.blacklist-avis');
-        console.log("Nombre d'éléments .blacklist-avis trouvés :", blacklist_avis.length);
         var modal = document.getElementById('customModal');
         var modal2 = document.getElementById('customModal2');
         var modalError = document.getElementById('customModalError');
@@ -1366,7 +1363,7 @@ WHERE code_offre = :code_offre
                 console.log(jetons);
                 if (jetons + 1 <= 3) {
                     modal2.style.display = 'flex';
-                    confirmBlacklist.dataset.avis = element.getAttribute('data-avis'); // Stocker l'ID de l'avis
+                    // confirmBlacklist.dataset.avis = element.getAttribute('data-avis'); // Stocker l'ID de l'avis
                 } else {
                     modalError.style.display = 'flex';
                 }
@@ -1378,8 +1375,7 @@ WHERE code_offre = :code_offre
             modal2.style.display = 'none';
 
             var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
-            var codeAvis = document.querySelector('#blacklist-avis').getAttribute('data-avis');
-            var tps_ban = document.getElementById("blacklistDuration").value;
+            var codeAvis = document.querySelector('.blacklist-avis').getAttribute('data-avis');
 
             // Utilisation de fetch pour envoyer les données
             fetch("https://scooby-team.ventsdouest.dev/update_avis_status.php", {

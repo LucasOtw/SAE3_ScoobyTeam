@@ -7,9 +7,7 @@ try {
     if (isset($data['id'])) {
         $id_avis = intval($data['id']);
 
-        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-        $username = "sae";
-        $password = "philly-Congo-bry4nt";
+        require_once __DIR__ . ("/../.security/config.php");
       
         // Créer une instance PDO
         $dbh = new PDO($dsn, $username, $password);

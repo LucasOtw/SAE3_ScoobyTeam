@@ -19,9 +19,7 @@ if (isset($_SESSION['detail_offre'])) {
 }
 
 
-$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-$username = "sae";
-$password = "philly-Congo-bry4nt";
+require_once __DIR__ . ("/../.security/config.php");
 
 // Créer une instance PDO
 $dbh = new PDO($dsn, $username, $password);
@@ -316,19 +314,6 @@ function tempsEcouleDepuisPublication($offre){
                 <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft()">&#8249;</button>
                 <section class="a-la-une">
                 <?php
-                    try {
-                        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-                        $username = "sae";
-                        $password = "philly-Congo-bry4nt";
-        
-                        // Créer une instance PDO
-                        $dbh = new PDO($dsn, $username, $password);
-                    } 
-                    catch (PDOException $e) 
-                    {
-                        print "Erreur!: ". $e->getMessage(). "<br/>";
-                        die();
-                    }
                     // On récupère toutes les offres (titre,ville,images)
                     $infosOffre = $dbh->query('SELECT * FROM tripenarvor._offre');
                     $infosOffre = $infosOffre->fetchAll(PDO::FETCH_ASSOC);
@@ -628,9 +613,7 @@ function tempsEcouleDepuisPublication($offre){
                     <section class="vu-recemment">
                     <?php
                         try {
-                            $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-                            $username = "sae";
-                            $password = "philly-Congo-bry4nt";
+                            require_once __DIR__ . ("/../.security/config.php");
             
                             // Créer une instance PDO
                             $dbh = new PDO($dsn, $username, $password);
@@ -1361,69 +1344,79 @@ function tempsEcouleDepuisPublication($offre){
             </div>
         </div>
     </footer>
-    <script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
     document.addEventListener("DOMContentLoaded", function () {
         const mapElement = document.getElementById('map');
 
         if (mapElement) {
             try {
-                // Création de la carte et centrage sur la Bretagne
+                // Création de la carte centrée sur la Bretagne
                 var map = L.map('map').setView([48.2020, -2.9326], 8);
 
-                L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                    attribution: '&copy; Esri',
+                // Ajout des tuiles via le proxy
+                L.tileLayer('proxy.php?z={z}&x={x}&y={y}', {
+                    attribution: '&copy; Thunderforest, Esri',
                     maxZoom: 20
                 }).addTo(map);
 
-                <?php
-                $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
-                                   (SELECT i.url_image 
-                                    FROM tripenarvor._son_image si 
-                                    JOIN tripenarvor._image i ON si.code_image = i.code_image 
-                                    WHERE si.code_offre = o.code_offre 
-                                    LIMIT 1) AS url_image
-                                   FROM tripenarvor._offre o 
-                                   JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
-                                   WHERE o.en_ligne = true');
+                // Icône personnalisée
+                var customIcon = L.icon({
+                    iconUrl: './images/ping.png',
+                    iconSize: [50, 40],
+                    iconAnchor: [15, 40],
+                    popupAnchor: [0, -35]
+                });
 
-                $api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig"; // Votre clé API Google
+                // Liste des adresses provenant du PHP (à inclure dans le code PHP)
+                var adresses = <?php
+                    // Récupérer les adresses et données depuis la base de données
+                    $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
+                                            (SELECT i.url_image 
+                                             FROM tripenarvor._son_image si 
+                                             JOIN tripenarvor._image i ON si.code_image = i.code_image 
+                                             WHERE si.code_offre = o.code_offre 
+                                             LIMIT 1) AS url_image
+                                             FROM tripenarvor._offre o 
+                                             JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
+                                             WHERE o.en_ligne = true');
+                    
+                    $result = [];
+                    foreach ($adresses as $adr) {
+                        $adresse_complete = urlencode($adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France');
+                        $geoUrl = "/geocode_proxy.php?address=$adresse_complete";
+                        $response = file_get_contents($geoUrl);
+                        $json = json_decode($response, true);
 
-                foreach ($adresses as $adr) {
-                    // Construction de l'adresse complète pour le géocodage
-                    $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
-                    $adresse_enc = urlencode($adresse_complete);
+                        if (isset($json['results'][0])) {
+                            $latitude = $json['results'][0]['geometry']['location']['lat'];
+                            $longitude = $json['results'][0]['geometry']['location']['lng'];
 
-                    // URL de l'API Geocoding
-                    $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
-
-                    // Appel de l'API Google Geocoding
-                    $response = file_get_contents($url);
-                    $json = json_decode($response, true);
-
-                    // Vérifie si la réponse contient des résultats
-                    if (isset($json['results'][0])) {
-                        $latitude = $json['results'][0]['geometry']['location']['lat'];
-                        $longitude = $json['results'][0]['geometry']['location']['lng'];
-
-                        $popupContent = "<div style='width:218px;'>";
-                        
-                        if (!empty($adr['url_image'])) {
-                            $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
+                            // Préparer les données pour JavaScript
+                            $result[] = [
+                                'latitude' => $latitude,
+                                'longitude' => $longitude,
+                                'popupContent' => "<div style='width:218px;'>" . 
+                                                  (!empty($adr['url_image']) ? "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>" : "") . 
+                                                  "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>" .
+                                                  "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>" .
+                                                  addslashes($adr['ville']) . "<br>" .
+                                                  $adr['tarif'] . "€<br>" .
+                                                  "<a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>" .
+                                                  "</div></div>"
+                            ];
                         }
-
-                        $popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
-                        $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
-                                       . addslashes($adr['ville']) . "<br>"
-                                       . $adr['tarif'] . "€"
-                                       . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
-                        $popupContent .= "</div>";
-                        $popupContent .= "</div>";
-
-                        echo "L.marker([$latitude, $longitude], {icon: customIcon}).addTo(map)
-                              .bindPopup(\"" . $popupContent . "\");";
                     }
-                }
-                ?>
+                    echo json_encode($result);
+                ?>;
+
+                // Placer les marqueurs sur la carte en utilisant les données PHP
+                adresses.forEach(function(adr) {
+                    var marker = L.marker([adr.latitude, adr.longitude], {icon: customIcon}).addTo(map);
+                    marker.bindPopup(adr.popupContent);
+                });
 
                 console.log("Carte Leaflet initialisée avec succès");
             } catch (error) {
@@ -1432,13 +1425,6 @@ function tempsEcouleDepuisPublication($offre){
         } else {
             console.error("L'élément #map n'existe pas dans le DOM");
         }
-    });
-
-    var customIcon = L.icon({
-        iconUrl: './images/ping.png',
-        iconSize: [50, 40],
-        iconAnchor: [15, 40],
-        popupAnchor: [0, -35]
     });
 </script>
 

@@ -2,9 +2,7 @@
     // Connexion à la base de données
     try {
         // Vérifie si le formulaire a été soumis    
-        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-        $username = "sae";  // Utilisateur PostgreSQL défini dans .env
-        $password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
+        require_once __DIR__ . ("/../.security/config.php");
     
         // Créer une instance PDO avec les bons paramètres
         $dbh = new PDO($dsn, $username, $password);
@@ -53,9 +51,9 @@
             UPDATE tripenarvor._offre
             SET nb_blacklister = nb_blacklister + 1
             WHERE code_offre = :code_offre
-            RETURNING titre_offre, blacklister, date_blacklister
+            RETURNING titre_offre, nb_blacklister
         ");
-        $stmt->execute([ ':code_offre' => code_offre ]);
+        $stmt->execute([ ':code_offre' => $code_offre ]);
 
         $updatedRow = $stmt->fetch(PDO::FETCH_ASSOC);
         print_r($updatedRow);
@@ -65,7 +63,7 @@
         $stmt = $dbh->prepare("
             UPDATE tripenarvor._avis
             SET blacklister = :blacklister,
-                date_blacklister = :date
+                date_blacklister = :date_blacklister
             WHERE code_avis = :code_avis
             RETURNING code_avis, blacklister, date_blacklister
         ");

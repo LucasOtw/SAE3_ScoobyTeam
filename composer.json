@@ -1,0 +1,11 @@
+{
+    "name": "scooby-team/pact",
+    "autoload": {
+        "psr-4": {
+            "ScoobyTeam\\Pact\\": "src/"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

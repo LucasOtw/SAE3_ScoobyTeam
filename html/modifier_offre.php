@@ -2,9 +2,7 @@
 ob_start();
 session_start();
 
-$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-$username = "sae";  // Utilisateur PostgreSQL défini dans .env
-$password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
+require_once __DIR__ . ("/../.security/config.php");
 
 // Créer une instance PDO avec les bons paramètres
 $dbh = new PDO($dsn, $username, $password);
@@ -134,8 +132,6 @@ foreach($tables as $table){
         break;
     }
 }
-
-var_dump($type_offre);
 
 switch($type_offre){
     case "restauration":
@@ -374,7 +370,7 @@ if (isset($_POST['envoi_modif'])){
             break;
         case "activite":
             $tab_services = array(
-                // "duree" => $_POST['duree_modif'],
+                "duree" => $_POST['duree_modif'],
                 "age_requis" => $_POST['_age_requis'],
                 "prestations_incluses" => $_POST['prestations_incluses'],
                 "prestations_non_incluses" => $_POST['prestations_non_incluses']
@@ -663,9 +659,6 @@ if (isset($_POST['envoi_modif'])){
 if($infos_offre !== null){
     $infos_offre = $infos_offre[0];
 }
-echo "<pre>";
-var_dump($infos_offre);
-echo "</pre>";
     
 ?>
 <!DOCTYPE html>
@@ -941,7 +934,7 @@ echo "</pre>";
 
                                 <label for="prestations_non_incluses">Prestations non incluses</label>
                                 <input type="text" id="prestations_non_incluses" name="prestations_non_incluses" data-sync="prestations_non_incluses"
-                                value="<?php echo htmlspecialchars($infos_offre['prestations_non_incluses']); ?>">
+                                value="<?php echo ($infos_offre['prestations_non_incluses'] != null ? $infos_offre['prestations_non_incluses'] : ""); ?>">
                             </fieldset>
                             
                             <?php
