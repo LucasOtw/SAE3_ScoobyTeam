@@ -62,6 +62,8 @@ require_once __DIR__ . ("/../.security/config.php");
 // Créer une instance PDO avec les bons paramètres
 $dbh = new PDO($dsn, $username, $password);
 
+var_dump($dbh);
+
 $details_offre = null;
 
 if (!isset($_POST['vueDetails']) && !isset($_SESSION['detail_offre'])) {
