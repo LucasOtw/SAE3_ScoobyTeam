@@ -908,7 +908,7 @@ include("recupInfosCompte.php");
                                                         value="Répondre à l'avis">
                                                 </form>
                                             </li>
-                                            <br>
+                                            
                                             <li>
                                                 <a id="btn-signaler-avis" href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
                                                     title="Signaler cet avis"
@@ -916,7 +916,7 @@ include("recupInfosCompte.php");
                                                     Signaler l'avis
                                                 </a>
                                             </li>
-                                            <br>
+                                            
                                             <li>
                                                 <div class="blacklist-avis"
                                                     data-avis="<?php echo htmlspecialchars($avis['code_avis']); ?>">
