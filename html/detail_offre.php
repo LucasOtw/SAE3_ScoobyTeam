@@ -722,6 +722,7 @@ if (isset($json['results'][0])) {
             // Fonction pour afficher les avis et les réponses récursivement
             function afficherAvis($avis, $niveau = 0)
             {
+                global $dbh;
                 // Déterminer l'affichage selon le type d'utilisateur
                 if (!empty($avis['raison_sociale_pro'])) {
                     // Si c'est un professionnel
