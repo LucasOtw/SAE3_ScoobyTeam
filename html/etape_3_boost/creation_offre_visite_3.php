@@ -59,7 +59,7 @@ if(isset($_POST['envoiForm3'])){
 
     <div class="header-controls">
         <div>
-            <img id="etapes" src="../images/fil_ariane4.png" alt="Étapes" width="80%" height="80%">
+            <img id="etapes" src="../images/fil_ariane3.png" alt="Étapes" width="80%" height="80%">
         </div>
     </div>
 

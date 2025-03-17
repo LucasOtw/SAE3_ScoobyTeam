@@ -19,9 +19,7 @@ if (isset($_SERVER['HTTP_REFERER'])) {
 }
 
 // Vérifie si le formulaire a été soumis    
-$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-$username = "sae";  // Utilisateur PostgreSQL défini dans .env
-$password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
+require_once __DIR__ . ("/../.security/config.php");
 
 // Créer une instance PDO avec les bons paramètres
 $dbh = new PDO($dsn, $username, $password);

@@ -3,9 +3,8 @@
 ob_start();
 session_start();
 
-$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-$username = "sae";
-$password = "philly-Congo-bry4nt";
+require_once __DIR__ . ("/../../.security/config.php");
+
 
 // Créer une instance PDO
 $dbh = new PDO($dsn, $username, $password);
@@ -457,7 +456,11 @@ if(isset($_POST['valider']) || isset($_POST['passer_cb']) || isset($_POST['creer
     
                     <div class="boutons">
                         <button type="submit" name="valider" class="btn-primary">Valider</button>
-                        <button type="submit" name="passer_cb" class="btn-secondary">Plus tard...</button>
+                        <?php if(!isset($infosCB) || $infosCB['iban'] == null){
+                            ?>
+                            <button type="submit" name="passer_cb" class="btn-secondary">Plus tard...</button>
+                            <?php
+                        } ?>
                     </div>
                 </form>
     

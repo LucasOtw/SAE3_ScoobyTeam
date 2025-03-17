@@ -324,5 +324,33 @@ session_start();
             </form>
         </div>
     </main>
+    <script>
+        document.getElementById("horaireForm").addEventListener("submit", function(event) {
+            let valid = false; // Indicateur si au moins un jour a une heure d'ouverture et de fermeture
+            const jours = document.querySelectorAll(".row"); // Sélectionne toutes les lignes correspondant aux jours
+
+            jours.forEach(jour => {
+                const ouverture = jour.querySelector('input[type="time"][name^="ouverture"]');
+                const fermeture = jour.querySelector('input[type="time"][name^="fermeture"]');
+                const fermeCheckbox = jour.querySelector('input[type="checkbox"]');
+
+                // Vérifier si le checkbox "Fermé" est coché, auquel cas on ignore cette ligne
+                if (fermeCheckbox && fermeCheckbox.checked) {
+                    return;
+                }
+
+                // Vérifier si les champs ouverture et fermeture sont remplis
+                if (ouverture.value.trim() !== "" && fermeture.value.trim() !== "") {
+                    valid = true;
+                }
+            });
+
+            if (!valid) {
+                event.preventDefault(); // Empêche l'envoi du formulaire si la validation échoue
+                alert("Veuillez saisir au moins une heure d'ouverture et de fermeture pour un jour.");
+            }
+        });
+    </script>
+
 </body>
 </html>

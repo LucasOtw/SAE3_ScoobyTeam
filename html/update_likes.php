@@ -11,10 +11,7 @@ if (!isset($_SESSION['membre']['code_compte'])) {
 }
 
 // Connexion à la base de données
-$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-$username = "sae";
-$password = "philly-Congo-bry4nt";
-$dbh = new PDO($dsn, $username, $password);
+require_once __DIR__ . ("/../.security/config.php");
 
 // Vérifie si la requête est une méthode POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -19,9 +19,7 @@ if (isset($_SESSION['detail_offre'])) {
 }
 
 
-$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-$username = "sae";
-$password = "philly-Congo-bry4nt";
+require_once __DIR__ . ("/../.security/config.php");
 
 // Créer une instance PDO
 $dbh = new PDO($dsn, $username, $password);
@@ -316,19 +314,6 @@ function tempsEcouleDepuisPublication($offre){
                 <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeft()">&#8249;</button>
                 <section class="a-la-une">
                 <?php
-                    try {
-                        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-                        $username = "sae";
-                        $password = "philly-Congo-bry4nt";
-        
-                        // Créer une instance PDO
-                        $dbh = new PDO($dsn, $username, $password);
-                    } 
-                    catch (PDOException $e) 
-                    {
-                        print "Erreur!: ". $e->getMessage(). "<br/>";
-                        die();
-                    }
                     // On récupère toutes les offres (titre,ville,images)
                     $infosOffre = $dbh->query('SELECT * FROM tripenarvor._offre');
                     $infosOffre = $infosOffre->fetchAll(PDO::FETCH_ASSOC);
@@ -628,9 +613,7 @@ function tempsEcouleDepuisPublication($offre){
                     <section class="vu-recemment">
                     <?php
                         try {
-                            $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-                            $username = "sae";
-                            $password = "philly-Congo-bry4nt";
+                            require_once __DIR__ . ("/../.security/config.php");
             
                             // Créer une instance PDO
                             $dbh = new PDO($dsn, $username, $password);
@@ -1335,7 +1318,6 @@ function tempsEcouleDepuisPublication($offre){
                     }
                     ?>
                 </ul>
-
             </div>
             <div class="link-group">
                 <ul>
@@ -1362,83 +1344,201 @@ function tempsEcouleDepuisPublication($offre){
             </div>
         </div>
     </footer>
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const mapElement = document.getElementById('map');
-    
-    if (mapElement) {
-        try {
-            // Création de la carte et centrage sur la Bretagne
-            var map = L.map('map').setView([48.2020, -2.9326], 8);
-            
-            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: '&copy; Esri',
-    maxZoom: 20
-}).addTo(map);
 
-            
 
-            <?php
+
+<?php
+// Supposons que votre connexion à la base de données soit déjà établie
 $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
-                       (SELECT i.url_image 
-                        FROM tripenarvor._son_image si 
-                        JOIN tripenarvor._image i ON si.code_image = i.code_image 
-                        WHERE si.code_offre = o.code_offre 
-                        LIMIT 1) AS url_image
-                       FROM tripenarvor._offre o 
-                       JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
-                       WHERE o.en_ligne = true');
+                                   (SELECT i.url_image 
+                                    FROM tripenarvor._son_image si 
+                                    JOIN tripenarvor._image i ON si.code_image = i.code_image 
+                                    WHERE si.code_offre = o.code_offre 
+                                    LIMIT 1) AS url_image
+                                   FROM tripenarvor._offre o 
+                                   JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
+                                   WHERE o.en_ligne = true');
 
-foreach($adresses as $adr) {
-    $lat = 48.0 + (intval(substr($adr['code_postal'], 0, 2)) / 100);
-    $lng = -3.0 + (intval(substr($adr['code_postal'], 2, 3)) / 100);
-    
-    $popupContent = "<div style='width:218px;'>";
-    
-    if (!empty($adr['url_image'])) {
-        $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
-    }
+$points = [];
+foreach ($adresses as $adr) {
+    // Construction de l'adresse complète pour le géocodage
+    $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
+    $adresse_enc = urlencode($adresse_complete);
 
-    //Correction du lien pour voir l'offre.
-$popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
-$popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
-               . addslashes($adr['ville']) . "<br>"
-               . $adr['tarif'] . "€"
-               . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
-          
+    // URL de l'API Geocoding
+    $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
 
-$popupContent .= "</div>";
+    // Appel de l'API Google Geocoding
+    $response = file_get_contents($url);
+    $json = json_decode($response, true);
 
-$popupContent .= "</div>";
-    
-    echo "L.marker([$lat, $lng], {icon: customIcon}).addTo(map)
-          .bindPopup(\"" . $popupContent . "\");";
-}
-            ?>
-            
-            console.log("Carte Leaflet initialisée avec succès");
-        } catch (error) {
-            console.error("Erreur lors de l'initialisation de la carte :", error);
+    // Vérifie si la réponse contient des résultats
+    if (isset($json['results'][0])) {
+        $latitude = $json['results'][0]['geometry']['location']['lat'];
+        $longitude = $json['results'][0]['geometry']['location']['lng'];
+
+        $popupContent = "<div style='width:218px;'>";
+
+        if (!empty($adr['url_image'])) {
+            $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
         }
-    } else {
-        console.error("L'élément #map n'existe pas dans le DOM");
+
+        $popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
+        $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
+                       . addslashes($adr['ville']) . "<br>"
+                       . $adr['tarif'] . "€"
+                       . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
+        $popupContent .= "</div>";
+        $popupContent .= "</div>";
+
+        // Ajouter chaque point dans le tableau PHP
+        $points[] = [
+            'lat' => $latitude,
+            'lon' => $longitude,
+            'popup' => $popupContent
+        ];
     }
-});
+}
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte Leaflet avec Clustering et Offres</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.Default.css" />
+    <style>
+        #map {
+            height: 80vh;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.1/dist/leaflet.markercluster.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var map = L.map('map').setView([48.2020, -2.9326], 8);  // Coordonnées de la Bretagne
 
-var customIcon = L.icon({
-    iconUrl: './images/ping.png', 
-    iconSize: [50, 40], 
-    iconAnchor: [15, 40], 
-    popupAnchor: [0, -35] 
-});
-</script>
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
 
+            // Création d'un groupe de clusters
+            var markers = L.markerClusterGroup();
 
+            // Liste de points générée par PHP
+            <?php foreach ($points as $point): ?>
+                var marker = L.marker([<?php echo $point['lat']; ?>, <?php echo $point['lon']; ?>]);
+                marker.bindPopup("<?php echo addslashes($point['popup']); ?>");
+                markers.addLayer(marker);
+            <?php endforeach; ?>
 
+            // Ajouter le groupe de clusters à la carte
+            map.addLayer(markers);
 
+            console.log("Carte Leaflet initialisée avec succès et offres ajoutées avec clustering.");
+        });
+    </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+   /* <link rel="stylesheet" href="leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.Default.css" />
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.1/dist/leaflet.markercluster.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var map = L.map('map').setView([48.2020, -2.9326], 8);  // Coordonnées de la Bretagne
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+
+            // Création d'un groupe de clusters
+            var markers = L.markerClusterGroup();
+
+            // Liste de points à afficher (20 points avec leurs coordonnées et contenu)
+            var points = [
+                { lat: 48.2020, lon: -2.9326, popup: "Point 1: Bienvenue en Bretagne !" },
+                { lat: 48.3000, lon: -2.9000, popup: "Point 2: Quelque part en Bretagne." },
+                { lat: 48.4000, lon: -2.8000, popup: "Point 3: Une autre belle vue." },
+                { lat: 48.5000, lon: -2.7000, popup: "Point 4: Un endroit spécial." },
+                { lat: 48.6000, lon: -2.6000, popup: "Point 5: Vue panoramique." },
+                { lat: 48.7000, lon: -2.5000, popup: "Point 6: Spot touristique." },
+                { lat: 48.8000, lon: -2.4000, popup: "Point 7: Un lieu calme." },
+                { lat: 48.9000, lon: -2.3000, popup: "Point 8: Ville historique." },
+                { lat: 49.0000, lon: -2.2000, popup: "Point 9: Plage magnifique." },
+                { lat: 49.1000, lon: -2.1000, popup: "Point 10: Le port." },
+                { lat: 49.2000, lon: -2.0000, popup: "Point 11: Une place pittoresque." },
+                { lat: 49.3000, lon: -1.9000, popup: "Point 12: Le marché." },
+                { lat: 49.4000, lon: -1.8000, popup: "Point 13: Parc naturel." },
+                { lat: 49.5000, lon: -1.7000, popup: "Point 14: Vue imprenable." },
+                { lat: 49.6000, lon: -1.6000, popup: "Point 15: Une plage secrète." },
+                { lat: 49.7000, lon: -1.5000, popup: "Point 16: Centre-ville animé." },
+                { lat: 49.8000, lon: -1.4000, popup: "Point 17: Quartier calme." },
+                { lat: 49.9000, lon: -1.3000, popup: "Point 18: Lieu historique." },
+                { lat: 50.0000, lon: -1.2000, popup: "Point 19: Le phare." },
+                { lat: 50.1000, lon: -1.1000, popup: "Point 20: Une ruelle charmante." }
+            ];
+
+            // Ajouter les marqueurs au groupe de clusters
+            points.forEach(function(point) {
+                var marker = L.marker([point.lat, point.lon]);
+                marker.bindPopup(point.popup);
+                markers.addLayer(marker);
+            });
+
+            // Ajouter le groupe de clusters à la carte
+            map.addLayer(markers);
+
+            console.log("Carte Leaflet initialisée avec succès et 20 points ajoutés avec clustering.");
+        });
+    </script>
+</body>
+</html>/*
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const newsletterForm = document.getElementById('newsletterForm');

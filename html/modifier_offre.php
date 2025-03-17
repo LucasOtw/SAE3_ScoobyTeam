@@ -2,9 +2,7 @@
 ob_start();
 session_start();
 
-$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-$username = "sae";  // Utilisateur PostgreSQL défini dans .env
-$password = "philly-Congo-bry4nt";  // Mot de passe PostgreSQL défini dans .env
+require_once __DIR__ . ("/../.security/config.php");
 
 // Créer une instance PDO avec les bons paramètres
 $dbh = new PDO($dsn, $username, $password);
@@ -362,6 +360,20 @@ if (isset($_POST['envoi_modif'])){
                 "visite_guidee" => $_POST['_langues_modif'],
                 "date_visite" => $date_visite,
                 "heure_visite" => $_POST['_heure_visite_modif']
+            );
+            break;
+        case "parc_attractions":
+            $tab_services = array(
+                "nombre_attractions" => $_POST['_nombre_attractions'],
+                "age_requis" => $_POST['_age_requis']
+            );
+            break;
+        case "activite":
+            $tab_services = array(
+                "duree" => $_POST['duree_modif'],
+                "age_requis" => $_POST['_age_requis'],
+                "prestations_incluses" => $_POST['prestations_incluses'],
+                "prestations_non_incluses" => $_POST['prestations_non_incluses']
             );
             break;
     }
@@ -869,7 +881,7 @@ if($infos_offre !== null){
                             break;
                         case "visite" :
                         ?>
-                            <fieldset class="interieur_modif_offre_visite>
+                            <fieldset class="interieur_modif_offre_visite">
                                 <label for="date">Date de la visite (*)</label>
                                 <input type="date" id="date" data-sync="date_modif" value="<?php echo htmlspecialchars($infos_offre['date_visite']); ?>">
 
@@ -890,6 +902,42 @@ if($infos_offre !== null){
                             </fieldset>
                         <?php
                             break;
+                        case "parc_attractions":
+                            ?>
+                            <fieldset class="interieur_modif_offre_visite">
+                                <legend>Âge requis (*)</legend>
+                                <input type="number" id="age_requis" data-sync="age_requis" name="_age_requis" value="<?php echo htmlspecialchars($infos_offre['age_requis']); ?>"
+                                min="0" max="18" oninput="validity.valid||(value='');">
+                            </fieldset>
+                            <fieldset class="interieur_modif_offre_visite">
+                                <legend>Nombre d'attractions (*)</legend>
+                                <input type="number" id="nombre_attractions" data-sync="nombre_attractions" name="_nombre_attractions" value="<?php echo htmlspecialchars($infos_offre['nombre_attractions']); ?>"
+                                min="0" max="200" oninput="validity.valid||(value='');">
+                            </fieldset>
+                            <?php
+                            break;
+                        case "activite":
+                            ?>
+                            <fieldset class="interieur_modif_offre_spectacle">
+                                <label for="duree">Durée (*)</label>
+                                <input type="time" class="duree" id="duree" name="duree_modif" value="<?php echo htmlspecialchars($infos_offre['duree']); ?>">
+                                <label for="age_requis">Âge requis (*)</label>
+                                <input type="number" id="age_requis" data-sync="age_requis" name="_age_requis" value="<?php echo htmlspecialchars($infos_offre['age_requis']); ?>"
+                                min="0" max="18" oninput="validity.valid||(value='');" required>
+                            </fieldset>
+                            <fieldset class="interieur_modif_offre_visite">
+                                <label for="prestations_incluses">
+                                    Prestations incluses (*)
+                                </label>
+                                <input type="text" id="prestations_incluses" name="prestations_incluses" data-sync="prestations_incluses"
+                                value="<?php echo htmlspecialchars($infos_offre['prestations_incluses']); ?>" required minlength="1">
+
+                                <label for="prestations_non_incluses">Prestations non incluses</label>
+                                <input type="text" id="prestations_non_incluses" name="prestations_non_incluses" data-sync="prestations_non_incluses"
+                                value="<?php echo ($infos_offre['prestations_non_incluses'] != null ? $infos_offre['prestations_non_incluses'] : ""); ?>">
+                            </fieldset>
+                            
+                            <?php
                     }
 
                     ?>

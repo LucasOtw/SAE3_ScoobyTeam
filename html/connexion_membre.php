@@ -3,9 +3,7 @@
 ob_start();
 session_start();
 
-$dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-$username = "sae";
-$password = "philly-Congo-bry4nt";
+require_once __DIR__ . ("/../.security/config.php");
 
 $dbh = new PDO($dsn,$username,$password);
 

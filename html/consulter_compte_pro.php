@@ -157,9 +157,7 @@ if (isset($_POST['modif_infos'])){
                         ///                            Contenu notif                                ///
                         ///////////////////////////////////////////////////////////////////////////////
                         
-                        $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-                        $username = "sae";
-                        $password = "philly-Congo-bry4nt";
+                        require_once __DIR__ . ("/../.security/config.php");
                         
                         // Créer une instance PDO
                         $dbh = new PDO($dsn, $username, $password);
@@ -295,15 +293,9 @@ if (isset($_POST['modif_infos'])){
                ?>
             </div>
             <?php
-                // Connexion à la base de données
-                $dsn = "pgsql:host=postgresdb;port=5432;dbname=sae;";
-                $username = "sae";
-                $password = "philly-Congo-bry4nt";
                 $api_key = '';
 
                 try {
-                    $dbh = new PDO($dsn, $username, $password);
-                    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                     // Récupération initiale de la clé API
                     $stmt = $dbh->query('SELECT api_key FROM tripenarvor._professionnel LIMIT 1');

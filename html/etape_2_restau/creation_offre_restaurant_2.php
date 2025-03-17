@@ -111,7 +111,7 @@ if(isset($_POST['envoiFormEtape2'])){
             <h1>Publier une offre</h1>
 
             <!-- Form Fields -->
-            <form action="#" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
+            <form id="form_repas" action="#" method="post" enctype="multipart/form-data" onsubmit="checkFermeture()">
                 <!-- Price Options -->
                 <div class="price-options">
                     <label for="prix">Prix</label>
@@ -153,11 +153,11 @@ if(isset($_POST['envoiFormEtape2'])){
                             <label class="label-check" for="brunch">Brunch</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="dejeuner" name="repas[]" value="Déjeuner" checked>
+                            <input type="checkbox" id="dejeuner" name="repas[]" value="Déjeuner">
                             <label class="label-check" for="dejeuner">Déjeuner</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="diner" name="repas[]" value="Dîner" checked>
+                            <input type="checkbox" id="diner" name="repas[]" value="Dîner">
                             <label class="label-check" for="diner">Dîner</label>
                         </div>
                         <div>
@@ -165,6 +165,7 @@ if(isset($_POST['envoiFormEtape2'])){
                             <label class="label-check" for="boissons">Boissons</label>
                         </div>
                     </div>
+                    <p id="error-checkbox" style="color: red; display: none;">Veuillez choisir au moins un élément !</p>
                 </div>
 
                 <button type="submit" id="button_valider" name="envoiFormEtape2">
@@ -174,5 +175,28 @@ if(isset($_POST['envoiFormEtape2'])){
             </form>
         </div>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            let form = document.getElementById('form_repas');
+
+            form.addEventListener('submit', function(event){
+                const checkboxes = document.querySelectorAll('input[name="repas[]"');
+                let checked = false;
+
+                checkboxes.forEach(checkbox => {
+                    if(checkbox.checked){
+                        checked = true;
+                    }
+                });
+
+                if(!checked){
+                    event.preventDefault();
+                    document.getElementById('error-checkbox').style.display = "block";
+                } else {
+                    document.getElementById('error-checkbox').style.display = "none";
+                }
+            });
+        });
+    </script>
 </body>
 </html>
