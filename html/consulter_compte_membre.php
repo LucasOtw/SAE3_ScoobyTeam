@@ -544,10 +544,6 @@ if (isset($_POST['dwl-data'])) {
                     input.name = "dwl-data";
                     input.value = "true"; // Déclencher le téléchargement
                     form.appendChild(input);
-
-                    setTimeout(() => {
-                        window.location.href = "<?php echo $url_JSON; ?>";
-                    }, 1000);
         
                     document.body.appendChild(form);
                     form.submit(); // Soumet le formulaire
