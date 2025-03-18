@@ -1401,24 +1401,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </script>
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Vérifier si l'élément map existe
-    var mapElement = document.getElementById('map');
-    
+document.addEventListener("DOMContentLoaded", function () {
+    const mapElement = document.getElementById('map');
+
     if (mapElement) {
-        console.log("Élément carte trouvé, initialisation de Leaflet...");
-        
         try {
-            var map = L.map('map').setView([48.2020, -2.9326], 8);  // Coordonnées de la Bretagne
-            
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; OpenStreetMap contributors'
+            // Création de la carte et centrage sur la Bretagne
+            var map = L.map('map').setView([48.2020, -2.9326], 8);
+
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                attribution: '&copy; Esri',
+                maxZoom: 20
             }).addTo(map);
-            
-            // Création d'un groupe de clusters
+
             var markers = L.markerClusterGroup();
-            
-            // Utiliser des coordonnées statiques pour tester
+
             <?php
             $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
                                    (SELECT i.url_image 
@@ -1429,54 +1426,58 @@ document.addEventListener("DOMContentLoaded", function() {
                                    FROM tripenarvor._offre o 
                                    JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
                                    WHERE o.en_ligne = true');
-            $adresses = $adresses->fetchAll(PDO::FETCH_ASSOC);
 
-        
+            $api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig"; // Votre clé API Google
 
-                
-            
-            foreach($adresses as $adr) {
-                // Remplacer l'API de géocodage par des coordonnées générées à partir du code postal
-                // C'est temporaire mais permettra à la carte de s'afficher
-                $lat = 48.0 + (intval(substr($adr['code_postal'], 0, 2)) / 100);
-                $lng = -3.0 + (intval(substr($adr['code_postal'], 2, 3)) / 100);
-                
-                $popupContent = "<div style='width:218px;'>";
-                
-                if (!empty($adr['url_image'])) {
-                    $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
+            foreach ($adresses as $adr) {
+                $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
+                $adresse_enc = urlencode($adresse_complete);
+
+                $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
+                $response = file_get_contents($url);
+                $json = json_decode($response, true);
+
+                if (isset($json['results'][0])) {
+                    $latitude = $json['results'][0]['geometry']['location']['lat'];
+                    $longitude = $json['results'][0]['geometry']['location']['lng'];
+
+                    $popupContent = "<div style='width:218px;'>";
+                    
+                    if (!empty($adr['url_image'])) {
+                        $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
+                    }
+
+                    $popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
+                    $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
+                                   . addslashes($adr['ville']) . "<br>"
+                                   . $adr['tarif'] . "€"
+                                   . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
+                    $popupContent .= "</div>";
+                    $popupContent .= "</div>";
+
+                    echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon})
+                          .bindPopup(\"" . $popupContent . "\");
+                          markers.addLayer(marker);";
                 }
-                
-                $popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
-                $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
-                               . addslashes($adr['ville']) . "<br>"
-                               . $adr['tarif'] . "€"
-                               . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
-                $popupContent .= "</div>";
-                $popupContent .= "</div>";
-                
-                echo "var marker = L.marker([$lat, $lng]);";
-                echo "marker.bindPopup(\"" . addslashes($popupContent) . "\");";
-                echo "markers.addLayer(marker);";
             }
             ?>
-            
-            // Ajouter le groupe de clusters à la carte
+
             map.addLayer(markers);
-            
-            // Force un recalcul de la taille de la carte
-            setTimeout(function() {
-                map.invalidateSize();
-                console.log("Carte redimensionnée");
-            }, 100);
-            
-            console.log("Carte Leaflet initialisée avec succès");
+            console.log("Carte Leaflet avec clusters initialisée avec succès");
         } catch (error) {
             console.error("Erreur lors de l'initialisation de la carte :", error);
         }
     } else {
-        console.error("L'élément #map n'a pas été trouvé dans le DOM");
+        console.error("L'élément #map n'existe pas dans le DOM");
     }
 });
+
+var customIcon = L.icon({
+    iconUrl: './images/ping.png',
+    iconSize: [50, 40],
+    iconAnchor: [15, 40],
+    popupAnchor: [0, -35]
+});
+
 </script>
 
