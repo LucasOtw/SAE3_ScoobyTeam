@@ -1351,16 +1351,6 @@ function tempsEcouleDepuisPublication($offre){
 <link rel="stylesheet" href="leaflet.css" />
  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.css" />
  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.Default.css" />
-
- 
-
-
-
-
-
-
-
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const newsletterForm = document.getElementById('newsletterForm');
@@ -1453,6 +1443,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                . $adr['tarif'] . "€"
                                . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
                 $popupContent .= "</div>";
+                $popupContent .= "<div class='map-directions'><a href='https://www.google.com/maps/search/?api=1&query=" . urlencode($adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France') . "' target='_blank'>Itinéraire <span class='iconify' data-icon='mdi:navigation' style='color: #F28322; font-size: 1.2em; vertical-align: middle;'></span></a></div>";
                 $popupContent .= "</div>";
                 
                 echo "var marker = L.marker([$lat, $lng]);";
