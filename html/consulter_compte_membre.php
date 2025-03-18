@@ -255,51 +255,73 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'].trim($path_photo))){
     echo "my bad";
 }
 
-// TELECHARGEMENT DES DONNEES (FORMAT JSON)
-if (isset($_POST['dwl-data']) && isset($_POST['dwl-photo'])) {
-    // Création du ZIP
-    $zipName = 'mes_donnees_' . date('YmdHis') . '.zip';
-    $zip = new ZipArchive();
+// Configuration des chemins et noms de fichiers
+const JSON_FILENAME = 'mes_donnees_PACT.json';
+const PHOTO_FILENAME = 'profil.jpg'; // Nom par défaut pour la photo
+
+// Fonction pour télécharger un fichier
+function telechargerFichier($chemin, $nomFichier) {
+    if (!file_exists($chemin)) {
+        return false;
+    }
     
-    // Ouverture du fichier ZIP en mode création
-    if ($zip->open($zipName, ZipArchive::CREATE | ZipArchive::OVERWRITE)) {
-        // --- Partie 1 : JSON ---
-        $data = [
-            'Nom' => $monCompteMembre['nom'],
-            'Prenom' => $monCompteMembre['prenom'],
-            'Pseudo' => $monCompteMembre['pseudo'],
-            'Email' => $compte['mail'],
-            'Téléphone' => $compte['telephone'],
-            'Liste_Avis' => $tab_avis
-        ];
-        
-        // Ajout du fichier JSON au ZIP
-        $jsonData = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-        $zip->addFromString('mes_donnees_PACT.json', $jsonData);
-        
-        // --- Partie 2 : Image ---
-        $url_photo = parse_url($compte_pp);
-        $path_photo = $_SERVER['DOCUMENT_ROOT'] . $url_photo['path'];
-        
-        if (file_exists($path_photo)) {
-            $zip->addFile($path_photo, basename($compte_pp));
+    // Nettoyer les buffers de sortie
+    ob_clean();
+    
+    // Envoyer les headers appropriés
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment; filename="' . $nomFichier . '"');
+    header('Content-Length: ' . filesize($chemin));
+    header('Cache-Control: no-cache');
+    header('Pragma: no-cache');
+    header('Expires: 0');
+    
+    // Envoyer le fichier
+    readfile($chemin);
+    return true;
+}
+
+// Traitement du formulaire
+if (isset($_POST['dwl-data']) && isset($_POST['dwl-photo'])) {
+    // Création des données JSON
+    $donnees = [
+        'Nom' => $monCompteMembre['nom'],
+        'Prenom' => $monCompteMembre['prenom'],
+        'Pseudo' => $monCompteMembre['pseudo'],
+        'Email' => $compte['mail'],
+        'Telephone' => $compte['telephone'],
+        'Liste_Avis' => $tab_avis
+    ];
+    
+    // Création du fichier JSON temporaire
+    $jsonTemp = tempnam(sys_get_temp_dir(), 'json');
+    file_put_contents($jsonTemp, json_encode($donnees, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    
+    // Chemin du fichier photo
+    $photoPath = $_SERVER['DOCUMENT_ROOT'] . parse_url($compte_pp)['path'];
+    
+    // Télécharger les fichiers séquentiellement
+    try {
+        // Téléchargement du JSON
+        if (!telechargerFichier($jsonTemp, JSON_FILENAME)) {
+            throw new Exception('Erreur lors du téléchargement du fichier JSON');
         }
         
-        // Fermeture du ZIP
-        $zip->close();
-        
-        // Envoi des headers pour le téléchargement
-        ob_clean(); // Nettoyer les buffers de sortie
-        header('Content-Type: application/zip');
-        header('Content-Disposition: attachment; filename="' . $zipName . '"');
-        header('Content-Length: ' . filesize($zipName));
-        readfile($zipName);
-        
         // Suppression du fichier temporaire
-        unlink($zipName);
-    } else {
-        echo 'Erreur lors de la création du fichier ZIP';
+        unlink($jsonTemp);
+        
+        // Pause courte entre les téléchargements
+        usleep(500000); // 500ms
+        
+        // Téléchargement de la photo
+        if (!telechargerFichier($photoPath, PHOTO_FILENAME)) {
+            throw new Exception('Erreur lors du téléchargement de la photo');
+        }
+        
+    } catch (Exception $e) {
+        echo 'Erreur : ' . $e->getMessage();
     }
+    
     exit;
 }
 ?>
