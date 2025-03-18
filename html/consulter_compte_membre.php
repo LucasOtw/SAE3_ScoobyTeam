@@ -249,12 +249,6 @@ if (isset($_POST['changePhoto'])) {
 $url_photo = parse_url($compte_pp);
 $path_photo = $url_photo['path'];
 
-if(file_exists($_SERVER['DOCUMENT_ROOT'].trim($path_photo))){
-    echo "lol";
-} else {
-    echo "my bad";
-}
-
 // TELECHARGEMENT DES DONNEES (FORMAT JSON)
 if (isset($_POST['dwl-data'])) {
     $url_photo = parse_url($compte_pp);
