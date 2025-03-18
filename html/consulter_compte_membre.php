@@ -246,16 +246,20 @@ if (isset($_POST['changePhoto'])) {
     exit;
 }
 
-echo $compte_pp;
+$url_photo = parse_url($compte_pp);
+$path_photo = $url_photo['path'];
 
-if(file_exists($compte_pp)){
-    echo "LOL";
+if(file_exists($path_photo)){
+    echo "lol";
 } else {
-    echo "My bad";
+    echo "my bad";
 }
 
 // TELECHARGEMENT DES DONNEES (FORMAT JSON)
 if (isset($_POST['dwl-data'])) {
+    $url_photo = parse_url($compte_pp);
+    $path_photo = $url_photo['path'];
+
     // Récupération des avis
     $avis = $dbh->prepare("SELECT o.titre_offre, a.txt_avis, a.note FROM tripenarvor._avis a 
                            JOIN tripenarvor._offre o ON a.code_offre = o.code_offre
