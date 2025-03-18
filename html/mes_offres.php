@@ -243,7 +243,7 @@ function tempsEcouleDepuisNotif($avis)
         ?>
         <form action="detail_offre_pro.php" method="POST" class="offer-form">
             <input type="hidden" id="valueOffre" name="uneOffre" value="<?php echo htmlspecialchars(serialize($monOffre)); ?>">
-            <div class="offer-card" onclick="this.closest('form').requestSubmit();">
+            <div class="offer-card">
                 <div class="offer-image">
                     <img src="<?php echo $monOffre['url_images'][0]; ?>" alt="Offre">
                     <div class="offer-status <?php echo $monOffre['en_ligne'] ? 'status-online' : 'status-offline'; ?>">
