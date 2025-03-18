@@ -6735,6 +6735,7 @@ select.theme_contacter_plateforme {
     width: 223px;
     height: 52px;
     border: 1px solid var(--orange);
+    font-size: 1em;
 }
 
 input#btn-poster-avis {
