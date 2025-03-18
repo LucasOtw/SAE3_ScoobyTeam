@@ -1442,7 +1442,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
                     }
 
-                    $popupContent .= "<div class='popup-text-container' style='padding: 10px;'>";
+                    $popupContent .= "<div class='popup-text-container' style='padding: 10px; display: flex;flex-direction: row;;'>";
                     $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
                                    . addslashes($adr['ville']) . "<br>"
                                    . $adr['tarif'] . "€"
