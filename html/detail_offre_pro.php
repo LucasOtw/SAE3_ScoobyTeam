@@ -806,11 +806,12 @@ include("recupInfosCompte.php");
             } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
                 // Si c'est un membre classique
                 if ($avis["blacklister"]) {
-                    $color = "--gris";
+                    $color = "--gris-fonce";
+                } else {
+                    $color = "--vert-clair";
                 }
                 $prenom = $avis['prenom'];
                 $nom = $avis['nom'];
-                $color = "--vert-clair";
             } else {
                 // Si l'utilisateur est supprimé
                 $prenom = "Utilisateur";
