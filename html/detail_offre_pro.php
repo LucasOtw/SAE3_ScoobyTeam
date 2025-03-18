@@ -826,6 +826,10 @@ include("recupInfosCompte.php");
 
             // Calcul de la marge pour les sous-réponses
             $marge = $niveau * 5; // Indentation
+
+            echo "<pre>";
+            var_dump($avis);
+            echo "</pre>";
         
             ?>
             <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
