@@ -733,16 +733,13 @@ if (isset($json['results'][0])) {
                     // Si l'utilisateur est celui qui a écrit l'avis ou la réponse
                     $prenom = "Moi";
                     $nom = "";
-                    $color = "--vert-clair";
-                } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
-                    // Si c'est un membre classique
                     if ($avis["blacklister"]) {
                         $color = "--gris-fonce";
-                        echo $color;
                     } else {
                         $color = "--vert-clair";
-                        echo $color;
                     }
+                } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
+                    // Si c'est un membre classique
                     $prenom = $avis['prenom'];
                     $nom = $avis['nom'];
                 } else {
