@@ -298,7 +298,7 @@ if (isset($_POST['dwl-data'])) {
     
     echo $jsonData;
 
-    $absolutePath = $_SERVER['DOCUMENT_ROOT'].trim($path_photo);
+/*     $absolutePath = $_SERVER['DOCUMENT_ROOT'].trim($path_photo);
 
     if(file_exists($absolutePath)){
         $nom_photo = basename($compte_pp);
@@ -330,7 +330,7 @@ if (isset($_POST['dwl-data'])) {
         header('Content-Disposition: attachment; filename="' . $nom_photo . '"');
         header('Content-Length: ' . filesize($path_photo));
         readfile($path_photo);
-    }
+    } */
     exit;
 }
 ?>
