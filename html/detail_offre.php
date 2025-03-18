@@ -738,8 +738,10 @@ if (isset($json['results'][0])) {
                     // Si c'est un membre classique
                     if ($avis["blacklister"]) {
                         $color = "--gris-fonce";
+                        echo $color;
                     } else {
                         $color = "--vert-clair";
+                        echo $color;
                     }
                     $prenom = $avis['prenom'];
                     $nom = $avis['nom'];
