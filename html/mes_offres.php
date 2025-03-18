@@ -246,17 +246,20 @@ function tempsEcouleDepuisNotif($avis)
             <div class="offer-card" onclick="this.closest('form').submit();">
                 <div class="offer-image">
                     <img src="<?php echo $monOffre['url_images'][0]; ?>" alt="Offre">
-                    <div class="offer-status <?php echo $monOffre['en_ligne'] ? 'status-online' : 'status-offline'; ?>">
-                        <p><?php echo $monOffre['en_ligne'] ? 'En Ligne' : 'Hors Ligne'; ?></p>
+                    <div
+                        <?php if (!$monOffre["en_ligne"]) { 
+                            ?> <div class="offer-status status-offline"><p>Hors Ligne</p>
+                        <?php } 
+                            else {
+                            ?> <div class="offer-status status-online"><p>En Ligne</p>
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="offer-info">
                     <h3><?php echo $monOffre['titre_offre']; ?></h3>
                     <p class="category"><?php echo $monOffre['_resume']; ?></p>
                     <p class="update"><span class="update-icon">⟳</span> Update <?php echo strtolower(tempsEcouleDepuisUpdate($monOffre)); ?></p>
-                    <p class="last-update">
-                        <?php echo $monOffre['en_ligne'] ? 'Publiée ' . strtolower(tempsEcouleDepuisPublication($monOffre)) : "N'est pas publiée"; ?>
-                    </p>
+                    <p class="last-update"><?php if ($monOffre['en_ligne']) { ?>Publiée <?php echo strtolower(tempsEcouleDepuisPublication($monOffre)) ?> <?php } else { echo "N'est pas publiée" ; } ?></p>
                     <p class="offer-type"><?php echo $monOffre['nom_type']; ?></p>
                     <p class="price"><?php echo $monOffre['tarif']; ?>€</p>
                 </div>
@@ -271,6 +274,7 @@ function tempsEcouleDepuisNotif($avis)
         </button>
     </a>
 </section>
+
 
     
 </main>
