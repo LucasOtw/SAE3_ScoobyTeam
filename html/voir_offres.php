@@ -1408,20 +1408,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
             <?php
             $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
-                                   (SELECT i.url_image 
-                                    FROM tripenarvor._son_image si 
-                                    JOIN tripenarvor._image i ON si.code_image = i.code_image 
-                                    WHERE si.code_offre = o.code_offre 
-                                    LIMIT 1) AS url_image
-                                   FROM tripenarvor._offre o 
-                                   JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
-                                   WHERE o.en_ligne = true');
+                               (SELECT i.url_image 
+                                FROM tripenarvor._son_image si 
+                                JOIN tripenarvor._image i ON si.code_image = i.code_image 
+                                WHERE si.code_offre = o.code_offre 
+                                LIMIT 1) AS url_image
+                               FROM tripenarvor._offre o 
+                               JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
+                               WHERE o.en_ligne = true');
 
             $api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig"; // Votre clé API Google
 
             foreach ($adresses as $adr) {
                 $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
                 $adresse_enc = urlencode($adresse_complete);
+                $adresse_maps = $adresse_complete; // Pour l'URL Google Maps
 
                 $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
                 $response = file_get_contents($url);
@@ -1431,39 +1432,31 @@ document.addEventListener("DOMContentLoaded", function () {
                     $latitude = $json['results'][0]['geometry']['location']['lat'];
                     $longitude = $json['results'][0]['geometry']['location']['lng'];
 
+                    // URL d'itinéraire Google Maps
+                    $url_maps = "https://www.google.com/maps/search/?api=1&query=" . urlencode($adresse_maps);
+
+                    // Contenu de la popup
                     $popupContent = "<div style='width:218px;'>";
                     
                     if (!empty($adr['url_image'])) {
                         $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
                     }
 
-                    $popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
+                    $popupContent .= "<div class='popup-text-container' style='padding: 10px;'>";
                     $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
                                    . addslashes($adr['ville']) . "<br>"
                                    . $adr['tarif'] . "€"
                                    . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
                     $popupContent .= "</div>";
+                    $popupContent .= "<div class='map-directions' style='text-align:center; padding:5px; background:#f5f5f5;'>";
+                    $popupContent .= "<a href='" . $url_maps . "' target='_blank' style='color:#F28322;'>Itinéraire <span class=\"iconify\" data-icon=\"mdi:navigation\" style=\"color: #F28322; font-size: 1.2em; vertical-align: middle;\"></span></a>";
+                    $popupContent .= "</div>";
                     $popupContent .= "</div>";
 
-                    echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon})
-                          .bindPopup(\"" . $popupContent . "\");
-                          markers.addLayer(marker);";
+                    echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
+                    echo "marker.bindPopup(\"" . addslashes($popupContent) . "\");";
+                    echo "markers.addLayer(marker);";
                 }
-                
-                $popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
-                $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
-                               . addslashes($adr['ville']) . "<br>"
-                               . $adr['tarif'] . "€"
-                               . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
-                $popupContent .= "</div>";
-                $adresse_maps = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
-                $url_maps = "https://www.google.com/maps/search/?api=1&query=" . urlencode($adresse_maps);
-                $popupContent .= "<div class='map-directions'><a href='" . htmlspecialchars($url_maps) . "' target='_blank'>Itinéraire <span class='iconify' data-icon='mdi:navigation' style='color: #F28322; font-size: 1.2em; vertical-align: middle;'></span></a></div>";
-                $popupContent .= "</div>";
-                
-                echo "var marker = L.marker([$lat, $lng]);";
-                echo "marker.bindPopup(\"" . addslashes($popupContent) . "\");";
-                echo "markers.addLayer(marker);";
             }
             ?>
 
@@ -1485,4 +1478,6 @@ var customIcon = L.icon({
 });
 
 </script>
+</body>
+</html>
 
