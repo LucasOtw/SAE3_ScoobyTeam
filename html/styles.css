@@ -7801,7 +7801,7 @@ form .btn-link {
     align-items: center;
 }
 
-.avis-widget .avis-content .opacite100{
+.avis-widget .avis-content #opacite100{
     opacity: 100%;
 }
 
@@ -8034,6 +8034,7 @@ form .btn-link {
   width: 30px;
   margin-left: 10px;
   margin-right: 5px;
+  opacity: 100%;
 }
 
 .note_prenom em {
