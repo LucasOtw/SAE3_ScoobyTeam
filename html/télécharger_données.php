@@ -1,4 +1,7 @@
+<?php
+
 // TELECHARGEMENT DES DONNEES (FORMAT JSON)
+
 if (isset($_POST['dwl-data'])) {
     // Récupération des avis
     $avis = $dbh->prepare("SELECT o.titre_offre, a.txt_avis, a.note FROM tripenarvor._avis a 
