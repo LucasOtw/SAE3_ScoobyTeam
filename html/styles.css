@@ -5070,6 +5070,7 @@ nav.nav-bar-tel {
     display: inline-block;
     border-bottom: 2px solid transparent;
     transition: border-color 0.3s;
+    transition: color 0.2s;
     color: #333;
     text-decoration: none;
 }
