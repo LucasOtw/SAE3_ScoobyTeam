@@ -8031,6 +8031,12 @@ form .btn-link {
   margin-right: 5px;
 }
 
+.note_prenom em {
+  font-weight: normal;
+  font-size: smaller;
+  color: #808080;
+}
+
 #body_offre_desktop .avis-header {
     display: flex;
     justify-content: space-between;
