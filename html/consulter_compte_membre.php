@@ -246,6 +246,8 @@ if (isset($_POST['changePhoto'])) {
     exit;
 }
 
+echo basename($compte_pp);
+
 // TELECHARGEMENT DES DONNEES (FORMAT JSON)
 if (isset($_POST['dwl-data'])) {
     // Récupération des avis
@@ -278,41 +280,14 @@ if (isset($_POST['dwl-data'])) {
         'Liste_Avis' => $tab_avis
     ];
     $jsonData = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+    // Envoi des en-têtes pour le téléchargement
+    header('Content-Type: application/json');
+    header('Content-Disposition: attachment; filename="mes_donnees_PACT.json"');
+    header('Content-Length: ' . strlen($jsonData));
     
-    // Création d'un fichier temporaire pour le JSON
-    $jsonFile = tempnam(sys_get_temp_dir(), 'PACT') . ".json";
-    file_put_contents($jsonFile, $jsonData);
-
-    // Récupération de la photo de profil
-    $photoPath = $compte_pp; // Chemin réel de l'image
-    $photoName = basename($photoPath); // Nom du fichier
-
-    // Création d'un fichier ZIP
-    $zipFile = tempnam(sys_get_temp_dir(), 'PACT') . ".zip";
-    $zip = new ZipArchive();
-    if ($zip->open($zipFile, ZipArchive::CREATE) === TRUE) {
-        $zip->addFile($jsonFile, "mes_donnees_PACT.json");
-
-        // Vérifier si la photo existe avant de l'ajouter
-        if (file_exists($photoPath)) {
-            $zip->addFile($photoPath, $photoName);
-        }
-
-        $zip->close();
-    }
-
-    // Envoi du fichier ZIP au client
-    header('Content-Type: application/zip');
-    header('Content-Disposition: attachment; filename="mes_donnees_PACT.zip"');
-    header('Content-Length: ' . filesize($zipFile));
-    readfile($zipFile);
-
-    // Nettoyage des fichiers temporaires
-    unlink($jsonFile);
-    unlink($zipFile);
-    exit;
+    echo $jsonData;
 }
-
 ?>
 
 <!DOCTYPE html>
