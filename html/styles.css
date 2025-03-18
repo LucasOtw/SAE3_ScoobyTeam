@@ -5070,14 +5070,8 @@ nav.nav-bar-tel {
     display: inline-block;
     border-bottom: 2px solid transparent;
     transition: border-color 0.3s;
-    transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
     color: #333;
     text-decoration: none;
-}
-
-.main_mes_offres .tabs ul li a:hover {
-    color: var(--orange);
-    text-shadow: 2px 0px black;
 }
 
 .main_mes_offres .tabs ul li a.active {
