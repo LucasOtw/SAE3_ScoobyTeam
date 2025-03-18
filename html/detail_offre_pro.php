@@ -833,7 +833,7 @@ include("recupInfosCompte.php");
         
             ?>
             <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
-                <div class="avis-content">
+                <div class="avis-content" style="<?php if ($avis["blacklister"]) { echo "opacity: 50%;"; }?>">
                     <h3 class="avis">
                         <?php if ($niveau > 0): ?>
                             <div class="note_prenom">
