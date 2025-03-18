@@ -256,12 +256,31 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'].trim($path_photo))){
 }
 
 // TELECHARGEMENT DES DONNEES (FORMAT JSON)
-if (isset($_POST['dwl-data']) && isset($_POST['dwl-photo'])) {
-    $boundary = uniqid(); // Délimiteur unique
-    header("Content-Type: multipart/mixed; boundary=$boundary");
-    header("Content-Disposition: attachment; filename=\"mes_donnees.zip\"");
+if (isset($_POST['dwl-data'])) {
+    $url_photo = parse_url($compte_pp);
+    $path_photo = $url_photo['path'];
 
-    // --- Partie 1 : JSON ---
+    // Récupération des avis
+    $avis = $dbh->prepare("SELECT o.titre_offre, a.txt_avis, a.note FROM tripenarvor._avis a 
+                           JOIN tripenarvor._offre o ON a.code_offre = o.code_offre
+                           WHERE a.code_compte = :code_compte");
+    $avis->bindValue(":code_compte", $compte['code_compte']);
+    $avis->execute();
+    $result = $avis->fetchAll(PDO::FETCH_ASSOC);
+
+    $tab_avis = [];
+    foreach ($result as $res) {
+        if (!array_key_exists($res['titre_offre'], $tab_avis)) {
+            $tab_avis[$res['titre_offre']] = [];
+        }
+        $content = html_entity_decode($res['txt_avis'], ENT_QUOTES, 'UTF-8');
+        $tab_avis[$res['titre_offre']][] = [
+            'content' => $content,
+            'note' => $res['note']
+        ];
+    }
+
+    // Préparation des données JSON
     $data = [
         'Nom' => $monCompteMembre['nom'],
         'Prenom' => $monCompteMembre['prenom'],
@@ -272,31 +291,53 @@ if (isset($_POST['dwl-data']) && isset($_POST['dwl-photo'])) {
     ];
     $jsonData = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
-    echo "--$boundary\r\n";
-    echo "Content-Type: application/json\r\n";
-    echo "Content-Disposition: attachment; filename=\"mes_donnees_PACT.json\"\r\n\r\n";
-    echo $jsonData . "\r\n";
+    // Envoi des en-têtes pour le téléchargement
+    header('Content-Type: application/json');
+    header('Content-Disposition: attachment; filename="mes_donnees_PACT.json"');
+    header('Content-Length: ' . strlen($jsonData));
+    
+    echo $jsonData;
 
-    // --- Partie 2 : Image ---
+}
+if(isset($_POST['dwl-photo'])){
     $url_photo = parse_url($compte_pp);
-    $path_photo = $_SERVER['DOCUMENT_ROOT'] . $url_photo['path'];
+    $path_photo = $url_photo['path'];
 
-    if (file_exists($path_photo)) {
-        $photoContent = file_get_contents($path_photo);
+    $absolutePath = $_SERVER['DOCUMENT_ROOT'].trim($path_photo);
+
+    if(file_exists($absolutePath)){
         $nom_photo = basename($compte_pp);
-        $fileExtension = strtolower(pathinfo($path_photo, PATHINFO_EXTENSION));
-        $mimeType = mime_content_type($path_photo);
 
-        echo "--$boundary\r\n";
-        echo "Content-Type: $mimeType\r\n";
-        echo "Content-Disposition: attachment; filename=\"$nom_photo\"\r\n\r\n";
-        echo $photoContent . "\r\n";
+        $fileExtension = strtolower(pathinfo($absolutePath, PATHINFO_EXTENSION));
+
+        switch ($fileExtension) {
+            case 'jpg':
+            case 'jpeg':
+                header('Content-Type: image/jpeg');
+                break;
+            case 'png':
+                header('Content-Type: image/png');
+                break;
+            case 'gif':
+                header('Content-Type: image/gif');
+                break;
+            case 'webp':
+                header('Content-Type: image/webp');
+                break;
+            case 'bmp':
+                header('Content-Type: image/bmp');
+                break;
+            default:
+                // Si le type n'est pas reconnu, on peut renvoyer une erreur ou gérer un type générique
+                header('Content-Type: application/octet-stream');
+                break;
+        }
+        header('Content-Disposition: attachment; filename="' . $nom_photo . '"');
+        header('Content-Length: ' . filesize($path_photo));
+        readfile($path_photo);
     }
-
-    echo "--$boundary--"; // Fin de la réponse
     exit;
 }
-
 ?>
 
 <!DOCTYPE html>
