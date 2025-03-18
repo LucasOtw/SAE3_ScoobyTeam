@@ -835,7 +835,15 @@ include("recupInfosCompte.php");
                             <div class="note_prenom">
                                 Réponse |
                                 <span class="nom_avis"
-                                    style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                                    style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?>
+                                </span>
+                                <?php 
+                                if ($avis["blacklister"]) { 
+                                        ?>
+                                        <img src="images/icones/jeton.png" alt="jeton" class="jeton" >
+                                        <?php
+                                        }
+                                ?>
                             </div>
                         <?php else: ?>
                             <div class="note_prenom">
