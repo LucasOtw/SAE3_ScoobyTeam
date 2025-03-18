@@ -7801,6 +7801,10 @@ form .btn-link {
     align-items: center;
 }
 
+.avis-widget .avis-content .opacite100{
+    opacity: 100%;
+}
+
 .avis-widget .avis-content h3.avis span.nom_avis {
     color: #BDC426;
     margin-left: 0.5em;
