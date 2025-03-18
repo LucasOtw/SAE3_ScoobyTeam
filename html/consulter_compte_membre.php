@@ -257,6 +257,30 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'].trim($path_photo))){
 
 // TELECHARGEMENT DES DONNEES (FORMAT JSON)
 if (isset($_POST['dwl-data'])) {
+    $url_photo = parse_url($compte_pp);
+    $path_photo = $url_photo['path'];
+
+    // Récupération des avis
+    $avis = $dbh->prepare("SELECT o.titre_offre, a.txt_avis, a.note FROM tripenarvor._avis a 
+                           JOIN tripenarvor._offre o ON a.code_offre = o.code_offre
+                           WHERE a.code_compte = :code_compte");
+    $avis->bindValue(":code_compte", $compte['code_compte']);
+    $avis->execute();
+    $result = $avis->fetchAll(PDO::FETCH_ASSOC);
+
+    $tab_avis = [];
+    foreach ($result as $res) {
+        if (!array_key_exists($res['titre_offre'], $tab_avis)) {
+            $tab_avis[$res['titre_offre']] = [];
+        }
+        $content = html_entity_decode($res['txt_avis'], ENT_QUOTES, 'UTF-8');
+        $tab_avis[$res['titre_offre']][] = [
+            'content' => $content,
+            'note' => $res['note']
+        ];
+    }
+
+    // Préparation des données JSON
     $data = [
         'Nom' => $monCompteMembre['nom'],
         'Prenom' => $monCompteMembre['prenom'],
@@ -267,31 +291,48 @@ if (isset($_POST['dwl-data'])) {
     ];
     $jsonData = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
+    // Envoi des en-têtes pour le téléchargement
     header('Content-Type: application/json');
     header('Content-Disposition: attachment; filename="mes_donnees_PACT.json"');
     header('Content-Length: ' . strlen($jsonData));
     
     echo $jsonData;
-    exit;
-}
 
-if (isset($_POST['dwl-photo'])) {
-    $url_photo = parse_url($compte_pp);
-    $path_photo = $_SERVER['DOCUMENT_ROOT'] . $url_photo['path'];
+    $absolutePath = $_SERVER['DOCUMENT_ROOT'].trim($path_photo);
 
-    if (file_exists($path_photo)) {
+    if(file_exists($absolutePath)){
         $nom_photo = basename($compte_pp);
-        $mimeType = mime_content_type($path_photo);
 
-        header("Content-Type: $mimeType");
-        header("Content-Disposition: attachment; filename=\"$nom_photo\"");
-        header("Content-Length: " . filesize($path_photo));
+        $fileExtension = strtolower(pathinfo($absolutePath, PATHINFO_EXTENSION));
 
+        switch ($fileExtension) {
+            case 'jpg':
+            case 'jpeg':
+                header('Content-Type: image/jpeg');
+                break;
+            case 'png':
+                header('Content-Type: image/png');
+                break;
+            case 'gif':
+                header('Content-Type: image/gif');
+                break;
+            case 'webp':
+                header('Content-Type: image/webp');
+                break;
+            case 'bmp':
+                header('Content-Type: image/bmp');
+                break;
+            default:
+                // Si le type n'est pas reconnu, on peut renvoyer une erreur ou gérer un type générique
+                header('Content-Type: application/octet-stream');
+                break;
+        }
+        header('Content-Disposition: attachment; filename="' . $nom_photo . '"');
+        header('Content-Length: ' . filesize($path_photo));
         readfile($path_photo);
     }
     exit;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -508,45 +549,9 @@ if (isset($_POST['dwl-photo'])) {
                     input.name = "dwl-data";
                     input.value = "true"; // Déclencher le téléchargement
                     form.appendChild(input);
-
-                    const inputPhoto = document.createElement("input");
-                    inputPhoto.type = "hidden";
-                    inputPhoto.name = "dwl-photo";
-                    inputPhoto.value = "true";
-                    form.appendChild(inputPhoto);
-
-                    let formDataJson = new FormData();
-                    formDataJson.append("dwl-data","1");
-
-                    fetch(window.location.href,{
-                        method: "POST",
-                        body: formDataJson
-                    }).then(reponse => reponse.blob()).then(blob => {
-                        let url = window.URL.createObjectURL(blob);
-                        let a = document.createElement("a");
-                        a.href = url;
-                        a.download = "mes_donnees_PACT.json";
-                        document.body.appendChild(a);
-                        a.click();
-                        a.remove();
-                    });
-
-                    let formDataPhoto = new FormData();
-                    formDataPhoto.append("dwl-photo", "1");
-                    
-                    setTimeout(() =>{
-                        fetch(window.location.href, {
-                            method: "POST",
-                            body: formDataPhoto
-                        }).then(response => response.blob()).then(blob => {
-                            let url = window.URL.createObjectURL(blob);
-                            let a = document.createElement("a");
-                            a.href = url;
-                            a.download = "profil.jpg";
-                            a.click();
-                            a.remove();
-                        });
-                    }, 1000);
+        
+                    document.body.appendChild(form);
+                    form.submit(); // Soumet le formulaire
         
                     // Fermer la popup
                     popupMesDonnees.style.display = "none";
