@@ -249,12 +249,12 @@ if (isset($_POST['changePhoto'])) {
 $url_photo = parse_url($compte_pp);
 $path_photo = $url_photo['path'];
 
-
 // Configuration des chemins et noms de fichiers
 const JSON_FILENAME = 'mes_donnees_PACT.json';
 const PHOTO_FILENAME = 'profil.jpg'; // Nom par défaut pour la photo
 
 // Fonction pour télécharger un fichier
+//
 function telechargerFichier($chemin, $nomFichier, $type = 'application/octet-stream') {
     if (!file_exists($chemin)) {
         return false;
