@@ -243,15 +243,15 @@ function tempsEcouleDepuisNotif($avis)
         ?>
         <form action="detail_offre_pro.php" method="POST" class="offer-form">
             <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($monOffre)); ?>">
-            <div class="offer-card" onclick="this.closest('form').requestSubmit();">
+            <div class="offer-card">
                 <div class="offer-image">
                     <img src="<?php echo $monOffre['url_images'][0]; ?>" alt="Offre">
                     <div
                         <?php if (!$monOffre["en_ligne"]) { 
-                            ?> <div class="offer-status status-offline"><p>Hors Ligne</p>
+                            ?> <div class="offer-status status-offline"><p>Hors Ligne</p></div>
                         <?php } 
                             else {
-                            ?> <div class="offer-status status-online"><p>En Ligne</p>
+                            ?> <div class="offer-status status-online"><p>En Ligne</p></div>
                         <?php } ?>
                     </div>
                 </div>
@@ -418,6 +418,14 @@ function tempsEcouleDepuisNotif($avis)
                 }
             });
            
+        });
+        document.addEventListener('DOMContentLoaded', function(){
+            document.querySelectorAll('.offer-card').forEach(card => {
+                card.addEventListener('click', function(){
+                    const form = this.closest('form');
+                    form.requestSubmit();
+                })
+            })
         });
 
     </script>
