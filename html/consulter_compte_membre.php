@@ -246,7 +246,7 @@ if (isset($_POST['changePhoto'])) {
     exit;
 }
 
-echo basename($compte_pp);
+echo $compte_pp;
 
 // TELECHARGEMENT DES DONNEES (FORMAT JSON)
 if (isset($_POST['dwl-data'])) {
