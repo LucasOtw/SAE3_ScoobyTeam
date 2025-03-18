@@ -249,78 +249,54 @@ if (isset($_POST['changePhoto'])) {
 $url_photo = parse_url($compte_pp);
 $path_photo = $url_photo['path'];
 
-// Configuration des chemins et noms de fichiers
-const JSON_FILENAME = 'mes_donnees_PACT.json';
-const PHOTO_FILENAME = 'profil.jpg'; // Nom par défaut pour la photo
-
-// Fonction pour télécharger un fichier
-//
-function telechargerFichier($chemin, $nomFichier, $type = 'application/octet-stream') {
-    if (!file_exists($chemin)) {
-        return false;
-    }
-    
-    // Nettoyer les buffers de sortie
-    ob_clean();
-    ob_start();
-    
-    // Envoyer les headers appropriés
-    header('Content-Type: ' . $type);
-    header('Content-Disposition: attachment; filename="' . $nomFichier . '"');
-    header('Content-Length: ' . filesize($chemin));
-    header('Cache-Control: no-cache');
-    header('Pragma: no-cache');
-    header('Expires: 0');
-    
-    // Envoyer le fichier
-    readfile($chemin);
-    ob_end_flush();
-    return true;
+if(file_exists($_SERVER['DOCUMENT_ROOT'].trim($path_photo))){
+    echo "lol";
+} else {
+    echo "my bad";
 }
 
-// Traitement du formulaire
-if (isset($_POST['telecharger'])) {
-    // Création des données JSON
-    $donnees = [
+// TELECHARGEMENT DES DONNEES (FORMAT JSON)
+if (isset($_POST['dwl-data']) && isset($_POST['dwl-photo'])) {
+    $boundary = uniqid(); // Délimiteur unique
+    header("Content-Type: multipart/mixed; boundary=$boundary");
+    header("Content-Disposition: attachment; filename=\"mes_donnees.zip\"");
+
+    // --- Partie 1 : JSON ---
+    $data = [
         'Nom' => $monCompteMembre['nom'],
         'Prenom' => $monCompteMembre['prenom'],
         'Pseudo' => $monCompteMembre['pseudo'],
         'Email' => $compte['mail'],
-        'Telephone' => $compte['telephone'],
+        'Téléphone' => $compte['telephone'],
         'Liste_Avis' => $tab_avis
     ];
-    
-    // Création du fichier JSON temporaire
-    $jsonTemp = tempnam(sys_get_temp_dir(), 'json');
-    file_put_contents($jsonTemp, json_encode($donnees, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-    
-    // Chemin du fichier photo
-    $photoPath = $_SERVER['DOCUMENT_ROOT'] . parse_url($compte_pp)['path'];
-    
-    // Télécharger les fichiers séquentiellement
-    try {
-        // Téléchargement du JSON
-        if (!telechargerFichier($jsonTemp, JSON_FILENAME, 'application/json')) {
-            throw new Exception('Erreur lors du téléchargement du fichier JSON');
-        }
-        
-        // Suppression du fichier temporaire
-        unlink($jsonTemp);
-        
-        // Pause courte entre les téléchargements
-        usleep(500000); // 500ms
-        
-        // Téléchargement de la photo
-        if (!telechargerFichier($photoPath, PHOTO_FILENAME, 'image/jpeg')) {
-            throw new Exception('Erreur lors du téléchargement de la photo');
-        }
-        
-    } catch (Exception $e) {
-        echo 'Erreur : ' . $e->getMessage();
+    $jsonData = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+    echo "--$boundary\r\n";
+    echo "Content-Type: application/json\r\n";
+    echo "Content-Disposition: attachment; filename=\"mes_donnees_PACT.json\"\r\n\r\n";
+    echo $jsonData . "\r\n";
+
+    // --- Partie 2 : Image ---
+    $url_photo = parse_url($compte_pp);
+    $path_photo = $_SERVER['DOCUMENT_ROOT'] . $url_photo['path'];
+
+    if (file_exists($path_photo)) {
+        $photoContent = file_get_contents($path_photo);
+        $nom_photo = basename($compte_pp);
+        $fileExtension = strtolower(pathinfo($path_photo, PATHINFO_EXTENSION));
+        $mimeType = mime_content_type($path_photo);
+
+        echo "--$boundary\r\n";
+        echo "Content-Type: $mimeType\r\n";
+        echo "Content-Disposition: attachment; filename=\"$nom_photo\"\r\n\r\n";
+        echo $photoContent . "\r\n";
     }
-    
+
+    echo "--$boundary--"; // Fin de la réponse
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
