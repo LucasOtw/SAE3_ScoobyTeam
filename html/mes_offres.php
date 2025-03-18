@@ -418,19 +418,27 @@ function tempsEcouleDepuisNotif($avis)
         document.addEventListener('DOMContentLoaded', function(){
             document.querySelectorAll('.offer-card').forEach(card => {
                 card.addEventListener('click', function(event){
-                    event.preventDefault();
+                    event.preventDefault(); // Empêche la soumission immédiate
 
                     const form = this.closest('form');
                     const formData = new FormData(form);
 
+                    // 📌 Assure-toi que le champ caché existe bien
                     const missing = document.querySelector('#valueOffre');
-                    formData.append(missing.name, missing.value);
+                    if (missing) {
+                        // Ajoute le champ caché au FormData
+                        formData.append(missing.name, missing.value);
+                    }
 
+                    // 🛠 Réinsère les données dans les champs du formulaire
                     formData.forEach((value, key) => {
                         const input = form.querySelector(`[name="${key}"]`);
-                        input.value = value;
+                        if (input) {
+                            input.value = value;
+                        }
                     });
 
+                    // ✅ Soumettre le formulaire normalement
                     form.submit();
                 });
             });
