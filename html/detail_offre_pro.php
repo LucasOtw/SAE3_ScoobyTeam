@@ -806,7 +806,7 @@ include("recupInfosCompte.php");
             } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
                 // Si c'est un membre classique
                 if ($avis["blacklister"]) {
-                    $color = "--gris";
+                    $color = "--gris-fonce";
                 } else {
                     $color = "--vert-clair";
                 }
