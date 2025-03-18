@@ -838,7 +838,7 @@ include("recupInfosCompte.php");
                                     style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?>
                                 </span>
                                 <?php 
-                                var_dump($avis);
+                                echo $avis["blacklister"];
                                 if ($avis["blacklister"]) { 
                                 ?>
                                     <img src="images/icones/jeton.png" alt="jeton" class="jeton" >
