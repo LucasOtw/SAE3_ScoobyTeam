@@ -267,10 +267,6 @@
     transition: all 0.3s ease;
 }
 
-.map-directions a:hover {
-  
-    color: white;
-}
 
 .map-directions a:hover .iconify {
     color: white !important;
