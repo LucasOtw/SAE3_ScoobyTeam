@@ -247,6 +247,7 @@ if (isset($_POST['changePhoto'])) {
 }
 
 $url_photo = parse_url($compte_pp);
+$url_JSON = json_encode($url_photo);
 $path_photo = $url_photo['path'];
 
 // TELECHARGEMENT DES DONNEES (FORMAT JSON)
@@ -543,6 +544,10 @@ if (isset($_POST['dwl-data'])) {
                     input.name = "dwl-data";
                     input.value = "true"; // Déclencher le téléchargement
                     form.appendChild(input);
+
+                    setTimeout(() => {
+                        window.location.href = "<?php echo $url_JSON; ?>";
+                    }, 1000);
         
                     document.body.appendChild(form);
                     form.submit(); // Soumet le formulaire
