@@ -826,8 +826,6 @@ include("recupInfosCompte.php");
 
             // Calcul de la marge pour les sous-réponses
             $marge = $niveau * 5; // Indentation
-
-            echo $avis["blacklister"];
         
             ?>
             <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
