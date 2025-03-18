@@ -5137,6 +5137,7 @@ nav.nav-bar-tel {
     width: 260px;
     /* Assure une largeur fixe pour chaque carte */
     margin-bottom: 20px;
+    height: 26.2em;
     /* Ajoute un espace en bas au cas où elles iraient à la ligne */
 }
 
