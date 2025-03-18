@@ -5074,6 +5074,11 @@ nav.nav-bar-tel {
     text-decoration: none;
 }
 
+.main_mes_offres .tabs ul li a:hover {
+    color: var(--orange);
+    text-shadow: 2px 0px black;
+}
+
 .main_mes_offres .tabs ul li a.active {
     border-color: #ff6600;
     text-decoration: none;
