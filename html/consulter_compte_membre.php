@@ -250,6 +250,8 @@ echo $compte_pp;
 
 if(file_exists($compte_pp)){
     echo "LOL";
+} else {
+    echo "My bad";
 }
 
 // TELECHARGEMENT DES DONNEES (FORMAT JSON)
