@@ -1436,7 +1436,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     $url_maps = "https://www.google.com/maps/search/?api=1&query=" . urlencode($adresse_maps);
 
                     // Contenu de la popup
-                    $popupContent = "<div style='width:230px; border-radius:8px; overflow:hidden; font-family:\"K2D\", sans-serif; box-shadow: 0 2px 8px rgba(0,0,0,0.15);'>";
+                    $popupContent = "<div style='width:230px; border-radius:8px; overflow:hidden; font-family:\"K2D\", sans-serif;'>";
 
                     // Image avec overlay dégradé
                     if (!empty($adr['url_image'])) {
