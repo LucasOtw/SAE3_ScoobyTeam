@@ -1436,21 +1436,27 @@ document.addEventListener("DOMContentLoaded", function () {
                     $url_maps = "https://www.google.com/maps/search/?api=1&query=" . urlencode($adresse_maps);
 
                     // Contenu de la popup
-                    $popupContent = "<div style='width:218px;'>";
-                    
+                    $popupContent = "<div style='width:230px; border-radius:8px; overflow:hidden; font-family:\"K2D\", sans-serif; box-shadow: 0 2px 8px rgba(0,0,0,0.15);'>";
+
+                    // Image avec overlay dégradé
                     if (!empty($adr['url_image'])) {
-                        $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
+                        $popupContent .= "<div style='position:relative;'>";
+                        $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%; height:130px; object-fit:cover;'>";
+                        $popupContent .= "<div style='position:absolute; top:0; right:0; background-color:#F28322; color:white; padding:4px 8px; border-bottom-left-radius:8px; font-size:14px; font-weight:bold;'>" . $adr['tarif'] . " €</div>";
+                        $popupContent .= "</div>";
                     }
 
-                    $popupContent .= "<div class='popup-text-container' style='padding: 10px; display: flex;flex-direction: row;;'>";
-                    $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
-                                   . addslashes($adr['ville']) . "<br>"
-                                   . $adr['tarif'] . "€"
-                                   . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
-                    
-                    $popupContent .= "<div class='map-directions' style='text-align:center; padding:5px; background:#f5f5f5;'>";
-                    $popupContent .= "<a href='" . $url_maps . "' target='_blank' style='color:#F28322;'>Itinéraire <span class=\"iconify\" data-icon=\"mdi:navigation\" style=\"color: #F28322; font-size: 1.2em; vertical-align: middle;\"></span></a>";
+                    // Contenu texte
+                    $popupContent .= "<div style='padding: 12px; background-color: white;'>";
+                    $popupContent .= "<h3 style='margin:0 0 8px 0; color:#333; font-size:16px; font-weight:600; line-height:1.2;'>" . addslashes($adr['titre_offre']) . "</h3>";
+                    $popupContent .= "<p style='margin:0 0 8px 0; font-size:14px; color:#555;'><span class=\"iconify\" data-icon=\"mdi:map-marker\" style=\"color: #BDC426; font-size: 1.2em; vertical-align: middle; margin-right: 3px;\"></span> " . addslashes($adr['ville']) . "</p>";
+
+                    // Boutons d'action
+                    $popupContent .= "<div style='display:flex; justify-content:space-between; margin-top:10px;'>";
+                    $popupContent .= "<a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='display:inline-block; padding:6px 12px; background-color:#2DD7A4; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;'>Voir l'offre</a>";
+                    $popupContent .= "<a href='" . $url_maps . "' target='_blank' style='display:inline-block; padding:6px 12px; background-color:#F28322; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;'><span class=\"iconify\" data-icon=\"mdi:navigation\" style=\"font-size: 1.1em; vertical-align: middle; margin-right: 3px;\"></span>Itinéraire</a>";
                     $popupContent .= "</div>";
+
                     $popupContent .= "</div>";
                     $popupContent .= "</div>";
 
