@@ -297,6 +297,41 @@ if (isset($_POST['dwl-data'])) {
     header('Content-Length: ' . strlen($jsonData));
     
     echo $jsonData;
+
+    $absolutePath = $_SERVER['DOCUMENT_ROOT'].trim($path_photo);
+
+    if(file_exists($absolutePath)){
+        $nom_photo = basename($compte_pp);
+
+        $fileExtension = strtolower(pathinfo($absolutePath, PATHINFO_EXTENSION));
+
+        switch ($fileExtension) {
+            case 'jpg':
+            case 'jpeg':
+                header('Content-Type: image/jpeg');
+                break;
+            case 'png':
+                header('Content-Type: image/png');
+                break;
+            case 'gif':
+                header('Content-Type: image/gif');
+                break;
+            case 'webp':
+                header('Content-Type: image/webp');
+                break;
+            case 'bmp':
+                header('Content-Type: image/bmp');
+                break;
+            default:
+                // Si le type n'est pas reconnu, on peut renvoyer une erreur ou gérer un type générique
+                header('Content-Type: application/octet-stream');
+                break;
+        }
+        header('Content-Disposition: attachment; filename="' . $nom_photo . '"');
+        header('Content-Length: ' . filesize($path_photo));
+        readfile($path_photo);
+    }
+    exit;
 }
 ?>
 

@@ -805,6 +805,9 @@ include("recupInfosCompte.php");
                 $color = "--orange";
             } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
                 // Si c'est un membre classique
+                if ($avis["blacklister"]) {
+                    $color = "--gris";
+                }
                 $prenom = $avis['prenom'];
                 $nom = $avis['nom'];
                 $color = "--vert-clair";
@@ -848,6 +851,7 @@ include("recupInfosCompte.php");
                                 if ($avis["blacklister"]) { 
                                 ?>
                                     <img src="images/icones/jeton.png" alt="jeton" class="jeton" >
+                                    <em>Cet avis est blacklister</em>
                                 <?php
                                 }
                                 ?>
