@@ -1436,16 +1436,27 @@ document.addEventListener("DOMContentLoaded", function() {
                 
             
             foreach($adresses as $adr) {
-                // Remplacer l'API de géocodage par des coordonnées générées à partir du code postal
-                // C'est temporaire mais permettra à la carte de s'afficher
-                $lat = 48.0 + (intval(substr($adr['code_postal'], 0, 2)) / 100);
-                $lng = -3.0 + (intval(substr($adr['code_postal'], 2, 3)) / 100);
-                
-                $popupContent = "<div style='width:218px;'>";
-                
-                if (!empty($adr['url_image'])) {
-                    $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
-                }
+                 // Construction de l'adresse complète pour le géocodage
+                 $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
+                 $adresse_enc = urlencode($adresse_complete);
+
+                 // URL de l'API Geocoding
+                 $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
+
+                 // Appel de l'API Google Geocoding
+                 $response = file_get_contents($url);
+                 $json = json_decode($response, true);
+
+                 // Vérifie si la réponse contient des résultats
+                 if (isset($json['results'][0])) {
+                     $latitude = $json['results'][0]['geometry']['location']['lat'];
+                     $longitude = $json['results'][0]['geometry']['location']['lng'];
+
+                     $popupContent = "<div style='width:218px;'>";
+                     
+                     if (!empty($adr['url_image'])) {
+                         $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
+                     }
                 
                 $popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
                 $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
@@ -1458,6 +1469,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 echo "var marker = L.marker([$lat, $lng]);";
                 echo "marker.bindPopup(\"" . addslashes($popupContent) . "\");";
                 echo "markers.addLayer(marker);";
+                    }
             }
             ?>
             
