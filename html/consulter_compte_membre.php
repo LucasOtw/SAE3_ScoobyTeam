@@ -268,6 +268,7 @@ function telechargerFichier($chemin, $nomFichier, $type = 'application/octet-str
     
     // Nettoyer les buffers de sortie
     ob_clean();
+    ob_start();
     
     // Envoyer les headers appropriés
     header('Content-Type: ' . $type);
@@ -279,11 +280,12 @@ function telechargerFichier($chemin, $nomFichier, $type = 'application/octet-str
     
     // Envoyer le fichier
     readfile($chemin);
+    ob_end_flush();
     return true;
 }
 
 // Traitement du formulaire
-if (isset($_POST['dwl-data']) && isset($_POST['dwl-photo'])) {
+if (isset($_POST['telecharger'])) {
     // Création des données JSON
     $donnees = [
         'Nom' => $monCompteMembre['nom'],
