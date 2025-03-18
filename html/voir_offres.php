@@ -1447,9 +1447,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                    . addslashes($adr['ville']) . "<br>"
                                    . $adr['tarif'] . "€"
                                    . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
-                    $popupContent .= "</div>";
+                    
                     $popupContent .= "<div class='map-directions' style='text-align:center; padding:5px; background:#f5f5f5;'>";
                     $popupContent .= "<a href='" . $url_maps . "' target='_blank' style='color:#F28322;'>Itinéraire <span class=\"iconify\" data-icon=\"mdi:navigation\" style=\"color: #F28322; font-size: 1.2em; vertical-align: middle;\"></span></a>";
+                    $popupContent .= "</div>";
                     $popupContent .= "</div>";
                     $popupContent .= "</div>";
 
