@@ -255,12 +255,13 @@ if(file_exists($_SERVER['DOCUMENT_ROOT'].trim($path_photo))){
     echo "my bad";
 }
 
+
 // Configuration des chemins et noms de fichiers
 const JSON_FILENAME = 'mes_donnees_PACT.json';
 const PHOTO_FILENAME = 'profil.jpg'; // Nom par défaut pour la photo
 
 // Fonction pour télécharger un fichier
-function telechargerFichier($chemin, $nomFichier) {
+function telechargerFichier($chemin, $nomFichier, $type = 'application/octet-stream') {
     if (!file_exists($chemin)) {
         return false;
     }
@@ -269,7 +270,7 @@ function telechargerFichier($chemin, $nomFichier) {
     ob_clean();
     
     // Envoyer les headers appropriés
-    header('Content-Type: application/octet-stream');
+    header('Content-Type: ' . $type);
     header('Content-Disposition: attachment; filename="' . $nomFichier . '"');
     header('Content-Length: ' . filesize($chemin));
     header('Cache-Control: no-cache');
@@ -303,7 +304,7 @@ if (isset($_POST['dwl-data']) && isset($_POST['dwl-photo'])) {
     // Télécharger les fichiers séquentiellement
     try {
         // Téléchargement du JSON
-        if (!telechargerFichier($jsonTemp, JSON_FILENAME)) {
+        if (!telechargerFichier($jsonTemp, JSON_FILENAME, 'application/json')) {
             throw new Exception('Erreur lors du téléchargement du fichier JSON');
         }
         
@@ -314,7 +315,7 @@ if (isset($_POST['dwl-data']) && isset($_POST['dwl-photo'])) {
         usleep(500000); // 500ms
         
         // Téléchargement de la photo
-        if (!telechargerFichier($photoPath, PHOTO_FILENAME)) {
+        if (!telechargerFichier($photoPath, PHOTO_FILENAME, 'image/jpeg')) {
             throw new Exception('Erreur lors du téléchargement de la photo');
         }
         
