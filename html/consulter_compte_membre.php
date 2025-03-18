@@ -248,6 +248,10 @@ if (isset($_POST['changePhoto'])) {
 
 echo $compte_pp;
 
+if(file_exists($compte_pp)){
+    echo "LOL";
+}
+
 // TELECHARGEMENT DES DONNEES (FORMAT JSON)
 if (isset($_POST['dwl-data'])) {
     // Récupération des avis
