@@ -667,7 +667,7 @@ if($infos_offre !== null){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="images/logoPin_orange.png" width="16px" height="32px">
-    <title>Modifier mon offre</title>
+    <title> mon offre</title>
     <link rel="stylesheet" href="styles.css?daz">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -997,7 +997,7 @@ if($infos_offre !== null){
     </div>
     <input type="hidden" name="deleted_images" id="deleted-images">
 
-    <h3>Modifier vos photos actuelles</h3>
+    <h3> vos photos actuelles</h3>
     <div class="photo-cards">
         <?php
         foreach($recup_photos as $photo){
@@ -1018,7 +1018,7 @@ if($infos_offre !== null){
         </div>
 
             <div class="btn_modif_offre">
-                <input type="submit" name="envoi_modif" value="Modifier">
+                <input type="submit" name="envoi_modif" value="Valider">
             </div>
         </form>
     </main>

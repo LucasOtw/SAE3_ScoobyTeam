@@ -826,6 +826,8 @@ include("recupInfosCompte.php");
 
             // Calcul de la marge pour les sous-réponses
             $marge = $niveau * 5; // Indentation
+
+            echo $avis["blacklister"];
         
             ?>
             <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
@@ -837,20 +839,20 @@ include("recupInfosCompte.php");
                                 <span class="nom_avis"
                                     style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?>
                                 </span>
+                            </div>
+                        <?php else: ?>
+                            <div class="note_prenom">
+                                <?php echo htmlspecialchars($avis['note']) . '.0 ' . $appreciation . " "; ?> |
+                                <span class="nom_avis"
+                                    style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?>
+                                </span>
                                 <?php 
-                                var_dump($avis);
                                 if ($avis["blacklister"]) { 
                                 ?>
                                     <img src="images/icones/jeton.png" alt="jeton" class="jeton" >
                                 <?php
                                 }
                                 ?>
-                            </div>
-                        <?php else: ?>
-                            <div class="note_prenom">
-                                <?php echo htmlspecialchars($avis['note']) . '.0 ' . $appreciation . " "; ?> |
-                                <span class="nom_avis"
-                                    style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
                             </div>
                         <?php endif; ?>
                         <style>
