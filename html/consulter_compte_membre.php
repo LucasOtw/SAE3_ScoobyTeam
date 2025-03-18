@@ -298,6 +298,11 @@ if (isset($_POST['dwl-data'])) {
     
     echo $jsonData;
 
+}
+if(isset($_POST['dwl-photo'])){
+    $url_photo = parse_url($compte_pp);
+    $path_photo = $url_photo['path'];
+
     $absolutePath = $_SERVER['DOCUMENT_ROOT'].trim($path_photo);
 
     if(file_exists($absolutePath)){
@@ -549,6 +554,12 @@ if (isset($_POST['dwl-data'])) {
                     input.name = "dwl-data";
                     input.value = "true"; // Déclencher le téléchargement
                     form.appendChild(input);
+
+                    const inputPhoto = document.createElement("input");
+                    inputPhoto.type = "hidden";
+                    inputPhoto.name = "dwl-photo";
+                    inputPhoto.value = "true";
+                    form.appendChild(inputPhoto);
         
                     document.body.appendChild(form);
                     form.submit(); // Soumet le formulaire

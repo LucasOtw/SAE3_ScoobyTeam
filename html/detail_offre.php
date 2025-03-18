@@ -736,9 +736,13 @@ if (isset($json['results'][0])) {
                     $color = "--vert-clair";
                 } elseif (!empty($avis['prenom']) && !empty($avis['nom'])) {
                     // Si c'est un membre classique
+                    if ($avis["blacklister"]) {
+                        $color = "--gris-fonce";
+                    } else {
+                        $color = "--vert-clair";
+                    }
                     $prenom = $avis['prenom'];
                     $nom = $avis['nom'];
-                    $color = "--vert-clair";
                 } else {
                     // Si l'utilisateur est supprimé
                     $prenom = "Utilisateur";
@@ -772,7 +776,16 @@ if (isset($json['results'][0])) {
                                     <div class="note_prenom">
                                         <?php echo htmlspecialchars($avis['note']) . '.0 ' . $appreciation . " "; ?> |
                                         <span class="nom_avis"
-                                            style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                                            style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?>
+                                        </span>
+                                        <?php 
+                                        if ($avis["blacklister"]) { 
+                                        ?>
+                                            <img src="images/icones/jeton.png" alt="jeton" class="jeton" >
+                                            <em>(Cet avis est blacklisté)</em>
+                                        <?php
+                                        }
+                                        ?>
                                     </div>
                                 <?php endif; ?>
     
