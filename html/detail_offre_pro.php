@@ -851,8 +851,8 @@ include("recupInfosCompte.php");
                                 <?php 
                                 if ($avis["blacklister"]) { 
                                 ?>
-                                    <img src="images/icones/jeton.png" alt="jeton" class="jeton" >
-                                    <em>(Cet avis est blacklisté)</em>
+                                    <img class="opacite100" src="images/icones/jeton.png" alt="jeton" class="jeton" >
+                                    <em class="opacite100">(Cet avis est blacklisté)</em>
                                 <?php
                                 }
                                 ?>
