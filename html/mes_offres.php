@@ -420,6 +420,7 @@ function tempsEcouleDepuisNotif($avis)
             });
            
         });
+        
 
     </script>
 </body>
