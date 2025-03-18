@@ -327,7 +327,7 @@ if (isset($_POST['dwl-data'])) {
                 header('Content-Type: application/octet-stream');
                 break;
         }
-        header('Content-Disposition: attachment; filename="' . $photoName . '"');
+        header('Content-Disposition: attachment; filename="' . $nom_photo . '"');
         header('Content-Length: ' . filesize($path_photo));
         readfile($path_photo);
     }
