@@ -7796,6 +7796,7 @@ form .btn-link {
 
 .avis-widget .avis-content .note_prenom {
     display: flex;
+    align-items: center;
 }
 
 .avis-widget .avis-content h3.avis span.nom_avis {
@@ -8026,6 +8027,7 @@ form .btn-link {
   height: 30px;
   width: 30px;
   margin-left: 10px;
+  margin-right: 5px;
 }
 
 #body_offre_desktop .avis-header {
