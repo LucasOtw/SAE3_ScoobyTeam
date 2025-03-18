@@ -731,13 +731,13 @@ include("recupInfosCompte.php");
 
         <?php
         // Récupérer la moyenne des notes
-        $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre and note<>0');
+        $moyenne_note = $dbh->prepare('SELECT avg(note) FROM tripenarvor._avis WHERE code_offre = :code_offre and note<>0 and blacklister<>TRUE');
         $moyenne_note->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
         $moyenne_note->execute();
         $note_moyenne = $moyenne_note->fetchColumn();
 
         // Récupérer le nombre d'avis
-        $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis as avis_principals WHERE code_offre = :code_offre and avis_principals.code_avis not in (select code_reponse FROM tripenarvor._reponse)');
+        $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis as avis_principals WHERE code_offre = :code_offre and blacklister<>TRUE and avis_principals.code_avis not in (select code_reponse FROM tripenarvor._reponse)');
         $nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
         $nb_avis->execute();
         $nombre_d_avis = $nb_avis->fetchColumn();
@@ -835,7 +835,15 @@ include("recupInfosCompte.php");
                             <div class="note_prenom">
                                 Réponse |
                                 <span class="nom_avis"
-                                    style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
+                                    style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?>
+                                </span>
+                                <?php 
+                                if ($avis["blacklister"]) { 
+                                ?>
+                                    <img src="images/icones/jeton.png" alt="jeton" class="jeton" >
+                                <?php
+                                }
+                                ?>
                             </div>
                         <?php else: ?>
                             <div class="note_prenom">
