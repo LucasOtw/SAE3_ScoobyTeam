@@ -1400,88 +1400,61 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 </script>
+<?php
+$adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
+                        (SELECT i.url_image FROM tripenarvor._son_image si 
+                         JOIN tripenarvor._image i ON si.code_image = i.code_image 
+                         WHERE si.code_offre = o.code_offre LIMIT 1) AS url_image
+                        FROM tripenarvor._offre o 
+                        JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
+                        WHERE o.en_ligne = true');
+
+$adresses = $adresses->fetchAll(PDO::FETCH_ASSOC);
+?>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // Vérifier si l'élément map existe
     var mapElement = document.getElementById('map');
-    
+
     if (mapElement) {
         console.log("Élément carte trouvé, initialisation de Leaflet...");
-        
+
         try {
-            var map = L.map('map').setView([48.2020, -2.9326], 8);  // Coordonnées de la Bretagne
-            
+            var map = L.map('map').setView([48.2020, -2.9326], 8);
+
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; OpenStreetMap contributors'
             }).addTo(map);
-            
-            // Création d'un groupe de clusters
+
             var markers = L.markerClusterGroup();
-            
-            // Utiliser des coordonnées statiques pour tester
-            <?php
-            $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
-                                   (SELECT i.url_image 
-                                    FROM tripenarvor._son_image si 
-                                    JOIN tripenarvor._image i ON si.code_image = i.code_image 
-                                    WHERE si.code_offre = o.code_offre 
-                                    LIMIT 1) AS url_image
-                                   FROM tripenarvor._offre o 
-                                   JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
-                                   WHERE o.en_ligne = true');
-            $adresses = $adresses->fetchAll(PDO::FETCH_ASSOC);
 
-        
+            <?php foreach ($adresses as $adr): ?>
+                <?php if (!empty($adr['latitude']) && !empty($adr['longitude'])): ?>
+                    var marker = L.marker([<?= $adr['latitude'] ?>, <?= $adr['longitude'] ?>]);
 
-                
-            
-            foreach($adresses as $adr) {
-                 // Construction de l'adresse complète pour le géocodage
-                 $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
-                 $adresse_enc = urlencode($adresse_complete);
+                    var popupContent = <?= json_encode(
+                        "<div style='width:218px;'>" .
+                        (!empty($adr['url_image']) ? "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>" : "") .
+                        "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>" .
+                        "<strong>" . $adr['titre_offre'] . "</strong><br>" .
+                        $adr['ville'] . "<br>" .
+                        $adr['tarif'] . "€<br>" .
+                        "<a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>" .
+                        "</div></div>", 
+                        JSON_HEX_APOS | JSON_HEX_QUOT
+                    ) ?>;
 
-                 // URL de l'API Geocoding
-                 $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
+                    marker.bindPopup(popupContent);
+                    markers.addLayer(marker);
+                <?php endif; ?>
+            <?php endforeach; ?>
 
-                 // Appel de l'API Google Geocoding
-                 $response = file_get_contents($url);
-                 $json = json_decode($response, true);
-
-                 // Vérifie si la réponse contient des résultats
-                 if (isset($json['results'][0])) {
-                     $latitude = $json['results'][0]['geometry']['location']['lat'];
-                     $longitude = $json['results'][0]['geometry']['location']['lng'];
-
-                     $popupContent = "<div style='width:218px;'>";
-                     
-                     if (!empty($adr['url_image'])) {
-                         $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%;max-height:120px;object-fit:cover;'><br>";
-                     }
-                
-                $popupContent .= "<div class='popup-text-container' style='display:flex; border-radius:0 0 5px 5px; gap: 21px;'>";
-                $popupContent .= "<strong>" . addslashes($adr['titre_offre']) . "</strong><br>"
-                               . addslashes($adr['ville']) . "<br>"
-                               . $adr['tarif'] . "€"
-                               . "<br><a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='color:#F28322;'>Voir l'offre</a>";
-                $popupContent .= "</div>";
-                $popupContent .= "</div>";
-                
-                echo "var marker = L.marker([$lat, $lng]);";
-                echo "marker.bindPopup(\"" . addslashes($popupContent) . "\");";
-                echo "markers.addLayer(marker);";
-                    }
-            }
-            ?>
-            
-            // Ajouter le groupe de clusters à la carte
             map.addLayer(markers);
-            
-            // Force un recalcul de la taille de la carte
+
             setTimeout(function() {
                 map.invalidateSize();
                 console.log("Carte redimensionnée");
             }, 100);
-            
+
             console.log("Carte Leaflet initialisée avec succès");
         } catch (error) {
             console.error("Erreur lors de l'initialisation de la carte :", error);
