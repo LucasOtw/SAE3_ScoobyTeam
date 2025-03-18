@@ -839,10 +839,10 @@ include("recupInfosCompte.php");
                                 </span>
                                 <?php 
                                 if ($avis["blacklister"]) { 
-                                        ?>
-                                        <img src="images/icones/jeton.png" alt="jeton" class="jeton" >
-                                        <?php
-                                        }
+                                ?>
+                                    <img src="images/icones/jeton.png" alt="jeton" class="jeton" >
+                                <?php
+                                }
                                 ?>
                             </div>
                         <?php else: ?>
