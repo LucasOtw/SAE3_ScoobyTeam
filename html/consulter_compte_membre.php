@@ -249,12 +249,6 @@ if (isset($_POST['changePhoto'])) {
 $url_photo = parse_url($compte_pp);
 $path_photo = $url_photo['path'];
 
-if(file_exists($_SERVER['DOCUMENT_ROOT'].trim($path_photo))){
-    echo "lol";
-} else {
-    echo "my bad";
-}
-
 
 // Configuration des chemins et noms de fichiers
 const JSON_FILENAME = 'mes_donnees_PACT.json';
