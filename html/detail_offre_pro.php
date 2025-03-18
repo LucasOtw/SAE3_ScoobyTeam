@@ -839,20 +839,20 @@ include("recupInfosCompte.php");
                                 <span class="nom_avis"
                                     style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?>
                                 </span>
+                            </div>
+                        <?php else: ?>
+                            <div class="note_prenom">
+                                <?php echo htmlspecialchars($avis['note']) . '.0 ' . $appreciation . " "; ?> |
+                                <span class="nom_avis"
+                                    style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?>
+                                </span>
                                 <?php 
-                                echo $avis["blacklister"];
                                 if ($avis["blacklister"]) { 
                                 ?>
                                     <img src="images/icones/jeton.png" alt="jeton" class="jeton" >
                                 <?php
                                 }
                                 ?>
-                            </div>
-                        <?php else: ?>
-                            <div class="note_prenom">
-                                <?php echo htmlspecialchars($avis['note']) . '.0 ' . $appreciation . " "; ?> |
-                                <span class="nom_avis"
-                                    style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?></span>
                             </div>
                         <?php endif; ?>
                         <style>
