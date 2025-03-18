@@ -230,48 +230,53 @@ function tempsEcouleDepuisNotif($avis)
     </a>
         </div>
     </section>
-   <section class="offers">
-    <?php foreach ($mesOffres as $monOffre): ?>
+    <section class="offers">
         <?php
-        // Appliquer le filtre
-        if (
-            ($filter === "online" && !$monOffre["en_ligne"]) ||
-            ($filter === "offline" && $monOffre["en_ligne"])
-        ) {
-            continue;
-        }
-        ?>
-        <form action="detail_offre_pro.php" method="POST" class="offer-form">
-            <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($monOffre)); ?>">
-            <div class="offer-card" onclick="this.closest('form').requestSubmit();">
+        foreach ($mesOffres as $monOffre) {
+            // Appliquer le filtre
+            if (
+                ($filter === "online" && !$monOffre["en_ligne"]) ||
+                ($filter === "offline" && $monOffre["en_ligne"])
+            ) {
+                continue;
+            }
+            ?>
+            <div class="offer-card">
                 <div class="offer-image">
                     <img src="<?php echo $monOffre['url_images'][0]; ?>" alt="Offre">
-                    <div class="offer-status <?php echo $monOffre['en_ligne'] ? 'status-online' : 'status-offline'; ?>">
-                        <p><?php echo $monOffre['en_ligne'] ? 'En Ligne' : 'Hors Ligne'; ?></p>
+                    <div
+                        <?php if (!$monOffre["en_ligne"]) { 
+                            ?> <div class="offer-status status-offline"><p>Hors Ligne</p>
+                        <?php } 
+                            else {
+                            ?> <div class="offer-status status-online"><p>En Ligne</p>
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="offer-info">
                     <h3><?php echo $monOffre['titre_offre']; ?></h3>
                     <p class="category"><?php echo $monOffre['_resume']; ?></p>
-                    <p class="update"><span class="update-icon">⟳</span> Update <?php echo strtolower(tempsEcouleDepuisUpdate($monOffre)); ?></p>
-                    <p class="last-update">
-                        <?php echo $monOffre['en_ligne'] ? 'Publiée ' . strtolower(tempsEcouleDepuisPublication($monOffre)) : "N'est pas publiée"; ?>
-                    </p>
+                    <p class="update"><span class="update-icon">⟳</span> Update <?php echo strtolower(tempsEcouleDepuisUpdate($monOffre)) ?></p>
+                    <p class="last-update"><?php if ($monOffre['en_ligne']) { ?>Publiée <?php echo strtolower(tempsEcouleDepuisPublication($monOffre)) ?> <?php } else { echo "N'est pas publiée" ; } ?></p>
                     <p class="offer-type"><?php echo $monOffre['nom_type']; ?></p>
                     <p class="price"><?php echo $monOffre['tarif']; ?>€</p>
                 </div>
+                <form id="add-btn" action="detail_offre_pro.php" method="POST">
+                    <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($monOffre)); ?>">
+                    <input id="btn-voir-offre" class="button-text add-btn_pro" type="submit" name="vueDetails" value="+">
+                </form>
             </div>
-        </form>
-    <?php endforeach; ?>
-
-    <a href="creation_offre.php" class="button-text">
-        <button class="image-button">
-            Publiez une offre
-            <img src="images/croix.png">
-        </button>
-    </a>
-</section>
-
+            <?php
+        }
+        ?>
+        <a href="creation_offre.php" class="button-text">
+                <button class="image-button">
+                    Publiez une offre
+                    <img src="images/croix.png">
+                </button>
+        </a>
+        
+    </section>
     
 </main>
 <footer class="footer footer_pro">
