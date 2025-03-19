@@ -20,4 +20,13 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
                         <input type="submit" value="Envoyer">
                 </form>
         </body>
+        <script>
+                document.addEventListener('DOMContentLoaded',function(){
+                        let monForm = document.getElementById('formulaire');
+                        monForm.addEventListener('submit',(e) =>{
+                                e.preventDefault();
+                                console.log("HAHAHAHAHAHAHA");
+                        });
+                });
+        </script>
 </html>
