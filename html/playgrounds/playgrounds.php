@@ -22,6 +22,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
         </body>
         <script>
                 document.addEventListener('DOMContentLoaded',function(){
+                        console.log("test");
                         let monForm = document.getElementById('formulaire');
                         monForm.addEventListener('submit',(e) =>{
                                 e.preventDefault();
