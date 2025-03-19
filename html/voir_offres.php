@@ -1405,9 +1405,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }).addTo(map);
 
             var markers = L.markerClusterGroup({
-                // Désactiver le zoom lors du clic sur un cluster
                 zoomToBoundsOnClick: true,
-                // Configuration pour éviter que les popups se ferment lorsqu'on clique sur un cluster
                 spiderfyOnMaxZoom: true,
                 showCoverageOnHover: true,
                 disableClusteringAtZoom: 16
@@ -1443,7 +1441,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     $url_maps = "https://www.google.com/maps/dir/?api=1&destination=" . urlencode($adresse_maps);
 
                     // Contenu de la popup avec styles améliorés
-                    $popupContent = "<div style='width:230px; border-radius:8px; overflow:hidden; font-family:\"K2D\", sans-serif;'>";
+                    $popupContent = "<div class='popup-container' style='width:230px; border-radius:8px; overflow:hidden; font-family:\"K2D\", sans-serif;'>";
 
                     // Image avec overlay dégradé
                     if (!empty($adr['url_image'])) {
@@ -1468,12 +1466,23 @@ document.addEventListener("DOMContentLoaded", function () {
                     $popupContent .= "</div>";
 
                     echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
-                    echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false}).setContent(\"" . addslashes($popupContent) . "\");";
+                    echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false, className: 'custom-popup'}).setContent(\"" . addslashes($popupContent) . "\");";
                     echo "marker.bindPopup(popup);";
                     
-                    // Ajouter les événements de survol
+                    // Ajouter les événements de survol améliorés
                     echo "marker.on('mouseover', function(e) { this.openPopup(); });";
-                    echo "marker.on('mouseout', function(e) { this.closePopup(); });";
+                    
+                    // Utiliser une variable pour suivre l'état de survol
+                    echo "var isMouseOverPopup = false;";
+                    
+                    // Gestion du mouseout sur le marqueur
+                    echo "marker.on('mouseout', function(e) {";
+                    echo "    setTimeout(() => {";
+                    echo "        if (!isMouseOverPopup) {";
+                    echo "            this.closePopup();";
+                    echo "        }";
+                    echo "    }, 50);";
+                    echo "});";
                     
                     echo "markers.addLayer(marker);";
                 }
@@ -1482,11 +1491,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
             map.addLayer(markers);
             console.log("Carte Leaflet avec clusters initialisée avec succès");
+            
+            // Ajouter des écouteurs d'événements aux popups après leur création
+            setTimeout(function() {
+                document.querySelectorAll('.leaflet-popup').forEach(function(popup) {
+                    popup.addEventListener('mouseenter', function() {
+                        isMouseOverPopup = true;
+                    });
+                    
+                    popup.addEventListener('mouseleave', function() {
+                        isMouseOverPopup = false;
+                        // Trouver le marqueur associé et fermer la popup
+                        markers.eachLayer(function(marker) {
+                            if (marker.isPopupOpen()) {
+                                marker.closePopup();
+                            }
+                        });
+                    });
+                });
+            }, 1000); // Attendre que les popups soient créées
+            
+            // Ajouter des écouteurs sur les popups à chaque fois qu'une popup s'ouvre
+            map.on('popupopen', function(e) {
+                setTimeout(function() {
+                    let popup = e.popup._container;
+                    if (popup) {
+                        popup.addEventListener('mouseenter', function() {
+                            isMouseOverPopup = true;
+                        });
+                        
+                        popup.addEventListener('mouseleave', function() {
+                            isMouseOverPopup = false;
+                            e.target.closePopup();
+                        });
+                    }
+                }, 10);
+            });
 
-            // Ajouter une gestion spéciale pour les appareils mobiles
+            // Gestion spéciale pour les appareils mobiles
             if ('ontouchstart' in window) {
                 markers.eachLayer(function(marker) {
-                    // Sur mobile, un tap ouvre le popup et un deuxième le ferme
                     marker.off('mouseover mouseout');
                     marker.on('click', function() {
                         if (this.isPopupOpen()) {
@@ -1512,6 +1556,26 @@ var customIcon = L.icon({
     iconAnchor: [15, 40],
     popupAnchor: [0, -35]
 });
+
+// Ajoutez du CSS pour améliorer l'apparence
+document.head.insertAdjacentHTML('beforeend', `
+    <style>
+    .custom-popup .leaflet-popup-content-wrapper {
+        padding: 0;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 3px 14px rgba(0,0,0,0.2);
+    }
+    .custom-popup .leaflet-popup-content {
+        margin: 0;
+        width: auto !important;
+    }
+    .custom-popup .leaflet-popup-tip-container {
+        left: 50%;
+        margin-left: -10px;
+    }
+    </style>
+`);
 </script>
 </body>
 </html>
