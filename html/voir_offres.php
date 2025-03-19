@@ -1404,25 +1404,32 @@ document.addEventListener("DOMContentLoaded", function () {
                 maxZoom: 20
             }).addTo(map);
 
-            var markers = L.markerClusterGroup();
+            var markers = L.markerClusterGroup({
+                // Désactiver le zoom lors du clic sur un cluster
+                zoomToBoundsOnClick: true,
+                // Configuration pour éviter que les popups se ferment lorsqu'on clique sur un cluster
+                spiderfyOnMaxZoom: true,
+                showCoverageOnHover: true,
+                disableClusteringAtZoom: 16
+            });
 
             <?php
             $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
-                               (SELECT i.url_image 
-                                FROM tripenarvor._son_image si 
-                                JOIN tripenarvor._image i ON si.code_image = i.code_image 
-                                WHERE si.code_offre = o.code_offre 
-                                LIMIT 1) AS url_image
-                               FROM tripenarvor._offre o 
-                               JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
-                               WHERE o.en_ligne = true');
+                           (SELECT i.url_image 
+                            FROM tripenarvor._son_image si 
+                            JOIN tripenarvor._image i ON si.code_image = i.code_image 
+                            WHERE si.code_offre = o.code_offre 
+                            LIMIT 1) AS url_image
+                           FROM tripenarvor._offre o 
+                           JOIN tripenarvor._adresse a ON o.code_adresse = a.code_adresse 
+                           WHERE o.en_ligne = true');
 
-            $api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig"; // Votre clé API Google
+            $api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig";
 
             foreach ($adresses as $adr) {
                 $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
                 $adresse_enc = urlencode($adresse_complete);
-                $adresse_maps = $adresse_complete; // Pour l'URL Google Maps
+                $adresse_maps = $adresse_complete;
 
                 $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
                 $response = file_get_contents($url);
@@ -1433,9 +1440,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     $longitude = $json['results'][0]['geometry']['location']['lng'];
 
                     // URL d'itinéraire Google Maps
-                    $url_maps = "https://www.google.com/maps/search/?api=1&query=" . urlencode($adresse_maps);
+                    $url_maps = "https://www.google.com/maps/dir/?api=1&destination=" . urlencode($adresse_maps);
 
-                    // Contenu de la popup
+                    // Contenu de la popup avec styles améliorés
                     $popupContent = "<div style='width:230px; border-radius:8px; overflow:hidden; font-family:\"K2D\", sans-serif;'>";
 
                     // Image avec overlay dégradé
@@ -1461,7 +1468,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     $popupContent .= "</div>";
 
                     echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
-                    echo "marker.bindPopup(\"" . addslashes($popupContent) . "\");";
+                    echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false}).setContent(\"" . addslashes($popupContent) . "\");";
+                    echo "marker.bindPopup(popup);";
+                    
+                    // Ajouter les événements de survol
+                    echo "marker.on('mouseover', function(e) { this.openPopup(); });";
+                    echo "marker.on('mouseout', function(e) { this.closePopup(); });";
+                    
                     echo "markers.addLayer(marker);";
                 }
             }
@@ -1469,6 +1482,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
             map.addLayer(markers);
             console.log("Carte Leaflet avec clusters initialisée avec succès");
+
+            // Ajouter une gestion spéciale pour les appareils mobiles
+            if ('ontouchstart' in window) {
+                markers.eachLayer(function(marker) {
+                    // Sur mobile, un tap ouvre le popup et un deuxième le ferme
+                    marker.off('mouseover mouseout');
+                    marker.on('click', function() {
+                        if (this.isPopupOpen()) {
+                            this.closePopup();
+                        } else {
+                            this.openPopup();
+                        }
+                    });
+                });
+            }
+
         } catch (error) {
             console.error("Erreur lors de l'initialisation de la carte :", error);
         }
@@ -1483,7 +1512,6 @@ var customIcon = L.icon({
     iconAnchor: [15, 40],
     popupAnchor: [0, -35]
 });
-
 </script>
 </body>
 </html>
