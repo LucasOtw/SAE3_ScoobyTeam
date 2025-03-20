@@ -1581,7 +1581,7 @@ document.head.insertAdjacentHTML('beforeend', `
 
         // Convertir l'HTMLCollection en un tableau
         Array.from(CartesAlaUne).forEach(card => {
-            let formALaUne = card.closest('form');
+            let formALaUne = card.querySelector('form');
             console.log(formALaUne);
         });
     });
