@@ -3,7 +3,7 @@ echo "<h1>Test OTP</h1>";
 
 // Générer un secret OTP
 echo "<h2>1️⃣ Génération du secret OTP</h2>";
-include_once("../generation_secret.php");
+include_once __DIR__ . "../generation_secret.php";
 
 // Afficher le QR Code
 echo "<h2>2️⃣ QR Code (Scanne-le avec Google Authenticator)</h2>";
