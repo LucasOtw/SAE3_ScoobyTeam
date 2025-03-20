@@ -1577,7 +1577,7 @@ document.head.insertAdjacentHTML('beforeend', `
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', function(){
-        
+        let CartesAlaUne = document.getElementsByClassName('card-a-la-une');
     });
 </script>
 </body>
