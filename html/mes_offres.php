@@ -423,7 +423,7 @@ function tempsEcouleDepuisNotif($avis)
             });
         }); */
 
-        documment.addEventListener('DOMContentLoaded', function(){
+        document.addEventListener('DOMContentLoaded', function(){
             document.querySelectorAll('.offer-card').forEach(card => {
                 card.addEventListener('click', function(event){
                     event.preventDefault();
