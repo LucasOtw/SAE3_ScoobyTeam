@@ -1579,7 +1579,7 @@ document.head.insertAdjacentHTML('beforeend', `
     document.addEventListener('DOMContentLoaded', function(){
         let CartesAlaUne = document.getElementsByClassName('card-a-la-une');
         
-        CartesALaUne.forEach(card => {
+        CartesAlaUne.forEach(card => {
             let formALaUne = card.closest('form');
             console.log(formALaUne);
         });
