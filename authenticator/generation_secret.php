@@ -8,6 +8,7 @@ use OTPHP\TOTP;
 // Inclusion de la configuration (connexion BDD)
 require_once __DIR__ . '/../.security/config.php';
 
+
 $code_compte = "test_user"; // À remplacer par la gestion réelle de l’utilisateur
 
 // Vérifier si l’utilisateur a déjà un secret OTP
