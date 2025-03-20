@@ -892,7 +892,7 @@ if($infos_offre !== null){
                                 <input type="time" class="duree" id="duree" data-sync="duree_modif" value="<?php echo htmlspecialchars($infos_offre['duree']); ?>">
 
                                 <label for="langues">Langues</label>
-                                <input type="text" id="langues" data-sync="langues_modif" value="<?php echo htmlspecialchars($infos_offre['visite_guidee']); ?>">
+                                <input type="text" id="langues" data-sync="langues_modif" value="<?php echo (isset($infos_offre['visite_guidee']) ? htmlspecialchars($infos_offre['visite_guidee']) : ""); ?>">
 
                                 <input type="hidden" id="date_modif" name="_date_modif">
                                 <input type="hidden" id="heure_visite_modif" name="_heure_visite_modif">
