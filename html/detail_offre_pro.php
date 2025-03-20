@@ -1099,7 +1099,7 @@ WHERE code_offre = :code_offre
         <footer>
             <div class="footer-links">
                 <div class="logo">
-                    <img src="images/logoBlanc.png" alt="Logo PAVCT">
+                    <img src="images/logo_blanc_pro.png" alt="Logo PAVCT">
                 </div>
                 <div class="link-group">
                     <ul>

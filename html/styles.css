@@ -5087,11 +5087,11 @@ nav.nav-bar-tel {
     border-radius: 15px;
     padding: 15px;
     width: 260px;
-    /* Ajuste selon ton besoin */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
     text-align: left;
+    cursor: pointer;
 }
 
 /* Image */
