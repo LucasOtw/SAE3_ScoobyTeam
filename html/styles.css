@@ -10045,6 +10045,12 @@ body.menu-open #overlay {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(76, 175, 80, 0.5);
     transform: scale(1.00);
     /* Légère mise en avant */
+    transition: transform 0.2s ease-in-out;
+    /* Animation au survol */
+}
+.toute_les_offres_main .offer.en_relief:hover {
+    transform: scale(1.03);
+    /* Mise en avant au survol */
 }
 
 
