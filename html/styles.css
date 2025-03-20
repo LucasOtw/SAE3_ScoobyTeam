@@ -5091,6 +5091,7 @@ nav.nav-bar-tel {
     position: relative;
     overflow: hidden;
     text-align: left;
+    transition: transform 0.2s ease-in-out;
     cursor: pointer;
 }
 
