@@ -3,9 +3,9 @@ require 'vendor/autoload.php';
 use OTPHP\TOTP;
 use PDO;
 
-$pdo = new PDO("mysql:host=localhost;dbname=otp_system", "root", "password", [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-]);
+require_once __DIR__ . ("/../.security/config.php");
+
+$pdo = new PDO($dsn, $username, $password);
 
 $username = "test_user"; // À remplacer par l’authentification réelle
 
@@ -15,7 +15,7 @@ $stmt->execute(['username' => $username]);
 $existingSecret = $stmt->fetchColumn();
 
 if ($existingSecret) {
-    die("❌ Un secret existe déjà pour cet utilisateur.");
+    die("Un secret existe déjà pour cet utilisateur.");
 }
 
 // Générer un secret OTP unique
@@ -23,8 +23,8 @@ $totp = TOTP::generate();
 $secret = $totp->getSecret();
 
 // Stocker en base de données
-$stmt = $pdo->prepare("INSERT INTO users (username, secret) VALUES (:username, :secret)");
+$stmt = $pdo->prepare("INSERT INTO compte_otp (code_compte, code_OTP) VALUES (:username, :secret)");
 $stmt->execute(['username' => $username, 'secret' => $secret]);
 
-echo "✅ Secret OTP généré pour $username : $secret";
+echo "Secret OTP généré pour $username : $secret";
 ?>
