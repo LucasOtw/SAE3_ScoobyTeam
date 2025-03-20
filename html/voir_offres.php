@@ -1575,6 +1575,11 @@ document.head.insertAdjacentHTML('beforeend', `
     </style>
 `);
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        
+    });
+</script>
 </body>
 </html>
 
