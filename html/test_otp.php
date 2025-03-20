@@ -1,4 +1,7 @@
 <?php
+
+ob_start();
+
 echo "<h1>Test OTP</h1>";
 
 // Générer un secret OTP
