@@ -1,21 +1,15 @@
 <?php
-// Inclure l'autoloader de Composer
-require __DIR__ . '/../vendor/autoload.php';
+require '/../vendor/autoload.php';
 
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;
 
-// Le contenu que vous souhaitez coder dans le QR Code (par exemple, une URL)
-$data = "https://www.example.com";
+$data = "je suis raciste";  // Contenu du QR Code
+$qrCode = new QrCode($data);       // Crée le QR Code
+$qrCode->setSize(300);             // Taille du QR Code
+$qrCode->setMargin(10);            // Marge du QR Code
 
-// Créer le QR Code
-$qrCode = new QrCode($data);
-
-// Définir des options pour la taille et la marge du QR Code
-$qrCode->setSize(300);
-$qrCode->setMargin(10);
-
-// Afficher l'image du QR Code dans le navigateur
+// Affichage de l'image PNG
 header('Content-Type: image/png');
 $writer = new PngWriter();
 echo $writer->write($qrCode)->getString();
