@@ -1579,13 +1579,26 @@ document.head.insertAdjacentHTML('beforeend', `
     document.addEventListener('DOMContentLoaded', function(){
         let CartesAlaUne = document.getElementsByClassName('card-a-la-une');
 
-        // Convertir l'HTMLCollection en un tableau
         Array.from(CartesAlaUne).forEach(card => {
             let formALaUne = card.querySelector('form');
             
             card.addEventListener('click', function(e){
                 e.preventDefault();
                 formALaUne.submit();
+            });
+        });
+
+        let CartesNouveautes = document.getElementsByClassName('offer-new');
+
+        Array.from(CartesNouveautes).forEach(card => {
+            let CardDetails = card.getElementsByClassName('offer-new-details');
+            CardDetails.forEach(detailedCard => {
+                let formNouveaute = detailedCard.querySelector('form');
+            });
+
+            card.addEventListener('click',function(e){
+                e.preventDefault();
+                formNouveaute.submit();
             });
         });
     });
