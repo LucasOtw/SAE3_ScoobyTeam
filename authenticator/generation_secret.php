@@ -1,7 +1,7 @@
 <?php
 // Fonction pour générer la clé secrète TOTP
-function generateSecret($length = 32) {
-    $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'; // Base32 characters
+function generateSecret($length = 6) {
+    $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
     $secret = '';
     for ($i = 0; $i < $length; $i++) {
         $secret .= $characters[random_int(0, strlen($characters) - 1)];
