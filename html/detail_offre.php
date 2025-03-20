@@ -63,13 +63,6 @@ function afficherHoraire($jour)
 // Créer une instance PDO avec les bons paramètres
 // $dbh = new PDO($dsn, $username, $password);
 
-// essai dbh
-
-$test = $dbh->prepare('SELECT * FROM tripenarvor._offre_activite');
-$test->execute();
-
-var_dump($test->fetchAll(PDO::FETCH_ASSOC));
-
 $details_offre = null;
 
 if (!isset($_POST['vueDetails']) && !isset($_SESSION['detail_offre'])) {
