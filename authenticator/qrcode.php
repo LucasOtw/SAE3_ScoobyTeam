@@ -1,6 +1,6 @@
 <?php
 // Inclure l'autoload de Composer pour charger les dépendances
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once '/../phpqrcode/qrlib.php';
 
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;
