@@ -7,7 +7,7 @@ use Endroid\QrCode\Writer\PngWriter;
 use PDO;
 
 // Connexion à la base de données
-$pdo = new PDO("mysql:host=localhost;dbname=otp_system", "root", "password");
+$pdo = new PDO($dsn, $username, $password);
 $username = "test_user"; // Remplace par le vrai utilisateur
 
 // Récupérer le secret
