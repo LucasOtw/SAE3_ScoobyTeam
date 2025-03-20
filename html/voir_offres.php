@@ -1577,6 +1577,13 @@ document.head.insertAdjacentHTML('beforeend', `
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', function(){
+
+        /* GESTION DE L'ENVOI DES FORMULAIRES SUR CARDS CLIQUABLES */
+
+
+        // Cartes des offres à la une
+
+
         let CartesAlaUne = document.getElementsByClassName('card-a-la-une');
 
         Array.from(CartesAlaUne).forEach(card => {
@@ -1587,6 +1594,8 @@ document.head.insertAdjacentHTML('beforeend', `
                 formALaUne.submit();
             });
         });
+
+        // Cartes des nouvelles offres
 
         let CartesNouveautes = document.getElementsByClassName('offer-new');
 
@@ -1603,6 +1612,8 @@ document.head.insertAdjacentHTML('beforeend', `
             });
         });
 
+        // Cartes des offres vues récemment
+
         let CartesVuesRecemment = document.getElementsByClassName('card-vu-recemment');
 
         Array.from(CartesVuesRecemment).forEach(card => {
@@ -1616,6 +1627,18 @@ document.head.insertAdjacentHTML('beforeend', `
 
         });
 
+        // Cartes de TOUTES les offres
+
+        let toutesCards = document.getElementById('offers-list').getElementsByClassName('offer');
+
+        Array.from(toutesCards).forEach(card => {
+            let formCard = card.querySelector('form');
+
+            card.addEventListener('click', function(e){
+                e.preventDefault();
+                formCard.submit();
+            });
+        });
     });
 
 </script>
