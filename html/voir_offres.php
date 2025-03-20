@@ -1602,6 +1602,17 @@ document.head.insertAdjacentHTML('beforeend', `
                 formNouveaute.submit();
             });
         });
+
+        let CartesVuesRecemment = document.getElementsByClassName('card-vu-recemment');
+
+        Array.from(CartesVuesRecemment).forEach(card =>){
+            let formVuRecemment = card.closest('form');
+
+            card.addEventListener('click',function(e){
+                e.preventDefault();
+                formVuRecemment.submit();
+            });
+        }
     });
 
 </script>
