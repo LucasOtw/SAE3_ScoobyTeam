@@ -1,16 +1,22 @@
 <?php
-// Inclure la bibliothèque PHP QR Code
-require_once __DIR__ . '/../phpqrcode/qrlib.php';  // Remplacez le chemin si nécessaire
+// Inclure l'autoloader de Composer
+require '/../vendor/autoload.php';
 
-// Contenu du QR Code (ce que vous voulez mettre dans le QR code)
-$data = "https://www.example.com";  // Remplacez par ce que vous voulez dans votre QR code
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
 
-// Chemin où enregistrer le fichier PNG
-$file_path = 'qrcode.png';  // Chemin relatif ou absolu
+// Le contenu que vous souhaitez coder dans le QR Code (par exemple, une URL)
+$data = "https://www.example.com";
 
-// Générer et sauvegarder le QR Code en PNG
-QRcode::png($data, $file_path);
+// Créer le QR Code
+$qrCode = new QrCode($data);
 
-// Afficher un message pour confirmer que l'image a été générée
-echo "Le QR Code a été généré et sauvegardé sous <b>$file_path</b>.";
+// Définir des options pour la taille et la marge du QR Code
+$qrCode->setSize(300);
+$qrCode->setMargin(10);
+
+// Afficher l'image du QR Code dans le navigateur
+header('Content-Type: image/png');
+$writer = new PngWriter();
+echo $writer->write($qrCode)->getString();
 ?>
