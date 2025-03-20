@@ -243,6 +243,7 @@ function tempsEcouleDepuisNotif($avis)
         ?>
         <form action="detail_offre_pro.php" method="POST" class="offer-form">
             <input type="hidden" id="valueOffre" name="uneOffre" value="<?php echo htmlspecialchars(serialize($monOffre)); ?>">
+            <input type="hidden" name="vueDetails" value="1">
             <div class="offer-card">
                 <div class="offer-image">
                     <img src="<?php echo $monOffre['url_images'][0]; ?>" alt="Offre">

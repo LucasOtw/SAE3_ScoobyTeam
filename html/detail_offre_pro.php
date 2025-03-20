@@ -5,8 +5,6 @@ if (headers_sent($file, $line)) {
 ob_start();
 session_start();
 
-var_dump($_POST);
-
 
 function tempsEcouleDepuisPublication($offre)
 {
