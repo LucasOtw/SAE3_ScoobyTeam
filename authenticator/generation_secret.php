@@ -1,7 +1,7 @@
 <?php
 // Inclusion des fichiers nécessaires
-require_once __DIR__ . '/../otphp-11.4.x/src/TOTP.php';
-require_once __DIR__ . '/../otphp-11.4.x/src/HOTP.php';
+require_once("https://github.com/Spomky-Labs/otphp/blob/11.4.x/src/TOTP.php");
+require_once("https://github.com/Spomky-Labs/otphp/blob/11.4.x/src/HOTP.php");
 
 use OTPHP\TOTP;
 
