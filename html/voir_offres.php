@@ -1592,7 +1592,7 @@ document.head.insertAdjacentHTML('beforeend', `
 
         Array.from(CartesNouveautes).forEach(card => {
             let CardDetails = card.getElementsByClassName('offer-new-details');
-            CardDetails.forEach(detailedCard => {
+            Array.from(CardDetails).forEach(detailedCard => {
                 let formNouveaute = detailedCard.querySelector('form');
             });
 
