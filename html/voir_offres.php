@@ -1591,10 +1591,11 @@ document.head.insertAdjacentHTML('beforeend', `
         let CartesNouveautes = document.getElementsByClassName('offer-new');
 
         Array.from(CartesNouveautes).forEach(card => {
-            let CardDetails = card.getElementsByClassName('offer-new-details');
+            let formNouveaute = card.querySelector('form');
+/*             let CardDetails = card.getElementsByClassName('offer-new-details');
             Array.from(CardDetails).forEach(detailedCard => {
                 let formNouveaute = detailedCard.querySelector('form');
-            });
+            }); */
 
             card.addEventListener('click',function(e){
                 e.preventDefault();
