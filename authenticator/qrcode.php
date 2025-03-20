@@ -1,11 +1,7 @@
 <?php
 // Inclusion des fichiers nécessaires
-require_once __DIR__ . '/../otphp-11.4.x/src/TOTP.php';
-require_once __DIR__ . '/../otphp-11.4.x/src/HOTP.php';
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php'; // Assurez-vous que le QR code library est bien installé
 
-
-use OTPHP\TOTP;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;
 use PDO;
@@ -21,7 +17,7 @@ try {
     die("❌ Erreur de connexion à la base de données : " . $e->getMessage());
 }
 
-$code_compte = "test_user"; // Remplace par le vrai utilisateur
+$code_compte = "test_user"; // Remplacez par l'utilisateur réel
 
 // Récupérer le secret OTP de l'utilisateur
 $stmt = $pdo->prepare("SELECT code_OTP FROM compte_otp WHERE code_compte = :code_compte");
@@ -32,12 +28,13 @@ if (!$secret) {
     die("❌ Utilisateur non trouvé ou pas encore enregistré.");
 }
 
-// Générer l’URL OTP pour l'application Google Authenticator
-$totp = TOTP::create($secret);
-$totp->setLabel("MonApplication");
+// Générer l'URL OTP (provisioning URI) pour l'application Google Authenticator
+$issuer = 'MonApplication';
+$label = urlencode($code_compte); // Label pour l'application, ici basé sur le compte utilisateur
+$provisioningUri = "otpauth://totp/{$issuer}:{$label}?secret={$secret}&issuer={$issuer}";
 
 // Générer le QR Code
-$qrCode = QrCode::create($totp->getProvisioningUri())
+$qrCode = QrCode::create($provisioningUri)
     ->setSize(300)
     ->setMargin(10);
 
