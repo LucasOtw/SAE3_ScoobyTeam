@@ -1578,13 +1578,14 @@ document.head.insertAdjacentHTML('beforeend', `
 <script>
     document.addEventListener('DOMContentLoaded', function(){
         let CartesAlaUne = document.getElementsByClassName('card-a-la-une');
-        
-        CartesAlaUne.forEach(card => {
+
+        // Convertir l'HTMLCollection en un tableau
+        Array.from(CartesAlaUne).forEach(card => {
             let formALaUne = card.closest('form');
             console.log(formALaUne);
         });
     });
-    
+
 </script>
 </body>
 </html>
