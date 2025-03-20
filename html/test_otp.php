@@ -7,12 +7,12 @@ include_once __DIR__ . "/../authenticator/generation_secret.php";
 
 // Afficher le QR Code
 echo "<h2>2️⃣ QR Code (Scanne-le avec Google Authenticator)</h2>";
-echo '<img src="../authenticator/qrcode.php" alt="QR Code OTP">';
+echo '<img src="/../authenticator/qrcode.php" alt="QR Code OTP">';
 
 // Formulaire pour tester la vérification OTP
 echo '<h2>3️⃣ Tester un code OTP</h2>';
 ?>
-<form method="POST" action="../authenticator/verification_otp.php">
+<form method="POST" action="/../authenticator/verification_otp.php">
     <input type="text" name="otp" placeholder="Entrez votre code OTP" required>
     <button type="submit">Vérifier</button>
 </form>
