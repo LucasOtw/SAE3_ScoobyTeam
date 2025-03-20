@@ -1,6 +1,6 @@
 <?php
 // Inclure la bibliothèque PHP QR Code
-require_once '/../phpqrcode/qrlib.php';  // Remplacez le chemin si nécessaire
+require_once __DIR__ . '/../phpqrcode/qrlib.php';  // Remplacez le chemin si nécessaire
 
 // Contenu du QR Code (ce que vous voulez mettre dans le QR code)
 $data = "https://www.example.com";  // Remplacez par ce que vous voulez dans votre QR code
