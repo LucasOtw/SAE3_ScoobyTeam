@@ -9,8 +9,6 @@ include_once __DIR__ . "/../authenticator/generation_secret.php";
 echo "<h2>2️⃣ QR Code (Scanne-le avec Google Authenticator)</h2>";
 echo '<img src="qrcode.png" alt="QR Code">';
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 // Formulaire pour tester la vérification OTP
 echo '<h2>3️⃣ Tester un code OTP</h2>';
