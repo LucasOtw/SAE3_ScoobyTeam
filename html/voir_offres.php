@@ -1605,14 +1605,19 @@ document.head.insertAdjacentHTML('beforeend', `
 
         let CartesVuesRecemment = document.getElementsByClassName('card-vu-recemment');
 
-        Array.from(CartesVuesRecemment).forEach(card =>){
+        Array.from(CartesVuesRecemment).forEach(card => {
+
             let formVuRecemment = card.closest('form');
 
-            card.addEventListener('click',function(e){
+            card.addEventListener('click', function(e){
+
                 e.preventDefault();
                 formVuRecemment.submit();
+
             });
-        }
+
+        });
+
     });
 
 </script>
