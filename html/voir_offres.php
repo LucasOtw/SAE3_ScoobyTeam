@@ -1584,6 +1584,7 @@ document.head.insertAdjacentHTML('beforeend', `
             console.log(formALaUne);
         });
     });
+    
 </script>
 </body>
 </html>
