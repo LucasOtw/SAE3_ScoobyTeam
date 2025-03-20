@@ -358,15 +358,13 @@ function tempsEcouleDepuisPublication($offre){
                                     <article class="card-a-la-une">
                                         <form id="form-voir-offre" action="detail_offre.php" method="POST" class="form-voir-offre">
                                             <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
+                                            <input type="hidden" name="vueDetails" value="1">
                                             <div class="image-background-card-a-la-une">
                                                 <img src="<?php echo './'.$offre_image['url_image']; ?>" alt="">
                                                 <div class="raison-sociale-card-a-la-une">
                                                     <p><?php echo $offre["titre_offre"]; ?></p>
-                                                   
-                                                    <!-- Le bouton est maintenant juste après le texte dans la même zone -->
-                                                    <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
                                                 </div>
-                                                
+                                            
                                             </div>
                                         </form>
                                     </article>
@@ -591,7 +589,7 @@ function tempsEcouleDepuisPublication($offre){
 
                                     
                                         <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
-                                        <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
+                                        <input type="hidden" name="vueDetails" value="1">
                                     </form>
                                 </div>
                         
@@ -691,13 +689,12 @@ function tempsEcouleDepuisPublication($offre){
                                         <article class="card-vu-recemment">
                                             <form id="form-voir-offre" action="detail_offre.php" method="POST" class="form-voir-offre">
                                                 <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
+                                                <input type="hidden" name="vueDetails" value="1">
                                                 <div class="image-background-card-vu-recemment">
                                                     <img src="<?php echo './'.$offre_image['url_image']; ?>" alt="">
                                                     <div class="raison-sociale-card-vu-recemment">
                                                         <p><?php echo $offre["titre_offre"]; ?></p>
                                                        
-                                                        <!-- Le bouton est maintenant juste après le texte dans la même zone -->
-                                                        <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
                                                     </div>
                                                     
                                                 </div>
@@ -949,7 +946,8 @@ function tempsEcouleDepuisPublication($offre){
                                             
                                     <form id="form-voir-offre" action="detail_offre.php" method="POST">
                                         <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
-                                        <input id="btn-voir-offre" type="submit" name="vueDetails" value="Voir l'offre &#10132;">
+                                        <input type="hidden" name="vueDetails" value="1">
+
                                     </form>
                                     
                                 </div>
