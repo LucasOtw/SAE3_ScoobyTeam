@@ -367,7 +367,7 @@ if (isset($_POST['modif_infos'])){
     <footer class="footer footer_pro">
         <div class="footer-links">
             <div class="logo">
-                <img src="images/logoBlanc.png" alt="Logo PACT">
+                <img src="images/logo_blanc_pro.png" alt="Logo PACT">
             </div>
             <div class="link-group">
                 <ul>

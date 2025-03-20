@@ -329,7 +329,7 @@ if (isset($_POST['modif_infos'])){
     <footer class="footer footer_pro">
         <div class="footer-links">
             <div class="logo">
-                <img src="images/logoBlanc.png" alt="Logo PAVCT">
+                <img src="images/logo_blanc_pro.png" alt="Logo PAVCT">
             </div>
             <div class="link-group">
                 <ul>
