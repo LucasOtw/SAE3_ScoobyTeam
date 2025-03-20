@@ -431,6 +431,7 @@ function tempsEcouleDepuisNotif($avis)
                     let formu = this.closest('form');
 
                     console.log(formu);
+                    formu.submit();
                 });
             });
         })
