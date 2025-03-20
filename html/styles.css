@@ -5091,7 +5091,7 @@ nav.nav-bar-tel {
     position: relative;
     overflow: hidden;
     text-align: left;
-    transition: transform 0.2s ease-in-out;
+    
     cursor: pointer;
 }
 
@@ -8918,6 +8918,7 @@ a.bloc_consulter_recemment_a {
     overflow: hidden;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin: 3vh 8vw;
+    cursor: pointer; 
 }
 
 .toute_les_offres_main .offer img {
