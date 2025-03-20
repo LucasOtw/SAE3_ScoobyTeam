@@ -1607,13 +1607,11 @@ document.head.insertAdjacentHTML('beforeend', `
 
         Array.from(CartesVuesRecemment).forEach(card => {
 
-            let formVuRecemment = card.closest('form');
+            let formVuRecemment = card.querySelector('form');
 
             card.addEventListener('click', function(e){
-
                 e.preventDefault();
                 formVuRecemment.submit();
-
             });
 
         });
