@@ -1583,10 +1583,10 @@ document.head.insertAdjacentHTML('beforeend', `
         Array.from(CartesAlaUne).forEach(card => {
             let formALaUne = card.querySelector('form');
             
-            card.addEventListener('click', function(e)){
+            card.addEventListener('click', function(e){
                 e.preventDefault();
                 formALaUne.submit();
-            }
+            });
         });
     });
 
