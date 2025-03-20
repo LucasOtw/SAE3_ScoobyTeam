@@ -423,6 +423,18 @@ function tempsEcouleDepuisNotif($avis)
             });
         }); */
 
+        documment.addEventListener('DOMContentLoaded', function(){
+            document.querySelectorAll('.offer-card').forEach(card => {
+                card.addEventListener('click', function(event){
+                    event.preventDefault();
+
+                    let formu = this.closest('form');
+
+                    console.log(formu);
+                });
+            });
+        })
+
     </script>
 </body>
 </html>
