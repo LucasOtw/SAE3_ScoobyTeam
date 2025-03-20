@@ -16,7 +16,7 @@ $stmt->execute(['username' => $username]);
 $secret = $stmt->fetchColumn();
 
 if (!$secret) {
-    die("❌ Utilisateur non trouvé.");
+    die("Utilisateur non trouvé.");
 }
 
 // Générer l’URL OTP
