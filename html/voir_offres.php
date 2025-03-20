@@ -1582,7 +1582,11 @@ document.head.insertAdjacentHTML('beforeend', `
         // Convertir l'HTMLCollection en un tableau
         Array.from(CartesAlaUne).forEach(card => {
             let formALaUne = card.querySelector('form');
-            console.log(formALaUne);
+            
+            card.addEventListener('click', function(e)){
+                e.preventDefault();
+                formALaUne.submit();
+            }
         });
     });
 
