@@ -1578,6 +1578,11 @@ document.head.insertAdjacentHTML('beforeend', `
 <script>
     document.addEventListener('DOMContentLoaded', function(){
         let CartesAlaUne = document.getElementsByClassName('card-a-la-une');
+        
+        CartesALaUne.forEach(card => {
+            let formALaUne = card.closest('form');
+            console.log(formALaUne);
+        });
     });
 </script>
 </body>
