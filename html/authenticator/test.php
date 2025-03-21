@@ -11,7 +11,7 @@ $code_compte = 1;
 
 // Créer un objet TOTP avec un secret
 $totp = TOTP::create();  // Crée un objet TOTP
-$totp->setLabel("MonSite:compte$code_compte");
+$totp->setLabel("MonSite_compte$code_compte"); // Enlever le ":" du label
 $secret = $totp->getSecret();
 
 // Générer l'URL d'initialisation OTP compatible Google Authenticator
