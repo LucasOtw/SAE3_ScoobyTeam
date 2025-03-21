@@ -358,6 +358,7 @@ function tempsEcouleDepuisPublication($offre){
                                     <article class="card-a-la-une">
                                         <form id="form-voir-offre" action="detail_offre.php" method="POST" class="form-voir-offre">
                                             <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($offre)); ?>">
+                                            <input type="hidden" name="vueDetails" value="1">
                                             <div class="image-background-card-a-la-une">
                                                 <img src="<?php echo './'.$offre_image['url_image']; ?>" alt="">
                                                 <div class="raison-sociale-card-a-la-une">
