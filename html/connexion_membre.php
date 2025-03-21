@@ -204,9 +204,12 @@ if(!empty($_POST)){
 
     modal.style.display = "none";
 
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+    });
+
     // Affiche la modale quand on clique sur "Se connecter"
     btn.onclick = function() {
-        form.preventDefault();
         modal.style.display = "block";
     }
 
