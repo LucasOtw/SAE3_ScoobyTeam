@@ -1,7 +1,7 @@
 <?php
 use OTPHP\TOTP;
 
-$clock = new MyClock(); // Your own implementation of a PSR-20 Clock
+$clock = "123456789";
 
 // A random secret will be generated from this.
 // You should store the secret with the user for verification.
