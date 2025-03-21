@@ -1,52 +1,42 @@
 <?php
-// Inclusion des fichiers nécessaires
-require_once __DIR__ . '/../otphp-11.4.x/src/TOTP.php';
-require_once __DIR__ . '/../otphp-11.4.x/src/HOTP.php';
-
+require 'vendor/autoload.php';
 use OTPHP\TOTP;
-use PDO;
 
-session_start();
+// Simuler un compte utilisateur (à remplacer par la session réelle)
+$code_compte = 1;
 
-// Inclusion de la configuration (connexion BDD)
-require_once __DIR__ . '/../.security/config.php';
+// Récupération du code OTP envoyé par le client
+$otp = $_POST['otp_code'] ?? '';
+
+if (empty($otp)) {
+    echo json_encode(['success' => false, 'message' => 'Code OTP manquant']);
+    exit;
+}
+
+// Connexion à la base de données
+require_once __DIR__ . ("/../.security/config.php");
 
 try {
-    $pdo = new PDO($dsn, $username, $password, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-    ]);
-} catch (PDOException $e) {
-    die("Erreur de connexion à la base de données : " . $e->getMessage());
-}
+    // Récupérer le secret OTP du compte
+    $stmt = $pdo->prepare("SELECT code_OTP FROM compte_otp WHERE code_compte = ?");
+    $stmt->execute([$code_compte]);
+    $secret = $stmt->fetchColumn();
 
-// Récupérer l’OTP envoyé par l’utilisateur
-$otp = $_POST['otp'] ?? '';
-$code_compte = "test_user"; // Remplace par l'authentification réelle
+    if (!$secret) {
+        echo json_encode(['success' => false, 'message' => 'Aucun secret OTP trouvé pour ce compte']);
+        exit;
+    }
 
-// Protection brute-force : Limite d’essais (5 max)
-if (!isset($_SESSION['attempts'])) {
-    $_SESSION['attempts'] = 0;
-}
-if ($_SESSION['attempts'] >= 5) {
-    die("Trop d'essais. Réessayez plus tard.");
-}
+    // Vérification avec otphp
+    $totp = \OTPHP\TOTP::create($secret);
+    $isValid = $totp->verify($otp);
 
-// Récupérer le secret OTP de l’utilisateur
-$stmt = $pdo->prepare("SELECT code_OTP FROM compte_otp WHERE code_compte = :code_compte");
-$stmt->execute(['code_compte' => $code_compte]);
-$secret = $stmt->fetchColumn();
+    if ($isValid) {
+        echo json_encode(['success' => true, 'message' => '✅ Code OTP valide']);
+    } else {
+        echo json_encode(['success' => false, 'message' => '❌ Code OTP invalide']);
+    }
 
-if (!$secret) {
-    die("Utilisateur non trouvé ou OTP non configuré.");
+} catch (Exception $e) {
+    echo json_encode(['success' => false, 'message' => 'Erreur : ' . $e->getMessage()]);
 }
-
-// Vérifier l’OTP
-$totp = TOTP::create($secret);
-if ($totp->verify($otp)) {
-    echo "Code OTP valide";
-    $_SESSION['attempts'] = 0; // Réinitialiser les essais après une réussite
-} else {
-    $_SESSION['attempts']++;
-    echo "Code OTP invalide. Tentative " . $_SESSION['attempts'] . "/5";
-}
-?>
