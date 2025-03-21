@@ -1,4 +1,7 @@
 <?php
+
+require __DIR__ . '/vendor/autoload.php';
+
 use OTPHP\TOTP;
 
 $clock = "123456789";
