@@ -12915,26 +12915,4 @@ ul.mentions_legales-sous-list {
     animation: fadeIn 0.4s ease-out;
 }
 
-/* Pour le formulaire */
-.connexion_membre_form-container {
-    display: flex;
-    flex-direction: column; /* Formulaire en colonne */
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-
-.connexion_membre_input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 100%;
-}
-
-.connexion_membre_btn_connecter_pas_de_compte {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
 
