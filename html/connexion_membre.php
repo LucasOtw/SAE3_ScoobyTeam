@@ -179,7 +179,10 @@ if(!empty($_POST)){
             <span class="close">&times;</span>
             <h3>Scanne ce QR Code avec Google Authenticator</h3>
             <img src="https://api.qrserver.com/v1/create-qr-code/?data=otpauth://totp/Monsite:example@example.com?secret=JBSWY3DPEHPK3PXP&issuer=MonSite&algorithm=SHA1&digits=6" alt="QR Code OTP">
-            <button id="submitFormBtn">Envoyer quand même</button>
+            <p>1. Scannez ce QR Code avec votre application</p>
+            <p>2. Copier le code de votre application</p>
+            <p>3. Coller votre code unique sur le</p>
+            <p>site internet</p>
         </div>
     </div>
 
