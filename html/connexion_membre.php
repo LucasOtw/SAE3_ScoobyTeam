@@ -1,225 +1,160 @@
 <?php
-
 ob_start();
 session_start();
-
 require_once __DIR__ . ("/../.security/config.php");
-
 $dbh = new PDO($dsn, $username, $password);
 
-if(!empty($_POST)){
+if (!empty($_POST)) {
     $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
     $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
 
-    // on cherche dans la base de données si le compte existe.
-    $existeUser = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail='$email'");
-    $existeUser->execute();
-    $existeUser = $existeUser->fetch(PDO::FETCH_ASSOC);
+    $stmt = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail = :email");
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if($existeUser){
-        // si l'utilisateur existe, on vérifie d'abord si il est membre.
-        // Car même si l'adresse mail et le mdp sont corrects, si le compte n'est pas lié à un membre, ça ne sert à rien de continuer les vérifications
-        $existeMembre = $dbh->prepare("SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte");
-        $existeMembre->bindParam(':code_compte', $existeUser['code_compte']);
-        $existeMembre->execute();
+    if ($user) {
+        $stmt = $dbh->prepare("SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte");
+        $stmt->bindParam(':code_compte', $user['code_compte']);
+        $stmt->execute();
+        $membre = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $existeMembre = $existeMembre->fetch(PDO::FETCH_ASSOC);
-        if($existeMembre){
-            // Si le membre existe, on vérifie le mot de passe
-            $checkPWD = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :code_compte");
-            $checkPWD->bindParam(':code_compte', $existeUser['code_compte']);
-            $checkPWD->execute();
-
-            $pwd_compte = $checkPWD->fetch();
-
-            if(password_verify($password, $pwd_compte[0])){
-                // les mots de passe correspondent
-                // l'utilisateur peut être connecté
+        if ($membre) {
+            if (password_verify($password, $user['mdp'])) {
+                $_SESSION["membre"] = $user;
                 header('location: voir_offres.php');
-                $_SESSION["membre"] = $existeUser;
-            } else /* MDP Invalide */ {
-                ?> 
-                <style>
-                    <?php echo "div.connexion_membre_form-container form fieldset p.erreur-mot-de-passe-incorect"?>{
-                        display : flex;
-                        align-items: center;
-                    }
-                    <?php echo ".connexion_membre_main fieldset p.erreur-mot-de-passe-incorect img"?>{
-                        width: 10px;
-                        height: 10px;
-                        margin-right: 10px;
-                    }
-                    <?php echo ".connexion_membre_main input.erreur-mot-de-passe-incorect"?>{
-                        border: 1px solid red;
-                    }
-                </style>
-                <?php
+                exit();
+            } else {
+                $erreur = 'mot_de_passe';
             }
-        } else /* Utilisateur Membre Inexistant */ {
-            ?> 
-            <style>
-                <?php echo "div.connexion_membre_form-container form fieldset p.erreur-membre-inconnu"?>{
-                    display : flex;
-                    align-items: center;
-                }
-                <?php echo ".connexion_membre_main fieldset p.erreur-membre-inconnu img"?>{
-                    width: 10px;
-                    height: 10px;
-                    margin-right: 10px;
-                }
-                <?php echo ".connexion_membre_main input.erreur-membre-inconnu"?>{
-                    border: 1px solid red;
-                }
-            </style>
-            <?php
+        } else {
+            $erreur = 'membre';
         }
-    } else /* Utilisateur Inexistant */ {
-        ?> 
-            <style>
-                <?php echo "div.connexion_membre_form-container form fieldset p.erreur-user-inconnu"?>{
-                    display : flex;
-                    align-items: center;
-                }
-                <?php echo ".connexion_membre_main fieldset p.erreur-user-inconnu img"?>{
-                    width: 10px;
-                    height: 10px;
-                    margin-right: 10px;
-                }
-                <?php echo ".connexion_membre_main input.erreur-user-inconnu"?>{
-                    border: 1px solid red;
-                }
-            </style>
-            <?php
+    } else {
+        $erreur = 'utilisateur';
     }
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Se connecter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-
-
+    <style>
+        .erreur-message {
+            display: flex;
+            align-items: center;
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        .erreur-message img {
+            width: 14px;
+            height: 14px;
+            margin-right: 8px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .modal-content img {
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+        .modal-content button {
+            margin-top: 10px;
+        }
+        .close {
+            position: absolute;
+            top: 10px; right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
 </head>
-
 <body>
-    <header class="header-pc header_membre">
-        <div class="logo-pc">
-            <a href="voir_offres.php">
-                    <img src="images/logoBlanc.png" alt="PACT Logo">
-            </a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="voir_offres.php" >Accueil</a></li>
-                <li><a href="connexion_pro.php">Publier</a></li>
-                <li><a href="#" class="active">Se connecter</a></li>
-            </ul>
-        </nav>
-    </header>
-    <header class="header-tel header_membre">
-        <div class="logo-tel">
-            <img src="images/LogoCouleur.png" alt="PACT Logo">
-        </div>
-         <a class="btn_plus_tard" href="voir_offres.php">Plus tard</a>
-    </header>
-        <h3 class="connexion_membre_ravi">Ravi de vous revoir !</h3>
-        
-    <main class="connexion_membre_main">
-        <div class="connexion_membre_container">
-            <div class="connexion_membre_form-container">
-                <div class="connexion_membre_h2_p">
-                    <h2>Se connecter</h2>
-                    <p>Sauvegardez vos annonces favorites, donnez votre avis sur les offres <br>profitez d'une expérience personnalisée.</p>
-                </div>
-                <form action="connexion_membre.php" method="POST" id="connexionForm">
-                    <fieldset>
-                        <legend>E-mail</legend>
-                        <div class="connexion_membre_input-group">
-                            <input class="erreur-user-inconnu erreur-membre-inconnu" type="email" id="email" name="mail" placeholder="E-mail" required>
-                            <p class="erreur-formulaire-connexion-membre erreur-user-inconnu"><img src="images/icon_informations.png" alt="icon i pour informations">L'utilisateur n'existe pas</p>
-                            <p class="erreur-formulaire-connexion-membre erreur-membre-inconnu"><img src="images/icon_informations.png" alt="icon i pour informations">L'utilisateur n'existe pas en tant que membre </p>
-                        </div>
-                    </fieldset>
+    <h2>Connexion Membre</h2>
 
-                    <fieldset>
-                        <legend>Mot de passe</legend>
-                        <div class="connexion_membre_input-group">
-                            <input class="erreur-mot-de-passe-incorect" type="password" id="password" name="pwd" placeholder="Mot de passe" required>
-                            <p class="erreur-formulaire-connexion-membre erreur-mot-de-passe-incorect"><img src="images/icon_informations.png" alt="icon i pour informations">Mot de passe incorrect</p>
-                        </div>
-                    </fieldset>
-                    
-                    <div class="connexion_membre_btn_connecter_pas_de_compte">
-                        <button class="se_connecter" type="submit" id="connectButton">Se connecter</button>
-                        
-                        <hr>
-                        <div class="connexion_membre_liens_connexion_inscription">
-                            <p><span class="pas_de_compte">Pas de compte ?<a href="creation_compte_membre.php">Inscription</a></p>
-                            <p><span class="connexion_compte_pro">Un compte<a href="connexion_pro.php">Pro </a>?</p>
-                        </div>
-                    </div>
-                    
-                </form>
-            </div>
-            <div class="connexion_membre_image-container">
-                <img src="images/imageConnexionProEau.png" alt="Image de maison en pierre avec de l'eau">
-            </div>
-        </div>
-    </main>
+    <form action="connexion_membre.php" method="POST" id="connexionForm">
+        <label for="email">E-mail</label><br>
+        <input type="email" id="email" name="mail" required>
+        <?php if (isset($erreur) && $erreur == 'utilisateur'): ?>
+            <div class="erreur-message"><img src="images/icon_informations.png">Utilisateur inconnu</div>
+        <?php elseif (isset($erreur) && $erreur == 'membre'): ?>
+            <div class="erreur-message"><img src="images/icon_informations.png">L'utilisateur n'est pas un membre</div>
+        <?php endif; ?>
 
-    <!-- Modal Popup QR Code -->
+        <br><br>
+
+        <label for="password">Mot de passe</label><br>
+        <input type="password" id="password" name="pwd" required>
+        <?php if (isset($erreur) && $erreur == 'mot_de_passe'): ?>
+            <div class="erreur-message"><img src="images/icon_informations.png">Mot de passe incorrect</div>
+        <?php endif; ?>
+
+        <br><br>
+
+        <!-- Bouton qui ouvre la modale -->
+        <button type="button" id="openModalBtn">Se connecter</button>
+    </form>
+
+    <!-- Modale -->
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
+            <h3>Vérification OTP</h3>
             <img src="https://api.qrserver.com/v1/create-qr-code/?data=otpauth://totp/Monsite:example@example.com?secret=JBSWY3DPEHPK3PXP&issuer=MonSite&algorithm=SHA1&digits=6" alt="QR Code OTP">
-            <button id="submitFormBtn">Envoyer quand même</button>
-            <div class="container_explication_qrcode">
-            <p>1. Scannez ce QR Code avec votre application</p>
-            <p>2. Copier le code de votre application</p>
-            <p>3. Coller votre code unique sur le <span class="texte_site_qrcode">site internet</span></p>
-            </div>
+            <p>1. Scannez le QR Code avec votre app d'authentification</p>
+            <p>2. Récupérez le code généré</p>
+            <p>3. Cliquez ci-dessous pour continuer</p>
+            <!-- Bouton réel de soumission -->
+            <button type="submit" id="submitFormBtn">Se connecter quand même</button>
         </div>
     </div>
 
     <script>
-        // Récupère le bouton et la modale
-        var modal = document.getElementById("myModal");
-        var btn = document.getElementById("connectButton");
-        var submitBtn = document.getElementById("submitFormBtn");
-        var span = document.getElementsByClassName("close")[0];
-        var form = document.getElementById("connexionForm");
+        window.onload = function () {
+            const modal = document.getElementById("myModal");
+            const openBtn = document.getElementById("openModalBtn");
+            const closeBtn = document.getElementsByClassName("close")[0];
+            const form = document.getElementById("connexionForm");
+            const submitBtn = document.getElementById("submitFormBtn");
 
-        modal.style.display = "none";
+            openBtn.onclick = function () {
+                modal.style.display = "block";
+            }
 
-        // Ouvre la modale lorsque le bouton est cliqué
-        btn.onclick = function() {
-            form.preventDefault();
-            modal.style.display = "block";
-        }
-
-        // Ferme la modale lorsque l'utilisateur clique sur (x)
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // Ferme la modale si l'utilisateur clique à l'extérieur de la modale
-        window.onclick = function(event) {
-            if (event.target == modal) {
+            closeBtn.onclick = function () {
                 modal.style.display = "none";
             }
-        }
 
-        // Soumettre le formulaire lorsque "Envoyer quand même" est cliqué
-        submitBtn.onclick = function() {
-            form.submit();
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            submitBtn.onclick = function () {
+                form.submit();
+            }
         }
     </script>
 </body>
-
 </html>
