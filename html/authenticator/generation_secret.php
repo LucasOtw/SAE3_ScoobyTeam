@@ -10,13 +10,12 @@ header('Content-Type: text/html; charset=utf-8');
 // Simuler un compte (à adapter avec ta session si besoin)
 $code_compte = 1;
 
-// Générer le TOTP
-$totp = TOTP::create();
-$totp->setLabel("MonSite:compte$code_compte");
+// Générer un OTP aléatoire
+$totp = TOTP::generate();  // Génère un secret OTP aléatoire
 $secret = $totp->getSecret();
 
-// Sauvegarder le secret dans la base
-require_once __DIR__ . "/../../.security/config.php";
+// Sauvegarder le secret dans la base de données
+require_once __DIR__ . "/../.security/config.php";
 $stmt = $pdo->prepare("
     INSERT INTO compte_otp (code_compte, code_OTP)
     VALUES (:code_compte, :secret)
@@ -35,7 +34,7 @@ $qrCode = new QrCode($otp_uri);
 $qrCode->setSize(300);
 $qrCode->setMargin(10);
 
-// Sauvegarder le QR Code dans un fichier
+// Sauvegarder le QR Code dans un fichier local
 $qrCodePath = 'qrcode.png';
 $qrCode->writeFile($qrCodePath);
 
