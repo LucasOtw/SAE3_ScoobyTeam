@@ -120,12 +120,14 @@ if(!empty($_POST)){
 
     /* Contenu de la Popup */
     .modal-content {
+        position: relative;
         background-color: #fefefe;
         padding: 20px;
         border: 1px solid #888;
         width: 40%;
-        right: 50%;
+        left: 50%;
         top: 50%;
+        transform: translate(-50%,-50%);
         max-width: 400px;
         display: flex;
         flex-direction: column;
