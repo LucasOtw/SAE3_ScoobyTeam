@@ -12943,32 +12943,31 @@ ul.mentions_legales-sous-list {
     font-size: 1.2em;
 }
 
-/* Bulle d'information qui s'affiche au survol */
-.tooltip::after {
-    content: attr(data-tooltip);
+
+/* Style de la bulle d'information */
+.tooltip-icon:hover::after {
+    content: "L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone.";
     position: absolute;
-    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
+    bottom: 25px; /* Positionne la bulle en dessous de l'icône */
     background-color: #333;
     color: #fff;
-    padding: 5px;
+    padding: 8px;
     font-size: 0.9em;
     border-radius: 5px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s;
-    width: 250px;
-    text-align: center;
-}
-
-/* Apparition de la bulle quand on survole l'icône */
-.tooltip:hover::after {
     opacity: 1;
     visibility: visible;
+    width: 250px;
+    text-align: center;
+    z-index: 10; /* Assure que la bulle soit au-dessus des autres éléments */
+    white-space: nowrap;
 }
 
-
+/* Le reste de la page (pour s'assurer que la bulle est bien visible) */
+.connexion_membre_2fa {
+    position: relative; /* Nécessaire pour que la bulle soit positionnée correctement */
+}
 
 
 
