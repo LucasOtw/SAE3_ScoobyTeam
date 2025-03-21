@@ -104,43 +104,85 @@ if(!empty($_POST)){
     <title>Se connecter</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Style pour la Popup */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4); /* Couleur de fond semi-transparente */
-        }
+    /* Style pour la Popup */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4); /* Couleur de fond semi-transparente */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-        /* Contenu de la Popup */
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 40%;
-        }
+    /* Contenu de la Popup */
+    .modal-content {
+        background-color: #fefefe;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 40%;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-        /* Le bouton de fermeture de la popup */
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
+    /* Le titre de la popup */
+    .modal-content h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
 
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
+    /* Le bouton de fermeture de la popup */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+    }
+
+    /* QR Code */
+    .modal-content img {
+        margin-bottom: 20px;
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Bouton Envoyer quand même */
+    #submitFormBtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    #submitFormBtn:hover {
+        background-color: #45a049;
+    }
+
+</style>
+
 </head>
 
 <body>
