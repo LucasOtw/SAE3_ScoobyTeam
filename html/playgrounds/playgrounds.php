@@ -1,33 +1,17 @@
 <?php
+use OTPHP\TOTP;
 
-require_once __DIR__ . ("/../../.security/config.php");
+$clock = new MyClock(); // Your own implementation of a PSR-20 Clock
 
-if($_SERVER['REQUEST_METHOD'] === "POST"){
-        var_dump($_POST);
-}
+// A random secret will be generated from this.
+// You should store the secret with the user for verification.
+$otp = TOTP::generate($clock);
+echo "The OTP secret is: {$otp->getSecret()}\n";
+
+// Note: use your own way to load the user secret.
+// The function "load_user_secret" is simply a placeholder.
+$secret = load_user_secret();
+$otp = TOTP::createFromSecret($secret, $clock);
+echo "The current OTP is: {$otp->now()}\n";
 
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-        <head>
-                <meta charset="utf-8">
-                <title>Mon Formulaire</title>
-        </head>
-        <body>
-                <h1>Mon formulaire</h1>
-                <form id="formulaire" method="POST" action="#">
-                        <input type="hidden" name="monChamp" value="Je suis une banane">
-                        <input type="submit" value="Envoyer">
-                </form>
-        </body>
-        <script>
-                document.addEventListener('DOMContentLoaded',function(){
-                        console.log("test");
-                        let monForm = document.getElementById('formulaire');
-                        monForm.addEventListener('submit',(e) =>{
-                                e.preventDefault();
-                                monForm.submit();
-                        });
-                });
-        </script>
-</html>
