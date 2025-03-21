@@ -272,6 +272,8 @@ if(!empty($_POST)){
         var span = document.getElementsByClassName("close")[0];
         var submitBtn = document.getElementById("submitOTP"); // Nouveau bouton dans la popup
 
+        modal.style.display = "none";
+
         // Ouvre la modale lorsque le bouton "Se connecter" est cliqué
         formConnexion.addEventListener('submit', function(e) {
             e.preventDefault();
