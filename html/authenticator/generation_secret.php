@@ -2,26 +2,41 @@
 require 'vendor/autoload.php';
 use OTPHP\TOTP;
 
-session_start();
-
-// Exemple : récupère l’ID du compte depuis la session ou un test temporaire
+// Simuler un compte utilisateur (à remplacer par la session réelle)
 $code_compte = 1;
 
-$totp = TOTP::create();
-$totp->setLabel('MonSite:utilisateur' . $code_compte);
-$secret = $totp->getSecret();
+// Récupération du code OTP envoyé par le client
+$otp = $_POST['otp_code'] ?? '';
 
-// Connexion à la base (via config.php)
-require_once __DIR__ . ("/../../.security/config.php");
-$stmt = $pdo->prepare("INSERT INTO compte_otp (code_compte, code_OTP) 
-                       VALUES (:code_compte, :secret)
-                       ON DUPLICATE KEY UPDATE code_OTP = :secret");
-$stmt->execute([
-    ':code_compte' => $code_compte,
-    ':secret' => $secret
-]);
+if (empty($otp)) {
+    echo json_encode(['success' => false, 'message' => 'Code OTP manquant']);
+    exit;
+}
 
-// Affiche le QRCode à scanner
-$otp_uri = $totp->getProvisioningUri();
-echo "<img src='https://api.qrserver.com/v1/create-qr-code/?data=" . urlencode($otp_uri) . "' />";
-echo "<p>Secret : $secret</p>";
+// Connexion à la base de données
+require_once __DIR__ . ("/../../.security/config.php");;
+
+try {
+    // Récupérer le secret OTP du compte
+    $stmt = $pdo->prepare("SELECT code_OTP FROM compte_otp WHERE code_compte = ?");
+    $stmt->execute([$code_compte]);
+    $secret = $stmt->fetchColumn();
+
+    if (!$secret) {
+        echo json_encode(['success' => false, 'message' => 'Aucun secret OTP trouvé pour ce compte']);
+        exit;
+    }
+
+    // Vérification avec otphp
+    $totp = \OTPHP\TOTP::create($secret);
+    $isValid = $totp->verify($otp);
+
+    if ($isValid) {
+        echo json_encode(['success' => true, 'message' => '✅ Code OTP valide']);
+    } else {
+        echo json_encode(['success' => false, 'message' => '❌ Code OTP invalide']);
+    }
+
+} catch (Exception $e) {
+    echo json_encode(['success' => false, 'message' => 'Erreur : ' . $e->getMessage()]);
+}
