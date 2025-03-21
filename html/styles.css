@@ -8926,7 +8926,7 @@ a.bloc_consulter_recemment_a {
 }
 
 .toute_les_offres_main .offer:hover {
-    transform: scale(1.03);
+    transform: scale(1.015);
 }
 
 
@@ -10058,7 +10058,7 @@ body.menu-open #overlay {
 }
 
 .toute_les_offres_main .offer.en_relief:hover {
-    transform: scale(1.03);
+    transform: scale(1.015);
     /* Mise en avant au survol */
 }
 
