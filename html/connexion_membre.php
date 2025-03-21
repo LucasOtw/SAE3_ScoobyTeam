@@ -228,11 +228,6 @@ if(!empty($_POST)){
         var span = document.getElementsByClassName("close")[0];
         var form = document.getElementById("connexionForm");
 
-        // Ouvre la modale lorsque le bouton est cliqué
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-
         // Ferme la modale lorsque l'utilisateur clique sur (x)
         span.onclick = function() {
             modal.style.display = "none";
