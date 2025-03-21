@@ -213,10 +213,9 @@ if(!empty($_POST)){
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h3>Double authentification</h3>
-            <h3>Scanne ce QR Code !</h3>
+            <h3>Scanne ce QR Code avec Google Authenticator</h3>
             <img src="https://api.qrserver.com/v1/create-qr-code/?data=otpauth://totp/Monsite:example@example.com?secret=JBSWY3DPEHPK3PXP&issuer=MonSite&algorithm=SHA1&digits=6" alt="QR Code OTP">
-            <button class="se_connecter">Se connecter quand même</button>
+            <button id="submitFormBtn">Envoyer quand même</button>
         </div>
     </div>
 
@@ -227,6 +226,11 @@ if(!empty($_POST)){
         var submitBtn = document.getElementById("submitFormBtn");
         var span = document.getElementsByClassName("close")[0];
         var form = document.getElementById("connexionForm");
+
+        // Ouvre la modale lorsque le bouton est cliqué
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
 
         // Ferme la modale lorsque l'utilisateur clique sur (x)
         span.onclick = function() {
