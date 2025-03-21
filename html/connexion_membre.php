@@ -181,8 +181,7 @@ if(!empty($_POST)){
             <div class="container_explication_qrcode">
             <p>1. Scannez ce QR Code avec votre application</p>
             <p>2. Copier le code de votre application</p>
-            &nbsp;<p>3. Coller votre code unique sur le</p>
-            <p class="texte_site_qrcode">site internet</p>
+            <p>3. Coller votre code unique sur le <span class="texte_site_qrcode">site internet</span></p>
             </div>
         </div>
     </div>
