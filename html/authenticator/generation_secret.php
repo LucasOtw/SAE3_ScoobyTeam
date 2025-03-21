@@ -11,7 +11,7 @@ $totp->setLabel("MonSite:compte$code_compte");
 $secret = $totp->getSecret();
 
 // Sauvegarder le secret dans la base
-require_once __DIR__ . ("/../.security/config.php");
+require_once __DIR__ . "/../.security/config.php";
 $stmt = $pdo->prepare("
     INSERT INTO compte_otp (code_compte, code_OTP)
     VALUES (:code_compte, :secret)
