@@ -166,6 +166,11 @@ if(!empty($_POST)){
                     </div>
                     
                 </form>
+            <div class="connexion_membre_2fa">
+                <input type="checkbox" id="enable2FA" name="enable2FA">
+                <label for="enable2FA">Activer l’authentification à deux facteurs</label>
+                <p class="info_2fa">⚠️ Une fois activée, cette option est irréversible.</p>
+            </div>
             </div>
             <div class="connexion_membre_image-container">
                 <img src="images/imageConnexionProEau.png" alt="Image de maison en pierre avec de l'eau">
