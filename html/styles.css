@@ -12832,8 +12832,6 @@ ul.mentions_legales-sous-list {
 
 
 
-
-/* Style pour la Popup */
 .modal {
     display: none; /* Assurez-vous que la modale est masquée au départ */
     position: fixed;
@@ -12846,24 +12844,22 @@ ul.mentions_legales-sous-list {
     background-color: rgba(0, 0, 0, 0.4); /* Fond semi-transparent */
     display: flex;
     justify-content: center;
-    align-items: center; /* Cela permet de centrer le contenu verticalement */
+    align-items: center; /* Centrer le contenu */
 }
 
-/* Contenu de la Popup */
 .modal-content {
     background-color: #fefefe;
     padding: 20px;
     border: 1px solid #888;
     width: 40%;
-    border-radius: 8px; /* Ajout des bords arrondis */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre douce */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: flex;
-    flex-direction: column; /* Dispose les éléments en colonne */
-    align-items: center; /* Aligne le contenu au centre */
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
 
-/* Le bouton de fermeture de la popup */
 .close {
     color: #aaa;
     font-size: 28px;
@@ -12880,7 +12876,6 @@ ul.mentions_legales-sous-list {
     cursor: pointer;
 }
 
-/* Bouton "Envoyer quand même" */
 #submitFormBtn {
     background-color: #4CAF50;
     color: white;
@@ -12901,7 +12896,6 @@ ul.mentions_legales-sous-list {
     outline: none;
 }
 
-/* Animation de la popup */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -12914,5 +12908,4 @@ ul.mentions_legales-sous-list {
 .modal-content {
     animation: fadeIn 0.4s ease-out;
 }
-
 
