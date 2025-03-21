@@ -216,7 +216,7 @@ if(!empty($_POST)){
             <h3>Double authentification</h3>
             <h3>Scanne ce QR Code !</h3>
             <img src="https://api.qrserver.com/v1/create-qr-code/?data=otpauth://totp/Monsite:example@example.com?secret=JBSWY3DPEHPK3PXP&issuer=MonSite&algorithm=SHA1&digits=6" alt="QR Code OTP">
-            <button id="submitFormBtn">Envoyer quand même</button>
+            <button class="se_connecter">Se connecter quand même</button>
         </div>
     </div>
 
