@@ -173,7 +173,7 @@ if(!empty($_POST)){
                     <h2>Se connecter</h2>
                     <p>Sauvegardez vos annonces favorites, donnez votre avis sur les offres <br>profitez d'une expérience personnalisée.</p>
                 </div>
-                <form id="form-connexion" action="connexion_membre.php" method="POST">
+                <form action="connexion_membre.php" method="POST" id="connexionForm">
                     <fieldset>
                         <legend>E-mail</legend>
                         <div class="connexion_membre_input-group">
@@ -192,7 +192,7 @@ if(!empty($_POST)){
                     </fieldset>
                     
                     <div class="connexion_membre_btn_connecter_pas_de_compte">
-                        <button class="se_connecter" type="submit" id="connectButton">Se connecter</button>
+                        <button class="se_connecter" type="button" id="connectButton">Se connecter</button>
                         
                         <hr>
                         <div class="connexion_membre_liens_connexion_inscription">
@@ -215,6 +215,7 @@ if(!empty($_POST)){
             <span class="close">&times;</span>
             <h3>Scanne ce QR Code avec Google Authenticator</h3>
             <img src="https://api.qrserver.com/v1/create-qr-code/?data=otpauth://totp/Monsite:example@example.com?secret=JBSWY3DPEHPK3PXP&issuer=MonSite&algorithm=SHA1&digits=6" alt="QR Code OTP">
+            <button id="submitFormBtn">Envoyer quand même</button>
         </div>
     </div>
 
@@ -222,16 +223,14 @@ if(!empty($_POST)){
         // Récupère le bouton et la modale
         var modal = document.getElementById("myModal");
         var btn = document.getElementById("connectButton");
+        var submitBtn = document.getElementById("submitFormBtn");
         var span = document.getElementsByClassName("close")[0];
+        var form = document.getElementById("connexionForm");
 
-        var formConnexion = document.getElementById("form-connexion");
-
-        // Ouvre la modale lorsque le bouton est cliquéx
-
-        formConnexion.addEventListener('submit',(e) =>{
-            e.preventDefault();
+        // Ouvre la modale lorsque le bouton est cliqué
+        btn.onclick = function() {
             modal.style.display = "block";
-        });
+        }
 
         // Ferme la modale lorsque l'utilisateur clique sur (x)
         span.onclick = function() {
@@ -243,6 +242,11 @@ if(!empty($_POST)){
             if (event.target == modal) {
                 modal.style.display = "none";
             }
+        }
+
+        // Soumettre le formulaire lorsque "Envoyer quand même" est cliqué
+        submitBtn.onclick = function() {
+            form.submit();
         }
     </script>
 </body>
