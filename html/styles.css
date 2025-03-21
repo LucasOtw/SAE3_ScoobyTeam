@@ -12863,7 +12863,7 @@ ul.mentions_legales-sous-list {
         cursor: pointer;
     }
 
-    texte_site_qrcode{
+    .texte_site_qrcode{
         color : var(--vert-clair);
     }
 
