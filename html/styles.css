@@ -12846,7 +12846,7 @@ ul.mentions_legales-sous-list {
     background-color: rgba(0, 0, 0, 0.4); /* Fond semi-transparent */
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; /* Cela permet de centrer le contenu verticalement */
 }
 
 /* Contenu de la Popup */
