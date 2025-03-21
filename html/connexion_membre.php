@@ -166,15 +166,15 @@ if(!empty($_POST)){
                     </div>
                     
                 </form>
-            <!-- Nouvelle section pour la 2FA -->
-            <div class="activation_2fa_container">
-                <label for="2fa">
-                    <input type="checkbox" id="2fa" name="2fa">
-                    Activer l'authentification à deux facteurs
-                    <span class="tooltip" data-tooltip="L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone."> ?</span>
-                </label>
-                <p><i>irréversible après activation</i></p>
-            </div>
+            <div class="connexion_membre_2fa">
+            <input type="checkbox" id="enable2FA" name="enable2FA">
+            <label for="enable2FA">Activer l’authentification à deux facteurs</label>
+        
+            <!-- Bulle d'information avec l'explication -->
+            <span class="tooltip" data-tooltip="L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone."> ⚠️</span>
+            
+            <p class="info_2fa">Une fois activée, cette option est irréversible.</p>
+        </div>
             </div>
             <div class="connexion_membre_image-container">
                 <img src="images/imageConnexionProEau.png" alt="Image de maison en pierre avec de l'eau">
