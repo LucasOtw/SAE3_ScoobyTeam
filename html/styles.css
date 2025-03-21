@@ -12833,7 +12833,7 @@ ul.mentions_legales-sous-list {
 
 
 .modal {
-    display: none; /* Assurez-vous que la modale est masquée au départ */
+    display: none; /* Popup est cachée par défaut */
     position: fixed;
     z-index: 1;
     left: 0;
@@ -12844,9 +12844,10 @@ ul.mentions_legales-sous-list {
     background-color: rgba(0, 0, 0, 0.4); /* Fond semi-transparent */
     display: flex;
     justify-content: center;
-    align-items: center; /* Centrer le contenu */
+    align-items: center; /* Centrage vertical et horizontal */
 }
 
+/* Contenu de la Popup */
 .modal-content {
     background-color: #fefefe;
     padding: 20px;
@@ -12860,6 +12861,7 @@ ul.mentions_legales-sous-list {
     justify-content: center;
 }
 
+/* Le bouton de fermeture de la popup */
 .close {
     color: #aaa;
     font-size: 28px;
