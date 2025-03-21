@@ -156,7 +156,7 @@ if(!empty($_POST)){
                     </fieldset>
                     
                     <div class="connexion_membre_btn_connecter_pas_de_compte">
-                        <button class="se_connecter" type="button" id="connectButton">Se connecter</button>
+                        <button class="se_connecter" type="submit" id="connectButton">Se connecter</button>
                         
                         <hr>
                         <div class="connexion_membre_liens_connexion_inscription">
@@ -201,6 +201,7 @@ if(!empty($_POST)){
 
     // Affiche la modale quand on clique sur "Se connecter"
     btn.onclick = function() {
+        form.preventDefault();
         modal.style.display = "block";
     }
 
