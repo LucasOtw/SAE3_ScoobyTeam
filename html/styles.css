@@ -12833,7 +12833,6 @@ ul.mentions_legales-sous-list {
 
 
 
-
 /* Style pour la Popup */
 .modal {
     display: none;
@@ -12844,26 +12843,34 @@ ul.mentions_legales-sous-list {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4); /* Couleur de fond semi-transparente */
+    background-color: rgba(0, 0, 0, 0.4); /* Fond semi-transparent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Contenu de la Popup */
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 40%;
-    border-radius: 8px; /* Ajoute des bords arrondis à la popup */
+    border-radius: 8px; /* Ajout des bords arrondis */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre douce */
+    display: flex;
+    flex-direction: column; /* Dispose les éléments en colonne */
+    align-items: center; /* Aligne le contenu au centre */
+    justify-content: center;
 }
 
 /* Le bouton de fermeture de la popup */
 .close {
     color: #aaa;
-    float: right;
     font-size: 28px;
     font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 .close:hover,
@@ -12882,6 +12889,7 @@ ul.mentions_legales-sous-list {
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
+    margin-top: 20px;
     transition: background-color 0.3s;
 }
 
@@ -12893,7 +12901,7 @@ ul.mentions_legales-sous-list {
     outline: none;
 }
 
-/* Animation pour la popup */
+/* Animation de la popup */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -12905,5 +12913,28 @@ ul.mentions_legales-sous-list {
 
 .modal-content {
     animation: fadeIn 0.4s ease-out;
+}
+
+/* Pour le formulaire */
+.connexion_membre_form-container {
+    display: flex;
+    flex-direction: column; /* Formulaire en colonne */
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.connexion_membre_input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+.connexion_membre_btn_connecter_pas_de_compte {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
