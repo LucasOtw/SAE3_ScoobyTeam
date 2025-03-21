@@ -14,7 +14,7 @@ $totp = TOTP::create();  // Crée un objet TOTP avec un secret aléatoire
 $totp->setLabel("MonSite_compte$code_compte");  // Label pour Google Authenticator (enlever les ":")
 
 // Sauvegarder le secret dans la base de données
-require_once __DIR__ . "/../.security/config.php";
+require_once __DIR__ . "/../../.security/config.php";
 $stmt = $pdo->prepare("
     INSERT INTO compte_otp (code_compte, code_OTP)
     VALUES (:code_compte, :secret)
