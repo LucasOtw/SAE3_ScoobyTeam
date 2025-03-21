@@ -12918,6 +12918,21 @@ ul.mentions_legales-sous-list {
 
 
 
+.connexion_membre_2fa {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.connexion_membre_2fa label {
+    margin-left: 8px;
+}
+
+.connexion_membre_2fa .info_2fa {
+    color: #b20000;
+    font-style: italic;
+    margin-left: 25px;
+    margin-top: 5px;
+}
 
 
 
