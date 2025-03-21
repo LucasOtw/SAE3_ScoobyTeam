@@ -106,16 +106,12 @@ if(!empty($_POST)){
     <style>
     /* Style pour la Popup */
     .modal {
-        display: none;
         position: fixed;
         z-index: 1;
         width: 100%;
         height: 100%;
         overflow: auto;
         background-color: rgba(0, 0, 0, 0.4); /* Couleur de fond semi-transparente */
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 
     /* Contenu de la Popup */
