@@ -10055,10 +10055,7 @@ body.menu-open #overlay {
     transition: transform 0.2s ease-in-out;
     /* Animation au survol */
 }
-.toute_les_offres_main .offer.en_relief:hover {
-    transform: scale(1.03);
-    /* Mise en avant au survol */
-}
+
 
 
 /* Badge pour les cartes spéciales */
