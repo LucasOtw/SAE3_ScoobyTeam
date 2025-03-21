@@ -12835,7 +12835,7 @@ ul.mentions_legales-sous-list {
 
 /* Style pour la Popup */
 .modal {
-    display: none;
+    display: none; /* Assurez-vous que la modale est masquée au départ */
     position: fixed;
     z-index: 1;
     left: 0;
@@ -12914,6 +12914,5 @@ ul.mentions_legales-sous-list {
 .modal-content {
     animation: fadeIn 0.4s ease-out;
 }
-
 
 
