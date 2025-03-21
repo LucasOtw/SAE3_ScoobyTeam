@@ -156,7 +156,7 @@ if(!empty($_POST)){
                     </fieldset>
                     
                     <div class="connexion_membre_btn_connecter_pas_de_compte">
-                        <button class="se_connecter" type="button" id="connectButton">Se connecter</button>
+                        <button class="se_connecter" type="submit" id="connectButton">Se connecter</button>
                         
                         <hr>
                         <div class="connexion_membre_liens_connexion_inscription">
@@ -178,6 +178,7 @@ if(!empty($_POST)){
         <div class="modal-content">
             <span class="close">&times;</span>
             <img src="https://api.qrserver.com/v1/create-qr-code/?data=otpauth://totp/Monsite:example@example.com?secret=JBSWY3DPEHPK3PXP&issuer=MonSite&algorithm=SHA1&digits=6" alt="QR Code OTP">
+            <button id="submitFormBtn">Envoyer quand même</button>
             <div class="container_explication_qrcode">
             <p>1. Scannez ce QR Code avec votre application</p>
             <p>2. Copier le code de votre application</p>
@@ -198,6 +199,7 @@ if(!empty($_POST)){
 
         // Ouvre la modale lorsque le bouton est cliqué
         btn.onclick = function() {
+            form.preventDefault();
             modal.style.display = "block";
         }
 
