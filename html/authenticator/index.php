@@ -1,20 +1,25 @@
 <?php
+
+session_start();
+
 require __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . "/../../.security/config.php";
+require __DIR__ . '/recupInfosCompte.php';
 
 use OTPHP\TOTP;
 
 // Déclarer l'encodage UTF-8
 header('Content-Type: text/html; charset=utf-8');
 
-// Simuler un compte (à adapter avec ta session si besoin)
-$code_compte = 1;
-
 // Créer un objet TOTP
 $totp = TOTP::create();  // Crée un objet TOTP avec un secret aléatoire
-$totp->setLabel("MonSite_compte$code_compte");  // Label pour Google Authenticator (enlever les ":")
+$totp->setLabel("MonSite_compte".$compte['code_compte']."");  // Label pour Google Authenticator (enlever les ":")
 
-// Sauvegarder le secret dans la base de données
-require_once __DIR__ . "/../../.security/config.php";
+// On vérifie si le couple code_compte / code_secret existe
+$getCode = $dbh->prepare("SELECT COUNT(*)
+FROM tripenarvor._compte_OTP
+WHERE code_compte = :code_compte");
+
 $stmt = $dbh->prepare("
     INSERT INTO compte_otp (code_compte, code_OTP)
     VALUES (:code_compte, :secret)
