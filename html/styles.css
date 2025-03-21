@@ -694,7 +694,7 @@ main.creation_compte_pro .checkbox label a {
     text-decoration: none;
 }
 
-main.creation_compte_pro #cgu {
+main.creation_compte_pro #cgu, main.main-consulter-compte-pro #cgu {
     accent-color: #df7519;
 }
 
