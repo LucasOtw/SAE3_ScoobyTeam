@@ -386,15 +386,14 @@ if (isset($_POST['dwl-data'])) {
             </div>
 
         <div class="profile-img-container">
-            <div class="profile-img+icone">
-                <img class="profile-img" src="<?php echo $compte_pp; ?>" alt="Photo de profil">
-                <form action="#" method="POST" enctype="multipart/form-data">
-                    <label for="upload-photo" class="upload-photo-button">
-                        <span class="iconify" data-icon="mdi:camera" data-inline="false"></span>
-                    </label>
-                    <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden required>
-                    <button type="submit" class="modif_photo" name="changePhoto">Enregistrer</button>
-                </form>
+            <img class="profile-img" src="<?php echo $compte_pp; ?>" alt="Photo de profil">
+            <form action="#" method="POST" enctype="multipart/form-data">
+                <label for="upload-photo" class="upload-photo-button">
+                    <span class="iconify" data-icon="mdi:camera" data-inline="false"></span>
+                </label>
+                <input type="file" id="upload-photo" name="profile-photo" accept="image/*" hidden required>
+                <button type="submit" class="modif_photo" name="changePhoto">Enregistrer</button>
+            </form>
             </div>
             <h1><?php echo $monCompteMembre['prenom']." ".$monCompteMembre['nom']." (".$monCompteMembre['pseudo'].")"; ?></h1>
             <p><?php echo $compte['mail']; ?> | <?php echo trim(preg_replace('/(\d{2})/', '$1 ', $compte['telephone'])); ?></p>
@@ -429,7 +428,7 @@ if (isset($_POST['dwl-data'])) {
                 </ul>
             </section>
 
-        <form action="consulter_compte_membre.php" method="POST" id="compteForm">
+        <form action="consulter_compte_membre.php" method="POST" class="compteForm">
 
             <div class="crea_pro_raison_sociale_num_siren">
                 <fieldset>
