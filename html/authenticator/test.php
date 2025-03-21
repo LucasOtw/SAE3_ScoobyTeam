@@ -9,8 +9,9 @@ header('Content-Type: text/html; charset=utf-8');
 // Simuler un compte (à adapter avec ta session si besoin)
 $code_compte = 1;
 
-// Générer un OTP aléatoire
-$totp = TOTP::generate();  // Génère un secret OTP aléatoire
+// Créer un objet TOTP avec un secret
+$totp = TOTP::create();  // Crée un objet TOTP
+$totp->setLabel("MonSite:compte$code_compte");
 $secret = $totp->getSecret();
 
 // Générer l'URL d'initialisation OTP compatible Google Authenticator
