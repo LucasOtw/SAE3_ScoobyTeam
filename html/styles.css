@@ -12862,6 +12862,11 @@ ul.mentions_legales-sous-list {
         cursor: pointer;
     }
 
+    .container_explication_qrcode{
+        display : flex;
+        
+    }
+
     .close:hover,
     .close:focus {
         color: black;

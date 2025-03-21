@@ -178,10 +178,12 @@ if(!empty($_POST)){
         <div class="modal-content">
             <span class="close">&times;</span>
             <img src="https://api.qrserver.com/v1/create-qr-code/?data=otpauth://totp/Monsite:example@example.com?secret=JBSWY3DPEHPK3PXP&issuer=MonSite&algorithm=SHA1&digits=6" alt="QR Code OTP">
+            <div class="container_explication_qrcode">
             <p>1. Scannez ce QR Code avec votre application</p>
             <p>2. Copier le code de votre application</p>
             <p>3. Coller votre code unique sur le</p>
             <p>site internet</p>
+            </div>
         </div>
     </div>
 
