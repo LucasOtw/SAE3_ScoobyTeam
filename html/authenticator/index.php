@@ -15,7 +15,7 @@ $totp->setLabel("MonSite_compte$code_compte");  // Label pour Google Authenticat
 
 // Sauvegarder le secret dans la base de données
 require_once __DIR__ . "/../../.security/config.php";
-$stmt = $pdo->prepare("
+$stmt = $dbh->prepare("
     INSERT INTO compte_otp (code_compte, code_OTP)
     VALUES (:code_compte, :secret)
     ON DUPLICATE KEY UPDATE code_OTP = :secret
