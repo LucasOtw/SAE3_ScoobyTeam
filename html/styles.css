@@ -2867,6 +2867,7 @@ input[type="password"]::placeholder {
 
 .main_consulter_compte_membre label {
     margin-bottom: 0px;
+    font-weight: bold;
 }
 
 .main_consulter_compte_membre input[type="text"],
