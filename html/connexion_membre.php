@@ -1,5 +1,4 @@
 <?php
-
 ob_start();
 session_start();
 
@@ -103,7 +102,6 @@ if(!empty($_POST)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Se connecter</title>
     <link rel="stylesheet" href="styles.css">
-    
 </head>
 
 <body>
@@ -127,7 +125,7 @@ if(!empty($_POST)){
         </div>
          <a class="btn_plus_tard" href="voir_offres.php">Plus tard</a>
     </header>
-        <h3 class="connexion_membre_ravi">Ravi de vous revoir !</h3>
+    <h3 class="connexion_membre_ravi">Ravi de vous revoir !</h3>
         
     <main class="connexion_membre_main">
         <div class="connexion_membre_container">
@@ -191,25 +189,26 @@ if(!empty($_POST)){
         var form = document.getElementById("connexionForm");
 
         // Ouvre la modale lorsque le bouton est cliqué
-        btn.onclick = function() {
-            modal.style.display = "block";
+        btn.onclick = function(event) {
+            event.preventDefault(); // Empêche la soumission immédiate
+            modal.style.display = "flex"; // Affiche la popup
         }
 
         // Ferme la modale lorsque l'utilisateur clique sur (x)
         span.onclick = function() {
-            modal.style.display = "none";
+            modal.style.display = "none"; // Ferme la popup
         }
 
         // Ferme la modale si l'utilisateur clique à l'extérieur de la modale
         window.onclick = function(event) {
             if (event.target == modal) {
-                modal.style.display = "none";
+                modal.style.display = "none"; // Ferme la popup
             }
         }
 
         // Soumettre le formulaire lorsque "Envoyer quand même" est cliqué
         submitBtn.onclick = function() {
-            form.submit();
+            form.submit(); // Soumet le formulaire
         }
     </script>
 </body>
