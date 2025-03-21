@@ -174,50 +174,54 @@ if(!empty($_POST)){
     </main>
 
     <!-- Modal Popup QR Code -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?data=otpauth://totp/Monsite:example@example.com?secret=JBSWY3DPEHPK3PXP&issuer=MonSite&algorithm=SHA1&digits=6" alt="QR Code OTP">
-            <div class="container_explication_qrcode">
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=otpauth://totp/Monsite:example@example.com?secret=JBSWY3DPEHPK3PXP&issuer=MonSite&algorithm=SHA1&digits=6" alt="QR Code OTP">
+        <div class="container_explication_qrcode">
             <p>1. Scannez ce QR Code avec votre application</p>
-            <p>2. Copier le code de votre application</p>
-            <p>3. Coller votre code unique sur le <span class="texte_site_qrcode">site internet</span></p>
-            </div>
+            <p>2. Copiez le code de votre application</p>
+            <p>3. Collez votre code unique sur le <span class="texte_site_qrcode">site internet</span></p>
         </div>
+        <!-- Bouton ajouté -->
+        <button id="submitFormBtn" class="se_connecter_modal">Se connecter quand même</button>
     </div>
+</div>
+
 
     <script>
-        // Récupère le bouton et la modale
-        var modal = document.getElementById("myModal");
-        var btn = document.getElementById("connectButton");
-        var submitBtn = document.getElementById("submitFormBtn");
-        var span = document.getElementsByClassName("close")[0];
-        var form = document.getElementById("connexionForm");
+    // Récupère les éléments
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("connectButton");
+    var submitBtn = document.getElementById("submitFormBtn");
+    var span = document.getElementsByClassName("close")[0];
+    var form = document.getElementById("connexionForm");
 
+    modal.style.display = "none";
+
+    // Affiche la modale quand on clique sur "Se connecter"
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // Ferme la modale en cliquant sur la croix
+    span.onclick = function() {
         modal.style.display = "none";
+    }
 
-        // Ouvre la modale lorsque le bouton est cliqué
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        // Ferme la modale lorsque l'utilisateur clique sur (x)
-        span.onclick = function() {
+    // Ferme la modale si on clique à l'extérieur
+    window.onclick = function(event) {
+        if (event.target == modal) {
             modal.style.display = "none";
         }
+    }
 
-        // Ferme la modale si l'utilisateur clique à l'extérieur de la modale
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+    // Clique sur "Se connecter quand même" => soumet le formulaire
+    submitBtn.onclick = function() {
+        form.submit();
+    }
+</script>
 
-        // Soumettre le formulaire lorsque "Envoyer quand même" est cliqué
-        submitBtn.onclick = function() {
-            form.submit();
-        }
-    </script>
 </body>
 
 </html>
