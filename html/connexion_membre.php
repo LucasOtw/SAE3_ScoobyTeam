@@ -206,12 +206,13 @@ if(!empty($_POST)){
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+        modal.style.display = "block";
     });
 
     // Affiche la modale quand on clique sur "Se connecter"
-    btn.onclick = function() {
+/*     btn.onclick = function() {
         modal.style.display = "block";
-    }
+    } */
 
     // Ferme la modale en cliquant sur la croix
     span.onclick = function() {
