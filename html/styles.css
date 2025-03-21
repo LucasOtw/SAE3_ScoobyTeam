@@ -12887,7 +12887,7 @@ ul.mentions_legales-sous-list {
 
     /* Bouton Envoyer quand même */
     #submitFormBtn {
-        background-color: #4CAF50;
+        background-color: --var(--vert-clair;
         color: white;
         padding: 10px 20px;
         border: none;
@@ -12898,7 +12898,7 @@ ul.mentions_legales-sous-list {
     }
 
     #submitFormBtn:hover {
-        background-color: #45a049;
+        background-color: --var(--vert-clair;
     }
 
 
