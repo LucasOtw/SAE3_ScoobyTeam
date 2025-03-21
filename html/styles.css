@@ -2889,7 +2889,6 @@ input[type="password"]::placeholder {
 
 
 .main_consulter_compte_membre form {
-    margin: 0 10vw;
     border-radius: 8px;
 }
 
@@ -3357,9 +3356,11 @@ nav.nav-bar {
         gap: 0;
     }
 
-    .main_consulter_compte_membre #compteForm {
-        width: 73vw;
-        margin-left: 8vw;
+    .main_consulter_compte_membre .compteForm {
+        /*width: 73vw;
+        margin-left: 8vw;*/
+        margin: 0 10vw;
+               
     }
 
 
