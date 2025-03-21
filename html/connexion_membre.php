@@ -107,11 +107,8 @@ if(!empty($_POST)){
     /* Style pour la Popup */
     .modal {
         display: none;
-        position: absolute;
+        position: fixed;
         z-index: 1;
-        left: 50%;
-        top: 50%;
-        transform: translate(-25%,-25%);
         width: 100%;
         height: 100%;
         overflow: auto;
@@ -127,6 +124,9 @@ if(!empty($_POST)){
         padding: 20px;
         border: 1px solid #888;
         width: 40%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
         max-width: 400px;
         display: flex;
         flex-direction: column;
