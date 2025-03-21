@@ -3207,22 +3207,22 @@ input[type="password"]::placeholder {
 }
 
 .upload-photo-button {
-    position: absolute;
-    bottom: 7.5em;
-    right: 18em;
+    position: relative;
+    bottom: 30px;
+    left: 70px;
+    width: 35px;
+    height: 35px;
     background-color: #4CAF50;
     color: white;
-    border: none;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
 }
+
 
 .upload-photo-button:hover {
     background-color: #45a049;
