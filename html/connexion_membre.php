@@ -5,14 +5,13 @@ session_start();
 
 require_once __DIR__ . ("/../.security/config.php");
 
-$dbh = new PDO($dsn,$username,$password);
+$dbh = new PDO($dsn, $username, $password);
 
 if(!empty($_POST)){
     $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
     $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
 
     // on cherche dans la base de données si le compte existe.
-
     $existeUser = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail='$email'");
     $existeUser->execute();
     $existeUser = $existeUser->fetch(PDO::FETCH_ASSOC);
@@ -21,19 +20,19 @@ if(!empty($_POST)){
         // si l'utilisateur existe, on vérifie d'abord si il est membre.
         // Car même si l'adresse mail et le mdp sont corrects, si le compte n'est pas lié à un membre, ça ne sert à rien de continuer les vérifications
         $existeMembre = $dbh->prepare("SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte");
-        $existeMembre->bindParam(':code_compte',$existeUser['code_compte']);
+        $existeMembre->bindParam(':code_compte', $existeUser['code_compte']);
         $existeMembre->execute();
 
         $existeMembre = $existeMembre->fetch(PDO::FETCH_ASSOC);
         if($existeMembre){
             // Si le membre existe, on vérifie le mot de passe
             $checkPWD = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :code_compte");
-            $checkPWD->bindParam(':code_compte',$existeUser['code_compte']);
+            $checkPWD->bindParam(':code_compte', $existeUser['code_compte']);
             $checkPWD->execute();
 
             $pwd_compte = $checkPWD->fetch();
 
-            if(password_verify($password,$pwd_compte[0])){
+            if(password_verify($password, $pwd_compte[0])){
                 // les mots de passe correspondent
                 // l'utilisateur peut être connecté
                 header('location: voir_offres.php');
@@ -104,6 +103,44 @@ if(!empty($_POST)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Se connecter</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Style pour la Popup */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4); /* Couleur de fond semi-transparente */
+        }
+
+        /* Contenu de la Popup */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 40%;
+        }
+
+        /* Le bouton de fermeture de la popup */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -113,8 +150,6 @@ if(!empty($_POST)){
                     <img src="images/logoBlanc.png" alt="PACT Logo">
             </a>
         </div>
-       
-        
         <nav>
             <ul>
                 <li><a href="voir_offres.php" >Accueil</a></li>
@@ -156,17 +191,8 @@ if(!empty($_POST)){
                         </div>
                     </fieldset>
                     
-                    <!--
-                    <div class="connexion_membre_remember-group">
-                        <div>
-                            <input type="submit" value="Enregistrer">
-                        </div>
-                        <a href="#">Mot de passe oublié ?</a>
-                    </div>
-                
-                -->
                     <div class="connexion_membre_btn_connecter_pas_de_compte">
-                        <button class="se_connecter" type="submit">Se connecter</button>
+                        <button class="se_connecter" type="submit" id="connectButton">Se connecter</button>
                         
                         <hr>
                         <div class="connexion_membre_liens_connexion_inscription">
@@ -176,13 +202,45 @@ if(!empty($_POST)){
                     </div>
                     
                 </form>
-
             </div>
             <div class="connexion_membre_image-container">
                 <img src="images/imageConnexionProEau.png" alt="Image de maison en pierre avec de l'eau">
             </div>
         </div>
     </main>
+
+    <!-- Modal Popup QR Code -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Scanne ce QR Code avec Google Authenticator</h3>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?data=otpauth://totp/Monsite:example@example.com?secret=JBSWY3DPEHPK3PXP&issuer=MonSite&algorithm=SHA1&digits=6" alt="QR Code OTP">
+        </div>
+    </div>
+
+    <script>
+        // Récupère le bouton et la modale
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("connectButton");
+        var span = document.getElementsByClassName("close")[0];
+
+        // Ouvre la modale lorsque le bouton est cliqué
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // Ferme la modale lorsque l'utilisateur clique sur (x)
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Ferme la modale si l'utilisateur clique à l'extérieur de la modale
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 
 </html>
