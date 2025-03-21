@@ -12863,6 +12863,10 @@ ul.mentions_legales-sous-list {
         cursor: pointer;
     }
 
+    texte_site_qrcode{
+        color : var(--vert-clair);
+    }
+
     .container_explication_qrcode{
         display : flex;
         flex-direction: row;
