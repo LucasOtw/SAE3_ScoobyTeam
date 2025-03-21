@@ -173,7 +173,7 @@ if(!empty($_POST)){
                     <h2>Se connecter</h2>
                     <p>Sauvegardez vos annonces favorites, donnez votre avis sur les offres <br>profitez d'une expérience personnalisée.</p>
                 </div>
-                <form action="connexion_membre.php" method="POST">
+                <form id="form-connexion" action="connexion_membre.php" method="POST">
                     <fieldset>
                         <legend>E-mail</legend>
                         <div class="connexion_membre_input-group">
@@ -224,10 +224,14 @@ if(!empty($_POST)){
         var btn = document.getElementById("connectButton");
         var span = document.getElementsByClassName("close")[0];
 
-        // Ouvre la modale lorsque le bouton est cliqué
-        btn.onclick = function() {
+        var formConnexion = document.getElementById("form-connexion");
+
+        // Ouvre la modale lorsque le bouton est cliquéx
+
+        formConnexion.addEventListener('submit',(e) =>{
+            e.preventDefault();
             modal.style.display = "block";
-        }
+        });
 
         // Ferme la modale lorsque l'utilisateur clique sur (x)
         span.onclick = function() {
