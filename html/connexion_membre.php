@@ -126,7 +126,6 @@ if(!empty($_POST)){
         width: 40%;
         right: 50%;
         top: 50%;
-        transform: translate(-50%,-50%);
         max-width: 400px;
         display: flex;
         flex-direction: column;
