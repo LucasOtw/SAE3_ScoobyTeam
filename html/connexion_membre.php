@@ -103,96 +103,13 @@ if(!empty($_POST)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Se connecter</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Style pour la Popup */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4); /* Fond semi-transparent */
-            display: flex;
-            justify-content: center;
-            align-items: center; /* Centrage vertical */
-        }
-
-        /* Contenu de la Popup */
-        .modal-content {
-            background-color: #fefefe;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 40%;
-            border-radius: 8px; /* Bords arrondis */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre douce */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Le bouton de fermeture de la popup */
-        .close {
-            color: #aaa;
-            font-size: 28px;
-            font-weight: bold;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        /* Bouton "Envoyer quand même" */
-        .submit-otp-btn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-            margin-top: 20px;
-            transition: background-color 0.3s;
-        }
-
-        .submit-otp-btn:hover {
-            background-color: #45a049;
-        }
-
-        .submit-otp-btn:focus {
-            outline: none;
-        }
-
-        /* Animation de la popup */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .modal-content {
-            animation: fadeIn 0.4s ease-out;
-        }
-    </style>
 </head>
 
 <body>
     <header class="header-pc header_membre">
         <div class="logo-pc">
             <a href="voir_offres.php">
-                <img src="images/logoBlanc.png" alt="PACT Logo">
+                    <img src="images/logoBlanc.png" alt="PACT Logo">
             </a>
         </div>
         <nav>
@@ -209,7 +126,7 @@ if(!empty($_POST)){
         </div>
          <a class="btn_plus_tard" href="voir_offres.php">Plus tard</a>
     </header>
-    <h3 class="connexion_membre_ravi">Ravi de vous revoir !</h3>
+        <h3 class="connexion_membre_ravi">Ravi de vous revoir !</h3>
         
     <main class="connexion_membre_main">
         <div class="connexion_membre_container">
@@ -218,7 +135,7 @@ if(!empty($_POST)){
                     <h2>Se connecter</h2>
                     <p>Sauvegardez vos annonces favorites, donnez votre avis sur les offres <br>profitez d'une expérience personnalisée.</p>
                 </div>
-                <form id="form-connexion" action="connexion_membre.php" method="POST">
+                <form action="connexion_membre.php" method="POST" id="connexionForm">
                     <fieldset>
                         <legend>E-mail</legend>
                         <div class="connexion_membre_input-group">
@@ -237,7 +154,7 @@ if(!empty($_POST)){
                     </fieldset>
                     
                     <div class="connexion_membre_btn_connecter_pas_de_compte">
-                        <button class="se_connecter" type="submit" id="connectButton">Se connecter</button>
+                        <button class="se_connecter" type="button" id="connectButton">Se connecter</button>
                         
                         <hr>
                         <div class="connexion_membre_liens_connexion_inscription">
@@ -259,45 +176,22 @@ if(!empty($_POST)){
         <div class="modal-content">
             <span class="close">&times;</span>
             <h3>Scanne ce QR Code avec Google Authenticator</h3>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?data=otpauth://totp/Monsite:example@example.com?secret=JBSWY3DPEHPK3PXP&issuer=MonSite&algorithm=SHA1&digits=6" alt="QR Code OTP">
-            <button id="submitOTP" class="submit-otp-btn">Se connecter quand même</button> <!-- Nouveau bouton -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?data=otpauth...
         </div>
     </div>
 
     <script>
-        // Récupère le bouton et la modale
-        var modal = document.getElementById("myModal");
-        var formConnexion = document.getElementById("form-connexion");
+        // Code JavaScript pour ouvrir la modal
+        var modal = document.getElementById('myModal');
         var btn = document.getElementById("connectButton");
         var span = document.getElementsByClassName("close")[0];
-        var submitBtn = document.getElementById("submitOTP"); // Nouveau bouton dans la popup
 
-        modal.style.display = "none";
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
 
-        // Ouvre la modale lorsque le bouton "Se connecter" est cliqué
-        formConnexion.addEventListener('submit', function(e) {
-            e.preventDefault();
-            modal.style.display = "block"; // Ouvre la modale
-        });
-
-        // Ferme la modale lorsque l'utilisateur clique sur (x)
         span.onclick = function() {
             modal.style.display = "none";
         }
 
-        // Ferme la modale si l'utilisateur clique à l'extérieur de la modale
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // Soumet le formulaire lorsque "Se connecter quand même" est cliqué
-        submitBtn.addEventListener("click", function() {
-            formConnexion.submit(); // Soumettre le formulaire
-            modal.style.display = "none"; // Fermer la modale après soumission
-        });
-    </script>
-</body>
-
-</html>
+        // Si l'utilisateur clique n'importe où en dehors
