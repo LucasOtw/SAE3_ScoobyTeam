@@ -187,25 +187,25 @@ if(!empty($_POST)){
         var submitBtn = document.getElementById("submitFormBtn");
         var span = document.getElementsByClassName("close")[0];
         var form = document.getElementById("connexionForm");
-
+        
         // Ouvre la modale lorsque le bouton est cliqué
         btn.onclick = function(event) {
             event.preventDefault(); // Empêche la soumission immédiate
             modal.style.display = "flex"; // Affiche la popup
         }
-
+        
         // Ferme la modale lorsque l'utilisateur clique sur (x)
         span.onclick = function() {
             modal.style.display = "none"; // Ferme la popup
         }
-
+        
         // Ferme la modale si l'utilisateur clique à l'extérieur de la modale
         window.onclick = function(event) {
             if (event.target == modal) {
-                modal.style.display = "none"; // Ferme la popup
+                modal.style.display = "none"; // Ferme la popup si l'on clique en dehors de la modale
             }
         }
-
+        
         // Soumettre le formulaire lorsque "Envoyer quand même" est cliqué
         submitBtn.onclick = function() {
             form.submit(); // Soumet le formulaire
