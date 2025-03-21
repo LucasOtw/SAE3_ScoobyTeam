@@ -12856,11 +12856,11 @@ ul.mentions_legales-sous-list {
 
     /* Le bouton de fermeture de la popup */
     .close {
-        color: #aaa;
-        float: right;
+        color: #000000;
         font-size: 28px;
-        font-weight: bold;
         cursor: pointer;
+        margin-left: 37vw;
+        margin-top: -3vh;
     }
 
     .texte_site_qrcode{
