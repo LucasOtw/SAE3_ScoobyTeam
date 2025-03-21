@@ -1,13 +1,6 @@
 <?php
 ob_start();
 session_start();
-
-/*
-echo "<pre>";
-var_dump($_SESSION);
-echo "</pre>";
-*/
-
 ?>
 
 <!DOCTYPE html>
@@ -16,18 +9,55 @@ echo "</pre>";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Se connecter</title>
-    <link rel="icon" type="image/png" href="images/logoPin_orange.png" width="16px" height="32px">
+    <link rel="icon" type="image/png" href="images/logoPin_orange.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=K2D:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Style d'erreurs */
+        .erreur-formulaire-connexion-pro {
+            display: none;
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        /* Popup OTP */
+        .popup-otp {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .popup-otp-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        .popup-otp-content img {
+            margin: 20px 0;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
 </head>
 
 <body>
     <header class="header_pro">
         <div class="logo">
             <a href="voir_offres.php">
-                    <img src="images/logo_blanc_pro.png" alt="PACT Logo">
+                <img src="images/logo_blanc_pro.png" alt="PACT Logo">
             </a>
         </div>
         <nav>
@@ -38,7 +68,7 @@ echo "</pre>";
             </ul>
         </nav>
     </header>
-    
+
     <main class="connexion_pro_main">
         <div class="connexion_pro_container">
             <div class="connexion_pro_form-container">
@@ -52,8 +82,8 @@ echo "</pre>";
                         <legend>E-mail</legend>
                         <div class="connexion_pro_input-group">
                             <input type="email" name="email" id="email" placeholder="E-mail" required>
-                            <p class="erreur-formulaire-connexion-pro erreur-user-inconnu"><img src="images/icon_informations.png" alt="icon i pour informations">L'utilisateur n'existe pas</p>
-                            <p class="erreur-formulaire-connexion-pro erreur-pro-inconnu"><img src="images/icon_informations.png" alt="icon i pour informations">L'utilisateur n'existe pas en tant que professionnel </p>
+                            <p class="erreur-formulaire-connexion-pro erreur-user-inconnu">L'utilisateur n'existe pas</p>
+                            <p class="erreur-formulaire-connexion-pro erreur-pro-inconnu">L'utilisateur n'est pas professionnel</p>
                         </div>
                     </fieldset>
 
@@ -61,14 +91,14 @@ echo "</pre>";
                         <legend>Mot de passe</legend>
                         <div class="connexion_pro_input-group">
                             <input type="password" name="password" id="password" placeholder="Mot de passe" required>
-                            <p class="erreur-formulaire-connexion-pro erreur-mot-de-passe-incorect"><img src="images/icon_informations.png" alt="icon i pour informations">Mot de passe incorrect</p>
+                            <p class="erreur-formulaire-connexion-pro erreur-mot-de-passe-incorect">Mot de passe incorrect</p>
                         </div>
                     </fieldset>
 
                     <button type="submit">Se connecter</button>
                     <div class="connexion_pro_additional-links">
-                        <p><span class="pas_de_compte">Pas de compte ?<a href="creation_pro.php">Inscription</a></span></p>
-                        <p class="compte_membre">Un compte<a href="connexion_membre.php">Membre </a>?</p>
+                        <p><span class="pas_de_compte">Pas de compte ? <a href="creation_pro.php">Inscription</a></span></p>
+                        <p class="compte_membre">Un compte <a href="connexion_membre.php">Membre</a> ?</p>
                     </div>
                 </form>
             </div>
@@ -78,108 +108,72 @@ echo "</pre>";
         </div>
     </main>
 
-    <?php
-    // Connexion à la base de données
-   require_once __DIR__ . ("/../.security/config.php");
+    <!-- POPUP OTP -->
+    <div id="otpPopup" class="popup-otp">
+        <div class="popup-otp-content">
+            <h3>Validation OTP</h3>
+            <p>Scannez ce QR Code avec votre application OTP</p>
+            <img src="generate_qr.php" alt="QR Code OTP">
+            <br>
+            <button onclick="connectAnyway()">Se connecter quand même</button>
+        </div>
+    </div>
 
+    <script>
+        function showError(selector) {
+            document.querySelector(selector).style.display = "block";
+        }
+
+        function showOTPPopup() {
+            document.getElementById("otpPopup").style.display = "flex";
+        }
+
+        function connectAnyway() {
+            window.location.href = "mes_offres.php";
+        }
+    </script>
+
+    <?php
+    require_once __DIR__ . '/../.security/config.php';
 
     try {
-        // Créer une instance PDO
         $dbh = new PDO($dsn, $username, $password);
-
     } catch (PDOException $e) {
         echo 'Erreur : ' . $e->getMessage();
+        exit;
     }
-    // Vérifier si le formulaire a été soumis
-    if($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)){
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
         $email = trim(htmlspecialchars($_POST['email']));
         $password = trim(htmlspecialchars($_POST['password']));
 
-        // on vérifie que l'adresse mail soit reliée à un compte
+        $stmt = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail = :mail");
+        $stmt->bindParam(":mail", $email);
+        $stmt->execute();
+        $compte = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $codeCompte = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail = :mail");
-        $codeCompte->bindParam(":mail",$email);
-        $codeCompte->execute();
-        $codeCompte = $codeCompte->fetch(PDO::FETCH_ASSOC);
+        if ($compte) {
+            $stmtPro = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel WHERE code_compte = :codeCompte");
+            $stmtPro->bindParam(":codeCompte", $compte['code_compte']);
+            $stmtPro->execute();
+            $isPro = $stmtPro->fetch();
 
-        if ($codeCompte) {
-            // si un compte est trouvé, on vérifie maintenant qu'il soit professionnel
-            // var_dump($codeCompte[0]);  // Commenté ou supprimé pour éviter la sortie avant header
-            $estPro = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel WHERE code_compte = :codeCompte");
-            $estPro->bindParam(":codeCompte", $codeCompte['code_compte']);
-            $estPro->execute();
-            $estPro = $estPro->fetch(PDO::FETCH_ASSOC);
-            
-            if ($estPro) {
-                // si le compte est professionnel, alors on vérifie son mot de passe
-                $mdpPro = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :codeCompte");
-                $mdpPro->bindParam("codeCompte", $codeCompte['code_compte']);
-                $mdpPro->execute();
-                $mdpPro = $mdpPro->fetch();
-                /*
-                echo "MDP : ".$password."";
-                echo "MDP2 : ".$mdpPro[0]."";
-                var_dump(password_verify($password,$mdpPro[0]));
-                */
-                if (password_verify(trim($password), trim($mdpPro[0]))) {
-                    // si le mot de passe est correct
-                    $_SESSION=[];
-                    $_SESSION["pro"] = $codeCompte; // Stocke le code_compte dans la session
-                    header('location: mes_offres.php');
+            if ($isPro) {
+                if (password_verify($password, $compte['mdp'])) {
+                    $_SESSION = [];
+                    $_SESSION["pro"] = $compte;
+
+                    // Affiche la popup OTP
+                    echo "<script>showOTPPopup();</script>";
                     exit;
-                } else /* Mot de passe Invalide */{
-                    ?> 
-                        <style>
-                            <?php echo ".connexion_pro_main fieldset p.erreur-mot-de-passe-incorect"?>{
-                                display : flex;
-                                align-items: center;
-                            }
-                            <?php echo ".connexion_pro_main fieldset p.erreur-mot-de-passe-incorect img"?>{
-                                width: 10px;
-                                height: 10px;
-                                margin-right: 10px;
-                            }
-                            <?php echo ".connexion_pro_main input.erreur-mot-de-passe-incorect"?>{
-                                border: 1px solid red;
-                            }
-                        </style>
-                        <?php
+                } else {
+                    echo "<script>showError('.erreur-mot-de-passe-incorect');</script>";
                 }
-            } else /* Mail Pas Pro */ {
-                ?> 
-                        <style>
-                            <?php echo ".connexion_pro_main fieldset p.erreur-pro-inconnu"?>{
-                                display : flex;
-                                align-items: center;
-                            }
-                            <?php echo ".connexion_pro_main fieldset p.erreur-pro-inconnu img"?>{
-                                width: 10px;
-                                height: 10px;
-                                margin-right: 10px;
-                            }
-                            <?php echo ".connexion_pro_main input.erreur-pro-inconnu"?>{
-                                border: 1px solid red;
-                            }
-                        </style>
-                        <?php
+            } else {
+                echo "<script>showError('.erreur-pro-inconnu');</script>";
             }
-        } else /* Mail Inconnu */{
-            ?> 
-                        <style>
-                            <?php echo ".connexion_pro_main fieldset p.erreur-user-inconnu"?>{
-                                display : flex;
-                                align-items: center;
-                            }
-                            <?php echo ".connexion_pro_main fieldset p.erreur-user-inconnu img"?>{
-                                width: 10px;
-                                height: 10px;
-                                margin-right: 10px;
-                            }
-                            <?php echo ".connexion_pro_main input.erreur-user-inconnu"?>{
-                                border: 1px solid red;
-                            }
-                        </style>
-                        <?php
+        } else {
+            echo "<script>showError('.erreur-user-inconnu');</script>";
         }
     }
     ?>
