@@ -8,7 +8,7 @@ $clock = "123456789";
 
 // A random secret will be generated from this.
 // You should store the secret with the user for verification.
-$otp = TOTP::generate($clock);
+$otp = TOTP::generate();
 echo "The OTP secret is: {$otp->getSecret()}\n";
 
 // Note: use your own way to load the user secret.
