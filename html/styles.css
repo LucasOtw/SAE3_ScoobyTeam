@@ -3168,6 +3168,8 @@ input[type="password"]::placeholder {
 .main_consulter_compte_membre #remember,
 #cgu {
     accent-color: var(--vert-clair);
+    height: 20px;
+    width: 20px;
 }
 
 .profile {
