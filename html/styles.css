@@ -5088,6 +5088,77 @@ nav.nav-bar-tel {
     text-decoration: none;
 }
 
+/* Effet de survol pour les onglets de navigation */
+.main_mes_offres .tabs ul li a:hover {
+    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    transition: border-color 0.3s;
+}
+
+/* Assurer que l'onglet actif conserve sa couleur d'accent même au survol */
+.main_mes_offres .tabs ul li a.active:hover {
+    border-color: #ff6600; /* Maintient la couleur orange pour l'onglet actif */
+}
+
+/* Pour les tabs dans d'autres sections avec accent vert clair */
+.main_consulter_compte_membre .tabs ul li a:hover {
+    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    transition: border-color 0.3s;
+}
+
+.main_consulter_compte_membre .tabs ul li a.active:hover {
+    border-color: var(--vert-clair); /* Maintient la couleur verte pour l'onglet actif */
+}
+
+/* Pour les tabs de la page modifier mot de passe membre */
+.main_modif_mdp_membre .tabs ul li a:hover {
+    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    transition: border-color 0.3s;
+}
+
+.main_modif_mdp_membre .tabs ul li a.active:hover {
+    border-color: var(--vert-clair); /* Maintient la couleur verte pour l'onglet actif */
+}
+
+/* Pour les tabs de la page modification bancaire */
+.main-modif-bancaire .tabs ul li a:hover {
+    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    transition: border-color 0.3s;
+}
+
+.main-modif-bancaire .tabs ul li a.active:hover {
+    border-color: #ff6600; /* Maintient la couleur orange pour l'onglet actif */
+}
+
+/* Pour les tabs dans la page de consultation de compte pro */
+.main-consulter-compte-pro .tabs ul li a:hover {
+    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    transition: border-color 0.3s;
+}
+
+.main-consulter-compte-pro .tabs ul li a.active:hover {
+    border-color: #ff6600; /* Maintient la couleur orange pour l'onglet actif */
+}
+
+/* Pour la page de modification de mot de passe pro */
+.main_modif_mdp_pro .tabs ul li a:hover {
+    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    transition: border-color 0.3s;
+}
+
+.main_modif_mdp_pro .tabs ul li a.active:hover {
+    border-color: #ff6600; /* Maintient la couleur orange pour l'onglet actif */
+}
+
+/* Pour la page d'ajout bancaire */
+.main-ajout-bancaire .tabs ul li a:hover {
+    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    transition: border-color 0.3s;
+}
+
+.main-ajout-bancaire .tabs ul li a.active:hover {
+    border-color: #ff6600; /* Maintient la couleur orange pour l'onglet actif */
+}
+
 /* Carte d'offre */
 .main_mes_offres .offer-card {
     background-color: #f9f9f9;
