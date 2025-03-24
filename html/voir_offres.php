@@ -1463,7 +1463,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     // Boutons d'action
                     $popupContent .= "<div style='display:flex; justify-content:space-between; margin-top:10px;'>";
-                    $popupContent .= "<a href='detail_offre.php?code= ".$adr['code_offre']." ' style='display:inline-block; padding:6px 12px; background-color:#2DD7A4; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;'>Voir l'offre</a>";
+                    $popupContent .= '
+                    <form id="form-voir-offre" action="detail_offre.php" method="POST" class="form-voir-offre">
+                        <input type="hidden" name="code_offre" value="' . htmlspecialchars($adr['code_offre']) . '">
+                        <button type="submit" style="
+                            display:inline-block; 
+                            padding:6px 12px; 
+                            background-color:#2DD7A4; 
+                            color:white; 
+                            text-decoration:none; 
+                            border:none;
+                            border-radius:4px; 
+                            font-size:12px; 
+                            font-weight:500; 
+                            transition:all 0.2s;
+                            cursor:pointer;">
+                            Voir l offre
+                        </button>
+                    </form>';
                     $popupContent .= "<a href='" . $url_maps . "' target='_blank' style='display:inline-block; padding:6px 12px; background-color:#F28322; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;'><span class=\"iconify\" data-icon=\"mdi:navigation\" style=\"font-size: 1.1em; vertical-align: middle; margin-right: 3px;\"></span>Itinéraire</a>";
                     $popupContent .= "</div>";
 
