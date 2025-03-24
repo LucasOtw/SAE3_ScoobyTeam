@@ -1,11 +1,12 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
-include_once __DIR__ . '/recupInfosCompte.php';
 
 use OTPHP\TOTP;
 
 ob_start();
 session_start();
+
+include_once __DIR__ . '/recupInfosCompte.php';
 
 if($_SERVER['REQUEST_METHOD'] === "POST"){
     if(isset($_POST['active2FA'])){
