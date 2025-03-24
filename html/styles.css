@@ -6831,7 +6831,7 @@ select.theme_contacter_plateforme {
     transition: transform 0.2s ease;
 }
 
-.visit-button_detailoffre_pro{
+.visit-button_detailoffre_pro:hover{
     transform: translateY(-2px);
     background-color: var(--orange);
     color: white;
