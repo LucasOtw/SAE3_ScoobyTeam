@@ -188,18 +188,44 @@ if(!empty($_POST)){
         <button id="submitFormBtn" class="se_connecter_modal">Se connecter quand même</button>
     </div>
 </div>
+<div id="modal-otp" class="custom-confirm-content">
+    <form id="envoiCode" action="#" method="POST">
+        <p class="texte-boite-perso">Code à 6 chiffres :</p>
+        <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
+        <input type="submit" value="Envoyer le code">
+        <p id="errorMsg" style="color: red; display: none;">Le code doit contenir exactement 6 chiffres.</p>
+        <button>Se connecter quand même</button>
+    </form>
+</div>
 
 
     <script>
 
     document.addEventListener('DOMContentLoaded', function(){
         // Récupère les éléments
-        var modal = document.getElementById("myModal");
+        var oldModal = document.getElementById("myModal");
+        var modal = document.getElementById("modal-otp");
+
         var btn = document.getElementById("connectButton");
         var submitBtn = document.getElementById("submitFormBtn");
         var span = document.getElementsByClassName("close")[0];
         var form = document.getElementById("connexionForm");
 
+        var champOTP = document.getElementById('otpCode');
+        var errorMsg = document.getElementById('errorMsg');
+        var formOTP = document.getElementById('envoiCode');
+        var btnEnvoiCode = formOTP.querySelector('submit');
+
+        var btnEnvoiQuentin = formOTP.querySelector('button');
+
+        btnEnvoiQuentin.addEventListener('click',function(e){
+            e.preventDefault();
+            form.submit();
+        });
+
+        console.log(btnEnvoiCode);
+
+        oldModal.style.display = "none";
         modal.style.display = "none";
 
         // Affiche la modale quand on clique sur "Se connecter"
@@ -207,17 +233,36 @@ if(!empty($_POST)){
             modal.style.display = "block";
         } */
 
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            modal.style.display = "block";
+        });
+
+        champOTP.addEventListener("input", function () {
+            let errorMsg = document.getElementById("errorMsg");
+
+            // Supprime tout sauf les chiffres et limite à 6 caractères
+            this.value = this.value.replace(/\D/g, "").slice(0, 6);
+
+            // Vérifie si la valeur est bien composée de 6 chiffres
+            if (this.value.length === 6) {
+                errorMsg.style.display = "none"; // Cache le message d'erreur
+            } else {
+                errorMsg.style.display = "block"; // Affiche le message d'erreur
+            }
+        });
+
         // Ferme la modale en cliquant sur la croix
         span.onclick = function() {
             modal.style.display = "none";
         }
 
-        // Ferme la modale si on clique à l'extérieur
+/*         // Ferme la modale si on clique à l'extérieur
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
             }
-        }
+        } */
 
         // Clique sur "Se connecter quand même" => soumet le formulaire
         submitBtn.onclick = function() {
