@@ -250,6 +250,9 @@ if(!empty($_POST)){
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             modal.style.display = "block";
+            if(checkFA.checked){
+                console.log("BONJOUR");
+            }
         });
 
         // Affiche la modale quand on clique sur "Se connecter"
