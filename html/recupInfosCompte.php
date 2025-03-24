@@ -270,6 +270,16 @@
 
 /* AUTHENTIFICATION À DEUX FACTEURS */
 
-echo "<pre>".var_dump($compte)."</pre>";
+// la variable $compte contient le code_compte, peu importe si c'est un pro ou un membre
+
+// on récupère la ligne concernant l'utilisateur si elle existe
+$reqisActivated2FA = $dbh->prepare("SELECT * FROM tripenarvor._compte_otp
+WHERE code_compte = :code_compte");
+$reqisActivated2FA->bindValue(':code_compte',$compte['code_compte']);
+$reqisActivated2FA->execute();
+
+$isActivated2FA = $reqisActivated2FA->fetchColumn();
+
+var_dump($isActivated2FA);
 
 ?>

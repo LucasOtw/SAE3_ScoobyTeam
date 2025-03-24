@@ -1014,7 +1014,7 @@ input[type="email"] {
 }
 
 #notification-popup ul li:hover {
-    background-color: #e0e0e0;
+    background-color: #fafafa;
 }
 
 #notification-popup ul li {
@@ -1023,8 +1023,6 @@ input[type="email"] {
     padding: 8px 0;
     border-bottom: 1px solid #e0e0e0;
     width: 100%;
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
 #notification-popup ul li:last-child {
@@ -1068,6 +1066,7 @@ input[type="email"] {
     font-size: 12px;
     color: #999;
     float: right;
+    margin-right: 10px;
 }
 
 .notification-icon {
@@ -12776,6 +12775,7 @@ ul.mentions_legales-sous-list {
     height: 80px;
     border-radius: 15px;
     object-fit: cover;
+    margin-left: 10px;
 }
 
 
