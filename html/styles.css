@@ -13229,7 +13229,7 @@ ul.mentions_legales-sous-list {
     border: 1px solid orange;
     width: 44vw;
     max-width: 301px;
-    height: 43px;
+    height: 43px; /**/
     color: #FFFFFF;
     border-radius: 11px;
     text-decoration: none;
