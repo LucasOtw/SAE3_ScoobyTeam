@@ -293,7 +293,19 @@ if (isset($_POST['modif_infos'])){
         </div>
     </footer>
     <script>
-        
+        /* CE SCRIPT SERT A LA GÉNÉRATION DU QR CODE
+        ET À L'ACTIVATION DE L'AUTHENTIFICATION À DEUX FACTEURS */
+
+        let btn2FA = document.getElementById('enable2FABtn');
+
+        btn2FA.addEventListener('click', function(){
+            let confirmeActivAuthent = confirm("Voulez-vous vraiment activer l'authentification à deux facteurs ? Cette action sera irréversible !");
+
+            if(confirmeActivAuthent){
+                
+            }
+        });
+
     </script>
 </body>
 </html>

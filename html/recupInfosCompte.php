@@ -49,6 +49,7 @@
     }
 
     $_adresse = $monAdresse->fetch(PDO::FETCH_ASSOC);
+
   } elseif(isset($_SESSION['pro'])){
      $compte = $_SESSION['pro'];
 
@@ -266,5 +267,9 @@
       }
     }
 }
+
+/* AUTHENTIFICATION À DEUX FACTEURS */
+
+echo "<pre>".var_dump($compte)."</pre>";
 
 ?>
