@@ -13295,3 +13295,10 @@ ul.mentions_legales-sous-list {
     color: #F28322;
     font-weight: 600;
 }
+
+.connexion_membre_2fa-pro{
+           width: 885px;
+           margin: 0 auto;
+           padding: 20px;
+           border-radius: 8px;
+}
