@@ -13429,10 +13429,14 @@ ul.mentions_legales-sous-list {
 }
 
 .btn-2fa:disabled{
-    filter: grayscale(100%);
-    text-decoration:line-through;
+    background-color: #C4C4C4;
 }
-
+.btn-2fa:disabled:hover {
+    transform: translateY(-2px);
+    cursor: pointer;
+    background-color:#C4C4C4;
+    color: white;
+}
 .btn-2fa:hover {
     transform: translateY(-2px);
     cursor: pointer;
