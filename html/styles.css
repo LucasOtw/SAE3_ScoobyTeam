@@ -3975,7 +3975,7 @@ div.creation-success::after {
     height: 3px;
     width: 100%;
     background-color: #7CB342;
-    animation: progressBar 5s linear forwards;
+    animation: progressBar 4s linear forwards;
     transform-origin: left;
 }
 
