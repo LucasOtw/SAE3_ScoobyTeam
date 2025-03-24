@@ -1407,7 +1407,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //ajout des controles de la map
             L.control.zoom({
-                position:'topright'
+                position:'topleft'
             }).addTo(map);
 
             var markers = L.markerClusterGroup({
