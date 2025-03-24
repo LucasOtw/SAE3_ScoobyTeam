@@ -13253,10 +13253,6 @@ ul.mentions_legales-sous-list {
     text-decoration:line-through;
 }
 
-.btn-2fa:disabled:hover{
-    all: unset;
-}
-
 .btn-2fa:hover {
     transform: translateY(-2px);
     cursor: pointer;
