@@ -199,12 +199,15 @@ if(!empty($_POST)){
 
     document.addEventListener('DOMContentLoaded', function(){
         // Récupère les éléments
+        var oldModal = document.getElementById("myModal");
         var modal = document.getElementById("modal-otp");
+
         var btn = document.getElementById("connectButton");
         var submitBtn = document.getElementById("submitFormBtn");
         var span = document.getElementsByClassName("close")[0];
         var form = document.getElementById("connexionForm");
 
+        oldModal.style.display = "none";
         modal.style.display = "none";
 
         // Affiche la modale quand on clique sur "Se connecter"
