@@ -13319,16 +13319,31 @@ ul.mentions_legales-sous-list {
     margin-left: 8px;
     cursor: pointer;
 }
+/* Style de la bulle */
+.tooltip {
+    position: relative;
+    cursor: pointer;
+    color: #ffcc00;
+    font-weight: bold;
+    font-size: 1.2em;
+}
 
-/* Style du message d'avertissement */
-.info_2fa {
-    color: #d32f2f;
-    width: 100%;
-    margin-top: 8px;
-    margin-left: 28px;
-    display: flex;
-    align-items: center;
-    font-weight: 500;
+
+/* Style de la bulle d'information */
+.info-icon2:hover::after {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 25px;
+    /* Positionne la bulle en dessous de l'icône */
+    background-color: #333;
+    color: #fff;
+    padding: 8px;
+    font-size: 0.9em;
+    opacity: 1;
+    width: 250px;
+    text-align: center;
+    z-index: 10;
 }
 
 /* Conteneur des icônes d'info */
