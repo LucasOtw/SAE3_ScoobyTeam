@@ -171,7 +171,7 @@ if(!empty($_POST)){
             <label for="enable2FA">Activer l’authentification à deux facteurs</label>
             
             <!-- Icône pour la bulle d'information -->
-            <span class="tooltip-icon">?</span>
+            <span class="info-icon">?</span>
             
 
             <p id="phrase" class="info_2fa" style="display: none;">⚠️ Une fois activée, cette option est irréversible.</p>
