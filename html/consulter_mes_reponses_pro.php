@@ -223,7 +223,7 @@ if (!empty($_POST['supprAvis'])) {
 
         <div class="dernier_avis_offre">
             <?php
-            $avis_de_mes_offres = $bh->prepare('SELECT * from tripenarvor._avis natural join tripenarvor._offre where professionnel = ? and code_compte <> ?;');
+            $avis_de_mes_offres = $dbh->prepare('SELECT * from tripenarvor._avis natural join tripenarvor._offre where professionnel = ? and code_compte <> ?;');
             $avis_de_mes_offres->execute([$_SESSION['pro']['code_compte'], $_SESSION['pro']['code_compte']]);
             $avis_de_mes_offres = $avis_de_mes_offres->fetchAll(PDO::FETCH_ASSOC);
 
