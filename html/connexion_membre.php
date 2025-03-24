@@ -164,6 +164,16 @@ if(!empty($_POST)){
                             <p><span class="connexion_compte_pro">Un compte<a href="connexion_pro.php">Pro </a>?</p>
                         </div>
                     </div>
+                    <div class="connexion_membre_2fa">
+                        <input type="checkbox" id="enable2FA" name="enable2FA">
+                        <label for="enable2FA">Activer l’authentification à deux facteurs</label>
+                        
+                        <!-- Icône pour la bulle d'information -->
+                        <span class="info-icon">?</span>
+                        
+
+                        <p id="phrase" class="info_2fa" style="display: none;">⚠️ Une fois activée, cette option est irréversible.<span class="info-icon2">?</span></p>
+                    </div>
                     
                 </form>
             <div class="connexion_membre_2fa">
@@ -226,9 +236,9 @@ if(!empty($_POST)){
 
         // GESTION DE LA CHECKBOX 2FA
         checkFA.addEventListener('change', function(){
+
             var phrase = document.getElementById('phrase');
             if (this.checked) {
-                <?php echo "lol"; ?>
                 phrase.style.display = 'block';
             } else {
                 phrase.style.display = 'none';

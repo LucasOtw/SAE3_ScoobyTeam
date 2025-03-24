@@ -799,7 +799,7 @@ if (isset($json['results'][0])) {
                                     }
                                 }
                                 ?>
-                                <div class="signalement_repondre">
+                                <div class="signalement_repondre" <?php if ($avis["blacklister"]) { echo "disabled"; }?>>
                                     <?php if (isset($_SESSION['membre']['code_compte'])) { ?>
                                         <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
                                             <!-- Pouce positif -->
@@ -842,7 +842,7 @@ if (isset($json['results'][0])) {
                                         </div>
                                     <?php } ?>
     
-                                    <div class="menu_avis">
+                                    <div class="menu_avis" <?php if ($avis["blacklister"]) { echo "disabled"; }?>>
                                         <div class="menu-container" onclick="toggleMenu(event, this)">
                                             <div class="context-menu">
                                                 <ul>

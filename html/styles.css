@@ -2893,6 +2893,9 @@ input[type="password"]::placeholder {
 
 .main_consulter_compte_membre form {
     border-radius: 8px;
+    margin-left: 12vw;
+    margin-right: 12vw;
+    margin-bottom: 5vw;
 }
 
 .main_consulter_compte_membre fieldset {
@@ -5096,7 +5099,6 @@ nav.nav-bar-tel {
     position: relative;
     overflow: hidden;
     text-align: left;
-
     cursor: pointer;
 }
 
@@ -8941,13 +8943,10 @@ a.bloc_consulter_recemment_a {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin: 3vh 8vw;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
 
 }
 
-.toute_les_offres_main .offer:hover {
-    transform: scale(1.015);
-}
+
 
 
 .toute_les_offres_main .offer img {
@@ -10140,14 +10139,9 @@ body.menu-open #overlay {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease-in-out;
     cursor: pointer;
 }
 
-/* Animation au survol de la carte */
-.offer-new:hover {
-    transform: scale(1.03);
-}
 
 /* Image dans la carte */
 .offer-new img {
