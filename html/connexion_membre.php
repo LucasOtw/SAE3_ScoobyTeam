@@ -200,20 +200,6 @@ if(!empty($_POST)){
         var span = document.getElementsByClassName("close")[0];
         var form = document.getElementById("connexionForm");
 
-        var checkFA = document.getElementById('enable2FA');
-        // console.log(checkFA);
-
-        // GESTION DE LA CHECKBOX 2FA
-        checkFA.addEventListener('change', function(){
-
-            var phrase = document.getElementById('phrase');
-            if (this.checked) {
-                phrase.style.display = 'block';
-            } else {
-                phrase.style.display = 'none';
-            }
-        });
-
         modal.style.display = "none";
 
         form.addEventListener('submit', (e) => {
