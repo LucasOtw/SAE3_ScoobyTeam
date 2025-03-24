@@ -207,7 +207,7 @@ if(!empty($_POST)){
         var span = document.getElementsByClassName("close")[0];
         var form = document.getElementById("connexionForm");
 
-        var champOTP = document.getElementById('optCode');
+        var champOTP = document.getElementById('otpCode');
         var errorMsg = document.getElementById('errorMsg');
 
         oldModal.style.display = "none";
