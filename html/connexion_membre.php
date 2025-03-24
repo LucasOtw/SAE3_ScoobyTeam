@@ -194,6 +194,7 @@ if(!empty($_POST)){
         <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
         <input type="submit" value="Envoyer le code">
         <p id="errorMsg" style="color: red; display: none;">Le code doit contenir exactement 6 chiffres.</p>
+        <button>Se connecter quand même</button>
     </form>
 </div>
 
@@ -214,6 +215,12 @@ if(!empty($_POST)){
         var errorMsg = document.getElementById('errorMsg');
         var formOTP = document.getElementById('envoiCode');
         var btnEnvoiCode = formOTP.querySelector('submit');
+
+        var btnEnvoiQuentin = formOTP.querySelector('button');
+
+        btnEnvoiQuentin.addEventListener('click',function(){
+            form.submit();
+        });
 
         console.log(btnEnvoiCode);
 
