@@ -1564,13 +1564,17 @@ var customIcon = L.icon({
     popupAnchor: [0, -35]
 });
 
-// Script pour afficher la popup au clic sur mobile
-if ('ontouchstart' in window) {  // Vérifie si le périphérique est tactile
-    map.on('click', function(e) {
-        var popup = e.layer.getPopup();
-        popup.openOn(map);
+// Vérifie si l'appareil est tactile
+if ('ontouchstart' in window || navigator.maxTouchPoints) {
+    map.eachLayer(function (layer) {
+        if (layer.getPopup) {
+            layer.on('click', function () {
+                this.openPopup();
+            });
+        }
     });
 }
+
 
 // Ajoutez du CSS pour améliorer l'apparence
 document.head.insertAdjacentHTML('beforeend', `
