@@ -5132,11 +5132,8 @@ nav.nav-bar-tel {
 .main_mes_offres .offres {
     display: flex;
     flex-wrap: wrap;
-    /* Pour que les cartes aillent à la ligne si nécessaire */
     gap: 20px;
-    /* Ajoute un espacement entre les cartes */
     justify-content: center;
-    /* Aligne les cartes de manière équitable */
     margin: 20px;
     margin-bottom: 100px;
 }
@@ -5145,6 +5142,38 @@ nav.nav-bar-tel {
     width: 260px;
     margin-bottom: 20px;
     height: 26.2em;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.4s ease;
+    overflow: hidden;
+}
+
+.main_mes_offres .offer-card::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #BDC426, #F28322);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+    z-index: 1;
+}
+
+.main_mes_offres .offer-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.main_mes_offres .offer-card:hover::after {
+    transform: scaleX(1);
+}
+
+.main_mes_offres .offer-card:active {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .main_mes_offres .offer-card:hover {
