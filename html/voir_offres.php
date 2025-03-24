@@ -1393,21 +1393,21 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const mapElement = document.getElementById('map');
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
     if (mapElement) {
         try {
             // Création de la carte et centrage sur la Bretagne
             var map = L.map('map', {zoomControl: false}).setView([48.2020, -2.9326], 8);
+
             
             L.tileLayer('https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=a62b465402a64a49862f451a157e69ca', {
                 attribution: '&copy; Thunderforest',
                 maxZoom: 20
             }).addTo(map);
 
-            // Ajout des contrôles de la map
+            //ajout des controles de la map
             L.control.zoom({
-                position: 'topleft'
+                position:'topleft'
             }).addTo(map);
 
             var markers = L.markerClusterGroup({
@@ -1415,14 +1415,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 spiderfyOnMaxZoom: true,
                 showCoverageOnHover: true,
                 disableClusteringAtZoom: 16
-            });
-
-            // Configurer une icône personnalisée
-            var customIcon = L.icon({
-                iconUrl: './images/ping.png',
-                iconSize: [50, 40],
-                iconAnchor: [15, 40],
-                popupAnchor: [0, -35]
             });
 
             <?php
@@ -1460,7 +1452,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Image avec overlay dégradé
                     if (!empty($adr['url_image'])) {
                         $popupContent .= "<div style='position:relative;'>";
-                        $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:95%; height:100px; object-fit:cover;'>";
+                        $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:95%; height:100px;'>";
                         $popupContent .= "<div style='position:absolute; top:0; right:0; background-color:#F28322; color:white; padding:4px 8px; border-bottom-left-radius:8px; font-size:14px; font-weight:bold;'>" . $adr['tarif'] . " €</div>";
                         $popupContent .= "</div>";
                     }
@@ -1472,83 +1464,124 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     // Boutons d'action
                     $popupContent .= "<div style='display:flex; justify-content:space-between; margin-top:10px;'>";
-                    $popupContent .= "<a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='display:inline-block; padding:6px 12px; background-color:#2DD7A4; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;'>Voir l'offre</a>";
+                    $popupContent .= "<a href='detail_offre.php?code=" .$adr['code_offre'] . "' style='display:inline-block; padding:6px 12px; background-color:#2DD7A4; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;'>Voir l'offre</a>";
                     $popupContent .= "<a href='" . $url_maps . "' target='_blank' style='display:inline-block; padding:6px 12px; background-color:#F28322; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;'><span class=\"iconify\" data-icon=\"mdi:navigation\" style=\"font-size: 1.1em; vertical-align: middle; margin-right: 3px;\"></span>Itinéraire</a>";
                     $popupContent .= "</div>";
 
                     $popupContent .= "</div>";
                     $popupContent .= "</div>";
 
-                    echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});\n";
-                    echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false, className: 'custom-popup'}).setContent(\"" . addslashes($popupContent) . "\");\n";
-                    echo "marker.bindPopup(popup);\n";
+                    echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
+                    echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false, className: 'custom-popup'}).setContent(\"" . addslashes($popupContent) . "\");";
+                    echo "marker.bindPopup(popup);";
                     
-                    // Application conditionnelle des événements
-                    echo "if (!isTouchDevice) {\n";
-                    echo "  // Événements pour les appareils desktop\n";
-                    echo "  marker.on('mouseover', function(e) { this.openPopup(); });\n";
-                    echo "  marker.on('mouseout', function(e) {\n";
-                    echo "    setTimeout(() => {\n";
-                    echo "      if (!isMouseOverPopup) {\n";
-                    echo "        this.closePopup();\n";
-                    echo "      }\n";
-                    echo "    }, 50);\n";
-                    echo "  });\n";
-                    echo "}\n";
+                    // Ajouter les événements de survol améliorés
+                    echo "marker.on('mouseover', function(e) { this.openPopup(); });";
                     
-                    echo "markers.addLayer(marker);\n";
+                    // Utiliser une variable pour suivre l'état de survol
+                    echo "var isMouseOverPopup = false;";
+                    
+                    // Gestion du mouseout sur le marqueur
+                    echo "marker.on('mouseout', function(e) {";
+                    echo "    setTimeout(() => {";
+                    echo "        if (!isMouseOverPopup) {";
+                    echo "            this.closePopup();";
+                    echo "        }";
+                    echo "    }, 50);";
+                    echo "});";
+                    
+                    echo "markers.addLayer(marker);";
                 }
             }
             ?>
 
             map.addLayer(markers);
+            console.log("Carte Leaflet avec clusters initialisée avec succès");
             
-            var isMouseOverPopup = false;
-            
-            // Configuration pour les appareils tactiles
-            if (isTouchDevice) {
-                // Sur mobile, configurer tous les marqueurs pour s'ouvrir/fermer au clic
-                markers.eachLayer(function(marker) {
-                    // Supprimer les comportements de survol existants
-                    marker.off('mouseover mouseout');
+            // Ajouter des écouteurs d'événements aux popups après leur création
+            setTimeout(function() {
+                document.querySelectorAll('.leaflet-popup').forEach(function(popup) {
+                    popup.addEventListener('mouseenter', function() {
+                        isMouseOverPopup = true;
+                    });
                     
-                    // Ajouter le comportement de clic
-                    marker.on('click', function() {
-                        if (this.isPopupOpen()) {
-                            this.closePopup();
-                        } else {
-                            // Fermer toutes les autres popups d'abord
-                            markers.eachLayer(function(m) {
-                                if (m !== marker && m.isPopupOpen()) {
-                                    m.closePopup();
-                                }
-                            });
-                            this.openPopup();
-                        }
+                    popup.addEventListener('mouseleave', function() {
+                        isMouseOverPopup = false;
+                        // Trouver le marqueur associé et fermer la popup
+                        markers.eachLayer(function(marker) {
+                            if (marker.isPopupOpen()) {
+                                marker.closePopup();
+                            }
+                        });
                     });
                 });
-            } else {
-                // Pour les appareils non tactiles, gérer les événements de survol des popups
-                map.on('popupopen', function(e) {
+            }, 1000); // Attendre que les popups soient créées
+            
+            // Ajouter des écouteurs sur les popups à chaque fois qu'une popup s'ouvre
+            map.on('popupopen', function(e) {
+                setTimeout(function() {
                     let popup = e.popup._container;
                     if (popup) {
                         popup.addEventListener('mouseenter', function() {
                             isMouseOverPopup = true;
                         });
+                        
                         popup.addEventListener('mouseleave', function() {
                             isMouseOverPopup = false;
-                            setTimeout(() => {
-                                e.target.closePopup();
-                            }, 100);
+                            e.target.closePopup();
                         });
                     }
+                }, 10);
+            });
+
+            // Gestion spéciale pour les appareils mobiles
+            if ('ontouchstart' in window) {
+                markers.eachLayer(function(marker) {
+                    marker.off('mouseover mouseout');
+                    marker.on('click', function() {
+                        if (this.isPopupOpen()) {
+                            this.closePopup();
+                        } else {
+                            this.openPopup();
+                        }
+                    });
                 });
             }
+
         } catch (error) {
             console.error("Erreur lors de l'initialisation de la carte :", error);
         }
+    } else {
+        console.error("L'élément #map n'existe pas dans le DOM");
     }
 });
+
+var customIcon = L.icon({
+    iconUrl: './images/ping.png',
+    iconSize: [50, 40],
+    iconAnchor: [15, 40],
+    popupAnchor: [0, -35]
+});
+
+// Ajoutez du CSS pour améliorer l'apparence
+document.head.insertAdjacentHTML('beforeend', `
+    <style>
+    .custom-popup .leaflet-popup-content-wrapper {
+        padding: 0;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 3px 14px rgba(0,0,0,0.2);
+    }
+    .custom-popup .leaflet-popup-content {
+        margin: 0;
+        width: auto !important;
+    }
+    .custom-popup .leaflet-popup-tip-container {
+        left: 50%;
+        margin-left: -10px;
+    }
+    </style>
+`);
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', function(){
