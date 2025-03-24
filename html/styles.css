@@ -13286,9 +13286,13 @@ ul.mentions_legales-sous-list {
 }
 
 .etat_2fa-pro {
-    margin-top: 12px;
+    margin-top: -9px;
     font-size: 0.95rem;
     color: #444;
+    width: 885px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
 }
 
 .statut-non-pro {
