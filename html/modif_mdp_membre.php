@@ -2,6 +2,10 @@
 ob_start(); // bufferisation, ça devrait marcher ?
 session_start();
 
+require __DIR__ . '/../vendor/autoload.php';
+
+use OTPHP\TOTP;
+
 include("recupInfosCompte.php");
 
 if(isset($_GET['logout'])){
