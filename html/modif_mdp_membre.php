@@ -155,7 +155,7 @@ if (isset($_POST['modif_infos'])){
                     <input type="submit" id="btn-api" name="generate_api_key" value="" alt="Regénérer la clé API" formnovalidate>
             </fieldset>
         <form>
-        <form action="#" method="POST">
+        <form id="form2FA" action="#" method="POST">
             <h3>Authentification à deux facteurs</h3>
             <div class="connexion_membre_2fa">
                 <button type="submit" id="enable2FABtn" class="btn-2fa">Activer l’authentification à deux facteurs</button>
@@ -299,13 +299,14 @@ if (isset($_POST['modif_infos'])){
         /* CE SCRIPT SERT A LA GÉNÉRATION DU QR CODE
         ET À L'ACTIVATION DE L'AUTHENTIFICATION À DEUX FACTEURS */
 
-        let btn2FA = document.getElementById('enable2FABtn');
+        let formActive2FA = document.getElementById('form2FA');
 
-        btn2FA.addEventListener('click', function(){
+        formActive2FA.addEventListener('submit', function(e){
+            e.preventDefault();
             let confirmeActivAuthent = confirm("Voulez-vous vraiment activer l'authentification à deux facteurs ? Cette action sera irréversible !");
 
             if(confirmeActivAuthent){
-                
+                formActive2FA.submit();
             }
         });
 
