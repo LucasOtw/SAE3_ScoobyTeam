@@ -7625,6 +7625,7 @@ form .btn-link {
     object-fit: cover;
     display: block;
     border-radius: 1.5em;
+    cursor: pointer;
 }
 
 .raison-sociale-card-a-la-une {
