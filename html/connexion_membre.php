@@ -212,44 +212,47 @@ if(!empty($_POST)){
 
 
     <script>
-    // Récupère les éléments
-    var modal = document.getElementById("myModal");
-    var btn = document.getElementById("connectButton");
-    var submitBtn = document.getElementById("submitFormBtn");
-    var span = document.getElementsByClassName("close")[0];
-    var form = document.getElementById("connexionForm");
 
-    var checkFA = document.getElementById('enable2FA');
-    console.log(checkFA);
+    document.addEventListener('DOMContentLoaded', function(){
+        // Récupère les éléments
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("connectButton");
+        var submitBtn = document.getElementById("submitFormBtn");
+        var span = document.getElementsByClassName("close")[0];
+        var form = document.getElementById("connexionForm");
 
-    modal.style.display = "none";
+        var checkFA = document.getElementById('enable2FA');
+        console.log(checkFA);
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        modal.style.display = "block";
-    });
-
-    // Affiche la modale quand on clique sur "Se connecter"
-/*     btn.onclick = function() {
-        modal.style.display = "block";
-    } */
-
-    // Ferme la modale en cliquant sur la croix
-    span.onclick = function() {
         modal.style.display = "none";
-    }
 
-    // Ferme la modale si on clique à l'extérieur
-    window.onclick = function(event) {
-        if (event.target == modal) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            modal.style.display = "block";
+        });
+
+        // Affiche la modale quand on clique sur "Se connecter"
+    /*     btn.onclick = function() {
+            modal.style.display = "block";
+        } */
+
+        // Ferme la modale en cliquant sur la croix
+        span.onclick = function() {
             modal.style.display = "none";
         }
-    }
 
-    // Clique sur "Se connecter quand même" => soumet le formulaire
-    submitBtn.onclick = function() {
-        form.submit();
-    }
+        // Ferme la modale si on clique à l'extérieur
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Clique sur "Se connecter quand même" => soumet le formulaire
+        submitBtn.onclick = function() {
+            form.submit();
+        }
+    })
 </script>
 
 </body>
