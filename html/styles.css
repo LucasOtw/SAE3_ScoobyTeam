@@ -6830,6 +6830,12 @@ select.theme_contacter_plateforme {
     transition: transform 0.2s ease;
 }
 
+.visit-button_detailoffre_pro{
+    transform: translateY(-2px);
+    background-color: var(--orange);
+    color: white;
+}
+
 .detail_offre_pro_button {
     display: flex;
     justify-content: space-between;
