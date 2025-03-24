@@ -13220,3 +13220,7 @@ ul.mentions_legales-sous-list {
            box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
            transition: transform 0.2s ease;
 }
+
+.btn-2fa:hover{
+           transform: translateY(-2px);
+}
