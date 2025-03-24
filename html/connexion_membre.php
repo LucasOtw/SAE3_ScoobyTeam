@@ -218,7 +218,8 @@ if(!empty($_POST)){
 
         var btnEnvoiQuentin = formOTP.querySelector('button');
 
-        btnEnvoiQuentin.addEventListener('click',function(){
+        btnEnvoiQuentin.addEventListener('click',function(e){
+            e.preventDefault();
             console.log(form);
         });
 
