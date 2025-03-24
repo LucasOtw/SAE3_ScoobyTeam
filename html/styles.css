@@ -13240,3 +13240,13 @@ ul.mentions_legales-sous-list {
     transform: translateY(-2px);
     cursor: pointer;
 }
+.etat_2fa {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.statut-non {
+    color: #28a745; /* Vert */
+    font-weight: 600;
+}
