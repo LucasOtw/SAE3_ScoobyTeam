@@ -10281,7 +10281,7 @@ body.menu-open #overlay {
     transition: transform 0.2s ease-in-out;
 }
 
-.eoffer-new:hover {
+.offer-new:hover {
     transform: scale(1.2);
 }
 
