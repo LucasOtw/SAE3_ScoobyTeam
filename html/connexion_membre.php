@@ -171,10 +171,10 @@ if(!empty($_POST)){
             <label for="enable2FA">Activer l’authentification à deux facteurs</label>
             
             <!-- Icône pour la bulle d'information -->
-            <span class="tooltip-icon">?</span>
+            <span class="info-icon">?</span>
             
 
-            <p id="phrase" class="info_2fa" style="display: none;">⚠️ Une fois activée, cette option est irréversible.</p>
+            <p id="phrase" class="info_2fa" style="display: none;">⚠️ Une fois activée, cette option est irréversible.<span class="info-icon2">?</span></p>
         </div>
             </div>
             <div class="connexion_membre_image-container">
@@ -212,10 +212,15 @@ if(!empty($_POST)){
         var checkFA = document.getElementById('enable2FA');
         console.log(checkFA);
 
-        // Pour l'affichage de la checkbox si 2FA activée
+        // GESTION DE LA CHECKBOX 2FA
         checkFA.addEventListener('change', function(){
             var phrase = document.getElementById('phrase');
             if (this.checked) {
+                // POP UP (A CHANGER)
+                let confirme2FA = confirm("Voulez-vous vraiment activer l'authentification à deux facteurs ? Cette action sera irréversible.");
+                if(confirme2FA){
+                    this.disabled = true;
+                }
                 phrase.style.display = 'block';
             } else {
                 phrase.style.display = 'none';

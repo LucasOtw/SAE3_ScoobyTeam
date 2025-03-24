@@ -2893,6 +2893,9 @@ input[type="password"]::placeholder {
 
 .main_consulter_compte_membre form {
     border-radius: 8px;
+    margin-left: 12vw;
+    margin-right: 12vw;
+    margin-bottom: 5vw;
 }
 
 .main_consulter_compte_membre fieldset {
@@ -3211,7 +3214,7 @@ input[type="password"]::placeholder {
 .upload-photo-button {
     position: relative;
     bottom: 30px;
-    /*left: 70px;*/
+    left: 70px;
     width: 35px;
     height: 35px;
     background-color: #4CAF50;
@@ -12968,7 +12971,7 @@ ul.mentions_legales-sous-list {
 
 
 /* Style de la bulle d'information */
-.tooltip-icon:hover::after {
+.info-icon2:hover::after {
     content: "L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone.";
     position: relative;
     left: 50%;
@@ -12982,13 +12985,7 @@ ul.mentions_legales-sous-list {
     opacity: 1;
     width: 250px;
     text-align: center;
-<<<<<<< HEAD
     z-index: 10; /* Assure que la bulle soit au-dessus des autres éléments */
-=======
-    z-index: 10;
-    /* Assure que la bulle soit au-dessus des autres éléments */
-    white-space: nowrap;
->>>>>>> b737a755a4472b873a01302fe911a453eeb40701
 }
 
 /* Le reste de la page (pour s'assurer que la bulle est bien visible) */
