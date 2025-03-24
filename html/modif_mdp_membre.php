@@ -300,6 +300,7 @@ if (isset($_POST['modif_infos'])){
         ET À L'ACTIVATION DE L'AUTHENTIFICATION À DEUX FACTEURS */
 
         let formActive2FA = document.getElementById('form2FA');
+        console.log(formActive2FA);
 
         formActive2FA.addEventListener('submit', function(e){
             e.preventDefault();
