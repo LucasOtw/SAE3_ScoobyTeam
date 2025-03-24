@@ -2893,6 +2893,9 @@ input[type="password"]::placeholder {
 
 .main_consulter_compte_membre form {
     border-radius: 8px;
+    margin-left: 12vw;
+    margin-right: 12vw;
+    margin-bottom: 5vw;
 }
 
 .main_consulter_compte_membre fieldset {
