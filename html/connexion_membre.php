@@ -236,7 +236,7 @@ if(!empty($_POST)){
             if(checkFA.checked){
                 modal.style.display = "block";
             } else {
-                e.submit();
+                form.submit();
             }
         });
 
