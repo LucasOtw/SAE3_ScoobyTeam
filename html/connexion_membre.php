@@ -183,21 +183,6 @@ if(!empty($_POST)){
         </div>
     </main>
 
-<<<<<<< HEAD
-    <!--Pour l'affichage de la checkbox si 2FA activée-->
-    <script>
-        document.getElementById('enable2FA').addEventListener('change', function() {
-            var phrase = document.querySelector('.info_2fa');
-            if (this.checked) {
-                phrase.style.display = 'block';
-            } else {
-                phrase.style.display = 'none';
-            }
-        });
-    </script>
-
-=======
->>>>>>> 49da78da (Checkbox 2FA)
     <!-- Modal Popup QR Code -->
 <div id="myModal" class="modal">
     <div class="modal-content">
