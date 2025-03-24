@@ -13074,7 +13074,6 @@ ul.mentions_legales-sous-list {
 
 /* Style de la bulle d'information */
 .info-icon2:hover::after {
-    content: "L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone.";
     position: relative;
     left: 50%;
     transform: translateX(-50%);

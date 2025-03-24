@@ -174,7 +174,7 @@ if(!empty($_POST)){
                         <p id="phrase" class="info_2fa" style="display: none;">⚠️ Une fois activée, cette option est irréversible.<div class="info-icon-container">
             <span class="info-icon2">?</span>
             <div class="tooltip-content">
-                Pour des raisons de sécurité, vous ne pourrez plus désactiver l'authentification à deux facteurs une fois qu'elle est configurée.
+            L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone.
             </div></p>
                     </div>
                     
