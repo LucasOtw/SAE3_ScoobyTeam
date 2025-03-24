@@ -13225,17 +13225,19 @@ ul.mentions_legales-sous-list {
     cursor: pointer;
 }
 .btn-2fa-pro {
-    background-color: var(--orange);
-    border: none;
+    background-color: #ffffff;
+    border: 1px solid orange;
     width: 44vw;
     max-width: 301px;
     height: 43px;
-    color: white;
-    border-radius: 16px;
+    color: #000000;
+    border-radius: 11px;
     text-decoration: none;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2s ease;
 }
+
+
 .btn-2fa-pro:hover{
     transform: translateY(-2px);
     cursor: pointer;
