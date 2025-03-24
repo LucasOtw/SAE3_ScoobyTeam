@@ -13271,7 +13271,6 @@ ul.mentions_legales-sous-list {
     cursor: pointer;
     background-color: var(--orange);
     color: white;
-    border: none;
 }
 
 .etat_2fa {
