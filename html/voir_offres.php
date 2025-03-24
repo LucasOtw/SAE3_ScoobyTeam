@@ -1434,64 +1434,66 @@ document.addEventListener("DOMContentLoaded", function () {
                 $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
                 $adresse_enc = urlencode($adresse_complete);
                 $adresse_maps = $adresse_complete;
-                $adresse_code = $adr['code_offre'];
-            
+                $adresse_code= $adr['code_offre'];
+
                 $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
                 $response = file_get_contents($url);
                 $json = json_decode($response, true);
-            
+
                 if (isset($json['results'][0])) {
                     $latitude = $json['results'][0]['geometry']['location']['lat'];
                     $longitude = $json['results'][0]['geometry']['location']['lng'];
-            
+
+                    // URL d'itinéraire Google Maps
                     $url_maps = "https://www.google.com/maps/dir/?api=1&destination=" . urlencode($adresse_maps);
-            
-                    // Recherche de l'offre correspondante
-                    foreach ($mesOffres as $offre) {
-                        if ($offre['code_offre'] == $adr['code_offre']) {
-                            $monOffre = $offre;
-                            break;
-                        }
-                    }
-            
-                    // Sérialisation de l'offre
-                    $offre_serialisee = htmlspecialchars(serialize($monOffre));
-            
-                    // Contenu de la popup
+
+                    // Contenu de la popup avec styles améliorés
                     $popupContent = "<div class='popup-container' style='width:230px; border-radius:8px; overflow:hidden; font-family:\"K2D\", sans-serif;'>";
-            
+
+                    // Image avec overlay dégradé
                     if (!empty($adr['url_image'])) {
                         $popupContent .= "<div style='position:relative;'>";
                         $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:95%; height:100px;'>";
                         $popupContent .= "<div style='position:absolute; top:0; right:0; background-color:#F28322; color:white; padding:4px 8px; border-bottom-left-radius:8px; font-size:14px; font-weight:bold;'>" . $adr['tarif'] . " €</div>";
                         $popupContent .= "</div>";
                     }
-            
+
+                    // Contenu texte
                     $popupContent .= "<div style='padding: 12px; background-color: white;'>";
                     $popupContent .= "<h3 style='margin:0 0 8px 0; color:#333; font-size:16px; font-weight:600; line-height:1.2;'>" . addslashes($adr['titre_offre']) . "</h3>";
                     $popupContent .= "<p style='margin:0 0 8px 0; font-size:14px; color:#555;'><span class=\"iconify\" data-icon=\"mdi:map-marker\" style=\"color: #BDC426; font-size: 1.2em; vertical-align: middle; margin-right: 3px;\"></span> " . addslashes($adr['ville']) . "</p>";
-                    
-                    // Formulaire caché pour soumettre l'offre
-                    $popupContent .= "<form action='detail_offre_pro.php' method='POST' class='offer-form-notif'>";
-                    $popupContent .= "<input type='hidden' name='uneOffre' value='$offre_serialisee'>";
-                    $popupContent .= "<input type='hidden' name='vueDetails' value='1'>";
-                    $popupContent .= "<button type='submit' style='display:inline-block; padding:6px 12px; background-color:#2DD7A4; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500;'>Voir l'offre</button>";
-                    $popupContent .= "</form>";
-                    
-                    $popupContent .= "<a href='" . $url_maps . "' target='_blank' style='display:inline-block; padding:6px 12px; background-color:#F28322; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500;'><span class=\"iconify\" data-icon=\"mdi:navigation\" style=\"font-size: 1.1em; vertical-align: middle; margin-right: 3px;\"></span>Itinéraire</a>";
-                    
-                    $popupContent .= "</div></div>";
-            
+
+                    // Boutons d'action
+                    $popupContent .= "<div style='display:flex; justify-content:space-between; margin-top:10px;'>";
+                    $popupContent .= "<a href='detail_offre.php?code= ".$adr['code_offre']." ' style='display:inline-block; padding:6px 12px; background-color:#2DD7A4; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;'>Voir l'offre</a>";
+                    $popupContent .= "<a href='" . $url_maps . "' target='_blank' style='display:inline-block; padding:6px 12px; background-color:#F28322; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;'><span class=\"iconify\" data-icon=\"mdi:navigation\" style=\"font-size: 1.1em; vertical-align: middle; margin-right: 3px;\"></span>Itinéraire</a>";
+                    $popupContent .= "</div>";
+
+                    $popupContent .= "</div>";
+                    $popupContent .= "</div>";
+
                     echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
                     echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false, className: 'custom-popup'}).setContent(\"" . addslashes($popupContent) . "\");";
                     echo "marker.bindPopup(popup);";
+                    
+                    // Ajouter les événements de survol améliorés
                     echo "marker.on('mouseover', function(e) { this.openPopup(); });";
+                    
+                    // Utiliser une variable pour suivre l'état de survol
                     echo "var isMouseOverPopup = false;";
-                    echo "marker.on('mouseout', function(e) { setTimeout(() => { if (!isMouseOverPopup) { this.closePopup(); } }, 50); });";
+                    
+                    // Gestion du mouseout sur le marqueur
+                    echo "marker.on('mouseout', function(e) {";
+                    echo "    setTimeout(() => {";
+                    echo "        if (!isMouseOverPopup) {";
+                    echo "            this.closePopup();";
+                    echo "        }";
+                    echo "    }, 50);";
+                    echo "});";
+                    
                     echo "markers.addLayer(marker);";
                 }
             }
-            
             ?>
 
             map.addLayer(markers);
