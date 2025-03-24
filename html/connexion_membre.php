@@ -207,6 +207,7 @@ if(!empty($_POST)){
     var form = document.getElementById("connexionForm");
 
     var checkFA = document.getElementById('enable2FA');
+    console.log(checkFA);
 
     modal.style.display = "none";
 
