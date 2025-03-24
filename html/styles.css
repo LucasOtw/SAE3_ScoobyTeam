@@ -2895,7 +2895,6 @@ input[type="password"]::placeholder {
     border-radius: 8px;
     margin-left: 12vw;
     margin-right: 12vw;
-    margin-bottom: 5vw;
 }
 
 .main_consulter_compte_membre fieldset {
@@ -2963,6 +2962,7 @@ input[type="password"]::placeholder {
     display: flex;
     justify-content: space-between;
     gap: 6px;
+    margin-bottom: 8em;
 }
 
 .main_consulter_compte_membre .compte_membre_save_delete_remove {
@@ -3213,8 +3213,8 @@ input[type="password"]::placeholder {
 
 .upload-photo-button {
     position: relative;
-    bottom: 30px;
-    left: 70px;
+    bottom: 31px;
+    left: 129px;
     width: 35px;
     height: 35px;
     background-color: #4CAF50;
