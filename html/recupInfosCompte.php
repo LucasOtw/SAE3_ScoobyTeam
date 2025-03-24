@@ -278,7 +278,7 @@ WHERE code_compte = :code_compte");
 $reqisActivated2FA->bindValue(':code_compte',$compte['code_compte']);
 $reqisActivated2FA->execute();
 
-$isActivated2FA = $reqisActivated2FA->fetchColumn();
+$isActivated2FA = $reqisActivated2FA->fetch(PDO::FETCH_ASSOC);
 
 var_dump($isActivated2FA);
 

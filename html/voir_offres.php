@@ -1397,7 +1397,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (mapElement) {
         try {
             // Création de la carte et centrage sur la Bretagne
-            var map = L.map('map' {zoomControl: false}).setView([48.2020, -2.9326], 8);
+            var map = L.map('map', {zoomControl: false}).setView([48.2020, -2.9326], 8);
+
             
             L.tileLayer('https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=a62b465402a64a49862f451a157e69ca', {
                 attribution: '&copy; Thunderforest',
@@ -1406,7 +1407,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //ajout des controles de la map
             L.control.zoom({
-                position:'topright'
+                position:'topleft'
             }).addTo(map);
 
             var markers = L.markerClusterGroup({
