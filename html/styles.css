@@ -3922,25 +3922,24 @@ main.creation_compte_membre nav ul li a {
 main.creation_compte_membre nav ul li a.active {
     border-bottom: 2px solid var(--vert-clair);
 }
-
 div.creation-success {
     position: absolute;
-    left: 83vw;
+    left: 65vw;
     top: 16vh;
     float: right;
     z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 17vw;
     border-radius: 1vw;
-    border: 1px solid #eeeeee;
-    background-color: #eeeeee;
+    border: 1px solid #789f4a;
+    background-color: #ffffff;
     height: 6vh;
-    width: 223px;
+    width: 270px;
+    padding: 2em;
 }
 
-div.creation-success h2 {
+div.creation-success h4 {
     font-size: 17px;
 }
 
