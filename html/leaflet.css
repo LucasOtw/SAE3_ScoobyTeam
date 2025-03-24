@@ -161,7 +161,7 @@
     width: 95%; 
     height: auto;
     border-radius: 13px;
-    margin: 5px;
+    /*margin: 5px;*/
 }
 
 .leaflet-popup-content h3 {
