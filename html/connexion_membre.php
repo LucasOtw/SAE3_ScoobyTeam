@@ -207,6 +207,8 @@ if(!empty($_POST)){
         var span = document.getElementsByClassName("close")[0];
         var form = document.getElementById("connexionForm");
 
+        var errorMsg = document.getElementById('errorMsg');
+
         oldModal.style.display = "none";
         modal.style.display = "none";
 
@@ -218,6 +220,20 @@ if(!empty($_POST)){
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             modal.style.display = "block";
+        });
+
+        modal.addEventListener("input", function () {
+            let errorMsg = document.getElementById("errorMsg");
+
+            // Supprime tout sauf les chiffres et limite à 6 caractères
+            this.value = this.value.replace(/\D/g, "").slice(0, 6);
+
+            // Vérifie si la valeur est bien composée de 6 chiffres
+            if (this.value.length === 6) {
+                errorMsg.style.display = "none"; // Cache le message d'erreur
+            } else {
+                errorMsg.style.display = "block"; // Affiche le message d'erreur
+            }
         });
 
         // Ferme la modale en cliquant sur la croix
