@@ -164,36 +164,33 @@ if(!empty($_POST)){
                             <p><span class="connexion_compte_pro">Un compte<a href="connexion_pro.php">Pro </a>?</p>
                         </div>
                     </div>
-                    
+                    <div class="connexion_membre_2fa">
+                        <input type="checkbox" id="enable2FA" name="enable2FA">
+                        <label for="enable2FA">Activer l’authentification à deux facteurs</label>
+                        
+                        <div class="info-icon-container">
+                            <span class="info-icon2">?</span>
+                            <div class="tooltip-content">
+                                L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone.
+                            </div>
+                        </div>
+                        
+                        <span class="info-icon2">?</span>
+            <p id="phrase" class="info_2fa" style="display: none;">⚠️ Une fois activée, cette option est irréversible.<div class="info-icon-container">
+            
+            <div class="tooltip-content">
+            L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone.
+            </div></p>
+                    </div>
                 </form>
-            <div class="connexion_membre_2fa">
-            <input type="checkbox" id="enable2FA" name="enable2FA">
-            <label for="enable2FA">Activer l’authentification à deux facteurs</label>
             
-            <!-- Icône pour la bulle d'information -->
-            <span class="tooltip-icon">?</span>
-            
-
-            <p class="info_2fa" style="display: none;">⚠️ Une fois activée, cette option est irréversible.</p>
-        </div>
+</div>
             </div>
             <div class="connexion_membre_image-container">
                 <img src="images/imageConnexionProEau.png" alt="Image de maison en pierre avec de l'eau">
             </div>
         </div>
     </main>
-
-    <!--Pour l'affichage de la checkbox si 2FA activée-->
-    <script>
-        document.getElementById('enable2FA').addEventListener('change', function() {
-            var phrase = document.querySelector('.info_2fa');
-            if (this.checked) {
-                phrase.style.display = 'block';
-            } else {
-                phrase.style.display = 'none';
-            }
-        });
-    </script>
 
     <!-- Modal Popup QR Code -->
 <div id="myModal" class="modal">
@@ -222,13 +219,29 @@ if(!empty($_POST)){
         var form = document.getElementById("connexionForm");
 
         var checkFA = document.getElementById('enable2FA');
-        console.log(checkFA);
+        // console.log(checkFA);
+
+        // GESTION DE LA CHECKBOX 2FA
+        checkFA.addEventListener('change', function(){
+
+            var phrase = document.getElementById('phrase');
+            if (this.checked) {
+                phrase.style.display = 'block';
+            } else {
+                phrase.style.display = 'none';
+            }
+        });
 
         modal.style.display = "none";
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            modal.style.display = "block";
+            if(checkFA.checked){
+                
+                modal.style.display = "block";
+            } else {
+                form.submit();
+            }
         });
 
         // Affiche la modale quand on clique sur "Se connecter"

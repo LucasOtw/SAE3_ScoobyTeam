@@ -912,47 +912,49 @@ include("recupInfosCompte.php");
 
                             <div class="menu_avis">
                                 <div class="menu-container" onclick="toggleMenu(event, this)">
-                                    <div class="context-menu">
-                                        <ul>
-                                            <li>
-                                                <form action="poster_reponse_pro.php" method="POST">
-                                                    <input type="hidden" name="unAvis"
-                                                        value="<?php echo htmlspecialchars(serialize($avis)); ?>">
-                                                    <input id="btn-repondre-avis" type="submit" name="repondreAvis"
-                                                        value="Répondre à l'avis">
-                                                </form>
-                                            </li>
-                                            
-                                            <li>
-                                                <a id="btn-signaler-avis" href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
-                                                    title="Signaler cet avis"
-                                                    style="text-decoration: none; color: black;">
-                                                    Signaler l'avis
-                                                </a>
-                                            </li>
-                                            
-                                            <li>
-                                                <div class="blacklist-avis"
-                                                    data-avis="<?php echo htmlspecialchars($avis['code_avis']); ?>">
-                                                    <p id="btn-blacklist-avis">Blacklister l'avis</p>
-                                                </div>
-                                            </li>
-                                            <?php
-                                            if ($avis['code_compte'] == $_SESSION['pro']['code_compte']) {
-                                                ?>
+                                    <?php if (!$avis["blacklister"]) { ?>
+                                        <div class="context-menu">
+                                            <ul>
                                                 <li>
-                                                    <form action="modif_avis_pro.php" method="POST">
+                                                    <form action="poster_reponse_pro.php" method="POST">
                                                         <input type="hidden" name="unAvis"
                                                             value="<?php echo htmlspecialchars(serialize($avis)); ?>">
-                                                        <input id="btn-repondre-avis" type="submit" name="modifierAvis"
-                                                            value="Modifier l'avis">
+                                                        <input id="btn-repondre-avis" type="submit" name="repondreAvis"
+                                                            value="Répondre à l'avis">
                                                     </form>
                                                 </li>
+                                                
+                                                <li>
+                                                    <a id="btn-signaler-avis" href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
+                                                        title="Signaler cet avis"
+                                                        style="text-decoration: none; color: black;">
+                                                        Signaler l'avis
+                                                    </a>
+                                                </li>
+                                                
+                                                <li>
+                                                    <div class="blacklist-avis"
+                                                        data-avis="<?php echo htmlspecialchars($avis['code_avis']); ?>">
+                                                        <p id="btn-blacklist-avis">Blacklister l'avis</p>
+                                                    </div>
+                                                </li>
                                                 <?php
-                                            }
-                                            ?>
-                                        </ul>
-                                    </div>
+                                                if ($avis['code_compte'] == $_SESSION['pro']['code_compte']) {
+                                                    ?>
+                                                    <li>
+                                                        <form action="modif_avis_pro.php" method="POST">
+                                                            <input type="hidden" name="unAvis"
+                                                                value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                                                            <input id="btn-repondre-avis" type="submit" name="modifierAvis"
+                                                                value="Modifier l'avis">
+                                                        </form>
+                                                    </li>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </ul>
+                                        </div>
+                                    <?php } ?>
                                     <img src="images/icones/ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
                                 </div>
                             </div>
