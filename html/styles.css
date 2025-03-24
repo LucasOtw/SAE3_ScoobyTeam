@@ -13241,6 +13241,8 @@ ul.mentions_legales-sous-list {
 .btn-2fa-pro:hover{
     transform: translateY(-2px);
     cursor: pointer;
+    background-color: var(--orange);
+    color: white;
 }
 .etat_2fa {
     margin-top: 12px;
