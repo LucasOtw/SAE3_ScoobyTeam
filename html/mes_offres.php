@@ -170,7 +170,8 @@ function tempsEcouleDepuisNotif($avis)
 
                                         <li class="notif" data-consult="<?php echo $notif["consulter_notif"]; ?>"
                                             data-avis="<?php echo $notif["code_avis"]; ?>"
-                                            onclick="this.querySelector('.offer-form-notif').submit();" style="cursor: pointer;">
+                                            onclick="this.querySelector('.offer-form-notif').submit();"
+                                            style="cursor: pointer; background-color: #333;">
 
                                             <img src="<?php echo $compte_pp; ?>" alt="photo de profil" class="profile-img">
                                             <div class="notification-content">
@@ -180,10 +181,17 @@ function tempsEcouleDepuisNotif($avis)
                                                 <span class="notification-time"><?php echo tempsEcouleDepuisNotif($notif); ?></span>
                                                 <span class="new-notif-dot" style="display:none"></span>
                                             </div>
-
+                                            <?php
+                                            foreach ($mesOffres as $offre) {
+                                                if ($offre['code_offre'] == $notif["code_offre"]) {
+                                                    $monOffre = $offre;
+                                                    break;
+                                                }
+                                            }
+                                            ?>
                                             <form action="detail_offre_pro.php" method="POST" class="offer-form-notif">
                                                 <input type="hidden" id="valueOffre" name="uneOffre"
-                                                    value="<?php echo htmlspecialchars(serialize($monOffre)); ?>">
+                                                    value="<?php echo htmlspecialchars(serialize($$offre)); ?>">
                                                 <input type="hidden" name="vueDetails" value="1">
                                             </form>
                                         </li>
