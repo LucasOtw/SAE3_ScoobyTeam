@@ -800,8 +800,8 @@ if (isset($json['results'][0])) {
                                 }
                                 ?>
                                 <div class="signalement_repondre">
-                                    <?php if (isset($_SESSION['membre']['code_compte'])) { ?>
-                                        <div class="pouce pouce<?php echo $avis['code_avis']; ?>" style="<?php echo $avis["blacklister"] ? 'pointer-events: none;' : ''; ?>">
+                                    <?php if (isset($_SESSION['membre']['code_compte']) && !$avis["blacklister"]) { ?>
+                                        <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
                                             <!-- Pouce positif -->
                                             <img id="positiveImage<?php echo $avis['code_avis']; ?>"
                                                 src="<?php echo $voteState == 1 ? 'images/pouce_positif_couleur.png' : 'images/pouce_positif_blanc.png'; ?>"
