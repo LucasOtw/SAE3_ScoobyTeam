@@ -406,7 +406,14 @@ include("recupInfosCompte.php");
                         <?php if (!empty($details_offre["site_web"])) { ?> <a
                                 href="<?php echo $details_offre["site_web"]; ?>" target="_blank"><button
                                     class="visit-button_detailoffre_pro">Voir le site ➔</button></a> <?php } ?>
-                        <form id="del-offre" action="#" method="POST">
+                                    <form id="add-btn" action="modifier_offre.php" method="POST">
+                            <input type="hidden" name="uneOffre"
+                                value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
+                            <input id="btn-voir-offre" class="button-text add-btn" type="submit" name="envoiOffre"
+                                value="Modifier votre offre">
+                        </form>
+                        
+                                    <form id="del-offre" action="#" method="POST">
                             <input type="hidden" name="uneOffre"
                                 value="<?php echo htmlspecialchars(serialize($details_offre['code_offre'])); ?>">
                             <input type="submit" id="btn-voir-offre" class="button-text del-btn" name="supprOffre"
@@ -423,12 +430,7 @@ include("recupInfosCompte.php");
                         </div>
 
 
-                        <form id="add-btn" action="modifier_offre.php" method="POST">
-                            <input type="hidden" name="uneOffre"
-                                value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
-                            <input id="btn-voir-offre" class="button-text add-btn" type="submit" name="envoiOffre"
-                                value="Modifier votre offre">
-                        </form>
+                       
 
 
 
