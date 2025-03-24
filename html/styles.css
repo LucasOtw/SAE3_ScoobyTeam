@@ -13225,12 +13225,12 @@ ul.mentions_legales-sous-list {
     cursor: pointer;
 }
 .btn-2fa-pro {
-    background-color: #ffffff;
+    background-color: #F28322;
     border: 1px solid orange;
     width: 44vw;
     max-width: 301px;
     height: 43px;
-    color: #000000;
+    color: #F28322;
     border-radius: 11px;
     text-decoration: none;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
