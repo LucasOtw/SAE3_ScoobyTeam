@@ -200,41 +200,7 @@ if(!empty($_POST)){
         var span = document.getElementsByClassName("close")[0];
         var form = document.getElementById("connexionForm");
 
-        var checkFA = document.getElementById('enable2FA');
-        // console.log(checkFA);
-
-        // GESTION DE LA CHECKBOX 2FA
-        checkFA.addEventListener('change', function(){
-
-            var phrase = document.getElementById('phrase');
-            if (this.checked) {
-                phrase.style.display = 'block';
-            } else {
-                phrase.style.display = 'none';
-            }
-        });
-
         modal.style.display = "none";
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            if(checkFA.checked){
-
-                fetch("generation_codeOTP.php",{
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        code_compte: "<?php ?>"
-                    })
-                })
-                
-                modal.style.display = "block";
-            } else {
-                form.submit();
-            }
-        });
 
         // Affiche la modale quand on clique sur "Se connecter"
     /*     btn.onclick = function() {
