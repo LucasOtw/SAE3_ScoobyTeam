@@ -201,7 +201,7 @@ if (isset($_POST['modif_infos'])){
                 ?>
                 <article>
                     <h2>Votre QR Code</h2>
-                    <p>Scannez votre QR Code pour ajouter</p>
+                    <p>Scannez votre QR Code pour obtenir un code à 6 chiffres</p>
                     <img src='https://api.qrserver.com/v1/create-qr-code/?data=<?php echo urlencode($otp_uri) ?>&size=200x200' alt='QR Code OTP'>
                 </article>
                 <?php
