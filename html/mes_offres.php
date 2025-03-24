@@ -64,7 +64,6 @@ function tempsEcouleDepuisNotif($avis)
     return $retour;
 }
 
-var_dump($mesOffres);
 
 ?>
 
@@ -179,6 +178,20 @@ var_dump($mesOffres);
                                                 <span class="notification-time"><?php echo tempsEcouleDepuisNotif($notif); ?></span>
                                                 <span class="new-notif-dot" style="display:none"></span>
                                             </div>
+                                            <?php
+                                            foreach ($mesOffres as $offre) {
+                                                if ($offre['code_offre'] == $notif["code_offre"]) {
+                                                    $monOffre = $offre;
+                                                    break;
+                                                }
+                                            }
+                                            ?>
+                                            <form action="detail_offre_pro.php" method="POST" class="offer-form">
+                                                <input type="hidden" id="valueOffre" name="uneOffre"
+                                                    value="<?php echo htmlspecialchars(serialize($offre)); ?>">
+                                                <input type="hidden" name="vueDetails" value="1">
+                                                <button type="submit">Voir les détails</button>
+                                            </form>
                                         </li>
 
                                         <?php
@@ -261,7 +274,8 @@ var_dump($mesOffres);
                             <h3><?php echo $monOffre['titre_offre']; ?></h3>
                             <p class="category"><?php echo $monOffre['_resume']; ?></p>
                             <p class="update"><span class="update-icon">⟳</span> Update
-                                <?php echo strtolower(tempsEcouleDepuisUpdate($monOffre)); ?></p>
+                                <?php echo strtolower(tempsEcouleDepuisUpdate($monOffre)); ?>
+                            </p>
                             <p class="last-update">
                                 <?php echo $monOffre['en_ligne'] ? 'Publiée ' . strtolower(tempsEcouleDepuisPublication($monOffre)) : "N'est pas publiée"; ?>
                             </p>
