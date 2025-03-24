@@ -1535,19 +1535,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }, 10);
             });
 
-            // Gestion spéciale pour les appareils mobiles
-            if ('ontouchstart' in window) {
-                markers.eachLayer(function(marker) {
-                    marker.off('mouseover mouseout');
-                    marker.on('click', function() {
-                        if (this.isPopupOpen()) {
-                            this.closePopup();
-                        } else {
-                            this.openPopup();
-                        }
-                    });
-                });
-            }
 
         } catch (error) {
             console.error("Erreur lors de l'initialisation de la carte :", error);
