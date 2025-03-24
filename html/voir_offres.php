@@ -1445,7 +1445,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Image avec overlay dégradé
                     if (!empty($adr['url_image'])) {
                         $popupContent .= "<div style='position:relative;'>";
-                        $popupContent .= "<img src='./" . $adr['url_image'] . ">";
+                        $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:100%; height:100px;'>";
                         $popupContent .= "<div style='position:absolute; top:0; right:0; background-color:#F28322; color:white; padding:4px 8px; border-bottom-left-radius:8px; font-size:14px; font-weight:bold;'>" . $adr['tarif'] . " €</div>";
                         $popupContent .= "</div>";
                     }
