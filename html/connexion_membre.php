@@ -189,9 +189,11 @@ if(!empty($_POST)){
     </div>
 </div>
 <div id="modal-otp" class="custom-confirm-content">
-    <p class="texte-boite-perso">Code à 6 chiffres :</p>
-    <input type="text" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
-    <p id="errorMsg" style="color: red; display: none;">Le code doit contenir exactement 6 chiffres.</p>
+    <form id="envoiCode" action="#" method="POST">
+        <p class="texte-boite-perso">Code à 6 chiffres :</p>
+        <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
+        <p id="errorMsg" style="color: red; display: none;">Le code doit contenir exactement 6 chiffres.</p>
+    </form>
 </div>
 
 
@@ -209,6 +211,10 @@ if(!empty($_POST)){
 
         var champOTP = document.getElementById('otpCode');
         var errorMsg = document.getElementById('errorMsg');
+        var formOTP = document.getElementById('envoiCode');
+        var btnEnvoiCode = formOTP.querySelector('submit');
+
+        console.log(btnEnvoiCode);
 
         oldModal.style.display = "none";
         modal.style.display = "none";
