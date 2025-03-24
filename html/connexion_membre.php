@@ -174,7 +174,7 @@ if(!empty($_POST)){
             <span class="info-icon">?</span>
             
 
-            <p id="phrase" class="info_2fa" style="display: none;">⚠️ Une fois activée, cette option est irréversible.</p>
+            <p id="phrase" class="info_2fa" style="display: none;">⚠️ Une fois activée, cette option est irréversible.<span class="info-icon">?</span></p>
         </div>
             </div>
             <div class="connexion_membre_image-container">
