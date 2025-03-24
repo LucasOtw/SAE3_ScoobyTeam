@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
+include_once __DIR__ . '/recupInfosCompte.php';
 
 use OTPHP\TOTP;
 
@@ -8,18 +9,29 @@ session_start();
 
 if($_SERVER['REQUEST_METHOD'] === "POST"){
     if(isset($_POST['active2FA'])){
-        
-        // A random secret will be generated from this.
-        // You should store the secret with the user for verification.
+
+        // On génère le code secret
+
         $otp = TOTP::create();
-        $otp->setLabel("test");
+        $otp->setLabel("Scooby-Team");
         $secret = $otp->getSecret();
 
-        $otp_uri = $otp->getProvisioningUri();
-        var_dump($otp_uri);
+        // Le code secret est généré.
+        // On vérifie son existence AU CAS OÙ
+
+        $checkCodeSecret = $dbh->prepare('SELECT COUNT(*) FROM tripenarvor._compte_otp
+        WHERE code_compte = :code_compte');
+        $checkCodeSecret->bindValue(':code_compte',$compte['code_compte']);
+        $checkCodeSecret->execute();
+
+        $existeCode = $checkCodeSecret->fetchColumn();
+        var_dump($existeCode);
+
+        // $otp_uri = $otp->getProvisioningUri();
+        // var_dump($otp_uri);
 
 
-        echo "The OTP secret is: {$otp->getSecret()}\n";
+        // echo "The OTP secret is: {$otp->getSecret()}\n";
     } else {
         /*
             AJOUTER DANS LE LOG
@@ -33,13 +45,3 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>TOTP</title>
-    </head>
-    <body>
-        <img src='https://api.qrserver.com/v1/create-qr-code/?data=<?php echo urlencode($otp_uri) ?>&size=200x200' alt='QR Code OTP'>
-    </body>
-</html>
