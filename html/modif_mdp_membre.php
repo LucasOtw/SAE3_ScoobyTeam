@@ -309,17 +309,19 @@ if (isset($_POST['modif_infos'])){
 
         let formActive2FA = document.getElementById('form2FA');
         let dialogue2FA = document.getElementsByClassName('custom-confirm-content')[0];
+
+        dialogue2FA.style.display = "none";
+
         console.log(dialogue2FA);
         console.log(formActive2FA);
 
         formActive2FA.addEventListener('submit', function(e){
             e.preventDefault();
-            let confirmeActivAuthent = confirm("Voulez-vous vraiment activer l'authentification à deux facteurs ? Cette action sera irréversible !");
-
-            if(confirmeActivAuthent){
-                formActive2FA.submit();
-            }
+            dialogue2FA.style.display = "block";
         });
+
+        let confirmBtn = dialogue2FA.querySelector('#confirm');
+        console.log(confirmBtn);
 
     </script>
 </body>
