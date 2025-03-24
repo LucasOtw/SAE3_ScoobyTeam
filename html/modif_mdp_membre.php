@@ -172,7 +172,17 @@ if (isset($_POST['modif_infos'])){
                     ⚠️ Une fois activée, cette option est <strong>irréversible</strong>.
                 </p>
             </div>
-            <p id="etat_2fa" class="etat_2fa">Pour le moment, l'authentification à deux facteurs est <span class="statut-non">désactivée</span>.</p>
+            <?php
+                if(isset($isActivated2FA) && $isActivated2FA){
+                    ?>
+                        <p id="etat_2fa" class="etat_2fa">L'authentification à deux facteurs est <span class="statut-oui">activée</span>.</p>
+                    <?php
+                } else {
+                    ?>
+                        <p id="etat_2fa" class="etat_2fa">Pour le moment, l'authentification à deux facteurs est <span class="statut-non">désactivée</span>.</p>
+                    <?php
+                }
+            ?>
         </form>
         <form action="modif_mdp_membre.php" method="POST">
            <h3>Modifiez votre mot de passe</h3>
