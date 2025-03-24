@@ -97,6 +97,8 @@
     position: absolute;
     z-index: 800;
     pointer-events: auto;
+    margin-left: 1vw;
+    margin-top: 0.6vw;
 }
 
 .leaflet-top, .leaflet-bottom {
