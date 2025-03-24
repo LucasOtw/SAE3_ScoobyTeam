@@ -20,15 +20,25 @@
 }
 
 /* Composants de la carte */
-.leaflet-pane, .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-tile-container,
-.leaflet-pane > svg, .leaflet-pane > canvas, .leaflet-zoom-box, .leaflet-image-layer, .leaflet-layer {
+.leaflet-pane,
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-tile-container,
+.leaflet-pane>svg,
+.leaflet-pane>canvas,
+.leaflet-zoom-box,
+.leaflet-image-layer,
+.leaflet-layer {
     position: absolute;
     left: 0;
     top: 0;
 }
 
 /* Icônes et tuiles */
-.leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow {
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow {
     user-select: none;
     -webkit-user-drag: none;
 }
@@ -76,20 +86,45 @@
 
 .leaflet-zoom-box {
     border: 2px dotted #38f;
-    background: rgba(255,255,255,0.5);
+    background: rgba(255, 255, 255, 0.5);
 }
 
 /* Couches et panneaux */
-.leaflet-pane { z-index: 400; }
-.leaflet-tile-pane { z-index: 200; }
-.leaflet-overlay-pane { z-index: 400; }
-.leaflet-shadow-pane { z-index: 500; }
-.leaflet-marker-pane { z-index: 600; }
-.leaflet-tooltip-pane { z-index: 650; }
-.leaflet-popup-pane { z-index: 700; }
+.leaflet-pane {
+    z-index: 400;
+}
 
-.leaflet-map-pane canvas { z-index: 100; }
-.leaflet-map-pane svg { z-index: 200; }
+.leaflet-tile-pane {
+    z-index: 200;
+}
+
+.leaflet-overlay-pane {
+    z-index: 400;
+}
+
+.leaflet-shadow-pane {
+    z-index: 500;
+}
+
+.leaflet-marker-pane {
+    z-index: 600;
+}
+
+.leaflet-tooltip-pane {
+    z-index: 650;
+}
+
+.leaflet-popup-pane {
+    z-index: 700;
+}
+
+.leaflet-map-pane canvas {
+    z-index: 100;
+}
+
+.leaflet-map-pane svg {
+    z-index: 200;
+}
 
 /* Contrôles */
 .leaflet-control {
@@ -100,16 +135,28 @@
     margin-top: 0.6vw;
 }
 
-.leaflet-top, .leaflet-bottom {
+.leaflet-top,
+.leaflet-bottom {
     position: absolute;
     z-index: 1000;
     pointer-events: none;
 }
 
-.leaflet-top { top: 0; }
-.leaflet-bottom { bottom: 0; }
-.leaflet-right { right: 0; }
-.leaflet-left { left: 0; }
+.leaflet-top {
+    top: 0;
+}
+
+.leaflet-bottom {
+    bottom: 0;
+}
+
+.leaflet-right {
+    right: 0;
+}
+
+.leaflet-left {
+    left: 0;
+}
 
 /* Animation de zoom et de fondu */
 .leaflet-fade-anim .leaflet-popup {
@@ -119,7 +166,7 @@
 
 .leaflet-zoom-animated {
     transform-origin: 0 0;
-    transition: transform 0.25s cubic-bezier(0,0,0.25,1);
+    transition: transform 0.25s cubic-bezier(0, 0, 0.25, 1);
 }
 
 /* Curseurs */
@@ -141,6 +188,7 @@
     text-align: center;
     margin-bottom: 20px;
 }
+
 .leaflet-popup-content-wrapper {
     background: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -159,7 +207,7 @@
 }
 
 .leaflet-popup-content img {
-    width: 95%; 
+    width: 95%;
     height: 90%;
     border-radius: 13px;
     margin: 5px;
@@ -209,23 +257,23 @@
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out {
     display: block;
-      width: 40px;
-      height: 40px;
-      margin: 5px auto;
-      border: none;
-      background-color: #fff;
-      font-size: 18px;
-      text-align: center;
-      line-height: 36px;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s ease;
+    width: 40px;
+    height: 40px;
+    margin: 5px auto;
+    border: none;
+    background-color: #fff;
+    font-size: 18px;
+    text-align: center;
+    line-height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
 }
 
 /* Contrôle des couches */
 .leaflet-control-layers {
-    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
     background: #fff;
     border-radius: 5px;
 }
@@ -273,20 +321,10 @@
 .map-directions a {
     display: inline-block;
     background-color: #f8f8f8;
- 
+
     text-decoration: none;
     padding: 5px 10px;
     border-radius: 4px;
     font-size: 12px;
     transition: all 0.3s ease;
-}
-
-@media (min-width: 768px) { /* Utiliser un breakpoint pour les écrans plus larges (ordinateurs) */
-    .leaflet-popup {
-        pointer-events: none; /* Empêche les interactions directes */
-    }
-    
-    .leaflet-marker-icon:hover + .leaflet-popup {
-        display: block; /* Affiche la popup au survol */
-    }
 }
