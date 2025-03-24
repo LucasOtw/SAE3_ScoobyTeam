@@ -308,7 +308,7 @@ include("recupInfosCompte.php");
 
 </head>
 
-<body onload="initMap()" data-banking=<?php echo $monComptePro['code_compte_bancaire']; ?>>
+<body onload="initMap()" data-banking=<?php echo $monComptePro['code_compte_bancaire']; ?> class="detail_offre_pro">
 
     <!-- Détails de l'offre sur Desktop -->
     <div id="body_offre_desktop">
