@@ -160,53 +160,57 @@ if (isset($_POST['modif_infos'])){
             </fieldset>
         </form>
         <form id="form2FA" action="#" method="POST">
-            <h3>Authentification à deux facteurs</h3>
+    <h3>Authentification à deux facteurs</h3>
+
+    <div class="two-fa-container">
+        <!-- Colonne gauche -->
+        <div class="left-2fa">
             <div class="connexion_membre_2fa">
-                <button type="submit" id="enable2FABtn" class="btn-2fa" <?php echo (isset($isActivated2FA) && $isActivated2FA) ? "disabled" : "" ?>>Activer l’authentification à deux facteurs</button>
+                <button type="submit" id="enable2FABtn" class="btn-2fa"
+                    <?php echo (isset($isActivated2FA) && $isActivated2FA) ? "disabled" : "" ?>>
+                    Activer l’authentification à deux facteurs
+                </button>
+
                 <input type="hidden" name="code_compte" value="<?php echo $compte['code_compte']; ?>">
                 <input type="hidden" name="active2FA" value="1">
-            
+
                 <div class="info-icon-container">
                     <span class="info-icon2">?</span>
                     <div class="tooltip-content">
                         L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone.
                     </div>
                 </div>
+
                 <p id="phrase" class="info_2fa" style="display: none;">
                     ⚠️ Une fois activée, cette option est <strong>irréversible</strong>.
                 </p>
             </div>
+
+            <p id="etat_2fa" class="etat_2fa">
+                <?php if (isset($isActivated2FA) && $isActivated2FA): ?>
+                    L'authentification à deux facteurs est <span class="statut-non">activée</span>.
+                <?php else: ?>
+                    Pour le moment, l'authentification à deux facteurs est <span class="statut-non">désactivée</span>.
+                <?php endif; ?>
+            </p>
+        </div>
+
+        <!-- Colonne droite : QR Code si activé -->
+        <?php if (isset($isActivated2FA) && $isActivated2FA): ?>
             <?php
-                if(isset($isActivated2FA) && $isActivated2FA){
-                    ?>
-                        <p id="etat_2fa" class="etat_2fa">L'authentification à deux facteurs est <span class="statut-non">activée</span>.</p>
-                    <?php
-                } else {
-                    ?>
-                        <p id="etat_2fa" class="etat_2fa">Pour le moment, l'authentification à deux facteurs est <span class="statut-non">désactivée</span>.</p>
-                    <?php
-                }
-            ?>
-        </form>
-        <?php
-            if(isset($isActivated2FA) && $isActivated2FA){
-
-                // $otp_uri = $otp->getProvisioningUri();
-                // var_dump($otp_uri);
-
                 $otp = TOTP::create($isActivated2FA['code_secret']);
                 $otp->setLabel("Scooby-Team");
                 $otp_uri = $otp->getProvisioningUri();
+            ?>
+            <div class="right-2fa">
+                <h2>Votre QR Code</h2>
+                <p>Scannez ce QR Code avec Google Authenticator ou une autre app compatible.</p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?data=<?php echo urlencode($otp_uri) ?>&size=200x200" alt="QR Code OTP">
+            </div>
+        <?php endif; ?>
+    </div>
+</form>
 
-                ?>
-                <article>
-                    <h2>Votre QR Code</h2>
-                    <p>Scannez votre QR Code pour obtenir un code à 6 chiffres</p>
-                    <img src='https://api.qrserver.com/v1/create-qr-code/?data=<?php echo urlencode($otp_uri) ?>&size=200x200' alt='QR Code OTP'>
-                </article>
-                <?php
-            }
-        ?>
         <form action="modif_mdp_membre.php" method="POST">
            <h3>Modifiez votre mot de passe</h3>
            
