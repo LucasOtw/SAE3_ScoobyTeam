@@ -224,10 +224,6 @@ if(!empty($_POST)){
         var checkFA = document.getElementById('enable2FA');
         console.log(checkFA);
 
-        checkFA.addEventListener('change',(e) => {
-            console.log(e.checked);
-        });
-
         modal.style.display = "none";
 
         form.addEventListener('submit', (e) => {
