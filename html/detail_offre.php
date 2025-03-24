@@ -847,6 +847,18 @@ if (isset($json['results'][0])) {
                                             <?php if (!$avis["blacklister"]) { ?>
                                                 <div class="context-menu">
                                                     <ul>
+                                                        <?php
+                                                            if (isset($_SESSION['membre']['code_compte']) && $avis['code_compte'] == $_SESSION['membre']['code_compte']) {
+                                                                ?>
+                                                                    <li>
+                                                                        <form action="modif_avis_membre.php" method="POST">
+                                                                            <input type="hidden" name="unAvis" value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                                                                            <input id="btn-repondre-avis" type="submit" name="modifierAvis" value="Modifier l'avis">
+                                                                        </form>
+                                                                    </li>
+                                                                <?php
+                                                            } else {
+                                                        ?>
                                                         <li>
                                                             <form action="poster_reponse_membre.php" method="POST">
                                                                 <input type="hidden" name="unAvis"
@@ -859,19 +871,7 @@ if (isset($json['results'][0])) {
                                                                 Signaler l'avis
                                                             </a>
                                                         </li>
-                                                        <?php
-                                                            if (isset($_SESSION['membre']['code_compte']) && $avis['code_compte'] == $_SESSION['membre']['code_compte']) {
-                                                                ?>
-                                                                    <li>
-                                                                        <form action="modif_avis_membre.php" method="POST">
-                                                                            <input type="hidden" name="unAvis" value="<?php echo htmlspecialchars(serialize($avis)); ?>">
-                                                                            <input id="btn-repondre-avis" type="submit" name="modifierAvis" value="Modifier l'avis">
-                                                                        </form>
-                                                                    </li>
-                                                                <?php
-                                                            }
-                                                        ?>
-        
+                                                        <?php } ?>
                                                     </ul>
                                                 </div>
                                             <?php } ?>
