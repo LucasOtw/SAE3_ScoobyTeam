@@ -220,7 +220,7 @@ if(!empty($_POST)){
 
         btnEnvoiQuentin.addEventListener('click',function(e){
             e.preventDefault();
-            console.log(form);
+            form.submit();
         });
 
         console.log(btnEnvoiCode);
