@@ -13254,7 +13254,7 @@ ul.mentions_legales-sous-list {
 }
 
 .btn-2fa:disabled:hover{
-    cursor: none;
+    all: unset;
 }
 
 .btn-2fa:hover {
