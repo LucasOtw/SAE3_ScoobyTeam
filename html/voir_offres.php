@@ -1445,7 +1445,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Image avec overlay dégradé
                     if (!empty($adr['url_image'])) {
                         $popupContent .= "<div style='position:relative;'>";
-                        $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:95px; height:100px;'>";
+                        $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:95%; height:100px;'>";
                         $popupContent .= "<div style='position:absolute; top:0; right:0; background-color:#F28322; color:white; padding:4px 8px; border-bottom-left-radius:8px; font-size:14px; font-weight:bold;'>" . $adr['tarif'] . " €</div>";
                         $popupContent .= "</div>";
                     }
@@ -1457,7 +1457,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     // Boutons d'action
                     $popupContent .= "<div style='display:flex; justify-content:space-between; margin-top:10px;'>";
-                    $popupContent .= "<a href='detail_offre.php?code=" . $adr['code_offre'] . "' style='display:inline-block; padding:6px 12px; background-color:#2DD7A4; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;'>Voir l'offre</a>";
+                    $popupContent .= "<a href='detail_offre.php code=" . $adr['code_offre'] . "' style='display:inline-block; padding:6px 12px; background-color:#2DD7A4; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;'>Voir l'offre</a>";
                     $popupContent .= "<a href='" . $url_maps . "' target='_blank' style='display:inline-block; padding:6px 12px; background-color:#F28322; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;'><span class=\"iconify\" data-icon=\"mdi:navigation\" style=\"font-size: 1.1em; vertical-align: middle; margin-right: 3px;\"></span>Itinéraire</a>";
                     $popupContent .= "</div>";
 
