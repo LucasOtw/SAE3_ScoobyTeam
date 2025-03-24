@@ -13255,3 +13255,13 @@ ul.mentions_legales-sous-list {
     color: #BDC426;
     font-weight: 600;
 }
+.etat_2fa-pro {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.statut-non-pro {
+    color: #BDC426;
+    font-weight: 600;
+}

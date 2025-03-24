@@ -292,6 +292,8 @@ if (isset($_POST['modif_infos'])){
             </div>
         </div>
     </footer>
-   
+    <script>
+        
+    </script>
 </body>
 </html>
