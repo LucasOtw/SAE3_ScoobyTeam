@@ -10279,7 +10279,7 @@ body.menu-open #overlay {
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    transition: transform 2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 }
 
 .eoffer-new:hover {
