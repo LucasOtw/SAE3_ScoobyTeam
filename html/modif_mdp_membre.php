@@ -190,7 +190,9 @@ if (isset($_POST['modif_infos'])){
                 // $otp_uri = $otp->getProvisioningUri();
                 // var_dump($otp_uri);
 
-                $otp_uri = $isActivated2FA['code_secret']->getProvisioningUri();
+                $otp = TOTP::create($isActivated2FA['code_secret']);
+                $otp->setLabel("Scooby-Team");
+                $otp_uri = $otp->getProvisioningUri();
 
                 ?>
                 <article>
