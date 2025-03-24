@@ -13247,6 +13247,6 @@ ul.mentions_legales-sous-list {
 }
 
 .statut-non {
-    color: #28a745; /* Vert */
+    color: var(--vert-clair)
     font-weight: 600;
 }
