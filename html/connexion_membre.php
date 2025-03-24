@@ -251,7 +251,7 @@ if(!empty($_POST)){
             e.preventDefault();
             modal.style.display = "block";
             console.log("TEST");
-            console.log(checkFA);
+            console.log(checkFA.checked);
         });
 
         // Affiche la modale quand on clique sur "Se connecter"
