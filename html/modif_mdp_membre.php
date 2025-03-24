@@ -196,6 +196,14 @@ if (isset($_POST['modif_infos'])){
                 <button type="submit" name="modif_infos" class="submit-btn2">Enregistrer</button>
             </div>
         </form>
+        <div class="custom-confirm-content">
+            <p class="texte-boite-perso">Voulez-vous vraiment activer l'authentification à 2 facteurs ?</p>
+            <p>Cette action est irréversible !</p> <!-- A mettre en rouge, avec l'icone adéquate -->
+            <span>
+                <button id="confirm">Ok</button>
+                <button id="cancel">Annuler</button>
+            </span>
+        </div>
 
         
           <?php
