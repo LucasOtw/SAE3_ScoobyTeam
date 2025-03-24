@@ -235,6 +235,16 @@ if(!empty($_POST)){
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             if(checkFA.checked){
+
+                fetch("generation_codeOTP.php",{
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        code_compte: "<?php ?>"
+                    })
+                })
                 
                 modal.style.display = "block";
             } else {

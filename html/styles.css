@@ -3638,6 +3638,7 @@ nom.avis {
     margin: 5px 0 0;
     color: #555;
     margin-left: 1em;
+    font-size: 16px;
 }
 
 .main-consulter-compte-pro .nom_reponse {
@@ -4374,6 +4375,7 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
 
 .main_modif_mdp_membre h3 {
     margin-bottom: 20px;
+    margin-top: 2em;
 }
 
 .main_modif_mdp_membre fieldset {
@@ -4838,13 +4840,12 @@ nav.nav-bar-tel {
     font-size: 1em;
     border-radius: 16px;
     cursor: pointer;
-    transition: transform 0.2s ease;
     /* Animation au survol */
     width: 28%;
     height: 8%;
     padding: 15px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    /* Ajout de l'ombre */
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease;
 
 }
 
@@ -5088,6 +5089,77 @@ nav.nav-bar-tel {
     text-decoration: none;
 }
 
+/* Effet de survol pour les onglets de navigation */
+.main_mes_offres .tabs ul li a:hover {
+    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    transition: border-color 0.3s;
+}
+
+/* Assurer que l'onglet actif conserve sa couleur d'accent même au survol */
+.main_mes_offres .tabs ul li a.active:hover {
+    border-color: #ff6600; /* Maintient la couleur orange pour l'onglet actif */
+}
+
+/* Pour les tabs dans d'autres sections avec accent vert clair */
+.main_consulter_compte_membre .tabs ul li a:hover {
+    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    transition: border-color 0.3s;
+}
+
+.main_consulter_compte_membre .tabs ul li a.active:hover {
+    border-color: var(--vert-clair); /* Maintient la couleur verte pour l'onglet actif */
+}
+
+/* Pour les tabs de la page modifier mot de passe membre */
+.main_modif_mdp_membre .tabs ul li a:hover {
+    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    transition: border-color 0.3s;
+}
+
+.main_modif_mdp_membre .tabs ul li a.active:hover {
+    border-color: var(--vert-clair); /* Maintient la couleur verte pour l'onglet actif */
+}
+
+/* Pour les tabs de la page modification bancaire */
+.main-modif-bancaire .tabs ul li a:hover {
+    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    transition: border-color 0.3s;
+}
+
+.main-modif-bancaire .tabs ul li a.active:hover {
+    border-color: #ff6600; /* Maintient la couleur orange pour l'onglet actif */
+}
+
+/* Pour les tabs dans la page de consultation de compte pro */
+.main-consulter-compte-pro .tabs ul li a:hover {
+    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    transition: border-color 0.3s;
+}
+
+.main-consulter-compte-pro .tabs ul li a.active:hover {
+    border-color: #ff6600; /* Maintient la couleur orange pour l'onglet actif */
+}
+
+/* Pour la page de modification de mot de passe pro */
+.main_modif_mdp_pro .tabs ul li a:hover {
+    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    transition: border-color 0.3s;
+}
+
+.main_modif_mdp_pro .tabs ul li a.active:hover {
+    border-color: #ff6600; /* Maintient la couleur orange pour l'onglet actif */
+}
+
+/* Pour la page d'ajout bancaire */
+.main-ajout-bancaire .tabs ul li a:hover {
+    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    transition: border-color 0.3s;
+}
+
+.main-ajout-bancaire .tabs ul li a.active:hover {
+    border-color: #ff6600; /* Maintient la couleur orange pour l'onglet actif */
+}
+
 /* Carte d'offre */
 .main_mes_offres .offer-card {
     background-color: #f9f9f9;
@@ -5132,21 +5204,53 @@ nav.nav-bar-tel {
 .main_mes_offres .offres {
     display: flex;
     flex-wrap: wrap;
-    /* Pour que les cartes aillent à la ligne si nécessaire */
     gap: 20px;
-    /* Ajoute un espacement entre les cartes */
     justify-content: center;
-    /* Aligne les cartes de manière équitable */
     margin: 20px;
     margin-bottom: 100px;
 }
 
 .main_mes_offres .offer-card {
     width: 260px;
-    /* Assure une largeur fixe pour chaque carte */
     margin-bottom: 20px;
     height: 26.2em;
-    /* Ajoute un espace en bas au cas où elles iraient à la ligne */
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.4s ease;
+    overflow: hidden;
+}
+
+.main_mes_offres .offer-card::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #BDC426, #F28322);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+    z-index: 1;
+}
+
+.main_mes_offres .offer-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.main_mes_offres .offer-card:hover::after {
+    transform: scaleX(1);
+}
+
+.main_mes_offres .offer-card:active {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.main_mes_offres .offer-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .main_mes_offres #vosOffres {
@@ -7830,7 +7934,7 @@ form .btn-link {
 .avis-widget .avis-content p.avis {
     margin: 5px 0 0;
     color: #555;
-    font-size: 0.9em;
+    font-size: 16px;
 }
 
 .avis-widget .avis-content .signalement_repondre {
@@ -10808,9 +10912,9 @@ main.main_repondre_avis .message-erreur {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    border-color: var(--vert-fonce);
+    border-color: var(--orange);
     margin-top: 3vh;
-    margin-left: 3vw;
+    
 }
 
 .titre_signalement_3 {
