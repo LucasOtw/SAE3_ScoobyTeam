@@ -2,6 +2,10 @@
 ob_start(); // bufferisation, ça devrait marcher ?
 session_start();
 
+require __DIR__ . '/../vendor/autoload.php';
+
+use OTPHP\TOTP;
+
 include("recupInfosCompte.php");
 
 if(isset($_GET['logout'])){
@@ -184,6 +188,25 @@ if (isset($_POST['modif_infos'])){
                 }
             ?>
         </form>
+        <?php
+            if(isset($isActivated2FA) && $isActivated2FA){
+
+                // $otp_uri = $otp->getProvisioningUri();
+                // var_dump($otp_uri);
+
+                $otp = TOTP::create($isActivated2FA['code_secret']);
+                $otp->setLabel("Scooby-Team");
+                $otp_uri = $otp->getProvisioningUri();
+
+                ?>
+                <article>
+                    <h2>Votre QR Code</h2>
+                    <p>Scannez votre QR Code pour ajouter</p>
+                    <img src='https://api.qrserver.com/v1/create-qr-code/?data=<?php echo urlencode($otp_uri) ?>&size=200x200' alt='QR Code OTP'>
+                </article>
+                <?php
+            }
+        ?>
         <form action="modif_mdp_membre.php" method="POST">
            <h3>Modifiez votre mot de passe</h3>
            

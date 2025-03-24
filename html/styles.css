@@ -3940,7 +3940,7 @@ div.creation-success {
 }
 
 div.creation-success h4 {
-    font-size: 17px;
+    font-size: 16px;
 }
 
 div.creation-success>img {
@@ -4432,6 +4432,116 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
     gap: 20px;
     /* Espacement entre les boutons */
     margin-bottom: 11em;
+}
+
+/* Popup de succès de modification */
+.modification-success {
+    position: fixed;
+    top: 10vh;
+    right: 2vw;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #ffffff;
+    border-left: 4px solid #BDC426;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    width: 320px;
+    padding: 16px;
+    animation: slideIn 0.5s ease forwards, fadeOut 0.5s ease 4.5s forwards;
+    overflow: hidden;
+}
+
+/* Animation d'entrée et de sortie */
+@keyframes slideIn {
+    0% { transform: translateX(100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; transform: translateX(0); }
+    100% { opacity: 0; transform: translateX(100%); }
+}
+
+/* Ligne de progression */
+.modification-success::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background-color: #BDC426;
+    animation: progressBar 5s linear forwards;
+    transform-origin: left;
+}
+
+@keyframes progressBar {
+    0% { transform: scaleX(1); }
+    100% { transform: scaleX(0); }
+}
+
+/* Icône de succès */
+.modification-success .success-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+    background-color: rgba(189, 196, 38, 0.15);
+    border-radius: 50%;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.modification-success .success-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Contenu textuel */
+.modification-success .success-content {
+    flex: 1;
+}
+
+.modification-success h4 {
+    margin: 0 0 4px 0;
+    font-size: 17px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.modification-success p {
+    margin: 0;
+    font-size: 14px;
+    color: #666666;
+}
+
+/* Bouton de fermeture */
+.modification-success .close-btn {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 10px;
+    transition: color 0.2s;
+}
+
+.modification-success .close-btn:hover {
+    color: #555;
+}
+
+/* Responsive design */
+@media (max-width: 430px) {
+    .modification-success {
+        width: 90%;
+        top: 5vh;
+        right: 5%;
+        left: 5%;
+    }
 }
 
 .main_modif_mdp_membre button.submit-btn1,
