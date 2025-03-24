@@ -17,7 +17,6 @@
 .leaflet-container a:hover,
 .leaflet-container a:focus {
     color: #005F7F;
-    text-decoration: underline;
 }
 
 /* Composants de la carte */
