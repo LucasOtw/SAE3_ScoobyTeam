@@ -206,12 +206,12 @@ if(!empty($_POST)){
     var span = document.getElementsByClassName("close")[0];
     var form = document.getElementById("connexionForm");
 
-    var checkFA = document.getElementById('enable2FA');
+/*     var checkFA = document.getElementById('enable2FA');
 
     // Gestion du check
     checkFA.addEventListener('click',{
         console.log(checkFA.checked);
-    });
+    }); */
 
     modal.style.display = "none";
 
