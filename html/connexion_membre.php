@@ -167,15 +167,27 @@ if(!empty($_POST)){
                     
                 </form>
             <div class="connexion_membre_2fa">
-            <input type="checkbox" id="enable2FA" name="enable2FA">
-            <label for="enable2FA">Activer l’authentification à deux facteurs</label>
-            
-            <!-- Icône pour la bulle d'information -->
-            <span class="info-icon">?</span>
-            
-
-            <p id="phrase" class="info_2fa" style="display: none;">⚠️ Une fois activée, cette option est irréversible.<span class="info-icon2">?</span></p>
+    <input type="checkbox" id="enable2FA" name="enable2FA">
+    <label for="enable2FA">Activer l'authentification à deux facteurs</label>
+    
+    <!-- Icône pour la bulle d'information -->
+    <div class="info-icon-container">
+        <span class="info-icon">?</span>
+        <div class="tooltip-content">
+            L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code généré par une application sur votre téléphone.
         </div>
+    </div>
+
+    <p id="phrase" class="info_2fa" style="display: none;">
+        ⚠️ Une fois activée, cette option est irréversible.
+        <div class="info-icon-container">
+            <span class="info-icon2">?</span>
+            <div class="tooltip-content">
+                Pour des raisons de sécurité, vous ne pourrez plus désactiver l'authentification à deux facteurs une fois qu'elle est configurée.
+            </div>
+        </div>
+    </p>
+</div>
             </div>
             <div class="connexion_membre_image-container">
                 <img src="images/imageConnexionProEau.png" alt="Image de maison en pierre avec de l'eau">

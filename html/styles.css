@@ -12987,11 +12987,12 @@ ul.mentions_legales-sous-list {
     opacity: 1;
     width: 250px;
     text-align: center;
-    z-index: 10; /* Assure que la bulle soit au-dessus des autres éléments */
+    z-index: 10; 
 }
 
-/* Le reste de la page (pour s'assurer que la bulle est bien visible) */
+
 .connexion_membre_2fa {
     position: relative;
-    /* Nécessaire pour que la bulle soit positionnée correctement */
+    display: flex;
+    gap : 10px;
 }
