@@ -5500,26 +5500,33 @@ nav.nav-bar-tel {
 }
 
 /* Effet au survol */
-.main_mes_offres .button-HorsLigne:hover {
-    transform: scale(1.05);
-    transition: 0.3s ease;
-    text-align: center;
-}
-
-.main_mes_offres .button-Ligne:hover {
-    transform: scale(1.05);
-    /* Légère mise en avant */
-    transition: 0.3s ease;
-    /* Animation douce */
-    text-align: center;
-}
-
+/* Effet au survol amélioré pour les boutons de filtrage */
+.main_mes_offres .button-HorsLigne:hover, 
+.main_mes_offres .button-Ligne:hover, 
 .main_mes_offres .button-toutes:hover {
-    transform: scale(1.05);
-    /* Légère mise en avant */
-    transition: 0.3s ease;
-    /* Animation douce */
-    text-align: center;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background-color: #f1f1f1;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    color: #333;
+    border-bottom: 2px solid #F28322;
+}
+
+/* Effet au clic */
+.main_mes_offres .button-HorsLigne:active, 
+.main_mes_offres .button-Ligne:active, 
+.main_mes_offres .button-toutes:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.1s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Animation subtile de l'icône (si vous en ajoutez) */
+.main_mes_offres .button-HorsLigne:hover i, 
+.main_mes_offres .button-Ligne:hover i, 
+.main_mes_offres .button-toutes:hover i {
+    transform: translateX(3px);
+    transition: transform 0.3s ease;
 }
 
 
