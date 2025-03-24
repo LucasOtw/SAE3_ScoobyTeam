@@ -13248,6 +13248,11 @@ ul.mentions_legales-sous-list {
     transition: transform 0.2s ease;
 }
 
+.btn-2fa:disabled{
+    filter: grayscale(100%);
+    text-decoration:line-through;
+}
+
 .btn-2fa:hover {
     transform: translateY(-2px);
     cursor: pointer;

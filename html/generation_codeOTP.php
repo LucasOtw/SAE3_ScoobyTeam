@@ -26,7 +26,32 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
         $checkCodeSecret->execute();
 
         $existeCode = $checkCodeSecret->fetchColumn();
-        var_dump($existeCode);
+
+        if($existeCode > 0){
+            // si le code existe déjà, l'utilisateur n'a rien à faire là...
+            /*
+                AJOUTER INTRUSION DANS LE LOG
+            */
+            header('location: modif_mdp_membre.php');
+            exit;
+        }
+
+        // Si le code continue de s'exécuter, c'est qu'il n'y a pas de ligne liée à l'utilisateur dans _compte_otp
+        // On peut donc la rajouter
+
+        $ajoutCodeSecret = $dbh->prepare('INSERT INTO tripenarvor._compte_otp (code_compte,code_secret)
+        VALUES (:code_compte,:_secret)');
+        $ajoutCodeSecret->bindValue(':code_compte',$compte['code_compte']);
+        $ajoutCodeSecret->bindValue(':_secret',$secret);
+
+        try{
+            $ajoutCodeSecret->execute();
+
+            header('location: modif_mdp_membre.php');
+            exit;
+        } catch (PDOException $e){
+            die("Échec exécution BDD : " . $e->getMessage());
+        }
 
         // $otp_uri = $otp->getProvisioningUri();
         // var_dump($otp_uri);
@@ -35,13 +60,13 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
         // echo "The OTP secret is: {$otp->getSecret()}\n";
     } else {
         /*
-            AJOUTER DANS LE LOG
+            AJOUTER INTRUSION DANS LE LOG
         */
     }
 } else {
     // Sinon, l'utilisateur ne devrait pas être là...
     /*
-        AJOUTER DANS LE LOG
+        AJOUTER INTRUSION DANS LE LOG
     */
 }
 
