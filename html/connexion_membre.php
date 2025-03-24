@@ -216,6 +216,11 @@ if(!empty($_POST)){
         checkFA.addEventListener('change', function(){
             var phrase = document.getElementById('phrase');
             if (this.checked) {
+                // POP UP (A CHANGER)
+                let confirme2FA = confirm("Voulez-vous vraiment activer l'authentification à deux facteurs ? Cette action sera irréversible.");
+                if(confirme2FA){
+                    this.disabled = true;
+                }
                 phrase.style.display = 'block';
             } else {
                 phrase.style.display = 'none';
