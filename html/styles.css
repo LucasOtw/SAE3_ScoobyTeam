@@ -10140,14 +10140,9 @@ body.menu-open #overlay {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease-in-out;
     cursor: pointer;
 }
 
-/* Animation au survol de la carte */
-.offer-new:hover {
-    transform: scale(1.03);
-}
 
 /* Image dans la carte */
 .offer-new img {
