@@ -1398,8 +1398,6 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             // Création de la carte et centrage sur la Bretagne
             var map = L.map('map', {zoomControl: false}).setView([48.2020, -2.9326], 8);
-            // Contenu dynamique pour la popup
-            var popupContent = "<a href='detail_offre.php?code= ".$adr['code_offre']." target="_blank">Cliquez ici pour visiter le site</a>'";    
             
             L.tileLayer('https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=a62b465402a64a49862f451a157e69ca', {
                 attribution: '&copy; Thunderforest',
@@ -1417,7 +1415,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 showCoverageOnHover: true,
                 disableClusteringAtZoom: 16
             });
-            marker.bindPopup(popupContent);
             <?php
             $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
                            (SELECT i.url_image 
