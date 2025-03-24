@@ -186,7 +186,7 @@ if(!empty($_POST)){
     <!--Pour l'affichage de la checkbox si 2FA activée-->
     <script>
         document.getElementById('enable2FA').addEventListener('change', function() {
-            var phrase = document.getElementById('info_2fa');
+            var phrase = document.getElementById('phrase');
             if (this.checked) {
                 phrase.style.display = 'block';
             } else {
