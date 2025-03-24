@@ -12940,20 +12940,125 @@ ul.mentions_legales-sous-list {
 
 
 
+/* Style pour les bulles d'information */
 .connexion_membre_2fa {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-top: 20px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
 }
 
 .connexion_membre_2fa label {
     margin-left: 8px;
+    cursor: pointer;
 }
 
-.connexion_membre_2fa .info_2fa {
-    color: #b20000;
-    font-style: italic;
-    margin-left: 25px;
-    margin-top: 5px;
+/* Style du message d'avertissement */
+.info_2fa {
+    color: #d32f2f;
+    width: 100%;
+    margin-top: 8px;
+    margin-left: 28px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+/* Conteneur des icônes d'info */
+.info-icon-container {
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+/* Style des icônes */
+.info-icon, .info-icon2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #555;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.info-icon:hover, .info-icon2:hover {
+    background-color: #BDC426;
+    color: white;
+}
+
+/* Style du tooltip */
+.tooltip-content {
+    position: absolute;
+    visibility: hidden;
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.85rem;
+    font-weight: normal;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Flèche du tooltip */
+.tooltip-content::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+/* Affichage du tooltip au survol */
+.info-icon-container:hover .tooltip-content {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Style de la checkbox */
+.connexion_membre_2fa input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #BDC426;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.connexion_membre_2fa input[type="checkbox"]:checked {
+    background-color: #BDC426;
+}
+
+.connexion_membre_2fa input[type="checkbox"]:checked::before {
+    content: "✓";
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* Style de la bulle */
