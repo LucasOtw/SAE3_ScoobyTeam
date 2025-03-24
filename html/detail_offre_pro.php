@@ -915,6 +915,20 @@ include("recupInfosCompte.php");
                                     <?php if (!$avis["blacklister"]) { ?>
                                         <div class="context-menu">
                                             <ul>
+                                                <?php
+                                                if ($avis['code_compte'] == $_SESSION['pro']['code_compte']) {
+                                                    ?>
+                                                    <li>
+                                                        <form action="modif_avis_pro.php" method="POST">
+                                                            <input type="hidden" name="unAvis"
+                                                                value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                                                            <input id="btn-repondre-avis" type="submit" name="modifierAvis"
+                                                                value="Modifier l'avis">
+                                                        </form>
+                                                    </li>
+                                                    <?php
+                                                } else {
+                                                ?>
                                                 <li>
                                                     <form action="poster_reponse_pro.php" method="POST">
                                                         <input type="hidden" name="unAvis"
@@ -938,20 +952,7 @@ include("recupInfosCompte.php");
                                                         <p id="btn-blacklist-avis">Blacklister l'avis</p>
                                                     </div>
                                                 </li>
-                                                <?php
-                                                if ($avis['code_compte'] == $_SESSION['pro']['code_compte']) {
-                                                    ?>
-                                                    <li>
-                                                        <form action="modif_avis_pro.php" method="POST">
-                                                            <input type="hidden" name="unAvis"
-                                                                value="<?php echo htmlspecialchars(serialize($avis)); ?>">
-                                                            <input id="btn-repondre-avis" type="submit" name="modifierAvis"
-                                                                value="Modifier l'avis">
-                                                        </form>
-                                                    </li>
-                                                    <?php
-                                                }
-                                                ?>
+                                                <?php } ?>
                                             </ul>
                                         </div>
                                     <?php } ?>
