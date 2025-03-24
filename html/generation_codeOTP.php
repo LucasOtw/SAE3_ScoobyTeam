@@ -16,6 +16,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
         $secret = $otp->getSecret();
 
         $otp_uri = $otp->getProvisioningUri();
+        var_dump($otp_uri);
 
 
         echo "The OTP secret is: {$otp->getSecret()}\n";
