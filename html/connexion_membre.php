@@ -232,6 +232,7 @@ if(!empty($_POST)){
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             if(checkFA.checked){
+                
                 modal.style.display = "block";
             } else {
                 form.submit();
