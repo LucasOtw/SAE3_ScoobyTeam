@@ -6848,7 +6848,7 @@ select.theme_contacter_plateforme {
     height: 52px;
     border: 1px solid var(--orange);
     font-size: 1em;
-    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    box-shadow: 0px 6px 19px var(--orange);
     transition: transform 0.2s ease;
 }
 
