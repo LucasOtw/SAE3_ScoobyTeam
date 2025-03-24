@@ -154,7 +154,9 @@ if (isset($_POST['modif_infos'])){
                     <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($monCompteMembre['api_key']); ?>" readonly>
                     <input type="submit" id="btn-api" name="generate_api_key" value="" alt="Regénérer la clé API" formnovalidate>
             </fieldset>
-           <h3>Authentification à deux facteurs</h3>
+        <form>
+        <div>
+            <h3>Authentification à deux facteurs</h3>
             <div class="connexion_membre_2fa">
                 <button type="button" id="enable2FABtn" class="btn-2fa">Activer l’authentification à deux facteurs</button>
             
@@ -169,8 +171,7 @@ if (isset($_POST['modif_infos'])){
                 </p>
             </div>
             <p id="etat_2fa" class="etat_2fa">Pour le moment, l'authentification à deux facteurs est <span class="statut-non">désactivée</span>.</p>
-
-        <form>
+        </div>
         <form action="modif_mdp_membre.php" method="POST">
            <h3>Modifiez votre mot de passe</h3>
            
@@ -302,7 +303,7 @@ if (isset($_POST['modif_infos'])){
             let confirmeActivAuthent = confirm("Voulez-vous vraiment activer l'authentification à deux facteurs ? Cette action sera irréversible !");
 
             if(confirmeActivAuthent){
-                
+
             }
         });
 
