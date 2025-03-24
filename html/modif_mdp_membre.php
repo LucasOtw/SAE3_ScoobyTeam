@@ -164,7 +164,7 @@ if (isset($_POST['modif_infos'])){
                         L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone.
                     </div>
                 </div>
-            
+                <p id="etat_2fa" class="etat_2fa">Pour le moment, l'authentification à deux facteurs est <span class="statut-non">pas activée</span>.</p>
                 <p id="phrase" class="info_2fa" style="display: none;">
                     ⚠️ Une fois activée, cette option est <strong>irréversible</strong>.
                 </p>

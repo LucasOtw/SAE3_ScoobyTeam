@@ -697,6 +697,7 @@ main.creation_compte_pro .checkbox label a {
 main.creation_compte_pro #cgu,
 main.main-consulter-compte-pro #cgu {
     accent-color: #df7519;
+    height: 15px;
 }
 
 main.creation_compte_pro .submit-btn {
@@ -2485,7 +2486,6 @@ fieldset[disabled] {
 .main-consulter-compte-pro label {
     display: block;
     margin-bottom: 0px;
-    font-weight: bold;
     color: #555;
 }
 
@@ -4945,6 +4945,7 @@ nav.nav-bar-tel {
 .main-modif-bancaire #remember,
 .main-modif-bancaire #cgu {
     accent-color: var(--orange);
+    height: 15px;
 }
 
 /* Styles pour les boutons */
@@ -13207,18 +13208,45 @@ ul.mentions_legales-sous-list {
     gap : 10px;
 }
 .btn-2fa {
-           background-color: var(--vert-clair);
-           border: none;
-           width: 44vw;
-           max-width: 301px;
-           height: 43px;
-           color: white;
-           border-radius: 16px;
-           text-decoration: none;
-           box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
-           transition: transform 0.2s ease;
+    background-color: var(--vert-clair);
+    border: none;
+    width: 44vw;
+    max-width: 301px;
+    height: 43px;
+    color: white;
+    border-radius: 16px;
+    text-decoration: none;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease;
 }
 
 .btn-2fa:hover{
-           transform: translateY(-2px);
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+.btn-2fa-pro {
+    background-color: var(--orange);
+    border: none;
+    width: 44vw;
+    max-width: 301px;
+    height: 43px;
+    color: white;
+    border-radius: 16px;
+    text-decoration: none;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease;
+}
+.btn-2fa-pro:hover{
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+.etat_2fa {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.statut-non {
+    color: var(--vert-clair)
+    font-weight: 600;
 }

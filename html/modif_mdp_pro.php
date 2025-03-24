@@ -280,6 +280,22 @@ if (isset($_POST['modif_infos'])){
                     <input disabled type="text" id="cle_api_pro" name="cle_api" value="<?php echo htmlspecialchars($monComptePro['api_key']); ?>" readonly>
                     <input type="submit" id="btn-api-pro" name="generate_api_key" value="" alt="Regénérer la clé API" formnovalidate>
             </fieldset>
+           <h3>Authentification à deux facteurs</h3>
+            <div class="connexion_membre_2fa-pro">
+                <button type="button" id="enable2FABtn" class="btn-2fa-pro">Activer l’authentification à deux facteurs</button>
+            
+                <div class="info-icon-container">
+                    <span class="info-icon2">?</span>
+                    <div class="tooltip-content">
+                        L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone.
+                    </div>
+                </div>
+            
+                <p id="phrase" class="info_2fa" style="display: none;">
+                    ⚠️ Une fois activée, cette option est <strong>irréversible</strong>.
+                </p>
+            </div>
+
         </form>
         <form action="modif_mdp_pro.php" method="POST">
            <h3>Modifiez votre mot de passe</h3>
