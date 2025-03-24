@@ -12947,7 +12947,7 @@ ul.mentions_legales-sous-list {
 /* Style de la bulle d'information */
 .tooltip-icon:hover::after {
     content: "L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone.";
-    position: absolute;
+    position: relative;
     left: 50%;
     transform: translateX(-50%);
     bottom: 25px; /* Positionne la bulle en dessous de l'icône */
@@ -12955,13 +12955,10 @@ ul.mentions_legales-sous-list {
     color: #fff;
     padding: 8px;
     font-size: 0.9em;
-    border-radius: 5px;
     opacity: 1;
-    visibility: visible;
     width: 250px;
     text-align: center;
     z-index: 10; /* Assure que la bulle soit au-dessus des autres éléments */
-    white-space: nowrap;
 }
 
 /* Le reste de la page (pour s'assurer que la bulle est bien visible) */
