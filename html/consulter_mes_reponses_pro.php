@@ -221,90 +221,69 @@ if (!empty($_POST['supprAvis'])) {
 
 
 
-
         <div class="dernier_avis_offre">
-            
-            <?php 
-                $avis_de_mes_offres = $bh->prepare('SELECT * from tripenarvor._avis natural join tripenarvor._offre where professionnel = ? and code_compte <> ?;');
-                $avis_de_mes_offres->execute($_SESSION['pro']['code_compte'], $_SESSION['pro']['code_compte']);
-                $avis_de_mes_offres = $avis_de_mes_offres->fetchAll(PDO::FETCH_ASSOC);
-                
+            <?php
+            $avis_de_mes_offres = $bh->prepare('SELECT * from tripenarvor._avis natural join tripenarvor._offre where professionnel = ? and code_compte <> ?;');
+            $avis_de_mes_offres->execute([$_SESSION['pro']['code_compte'], $_SESSION['pro']['code_compte']]);
+            $avis_de_mes_offres = $avis_de_mes_offres->fetchAll(PDO::FETCH_ASSOC);
 
-                foreach ($avis_de_mes_offres as $avis):
-                    // Déterminer l'appréciation en fonction de la note
-                    $appreciation = "";
-                    switch ($avis["avis_note"]) {
-                        case '1':
-                            $appreciation = "Insatisfaisant";
-                            break;
-                        case '2':
-                            $appreciation = "Passable";
-                            break;
-                        case '3':
-                            $appreciation = "Correct";
-                            break;
-                        case '4':
-                            $appreciation = "Excellent";
-                            break;
-                        case '5':
-                            $appreciation = "Parfait";
-                            break;
-                        default:
-                            $appreciation = "Non noté";
-                            break;
-                    }
-                    ?>
-                    <div class="avis">
-                        <div class="avis-content">
-                            <h3 class="avis" style="display: flex; justify-content: space-between;">
-                                <span>
-                                    <?php
-                                    if ($avis["avis_note"] != 0) {
-                                        echo htmlspecialchars($avis["avis_note"]) . ".0 ★ " . htmlspecialchars($appreciation);
-                                    } else {
-                                        echo "Réponse";
-                                    }
-                                    ?>
+            foreach ($avis_de_mes_offres as $avis):
+                // Déterminer l'appréciation en fonction de la note
+                $appreciation = match ($avis["avis_note"]) {
+                    '1' => "Insatisfaisant",
+                    '2' => "Passable",
+                    '3' => "Correct",
+                    '4' => "Excellent",
+                    '5' => "Parfait",
+                    default => "Non noté"
+                };
+                ?>
+                <div class="avis">
+                    <div class="avis-content">
+                        <h3 class="avis" style="display: flex; justify-content: space-between;">
+                            <span>
+                                <?php
+                                echo $avis["avis_note"] != 0
+                                    ? htmlspecialchars($avis["avis_note"]) . ".0 ★ " . htmlspecialchars($appreciation)
+                                    : "Réponse";
+                                ?>
 
-                                    <?php
-                                    if (!empty($avis['pro_raison_sociale'])) {
-                                        ?><br><span class="nom_avis" style="color:var(--orange)">Mon entreprise</span><?php
-                                    } elseif (!empty($avis['avis_prenom_membre']) && !empty($avis['avis_nom_membre'])) {
-                                        ?><br><span class="nom_avis"><?php echo htmlspecialchars($avis["avis_prenom_membre"]) . " " . htmlspecialchars($avis["avis_nom_membre"]); ?></span><?php
-                                    } else {
-                                        ?><br><span class="nom_avis">Utilisateur supprimé</span><?php
-                                    }
-                                    ?>
-                                    <span class="nom_visite"><?php echo htmlspecialchars($avis["titre_offre"]); ?></span>
-                                </span>
-                                <!-- Formulaire pour supprimer un avis -->
+                                <?php if (!empty($avis['pro_raison_sociale'])): ?>
+                                    <br><span class="nom_avis" style="color:var(--orange)">Mon entreprise</span>
+                                <?php elseif (!empty($avis['avis_prenom_membre']) && !empty($avis['avis_nom_membre'])): ?>
+                                    <br><span class="nom_avis">
+                                        <?= htmlspecialchars($avis["avis_prenom_membre"]) . " " . htmlspecialchars($avis["avis_nom_membre"]) ?>
+                                    </span>
+                                <?php else: ?>
+                                    <br><span class="nom_avis">Utilisateur supprimé</span>
+                                <?php endif; ?>
 
-                            </h3>
-                            <p class="avis"><?php echo htmlspecialchars_decode($avis["avis_txt_avis"], ENT_QUOTES); ?></p>
-                            <div class="consulter_mes_reponses_pro_reponse">
-                                <span class="nom_reponse"
-                                    style="color:var(--orange); font-weight:bold;"><?php echo "Mon entreprise"; ?></span>
-                                <div class="txt_reponse_poubelle" style="display: flex; justify-content: space-between;">
-                                    <p class="reponse">
-                                        <?php echo htmlspecialchars_decode($avis["reponse_txt_avis"], ENT_QUOTES); ?></p>
+                                <span class="nom_visite"><?= htmlspecialchars($avis["titre_offre"]) ?></span>
+                            </span>
+                        </h3>
 
-                                    <form method="POST" action="consulter_mes_reponses_pro.php" class="delete-form"
-                                        style="padding:0px; width:auto; margin:0;">
-                                        <input type="hidden" name="supprAvis"
-                                            value="<?php echo htmlspecialchars($avis['reponse_code_avis']); ?>">
-                                        <img src="images/trash.svg" alt="Supprimer" class="delete-icon"
-                                            title="Supprimer cet avis" onclick="confirmDelete(event)">
-                                    </form>
-                                </div>
+                        <p class="avis"><?= htmlspecialchars_decode($avis["avis_txt_avis"], ENT_QUOTES) ?></p>
 
+                        <div class="consulter_mes_reponses_pro_reponse">
+                            <span class="nom_reponse" style="color:var(--orange); font-weight:bold;">Mon entreprise</span>
+                            <div class="txt_reponse_poubelle" style="display: flex; justify-content: space-between;">
+                                <p class="reponse"><?= htmlspecialchars_decode($avis["reponse_txt_avis"], ENT_QUOTES) ?></p>
+
+                                <form method="POST" action="consulter_mes_reponses_pro.php" class="delete-form"
+                                    style="padding:0px; width:auto; margin:0;">
+                                    <input type="hidden" name="supprAvis"
+                                        value="<?= htmlspecialchars($avis['reponse_code_avis']) ?>">
+                                    <img src="images/trash.svg" alt="Supprimer" class="delete-icon"
+                                        title="Supprimer cet avis" onclick="confirmDelete(event)">
+                                </form>
                             </div>
                         </div>
                     </div>
-                    <?php
-            ?>
+                </div>
+            <?php endforeach; ?>
         </div>
 
-        </div>
+
         <div class="avis-widget">
             <div class="avis-list">
                 <?php
@@ -404,7 +383,8 @@ if (!empty($_POST['supprAvis'])) {
                                     if (!empty($avis['pro_raison_sociale'])) {
                                         ?><br><span class="nom_avis" style="color:var(--orange)">Mon entreprise</span><?php
                                     } elseif (!empty($avis['avis_prenom_membre']) && !empty($avis['avis_nom_membre'])) {
-                                        ?><br><span class="nom_avis"><?php echo htmlspecialchars($avis["avis_prenom_membre"]) . " " . htmlspecialchars($avis["avis_nom_membre"]); ?></span><?php
+                                        ?><br><span
+                                            class="nom_avis"><?php echo htmlspecialchars($avis["avis_prenom_membre"]) . " " . htmlspecialchars($avis["avis_nom_membre"]); ?></span><?php
                                     } else {
                                         ?><br><span class="nom_avis">Utilisateur supprimé</span><?php
                                     }
@@ -420,7 +400,8 @@ if (!empty($_POST['supprAvis'])) {
                                     style="color:var(--orange); font-weight:bold;"><?php echo "Mon entreprise"; ?></span>
                                 <div class="txt_reponse_poubelle" style="display: flex; justify-content: space-between;">
                                     <p class="reponse">
-                                        <?php echo htmlspecialchars_decode($avis["reponse_txt_avis"], ENT_QUOTES); ?></p>
+                                        <?php echo htmlspecialchars_decode($avis["reponse_txt_avis"], ENT_QUOTES); ?>
+                                    </p>
 
                                     <form method="POST" action="consulter_mes_reponses_pro.php" class="delete-form"
                                         style="padding:0px; width:auto; margin:0;">
@@ -532,6 +513,7 @@ if (!empty($_POST['supprAvis'])) {
         </div>
     </footer>
 </body>
+
 </html>
 
 <script>
