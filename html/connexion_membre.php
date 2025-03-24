@@ -173,6 +173,7 @@ if(!empty($_POST)){
             <!-- Icône pour la bulle d'information -->
             <span class="tooltip-icon">?</span>
             
+
             <p class="info_2fa">⚠️ Une fois activée, cette option est irréversible.</p>
         </div>
             </div>
@@ -181,6 +182,18 @@ if(!empty($_POST)){
             </div>
         </div>
     </main>
+
+    <!--Pour l'affichage de la checkbox si 2FA activée-->
+    <script>
+        document.getElementById('enable2FA').addEventListener('info_2fa', function() {
+            var phrase = document.getElementById('info_2fa');
+            if (this.checked) {
+                phrase.style.display = 'block';
+            } else {
+                phrase.style.display = 'none';
+            }
+        });
+    </script>
 
     <!-- Modal Popup QR Code -->
 <div id="myModal" class="modal">
