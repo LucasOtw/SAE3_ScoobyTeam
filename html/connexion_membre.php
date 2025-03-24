@@ -207,6 +207,7 @@ if(!empty($_POST)){
         var span = document.getElementsByClassName("close")[0];
         var form = document.getElementById("connexionForm");
 
+        var champOTP = document.getElementById('optCode');
         var errorMsg = document.getElementById('errorMsg');
 
         oldModal.style.display = "none";
@@ -222,7 +223,7 @@ if(!empty($_POST)){
             modal.style.display = "block";
         });
 
-        modal.addEventListener("input", function () {
+        champOTP.addEventListener("input", function () {
             let errorMsg = document.getElementById("errorMsg");
 
             // Supprime tout sauf les chiffres et limite à 6 caractères
