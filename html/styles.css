@@ -3922,6 +3922,7 @@ main.creation_compte_membre nav ul li a {
 main.creation_compte_membre nav ul li a.active {
     border-bottom: 2px solid var(--vert-clair);
 }
+
 /* Popup de succès - version améliorée */
 div.creation-success {
     position: fixed;
@@ -3942,13 +3943,27 @@ div.creation-success {
 
 /* Animation d'entrée et de sortie */
 @keyframes slideInRight {
-    0% { transform: translateX(100%); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 @keyframes fadeOut {
-    0% { opacity: 1; transform: translateX(0); }
-    100% { opacity: 0; transform: translateX(100%); }
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
 }
 
 /* Ligne de progression */
@@ -3965,12 +3980,17 @@ div.creation-success::after {
 }
 
 @keyframes progressBar {
-    0% { transform: scaleX(1); }
-    100% { transform: scaleX(0); }
+    0% {
+        transform: scaleX(1);
+    }
+
+    100% {
+        transform: scaleX(0);
+    }
 }
 
 /* Icône de succès */
-div.creation-success > img {
+div.creation-success>img {
     width: 24px;
     height: 24px;
     padding: 8px;
@@ -4522,13 +4542,27 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
 
 /* Animation d'entrée et de sortie */
 @keyframes slideIn {
-    0% { transform: translateX(100%); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 @keyframes fadeOut {
-    0% { opacity: 1; transform: translateX(0); }
-    100% { opacity: 0; transform: translateX(100%); }
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
 }
 
 /* Ligne de progression */
@@ -4545,8 +4579,13 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
 }
 
 @keyframes progressBar {
-    0% { transform: scaleX(1); }
-    100% { transform: scaleX(0); }
+    0% {
+        transform: scaleX(1);
+    }
+
+    100% {
+        transform: scaleX(0);
+    }
 }
 
 /* Icône de succès */
@@ -9418,6 +9457,7 @@ nav.nav-bar {
         justify-content: space-around;
         border-radius: 1000px;
         box-shadow: 0px 2px 10px rgb(156, 156, 156);
+        z-index: 10;
     }
 
 
@@ -13428,15 +13468,17 @@ ul.mentions_legales-sous-list {
     transition: transform 0.2s ease;
 }
 
-.btn-2fa:disabled{
+.btn-2fa:disabled {
     background-color: #C4C4C4;
 }
+
 .btn-2fa:disabled:hover {
     transform: translateY(-2px);
     cursor: pointer;
-    background-color:#C4C4C4;
+    background-color: #C4C4C4;
     color: white;
 }
+
 .btn-2fa:hover {
     transform: translateY(-2px);
     cursor: pointer;
@@ -13445,16 +13487,16 @@ ul.mentions_legales-sous-list {
 }
 
 .btn-2fa-pro {
-        background-color: #ffffff;
-        border: 1px solid orange;
-        width: 44vw;
-        max-width: 301px;
-        height: 43px;
-        color: #000000;
-        border-radius: 11px;
-        text-decoration: none;
-        box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
-        transition: transform 0.2s ease;
+    background-color: #ffffff;
+    border: 1px solid orange;
+    width: 44vw;
+    max-width: 301px;
+    height: 43px;
+    color: #000000;
+    border-radius: 11px;
+    text-decoration: none;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease;
 }
 
 
@@ -13491,11 +13533,12 @@ ul.mentions_legales-sous-list {
     font-weight: 600;
 }
 
-.connexion_membre_2fa-pro{
-           width: 885px;
-           margin: 0 auto;
-           border-radius: 8px;
+.connexion_membre_2fa-pro {
+    width: 885px;
+    margin: 0 auto;
+    border-radius: 8px;
 }
-.main_modif_mdp_membre > .custom-confirm-content{
+
+.main_modif_mdp_membre>.custom-confirm-content {
     position: fixed;
 }
