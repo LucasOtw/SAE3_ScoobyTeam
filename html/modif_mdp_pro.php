@@ -295,7 +295,7 @@ if (isset($_POST['modif_infos'])){
                     ⚠️ Une fois activée, cette option est <strong>irréversible</strong>.
                 </p>
             </div>
-            <p id="etat_2fa-pro" class="etat_2fa-pro">Pour le moment, l'authentification à deux facteurs est <span class="statut-non-pro">pas activée</span>.</p>
+            <p id="etat_2fa-pro" class="etat_2fa-pro">Pour le moment, l'authentification à deux facteurs est <span class="statut-non-pro">désactivée</span>.</p>
 
         </form>
         <form action="modif_mdp_pro.php" method="POST">
