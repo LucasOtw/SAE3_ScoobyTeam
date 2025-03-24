@@ -156,7 +156,6 @@ if (isset($_POST['modif_infos'])){
             </fieldset>
         </form>
         <form id="form2FA" action="#" method="POST">
-            sdfghjkiolikjuhgfcdfvghjuikoikjuhgbvfcgbhjuikokujhgbvfc vgbhujiujhygvfcx cdfvgyhu
             <h3>Authentification à deux facteurs</h3>
             <div class="connexion_membre_2fa">
                 <button type="submit" id="enable2FABtn" class="btn-2fa">Activer l’authentification à deux facteurs</button>
