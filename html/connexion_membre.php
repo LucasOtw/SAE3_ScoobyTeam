@@ -232,7 +232,7 @@ if(!empty($_POST)){
         var form = document.getElementById("connexionForm");
 
         var checkFA = document.getElementById('enable2FA');
-        console.log(checkFA);
+        // console.log(checkFA);
 
         // GESTION DE LA CHECKBOX 2FA
         checkFA.addEventListener('change', function(){
@@ -250,9 +250,8 @@ if(!empty($_POST)){
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             modal.style.display = "block";
-            if(checkFA.checked){
-                console.log("BONJOUR");
-            }
+            console.log("TEST");
+            console.log(checkFA);
         });
 
         // Affiche la modale quand on clique sur "Se connecter"
