@@ -360,7 +360,6 @@ if (isset($_POST['modif_infos'])) {
         <div class="creation-success">
             <img src="./images/icones/check.svg" alt="Succès">
             <h4>Compte créé avec succès ! Vous pouvez maintenant vous connecter.</h4>
-            <button class="close-btn">&times;</button>
         </div>
 
     </main>
