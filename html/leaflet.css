@@ -207,8 +207,23 @@
 /* Contrôles de zoom */
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out {
-    display:flex;
-    font: bold 18px 'Lucida Console', Monaco, monospace;
+    display: block;
+      width: 40px;
+      height: 40px;
+      margin: 5px auto;
+      border: none;
+      background-color: #fff;
+      font-size: 18px;
+      text-align: center;
+      line-height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+}
+.leaflet-control-zoom-in:hover,
+.leaflet-control-zoom-out:hover{
+    background-color: #f1f1f1;
 }
 
 /* Contrôle des couches */
