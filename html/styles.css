@@ -10911,9 +10911,9 @@ main.main_repondre_avis .message-erreur {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    border-color: var(--vert-fonce);
+    border-color: var(--orange);
     margin-top: 3vh;
-    margin-left: 3vw;
+    
 }
 
 .titre_signalement_3 {
