@@ -732,6 +732,7 @@ function tempsEcouleDepuisPublication($offre){
 
         <div id="map" style="height: 618px; width: 82%; margin: auto"></div>
 
+        
 
         <div class="titres-offres">
             <h2 class="titre-les-offres">Toutes les offres</h2>
@@ -1396,11 +1397,17 @@ document.addEventListener("DOMContentLoaded", function () {
     if (mapElement) {
         try {
             // Création de la carte et centrage sur la Bretagne
-            var map = L.map('map').setView([48.2020, -2.9326], 8);
+            var map = L.map('map', {zoomControl: false}).setView([48.2020, -2.9326], 8);
 
+            
             L.tileLayer('https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=a62b465402a64a49862f451a157e69ca', {
                 attribution: '&copy; Thunderforest',
                 maxZoom: 20
+            }).addTo(map);
+
+            //ajout des controles de la map
+            L.control.zoom({
+                position:'topright'
             }).addTo(map);
 
             var markers = L.markerClusterGroup({

@@ -7696,6 +7696,8 @@ form .btn-link {
 #btn-repondre-avis {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    font-size: 15px;
+    font-weight: 400;
 }
 
 #btn-blacklist-avis {

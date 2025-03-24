@@ -867,7 +867,7 @@ if (isset($json['results'][0])) {
                                                             </form>
                                                         </li>
                                                         <li>
-                                                            <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>" title="Signaler cet avis" style="text-decoration: none; margin-right: 2vw; color: black;">
+                                                            <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>" title="Signaler cet avis" style="text-decoration: none;margin-right: 2vw;color: black;font-size: 15px;font-weight: 400;">
                                                                 Signaler l'avis
                                                             </a>
                                                         </li>
