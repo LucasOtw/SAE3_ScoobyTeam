@@ -5143,10 +5143,13 @@ nav.nav-bar-tel {
 
 .main_mes_offres .offer-card {
     width: 260px;
-    /* Assure une largeur fixe pour chaque carte */
     margin-bottom: 20px;
     height: 26.2em;
-    /* Ajoute un espace en bas au cas où elles iraient à la ligne */
+}
+
+.main_mes_offres .offer-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .main_mes_offres #vosOffres {
