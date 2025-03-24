@@ -64,7 +64,6 @@ function tempsEcouleDepuisNotif($avis)
     return $retour;
 }
 
-var_dump($mesOffres);
 
 ?>
 
