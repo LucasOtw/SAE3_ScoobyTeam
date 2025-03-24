@@ -188,13 +188,18 @@ if(!empty($_POST)){
         <button id="submitFormBtn" class="se_connecter_modal">Se connecter quand même</button>
     </div>
 </div>
+<div id="modal-otp" class="custom-confirm-content">
+    <p class="texte-boite-perso">Code à 6 chiffres :</p>
+    <input type="text" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
+    <p id="errorMsg" style="color: red; display: none;">Le code doit contenir exactement 6 chiffres.</p>
+</div>
 
 
     <script>
 
     document.addEventListener('DOMContentLoaded', function(){
         // Récupère les éléments
-        var modal = document.getElementById("myModal");
+        var modal = document.getElementById("modal-otp");
         var btn = document.getElementById("connectButton");
         var submitBtn = document.getElementById("submitFormBtn");
         var span = document.getElementsByClassName("close")[0];
@@ -207,17 +212,22 @@ if(!empty($_POST)){
             modal.style.display = "block";
         } */
 
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            modal.style.display = "block";
+        });
+
         // Ferme la modale en cliquant sur la croix
         span.onclick = function() {
             modal.style.display = "none";
         }
 
-        // Ferme la modale si on clique à l'extérieur
+/*         // Ferme la modale si on clique à l'extérieur
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
             }
-        }
+        } */
 
         // Clique sur "Se connecter quand même" => soumet le formulaire
         submitBtn.onclick = function() {
