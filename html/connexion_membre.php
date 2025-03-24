@@ -176,6 +176,28 @@ if(!empty($_POST)){
                     </div>
                     
                 </form>
+            <div class="connexion_membre_2fa">
+    <input type="checkbox" id="enable2FA" name="enable2FA">
+    <label for="enable2FA">Activer l'authentification à deux facteurs</label>
+    
+    <!-- Icône pour la bulle d'information -->
+    <div class="info-icon-container">
+        <span class="info-icon">?</span>
+        <div class="tooltip-content">
+            L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code généré par une application sur votre téléphone.
+        </div>
+    </div>
+
+    <p id="phrase" class="info_2fa" style="display: none;">
+        ⚠️ Une fois activée, cette option est irréversible.
+        <div class="info-icon-container">
+            <span class="info-icon2">?</span>
+            <div class="tooltip-content">
+                Pour des raisons de sécurité, vous ne pourrez plus désactiver l'authentification à deux facteurs une fois qu'elle est configurée.
+            </div>
+        </div>
+    </p>
+</div>
             </div>
             <div class="connexion_membre_image-container">
                 <img src="images/imageConnexionProEau.png" alt="Image de maison en pierre avec de l'eau">
@@ -210,7 +232,7 @@ if(!empty($_POST)){
         var form = document.getElementById("connexionForm");
 
         var checkFA = document.getElementById('enable2FA');
-        console.log(checkFA);
+        // console.log(checkFA);
 
         // GESTION DE LA CHECKBOX 2FA
         checkFA.addEventListener('change', function(){
@@ -228,6 +250,9 @@ if(!empty($_POST)){
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             modal.style.display = "block";
+            if(checkFA.checked){
+                console.log("test");
+            }
         });
 
         // Affiche la modale quand on clique sur "Se connecter"
