@@ -13211,9 +13211,9 @@ ul.mentions_legales-sous-list {
 .btn-2fa {
            background-color: var(--vert-clair);
            border: none;
-           width: 15vw;
-           max-width: 220px;
-           height: 52px;
+           width: 44vw;
+           max-width: 301px;
+           height: 43px;
            color: white;
            border-radius: 16px;
            text-decoration: none;
