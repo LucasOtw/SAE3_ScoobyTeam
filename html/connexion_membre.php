@@ -214,6 +214,7 @@ if(!empty($_POST)){
 
         // GESTION DE LA CHECKBOX 2FA
         checkFA.addEventListener('change', function(){
+            
             var phrase = document.getElementById('phrase');
             if (this.checked) {
                 phrase.style.display = 'block';
