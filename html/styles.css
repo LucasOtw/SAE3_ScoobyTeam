@@ -13302,3 +13302,6 @@ ul.mentions_legales-sous-list {
            margin: 0 auto;
            border-radius: 8px;
 }
+.main_modif_mdp_membre > .custom-confirm-content{
+    position: fixed;
+}
