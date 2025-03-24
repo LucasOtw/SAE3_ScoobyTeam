@@ -155,6 +155,7 @@ if (isset($_POST['modif_infos'])){
                     <input type="submit" id="btn-api" name="generate_api_key" value="" alt="Regénérer la clé API" formnovalidate>
             </fieldset>
            <div class="connexion_membre_2fa">
+              <p>Authentification à deux facteurs</p>
              <input type="checkbox" id="enable2FA" name="enable2FA">
              <label for="enable2FA">Activer l’authentification à deux facteurs</label>
          
