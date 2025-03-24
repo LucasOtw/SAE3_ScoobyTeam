@@ -6,12 +6,16 @@ session_start();
 
 if($_SERVER['REQUEST_METHOD'] === "POST"){
     if(isset($_POST['active2FA'])){
-
-        $clock = new MyClock(); // Your own implementation of a PSR-20 Clock
         
         // A random secret will be generated from this.
         // You should store the secret with the user for verification.
-        $otp = TOTP::generate($clock);
+        $otp = TOTP::create();
+        $otp->setLabel("test");
+        $secret = $otp->getSecret();
+
+        $otp_uri = $otp->getProvisioningUri();
+
+
         echo "The OTP secret is: {$otp->getSecret()}\n";
     } else {
         /*
