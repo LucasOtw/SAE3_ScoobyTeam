@@ -1434,6 +1434,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
                 $adresse_enc = urlencode($adresse_complete);
                 $adresse_maps = $adresse_complete;
+                $adresse_code= $adr['code_offre'];
 
                 $url = "https://maps.googleapis.com/maps/api/geocode/json?address=$adresse_enc&key=$api_key";
                 $response = file_get_contents($url);
@@ -1464,7 +1465,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     // Boutons d'action
                     $popupContent .= "<div style='display:flex; justify-content:space-between; margin-top:10px;'>";
-                    $popupContent .= "<a href='detail_offre.php?code=" .$adr['code_offre'] . "' style='display:inline-block; padding:6px 12px; background-color:#2DD7A4; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;'>Voir l'offre</a>";
+                    $popupContent .= "<a href='detail_offre.php?code=" .$adresse_code. "' style='display:inline-block; padding:6px 12px; background-color:#2DD7A4; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;'>Voir l'offre</a>";
                     $popupContent .= "<a href='" . $url_maps . "' target='_blank' style='display:inline-block; padding:6px 12px; background-color:#F28322; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;'><span class=\"iconify\" data-icon=\"mdi:navigation\" style=\"font-size: 1.1em; vertical-align: middle; margin-right: 3px;\"></span>Itinéraire</a>";
                     $popupContent .= "</div>";
 
