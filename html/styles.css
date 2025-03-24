@@ -697,6 +697,7 @@ main.creation_compte_pro .checkbox label a {
 main.creation_compte_pro #cgu,
 main.main-consulter-compte-pro #cgu {
     accent-color: #df7519;
+    height: 15px;
 }
 
 main.creation_compte_pro .submit-btn {
@@ -2485,7 +2486,6 @@ fieldset[disabled] {
 .main-consulter-compte-pro label {
     display: block;
     margin-bottom: 0px;
-    font-weight: bold;
     color: #555;
 }
 
