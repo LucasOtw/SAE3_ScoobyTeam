@@ -216,7 +216,6 @@ if(!empty($_POST)){
         checkFA.addEventListener('change', function(){
             var phrase = document.getElementById('phrase');
             if (this.checked) {
-                <?php echo "lol"; ?>
                 phrase.style.display = 'block';
             } else {
                 phrase.style.display = 'none';
