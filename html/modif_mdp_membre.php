@@ -154,7 +154,27 @@ if (isset($_POST['modif_infos'])){
                     <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($monCompteMembre['api_key']); ?>" readonly>
                     <input type="submit" id="btn-api" name="generate_api_key" value="" alt="Regénérer la clé API" formnovalidate>
             </fieldset>
-        <form>
+        </form>
+        <form id="form2FA" action="#" method="POST">
+            sdfghjkiolikjuhgfcdfvghjuikoikjuhgbvfcgbhjuikokujhgbvfc vgbhujiujhygvfcx cdfvgyhu
+            <h3>Authentification à deux facteurs</h3>
+            <div class="connexion_membre_2fa">
+                <button type="submit" id="enable2FABtn" class="btn-2fa">Activer l’authentification à deux facteurs</button>
+                <input type="hidden" name="code_compte" value="<?php echo $compte['code_compte']; ?>">
+                <input type="hidden" name="active2FA" value="1">
+            
+                <div class="info-icon-container">
+                    <span class="info-icon2">?</span>
+                    <div class="tooltip-content">
+                        L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone.
+                    </div>
+                </div>
+                <p id="phrase" class="info_2fa" style="display: none;">
+                    ⚠️ Une fois activée, cette option est <strong>irréversible</strong>.
+                </p>
+            </div>
+            <p id="etat_2fa" class="etat_2fa">Pour le moment, l'authentification à deux facteurs est <span class="statut-non">désactivée</span>.</p>
+        </form>
         <form action="modif_mdp_membre.php" method="POST">
            <h3>Modifiez votre mot de passe</h3>
            
