@@ -173,7 +173,8 @@ if(!empty($_POST)){
             <!-- Icône pour la bulle d'information -->
             <span class="tooltip-icon">?</span>
             
-            <p class="info_2fa">⚠️ Une fois activée, cette option est irréversible.</p>
+
+            <p class="info_2fa" style="display: none;">⚠️ Une fois activée, cette option est irréversible.</p>
         </div>
             </div>
             <div class="connexion_membre_image-container">
@@ -181,6 +182,18 @@ if(!empty($_POST)){
             </div>
         </div>
     </main>
+
+    <!--Pour l'affichage de la checkbox si 2FA activée-->
+    <script>
+        document.getElementById('enable2FA').addEventListener('change', function() {
+            var phrase = document.querySelector('.info_2fa');
+            if (this.checked) {
+                phrase.style.display = 'block';
+            } else {
+                phrase.style.display = 'none';
+            }
+        });
+    </script>
 
     <!-- Modal Popup QR Code -->
 <div id="myModal" class="modal">
@@ -199,43 +212,47 @@ if(!empty($_POST)){
 
 
     <script>
-    // Récupère les éléments
-    var modal = document.getElementById("myModal");
-    var btn = document.getElementById("connectButton");
-    var submitBtn = document.getElementById("submitFormBtn");
-    var span = document.getElementsByClassName("close")[0];
-    var form = document.getElementById("connexionForm");
 
-    var checkFA = document.getElementById('enable2FA');
+    document.addEventListener('DOMContentLoaded', function(){
+        // Récupère les éléments
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("connectButton");
+        var submitBtn = document.getElementById("submitFormBtn");
+        var span = document.getElementsByClassName("close")[0];
+        var form = document.getElementById("connexionForm");
 
-    modal.style.display = "none";
+        var checkFA = document.getElementById('enable2FA');
+        console.log(checkFA);
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        modal.style.display = "block";
-    });
-
-    // Affiche la modale quand on clique sur "Se connecter"
-/*     btn.onclick = function() {
-        modal.style.display = "block";
-    } */
-
-    // Ferme la modale en cliquant sur la croix
-    span.onclick = function() {
         modal.style.display = "none";
-    }
 
-    // Ferme la modale si on clique à l'extérieur
-    window.onclick = function(event) {
-        if (event.target == modal) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            modal.style.display = "block";
+        });
+
+        // Affiche la modale quand on clique sur "Se connecter"
+    /*     btn.onclick = function() {
+            modal.style.display = "block";
+        } */
+
+        // Ferme la modale en cliquant sur la croix
+        span.onclick = function() {
             modal.style.display = "none";
         }
-    }
 
-    // Clique sur "Se connecter quand même" => soumet le formulaire
-    submitBtn.onclick = function() {
-        form.submit();
-    }
+        // Ferme la modale si on clique à l'extérieur
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Clique sur "Se connecter quand même" => soumet le formulaire
+        submitBtn.onclick = function() {
+            form.submit();
+        }
+    })
 </script>
 
 </body>
