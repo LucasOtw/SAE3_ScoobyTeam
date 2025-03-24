@@ -296,7 +296,7 @@ if (isset($_POST['modif_infos'])) {
         <form id="form2FA" action="#" method="POST">
             <h3>Authentification à deux facteurs</h3>
             <div class="connexion_membre_2fa-pro">
-                <button type="submit" id="enable2FABtn" class="btn-2fa">Activer l’authentification à deux facteurs</button>
+                <button type="submit" id="enable2FABtn" class="btn-2fa-pro">Activer l’authentification à deux facteurs</button>
                 <input type="hidden" name="code_compte" value="<?php echo $compte['code_compte']; ?>">
                 <input type="hidden" name="active2FA" value="1">
             
@@ -306,11 +306,11 @@ if (isset($_POST['modif_infos'])) {
                         L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone.
                     </div>
                 </div>
-                <p id="phrase" class="info_2fa" style="display: none;">
+                <p id="phrase" class="info_2fa-pro" style="display: none;">
                     ⚠️ Une fois activée, cette option est <strong>irréversible</strong>.
                 </p>
             </div>
-            <p id="etat_2fa" class="etat_2fa">Pour le moment, l'authentification à deux facteurs est <span class="statut-non">désactivée</span>.</p>
+            <p id="etat_2fa" class="etat_2fa-pro">Pour le moment, l'authentification à deux facteurs est <span class="statut-non-pro">désactivée</span>.</p>
         </form>
         <form action="modif_mdp_pro.php" method="POST">
             <h3>Modifiez votre mot de passe</h3>
