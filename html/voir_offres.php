@@ -1564,6 +1564,14 @@ var customIcon = L.icon({
     popupAnchor: [0, -35]
 });
 
+// Script pour afficher la popup au clic sur mobile
+if ('ontouchstart' in window) {  // Vérifie si le périphérique est tactile
+    map.on('click', function(e) {
+        var popup = e.layer.getPopup();
+        popup.openOn(map);
+    });
+}
+
 // Ajoutez du CSS pour améliorer l'apparence
 document.head.insertAdjacentHTML('beforeend', `
     <style>
