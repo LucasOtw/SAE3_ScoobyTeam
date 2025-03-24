@@ -9420,6 +9420,10 @@ nav.nav-bar {
     width: 75%;
 }
 
+#closePopup {
+    cursor: pointer;
+}
+
 body {
     margin: 0;
     font-family: 'K2D', sans-serif;

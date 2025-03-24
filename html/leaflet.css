@@ -269,5 +269,12 @@
     transition: all 0.3s ease;
 }
 
-
-
+@media (min-width: 768px) { /* Utiliser un breakpoint pour les écrans plus larges (ordinateurs) */
+    .leaflet-popup {
+        pointer-events: none; /* Empêche les interactions directes */
+    }
+    
+    .leaflet-marker-icon:hover + .leaflet-popup {
+        display: block; /* Affiche la popup au survol */
+    }
+}
