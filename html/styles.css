@@ -9781,6 +9781,7 @@ body.menu-open #overlay {
     /* Espacement entre le texte et le bouton */
     align-items: center;
     /* Aligne verticalement le texte et le bouton */
+    cursor: pointer;
 }
 
 .toute_les_offres_main .raison-sociale-card-a-la-une p,
