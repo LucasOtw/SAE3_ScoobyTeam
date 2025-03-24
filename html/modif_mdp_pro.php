@@ -291,7 +291,9 @@ if (isset($_POST['modif_infos'])) {
                 <input type="submit" id="btn-api-pro" name="generate_api_key" value="" alt="Regénérer la clé API"
                     formnovalidate>
             </fieldset>
-            <h3>Authentification à deux facteurs</h3>
+
+        </form>
+        <div>
             <div class="connexion_membre_2fa-pro">
                 <button type="button" id="enable2FABtn" class="btn-2fa-pro">Activer l’authentification à deux
                     facteurs</button>
@@ -310,8 +312,7 @@ if (isset($_POST['modif_infos'])) {
             </div>
             <p id="etat_2fa-pro" class="etat_2fa-pro">Pour le moment, l'authentification à deux facteurs est <span
                     class="statut-non-pro">désactivée</span>.</p>
-
-        </form>
+        </div>
         <form action="modif_mdp_pro.php" method="POST">
             <h3>Modifiez votre mot de passe</h3>
 

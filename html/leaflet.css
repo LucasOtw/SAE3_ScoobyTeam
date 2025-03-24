@@ -10,7 +10,7 @@
 }
 
 .leaflet-container a {
-    color: #0078A8;
+    color: #000000;
     text-decoration: none;
 }
 
@@ -221,10 +221,6 @@
       cursor: pointer;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       transition: background-color 0.3s ease;
-}
-.leaflet-control-zoom-in:hover,
-.leaflet-control-zoom-out:hover{
-    background-color: #f1f1f1;
 }
 
 /* Contrôle des couches */
