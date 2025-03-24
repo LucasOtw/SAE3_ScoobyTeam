@@ -179,7 +179,7 @@ if (isset($_POST['modif_infos'])){
                     <?php
                 } else {
                     ?>
-                        <p id="etat_2fa" class="etat_2fa">Pour le moment, l'authentification à deux facteurs est <span class="statut-non">désactivée</span>.</p>
+                        <p id="etat_2fa" class="etat_2fa">Pour le moment, l'authentification à deux facteurs est <span class="statut-oui">désactivée</span>.</p>
                     <?php
                 }
             ?>
