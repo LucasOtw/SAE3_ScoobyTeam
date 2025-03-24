@@ -1467,7 +1467,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     $popupContent .= "<div style='display:flex; justify-content:space-between; margin-top:10px;'>";
                     $popupContent .= '
                     <form id="form-voir-offre" action="detail_offre.php" method="POST" class="form-voir-offre">
-                        <input type="hidden" name="code_offre" value="' . htmlspecialchars($adr['code_offre']) . '">
+                        <input type="hidden" name="code_offre" value="' .$adr['code_offre'] . '">
                         <button type="submit" style="
                             display:inline-block; 
                             padding:6px 12px; 
