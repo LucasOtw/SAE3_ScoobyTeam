@@ -159,7 +159,7 @@
 
 .leaflet-popup-content img {
     width: 95%; 
-    height: auto;
+    height: 90%;
     border-radius: 13px;
     /*margin: 5px;*/
 }
