@@ -1000,7 +1000,8 @@ input[type="email"] {
     background: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     z-index: 1000;
     font-family: Arial, sans-serif;
 }
@@ -1012,12 +1013,18 @@ input[type="email"] {
     color: #000;
 }
 
+#notification-popup ul li:hover {
+    background-color: #e0e0e0;
+}
+
 #notification-popup ul li {
     display: flex;
     align-items: center;
     padding: 8px 0;
     border-bottom: 1px solid #e0e0e0;
     width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 #notification-popup ul li:last-child {
@@ -1037,7 +1044,7 @@ input[type="email"] {
 }
 
 #notification-popup>ul {
-    gap: 25px
+    gap: 0;
 }
 
 .notification-content strong {
@@ -5092,73 +5099,87 @@ nav.nav-bar-tel {
 
 /* Effet de survol pour les onglets de navigation */
 .main_mes_offres .tabs ul li a:hover {
-    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    border-color: #aaa;
+    /* Couleur grise pour le soulignement au survol */
     transition: border-color 0.3s;
 }
 
 /* Assurer que l'onglet actif conserve sa couleur d'accent même au survol */
 .main_mes_offres .tabs ul li a.active:hover {
-    border-color: #ff6600; /* Maintient la couleur orange pour l'onglet actif */
+    border-color: #ff6600;
+    /* Maintient la couleur orange pour l'onglet actif */
 }
 
 /* Pour les tabs dans d'autres sections avec accent vert clair */
 .main_consulter_compte_membre .tabs ul li a:hover {
-    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    border-color: #aaa;
+    /* Couleur grise pour le soulignement au survol */
     transition: border-color 0.3s;
 }
 
 .main_consulter_compte_membre .tabs ul li a.active:hover {
-    border-color: var(--vert-clair); /* Maintient la couleur verte pour l'onglet actif */
+    border-color: var(--vert-clair);
+    /* Maintient la couleur verte pour l'onglet actif */
 }
 
 /* Pour les tabs de la page modifier mot de passe membre */
 .main_modif_mdp_membre .tabs ul li a:hover {
-    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    border-color: #aaa;
+    /* Couleur grise pour le soulignement au survol */
     transition: border-color 0.3s;
 }
 
 .main_modif_mdp_membre .tabs ul li a.active:hover {
-    border-color: var(--vert-clair); /* Maintient la couleur verte pour l'onglet actif */
+    border-color: var(--vert-clair);
+    /* Maintient la couleur verte pour l'onglet actif */
 }
 
 /* Pour les tabs de la page modification bancaire */
 .main-modif-bancaire .tabs ul li a:hover {
-    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    border-color: #aaa;
+    /* Couleur grise pour le soulignement au survol */
     transition: border-color 0.3s;
 }
 
 .main-modif-bancaire .tabs ul li a.active:hover {
-    border-color: #ff6600; /* Maintient la couleur orange pour l'onglet actif */
+    border-color: #ff6600;
+    /* Maintient la couleur orange pour l'onglet actif */
 }
 
 /* Pour les tabs dans la page de consultation de compte pro */
 .main-consulter-compte-pro .tabs ul li a:hover {
-    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    border-color: #aaa;
+    /* Couleur grise pour le soulignement au survol */
     transition: border-color 0.3s;
 }
 
 .main-consulter-compte-pro .tabs ul li a.active:hover {
-    border-color: #ff6600; /* Maintient la couleur orange pour l'onglet actif */
+    border-color: #ff6600;
+    /* Maintient la couleur orange pour l'onglet actif */
 }
 
 /* Pour la page de modification de mot de passe pro */
 .main_modif_mdp_pro .tabs ul li a:hover {
-    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    border-color: #aaa;
+    /* Couleur grise pour le soulignement au survol */
     transition: border-color 0.3s;
 }
 
 .main_modif_mdp_pro .tabs ul li a.active:hover {
-    border-color: #ff6600; /* Maintient la couleur orange pour l'onglet actif */
+    border-color: #ff6600;
+    /* Maintient la couleur orange pour l'onglet actif */
 }
 
 /* Pour la page d'ajout bancaire */
 .main-ajout-bancaire .tabs ul li a:hover {
-    border-color: #aaa; /* Couleur grise pour le soulignement au survol */
+    border-color: #aaa;
+    /* Couleur grise pour le soulignement au survol */
     transition: border-color 0.3s;
 }
 
 .main-ajout-bancaire .tabs ul li a.active:hover {
-    border-color: #ff6600; /* Maintient la couleur orange pour l'onglet actif */
+    border-color: #ff6600;
+    /* Maintient la couleur orange pour l'onglet actif */
 }
 
 /* Carte d'offre */
@@ -5216,8 +5237,8 @@ nav.nav-bar-tel {
     margin-bottom: 20px;
     height: 26.2em;
     position: relative;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                box-shadow 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        box-shadow 0.4s ease;
     overflow: hidden;
 }
 
@@ -6832,7 +6853,7 @@ select.theme_contacter_plateforme {
     transition: transform 0.2s ease;
 }
 
-.visit-button_detailoffre_pro:hover{
+.visit-button_detailoffre_pro:hover {
     transform: translateY(-2px);
     background-color: var(--orange);
     color: white;
@@ -10192,7 +10213,7 @@ body.menu-open #overlay {
     /* Couleur de mise en avant */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(76, 175, 80, 0.5);
     transform: scale(1.00);
-    
+
 }
 
 
@@ -10927,7 +10948,7 @@ main.main_repondre_avis .message-erreur {
     border-radius: 5px;
     border-color: var(--orange);
     margin-top: 3vh;
-    
+
 }
 
 .titre_signalement_3 {
@@ -13093,7 +13114,8 @@ ul.mentions_legales-sous-list {
 }
 
 /* Style des icônes */
-.info-icon, .info-icon2 {
+.info-icon,
+.info-icon2 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13198,15 +13220,16 @@ ul.mentions_legales-sous-list {
     opacity: 1;
     width: 250px;
     text-align: center;
-    z-index: 10; 
+    z-index: 10;
 }
 
 
 .connexion_membre_2fa {
     position: relative;
     display: flex;
-    gap : 10px;
+    gap: 10px;
 }
+
 .btn-2fa {
     background-color: var(--vert-clair);
     border: none;
@@ -13220,10 +13243,11 @@ ul.mentions_legales-sous-list {
     transition: transform 0.2s ease;
 }
 
-.btn-2fa:hover{
+.btn-2fa:hover {
     transform: translateY(-2px);
     cursor: pointer;
 }
+
 .btn-2fa-pro {
     background-color: #F28322;
     border: 1px solid orange;
@@ -13238,13 +13262,14 @@ ul.mentions_legales-sous-list {
 }
 
 
-.btn-2fa-pro:hover{
+.btn-2fa-pro:hover {
     transform: translateY(-2px);
     cursor: pointer;
     background-color: var(--orange);
     color: white;
-    border : none;
+    border: none;
 }
+
 .etat_2fa {
     margin-top: 12px;
     font-size: 0.95rem;
@@ -13255,6 +13280,7 @@ ul.mentions_legales-sous-list {
     color: #BDC426;
     font-weight: 600;
 }
+
 .etat_2fa-pro {
     margin-top: 12px;
     font-size: 0.95rem;
