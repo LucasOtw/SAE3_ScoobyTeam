@@ -6831,6 +6831,12 @@ select.theme_contacter_plateforme {
     transition: transform 0.2s ease;
 }
 
+.visit-button_detailoffre_pro{
+    transform: translateY(-2px);
+    background-color: var(--orange);
+    color: white;
+}
+
 .detail_offre_pro_button {
     display: flex;
     justify-content: space-between;
@@ -6849,6 +6855,14 @@ select.theme_contacter_plateforme {
     height: 52px;
     border: 1px solid var(--orange);
     font-size: 1em;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease;
+}
+
+.button-text.add-btn:hover {
+    transform: translateY(-2px);
+    background-color: var(--orange);
+    color: white;
 }
 
 input#btn-poster-avis {

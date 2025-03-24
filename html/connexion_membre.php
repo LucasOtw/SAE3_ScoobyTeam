@@ -164,22 +164,6 @@ if(!empty($_POST)){
                             <p><span class="connexion_compte_pro">Un compte<a href="connexion_pro.php">Pro </a>?</p>
                         </div>
                     </div>
-                    <div class="connexion_membre_2fa">
-                        <input type="checkbox" id="enable2FA" name="enable2FA">
-                        <label for="enable2FA">Activer l’authentification à deux facteurs</label>
-                        
-                        <div class="info-icon-container">
-                            <span class="info-icon2">?</span>
-                            <div class="tooltip-content">
-                                L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone.
-                            </div>
-                        </div>
-                        
-                       
-            <p id="phrase" class="info_2fa" style="display: none;">⚠️ Une fois activée, cette option est irréversible.<div class="info-icon-container">
-            
-            </p>
-                    </div>
                 </form>
             
 </div>
@@ -216,41 +200,7 @@ if(!empty($_POST)){
         var span = document.getElementsByClassName("close")[0];
         var form = document.getElementById("connexionForm");
 
-        var checkFA = document.getElementById('enable2FA');
-        // console.log(checkFA);
-
-        // GESTION DE LA CHECKBOX 2FA
-        checkFA.addEventListener('change', function(){
-
-            var phrase = document.getElementById('phrase');
-            if (this.checked) {
-                phrase.style.display = 'block';
-            } else {
-                phrase.style.display = 'none';
-            }
-        });
-
         modal.style.display = "none";
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            if(checkFA.checked){
-
-                fetch("generation_codeOTP.php",{
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        code_compte: "<?php ?>"
-                    })
-                })
-                
-                modal.style.display = "block";
-            } else {
-                form.submit();
-            }
-        });
 
         // Affiche la modale quand on clique sur "Se connecter"
     /*     btn.onclick = function() {
