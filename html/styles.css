@@ -4945,6 +4945,7 @@ nav.nav-bar-tel {
 .main-modif-bancaire #remember,
 .main-modif-bancaire #cgu {
     accent-color: var(--orange);
+    height: 15px;
 }
 
 /* Styles pour les boutons */
