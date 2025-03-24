@@ -219,7 +219,7 @@ if(!empty($_POST)){
         var btnEnvoiQuentin = formOTP.querySelector('button');
 
         btnEnvoiQuentin.addEventListener('click',function(){
-            form.submit();
+            console.log(form);
         });
 
         console.log(btnEnvoiCode);
