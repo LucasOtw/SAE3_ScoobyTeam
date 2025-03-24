@@ -324,7 +324,7 @@ if (isset($_POST['modif_infos'])){
         let cancelBtn = dialogue2FA.querySelector('#cancel');
 
         confirmBtn.addEventListener('click', function(){
-            form2FA.action = "test.php";
+            form2FA.action = "generation_codeOTP.php";
             form2FA.submit();
         });
 
