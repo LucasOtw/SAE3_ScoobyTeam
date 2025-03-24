@@ -321,7 +321,15 @@ if (isset($_POST['modif_infos'])){
         });
 
         let confirmBtn = dialogue2FA.querySelector('#confirm');
-        console.log(confirmBtn);
+        let cancelBtn = dialogue2FA.querySelector('#cancel');
+
+        confirmBtn.addEventListener('click', function(){
+            form2FA.submit();
+        });
+
+        cancelBtn.addEventListener('click', function(){
+            dialogue2FA.style.display = "none";
+        });
 
     </script>
 </body>
