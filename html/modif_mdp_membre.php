@@ -154,9 +154,13 @@ if (isset($_POST['modif_infos'])){
                     <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($monCompteMembre['api_key']); ?>" readonly>
                     <input type="submit" id="btn-api" name="generate_api_key" value="" alt="Regénérer la clé API" formnovalidate>
             </fieldset>
-           <h3>Authentification à deux facteurs</h3>
+        </form>
+        <form id="form2FA" action="#" method="POST">
+            <h3>Authentification à deux facteurs</h3>
             <div class="connexion_membre_2fa">
-                <button type="button" id="enable2FABtn" class="btn-2fa">Activer l’authentification à deux facteurs</button>
+                <button type="submit" id="enable2FABtn" class="btn-2fa" <?php echo (isset($isActivated2FA) && $isActivated2FA) ? "disabled" : "" ?>>Activer l’authentification à deux facteurs</button>
+                <input type="hidden" name="code_compte" value="<?php echo $compte['code_compte']; ?>">
+                <input type="hidden" name="active2FA" value="1">
             
                 <div class="info-icon-container">
                     <span class="info-icon2">?</span>
@@ -168,9 +172,18 @@ if (isset($_POST['modif_infos'])){
                     ⚠️ Une fois activée, cette option est <strong>irréversible</strong>.
                 </p>
             </div>
-            <p id="etat_2fa" class="etat_2fa">Pour le moment, l'authentification à deux facteurs est <span class="statut-non">désactivée</span>.</p>
-
-        <form>
+            <?php
+                if(isset($isActivated2FA) && $isActivated2FA){
+                    ?>
+                        <p id="etat_2fa" class="etat_2fa">L'authentification à deux facteurs est <span class="statut-non">activée</span>.</p>
+                    <?php
+                } else {
+                    ?>
+                        <p id="etat_2fa" class="etat_2fa">Pour le moment, l'authentification à deux facteurs est <span class="statut-non">désactivée</span>.</p>
+                    <?php
+                }
+            ?>
+        </form>
         <form action="modif_mdp_membre.php" method="POST">
            <h3>Modifiez votre mot de passe</h3>
            
@@ -193,6 +206,14 @@ if (isset($_POST['modif_infos'])){
                 <button type="submit" name="modif_infos" class="submit-btn2">Enregistrer</button>
             </div>
         </form>
+        <div class="custom-confirm-content">
+            <p class="texte-boite-perso">Voulez-vous vraiment activer l'authentification à 2 facteurs ?</p>
+            <p>Cette action est irréversible !</p> <!-- A mettre en rouge, avec l'icone adéquate -->
+            <span>
+                <button id="confirm">Ok</button>
+                <button id="cancel">Annuler</button>
+            </span>
+        </div>
 
         
           <?php
@@ -296,14 +317,29 @@ if (isset($_POST['modif_infos'])){
         /* CE SCRIPT SERT A LA GÉNÉRATION DU QR CODE
         ET À L'ACTIVATION DE L'AUTHENTIFICATION À DEUX FACTEURS */
 
-        let btn2FA = document.getElementById('enable2FABtn');
+        let formActive2FA = document.getElementById('form2FA');
+        let dialogue2FA = document.getElementsByClassName('custom-confirm-content')[0];
 
-        btn2FA.addEventListener('click', function(){
-            let confirmeActivAuthent = confirm("Voulez-vous vraiment activer l'authentification à deux facteurs ? Cette action sera irréversible !");
+        dialogue2FA.style.display = "none";
 
-            if(confirmeActivAuthent){
-                
-            }
+        console.log(dialogue2FA);
+        console.log(formActive2FA);
+
+        formActive2FA.addEventListener('submit', function(e){
+            e.preventDefault();
+            dialogue2FA.style.display = "block";
+        });
+
+        let confirmBtn = dialogue2FA.querySelector('#confirm');
+        let cancelBtn = dialogue2FA.querySelector('#cancel');
+
+        confirmBtn.addEventListener('click', function(){
+            form2FA.action = "generation_codeOTP.php";
+            form2FA.submit();
+        });
+
+        cancelBtn.addEventListener('click', function(){
+            dialogue2FA.style.display = "none";
         });
 
     </script>

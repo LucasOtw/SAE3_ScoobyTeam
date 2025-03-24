@@ -2876,7 +2876,7 @@ input[type="password"]::placeholder {
 
 .main_consulter_compte_membre label {
     margin-bottom: 0px;
-    font-weight: bold;
+    font-size: 14px;
 }
 
 .main_consulter_compte_membre input[type="text"],
@@ -3177,8 +3177,7 @@ input[type="password"]::placeholder {
 .main_consulter_compte_membre #remember,
 #cgu {
     accent-color: var(--vert-clair);
-    height: 20px;
-    width: 20px;
+    height: 15px;
     cursor: pointer;
 }
 
@@ -4375,7 +4374,6 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
 .main_modif_mdp_membre form {
     width: 885px;
     margin: 0 auto;
-    padding: 20px;
     border-radius: 8px;
 }
 
@@ -10284,6 +10282,11 @@ body.menu-open #overlay {
     display: flex;
     flex-direction: column;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.offer-new:hover {
+    transform: scale(1.04);
 }
 
 
@@ -13237,35 +13240,41 @@ ul.mentions_legales-sous-list {
 }
 
 .btn-2fa {
-    background-color: var(--vert-clair);
-    border: none;
+    background-color: #ffffff;
+    border: solid 1px var(--vert-clair);
     width: 44vw;
     max-width: 301px;
     height: 43px;
-    color: white;
-    border-radius: 16px;
+    color: #000000;
+    border-radius: 11px;
     text-decoration: none;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2s ease;
+}
+
+.btn-2fa:disabled{
+    filter: grayscale(100%);
+    text-decoration:line-through;
 }
 
 .btn-2fa:hover {
     transform: translateY(-2px);
     cursor: pointer;
+    background-color: var(--vert-clair);
+    color: white;
 }
 
 .btn-2fa-pro {
-    background-color: #F28322;
-    border: 1px solid orange;
-    width: 44vw;
-    max-width: 301px;
-    height: 43px;
-    /**/
-    color: #FFFFFF;
-    border-radius: 11px;
-    text-decoration: none;
-    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
-    transition: transform 0.2s ease;
+        background-color: #ffffff;
+        border: 1px solid orange;
+        width: 44vw;
+        max-width: 301px;
+        height: 43px;
+        color: #000000;
+        border-radius: 11px;
+        text-decoration: none;
+        box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+        transition: transform 0.2s ease;
 }
 
 
@@ -13274,7 +13283,6 @@ ul.mentions_legales-sous-list {
     cursor: pointer;
     background-color: var(--orange);
     color: white;
-    border: none;
 }
 
 .etat_2fa {
@@ -13289,12 +13297,25 @@ ul.mentions_legales-sous-list {
 }
 
 .etat_2fa-pro {
-    margin-top: 12px;
+    margin-top: -9px;
     font-size: 0.95rem;
     color: #444;
+    width: 885px;
+    margin: 0 auto;
+    border-radius: 8px;
+    margin-top: 1em;
 }
 
 .statut-non-pro {
     color: #F28322;
     font-weight: 600;
+}
+
+.connexion_membre_2fa-pro{
+           width: 885px;
+           margin: 0 auto;
+           border-radius: 8px;
+}
+.main_modif_mdp_membre > .custom-confirm-content{
+    position: fixed;
 }

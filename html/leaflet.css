@@ -10,14 +10,13 @@
 }
 
 .leaflet-container a {
-    color: #0078A8;
+    color: #000000;
     text-decoration: none;
 }
 
 .leaflet-container a:hover,
 .leaflet-container a:focus {
     color: #005F7F;
-    text-decoration: underline;
 }
 
 /* Composants de la carte */
@@ -97,6 +96,8 @@
     position: absolute;
     z-index: 800;
     pointer-events: auto;
+    margin-left: 1vw;
+    margin-top: 0.6vw;
 }
 
 .leaflet-top, .leaflet-bottom {
@@ -207,8 +208,19 @@
 /* Contrôles de zoom */
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out {
-    display:flex;
-    font: bold 18px 'Lucida Console', Monaco, monospace;
+    display: block;
+      width: 40px;
+      height: 40px;
+      margin: 5px auto;
+      border: none;
+      background-color: #fff;
+      font-size: 18px;
+      text-align: center;
+      line-height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
 }
 
 /* Contrôle des couches */

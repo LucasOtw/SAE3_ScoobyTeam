@@ -276,7 +276,11 @@
 $reqisActivated2FA = $dbh->prepare("SELECT * FROM tripenarvor._compte_otp
 WHERE code_compte = :code_compte");
 $reqisActivated2FA->bindValue(':code_compte',$compte['code_compte']);
-$reqisActivated2FA->execute();
+try{
+    $reqisActivated2FA->execute();
+} catch (PDOException $e){
+    die("Erreur => ".$e->getMessage());
+}
 
 $isActivated2FA = $reqisActivated2FA->fetch(PDO::FETCH_ASSOC);
 
