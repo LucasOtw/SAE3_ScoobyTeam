@@ -3638,6 +3638,7 @@ nom.avis {
     margin: 5px 0 0;
     color: #555;
     margin-left: 1em;
+    font-size: 16px;
 }
 
 .main-consulter-compte-pro .nom_reponse {
@@ -7933,7 +7934,7 @@ form .btn-link {
 .avis-widget .avis-content p.avis {
     margin: 5px 0 0;
     color: #555;
-    font-size: 0.9em;
+    font-size: 16px;
 }
 
 .avis-widget .avis-content .signalement_repondre {
