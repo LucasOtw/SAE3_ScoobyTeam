@@ -212,10 +212,11 @@ if(!empty($_POST)){
         var checkFA = document.getElementById('enable2FA');
         console.log(checkFA);
 
-        // Pour l'affichage de la checkbox si 2FA activée
+        // GESTION DE LA CHECKBOX 2FA
         checkFA.addEventListener('change', function(){
             var phrase = document.getElementById('phrase');
             if (this.checked) {
+                <?php echo "lol"; ?>
                 phrase.style.display = 'block';
             } else {
                 phrase.style.display = 'none';
