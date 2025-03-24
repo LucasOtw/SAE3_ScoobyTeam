@@ -40,6 +40,6 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
         <title>TOTP</title>
     </head>
     <body>
-        <img src='https://api.qrserver.com/v1/create-qr-code/?data=" . urlencode($otp_uri) . "&size=200x200' alt='QR Code OTP'>
+        <img src='https://api.qrserver.com/v1/create-qr-code/?data="<?php echo urlencode($otp_uri) ?>"&size=200x200' alt='QR Code OTP'>
     </body>
 </html>
