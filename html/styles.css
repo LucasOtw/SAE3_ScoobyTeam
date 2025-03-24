@@ -13421,94 +13421,91 @@ ul.mentions_legales-sous-list {
     transform: translate(-50%, -50%);
 }
 
-/* Style de la bulle */
-.tooltip {
-    position: relative;
-    cursor: pointer;
-    color: #ffcc00;
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-
-/* Style de la bulle d'information */
-.info-icon2:hover::after {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 25px;
-    /* Positionne la bulle en dessous de l'icône */
-    background-color: #333;
-    color: #fff;
-    padding: 8px;
-    font-size: 0.9em;
-    opacity: 1;
-    width: 250px;
-    text-align: center;
-    z-index: 10;
-}
-
-
-.connexion_membre_2fa {
-    position: relative;
+/* === Mise en page principale en deux colonnes === */
+.two-fa-container {
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
+.left-2fa, .right-2fa {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* === Style du bouton 2FA === */
 .btn-2fa {
     background-color: #ffffff;
-    border: solid 1px var(--vert-clair);
-    width: 44vw;
+    border: 1px solid #8BC34A; /* exemple de vert clair */
+    width: 100%;
     max-width: 301px;
     height: 43px;
-    color: #000000;
+    color: #000;
     border-radius: 11px;
     text-decoration: none;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
-    transition: transform 0.2s ease;
-}
-
-.btn-2fa:disabled {
-    background-color: #C4C4C4;
-}
-
-.btn-2fa:disabled:hover {
-    transform: translateY(-2px);
-    cursor: pointer;
-    background-color: #C4C4C4;
-    color: white;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .btn-2fa:hover {
     transform: translateY(-2px);
     cursor: pointer;
-    background-color: var(--vert-clair);
+    background-color: #8BC34A;
     color: white;
 }
 
-.btn-2fa-pro {
-    background-color: #ffffff;
-    border: 1px solid orange;
-    width: 44vw;
-    max-width: 301px;
-    height: 43px;
-    color: #000000;
-    border-radius: 11px;
-    text-decoration: none;
-    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
-    transition: transform 0.2s ease;
+.btn-2fa:disabled {
+    background-color: #C4C4C4;
+    color: white;
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
+.btn-2fa:disabled:hover {
+    transform: none;
+}
 
-.btn-2fa-pro:hover {
-    transform: translateY(-2px);
+/* === Tooltip (bulle info sur ?) === */
+.info-icon-container {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.info-icon2 {
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 9px;
+    font-weight: bold;
     cursor: pointer;
-    background-color: var(--orange);
-    color: white;
+    display: inline-block;
 }
 
+.tooltip-content {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    width: 250px;
+    font-size: 14px;
+    z-index: 100;
+}
+
+.info-icon-container:hover .tooltip-content {
+    display: block;
+}
+
+/* === Infos et état de 2FA === */
 .etat_2fa {
-    margin-top: 12px;
+    margin-top: 15px;
     font-size: 0.95rem;
     color: #444;
 }
@@ -13518,27 +13515,16 @@ ul.mentions_legales-sous-list {
     font-weight: 600;
 }
 
-.etat_2fa-pro {
-    margin-top: -9px;
-    font-size: 0.95rem;
-    color: #444;
-    width: 885px;
-    margin: 0 auto;
-    border-radius: 8px;
-    margin-top: 1em;
-}
-
-.statut-non-pro {
-    color: #F28322;
-    font-weight: 600;
-}
-
-.connexion_membre_2fa-pro {
-    width: 885px;
-    margin: 0 auto;
+/* === QR Code === */
+.right-2fa img {
+    margin-top: 10px;
+    border: 1px solid #ccc;
     border-radius: 8px;
 }
 
-.main_modif_mdp_membre>.custom-confirm-content {
-    position: fixed;
+/* === Responsive mobile === */
+@media (max-width: 768px) {
+    .two-fa-container {
+        flex-direction: column;
+    }
 }
