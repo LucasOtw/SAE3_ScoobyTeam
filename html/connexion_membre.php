@@ -168,7 +168,12 @@ if(!empty($_POST)){
                         <input type="checkbox" id="enable2FA" name="enable2FA">
                         <label for="enable2FA">Activer l’authentification à deux facteurs</label>
                         
-                        
+                        <div class="info-icon-container">
+                            <span class="info-icon2">?</span>
+                            <div class="tooltip-content">
+                                L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone.
+                            </div>
+                        </div>
                         
                         <span class="info-icon2">?</span>
             <p id="phrase" class="info_2fa" style="display: none;">⚠️ Une fois activée, cette option est irréversible.<div class="info-icon-container">

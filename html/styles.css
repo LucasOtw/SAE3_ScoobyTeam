@@ -12991,9 +12991,6 @@ ul.mentions_legales-sous-list {
     transition: background-color 0.3s, color 0.3s;
 }
 
-.info-icon:hover, .info-icon2:hover {
-}
-
 /* Style du tooltip */
 .tooltip-content {
     position: absolute;
