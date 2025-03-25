@@ -305,7 +305,7 @@ function tempsEcouleDepuisNotif($avis)
             </div>
             <div class="checkbox">
                 <input type="checkbox" id="cgu" name="cgu" required>
-                <label for="cgu">J’accepte les <a href="cgu.html">Conditions générales d’utilisation (CGU)</a></label>
+                <label for="cgu">J’accepte les <a href="cgu.php">Conditions générales d’utilisation (CGU)</a></label>
             </div>
             <div class="compte_membre_save_delete">
                 <button type="submit" class="submit-btn2">Modifiez vos coordonnées</button>
@@ -319,7 +319,7 @@ function tempsEcouleDepuisNotif($avis)
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="mentions_legales.html">Mentions Légales</a></li>
+                    <li><a href="mentions_legales.php">Mentions Légales</a></li>
                     <li><a href="cgu.php">GGU</a></li>
                     <li><a href="cgv.php">CGV</a></li>
                 </ul>
