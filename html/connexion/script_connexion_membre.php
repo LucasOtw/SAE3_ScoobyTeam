@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$user) {
-        echo json_encode(["success" => false, "message" => "Identifiants incorrects 1"]);
+        echo json_encode(["success" => false, "message" => "Identifiants incorrects"]);
         exit;
     }
 
@@ -31,13 +31,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $membre = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$membre) {
-        echo json_encode(["success" => false, "message" => "Identifiants incorrects 2"]);
+        echo json_encode(["success" => false, "message" => "Identifiants incorrects"]);
         exit;
     }
 
     // Vérifier le mot de passe
     if (!password_verify($password, $user['mdp'])) {
-        echo json_encode(["success" => false, "message" => "Identifiants incorrects 3"]);
+        echo json_encode(["success" => false, "message" => "Identifiants incorrects"]);
         exit;
     }
 
