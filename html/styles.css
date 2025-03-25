@@ -12084,6 +12084,7 @@ ul.mentions_legales-sous-list {
 
 #cle_api_pro {
     width: 30%;
+    margin-bottom: 10vh;
 }
 
 
@@ -13617,7 +13618,7 @@ ul.mentions_legales-sous-list {
     margin-top: 10px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    margin-bottom: 4em;
+   
 }
 
 /* === Responsive mobile === */
