@@ -16,7 +16,7 @@
 
 .leaflet-container a:hover,
 .leaflet-container a:focus {
-    color: transparent;
+    color: red;
 }
 
 /* Composants de la carte */
