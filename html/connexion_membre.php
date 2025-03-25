@@ -257,8 +257,10 @@ if(!empty($_POST)){
             e.preventDefault();
 
             if(champOTP.value.length < 6){
-
-
+                /* Lancer une animation */
+            } else {
+                // Le code a la bonne longueur, on peut le vérifier
+                
             }
         });
 

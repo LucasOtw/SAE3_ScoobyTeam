@@ -411,8 +411,8 @@ if (!empty($_POST['supprAvis'])) {
             <div class="link-group">
                 <ul>
                     <li><a href="mentions_legales.html">Mentions Légales</a></li>
-                    <li><a href="cgu.html">GGU</a></li>
-                    <li><a href="cgv.html">CGV</a></li>
+                    <li><a href="cgu.php">GGU</a></li>
+                    <li><a href="cgv.php">CGV</a></li>
                 </ul>
             </div>
             <div class="link-group">
