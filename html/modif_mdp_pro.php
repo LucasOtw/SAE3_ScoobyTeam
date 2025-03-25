@@ -297,6 +297,7 @@ if (isset($_POST['modif_infos'])) {
                 <button id="confirm">Ok</button>
                 <button id="cancel">Annuler</button>
             </span>
+            <p>Une fois validé,un QrCode va apparaitre. Il faut impérativement enculer ta daronne</p>
         </div>
         <form action="modif_mdp_pro.php" method="POST">
             <h3>Modifiez votre mot de passe</h3>
