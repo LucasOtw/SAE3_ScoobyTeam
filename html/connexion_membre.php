@@ -222,10 +222,11 @@ if(!empty($_POST)){
         form.addEventListener('submit', function(e){
             e.preventDefault();
 
-            let email = document.getElementById('email').value.trim();
-            let password = document.getElementById('pwd').value.trim();
+            let email = form.querySelector('#email');
+            let password = form.querySelector('#pwd');
 
-            console.log(email,password);
+            console.log(email);
+            console.log(password);
         });
 
 
