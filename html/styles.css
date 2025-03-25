@@ -11290,7 +11290,7 @@ main.main_repondre_avis .message-erreur {
 .mentions_legales-title {
     font-size: 1.5em;
     color: var(--vert-fonce);
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .mentions_legales-paragraph {
