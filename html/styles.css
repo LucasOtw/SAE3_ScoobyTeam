@@ -1234,6 +1234,7 @@ input[type="password"]::placeholder {
 
 .main_modif_mdp_pro h3 {
     margin-bottom: 20px;
+    margin-top: 5vh;
 }
 
 /*****************************************************
@@ -13527,6 +13528,10 @@ ul.mentions_legales-sous-list {
     color: white;
     cursor: not-allowed;
     box-shadow: none;
+}
+
+.statut-non_pro{
+    color : var(--orange);
 }
 
 .btn-2fa_pro:disabled:hover {

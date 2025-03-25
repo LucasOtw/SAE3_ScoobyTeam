@@ -359,7 +359,7 @@ if (isset($_POST['modif_infos'])) {
 
                     <p id="etat_2fa" class="etat_2fa">
                         <?php if (isset($isActivated2FA) && $isActivated2FA): ?>
-                            L'authentification à deux facteurs est <span class="statut-non">activée</span>.
+                            L'authentification à deux facteurs est <span class="statut-non_pro">activée</span>.
                         <?php else: ?>
                             Pour le moment, l'authentification à deux facteurs est <span class="statut-non">désactivée</span>.
                         <?php endif; ?>
