@@ -13450,6 +13450,23 @@ ul.mentions_legales-sous-list {
     min-width: 300px;
 }
 
+.g_auth_link{
+    text-decoration: none;
+}
+
+.info-icon2{
+    height: 29px;
+    width: 29px;
+    margin-top: -1vh;
+}
+
+.connexion_membre_2fa{
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
 /* === Style du bouton 2FA === */
 .btn-2fa {
     background-color: #ffffff;
