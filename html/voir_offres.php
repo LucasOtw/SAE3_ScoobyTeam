@@ -1416,7 +1416,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 disableClusteringAtZoom: 16
             });
             <?php
-            $adresses = $dbh->query('SELECT o.code_offre, o.titre_offre, o.tarif, a.*, 
+            $adresses = $dbh->query('SELECT o.*, a.*, 
                            (SELECT i.url_image 
                             FROM tripenarvor._son_image si 
                             JOIN tripenarvor._image i ON si.code_image = i.code_image 
@@ -1464,7 +1464,21 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Boutons d'action
                     $popupContent .= "<div style='display:flex; justify-content:space-between; margin-top:10px;'>";
                     
-                    
+                    // Recherche de l'offre correspondant à l'adresse actuelle
+                    $monOffre = null;
+                    foreach ($mesOffres as $offre) {
+                        if ($infosOffre['code_offre'] == $adr["code_offre"]) {
+                            $monOffre = $offre;
+                            break;
+                        }
+                    }
+                        $popupContent .= '<form action="#" method="POST" class="voir_offre_carte">';
+                        $popupContent .= '<input type="hidden" name="uneOffre" value="' . htmlspecialchars(serialize($monOffre)) . '">';
+                        $popupContent .= '<input type="hidden" name="vueDetails" value="1">';
+                        $popupContent .= '<button type="submit" style="padding:6px 12px; background-color:#2DD7A4; color:white; border:none; cursor:pointer; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;">Voir l\'offre</button>';
+                        $popupContent .= '</form>';
+
+
                     
                     $popupContent .= "<a href='" . $url_maps . "' target='_blank' style='display:inline-block; padding:6px 12px; background-color:#F28322; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;'><span class=\"iconify\" data-icon=\"mdi:navigation\" style=\"font-size: 1.1em; vertical-align: middle; margin-right: 3px;\"></span>Itinéraire</a>";
                     $popupContent .= "</div>";
