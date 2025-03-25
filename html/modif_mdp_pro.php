@@ -393,7 +393,7 @@ if (isset($_POST['modif_infos'])) {
                 $msg_modif = "Erreur lors du changement du mot de passe&nbsp!";
             }
             ?>
-            <div class="creation-success" id="modif_mdp_membre">
+            <div class="modif-mdp-succes-pro" id="modif_mdp_membre">
                 <img src="<?php echo $img_success ?>" alt="Succès">
                 <h2><?php echo $msg_modif; ?></h2>
             </div>
@@ -401,9 +401,9 @@ if (isset($_POST['modif_infos'])) {
         }
         ?>
 
-        <div class="creation-success">
+        <div class="modif-mdp-succes-pro">
             <img src="./images/icones/check.svg" alt="Succès">
-            <h4>Compte créé avec succès ! Vous pouvez maintenant vous connecter.</h4>
+            <h4>Mot de passe modifié avec succès !</h4>
         </div>
 
     </main>
