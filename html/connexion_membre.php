@@ -225,7 +225,22 @@ if(!empty($_POST)){
             let email = document.getElementById('email').value.trim();
             let password = document.getElementById('pwd').value.trim();
 
-            console.log(email,password);
+            console.log(email.value.trim());
+            console.log(password.value.trim());
+
+            fetch("connexion/script_connexion_membre.php",{
+                method: "POST",
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ mail: email, pwd: password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success){
+                    console.log(data.message);
+                } else {
+                    console.log(data.message);
+                }
+            })
         });
 
 
@@ -243,11 +258,6 @@ if(!empty($_POST)){
     /*     btn.onclick = function() {
             modal.style.display = "block";
         } */
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            modal.style.display = "block";
-        });
 
         champOTP.addEventListener("input", function () {
             let errorMsg = document.getElementById("errorMsg");
