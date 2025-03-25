@@ -199,6 +199,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var modalOTP = document.getElementById('modal-otp');
 
+    let codeCompte;
+
     modalOTP.style.display = "none";
 
     // GESTION DE L'ENVOI DU FORMULAIRE DE CONNEXION
@@ -232,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.location.href = "voir_offres.php";
                 } else {
                     modalOTP.style.display = "block";
-                    var codeCompte = data.code_compte;
+                    codeCompte = data.code_compte;
                 }
             } else {
                 console.log("Authentification refusée !");
