@@ -181,7 +181,7 @@ if (isset($_POST['modif_infos'])){
                 <button id="cancel">Annuler</button>
             </span>
            <p>Cette action est irréversible !</p> 
-           <a href="https://apps.apple.com/fr/app/google-authenticator/id388497605">Votre QrCode</a>
+           <img src="https://api.qrserver.com/v1/create-qr-code/?data=<?php echo urlencode($otp_uri) ?>&size=200x200" alt="QR Code OTP">
            <p>Scannez impérativement ce QrCode</p> 
            
         </div>
