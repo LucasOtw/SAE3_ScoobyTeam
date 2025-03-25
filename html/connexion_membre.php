@@ -93,6 +93,8 @@ if(!empty($_POST)){
     }
 }
 
+echo password_hash("test",PASSWORD_DEFAULT);
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -221,6 +223,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if(data.success){
                 console.log("Authentification validée !");
                 console.log(data.message);
+
+                if(!data.otp){
+                    window.location.href = "voir_offres.php";
+                }
             } else {
                 console.log("Authentification refusée !");
                 console.log(data.message);

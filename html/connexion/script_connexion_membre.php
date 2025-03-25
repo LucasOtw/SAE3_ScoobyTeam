@@ -1,55 +1,51 @@
 <?php
+session_start();
 header("Content-Type: application/json");
 
-require_once __DIR__ . ("/../.security/config.php");
+require_once __DIR__ . ("/../../.security/config.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = $_POST["mail"] ?? "";
     $password = $_POST["pwd"] ?? "";
 
-    // Vérifier si les champs sont remplis
     if (empty($email) || empty($password)) {
         echo json_encode(["success" => false, "message" => "Tous les champs sont requis."]);
         exit;
     }
 
-    // si tous les champs sont remplis, on peut passer à la vérification
+    // Vérifier si l'utilisateur existe
+    $stmt = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail = :email");
+    $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $existeUser = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail = :email");
-    $existeUser->bindValue(":email",$email);
-    $existeUser->execute();
-
-    $existeUser = $existeUser->fetch(PDO::FETCH_ASSOC);
-
-    if($existeUser){
-        // si l'utilisateur existe, on vérifie si c'est un membre
-        $existeMembre = $dbh->prepare("SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte");
-        $existeMembre->bindValue(":code_compte",$existeUser['code_compte']);
-        $existeMembre->execute();
-
-        $existeMembre = $existeMembre->fetch(PDO::FETCH_ASSOC);
-
-        if($existeMembre){
-            // si le membre existe, on vérifie le mot de passe
-
-            $mdp_compte = $existeUser['mdp'];
-
-            if(password_verify($password,$mdp_compte['mdp'])){
-                // si les mots de passe correspondent
-                // l'utilisateur peut être connecté
-                $_SESSION['membre'] = $existeUser;
-                echo json_encode(["success" => true, "message" => "Identification autorisée"]);
-                exit;
-            }
-
-        } else {
-            echo json_encode(["success" => false, "message" => "Identifiants incorrects"]);
-        }
-
-    } else {
-        echo json_encode(["success" => false, "message" => "Identifiants incorrects"]);
+    if (!$user) {
+        echo json_encode(["success" => false, "message" => "Identifiants incorrects 1"]);
         exit;
     }
+
+    // Vérifier si l'utilisateur est un membre
+    $stmt = $dbh->prepare("SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte");
+    $stmt->bindValue(":code_compte", $user['code_compte'], PDO::PARAM_INT);
+    $stmt->execute();
+    $membre = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$membre) {
+        echo json_encode(["success" => false, "message" => "Identifiants incorrects 2"]);
+        exit;
+    }
+
+    // Vérifier le mot de passe
+    if (!password_verify($password, $user['mdp'])) {
+        echo json_encode(["success" => false, "message" => "Identifiants incorrects 3"]);
+        exit;
+    }
+
+    // Authentification réussie
+    if(!isset($_SESSION['membre'])){
+        $_SESSION['membre'] = $user;
+    }
+    echo json_encode(["success" => true, "message" => "Identification autorisée"]);
 } else {
     echo json_encode(["success" => false, "message" => "Requête invalide."]);
 }
