@@ -201,129 +201,90 @@ if(!empty($_POST)){
 
     <script>
 
-    document.addEventListener('DOMContentLoaded', function(){
-        // Récupère les éléments
-        var oldModal = document.getElementById("myModal");
-        var modal = document.getElementById("modal-otp");
+document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById("connexionForm");
+    var connectBtn = document.getElementById("connectButton");
+    var submitBtn = document.getElementById("submitFormBtn");
+    var champOTP = document.getElementById('otpCode');
+    var errorMsg = document.getElementById('errorMsg');
+    var formOTP = document.getElementById('envoiCode');
+    var btnEnvoiQuentin = formOTP ? formOTP.querySelector('button') : null;
 
-        var connectBtn = document.getElementById("connectButton");
-        var submitBtn = document.getElementById("submitFormBtn");
-        var span = document.getElementsByClassName("close")[0];
-        var form = document.getElementById("connexionForm");
+    if (!form || !connectBtn) {
+        console.error("Éléments du formulaire non trouvés !");
+        return;
+    }
 
-        var champOTP = document.getElementById('otpCode');
-        var errorMsg = document.getElementById('errorMsg');
-        var formOTP = document.getElementById('envoiCode');
-        var btnEnvoiCode = formOTP.querySelector('submit');
-
-        var btnEnvoiQuentin = formOTP.querySelector('button');
-
-
-        form.addEventListener('submit', function(e){
-            e.preventDefault();
-
-            let email = document.getElementById('email').value.trim();
-            let password = document.getElementById('pwd').value.trim();
-
-            console.log(email.value.trim());
-            console.log(password.value.trim());
-
-            fetch("connexion/script_connexion_membre.php",{
-                method: "POST",
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams({ mail: email, pwd: password })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success){
-                    console.log(data.message);
-                } else {
-                    console.log(data.message);
-                }
-            })
-        });
-
-
-        btnEnvoiQuentin.addEventListener('click',function(e){
+    if (btnEnvoiQuentin) {
+        btnEnvoiQuentin.addEventListener('click', function(e) {
             e.preventDefault();
             form.submit();
         });
+    }
 
-        console.log(btnEnvoiCode);
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-        oldModal.style.display = "none";
-        modal.style.display = "none";
+        let email = document.getElementById('email');
+        let password = document.getElementById('password');
 
-        // Affiche la modale quand on clique sur "Se connecter"
-    /*     btn.onclick = function() {
-            modal.style.display = "block";
-        } */
+        if (!email || !password) {
+            console.error("Champs e-mail ou mot de passe introuvables !");
+            return;
+        }
 
-        champOTP.addEventListener("input", function () {
-            let errorMsg = document.getElementById("errorMsg");
+        let emailValue = email.value.trim();
+        let passwordValue = password.value.trim();
 
-            // Supprime tout sauf les chiffres et limite à 6 caractères
-            this.value = this.value.replace(/\D/g, "").slice(0, 6);
-
-            // Vérifie si la valeur est bien composée de 6 chiffres
-            if (this.value.length === 6) {
-                errorMsg.style.display = "none"; // Cache le message d'erreur
+        fetch("connexion/script_connexion_membre.php", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ mail: emailValue, pwd: passwordValue })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log(data.message);
             } else {
-                errorMsg.style.display = "block"; // Affiche le message d'erreur
+                console.log(data.message);
             }
+        })
+        .catch(error => {
+            console.error("Erreur AJAX :", error);
         });
+    });
 
-        console.log(champOTP);
+    if (champOTP) {
+        champOTP.addEventListener("input", function () {
+            this.value = this.value.replace(/\D/g, "").slice(0, 6);
+            errorMsg.style.display = (this.value.length === 6) ? "none" : "block";
+        });
+    }
 
-
-        formOTP.addEventListener('submit',(e) => {
+    if (formOTP) {
+        formOTP.addEventListener('submit', (e) => {
             e.preventDefault();
-
-            if(champOTP.value.length < 6){
-                /* Lancer une animation */
+            if (champOTP.value.length < 6) {
+                console.log("Code OTP trop court !");
             } else {
-                // Le code a la bonne longueur, on peut le vérifier
-                fetch("verification_codeOTP.php",{
+                fetch("verification_codeOTP.php", {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    },
-                    body: new URLSearchParams({codeOTP: champOTP.value})
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams({ codeOTP: champOTP.value })
                 })
                 .then(response => response.json())
                 .then(data => {
-                    if(data.success){
-                        console.log("Code valide !");
-                        console.log(data.message);
-                    } else {
-                        console.log("Code invalide !");
-                    }
+                    console.log(data.success ? "Code valide !" : "Code invalide !");
                 })
                 .catch(error => {
-                    console.log("Erreur : ",error);
+                    console.error("Erreur :", error);
                 });
-            };
-        });
-
-
-
-        // Ferme la modale en cliquant sur la croix
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-/*         // Ferme la modale si on clique à l'extérieur
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
             }
-        } */
+        });
+    }
 
-        // Clique sur "Se connecter quand même" => soumet le formulaire
-        submitBtn.onclick = function() {
-            form.submit();
-        }
-    })
+});
+
     
 </script>
 
