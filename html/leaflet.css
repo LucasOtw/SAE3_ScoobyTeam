@@ -16,7 +16,7 @@
 
 .leaflet-container a:hover,
 .leaflet-container a:focus {
-    color: red;
+    color: #005F7F;
 }
 
 /* Composants de la carte */
@@ -85,7 +85,7 @@
 }
 
 .leaflet-zoom-box {
-    border: 2px dotted transparent;
+    border: 2px dotted #38f;
     background: rgba(255, 255, 255, 0.5);
 }
 

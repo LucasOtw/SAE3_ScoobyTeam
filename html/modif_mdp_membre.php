@@ -183,56 +183,56 @@ if (isset($_POST['modif_infos'])){
             </span>
         </div>
         <form id="form2FA" action="#" method="POST">
-    <h3>Authentification à deux facteurs</h3>
+            <h3>Authentification à deux facteurs</h3>
 
-    <div class="two-fa-container">
-        <!-- Colonne gauche -->
-        <div class="left-2fa">
-            <div class="connexion_membre_2fa">
-                <button type="submit" id="enable2FABtn" class="btn-2fa"
-                    <?php echo (isset($isActivated2FA) && $isActivated2FA) ? "disabled" : "" ?>>
-                    Authentification à deux facteurs
-                </button>
+            <div class="two-fa-container">
+                <!-- Colonne gauche -->
+                <div class="left-2fa">
+                    <div class="connexion_membre_2fa">
+                        <button type="submit" id="enable2FABtn" class="btn-2fa"
+                            <?php echo (isset($isActivated2FA) && $isActivated2FA) ? "disabled" : "" ?>>
+                            Authentification à deux facteurs
+                        </button>
 
-                <input type="hidden" name="code_compte" value="<?php echo $compte['code_compte']; ?>">
-                <input type="hidden" name="active2FA" value="1">
+                        <input type="hidden" name="code_compte" value="<?php echo $compte['code_compte']; ?>">
+                        <input type="hidden" name="active2FA" value="1">
 
-                <div class="info-icon-container">
-                    <span class="info-icon2">?</span>
-                    <div class="tooltip-content">
-                        L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone.
+                        <div class="info-icon-container">
+                            <span class="info-icon2">?</span>
+                            <div class="tooltip-content">
+                                L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone.
+                            </div>
+                        </div>
+
+                        <p id="phrase" class="info_2fa" style="display: none;">
+                            ⚠️ Une fois activée, cette option est <strong>irréversible</strong>.
+                        </p>
                     </div>
+
+                    <p id="etat_2fa" class="etat_2fa">
+                        <?php if (isset($isActivated2FA) && $isActivated2FA): ?>
+                            L'authentification à deux facteurs est <span class="statut-non">activée</span>.
+                        <?php else: ?>
+                            Pour le moment, l'authentification à deux facteurs est <span class="statut-non">désactivée</span>.
+                        <?php endif; ?>
+                    </p>
                 </div>
 
-                <p id="phrase" class="info_2fa" style="display: none;">
-                    ⚠️ Une fois activée, cette option est <strong>irréversible</strong>.
-                </p>
-            </div>
-
-            <p id="etat_2fa" class="etat_2fa">
+                <!-- Colonne droite : QR Code si activé -->
                 <?php if (isset($isActivated2FA) && $isActivated2FA): ?>
-                    L'authentification à deux facteurs est <span class="statut-non">activée</span>.
-                <?php else: ?>
-                    Pour le moment, l'authentification à deux facteurs est <span class="statut-non">désactivée</span>.
+                    <?php
+                        $otp = TOTP::create($isActivated2FA['code_secret']);
+                        $otp->setLabel("Scooby-Team");
+                        $otp_uri = $otp->getProvisioningUri();
+                    ?>
+                    <div class="right-2fa">
+                        <h3>Votre QR Code</h3>
+                        <p>Scannez ce QR Code avec <a class="g_auth_link" href="https://apps.apple.com/fr/app/google-authenticator/id388497605">Google Authenticator</a> ou une autre app compatible.</p>
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?data=<?php echo urlencode($otp_uri) ?>&size=200x200" alt="QR Code OTP">
+                    </div>
                 <?php endif; ?>
-            </p>
-        </div>
-
-        <!-- Colonne droite : QR Code si activé -->
-        <?php if (isset($isActivated2FA) && $isActivated2FA): ?>
-            <?php
-                $otp = TOTP::create($isActivated2FA['code_secret']);
-                $otp->setLabel("Scooby-Team");
-                $otp_uri = $otp->getProvisioningUri();
-            ?>
-            <div class="right-2fa">
-                <h3>Votre QR Code</h3>
-                <p>Scannez ce QR Code avec <a class="g_auth_link" href="https://apps.apple.com/fr/app/google-authenticator/id388497605">Google Authenticator</a> ou une autre app compatible.</p>
-                <img src="https://api.qrserver.com/v1/create-qr-code/?data=<?php echo urlencode($otp_uri) ?>&size=200x200" alt="QR Code OTP">
             </div>
-        <?php endif; ?>
-    </div>
-</form>
+        </form>
 
        
 
