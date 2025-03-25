@@ -393,7 +393,7 @@ if (isset($_POST['modif_infos'])) {
                 $msg_modif = "Erreur lors du changement du mot de passe&nbsp!";
             }
             ?>
-            <div class="modif-mdp-succes-pro" id="modif_mdp_membre">
+            <div class="modif-mdp-succes-pro" id="modif_mdp_pro">
                 <img src="<?php echo $img_success ?>" alt="Succès">
                 <h2><?php echo $msg_modif; ?></h2>
             </div>
