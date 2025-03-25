@@ -189,9 +189,13 @@ if(!empty($_POST)){
     </div>
 </div>
 <div id="modal-otp" class="custom-confirm-content">
-    <p class="texte-boite-perso">Code à 6 chiffres :</p>
-    <input type="text" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
-    <p id="errorMsg" style="color: red; display: none;">Le code doit contenir exactement 6 chiffres.</p>
+    <form id="envoiCode" action="#" method="POST">
+        <p class="texte-boite-perso">Code à 6 chiffres :</p>
+        <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
+        <input type="submit" value="Envoyer le code">
+        <p id="errorMsg" style="color: red; display: none;">Le code doit contenir exactement 6 chiffres.</p>
+        <button>Se connecter quand même</button>
+    </form>
 </div>
 
 
@@ -207,7 +211,19 @@ if(!empty($_POST)){
         var span = document.getElementsByClassName("close")[0];
         var form = document.getElementById("connexionForm");
 
+        var champOTP = document.getElementById('otpCode');
         var errorMsg = document.getElementById('errorMsg');
+        var formOTP = document.getElementById('envoiCode');
+        var btnEnvoiCode = formOTP.querySelector('submit');
+
+        var btnEnvoiQuentin = formOTP.querySelector('button');
+
+        btnEnvoiQuentin.addEventListener('click',function(e){
+            e.preventDefault();
+            form.submit();
+        });
+
+        console.log(btnEnvoiCode);
 
         oldModal.style.display = "none";
         modal.style.display = "none";
@@ -222,7 +238,7 @@ if(!empty($_POST)){
             modal.style.display = "block";
         });
 
-        modal.addEventListener("input", function () {
+        champOTP.addEventListener("input", function () {
             let errorMsg = document.getElementById("errorMsg");
 
             // Supprime tout sauf les chiffres et limite à 6 caractères
@@ -235,6 +251,13 @@ if(!empty($_POST)){
                 errorMsg.style.display = "block"; // Affiche le message d'erreur
             }
         });
+
+
+        formOTP.addEventListener('submit',(e) => {
+            e.preventDefault();
+        });
+
+
 
         // Ferme la modale en cliquant sur la croix
         span.onclick = function() {
