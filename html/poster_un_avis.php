@@ -286,7 +286,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="mentions_legales.html">Mentions Légales</a></li>
+                    <li><a href="mentions_legales.php">Mentions Légales</a></li>
                     <li><a href="#">RGPD</a></li>
                     <li><a href="#">Nous connaître</a></li>
                     <li><a href="#">Nos partenaires</a></li>
