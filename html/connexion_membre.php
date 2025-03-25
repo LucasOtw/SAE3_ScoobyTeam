@@ -188,7 +188,7 @@ if(!empty($_POST)){
         <button id="submitFormBtn" class="se_connecter_modal">Se connecter quand même</button>
     </div>
 </div>
-<div id="modal-otp" class="custom-confirm-content">
+<div id="modal-otp" class="otp-confirm-content">
     <form id="envoiCode" action="#" method="POST">
         <p class="texte-boite-perso">Code à 6 chiffres :</p>
         <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
@@ -251,6 +251,20 @@ if(!empty($_POST)){
                 errorMsg.style.display = "block"; // Affiche le message d'erreur
             }
         });
+
+
+        formOTP.addEventListener('submit',(e) => {
+            e.preventDefault();
+
+            if(champOTP.value.length < 6){
+                /* Lancer une animation */
+            } else {
+                // Le code a la bonne longueur, on peut le vérifier
+                
+            }
+        });
+
+
 
         // Ferme la modale en cliquant sur la croix
         span.onclick = function() {

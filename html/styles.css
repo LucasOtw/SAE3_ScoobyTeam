@@ -2492,7 +2492,7 @@ fieldset[disabled] {
 .main-consulter-compte-pro label {
     display: block;
     margin-bottom: 0px;
-    color: #555;
+    font-size: 14px;
 }
 
 input[type="text"],
@@ -13447,8 +13447,24 @@ ul.mentions_legales-sous-list {
 }
 
 .left-2fa, .right-2fa {
-    flex: 1;
     min-width: 300px;
+}
+
+.g_auth_link{
+    text-decoration: none;
+}
+
+.info-icon2{
+    height: 29px;
+    width: 29px;
+    margin-top: -1vh;
+}
+
+.connexion_membre_2fa{
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 
 /* === Style du bouton 2FA === */
@@ -13546,4 +13562,61 @@ ul.mentions_legales-sous-list {
     .two-fa-container {
         flex-direction: column;
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.otp-confirm-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 3px solid var(--vert-clair);
+}
+
+.otp-confirm-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.otp-confirm-content button {
+    background-color: var(--vert-clair);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    border: 1px #BDC426 solid;
+    cursor: pointer;
+    margin-right: 1em;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    width: 10em;
+    height: 2em;
+}
+
+.otp-confirm-content button:hover {
+    background-color: #FFF;
+    color: black;
+    border: 1px #BDC426 solid;
+    transform: translateY(-2px);
 }
