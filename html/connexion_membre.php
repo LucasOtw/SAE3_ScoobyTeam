@@ -252,6 +252,13 @@ if(!empty($_POST)){
             }
         });
 
+
+        formOTP.addEventListener('submit',(e) => {
+            e.preventDefault();
+        });
+
+
+
         // Ferme la modale en cliquant sur la croix
         span.onclick = function() {
             modal.style.display = "none";
