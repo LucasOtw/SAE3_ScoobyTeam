@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: application/json");
 
-require_once __DIR__ . ("/../.security/config.php");
+require_once __DIR__ . ("/../../.security/config.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = $_POST["mail"] ?? "";
