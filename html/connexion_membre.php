@@ -205,6 +205,12 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit',(e) => {
         e.preventDefault();
 
+        let email = document.getElementById('email');
+        let password = document.getElementById('password');
+
+        let emailValue = email.value.trim();
+        let passwordValue = password.value.trim();
+
         fetch("connexion/script_connexion_membre.php", {
             method: "POST",
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
