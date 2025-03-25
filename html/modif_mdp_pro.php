@@ -552,7 +552,7 @@ if (isset($_POST['modif_infos'])) {
         ET À L'ACTIVATION DE L'AUTHENTIFICATION À DEUX FACTEURS */
         document.addEventListener('DOMContentLoaded', function(){
             let formActive2FA = document.getElementById('form2FA');
-            let dialogue2FA = document.getElementsByClassName('custom-confirm-content')[0];
+            let dialogue2FA = document.getElementsByClassName('popup-2fa-validation')[0];
 
             dialogue2FA.style.display = "none";
 
