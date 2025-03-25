@@ -105,7 +105,7 @@
         </section>
     </main>
 </body>
-   <footer class="footer-membre">
+   <footer class="footer_membre">
     <div class="newsletter">
         <div class="newsletter-content">
             <h2>Inscrivez-vous à notre Newsletter</h2>
