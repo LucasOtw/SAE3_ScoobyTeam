@@ -18,6 +18,8 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
     $recupCodeSecret->bindValue(":code_compte",$codeCompte);
     $recupCodeSecret->execute();
 
+    $codeSecret = $recupCodeSecret->fetchColumn(PDO::FETCH_ASSOC);
+
     echo json_encode(["success" => true, "message" => "Bonjour"]);
 }
 
