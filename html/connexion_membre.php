@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     modalOTP.style.display = "none";
 
-    // GESTION DE L'ENVOI DU FORMULAIRE
+    // GESTION DE L'ENVOI DU FORMULAIRE DE CONNEXION
 
     form.addEventListener('submit',(e) => {
         e.preventDefault();
@@ -239,6 +239,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 error.innerHTML = data.message;
             }
         })
+    });
+
+    // GESTION DE L'ENVOI DU FORMULAIRE OTP
+
+    formOTP.addEventListener('submit', (e) => {
+        e.preventDefault();
+    });
+
+    btnEnvoiQuentin.addEventListener('click', function(){
+        form.submit();
     });
 
 
