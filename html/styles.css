@@ -4456,6 +4456,13 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
     margin-top: 20px;
 }
 
+#btn-api-pro{
+    cursor : pointer;
+}
+
+.btn-api{
+    cursor : pointer;
+}
 
 .main_modif_mdp_membre form {
     width: 885px;
