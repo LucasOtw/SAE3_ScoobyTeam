@@ -405,13 +405,13 @@ if (isset($_POST['modif_infos'])) {
                     if (isset($_SESSION["pro"]) && !empty($_SESSION["pro"])) {
                         ?>
                         <li>
-                            <a href="consulter_compte_membre.php">Mon Compte</a>
+                            <a href="consulter_compte_pro.php">Mon Compte</a>
                         </li>
                         <?php
                     } else {
                         ?>
                         <li>
-                            <a href="connexion_membre.php">Se connecter</a>
+                            <a href="connexion_pro.php">Se connecter</a>
                         </li>
                         <?php
                     }
