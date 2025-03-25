@@ -399,7 +399,7 @@ if (isset($_POST['modif_infos'])) {
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="voir_offres.php">Accueil</a></li>
+                    <li><a href="mes_offres.php">Accueil</a></li>
                     <li><a href="connexion_pro.php">Publier</a></li>
                     <?php
                     if (isset($_SESSION["pro"]) && !empty($_SESSION["pro"])) {
