@@ -243,8 +243,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // GESTION DE L'ENVOI DU FORMULAIRE OTP
 
+    if (champOTP) {
+        champOTP.addEventListener("input", function () {
+            this.value = this.value.replace(/\D/g, "").slice(0, 6);
+            errorMsg.style.display = (this.value.length === 6) ? "none" : "block";
+        });
+    }
+
     formOTP.addEventListener('submit', (e) => {
         e.preventDefault();
+
+        if (champOTP.value.length < 6) {
+            console.log("Code OTP trop court !");
+        }
     });
 
     btnEnvoiQuentin.addEventListener('click', function(){
