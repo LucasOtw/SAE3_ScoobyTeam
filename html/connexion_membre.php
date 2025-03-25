@@ -271,6 +271,7 @@ if(!empty($_POST)){
                 .then(data => {
                     if(data.success){
                         console.log("Code valide !");
+                        console.log(data.message);
                     } else {
                         console.log("Code invalide !");
                     }
