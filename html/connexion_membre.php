@@ -156,6 +156,7 @@ echo password_hash("test",PASSWORD_DEFAULT);
                             <p class="erreur-formulaire-connexion-membre erreur-mot-de-passe-incorect"><img src="images/icon_informations.png" alt="icon i pour informations">Mot de passe incorrect</p>
                         </div>
                     </fieldset>
+                    <span id="error-msg"></span>
                     
                     <div class="connexion_membre_btn_connecter_pas_de_compte">
                         <button class="se_connecter" type="submit" id="connectButton">Se connecter</button>
@@ -226,10 +227,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if(!data.otp){
                     window.location.href = "voir_offres.php";
+                } else {
+                    modalOTP.style.display = "block";
                 }
             } else {
+                error = document.getElementById('error-msg');
                 console.log("Authentification refusée !");
                 console.log(data.message);
+                error.innerHTML = data.message;
             }
         })
     });

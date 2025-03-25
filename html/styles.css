@@ -3704,6 +3704,7 @@ nom.avis {
 .custom-confirm-content p {
     margin-bottom: 20px;
     font-size: 16px;
+    margin-top: 1em;
 }
 
 .custom-confirm-content button {
