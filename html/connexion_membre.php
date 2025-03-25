@@ -223,10 +223,10 @@ if(!empty($_POST)){
             e.preventDefault();
 
             let email = form.querySelector('#email');
-            let password = form.querySelector('#pwd');
+            let password = form.querySelector('#password');
 
-            console.log(email);
-            console.log(password);
+            console.log(email.value.trim());
+            console.log(password.value.trim());
         });
 
 
