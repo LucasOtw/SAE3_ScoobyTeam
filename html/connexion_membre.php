@@ -205,7 +205,21 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit',(e) => {
         e.preventDefault();
 
-        modalOTP.style.display = "block";
+        fetch("connexion/script_connexion_membre.php", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ mail: emailValue, pwd: passwordValue })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.success){
+                console.log("Authentification validée !");
+                console.log(data.message);
+            } else {
+                console.log("Authentification refusée !");
+                console.log(data.message);
+            }
+        })
     });
 
 
