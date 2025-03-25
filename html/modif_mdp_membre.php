@@ -168,7 +168,7 @@ if (isset($_POST['modif_infos'])){
             <div class="connexion_membre_2fa">
                 <button type="submit" id="enable2FABtn" class="btn-2fa"
                     <?php echo (isset($isActivated2FA) && $isActivated2FA) ? "disabled" : "" ?>>
-                    Activer l’authentification à deux facteurs
+                    Authentification à deux facteurs
                 </button>
 
                 <input type="hidden" name="code_compte" value="<?php echo $compte['code_compte']; ?>">
