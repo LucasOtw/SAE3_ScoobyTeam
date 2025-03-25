@@ -281,7 +281,7 @@ if(!empty($_POST)){
                 /* Lancer une animation */
             } else {
                 // Le code a la bonne longueur, on peut le vérifier
-                fetch("verification_codeOTP.php",{
+/*                 fetch("verification_codeOTP.php",{
                     method: "POST",
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded"
@@ -299,7 +299,7 @@ if(!empty($_POST)){
                 })
                 .catch(error => {
                     console.log("Erreur : ",error);
-                });
+                }); */
             };
         });
 
