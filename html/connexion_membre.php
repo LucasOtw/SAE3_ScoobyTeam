@@ -223,6 +223,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if(data.success){
                 console.log("Authentification validée !");
                 console.log(data.message);
+
+                if(!data.otp){
+                    window.location.href = "voir_offres.php";
+                }
             } else {
                 console.log("Authentification refusée !");
                 console.log(data.message);

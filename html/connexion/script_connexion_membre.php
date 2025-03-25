@@ -42,7 +42,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // Authentification réussie
-    $_SESSION['membre'] = $user;
+    if(!isset($_SESSION['membre'])){
+        $_SESSION['membre'] = $user;
+    }
     echo json_encode(["success" => true, "message" => "Identification autorisée"]);
 } else {
     echo json_encode(["success" => false, "message" => "Requête invalide."]);
