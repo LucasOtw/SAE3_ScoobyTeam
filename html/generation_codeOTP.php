@@ -47,8 +47,13 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
         try{
             $ajoutCodeSecret->execute();
 
-            header('location: modif_mdp_membre.php');
-            exit;
+            if(isset($monCompteMembre)){
+                header('location: modif_mdp_membre.php');
+                exit;
+            } else {
+                header('location: modif_mdp_pro.php');
+                exit;
+            }
         } catch (PDOException $e){
             die("Échec exécution BDD : " . $e->getMessage());
         }
