@@ -79,6 +79,13 @@ if (isset($_POST['modif_infos'])){
    } else {
        echo "Aucune modification détectée.";
    }
+
+
+    if ($modification_reussie) {
+        $_SESSION['modif_mdp'] = true;
+    } else {
+        $_SESSION['modif_mdp'] = false;
+    }
 }
 
 ?>
@@ -245,30 +252,38 @@ if (isset($_POST['modif_infos'])){
         </form>
 
         
-          <?php
+            <?php
 
-            if($modif_mdp !== null){
-               if($modif_mdp == true){
-                  $img_success = "images/verifier.png";
-                  $msg_modif = "Mot de passe modifié avec succès&nbsp!";
-               } else {
-                  $img_success = "images/erreur.png";
-                  $msg_modif = "Erreur lors du changement du mot de passe&nbsp!";
-               }
-               ?>
-               <div class="creation-success" id="modif_mdp_membre">
-                  <img src="<?php echo $img_success ?>" alt="Succès">
-                  <h2><?php echo $msg_modif; ?></h2>
-               </div>
-               <?php
+                if($modif_mdp !== null){
+                if($modif_mdp == true){
+                    $img_success = "images/verifier.png";
+                    $msg_modif = "Mot de passe modifié avec succès&nbsp!";
+                } else {
+                    $img_success = "images/erreur.png";
+                    $msg_modif = "Erreur lors du changement du mot de passe&nbsp!";
+                }
             }
             ?>
+            <?php
+            if (isset($_SESSION['modif_mdp'])) {
+                $modif_mdp = $_SESSION['modif_mdp'];
+                unset($_SESSION['modif_mdp']); // Supprime la variable de session après usage
+            } else {
+                $modif_mdp = null;
+            }
 
-            <div class="creation-success">
-            <img src="./images/icones/check.svg" alt="Succès">
-            <h4>Compte créé avec succès ! Vous pouvez maintenant vous connecter.</h4>
-        </div>
-       
+            if ($modif_mdp !== null) {
+                $img_success = $modif_mdp ? "images/verifier.png" : "images/erreur.png";
+                $msg_modif = $modif_mdp ? "Mot de passe modifié avec succès&nbsp!" : "Erreur lors du changement du mot de passe&nbsp!";
+                ?>
+                <div class="creation-success" id="modif_mdp_membre">
+                    <img src="<?php echo $img_success ?>" alt="Succès">
+                    <h2><?php echo $msg_modif; ?></h2>
+                </div>
+                <?php
+            }
+            ?>
+                
     </main>
    
     <nav class="nav-bar-tel">
