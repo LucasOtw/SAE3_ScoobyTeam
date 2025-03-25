@@ -46,13 +46,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['membre'] = $user;
     }
 
-    include_once("../recupInfosCompte.php");
+    // on vérifie si il a l'authentification à 2 facteurs
 
+    $checkOTP = $dbh->prepare("SELECT COUNT(*) FROM tripenarvor._compte_otp
+    WHERE code_compte = :code_compte");
+    $checkOTP->bindValue(":code_compte",$user['code_compte']);
+    $checkOTP->execute();
+
+    $isOTP = $checkOTP->fetchColumn();
     $is2FA = false;
 
-    if(isset($isActivated2FA) && $isActivated2FA){
+    if($isOTP > 0){
         $is2FA = true;
     }
+
     echo json_encode([
     "success" => true,
     "message" => "Identification autorisée",
