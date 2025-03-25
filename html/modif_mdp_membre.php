@@ -79,13 +79,6 @@ if (isset($_POST['modif_infos'])){
    } else {
        echo "Aucune modification détectée.";
    }
-
-
-    if ($modification_reussie) {
-        $_SESSION['modif_mdp'] = true;
-    } else {
-        $_SESSION['modif_mdp'] = false;
-    }
 }
 
 ?>
