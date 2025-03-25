@@ -219,10 +219,13 @@ if(!empty($_POST)){
         var btnEnvoiQuentin = formOTP.querySelector('button');
 
 
-        form.addEventListener('submit', function(){
+        form.addEventListener('submit', function(e){
             e.preventDefault();
 
-            
+            let email = document.getElementById('email').value.trim();
+            let password = document.getElementById('pwd').value.trim();
+
+            console.log(email,password);
         });
 
 
