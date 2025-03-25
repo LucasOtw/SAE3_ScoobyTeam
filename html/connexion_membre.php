@@ -174,20 +174,6 @@ if(!empty($_POST)){
         </div>
     </main>
 
-    <!-- Modal Popup QR Code -->
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?data=otpauth://totp/Monsite:example@example.com?secret=JBSWY3DPEHPK3PXP&issuer=MonSite&algorithm=SHA1&digits=6" alt="QR Code OTP">
-        <div class="container_explication_qrcode">
-            <p>1. Scannez ce QR Code avec votre application</p>
-            <p>2. Copiez le code de votre application</p>
-            <p>3. Collez votre code unique sur le <span class="texte_site_qrcode">site internet</span></p>
-        </div>
-        <!-- Bouton ajouté -->
-        <button id="submitFormBtn" class="se_connecter_modal">Se connecter quand même</button>
-    </div>
-</div>
 <div id="modal-otp" class="otp-confirm-content">
     <form id="envoiCode" action="#" method="POST">
         <p class="texte-boite-perso">Code à 6 chiffres :</p>
