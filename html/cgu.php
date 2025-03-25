@@ -10,6 +10,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=K2D:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js" defer></script>
+    <style>
+        body {
+            height: 150em;
+        }
+        </style>
+
 </head>
 <body>
     <header class="header-pc header_membre">
