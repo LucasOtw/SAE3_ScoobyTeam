@@ -255,6 +255,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (champOTP.value.length < 6) {
             console.log("Code OTP trop court !");
+        } else {
+            fetch("verification_codeOTP.php",{
+                method: "POST",
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ codeOTP : champOTP.value})
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success){
+                    console.log(data.message);
+                }
+            })
         }
     });
 
