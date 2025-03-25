@@ -2,15 +2,13 @@
 session_start();
 header("Content-Type: application/json");
 
-require_once __DIR__ . ("/../.security/config.php");
+require_once __DIR__ . ("/../../.security/config.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = $_POST["mail"] ?? "";
     $password = $_POST["pwd"] ?? "";
 
-    echo json_encode(["success" => true, "message" => $email." / ".$password]);
-
-/*     if (empty($email) || empty($password)) {
+    if (empty($email) || empty($password)) {
         echo json_encode(["success" => false, "message" => "Tous les champs sont requis."]);
         exit;
     }
@@ -45,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Authentification réussie
     $_SESSION['membre'] = $user;
-    echo json_encode(["success" => true, "message" => "Identification autorisée"]); */
+    echo json_encode(["success" => true, "message" => "Identification autorisée"]);
 } else {
     echo json_encode(["success" => false, "message" => "Requête invalide."]);
 }
