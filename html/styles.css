@@ -13509,7 +13509,7 @@ ul.mentions_legales-sous-list {
 .btn-2fa:hover {
     transform: translateY(-2px);
     cursor: pointer;
-    background-color: #8BC34A;
+    background-color: var(--vert-clair);
     color: white;
 }
 
