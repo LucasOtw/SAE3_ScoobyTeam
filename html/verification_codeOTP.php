@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
     $codeSecret = $recupCodeSecret->fetchColumn();
 
     // On génère un code OTP à partir du secret
-    $otp = TOTP::createFromSecret($codeSecret);
+    // $otp = TOTP::createFromSecret($codeSecret);
 
     echo json_encode(["success" => true, "message" => "Bonjour"]);
 }
