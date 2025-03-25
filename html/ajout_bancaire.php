@@ -161,7 +161,7 @@ $pdo = null;
                     <li><a href="mes_offres.php">Accueil</a></li>
                     <li><a href="connexion_pro.php">Publier</a></li>
                     <?php
-                    if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
+                    if (isset($_SESSION["pro"]) && !empty($_SESSION["pro"])) {
                         ?>
                         <li>
                             <a href="consulter_compte_pro.php">Mon Compte</a>
