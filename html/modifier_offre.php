@@ -1030,7 +1030,7 @@ if($infos_offre !== null){
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="mentions_legales.html">Mentions Légales</a></li>
+                    <li><a href="mentions_legales.php">Mentions Légales</a></li>
                     <li><a href="cgu.php">GGU</a></li>
                     <li><a href="cgv.php">CGV</a></li>
                 </ul>
