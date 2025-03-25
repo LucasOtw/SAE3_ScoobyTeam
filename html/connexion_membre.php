@@ -322,6 +322,7 @@ if(!empty($_POST)){
             form.submit();
         }
     })
+    
 </script>
 
 </body>
