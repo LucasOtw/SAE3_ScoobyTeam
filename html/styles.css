@@ -13491,7 +13491,7 @@ ul.mentions_legales-sous-list {
 /* === Style du bouton 2FA === */
 .btn-2fa {
     background-color: #ffffff;
-    border: 1px solid #8BC34A; /* exemple de vert clair */
+    border: 1px solid var(--vert-clair);
     width: 100%;
     max-width: 301px;
     height: 43px;
