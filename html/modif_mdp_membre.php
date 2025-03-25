@@ -152,13 +152,36 @@ if (isset($_POST['modif_infos'])){
 <!--<li><a href="historique_membre.php">Historique</a></li>-->
             </ul>
         </section>
-        <form action="#" method="POST">
-            <fieldset id="api">
-                    <p>Clé API</p>
-                    <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($monCompteMembre['api_key']); ?>" readonly>
-                    <input type="submit" id="btn-api" name="generate_api_key" value="" alt="Regénérer la clé API" formnovalidate>
+        <form action="modif_mdp_membre.php" method="POST">
+           <h3>Modifiez votre mot de passe</h3>
+           
+            <fieldset>
+                <legend>Entrez votre mot de passe actuel *</legend>
+                <input type="password" id="mdp_actuel" name="mdp_actuel" placeholder="Entrez votre mot de passe actuel *" required>
             </fieldset>
+
+            <fieldset>
+                <legend>Définissez votre nouveau mot de passe *</legend>
+                <input type="password" id="mdp_nv1" name="mdp_nv1" placeholder="Definissez votre nouveau mot de passe *" required>
+            </fieldset>
+           
+            <fieldset>
+                <legend>Confirmez votre nouveau mot de passe *</legend>
+                <input type="password" id="mdp_nv2" name="mdp_nv2" placeholder="Confirmez votre nouveau mot de passe *" required>
+            </fieldset>
+
+            <div class="compte_membre_save_delete">
+                <button type="submit" name="modif_infos" class="submit-btn2">Enregistrer</button>
+            </div>
         </form>
+        <div class="custom-confirm-content">
+            <p class="texte-boite-perso">Voulez-vous vraiment activer l'authentification à 2 facteurs ?</p>
+            <p>Cette action est irréversible !</p> <!-- A mettre en rouge, avec l'icone adéquate -->
+            <span>
+                <button id="confirm">Ok</button>
+                <button id="cancel">Annuler</button>
+            </span>
+        </div>
         <form id="form2FA" action="#" method="POST">
     <h3>Authentification à deux facteurs</h3>
 
@@ -168,7 +191,7 @@ if (isset($_POST['modif_infos'])){
             <div class="connexion_membre_2fa">
                 <button type="submit" id="enable2FABtn" class="btn-2fa"
                     <?php echo (isset($isActivated2FA) && $isActivated2FA) ? "disabled" : "" ?>>
-                    Activer l’authentification à deux facteurs
+                    Authentification à deux facteurs
                 </button>
 
                 <input type="hidden" name="code_compte" value="<?php echo $compte['code_compte']; ?>">
@@ -211,36 +234,15 @@ if (isset($_POST['modif_infos'])){
     </div>
 </form>
 
-        <form action="modif_mdp_membre.php" method="POST">
-           <h3>Modifiez votre mot de passe</h3>
-           
-            <fieldset>
-                <legend>Entrez votre mot de passe actuel *</legend>
-                <input type="password" id="mdp_actuel" name="mdp_actuel" placeholder="Entrez votre mot de passe actuel *" required>
-            </fieldset>
+       
 
-            <fieldset>
-                <legend>Définissez votre nouveau mot de passe *</legend>
-                <input type="password" id="mdp_nv1" name="mdp_nv1" placeholder="Definissez votre nouveau mot de passe *" required>
+        <form action="#" method="POST">
+            <fieldset id="api">
+                    <p>Clé API</p>
+                    <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($monCompteMembre['api_key']); ?>" readonly>
+                    <input type="submit" id="btn-api" name="generate_api_key" value="" alt="Regénérer la clé API" formnovalidate>
             </fieldset>
-           
-            <fieldset>
-                <legend>Confirmez votre nouveau mot de passe *</legend>
-                <input type="password" id="mdp_nv2" name="mdp_nv2" placeholder="Confirmez votre nouveau mot de passe *" required>
-            </fieldset>
-
-            <div class="compte_membre_save_delete">
-                <button type="submit" name="modif_infos" class="submit-btn2">Enregistrer</button>
-            </div>
         </form>
-        <div class="custom-confirm-content">
-            <p class="texte-boite-perso">Voulez-vous vraiment activer l'authentification à 2 facteurs ?</p>
-            <p>Cette action est irréversible !</p> <!-- A mettre en rouge, avec l'icone adéquate -->
-            <span>
-                <button id="confirm">Ok</button>
-                <button id="cancel">Annuler</button>
-            </span>
-        </div>
 
         
           <?php
@@ -292,7 +294,7 @@ if (isset($_POST['modif_infos'])){
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="mentions_legales.html">Mentions Légales</a></li>
+                    <li><a href="mentions_legales.php">Mentions Légales</a></li>
                     <li><a href="cgu.php">GGU</a></li>
                     <li><a href="cgv.php">CGV</a></li>
                 </ul>

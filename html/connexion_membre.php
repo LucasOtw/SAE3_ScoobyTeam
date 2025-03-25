@@ -267,10 +267,11 @@ if(!empty($_POST)){
                     },
                     body: new URLSearchParams({codeOTP: champOTP.value})
                 })
-                .then(response => response.json());
+                .then(response => response.json())
                 .then(data => {
                     if(data.success){
                         console.log("Code valide !");
+                        console.log(data.message);
                     } else {
                         console.log("Code invalide !");
                     }

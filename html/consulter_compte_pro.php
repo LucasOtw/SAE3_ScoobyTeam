@@ -372,7 +372,7 @@ if (isset($_POST['modif_infos'])) {
 
             <div class="checkbox">
                 <input type="checkbox" id="cgu" name="cgu" required>
-                <label for="cgu">J’accepte les <a href="cgu.html">Conditions générales d’utilisation (CGU)</a></label>
+                <label for="cgu">J’accepte les <a href="cgu.php">Conditions générales d’utilisation (CGU)</a></label>
             </div>
             <div class="compte_pro_save_delete_remove">
                 <button type="button" name="suppr-compte" class="btn-suppr-compte" id="btn-suppr-compte">Supprimer le
@@ -392,7 +392,7 @@ if (isset($_POST['modif_infos'])) {
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="mentions_legales.html">Mentions Légales</a></li>
+                    <li><a href="mentions_legales.php">Mentions Légales</a></li>
                     <li><a href="cgu.php">GGU</a></li>
                     <li><a href="cgv.php">CGV</a></li>
                 </ul>
