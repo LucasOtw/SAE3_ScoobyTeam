@@ -231,10 +231,17 @@ if (!empty($_POST)) {
             var oldModal = document.getElementById("myModal");
             var modal = document.getElementById("modal-otp");
 
+<<<<<<< HEAD
             var btn = document.getElementById("connectButton");
             var submitBtn = document.getElementById("submitFormBtn");
             var span = document.getElementsByClassName("close")[0];
             var form = document.getElementById("connexionForm");
+=======
+        var connectBtn = document.getElementById("connectButton");
+        var submitBtn = document.getElementById("submitFormBtn");
+        var span = document.getElementsByClassName("close")[0];
+        var form = document.getElementById("connexionForm");
+>>>>>>> aa685ad0505b512fe7e28d51d2e7c48bf33f76d8
 
             var champOTP = document.getElementById('otpCode');
             var errorMsg = document.getElementById('errorMsg');
@@ -243,10 +250,29 @@ if (!empty($_POST)) {
 
             var btnEnvoiQuentin = formOTP.querySelector('button');
 
+<<<<<<< HEAD
             btnEnvoiQuentin.addEventListener('click', function (e) {
                 e.preventDefault();
                 form.submit();
             });
+=======
+
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+
+            let email = form.querySelector('#email');
+            let password = form.querySelector('#password');
+
+            console.log(email.value.trim());
+            console.log(password.value.trim());
+        });
+
+
+        btnEnvoiQuentin.addEventListener('click',function(e){
+            e.preventDefault();
+            form.submit();
+        });
+>>>>>>> aa685ad0505b512fe7e28d51d2e7c48bf33f76d8
 
             console.log(btnEnvoiCode);
 

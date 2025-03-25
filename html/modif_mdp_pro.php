@@ -287,16 +287,6 @@ if (isset($_POST['modif_infos'])) {
                 <li><a href="consulter_mes_reponses_pro.php">Mes réponses</a></li>
             </ul>
         </section>
-        <form action="#" method="POST">
-            <fieldset id="api">
-                <p>Clé API</p>
-                <input disabled type="text" id="cle_api_pro" name="cle_api"
-                    value="<?php echo htmlspecialchars($monComptePro['api_key']); ?>" readonly>
-                <input type="submit" id="btn-api-pro" name="generate_api_key" value="" alt="Regénérer la clé API"
-                    formnovalidate>
-            </fieldset>
-
-        </form>
         <div class="custom-confirm-content">
             <p class="texte-boite-perso">Voulez-vous vraiment activer l'authentification à 2 facteurs ?</p>
             <p>Cette action est irréversible !</p> <!-- A mettre en rouge, avec l'icone adéquate -->
@@ -337,7 +327,7 @@ if (isset($_POST['modif_infos'])) {
                 <!-- Colonne gauche -->
                 <div class="left-2fa">
                     <div class="connexion_membre_2fa">
-                        <button type="submit" id="enable2FABtn" class="btn-2fa"
+                        <button type="submit" id="enable2FABtn" class="btn-2fa_pro"
                             <?php echo (isset($isActivated2FA) && $isActivated2FA) ? "disabled" : "" ?>>
                             Authentification à deux facteurs
                         </button>
@@ -359,9 +349,9 @@ if (isset($_POST['modif_infos'])) {
 
                     <p id="etat_2fa" class="etat_2fa">
                         <?php if (isset($isActivated2FA) && $isActivated2FA): ?>
-                            L'authentification à deux facteurs est <span class="statut-non">activée</span>.
+                            L'authentification à deux facteurs est <span class="statut-non_pro">activée</span>.
                         <?php else: ?>
-                            Pour le moment, l'authentification à deux facteurs est <span class="statut-non">désactivée</span>.
+                            Pour le moment, l'authentification à deux facteurs est <span class="statut-non_pro">désactivée</span>.
                         <?php endif; ?>
                     </p>
                 </div>
@@ -380,6 +370,16 @@ if (isset($_POST['modif_infos'])) {
                     </div>
                 <?php endif; ?>
             </div>
+        </form>
+        <form action="#" method="POST">
+            <fieldset id="api">
+                <p>Clé API</p>
+                <input disabled type="text" id="cle_api_pro" name="cle_api"
+                    value="<?php echo htmlspecialchars($monComptePro['api_key']); ?>" readonly>
+                <input type="submit" id="btn-api-pro" name="generate_api_key" value="" alt="Regénérer la clé API"
+                    formnovalidate>
+            </fieldset>
+
         </form>
 
         <?php
@@ -423,19 +423,19 @@ if (isset($_POST['modif_infos'])) {
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="voir_offres.php">Accueil</a></li>
+                    <li><a href="mes_offres.php">Accueil</a></li>
                     <li><a href="connexion_pro.php">Publier</a></li>
                     <?php
-                    if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
+                    if (isset($_SESSION["pro"]) && !empty($_SESSION["pro"])) {
                         ?>
                         <li>
-                            <a href="consulter_compte_membre.php">Mon Compte</a>
+                            <a href="consulter_compte_pro.php">Mon Compte</a>
                         </li>
                         <?php
                     } else {
                         ?>
                         <li>
-                            <a href="connexion_membre.php">Se connecter</a>
+                            <a href="connexion_pro.php">Se connecter</a>
                         </li>
                         <?php
                     }
