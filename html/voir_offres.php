@@ -1471,7 +1471,7 @@ function tempsEcouleDepuisPublication($offre)
                                     break;
                                 }
                             }
-                            $popupContent .= '<form action="#" method="POST" class="voir_offre_carte">';
+                            $popupContent .= '<form action="detail_offre.php" method="POST" class="voir_offre_carte">';
                             $popupContent .= '<input type="hidden" name="uneOffre" value="' . htmlspecialchars(serialize($monOffre)) . '">';
                             $popupContent .= '<input type="hidden" name="vueDetails" value="1">';
                             $popupContent .= '<button type="submit" style="padding:6px 12px; background-color:#2DD7A4; color:white; border:none; cursor:pointer; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;">Voir l\'offre</button>';
