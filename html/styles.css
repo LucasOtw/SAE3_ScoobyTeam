@@ -4038,7 +4038,7 @@ div.creation-success .close-btn:hover {
 }
 
 /* Popup de succès PRO - version améliorée */
-div.modif-mdp-success-pro {
+.modif-mdp-success-pro {
     position: fixed;
     top: 30px;
     right: 30px;
@@ -4081,7 +4081,7 @@ div.modif-mdp-success-pro {
     }
     
     /* Ligne de progression */
-    div.modif-mdp-success-pro ::after {
+    .modif-mdp-success-pro ::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -4104,7 +4104,7 @@ div.modif-mdp-success-pro {
     }
     
     /* Icône de succès */
-    div.modif-mdp-success-pro >img {
+    .modif-mdp-success-pro >img {
     width: 24px;
     height: 24px;
     padding: 8px;
@@ -4115,7 +4115,7 @@ div.modif-mdp-success-pro {
     }
     
     /* Texte du message */
-    div.modif-mdp-success-pro h4 {
+    .modif-mdp-success-pro h4 {
     margin: 0;
     font-size: 16px;
     font-weight: 600;
@@ -4124,7 +4124,7 @@ div.modif-mdp-success-pro {
     }
     
     /* Bouton de fermeture (optionnel) */
-    div.modif-mdp-success-pro .close-btn {
+    .modif-mdp-success-pro .close-btn {
     position: absolute;
     top: 12px;
     right: 12px;
@@ -4137,17 +4137,8 @@ div.modif-mdp-success-pro {
     transition: color 0.2s;
     }
     
-    div.modif-mdp-success-pro .close-btn:hover {
+    .modif-mdp-success-pro .close-btn:hover {
     color: #555;
-    }
-    
-    /* Responsive */
-    @media (max-width: 480px) {
-    div.modif-mdp-success-pro {
-    width: calc(100% - 40px);
-    right: 20px;
-    left: 20px;
-    }
     }
     
 

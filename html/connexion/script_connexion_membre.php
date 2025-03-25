@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // ⚠️ Exemple : Vérifier dans la base de données (Remplace par ta logique)
-    if ($email === "test@example.com" && $password === "123456") {
+    if ($email === "membre@gmail.com" && $password === "test") {
         echo json_encode(["success" => true, "message" => "Connexion réussie."]);
     } else {
         echo json_encode(["success" => false, "message" => "Identifiants incorrects."]);
