@@ -93,8 +93,6 @@ if(!empty($_POST)){
     }
 }
 
-echo password_hash("test",PASSWORD_DEFAULT);
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -214,6 +212,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let emailValue = email.value.trim();
         let passwordValue = password.value.trim();
 
+        error = document.getElementById('error-msg');
+
         fetch("connexion/script_connexion_membre.php", {
             method: "POST",
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -222,6 +222,9 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if(data.success){
+
+                error.innerHTML = "";
+
                 console.log("Authentification validée !");
                 console.log(data.message);
 
@@ -231,7 +234,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     modalOTP.style.display = "block";
                 }
             } else {
-                error = document.getElementById('error-msg');
                 console.log("Authentification refusée !");
                 console.log(data.message);
                 error.innerHTML = data.message;
