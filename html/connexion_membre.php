@@ -196,7 +196,20 @@ document.addEventListener('DOMContentLoaded', function() {
     var formOTP = document.getElementById('envoiCode');
     var btnEnvoiQuentin = formOTP ? formOTP.querySelector('button') : null;
 
-    if (!form || !connectBtn) {
+    var modalOTP = document.getElementById('modal-otp');
+
+    modalOTP.style.display = "none";
+
+    // GESTION DE L'ENVOI DU FORMULAIRE
+
+    form.addEventListener('submit',(e) => {
+        e.preventDefault();
+
+        modalOTP.style.display = "block";
+    });
+
+
+ /*    if (!form || !connectBtn) {
         console.error("Éléments du formulaire non trouvés !");
         return;
     }
@@ -267,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         });
-    }
+    } */
 
 });
 
