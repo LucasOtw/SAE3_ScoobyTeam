@@ -232,6 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.location.href = "voir_offres.php";
                 } else {
                     modalOTP.style.display = "block";
+                    var codeCompte = data.code_compte;
                 }
             } else {
                 console.log("Authentification refusée !");
@@ -252,6 +253,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     formOTP.addEventListener('submit', (e) => {
         e.preventDefault();
+
+        console.log(codeCompte);
 
         if (champOTP.value.length < 6) {
             console.log("Code OTP trop court !");
