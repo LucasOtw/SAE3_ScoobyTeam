@@ -293,6 +293,14 @@ if (isset($_POST['modif_infos'])) {
             </fieldset>
 
         </form>
+        <div class="custom-confirm-content">
+            <p class="texte-boite-perso">Voulez-vous vraiment activer l'authentification à 2 facteurs ?</p>
+            <p>Cette action est irréversible !</p> <!-- A mettre en rouge, avec l'icone adéquate -->
+            <span>
+                <button id="confirm">Ok</button>
+                <button id="cancel">Annuler</button>
+            </span>
+        </div>
         <form action="modif_mdp_pro.php" method="POST">
             <h3>Modifiez votre mot de passe</h3>
 
@@ -535,6 +543,35 @@ if (isset($_POST['modif_infos'])) {
         });
 
     </script>
-</body>
+        <script>
+        /* CE SCRIPT SERT A LA GÉNÉRATION DU QR CODE
+        ET À L'ACTIVATION DE L'AUTHENTIFICATION À DEUX FACTEURS */
+        document.addEventListener('DOMContentLoaded', function(){
+            let formActive2FA = document.getElementById('form2FA');
+            let dialogue2FA = document.getElementsByClassName('custom-confirm-content')[0];
 
+            dialogue2FA.style.display = "none";
+
+            console.log(dialogue2FA);
+            console.log(formActive2FA);
+
+            formActive2FA.addEventListener('submit', function(e){
+                e.preventDefault();
+                dialogue2FA.style.display = "block";
+            });
+
+            let confirmBtn = dialogue2FA.querySelector('#confirm');
+            let cancelBtn = dialogue2FA.querySelector('#cancel');
+
+            confirmBtn.addEventListener('click', function(){
+                form2FA.action = "generation_codeOTP.php";
+                form2FA.submit();
+            });
+
+            cancelBtn.addEventListener('click', function(){
+                dialogue2FA.style.display = "none";
+            });
+        });
+    </script>
+</body>
 </html>
