@@ -1410,7 +1410,7 @@ function tempsEcouleDepuisPublication($offre)
 
                     var markers = L.markerClusterGroup({
                         zoomToBoundsOnClick: true,
-                        spiderfyOnMaxZoom: true,
+                        spiderfyOnMaxZoom: false,
                         showCoverageOnHover: false,
                         disableClusteringAtZoom: 16
                     });
