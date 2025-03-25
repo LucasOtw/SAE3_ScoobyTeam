@@ -104,7 +104,7 @@
             </p>
         </section>
     </main>
-    </body>
+</body>
    <footer>
     <div class="newsletter">
         <div class="newsletter-content">
@@ -189,6 +189,4 @@
             </div>
         </div>
     </footer>
-
-
 </html>
