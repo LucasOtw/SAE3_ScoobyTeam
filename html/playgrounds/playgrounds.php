@@ -12,6 +12,6 @@ $secret = $getSecret->fetchColumn();
 var_dump($secret);
 
 $otp = TOTP::createFromSecret($secret);
-var_dump($otp);
+var_dump($otp->verify($secret));
 
 ?>
