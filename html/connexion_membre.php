@@ -256,15 +256,16 @@ document.addEventListener('DOMContentLoaded', function() {
     formOTP.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        console.log(codeCompte);
-
         if (champOTP.value.length < 6) {
             console.log("Code OTP trop court !");
         } else {
             fetch("verification_codeOTP.php",{
                 method: "POST",
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams({ codeOTP : champOTP.value})
+                body: new URLSearchParams({
+                    codeOTP : champOTP.value,
+                    code_compte : codeCompte
+                })
             })
             .then(response => response.json())
             .then(data => {
