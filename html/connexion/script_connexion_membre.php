@@ -1,5 +1,7 @@
 <?php
-header("Content-Type: application/json"); // 🔹 Assure que la réponse est en JSON
+header("Content-Type: application/json");
+
+require_once __DIR__ . ("/../.security/config.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = $_POST["mail"] ?? "";
@@ -25,16 +27,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $existeMembre->bindValue(":code_compte",$existeUser['code_compte']);
         $existeMembre->execute();
 
+        $existeMembre = $existeMembre->fetch(PDO::FETCH_ASSOC);
+
         if($existeMembre){
             // si le membre existe, on vérifie le mot de passe
 
-            $checkMDP = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :code_compte");
-            $checkMDP->bindValue(':code_compte',$existeUser['code_compte']);
-            $checkMDP->execute();
+            $mdp_compte = $existeUser['mdp'];
 
-            $mdp_compte = $checkMDP->fetch(PDO::FETCH_ASSOC);
-
-            if(password_verify($password,$mdp_compte)){
+            if(password_verify($password,$mdp_compte['mdp'])){
                 // si les mots de passe correspondent
                 // l'utilisateur peut être connecté
                 $_SESSION['membre'] = $existeUser;
@@ -50,13 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo json_encode(["success" => false, "message" => "Identifiants incorrects"]);
         exit;
     }
-
-    // ⚠️ Exemple : Vérifier dans la base de données (Remplace par ta logique)
-/*     if ($email === "membre@gmail.com" && $password === "test") {
-        echo json_encode(["success" => true, "message" => "Connexion réussie."]);
-    } else {
-        echo json_encode(["success" => false, "message" => "Identifiants incorrects."]);
-    } */
 } else {
     echo json_encode(["success" => false, "message" => "Requête invalide."]);
 }
