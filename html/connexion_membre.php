@@ -256,7 +256,7 @@ if(!empty($_POST)){
         formOTP.addEventListener('submit',(e) => {
             e.preventDefault();
 
-            console.log(champOTP.length);
+            console.log(champOTP);
         });
 
 
