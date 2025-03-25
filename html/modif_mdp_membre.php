@@ -1,389 +1,329 @@
 <?php
-ob_start(); // bufferisation, ça devrait marcher ?
+
+ob_start();
 session_start();
 
-require __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . ("/../.security/config.php");
 
-use OTPHP\TOTP;
+$dbh = new PDO($dsn, $username, $password);
 
-include("recupInfosCompte.php");
+if(!empty($_POST)){
+    $email = trim(isset($_POST['mail']) ? htmlspecialchars($_POST['mail']) : '');
+    $password = isset($_POST['pwd']) ? htmlspecialchars($_POST['pwd']) : '';
 
-if(isset($_GET['logout'])){
-   session_unset();
-   session_destroy();
-   header('location: connexion_membre.php');
-   exit;
-}
+    // on cherche dans la base de données si le compte existe.
+    $existeUser = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail='$email'");
+    $existeUser->execute();
+    $existeUser = $existeUser->fetch(PDO::FETCH_ASSOC);
 
-if(!isset($_SESSION['membre'])){
-   header('location: connexion_membre.php');
-   exit;
-}
+    if($existeUser){
+        // si l'utilisateur existe, on vérifie d'abord si il est membre.
+        // Car même si l'adresse mail et le mdp sont corrects, si le compte n'est pas lié à un membre, ça ne sert à rien de continuer les vérifications
+        $existeMembre = $dbh->prepare("SELECT * FROM tripenarvor._membre WHERE code_compte = :code_compte");
+        $existeMembre->bindParam(':code_compte', $existeUser['code_compte']);
+        $existeMembre->execute();
 
-$modif_mdp = null;
+        $existeMembre = $existeMembre->fetch(PDO::FETCH_ASSOC);
+        if($existeMembre){
+            // Si le membre existe, on vérifie le mot de passe
+            $checkPWD = $dbh->prepare("SELECT mdp FROM tripenarvor._compte WHERE code_compte = :code_compte");
+            $checkPWD->bindParam(':code_compte', $existeUser['code_compte']);
+            $checkPWD->execute();
 
-// Vérification si le bouton de génération est cliqué
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_api_key'])) {
-    $prefix = 'M'; // Préfixe pour générer la clé
-    $stmt = $dbh->prepare('update tripenarvor._membre set api_key = tripenarvor.generate_api_key(:prefix) where code_compte = :code_compte');
-    $stmt->bindParam(':prefix', $prefix, PDO::PARAM_STR);
-    $stmt->bindParam(':code_compte', $_SESSION['membre']['code_compte']);
-    $stmt->execute();
+            $pwd_compte = $checkPWD->fetch();
 
-    // Récupérer la nouvelle clé générée
-}
-
-if (isset($_POST['modif_infos'])){
-   
-   // Champs modifiés
-   $champsModifies = [];
-   
-   // Parcourir les données soumises
-   foreach ($_POST as $champ => $valeur) {
-      if ($champ != 'modif_infos')
-      {
-         $champsModifies[$champ] = trim($valeur);
-      }
-   }
-   
-   // Mettre à jour seulement les champs modifiés
-   if (!empty($champsModifies))
-   {
-      if (password_verify($champsModifies['mdp_actuel'],$compte['mdp']))
-      {
-         if (trim($champsModifies['mdp_nv1']) === trim($champsModifies['mdp_nv2']))
-         {
-            $mdp_modif = password_hash($champsModifies['mdp_nv1'], PASSWORD_DEFAULT);
-            $query = $dbh->prepare("UPDATE tripenarvor._compte SET mdp = :valeur WHERE code_compte = :code_compte");
-            $query->bindValue(":valeur",$mdp_modif);
-            $query->bindValue(":code_compte",$compte['code_compte']);
-            $query->execute();
-                
-            $rowsAffected = $query->rowCount();
-            if ($rowsAffected > 0) {
-               $modif_mdp = true;
-               $_SESSION['membre']['mdp'] = $mdp_modif;
-            } else {
-               $modif_mdp = false;
+            if(password_verify($password, $pwd_compte[0])){
+                // les mots de passe correspondent
+                // l'utilisateur peut être connecté
+                header('location: voir_offres.php');
+                $_SESSION["membre"] = $existeUser;
+            } else /* MDP Invalide */ {
+                ?> 
+                <style>
+                    <?php echo "div.connexion_membre_form-container form fieldset p.erreur-mot-de-passe-incorect"?>{
+                        display : flex;
+                        align-items: center;
+                    }
+                    <?php echo ".connexion_membre_main fieldset p.erreur-mot-de-passe-incorect img"?>{
+                        width: 10px;
+                        height: 10px;
+                        margin-right: 10px;
+                    }
+                    <?php echo ".connexion_membre_main input.erreur-mot-de-passe-incorect"?>{
+                        border: 1px solid red;
+                    }
+                </style>
+                <?php
             }
-
-         } else {
-            $modif_mdp = false;
-         }
-      } else {
-         echo "Test";
-         $modif_mdp = false;
-      }
-       // echo "Les informations ont été mises à jour.";
-       include("recupInfosCompte.php");
-   } else {
-       echo "Aucune modification détectée.";
-   }
+        } else /* Utilisateur Membre Inexistant */ {
+            ?> 
+            <style>
+                <?php echo "div.connexion_membre_form-container form fieldset p.erreur-membre-inconnu"?>{
+                    display : flex;
+                    align-items: center;
+                }
+                <?php echo ".connexion_membre_main fieldset p.erreur-membre-inconnu img"?>{
+                    width: 10px;
+                    height: 10px;
+                    margin-right: 10px;
+                }
+                <?php echo ".connexion_membre_main input.erreur-membre-inconnu"?>{
+                    border: 1px solid red;
+                }
+            </style>
+            <?php
+        }
+    } else /* Utilisateur Inexistant */ {
+        ?> 
+            <style>
+                <?php echo "div.connexion_membre_form-container form fieldset p.erreur-user-inconnu"?>{
+                    display : flex;
+                    align-items: center;
+                }
+                <?php echo ".connexion_membre_main fieldset p.erreur-user-inconnu img"?>{
+                    width: 10px;
+                    height: 10px;
+                    margin-right: 10px;
+                }
+                <?php echo ".connexion_membre_main input.erreur-user-inconnu"?>{
+                    border: 1px solid red;
+                }
+            </style>
+            <?php
+    }
 }
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-   <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
+    <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier Mot de passe</title>
+    <title>Se connecter</title>
     <link rel="stylesheet" href="styles.css">
+
+
 </head>
+
 <body>
-    <header class="header_membre">
-        <div class="logo">
-         <a href="voir_offres.php">
-            <img src="images/logoBlanc.png" alt="PACT Logo">
-         </a>
+    <header class="header-pc header_membre">
+        <div class="logo-pc">
+            <a href="voir_offres.php">
+                    <img src="images/logoBlanc.png" alt="PACT Logo">
+            </a>
         </div>
         <nav>
             <ul>
-                <li><a href="voir_offres.php">Accueil</a></li>
+                <li><a href="voir_offres.php" >Accueil</a></li>
                 <li><a href="connexion_pro.php">Publier</a></li>
-                <?php
-                    if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
-                       ?>
-                       <li>
-                           <a href="consulter_compte_membre.php" class="active">Mon Compte</a>
-                       </li>
-                        <?php
-                    } else {
-                        ?>
-                       <li>
-                           <a href="connexion_membre.php">Se connecter</a>
-                       </li>
-                       <?php
-                    }
-                ?>
+                <li><a href="#" class="active">Se connecter</a></li>
             </ul>
         </nav>
     </header>
-   
-    <main class="main_modif_mdp_membre">
-       
-<!-- POUR PC/TABLETTE -->
-        <div class="profile">
-            <div class="banner">
-                <img src="images/Rectangle 3.png" alt="Bannière" class="header-img">
-            </div>
-
-            <div class="profile-info">
-                <img src=<?php echo $compte_pp; ?> alt="Photo de profil" class="profile-img">
-                <h1><?php echo $monCompteMembre['prenom']." ".$monCompteMembre['nom']." (".$monCompteMembre['pseudo'].")"; ?></h1>
-                <p><?php echo $compte['mail']; ?> | <?php echo trim(preg_replace('/(\d{2})/', '$1 ', $compte['telephone'])); ?></p>
-            </div>
+    <header class="header-tel header_membre">
+        <div class="logo-tel">
+            <img src="images/LogoCouleur.png" alt="PACT Logo">
         </div>
-       
-<!-- POUR TEL -->
-        <div class="mdp_securite">
-            <a href="compte_membre_tel.php"><img src="images/Bouton_retour.png" alt="Bouton retour"></a>
-            <h1>Mot de passe</h1>
-        </div>
-        <div class="illustration">
-            <img src="images/mdp_securite_illustration.png" alt="Illustration" class="illustration_mdp_securite">
-        </div>
-        <section class="tabs">
-            <ul>
-                <li><a href="consulter_compte_membre.php">Informations personnelles</a></li>
-                <li><a href="modif_mdp_membre.php" class="active">Mot de passe et sécurité</a></li>
-                <li><a href="consulter_mes_avis.php">Historique</a></li>
-<!--<li><a href="historique_membre.php">Historique</a></li>-->
-            </ul>
-        </section>
-        <form action="modif_mdp_membre.php" method="POST">
-           <h3>Modifiez votre mot de passe</h3>
-           
-            <fieldset>
-                <legend>Entrez votre mot de passe actuel *</legend>
-                <input type="password" id="mdp_actuel" name="mdp_actuel" placeholder="Entrez votre mot de passe actuel *" required>
-            </fieldset>
-
-            <fieldset>
-                <legend>Définissez votre nouveau mot de passe *</legend>
-                <input type="password" id="mdp_nv1" name="mdp_nv1" placeholder="Definissez votre nouveau mot de passe *" required>
-            </fieldset>
-           
-            <fieldset>
-                <legend>Confirmez votre nouveau mot de passe *</legend>
-                <input type="password" id="mdp_nv2" name="mdp_nv2" placeholder="Confirmez votre nouveau mot de passe *" required>
-            </fieldset>
-
-            <div class="compte_membre_save_delete">
-                <button type="submit" name="modif_infos" class="submit-btn2">Enregistrer</button>
-            </div>
-        </form>
-        <div class="custom-confirm-content">
-            <p class="texte-boite-perso">Voulez-vous vraiment activer l'authentification à 2 facteurs ?</p>
-            <p>Cette action est irréversible !</p> <!-- A mettre en rouge, avec l'icone adéquate -->
-            <span>
-                <button id="confirm">Ok</button>
-                <button id="cancel">Annuler</button>
-            </span>
-        </div>
-        <form id="form2FA" action="#" method="POST">
-            <h3>Authentification à deux facteurs</h3>
-
-            <div class="two-fa-container">
-                <!-- Colonne gauche -->
-                <div class="left-2fa">
-                    <div class="connexion_membre_2fa">
-                        <button type="submit" id="enable2FABtn" class="btn-2fa"
-                            <?php echo (isset($isActivated2FA) && $isActivated2FA) ? "disabled" : "" ?>>
-                            Authentification à deux facteurs
-                        </button>
-
-                        <input type="hidden" name="code_compte" value="<?php echo $compte['code_compte']; ?>">
-                        <input type="hidden" name="active2FA" value="1">
-
-                        <div class="info-icon-container">
-                            <span class="info-icon2">?</span>
-                            <div class="tooltip-content">
-                                L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire en exigeant une vérification via un code envoyé sur votre téléphone.
-                            </div>
+         <a class="btn_plus_tard" href="voir_offres.php">Plus tard</a>
+    </header>
+        <h3 class="connexion_membre_ravi">Ravi de vous revoir !</h3>
+        
+    <main class="connexion_membre_main">
+        <div class="connexion_membre_container">
+            <div class="connexion_membre_form-container">
+                <div class="connexion_membre_h2_p">
+                    <h2>Se connecter</h2>
+                    <p>Sauvegardez vos annonces favorites, donnez votre avis sur les offres <br>profitez d'une expérience personnalisée.</p>
+                </div>
+                <form action="connexion_membre.php" method="POST" id="connexionForm">
+                    <fieldset>
+                        <legend>E-mail</legend>
+                        <div class="connexion_membre_input-group">
+                            <input class="erreur-user-inconnu erreur-membre-inconnu" type="email" id="email" name="mail" placeholder="E-mail" required>
+                            <p class="erreur-formulaire-connexion-membre erreur-user-inconnu"><img src="images/icon_informations.png" alt="icon i pour informations">L'utilisateur n'existe pas</p>
+                            <p class="erreur-formulaire-connexion-membre erreur-membre-inconnu"><img src="images/icon_informations.png" alt="icon i pour informations">L'utilisateur n'existe pas en tant que membre </p>
                         </div>
+                    </fieldset>
 
-                        <p id="phrase" class="info_2fa" style="display: none;">
-                            ⚠️ Une fois activée, cette option est <strong>irréversible</strong>.
-                        </p>
+                    <fieldset>
+                        <legend>Mot de passe</legend>
+                        <div class="connexion_membre_input-group">
+                            <input class="erreur-mot-de-passe-incorect" type="password" id="password" name="pwd" placeholder="Mot de passe" required>
+                            <p class="erreur-formulaire-connexion-membre erreur-mot-de-passe-incorect"><img src="images/icon_informations.png" alt="icon i pour informations">Mot de passe incorrect</p>
+                        </div>
+                    </fieldset>
+                    
+                    <div class="connexion_membre_btn_connecter_pas_de_compte">
+                        <button class="se_connecter" type="submit" id="connectButton">Se connecter</button>
+                        
+                        <hr>
+                        <div class="connexion_membre_liens_connexion_inscription">
+                            <p><span class="pas_de_compte">Pas de compte ?<a href="creation_compte_membre.php">Inscription</a></p>
+                            <p><span class="connexion_compte_pro">Un compte<a href="connexion_pro.php">Pro </a>?</p>
+                        </div>
                     </div>
-
-                    <p id="etat_2fa" class="etat_2fa">
-                        <?php if (isset($isActivated2FA) && $isActivated2FA): ?>
-                            L'authentification à deux facteurs est <span class="statut-non">activée</span>.
-                        <?php else: ?>
-                            Pour le moment, l'authentification à deux facteurs est <span class="statut-non">désactivée</span>.
-                        <?php endif; ?>
-                    </p>
-                </div>
-
-                <!-- Colonne droite : QR Code si activé -->
-                <?php if (isset($isActivated2FA) && $isActivated2FA): ?>
-                    <?php
-                        $otp = TOTP::create($isActivated2FA['code_secret']);
-                        $otp->setLabel("Scooby-Team");
-                        $otp_uri = $otp->getProvisioningUri();
-                    ?>
-                    <div class="right-2fa">
-                        <h3>Votre QR Code</h3>
-                        <p>Scannez ce QR Code avec <a class="g_auth_link" href="https://apps.apple.com/fr/app/google-authenticator/id388497605">Google Authenticator</a> ou une autre app compatible.</p>
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?data=<?php echo urlencode($otp_uri) ?>&size=200x200" alt="QR Code OTP">
-                    </div>
-                <?php endif; ?>
+                </form>
+            
+</div>
             </div>
-        </form>
-
-       
-
-        <form action="#" method="POST">
-            <fieldset id="api">
-                    <p>Clé API</p>
-                    <input disabled type="text" id="cle_api" name="cle_api" value="<?php echo htmlspecialchars($monCompteMembre['api_key']); ?>" readonly>
-                    <input type="submit" id="btn-api" name="generate_api_key" value="" alt="Regénérer la clé API" formnovalidate>
-            </fieldset>
-        </form>
-
-        
-            <?php
-
-                if($modif_mdp !== null){
-                if($modif_mdp == true){
-                    $img_success = "images/verifier.png";
-                    $msg_modif = "Mot de passe modifié avec succès&nbsp!";
-                } else {
-                    $img_success = "images/erreur.png";
-                    $msg_modif = "Erreur lors du changement du mot de passe&nbsp!";
-                }
-            }
-            ?>
-            <?php
-            if (isset($_SESSION['modif_mdp'])) {
-                $modif_mdp = $_SESSION['modif_mdp'];
-                unset($_SESSION['modif_mdp']); // Supprime la variable de session après usage
-            } else {
-                $modif_mdp = null;
-            }
-
-            if ($modif_mdp !== null) {
-                $img_success = $modif_mdp ? "images/verifier.png" : "images/erreur.png";
-                $msg_modif = $modif_mdp ? "Mot de passe modifié avec succès&nbsp!" : "Erreur lors du changement du mot de passe&nbsp!";
-                ?>
-                <div class="creation-success" id="modif_mdp_membre">
-                    <img src="<?php echo $img_success ?>" alt="Succès">
-                    <h2><?php echo $msg_modif; ?></h2>
-                </div>
-                <?php
-            }
-            ?>
-                
+            <div class="connexion_membre_image-container">
+                <img src="images/imageConnexionProEau.png" alt="Image de maison en pierre avec de l'eau">
+            </div>
+        </div>
     </main>
-   
-    <nav class="nav-bar-tel">
-        <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
-        <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
-        <a href="#"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
-        <a href="
-            <?php
-                if(isset($_SESSION["membre"]) || !empty($_SESSION["membre"])){
-                    echo "consulter_compte_membre.php";
-                } else {
-                    echo "connexion_membre.php";
-                }
-            ?>">
-            <img src="images/icones/User icon.png" alt="image de Personne"></a>
-    </nav>
-   
-    <footer class="footer footer_membre">
-        
-        <div class="footer-links">
-            <div class="logo">
-                <img src="images/logoBlanc.png" alt="Logo PAVCT">
-            </div>
-            <div class="link-group">
-                <ul>
-                    <li><a href="mentions_legales.php">Mentions Légales</a></li>
-                    <li><a href="cgu.php">GGU</a></li>
-                    <li><a href="cgv.php">CGV</a></li>
-                </ul>
-            </div>
-            <div class="link-group">
-                <ul>
-                    <li><a href="voir_offres.php">Accueil</a></li>
-                    <li><a href="connexion_pro.php">Publier</a></li>
-                    <?php
-                    if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
-                        ?>
-                        <li>
-                            <a href="consulter_compte_membre.php">Mon Compte</a>
-                        </li>
-                        <?php
-                    } else {
-                        ?>
-                        <li>
-                            <a href="connexion_membre.php">Se connecter</a>
-                        </li>
-                        <?php
-                    }
-                    ?>
-                </ul>
 
-            </div>
-            <div class="link-group">
-                <ul>
-                    <li><a href="#">Nous Connaitre</a></li>
-                    <li><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
-                    <li><a href="contacter_plateforme.php">Nous contacter</a></li>
-                </ul>
-            </div>
-            <div class="link-group">
-                <ul>
-                    <!--<li><a href="#">Presse</a></li>
-                    <li><a href="#">Newsletter</a></li>
-                    <li><a href="#">Notre équipe</a></li>-->
-                </ul>
-            </div>
+    <!-- Modal Popup QR Code -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=otpauth://totp/Monsite:example@example.com?secret=JBSWY3DPEHPK3PXP&issuer=MonSite&algorithm=SHA1&digits=6" alt="QR Code OTP">
+        <div class="container_explication_qrcode">
+            <p>1. Scannez ce QR Code avec votre application</p>
+            <p>2. Copiez le code de votre application</p>
+            <p>3. Collez votre code unique sur le <span class="texte_site_qrcode">site internet</span></p>
         </div>
-       
+        <!-- Bouton ajouté -->
+        <button id="submitFormBtn" class="se_connecter_modal">Se connecter quand même</button>
+    </div>
+</div>
+<div id="modal-otp" class="otp-confirm-content">
+    <form id="envoiCode" action="#" method="POST">
+        <p class="texte-boite-perso">Code à 6 chiffres :</p>
+        <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
+        <input type="submit" value="Envoyer le code">
+        <p id="errorMsg" style="color: red; display: none;">Le code doit contenir exactement 6 chiffres.</p>
+        <button>Se connecter quand même</button>
+    </form>
+</div>
 
-        <div class="footer-bottom">
-            <div class="social-icons">
-                <a href="#"><img src="images/Vector.png" alt="Facebook"></a>
-                <a href="#"><img src="images/Vector2.png" alt="Instagram"></a>
-                <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
-                <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
-            </div>
-        </div>
-    </footer>
+
     <script>
-        /* CE SCRIPT SERT A LA GÉNÉRATION DU QR CODE
-        ET À L'ACTIVATION DE L'AUTHENTIFICATION À DEUX FACTEURS */
 
-        let formActive2FA = document.getElementById('form2FA');
-        let dialogue2FA = document.getElementsByClassName('custom-confirm-content')[0];
+    document.addEventListener('DOMContentLoaded', function(){
+        // Récupère les éléments
+        var oldModal = document.getElementById("myModal");
+        var modal = document.getElementById("modal-otp");
 
-        dialogue2FA.style.display = "none";
+        var connectBtn = document.getElementById("connectButton");
+        var submitBtn = document.getElementById("submitFormBtn");
+        var span = document.getElementsByClassName("close")[0];
+        var form = document.getElementById("connexionForm");
 
-        console.log(dialogue2FA);
-        console.log(formActive2FA);
+        var champOTP = document.getElementById('otpCode');
+        var errorMsg = document.getElementById('errorMsg');
+        var formOTP = document.getElementById('envoiCode');
+        var btnEnvoiCode = formOTP.querySelector('submit');
 
-        formActive2FA.addEventListener('submit', function(e){
+        var btnEnvoiQuentin = formOTP.querySelector('button');
+
+
+        form.addEventListener('submit', function(e){
             e.preventDefault();
-            dialogue2FA.style.display = "block";
+
+            let email = document.getElementById('email').value.trim();
+            let password = document.getElementById('pwd').value.trim();
+
+            console.log(email.value.trim());
+            console.log(password.value.trim());
+
+            fetch("connexion/script_connexion_membre.php",{
+                method: "POST",
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ mail: email, pwd: password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success){
+                    console.log(data.message);
+                } else {
+                    console.log(data.message);
+                }
+            })
         });
 
-        let confirmBtn = dialogue2FA.querySelector('#confirm');
-        let cancelBtn = dialogue2FA.querySelector('#cancel');
 
-        confirmBtn.addEventListener('click', function(){
-            form2FA.action = "generation_codeOTP.php";
-            form2FA.submit();
+        btnEnvoiQuentin.addEventListener('click',function(e){
+            e.preventDefault();
+            form.submit();
         });
 
-        cancelBtn.addEventListener('click', function(){
-            dialogue2FA.style.display = "none";
+        console.log(btnEnvoiCode);
+
+        oldModal.style.display = "none";
+        modal.style.display = "none";
+
+        // Affiche la modale quand on clique sur "Se connecter"
+    /*     btn.onclick = function() {
+            modal.style.display = "block";
+        } */
+
+        champOTP.addEventListener("input", function () {
+            let errorMsg = document.getElementById("errorMsg");
+
+            // Supprime tout sauf les chiffres et limite à 6 caractères
+            this.value = this.value.replace(/\D/g, "").slice(0, 6);
+
+            // Vérifie si la valeur est bien composée de 6 chiffres
+            if (this.value.length === 6) {
+                errorMsg.style.display = "none"; // Cache le message d'erreur
+            } else {
+                errorMsg.style.display = "block"; // Affiche le message d'erreur
+            }
         });
 
-    </script>
+
+        formOTP.addEventListener('submit',(e) => {
+            e.preventDefault();
+
+            if(champOTP.value.length < 6){
+                /* Lancer une animation */
+            } else {
+                // Le code a la bonne longueur, on peut le vérifier
+                fetch("verification_codeOTP.php",{
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: new URLSearchParams({codeOTP: champOTP.value})
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.success){
+                        console.log("Code valide !");
+                        console.log(data.message);
+                    } else {
+                        console.log("Code invalide !");
+                    }
+                })
+                .catch(error => {
+                    console.log("Erreur : ",error);
+                });
+            };
+        });
+
+
+
+        // Ferme la modale en cliquant sur la croix
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+/*         // Ferme la modale si on clique à l'extérieur
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        } */
+
+        // Clique sur "Se connecter quand même" => soumet le formulaire
+        submitBtn.onclick = function() {
+            form.submit();
+        }
+    })
+</script>
+
 </body>
+
 </html>
