@@ -93,7 +93,7 @@ if(!empty($_POST)){
     }
 }
 
-echo password_hash("test");
+echo password_hash("test",PASSWORD_DEFAULT);
 
 ?>
 <!DOCTYPE html>
