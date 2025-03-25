@@ -290,7 +290,7 @@ if (isset($_POST['modif_infos'])) {
                 <li><a href="consulter_mes_reponses_pro.php">Mes réponses</a></li>
             </ul>
         </section>
-        <div class="custom-confirm-content">
+        <div class="popup-2fa-validation">
             <p class="texte-boite-perso">Voulez-vous vraiment activer l'authentification à 2 facteurs ?</p>
             <p>Cette action est irréversible !</p> <!-- A mettre en rouge, avec l'icone adéquate -->
             <span>
@@ -555,7 +555,7 @@ if (isset($_POST['modif_infos'])) {
         ET À L'ACTIVATION DE L'AUTHENTIFICATION À DEUX FACTEURS */
         document.addEventListener('DOMContentLoaded', function(){
             let formActive2FA = document.getElementById('form2FA');
-            let dialogue2FA = document.getElementsByClassName('custom-confirm-content')[0];
+            let dialogue2FA = document.getElementsByClassName('popup-2fa-validation')[0];
 
             dialogue2FA.style.display = "none";
 
