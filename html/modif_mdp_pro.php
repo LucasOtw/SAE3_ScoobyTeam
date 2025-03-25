@@ -386,27 +386,25 @@ if (isset($_POST['modif_infos'])) {
         </form>
 
         <?php
-            // Vérification de l'état de la modification du mot de passe
-            $show_popup = "false"; // Par défaut, on n'affiche pas la pop-up
 
-            if ($modif_mdp !== null) {
-                if ($modif_mdp == true) {
-                    $img_success = "images/verifier.png";
-                    $msg_modif = "Mot de passe modifié avec succès&nbsp!";
-                } else {
-                    $img_success = "images/erreur.png";
-                    $msg_modif = "Erreur lors du changement du mot de passe&nbsp!";
-                }
-
-                $show_popup = "true"; // On marque que la pop-up doit être affichée si l'utilisateur clique
+        if ($modif_mdp !== null) {
+            if ($modif_mdp == true) {
+                $img_success = "images/verifier.png";
+                $msg_modif = "Mot de passe modifié avec succès&nbsp!";
+            } else {
+                $img_success = "images/erreur.png";
+                $msg_modif = "Erreur lors du changement du mot de passe&nbsp!";
             }
             ?>
-
-            <!-- Message de modification du mot de passe (caché par défaut) -->
-            <div class="modif-mdp-success-pro" id="modif_mdp_pro" style="display: none;">
-                <img src="<?php echo isset($img_success) ? $img_success : ''; ?>" alt="Succès">
-                <h2><?php echo isset($msg_modif) ? $msg_modif : ''; ?></h2>
+            <div class="modif-mdp-success-pro" id="modif_mdp_pro">
+                <img src="<?php echo $img_success ?>" alt="Succès">
+                <h2><?php echo $msg_modif; ?></h2>
             </div>
+            <?php
+        }
+        ?>
+
+
     </main>
 
 
@@ -580,17 +578,14 @@ if (isset($_POST['modif_infos'])) {
     </script>
     <script>
         $(document).ready(function() {
-        let showPopup = <?php echo $show_popup; ?>; // Récupérer la variable PHP
-
-        // Empêcher l'affichage immédiat au chargement
-        if (showPopup === true) {
-            $("#modif_mdp_pro").hide(); // S'assurer que c'est bien caché au départ
-        }
-
-        // Afficher la pop-up au clic sur le bouton
+        // Affichage du message lorsque le bouton est cliqué
         $(".submit-btn2").click(function(e) {
-            e.preventDefault(); // Empêcher la soumission du formulaire
-            $("#modif_mdp_pro").fadeIn(); // Afficher la pop-up
+            e.preventDefault();  // Empêche la soumission du formulaire si nécessaire
+
+            // Vérifiez si le div est déjà visible, sinon l'afficher
+            if ($("#modif_mdp_pro").is(":hidden")) {
+                $("#modif_mdp_pro").fadeIn();
+            }
         });
     });
 </script>
