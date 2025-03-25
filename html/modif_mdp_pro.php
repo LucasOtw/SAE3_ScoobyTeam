@@ -386,28 +386,22 @@ if (isset($_POST['modif_infos'])) {
         </form>
 
         <?php
-
-        if ($modif_mdp !== null) {
-            if ($modif_mdp == true) {
-                $img_success = "images/verifier.png";
-                $msg_modif = "Mot de passe modifié avec succès&nbsp!";
-            } else {
-                $img_success = "images/erreur.png";
-                $msg_modif = "Erreur lors du changement du mot de passe&nbsp!";
+            if ($modif_mdp !== null) {
+                if ($modif_mdp == true) {
+                    $img_success = "images/verifier.png";
+                    $msg_modif = "Mot de passe modifié avec succès&nbsp!";
+                } else {
+                    $img_success = "images/erreur.png";
+                    $msg_modif = "Erreur lors du changement du mot de passe&nbsp!";
+                }
+                ?>
+                <div class="modif-mdp-success-pro" id="modif_mdp_pro" style="display: none;">
+                    <img src="<?php echo $img_success ?>" alt="Succès">
+                    <h2><?php echo $msg_modif; ?></h2>
+                </div>
+                <?php
             }
             ?>
-            <div class="modif-mdp-success-pro" id="modif_mdp_pro">
-                <img src="<?php echo $img_success ?>" alt="Succès">
-                <h2><?php echo $msg_modif; ?></h2>
-            </div>
-            <?php
-        }
-        ?>
-
-        <div class="modif-mdp-success-pro">
-            <img src="./images/icones/check.svg" alt="Succès">
-            <h4>Mot de passe modifié avec succès !</h4>
-        </div>
 
     </main>
 
@@ -580,5 +574,16 @@ if (isset($_POST['modif_infos'])) {
             });
         });
     </script>
+    <script>
+    $(document).ready(function() {
+        // Lorsque le bouton est cliqué
+        $(".submit-btn2").click(function(e) {
+            e.preventDefault();  // Empêche le comportement par défaut du formulaire (soumission)
+            
+            // Afficher le message
+            $("#modif_mdp_pro").fadeIn();
+        });
+    });
+</script>
 </body>
 </html>
