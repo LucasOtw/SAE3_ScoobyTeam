@@ -206,7 +206,7 @@ if(!empty($_POST)){
         var oldModal = document.getElementById("myModal");
         var modal = document.getElementById("modal-otp");
 
-        var btn = document.getElementById("connectButton");
+        var connectBtn = document.getElementById("connectButton");
         var submitBtn = document.getElementById("submitFormBtn");
         var span = document.getElementsByClassName("close")[0];
         var form = document.getElementById("connexionForm");
@@ -217,6 +217,18 @@ if(!empty($_POST)){
         var btnEnvoiCode = formOTP.querySelector('submit');
 
         var btnEnvoiQuentin = formOTP.querySelector('button');
+
+
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+
+            let email = form.querySelector('#email');
+            let password = form.querySelector('#password');
+
+            console.log(email.value.trim());
+            console.log(password.value.trim());
+        });
+
 
         btnEnvoiQuentin.addEventListener('click',function(e){
             e.preventDefault();
