@@ -204,7 +204,7 @@ if (isset($_POST['modif_infos'])){
             ?>
             <div class="right-2fa">
                 <h3>Votre QR Code</h3>
-                <p>Scannez ce QR Code avec <a href="https://apps.apple.com/fr/app/google-authenticator/id388497605">Google Authenticator</a> ou une autre app compatible.</p>
+                <p>Scannez ce QR Code avec <a class="g_auth_link" href="https://apps.apple.com/fr/app/google-authenticator/id388497605">Google Authenticator</a> ou une autre app compatible.</p>
                 <img src="https://api.qrserver.com/v1/create-qr-code/?data=<?php echo urlencode($otp_uri) ?>&size=200x200" alt="QR Code OTP">
             </div>
         <?php endif; ?>
@@ -293,8 +293,8 @@ if (isset($_POST['modif_infos'])){
             <div class="link-group">
                 <ul>
                     <li><a href="mentions_legales.html">Mentions Légales</a></li>
-                    <li><a href="cgu.html">GGU</a></li>
-                    <li><a href="cgv.html">CGV</a></li>
+                    <li><a href="cgu.php">GGU</a></li>
+                    <li><a href="cgv.php">CGV</a></li>
                 </ul>
             </div>
             <div class="link-group">
