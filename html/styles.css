@@ -4456,6 +4456,10 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
     margin-top: 20px;
 }
 
+#api p {
+    margin-top : 2em;
+}
+
 #btn-api-pro{
     cursor : pointer;
 }
