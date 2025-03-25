@@ -147,7 +147,7 @@ $pdo = null;
 </main>
 <div class="footer footer_pro">
             <div class="logo">
-                <img src="images/logoBlanc.png" alt="Logo PAVCT">
+                <img src="images/logo_blanc_pro.png" alt="Logo PAVCT">
             </div>
             <div class="link-group">
                 <ul>
@@ -158,25 +158,24 @@ $pdo = null;
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="voir_offres.php">Accueil</a></li>
+                    <li><a href="mes_offres.php">Accueil</a></li>
                     <li><a href="connexion_pro.php">Publier</a></li>
                     <?php
                     if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
                         ?>
                         <li>
-                            <a href="consulter_compte_membre.php">Mon Compte</a>
+                            <a href="consulter_compte_pro.php">Mon Compte</a>
                         </li>
                         <?php
                     } else {
                         ?>
                         <li>
-                            <a href="connexion_membre.php">Se connecter</a>
+                            <a href="connexion_pro.php">Se connecter</a>
                         </li>
                         <?php
                     }
                     ?>
                 </ul>
-
             </div>
             <div class="link-group">
                 <ul>
@@ -193,6 +192,7 @@ $pdo = null;
                 </ul>
             </div>
         </div>
+
 
     <div class="footer-bottom">
         <div class="social-icons">

@@ -386,7 +386,7 @@ if (isset($_POST['dwl-data'])) {
             </div>
 
             <div class="profile-img-container">
-                 <div class="profile-img+icone">
+                 <div class="profile-img-icone">
                      <img class="profile-img" src="<?php echo $compte_pp; ?>" alt="Photo de profil">
                      <form action="#" method="POST" enctype="multipart/form-data">
                          <label for="upload-photo" class="upload-photo-button">
