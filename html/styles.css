@@ -13560,6 +13560,10 @@ ul.mentions_legales-sous-list {
     font-weight: 600;
 }
 
+#id{
+    margin-bottom: 7em;
+}
+
 /* === QR Code === */
 .right-2fa img {
     margin-top: 10px;
