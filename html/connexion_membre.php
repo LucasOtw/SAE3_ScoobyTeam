@@ -226,6 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if(!data.otp){
                     window.location.href = "voir_offres.php";
+                } else {
                     modalOTP.style.display = "block";
                 }
             } else {
