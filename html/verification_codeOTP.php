@@ -10,7 +10,16 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
     $codeOTP = $_POST['codeOTP'] ?? "";
     $codeCompte = $_POST['code_compte'] ?? "";
 
-    echo json_encode(["success" => true, "message" => $codeOTP." /".$codeCompte]);
+    // On récupère tout d'abord le secret dans la BDD
+
+    $recupCodeSecret = $dbh->prepare('SELECT code_secret FROM tripenarvor._compte_otp
+    WHERE code_compte = :code_compte');
+    $recupCodeSecret->bindValue(":code_compte",$codeCompte);
+    $recupCodeSecret->execute();
+
+    $codeSecret = $recupCodeSecret->fetchColumn(PDO::FETCH_ASSOC);
+
+    echo json_encode(["success" => true, "message" => $codeSecret]);
 }
 
 ?>
