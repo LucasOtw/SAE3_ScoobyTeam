@@ -45,7 +45,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if(!isset($_SESSION['membre'])){
         $_SESSION['membre'] = $user;
     }
-    echo json_encode(["success" => true, "message" => "Identification autorisée"]);
+
+    include_once("../recupInfosCompte.php");
+
+    $is2FA = false;
+
+    if(isset($isActivated2FA) && $isActivated2FA){
+        $is2FA = true;
+    }
+    echo json_encode([
+    "success" => true,
+    "message" => "Identification autorisée",
+    "otp" => $is2FA
+    ]);
 } else {
     echo json_encode(["success" => false, "message" => "Requête invalide."]);
 }
