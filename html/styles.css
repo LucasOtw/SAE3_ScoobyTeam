@@ -13458,6 +13458,12 @@ ul.mentions_legales-sous-list {
     margin-top: -4vh;
 }
 
+.tooltip-content{
+    height: 13vh;
+    margin-top: -19vh;
+    margin-left: 0.7vh;
+}
+
 .info-icon2{
     height: 29px;
     width: 29px;
