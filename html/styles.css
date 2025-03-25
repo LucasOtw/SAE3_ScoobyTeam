@@ -4518,7 +4518,7 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
     /* Aligne les boutons au centre */
     gap: 20px;
     /* Espacement entre les boutons */
-    margin-bottom: 11em;
+    
 }
 
 /* Popup de succès de modification */
@@ -13565,6 +13565,7 @@ ul.mentions_legales-sous-list {
     margin-top: 10px;
     border: 1px solid #ccc;
     border-radius: 8px;
+    margin-bottom: 5em;
 }
 
 /* === Responsive mobile === */
