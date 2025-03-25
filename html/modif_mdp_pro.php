@@ -89,36 +89,39 @@ if (isset($_POST['modif_infos'])) {
         }
     }
 
-    // Mettre à jour seulement les champs modifiés
-    if (!empty($champsModifies)) {
-        if (password_verify($champsModifies['mdp_actuel'], $compte['mdp'])) {
-            if (trim($champsModifies['mdp_nv1']) === trim($champsModifies['mdp_nv2'])) {
-                $mdp_modif = password_hash($champsModifies['mdp_nv1'], PASSWORD_DEFAULT);
-                $query = $dbh->prepare("UPDATE tripenarvor._compte SET mdp = :valeur WHERE code_compte = :code_compte");
-                $query->bindValue(":valeur", $mdp_modif);
-                $query->bindValue(":code_compte", $compte['code_compte']);
-                $query->execute();
-
-                $rowsAffected = $query->rowCount();
-                if ($rowsAffected > 0) {
-                    $modif_mdp = true;
-                    $_SESSION['pro']['mdp'] = $mdp_modif;
-                } else {
-                    $modif_mdp = false;
-                }
-
+   // Mettre à jour seulement les champs modifiés
+   if (!empty($champsModifies))
+   {
+      if (password_verify($champsModifies['mdp_actuel'],$compte['mdp']))
+      {
+         if (trim($champsModifies['mdp_nv1']) === trim($champsModifies['mdp_nv2']))
+         {
+            $mdp_modif = password_hash($champsModifies['mdp_nv1'], PASSWORD_DEFAULT);
+            $query = $dbh->prepare("UPDATE tripenarvor._compte SET mdp = :valeur WHERE code_compte = :code_compte");
+            $query->bindValue(":valeur",$mdp_modif);
+            $query->bindValue(":code_compte",$compte['code_compte']);
+            $query->execute();
+                
+            $rowsAffected = $query->rowCount();
+            if ($rowsAffected > 0) {
+               $modif_mdp = true;
+               $_SESSION['pro']['mdp'] = $mdp_modif;
             } else {
-                $modif_mdp = false;
+               $modif_mdp = false;
             }
-        } else {
-            echo "Test";
+
+         } else {
             $modif_mdp = false;
-        }
-        // echo "Les informations ont été mises à jour.";
-        include("recupInfosCompte.php");
-    } else {
-        echo "Aucune modification détectée.";
-    }
+         }
+      } else {
+         echo "Test";
+         $modif_mdp = false;
+      }
+       // echo "Les informations ont été mises à jour.";
+       include("recupInfosCompte.php");
+   } else {
+       echo "Aucune modification détectée.";
+   }
 }
 
 ?>
