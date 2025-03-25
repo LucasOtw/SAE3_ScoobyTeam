@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
 
     $codeSecret = $recupCodeSecret->fetchColumn();
 
-    echo json_encode(["success" => true, "message" => "Bonjour"]);
+    echo json_encode(["success" => true, "message" => $codeSecret]);
 }
 
 ?>
