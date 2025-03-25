@@ -272,21 +272,20 @@ $isAnswer = $isAnswer->fetchColumn();
     <footer class="footer footer_pro">
         
         <div class="footer-links">
-            <div class="logo\avis">
-                <img src="images/logoBlanc.png" alt="Logo PACT">
+        <div class="logo">
+                <img src="images/logo_blanc_pro.png" alt="Logo PAVCT">
             </div>
             <div class="link-group">
                 <ul>
                     <li><a href="mentions_legales.php">Mentions Légales</a></li>
-                    <li><a href="#">RGPD</a></li>
-                    <li><a href="#">Nous connaître</a></li>
-                    <li><a href="#">Nos partenaires</a></li>
+                    <li><a href="cgu.php">GGU</a></li>
+                    <li><a href="cgv.php">CGV</a></li>
                 </ul>
             </div>
             <div class="link-group">
                 <ul>
                     <li><a href="mes_offres.php">Accueil</a></li>
-                    <li><a href="creation_offre.php">Publier</a></li>
+                    <li><a href="connexion_pro.php">Publier</a></li>
                     <?php
                     if (isset($_SESSION["pro"]) && !empty($_SESSION["pro"])) {
                         ?>
@@ -306,8 +305,8 @@ $isAnswer = $isAnswer->fetchColumn();
             </div>
             <div class="link-group">
                 <ul>
-                    <li><a href="#">CGU</a></li>
-                    <li><a href="contacter_plateforme.php">Signaler un problème</a></li>
+                    <li><a href="#">Nous Connaitre</a></li>
+                    <li><a href="obtenir_aide.php">Obtenir de l'aide</a></li>
                     <li><a href="contacter_plateforme.php">Nous contacter</a></li>
                 </ul>
             </div>
