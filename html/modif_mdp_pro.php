@@ -337,7 +337,7 @@ if (isset($_POST['modif_infos'])) {
                 <!-- Colonne gauche -->
                 <div class="left-2fa">
                     <div class="connexion_membre_2fa">
-                        <button type="submit" id="enable2FABtn" class="btn-2fa"
+                        <button type="submit" id="enable2FABtn" class="btn-2fa_pro"
                             <?php echo (isset($isActivated2FA) && $isActivated2FA) ? "disabled" : "" ?>>
                             Authentification à deux facteurs
                         </button>

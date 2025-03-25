@@ -1131,7 +1131,7 @@ input[type="password"]::placeholder {
     display: flex;
     justify-content: right;
     gap: 20px;
-    margin-bottom: 11em;
+    margin-bottom: 1em;
 }
 
 .main_modif_mdp_pro .compte_membre_save_delete a {
@@ -13501,6 +13501,38 @@ ul.mentions_legales-sous-list {
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
+
+.btn-2fa_pro {
+    background-color: white;
+    border: 1px solid var(--orange);
+    width: 100%;
+    max-width: 301px;
+    height: 43px;
+    color: #000;
+    border-radius: 11px;
+    text-decoration: none;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-2fa_pro:hover {
+    transform: translateY(-2px);
+    cursor: pointer;
+    background-color: var(--orange);
+    color: black;
+}
+
+.btn-2fa_pro:disabled {
+    background-color: #C4C4C4;
+    color: white;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.btn-2fa_pro:disabled:hover {
+    transform: none;
+}
+
 
 .main_modif_mdp_membre>.custom-confirm-content {
     position: fixed;
