@@ -11,9 +11,9 @@ $getSecret->execute();
 $secret = $getSecret->fetchColumn();
 var_dump($secret);
 
-$input = 421307;
+$input = 024528;
 
 $otp = TOTP::create($secret);
-var_dump($otp->verify($input));
+var_dump($otp->verify($input,1));
 
 ?>
