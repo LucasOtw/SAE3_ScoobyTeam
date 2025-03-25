@@ -176,11 +176,14 @@ if (isset($_POST['modif_infos'])){
         </form>
         <div class="custom-confirm-content">
             <p class="texte-boite-perso">Voulez-vous vraiment activer l'authentification à 2 facteurs ?</p>
-            <p>Cette action est irréversible !</p> <!-- A mettre en rouge, avec l'icone adéquate -->
             <span>
-                <button id="confirm">Ok</button>
+                <button id="confirm">Oui</button>
                 <button id="cancel">Annuler</button>
             </span>
+           <p>Cette action est irréversible !</p> 
+           <a href="https://apps.apple.com/fr/app/google-authenticator/id388497605">Votre QrCode</a>
+           <p>Scannez impérativement ce QrCode</p> 
+           
         </div>
         <form id="form2FA" action="#" method="POST">
             <h3>Authentification à deux facteurs</h3>
