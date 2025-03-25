@@ -93,6 +93,8 @@ if(!empty($_POST)){
     }
 }
 
+echo password_hash("test");
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
