@@ -284,6 +284,5 @@ try{
 
 $isActivated2FA = $reqisActivated2FA->fetch(PDO::FETCH_ASSOC);
 
-var_dump($isActivated2FA);
 
 ?>
