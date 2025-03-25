@@ -13447,7 +13447,6 @@ ul.mentions_legales-sous-list {
 }
 
 .left-2fa, .right-2fa {
-    flex: 1;
     min-width: 300px;
 }
 
