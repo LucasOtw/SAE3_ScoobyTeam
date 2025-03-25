@@ -13516,11 +13516,15 @@ ul.mentions_legales-sous-list {
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
+.statut-non_pro{
+    color : var(--orange)
+}
+
 .btn-2fa_pro:hover {
     transform: translateY(-2px);
     cursor: pointer;
     background-color: var(--orange);
-    color: black;
+    color: white;
 }
 
 .btn-2fa_pro:disabled {
