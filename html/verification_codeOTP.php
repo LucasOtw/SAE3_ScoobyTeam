@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
     // On génère un code OTP à partir du secret
     $otp = TOTP::createFromSecret($codeSecret);
 
-    echo json_encode(["success" => true, "message" => $otp->verify($codeOTP)]);
+    echo json_encode(["success" => true, "message" => "Bonjour"]);
 }
 
 ?>
