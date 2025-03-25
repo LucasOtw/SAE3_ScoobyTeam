@@ -226,6 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if(!data.otp){
                     window.location.href = "voir_offres.php";
+                    modalOTP.style.display = "block";
                 }
             } else {
                 console.log("Authentification refusée !");
