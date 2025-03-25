@@ -971,6 +971,7 @@ function tempsEcouleDepuisPublication($offre)
             document.addEventListener("DOMContentLoaded", function () {
                 // Récupération des éléments
                 const offerItems = document.querySelectorAll('.offer');
+                const leafletItems = document.querySelectorAll('.leaflet-popup');
 
                 const searchInput = document.querySelector('.search-input');
 
@@ -1004,6 +1005,15 @@ function tempsEcouleDepuisPublication($offre)
 
                     // Parcourir chaque offre et vérifier si elle correspond à la recherche
                     offerItems.forEach(offer => {
+                        const text = offer.textContent.toLowerCase();
+                        if (text.includes(query)) {
+                            offer.classList.remove('hidden');
+                        } else {
+                            offer.classList.add('hidden');
+                        }
+                    });
+
+                    leafletItems.forEach(leaflet => {
                         const text = offer.textContent.toLowerCase();
                         if (text.includes(query)) {
                             offer.classList.remove('hidden');
