@@ -105,7 +105,7 @@
         </section>
     </main>
 </body>
-   <footer>
+   <footer class="footer_membre">
     <div class="newsletter">
         <div class="newsletter-content">
             <h2>Inscrivez-vous à notre Newsletter</h2>
@@ -128,9 +128,6 @@
         </div>
     </div>
 
-
-
-        
         <div class="footer-links">
             <div class="logo">
                 <img src="images/logoBlanc.png" alt="Logo PAVCT">
