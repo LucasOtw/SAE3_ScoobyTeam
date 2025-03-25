@@ -4088,7 +4088,7 @@ div.creation-success .close-btn:hover {
     left: 0;
     height: 3px;
     width: 100%;
-    background-color: #7CB342;
+    background-color: var(--orange);
     animation: progressBar 4s linear forwards;
     transform-origin: left;
     }
