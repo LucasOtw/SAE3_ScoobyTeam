@@ -33,19 +33,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_api_key'])) 
     // Récupérer la nouvelle clé générée
 }
 
-if (isset($_POST['modif_infos'])){
-   
-   // Champs modifiés
-   $champsModifies = [];
-   
-   // Parcourir les données soumises
-   foreach ($_POST as $champ => $valeur) {
-      if ($champ != 'modif_infos')
-      {
-         $champsModifies[$champ] = trim($valeur);
-      }
-   }
-   
+if (isset($_POST['modif_infos'])) {
+
+    // Champs modifiés
+    $champsModifies = [];
+
+    // Parcourir les données soumises
+    foreach ($_POST as $champ => $valeur) {
+        if ($champ != 'modif_infos') {
+            $champsModifies[$champ] = trim($valeur);
+        }
+    }
+
    // Mettre à jour seulement les champs modifiés
    if (!empty($champsModifies))
    {
