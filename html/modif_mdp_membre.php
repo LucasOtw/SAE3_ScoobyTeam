@@ -386,5 +386,18 @@ if (isset($_POST['modif_infos'])) {
         });
 
     </script>
+    <script>
+        $(document).ready(function() {
+        // Affichage du message lorsque le bouton est cliqué
+        $(".submit-btn2").click(function(e) {
+            e.preventDefault();  // Empêche la soumission du formulaire si nécessaire
+
+            // Vérifiez si le div est déjà visible, sinon l'afficher
+            if ($("#modif_mdp_membre").is(":hidden")) {
+                $("#modif_mdp_membre").fadeIn();
+            }
+        });
+    });
+</script>
 </body>
 </html>
