@@ -11,10 +11,10 @@ $getSecret->execute();
 $secret = $getSecret->fetchColumn();
 var_dump($secret);
 
-$input = "617176";
+$input = "204877";
 
 $otp = TOTP::create();
 $otp->setSecret($secret);
-var_dump($otp->verify($input,1));
+var_dump($otp->verify($input));
 
 ?>
