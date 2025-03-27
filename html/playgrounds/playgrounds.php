@@ -13,7 +13,7 @@ var_dump($secret);
 
 $input = "638481";
 
-$otp = TOTP::create($secret);
-var_dump($otp->verify($input,1));
+$otp = TOTP::createFromSecret($secret);
+var_dump($otp->verify($input));
 
 ?>
