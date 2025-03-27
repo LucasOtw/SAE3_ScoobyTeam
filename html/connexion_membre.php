@@ -200,6 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var modalOTP = document.getElementById('modal-otp');
 
     let codeCompte;
+    let nbEssais = 3;
 
     modalOTP.style.display = "none";
 
