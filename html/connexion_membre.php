@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 if(data.success){
                     console.log(data.message);
-                    window.href.location = "voir_offres.php";
+                    window.location.href = "voir_offres.php";
                 } else {
                     console.log(data.message);
                 }
