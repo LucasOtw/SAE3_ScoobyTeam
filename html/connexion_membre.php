@@ -271,6 +271,8 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 if(data.success){
                     console.log(data.message);
+                } else {
+                    console.log(data.message);
                 }
             })
         }
