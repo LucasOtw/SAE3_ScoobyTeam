@@ -216,7 +216,7 @@ session_start();
                             errorMsg.style.color = "green";
                             errorMsg.style.display = "block";
                             setTimeout(() => {
-                                window.location.href = "voir_offres.php";
+                                window.location.href = "mes_offres.php";
                             }, 1500);
                         } else {
                             errorMsg.innerHTML = "";
