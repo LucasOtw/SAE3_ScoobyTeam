@@ -397,7 +397,7 @@ if (isset($_POST['dwl-data'])) {
             </div>
         </header>
     </div>
-    <main class="main_consulter_compte_membre">
+    <main class="main_consulter_compte_membre" style="margin-top: 2em;">
 <!-- POUR PC/TABLETTE -->
         <div class="profile">
             <div class="banner">
