@@ -165,8 +165,6 @@ session_start();
                     if (data.success) {
                         error.innerHTML = "";
 
-                        console.log(data.pro);
-
                         if(!data.otp){
                             window.location.href = "mes_offres.php";
                         } else {

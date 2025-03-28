@@ -255,9 +255,6 @@ if (!empty($_POST)) {
 
                             error.innerHTML = "";
 
-                            console.log("Authentification validée !");
-                            console.log(data.message);
-
                             if (!data.otp) {
                                 window.location.href = "voir_offres.php";
                             } else {
@@ -265,8 +262,6 @@ if (!empty($_POST)) {
                                 codeCompte = data.code_compte;
                             }
                         } else {
-                            console.log("Authentification refusée !");
-                            console.log(data.message);
                             error.innerHTML = data.message;
                         }
                     })
@@ -301,7 +296,6 @@ if (!empty($_POST)) {
                         .then(response => response.json())
                         .then(data => {
                             if (data.success) {
-                                console.log(data.message);
                                 errorMsg.innerHTML = "";
                                 errorMsg.innerHTML = data.message;
                                 errorMsg.style.color = "green";
@@ -314,7 +308,6 @@ if (!empty($_POST)) {
                                 errorMsg.innerHTML = data.message;
                                 errorMsg.style.color = "red";
                                 errorMsg.style.display = "block";
-                                console.log(data.message);
                             }
                         })
                 }
