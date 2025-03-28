@@ -9800,9 +9800,7 @@ body {
     font-family: 'K2D', sans-serif;
     overflow-x: hidden;
     transition: transform 0.3s ease;
-    @media (max-width: 430px) {
-        align-items: center;
-    }
+    
 }
 
 .content {
