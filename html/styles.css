@@ -4574,8 +4574,7 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
     margin-top: 20px;
 }
 
-#api p {
-}
+
 
 #btn-api-pro{
     cursor : pointer;
@@ -13828,4 +13827,7 @@ ul.mentions_legales-sous-list {
     transform: translateY(-2px);
 }
 
-  
+.btn-group-tel {
+    display: flex;
+    gap: 10px; /* Espacement entre les boutons */
+}
