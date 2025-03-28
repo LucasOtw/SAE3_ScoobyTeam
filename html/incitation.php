@@ -24,7 +24,7 @@ session_start();
                 fill-rule="evenodd"
                 clip-rule="evenodd"
                 d="M0 126.87L0 0H428V134.241C374.61 176.076 300.465 202 218.5 202C131.823 202 53.891 173.01 0 126.87Z"
-                fill="var(--vert-clair)"
+                fill="#E8E8E8"
             ></path>
         </svg>
             <div  class="logo-tel">
