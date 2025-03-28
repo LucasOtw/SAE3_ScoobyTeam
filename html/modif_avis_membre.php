@@ -56,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $avis = unserialize($_POST['unAvis']);
         $_SESSION['modif_avis'] = $avis;
+        echo "TA MERE";
     }
     if (isset($_POST['modifier'])) {
         echo "test";
