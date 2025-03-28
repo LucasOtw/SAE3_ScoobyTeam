@@ -375,7 +375,7 @@ if (isset($_POST['modif_infos'])) {
 
         formActive2FA.addEventListener('submit', function(e){
             e.preventDefault();
-            dialogue2FA.style.display = "block";
+            dialogue2FA.style.display = "flex";
             overlay.style.display = "block"; // Afficher l'overlay avec effet de flou
         });
 

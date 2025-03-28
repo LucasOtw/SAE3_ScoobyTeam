@@ -13795,6 +13795,8 @@ ul.mentions_legales-sous-list {
 
 .main_modif_mdp_membre>.custom-confirm-content {
     position: fixed;
+    flex-direction: column;
+    align-items: center;
 }
 
 .btn-2fa:hover {
