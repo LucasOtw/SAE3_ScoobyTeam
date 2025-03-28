@@ -11315,7 +11315,7 @@ main.main_repondre_avis .message-erreur {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    border-color: var(--orange);
+    border-color: var(--vert-clair);
     margin-top: 3vh;
 
 }
