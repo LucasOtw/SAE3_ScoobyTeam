@@ -17,17 +17,17 @@ function writeLog($type, $message) {
     $logFile = $logDir . '/2fa.log';
 
     // Heure au format français
-    $date = date('d/m/Y H:i:s');
+    $date = date('Y-m-d H:i:s');
 
     // Couleurs ANSI pour terminal (optionnel)
     switch ($type) {
-        case 'VALIDATION':
+        case '🟢VALIDATION':
             $colorStart = "\033[32m"; // Vert
             break;
-        case 'WARNING':
+        case '🟠WARNING':
             $colorStart = "\033[33m"; // Jaune
             break;
-        case 'ERROR':
+        case '🔴ERROR':
             $colorStart = "\033[31m"; // Rouge
             break;
         default:

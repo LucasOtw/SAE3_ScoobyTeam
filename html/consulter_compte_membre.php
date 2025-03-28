@@ -404,7 +404,7 @@ if (isset($_POST['dwl-data'])) {
 
         <style>
     @media (max-width: 429px) {
-        .profile-img-container{
+        .profile{
             display:none;
         }
     }

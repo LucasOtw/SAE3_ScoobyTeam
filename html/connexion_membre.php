@@ -194,6 +194,7 @@ if(!empty($_POST)){
         <input type="submit" value="Envoyer le code">
         <p id="errorMsg" style="color: red; display: none;">Le code doit contenir exactement 6 chiffres.</p>
         <button>Se connecter quand même</button>
+        <p id="countdown"></p>
     </form>
 </div>
 
@@ -231,8 +232,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let emailValue_otp;
 
     let storedBlocked = JSON.parse(localStorage.getItem("essais_user")) || {};
-
     console.log(storedBlocked);
+    let lockTime = JSON.parse(localStorage.getItem("user_lock")) || {};
+
+    let now = Date.now();
+
 
     let codeCompte;
     let nbEssais;
@@ -268,6 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(!data.otp){
                     window.location.href = "voir_offres.php";
                 } else {
+                    checkLockTime(emailValue_otp);
 
                     if(!storedBlocked.hasOwnProperty(emailValue_otp)){
                         storedBlocked[emailValue_otp] = 3;
@@ -275,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     modalOTP.style.display = "block";
                     codeCompte = data.code_compte;
-                }
+                    }
             } else {
                 console.log("Authentification refusée !");
                 console.log(data.message);
@@ -299,31 +304,66 @@ document.addEventListener('DOMContentLoaded', function() {
         if (champOTP.value.length < 6) {
             console.log("Code OTP trop court !");
         } else {
-            fetch("verification_codeOTP.php",{
-                method: "POST",
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams({
-                    codeOTP : champOTP.value,
-                    code_compte : codeCompte
+            console.log(storedBlocked);
+            if(storedBlocked[emailValue_otp] >= 1){
+                fetch("verification_codeOTP.php",{
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({
+                        codeOTP : champOTP.value,
+                        code_compte : codeCompte,
+                        nbEssais : storedBlocked[emailValue_otp]
+                    })
                 })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.success){
-                    console.log(data.message);
-                    window.location.href = "voir_offres.php";
-                } else {
-                    storedBlocked[emailValue_otp]--;
-                    console.log(storedBlocked[emailValue_otp]);
-                    localStorage.setItem("essais_user",JSON.stringify(storedBlocked));
-                    console.log(data.message);
-                }
-            })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.success){
+                        console.log(data.message);
+                        window.location.href = "voir_offres.php";
+                    } else {
+                        if(storedBlocked[emailValue_otp] >= 0){
+                            storedBlocked[emailValue_otp]--;
+                            localStorage.setItem("essais_user",JSON.stringify(storedBlocked));
+                        }
+                        console.log(storedBlocked[emailValue_otp]);
+                        console.log(data.message);
+                    }
+                })
+            } else {
+                // let blockDuration = 5 * 60 * 1000 // 5 minutes
+                let blockDuration = 30 * 1000;
+                lockTime[emailValue_otp] = now + blockDuration;
+                localStorage.setItem("user_lock",JSON.stringify(lockTime));
+            }
         }
     });
     btnEnvoiQuentin.addEventListener('click', function(){
         form.submit();
     });
+
+    function checkLockTime(emailValue) {
+        let now = Date.now();
+        let lockTime = JSON.parse(localStorage.getItem("user_lock")) || {}; // assure que `user_lock` est un objet
+        let remainingTime = Math.ceil((lockTime[emailValue] - now) / 1000);
+
+        console.log(remainingTime);
+
+        if (lockTime[emailValue] && now < lockTime[emailValue]) {
+            champOTP.disabled = true; // Désactive le champ OTP si l'utilisateur est verrouillé
+        } else if (now >= lockTime[emailValue]) {
+            champOTP.disabled = false; // Réactive le champ OTP si le verrouillage est expiré
+            let storedBlock = JSON.parse(localStorage.getItem("essais_user")) || {}; // Assure que `essais_user` est un objet
+            console.log(storedBlock);
+            delete storedBlock[emailValue]; // Supprime l'utilisateur de `essais_user` après déverrouillage
+            localStorage.setItem("essais_user", JSON.stringify(storedBlock)); // Sauvegarde les données mises à jour
+        }
+
+        // Utilisation de setTimeout avec une fonction de rappel pour éviter la récursion infinie
+        setTimeout(function() {
+            checkLockTime(emailValue);
+        }, 1000);
+    }
+
 
 
  /*    if (!form || !connectBtn) {
