@@ -185,6 +185,8 @@ if(!empty($_POST)){
     </form>
 </div>
 
+<button onclick="localStorage.remove('nbEssais_otp');">localStorage remove</button>
+
 
     <script>
 
@@ -279,6 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     } else {
                         nbEssais = data.nbEssais;
                         console.log(nbEssais);
+                        localStorage.setItem("nbEssais_otp",nbEssais);
                         console.log(data.message);
                     }
                 })
