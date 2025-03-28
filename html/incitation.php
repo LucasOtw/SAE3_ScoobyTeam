@@ -24,7 +24,7 @@ session_start();
                 fill-rule="evenodd"
                 clip-rule="evenodd"
                 d="M0 126.87L0 0H428V134.241C374.61 176.076 300.465 202 218.5 202C131.823 202 53.891 173.01 0 126.87Z"
-                fill="#E8E8E8"
+                fill="var(--orange)"
             ></path>
         </svg>
             <div  class="logo-tel">
@@ -46,7 +46,7 @@ session_start();
     
     </main>
 
-    <nav class="nav-bar">
+    <nav class="nav-bar" style=" background-color: var(--orange);">
       <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
       <a href="consulter_mes_avis.php"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
       <a href="incitation.php"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
