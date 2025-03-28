@@ -3694,20 +3694,32 @@ nom.avis {
     z-index: 1000;
 }
 
+/* Style pour l'overlay avec effet de flou */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); /* Pour Safari */
+    z-index: 999;
+    display: none;
+}
+
+/* Assurez-vous que votre popup est au-dessus de l'overlay */
 .custom-confirm-content {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    padding: 20px 30px;
-    border-radius: 19px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    z-index: 999;
-    width: 543px;
-    max-width: 92%;
-    text-align: center;
-    height: 231px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Plus élevé que l'overlay */
+    display: none;
 }
 
 .custom-confirm-content p {
