@@ -162,6 +162,7 @@ if (!empty($_POST['supprAvis'])){
                         </form>
                         <form action="modif_avis_membre.php" method="POST">
                             <input type="hidden" name="unAvis" value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                            <input type="hidden" name="uneOffre" value="<?php echo htmlspecialchars(serialize($avis)); ?>">
                             <input type="image" src="images/icones/modif.png" alt="Modifier l'avis" class="modif-icon" title="Modifier cet avis">
                         </form>
 
