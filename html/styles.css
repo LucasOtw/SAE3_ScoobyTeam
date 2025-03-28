@@ -13750,22 +13750,6 @@ ul.mentions_legales-sous-list {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .otp-confirm-content {
     position: absolute;
     top: 50%;
@@ -13796,7 +13780,8 @@ ul.mentions_legales-sous-list {
     transition: transform 0.2s ease;
     text-decoration: none;
     width: 10em;
-    height: 2em;
+    height: 3em;
+    margin-top:1em;
 }
 
 .otp-confirm-content button:hover {
