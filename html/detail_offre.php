@@ -1472,6 +1472,11 @@ WHERE code_offre = :code_offre
         </div>
     </div>
 </footer>
+<?php
+echo "<pre>";
+var_dump($details_offre);
+echo "</pre>";
+?>
 
 </html>
 <script>
