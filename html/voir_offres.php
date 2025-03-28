@@ -246,7 +246,7 @@ function tempsEcouleDepuisPublication($offre)
                     <option value="croissantP">Croissant</option>
                 </select>
                 <select class="search-select">
-                    <option value="" selected>Note</option>
+                    <option value="" selected>Notes</option>
                     <option value="decroissantN">Décroissant</option>
                     <option value="croissantN">Croissant</option>
                 </select>
