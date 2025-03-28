@@ -13827,12 +13827,38 @@ ul.mentions_legales-sous-list {
     transform: translateY(-2px);
 }
 
-.btn-group-tel {
-    background-color: #eee;
-    padding: 15px;
-    border-radius: 10px;
+.btn-container {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: fit-content;
+    flex-direction: column; /* Pour afficher les liens l'un en dessous de l'autre */
+    gap: 10px; /* Espacement entre les liens */
+    width: 100%;
+}
+
+.btn-link {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 8px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    gap: 8px; /* Espacement entre l'icône et le texte */
+}
+
+.btn-link:hover {
+    background-color: #e0e0e0;
+}
+
+.btn-link img {
+    width: 20px;
+    height: auto;
 }
