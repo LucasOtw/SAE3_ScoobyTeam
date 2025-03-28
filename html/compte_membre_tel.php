@@ -175,16 +175,16 @@ if (isset($_POST['changePhoto'])) {
 
 </script>
         
-        <div class="btn-container">
-            <a href="consulter_compte_membre.php" class="btn-link">
+        <a href="consulter_compte_membre.php">
+            <button class="action-btn">
                 <img src="images/Vector_10.png" alt="Edit Icon"> Éditer les informations
-            </a>
-            <a href="modif_mdp_membre.php" class="btn-link">
+            </button>
+        </a>
+        <a href="modif_mdp_membre.php">
+            <button class="action-btn">
                 <img src="images/Vector_11.png" alt="Password Icon"> Modifier mon mot de passe
-            </a>
-        </div>
-
-
+            </button>
+        </a>
         <a href="contacter_plateforme.php">
             <button class="action-btn">
                 <img src="images/icones/phone.png" alt="Password Icon"> Contacter la plateforme

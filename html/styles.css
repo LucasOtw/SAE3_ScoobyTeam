@@ -13363,19 +13363,6 @@ ul.mentions_legales-sous-list {
     display: none; /* Caché par défaut */
 }
 
-.modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px); /* Pour Safari */
-    z-index: 998; /* Juste en dessous de la popup */
-    display: none;
-}
-
 /* Ajustement des popups existantes */
 .modal {
     background-color: transparent; /* Rendre le fond transparent car on utilise l'overlay */
@@ -13827,38 +13814,4 @@ ul.mentions_legales-sous-list {
     transform: translateY(-2px);
 }
 
-.btn-container {
-    display: flex;
-    flex-direction: column; /* Pour afficher les liens l'un en dessous de l'autre */
-    gap: 10px; /* Espacement entre les liens */
-    width: 100%;
-}
-
-.btn-link {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-    font-size: 16px;
-    font-weight: 500;
-    background-color: #f9f9f9;
-    border: none;
-    border-radius: 8px;
-    color: #333;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-decoration: none;
-    gap: 8px; /* Espacement entre l'icône et le texte */
-}
-
-.btn-link:hover {
-    background-color: #e0e0e0;
-}
-
-.btn-link img {
-    width: 20px;
-    height: auto;
-}
+  
