@@ -1356,7 +1356,7 @@ function tempsEcouleDepuisPublication($offre)
 
             leafletItems.forEach(leaflet => {
                 let form = leaflet.closest('.leaflet-marker-icon')?.parentElement?.querySelector('.voir_offre_carte input[name="uneOffre"]');
-                console.log(form);
+                console.log(leaflet.closest('.leaflet-marker-icon')?.parentElement?.querySelector('.voir_offre_carte input[name="uneOffre"]'));
                 if (form) {
                     try {
                         let offerData = JSON.parse(form.value);
@@ -1678,6 +1678,19 @@ function tempsEcouleDepuisPublication($offre)
             });
         });
 
+    </script>
+    <script>
+        function updateCategoryText() {
+        let categoryOption = document.querySelector('.search-select option[value="all"]');
+        if (window.innerWidth <= 429) {
+            categoryOption.textContent = "Catégo";
+        } else {
+            categoryOption.textContent = "Catégories";
+        }
+    }
+
+    window.addEventListener("resize", updateCategoryText);
+    window.addEventListener("DOMContentLoaded", updateCategoryText);
     </script>
 </body>
 

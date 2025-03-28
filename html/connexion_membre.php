@@ -231,10 +231,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let emailValue_otp;
 
-    let storedBlocked = JSON.parse(localStorage.getItem("essais_user")) || {};
-    let lockTime = JSON.parse(localStorage.getItem("user_lock")) || {};
+    var storedBlocked = JSON.parse(localStorage.getItem("essais_user")) || {};
+    var lockTime = JSON.parse(localStorage.getItem("user_lock")) || {};
 
-    let now = Date.now();
+    var now = Date.now();
 
 
     let codeCompte;
@@ -276,8 +276,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     if(!storedBlocked.hasOwnProperty(emailValue_otp)){
                         storedBlocked[emailValue_otp] = 3;
                     }
-
-                    console.log(storedBlocked);
 
                     modalOTP.style.display = "block";
                     codeCompte = data.code_compte;
@@ -324,6 +322,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     } else {
                         if(storedBlocked[emailValue_otp] >= 0){
                             storedBlocked[emailValue_otp]--;
+                            console.log(storedBlocked);
                             localStorage.setItem("essais_user",JSON.stringify(storedBlocked));
                         }
                         console.log(storedBlocked[emailValue_otp]);
@@ -351,18 +350,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (lockTime[emailValue] && now < lockTime[emailValue]) {
             champOTP.disabled = true; // Désactive le champ OTP si l'utilisateur est verrouillé
+
+            setTimeout(function() {
+                checkLockTime(emailValue);
+            }, 1000);
+
         } else if (now >= lockTime[emailValue]) {
             champOTP.disabled = false; // Réactive le champ OTP si le verrouillage est expiré
-            let storedBlock = JSON.parse(localStorage.getItem("essais_user")) || {}; // Assure que `essais_user` est un objet
             console.log(storedBlock);
             delete storedBlock[emailValue]; // Supprime l'utilisateur de `essais_user` après déverrouillage
             localStorage.setItem("essais_user", JSON.stringify(storedBlock)); // Sauvegarde les données mises à jour
         }
 
         // Utilisation de setTimeout avec une fonction de rappel pour éviter la récursion infinie
-        setTimeout(function() {
-            checkLockTime(emailValue);
-        }, 1000);
     }
 
 
