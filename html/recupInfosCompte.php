@@ -51,6 +51,7 @@
     $_adresse = $monAdresse->fetch(PDO::FETCH_ASSOC);
 
   } elseif(isset($_SESSION['pro'])){
+    echo "LOL";
      $compte = $_SESSION['pro'];
 
     /*
