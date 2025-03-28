@@ -345,10 +345,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-    function checkLockTime() {
+function checkLockTime() {
     let now = Date.now();
     let lockTime = JSON.parse(localStorage.getItem("user_lock")) || {}; // assure que `user_lock` est un objet
-    console.log(lockTime);
     let storedBlocked = JSON.parse(localStorage.getItem("essais_user")) || {}; // récupérer les essais restant
 
     let updated = false; // Indicateur pour savoir si des mises à jour ont eu lieu
@@ -368,14 +367,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('otpCode').disabled = false;
                 console.log(storedBlocked);
 
-                // Supprimer l'utilisateur de `essais_user` après déverrouillage
-                if (storedBlocked.hasOwnProperty(emailValue)) {
-                    delete storedBlocked[emailValue]; 
-                    updated = true; // Indiquer que des mises à jour ont eu lieu
-                }
+                // Créer un nouvel objet sans l'utilisateur courant dans storedBlocked
+                storedBlocked = Object.keys(storedBlocked).reduce((newStored, email) => {
+                    if (email !== emailValue) {
+                        newStored[email] = storedBlocked[email];
+                    }
+                    return newStored;
+                }, {});
+
+                updated = true; // Indiquer que des mises à jour ont eu lieu
                 
-                // Supprimer l'utilisateur de `user_lock` aussi
-                delete lockTime[emailValue]; 
+                // Créer un nouvel objet sans l'utilisateur courant dans lockTime
+                lockTime = Object.keys(lockTime).reduce((newLock, email) => {
+                    if (email !== emailValue) {
+                        newLock[email] = lockTime[email];
+                    }
+                    return newLock;
+                }, {});
+
                 updated = true; // Indiquer que des mises à jour ont eu lieu
             }
         }
@@ -390,6 +399,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Utilisation de setTimeout pour exécuter cette fonction régulièrement toutes les secondes
     setTimeout(checkLockTime, 1000); // Rappel la fonction toutes les secondes
 }
+
 
 
 
