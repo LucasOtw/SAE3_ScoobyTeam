@@ -13809,3 +13809,9 @@ ul.mentions_legales-sous-list {
     border: 1px #BDC426 solid;
     transform: translateY(-2px);
 }
+@media (min-width: 431px) {
+    svg {
+      display: none;
+    }
+  }
+  
