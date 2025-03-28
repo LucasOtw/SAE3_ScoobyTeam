@@ -1364,8 +1364,8 @@ function tempsEcouleDepuisPublication($offre)
                 let offerData = leaflet.getAttribute("data-offer");
 
                 if (offerData) {
-                    console.log(offerData);
-                    let offer = JSON.parse(offerData); // Convertir en objet
+                    let correctedJsonString = decodeHtmlEntities(offerData);
+                    let offer = JSON.parse(correctedJsonString); // Convertir en objet
                     let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
         
                     if (offerText.includes(query)) {
