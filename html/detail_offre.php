@@ -849,6 +849,7 @@ if (isset($json['results'][0])) {
                                                     <ul>
                                                         <?php
                                                             if (isset($_SESSION['membre']['code_compte']) && $avis['code_compte'] == $_SESSION['membre']['code_compte']) {
+                                                                $avis['titre_offre'] = $details_offre['titre_offre'];
                                                                 ?>
                                                                     <li>
                                                                         <form action="modif_avis_membre.php" method="POST">
