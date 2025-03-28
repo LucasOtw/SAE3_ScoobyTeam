@@ -1199,7 +1199,7 @@ function tempsEcouleDepuisPublication($offre)
                             echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
                             echo "marker.on('add', function() {";
                             echo "    if (this._icon) {";
-                            echo "        this._icon.setAttribute('data-offer', '" . json_encode($monOffre) . "');";
+                            echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre)) . "');";
                             echo "    }";
                             echo "});";
                             
@@ -1315,6 +1315,7 @@ function tempsEcouleDepuisPublication($offre)
     </script>
 
     <script>
+        
     document.addEventListener("DOMContentLoaded", function () {
         // Récupération des éléments
         const offerItems = document.querySelectorAll('.offer');
@@ -1364,9 +1365,11 @@ function tempsEcouleDepuisPublication($offre)
                 let offerData = leaflet.getAttribute("data-offer");
 
                 if (offerData) {
-                    console.log(offerData);
-                    let offer = JSON.parse(offerData); // Convertir en objet
+                    let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'"); 
+                    let offer = JSON.parse(correctedJsonString); // Convertir en objet
                     let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
+
+                    console.log(offerText);
         
                     if (offerText.includes(query)) {
                         leaflet.style.display = "block"; // Afficher le marqueur

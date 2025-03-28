@@ -174,16 +174,19 @@ if (isset($_POST['modif_infos'])) {
                 <button type="submit" name="modif_infos" class="submit-btn2">Enregistrer</button>
             </div>
         </form>
+
+        <!-- Ajouter cet élément avant votre div custom-confirm-content -->
+        <div id="popup-overlay" class="popup-overlay"></div>
+
         <div class="custom-confirm-content">
             <p class="texte-boite-perso">Voulez-vous vraiment activer l'authentification à 2 facteurs ?</p>
-           <p>Cette action est irréversible !</p> 
-           <p>Scannez impérativement ce QrCode</p> 
+            <p style="color:#d32f2f;">Cette action est irréversible !</p>
            <span>
                 <button id="confirm">Oui</button>
                 <button id="cancel">Annuler</button>
             </span>
-           
         </div>
+
         <form id="form2FA" action="#" method="POST">
             <h3>Authentification à deux facteurs</h3>
 
@@ -362,15 +365,18 @@ if (isset($_POST['modif_infos'])) {
 
         let formActive2FA = document.getElementById('form2FA');
         let dialogue2FA = document.getElementsByClassName('custom-confirm-content')[0];
+        let overlay = document.getElementById('popup-overlay');
 
         dialogue2FA.style.display = "none";
+        overlay.style.display = "none";
 
         console.log(dialogue2FA);
         console.log(formActive2FA);
 
         formActive2FA.addEventListener('submit', function(e){
             e.preventDefault();
-            dialogue2FA.style.display = "block";
+            dialogue2FA.style.display = "flex";
+            overlay.style.display = "block"; // Afficher l'overlay avec effet de flou
         });
 
         let confirmBtn = dialogue2FA.querySelector('#confirm');
@@ -383,8 +389,14 @@ if (isset($_POST['modif_infos'])) {
 
         cancelBtn.addEventListener('click', function(){
             dialogue2FA.style.display = "none";
+            overlay.style.display = "none"; // Masquer l'overlay
         });
-
+        
+        // Fermer également si on clique sur l'overlay (optionnel)
+        overlay.addEventListener('click', function() {
+            dialogue2FA.style.display = "none";
+            overlay.style.display = "none";
+        });
     </script>
     <script>
         $(document).ready(function() {

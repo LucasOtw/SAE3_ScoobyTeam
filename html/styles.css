@@ -3694,24 +3694,36 @@ nom.avis {
     z-index: 1000;
 }
 
+/* Style pour l'overlay avec effet de flou */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11px);
+    -webkit-backdrop-filter: blur(5px); /* Pour Safari */
+    z-index: 999;
+    display: none;
+}
+
+/* Assurez-vous que votre popup est au-dessus de l'overlay */
 .custom-confirm-content {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    padding: 20px 30px;
-    border-radius: 19px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    z-index: 999;
-    width: 543px;
-    max-width: 92%;
-    text-align: center;
-    height: 231px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Plus élevé que l'overlay */
+    display: none;
 }
 
 .custom-confirm-content p {
-    margin-bottom: 20px;
+    margin-bottom: 44px;
     font-size: 16px;
     margin-top: 1em;
 }
@@ -3728,12 +3740,13 @@ nom.avis {
     color: white;
     height: 39px;
     width: 154px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
 }
 
 .custom-confirm-content button:hover {
-    background-color: #FFF;
-    color: black;
-    border: 1px #BDC426 solid;
+    background-color: var(--vert-clair);
+    color: white;
+    border: 1px var(--vert-clair) solid;
     transform: translateY(-2px);
 }
 
@@ -3745,15 +3758,16 @@ nom.avis {
     font-weight: 500;
     transition: all 0.2s ease;
     border-radius: 12px;
-    background-color: var(--vert-clair);
-    color: white;
+    background-color: white;
+    color: black;
     height: 39px;
     width: 154px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
 }
 
 .custom-confirm-content button:last-child:hover {
-    background-color: var(--vert-clair);
-    color: white;
+    background-color: white;
+    color: black;
     transform: translateY(-2px);
 }
 
@@ -11312,7 +11326,7 @@ main.main_repondre_avis .message-erreur {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    border-color: var(--orange);
+    border-color: var(--vert-clair);
     margin-top: 3vh;
 
 }
@@ -11360,7 +11374,7 @@ main.main_repondre_avis .message-erreur {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         margin-top: 3vh;
         margin-left: 3vw;
-        width: 95vw;
+        width: 95%;
         margin-bottom: 3vh;
     }
 
@@ -11393,7 +11407,8 @@ main.main_repondre_avis .message-erreur {
     }
 
     .signalement-container {
-        margin-left: 0;
+        width: 80%;
+        margin-left: 4em;
     }
 }
 
@@ -13781,6 +13796,8 @@ ul.mentions_legales-sous-list {
 
 .main_modif_mdp_membre>.custom-confirm-content {
     position: fixed;
+    flex-direction: column;
+    align-items: center;
 }
 
 .btn-2fa:hover {
