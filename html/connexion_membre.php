@@ -271,6 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(!data.otp){
                     window.location.href = "voir_offres.php";
                 } else {
+                    checkLockTime(emailValue_otp);
 
                     if(!storedBlocked.hasOwnProperty(emailValue_otp)){
                         storedBlocked[emailValue_otp] = 3;
@@ -344,12 +345,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if(lockTime[emailValue] && now < lockTime[emailValue]){
             champOTP.disabled = true;
+        } else if (now >= lockTime[emailValue]){
+            champOTP.disabled = false;
+            let storedBlock = JSON.parse(localStorage.getItem("essais_user"));
+            delete storedBlock[emailValue_otp];
+            localStorage.setItem("essais_user",storedBlock);
         }
 
         setTimeout(checkLockTime(emailValue),1000);
     }
 
-    console.log(lockTime);
 
 
  /*    if (!form || !connectBtn) {
