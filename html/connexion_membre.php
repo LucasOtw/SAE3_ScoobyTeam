@@ -232,6 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let emailValue_otp;
 
     let storedBlocked = JSON.parse(localStorage.getItem("essais_user")) || {};
+    console.log(storedBlocked);
     let lockTime = JSON.parse(localStorage.getItem("user_lock")) || {};
 
     let now = Date.now();
