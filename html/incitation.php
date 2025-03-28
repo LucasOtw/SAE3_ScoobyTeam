@@ -41,11 +41,9 @@ session_start();
     <div class="incitation_image-container">
         <img src="images/cadeau.png" alt="Icône cadeau" class="image">
     </div>
-      <h2 class="incitation_main-title">Envie de publier une offre ?</h2>
-      <p class="incitation_subtitle">Passez à la vitesse supérieure avec un compte Professionnel</p>
-      <div class="incitation_image-container">
-        <img src="images/features.png" class="features-image">
-      </div>
+    <h2 class="incitation_main-title">Envie de publier une offre ?</h2>
+    <p class="incitation_subtitle">Passez à la vitesse supérieure avec un compte Professionnel</p>
+    
     </main>
 
     <nav class="nav-bar">

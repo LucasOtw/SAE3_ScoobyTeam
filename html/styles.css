@@ -5998,7 +5998,7 @@ nav.nav-bar-tel {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-left: -1.5em;
+    margin-top: 10em;
 }
 
 .skip {
@@ -9554,6 +9554,7 @@ nav.nav-bar {
 
     header.header-tel {
         display: block;
+        background-color: transparent;
     }
 
     .toute_les_offres_main .offer-details h2 {
