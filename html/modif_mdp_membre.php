@@ -33,19 +33,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['generate_api_key'])) 
     // Récupérer la nouvelle clé générée
 }
 
-if (isset($_POST['modif_infos'])){
-   
-   // Champs modifiés
-   $champsModifies = [];
-   
-   // Parcourir les données soumises
-   foreach ($_POST as $champ => $valeur) {
-      if ($champ != 'modif_infos')
-      {
-         $champsModifies[$champ] = trim($valeur);
-      }
-   }
-   
+if (isset($_POST['modif_infos'])) {
+
+    // Champs modifiés
+    $champsModifies = [];
+
+    // Parcourir les données soumises
+    foreach ($_POST as $champ => $valeur) {
+        if ($champ != 'modif_infos') {
+            $champsModifies[$champ] = trim($valeur);
+        }
+    }
+
    // Mettre à jour seulement les champs modifiés
    if (!empty($champsModifies))
    {
@@ -94,6 +93,7 @@ if (isset($_POST['modif_infos'])){
 <body>
     <header class="header_membre">
         <div class="logo">
+        
          <a href="voir_offres.php">
             <img src="images/logoBlanc.png" alt="PACT Logo">
          </a>
@@ -176,11 +176,13 @@ if (isset($_POST['modif_infos'])){
         </form>
         <div class="custom-confirm-content">
             <p class="texte-boite-perso">Voulez-vous vraiment activer l'authentification à 2 facteurs ?</p>
-            <p>Cette action est irréversible !</p> <!-- A mettre en rouge, avec l'icone adéquate -->
             <span>
-                <button id="confirm">Ok</button>
+                <button id="confirm">Oui</button>
                 <button id="cancel">Annuler</button>
             </span>
+           <p>Cette action est irréversible !</p> 
+           <p>Scannez impérativement ce QrCode</p> 
+           
         </div>
         <form id="form2FA" action="#" method="POST">
             <h3>Authentification à deux facteurs</h3>
@@ -258,24 +260,23 @@ if (isset($_POST['modif_infos'])){
             }
             ?>
             <?php
-            if (isset($_SESSION['modif_mdp'])) {
-                $modif_mdp = $_SESSION['modif_mdp'];
-                unset($_SESSION['modif_mdp']); // Supprime la variable de session après usage
-            } else {
-                $modif_mdp = null;
-            }
 
-            if ($modif_mdp !== null) {
-                $img_success = $modif_mdp ? "images/verifier.png" : "images/erreur.png";
-                $msg_modif = $modif_mdp ? "Mot de passe modifié avec succès&nbsp!" : "Erreur lors du changement du mot de passe&nbsp!";
+                if ($modif_mdp !== null) {
+                    if ($modif_mdp == true) {
+                        $img_success = "images/verifier.png";
+                        $msg_modif = "Mot de passe modifié avec succès&nbsp!";
+                    } else {
+                        $img_success = "images/erreur.png";
+                        $msg_modif = "Erreur lors du changement du mot de passe&nbsp!";
+                    }
+                    ?>
+                    <div class="creation-success" id="modif_mdp_membre">
+                        <img src="<?php echo $img_success ?>" alt="Succès">
+                        <h2><?php echo $msg_modif; ?></h2>
+                    </div>
+                    <?php
+                }
                 ?>
-                <div class="creation-success" id="modif_mdp_membre">
-                    <img src="<?php echo $img_success ?>" alt="Succès">
-                    <h2><?php echo $msg_modif; ?></h2>
-                </div>
-                <?php
-            }
-            ?>
                 
     </main>
    
@@ -385,5 +386,18 @@ if (isset($_POST['modif_infos'])){
         });
 
     </script>
+    <script>
+        $(document).ready(function() {
+        // Affichage du message lorsque le bouton est cliqué
+        $(".submit-btn2").click(function(e) {
+            e.preventDefault();  // Empêche la soumission du formulaire si nécessaire
+
+            // Vérifiez si le div est déjà visible, sinon l'afficher
+            if ($("#modif_mdp_membre").is(":hidden")) {
+                $("#modif_mdp_membre").fadeIn();
+            }
+        });
+    });
+</script>
 </body>
 </html>
