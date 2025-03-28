@@ -217,7 +217,6 @@ if (!empty($_POST)) {
         document.addEventListener('DOMContentLoaded', function () {
             var form = document.getElementById("connexionForm");
             var connectBtn = document.getElementById("connectButton");
-            var submitBtn = document.getElementById("submitFormBtn");
             var champOTP = document.getElementById('otpCode');
             var errorMsg = document.getElementById('errorMsg');
             var formOTP = document.getElementById('envoiCode');

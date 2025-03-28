@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     }
 
     $stmt = $dbh->prepare("SELECT * FROM tripenarvor._compte
-    WHERE mail :email");
+    WHERE mail = :email");
     $stmt->bindValue(":email",$email,PDO::PARAM_STR);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
