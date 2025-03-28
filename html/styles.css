@@ -3811,7 +3811,6 @@ nom.avis {
     background-color: #FFF;
     color: black;
     border: none;
-    border-radius: 16px;
     cursor: pointer;
     margin-right: 1em;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
@@ -13427,6 +13426,8 @@ ul.mentions_legales-sous-list {
 .popup-2fa-validation #confirm {
     background-color: #BDC426;
     color: white;
+    height: 39px;
+    width: 154px;
 }
 
 .popup-2fa-validation #confirm:hover {
@@ -13436,6 +13437,8 @@ ul.mentions_legales-sous-list {
 .popup-2fa-validation #cancel {
     background-color: #f5f5f5;
     color: #333;
+    height: 39px;
+    width: 154px;
 }
 
 .popup-2fa-validation #cancel:hover {
