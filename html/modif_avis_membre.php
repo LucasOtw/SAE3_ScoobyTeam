@@ -376,6 +376,7 @@ $isAnswer = $isAnswer->fetchColumn();
             formModif.addEventListener('submit', function (e) {
                 e.preventDefault();
                 modal.style.display = 'flex';
+                console.log(modal);
             });
 
             confirmModif.addEventListener('click', () => {
