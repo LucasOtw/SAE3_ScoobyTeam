@@ -279,8 +279,16 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 if(data.success){
                     console.log(data.message);
-                    window.location.href = "voir_offres.php";
+                    champOTP.innerHTML = "";
+                    champOTP.innerHTML = data.message;
+                    champOTP.style.color = "green";
+                    setTimeout(() => {
+                        window.location.href = "voir_offres.php";
+                    }, 3000);
                 } else {
+                    champOTP.innerHTML = "";
+                    champOTP.innerHTML = data.message;
+                    champOTP.style.color = "red";
                     console.log(data.message);
                 }
             })
