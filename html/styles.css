@@ -3897,6 +3897,15 @@ nom.avis {
         margin-bottom: 9vh;
     }
 
+    @media screen and (max-width: 418px) {
+        .custom-confirm-content {
+            width: 90%;
+            max-width: 350px;
+            height: auto;
+            padding: 15px;
+        }
+    }
+
     nav.nav-bar {
         width: 84vw;
         position: fixed;
