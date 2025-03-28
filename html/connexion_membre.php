@@ -348,6 +348,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function checkLockTime() {
     let now = Date.now();
     let lockTime = JSON.parse(localStorage.getItem("user_lock")) || {}; // assure que `user_lock` est un objet
+    console.log(lockTime);
     let storedBlocked = JSON.parse(localStorage.getItem("essais_user")) || {}; // récupérer les essais restant
 
     let updated = false; // Indicateur pour savoir si des mises à jour ont eu lieu
