@@ -962,6 +962,7 @@ function tempsEcouleDepuisPublication($offre)
             document.addEventListener("DOMContentLoaded", function () {
                 // Récupération des éléments
                 const offerItems = document.querySelectorAll('.offer');
+                const LeafletItems = document.querySelectorAll('.leaflet-marker-icon');
 
                 const searchInput = document.querySelector('.search-input');
 
@@ -1001,6 +1002,10 @@ function tempsEcouleDepuisPublication($offre)
                         } else {
                             offer.classList.add('hidden');
                         }
+                    });
+
+                    leafletItems.forEach(leaflet => {
+                        console.log(leaflet);
                     });
 
                 });
