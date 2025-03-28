@@ -228,6 +228,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let password = document.getElementById('password');
     let storedBlocked = json.parse(localStorage.getItem("essais_user")) || {};
 
+    console.log(storedBlocked);
+
     let codeCompte;
     let nbEssais;
 
@@ -311,8 +313,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log(data.message);
                 }
             })
-        } else {
-            console.log("Vous avez utilisé vos 3 essais...");
         }
     });
     btnEnvoiQuentin.addEventListener('click', function(){
