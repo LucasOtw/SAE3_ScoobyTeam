@@ -13345,14 +13345,33 @@ ul.mentions_legales-sous-list {
 
 
 /* Style pour la Popup */
-.modal {
+/* Overlay avec effet de flou pour les popups */
+.modal-overlay {
     position: fixed;
-    z-index: 1;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Couleur de fond semi-transparente */
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    backdrop-filter: blur(5px); /* Effet de flou */
+    -webkit-backdrop-filter: blur(5px); /* Support pour Safari */
+    z-index: 999; /* S'assurer que c'est au-dessus de tout le contenu */
+    display: none; /* Caché par défaut */
+}
+
+/* Ajustement des popups existantes */
+.modal {
+    background-color: transparent; /* Rendre le fond transparent car on utilise l'overlay */
+    z-index: 1000; /* Plus élevé que l'overlay */
+}
+
+.otp-confirm-content,
+.custom-modal-content,
+.custom-modal-error-content,
+#modal-otp {
+    position: fixed;
+    z-index: 1000; /* Plus élevé que l'overlay */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée pour un meilleur effet */
 }
 
 /* Contenu de la Popup */
@@ -13750,6 +13769,10 @@ ul.mentions_legales-sous-list {
 }
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> b9649e2c4456ec631c01be8d2e80f63128e0ce91
 .otp-confirm-content {
     position: absolute;
     top: 50%;
