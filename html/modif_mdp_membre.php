@@ -190,7 +190,6 @@ if (isset($_POST['modif_infos'])) {
 
         <form id="form2FA" action="#" method="POST">
             <h3>Authentification à deux facteurs</h3>
-
             <div class="two-fa-container">
                 <!-- Colonne gauche -->
                 <div class="left-2fa">
