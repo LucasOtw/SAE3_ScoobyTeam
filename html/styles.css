@@ -3754,7 +3754,7 @@ nom.avis {
 }
 
 .custom-confirm-content button:last-child:hover {
-    background-color: var(--vert-clair);
+    background-color: white;
     color: white;
     transform: translateY(-2px);
 }
