@@ -13908,3 +13908,12 @@ ul.mentions_legales-sous-list {
 .back_button{
     margin-top:1.5em;
 }
+
+.header-tel svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Pour qu'il s'adapte à la largeur du header */
+    height: auto; /* Ajustement proportionnel */
+    z-index: -1; /* Envoie le SVG à l'arrière-plan */
+}
