@@ -265,7 +265,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: new URLSearchParams({
                     codeOTP : champOTP.value,
-                    code_compte : codeCompte
+                    code_compte : codeCompte,
+                    nombre_essais : nbEssais
                 })
             })
             .then(response => response.json())
@@ -274,7 +275,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log(data.message);
                     window.location.href = "voir_offres.php";
                 } else {
-                    nbEssais--;
+                    console.log(data.nbEssais);
                     console.log(data.message);
                 }
             })
