@@ -185,7 +185,7 @@ if(!empty($_POST)){
     </form>
 </div>
 
-<button onclick="localStorage.remove('nbEssais_otp');">localStorage remove</button>
+<button onclick="localStorage.removeItem('nbEssais_otp');">localStorage remove</button>
 
 
     <script>
