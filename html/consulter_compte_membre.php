@@ -274,12 +274,12 @@ if (isset($_POST['dwl-data'])) {
             'note' => $res['note']
         ];
     }
-
+    
     $zip = new ZipArchive();
     $zipFile = tempnam(sys_get_temp_dir(), 'zip'); 
-
-    if($zip->open($zipFile, ZipArchive::CREATE) === TRUE){
-            // Préparation des données JSON
+    
+    if ($zip->open($zipFile, ZipArchive::CREATE) === TRUE) {
+        // 🔹 Création du JSON
         $data = [
             'Nom' => $monCompteMembre['nom'],
             'Prenom' => $monCompteMembre['prenom'],
@@ -289,29 +289,36 @@ if (isset($_POST['dwl-data'])) {
             'Liste_Avis' => $tab_avis
         ];
         $jsonData = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-
-        $zip->addFile("donnees.json",$jsonData);
-
-        $absolutePath = $_SERVER['DOCUMENT_ROOT'].trim($path_photo);
-
-        if(file_exists($absolutePath)){
-            $zip->addFile($absolutePath,"profil.jpg");
+    
+        // 🔹 Ajouter le JSON correctement
+        $zip->addFromString("donnees.json", $jsonData);
+    
+        // 🔹 Ajouter l'image (si elle existe)
+        $absolutePath = $_SERVER['DOCUMENT_ROOT'] . '/' . ltrim($path_photo, '/');
+    
+        if (file_exists($absolutePath)) {
+            $zip->addFile($absolutePath, "profil.jpg");
+        } else {
+            error_log("⚠️ L'image n'existe pas : " . $absolutePath);
         }
-
+    
+        // 🔹 Fermer l'archive ZIP
         $zip->close();
-
-        // Définir les headers pour forcer le téléchargement
+    
+        // 🔹 Définir les headers pour forcer le téléchargement
         header('Content-Type: application/zip');
         header('Content-Disposition: attachment; filename="mon_archive.zip"');
         header('Content-Length: ' . filesize($zipFile));
-
-        // Lire et envoyer le fichier au client
+    
+        // 🔹 Lire et envoyer le fichier ZIP au client
         readfile($zipFile);
-
-        // Supprimer le fichier temporaire après téléchargement
+    
+        // 🔹 Supprimer le fichier temporaire après téléchargement
         unlink($zipFile);
-        
+    } else {
+        echo "Erreur lors de la création du fichier ZIP.";
     }
+    
 
 /*     $absolutePath = $_SERVER['DOCUMENT_ROOT'].trim($path_photo);
 
