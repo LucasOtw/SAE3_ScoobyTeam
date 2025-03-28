@@ -10498,9 +10498,7 @@ body.menu-open #overlay {
 
     }
 
-    .search-select option[value="all"]::after {
-        content: "Cat";
-    }
+    
 
     .search-bar {
         margin: 1em 0 20em 0;
