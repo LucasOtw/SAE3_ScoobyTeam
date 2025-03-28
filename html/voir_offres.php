@@ -1355,7 +1355,21 @@ function tempsEcouleDepuisPublication($offre)
             });
 
             leafletItems.forEach(leaflet => {
-                console.log(leaflet);
+                let form = leaflet.closest('.leaflet-marker-icon')?.parentElement?.querySelector('.voir_offre_carte input[name="uneOffre"]');
+                if (form) {
+                    try {
+                        let offerData = JSON.parse(form.value);
+                        let offerTitle = offerData.titre_offre.toLowerCase();
+        
+                        if (offerTitle.includes(query)) {
+                            leaflet.style.display = 'block'; // Afficher le marqueur
+                        } else {
+                            leaflet.style.display = 'none'; // Cacher le marqueur
+                        }
+                    } catch (error) {
+                        console.error("Erreur lors du parsing JSON :", error);
+                    }
+                }
             });
 
         });
