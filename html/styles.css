@@ -13828,6 +13828,11 @@ ul.mentions_legales-sous-list {
 }
 
 .btn-group-tel {
+    background-color: #eee;
+    padding: 15px;
+    border-radius: 10px;
     display: flex;
-    gap: 10px; /* Espacement entre les boutons */
+    flex-direction: column;
+    gap: 10px;
+    width: fit-content;
 }
