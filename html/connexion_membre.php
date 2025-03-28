@@ -271,11 +271,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(!data.otp){
                     window.location.href = "voir_offres.php";
                 } else {
-                    checkLockTime(emailValue_otp);
 
                     if(!storedBlocked.hasOwnProperty(emailValue_otp)){
                         storedBlocked[emailValue_otp] = 3;
                     }
+
+                    checkLockTime(emailValue_otp);
 
                     modalOTP.style.display = "block";
                     codeCompte = data.code_compte;
@@ -351,10 +352,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (lockTime[emailValue] && now < lockTime[emailValue]) {
             champOTP.disabled = true; // Désactive le champ OTP si l'utilisateur est verrouillé
 
-            setTimeout(function() {
-                checkLockTime(emailValue);
-            }, 1000);
-
         } else if (now >= lockTime[emailValue]) {
             champOTP.disabled = false; // Réactive le champ OTP si le verrouillage est expiré
             console.log(storedBlocked);
@@ -363,6 +360,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Utilisation de setTimeout avec une fonction de rappel pour éviter la récursion infinie
+        setTimeout(function() {
+                checkLockTime(emailValue);
+            }, 1000);
     }
 
 

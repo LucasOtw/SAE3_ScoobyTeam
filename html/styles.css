@@ -9030,6 +9030,7 @@ div.header-membre nav ul li a:hover::before {
 
     div.header-membre header.header-tel {
         display: block;
+        background-color: transparent;
     }
 }
 
