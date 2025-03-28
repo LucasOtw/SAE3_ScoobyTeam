@@ -8958,6 +8958,7 @@ div.header-membre .logo-tel {
     display: flex;
     margin-top: 40px;
     justify-content: center;
+    background-color: transparent;
 }
 
 div.header-membre .logo img {
@@ -9031,6 +9032,7 @@ div.header-membre nav ul li a:hover::before {
 
     div.header-membre header.header-tel {
         display: block;
+        background-color: transparent;
     }
 }
 

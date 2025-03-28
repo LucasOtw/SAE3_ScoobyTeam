@@ -236,6 +236,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var now = Date.now();
 
+    checkLockTime();
+
 
     let codeCompte;
     let nbEssais;
@@ -271,7 +273,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(!data.otp){
                     window.location.href = "voir_offres.php";
                 } else {
-                    checkLockTime(emailValue_otp);
 
                     if(!storedBlocked.hasOwnProperty(emailValue_otp)){
                         storedBlocked[emailValue_otp] = 3;
@@ -341,29 +342,42 @@ document.addEventListener('DOMContentLoaded', function() {
         form.submit();
     });
 
-    function checkLockTime(emailValue) {
-        let now = Date.now();
-        let lockTime = JSON.parse(localStorage.getItem("user_lock")) || {}; // assure que `user_lock` est un objet
-        let remainingTime = Math.ceil((lockTime[emailValue] - now) / 1000);
 
-        console.log(remainingTime);
+function checkLockTime() {
+    let now = Date.now();
+    let lockTime = JSON.parse(localStorage.getItem("user_lock")) || {}; // assure que `user_lock` est un objet
+    let storedBlocked = JSON.parse(localStorage.getItem("essais_user")) || {}; // récupérer les essais restant
 
-        if (lockTime[emailValue] && now < lockTime[emailValue]) {
-            champOTP.disabled = true; // Désactive le champ OTP si l'utilisateur est verrouillé
+    // Boucle sur tous les utilisateurs dans lockTime pour vérifier leur statut de verrouillage
+    for (let emailValue in lockTime) {
+        if (lockTime.hasOwnProperty(emailValue)) {
+            let remainingTime = Math.ceil((lockTime[emailValue] - now) / 1000);
 
-            setTimeout(function() {
-                checkLockTime(emailValue);
-            }, 1000);
+            console.log(`Remaining time for ${emailValue}: ${remainingTime} seconds`);
 
-        } else if (now >= lockTime[emailValue]) {
-            champOTP.disabled = false; // Réactive le champ OTP si le verrouillage est expiré
-            console.log(storedBlocked);
-            delete storedBlocked[emailValue]; // Supprime l'utilisateur de `essais_user` après déverrouillage
-            localStorage.setItem("essais_user", JSON.stringify(storedBlocked)); // Sauvegarde les données mises à jour
+            if (now < lockTime[emailValue]) {
+                // L'utilisateur est toujours bloqué, on désactive le champ OTP
+                document.getElementById('otpCode').disabled = true;
+            } else {
+                // Le verrouillage est expiré, on réactive le champ OTP
+                document.getElementById('otpCode').disabled = false;
+                console.log(storedBlocked);
+                
+                // Supprimer l'utilisateur de `essais_user` après déverrouillage
+                delete storedBlocked[emailValue]; 
+                localStorage.setItem("essais_user", JSON.stringify(storedBlocked)); // Sauvegarder les données mises à jour
+                
+                // Supprimer l'utilisateur de `user_lock` aussi
+                delete lockTime[emailValue]; 
+                localStorage.setItem("user_lock", JSON.stringify(lockTime)); // Sauvegarder les données mises à jour
+            }
         }
-
-        // Utilisation de setTimeout avec une fonction de rappel pour éviter la récursion infinie
     }
+
+    // Utilisation de setTimeout pour exécuter cette fonction régulièrement
+    setTimeout(checkLockTime, 1000); // Rappel la fonction toutes les secondes
+}
+
 
 
 

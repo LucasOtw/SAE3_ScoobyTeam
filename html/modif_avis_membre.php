@@ -8,11 +8,11 @@ if (!isset($_SESSION['membre'])) {
     header('location: connexion_membre.php');
     exit;
 }
-
+/*
 echo "<pre>";
 var_dump($_SESSION);
 echo "</pre>";
-
+*/
 $details_offre = $_SESSION["modif_avis"];
 
 // Vérifie si HTTP_REFERER est défini
@@ -20,7 +20,7 @@ if (isset($_SERVER['HTTP_REFERER'])) {
     // Vérifie que la page précédente est "detail_offre.php"
     if ($_SERVER['HTTP_REFERER'] === "https://scooby-team.ventsdouest.dev/detail_offre.php" && !isset($_POST['publier'])) {
         // Action si les conditions sont respectées
-        $details_offre = $_SESSION['detail_offre'];
+        $details_offre = $_SESSION['modif_avis'];
     }
 }
 
@@ -190,7 +190,8 @@ $isAnswer = $isAnswer->fetchColumn();
                         <?php echo $details_offre["titre_offre"]; ?><!-- - <?php // echo $details_offre["titre_offre"]; ?>-->
                     </h2>
                     <p class="poster_un_avis_location">📍 <?php echo $details_offre["ville"]; ?>,
-                        <?php echo $details_offre["code_postal"]; ?></p>
+                        <?php echo $details_offre["code_postal"]; ?>
+                    </p>
                     <form id="form-voir-offre" action="detail_offre.php" method="POST">
                         <input type="hidden" name="uneOffre"
                             value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
