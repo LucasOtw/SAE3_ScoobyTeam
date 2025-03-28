@@ -4620,6 +4620,9 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    @media (max-width: 429px) {
+        background-color: #F3F8FF;
+    }
 }
 
 .main_modif_mdp_membre input[type="password"]::placeholder {
