@@ -231,10 +231,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let emailValue_otp;
 
-    let storedBlocked = JSON.parse(localStorage.getItem("essais_user")) || {};
-    let lockTime = JSON.parse(localStorage.getItem("user_lock")) || {};
+    var storedBlocked = JSON.parse(localStorage.getItem("essais_user")) || {};
+    var lockTime = JSON.parse(localStorage.getItem("user_lock")) || {};
 
-    let now = Date.now();
+    var now = Date.now();
 
 
     let codeCompte;
