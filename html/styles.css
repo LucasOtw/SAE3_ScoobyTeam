@@ -3712,6 +3712,8 @@ nom.avis {
 .custom-confirm-content {
     position: fixed;
     top: 50%;
+    height: 231px;
+    width: 543px;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
