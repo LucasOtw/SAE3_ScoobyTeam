@@ -103,8 +103,20 @@ if(!empty($_POST)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Se connecter</title>
     <link rel="stylesheet" href="styles.css">
-
-
+    <style>
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px); /* Pour Safari */
+            z-index: 998; /* Juste en dessous de la popup */
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -154,6 +166,7 @@ if(!empty($_POST)){
                             <p class="erreur-formulaire-connexion-membre erreur-mot-de-passe-incorect"><img src="images/icon_informations.png" alt="icon i pour informations">Mot de passe incorrect</p>
                         </div>
                     </fieldset>
+                    <span id="error-msg"></span>
                     
                     <div class="connexion_membre_btn_connecter_pas_de_compte">
                         <button class="se_connecter" type="submit" id="connectButton">Se connecter</button>
@@ -174,20 +187,6 @@ if(!empty($_POST)){
         </div>
     </main>
 
-    <!-- Modal Popup QR Code -->
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?data=otpauth://totp/Monsite:example@example.com?secret=JBSWY3DPEHPK3PXP&issuer=MonSite&algorithm=SHA1&digits=6" alt="QR Code OTP">
-        <div class="container_explication_qrcode">
-            <p>1. Scannez ce QR Code avec votre application</p>
-            <p>2. Copiez le code de votre application</p>
-            <p>3. Collez votre code unique sur le <span class="texte_site_qrcode">site internet</span></p>
-        </div>
-        <!-- Bouton ajouté -->
-        <button id="submitFormBtn" class="se_connecter_modal">Se connecter quand même</button>
-    </div>
-</div>
 <div id="modal-otp" class="otp-confirm-content">
     <form id="envoiCode" action="#" method="POST">
         <p class="texte-boite-perso">Code à 6 chiffres :</p>
@@ -198,120 +197,204 @@ if(!empty($_POST)){
     </form>
 </div>
 
+<div id="modal-backdrop" class="modal-backdrop"></div>
 
     <script>
 
-    document.addEventListener('DOMContentLoaded', function(){
-        // Récupère les éléments
-        var oldModal = document.getElementById("myModal");
-        var modal = document.getElementById("modal-otp");
+// Pour afficher la popup avec l'overlay flou
+function showPopup() {
+    document.getElementById('modal-backdrop').style.display = 'block';
+    document.getElementById('modal-otp').style.display = 'block';
+}
 
-        var connectBtn = document.getElementById("connectButton");
-        var submitBtn = document.getElementById("submitFormBtn");
-        var span = document.getElementsByClassName("close")[0];
-        var form = document.getElementById("connexionForm");
+// Pour masquer la popup et l'overlay
+function hidePopup() {
+    document.getElementById('modal-backdrop').style.display = 'none';
+    document.getElementById('modal-otp').style.display = 'none';
+}
 
-        var champOTP = document.getElementById('otpCode');
-        var errorMsg = document.getElementById('errorMsg');
-        var formOTP = document.getElementById('envoiCode');
-        var btnEnvoiCode = formOTP.querySelector('submit');
+document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById("connexionForm");
+    var connectBtn = document.getElementById("connectButton");
+    var submitBtn = document.getElementById("submitFormBtn");
+    var champOTP = document.getElementById('otpCode');
+    var errorMsg = document.getElementById('errorMsg');
+    var formOTP = document.getElementById('envoiCode');
+    var btnEnvoiQuentin = formOTP ? formOTP.querySelector('button') : null;
 
-        var btnEnvoiQuentin = formOTP.querySelector('button');
+    var modalOTP = document.getElementById('modal-otp');
 
+    let codeCompte;
+    let nbEssais;
 
-        form.addEventListener('submit', function(e){
-            e.preventDefault();
+    modalOTP.style.display = "none";
 
-            let email = document.getElementById('email').value.trim();
-            let password = document.getElementById('pwd').value.trim();
+    // GESTION DE L'ENVOI DU FORMULAIRE DE CONNEXION
 
-            console.log(email,password);
-        });
+    form.addEventListener('submit',(e) => {
+        e.preventDefault();
 
+        let email = document.getElementById('email');
+        let password = document.getElementById('password');
 
-        btnEnvoiQuentin.addEventListener('click',function(e){
-            e.preventDefault();
-            form.submit();
-        });
+        let emailValue = email.value.trim();
+        let passwordValue = password.value.trim();
 
-        console.log(btnEnvoiCode);
+        error = document.getElementById('error-msg');
 
-        oldModal.style.display = "none";
-        modal.style.display = "none";
+        fetch("connexion/script_connexion_membre.php", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ mail: emailValue, pwd: passwordValue })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.success){
 
-        // Affiche la modale quand on clique sur "Se connecter"
-    /*     btn.onclick = function() {
-            modal.style.display = "block";
-        } */
+                error.innerHTML = "";
 
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            modal.style.display = "block";
-        });
+                console.log("Authentification validée !");
+                console.log(data.message);
 
-        champOTP.addEventListener("input", function () {
-            let errorMsg = document.getElementById("errorMsg");
-
-            // Supprime tout sauf les chiffres et limite à 6 caractères
-            this.value = this.value.replace(/\D/g, "").slice(0, 6);
-
-            // Vérifie si la valeur est bien composée de 6 chiffres
-            if (this.value.length === 6) {
-                errorMsg.style.display = "none"; // Cache le message d'erreur
+                if(!data.otp){
+                    window.location.href = "voir_offres.php";
+                } else {
+                    nbEssais = localStorage.getItem("nbEssais_otp") ?? 3; // si le localStorage n'est pas défini, on l'initialise à 3
+                    modalOTP.style.display = "block";
+                    codeCompte = data.code_compte;
+                }
             } else {
-                errorMsg.style.display = "block"; // Affiche le message d'erreur
+                console.log("Authentification refusée !");
+                console.log(data.message);
+                error.innerHTML = data.message;
             }
+        })
+    });
+
+    // GESTION DE L'ENVOI DU FORMULAIRE OTP
+
+    if (champOTP) {
+        champOTP.addEventListener("input", function () {
+            this.value = this.value.replace(/\D/g, "").slice(0, 6);
+            errorMsg.style.display = (this.value.length === 6) ? "none" : "block";
         });
+    }
 
+    formOTP.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-        formOTP.addEventListener('submit',(e) => {
-            e.preventDefault();
-
-            if(champOTP.value.length < 6){
-                /* Lancer une animation */
-            } else {
-                // Le code a la bonne longueur, on peut le vérifier
+        if (champOTP.value.length < 6) {
+            console.log("Code OTP trop court !");
+        } else {
+            if(nbEssais >= 1){
                 fetch("verification_codeOTP.php",{
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    },
-                    body: new URLSearchParams({codeOTP: champOTP.value})
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({
+                        codeOTP : champOTP.value,
+                        code_compte : codeCompte,
+                        nombre_essais : nbEssais
+                    })
                 })
                 .then(response => response.json())
                 .then(data => {
                     if(data.success){
-                        console.log("Code valide !");
                         console.log(data.message);
+                        window.location.href = "voir_offres.php";
                     } else {
-                        console.log("Code invalide !");
+                        nbEssais = data.nbEssais;
+                        console.log(nbEssais);
+                        localStorage.setItem("nbEssais_otp",nbEssais);
+                        console.log(data.message);
                     }
                 })
-                .catch(error => {
-                    console.log("Erreur : ",error);
-                });
-            };
-        });
-
-
-
-        // Ferme la modale en cliquant sur la croix
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-/*         // Ferme la modale si on clique à l'extérieur
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+            } else {
+                console.log("Vous avez utilisé vos 3 essais...");
             }
-        } */
-
-        // Clique sur "Se connecter quand même" => soumet le formulaire
-        submitBtn.onclick = function() {
-            form.submit();
         }
-    })
+    });
+
+    btnEnvoiQuentin.addEventListener('click', function(){
+        form.submit();
+    });
+
+
+ /*    if (!form || !connectBtn) {
+        console.error("Éléments du formulaire non trouvés !");
+        return;
+    }
+
+    if (btnEnvoiQuentin) {
+        btnEnvoiQuentin.addEventListener('click', function(e) {
+            e.preventDefault();
+            form.submit();
+        });
+    }
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        let email = document.getElementById('email');
+        let password = document.getElementById('password');
+
+        if (!email || !password) {
+            console.error("Champs e-mail ou mot de passe introuvables !");
+            return;
+        }
+
+        let emailValue = email.value.trim();
+        let passwordValue = password.value.trim();
+
+        fetch("connexion/script_connexion_membre.php", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ mail: emailValue, pwd: passwordValue })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log(data.message);
+            } else {
+                console.log(data.message);
+            }
+        })
+        .catch(error => {
+            console.error("Erreur AJAX :", error);
+        });
+    });
+
+    if (champOTP) {
+        champOTP.addEventListener("input", function () {
+            this.value = this.value.replace(/\D/g, "").slice(0, 6);
+            errorMsg.style.display = (this.value.length === 6) ? "none" : "block";
+        });
+    }
+
+    if (formOTP) {
+        formOTP.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (champOTP.value.length < 6) {
+                console.log("Code OTP trop court !");
+            } else {
+                fetch("verification_codeOTP.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams({ codeOTP: champOTP.value })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.success ? "Code valide !" : "Code invalide !");
+                })
+                .catch(error => {
+                    console.error("Erreur :", error);
+                });
+            }
+        });
+    } */
+
+});
+
+    
 </script>
 
 </body>

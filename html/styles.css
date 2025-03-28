@@ -3697,11 +3697,14 @@ nom.avis {
     text-align: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     border: 3px solid var(--vert-clair);
+    position: fixed;
+    z-index: 10;
 }
 
 .custom-confirm-content p {
     margin-bottom: 20px;
     font-size: 16px;
+    margin-top: 1em;
 }
 
 .custom-confirm-content button {
@@ -3745,20 +3748,20 @@ nom.avis {
 }
 
 
+
+
 /* Style de la boîte de dialogue personnalisée */
-.custom-confirm-pro {
+.popup-2fa-validation {
     display: none;
     /* Masquer par défaut */
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
 
-.custom-confirm-content-pro {
+.popup-2fa-validation {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -3769,19 +3772,21 @@ nom.avis {
     text-align: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     border: 3px solid var(--orange);
+    position: fixed;
+    z-index: 10;
 }
 
-.custom-confirm-content-pro p {
+.popup-2fa-validation p {
     margin-bottom: 20px;
     font-size: 16px;
 }
 
-.custom-confirm-content-pro button {
+.popup-2fa-validation button {
     background-color: var(--orange);
     color: white;
     border: none;
     border-radius: 16px;
-    border: 1px #e17a1f solid;
+    border: 1px #F28322 solid;
     cursor: pointer;
     margin-right: 1em;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
@@ -3791,14 +3796,14 @@ nom.avis {
     height: 2em;
 }
 
-.custom-confirm-content-pro button:hover {
+.popup-2fa-validation button:hover {
     background-color: #FFF;
     color: black;
-    border: 1px #BDC426 solid;
+    border: 1px #F28322 solid;
     transform: translateY(-2px);
 }
 
-.custom-confirm-content-pro button:last-child {
+.popup-2fa-validation button:last-child {
     background-color: #FFF;
     color: black;
     border: none;
@@ -3810,11 +3815,18 @@ nom.avis {
     text-decoration: none;
 }
 
-.custom-confirm-content-pro button:last-child:hover {
+.popup-2fa-validation button:last-child:hover {
     background-color: var(--orange);
     color: white;
     transform: translateY(-2px);
 }
+
+
+
+
+
+
+
 
 
 @media (max-width: 429px) {
@@ -4036,6 +4048,111 @@ div.creation-success .close-btn:hover {
         left: 20px;
     }
 }
+
+/* Popup de succès PRO - version améliorée */
+.modif-mdp-success-pro {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-left: 4px solid var(--orange);
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    width: 320px;
+    padding: 16px;
+    animation: slideInRight 0.4s ease forwards, fadeOut 0.4s ease 4.5s forwards;
+    overflow: hidden;
+    }
+    
+    /* Animation d'entrée et de sortie */
+    @keyframes slideInRight {
+    0% {
+    transform: translateX(100%);
+    opacity: 0;
+    }
+    
+    100% {
+    transform: translateX(0);
+    opacity: 1;
+    }
+    }
+    
+    @keyframes fadeOut {
+    0% {
+    opacity: 1;
+    transform: translateX(0);
+    }
+    
+    100% {
+    opacity: 0;
+    transform: translateX(100%);
+    }
+    }
+    
+    /* Ligne de progression */
+    .modif-mdp-success-pro ::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background-color: var(--orange);
+    animation: progressBar 4s linear forwards;
+    transform-origin: left;
+    }
+    
+    @keyframes progressBar {
+    0% {
+    transform: scaleX(1);
+    }
+    
+    100% {
+    transform: scaleX(0);
+    }
+    }
+    
+    /* Icône de succès */
+    .modif-mdp-success-pro >img {
+    width: 24px;
+    height: 24px;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: rgba(124, 179, 66, 0.15);
+    margin-right: 16px;
+    flex-shrink: 0;
+    }
+    
+    /* Texte du message */
+    .modif-mdp-success-pro h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333333;
+    line-height: 1.4;
+    }
+    
+    /* Bouton de fermeture (optionnel) */
+    .modif-mdp-success-pro .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s;
+    }
+    
+    .modif-mdp-success-pro .close-btn:hover {
+    color: #555;
+    }
+    
 
 main.creation_compte_membre .creation_compte_membre_container {
     display: flex;
@@ -4457,8 +4574,7 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
     margin-top: 20px;
 }
 
-#api p {
-}
+
 
 #btn-api-pro{
     cursor : pointer;
@@ -4797,7 +4913,7 @@ nav.nav-bar-tel {
     }
 
     .main_modif_mdp_membre form {
-        width: auto;
+        width: 80%;
     }
 
 
@@ -11290,7 +11406,7 @@ main.main_repondre_avis .message-erreur {
 .mentions_legales-title {
     font-size: 1.5em;
     color: var(--vert-fonce);
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .mentions_legales-paragraph {
@@ -11878,6 +11994,11 @@ ul.mentions_legales-sous-list {
     cursor: pointer;
     font-size: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    @media (max-width: 429px) {
+        bottom: 7.5em;
+        left: 5.8em;
+        
+    }
 }
 
 .main_compte_membre_tel .upload-photo-button:hover {
@@ -13228,14 +13349,33 @@ ul.mentions_legales-sous-list {
 
 
 /* Style pour la Popup */
-.modal {
+/* Overlay avec effet de flou pour les popups */
+.modal-overlay {
     position: fixed;
-    z-index: 1;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Couleur de fond semi-transparente */
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    backdrop-filter: blur(5px); /* Effet de flou */
+    -webkit-backdrop-filter: blur(5px); /* Support pour Safari */
+    z-index: 999; /* S'assurer que c'est au-dessus de tout le contenu */
+    display: none; /* Caché par défaut */
+}
+
+/* Ajustement des popups existantes */
+.modal {
+    background-color: transparent; /* Rendre le fond transparent car on utilise l'overlay */
+    z-index: 1000; /* Plus élevé que l'overlay */
+}
+
+.otp-confirm-content,
+.custom-modal-content,
+.custom-modal-error-content,
+#modal-otp {
+    position: fixed;
+    z-index: 1000; /* Plus élevé que l'overlay */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée pour un meilleur effet */
 }
 
 /* Contenu de la Popup */
@@ -13633,22 +13773,6 @@ ul.mentions_legales-sous-list {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .otp-confirm-content {
     position: absolute;
     top: 50%;
@@ -13679,7 +13803,8 @@ ul.mentions_legales-sous-list {
     transition: transform 0.2s ease;
     text-decoration: none;
     width: 10em;
-    height: 2em;
+    height: 3em;
+    margin-top:1em;
 }
 
 .otp-confirm-content button:hover {
@@ -13688,3 +13813,5 @@ ul.mentions_legales-sous-list {
     border: 1px #BDC426 solid;
     transform: translateY(-2px);
 }
+
+  

@@ -1,5 +1,5 @@
 <?php
-ob_start(); // bufferisation, ça devrait marcher ?
+ob_start(); 
 session_start();
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -89,36 +89,39 @@ if (isset($_POST['modif_infos'])) {
         }
     }
 
-    // Mettre à jour seulement les champs modifiés
-    if (!empty($champsModifies)) {
-        if (password_verify($champsModifies['mdp_actuel'], $compte['mdp'])) {
-            if (trim($champsModifies['mdp_nv1']) === trim($champsModifies['mdp_nv2'])) {
-                $mdp_modif = password_hash($champsModifies['mdp_nv1'], PASSWORD_DEFAULT);
-                $query = $dbh->prepare("UPDATE tripenarvor._compte SET mdp = :valeur WHERE code_compte = :code_compte");
-                $query->bindValue(":valeur", $mdp_modif);
-                $query->bindValue(":code_compte", $compte['code_compte']);
-                $query->execute();
-
-                $rowsAffected = $query->rowCount();
-                if ($rowsAffected > 0) {
-                    $modif_mdp = true;
-                    $_SESSION['pro']['mdp'] = $mdp_modif;
-                } else {
-                    $modif_mdp = false;
-                }
-
+   // Mettre à jour seulement les champs modifiés
+   if (!empty($champsModifies))
+   {
+      if (password_verify($champsModifies['mdp_actuel'],$compte['mdp']))
+      {
+         if (trim($champsModifies['mdp_nv1']) === trim($champsModifies['mdp_nv2']))
+         {
+            $mdp_modif = password_hash($champsModifies['mdp_nv1'], PASSWORD_DEFAULT);
+            $query = $dbh->prepare("UPDATE tripenarvor._compte SET mdp = :valeur WHERE code_compte = :code_compte");
+            $query->bindValue(":valeur",$mdp_modif);
+            $query->bindValue(":code_compte",$compte['code_compte']);
+            $query->execute();
+                
+            $rowsAffected = $query->rowCount();
+            if ($rowsAffected > 0) {
+               $modif_mdp = true;
+               $_SESSION['pro']['mdp'] = $mdp_modif;
             } else {
-                $modif_mdp = false;
+               $modif_mdp = false;
             }
-        } else {
-            echo "Test";
+
+         } else {
             $modif_mdp = false;
-        }
-        // echo "Les informations ont été mises à jour.";
-        include("recupInfosCompte.php");
-    } else {
-        echo "Aucune modification détectée.";
-    }
+         }
+      } else {
+         echo "Test";
+         $modif_mdp = false;
+      }
+       // echo "Les informations ont été mises à jour.";
+       include("recupInfosCompte.php");
+   } else {
+       echo "Aucune modification détectée.";
+   }
 }
 
 ?>
@@ -130,7 +133,7 @@ if (isset($_POST['modif_infos'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="images/logoPin_orange.png" width="16px" height="32px">
     <title>Modifier mot de passe</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -287,7 +290,7 @@ if (isset($_POST['modif_infos'])) {
                 <li><a href="consulter_mes_reponses_pro.php">Mes réponses</a></li>
             </ul>
         </section>
-        <div class="custom-confirm-content">
+        <div class="popup-2fa-validation">
             <p class="texte-boite-perso">Voulez-vous vraiment activer l'authentification à 2 facteurs ?</p>
             <p>Cette action est irréversible !</p> <!-- A mettre en rouge, avec l'icone adéquate -->
             <span>
@@ -393,7 +396,7 @@ if (isset($_POST['modif_infos'])) {
                 $msg_modif = "Erreur lors du changement du mot de passe&nbsp!";
             }
             ?>
-            <div class="creation-success" id="modif_mdp_membre">
+            <div class="modif-mdp-success-pro" id="modif_mdp_pro">
                 <img src="<?php echo $img_success ?>" alt="Succès">
                 <h2><?php echo $msg_modif; ?></h2>
             </div>
@@ -401,10 +404,6 @@ if (isset($_POST['modif_infos'])) {
         }
         ?>
 
-        <div class="creation-success">
-            <img src="./images/icones/check.svg" alt="Succès">
-            <h4>Compte créé avec succès ! Vous pouvez maintenant vous connecter.</h4>
-        </div>
 
     </main>
 
@@ -552,7 +551,7 @@ if (isset($_POST['modif_infos'])) {
         ET À L'ACTIVATION DE L'AUTHENTIFICATION À DEUX FACTEURS */
         document.addEventListener('DOMContentLoaded', function(){
             let formActive2FA = document.getElementById('form2FA');
-            let dialogue2FA = document.getElementsByClassName('custom-confirm-content')[0];
+            let dialogue2FA = document.getElementsByClassName('popup-2fa-validation')[0];
 
             dialogue2FA.style.display = "none";
 
@@ -577,5 +576,18 @@ if (isset($_POST['modif_infos'])) {
             });
         });
     </script>
+    <script>
+        $(document).ready(function() {
+        // Affichage du message lorsque le bouton est cliqué
+        $(".submit-btn2").click(function(e) {
+            e.preventDefault();  // Empêche la soumission du formulaire si nécessaire
+
+            // Vérifiez si le div est déjà visible, sinon l'afficher
+            if ($("#modif_mdp_pro").is(":hidden")) {
+                $("#modif_mdp_pro").fadeIn();
+            }
+        });
+    });
+</script>
 </body>
 </html>
