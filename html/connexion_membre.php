@@ -207,7 +207,7 @@ if (!empty($_POST)) {
             <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
             <input type="submit" id="submit-code" value="Envoyer le code">
             <p id="errorMsg" style="color: red; display: none;">Le code doit contenir exactement 6 chiffres.</p>
-            //<button>Se connecter quand même</button>
+            <!--<button>Se connecter quand même</button>-->
         </form>
     </div>
 
