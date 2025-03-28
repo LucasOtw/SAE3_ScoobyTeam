@@ -166,7 +166,7 @@ session_start();
                         error.innerHTML = "";
 
                         if(!data.otp){
-                            window.location.href = "voir_offres.php";
+                            window.location.href = "mes_offres.php";
                         } else {
                             showPopup();
                             codeCompte = data.code_compte;
