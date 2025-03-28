@@ -29,11 +29,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
     if($otp->verify($codeOTP,null,1)){
         echo json_encode(["success" => true, "message" => "Code valide !"]);
     } else {
-        $nbEssais--;
-        echo json_encode(
-            ["success" => false,
-            "message" => "Code invalide"]
-        );
+        echo json_encode(["success" => false, "message" => "Code invalide"]);
     }
 }
 
