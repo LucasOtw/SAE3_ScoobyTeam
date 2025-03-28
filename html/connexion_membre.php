@@ -234,7 +234,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(!data.otp){
                     window.location.href = "voir_offres.php";
                 } else {
-                    localStorage.setItem("nbEssais_otp",5);
                     nbEssais = localStorage.getItem("nbEssais_otp") ?? null;
                     console.log(nbEssais);
                     modalOTP.style.display = "block";
