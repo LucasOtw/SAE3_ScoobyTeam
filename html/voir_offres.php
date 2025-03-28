@@ -1199,8 +1199,6 @@ function tempsEcouleDepuisPublication($offre)
                             echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
                             echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false, className: 'custom-popup'}).setContent(\"" . addslashes($popupContent) . "\");";
                             echo "marker.bindPopup(popup);";
-
-                            echo "console.log(marker);";
                             
                             // Ajouter les événements de survol améliorés
                             echo "marker.on('mouseover', function(e) { this.openPopup(); });";
@@ -1356,12 +1354,9 @@ function tempsEcouleDepuisPublication($offre)
                 }
             });
 
-            setTimeout(function () {
-                leafletItems.forEach(leaflet => {
-                    console.log(leaflet);
-                    console.log("ok");
-                });
-            }, 1000);
+            leafletItems.forEach(leaflet => {
+                console.log(leaflet);
+            });
 
         });
 
@@ -1598,7 +1593,7 @@ function tempsEcouleDepuisPublication($offre)
         openingEndDate.addEventListener('change', filterByOpeningDates);
 
     });
-</script>
+    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
