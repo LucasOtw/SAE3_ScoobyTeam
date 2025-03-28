@@ -3724,6 +3724,11 @@ nom.avis {
     font-weight: 500;
     transition: all 0.2s ease;
     border-radius: 12px;
+    background-color: var(--vert-clair);
+    color: white;
+    height: 39px;
+    width: 154px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
 }
 
 .custom-confirm-content button:hover {
@@ -3734,15 +3739,18 @@ nom.avis {
 }
 
 .custom-confirm-content button:last-child {
-    background-color: #FFF;
-    color: black;
+    padding: 8px 20px;
+    border-radius: 4px;
     border: none;
-    border-radius: 16px;
     cursor: pointer;
-    margin-right: 1em;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-radius: 12px;
+    background-color: white;
+    color: black;
+    height: 39px;
+    width: 154px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
-    transition: transform 0.2s ease;
-    text-decoration: none;
 }
 
 .custom-confirm-content button:last-child:hover {
