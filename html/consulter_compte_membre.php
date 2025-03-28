@@ -649,7 +649,7 @@ if (isset($_POST['dwl-data'])) {
                     if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
                         ?>
                         <li>
-                            <a href="consulter_compte_membre.php">Mon Compte</a>
+                            <a href="compte_membre_tel.php">Mon Compte</a>
                         </li>
                         <?php
                     } else {
