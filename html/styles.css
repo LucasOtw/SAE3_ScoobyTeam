@@ -11392,6 +11392,7 @@ main.main_repondre_avis .message-erreur {
         transition: transform 0.2s ease;
         margin-top: 1vh;
         margin-left: 21vw;
+        align-items: center;
     }
 
     .signaler_un_avis_textarea {
