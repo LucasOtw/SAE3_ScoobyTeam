@@ -1241,7 +1241,7 @@ WHERE code_offre = :code_offre
                 }
             })
             .then(data => {
-                console.log(data.message);
+                console.log(data);
             })
             .catch(error => {
                 console.error("Erreur de réseau ou autre :", error);
