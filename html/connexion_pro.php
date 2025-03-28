@@ -108,74 +108,19 @@ session_start();
         </div>
     </main>
 
-    <!-- POPUP OTP -->
-    <div id="otpPopup" class="popup-otp">
-        <div class="popup-otp-content">
-            <h3>Validation OTP</h3>
-            <p>Scannez ce QR Code avec votre application OTP</p>
-            <img src="generate_qr.php" alt="QR Code OTP">
-            <br>
-            <button onclick="connectAnyway()">Se connecter quand même</button>
-        </div>
+    <div class="modal-overlay" id="modal-overlay"></div>
+
+    <div id="modal-otp" class="otp-confirm-content">
+        <form id="envoiCode" action="#" method="POST">
+            <p class="texte-boite-perso">Code à 6 chiffres :</p>
+            <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
+            <input type="submit" id="submit-code" value="Envoyer le code">
+            <p id="errorMsg" style="color: red; display: none;">Le code doit contenir exactement 6 chiffres.</p>
+            <button>Se connecter quand même</button>
+        </form>
     </div>
-
     <script>
-        function showError(selector) {
-            document.querySelector(selector).style.display = "block";
-        }
 
-        function showOTPPopup() {
-            document.getElementById("otpPopup").style.display = "flex";
-        }
-
-        function connectAnyway() {
-            window.location.href = "mes_offres.php";
-        }
     </script>
-
-    <?php
-    require_once __DIR__ . '/../.security/config.php';
-
-    try {
-        $dbh = new PDO($dsn, $username, $password);
-    } catch (PDOException $e) {
-        echo 'Erreur : ' . $e->getMessage();
-        exit;
-    }
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
-        $email = trim(htmlspecialchars($_POST['email']));
-        $password = trim(htmlspecialchars($_POST['password']));
-
-        $stmt = $dbh->prepare("SELECT * FROM tripenarvor._compte WHERE mail = :mail");
-        $stmt->bindParam(":mail", $email);
-        $stmt->execute();
-        $compte = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($compte) {
-            $stmtPro = $dbh->prepare("SELECT 1 FROM tripenarvor._professionnel WHERE code_compte = :codeCompte");
-            $stmtPro->bindParam(":codeCompte", $compte['code_compte']);
-            $stmtPro->execute();
-            $isPro = $stmtPro->fetch();
-
-            if ($isPro) {
-                if (password_verify($password, $compte['mdp'])) {
-                    $_SESSION = [];
-                    $_SESSION["pro"] = $compte;
-
-                    // Affiche la popup OTP
-                    echo "<script>showOTPPopup();</script>";
-                    exit;
-                } else {
-                    echo "<script>showError('.erreur-mot-de-passe-incorect');</script>";
-                }
-            } else {
-                echo "<script>showError('.erreur-pro-inconnu');</script>";
-            }
-        } else {
-            echo "<script>showError('.erreur-user-inconnu');</script>";
-        }
-    }
-    ?>
 </body>
 </html>
