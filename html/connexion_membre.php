@@ -232,7 +232,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let emailValue_otp;
 
     let storedBlocked = JSON.parse(localStorage.getItem("essais_user")) || {};
-    console.log(storedBlocked);
     let lockTime = JSON.parse(localStorage.getItem("user_lock")) || {};
 
     let now = Date.now();
@@ -277,6 +276,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     if(!storedBlocked.hasOwnProperty(emailValue_otp)){
                         storedBlocked[emailValue_otp] = 3;
                     }
+
+                    console.log(storedBlocked);
 
                     modalOTP.style.display = "block";
                     codeCompte = data.code_compte;

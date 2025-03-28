@@ -1370,6 +1370,8 @@ function tempsEcouleDepuisPublication($offre)
                     } catch (error) {
                         console.error("Erreur lors du parsing JSON :", error);
                     }
+                } else {
+                    console.log("Aucune donnée");
                 }
             });
 
