@@ -1197,6 +1197,7 @@ function tempsEcouleDepuisPublication($offre)
                             $popupContent .= "</div>";
 
                             echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
+                            echo "marker._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre)) . "');";
                             echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false, className: 'custom-popup'}).setContent(\"" . addslashes($popupContent) . "\");";
                             echo "marker.bindPopup(popup);";
                             
@@ -1355,23 +1356,17 @@ function tempsEcouleDepuisPublication($offre)
             });
 
             leafletItems.forEach(leaflet => {
-                let form = leaflet.closest('.leaflet-marker-icon')?.parentElement?.querySelector('.voir_offre_carte input[name="uneOffre"]');
-                console.log(leaflet.closest('.leaflet-marker-icon')?.parentElement?.querySelector('.voir_offre_carte input[name="uneOffre"]'));
-                if (form) {
-                    try {
-                        let offerData = JSON.parse(form.value);
-                        let offerTitle = offerData.titre_offre.toLowerCase();
+                let offerData = leaflet.getAttribute("data-offer");
+
+                if (offerData) {
+                    let offer = JSON.parse(offerData); // Convertir en objet
+                    let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
         
-                        if (offerTitle.includes(query)) {
-                            leaflet.style.display = 'block'; // Afficher le marqueur
-                        } else {
-                            leaflet.style.display = 'none'; // Cacher le marqueur
-                        }
-                    } catch (error) {
-                        console.error("Erreur lors du parsing JSON :", error);
+                    if (offerText.includes(query)) {
+                        leaflet.style.display = "block"; // Afficher le marqueur
+                    } else {
+                        leaflet.style.display = "none"; // Cacher le marqueur
                     }
-                } else {
-                    console.log("Aucune donnée");
                 }
             });
 
