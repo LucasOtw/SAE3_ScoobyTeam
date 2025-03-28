@@ -11995,6 +11995,11 @@ ul.mentions_legales-sous-list {
     cursor: pointer;
     font-size: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    @media (max-width: 429px) {
+        bottom: 6em;
+        right: 0em;
+        
+    }
 }
 
 .main_compte_membre_tel .upload-photo-button:hover {
