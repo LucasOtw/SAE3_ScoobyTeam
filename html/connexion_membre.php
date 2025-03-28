@@ -251,6 +251,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // GESTION DE L'ENVOI DU FORMULAIRE OTP
 
+    btnOTP.disabled = true;
+
     if (champOTP) {
         champOTP.addEventListener("input", function () {
             this.value = this.value.replace(/\D/g, "").slice(0, 6);
