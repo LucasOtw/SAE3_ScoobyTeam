@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     errorMsg.style.display = "block";
                     setTimeout(() => {
                         window.location.href = "voir_offres.php";
-                    }, 3000);
+                    }, 1500);
                 } else {
                     errorMsg.innerHTML = "";
                     errorMsg.innerHTML = data.message;
