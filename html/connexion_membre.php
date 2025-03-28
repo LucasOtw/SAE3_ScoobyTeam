@@ -262,23 +262,26 @@ document.addEventListener('DOMContentLoaded', function() {
         if (champOTP.value.length < 6) {
             console.log("Code OTP trop court !");
         } else {
-            fetch("verification_codeOTP.php",{
-                method: "POST",
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams({
-                    codeOTP : champOTP.value,
-                    code_compte : codeCompte
+            if(nbEssais < 1){
+                fetch("verification_codeOTP.php",{
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({
+                        codeOTP : champOTP.value,
+                        code_compte : codeCompte
+                    })
                 })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.success){
-                    console.log(data.message);
-                    window.location.href = "voir_offres.php";
-                } else {
-                    console.log(data.message);
-                }
-            })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.success){
+                        console.log(data.message);
+                        window.location.href = "voir_offres.php";
+                    } else {
+                        nbEssais--;
+                        console.log(data.message);
+                    }
+                })
+            }
         }
     });
 
