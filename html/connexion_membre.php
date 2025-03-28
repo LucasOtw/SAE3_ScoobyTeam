@@ -339,20 +339,23 @@ document.addEventListener('DOMContentLoaded', function() {
         form.submit();
     });
 
-    function checkLockTime(emailValue){
+    function checkLockTime(emailValue) {
         let now = Date.now();
-        let lockTime = localStorage.getItem("user_lock");
+        let lockTime = JSON.parse(localStorage.getItem("user_lock")) || {}; // assure que `user_lock` est un objet
 
-        if(lockTime[emailValue] && now < lockTime[emailValue]){
-            champOTP.disabled = true;
-        } else if (now >= lockTime[emailValue]){
-            champOTP.disabled = false;
-            let storedBlock = JSON.parse(localStorage.getItem("essais_user"));
-            delete storedBlock[emailValue_otp];
-            localStorage.setItem("essais_user",storedBlock);
+        if (lockTime[emailValue] && now < lockTime[emailValue]) {
+            champOTP.disabled = true; // Désactive le champ OTP si l'utilisateur est verrouillé
+        } else if (now >= lockTime[emailValue]) {
+            champOTP.disabled = false; // Réactive le champ OTP si le verrouillage est expiré
+            let storedBlock = JSON.parse(localStorage.getItem("essais_user")) || {}; // Assure que `essais_user` est un objet
+            delete storedBlock[emailValue]; // Supprime l'utilisateur de `essais_user` après déverrouillage
+            localStorage.setItem("essais_user", JSON.stringify(storedBlock)); // Sauvegarde les données mises à jour
         }
 
-        setTimeout(checkLockTime(emailValue),1000);
+        // Utilisation de setTimeout avec une fonction de rappel pour éviter la récursion infinie
+        setTimeout(function() {
+            checkLockTime(emailValue);
+        }, 1000);
     }
 
 
