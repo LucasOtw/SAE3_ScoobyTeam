@@ -1004,10 +1004,12 @@ function tempsEcouleDepuisPublication($offre)
                         }
                     });
 
-                    leafletItems.forEach(leaflet => {
-                        console.log(leaflet);
-                        console.log("ok");
-                    });
+                    setTimeout(function () {
+                        leafletItems.forEach(leaflet => {
+                            console.log(leaflet);
+                            console.log("ok");
+                        });
+                    }, 1000);
 
                 });
 
