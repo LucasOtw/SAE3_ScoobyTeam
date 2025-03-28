@@ -277,8 +277,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         storedBlocked[emailValue_otp] = 3;
                     }
 
-                    console.log(storedBlocked);
-
                     modalOTP.style.display = "block";
                     codeCompte = data.code_compte;
                     }
@@ -324,6 +322,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     } else {
                         if(storedBlocked[emailValue_otp] >= 0){
                             storedBlocked[emailValue_otp]--;
+                            console.log(storedBlocked);
                             localStorage.setItem("essais_user",JSON.stringify(storedBlocked));
                         }
                         console.log(storedBlocked[emailValue_otp]);
