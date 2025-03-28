@@ -3728,6 +3728,7 @@ nom.avis {
     color: white;
     height: 39px;
     width: 154px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
 }
 
 .custom-confirm-content button:hover {
@@ -3749,6 +3750,7 @@ nom.avis {
     color: black;
     height: 39px;
     width: 154px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
 }
 
 .custom-confirm-content button:last-child:hover {
