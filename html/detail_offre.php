@@ -716,6 +716,7 @@ if (isset($json['results'][0])) {
             function afficherAvis($avis, $niveau = 0)
             {
                 global $dbh;
+                global $details_offre;
                 // Déterminer l'affichage selon le type d'utilisateur
                 if (!empty($avis['raison_sociale_pro'])) {
                     // Si c'est un professionnel
