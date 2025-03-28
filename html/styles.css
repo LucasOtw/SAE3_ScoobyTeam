@@ -13909,7 +13909,7 @@ ul.mentions_legales-sous-list {
     font-size: 16px;
 }
 
-.otp-confirm-content button, .otp-confirm-content input {
+.otp-confirm-content button, .otp-confirm-content input[type="submit"] {
     padding: 8px 20px;
     border-radius: 4px;
     border: none;
