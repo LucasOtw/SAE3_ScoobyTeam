@@ -2206,6 +2206,7 @@ main.main_poster_avis .back-button {
 
 main.main_poster_avis .poster_un_avis_container {
     padding: 5vh 9vw;
+    margin-top:7em;
 }
 
 /*Code pour le format responsive de poster un avis */
