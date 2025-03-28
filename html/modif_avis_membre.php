@@ -9,10 +9,6 @@ if (!isset($_SESSION['membre'])) {
     exit;
 }
 
-echo "<pre>";
-var_dump($_SESSION);
-echo "</pre>";
-
 $details_offre = $_SESSION["modif_avis"];
 
 // Vérifie si HTTP_REFERER est défini
@@ -56,7 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $avis = unserialize($_POST['unAvis']);
         $_SESSION['modif_avis'] = $avis;
-        echo "TA MERE";
     }
     if (isset($_POST['modifier'])) {
         echo "test";
