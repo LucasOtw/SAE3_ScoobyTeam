@@ -309,6 +309,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.location.href = "voir_offres.php";
                 } else {
                     storedBlocked[email]--;
+                    console.log(storedBlocked[email]);
                     localStorage.setItem("essais_user",JSON.stringify(storedBlocked));
                     console.log(data.message);
                 }
