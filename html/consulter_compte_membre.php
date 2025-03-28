@@ -393,11 +393,11 @@ if (isset($_POST['dwl-data'])) {
                     fill="#E8E8E8"
                 ></path>
             </svg>
-                <a href="voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo" ></a>
+                <a href="voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo" style = " margin-top : -2em;"></a>
             </div>
         </header>
     </div>
-    <main class="main_consulter_compte_membre" style="margin-top: 2em;">
+    <main class="main_consulter_compte_membre" style="margin-top: 5em;">
 <!-- POUR PC/TABLETTE -->
         <div class="profile">
             <div class="banner">
