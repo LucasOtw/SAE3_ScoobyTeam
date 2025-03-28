@@ -1197,7 +1197,12 @@ function tempsEcouleDepuisPublication($offre)
                             $popupContent .= "</div>";
 
                             echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
-                            echo "marker._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre)) . "');";
+                            echo "marker.on('add', function() {";
+                            echo "    if (this._icon) {";
+                            echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre)) . "');";
+                            echo "    }";
+                            echo "});";
+                            
                             echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false, className: 'custom-popup'}).setContent(\"" . addslashes($popupContent) . "\");";
                             echo "marker.bindPopup(popup);";
                             
