@@ -17,7 +17,7 @@ function writeLog($type, $message) {
     $logFile = $logDir . '/2fa.log';
 
     // Heure au format français
-    $date = date('d/m/Y H:i:s');
+    $date = date('Y-m-d H:i:s');
 
     // Couleurs ANSI pour terminal (optionnel)
     switch ($type) {
