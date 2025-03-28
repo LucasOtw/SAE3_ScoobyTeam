@@ -302,6 +302,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (champOTP.value.length < 6) {
             console.log("Code OTP trop court !");
         } else {
+            console.log(storedBlocked);
             if(storedBlocked[emailValue_otp] >= 1){
                 fetch("verification_codeOTP.php",{
                     method: "POST",
