@@ -352,6 +352,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (now >= lockTime[emailValue]) {
             champOTP.disabled = false; // Réactive le champ OTP si le verrouillage est expiré
             let storedBlock = JSON.parse(localStorage.getItem("essais_user")) || {}; // Assure que `essais_user` est un objet
+            console.log(storedBlock[emailValue]);
             delete storedBlock[emailValue]; // Supprime l'utilisateur de `essais_user` après déverrouillage
             localStorage.setItem("essais_user", JSON.stringify(storedBlock)); // Sauvegarde les données mises à jour
         }
