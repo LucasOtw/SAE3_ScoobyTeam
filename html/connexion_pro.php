@@ -120,7 +120,33 @@ session_start();
         </form>
     </div>
     <script>
+        document.addEventListener('DOMContentLoaded', function (){
+            var form = document.getElementById("connexionForm");
+            var connectBtn = document.getElementById("connectButton");
+            var submitBtn = document.getElementById("submitFormBtn");
+            var champOTP = document.getElementById("otpCode");
+            var errorMsg = document.getElementById("errorMsg");
+            var formOTP = document.getElementById("envoiCode");
+            var btnOTP = document.getElementById("submit-code");
 
+            var btnEnvoiQuentin = formOTP ? formOTP.querySelector('button') : null;
+
+            var modalOTP = document.getElementById('modal-otp');
+
+            let codeCompte;
+
+            modalOTP.style.display = "none";
+
+            // GESTION DE L'ENVOI DU FORMULAIRE DE CONNEXION
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                let email = document.getElementById('email');
+                let password = document.getElementById('password');
+            })
+
+        });
     </script>
 </body>
 </html>
