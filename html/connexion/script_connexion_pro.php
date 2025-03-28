@@ -63,7 +63,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         "success" => true,
         "message" => "Identification autorisée",
         "otp" => $is2FA,
-        "code_compte" => $user['code_compte']
+        "code_compte" => $user['code_compte'],
+        "pro" => $pro
     ]);
 } else {
     echo json_encode(["success" => false, "message" => "Requête invalide."]);
