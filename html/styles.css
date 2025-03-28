@@ -12077,7 +12077,8 @@ ul.mentions_legales-sous-list {
 }
 
 .main_compte_membre_tel img[src="images/trash.svg"] {
-    color: var(--vert-clair);
+    fill: #BDC426;
+
 }
 
 
