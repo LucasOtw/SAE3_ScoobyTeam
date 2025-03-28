@@ -10,6 +10,7 @@ header("Content-Type: application/json");
 if($_SERVER['REQUEST_METHOD'] === "POST"){
     $codeOTP = $_POST['codeOTP'] ?? "";
     $codeCompte = $_POST['code_compte'] ?? "";
+    $nbEssais = $_POST['nombre_essais'] ?? "";
 
     // On récupère tout d'abord le secret dans la BDD
 
@@ -29,7 +30,12 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
     if($otp->verify($codeOTP,null,1)){
         echo json_encode(["success" => true, "message" => "Code valide !"]);
     } else {
-        echo json_encode(["success" => false, "message" => "Code invalide"]);
+        $nbEssais--;
+        echo json_encode(
+            ["success" => false,
+            "message" => "Code invalide",
+            "nbEssais" => $nbEssais]
+        );
     }
 }
 
