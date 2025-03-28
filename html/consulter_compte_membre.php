@@ -377,6 +377,25 @@ if (isset($_POST['dwl-data'])) {
                 </ul>
             </nav>
         </header>
+        <header class="header-tel header_membre">
+            <div class="logo-tel">
+            <svg
+                width="428"
+                height="202"
+                viewBox="0 0 428 202"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                >
+                <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M0 126.87L0 0H428V134.241C374.61 176.076 300.465 202 218.5 202C131.823 202 53.891 173.01 0 126.87Z"
+                    fill="#E8E8E8"
+                ></path>
+            </svg>
+                <a href="voir_offres.php"><img src="images/logoNoirVert.png" alt="PACT Logo" style = " margin-top : 2em;"></a>
+            </div>
+        </header>
     </div>
     <main class="main_consulter_compte_membre">
 <!-- POUR PC/TABLETTE -->
