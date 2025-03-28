@@ -234,6 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(!data.otp){
                     window.location.href = "voir_offres.php";
                 } else {
+                    console.log(localStorage.getItem("nbEssais_otp"));
                     modalOTP.style.display = "block";
                     codeCompte = data.code_compte;
                 }
@@ -248,7 +249,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // GESTION DE L'ENVOI DU FORMULAIRE OTP
 
     if (champOTP) {
-        console.log(localStorage.getItem("nbEssais_otp"));
         champOTP.addEventListener("input", function () {
             this.value = this.value.replace(/\D/g, "").slice(0, 6);
             errorMsg.style.display = (this.value.length === 6) ? "none" : "block";
