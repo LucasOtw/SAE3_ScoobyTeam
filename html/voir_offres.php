@@ -1356,6 +1356,7 @@ function tempsEcouleDepuisPublication($offre)
 
             leafletItems.forEach(leaflet => {
                 let form = leaflet.closest('.leaflet-marker-icon')?.parentElement?.querySelector('.voir_offre_carte input[name="uneOffre"]');
+                console.log(form);
                 if (form) {
                     try {
                         let offerData = JSON.parse(form.value);
