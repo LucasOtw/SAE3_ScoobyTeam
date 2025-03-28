@@ -193,7 +193,7 @@ function tempsEcouleDepuisPublication($offre)
         </header>
         <header class="header-tel">
             <div class="logo-tel">
-                <img src="images/LogoCouleur.png" alt="PACT Logo">
+                <img src="images/LogoCouleur.png" alt="PACT Logo" style= "margin-top:-0.5em;">
             </div>
 
         </header>
