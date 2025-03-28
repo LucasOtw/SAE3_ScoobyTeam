@@ -13366,6 +13366,82 @@ ul.mentions_legales-sous-list {
     display: none; /* Caché par défaut */
 }
 
+/* Overlay avec effet de flou pour la popup 2FA */
+.popup-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); /* Pour Safari */
+    z-index: 998;
+    display: none;
+}
+
+/* Amélioration du style de la popup 2FA */
+.popup-2fa-validation {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+}
+
+.popup-2fa-validation p.texte-boite-perso {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.popup-2fa-validation p {
+    color: #d32f2f;
+    margin-bottom: 20px;
+}
+
+.popup-2fa-validation span {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.popup-2fa-validation button {
+    padding: 8px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.popup-2fa-validation #confirm {
+    background-color: #BDC426;
+    color: white;
+}
+
+.popup-2fa-validation #confirm:hover {
+    background-color: #a5b122;
+}
+
+.popup-2fa-validation #cancel {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.popup-2fa-validation #cancel:hover {
+    background-color: #e0e0e0;
+}
+
 /* Ajustement des popups existantes */
 .modal {
     background-color: transparent; /* Rendre le fond transparent car on utilise l'overlay */

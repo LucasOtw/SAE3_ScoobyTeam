@@ -214,6 +214,9 @@ function hidePopup() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+
+    localStorage.removeItem("[object HTMLInputElement]");
+
     var form = document.getElementById("connexionForm");
     var connectBtn = document.getElementById("connectButton");
     var submitBtn = document.getElementById("submitFormBtn");
@@ -308,8 +311,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log(data.message);
                     window.location.href = "voir_offres.php";
                 } else {
-                    storedBlocked[email]--;
-                    console.log(storedBlocked[email]);
+                    storedBlocked[emailValue]--;
+                    console.log(storedBlocked[emailValue]);
                     localStorage.setItem("essais_user",JSON.stringify(storedBlocked));
                     console.log(data.message);
                 }

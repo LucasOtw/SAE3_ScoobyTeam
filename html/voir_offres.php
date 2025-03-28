@@ -1482,10 +1482,12 @@ function tempsEcouleDepuisPublication($offre)
                             echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false, className: 'custom-popup'}).setContent(\"" . addslashes($popupContent) . "\");";
                             echo "marker.bindPopup(popup);";
 
+                            ?>
                             <script>
                             console.log(marker);
                             </script>
-
+                            <?php
+                            
                             // Ajouter les événements de survol améliorés
                             echo "marker.on('mouseover', function(e) { this.openPopup(); });";
 
