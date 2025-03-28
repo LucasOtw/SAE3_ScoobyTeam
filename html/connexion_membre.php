@@ -349,6 +349,8 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(checkLockTime(emailValue),1000);
     }
 
+    console.log(lockTime);
+
 
  /*    if (!form || !connectBtn) {
         console.error("Éléments du formulaire non trouvés !");
