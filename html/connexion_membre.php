@@ -181,7 +181,7 @@ if(!empty($_POST)){
     <form id="envoiCode" action="#" method="POST">
         <p class="texte-boite-perso">Code à 6 chiffres :</p>
         <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
-        <input type="submit" value="Envoyer le code">
+        <input type="submit" id="submit-code" value="Envoyer le code">
         <p id="errorMsg" style="color: red; display: none;">Le code doit contenir exactement 6 chiffres.</p>
         <button>Se connecter quand même</button>
     </form>
@@ -197,6 +197,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var champOTP = document.getElementById('otpCode');
     var errorMsg = document.getElementById('errorMsg');
     var formOTP = document.getElementById('envoiCode');
+    var btnOTP = document.getElementById('submit-code');
+
     var btnEnvoiQuentin = formOTP ? formOTP.querySelector('button') : null;
 
     var modalOTP = document.getElementById('modal-otp');
@@ -253,6 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
         champOTP.addEventListener("input", function () {
             this.value = this.value.replace(/\D/g, "").slice(0, 6);
             errorMsg.style.display = (this.value.length === 6) ? "none" : "block";
+            btnOTP.disabled = (this.value.length === 6) ? false : true;
         });
     }
 
