@@ -13421,6 +13421,7 @@ ul.mentions_legales-sous-list {
     cursor: pointer;
     font-weight: 500;
     transition: all 0.2s ease;
+    border-radius: 12px;
 }
 
 .popup-2fa-validation #confirm {
