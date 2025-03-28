@@ -3745,8 +3745,8 @@ nom.avis {
     font-weight: 500;
     transition: all 0.2s ease;
     border-radius: 12px;
-    background-color: var(--vert-clair);
-    color: white;
+    background-color: white;
+    color: black;
     height: 39px;
     width: 154px;
 }
