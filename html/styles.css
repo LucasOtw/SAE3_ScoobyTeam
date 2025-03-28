@@ -13425,7 +13425,7 @@ ul.mentions_legales-sous-list {
 }
 
 .popup-2fa-validation #confirm {
-    background-color: #BDC426;
+    background-color: var(--orange);
     color: white;
     height: 39px;
     width: 154px;
