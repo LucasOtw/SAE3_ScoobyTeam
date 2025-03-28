@@ -8,11 +8,11 @@ if (!isset($_SESSION['membre'])) {
     header('location: connexion_membre.php');
     exit;
 }
-/*
+
 echo "<pre>";
 var_dump($_SESSION);
 echo "</pre>";
-*/
+
 $details_offre = $_SESSION["modif_avis"];
 
 // Vérifie si HTTP_REFERER est défini
