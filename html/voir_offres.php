@@ -1374,10 +1374,10 @@ function tempsEcouleDepuisPublication($offre)
                     console.log("///");
         
                     if (offerText.includes(query)) {
-                        leaflet.style.display = "block"; // Afficher le marqueur
+                        leaflet.classList.remove('hidden'); // Afficher le marqueur
                         console.log("ok");
                     } else {
-                        leaflet.style.display = "none"; // Cacher le marqueur
+                        leaflet.classList.add('hidden'); // Cacher le marqueur
                         console.log("pas ok");
                     }
                 }
