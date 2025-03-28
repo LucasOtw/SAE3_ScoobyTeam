@@ -2,24 +2,22 @@
 // logs.php
 
 function writeLog($type, $message) {
-    // Dossier logs dans web/
-    $logDir = realpath(__DIR__ . '/..') . '/logs';
+    // On remonte de html/ à web/
+    $logDir = dirname(__DIR__) . '/logs';
 
     // Créer le dossier logs s'il n'existe pas
     if (!is_dir($logDir)) {
         mkdir($logDir, 0777, true);
     }
 
-    // Fichier unique pour tous les logs 2FA
+    // Fichier unique
     $logFile = $logDir . '/2fa.log';
 
-    // Format de la date
+    // Date et format
     $date = date('Y-m-d H:i:s');
-
-    // Format du message
     $logMessage = "[$date][$type] $message" . PHP_EOL;
 
-    // Écriture dans le fichier
+    // Écriture
     file_put_contents($logFile, $logMessage, FILE_APPEND);
 }
 

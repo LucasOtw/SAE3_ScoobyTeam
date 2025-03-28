@@ -214,6 +214,7 @@ function hidePopup() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+
     var form = document.getElementById("connexionForm");
     var connectBtn = document.getElementById("connectButton");
     var submitBtn = document.getElementById("submitFormBtn");
@@ -226,6 +227,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let email = document.getElementById('email');
     let password = document.getElementById('password');
+
+    let emailValue_otp;
+
     let storedBlocked = JSON.parse(localStorage.getItem("essais_user")) || {};
 
     console.log(storedBlocked);
@@ -259,13 +263,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log("Authentification validée !");
                 console.log(data.message);
 
+                emailValue_otp = emailValue;
+
                 if(!data.otp){
                     window.location.href = "voir_offres.php";
                 } else {
-                    nbEssais = localStorage.getItem("nbEssais_otp") ?? 3; // si le localStorage n'est pas défini, on l'initialise à 3
 
-                    if(!storedBlocked.hasOwnProperty(emailValue)){
-                        storedBlocked[emailValue] = 3;
+                    if(!storedBlocked.hasOwnProperty(emailValue_otp)){
+                        storedBlocked[emailValue_otp] = 3;
                     }
 
                     modalOTP.style.display = "block";
@@ -308,8 +313,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log(data.message);
                     window.location.href = "voir_offres.php";
                 } else {
-                    storedBlocked[email]--;
-                    console.log(storedBlocked[email]);
+                    storedBlocked[emailValue_otp]--;
+                    console.log(storedBlocked[emailValue_otp]);
                     localStorage.setItem("essais_user",JSON.stringify(storedBlocked));
                     console.log(data.message);
                 }
