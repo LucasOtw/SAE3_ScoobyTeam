@@ -44,7 +44,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     }
 
     if(!isset($_SESSION['pro'])){
-        $_SESSION['pro'] = $pro;
+        $_SESSION['pro'] = $user;
     }
 
     $checkOTP = $dbh->prepare("SELECT COUNT(*) FROM tripenarvor._compte_otp
