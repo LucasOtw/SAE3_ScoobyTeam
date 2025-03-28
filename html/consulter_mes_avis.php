@@ -67,26 +67,7 @@ if (!empty($_POST['supprAvis'])){
             </nav>
         </header>
     </div>
-    <main class="main_consulter_compte_membre">
-<!-- POUR PC/TABLETTE -->
-        <div class="profile">
-            <div class="banner">
-                <img src="images/Rectangle 3.png" alt="Bannière" class="header-img">
-            </div>
-
-            <div class="profile-info">
-                <img src=<?php echo $compte_pp; ?> alt="Photo de profil" class="profile-img">
-                <h1><?php echo $monCompteMembre['prenom']." ".$monCompteMembre['nom']." (".$monCompteMembre['pseudo'].")"; ?></h1>
-                <p><?php echo $compte['mail']; ?> | <?php echo trim(preg_replace('/(\d{2})/', '$1 ', $compte['telephone'])); ?></p>
-            </div>
-        </div>
-<!-- POUR TEL -->
-<style>
-    .edit-profil {
-        display: none;
-    }
-</style>
-<header class="header-tel">
+    <header class="header-tel">
         <svg
             width="428"
             height="202"
@@ -107,6 +88,26 @@ if (!empty($_POST['supprAvis'])){
                 </a>
             </div>
         </header>
+    <main class="main_consulter_compte_membre">
+<!-- POUR PC/TABLETTE -->
+        <div class="profile">
+            <div class="banner">
+                <img src="images/Rectangle 3.png" alt="Bannière" class="header-img">
+            </div>
+
+            <div class="profile-info">
+                <img src=<?php echo $compte_pp; ?> alt="Photo de profil" class="profile-img">
+                <h1><?php echo $monCompteMembre['prenom']." ".$monCompteMembre['nom']." (".$monCompteMembre['pseudo'].")"; ?></h1>
+                <p><?php echo $compte['mail']; ?> | <?php echo trim(preg_replace('/(\d{2})/', '$1 ', $compte['telephone'])); ?></p>
+            </div>
+        </div>
+<!-- POUR TEL -->
+<style>
+    .edit-profil {
+        display: none;
+    }
+</style>
+
       
         <div class="edit-profil">
             <a href="compte_membre_tel.php">
