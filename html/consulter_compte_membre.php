@@ -275,23 +275,43 @@ if (isset($_POST['dwl-data'])) {
         ];
     }
 
-    // Préparation des données JSON
-    $data = [
-        'Nom' => $monCompteMembre['nom'],
-        'Prenom' => $monCompteMembre['prenom'],
-        'Pseudo' => $monCompteMembre['pseudo'],
-        'Email' => $compte['mail'],
-        'Téléphone' => $compte['telephone'],
-        'Liste_Avis' => $tab_avis
-    ];
-    $jsonData = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    $zip = new ZipArchive();
+    $zipFile = tempnam(sys_get_temp_dir(), 'zip'); 
 
-    // Envoi des en-têtes pour le téléchargement
-    header('Content-Type: application/json');
-    header('Content-Disposition: attachment; filename="mes_donnees_PACT.json"');
-    header('Content-Length: ' . strlen($jsonData));
-    
-    echo $jsonData;
+    if($zip->open($zipFile, ZipArchive::CREATE) === TRUE){
+            // Préparation des données JSON
+        $data = [
+            'Nom' => $monCompteMembre['nom'],
+            'Prenom' => $monCompteMembre['prenom'],
+            'Pseudo' => $monCompteMembre['pseudo'],
+            'Email' => $compte['mail'],
+            'Téléphone' => $compte['telephone'],
+            'Liste_Avis' => $tab_avis
+        ];
+        $jsonData = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+        $zip->addFile("donnees.json",$jsonData);
+
+        $absolutePath = $_SERVER['DOCUMENT_ROOT'].trim($path_photo);
+
+        if(file_exists($absolutePath)){
+            $zip->addFile($absolutePath,"profil.jpg");
+        }
+
+        $zip->close();
+
+        // Définir les headers pour forcer le téléchargement
+        header('Content-Type: application/zip');
+        header('Content-Disposition: attachment; filename="mon_archive.zip"');
+        header('Content-Length: ' . filesize($zipFile));
+
+        // Lire et envoyer le fichier au client
+        readfile($zipFile);
+
+        // Supprimer le fichier temporaire après téléchargement
+        unlink($zipFile);
+        
+    }
 
 /*     $absolutePath = $_SERVER['DOCUMENT_ROOT'].trim($path_photo);
 
