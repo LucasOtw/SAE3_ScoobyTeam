@@ -7,7 +7,7 @@ ob_start();
 session_start();
 
 include_once __DIR__ . '/recupInfosCompte.php';
-include_once __DIR__ . '/logger.php'; // Inclusion du logger
+include_once __DIR__ . '/logs.php'; // Inclusion du logger
 
 if($_SERVER['REQUEST_METHOD'] === "POST"){
     if(isset($_POST['active2FA'])){
