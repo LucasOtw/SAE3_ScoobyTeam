@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $email = $_POST['email_OTP'] ?? "";
     $nbEssais = $_POST['nbEssais'] ?? "";
 
-    logValidation("Tentative de vérification OTP pour le compte $codeCompte (email: $email)");
+    logValidation("Tentative de vérification OTP pour le compte $codeCompte ");
 
     if (empty($codeOTP) || empty($codeCompte)) {
         logWarning("Requête OTP incomplète pour le compte $codeCompte");
