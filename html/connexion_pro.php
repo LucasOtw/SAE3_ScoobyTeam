@@ -77,7 +77,7 @@ session_start();
                     <p>Connectez-vous à votre compte professionnel pour gérer vos annonces, 
                     <br>suivre vos interactions et continuer à développer votre activité !</p>
                 </div>
-                <form action="#" method="POST">
+                <form id="connexionForm" action="#" method="POST">
                     <fieldset>
                         <legend>E-mail</legend>
                         <div class="connexion_pro_input-group">
@@ -95,7 +95,7 @@ session_start();
                         </div>
                     </fieldset>
 
-                    <button type="submit">Se connecter</button>
+                    <button type="submit" id="connectButton" >Se connecter</button>
                     <div class="connexion_pro_additional-links">
                         <p><span class="pas_de_compte">Pas de compte ? <a href="creation_pro.php">Inscription</a></span></p>
                         <p class="compte_membre">Un compte <a href="connexion_membre.php">Membre</a> ?</p>
@@ -123,7 +123,6 @@ session_start();
         document.addEventListener('DOMContentLoaded', function (){
             var form = document.getElementById("connexionForm");
             var connectBtn = document.getElementById("connectButton");
-            var submitBtn = document.getElementById("submitFormBtn");
             var champOTP = document.getElementById("otpCode");
             var errorMsg = document.getElementById("errorMsg");
             var formOTP = document.getElementById("envoiCode");
