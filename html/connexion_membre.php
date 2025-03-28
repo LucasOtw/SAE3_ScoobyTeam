@@ -345,15 +345,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-function checkLockTime() {
+    function checkLockTime() {
     let now = Date.now();
     let lockTime = JSON.parse(localStorage.getItem("user_lock")) || {}; // assure que `user_lock` est un objet
     let storedBlocked = JSON.parse(localStorage.getItem("essais_user")) || {}; // récupérer les essais restant
 
+    let updated = false; // Indicateur pour savoir si des mises à jour ont eu lieu
+
     // Boucle sur tous les utilisateurs dans lockTime pour vérifier leur statut de verrouillage
     for (let emailValue in lockTime) {
         if (lockTime.hasOwnProperty(emailValue)) {
-            let remainingTime = Math.ceil((lockTime[emailValue] - now) / 1000);
+            let remainingTime = Math.ceil((lockTime[emailValue] - now) / 1000); // Temps restant en secondes
 
             console.log(`Remaining time for ${emailValue}: ${remainingTime} seconds`);
 
@@ -364,20 +366,27 @@ function checkLockTime() {
                 // Le verrouillage est expiré, on réactive le champ OTP
                 document.getElementById('otpCode').disabled = false;
                 console.log(storedBlocked);
-                
+
                 // Supprimer l'utilisateur de `essais_user` après déverrouillage
-                delete storedBlocked[emailValue]; 
-                localStorage.setItem("essais_user", JSON.stringify(storedBlocked)); // Sauvegarder les données mises à jour
+                if (storedBlocked.hasOwnProperty(emailValue)) {
+                    delete storedBlocked[emailValue]; 
+                    updated = true; // Indiquer que des mises à jour ont eu lieu
+                }
                 
                 // Supprimer l'utilisateur de `user_lock` aussi
                 delete lockTime[emailValue]; 
-                localStorage.setItem("user_lock", JSON.stringify(lockTime)); // Sauvegarder les données mises à jour
+                updated = true; // Indiquer que des mises à jour ont eu lieu
             }
         }
     }
 
-    // Utilisation de setTimeout pour exécuter cette fonction régulièrement
-    console.log(localStorage.getItem("essais_user"));
+    // Si des mises à jour ont eu lieu, on enregistre les nouveaux objets dans le localStorage
+    if (updated) {
+        localStorage.setItem("essais_user", JSON.stringify(storedBlocked)); // Sauvegarder les données mises à jour
+        localStorage.setItem("user_lock", JSON.stringify(lockTime)); // Sauvegarder les données mises à jour
+    }
+
+    // Utilisation de setTimeout pour exécuter cette fonction régulièrement toutes les secondes
     setTimeout(checkLockTime, 1000); // Rappel la fonction toutes les secondes
 }
 
