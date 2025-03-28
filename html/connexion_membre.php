@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var modalOTP = document.getElementById('modal-otp');
 
     let codeCompte;
-    let nbEssais = 3;
+    let nbEssais;
 
     modalOTP.style.display = "none";
 
@@ -234,8 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(!data.otp){
                     window.location.href = "voir_offres.php";
                 } else {
-                    nbEssais = localStorage.getItem("nbEssais_otp") ?? null;
-                    console.log(nbEssais);
+                    nbEssais = localStorage.getItem("nbEssais_otp") ?? 3; // si le localStorage n'est pas défini, on l'initialise à 3
                     modalOTP.style.display = "block";
                     codeCompte = data.code_compte;
                 }
@@ -278,8 +277,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         console.log(data.message);
                         window.location.href = "voir_offres.php";
                     } else {
-                        console.log(data.nbEssais);
                         nbEssais = data.nbEssais;
+                        console.log(nbEssais);
                         console.log(data.message);
                     }
                 })
