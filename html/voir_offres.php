@@ -1005,7 +1005,12 @@ function tempsEcouleDepuisPublication($offre)
                     });
 
                     leafletItems.forEach(leaflet => {
-                        const text = offer.textContent.toLowerCase();
+                        console.log(leaflet);
+                        
+                        var json = document.querySelector(".voir_offre_carte input[name='uneOffre']").value;
+                        var parsedData = JSON.parse(json);
+                        
+                        console.log(json);
                         if (text.includes(query)) {
                             offer.classList.remove('hidden');
                         } else {
@@ -1473,7 +1478,7 @@ function tempsEcouleDepuisPublication($offre)
                                 }
                             }
                             $popupContent .= '<form action="detail_offre.php" method="POST" class="voir_offre_carte">';
-                            $popupContent .= '<input type="hidden" name="uneOffre" value="' . htmlspecialchars(serialize($monOffre)) . '">';
+                            $popupContent .= '<input type="hidden" name="uneOffre" value="' . htmlspecialchars(serialize($monOffre)) . '" class="data_offre_carte">';
                             $popupContent .= '<input type="hidden" name="vueDetails" value="1">';
                             $popupContent .= '<button type="submit" style="padding:6px 12px; background-color:#2DD7A4; color:white; border:none; cursor:pointer; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;">Voir l\'offre</button>';
                             $popupContent .= '</form>';
