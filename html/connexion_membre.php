@@ -175,6 +175,8 @@ if(!empty($_POST)){
         </div>
     </main>
 
+<div class="modal-overlay" id="modal-overlay"></div>
+
 <div id="modal-otp" class="otp-confirm-content">
     <form id="envoiCode" action="#" method="POST">
         <p class="texte-boite-perso">Code à 6 chiffres :</p>
@@ -234,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(!data.otp){
                     window.location.href = "voir_offres.php";
                 } else {
-                    modalOTP.style.display = "block";
+                    showPopup();
                     codeCompte = data.code_compte;
                 }
             } else {
@@ -284,83 +286,20 @@ document.addEventListener('DOMContentLoaded', function() {
         form.submit();
     });
 
-
- /*    if (!form || !connectBtn) {
-        console.error("Éléments du formulaire non trouvés !");
-        return;
-    }
-
-    if (btnEnvoiQuentin) {
-        btnEnvoiQuentin.addEventListener('click', function(e) {
-            e.preventDefault();
-            form.submit();
-        });
-    }
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        let email = document.getElementById('email');
-        let password = document.getElementById('password');
-
-        if (!email || !password) {
-            console.error("Champs e-mail ou mot de passe introuvables !");
-            return;
-        }
-
-        let emailValue = email.value.trim();
-        let passwordValue = password.value.trim();
-
-        fetch("connexion/script_connexion_membre.php", {
-            method: "POST",
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams({ mail: emailValue, pwd: passwordValue })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                console.log(data.message);
-            } else {
-                console.log(data.message);
-            }
-        })
-        .catch(error => {
-            console.error("Erreur AJAX :", error);
-        });
-    });
-
-    if (champOTP) {
-        champOTP.addEventListener("input", function () {
-            this.value = this.value.replace(/\D/g, "").slice(0, 6);
-            errorMsg.style.display = (this.value.length === 6) ? "none" : "block";
-        });
-    }
-
-    if (formOTP) {
-        formOTP.addEventListener('submit', (e) => {
-            e.preventDefault();
-            if (champOTP.value.length < 6) {
-                console.log("Code OTP trop court !");
-            } else {
-                fetch("verification_codeOTP.php", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: new URLSearchParams({ codeOTP: champOTP.value })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data.success ? "Code valide !" : "Code invalide !");
-                })
-                .catch(error => {
-                    console.error("Erreur :", error);
-                });
-            }
-        });
-    } */
-
 });
 
-    
+// Pour afficher la popup et l'overlay
+function showPopup() {
+    document.getElementById('modal-overlay').style.display = 'block';
+    document.getElementById('modal-otp').style.display = 'block';
+}
+
+// Pour masquer la popup et l'overlay
+function hidePopup() {
+    document.getElementById('modal-overlay').style.display = 'none';
+    document.getElementById('modal-otp').style.display = 'none';
+}
+
 </script>
 
 </body>

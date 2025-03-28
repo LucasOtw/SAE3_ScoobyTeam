@@ -1,5 +1,5 @@
 <?php
-ob_start(); // bufferisation, ça devrait marcher ?
+ob_start(); 
 session_start();
 
 require __DIR__ . '/../vendor/autoload.php';
