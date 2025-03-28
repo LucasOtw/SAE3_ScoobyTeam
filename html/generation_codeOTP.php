@@ -6,60 +6,69 @@ use OTPHP\TOTP;
 ob_start();
 session_start();
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Inclusion de la BDD + compte + logger
 include_once __DIR__ . '/recupInfosCompte.php';
-include_once __DIR__ . '/logs.php'; // Inclusion du logger
+include_once __DIR__ . '/logs.php';
 
-if($_SERVER['REQUEST_METHOD'] === "POST"){
-    if(isset($_POST['active2FA'])){
+logValidation("Accès à la page generation_codeOTP.php pour le compte " . ($compte['code_compte'] ?? 'inconnu'));
 
-        // On génère le code secret
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    if (isset($_POST['active2FA'])) {
+
+        // Génération du code OTP
         $otp = TOTP::create();
         $otp->setLabel("Scooby-Team");
         $secret = $otp->getSecret();
 
-        // Vérification existence code secret
-        $checkCodeSecret = $dbh->prepare('SELECT COUNT(*) FROM tripenarvor._compte_otp
-        WHERE code_compte = :code_compte');
+        logValidation("Génération du secret OTP pour le compte " . $compte['code_compte']);
+
+        // Vérification si un code existe déjà
+        $checkCodeSecret = $dbh->prepare('SELECT COUNT(*) FROM tripenarvor._compte_otp WHERE code_compte = :code_compte');
         $checkCodeSecret->bindValue(':code_compte', $compte['code_compte']);
         $checkCodeSecret->execute();
-
         $existeCode = $checkCodeSecret->fetchColumn();
 
-        if($existeCode > 0){
-            // Tentative d'intrusion : code déjà existant
-            logWarning("Tentative d'ajout d'un code 2FA alors qu'un code existe déjà pour le compte ID {$compte['code_compte']} (IP : {$_SERVER['REMOTE_ADDR']})");
+        if ($existeCode > 0) {
+            logError("Tentative d'ajout d'un code OTP alors qu'il en existe déjà pour le compte " . $compte['code_compte']);
             header('location: modif_mdp_membre.php');
             exit;
         }
 
-        // Insertion du nouveau code secret
+        // Insertion du code OTP
         $ajoutCodeSecret = $dbh->prepare('INSERT INTO tripenarvor._compte_otp (code_compte, code_secret)
-        VALUES (:code_compte, :_secret)');
+                                          VALUES (:code_compte, :_secret)');
         $ajoutCodeSecret->bindValue(':code_compte', $compte['code_compte']);
         $ajoutCodeSecret->bindValue(':_secret', $secret);
 
         try {
             $ajoutCodeSecret->execute();
-            logValidation("Activation 2FA réussie pour le compte ID {$compte['code_compte']} (IP : {$_SERVER['REMOTE_ADDR']})");
+            logValidation("Code OTP ajouté en base pour le compte " . $compte['code_compte']);
 
-            if(isset($monCompteMembre)){
+            if (isset($monCompteMembre)) {
                 header('location: modif_mdp_membre.php');
                 exit;
             } else {
                 header('location: modif_mdp_pro.php');
                 exit;
             }
+
         } catch (PDOException $e) {
-            logError("Erreur lors de l'insertion du code 2FA pour le compte ID {$compte['code_compte']} : " . $e->getMessage());
+            logError("Erreur BDD lors de l’insertion du code OTP : " . $e->getMessage());
             die("Échec exécution BDD : " . $e->getMessage());
         }
 
     } else {
-        // Accès POST sans case cochée : comportement anormal
-        logWarning("Requête POST reçue sans champ 'active2FA' pour le compte ID {$compte['code_compte']} (IP : {$_SERVER['REMOTE_ADDR']})");
+        logWarning("Tentative POST sans champ 'active2FA' par le compte " . ($compte['code_compte'] ?? 'inconnu'));
+        header('location: ../index.php');
+        exit;
     }
 } else {
-    // Accès non-POST : comportement anormal
-    logWarning("Tentative d'accès non autorisée à la page d'activation 2FA (méthode: {$_SERVER['REQUEST_METHOD']}, IP : {$_SERVER['REMOTE_ADDR']})");
+    logWarning("Accès non autorisé à generation_codeOTP.php (non-POST) par le compte " . ($compte['code_compte'] ?? 'inconnu'));
+    header('location: ../index.php');
+    exit;
 }
 ?>
