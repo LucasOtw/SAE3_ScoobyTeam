@@ -39,12 +39,13 @@ echo "<pre>";
    var_dump($image_offre);
 echo "</pre>";
 echo "<pre>";
-var_dump($details_offre);
-echo "</pre>";
-echo "<pre>";
 var_dump($compte);
 echo "</pre>";
 */
+
+echo "<pre>";
+var_dump($details_offre);
+echo "</pre>";
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
