@@ -962,7 +962,7 @@ function tempsEcouleDepuisPublication($offre)
             document.addEventListener("DOMContentLoaded", function () {
                 // Récupération des éléments
                 const offerItems = document.querySelectorAll('.offer');
-                const leafletItems = document.querySelectorAll('.leaflet-popup');
+                const leafletItems = document.querySelectorAll('.popup-container');
 
                 const searchInput = document.querySelector('.search-input');
 
