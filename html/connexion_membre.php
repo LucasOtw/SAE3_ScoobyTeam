@@ -303,7 +303,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (champOTP.value.length < 6) {
             console.log("Code OTP trop court !");
         } else {
-            console.log(storedBlocked);
             if(storedBlocked[emailValue_otp] >= 1){
                 fetch("verification_codeOTP.php",{
                     method: "POST",
@@ -334,6 +333,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 let blockDuration = 30 * 1000;
                 lockTime[emailValue_otp] = now + blockDuration;
                 localStorage.setItem("user_lock",JSON.stringify(lockTime));
+                checkLockTime();
             }
         }
     });
