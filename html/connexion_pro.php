@@ -116,7 +116,7 @@ session_start();
             <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
             <input type="submit" id="submit-code" value="Envoyer le code">
             <p id="errorMsg" style="color: red; display: none;">Le code doit contenir exactement 6 chiffres.</p>
-            <button>Se connecter quand même</button>
+            <!--<button>Se connecter quand même</button>-->
         </form>
     </div>
     <script>
@@ -144,9 +144,103 @@ session_start();
 
                 let email = document.getElementById('email');
                 let password = document.getElementById('password');
-            })
+
+                let emailValue = email.value.trim();
+                let passwordValue = password.value.trim();
+
+                error = document.getElementById('error-msg');
+
+                fetch("connexion/script_connexion_pro.php",{
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({
+                        mail: emailValue,
+                        pwd: passwordValue
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        error.innerHTML = "";
+
+                        if(!data.otp){
+                            window.location.href = "voir_offres.php";
+                        } else {
+                            showPopup();
+                            codeCompte = data.code_compte;
+                        }
+                    } else {
+                        error.innerHTML = data.message;
+                    }
+                })
+            });
+
+            // GESTION DE L'ENVOI DU FORMULAIRE OTP
+
+            btnOTP.disabled = true;
+
+            if (champOTP) {
+                champOTP.addEventListener("input", function () {
+                    this.value = this.value.replace(/\D/g, "").slice(0, 6);
+
+                    errorMsg.style.display = (this.value.length === 6) ? "none" : "block";
+                    btnOTP.disabled = (this.value.length === 6) ? false : true;
+                });
+            }
+
+            formOTP.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                if (champOTP.value.length < 6){
+                    console.log("Code OTP trop court !");
+                } else {
+                    fetch("verification_codeOTP.php",{
+                        method: "POST",
+                        headers: {
+                            'Content-Type' : 'application/x-www-form-urlencoded'
+                        },
+                        body: new URLSearchParams({
+                            codeOTP: champOTP.value,
+                            code_compte: codeCompte
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if(data.success){
+                            errorMsg.innerHTML = "";
+                            errorMsg.innerHTML = data.message;
+                            errorMsg.style.color = "green";
+                            errorMsg.style.display = "block";
+                            setTimeout(() => {
+                                window.location.href = "voir_offres.php";
+                            }, 1500);
+                        } else {
+                            errorMsg.innerHTML = "";
+                            errorMsg.innerHTML = data.message;
+                            errorMsg.style.color = "red";
+                            errorMsg.style.display = "block";
+                        }
+                    })
+                }
+            });
+
+            btnEnvoiQuentin.addEventListener('click', function(){
+                form.submit();
+            });
 
         });
+
+        function showPopup(){
+            document.getElementById('modal-overlay').style.display = 'block';
+            document.getElementById('modal-otp').style.display = 'block';
+        }
+
+        function hidePopup(){
+            document.getElementById('modal-overlay').style.display = 'none';
+            document.getElementById('modal-otp').style.display = 'none';
+        }
     </script>
 </body>
 </html>
