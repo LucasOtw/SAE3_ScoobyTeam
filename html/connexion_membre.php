@@ -194,6 +194,7 @@ if(!empty($_POST)){
         <input type="submit" value="Envoyer le code">
         <p id="errorMsg" style="color: red; display: none;">Le code doit contenir exactement 6 chiffres.</p>
         <button>Se connecter quand même</button>
+        <p id="countdown"></p>
     </form>
 </div>
 
@@ -271,19 +272,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.location.href = "voir_offres.php";
                 } else {
 
-                    let lockTime = JSON.parse(localStorage.getItem("user_lock")) || {};
-
-                    if(lockTime.hasOwnProperty[emailValue_otp]){
-                        console.log("Vous ne pouvez pas vous connecter !");
-                    } else {
-                        if(!storedBlocked.hasOwnProperty(emailValue_otp)){
-                            storedBlocked[emailValue_otp] = 3;
-                        }
-
-                        modalOTP.style.display = "block";
-                        codeCompte = data.code_compte;
+                    if(!storedBlocked.hasOwnProperty(emailValue_otp)){
+                        storedBlocked[emailValue_otp] = 3;
                     }
-                }
+
+                    modalOTP.style.display = "block";
+                    codeCompte = data.code_compte;
+                    }
             } else {
                 console.log("Authentification refusée !");
                 console.log(data.message);
@@ -332,13 +327,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
             } else {
                 let blockDuration = 5 * 60 * 1000 // 5 minutes
-                
+                lockTime[emailValue_otp] = now + blockDuration;
+                localStorage.setItem("user_lock",JSON.stringify(lockTime));
             }
         }
     });
     btnEnvoiQuentin.addEventListener('click', function(){
         form.submit();
     });
+
+    function checkLockTime(emailValue){
+        let now = Date.now();
+        let lockTime = localStorage.getItem("user_lock");
+
+        if(lockTime[emailValue] && now < lockTime[emailValue]){
+            champOTP.disabled = true;
+        }
+
+        setTimeout(checkLockTime(emailValue),1000);
+    }
 
 
  /*    if (!form || !connectBtn) {
