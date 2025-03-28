@@ -9799,6 +9799,9 @@ body {
     font-family: 'K2D', sans-serif;
     overflow-x: hidden;
     transition: transform 0.3s ease;
+    @media (max-width: 430px) {
+        align-items: center;
+    }
 }
 
 .content {
@@ -11394,6 +11397,7 @@ main.main_repondre_avis .message-erreur {
         transition: transform 0.2s ease;
         margin-top: 1vh;
         margin-left: 21vw;
+        align-items: center;
     }
 
     .signaler_un_avis_textarea {
