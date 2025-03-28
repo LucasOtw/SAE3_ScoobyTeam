@@ -13432,7 +13432,7 @@ ul.mentions_legales-sous-list {
 }
 
 .popup-2fa-validation #confirm:hover {
-    background-color: #a5b122;
+    background-color: var(--orange);
 }
 
 .popup-2fa-validation #cancel {
