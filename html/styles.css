@@ -10498,6 +10498,10 @@ body.menu-open #overlay {
 
     }
 
+    .search-select option[value="all"]::after {
+        content: "Cat";
+    }
+
     .search-bar {
         margin: 1em 0 20em 0;
     }
@@ -13905,9 +13909,4 @@ ul.mentions_legales-sous-list {
 
 .back_button{
     margin-top:1.5em;
-}
-@media (max-width: 430px) {
-    .search-select option[value="all"]::after {
-        content: "Cat";
-    }
 }
