@@ -1199,7 +1199,7 @@ function tempsEcouleDepuisPublication($offre)
                             echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
                             echo "marker.on('add', function() {";
                             echo "    if (this._icon) {";
-                            echo "        this._icon.setAttribute('data-offer', '" . json_encode($monOffre) . "');";
+                            echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre)) . "');";
                             echo "    }";
                             echo "});";
                             
