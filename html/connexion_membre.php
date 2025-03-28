@@ -342,6 +342,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function checkLockTime(emailValue) {
         let now = Date.now();
         let lockTime = JSON.parse(localStorage.getItem("user_lock")) || {}; // assure que `user_lock` est un objet
+        let remainingTime = Math.ceil((lockTime[emailValue] - now) / 1000);
+
+        console.log(remainingTime);
 
         if (lockTime[emailValue] && now < lockTime[emailValue]) {
             champOTP.disabled = true; // Désactive le champ OTP si l'utilisateur est verrouillé
