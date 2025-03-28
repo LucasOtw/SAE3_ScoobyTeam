@@ -216,6 +216,8 @@ function hidePopup() {
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    localStorage.clear();
+
     var form = document.getElementById("connexionForm");
     var connectBtn = document.getElementById("connectButton");
     var submitBtn = document.getElementById("submitFormBtn");
@@ -375,6 +377,7 @@ function checkLockTime() {
     }
 
     // Utilisation de setTimeout pour exécuter cette fonction régulièrement
+    console.log(localStorage.getItem("essais_user"));
     setTimeout(checkLockTime, 1000); // Rappel la fonction toutes les secondes
 }
 
