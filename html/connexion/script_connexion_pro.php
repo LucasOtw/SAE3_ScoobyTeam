@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $checkPro->bindValue(":code_compte",$user['code_compte'],PDO::PARAM_INT);
     $checkPro->execute();
     
-    $pro = $scheckPro->fetch(PDO::FETCH_ASSOC);
+    $pro = $checkPro->fetch(PDO::FETCH_ASSOC);
 
     if(!$pro){
         echo json_encode(["success" => false, "message" => "Identifiants incorrects"]);
