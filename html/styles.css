@@ -3732,9 +3732,9 @@ nom.avis {
 }
 
 .custom-confirm-content button:hover {
-    background-color: #FFF;
-    color: black;
-    border: 1px #BDC426 solid;
+    background-color: var(--vert-clair);
+    color: white;
+    border: 1px var(--vert-clair) solid;
     transform: translateY(-2px);
 }
 
@@ -3752,7 +3752,7 @@ nom.avis {
 
 .custom-confirm-content button:last-child:hover {
     background-color: white;
-    color: white;
+    color: black;
     transform: translateY(-2px);
 }
 
