@@ -3460,6 +3460,11 @@ nav.nav-bar {
 .main_consulter_compte_membre .profile {
     text-align: center;
     margin-bottom: 30px;
+    @media (max-width: 429px) {
+        width: 80%;
+        margin-left:2em;
+        
+    }
 }
 
 
