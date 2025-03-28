@@ -94,6 +94,7 @@ session_start();
                             <p class="erreur-formulaire-connexion-pro erreur-mot-de-passe-incorect">Mot de passe incorrect</p>
                         </div>
                     </fieldset>
+                    <span id="error-msg"></span>
 
                     <button type="submit" id="connectButton" >Se connecter</button>
                     <div class="connexion_pro_additional-links">
