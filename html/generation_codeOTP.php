@@ -14,7 +14,7 @@ error_reporting(E_ALL);
 include_once __DIR__ . '/recupInfosCompte.php';
 include_once __DIR__ . '/logs.php';
 
-logValidation("Accès à la page generation_codeOTP.php pour le compte $compte['code_compte']));
+logValidation("Accès à la page generation_codeOTP.php pour le compte $compte['code_compte']"));
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     if (isset($_POST['active2FA'])) {
