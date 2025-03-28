@@ -13906,7 +13906,7 @@ ul.mentions_legales-sous-list {
 .back_button{
     margin-top:1.5em;
 }
-@media (max-width: 429px) {
+@media (max-width: 430px) {
     .search-select option[value="all"]::after {
         content: "Cat";
     }
