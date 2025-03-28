@@ -49,14 +49,14 @@ function writeLog($type, $message) {
 }
 
 function logValidation($message) {
-    writeLog('VALIDATION', 🟢$message);
+    writeLog('VALIDATION', '🟢'$message);
 }
 
 function logWarning($message) {
-    writeLog('WARNING', 🟠$message);
+    writeLog('WARNING', '🟠'$message);
 }
 
 function logError($message) {
-    writeLog('ERROR', 🔴$message);
+    writeLog('ERROR', '🔴'$message);
 }
 ?>
