@@ -214,6 +214,7 @@ function hidePopup() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+
     var form = document.getElementById("connexionForm");
     var connectBtn = document.getElementById("connectButton");
     var submitBtn = document.getElementById("submitFormBtn");
@@ -224,6 +225,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var modalOTP = document.getElementById('modal-otp');
 
+    let email = document.getElementById('email');
+    let password = document.getElementById('password');
+
+    let emailValue_otp;
+
+    let storedBlocked = JSON.parse(localStorage.getItem("essais_user")) || {};
+
+    console.log(storedBlocked);
+
     let codeCompte;
     let nbEssais;
 
@@ -233,9 +243,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     form.addEventListener('submit',(e) => {
         e.preventDefault();
-
-        let email = document.getElementById('email');
-        let password = document.getElementById('password');
 
         let emailValue = email.value.trim();
         let passwordValue = password.value.trim();
@@ -256,10 +263,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log("Authentification validée !");
                 console.log(data.message);
 
+                emailValue_otp = emailValue;
+
                 if(!data.otp){
                     window.location.href = "voir_offres.php";
                 } else {
-                    nbEssais = localStorage.getItem("nbEssais_otp") ?? 3; // si le localStorage n'est pas défini, on l'initialise à 3
+
+                    if(!storedBlocked.hasOwnProperty(emailValue_otp)){
+                        storedBlocked[emailValue_otp] = 3;
+                    }
+
                     modalOTP.style.display = "block";
                     codeCompte = data.code_compte;
                 }
@@ -286,34 +299,28 @@ document.addEventListener('DOMContentLoaded', function() {
         if (champOTP.value.length < 6) {
             console.log("Code OTP trop court !");
         } else {
-            if(nbEssais >= 1){
-                fetch("verification_codeOTP.php",{
-                    method: "POST",
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams({
-                        codeOTP : champOTP.value,
-                        code_compte : codeCompte,
-                        nombre_essais : nbEssais
-                    })
+            fetch("verification_codeOTP.php",{
+                method: "POST",
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({
+                    codeOTP : champOTP.value,
+                    code_compte : codeCompte
                 })
-                .then(response => response.json())
-                .then(data => {
-                    if(data.success){
-                        console.log(data.message);
-                        window.location.href = "voir_offres.php";
-                    } else {
-                        nbEssais = data.nbEssais;
-                        console.log(nbEssais);
-                        localStorage.setItem("nbEssais_otp",nbEssais);
-                        console.log(data.message);
-                    }
-                })
-            } else {
-                console.log("Vous avez utilisé vos 3 essais...");
-            }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success){
+                    console.log(data.message);
+                    window.location.href = "voir_offres.php";
+                } else {
+                    storedBlocked[emailValue_otp]--;
+                    console.log(storedBlocked[emailValue_otp]);
+                    localStorage.setItem("essais_user",JSON.stringify(storedBlocked));
+                    console.log(data.message);
+                }
+            })
         }
     });
-
     btnEnvoiQuentin.addEventListener('click', function(){
         form.submit();
     });

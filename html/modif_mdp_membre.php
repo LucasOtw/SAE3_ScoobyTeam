@@ -272,7 +272,7 @@ if (isset($_POST['modif_infos'])) {
                     ?>
                     <div class="creation-success" id="modif_mdp_membre">
                         <img src="<?php echo $img_success ?>" alt="Succès">
-                        <h2><?php echo $msg_modif; ?></h2>
+                        <h4><?php echo $msg_modif; ?></h4>
                     </div>
                     <?php
                 }
