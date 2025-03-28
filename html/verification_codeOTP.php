@@ -39,14 +39,14 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $otp = TOTP::create();
     $otp->setSecret($codeSecret);
 
-    if ($otp->verify($codeOTP, null, 1)) {
-        logValidation("Code OTP correct pour le compte $codeCompte");
+    if ($otp->verify($codeOTP, null, 1)) { 
+        logValidation("Code OTP correct pour le compte $codeCompte ");
         echo json_encode(["success" => true, "message" => "Code valide !"]);
     } else {
-        logWarning("Échec de validation OTP pour le compte $codeCompte - code entré : $codeOTP");
+        logWarning("Échec de validation OTP pour le compte $codeCompte - il vous reste $nbEssai");
         echo json_encode(["success" => false, "message" => "Code invalide"]);
     }
 } else {
-    logWarning("Requête non-POST reçue sur verif_codeOTP.php");
+    logError("Requête non-POST reçue sur verif_codeOTP.php");
     echo json_encode(["success" => false, "message" => "Méthode non autorisée"]);
 }
