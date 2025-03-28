@@ -194,6 +194,7 @@ if(!empty($_POST)){
         <input type="submit" value="Envoyer le code">
         <p id="errorMsg" style="color: red; display: none;">Le code doit contenir exactement 6 chiffres.</p>
         <button>Se connecter quand même</button>
+        <p id="countdown"></p>
     </form>
 </div>
 
@@ -214,6 +215,9 @@ function hidePopup() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+
+    localStorage.clear();
+
     var form = document.getElementById("connexionForm");
     var connectBtn = document.getElementById("connectButton");
     var submitBtn = document.getElementById("submitFormBtn");
@@ -224,6 +228,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var modalOTP = document.getElementById('modal-otp');
 
+    let email = document.getElementById('email');
+    let password = document.getElementById('password');
+
+    let emailValue_otp;
+
+    var storedBlocked = JSON.parse(localStorage.getItem("essais_user")) || {};
+    var lockTime = JSON.parse(localStorage.getItem("user_lock")) || {};
+
+    var now = Date.now();
+
+    checkLockTime();
+
+
     let codeCompte;
     let nbEssais;
 
@@ -233,9 +250,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     form.addEventListener('submit',(e) => {
         e.preventDefault();
-
-        let email = document.getElementById('email');
-        let password = document.getElementById('password');
 
         let emailValue = email.value.trim();
         let passwordValue = password.value.trim();
@@ -256,13 +270,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log("Authentification validée !");
                 console.log(data.message);
 
+                emailValue_otp = emailValue;
+
                 if(!data.otp){
                     window.location.href = "voir_offres.php";
                 } else {
-                    nbEssais = localStorage.getItem("nbEssais_otp") ?? 3; // si le localStorage n'est pas défini, on l'initialise à 3
+
+                    if(!storedBlocked.hasOwnProperty(emailValue_otp)){
+                        storedBlocked[emailValue_otp] = 3;
+                    }
+
                     modalOTP.style.display = "block";
                     codeCompte = data.code_compte;
-                }
+                    }
             } else {
                 console.log("Authentification refusée !");
                 console.log(data.message);
@@ -286,14 +306,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (champOTP.value.length < 6) {
             console.log("Code OTP trop court !");
         } else {
-            if(nbEssais >= 1){
+            if(storedBlocked[emailValue_otp] >= 1){
                 fetch("verification_codeOTP.php",{
                     method: "POST",
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: new URLSearchParams({
                         codeOTP : champOTP.value,
                         code_compte : codeCompte,
-                        nombre_essais : nbEssais
+                        nbEssais : storedBlocked[emailValue_otp]
                     })
                 })
                 .then(response => response.json())
@@ -302,21 +322,75 @@ document.addEventListener('DOMContentLoaded', function() {
                         console.log(data.message);
                         window.location.href = "voir_offres.php";
                     } else {
-                        nbEssais = data.nbEssais;
-                        console.log(nbEssais);
-                        localStorage.setItem("nbEssais_otp",nbEssais);
+                        if(storedBlocked[emailValue_otp] >= 0){
+                            storedBlocked[emailValue_otp]--;
+                            console.log(storedBlocked);
+                            localStorage.setItem("essais_user",JSON.stringify(storedBlocked));
+                        }
+                        console.log(storedBlocked[emailValue_otp]);
                         console.log(data.message);
                     }
                 })
             } else {
-                console.log("Vous avez utilisé vos 3 essais...");
+                // let blockDuration = 5 * 60 * 1000 // 5 minutes
+                let blockDuration = 30 * 1000;
+                lockTime[emailValue_otp] = now + blockDuration;
+                localStorage.setItem("user_lock",JSON.stringify(lockTime));
+                checkLockTime();
             }
         }
     });
-
     btnEnvoiQuentin.addEventListener('click', function(){
         form.submit();
     });
+
+
+    function checkLockTime() {
+    let now = Date.now();
+    let lockTime = JSON.parse(localStorage.getItem("user_lock")) || {}; // assure que `user_lock` est un objet
+    let storedBlocked = JSON.parse(localStorage.getItem("essais_user")) || {}; // récupérer les essais restant
+
+    let updated = false; // Indicateur pour savoir si des mises à jour ont eu lieu
+
+    // Boucle sur tous les utilisateurs dans lockTime pour vérifier leur statut de verrouillage
+    for (let emailValue in lockTime) {
+        if (lockTime.hasOwnProperty(emailValue)) {
+            let remainingTime = Math.ceil((lockTime[emailValue] - now) / 1000); // Temps restant en secondes
+
+            console.log(`Remaining time for ${emailValue}: ${remainingTime} seconds`);
+
+            if (now < lockTime[emailValue]) {
+                // L'utilisateur est toujours bloqué, on désactive le champ OTP
+                document.getElementById('otpCode').disabled = true;
+            } else {
+                // Le verrouillage est expiré, on réactive le champ OTP
+                document.getElementById('otpCode').disabled = false;
+                console.log(storedBlocked);
+
+                // Supprimer l'utilisateur de `essais_user` après déverrouillage
+                if (storedBlocked.hasOwnProperty(emailValue)) {
+                    delete storedBlocked[emailValue]; 
+                    updated = true; // Indiquer que des mises à jour ont eu lieu
+                }
+                
+                // Supprimer l'utilisateur de `user_lock` aussi
+                delete lockTime[emailValue]; 
+                updated = true; // Indiquer que des mises à jour ont eu lieu
+            }
+        }
+    }
+
+    // Si des mises à jour ont eu lieu, on enregistre les nouveaux objets dans le localStorage
+    if (updated) {
+        localStorage.setItem("essais_user", JSON.stringify(storedBlocked)); // Sauvegarder les données mises à jour
+        localStorage.setItem("user_lock", JSON.stringify(lockTime)); // Sauvegarder les données mises à jour
+    }
+
+    // Utilisation de setTimeout pour exécuter cette fonction régulièrement toutes les secondes
+    setTimeout(checkLockTime, 1000); // Rappel la fonction toutes les secondes
+}
+
+
 
 
  /*    if (!form || !connectBtn) {

@@ -290,9 +290,12 @@ if (isset($_POST['modif_infos'])) {
                 <li><a href="consulter_mes_reponses_pro.php">Mes réponses</a></li>
             </ul>
         </section>
+        <!-- Ajouter ceci juste avant votre popup -->
+        <div class="popup-backdrop" id="popup-backdrop"></div>
+
         <div class="popup-2fa-validation">
             <p class="texte-boite-perso">Voulez-vous vraiment activer l'authentification à 2 facteurs ?</p>
-            <p>Cette action est irréversible !</p> <!-- A mettre en rouge, avec l'icone adéquate -->
+            <p>Cette action est irréversible !</p>
             <span>
                 <button id="confirm">Ok</button>
                 <button id="cancel">Annuler</button>
@@ -546,14 +549,17 @@ if (isset($_POST['modif_infos'])) {
         });
 
     </script>
-        <script>
+    <script>
         /* CE SCRIPT SERT A LA GÉNÉRATION DU QR CODE
         ET À L'ACTIVATION DE L'AUTHENTIFICATION À DEUX FACTEURS */
         document.addEventListener('DOMContentLoaded', function(){
             let formActive2FA = document.getElementById('form2FA');
             let dialogue2FA = document.getElementsByClassName('popup-2fa-validation')[0];
+            let backdrop = document.getElementById('popup-backdrop');
 
+            // Masquer la popup et le backdrop au chargement
             dialogue2FA.style.display = "none";
+            backdrop.style.display = "none";
 
             console.log(dialogue2FA);
             console.log(formActive2FA);
@@ -561,6 +567,7 @@ if (isset($_POST['modif_infos'])) {
             formActive2FA.addEventListener('submit', function(e){
                 e.preventDefault();
                 dialogue2FA.style.display = "block";
+                backdrop.style.display = "block"; // Afficher le backdrop avec effet de flou
             });
 
             let confirmBtn = dialogue2FA.querySelector('#confirm');
@@ -573,6 +580,7 @@ if (isset($_POST['modif_infos'])) {
 
             cancelBtn.addEventListener('click', function(){
                 dialogue2FA.style.display = "none";
+                backdrop.style.display = "none"; // Masquer le backdrop
             });
         });
     </script>

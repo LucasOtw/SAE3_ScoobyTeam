@@ -246,7 +246,7 @@ function tempsEcouleDepuisPublication($offre)
                     <option value="croissantP">Croissant</option>
                 </select>
                 <select class="search-select">
-                    <option value="" selected>Note</option>
+                    <option value="" selected>Notes</option>
                     <option value="decroissantN">Décroissant</option>
                     <option value="croissantN">Croissant</option>
                 </select>
@@ -958,288 +958,6 @@ function tempsEcouleDepuisPublication($offre)
             ?>
         </section>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                // Récupération des éléments
-                const offerItems = document.querySelectorAll('.offer');
-
-                const searchInput = document.querySelector('.search-input');
-
-                const searchSelect = document.querySelectorAll('.search-select');
-                const container = document.querySelector('#offers-list');
-
-                // const searchLocation = document.querySelector('#location');
-
-                const selectRate = document.querySelector('#select-rate');
-
-                const priceMinInput = document.getElementById("price-min");
-                const priceMaxInput = document.getElementById("price-max");
-                const priceMinDisplay = document.getElementById("price-min-display");
-                const priceMaxDisplay = document.getElementById("price-max-display");
-
-                const selectStatus = document.querySelector('#select-statut');
-
-                const eventDate = document.querySelector('#event-date');
-
-                const openingStartDate = document.getElementById('opening-start-date');
-                const openingEndDate = document.getElementById('opening-end-date');
-
-
-
-                ///////////////////////////////////////////////////
-                ///            Barre de recherche               ///
-                ///////////////////////////////////////////////////
-                // Barre de recherche
-                searchInput.addEventListener('input', () => {
-                    const query = searchInput.value.toLowerCase().trim();
-
-                    // Parcourir chaque offre et vérifier si elle correspond à la recherche
-                    offerItems.forEach(offer => {
-                        const text = offer.textContent.toLowerCase();
-                        if (text.includes(query)) {
-                            offer.classList.remove('hidden');
-                        } else {
-                            offer.classList.add('hidden');
-                        }
-                    });
-
-                });
-
-
-                ///////////////////////////////////////////////////
-                ///            Selecteur cat, d et c            ///
-                ///////////////////////////////////////////////////
-                // Selecteurs de tri
-                searchSelect.forEach(select => {
-                    select.addEventListener('change', function () {
-                        const category = document.querySelector('.search-select:nth-of-type(1)').value;
-                        const priceOrder = document.querySelector('.search-select:nth-of-type(2)').value;
-                        const noteOrder = document.querySelector('.search-select:nth-of-type(3)').value;
-                        const rate = document.querySelector('#select-rate').value;
-                        const status = document.querySelector('#select-statut').value;
-
-                        // Filtrer par catégorie
-                        offerItems.forEach(offer => {
-
-                            const offerCategory = offer.getAttribute('data-category');
-                            const offerRate = offer.getAttribute('data-rate');
-                            const offerStatus = offer.getAttribute('data-status');
-
-                            if ((category === 'all' || category === offerCategory) &&
-                                (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
-                                (!status || status === offerStatus)) {
-                                offer.style.removeProperty('display');
-                            } else {
-                                offer.style.display = "none";
-                            }
-                        });
-
-
-                        // Trier les offres visibles
-                        let offers = Array.from(document.querySelectorAll('.offer:not(.hidden)'));
-
-                        if (priceOrder) {
-                            offers.sort((a, b) => {
-                                const priceA = parseFloat(a.getAttribute('data-price')) || 0;
-                                const priceB = parseFloat(b.getAttribute('data-price')) || 0;
-                                return priceOrder === 'croissantP' ? priceA - priceB : priceB - priceA;
-                            });
-                        }
-
-                        if (noteOrder) {
-                            offers.sort((a, b) => {
-                                const noteA = parseFloat(a.getAttribute('data-rate')) || 0;
-                                const noteB = parseFloat(b.getAttribute('data-rate')) || 0;
-
-                                console.log(noteA + " " + noteB);
-
-                                return noteOrder === 'croissantN' ? noteA - noteB : noteB - noteA;
-                            });
-                        }
-
-                        // Réorganiser dans le DOM
-                        container.innerHTML = ''; // Clear container
-                        offers.forEach(offer => container.appendChild(offer)); // Append sorted offers
-                    });
-                });
-
-
-                ///////////////////////////////////////////////////
-                ///               Recherche de lieu               ///
-                ///////////////////////////////////////////////////
-                // searchLocation.addEventListener('input', () => {
-                //     const query = searchLocation.value.toLowerCase().trim();
-
-                //     offerItems.forEach(offer => {
-                //         const text = offer.getAttribute('location').toLowerCase();
-                //         console.log(query);
-                //         if (text.includes(query)) {
-                //             offer.classList.remove('hidden');
-                //         } else {
-                //             offer.classList.add('hidden');
-                //         }
-                //     });
-                // });
-
-
-                ///////////////////////////////////////////////////
-                ///               Selecteur note                ///
-                ///////////////////////////////////////////////////
-                // selectRate.addEventListener('change', function () {
-                //         const rate = selectRate.value;
-
-                //         // Filtrer par catégorie
-                //         offerItems.forEach(offer => {
-
-                //             const offerRate = offer.getAttribute('data-rate');
-                //             if (!rate || rate === offerRate || (offerRate > rate && offerRate < rate+1)) {
-                //                 console.log(`BOUCLE NON VALIDE : ${offerRate}`);
-                //                 //offer.classList.remove('hidden');
-                //                 offer.style.removeProperty('display');
-                //             } else {
-                //                 console.log(`BOUCLE VALIDE : ${offerRate}`);
-                //                 //offer.classList.add('hidden');
-                //                 offer.style.display = "none";
-                //             }
-                //         });
-                //     });
-
-
-                ///////////////////////////////////////////////////
-                ///      Selecteur de la fourchette de prix     ///
-                ///////////////////////////////////////////////////
-                // Mettre à jour les affichages du prix
-                function updatePriceDisplay() {
-                    // Empêche price-min de dépasser price-max
-                    if (parseInt(priceMinInput.value) > parseInt(priceMaxInput.value)) {
-                        priceMinInput.value = priceMaxInput.value;
-                    }
-
-                    // Empêche price-max d'être inférieur à price-min
-                    if (parseInt(priceMaxInput.value) < parseInt(priceMinInput.value)) {
-                        priceMaxInput.value = priceMinInput.value;
-                    }
-
-                    priceMinDisplay.textContent = priceMinInput.value;
-                    priceMaxDisplay.textContent = priceMaxInput.value;
-                }
-
-                // Filtrer les offres en fonction de la fourchette de prix
-                function filterOffers() {
-                    const minPrice = parseFloat(priceMinInput.value);
-                    const maxPrice = parseFloat(priceMaxInput.value);
-
-                    offerItems.forEach(offer => {
-                        const offerPrice = parseFloat(offer.getAttribute('data-price'));
-
-                        // Vérifier si le prix de l'offre est dans la fourchette
-                        if (offerPrice >= minPrice && offerPrice <= maxPrice) {
-                            offer.style.removeProperty('display'); // Afficher l'offre
-                        } else {
-                            offer.style.display = "none"; // Cacher l'offre
-                        }
-                    });
-                }
-
-                // Ajouter des événements sur les sliders
-                priceMinInput.addEventListener("input", () => {
-                    updatePriceDisplay(); // Mettre à jour l'affichage des prix
-                    filterOffers(); // Appliquer le filtre
-                });
-
-                priceMaxInput.addEventListener("input", () => {
-                    updatePriceDisplay(); // Mettre à jour l'affichage des prix
-                    filterOffers(); // Appliquer le filtre
-                });
-
-
-
-                ///////////////////////////////////////////////////
-                ///              Selecteur status               ///
-                ///////////////////////////////////////////////////
-                // selectStatus.addEventListener('change', function () {
-                //         const status = selectStatus.value;
-
-                //         // Filtrer par catégorie
-                //         offerItems.forEach(offer => {
-
-                //             const offerStatus = offer.getAttribute('data-status');
-                //             if (!status || status === offerStatus) {
-                //                 offer.style.removeProperty('display');
-                //             } else {
-                //                 offer.style.display = "none";
-                //             }
-                //         });
-                //     });
-
-
-
-                ///////////////////////////////////////////////////
-                ///            Selecteur date event             ///
-                ///////////////////////////////////////////////////
-                eventDate.addEventListener('change', function () {
-                    const date = eventDate.value;
-
-                    // Filtrer par catégorie
-                    offerItems.forEach(offer => {
-
-                        const offerEvent = offer.getAttribute('data-event');
-                        if (!date || date === offerEvent) {
-                            offer.style.removeProperty('display');
-                        } else {
-                            offer.style.display = "none";
-                        }
-                    });
-                });
-
-
-
-                ///////////////////////////////////////////////////
-                ///           Selecteur date periode            ///
-                ///////////////////////////////////////////////////
-                function filterByOpeningDates() {
-                    const startDate = openingStartDate.value;
-                    const endDate = openingEndDate.value;
-
-                    // Parcourir chaque offre et vérifier les critères
-                    offerItems.forEach(offer => {
-                        const offerPeriodStart = offer.getAttribute('data-period-o');
-                        const offerPeriodEnd = offer.getAttribute('data-period-c');
-                        const offerCategory = offer.getAttribute('data-category');
-
-                        // Condition pour afficher l'offre
-                        if (((!startDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite')) &&
-                            (!endDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite'))) ||
-                            ((startDate <= offerPeriodEnd && startDate >= offerPeriodStart) || (endDate >= offerPeriodStart && endDate <= offerPeriodEnd))) {
-                            offer.style.removeProperty('display'); // Afficher l'offre
-                        } else {
-                            offer.style.display = "none"; // Masquer l'offre
-                        }
-                        if (offerCategory == 'parc_attractions') {
-                            console.log(offerCategory);
-                            if (!startDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite')) {
-                                console.log("Boucle n1 : ok\n");
-                            }
-                            if (!endDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite')) {
-                                console.log("Boucle n2 : ok\n");
-                            }
-                            if (startDate <= offerPeriodEnd && startDate >= offerPeriodStart) {
-                                console.log("Boucle n3 : ok\n");
-                            }
-                            if (endDate >= offerPeriodStart && endDate <= offerPeriodEnd) {
-                                console.log("Boucle n4 : ok\n");
-                            }
-                        }
-                    });
-                }
-
-                // Ajouter un écouteur d'événement sur les champs de date
-                openingStartDate.addEventListener('change', filterByOpeningDates);
-                openingEndDate.addEventListener('change', filterByOpeningDates);
-
-            });
-        </script>
-
     </main>
     <nav class="nav-bar">
         <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
@@ -1445,59 +1163,65 @@ function tempsEcouleDepuisPublication($offre)
                                 }
                             }
 
-                            // // Contenu de la popup avec styles améliorés
-                            // $popupContent = "<div class='popup-container' style='width:230px; border-radius:8px; overflow:hidden; font-family:\"K2D\", sans-serif;'>";
+                            // Contenu de la popup avec styles améliorés
+                            $popupContent = "<div class='popup-container' style='width:230px; border-radius:8px; overflow:hidden; font-family:\"K2D\", sans-serif;'>";
 
-                            // // Image avec overlay dégradé
-                            // if (!empty($adr['url_image'])) {
-                            //     $popupContent .= "<div style='position:relative;'>";
-                            //     $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:95%; height:100px;'>";
-                            //     $popupContent .= "<div style='position:absolute; top:0; right:0; background-color:#F28322; color:white; padding:4px 8px; border-bottom-left-radius:8px; font-size:14px; font-weight:bold;'>" . $adr['tarif'] . " €</div>";
-                            //     $popupContent .= "</div>";
-                            // }
+                            // Image avec overlay dégradé
+                            if (!empty($adr['url_image'])) {
+                                $popupContent .= "<div style='position:relative;'>";
+                                $popupContent .= "<img src='./" . $adr['url_image'] . "' style='width:95%; height:100px;'>";
+                                $popupContent .= "<div style='position:absolute; top:0; right:0; background-color:#F28322; color:white; padding:4px 8px; border-bottom-left-radius:8px; font-size:14px; font-weight:bold;'>" . $adr['tarif'] . " €</div>";
+                                $popupContent .= "</div>";
+                            }
 
-                            // // Contenu texte
-                            // $popupContent .= "<div style='padding: 12px; background-color: white;'>";
-                            // $popupContent .= "<h3 style='margin:0 0 8px 0; color:#333; font-size:16px; font-weight:600; line-height:1.2;'>" . addslashes($adr['titre_offre']) . "</h3>";
-                            // $popupContent .= "<p style='margin:0 0 8px 0; font-size:14px; color:#555;'><span class=\"iconify\" data-icon=\"mdi:map-marker\" style=\"color: #BDC426; font-size: 1.2em; vertical-align: middle; margin-right: 3px;\"></span> " . addslashes($adr['ville']) . "</p>";
+                            // Contenu texte
+                            $popupContent .= "<div style='padding: 12px; background-color: white;'>";
+                            $popupContent .= "<h3 style='margin:0 0 8px 0; color:#333; font-size:16px; font-weight:600; line-height:1.2;'>" . addslashes($adr['titre_offre']) . "</h3>";
+                            $popupContent .= "<p style='margin:0 0 8px 0; font-size:14px; color:#555;'><span class=\"iconify\" data-icon=\"mdi:map-marker\" style=\"color: #BDC426; font-size: 1.2em; vertical-align: middle; margin-right: 3px;\"></span> " . addslashes($adr['ville']) . "</p>";
 
-                            // // Boutons d'action
-                            // $popupContent .= "<div style='display:flex; justify-content:space-between; margin-top:10px;'>";
+                            // Boutons d'action
+                            $popupContent .= "<div style='display:flex; justify-content:space-between; margin-top:10px;'>";
 
-                            // $popupContent .= '<form action="detail_offre.php" method="POST" class="voir_offre_carte">';
-                            // $popupContent .= '<input type="hidden" name="uneOffre" value="' . htmlspecialchars(serialize($monOffre)) . '" class="data_offre_carte">';
-                            // $popupContent .= '<input type="hidden" name="vueDetails" value="1">';
-                            // $popupContent .= '<button type="submit" style="padding:6px 12px; background-color:#2DD7A4; color:white; border:none; cursor:pointer; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;">Voir l\'offre</button>';
-                            // $popupContent .= '</form>';
+                            $popupContent .= '<form action="detail_offre.php" method="POST" class="voir_offre_carte">';
+                            $popupContent .= '<input type="hidden" name="uneOffre" value="' . htmlspecialchars(serialize($monOffre)) . '" class="data_offre_carte">';
+                            $popupContent .= '<input type="hidden" name="vueDetails" value="1">';
+                            $popupContent .= '<button type="submit" style="padding:6px 12px; background-color:#2DD7A4; color:white; border:none; cursor:pointer; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;">Voir l\'offre</button>';
+                            $popupContent .= '</form>';
 
 
 
-                            // $popupContent .= "<a href='" . $url_maps . "' target='_blank' style='display:inline-block; padding:6px 12px; background-color:#F28322; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;'><span class=\"iconify\" data-icon=\"mdi:navigation\" style=\"font-size: 1.1em; vertical-align: middle; margin-right: 3px;\"></span>Itinéraire</a>";
-                            // $popupContent .= "</div>";
+                            $popupContent .= "<a href='" . $url_maps . "' target='_blank' style='display:inline-block; padding:6px 12px; background-color:#F28322; color:white; text-decoration:none; border-radius:4px; font-size:12px; font-weight:500; transition:all 0.2s;'><span class=\"iconify\" data-icon=\"mdi:navigation\" style=\"font-size: 1.1em; vertical-align: middle; margin-right: 3px;\"></span>Itinéraire</a>";
+                            $popupContent .= "</div>";
 
-                            // $popupContent .= "</div>";
-                            // $popupContent .= "</div>";
+                            $popupContent .= "</div>";
+                            $popupContent .= "</div>";
 
-                            // echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
-                            // echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false, className: 'custom-popup'}).setContent(\"" . addslashes($popupContent) . "\");";
-                            // echo "marker.bindPopup(popup);";
+                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
+                            echo "marker.on('add', function() {";
+                            echo "    if (this._icon) {";
+                            echo "        this._icon.setAttribute('data-offer', '" . json_encode($monOffre) . "');";
+                            echo "    }";
+                            echo "});";
+                            
+                            echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false, className: 'custom-popup'}).setContent(\"" . addslashes($popupContent) . "\");";
+                            echo "marker.bindPopup(popup);";
+                            
+                            // Ajouter les événements de survol améliorés
+                            echo "marker.on('mouseover', function(e) { this.openPopup(); });";
 
-                            // // Ajouter les événements de survol améliorés
-                            // echo "marker.on('mouseover', function(e) { this.openPopup(); });";
+                            // Utiliser une variable pour suivre l'état de survol
+                            echo "var isMouseOverPopup = false;";
 
-                            // // Utiliser une variable pour suivre l'état de survol
-                            // echo "var isMouseOverPopup = false;";
+                            // Gestion du mouseout sur le marqueur
+                            echo "marker.on('mouseout', function(e) {";
+                            echo "    setTimeout(() => {";
+                            echo "        if (!isMouseOverPopup) {";
+                            echo "            this.closePopup();";
+                            echo "        }";
+                            echo "    }, 50);";
+                            echo "});";
 
-                            // // Gestion du mouseout sur le marqueur
-                            // echo "marker.on('mouseout', function(e) {";
-                            // echo "    setTimeout(() => {";
-                            // echo "        if (!isMouseOverPopup) {";
-                            // echo "            this.closePopup();";
-                            // echo "        }";
-                            // echo "    }, 50);";
-                            // echo "});";
-
-                            // echo "markers.addLayer(marker);";
+                            echo "markers.addLayer(marker);";
                         }
                     }
                     ?>
@@ -1589,6 +1313,306 @@ function tempsEcouleDepuisPublication($offre)
     </style>
 `);
     </script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Récupération des éléments
+        const offerItems = document.querySelectorAll('.offer');
+        const leafletItems = document.querySelectorAll('.leaflet-marker-icon');
+
+        const searchInput = document.querySelector('.search-input');
+
+        const searchSelect = document.querySelectorAll('.search-select');
+        const container = document.querySelector('#offers-list');
+
+        // const searchLocation = document.querySelector('#location');
+
+        const selectRate = document.querySelector('#select-rate');
+
+        const priceMinInput = document.getElementById("price-min");
+        const priceMaxInput = document.getElementById("price-max");
+        const priceMinDisplay = document.getElementById("price-min-display");
+        const priceMaxDisplay = document.getElementById("price-max-display");
+
+        const selectStatus = document.querySelector('#select-statut');
+
+        const eventDate = document.querySelector('#event-date');
+
+        const openingStartDate = document.getElementById('opening-start-date');
+        const openingEndDate = document.getElementById('opening-end-date');
+
+
+
+        ///////////////////////////////////////////////////
+        ///            Barre de recherche               ///
+        ///////////////////////////////////////////////////
+        // Barre de recherche
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase().trim();
+
+            // Parcourir chaque offre et vérifier si elle correspond à la recherche
+            offerItems.forEach(offer => {
+                const text = offer.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    offer.classList.remove('hidden');
+                } else {
+                    offer.classList.add('hidden');
+                }
+            });
+
+            leafletItems.forEach(leaflet => {
+                let offerData = leaflet.getAttribute("data-offer");
+
+                if (offerData) {
+                    console.log(offerData);
+                    let offer = JSON.parse(offerData); // Convertir en objet
+                    let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
+        
+                    if (offerText.includes(query)) {
+                        leaflet.style.display = "block"; // Afficher le marqueur
+                    } else {
+                        leaflet.style.display = "none"; // Cacher le marqueur
+                    }
+                }
+            });
+
+        });
+
+
+        ///////////////////////////////////////////////////
+        ///            Selecteur cat, d et c            ///
+        ///////////////////////////////////////////////////
+        // Selecteurs de tri
+        searchSelect.forEach(select => {
+            select.addEventListener('change', function () {
+                const category = document.querySelector('.search-select:nth-of-type(1)').value;
+                const priceOrder = document.querySelector('.search-select:nth-of-type(2)').value;
+                const noteOrder = document.querySelector('.search-select:nth-of-type(3)').value;
+                const rate = document.querySelector('#select-rate').value;
+                const status = document.querySelector('#select-statut').value;
+
+                // Filtrer par catégorie
+                offerItems.forEach(offer => {
+
+                    const offerCategory = offer.getAttribute('data-category');
+                    const offerRate = offer.getAttribute('data-rate');
+                    const offerStatus = offer.getAttribute('data-status');
+
+                    if ((category === 'all' || category === offerCategory) &&
+                        (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
+                        (!status || status === offerStatus)) {
+                        offer.style.removeProperty('display');
+                    } else {
+                        offer.style.display = "none";
+                    }
+                });
+
+
+                // Trier les offres visibles
+                let offers = Array.from(document.querySelectorAll('.offer:not(.hidden)'));
+
+                if (priceOrder) {
+                    offers.sort((a, b) => {
+                        const priceA = parseFloat(a.getAttribute('data-price')) || 0;
+                        const priceB = parseFloat(b.getAttribute('data-price')) || 0;
+                        return priceOrder === 'croissantP' ? priceA - priceB : priceB - priceA;
+                    });
+                }
+
+                if (noteOrder) {
+                    offers.sort((a, b) => {
+                        const noteA = parseFloat(a.getAttribute('data-rate')) || 0;
+                        const noteB = parseFloat(b.getAttribute('data-rate')) || 0;
+
+                        console.log(noteA + " " + noteB);
+
+                        return noteOrder === 'croissantN' ? noteA - noteB : noteB - noteA;
+                    });
+                }
+
+                // Réorganiser dans le DOM
+                container.innerHTML = ''; // Clear container
+                offers.forEach(offer => container.appendChild(offer)); // Append sorted offers
+            });
+        });
+
+
+        ///////////////////////////////////////////////////
+        ///               Recherche de lieu               ///
+        ///////////////////////////////////////////////////
+        // searchLocation.addEventListener('input', () => {
+        //     const query = searchLocation.value.toLowerCase().trim();
+
+        //     offerItems.forEach(offer => {
+        //         const text = offer.getAttribute('location').toLowerCase();
+        //         console.log(query);
+        //         if (text.includes(query)) {
+        //             offer.classList.remove('hidden');
+        //         } else {
+        //             offer.classList.add('hidden');
+        //         }
+        //     });
+        // });
+
+
+        ///////////////////////////////////////////////////
+        ///               Selecteur note                ///
+        ///////////////////////////////////////////////////
+        // selectRate.addEventListener('change', function () {
+        //         const rate = selectRate.value;
+
+        //         // Filtrer par catégorie
+        //         offerItems.forEach(offer => {
+
+        //             const offerRate = offer.getAttribute('data-rate');
+        //             if (!rate || rate === offerRate || (offerRate > rate && offerRate < rate+1)) {
+        //                 console.log(`BOUCLE NON VALIDE : ${offerRate}`);
+        //                 //offer.classList.remove('hidden');
+        //                 offer.style.removeProperty('display');
+        //             } else {
+        //                 console.log(`BOUCLE VALIDE : ${offerRate}`);
+        //                 //offer.classList.add('hidden');
+        //                 offer.style.display = "none";
+        //             }
+        //         });
+        //     });
+
+
+        ///////////////////////////////////////////////////
+        ///      Selecteur de la fourchette de prix     ///
+        ///////////////////////////////////////////////////
+        // Mettre à jour les affichages du prix
+        function updatePriceDisplay() {
+            // Empêche price-min de dépasser price-max
+            if (parseInt(priceMinInput.value) > parseInt(priceMaxInput.value)) {
+                priceMinInput.value = priceMaxInput.value;
+            }
+
+            // Empêche price-max d'être inférieur à price-min
+            if (parseInt(priceMaxInput.value) < parseInt(priceMinInput.value)) {
+                priceMaxInput.value = priceMinInput.value;
+            }
+
+            priceMinDisplay.textContent = priceMinInput.value;
+            priceMaxDisplay.textContent = priceMaxInput.value;
+        }
+
+        // Filtrer les offres en fonction de la fourchette de prix
+        function filterOffers() {
+            const minPrice = parseFloat(priceMinInput.value);
+            const maxPrice = parseFloat(priceMaxInput.value);
+
+            offerItems.forEach(offer => {
+                const offerPrice = parseFloat(offer.getAttribute('data-price'));
+
+                // Vérifier si le prix de l'offre est dans la fourchette
+                if (offerPrice >= minPrice && offerPrice <= maxPrice) {
+                    offer.style.removeProperty('display'); // Afficher l'offre
+                } else {
+                    offer.style.display = "none"; // Cacher l'offre
+                }
+            });
+        }
+
+        // Ajouter des événements sur les sliders
+        priceMinInput.addEventListener("input", () => {
+            updatePriceDisplay(); // Mettre à jour l'affichage des prix
+            filterOffers(); // Appliquer le filtre
+        });
+
+        priceMaxInput.addEventListener("input", () => {
+            updatePriceDisplay(); // Mettre à jour l'affichage des prix
+            filterOffers(); // Appliquer le filtre
+        });
+
+
+
+        ///////////////////////////////////////////////////
+        ///              Selecteur status               ///
+        ///////////////////////////////////////////////////
+        // selectStatus.addEventListener('change', function () {
+        //         const status = selectStatus.value;
+
+        //         // Filtrer par catégorie
+        //         offerItems.forEach(offer => {
+
+        //             const offerStatus = offer.getAttribute('data-status');
+        //             if (!status || status === offerStatus) {
+        //                 offer.style.removeProperty('display');
+        //             } else {
+        //                 offer.style.display = "none";
+        //             }
+        //         });
+        //     });
+
+
+
+        ///////////////////////////////////////////////////
+        ///            Selecteur date event             ///
+        ///////////////////////////////////////////////////
+        eventDate.addEventListener('change', function () {
+            const date = eventDate.value;
+
+            // Filtrer par catégorie
+            offerItems.forEach(offer => {
+
+                const offerEvent = offer.getAttribute('data-event');
+                if (!date || date === offerEvent) {
+                    offer.style.removeProperty('display');
+                } else {
+                    offer.style.display = "none";
+                }
+            });
+        });
+
+
+
+        ///////////////////////////////////////////////////
+        ///           Selecteur date periode            ///
+        ///////////////////////////////////////////////////
+        function filterByOpeningDates() {
+            const startDate = openingStartDate.value;
+            const endDate = openingEndDate.value;
+
+            // Parcourir chaque offre et vérifier les critères
+            offerItems.forEach(offer => {
+                const offerPeriodStart = offer.getAttribute('data-period-o');
+                const offerPeriodEnd = offer.getAttribute('data-period-c');
+                const offerCategory = offer.getAttribute('data-category');
+
+                // Condition pour afficher l'offre
+                if (((!startDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite')) &&
+                    (!endDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite'))) ||
+                    ((startDate <= offerPeriodEnd && startDate >= offerPeriodStart) || (endDate >= offerPeriodStart && endDate <= offerPeriodEnd))) {
+                    offer.style.removeProperty('display'); // Afficher l'offre
+                } else {
+                    offer.style.display = "none"; // Masquer l'offre
+                }
+                if (offerCategory == 'parc_attractions') {
+                    console.log(offerCategory);
+                    if (!startDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite')) {
+                        console.log("Boucle n1 : ok\n");
+                    }
+                    if (!endDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite')) {
+                        console.log("Boucle n2 : ok\n");
+                    }
+                    if (startDate <= offerPeriodEnd && startDate >= offerPeriodStart) {
+                        console.log("Boucle n3 : ok\n");
+                    }
+                    if (endDate >= offerPeriodStart && endDate <= offerPeriodEnd) {
+                        console.log("Boucle n4 : ok\n");
+                    }
+                }
+            });
+        }
+
+        // Ajouter un écouteur d'événement sur les champs de date
+        openingStartDate.addEventListener('change', filterByOpeningDates);
+        openingEndDate.addEventListener('change', filterByOpeningDates);
+
+    });
+    </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
@@ -1655,6 +1679,19 @@ function tempsEcouleDepuisPublication($offre)
             });
         });
 
+    </script>
+    <script>
+        function updateCategoryText() {
+        let categoryOption = document.querySelector('.search-select option[value="all"]');
+        if (window.innerWidth <= 429) {
+            categoryOption.textContent = "Catégo";
+        } else {
+            categoryOption.textContent = "Catégories";
+        }
+    }
+
+    window.addEventListener("resize", updateCategoryText);
+    window.addEventListener("DOMContentLoaded", updateCategoryText);
     </script>
 </body>
 
