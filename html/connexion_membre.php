@@ -357,9 +357,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         } else if (now >= lockTime[emailValue]) {
             champOTP.disabled = false; // Réactive le champ OTP si le verrouillage est expiré
-            console.log(storedBlock);
-            delete storedBlock[emailValue]; // Supprime l'utilisateur de `essais_user` après déverrouillage
-            localStorage.setItem("essais_user", JSON.stringify(storedBlock)); // Sauvegarde les données mises à jour
+            console.log(storedBlocked);
+            delete storedBlocked[emailValue]; // Supprime l'utilisateur de `essais_user` après déverrouillage
+            localStorage.setItem("essais_user", JSON.stringify(storedBlocked)); // Sauvegarde les données mises à jour
         }
 
         // Utilisation de setTimeout avec une fonction de rappel pour éviter la récursion infinie
