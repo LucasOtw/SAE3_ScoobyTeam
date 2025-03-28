@@ -33,7 +33,7 @@
         <div class="poster_un_avis_container">
             <div class="poster_un_avis_back_button">
                 <a href="<?php echo $_SERVER['HTTP_REFERER']?>" style="position: absolute; top: 50px; left: 5vw; margin-top: 3vh;">
-                        <img src="images/Bouton_retour.png" alt="bouton retour">
+                        <img class = " back_button" src="images/Bouton_retour.png" alt="bouton retour">
                 </a>
                 <h1 class="titre_contacter_nous">Contactez nous !</h1>
             </div>
