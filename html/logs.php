@@ -2,7 +2,8 @@
 // logs.php
 
 function writeLog($type, $message) {
-    $logDir = __DIR__ . '/logs';
+    // Chemin vers /web/logs
+    $logDir = realpath(__DIR__ . '/..') . '/logs';
 
     // Créer le dossier logs s'il n'existe pas
     if (!is_dir($logDir)) {
@@ -33,9 +34,4 @@ function logWarning($message) {
 function logError($message) {
     writeLog('ERROR', $message);
 }
-
-// Exemple d'utilisation
-// logValidation('Utilisateur connecté avec succès.');
-// logWarning('Mot de passe expiré détecté pour l\'utilisateur.');
-// logError('Impossible de se connecter à la base de données.');
 ?>
