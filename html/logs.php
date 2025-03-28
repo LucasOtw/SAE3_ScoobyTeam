@@ -21,13 +21,13 @@ function writeLog($type, $message) {
 
     // Couleurs ANSI pour terminal (optionnel)
     switch ($type) {
-        case 'VALIDATION':
+        case '🟢VALIDATION':
             $colorStart = "\033[32m"; // Vert
             break;
-        case 'WARNING':
+        case '🟠WARNING':
             $colorStart = "\033[33m"; // Jaune
             break;
-        case 'ERROR':
+        case '🔴ERROR':
             $colorStart = "\033[31m"; // Rouge
             break;
         default:
