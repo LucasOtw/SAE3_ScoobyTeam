@@ -279,16 +279,18 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 if(data.success){
                     console.log(data.message);
-                    champOTP.innerHTML = "";
-                    champOTP.innerHTML = data.message;
-                    champOTP.style.color = "green";
+                    errorMsg.innerHTML = "";
+                    errorMsg.innerHTML = data.message;
+                    errorMsg.style.color = "green";
+                    errorMsg.style.display = "block";
                     setTimeout(() => {
                         window.location.href = "voir_offres.php";
                     }, 3000);
                 } else {
-                    champOTP.innerHTML = "";
-                    champOTP.innerHTML = data.message;
-                    champOTP.style.color = "red";
+                    errorMsg.innerHTML = "";
+                    errorMsg.innerHTML = data.message;
+                    errorMsg.style.color = "red";
+                    errorMsg.style.display = "block";
                     console.log(data.message);
                 }
             })
