@@ -216,6 +216,8 @@ function hidePopup() {
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    localStorage.clear();
+
     var form = document.getElementById("connexionForm");
     var connectBtn = document.getElementById("connectButton");
     var submitBtn = document.getElementById("submitFormBtn");
@@ -329,7 +331,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 })
             } else {
-                let blockDuration = 5 * 60 * 1000 // 5 minutes
+                // let blockDuration = 5 * 60 * 1000 // 5 minutes
+                let blockDuration = 30 * 1000;
                 lockTime[emailValue_otp] = now + blockDuration;
                 localStorage.setItem("user_lock",JSON.stringify(lockTime));
             }
