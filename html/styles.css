@@ -2925,6 +2925,7 @@ input[type="password"]::placeholder {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    background-color: #F3F8FF;
 }
 
 .main_consulter_compte_membre input[type="text"]::placeholder,
