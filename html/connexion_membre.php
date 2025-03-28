@@ -276,6 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.location.href = "voir_offres.php";
                 } else {
                     console.log(data.nbEssais);
+                    nbEssais = data.nbEssais;
                     console.log(data.message);
                 }
             })
