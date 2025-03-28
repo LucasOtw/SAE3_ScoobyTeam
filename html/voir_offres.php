@@ -1315,11 +1315,11 @@ function tempsEcouleDepuisPublication($offre)
     </script>
 
     <script>
-    function decodeHtmlEntities(text) {
-        let textarea = document.createElement("textarea");
-        textarea.innerHTML = text;
-        return textarea.value;
-    }
+    // function decodeHtmlEntities(text) {
+    //     let textarea = document.createElement("textarea");
+    //     textarea.innerHTML = text;
+    //     return textarea.value;
+    // }
         
     document.addEventListener("DOMContentLoaded", function () {
         // Récupération des éléments
