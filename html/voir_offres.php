@@ -1683,7 +1683,7 @@ function tempsEcouleDepuisPublication($offre)
         function updateCategoryText() {
         let categoryOption = document.querySelector('.search-select option[value="all"]');
         if (window.innerWidth <= 429) {
-            categoryOption.textContent = "Cat";
+            categoryOption.textContent = "Catégo";
         } else {
             categoryOption.textContent = "Catégories";
         }
