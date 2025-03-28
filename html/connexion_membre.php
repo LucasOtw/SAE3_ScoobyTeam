@@ -231,8 +231,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let emailValue_otp;
 
     let storedBlocked = JSON.parse(localStorage.getItem("essais_user")) || {};
+    let lockTime = JSON.parse(localStorage.getItem("user_lock")) || {};
 
-    console.log(storedBlocked);
+    let now = Date.now();
+
 
     let codeCompte;
     let nbEssais;
@@ -269,12 +271,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.location.href = "voir_offres.php";
                 } else {
 
-                    if(!storedBlocked.hasOwnProperty(emailValue_otp)){
-                        storedBlocked[emailValue_otp] = 3;
-                    }
+                    let lockTime = JSON.parse(localStorage.getItem("user_lock")) || {};
 
-                    modalOTP.style.display = "block";
-                    codeCompte = data.code_compte;
+                    if(lockTime.hasOwnProperty[emailValue_otp]){
+                        console.log("Vous ne pouvez pas vous connecter !");
+                    } else {
+                        if(!storedBlocked.hasOwnProperty(emailValue_otp)){
+                            storedBlocked[emailValue_otp] = 3;
+                        }
+
+                        modalOTP.style.display = "block";
+                        codeCompte = data.code_compte;
+                    }
                 }
             } else {
                 console.log("Authentification refusée !");
@@ -299,26 +307,33 @@ document.addEventListener('DOMContentLoaded', function() {
         if (champOTP.value.length < 6) {
             console.log("Code OTP trop court !");
         } else {
-            fetch("verification_codeOTP.php",{
-                method: "POST",
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams({
-                    codeOTP : champOTP.value,
-                    code_compte : codeCompte
+            if(storedBlocked[emailValue_otp] >= 1){
+                fetch("verification_codeOTP.php",{
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({
+                        codeOTP : champOTP.value,
+                        code_compte : codeCompte
+                    })
                 })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.success){
-                    console.log(data.message);
-                    window.location.href = "voir_offres.php";
-                } else {
-                    storedBlocked[emailValue_otp]--;
-                    console.log(storedBlocked[emailValue_otp]);
-                    localStorage.setItem("essais_user",JSON.stringify(storedBlocked));
-                    console.log(data.message);
-                }
-            })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.success){
+                        console.log(data.message);
+                        window.location.href = "voir_offres.php";
+                    } else {
+                        if(storedBlocked[emailValue_otp] >= 0){
+                            storedBlocked[emailValue_otp]--;
+                            localStorage.setItem("essais_user",JSON.stringify(storedBlocked));
+                        }
+                        console.log(storedBlocked[emailValue_otp]);
+                        console.log(data.message);
+                    }
+                })
+            } else {
+                let blockDuration = 5 * 60 * 1000 // 5 minutes
+                
+            }
         }
     });
     btnEnvoiQuentin.addEventListener('click', function(){

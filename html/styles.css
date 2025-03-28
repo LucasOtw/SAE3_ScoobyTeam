@@ -10545,7 +10545,7 @@ body.menu-open #overlay {
     .toute_les_offres_main .image-background-card-a-la-une,
     .toute_les_offres_main .image-background-card-nouveautes,
     .toute_les_offres_main .image-background-card-vu-recemment {
-        width: 22em;
+        width: 80vw;
     }
 
     .toute_les_offres_main .offer.en_relief::before {

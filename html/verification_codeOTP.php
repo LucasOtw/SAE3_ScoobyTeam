@@ -10,6 +10,10 @@ header("Content-Type: application/json");
 if($_SERVER['REQUEST_METHOD'] === "POST"){
     $codeOTP = $_POST['codeOTP'] ?? "";
     $codeCompte = $_POST['code_compte'] ?? "";
+    $email = $_POST['email_OTP'] ?? "";
+    $nbEssais = $_POST['nbEssais'] ?? "";
+
+    // On vérifie 
 
     // On récupère tout d'abord le secret dans la BDD
 
