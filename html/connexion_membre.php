@@ -278,6 +278,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         window.location.href = "voir_offres.php";
                     } else {
                         nbEssais--;
+                        console.log(`${nbEssais} essais restants !!!`);
                         console.log(data.message);
                     }
                 })
