@@ -398,29 +398,7 @@ if (isset($_POST['modif_infos'])) {
         });
     });
 </script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const mdpActuel = document.getElementById("mdp_actuel");
-    const mdpNv1 = document.getElementById("mdp_nv1");
-    const mdpNv2 = document.getElementById("mdp_nv2");
-    const submitBtn = document.querySelector(".submit-btn2");
 
-    function toggleButtonState() {
-        if (mdpActuel.value.trim() !== "" && mdpNv1.value.trim() !== "" && mdpNv2.value.trim() !== "") {
-            submitBtn.removeAttribute("disabled");
-        } else {
-            submitBtn.setAttribute("disabled", "disabled");
-        }
-    }
-
-    mdpActuel.addEventListener("input", toggleButtonState);
-    mdpNv1.addEventListener("input", toggleButtonState);
-    mdpNv2.addEventListener("input", toggleButtonState);
-
-    // Désactiver le bouton au chargement de la page
-    toggleButtonState();
-});
-</script>
 
 </body>
 </html>
