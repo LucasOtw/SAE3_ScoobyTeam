@@ -13387,12 +13387,13 @@ ul.mentions_legales-sous-list {
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px 30px;
-    border-radius: 8px;
+    border-radius: 19px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     z-index: 999;
-    width: 400px;
-    max-width: 90%;
+    width: 543px;
+    max-width: 92%;
     text-align: center;
+    height: 231px;
 }
 
 .popup-2fa-validation p.texte-boite-perso {
