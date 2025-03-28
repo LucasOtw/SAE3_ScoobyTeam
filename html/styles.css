@@ -12077,7 +12077,7 @@ ul.mentions_legales-sous-list {
 }
 
 .main_compte_membre_tel img[src="images/trash.svg"] {
-    filter: invert(74%) sepia(17%) saturate(1147%) hue-rotate(8deg) brightness(97%) contrast(96%);
+    color: var(--vert-clair);
 }
 
 
