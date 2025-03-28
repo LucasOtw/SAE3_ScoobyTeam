@@ -52,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $avis = unserialize($_POST['unAvis']);
         $_SESSION['modif_avis'] = $avis;
+        $details_offre = $_SESSION['modif_avis'];
     }
     if (isset($_POST['modifier'])) {
         echo "test";
