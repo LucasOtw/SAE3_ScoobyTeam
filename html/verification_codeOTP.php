@@ -14,10 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $email = $_POST['email_OTP'] ?? "";
     $nbEssais = $_POST['nbEssais'] ?? "";
 
-    logValidation("Tentative de vérification OTP pour le compte $codeCompte (email: $email) - essai $nbEssais");
+    logValidation("Tentative de vérification OTP pour le compte $codeCompte (email: $email)");
 
     if (empty($codeOTP) || empty($codeCompte)) {
-        logWarning("Requête OTP incomplète (code ou compte manquant) - email: $email");
+        logWarning("Requête OTP incomplète pour le compte $codeCompte");
         echo json_encode(["success" => false, "message" => "Requête invalide"]);
         exit;
     }
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $codeSecret = $recupCodeSecret->fetchColumn();
 
     if (!$codeSecret) {
-        logError("Aucun secret trouvé pour le compte $codeCompte (email: $email)");
+        logError("Aucun secret trouvé pour le compte $codeCompte");
         echo json_encode(["success" => false, "message" => "Erreur d’identification"]);
         exit;
     }
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         logValidation("Code OTP correct pour le compte $codeCompte ");
         echo json_encode(["success" => true, "message" => "Code valide !"]);
     } else {
-        logWarning("Échec de validation OTP pour le compte $codeCompte - il vous reste $nbEssais");
+        logWarning("Échec de validation OTP pour le compte $codeCompte - il reste $nbEssais essais");
         echo json_encode(["success" => false, "message" => "Code invalide"]);
     }
 } else {
