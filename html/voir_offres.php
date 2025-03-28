@@ -1315,11 +1315,6 @@ function tempsEcouleDepuisPublication($offre)
     </script>
 
     <script>
-    // function decodeHtmlEntities(text) {
-    //     let textarea = document.createElement("textarea");
-    //     textarea.innerHTML = text;
-    //     return textarea.value;
-    // }
         
     document.addEventListener("DOMContentLoaded", function () {
         // Récupération des éléments
@@ -1370,7 +1365,7 @@ function tempsEcouleDepuisPublication($offre)
                 let offerData = leaflet.getAttribute("data-offer");
 
                 if (offerData) {
-                    let correctedJsonString = decodeHtmlEntities(offerData);
+                    let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'"); 
                     let offer = JSON.parse(correctedJsonString); // Convertir en objet
                     let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
         
