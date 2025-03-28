@@ -185,8 +185,21 @@ if(!empty($_POST)){
     </form>
 </div>
 
+<div id="modal-backdrop" class="modal-backdrop"></div>
 
     <script>
+
+// Pour afficher la popup avec l'overlay flou
+function showPopup() {
+    document.getElementById('modal-backdrop').style.display = 'block';
+    document.getElementById('modal-otp').style.display = 'block';
+}
+
+// Pour masquer la popup et l'overlay
+function hidePopup() {
+    document.getElementById('modal-backdrop').style.display = 'none';
+    document.getElementById('modal-otp').style.display = 'none';
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     var form = document.getElementById("connexionForm");
@@ -279,6 +292,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     } else {
                         nbEssais = data.nbEssais;
                         console.log(nbEssais);
+                        localStorage.setItem("nbEssais_otp",nbEssais);
                         console.log(data.message);
                     }
                 })

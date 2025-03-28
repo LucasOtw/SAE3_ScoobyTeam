@@ -962,7 +962,6 @@ function tempsEcouleDepuisPublication($offre)
             document.addEventListener("DOMContentLoaded", function () {
                 // Récupération des éléments
                 const offerItems = document.querySelectorAll('.offer');
-                const leafletItems = document.querySelectorAll('.popup-container');
 
                 const searchInput = document.querySelector('.search-input');
 
@@ -1004,19 +1003,6 @@ function tempsEcouleDepuisPublication($offre)
                         }
                     });
 
-                    leafletItems.forEach(leaflet => {
-                        console.log(leaflet);
-                        
-                        var json = document.querySelector(".voir_offre_carte input[name='uneOffre']").value;
-                        var parsedData = JSON.parse(json);
-                        
-                        console.log(json);
-                        if (text.includes(query)) {
-                            offer.classList.remove('hidden');
-                        } else {
-                            offer.classList.add('hidden');
-                        }
-                    });
                 });
 
 

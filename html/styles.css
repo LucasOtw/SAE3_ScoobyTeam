@@ -13363,6 +13363,19 @@ ul.mentions_legales-sous-list {
     display: none; /* Caché par défaut */
 }
 
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); /* Pour Safari */
+    z-index: 998; /* Juste en dessous de la popup */
+    display: none;
+}
+
 /* Ajustement des popups existantes */
 .modal {
     background-color: transparent; /* Rendre le fond transparent car on utilise l'overlay */
