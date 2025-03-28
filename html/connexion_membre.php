@@ -103,8 +103,20 @@ if(!empty($_POST)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Se connecter</title>
     <link rel="stylesheet" href="styles.css">
-
-
+    <style>
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px); /* Pour Safari */
+            z-index: 998; /* Juste en dessous de la popup */
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
