@@ -1006,6 +1006,7 @@ function tempsEcouleDepuisPublication($offre)
 
                     leafletItems.forEach(leaflet => {
                         console.log(leaflet);
+                        console.log("ok");
                     });
 
                 });
