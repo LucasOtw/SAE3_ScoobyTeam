@@ -216,6 +216,8 @@ function hidePopup() {
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    localStorage.clear();
+
     var form = document.getElementById("connexionForm");
     var connectBtn = document.getElementById("connectButton");
     var submitBtn = document.getElementById("submitFormBtn");
