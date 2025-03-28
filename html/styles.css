@@ -9782,6 +9782,9 @@ body {
     font-family: 'K2D', sans-serif;
     overflow-x: hidden;
     transition: transform 0.3s ease;
+    @media (max-width: 430px) {
+        width: 80%;
+    }
 }
 
 .content {
@@ -11359,7 +11362,7 @@ main.main_repondre_avis .message-erreur {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         margin-top: 3vh;
         margin-left: 3vw;
-        width: 95vw;
+        width: 95%;
         margin-bottom: 3vh;
     }
 
