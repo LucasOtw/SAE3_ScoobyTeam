@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         logValidation("Code OTP correct pour le compte $codeCompte ");
         echo json_encode(["success" => true, "message" => "Code valide !"]);
     } else {
-        logWarning("Échec de validation OTP pour le compte $codeCompte - il vous reste $nbEssai");
+        logWarning("Échec de validation OTP pour le compte $codeCompte - il vous reste $nbEssais");
         echo json_encode(["success" => false, "message" => "Code invalide"]);
     }
 } else {
