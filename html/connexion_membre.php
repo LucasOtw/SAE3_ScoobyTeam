@@ -309,7 +309,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: new URLSearchParams({
                         codeOTP : champOTP.value,
-                        code_compte : codeCompte
+                        code_compte : codeCompte,
+                        nbEssais : storedBlocked[emailValue_otp]
                     })
                 })
                 .then(response => response.json())
