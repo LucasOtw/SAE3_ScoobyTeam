@@ -1,105 +1,84 @@
 <?php
-    // Connexion à la base de données
     try {
-        // Vérifie si le formulaire a été soumis    
         require_once __DIR__ . ("/../.security/config.php");
-    
-        // Créer une instance PDO avec les bons paramètres
         $dbh = new PDO($dsn, $username, $password);
     } catch (PDOException $e) {
-        die("Erreur de connexion : " . $e->getMessage());
+        http_response_code(500);
+        die(json_encode(["success" => false, "message" => "Erreur de connexion : " . $e->getMessage()]));
     }
 
-
+    // Debug: Afficher les données envoyées en POST
     print_r($_POST);
 
-    // Récupérer les données envoyées en POST
-    $en_ligne = $_POST['en_ligne'];
-    
-    // Vérifier que l'identifiant de l'offre est défini
-    $code_offre = $_POST['code_offre'];
+    // Récupérer et convertir les valeurs
+    $en_ligne = isset($_POST['en_ligne']) ? (int)$_POST['en_ligne'] : 0;
+    $code_offre = $_POST['code_offre'] ?? null;
 
-    if ($code_offre === null) {
+    if (!$code_offre) {
         http_response_code(400);
-        echo "Code offre manquant.";
+        echo json_encode(["success" => false, "message" => "Code offre manquant."]);
         exit;
     }
-    
-    // Mettre à jour la table _offre
+
     try {
-        
-        $query = $dbh->prepare("
-        SELECT en_ligne, date_publication
-        FROM tripenarvor._offre
-        WHERE code_offre = :code_offre
-        ");
+        // Vérifier si l'offre existe
+        $query = $dbh->prepare("SELECT en_ligne, date_publication FROM tripenarvor._offre WHERE code_offre = :code_offre");
         $query->execute([':code_offre' => $code_offre]);
         $currentRow = $query->fetch(PDO::FETCH_ASSOC);
-    
+
         if (!$currentRow) {
-            echo "Aucune offre trouvée avec le code fourni.";
+            echo json_encode(["success" => false, "message" => "Aucune offre trouvée avec le code fourni."]);
+            exit;
         }
 
-        $dateTime = (new DateTime())->format('Y-m-d H:i:s'); // Format SQL pour timestamp
-        $date = (new DateTime())->format('Y-m-d');          // Format SQL pour date
-        
-        if ($en_ligne == 1) {
-            print_r("///////////////////////////ok///////////////////////////");
-            
-            // Si l'offre passe en ligne, mettre à jour date_publication et date_derniere_modif
+        // Définir les nouvelles valeurs
+        $dateTime = (new DateTime())->format('Y-m-d H:i:s');
+        $date = (new DateTime())->format('Y-m-d');
+
+        // Effectuer la mise à jour
+        if ($en_ligne === 1) {
             $stmt = $dbh->prepare("
                 UPDATE tripenarvor._offre
                 SET en_ligne = :en_ligne,
                     date_publication = :date_publication,
                     date_derniere_modif = :date_derniere_modif
                 WHERE code_offre = :code_offre
-                RETURNING titre_offre, en_ligne, date_publication
             ");
             $stmt->execute([
-                ':en_ligne' => true,
-                ':date_publication' => $dateTime,    // Valeur timestamp
-                ':date_derniere_modif' => $date,    // Valeur date
+                ':en_ligne' => (int) $en_ligne,
+                ':date_publication' => $dateTime,
+                ':date_derniere_modif' => $date,
                 ':code_offre' => $code_offre
             ]);
         } else {
-            // Si l'offre est hors ligne, ne pas toucher à date_publication
             $stmt = $dbh->prepare("
                 UPDATE tripenarvor._offre
                 SET en_ligne = :en_ligne
                 WHERE code_offre = :code_offre
-                RETURNING titre_offre, en_ligne, date_publication
             ");
             $stmt->execute([
-                ':en_ligne' => false,
+                ':en_ligne' => (int) $en_ligne,
                 ':code_offre' => $code_offre
             ]);
         }
 
-        
-        // Récupérer le nombre de lignes modifiées
-        $updatedRow = $stmt->fetch(PDO::FETCH_ASSOC);
+        // Vérifier si une mise à jour a été faite
+        if ($stmt->rowCount() > 0) {
+            $query = $dbh->prepare("SELECT titre_offre, en_ligne, date_publication FROM tripenarvor._offre WHERE code_offre = :code_offre");
+            $query->execute([':code_offre' => $code_offre]);
+            $updatedRow = $query->fetch(PDO::FETCH_ASSOC);
 
-        if ($updatedRow) {
-            // Étape 4 : Comparer les champs pour compter les modifications
-            $fieldsModified = 0;
-    
-            if ($currentRow['en_ligne'] != $updatedRow['en_ligne']) {
-                $fieldsModified++;
-            }
-            if (isset($updatedRow['date_publication']) && $en_ligne == 1) { // Si en ligne, date modifiée
-                $fieldsModified++;
-            }
-    
-            // Afficher les résultats
-            echo "La mise à jour a été effectuée avec succès.";
-            echo " Nombre de champs modifiés : $fieldsModified.";
-            print_r($updatedRow);
+            echo json_encode([
+                "success" => true,
+                "message" => "Mise à jour effectuée.",
+                "data" => $updatedRow
+            ]);
         } else {
-            echo "Aucune mise à jour effectuée.";
+            echo json_encode(["success" => false, "message" => "Aucune modification effectuée."]);
         }
-        
+
     } catch (PDOException $e) {
         http_response_code(500);
-        echo "Erreur lors de la mise à jour : " . $e->getMessage();
+        echo json_encode(["success" => false, "message" => "Erreur SQL : " . $e->getMessage()]);
     }
 ?>

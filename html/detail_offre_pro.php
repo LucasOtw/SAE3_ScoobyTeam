@@ -1240,6 +1240,9 @@ WHERE code_offre = :code_offre
                     console.error("Erreur lors de la mise à jour de l'état de l'offre : " + response.status);
                 }
             })
+            .then(data => {
+                console.log(data.message);
+            })
             .catch(error => {
                 console.error("Erreur de réseau ou autre :", error);
             });
