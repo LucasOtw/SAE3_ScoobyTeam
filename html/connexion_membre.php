@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let email = document.getElementById('email');
     let password = document.getElementById('password');
-    let storedBlocked = json.parse(localStorage.getItem("essais_user")) || {};
+    let storedBlocked = JSON.parse(localStorage.getItem("essais_user")) || {};
 
     console.log(storedBlocked);
 
