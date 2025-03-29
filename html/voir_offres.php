@@ -1200,11 +1200,11 @@ function tempsEcouleDepuisPublication($offre)
                             echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
                             echo "marker.on('add', function() {";
                             echo "    if (this._icon) {";
-                            //echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "');";
-                            echo "        console.log('Icône affichée avec data-offer :', this._icon);";
+                            // echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "');";
+                            // echo "        console.log('Icône affichée avec data-offer :', this._icon);";
                             
                             echo "        let offerData = " . json_encode($monOffre) . ";"; 
-                            echo "        console.log('offerData:', offerData);"; // Afficher l'objet offerData dans la console
+                            // echo "        console.log('offerData:', offerData);"; // Afficher l'objet offerData dans la console
                             
                             ///////////////////////////////////////////////////
                             ///            Barre de recherche               ///
@@ -1215,10 +1215,10 @@ function tempsEcouleDepuisPublication($offre)
                             echo "            console.log(offerText);";
                             echo "            if (!offerText.includes(query)) {";
                             //echo "                this._icon.style.display = 'none';";  // Cacher le marqueur si le texte ne correspond pas
-                            echo "                console.log('ok');";
+                            echo "                console.log('pas ok');";
                             echo "            } else {";
                             //echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
-                            echo "                console.log('pas ok');";
+                            echo "                console.log('ok');";
                             echo "            }";
 
 
