@@ -1202,27 +1202,6 @@ function tempsEcouleDepuisPublication($offre)
                             echo "    if (this._icon) {";
                             //echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "');";
                             echo "        console.log('Icône affichée avec data-offer :', this._icon);";
-                            
-                            // echo "        let offerData = " . json_encode($monOffre)  .";";
-                            // echo "        if (offerData) {";
-                            // // echo "            // Décodage des entités HTML dans le JSON";
-                            // // echo "            let parser = new DOMParser();";
-                            // // echo "            let doc = parser.parseFromString(offerData, 'text/html');";
-                            // // echo "            let decodedOfferData = doc.body.textContent || doc.body.innerText;"; // Décodage des entités HTML";
-                            // // echo "            let offer = JSON.parse(decodedOfferData);";
-                            
-                            // echo "            ///////////////////////////////////////////////////";
-                            // echo "            ///            Barre de recherche               ///";
-                            // echo "            ///////////////////////////////////////////////////";    
-                            // echo "            let query = document.querySelector('.search-input').value.toLowerCase().trim();";
-                            // echo "            let offerText = " . $monOffre["titre_offre"].toLowerCase() . ";";
-                            // echo "            if (!offerText.includes(query)) {";
-                            // //echo "                this._icon.style.display = 'none';";  // Cacher le marqueur si le texte ne correspond pas
-                            // echo "            } else {";
-                            // //echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
-                            // echo "            }";
-                            
-                            echo "        }";
                             echo "    }";
                             echo "});";
 
