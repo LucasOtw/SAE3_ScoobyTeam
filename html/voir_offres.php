@@ -1235,11 +1235,9 @@ function tempsEcouleDepuisPublication($offre)
                                     if (($interval->h < 1) || ($interval->h == 1 && $interval->i == 0)) {
                                         // Si la fermeture est dans moins de 1 heure
                                         $dataStatusEng = "closing-soon";
-                                        $dataStatusFr = "Ferme bientôt";
                                     } else {
                                         // Si on est ouvert normalement
                                         $dataStatusEng = "open";
-                                        $dataStatusFr = "Ouvert";
                                     }
                                 } elseif ($ouverture > $date || $fermeture <= $date) {
                                     // Si on est avant l'ouverture
@@ -1248,22 +1246,18 @@ function tempsEcouleDepuisPublication($offre)
                                     if (($interval->h < 1) || ($interval->h == 1 && $interval->i == 0)) {
                                         // Si l'ouverture est dans moins de 1 heure
                                         $dataStatusEng = "opening-soon";
-                                        $dataStatusFr = "Ouvre bientôt";
                                     } else {
                                         // Si on est fermé
                                         $dataStatusEng = "closed";
-                                        $dataStatusFr = "Fermé";
                                     }
                                 }
                             } else if (empty($horaire)) {
             
                                 $dataStatusEng = "closed";
-                                $dataStatusFr = "Fermé";
             
                             } else if ($type_offre === 'spectacle') {
                                 // Si il n'a pas d'horaire du tt
                                 $dataStatusEng = "xx";
-                                $dataStatusFr = "xx";
                             }
             
             
@@ -1349,6 +1343,18 @@ function tempsEcouleDepuisPublication($offre)
                             echo "            let category = document.querySelector('.search-select:nth-of-type(1)').value;";
                             echo "            let rate = document.querySelector('#select-rate').value;";
                             echo "            let status = document.querySelector('#select-statut').value;";
+
+                            echo "            let offerCategory = " . json_encode($type_offre) . ";";
+                            echo "            let offerRate = " . json_encode($monOffre["note_moyenne"]) . ";";
+                            echo "            let offerStatus = " . json_encode($dataStatusEng) . ";";
+                
+                            echo "            if ((category === 'all' || category === offerCategory) &&";
+                            echo "                (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&";
+                            echo "                (!status || status === offerStatus)) {";
+                            //echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
+                            echo "            } else {";
+                            echo "                afficher+=1;";
+                            echo "            }";
                             
                             
 
