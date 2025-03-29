@@ -1343,6 +1343,12 @@ function tempsEcouleDepuisPublication($offre)
         const openingEndDate = document.getElementById('opening-end-date');
 
 
+        marker.on('add', function() {
+            if (this._icon) {
+                console.log("Icône affichée avec data-offer :", this._icon);
+            }
+        });
+
 
         ///////////////////////////////////////////////////
         ///            Barre de recherche               ///
@@ -1361,27 +1367,27 @@ function tempsEcouleDepuisPublication($offre)
                 }
             });
 
-            leafletItems.forEach(leaflet => {
-                let offerData = leaflet.getAttribute("data-offer");
+            // leafletItems.forEach(leaflet => {
+            //     let offerData = leaflet.getAttribute("data-offer");
 
-                if (offerData) {
-                    let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'"); 
-                    let offer = JSON.parse(correctedJsonString); // Convertir en objet
-                    let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
+            //     if (offerData) {
+            //         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'"); 
+            //         let offer = JSON.parse(correctedJsonString); // Convertir en objet
+            //         let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
                     
-                    console.log(offerText);
-                    console.log(leaflet);
-                    console.log("///");
+            //         console.log(offerText);
+            //         console.log(leaflet);
+            //         console.log("///");
         
-                    if (offerText.includes(query)) {
-                        leaflet.style.display = "block"; // Afficher le marqueur
-                        console.log("ok");
-                    } else {
-                        leaflet.style.display = "none"; // Cacher le marqueur
-                        console.log("pas ok");
-                    }
-                }
-            });
+            //         if (offerText.includes(query)) {
+            //             leaflet.style.display = "block"; // Afficher le marqueur
+            //             console.log("ok");
+            //         } else {
+            //             leaflet.style.display = "none"; // Cacher le marqueur
+            //             console.log("pas ok");
+            //         }
+            //     }
+            // });
 
         });
 
@@ -1404,6 +1410,9 @@ function tempsEcouleDepuisPublication($offre)
                     const offerCategory = offer.getAttribute('data-category');
                     const offerRate = offer.getAttribute('data-rate');
                     const offerStatus = offer.getAttribute('data-status');
+
+                    console.log(offerCategory+" == "+category);
+                    console.log(offerRate+" == "+rate);
 
                     if ((category === 'all' || category === offerCategory) &&
                         (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
