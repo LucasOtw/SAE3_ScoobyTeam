@@ -1200,7 +1200,7 @@ function tempsEcouleDepuisPublication($offre)
                             echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
                             echo "marker.on('add', function() {";
                             echo "    if (this._icon) {";
-                            // echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "');";
+                            echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "');";
                             // echo "        console.log('Icône affichée avec data-offer :', this._icon);";
                             
                             echo "        let offerData = " . json_encode($monOffre) . ";"; 
@@ -1383,27 +1383,27 @@ function tempsEcouleDepuisPublication($offre)
                 }
             });
 
-            // leafletItems.forEach(leaflet => {
-            //     let offerData = leaflet.getAttribute("data-offer");
+            leafletItems.forEach(leaflet => {
+                let offerData = leaflet.getAttribute("data-offer");
 
-            //     if (offerData) {
-            //         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'"); 
-            //         let offer = JSON.parse(correctedJsonString); // Convertir en objet
-            //         let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
+                if (offerData) {
+                    let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'"); 
+                    let offer = JSON.parse(correctedJsonString); // Convertir en objet
+                    let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
                     
-            //         console.log(offerText);
-            //         console.log(leaflet);
-            //         console.log("///");
+                    console.log(offerText);
+                    console.log(leaflet);
+                    console.log("///");
         
-            //         if (offerText.includes(query)) {
-            //             leaflet.style.display = "block"; // Afficher le marqueur
-            //             console.log("ok");
-            //         } else {
-            //             leaflet.style.display = "none"; // Cacher le marqueur
-            //             console.log("pas ok");
-            //         }
-            //     }
-            // });
+                    if (offerText.includes(query)) {
+                        leaflet.style.display = "block"; // Afficher le marqueur
+                        console.log("ok");
+                    } else {
+                        leaflet.style.display = "none"; // Cacher le marqueur
+                        console.log("pas ok");
+                    }
+                }
+            });
 
         });
 
