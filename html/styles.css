@@ -13941,7 +13941,7 @@ ul.mentions_legales-sous-list {
     margin-left: 170px;
 }
 
-.otp-confirm-content button:hover {
+.otp-confirm-content button, .otp-confirm-content input[type="submit"]:hover {
     background-color: #FFF;
     color: black;
     border: 1px #BDC426 solid;
