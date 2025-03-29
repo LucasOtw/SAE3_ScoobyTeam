@@ -1317,69 +1317,71 @@ function tempsEcouleDepuisPublication($offre)
     <script>
         
     document.addEventListener("DOMContentLoaded", function () {
-        const offerItems = document.querySelectorAll('.offer');
         const searchInput = document.querySelector('.search-input');
-        const searchSelects = document.querySelectorAll('.search-select');
+        const searchSelect = document.querySelectorAll('.search-select');
         const priceMinInput = document.getElementById("price-min");
         const priceMaxInput = document.getElementById("price-max");
         const eventDate = document.querySelector('#event-date');
         const openingStartDate = document.getElementById('opening-start-date');
         const openingEndDate = document.getElementById('opening-end-date');
         
-        let markers = []; // Stockage des marqueurs Leaflet
-        
         function updateMarkers() {
-            markers.forEach(marker => map.removeLayer(marker)); // Suppression des marqueurs
-            markers = []; // Réinitialisation
+            markers.clearLayers();
             
-            offerItems.forEach(offer => {
-                if (!offer.classList.contains('hidden')) {
-                    let data = JSON.parse(offer.getAttribute('data-offer'));
-                    let marker = L.marker([data.latitude, data.longitude], { icon: customIcon }).bindPopup(data.popupContent);
-                    markers.push(marker);
-                    marker.addTo(map);
+            leafletItems.forEach(leaflet => {
+                let offerData = leaflet.getAttribute("data-offer");
+                if (!offerData) return;
+                
+                let offer = JSON.parse(offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'"));
+                let isVisible = true;
+                
+                // Filtrage par recherche
+                const query = searchInput.value.toLowerCase().trim();
+                if (query && !offer.titre_offre.toLowerCase().includes(query)) {
+                    isVisible = false;
+                }
+                
+                // Filtrage par catégorie, prix et note
+                const category = document.querySelector('.search-select:nth-of-type(1)').value;
+                const priceOrder = document.querySelector('.search-select:nth-of-type(2)').value;
+                const noteOrder = document.querySelector('.search-select:nth-of-type(3)').value;
+                
+                if (category !== 'all' && offer.category !== category) {
+                    isVisible = false;
+                }
+                
+                const minPrice = parseFloat(priceMinInput.value);
+                const maxPrice = parseFloat(priceMaxInput.value);
+                const offerPrice = parseFloat(offer.tarif);
+                if (offerPrice < minPrice || offerPrice > maxPrice) {
+                    isVisible = false;
+                }
+                
+                // Filtrage par date d'événement
+                if (eventDate.value && eventDate.value !== offer.date_event) {
+                    isVisible = false;
+                }
+                
+                // Filtrage par période d'ouverture
+                if (openingStartDate.value && (offer.period_end < openingStartDate.value || offer.period_start > openingEndDate.value)) {
+                    isVisible = false;
+                }
+                
+                if (isVisible) {
+                    markers.addLayer(leaflet);
                 }
             });
         }
     
-        function filterOffers() {
-            const query = searchInput.value.toLowerCase().trim();
-            const minPrice = parseFloat(priceMinInput.value);
-            const maxPrice = parseFloat(priceMaxInput.value);
-            const selectedCategory = searchSelects[0].value;
-            const selectedOrder = searchSelects[1].value;
-            const date = eventDate.value;
-            const startDate = openingStartDate.value;
-            const endDate = openingEndDate.value;
-    
-            offerItems.forEach(offer => {
-                let text = offer.textContent.toLowerCase();
-                let price = parseFloat(offer.getAttribute('data-price'));
-                let category = offer.getAttribute('data-category');
-                let offerDate = offer.getAttribute('data-event');
-                let periodStart = offer.getAttribute('data-period-o');
-                let periodEnd = offer.getAttribute('data-period-c');
-                
-                let isVisible = text.includes(query) && 
-                    (price >= minPrice && price <= maxPrice) && 
-                    (selectedCategory === 'all' || category === selectedCategory) &&
-                    (!date || date === offerDate) &&
-                    ((!startDate || (startDate <= periodEnd && startDate >= periodStart)) && (!endDate || (endDate >= periodStart && endDate <= periodEnd)));
-    
-                offer.classList.toggle('hidden', !isVisible);
-            });
-    
-            updateMarkers();
-        }
-    
-        searchInput.addEventListener('input', filterOffers);
-        priceMinInput.addEventListener('input', filterOffers);
-        priceMaxInput.addEventListener('input', filterOffers);
-        searchSelects.forEach(select => select.addEventListener('change', filterOffers));
-        eventDate.addEventListener('change', filterOffers);
-        openingStartDate.addEventListener('change', filterOffers);
-        openingEndDate.addEventListener('change', filterOffers);
+        searchInput.addEventListener('input', updateMarkers);
+        searchSelect.forEach(select => select.addEventListener('change', updateMarkers));
+        priceMinInput.addEventListener("input", updateMarkers);
+        priceMaxInput.addEventListener("input", updateMarkers);
+        eventDate.addEventListener('change', updateMarkers);
+        openingStartDate.addEventListener('change', updateMarkers);
+        openingEndDate.addEventListener('change', updateMarkers);
     });
+
     </script>
 
     <script>
