@@ -1234,11 +1234,11 @@ function tempsEcouleDepuisPublication($offre)
                             ///////////////////////////////////////////////////
                             ///                  Affichage                  ///
                             ///////////////////////////////////////////////////
-                            echo "            if (afficher > 0) {";
-                            echo "                this._icon.style.display = 'none';";  // Cacher le marqueur si le texte ne correspond pas
-                            echo "             } else {";
-                            echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
-                            echo "             }";
+                            // echo "            if (afficher > 0) {";
+                            // echo "                this._icon.style.display = 'none';";  // Cacher le marqueur si le texte ne correspond pas
+                            // echo "             } else {";
+                            // echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
+                            // echo "             }";
 
 
                             echo "    }";
