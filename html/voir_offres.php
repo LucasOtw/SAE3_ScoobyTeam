@@ -1200,10 +1200,10 @@ function tempsEcouleDepuisPublication($offre)
                             echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
                             echo "marker.on('add', function() {";
                             echo "    if (this._icon) {";
-                            echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "');";
+                            //echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "');";
                             echo "        console.log('Icône affichée avec data-offer :', this._icon);";
                             
-                            echo "        let offerData = ".$monOffre.";";
+                            echo "        let offerData = " . json_encode($monOffre)  .";";
                             echo "        if (offerData) {";
                             // echo "            // Décodage des entités HTML dans le JSON";
                             // echo "            let parser = new DOMParser();";
