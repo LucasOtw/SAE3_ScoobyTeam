@@ -1270,7 +1270,6 @@ function tempsEcouleDepuisPublication($offre)
                             } else {
                                 $event = "";
                             }
-                            echo "console.log(".json_encode($monOffre).");";
 
 
 
@@ -1393,7 +1392,7 @@ function tempsEcouleDepuisPublication($offre)
                             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                             
                             echo "marker.on('layeradd', function() {";
-                            // echo "        console.log('Icône affichée avec data-offer :', this._icon);";
+                            echo "        console.log('Icône dans le cluster :', this._icon);";
                             
                             echo "        let offerData = " . json_encode($monOffre) . ";";
                             // echo "        console.log('offerData:', offerData);"; // Afficher l'objet offerData dans la console
