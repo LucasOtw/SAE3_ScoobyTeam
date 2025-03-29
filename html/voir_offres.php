@@ -1386,78 +1386,78 @@ function tempsEcouleDepuisPublication($offre)
                             echo "});";
 
                             
-                            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                            /////////                                                          CLUSTERS                                                                     /////////
-                            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                            ///////                                                          CLUSTERS                                                                     /////////
+                            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                             
-                            // echo "marker.on('layeradd', function() {";
-                            // // echo "        console.log('Icône affichée avec data-offer :', this._icon);";
+                            echo "marker.on('layeradd', function() {";
+                            // echo "        console.log('Icône affichée avec data-offer :', this._icon);";
                             
-                            // echo "        let offerData = " . json_encode($monOffre) . ";";
-                            // // echo "        console.log('offerData:', offerData);"; // Afficher l'objet offerData dans la console
-                            // echo "        let afficher = 0;";
+                            echo "        let offerData = " . json_encode($monOffre) . ";";
+                            // echo "        console.log('offerData:', offerData);"; // Afficher l'objet offerData dans la console
+                            echo "        let afficher = 0;";
                             
-                            // ///////////////////////////////////////////////////
-                            // ///            Barre de recherche               ///
-                            // ///////////////////////////////////////////////////
-                            // echo "            let query = document.querySelector('.search-input').value.toLowerCase().trim();";
+                            ///////////////////////////////////////////////////
+                            ///            Barre de recherche               ///
+                            ///////////////////////////////////////////////////
+                            echo "            let query = document.querySelector('.search-input').value.toLowerCase().trim();";
                             
-                            // echo "            let offerText = " . json_encode(strtolower($monOffre["titre_offre"])) . ";";
+                            echo "            let offerText = " . json_encode(strtolower($monOffre["titre_offre"])) . ";";
                             
-                            // echo "            if (!offerText.includes(query)) {";
-                            // //echo "                this._icon.style.display = 'none';";  // Cacher le marqueur si le texte ne correspond pas
-                            // echo "                afficher += 1;";
-                            // echo "            } else {";
-                            // //echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
-                            // echo "            }";
+                            echo "            if (!offerText.includes(query)) {";
+                            //echo "                this._icon.style.display = 'none';";  // Cacher le marqueur si le texte ne correspond pas
+                            echo "                afficher += 1;";
+                            echo "            } else {";
+                            //echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
+                            echo "            }";
 
-                            // ///////////////////////////////////////////////////
-                            // ///            Selecteur cat, d et c            ///
-                            // ///////////////////////////////////////////////////
-                            // echo "            let category = document.querySelector('.search-select:nth-of-type(1)').value;";
-                            // echo "            let rate = document.querySelector('#select-rate').value;";
-                            // echo "            let status = document.querySelector('#select-statut').value;";
+                            ///////////////////////////////////////////////////
+                            ///            Selecteur cat, d et c            ///
+                            ///////////////////////////////////////////////////
+                            echo "            let category = document.querySelector('.search-select:nth-of-type(1)').value;";
+                            echo "            let rate = document.querySelector('#select-rate').value;";
+                            echo "            let status = document.querySelector('#select-statut').value;";
 
-                            // echo "            let offerCategory = " . json_encode($type_offre) . ";";
-                            // echo "            let offerRate = " . json_encode($monOffre["note_moyenne"]) . ";";
-                            // echo "            let offerStatus = " . json_encode($dataStatusEng) . ";";
+                            echo "            let offerCategory = " . json_encode($type_offre) . ";";
+                            echo "            let offerRate = " . json_encode($monOffre["note_moyenne"]) . ";";
+                            echo "            let offerStatus = " . json_encode($dataStatusEng) . ";";
                 
-                            // echo "            if ((category === 'all' || category === offerCategory) &&";
-                            // echo "                (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&";
-                            // echo "                (!status || status === offerStatus)) {";
-                            // //echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
-                            // echo "            } else {";
-                            // echo "                afficher+=1;";
-                            // echo "            }";
+                            echo "            if ((category === 'all' || category === offerCategory) &&";
+                            echo "                (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&";
+                            echo "                (!status || status === offerStatus)) {";
+                            //echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
+                            echo "            } else {";
+                            echo "                afficher+=1;";
+                            echo "            }";
 
-                            // ///////////////////////////////////////////////////
-                            // ///      Selecteur de la fourchette de prix     ///
-                            // ///////////////////////////////////////////////////
-                            // echo "            const minPrice = parseFloat(document.getElementById('price-min').value);";
-                            // echo "            const maxPrice = parseFloat(document.getElementById('price-max').value);";
+                            ///////////////////////////////////////////////////
+                            ///      Selecteur de la fourchette de prix     ///
+                            ///////////////////////////////////////////////////
+                            echo "            const minPrice = parseFloat(document.getElementById('price-min').value);";
+                            echo "            const maxPrice = parseFloat(document.getElementById('price-max').value);";
 
-                            // echo "            const offerPrice = " . json_encode($monOffre["tarif"]) . ";";
+                            echo "            const offerPrice = " . json_encode($monOffre["tarif"]) . ";";
 
-                            // echo "            if (offerPrice >= minPrice && offerPrice <= maxPrice) {";
-                            // //echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
-                            // echo "            } else {";
-                            // echo "                afficher+=1;";
-                            // echo "            }";
+                            echo "            if (offerPrice >= minPrice && offerPrice <= maxPrice) {";
+                            //echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
+                            echo "            } else {";
+                            echo "                afficher+=1;";
+                            echo "            }";
                             
                             
 
-                            // ///////////////////////////////////////////////////
-                            // ///                  Affichage                  ///
-                            // ///////////////////////////////////////////////////
-                            // echo "            if (afficher > 0) {";
-                            // // echo "                this._icon.style.display = 'none';";  // Cacher le marqueur si le texte ne correspond pas
-                            // echo "                markers.removeLayer(marker);";
-                            // echo "             } else {";
-                            // // echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
-                            // echo "             }";
+                            ///////////////////////////////////////////////////
+                            ///                  Affichage                  ///
+                            ///////////////////////////////////////////////////
+                            echo "            if (afficher > 0) {";
+                            // echo "                this._icon.style.display = 'none';";  // Cacher le marqueur si le texte ne correspond pas
+                            echo "                markers.removeLayer(marker);";
+                            echo "             } else {";
+                            // echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
+                            echo "             }";
 
 
-                            // echo "});";
+                            echo "});";
 
                             
                             echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false, className: 'custom-popup'}).setContent(\"" . addslashes($popupContent) . "\");";
