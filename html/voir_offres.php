@@ -1313,6 +1313,7 @@ function tempsEcouleDepuisPublication($offre)
                             $popupContent .= "</div>";
 
                             echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
+                            echo "markers.addLayer(marker);";
                             echo "marker.on('add', function() {";
                             echo "    if (this._icon) {";
                             echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "');";
@@ -1379,7 +1380,6 @@ function tempsEcouleDepuisPublication($offre)
                             echo "                markers.removeLayer(marker);";
                             echo "             } else {";
                             echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
-                            echo "                markers.addLayer(marker);";
                             echo "             }";
 
 
