@@ -203,7 +203,7 @@ if (!empty($_POST)) {
 
     <div id="modal-otp" class="otp-confirm-content">
         <form id="envoiCode" action="#" method="POST">
-            <p class="texte-boite-perso">Code à 6 chiffres :</p>
+            <p class="texte-boite-perso">Veuillez renseigner le code à 6 chiffres présent dans l'application :</p>
             <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
             <input type="submit" id="submit-code" value="Envoyer le code">
             <p id="errorMsg" style="color: red; display: none;">Le code doit contenir exactement 6 chiffres.</p>
