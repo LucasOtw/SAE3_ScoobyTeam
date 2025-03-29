@@ -1214,10 +1214,10 @@ function tempsEcouleDepuisPublication($offre)
                             echo "            let offerText = " . json_encode(strtolower($monOffre["titre_offre"])) . ";";
                             echo "            console.log(offerText);";
                             echo "            if (!offerText.includes(query)) {";
-                            //echo "                this._icon.style.display = 'none';";  // Cacher le marqueur si le texte ne correspond pas
+                            echo "                this._icon.style.display = 'none';";  // Cacher le marqueur si le texte ne correspond pas
                             echo "                console.log('pas ok');";
                             echo "            } else {";
-                            //echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
+                            echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
                             echo "                console.log('ok');";
                             echo "            }";
 
