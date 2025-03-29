@@ -1478,7 +1478,7 @@ function tempsEcouleDepuisPublication($offre)
                             echo "    }, 50);";
                             echo "});";
 
-                            // echo "markers.addLayer(marker);";
+                            echo "markers.addLayer(marker);";
 
                         }
                     }
