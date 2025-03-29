@@ -1359,10 +1359,10 @@ function tempsEcouleDepuisPublication($offre)
                             ///////////////////////////////////////////////////
                             ///      Selecteur de la fourchette de prix     ///
                             ///////////////////////////////////////////////////
-                            echo "            const minPrice = parseFloat(document.getElementById('price-min'.value);";
-                            echo "            const maxPrice = parseFloat( document.getElementById('price-max').value);";
+                            echo "            const minPrice = parseFloat(document.getElementById('price-min').value);";
+                            echo "            const maxPrice = parseFloat(document.getElementById('price-max').value);";
 
-                            echo "            const offerPrice = " . json_encode($monOffre["prix"]) . ";";
+                            echo "            const offerPrice = " . json_encode($monOffre["tarif"]) . ";";
 
                             echo "            if (offerPrice >= minPrice && offerPrice <= maxPrice) {";
                             //echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
