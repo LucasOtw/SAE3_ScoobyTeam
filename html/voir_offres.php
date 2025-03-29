@@ -1397,54 +1397,66 @@ function tempsEcouleDepuisPublication($offre)
                 const noteOrder = document.querySelector('.search-select:nth-of-type(3)').value;
                 const rate = document.querySelector('#select-rate').value;
                 const status = document.querySelector('#select-statut').value;
-
+        
+                console.log("Category:", category);
+                console.log("Price Order:", priceOrder);
+                console.log("Note Order:", noteOrder);
+                console.log("Rate:", rate);
+                console.log("Status:", status);
+        
                 // Filtrer par catégorie
                 offerItems.forEach(offer => {
-
                     const offerCategory = offer.getAttribute('data-category');
                     const offerRate = offer.getAttribute('data-rate');
                     const offerStatus = offer.getAttribute('data-status');
-
-                    console.log("\n"+offerCategory+" == "+category+"\n");
-                    console.log("\n"+offerRate+" == "+rate+"\n");
-
+        
+                    console.log("Offer Category:", offerCategory);
+                    console.log("Offer Rate:", offerRate);
+                    console.log("Offer Status:", offerStatus);
+        
                     if ((category === 'all' || category === offerCategory) &&
                         (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
                         (!status || status === offerStatus)) {
                         offer.style.removeProperty('display');
+                        console.log("Offer visible:", offer);
                     } else {
                         offer.style.display = "none";
+                        console.log("Offer hidden:", offer);
                     }
                 });
-
-
+        
                 // Trier les offres visibles
                 let offers = Array.from(document.querySelectorAll('.offer:not(.hidden)'));
-
+                console.log("Visible Offers:", offers);
+        
                 if (priceOrder) {
                     offers.sort((a, b) => {
                         const priceA = parseFloat(a.getAttribute('data-price')) || 0;
                         const priceB = parseFloat(b.getAttribute('data-price')) || 0;
+                        console.log("Sorting by price:", priceA, priceB);
                         return priceOrder === 'croissantP' ? priceA - priceB : priceB - priceA;
                     });
                 }
-
+        
                 if (noteOrder) {
                     offers.sort((a, b) => {
                         const noteA = parseFloat(a.getAttribute('data-rate')) || 0;
                         const noteB = parseFloat(b.getAttribute('data-rate')) || 0;
-
-                        console.log(noteA + " " + noteB);
-
+                        console.log("Sorting by note:", noteA, noteB);
                         return noteOrder === 'croissantN' ? noteA - noteB : noteB - noteA;
                     });
                 }
-
+        
                 // Réorganiser dans le DOM
+                console.log("Reorganizing DOM...");
                 container.innerHTML = ''; // Clear container
-                offers.forEach(offer => container.appendChild(offer)); // Append sorted offers
+                offers.forEach(offer => {
+                    console.log("Appending offer:", offer);
+                    container.appendChild(offer); // Append sorted offers
+                });
             });
         });
+
 
         ///////////////////////////////////////////////////
         ///      Selecteur de la fourchette de prix     ///
