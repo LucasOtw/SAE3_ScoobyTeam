@@ -1202,7 +1202,23 @@ function tempsEcouleDepuisPublication($offre)
                             echo "    if (this._icon) {";
                             echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre)) . "');";
                             echo "        console.log('Icône affichée avec data-offer :', this._icon);";
-                            //echo "        this._icon.style.display = 'none'; // Cacher le marqueur";
+                            echo "        let offerData = this._icon.getAttribute("data-offer");";
+                            echo "             if (offerData) {";
+                            echo "                 let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'"); ";
+                            echo "                 let offer = JSON.parse(correctedJsonString);";
+
+                            ///////////////////////////////////////////////////
+                            ///            Barre de recherche               ///
+                            ///////////////////////////////////////////////////    
+                            echo "                 query = document.querySelector('.search-input').value.toLowerCase().trim();";
+                            echo "                 let offerText = offer.titre_offre.toLowerCase();";
+                            echo "                 if (!offerText.includes(query)) {";
+                            echo "                     this._icon.style.display = "none";";
+                            echo "                 } else {";
+                            echo "                     this._icon.style.display = "block";";
+                            echo "                 }";
+                            
+                            echo "             }";
                             echo "    }";
                             echo "});";
                             
