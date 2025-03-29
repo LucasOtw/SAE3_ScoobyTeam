@@ -1230,7 +1230,7 @@ function tempsEcouleDepuisPublication($offre)
                             echo "            let status = document.querySelector('#select-statut').value;";
                             
                             echo "            let offerCategory = " . json_encode(strtolower($monOffre["titre_offre"])) . ";";
-                            echo "            let offerRate = " . json_encode(strtolower($monOffre["note_moyenne"])) . ";";
+                            echo "            let offerRate = " . json_encode($monOffre["note_moyenne"]) . ";";
                             echo "            let offerStatus = " . json_encode(strtolower($monOffre["titre_offre"])) . ";";
                 
                             echo "            if ((category === 'all' || category === offerCategory) &&";
