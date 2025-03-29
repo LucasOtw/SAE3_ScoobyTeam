@@ -1210,7 +1210,7 @@ function tempsEcouleDepuisPublication($offre)
                             ///            Barre de recherche               ///
                             ///////////////////////////////////////////////////
                             echo "            let query = document.querySelector('.search-input').value.toLowerCase().trim();";
-                            echo "            console.log(query)";
+                            echo "            console.log(query);";
                             echo "            let offerText = " . json_encode(strtolower($monOffre["titre_offre"])) . ";";
                             echo "            console.log(offerText);";
 
