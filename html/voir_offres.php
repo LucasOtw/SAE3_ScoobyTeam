@@ -1387,6 +1387,8 @@ function tempsEcouleDepuisPublication($offre)
                             echo "             }";
 
 
+                            echo "    } else {";
+                            echo "        console.log('pas ok');";
                             echo "    }";
                             // echo "});";
 
