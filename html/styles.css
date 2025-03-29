@@ -13937,9 +13937,8 @@ ul.mentions_legales-sous-list {
     height: 39px;
     width: 154px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
-    align-content: stretch;
-    margin-left: 170px;
     margin-top: 41px;
+    margin-left: 170px;
 }
 
 .otp-confirm-content button:hover {
