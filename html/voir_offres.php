@@ -1377,11 +1377,8 @@ function tempsEcouleDepuisPublication($offre)
                             echo "            if (afficher > 0) {";
                             // echo "                this._icon.style.display = 'none';";  // Cacher le marqueur si le texte ne correspond pas
                             echo "                markers.removeLayer(marker);";
-                            echo "                console.log('pas ok');";
                             echo "             } else {";
                             // echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
-                            echo "                markers.addLayer(marker);";
-                            echo "                console.log('ok');";
                             echo "             }";
 
                             echo "    }";
