@@ -111,10 +111,10 @@ session_start();
 
     <div class="modal-overlay" id="modal-overlay"></div>
 
-    <div id="modal-otp" class="otp-confirm-content">
+    <div id="modal-otp" class="otp-confirm-content2">
         <form id="envoiCode" action="#" method="POST">
             <p class="texte-boite-perso">Veuillez renseigner le code à 6 chiffres présent dans l'application :</p>
-            <input type="text" name="code_otp" id="otpCode2" placeholder="Code à 6 chiffres" maxlength="6">
+            <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
             <input type="submit" id="submit-code" value="Envoyer le code">
             <p id="errorMsg" style="color: red; display: none;">Le code doit contenir exactement 6 chiffres.</p>
             <!--<button>Se connecter quand même</button>-->
