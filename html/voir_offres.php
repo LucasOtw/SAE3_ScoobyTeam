@@ -1211,7 +1211,7 @@ function tempsEcouleDepuisPublication($offre)
                             ///////////////////////////////////////////////////
                             echo "            let query = document.querySelector('.search-input').value.toLowerCase().trim();";
                             echo "            console.log(query)";
-                            echo "            let offerText = " . $monOffre["titre_offre"].toLowerCase() . ";";
+                            echo "            let offerText = " . js_encode($monOffre["titre_offre"].toLowerCase()) . ";";
                             echo "            console.log(offerText)";
 
                             echo "    }";
