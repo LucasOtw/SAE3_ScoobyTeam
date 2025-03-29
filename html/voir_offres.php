@@ -1163,6 +1163,7 @@ function tempsEcouleDepuisPublication($offre)
                                     break;
                                 }
                             }
+                            echo "console.log(".js_encode($monOffre).");";
 
                             // Contenu de la popup avec styles améliorés
                             $popupContent = "<div class='popup-container' style='width:230px; border-radius:8px; overflow:hidden; font-family:\"K2D\", sans-serif;'>";
@@ -1203,23 +1204,51 @@ function tempsEcouleDepuisPublication($offre)
                             echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "');";
                             // echo "        console.log('Icône affichée avec data-offer :', this._icon);";
                             
-                            echo "        let offerData = " . json_encode($monOffre) . ";"; 
+                            echo "        let offerData = " . json_encode($monOffre) . ";";
                             // echo "        console.log('offerData:', offerData);"; // Afficher l'objet offerData dans la console
+                            echo "        let afficher = 0;";
                             
                             ///////////////////////////////////////////////////
                             ///            Barre de recherche               ///
                             ///////////////////////////////////////////////////
                             echo "            let query = document.querySelector('.search-input').value.toLowerCase().trim();";
-                            echo "            console.log(query);";
+                            
                             echo "            let offerText = " . json_encode(strtolower($monOffre["titre_offre"])) . ";";
-                            echo "            console.log(offerText);";
+                            
                             echo "            if (!offerText.includes(query)) {";
-                            echo "                this._icon.style.display = 'none';";  // Cacher le marqueur si le texte ne correspond pas
-                            echo "                console.log('pas ok');";
+                            //echo "                this._icon.style.display = 'none';";  // Cacher le marqueur si le texte ne correspond pas
+                            echo "                afficher+=1;";
                             echo "            } else {";
-                            echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
-                            echo "                console.log('ok');";
+                            //echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
                             echo "            }";
+
+                            ///////////////////////////////////////////////////
+                            ///            Selecteur cat, d et c            ///
+                            ///////////////////////////////////////////////////
+                            echo "            let category = document.querySelector('.search-select:nth-of-type(1)').value;";
+                            echo "            let rate = document.querySelector('#select-rate').value;";
+                            echo "            let status = document.querySelector('#select-statut').value;";
+                            
+                            echo "            let offerCategory = " . json_encode(strtolower($monOffre["titre_offre"])) . ";";
+                            echo "            let offerRate = " . json_encode(strtolower($monOffre["note_moyenne"])) . ";";
+                            echo "            let offerStatus = " . json_encode(strtolower($monOffre["titre_offre"])) . ";";
+                
+                            echo "            if ((category === 'all' || category === offerCategory) &&";
+                            echo "                (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&";
+                            echo "                (!status || status === offerStatus)) {";
+                            //echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
+                            echo "            } else {";
+                            echo "                afficher+=1;";
+                            echo "            }";
+
+                            ///////////////////////////////////////////////////
+                            ///                  Affichage                  ///
+                            ///////////////////////////////////////////////////
+                            echo "            if (afficher > 0) {";
+                            echo "                this._icon.style.display = 'none';";  // Cacher le marqueur si le texte ne correspond pas
+                            echo "             } else {";
+                            echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
+                            echo "             }";
 
 
                             echo "    }";
