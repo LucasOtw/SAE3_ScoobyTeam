@@ -1200,6 +1200,7 @@ function tempsEcouleDepuisPublication($offre)
                             echo "marker.on('add', function() {";
                             echo "    if (this._icon) {";
                             echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre)) . "');";
+                            echo "        console.log('Icône affichée avec data-offer :', this._icon);";
                             echo "    }";
                             echo "});";
                             
@@ -1341,13 +1342,6 @@ function tempsEcouleDepuisPublication($offre)
 
         const openingStartDate = document.getElementById('opening-start-date');
         const openingEndDate = document.getElementById('opening-end-date');
-
-
-        marker.on('add', function() {
-            if (this._icon) {
-                console.log("Icône affichée avec data-offer :", this._icon);
-            }
-        });
 
 
         ///////////////////////////////////////////////////
