@@ -1392,7 +1392,7 @@ function tempsEcouleDepuisPublication($offre)
                             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                             
                             echo "marker.on('layeradd', function() {";
-                            echo "        console.log('Icône dans le cluster :', this._icon);";
+                            echo "        console.log('ok');";
                             
                             echo "        let offerData = " . json_encode($monOffre) . ";";
                             // echo "        console.log('offerData:', offerData);"; // Afficher l'objet offerData dans la console
