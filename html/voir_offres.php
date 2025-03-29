@@ -1202,7 +1202,7 @@ function tempsEcouleDepuisPublication($offre)
                             echo "    if (this._icon) {";
                             echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre)) . "');";
                             echo "        console.log('Icône affichée avec data-offer :', this._icon);";
-                            echo "        this._icon.style.display = 'none'; // Cacher le marqueur";
+                            //echo "        this._icon.style.display = 'none'; // Cacher le marqueur";
                             echo "    }";
                             echo "});";
                             
