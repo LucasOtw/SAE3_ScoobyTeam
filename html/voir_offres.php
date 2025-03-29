@@ -1405,8 +1405,8 @@ function tempsEcouleDepuisPublication($offre)
                     const offerRate = offer.getAttribute('data-rate');
                     const offerStatus = offer.getAttribute('data-status');
 
-                    console.log(offerCategory+" == "+category);
-                    console.log(offerRate+" == "+rate);
+                    console.log("\n"+offerCategory+" == "+category+"\n");
+                    console.log("\n"+offerRate+" == "+rate+"\n");
 
                     if ((category === 'all' || category === offerCategory) &&
                         (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
