@@ -1317,90 +1317,69 @@ function tempsEcouleDepuisPublication($offre)
     <script>
         
     document.addEventListener("DOMContentLoaded", function () {
-        // Récupération des éléments
         const offerItems = document.querySelectorAll('.offer');
-        const leafletItems = document.querySelectorAll('.leaflet-marker-icon');
         const searchInput = document.querySelector('.search-input');
-        const searchSelect = document.querySelectorAll('.search-select');
-        const container = document.querySelector('#offers-list');
+        const searchSelects = document.querySelectorAll('.search-select');
         const priceMinInput = document.getElementById("price-min");
         const priceMaxInput = document.getElementById("price-max");
         const eventDate = document.querySelector('#event-date');
         const openingStartDate = document.getElementById('opening-start-date');
         const openingEndDate = document.getElementById('opening-end-date');
-    
+        
+        let markers = []; // Stockage des marqueurs Leaflet
+        
         function updateMarkers() {
-            leafletItems.forEach(marker => {
-                let offerData = marker.getAttribute("data-offer");
-                if (offerData) {
-                    let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
-                    let offer = JSON.parse(correctedJsonString);
-                    let relatedOffer = document.querySelector(`.offer[data-id='${offer.id}']`);
-                    
-                    if (relatedOffer && relatedOffer.style.display !== "none") {
-                        marker.style.display = "block";
-                    } else {
-                        marker.style.display = "none";
-                    }
+            markers.forEach(marker => map.removeLayer(marker)); // Suppression des marqueurs
+            markers = []; // Réinitialisation
+            
+            offerItems.forEach(offer => {
+                if (!offer.classList.contains('hidden')) {
+                    let data = JSON.parse(offer.getAttribute('data-offer'));
+                    let marker = L.marker([data.latitude, data.longitude], { icon: customIcon }).bindPopup(data.popupContent);
+                    markers.push(marker);
+                    marker.addTo(map);
                 }
             });
         }
     
-        searchInput.addEventListener('input', () => {
+        function filterOffers() {
             const query = searchInput.value.toLowerCase().trim();
-            offerItems.forEach(offer => {
-                const text = offer.textContent.toLowerCase();
-                offer.style.display = text.includes(query) ? "" : "none";
-            });
-            updateMarkers();
-        });
-    
-        searchSelect.forEach(select => {
-            select.addEventListener('change', function () {
-                const category = document.querySelector('.search-select:nth-of-type(1)').value;
-                offerItems.forEach(offer => {
-                    const offerCategory = offer.getAttribute('data-category');
-                    offer.style.display = (category === 'all' || category === offerCategory) ? "" : "none";
-                });
-                updateMarkers();
-            });
-        });
-    
-        function filterOffersByPrice() {
             const minPrice = parseFloat(priceMinInput.value);
             const maxPrice = parseFloat(priceMaxInput.value);
-            offerItems.forEach(offer => {
-                const offerPrice = parseFloat(offer.getAttribute('data-price'));
-                offer.style.display = (offerPrice >= minPrice && offerPrice <= maxPrice) ? "" : "none";
-            });
-            updateMarkers();
-        }
-        priceMinInput.addEventListener("input", filterOffersByPrice);
-        priceMaxInput.addEventListener("input", filterOffersByPrice);
-    
-        eventDate.addEventListener('change', function () {
+            const selectedCategory = searchSelects[0].value;
+            const selectedOrder = searchSelects[1].value;
             const date = eventDate.value;
-            offerItems.forEach(offer => {
-                const offerEvent = offer.getAttribute('data-event');
-                offer.style.display = (!date || date === offerEvent) ? "" : "none";
-            });
-            updateMarkers();
-        });
-    
-        function filterByOpeningDates() {
             const startDate = openingStartDate.value;
             const endDate = openingEndDate.value;
+    
             offerItems.forEach(offer => {
-                const offerPeriodStart = offer.getAttribute('data-period-o');
-                const offerPeriodEnd = offer.getAttribute('data-period-c');
-                offer.style.display = ((startDate <= offerPeriodEnd && startDate >= offerPeriodStart) || (endDate >= offerPeriodStart && endDate <= offerPeriodEnd)) ? "" : "none";
+                let text = offer.textContent.toLowerCase();
+                let price = parseFloat(offer.getAttribute('data-price'));
+                let category = offer.getAttribute('data-category');
+                let offerDate = offer.getAttribute('data-event');
+                let periodStart = offer.getAttribute('data-period-o');
+                let periodEnd = offer.getAttribute('data-period-c');
+                
+                let isVisible = text.includes(query) && 
+                    (price >= minPrice && price <= maxPrice) && 
+                    (selectedCategory === 'all' || category === selectedCategory) &&
+                    (!date || date === offerDate) &&
+                    ((!startDate || (startDate <= periodEnd && startDate >= periodStart)) && (!endDate || (endDate >= periodStart && endDate <= periodEnd)));
+    
+                offer.classList.toggle('hidden', !isVisible);
             });
+    
             updateMarkers();
         }
-        openingStartDate.addEventListener('change', filterByOpeningDates);
-        openingEndDate.addEventListener('change', filterByOpeningDates);
+    
+        searchInput.addEventListener('input', filterOffers);
+        priceMinInput.addEventListener('input', filterOffers);
+        priceMaxInput.addEventListener('input', filterOffers);
+        searchSelects.forEach(select => select.addEventListener('change', filterOffers));
+        eventDate.addEventListener('change', filterOffers);
+        openingStartDate.addEventListener('change', filterOffers);
+        openingEndDate.addEventListener('change', filterOffers);
     });
-
     </script>
 
     <script>
