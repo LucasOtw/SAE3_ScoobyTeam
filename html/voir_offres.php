@@ -1163,7 +1163,7 @@ function tempsEcouleDepuisPublication($offre)
                                     break;
                                 }
                             }
-                            echo "console.log(".js_encode($monOffre).");";
+                            echo "console.log(".json_encode($monOffre).");";
 
                             // Contenu de la popup avec styles améliorés
                             $popupContent = "<div class='popup-container' style='width:230px; border-radius:8px; overflow:hidden; font-family:\"K2D\", sans-serif;'>";
@@ -1225,9 +1225,9 @@ function tempsEcouleDepuisPublication($offre)
                             ///////////////////////////////////////////////////
                             ///            Selecteur cat, d et c            ///
                             ///////////////////////////////////////////////////
-                            // echo "            let category = document.querySelector('.search-select:nth-of-type(1)').value;";
-                            // echo "            let rate = document.querySelector('#select-rate').value;";
-                            // echo "            let status = document.querySelector('#select-statut').value;";
+                            echo "            let category = document.querySelector('.search-select:nth-of-type(1)').value;";
+                            echo "            let rate = document.querySelector('#select-rate').value;";
+                            echo "            let status = document.querySelector('#select-statut').value;";
                             
                             
 
