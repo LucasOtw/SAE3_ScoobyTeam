@@ -1398,12 +1398,6 @@ function tempsEcouleDepuisPublication($offre)
                 const rate = document.querySelector('#select-rate').value;
                 const status = document.querySelector('#select-statut').value;
         
-                console.log("Category:", category);
-                console.log("Price Order:", priceOrder);
-                console.log("Note Order:", noteOrder);
-                console.log("Rate:", rate);
-                console.log("Status:", status);
-        
                 // Filtrer par catégorie
                 offerItems.forEach(offer => {
                     const offerCategory = offer.getAttribute('data-category');
@@ -1418,22 +1412,18 @@ function tempsEcouleDepuisPublication($offre)
                         (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
                         (!status || status === offerStatus)) {
                         offer.style.removeProperty('display');
-                        console.log("Offer visible:", offer);
                     } else {
                         offer.style.display = "none";
-                        console.log("Offer hidden:", offer);
                     }
                 });
         
                 // Trier les offres visibles
                 let offers = Array.from(document.querySelectorAll('.offer:not(.hidden)'));
-                console.log("Visible Offers:", offers);
         
                 if (priceOrder) {
                     offers.sort((a, b) => {
                         const priceA = parseFloat(a.getAttribute('data-price')) || 0;
                         const priceB = parseFloat(b.getAttribute('data-price')) || 0;
-                        console.log("Sorting by price:", priceA, priceB);
                         return priceOrder === 'croissantP' ? priceA - priceB : priceB - priceA;
                     });
                 }
@@ -1442,16 +1432,13 @@ function tempsEcouleDepuisPublication($offre)
                     offers.sort((a, b) => {
                         const noteA = parseFloat(a.getAttribute('data-rate')) || 0;
                         const noteB = parseFloat(b.getAttribute('data-rate')) || 0;
-                        console.log("Sorting by note:", noteA, noteB);
                         return noteOrder === 'croissantN' ? noteA - noteB : noteB - noteA;
                     });
                 }
         
                 // Réorganiser dans le DOM
-                console.log("Reorganizing DOM...");
                 container.innerHTML = ''; // Clear container
                 offers.forEach(offer => {
-                    console.log("Appending offer:", offer);
                     container.appendChild(offer); // Append sorted offers
                 });
             });
