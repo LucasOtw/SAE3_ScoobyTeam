@@ -1385,6 +1385,8 @@ function tempsEcouleDepuisPublication($offre)
                             echo "    }";
                             echo "});";
 
+                            echo "markers.addLayer(marker);";
+
                             
                             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                             ///////                                                          CLUSTERS                                                                     /////////
@@ -1478,7 +1480,7 @@ function tempsEcouleDepuisPublication($offre)
                             echo "    }, 50);";
                             echo "});";
 
-                            echo "markers.addLayer(marker);";
+                            
 
                         }
                     }
