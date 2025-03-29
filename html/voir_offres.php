@@ -1205,21 +1205,12 @@ function tempsEcouleDepuisPublication($offre)
                             
                             echo "        let offerData = " . json_encode($monOffre) . ";"; 
                             echo "        console.log('offerData:', offerData);"; // Afficher l'objet offerData dans la console
+                            
                             ///////////////////////////////////////////////////
                             ///            Barre de recherche               ///
                             ///////////////////////////////////////////////////
                             echo "            let query = document.querySelector('.search-input').value.toLowerCase().trim();";
                             echo "            console.log(query)";
-                            echo "            let offerText = " . $monOffre["titre_offre"].toLowerCase() . ";";
-                            echo "            console.log(offerText)";
-                            echo "            if (!offerText.includes(query)) {";
-                            //echo "                this._icon.style.display = 'none';";  // Cacher le marqueur si le texte ne correspond pas
-                            echo "                console.log('ok');";
-                            echo "            } else {";
-                            //echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
-                            echo "                console.log('pas ok');";
-                            echo "            }";
-
 
                             echo "    }";
                             echo "});";
