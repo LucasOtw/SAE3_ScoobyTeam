@@ -1225,9 +1225,9 @@ function tempsEcouleDepuisPublication($offre)
                             ///////////////////////////////////////////////////
                             ///            Selecteur cat, d et c            ///
                             ///////////////////////////////////////////////////
-                            echo "            let category = document.querySelector('.search-select:nth-of-type(1)').value;";
-                            echo "            let rate = document.querySelector('#select-rate').value;";
-                            echo "            let status = document.querySelector('#select-statut').value;";
+                            // echo "            let category = document.querySelector('.search-select:nth-of-type(1)').value;";
+                            // echo "            let rate = document.querySelector('#select-rate').value;";
+                            // echo "            let status = document.querySelector('#select-statut').value;";
                             
                             
 
