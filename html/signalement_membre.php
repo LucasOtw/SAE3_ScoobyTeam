@@ -3,6 +3,8 @@
 session_start();
 require_once __DIR__ . ("/../.security/config.php");
 
+include_once("recupInfosCompte.php");
+
 try {
     $dbh = new PDO($dsn, $username, $password);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -26,7 +28,6 @@ try {
 
             // Récupérer l'avis correspondant
             $avis = $stmt->fetch();
-            var_dump($avis);
         } else {
             // Si l'ID n'est pas un nombre valide
             $erreur = "L'ID d'avis est invalide.";
