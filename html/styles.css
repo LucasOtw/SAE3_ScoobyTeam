@@ -10469,7 +10469,7 @@ body.menu-open #overlay {
         flex-direction: column;
         /* Empiler l'input et le bouton verticalement */
         align-items: center;
-        width: 100%;
+        width: 80%;
     }
 
     .toute_les_offres_main .search-input {
