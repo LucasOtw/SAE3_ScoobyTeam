@@ -256,6 +256,20 @@ try {
             color: green;
         }
     </style>
+    <nav class="nav-bar">
+        <a href="voir_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
+        <a href="consulter_mes_avis.php"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
+        <a href="incitation.php"><img src="images/icones/Croix icon.png" alt="image de PLUS"></a>
+        <a href="
+        <?php
+        if (isset($_SESSION["membre"]) || !empty($_SESSION["membre"])) {
+            echo "compte_membre_tel.php";
+        } else {
+            echo "connexion_membre.php";
+        }
+        ?>">
+            <img src="images/icones/User icon.png" alt="image de Personne"></a>
+    </nav>
     <footer class="footer footer_membre">
        <div class="newsletter">
         <div class="newsletter-content">

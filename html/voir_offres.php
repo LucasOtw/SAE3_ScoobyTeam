@@ -1115,6 +1115,8 @@ function tempsEcouleDepuisPublication($offre)
 
     </script>
     <script>
+        let markersArray = [];
+        
         document.addEventListener("DOMContentLoaded", function () {
             const mapElement = document.getElementById('map');
 
@@ -1141,7 +1143,7 @@ function tempsEcouleDepuisPublication($offre)
                         removeOutsideVisibleBounds: false
                     });
 
-                    var markersArray = [];
+                    let index = 0;
                     <?php
                     $adresses = $dbh->query('SELECT o.*, a.*, 
                            (SELECT i.url_image 
@@ -1154,8 +1156,6 @@ function tempsEcouleDepuisPublication($offre)
                            WHERE o.en_ligne = true');
 
                     $api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig";
-
-                    $index = 0;
 
                     foreach ($adresses as $adr) {
                         $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
@@ -1332,10 +1332,11 @@ function tempsEcouleDepuisPublication($offre)
                             $popupContent .= "</div>";
 
                             echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
-                            // echo "markersArray.push({" . '"code_offre": ' . $adr["code_offre"] . ', "marker": marker});\n';
+                            echo "markersArray.push(marker);";
                             echo "marker.on('add', function() {";
                             echo "    if (this._icon) {";
                             echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "');";
+                            echo "        this._icon.setAttribute('data-index', index);";
                             // echo "        console.log('Icône affichée avec data-offer :', this._icon);";
                     
                             echo "        let offerData = " . json_encode($monOffre) . ";";
@@ -1577,6 +1578,7 @@ function tempsEcouleDepuisPublication($offre)
                     if (offerData) {
                         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
                         let offer = JSON.parse(correctedJsonString); // Convertir en objet
+                        let offerObject = leaflet.getAttribute("data-index");
                         let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
 
                         console.log(offerText);
@@ -1584,9 +1586,9 @@ function tempsEcouleDepuisPublication($offre)
                         console.log("/////////////");
 
                         if (offerText.includes(query)) {
-                            leaflet.marker.setOpacity(1); // Rendre visible
+                            toggleMarkerVisibility(offerObject,1); // Rendre visible
                         } else {
-                            leaflet.marker.setOpacity(0); // Cacher le marqueur
+                            toggleMarkerVisibility(offerObject,0); // Cacher le marqueur
                         }
                     }
                 });
