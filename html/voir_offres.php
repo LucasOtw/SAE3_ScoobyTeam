@@ -633,29 +633,9 @@ function tempsEcouleDepuisPublication($offre)
                             print "Erreur!: " . $e->getMessage() . "<br/>";
                             die();
                         }
-                        // On récupère toutes les offres (titre,ville,images)
-                        // Requête préparée
-                        $sql = "SELECT * 
-                                FROM tripenarvor._consulte 
-                                NATURAL JOIN tripenarvor._offre 
-                                WHERE code_compte = :code_compte 
-                                ORDER BY date_consultation desc";
+                        
 
-                        // Préparation de la requête
-                        $stmt = $dbh->prepare($sql);
-
-                        // Liaison des paramètres
-                        $stmt->bindParam(':code_compte', $_SESSION['membre']['code_compte'], PDO::PARAM_INT);
-
-                        // Exécution
-                        $stmt->execute();
-
-                        // Récupération des résultats
-                    
-                        // $infosOffre = $dbh->query('select * from tripenarvor._offre;');
-                        $infosOffre = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                        foreach ($_COOKIE as $cookie => $code_offre) {
+                        foreach (array_reverse($_COOKIE) as $cookie => $code_offre) {
                             if (strpos($cookie, 'consulte_recemment') === 0) {
 
                                 // Récupérer l'offre
