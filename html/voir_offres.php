@@ -1331,7 +1331,7 @@ function tempsEcouleDepuisPublication($offre)
                             $popupContent .= "</div>";
                             $popupContent .= "</div>";
 
-                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
+                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon, , dataOffer: '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "'});";
                             echo "markersArray.push(marker);";
                             echo "marker.on('add', function() {";
                             echo "    if (this._icon) {";
@@ -1607,7 +1607,7 @@ function tempsEcouleDepuisPublication($offre)
                 markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
                 markersArray.forEach((marker, index) => {
                     console.log(marker._icon);
-                    const offerData = marker._icon.getAttribute("data-offer");
+                    const offerData = marker.options.dataOffer;
             
                     if (offerData) {
                         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
