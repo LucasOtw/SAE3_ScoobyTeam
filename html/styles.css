@@ -13952,6 +13952,20 @@ ul.mentions_legales-sous-list {
     color: white;
 }
 
+.custom-confirm-content-pro{
+    position: fixed;
+    top: 50%;
+    height: 231px;
+    width: 543px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 19px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
 .back_button{
     margin-top:12.3em;
 }
