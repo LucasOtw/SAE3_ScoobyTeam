@@ -18,13 +18,13 @@ if (isset($_SESSION['detail_offre'])) {
     unset($_SESSION['detail_offre']);
 }
 
-
+/*
 ?>
 <pre>
     <?php var_dump($_COOKIE); ?>
 </pre>
 <?php
-
+*/
 require_once __DIR__ . ("/../.security/config.php");
 
 // Créer une instance PDO
