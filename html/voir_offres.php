@@ -1126,6 +1126,8 @@ function tempsEcouleDepuisPublication($offre)
                         disableClusteringAtZoom: 35,
                         removeOutsideVisibleBounds: false
                     });
+
+                    var markersArray = [];
                     <?php
                     $adresses = $dbh->query('SELECT o.*, a.*, 
                            (SELECT i.url_image 
@@ -1138,6 +1140,8 @@ function tempsEcouleDepuisPublication($offre)
                            WHERE o.en_ligne = true');
 
                     $api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig";
+
+                    $index = 0;
 
                     foreach ($adresses as $adr) {
                         $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
@@ -1314,6 +1318,8 @@ function tempsEcouleDepuisPublication($offre)
                             $popupContent .= "</div>";
 
                             echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
+                            echo "marker.index = $index;\n";
+                            echo "markersArray.push(marker);\n";
                             echo "marker.on('add', function() {";
                             echo "    if (this._icon) {";
                             echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "');";
@@ -1404,6 +1410,7 @@ function tempsEcouleDepuisPublication($offre)
                             echo "});";
 
                             echo "markers.addLayer(marker);";
+                            $index++;
 
                         }
                     }
