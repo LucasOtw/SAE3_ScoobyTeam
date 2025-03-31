@@ -11426,7 +11426,8 @@ main.main_repondre_avis .message-erreur {
         padding: 15px;
         margin-top:4vh;
         margin-left:1em;
-        border: 1px solid #f3f8ff;
+        border: 5px solid transparent; 
+        border-image: linear-gradient(90deg, #176FF2, #196EEE) 1;
         border-radius: 29px;
         resize: none;
         background-color: #e9e9e9;
@@ -13359,7 +13360,7 @@ ul.mentions_legales-sous-list {
         margin: 0 auto 20px;
         line-height: 1.5;
     }
-    font-size
+    font-size{
         max-width: 100%;
         margin: 20px auto;
     }
