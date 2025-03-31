@@ -1017,6 +1017,9 @@ if($infos_offre !== null){
     
    
         </div>
+        <div class="tab-content" id="payment">
+            COUCOU LES CONGOLAIS
+        </div>
 
             <div class="btn_modif_offre">
                 <input type="submit" name="envoi_modif" value="Valider">
