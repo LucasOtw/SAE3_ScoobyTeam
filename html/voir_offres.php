@@ -1116,6 +1116,14 @@ function tempsEcouleDepuisPublication($offre)
     </script>
     <script>
         let markersArray = [];
+
+        var markers = L.markerClusterGroup({
+                        zoomToBoundsOnClick: true,
+                        spiderfyOnMaxZoom: false,
+                        showCoverageOnHover: false,
+                        disableClusteringAtZoom: 35,
+                        removeOutsideVisibleBounds: false
+                    });
         
         document.addEventListener("DOMContentLoaded", function () {
             const mapElement = document.getElementById('map');
@@ -1134,14 +1142,6 @@ function tempsEcouleDepuisPublication($offre)
                     L.control.zoom({
                         position: 'topleft'
                     }).addTo(map);
-
-                    var markers = L.markerClusterGroup({
-                        zoomToBoundsOnClick: true,
-                        spiderfyOnMaxZoom: false,
-                        showCoverageOnHover: false,
-                        disableClusteringAtZoom: 35,
-                        removeOutsideVisibleBounds: false
-                    });
 
                     let index = 0;
                     <?php
