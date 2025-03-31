@@ -1515,7 +1515,6 @@ function tempsEcouleDepuisPublication($offre)
                 // Réinitialiser les marqueurs
                 markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
                 markersArray.forEach((marker, index) => {
-                    console.log(marker._icon);
                     const offerData = marker.options.dataOffer;
 
                     if (offerData) {
@@ -1533,7 +1532,7 @@ function tempsEcouleDepuisPublication($offre)
                 });
 
                 // Recalculer les clusters
-                map.addLayer(markers); // Réajouter le groupe de clusters à la carte
+                //map.addLayer(markers); // Réajouter le groupe de clusters à la carte
 
             });
 
