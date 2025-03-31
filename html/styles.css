@@ -13956,7 +13956,15 @@ ul.mentions_legales-sous-list {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; /* Pour qu'il s'adapte à la largeur du header */
-    height: auto; /* Ajustement proportionnel */
-    z-index: -1; /* Envoie le SVG à l'arrière-plan */
+    width: 100%; 
+    height: auto; 
+    z-index: -1; 
 }
+bouton-retour-tel{
+    display: block; 
+
+    @media (max-width: 430px) {
+        display: none; 
+    }   
+}
+  

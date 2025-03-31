@@ -31,26 +31,17 @@
     </header>
     <header class="header-tel header_membre">
         <div class="logo-tel">
-            <img src="images/LogoCouleur.png" alt="PACT Logo">
-            <a class="btn_plus_tard_crea" href="voir_offres.php">Plus tard</a>
-            <a href="compte_membre_tel.php">
-                <img src="images/Bouton_retour.png" alt="bouton retour">
-            </a>
-            
+            <img src="images/LogoCouleur.png" alt="PACT Logo">          
         </div>
-        <style>
-            .btn_plus_tard_crea{
-                text-decoration:none;
-                color:black;
-                margin-top:2em;
-            }
-        </style>
 
     </header>
 
     <main class="creation_compte_membre">
         <div class="creation_compte_membre_container">
             <div class="creation_compte_membre_form-section">
+                <a href="compte_membre_tel.php">
+                    <img src="images/Bouton_retour.png" alt="bouton retour" class="bouton-retour-tel">
+                </a>
                 <h1>S’inscrire</h1>
                 <p>
                     Créez un compte membre pour sauvegarder vos annonces favorites 
