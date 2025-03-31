@@ -1335,11 +1335,7 @@ function tempsEcouleDepuisPublication($offre)
                             $popupContent .= "</div>";
                             $popupContent .= "</div>";
 
-                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon, 
-                                                                                    dataOffer: '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "',
-                                                                                    dataStatus: '" . json_encode($dataStatusEng) . "', 
-                                                                                    dataCategory: '" . json_encode($type_offre) . "',
-                                                                                    dataCity: '" . json_encode($villeOffre) . "'});";
+                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon, dataOffer: '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "',dataStatus: '" . json_encode($dataStatusEng) . "', dataCategory: '" . json_encode($type_offre) . "', dataCity: '" . json_encode($villeOffre) . "'});";
                             echo "markersArray.push(marker);";
 
                             echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false, className: 'custom-popup'}).setContent(\"" . addslashes($popupContent) . "\");";
