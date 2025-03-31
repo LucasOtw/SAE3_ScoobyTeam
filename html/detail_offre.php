@@ -128,7 +128,7 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
         }
 
 
-        // Une offre a forcément au moins une image. 
+        // Une offre a forcément au moins une içmage. 
         // On récupère l'image (ou les images) associée(s)
 
         $stmt = $dbh->prepare('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = :code_offre;');

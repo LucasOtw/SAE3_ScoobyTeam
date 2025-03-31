@@ -659,61 +659,69 @@ function tempsEcouleDepuisPublication($offre)
                         // $infosOffre = $dbh->query('select * from tripenarvor._offre;');
                         $infosOffre = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                        foreach ($infosOffre as $offre) {
+                        foreach ($_COOKIE as $cookie => $code_offre) {
+                            if (strpos($cookie, 'consulte_recemment') === 0) {
 
-                            // Récupérer la ville
-                            $villeOffre = $dbh->prepare('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
-                            $villeOffre->bindParam(":code_adresse", $offre["code_adresse"]);
-                            $villeOffre->execute();
-                            $villeOffre = $villeOffre->fetch(); // Récupérer la ville (ou NULL si pas trouvé)
+                                // Récupérer l'offre
+                                $offreStmt = $dbh->prepare('SELECT * FROM tripenarvor._offre WHERE code_offre = :code_offre');
+                                $offreStmt->bindParam(":code_offre", $code_offre, PDO::PARAM_INT);
+                                $offreStmt->execute();
+                                $offre = $offreStmt->fetch(PDO::FETCH_ASSOC);
+
+                                // Récupérer la ville
+                                $villeOffre = $dbh->prepare('SELECT ville FROM tripenarvor._adresse WHERE code_adresse = :code_adresse');
+                                $villeOffre->bindParam(":code_adresse", $offre["code_adresse"]);
+                                $villeOffre->execute();
+                                $villeOffre = $villeOffre->fetch(); // Récupérer la ville (ou NULL si pas trouvé)
                     
-                            // Récupérer les images
-                            $imagesOffre = $dbh->prepare('SELECT code_image FROM tripenarvor._son_image WHERE code_offre = :code_offre');
-                            $imagesOffre->bindParam(":code_offre", $offre["code_offre"]);
-                            $imagesOffre->execute();
+                                // Récupérer les images
+                                $imagesOffre = $dbh->prepare('SELECT code_image FROM tripenarvor._son_image WHERE code_offre = :code_offre');
+                                $imagesOffre->bindParam(":code_offre", $offre["code_offre"]);
+                                $imagesOffre->execute();
 
-                            // on recupère toutes les images sous forme de tableau
-                            $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
+                                // on recupère toutes les images sous forme de tableau
+                                $images = $imagesOffre->fetchAll(PDO::FETCH_ASSOC);
 
-                            if (!empty($images)) { // si le tableau n'est pas vide...
-                                /* On récupère uniquement la première image.
-                                Une offre peut avoir plusieurs images. Mais on n'en affiche qu'une seule sur cette page.
-                                On pourrait afficher aléatoirement chaque image, mais on serait vite perdus...*/
+                                if (!empty($images)) { // si le tableau n'est pas vide...
+                                    /* On récupère uniquement la première image.
+                                    Une offre peut avoir plusieurs images. Mais on n'en affiche qu'une seule sur cette page.
+                                    On pourrait afficher aléatoirement chaque image, mais on serait vite perdus...*/
 
-                                $recupLienImage = $dbh->prepare('SELECT url_image FROM tripenarvor._image WHERE code_image = :code_image');
-                                $recupLienImage->bindValue(":code_image", $images[0]['code_image']);
-                                $recupLienImage->execute();
+                                    $recupLienImage = $dbh->prepare('SELECT url_image FROM tripenarvor._image WHERE code_image = :code_image');
+                                    $recupLienImage->bindValue(":code_image", $images[0]['code_image']);
+                                    $recupLienImage->execute();
 
-                                $offre_image = $recupLienImage->fetch(PDO::FETCH_ASSOC);
-                            } else {
-                                $offre_image = "";
-                            }
+                                    $offre_image = $recupLienImage->fetch(PDO::FETCH_ASSOC);
+                                } else {
+                                    $offre_image = "";
+                                }
 
-                            $consulter = $dbh->prepare('select * from tripenarvor._consulte where code_compte = :code_compte and code_offre = :code_offre');
-                            $consulter->execute(['code_compte' => $_SESSION['membre']['code_compte'], ':code_offre' => $offre["code_offre"]]);
-                            $consulter = $consulter->fetch();
+                                $consulter = $dbh->prepare('select * from tripenarvor._consulte where code_compte = :code_compte and code_offre = :code_offre');
+                                $consulter->execute(['code_compte' => $_SESSION['membre']['code_compte'], ':code_offre' => $offre["code_offre"]]);
+                                $consulter = $consulter->fetch();
 
-                            if (!empty($consulter)) {
-                                if ($offre["en_ligne"]) {
-                                    ?>
+                                if (!empty($consulter)) {
+                                    if ($offre["en_ligne"]) {
+                                        ?>
 
-                                    <article class="card-vu-recemment">
-                                        <form id="form-voir-offre" action="detail_offre.php" method="POST" class="form-voir-offre">
-                                            <input type="hidden" name="uneOffre"
-                                                value="<?php echo htmlspecialchars(serialize($offre)); ?>">
-                                            <input type="hidden" name="vueDetails" value="1">
-                                            <div class="image-background-card-vu-recemment">
-                                                <img src="<?php echo './' . $offre_image['url_image']; ?>" alt="">
-                                                <div class="raison-sociale-card-vu-recemment">
-                                                    <p><?php echo $offre["titre_offre"]; ?></p>
+                                        <article class="card-vu-recemment">
+                                            <form id="form-voir-offre" action="detail_offre.php" method="POST" class="form-voir-offre">
+                                                <input type="hidden" name="uneOffre"
+                                                    value="<?php echo htmlspecialchars(serialize($offre)); ?>">
+                                                <input type="hidden" name="vueDetails" value="1">
+                                                <div class="image-background-card-vu-recemment">
+                                                    <img src="<?php echo './' . $offre_image['url_image']; ?>" alt="">
+                                                    <div class="raison-sociale-card-vu-recemment">
+                                                        <p><?php echo $offre["titre_offre"]; ?></p>
+
+                                                    </div>
 
                                                 </div>
+                                            </form>
+                                        </article>
 
-                                            </div>
-                                        </form>
-                                    </article>
-
-                                    <?php
+                                        <?php
+                                    }
                                 }
                             }
                         }
@@ -1121,14 +1129,6 @@ function tempsEcouleDepuisPublication($offre)
     <script>
         let markersArray = [];
 
-        var markers = L.markerClusterGroup({
-                        zoomToBoundsOnClick: true,
-                        spiderfyOnMaxZoom: false,
-                        showCoverageOnHover: false,
-                        disableClusteringAtZoom: 35,
-                        removeOutsideVisibleBounds: false
-                    });
-        
         document.addEventListener("DOMContentLoaded", function () {
             const mapElement = document.getElementById('map');
 
@@ -1335,79 +1335,8 @@ function tempsEcouleDepuisPublication($offre)
                             $popupContent .= "</div>";
                             $popupContent .= "</div>";
 
-                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
+                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon, dataOffer: '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "'});";
                             echo "markersArray.push(marker);";
-                            echo "marker.on('add', function() {";
-                            echo "    if (this._icon) {";
-                            echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "');";
-                            echo "        this._icon.setAttribute('data-index', index);";
-                            // echo "        console.log('Icône affichée avec data-offer :', this._icon);";
-                    
-                            echo "        let offerData = " . json_encode($monOffre) . ";";
-                            // echo "        console.log('offerData:', offerData);"; // Afficher l'objet offerData dans la console
-                            echo "        let afficher = 0;";
-
-                            ///////////////////////////////////////////////////
-                            ///            Barre de recherche               ///
-                            ///////////////////////////////////////////////////
-                            echo "            let query = document.querySelector('.search-input').value.toLowerCase().trim();";
-
-                            echo "            let offerText = " . json_encode(strtolower($monOffre["titre_offre"])) . ";";
-
-                            echo "            if (!offerText.includes(query)) {";
-                            //echo "                this._icon.style.display = 'none';";  // Cacher le marqueur si le texte ne correspond pas
-                            echo "                afficher += 1;";
-                            echo "            } else {";
-                            //echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
-                            echo "            }";
-
-                            ///////////////////////////////////////////////////
-                            ///            Selecteur cat, d et c            ///
-                            ///////////////////////////////////////////////////
-                            echo "            let category = document.querySelector('.search-select:nth-of-type(1)').value;";
-                            echo "            let rate = document.querySelector('#select-rate').value;";
-                            echo "            let status = document.querySelector('#select-statut').value;";
-
-                            echo "            let offerCategory = " . json_encode($type_offre) . ";";
-                            echo "            let offerRate = " . json_encode($monOffre["note_moyenne"]) . ";";
-                            echo "            let offerStatus = " . json_encode($dataStatusEng) . ";";
-
-                            echo "            if ((category === 'all' || category === offerCategory) &&";
-                            echo "                (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&";
-                            echo "                (!status || status === offerStatus)) {";
-                            //echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
-                            echo "            } else {";
-                            echo "                afficher+=1;";
-                            echo "            }";
-
-                            ///////////////////////////////////////////////////
-                            ///      Selecteur de la fourchette de prix     ///
-                            ///////////////////////////////////////////////////
-                            echo "            const minPrice = parseFloat(document.getElementById('price-min').value);";
-                            echo "            const maxPrice = parseFloat(document.getElementById('price-max').value);";
-
-                            echo "            const offerPrice = " . json_encode($monOffre["tarif"]) . ";";
-
-                            echo "            if (offerPrice >= minPrice && offerPrice <= maxPrice) {";
-                            //echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
-                            echo "            } else {";
-                            echo "                afficher+=1;";
-                            echo "            }";
-
-
-
-                            ///////////////////////////////////////////////////
-                            ///                  Affichage                  ///
-                            ///////////////////////////////////////////////////
-                            echo "            if (afficher > 0) {";
-                            echo "                this._icon.style.display = 'none';";  // Cacher le marqueur si le texte ne correspond pas
-                            echo "             } else {";
-                            echo "                this._icon.style.display = 'block';"; // Afficher le marqueur si le texte correspond
-                            echo "             }";
-
-                            echo "    }";
-                            echo "});";
-
 
                             echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false, className: 'custom-popup'}).setContent(\"" . addslashes($popupContent) . "\");";
                             echo "marker.bindPopup(popup);";
@@ -1543,7 +1472,6 @@ function tempsEcouleDepuisPublication($offre)
         document.addEventListener("DOMContentLoaded", function () {
             // Récupération des éléments
             const offerItems = document.querySelectorAll('.offer');
-            const leafletItems = document.querySelectorAll('.leaflet-marker-icon');
 
             const searchInput = document.querySelector('.search-input');
 
@@ -1584,34 +1512,11 @@ function tempsEcouleDepuisPublication($offre)
                     }
                 });
 
-                // leafletItems.forEach(leaflet => {
-                //     console.log(leaflet);
-
-                //     let offerData = leaflet.getAttribute("data-offer");
-
-                //     if (offerData) {
-                //         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
-                //         let offer = JSON.parse(correctedJsonString); // Convertir en objet
-                //         let offerObject = leaflet.getAttribute("data-index");
-                //         let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
-
-                //         console.log(offerText);
-                //         console.log(query);
-                //         console.log("/////////////");
-
-                //         if (offerText.includes(query)) {
-                //             toggleMarkerVisibility(offerObject,1); // Rendre visible
-                //         } else {
-                //             toggleMarkerVisibility(offerObject,0); // Cacher le marqueur
-                //         }
-                //     }
-                // });
-
                 // Réinitialiser les marqueurs
                 markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
                 markersArray.forEach((marker, index) => {
-                    console.log(marker);
-                    const offerData = marker._icon.getAttribute("data-offer");
+                    console.log(marker._icon);
+                    const offerData = marker.options.dataOffer;
             
                     if (offerData) {
                         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
@@ -1620,10 +1525,9 @@ function tempsEcouleDepuisPublication($offre)
             
                         // Si l'offre correspond à la recherche, on la montre
                         if (offerText.includes(query)) {
-                            markers.addLayer(marker);  // Ajouter au groupe de clusters
-                            toggleMarkerVisibility(index, 1); // Marquer comme visible
+                            toggleMarkerVisibility(offerObject, 1); // Rendre visible
                         } else {
-                            toggleMarkerVisibility(index, 0); // Marquer comme caché
+                            toggleMarkerVisibility(offerObject, 0); // Cacher le marqueur
                         }
                     }
                 });

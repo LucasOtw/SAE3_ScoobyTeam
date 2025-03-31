@@ -1027,14 +1027,17 @@ if($infos_offre !== null){
                 <?php
                     if(isset($monComptePro['num_siren']) && $monComptePro['num_siren']){
                         ?>
-                        <input type="radio" id="off_std" name="type_offre" value="standard">
+                        <input type="radio" id="off_std" name="type_offre" value="standard"
+                        <?php echo ($offre['nom_type'] == "Offre Standard") ? "checked" : "" ?>>
                         <label for="off_std">Offre Standard</label>
-                        <input type="radio" id="off_pre" name="type_offre" value="premium">
+                        <input type="radio" id="off_pre" name="type_offre" value="premium"
+                        <?php echo ($offre['nom_type'] == "Offre Premium") ? "checked" : "" ?>>
                         <label for="off_pre">Offre Premium</label>
                         <?php
                     } else {
                         ?>
-                        <input type="radio" id="off_grt" name="type_offre" value="gratuite">
+                        <input type="radio" id="off_grt" name="type_offre" value="gratuite"
+                        <?php echo ($offre['nom_type'] == "Offre Gratuite") ? "checked" : "" ?>>
                         <label for="off_grt">Offre Gratuite</label>
                         <?php
                     }
@@ -1042,7 +1045,14 @@ if($infos_offre !== null){
             </fieldset>
             <fieldset>
                 <legend>Option</legend>
-                
+                <input type="radio" id="no-opt" name="option_offre" value="">
+                <label for="no-opt">Aucune option</label>
+                <input type="radio" id="opt_relief" name="option_offre" value="relief"
+                <?php echo ($offre['option_en_relief']) ? "checked" : ""  ?>>
+                <label for="opt_relief">Option "en Relief"</label>
+                <input type="radio" id="opt_aLaUne" name="option_offre" value="aLaUne"
+                <?php echo ($offre['option_a_la_une']) ? "checked" : "" ?>>
+                <label for="opt_aLaUne">Option "à la Une"</label>
             </fieldset>
         </div>
 
