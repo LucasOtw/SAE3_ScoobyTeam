@@ -687,8 +687,9 @@ function tempsEcouleDepuisPublication($offre)
                                     $offre_image = "";
                                 }
 
-                                $consulter = $dbh->prepare('select * from tripenarvor._consulte where code_compte = :code_compte and code_offre = :code_offre');
-                                $consulter->execute(['code_compte' => $_SESSION['membre']['code_compte'], ':code_offre' => $offre["code_offre"]]);
+                                $consulter = $dbh->prepare('select * from tripenarvor._consulte where code_offre = :code_offre');
+                                $consulter->bindValue(":code_offre", $offre["code_offre"]);
+                                $consulter->execute();
                                 $consulter = $consulter->fetch();
 
                                 if (!empty($consulter)) {
