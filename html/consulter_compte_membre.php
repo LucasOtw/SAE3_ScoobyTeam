@@ -304,14 +304,15 @@ if (isset($_POST['dwl-data'])) {
         }
 
         // Fermer l'archive ZIP
-        ob_end_clean();
-        flush();
         $zip->close();
 
         // Définir les headers pour forcer le téléchargement
         header('Content-Type: application/zip');
         header('Content-Disposition: attachment; filename="mon_archive.zip"');
         header('Content-Length: ' . filesize($zipFile));
+
+        ob_end_clean();
+        flush();
 
         // Lire et envoyer le fichier ZIP au client
         readfile($zipFile);
