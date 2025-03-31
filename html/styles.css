@@ -3904,7 +3904,7 @@ nom.avis {
     @media screen and (max-width: 418px) {
         .custom-confirm-content {
             width: 90%;
-            max-width: 350px;
+            max-width: 327px;
             height: auto;
             padding: 15px;
         }
