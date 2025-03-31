@@ -115,7 +115,7 @@ session_start();
         <form id="envoiCode" action="#" method="POST">
             <p class="texte-boite-perso">Veuillez renseigner le code à 6 chiffres présent dans l'application :</p>
             <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
-            <input style="margin-top: 41px; margin-left: 170px; background-color: var(--orange);" type="submit" id="submit-code" value="Envoyer le code">
+            <input style="margin-top: 63px; margin-left: 170px; background-color: var(--orange);" type="submit" id="submit-code" value="Envoyer le code">
             <p id="errorMsg" style="color: red; display: none; margin-top: 16px;">Le code doit contenir exactement 6 chiffres.</p>
             <!--<button>Se connecter quand même</button>-->
         </form>

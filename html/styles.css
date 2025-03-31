@@ -3722,13 +3722,11 @@ nom.avis {
     border-radius: 19px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     z-index: 1000; /* Plus élevé que l'overlay */
-    display: none;
 }
 
 .custom-confirm-content p {
     font-size: 16px;
     font-weight: 600;
-    margin-bottom: 10px;
     color: #333;
 }
 
@@ -3745,6 +3743,7 @@ nom.avis {
     height: 39px;
     width: 154px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    margin-left: 9px;
 }
 
 .custom-confirm-content button:hover {
@@ -3889,9 +3888,6 @@ nom.avis {
         height: 19px;
     }
 
-    .edit-profil h1 {
-        margin-left: 0em;
-    }
 
     .avis-list {
         margin-bottom: 9vh;
@@ -4237,9 +4233,6 @@ main.creation_compte_membre form {
     flex-direction: column;
 }
 
-main.creation_compte_membre label {
-    font-weight: bold;
-}
 
 main.creation_compte_membre input[type="text"],
 input[type="email"],
@@ -4428,6 +4421,14 @@ main.creation_compte_membre .creation_compte_membre_bienvenue {
     main.creation_compte_membre .submit-btn {
         width: 65vw;
         margin-left: 9.6vw;
+    }
+
+    .logo-tel .btn_plus_tard_crea{
+           display: none;
+    }
+
+    main.creation_compte_membre label{
+           font-size: 12px;
     }
 
     main.creation_compte_membre .input-icon-img {
@@ -13944,20 +13945,74 @@ ul.mentions_legales-sous-list {
 
 .otp-confirm-content button, .otp-confirm-content input[type="submit"]:hover {
     background-color: #FFF;
-    color: black;
-    border: 1px #BDC426 solid;
+    transform: translateY(-2px);
+    color: white;
+}
+
+.custom-confirm-content-pro{
+    position: fixed;
+    top: 50%;
+    height: 231px;
+    width: 543px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 19px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.main-consulter-compte-pro p{
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.custom-confirm-content-pro button {
+    padding: 8px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-radius: 12px;
+    background-color: var(--orange);
+    color: white;
+    height: 39px;
+    width: 154px;
+    box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
+    margin-left: 9px;
+    margin-top: 125px;
+}
+
+.custom-confirm-content-pro button:hover{
     transform: translateY(-2px);
 }
 
 .back_button{
-    margin-top:9.3em;
+    margin-top:12.3em;
 }
 
+#button_annuler{
+    background-color: white;
+    color : black;
+}
 .header-tel svg {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; /* Pour qu'il s'adapte à la largeur du header */
-    height: auto; /* Ajustement proportionnel */
-    z-index: -1; /* Envoie le SVG à l'arrière-plan */
+    width: 100%; 
+    height: auto; 
+    z-index: -1; 
 }
+.bouton-retour-tel{
+    display: block; 
+    margin-left: -2em;
+    margin-top: 1.5em;
+
+    @media (min-width: 430px) {
+        display: none; 
+    }   
+}
+  

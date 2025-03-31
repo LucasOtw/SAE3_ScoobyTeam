@@ -9,26 +9,12 @@ if (!isset($_SESSION['membre'])) {
     exit;
 }
 
-$details_offre = $_SESSION["modif_avis"];
-
-// Vérifie si HTTP_REFERER est défini
-if (isset($_SERVER['HTTP_REFERER'])) {
-    // Vérifie que la page précédente est "detail_offre.php"
-    if ($_SERVER['HTTP_REFERER'] === "https://scooby-team.ventsdouest.dev/detail_offre.php" && !isset($_POST['publier'])) {
-        // Action si les conditions sont respectées
-        $details_offre = $_SESSION['modif_avis'];
-    }
-}
-
 // Vérifie si le formulaire a été soumis    
 require_once __DIR__ . ("/../.security/config.php");
 
 // Créer une instance PDO avec les bons paramètres
 $dbh = new PDO($dsn, $username, $password);
 
-$stmt = $dbh->prepare('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = :code_offre;');
-$stmt->execute([':code_offre' => $details_offre["code_offre"]]);
-$image_offre = $stmt->fetch(PDO::FETCH_NUM);
 
 /*
 echo "<pre>";
@@ -49,6 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $avis = unserialize($_POST['unAvis']);
         $_SESSION['modif_avis'] = $avis;
         $details_offre = $_SESSION['modif_avis'];
+
+        $stmt = $dbh->prepare('SELECT url_image FROM tripenarvor._son_image natural join tripenarvor._image WHERE code_offre = :code_offre;');
+    $stmt->execute([':code_offre' => $details_offre["code_offre"]]);
+    $image_offre = $stmt->fetch(PDO::FETCH_NUM);
     }
     if (isset($_POST['modifier'])) {
         echo "test";
@@ -371,16 +361,18 @@ $isAnswer = $isAnswer->fetchColumn();
 
             var formModif = document.getElementById('avisForm');
             var modal = document.getElementById('customModal');
+            var realPopup = modal.querySelector("div");
             var btnModif = document.getElementById('confirmModif');
 
             formModif.addEventListener('submit', function (e) {
                 e.preventDefault();
                 modal.style.display = 'flex';
-                console.log(modal);
+                realPopup.style.display = "block";
             });
 
             confirmModif.addEventListener('click', () => {
                 modal.style.display = 'none';
+                realPopup.style.display = "none";
                 avisForm.action = "modif_avis_membre.php";
                 avisForm.submit();
             });
@@ -388,6 +380,7 @@ $isAnswer = $isAnswer->fetchColumn();
             window.onclick = function (event) {
                 if (event.target == modal) {
                     modal.style.display = 'none';
+                    realPopup.style.display = "none";
                 }
             };
         });

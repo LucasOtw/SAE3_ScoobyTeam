@@ -1123,8 +1123,11 @@ function tempsEcouleDepuisPublication($offre)
                         zoomToBoundsOnClick: true,
                         spiderfyOnMaxZoom: false,
                         showCoverageOnHover: false,
-                        disableClusteringAtZoom: 35
+                        disableClusteringAtZoom: 35,
+                        removeOutsideVisibleBounds: false
                     });
+
+                    var markersArray = [];
                     <?php
                     $adresses = $dbh->query('SELECT o.*, a.*, 
                            (SELECT i.url_image 
@@ -1137,6 +1140,8 @@ function tempsEcouleDepuisPublication($offre)
                            WHERE o.en_ligne = true');
 
                     $api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig";
+
+                    $index = 0;
 
                     foreach ($adresses as $adr) {
                         $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
@@ -1313,6 +1318,8 @@ function tempsEcouleDepuisPublication($offre)
                             $popupContent .= "</div>";
 
                             echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
+                            echo "marker.index = $index;\n";
+                            echo "markersArray.push(marker);\n";
                             echo "marker.on('add', function() {";
                             echo "    if (this._icon) {";
                             echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "');";
@@ -1403,6 +1410,7 @@ function tempsEcouleDepuisPublication($offre)
                             echo "});";
 
                             echo "markers.addLayer(marker);";
+                            $index++;
 
                         }
                     }
@@ -1462,6 +1470,12 @@ function tempsEcouleDepuisPublication($offre)
             iconAnchor: [15, 40],
             popupAnchor: [0, -35]
         });
+
+        toggleMarkerVisibility = (index, visible) => {
+            if (markersArray[index]) {
+                markersArray[index].setOpacity(visible ? 1 : 0);
+            }
+        }
 
         // Vérifie si l'appareil est tactile
         if ('ontouchstart' in window || navigator.maxTouchPoints) {
@@ -1543,17 +1557,23 @@ function tempsEcouleDepuisPublication($offre)
             });
 
             leafletItems.forEach(leaflet => {
+                console.log(leaflet);
+                
                 let offerData = leaflet.getAttribute("data-offer");
 
                 if (offerData) {
                     let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'"); 
                     let offer = JSON.parse(correctedJsonString); // Convertir en objet
                     let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
+
+                    console.log(offerText);
+                    console.log(query);
+                    console.log("/////////////");
         
                     if (offerText.includes(query)) {
-                        leaflet.style.removeProperty('display'); // Afficher le marqueur
+                        leaflet.marker.setOpacity(1); // Rendre visible
                     } else {
-                        leaflet.style.display = "none"; // Cacher le marqueur
+                        leaflet.marker.setOpacity(0); // Cacher le marqueur
                     }
                 }
             });

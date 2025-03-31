@@ -138,10 +138,12 @@ if (!empty($_POST)) {
         </nav>
     </header>
     <header class="header-tel header_membre">
-        <div class="logo-tel">
+        <div class="logo-tel">.
+            <a href="voir_offres.php">
+                <img src="images/Bouton_retour.png" alt="bouton retour" class="bouton-retour-tel">
+            </a>
             <img src="images/LogoCouleur.png" alt="PACT Logo">
         </div>
-        <a class="btn_plus_tard" href="voir_offres.php">Plus tard</a>
     </header>
     <h3 class="connexion_membre_ravi">Ravi de vous revoir !</h3>
 

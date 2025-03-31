@@ -179,7 +179,7 @@ if (!empty($_POST['supprAvis'])){
                         <!-- Formulaire pour supprimer un avis -->
                         <form method="POST" action="consulter_mes_avis.php" class="delete-form">
                             <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis['code_avis']); ?>">
-                            <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="confirmDelete(event)">
+                            <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="confirmDelete(event)" style="filter: brightness(0.1);">
                         </form>
                         <form action="modif_avis_membre.php" method="POST">
                             <input type="hidden" name="unAvis" value="<?php echo htmlspecialchars(serialize($avis)); ?>">
@@ -194,8 +194,8 @@ if (!empty($_POST['supprAvis'])){
             <!-- Boîte de dialogue personnalisée -->
             <div id="customConfirm" class="custom-confirm">
                 <div class="custom-confirm-content">
-                    <p>Êtes-vous sûr de vouloir supprimer cet avis ?</p>
-                    <button onclick="submitForm()">Oui</button>
+                    <p style="margin-bottom: 122px;">Êtes-vous sûr de vouloir supprimer cet avis ?</p>
+                    <button onclick="submitForm()" style="margin-left: 90px;">Oui</button>
                     <button onclick="closeConfirm()">Non</button>
                 </div>
             </div>            

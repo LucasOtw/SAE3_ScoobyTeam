@@ -358,7 +358,7 @@ if (!empty($_POST['supprAvis'])) {
                                         <input type="hidden" name="supprAvis"
                                             value="<?php echo htmlspecialchars($avis['reponse_code_avis']); ?>">
                                         <img src="images/trash.svg" alt="Supprimer" class="delete-icon"
-                                            title="Supprimer cet avis" onclick="confirmDelete(event)">
+                                            title="Supprimer cet avis" onclick="confirmDelete(event)" style="filter: brightness(0.1);">
                                     </form>
                                 </div>
 
@@ -370,8 +370,10 @@ if (!empty($_POST['supprAvis'])) {
                     <div id="customConfirm" class="custom-confirm">
                         <div class="custom-confirm-content-pro">
                             <p>Êtes-vous sûr de vouloir supprimer cet avis ?</p>
+                            <span style="margin-left: 79px;">
                             <button onclick="submitForm()">Oui</button>
-                            <button onclick="closeConfirm()">Non</button>
+                            <button id="button_annuler" onclick="closeConfirm()">Non</button>
+                            </span>
                         </div>
                     </div>
                     <script>
