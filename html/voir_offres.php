@@ -1471,6 +1471,12 @@ function tempsEcouleDepuisPublication($offre)
             popupAnchor: [0, -35]
         });
 
+        toggleMarkerVisibility = (index, visible) => {
+            if (markersArray[index]) {
+                markersArray[index].setOpacity(visible ? 1 : 0);
+            }
+        }
+
         // Vérifie si l'appareil est tactile
         if ('ontouchstart' in window || navigator.maxTouchPoints) {
             map.eachLayer(function (layer) {
