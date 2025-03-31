@@ -1580,28 +1580,51 @@ function tempsEcouleDepuisPublication($offre)
                     }
                 });
 
-                leafletItems.forEach(leaflet => {
-                    console.log(leaflet);
+                // leafletItems.forEach(leaflet => {
+                //     console.log(leaflet);
 
-                    let offerData = leaflet.getAttribute("data-offer");
+                //     let offerData = leaflet.getAttribute("data-offer");
 
+                //     if (offerData) {
+                //         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
+                //         let offer = JSON.parse(correctedJsonString); // Convertir en objet
+                //         let offerObject = leaflet.getAttribute("data-index");
+                //         let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
+
+                //         console.log(offerText);
+                //         console.log(query);
+                //         console.log("/////////////");
+
+                //         if (offerText.includes(query)) {
+                //             toggleMarkerVisibility(offerObject,1); // Rendre visible
+                //         } else {
+                //             toggleMarkerVisibility(offerObject,0); // Cacher le marqueur
+                //         }
+                //     }
+                // });
+
+                // Réinitialiser les marqueurs
+                markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
+                markersArray.forEach((marker, index) => {
+                    const offerData = marker._icon.getAttribute("data-offer");
+            
                     if (offerData) {
                         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
                         let offer = JSON.parse(correctedJsonString); // Convertir en objet
-                        let offerObject = leaflet.getAttribute("data-index");
                         let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
-
-                        console.log(offerText);
-                        console.log(query);
-                        console.log("/////////////");
-
+            
+                        // Si l'offre correspond à la recherche, on la montre
                         if (offerText.includes(query)) {
-                            toggleMarkerVisibility(offerObject,1); // Rendre visible
+                            markers.addLayer(marker);  // Ajouter au groupe de clusters
+                            toggleMarkerVisibility(index, 1); // Marquer comme visible
                         } else {
-                            toggleMarkerVisibility(offerObject,0); // Cacher le marqueur
+                            toggleMarkerVisibility(index, 0); // Marquer comme caché
                         }
                     }
                 });
+            
+                // Recalculer les clusters
+                map.addLayer(markers); // Réajouter le groupe de clusters à la carte
 
             });
 
