@@ -1332,7 +1332,7 @@ function tempsEcouleDepuisPublication($offre)
                             $popupContent .= "</div>";
 
                             echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
-                            echo "markersArray.push({" . '"code_offre": ' . $adr["code_offre"] . ', "marker": marker});\n';
+                            // echo "markersArray.push({" . '"code_offre": ' . $adr["code_offre"] . ', "marker": marker});\n';
                             echo "marker.on('add', function() {";
                             echo "    if (this._icon) {";
                             echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "');";
