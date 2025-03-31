@@ -235,8 +235,7 @@ function tempsEcouleDepuisPublication($offre)
             <div class="search-top">
                 <input type="text" class="search-input" placeholder="Rechercher parmi les offres">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    style="color: white;">
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
@@ -625,12 +624,12 @@ function tempsEcouleDepuisPublication($offre)
 
             <?php
 
-            $AConsulterRecemment = false;
-
+            $AConsulterRecemment = false; 
+            
             foreach ($_COOKIE as $name => $value) {
                 if (strpos($name, 'consulte_recemment') === 0) {
                     $AConsulterRecemment = true;
-                    break;
+                    break; 
                 }
             }
 
@@ -1336,7 +1335,7 @@ function tempsEcouleDepuisPublication($offre)
                             $popupContent .= "</div>";
                             $popupContent .= "</div>";
 
-                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon, dataOffer: '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "'});";
+                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon, dataOffer: '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "', dataStatus: '" . json_encode($dataStatusEng) . "', dataCategory: '" . json_encode($type_offre) . "'});";
                             echo "markersArray.push(marker);";
 
                             echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false, className: 'custom-popup'}).setContent(\"" . addslashes($popupContent) . "\");";
@@ -1506,6 +1505,7 @@ function tempsEcouleDepuisPublication($offre)
                 // Parcourir chaque offre et vérifier si elle correspond à la recherche
                 offerItems.forEach(offer => {
                     const text = offer.textContent.toLowerCase();
+                    console.log(text);
                     if (text.includes(query)) {
                         offer.classList.remove('hidden');
                     } else {
@@ -1566,6 +1566,27 @@ function tempsEcouleDepuisPublication($offre)
                             offer.style.removeProperty('display');
                         } else {
                             offer.style.display = "none";
+                        }
+                    });
+
+                    // Réinitialiser les marqueurs
+                    markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
+                    markersArray.forEach((marker, index) => {
+                        const offerData = marker.options.dataOffer;
+    
+                        if (offerData) {
+                            let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
+                            let offer = JSON.parse(correctedJsonString); // Convertir en objet
+                            let offerCategory = marker.options.dataCategory; // Prendre le titre de l’offre
+                            const offerRate = offerData.note_moyenne;
+                            const offerStatus = marker.options.dataStatus;
+    
+                            // Si l'offre correspond à la recherche, on la montre
+                            if (offerText.includes(query)) {
+                                toggleMarkerVisibility(index, 1); // Rendre visible
+                            } else {
+                                toggleMarkerVisibility(index, 0); // Cacher le marqueur
+                            }
                         }
                     });
 
