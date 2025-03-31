@@ -667,7 +667,7 @@ if($infos_offre !== null){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="images/logoPin_orange.png" width="16px" height="32px">
-    <title> mon offre</title>
+    <title> Mon offre</title>
     <link rel="stylesheet" href="styles.css?daz">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -698,6 +698,7 @@ if($infos_offre !== null){
                     <li><a href="#" class="active" data-tab="general">Informations générales</a></li>
                     <li><a href="#" data-tab="services">Services et horaires</a></li>
                     <li><a href="#" data-tab="photos">Photos</a></li>
+                    <li><a href="#" data-tab="payment">Paiement</a></li>
                 </ul>
             </section>
             <div class="tab-content active" id="general">
