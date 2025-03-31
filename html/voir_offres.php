@@ -1549,17 +1549,11 @@ function tempsEcouleDepuisPublication($offre)
                     let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'"); 
                     let offer = JSON.parse(correctedJsonString); // Convertir en objet
                     let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
-                    
-                    console.log(offerText);
-                    console.log(leaflet);
-                    console.log("///");
         
                     if (offerText.includes(query)) {
-                        leaflet.style.display = "block"; // Afficher le marqueur
-                        console.log("ok");
+                        leaflet.style.removeProperty('display'); // Afficher le marqueur
                     } else {
                         leaflet.style.display = "none"; // Cacher le marqueur
-                        console.log("pas ok");
                     }
                 }
             });
