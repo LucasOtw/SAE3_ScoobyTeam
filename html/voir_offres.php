@@ -1616,27 +1616,28 @@ function tempsEcouleDepuisPublication($offre)
                     });
 
                     // Réinitialiser les marqueurs
-                    markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
-                    markersArray.forEach((marker, index) => {
-                        const offerData = marker.options.dataOffer;
+                    // markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
+                    // markersArray.forEach((marker, index) => {
+                    //     const offerData = marker.options.dataOffer;
     
-                        if (offerData) {
-                            let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
-                            let offer = JSON.parse(correctedJsonString); // Convertir en objet
-                            let offerCategory = marker.options.dataCategory; // Prendre le titre de l’offre
-                            const offerRate = offerData.note_moyenne;
-                            const offerStatus = marker.options.dataStatus;
+                    //     if (offerData) {
+                    //         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
+                    //         let offer = JSON.parse(correctedJsonString); // Convertir en objet
+                    //         let offerCategory = marker.options.dataCategory; // Prendre le titre de l’offre
+                    //         const offerRate = offerData.note_moyenne;
+                    //         const offerStatus = marker.options.dataStatus;
     
-                            // Si l'offre correspond à la recherche, on la montre
-                            if ((category === 'all' || category === offerCategory) &&
-                                (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
-                                (!status || status === offerStatus)) {
-                                toggleMarkerVisibility(index, 1); // Rendre visible
-                            } else {
-                                toggleMarkerVisibility(index, 0); // Cacher le marqueur
-                            }
-                        }
-                    });
+                    //         // Si l'offre correspond à la recherche, on la montre
+                    //         if ((category === 'all' || category === offerCategory) &&
+                    //             (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
+                    //             (!status || status === offerStatus)) {
+                    //             toggleMarkerVisibility(index, 1); // Rendre visible
+                    //         } else {
+                    //             toggleMarkerVisibility(index, 0); // Cacher le marqueur
+                    //         }
+                    //     }
+                    // });
+                    leafletFilters();
 
                     // Trier les offres visibles
                     let offers = Array.from(document.querySelectorAll('.offer:not(.hidden)'));
