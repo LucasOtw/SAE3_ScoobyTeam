@@ -1533,9 +1533,9 @@ function tempsEcouleDepuisPublication($offre)
             
                         // Si l'offre correspond à la recherche, on la montre
                         if (offerText.includes(query)) {
-                            toggleMarkerVisibility(offerObject, 1); // Rendre visible
+                            toggleMarkerVisibility(index, 1); // Rendre visible
                         } else {
-                            toggleMarkerVisibility(offerObject, 0); // Cacher le marqueur
+                            toggleMarkerVisibility(index, 0); // Cacher le marqueur
                         }
                     }
                 });
