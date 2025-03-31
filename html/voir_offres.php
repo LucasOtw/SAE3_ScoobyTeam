@@ -234,10 +234,11 @@ function tempsEcouleDepuisPublication($offre)
         <div class="search-bar">
             <div class="search-top">
                 <input type="text" class="search-input" placeholder="Rechercher parmi les offres">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
             </div>
 
             <div class="search-options">
@@ -622,7 +623,17 @@ function tempsEcouleDepuisPublication($offre)
             <h2 class="titre-vu-recemment">Vu récemment</h2>
 
             <?php
-            if (isset($_SESSION["membre"]) || !empty($_SESSION["membre"])) {
+
+            $AConsulterRecemment = false; 
+            
+            foreach ($_COOKIE as $name => $value) {
+                if (strpos($name, 'consulte_recemment') === 0) {
+                    $AConsulterRecemment = true;
+                    break; 
+                }
+            }
+
+            if (isset($AConsulterRecemment)) {
                 ?>
                 <div class="vu-recemment-carrousel">
                     <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeftR()">&#8249;</button>
@@ -637,7 +648,7 @@ function tempsEcouleDepuisPublication($offre)
                             print "Erreur!: " . $e->getMessage() . "<br/>";
                             die();
                         }
-                        
+
 
                         foreach (array_reverse($_COOKIE) as $cookie => $code_offre) {
                             if (strpos($cookie, 'consulte_recemment') === 0) {
@@ -715,7 +726,7 @@ function tempsEcouleDepuisPublication($offre)
                 <a class="bloc_consulter_recemment_a" href="connexion_membre.php">
                     <section class="bloc_consulter_recemment">
                         <img src="images/introuvable.png" alt="image pour la connexion">
-                        <p>Veuillez vous connecter pour accéder à votre historique
+                        <p>Vous n'avez consulté d'offres pour le moment</p>
                     </section>
                 </a>
 
@@ -1109,13 +1120,13 @@ function tempsEcouleDepuisPublication($offre)
     <script>
         let markersArray = [];
 
-         var markers = L.markerClusterGroup({
-                        zoomToBoundsOnClick: true,
-                        spiderfyOnMaxZoom: false,
-                        showCoverageOnHover: false,
-                        disableClusteringAtZoom: 35,
-                        removeOutsideVisibleBounds: false
-                    });
+        var markers = L.markerClusterGroup({
+            zoomToBoundsOnClick: true,
+            spiderfyOnMaxZoom: false,
+            showCoverageOnHover: false,
+            disableClusteringAtZoom: 35,
+            removeOutsideVisibleBounds: false
+        });
 
         document.addEventListener("DOMContentLoaded", function () {
             const mapElement = document.getElementById('map');
@@ -1505,12 +1516,12 @@ function tempsEcouleDepuisPublication($offre)
                 markersArray.forEach((marker, index) => {
                     console.log(marker._icon);
                     const offerData = marker.options.dataOffer;
-            
+
                     if (offerData) {
                         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
                         let offer = JSON.parse(correctedJsonString); // Convertir en objet
                         let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
-            
+
                         // Si l'offre correspond à la recherche, on la montre
                         if (offerText.includes(query)) {
                             toggleMarkerVisibility(index, 1); // Rendre visible
@@ -1519,7 +1530,7 @@ function tempsEcouleDepuisPublication($offre)
                         }
                     }
                 });
-            
+
                 // Recalculer les clusters
                 map.addLayer(markers); // Réajouter le groupe de clusters à la carte
 
