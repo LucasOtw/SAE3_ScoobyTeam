@@ -371,7 +371,7 @@ if (!empty($_POST['supprAvis'])) {
                         <div class="custom-confirm-content-pro">
                             <p>Êtes-vous sûr de vouloir supprimer cet avis ?</p>
                             <span style="margin-left: 79px;">
-                            <button onclick="submitForm()">Oui</button>
+                            <button id="button_annuler" onclick="submitForm()">Oui</button>
                             <button onclick="closeConfirm()">Non</button>
                             </span>
                         </div>
