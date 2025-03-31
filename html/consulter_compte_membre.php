@@ -304,7 +304,7 @@ if (isset($_POST['dwl-data'])) {
         }
 
         // Fermer l'archive ZIP
-        ob_clean();
+        ob_end_clean();
         flush();
         $zip->close();
 
