@@ -179,7 +179,7 @@ if (!empty($_POST['supprAvis'])){
                         <!-- Formulaire pour supprimer un avis -->
                         <form method="POST" action="consulter_mes_avis.php" class="delete-form">
                             <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis['code_avis']); ?>">
-                            <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="confirmDelete(event)">
+                            <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="confirmDelete(event)" style="filter: brightness(0.1);">
                         </form>
                         <form action="modif_avis_membre.php" method="POST">
                             <input type="hidden" name="unAvis" value="<?php echo htmlspecialchars(serialize($avis)); ?>">
@@ -191,33 +191,42 @@ if (!empty($_POST['supprAvis'])){
                 </div>
             </div>
             
+            <!-- Overlay avec effet de flou -->
+            <div id="confirmOverlay" class="confirm-overlay"></div>
+
             <!-- Boîte de dialogue personnalisée -->
             <div id="customConfirm" class="custom-confirm">
                 <div class="custom-confirm-content">
-                    <p style="margin-bottom: 122px;">Êtes-vous sûr de vouloir supprimer cet avis ?</p>
-                    <button onclick="submitForm()" style="margin-left: 90px;">Oui</button>
+                    <p style="margin-bottom: 20px;">Êtes-vous sûr de vouloir supprimer cet avis ?</p>
+                    <button onclick="submitForm()" style="margin-left: 10px;">Oui</button>
                     <button onclick="closeConfirm()">Non</button>
                 </div>
             </div>            
             <script>
             let currentForm;
-            
+
             function confirmDelete(event) {
                 event.preventDefault();
                 currentForm = event.target.closest('form');
+                document.getElementById('confirmOverlay').style.display = 'block';
                 document.getElementById('customConfirm').style.display = 'block';
             }
-            
+
             function submitForm() {
+                document.getElementById('confirmOverlay').style.display = 'none';
                 document.getElementById('customConfirm').style.display = 'none';
                 if (currentForm) {
                     currentForm.submit();
                 }
             }
-            
+
             function closeConfirm() {
+                document.getElementById('confirmOverlay').style.display = 'none';
                 document.getElementById('customConfirm').style.display = 'none';
             }
+
+            // Optionnel : fermer la popup si on clique sur l'overlay
+            document.getElementById('confirmOverlay').addEventListener('click', closeConfirm);
             </script>
 
 

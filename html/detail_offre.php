@@ -70,6 +70,10 @@ if (!isset($_POST['vueDetails']) && !isset($_SESSION['detail_offre'])) {
     exit;
 }
 
+/* DUREE DU COOKIE */
+$duréeCookie = 7;
+
+
 if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
     //echo $_POST["uneOffre"];
 
@@ -96,6 +100,8 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
                     ':code_compte' => $_SESSION["membre"]["code_compte"],
                     ':code_offre' => $code_offre
                 ]);
+
+                setcookie('consulte_recemment' + $code_offre, $code_offre, time() + (60 * 60 * 24 * $duréeCookie), "/");
             } catch (PDOException $e) {
                 $consulter = $dbh->prepare('
                     update tripenarvor._consulte set date_consultation = NOW() 
@@ -754,10 +760,12 @@ if (isset($json['results'][0])) {
 
                 // Calcul de la marge pour les sous-réponses
                 $marge = $niveau * 5; // Indentation
-                if (!$avis["blacklister"] || ($avis["blacklister"] && isset($_SESSION['membre']) && $avis["code_compte"]==$_SESSION['membre']['code_compte']) ) {
+                if (!$avis["blacklister"] || ($avis["blacklister"] && isset($_SESSION['membre']) && $avis["code_compte"] == $_SESSION['membre']['code_compte'])) {
                     ?>
                     <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
-                        <div class="avis-content" style="<?php if ($avis["blacklister"]) { echo "opacity: 50%;"; }?>">
+                        <div class="avis-content" style="<?php if ($avis["blacklister"]) {
+                            echo "opacity: 50%;";
+                        } ?>">
                             <h3 class="avis">
                                 <?php if ($niveau > 0): ?>
                                     <div class="note_prenom">
@@ -771,29 +779,29 @@ if (isset($json['results'][0])) {
                                         <span class="nom_avis"
                                             style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?>
                                         </span>
-                                        <?php 
-                                        if ($avis["blacklister"]) { 
-                                        ?>
-                                            <img src="images/icones/jeton.png" alt="jeton" class="jeton" >
-                                            <em>(Cet avis est blacklisté)</em>
                                         <?php
+                                        if ($avis["blacklister"]) {
+                                            ?>
+                                            <img src="images/icones/jeton.png" alt="jeton" class="jeton">
+                                            <em>(Cet avis est blacklisté)</em>
+                                            <?php
                                         }
                                         ?>
                                     </div>
                                 <?php endif; ?>
-    
-    
-    
+
+
+
                                 <?php
                                 if (isset($_SESSION['membre']['code_compte'])) {
                                     // Récupérer l'état du vote de l'utilisateur pour cet avis
                                     $codeAvis = $avis['code_avis']; // Assurez-vous que $avis contient bien le code de l'avis
                                     $codeCompte = $_SESSION['membre']['code_compte']; // L'utilisateur doit être connecté
-                            
+                        
                                     $stmt = $dbh->prepare("SELECT pouce FROM tripenarvor._pouce WHERE code_avis = :code_avis AND code_compte = :code_compte");
                                     $stmt->execute([':code_avis' => $codeAvis, ':code_compte' => $codeCompte]);
                                     $voteState = $stmt->fetchColumn();
-    
+
                                     // Si aucun vote n'existe, définir le vote par défaut à 0 (ni like ni dislike)
                                     if ($voteState === false) {
                                         $voteState = 0;
@@ -812,7 +820,7 @@ if (isset($json['results'][0])) {
                                                 <?php echo $avis['pouce_positif']; ?>
                                             </p>
                                         </div>
-    
+
                                         <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
                                             <!-- Pouce négatif -->
                                             <img id="negativeImage<?php echo $avis['code_avis']; ?>"
@@ -832,7 +840,7 @@ if (isset($json['results'][0])) {
                                                 <?php echo $avis['pouce_positif']; ?>
                                             </p>
                                         </div>
-    
+
                                         <div class="pouce pouce<?php echo $avis['code_avis']; ?>">
                                             <!-- Pouce négatif -->
                                             <img id="negativeImage" src="images/pouce_negatif_blanc.png" alt="Pouce négatif"
@@ -842,45 +850,51 @@ if (isset($json['results'][0])) {
                                             </p>
                                         </div>
                                     <?php } ?>
-    
+
                                     <div class="menu_avis">
                                         <div class="menu-container" onclick="toggleMenu(event, this)">
                                             <?php if (!$avis["blacklister"]) { ?>
                                                 <div class="context-menu">
                                                     <ul>
                                                         <?php
-                                                            if (isset($_SESSION['membre']['code_compte']) && $avis['code_compte'] == $_SESSION['membre']['code_compte']) {
-                                                                $avis['titre_offre'] = $details_offre['titre_offre'];
-                                                                ?>
-                                                                    <li>
-                                                                        <form action="modif_avis_membre.php" method="POST">
-                                                                            <input type="hidden" name="unAvis" value="<?php echo htmlspecialchars(serialize($avis)); ?>">
-                                                                            <input id="btn-repondre-avis" type="submit" name="modifierAvis" value="Modifier l'avis">
-                                                                        </form>
-                                                                    </li>
-                                                                <?php
-                                                            } else {
-                                                        ?>
-                                                        <li>
-                                                            <form action="poster_reponse_membre.php" method="POST">
-                                                                <input type="hidden" name="unAvis"
-                                                                    value="<?php echo htmlspecialchars(serialize($avis)); ?>">
-                                                                <input id="btn-repondre-avis" type="submit" name="repondreAvis" value="Répondre à l'avis">
-                                                            </form>
-                                                        </li>
-                                                        <li>
-                                                            <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>" title="Signaler cet avis" style="text-decoration: none;margin-right: 2vw;color: black;font-size: 15px;font-weight: 400;">
-                                                                Signaler l'avis
-                                                            </a>
-                                                        </li>
+                                                        if (isset($_SESSION['membre']['code_compte']) && $avis['code_compte'] == $_SESSION['membre']['code_compte']) {
+                                                            $avis['titre_offre'] = $details_offre['titre_offre'];
+                                                            ?>
+                                                            <li>
+                                                                <form action="modif_avis_membre.php" method="POST">
+                                                                    <input type="hidden" name="unAvis"
+                                                                        value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                                                                    <input id="btn-repondre-avis" type="submit" name="modifierAvis"
+                                                                        value="Modifier l'avis">
+                                                                </form>
+                                                            </li>
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <li>
+                                                                <form action="poster_reponse_membre.php" method="POST">
+                                                                    <input type="hidden" name="unAvis"
+                                                                        value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                                                                    <input id="btn-repondre-avis" type="submit" name="repondreAvis"
+                                                                        value="Répondre à l'avis">
+                                                                </form>
+                                                            </li>
+                                                            <li>
+                                                                <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
+                                                                    title="Signaler cet avis"
+                                                                    style="text-decoration: none;margin-right: 2vw;color: black;font-size: 15px;font-weight: 400;">
+                                                                    Signaler l'avis
+                                                                </a>
+                                                            </li>
                                                         <?php } ?>
                                                     </ul>
                                                 </div>
                                             <?php } ?>
-                                            <img src="images/icones/ellipsis-vertical-solid.svg" alt="Menu" width="20" height="20">
+                                            <img src="images/icones/ellipsis-vertical-solid.svg" alt="Menu" width="20"
+                                                height="20">
                                         </div>
                                     </div>
-                                
+
                                     <script>
                                         function toggleMenu(event, element) {
                                             event.stopPropagation();
@@ -888,19 +902,19 @@ if (isset($json['results'][0])) {
                                             var menu = element.querySelector('.context-menu');
                                             menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
                                         }
-                                
+
                                         function closeAllMenus() {
                                             document.querySelectorAll('.context-menu').forEach(menu => {
                                                 menu.style.display = 'none';
                                             });
                                         }
-                                
-                                        document.addEventListener('click', function() {
+
+                                        document.addEventListener('click', function () {
                                             closeAllMenus();
                                         });
                                     </script>
-    
-    
+
+
                                     <!-- <span class="signalement_avis_offre">
                                         <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
                                             title="Signaler cet avis"
