@@ -37,6 +37,10 @@ if (isset($_POST['envoiOffre'])) {
 
 $offre = $_SESSION['modif_offre'];
 
+echo "<pre>";
+var_dump($offre);
+echo "</pre>";
+
 
 /* TABLEAU DES JOURS */
 
@@ -1027,7 +1031,6 @@ if($infos_offre !== null){
                         <label for="off_std">Offre Standard</label>
                         <input type="radio" id="off_pre" name="type_offre" value="premium">
                         <label for="off_pre">Offre Premium</label>
-                        <input>
                         <?php
                     } else {
                         ?>
@@ -1036,6 +1039,10 @@ if($infos_offre !== null){
                         <?php
                     }
                 ?>
+            </fieldset>
+            <fieldset>
+                <legend>Option</legend>
+                
             </fieldset>
         </div>
 
