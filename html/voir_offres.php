@@ -924,7 +924,7 @@ function tempsEcouleDepuisPublication($offre)
                                    echo $periode['date_fermeture'];
                                } else {
                                    echo "";
-                               } ?>>
+                               } ?>" data-title="<?php echo $offre["titre_offre"]; ?>">
 
                         <img src="<?php echo "./" . $offre_image['url_image']; ?>" alt="aucune image">
 
@@ -1504,9 +1504,10 @@ function tempsEcouleDepuisPublication($offre)
 
                 // Parcourir chaque offre et vérifier si elle correspond à la recherche
                 offerItems.forEach(offer => {
-                    const text = offer.textContent.toLowerCase();
+                    const offerLoc = offer.getAttribute('location');
+                    const offerText = offer.getAttribute('data-title');
                     console.log(text);
-                    if (text.includes(query)) {
+                    if (offerLoc.includes(query) || offerText.includes(query)) {
                         offer.classList.remove('hidden');
                     } else {
                         offer.classList.add('hidden');
@@ -1556,10 +1557,6 @@ function tempsEcouleDepuisPublication($offre)
                         const offerCategory = offer.getAttribute('data-category');
                         const offerRate = offer.getAttribute('data-rate');
                         const offerStatus = offer.getAttribute('data-status');
-
-                        console.log("Offer Category:", offerCategory);
-                        console.log("Offer Rate:", offerRate);
-                        console.log("Offer Status:", offerStatus);
 
                         if ((category === 'all' || category === offerCategory) &&
                             (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
