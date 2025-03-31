@@ -3891,11 +3891,14 @@ nom.avis {
         margin-left: 0.6em;
     }
 
+
     .avis-list {
         margin-bottom: 9vh;
     }
 
-    /* A corriger besoin de revoir la version*/
+    .mes_avis{
+        margin-left: 1.8em;
+    }
 
     @media screen and (max-width: 418px) {
         .custom-confirm-content {
@@ -13920,45 +13923,6 @@ ul.mentions_legales-sous-list {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     z-index: 1000; 
     display: none;
-}
-
-/* Overlay avec effet de flou pour la confirmation */
-.confirm-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px); /* Pour Safari */
-    z-index: 998; /* Juste en dessous de la popup */
-    display: none;
-}
-
-/* Style pour la boîte de dialogue de confirmation */
-.custom-confirm {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 999;
-}
-
-.custom-confirm-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 350px;
-    max-width: 90%;
 }
 
 .otp-confirm-content p {
