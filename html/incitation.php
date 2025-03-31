@@ -32,9 +32,7 @@ session_start();
                     <img src="images/logoBlanc.png" alt="PACT Logo" style="margin-top: 2em;">
                 </a>
             </div>
-            <div class="incitation_skip-container">
-              <a href="voir_offres.php"><img src="images/croix_fermer.png" class="skip"></a>
-            </div>
+            
         </header>
     
 <main class="incitation_content">
