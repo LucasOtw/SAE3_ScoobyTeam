@@ -4430,7 +4430,7 @@ main.creation_compte_membre .creation_compte_membre_bienvenue {
         margin-left: 9.6vw;
     }
 
-    main.creation_compte_membre .btn_plus_tard_crea{
+    .logo tel .btn_plus_tard_crea{
            display: none;
     }
 
@@ -13954,7 +13954,7 @@ ul.mentions_legales-sous-list {
 }
 
 .back_button{
-    margin-top:9.3em;
+    margin-top:12.3em;
 }
 
 .header-tel svg {

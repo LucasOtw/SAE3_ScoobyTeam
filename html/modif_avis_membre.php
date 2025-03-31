@@ -361,16 +361,18 @@ $isAnswer = $isAnswer->fetchColumn();
 
             var formModif = document.getElementById('avisForm');
             var modal = document.getElementById('customModal');
+            var realPopup = modal.querySelector("div");
             var btnModif = document.getElementById('confirmModif');
 
             formModif.addEventListener('submit', function (e) {
                 e.preventDefault();
                 modal.style.display = 'flex';
-                console.log(modal);
+                realPopup.style.display = "block";
             });
 
             confirmModif.addEventListener('click', () => {
                 modal.style.display = 'none';
+                realPopup.style.display = "none";
                 avisForm.action = "modif_avis_membre.php";
                 avisForm.submit();
             });
@@ -378,6 +380,7 @@ $isAnswer = $isAnswer->fetchColumn();
             window.onclick = function (event) {
                 if (event.target == modal) {
                     modal.style.display = 'none';
+                    realPopup.style.display = "none";
                 }
             };
         });
