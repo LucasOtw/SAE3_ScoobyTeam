@@ -1478,8 +1478,6 @@ function tempsEcouleDepuisPublication($offre)
             const searchSelect = document.querySelectorAll('.search-select');
             const container = document.querySelector('#offers-list');
 
-            // const searchLocation = document.querySelector('#location');
-
             const selectRate = document.querySelector('#select-rate');
 
             const priceMinInput = document.getElementById("price-min");
@@ -1494,22 +1492,26 @@ function tempsEcouleDepuisPublication($offre)
             const openingStartDate = document.getElementById('opening-start-date');
             const openingEndDate = document.getElementById('opening-end-date');
 
+            // Récupération des values des éléments
+            const query = searchInput.value.toLowerCase().trim();
 
+            ///////////////////////////////////////////////////
+            ///           Fonction filtre leaflet           ///
+            ///////////////////////////////////////////////////
+            function leafletFilters() {
+                
+            }
+            
             ///////////////////////////////////////////////////
             ///            Barre de recherche               ///
             ///////////////////////////////////////////////////
             // Barre de recherche
             searchInput.addEventListener('input', () => {
-                const query = searchInput.value.toLowerCase().trim();
 
                 // Parcourir chaque offre et vérifier si elle correspond à la recherche
                 offerItems.forEach(offer => {
                     const offerLoc = offer.getAttribute('location').toLowerCase();
                     const offerText = offer.querySelector('h2').textContent.toLowerCase().trim();
-
-                    console.log(offerLoc);
-                    console.log(offerText);
-                    console.log(offer);
                     
                     if (offerLoc.includes(query) || offerText.includes(query)) {
                         offer.classList.remove('hidden');
@@ -1537,9 +1539,6 @@ function tempsEcouleDepuisPublication($offre)
                         }
                     }
                 });
-
-                // Recalculer les clusters
-                //map.addLayer(markers); // Réajouter le groupe de clusters à la carte
 
             });
 
