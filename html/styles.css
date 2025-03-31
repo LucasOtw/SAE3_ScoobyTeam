@@ -12219,7 +12219,8 @@ ul.mentions_legales-sous-list {
 #api p {
     font-size: 1.2em;
     font-weight: bolder;
-        margin-top: 4vh;
+    margin-top: 4vh;
+    margin-bottom: 1vh;
 
 }
 
