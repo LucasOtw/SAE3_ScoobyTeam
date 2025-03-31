@@ -179,7 +179,7 @@ if (!empty($_POST['supprAvis'])){
                         <!-- Formulaire pour supprimer un avis -->
                         <form method="POST" action="consulter_mes_avis.php" class="delete-form">
                             <input type="hidden" name="supprAvis" value="<?php echo htmlspecialchars($avis['code_avis']); ?>">
-                            <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="confirmDelete(event)">
+                            <img src="images/trash.svg" alt="Supprimer" class="delete-icon" title="Supprimer cet avis" onclick="confirmDelete(event)" style="filter: brightness(0.1);">
                         </form>
                         <form action="modif_avis_membre.php" method="POST">
                             <input type="hidden" name="unAvis" value="<?php echo htmlspecialchars(serialize($avis)); ?>">
