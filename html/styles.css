@@ -4430,6 +4430,10 @@ main.creation_compte_membre .creation_compte_membre_bienvenue {
         margin-left: 9.6vw;
     }
 
+    main.creation_compte_membre .btn_plus_tard_crea{
+           display: none;
+    }
+
     main.creation_compte_membre .input-icon-img {
         display: inline-block;
     }
