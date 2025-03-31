@@ -21,7 +21,7 @@ if (isset($_SESSION['detail_offre'])) {
 
 ?>
 <pre>
-    <?php echo $_COOKIE; ?>
+    <?php var_dump($_COOKIE); ?>
 </pre>
 <?php
 require_once __DIR__ . ("/../.security/config.php");
@@ -903,11 +903,9 @@ function tempsEcouleDepuisPublication($offre)
                 if ($offre["en_ligne"]) {
                     /* echo $villeOffre["ville"]; */
                     ?>
-                    <article
-                        class="offer <?php if (!empty($offre['option_en_relief']) || !empty($offre['option_a_la_une'])) {
-                            echo "en_relief";
-                        } ?>"
-                        data-category="<?php echo $type_offre; ?>" data-price="<?php echo $offre["tarif"]; ?>"
+                    <article class="offer <?php if (!empty($offre['option_en_relief']) || !empty($offre['option_a_la_une'])) {
+                        echo "en_relief";
+                    } ?>" data-category="<?php echo $type_offre; ?>" data-price="<?php echo $offre["tarif"]; ?>"
                         data-rate="<?php echo $offre["note_moyenne"]; ?>" location="<?php echo $villeOffre["ville"]; ?>"
                         data-status="<?php echo $dataStatusEng; ?>" data-event=<?php if (!empty($event)) {
                                echo $event['date_' . $type_offre];

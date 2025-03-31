@@ -454,7 +454,7 @@ if (isset($_POST['dwl-data'])) {
     <a href="compte_membre_tel.php">
         <img src="images/Bouton_retour.png" alt="bouton retour">
     </a>
-    <h1>Editer le profil</h1>
+    <h1 class ="editer_profil_tel">Editer le profil</h1>
 </div>      
             <section class="tabs">
                 <ul>
