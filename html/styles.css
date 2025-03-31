@@ -4226,7 +4226,8 @@ main.creation_compte_membre .crea_membre_mail_tel .creation_compte_membre_form-s
 
 main.creation_compte_membre .creation_compte_membre_form-section h1 {
     font-size: 28px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 30px;
 }
 
 main.creation_compte_membre .creation_compte_membre_form-section p {
