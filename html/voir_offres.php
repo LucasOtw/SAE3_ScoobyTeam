@@ -1142,6 +1142,7 @@ function tempsEcouleDepuisPublication($offre)
                     });
 
                     var markersArray = [];
+                    let index = 0;
                     <?php
                     $adresses = $dbh->query('SELECT o.*, a.*, 
                            (SELECT i.url_image 
@@ -1154,8 +1155,6 @@ function tempsEcouleDepuisPublication($offre)
                            WHERE o.en_ligne = true');
 
                     $api_key = "AIzaSyASKQTHbmzXG5VZUcCMN3YQPYBVAgbHUig";
-
-                    $index = 0;
 
                     foreach ($adresses as $adr) {
                         $adresse_complete = $adr['adresse_postal'] . ', ' . $adr['code_postal'] . ' ' . $adr['ville'] . ', France';
