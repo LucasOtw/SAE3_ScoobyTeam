@@ -304,6 +304,8 @@ if (isset($_POST['dwl-data'])) {
         }
 
         // Fermer l'archive ZIP
+        ob_clean();
+        flush();
         $zip->close();
 
         // Définir les headers pour forcer le téléchargement
