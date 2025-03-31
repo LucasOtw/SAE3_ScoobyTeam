@@ -1558,9 +1558,9 @@ function tempsEcouleDepuisPublication($offre)
                     console.log("/////////////");
         
                     if (offerText.includes(query)) {
-                        leaflet.style.removeProperty('display'); // Afficher le marqueur
+                        leaflet.marker.setOpacity(1); // Rendre visible
                     } else {
-                        leaflet.style.display = "none"; // Cacher le marqueur
+                        leaflet.marker.setOpacity(0); // Cacher le marqueur
                     }
                 }
             });
