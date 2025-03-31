@@ -323,7 +323,9 @@ header.header-tel {
 
     header.header-tel .logo-tel {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
+        gap: 35px;
+        margin: 20px;
     }
 
     footer {
@@ -3904,7 +3906,7 @@ nom.avis {
     @media screen and (max-width: 418px) {
         .custom-confirm-content {
             width: 90%;
-            max-width: 350px;
+            max-width: 327px;
             height: auto;
             padding: 15px;
         }

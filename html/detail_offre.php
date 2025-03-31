@@ -8,7 +8,6 @@ ob_start();
 session_start();
 
 
-setcookie('consulte_recemment' . $code_offre, $code_offre, time() + (60 * 60 * 24 * 1));
 
 
 function tempsEcouleDepuisPublication($offre)
@@ -90,6 +89,7 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
     }
 
     $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
+    setcookie('consulte_recemment' . $code_offre, $code_offre, time() + (60 * 60 * 24 * 1));
 
     if (!empty($details_offre)) { // si l'offre existe
 
