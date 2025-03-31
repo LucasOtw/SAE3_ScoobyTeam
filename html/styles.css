@@ -13986,12 +13986,22 @@ ul.mentions_legales-sous-list {
     width: 154px;
     box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
     margin-left: 9px;
+    margin-top: 125px;
+}
+
+.custom-confirm-content-pro button:hover{
+    transform: translateY(-2px);
 }
 
 .back_button{
     margin-top:12.3em;
 }
 
+#button_annuler{
+    background-color: white;
+    border : 1px solid var(--orange);
+    color : black;
+}
 .header-tel svg {
     position: absolute;
     top: 0;
