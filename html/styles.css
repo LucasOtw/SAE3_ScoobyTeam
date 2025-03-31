@@ -6301,14 +6301,6 @@ select.theme_contacter_plateforme {
     color: #333;
 }
 
-#modif_offre label {
-    font-size: 1.1rem;
-    color: #555;
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-
 #titre_modif_offre {
     font-size: 4rem;
     font-weight: bold;
@@ -6583,7 +6575,7 @@ select.theme_contacter_plateforme {
 #modif_offre label {
     font-size: 1rem;
     font-weight: 500;
-    color: #ffffff;
+    color: #555;
     margin-bottom: 8px;
     display: block;
 }
@@ -13360,9 +13352,7 @@ ul.mentions_legales-sous-list {
         margin: 0 auto 20px;
         line-height: 1.5;
     }
-
-    /* Image */
-    .error-image {
+    font-size
         max-width: 100%;
         margin: 20px auto;
     }
