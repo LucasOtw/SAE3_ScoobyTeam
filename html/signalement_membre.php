@@ -20,11 +20,11 @@ try {
                 SELECT * 
                 FROM tripenarvor._avis 
                 NATURAL JOIN tripenarvor._membre
-                WHERE code_compte=2 AND code_avis = :id
+                WHERE code_compte=:code_compte AND code_avis = :id
             ");
-            
-            // Lier le paramètre :id et exécuter la requête
-            $stmt->execute([':id' => $idAvis]);
+            $stmt->bindValue(":code_compte",$compte['code_compte']);
+            $stmt->bindValue(":id",$idAvis);
+            $stmt->execute();
 
             // Récupérer l'avis correspondant
             $avis = $stmt->fetch();
