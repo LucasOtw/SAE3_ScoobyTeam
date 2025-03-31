@@ -667,7 +667,7 @@ if($infos_offre !== null){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="images/logoPin_orange.png" width="16px" height="32px">
-    <title> Mon offre</title>
+    <title>Modifier mon offre</title>
     <link rel="stylesheet" href="styles.css?daz">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -991,7 +991,7 @@ if($infos_offre !== null){
         <div class="drop-zone-prompt">Glissez et déposez vos images ici</div>
         <div>ou</div>
         <label class="button_import_image" for="file-input">Choisir des fichiers</label>
-        <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple class="file-input">
+        <input type="file" id="fiCOUCOU LES CONGOLAISle-input" name="offre_nouv_images[]" accept="image/*" multiple class="file-input">
     </div>
     <div class="selected-files-container" id="selected-files">
         <!-- Les fichiers sélectionnés s'afficheront ici -->
@@ -1018,7 +1018,25 @@ if($infos_offre !== null){
    
         </div>
         <div class="tab-content" id="payment">
-            COUCOU LES CONGOLAIS
+            <fieldset>
+                <legend>Type</legend>
+                <?php
+                    if(isset($comptePro['num_siren']) && $comptePro['num_siren']){
+                        ?>
+                        <input type="radio" id="off_std" name="type_offre" value="standard">
+                        <label for="off_std">Offre Standard</label>
+                        <input type="radio" id="off_pre" name="type_offre" value="premium">
+                        <label for="off_pre">Offre Premium</label>
+                        <input>
+                        <?php
+                    } else {
+                        ?>
+                        <input type="radio" id="off_grt" name="type_offre" value="gratuite">
+                        <label for="off_grt">Offre Gratuite</label>
+                        <?php
+                    }
+                ?>
+            </fieldset>
         </div>
 
             <div class="btn_modif_offre">
