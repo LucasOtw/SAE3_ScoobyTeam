@@ -1530,7 +1530,7 @@ function tempsEcouleDepuisPublication($offre)
                         if ((category === 'all' || category === offerCategory) &&
                             (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
                             (!status || status === offerStatus)) {
-                            
+                            console.log("ok");
                         } else {
                             afficher=false;
                         }
