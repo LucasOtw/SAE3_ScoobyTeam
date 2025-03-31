@@ -91,7 +91,7 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
     $code_offre = $details_offre["code_offre"]; // on récupère le code de l'offre envoyé
 
     if (isset($_COOKIE[$cookie_name])) {
-        setcookie($cookie_name, '', time() - 3600, "/"); // Expire immédiatement
+        setcookie('consulte_recemment' . $code_offre, '', time() - 3600, "/"); // Expire immédiatement
     }
     setcookie('consulte_recemment' . $code_offre, $code_offre, time() + (60 * 60 * 24 * 1), "/");
 
