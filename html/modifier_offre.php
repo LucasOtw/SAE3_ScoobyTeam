@@ -667,7 +667,7 @@ if($infos_offre !== null){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="images/logoPin_orange.png" width="16px" height="32px">
-    <title>Modifier mon offre</title>
+    <title> mon offre</title>
     <link rel="stylesheet" href="styles.css?daz">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -698,7 +698,6 @@ if($infos_offre !== null){
                     <li><a href="#" class="active" data-tab="general">Informations générales</a></li>
                     <li><a href="#" data-tab="services">Services et horaires</a></li>
                     <li><a href="#" data-tab="photos">Photos</a></li>
-                    <li><a href="#" data-tab="payment">Paiement</li>
                 </ul>
             </section>
             <div class="tab-content active" id="general">
@@ -985,35 +984,37 @@ if($infos_offre !== null){
 
             </div>
             <div class="tab-content" id="photos">
-                <h3>Ajouter de nouvelles photos</h3>
-                <div class="drop-zone" id="drop-zone">
-                    <div class="drop-zone-icon">+</div>
-                    <div class="drop-zone-prompt">Glissez et déposez vos images ici</div>
-                    <div>ou</div>
-                    <label class="button_import_image" for="file-input">Choisir des fichiers</label>
-                    <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple class="file-input">
-                </div>
-                <div class="selected-files-container" id="selected-files">
-                    <!-- Les fichiers sélectionnés s'afficheront ici -->
-                </div>
-                <input type="hidden" name="deleted_images" id="deleted-images">
+            <h3>Ajouter de nouvelles photos</h3>
+    <div class="drop-zone" id="drop-zone">
+        <div class="drop-zone-icon">+</div>
+        <div class="drop-zone-prompt">Glissez et déposez vos images ici</div>
+        <div>ou</div>
+        <label class="button_import_image" for="file-input">Choisir des fichiers</label>
+        <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple class="file-input">
+    </div>
+    <div class="selected-files-container" id="selected-files">
+        <!-- Les fichiers sélectionnés s'afficheront ici -->
+    </div>
+    <input type="hidden" name="deleted_images" id="deleted-images">
 
-                <h3> vos photos actuelles</h3>
-                <div class="photo-cards">
-                    <?php
-                    foreach($recup_photos as $photo){
-                    ?>
-                    <div class="photo-card">
-                        <div class="photo-image">
-                            <img src="<?php echo $photo; ?>" alt="Photo">
-                        </div>
-                        <button class="delete-photo-btn"></button>
-                    </div>
-                    <?php
-                    }
-                    ?>
-                </div>
+    <h3> vos photos actuelles</h3>
+    <div class="photo-cards">
+        <?php
+        foreach($recup_photos as $photo){
+        ?>
+        <div class="photo-card">
+            <div class="photo-image">
+                <img src="<?php echo $photo; ?>" alt="Photo">
             </div>
+            <button class="delete-photo-btn"></button>
+        </div>
+        <?php
+        }
+        ?>
+    </div>
+    </div>
+    
+   
         </div>
 
             <div class="btn_modif_offre">
