@@ -4256,6 +4256,7 @@ main.creation_compte_membre .checkbox {
     align-items: center;
     gap: 10px;
     margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 main.creation_compte_membre .checkbox label a {
