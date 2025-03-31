@@ -1021,7 +1021,7 @@ if($infos_offre !== null){
             <fieldset>
                 <legend>Type</legend>
                 <?php
-                    if(isset($comptePro['num_siren']) && $comptePro['num_siren']){
+                    if(isset($$monComptePro['num_siren']) && $monComptePro['num_siren']){
                         ?>
                         <input type="radio" id="off_std" name="type_offre" value="standard">
                         <label for="off_std">Offre Standard</label>
