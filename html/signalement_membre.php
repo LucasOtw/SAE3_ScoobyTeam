@@ -20,7 +20,7 @@ try {
                 SELECT * 
                 FROM tripenarvor._avis av
                 INNER JOIN tripenarvor._membre me
-                WHERE me.code_compte=:code_compte AND av.code_avis = :id
+                ON me.code_compte=:code_compte AND av.code_avis = :id
             ");
             $stmt->bindValue(":code_compte",$compte['code_compte']);
             $stmt->bindValue(":id",$idAvis);
