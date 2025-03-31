@@ -573,6 +573,8 @@ if (isset($_POST['dwl-data'])) {
                 const btnConfirmDonnees = document.getElementById("confirm-donnees");
                 const btnCancelDonnees = document.getElementById("cancel-donnees");
                 const btnClosePopup = document.getElementById("close-popup");
+
+                const realPopup = popupMesDonnees.querySelector("div");
         
                 // Récupérer le message de succès après que le DOM ait fini de se charger
                 const successMessage = document.getElementById('mail-success');
@@ -580,11 +582,13 @@ if (isset($_POST['dwl-data'])) {
                 // Afficher la popup lorsque l'utilisateur clique sur le bouton "Mes données"
                 btnMesDonnees.addEventListener("click", () => {
                     popupMesDonnees.style.display = "block";
+                    realPopup.style.display = "block";
                 });
         
                 // Masquer la popup lorsque l'utilisateur clique sur "Fermer"
                 btnClosePopup.addEventListener("click", () => {
                     popupMesDonnees.style.display = "none";
+                    realPopup.style.display = "none";
                 });
         
                 // Télécharger les données lorsque l'utilisateur clique sur "Télécharger"
