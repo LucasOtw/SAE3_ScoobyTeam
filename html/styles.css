@@ -4431,7 +4431,7 @@ main.creation_compte_membre .creation_compte_membre_bienvenue {
         margin-left: 9.6vw;
     }
 
-    main.creation_compte_membre .btn_plus_tard_crea{
+    .btn_plus_tard_crea{
            display: none;
     }
 
