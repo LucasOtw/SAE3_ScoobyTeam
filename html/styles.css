@@ -10474,11 +10474,10 @@ body.menu-open #overlay {
 
     .toute_les_offres_main .search-input {
         width: 100%;
-        /* L'input prend toute la largeur */
+        height: 3.5em;
+        border-radius: 12px;
         margin-right: 0;
-        /* Retirer le margin droit */
         margin-bottom: 8px;
-        /* Ajouter un espacement entre l'input et le bouton */
         color: black;
         background-color: var(--gris);
         margin: 0;
