@@ -1521,7 +1521,7 @@ function tempsEcouleDepuisPublication($offre)
                         
                         // Si l'offre correspond à la recherche, on la montre
                         if (offerText.includes(query) || offerCity.includes(query)) {
-                            continue;
+                            
                         } else {
                             afficher=false;
                         }
