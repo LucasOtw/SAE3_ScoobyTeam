@@ -1027,14 +1027,17 @@ if($infos_offre !== null){
                 <?php
                     if(isset($monComptePro['num_siren']) && $monComptePro['num_siren']){
                         ?>
-                        <input type="radio" id="off_std" name="type_offre" value="standard">
+                        <input type="radio" id="off_std" name="type_offre" value="standard"
+                        <?php echo ($offre['nom_type'] == "Offre Standard") ? "checked" : "" ?>>
                         <label for="off_std">Offre Standard</label>
-                        <input type="radio" id="off_pre" name="type_offre" value="premium">
+                        <input type="radio" id="off_pre" name="type_offre" value="premium"
+                        <?php echo ($offre['nom_type'] == "Offre Premium") ? "checked" : "" ?>>
                         <label for="off_pre">Offre Premium</label>
                         <?php
                     } else {
                         ?>
-                        <input type="radio" id="off_grt" name="type_offre" value="gratuite">
+                        <input type="radio" id="off_grt" name="type_offre" value="gratuite"
+                        <?php echo ($offre['nom_type'] == "Offre Gratuite") ? "checked" : "" ?>>
                         <label for="off_grt">Offre Gratuite</label>
                         <?php
                     }
