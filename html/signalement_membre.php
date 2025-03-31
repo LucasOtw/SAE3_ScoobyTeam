@@ -18,9 +18,9 @@ try {
             // Requête préparée avec un paramètre dynamique :id
             $stmt = $dbh->prepare("
                 SELECT * 
-                FROM tripenarvor._avis 
-                NATURAL JOIN tripenarvor._membre
-                WHERE code_compte=:code_compte AND code_avis = :id
+                FROM tripenarvor._avis av
+                INNER JOIN tripenarvor._membre me
+                WHERE me.code_compte=:code_compte AND av.code_avis = :id
             ");
             $stmt->bindValue(":code_compte",$compte['code_compte']);
             $stmt->bindValue(":id",$idAvis);
@@ -28,8 +28,6 @@ try {
 
             // Récupérer l'avis correspondant
             $avis = $stmt->fetch();
-            var_dump($avis);
-            var_dump($compte);
         } else {
             // Si l'ID n'est pas un nombre valide
             $erreur = "L'ID d'avis est invalide.";
