@@ -203,9 +203,9 @@ if (!empty($_POST)) {
 
     <div id="modal-otp" class="otp-confirm-content">
         <form id="envoiCode" action="#" method="POST">
-            <p class="texte-boite-perso">Veuillez renseigner le code à 6 chiffres présent dans l'application :</p>
+            <p class="texte-boite-perso">Veuillez renseigner le code à 6 chiffres présent dans votre application d'authentification :</p>
             <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
-            <input style=" margin-top: 41px;
+            <input style=" margin-top: 20px;
     margin-left: 170px;" type="submit" id="submit-code" value="Envoyer le code">
             <p id="errorMsg" style="color: red; display: none;margin-top: 16px;">Le code doit contenir exactement 6 chiffres.</p>
             <!--<button>Se connecter quand même</button>-->
