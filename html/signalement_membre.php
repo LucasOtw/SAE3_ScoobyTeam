@@ -3,6 +3,8 @@
 session_start();
 require_once __DIR__ . ("/../.security/config.php");
 
+include_once("recupInfosCompte.php");
+
 try {
     $dbh = new PDO($dsn, $username, $password);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -16,13 +18,13 @@ try {
             // Requête préparée avec un paramètre dynamique :id
             $stmt = $dbh->prepare("
                 SELECT * 
-                FROM tripenarvor._avis 
-                NATURAL JOIN tripenarvor._membre
-                WHERE code_compte=2 AND code_avis = :id
+                FROM tripenarvor._avis av
+                INNER JOIN tripenarvor._membre me
+                ON me.code_compte=:code_compte AND av.code_avis = :id
             ");
-            
-            // Lier le paramètre :id et exécuter la requête
-            $stmt->execute([':id' => $idAvis]);
+            $stmt->bindValue(":code_compte",$compte['code_compte']);
+            $stmt->bindValue(":id",$idAvis);
+            $stmt->execute();
 
             // Récupérer l'avis correspondant
             $avis = $stmt->fetch();
@@ -193,7 +195,7 @@ try {
     
             </div>
             <h2 class="titre_signalement_3">Description (facultatif)</h2>
-            <textarea placeholder="Écrivez votre avis ici..." class="signaler_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
+            <textarea placeholder="Donnez + de détails..." class="signaler_un_avis_textarea" name="textAreaAvis" id="textAreaAvis"></textarea>
             <form method="POST" action="signalement.php" class="signalement-fom">
                 <input type="hidden" name="id_avis" value="<?php echo $idAvis; ?>">
                 <button class="signalement" type="submit" onclick="showConfirmation(event)">Confirmer le signalement</button>
