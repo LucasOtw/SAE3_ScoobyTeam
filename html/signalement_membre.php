@@ -29,6 +29,7 @@ try {
             // Récupérer l'avis correspondant
             $avis = $stmt->fetch();
             var_dump($avis);
+            var_dump($compte);
         } else {
             // Si l'ID n'est pas un nombre valide
             $erreur = "L'ID d'avis est invalide.";
