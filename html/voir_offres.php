@@ -1423,14 +1423,15 @@ function tempsEcouleDepuisPublication($offre)
                             echo "    }, 50);";
                             echo "});";
 
-                            echo "markers.addLayer(marker);";
+                            //echo "markers.addLayer(marker);";
+                            echo "map.addLayer(marker)";
                             echo "index++;";
 
                         }
                     }
                     ?>
 
-                    map.addLayer(markers);
+                    //map.addLayer(markers);
                     console.log("Carte Leaflet avec clusters initialisée avec succès");
 
                     // Ajouter des écouteurs d'événements aux popups après leur création
