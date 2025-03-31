@@ -29,7 +29,7 @@ session_start();
         </svg>
             <div  class="logo-tel">
                 <a href="voir_offres.php">
-                    <img src="images/LogoCouleur.png" alt="PACT Logo" style="margin-top: 2em;">
+                    <img src="images/LogoBlanc.png" alt="PACT Logo" style="margin-top: 2em;">
                 </a>
             </div>
             <div class="incitation_skip-container">
