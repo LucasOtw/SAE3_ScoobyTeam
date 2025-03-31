@@ -1332,11 +1332,10 @@ function tempsEcouleDepuisPublication($offre)
                             $popupContent .= "</div>";
 
                             echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
-                            echo "markersArray.push(marker);\n";
+                            // echo "markersArray.push({" . '"code_offre": ' . $adr["code_offre"] . ', "marker": marker});\n';
                             echo "marker.on('add', function() {";
                             echo "    if (this._icon) {";
                             echo "        this._icon.setAttribute('data-offer', '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "');";
-                            echo "        this._icon.setAttribute('data-index', index);";
                             // echo "        console.log('Icône affichée avec data-offer :', this._icon);";
                     
                             echo "        let offerData = " . json_encode($monOffre) . ";";
