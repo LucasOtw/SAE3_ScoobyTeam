@@ -181,8 +181,7 @@ if (isset($_POST['modif_infos'])) {
         <div class="custom-confirm-content">
             <p class="texte-boite-perso">Voulez-vous vraiment activer l'authentification à 2 facteurs ?</p>
             <p style="color:#d32f2f;">Cette action est irréversible !</p>
-           <span style="
-           margin-top: 82px;">
+           <span style="margin-top: 82px;display: flex;">
                 <button id="confirm">Oui</button>
                 <button id="cancel">Annuler</button>
             </span>
