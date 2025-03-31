@@ -84,7 +84,7 @@ if (!empty($_POST['supprAvis'])){
         </svg>
             <div  class="logo-tel">
                 <a href="voir_offres.php">
-                    <img src="images/LogoCouleur.png" alt="PACT Logo" style="margin-top:2em; margin-left:5em;">
+                    <img src="images/LogoCouleur.png" alt="PACT Logo" style="margin-top:2.5em;">
                 </a>
             </div>
         </header>

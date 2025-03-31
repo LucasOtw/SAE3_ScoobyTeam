@@ -37,6 +37,10 @@ if (isset($_POST['envoiOffre'])) {
 
 $offre = $_SESSION['modif_offre'];
 
+echo "<pre>";
+var_dump($offre);
+echo "</pre>";
+
 
 /* TABLEAU DES JOURS */
 
@@ -667,7 +671,7 @@ if($infos_offre !== null){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="images/logoPin_orange.png" width="16px" height="32px">
-    <title> Mon offre</title>
+    <title>Modifier mon offre</title>
     <link rel="stylesheet" href="styles.css?daz">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -991,7 +995,7 @@ if($infos_offre !== null){
         <div class="drop-zone-prompt">Glissez et déposez vos images ici</div>
         <div>ou</div>
         <label class="button_import_image" for="file-input">Choisir des fichiers</label>
-        <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple class="file-input">
+        <input type="file" id="fiCOUCOU LES CONGOLAISle-input" name="offre_nouv_images[]" accept="image/*" multiple class="file-input">
     </div>
     <div class="selected-files-container" id="selected-files">
         <!-- Les fichiers sélectionnés s'afficheront ici -->
@@ -1016,6 +1020,40 @@ if($infos_offre !== null){
     </div>
     
    
+        </div>
+        <div class="tab-content" id="payment">
+            <fieldset>
+                <legend>Type</legend>
+                <?php
+                    if(isset($monComptePro['num_siren']) && $monComptePro['num_siren']){
+                        ?>
+                        <input type="radio" id="off_std" name="type_offre" value="standard"
+                        <?php echo ($offre['nom_type'] == "Offre Standard") ? "checked" : "" ?>>
+                        <label for="off_std">Offre Standard</label>
+                        <input type="radio" id="off_pre" name="type_offre" value="premium"
+                        <?php echo ($offre['nom_type'] == "Offre Premium") ? "checked" : "" ?>>
+                        <label for="off_pre">Offre Premium</label>
+                        <?php
+                    } else {
+                        ?>
+                        <input type="radio" id="off_grt" name="type_offre" value="gratuite"
+                        <?php echo ($offre['nom_type'] == "Offre Gratuite") ? "checked" : "" ?>>
+                        <label for="off_grt">Offre Gratuite</label>
+                        <?php
+                    }
+                ?>
+            </fieldset>
+            <fieldset>
+                <legend>Option</legend>
+                <input type="radio" id="no-opt" name="option_offre" value="">
+                <label for="no-opt">Aucune option</label>
+                <input type="radio" id="opt_relief" name="option_offre" value="relief"
+                <?php echo ($offre['option_en_relief']) ? "checked" : ""  ?>>
+                <label for="opt_relief">Option "en Relief"</label>
+                <input type="radio" id="opt_aLaUne" name="option_offre" value="aLaUne"
+                <?php echo ($offre['option_a_la_une']) ? "checked" : "" ?>>
+                <label for="opt_aLaUne">Option "à la Une"</label>
+            </fieldset>
         </div>
 
             <div class="btn_modif_offre">

@@ -323,9 +323,7 @@ header.header-tel {
 
     header.header-tel .logo-tel {
         display: flex;
-        justify-content: flex-start;
-        gap: 35px;
-        margin: 20px;
+        justify-content: center
     }
 
     footer {
@@ -6525,7 +6523,6 @@ select.theme_contacter_plateforme {
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-decoration: none;
-    min-width: 52vw;
 }
 
 #modif_offre .tabs ul li {
@@ -10472,7 +10469,7 @@ body.menu-open #overlay {
         flex-direction: column;
         /* Empiler l'input et le bouton verticalement */
         align-items: center;
-        width: 100%;
+        width: 90%;
     }
 
     .toute_les_offres_main .search-input {
@@ -10550,7 +10547,7 @@ body.menu-open #overlay {
 
     .toute_les_offres_main .search-options {
         flex-direction: row;
-        width: 100%;
+        width: 90%;
     }
 
     .toute_les_offres_main .search-top {
@@ -11393,7 +11390,7 @@ main.main_repondre_avis .message-erreur {
 
 @media screen and (max-width: 429px) {
     .signalement-avis {
-        background-color: #e7f0ff;
+        background: linear-gradient(90deg, rgba(23, 111, 242, 0.1), rgba(25, 110, 238, 0.1));
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -11426,7 +11423,8 @@ main.main_repondre_avis .message-erreur {
         padding: 15px;
         margin-top:4vh;
         margin-left:1em;
-        border: 1px solid #f3f8ff;
+        border: 5px solid transparent; 
+        border-image: linear-gradient(90deg, #176FF2, #196EEE) 1;
         border-radius: 29px;
         resize: none;
         background-color: #e9e9e9;
@@ -13359,7 +13357,7 @@ ul.mentions_legales-sous-list {
         margin: 0 auto 20px;
         line-height: 1.5;
     }
-    font-size
+    font-size{
         max-width: 100%;
         margin: 20px auto;
     }

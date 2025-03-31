@@ -1143,14 +1143,6 @@ function tempsEcouleDepuisPublication($offre)
                         position: 'topleft'
                     }).addTo(map);
 
-                    var markers = L.markerClusterGroup({
-                        zoomToBoundsOnClick: true,
-                        spiderfyOnMaxZoom: false,
-                        showCoverageOnHover: false,
-                        disableClusteringAtZoom: 35,
-                        removeOutsideVisibleBounds: false
-                    });
-
                     let index = 0;
                     <?php
                     $adresses = $dbh->query('SELECT o.*, a.*, 
@@ -1339,7 +1331,7 @@ function tempsEcouleDepuisPublication($offre)
                             $popupContent .= "</div>";
                             $popupContent .= "</div>";
 
-                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon});";
+                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon, dataOffer: '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "'});";
                             echo "markersArray.push(marker);";
                             echo "marker.on('add', function() {";
                             echo "    if (this._icon) {";
@@ -1431,15 +1423,15 @@ function tempsEcouleDepuisPublication($offre)
                             echo "    }, 50);";
                             echo "});";
 
-                            //echo "markers.addLayer(marker);";
-                            echo "map.addLayer(marker);";
+                            echo "markers.addLayer(marker);";
+                            //echo "map.addLayer(marker);";
                             echo "index++;";
 
                         }
                     }
                     ?>
 
-                    //map.addLayer(markers);
+                    map.addLayer(markers);
                     console.log("Carte Leaflet avec clusters initialisée avec succès");
 
                     // Ajouter des écouteurs d'événements aux popups après leur création
@@ -1496,7 +1488,16 @@ function tempsEcouleDepuisPublication($offre)
 
         toggleMarkerVisibility = (index, visible) => {
             if (markersArray[index]) {
-                markersArray[index].setOpacity(visible ? 1 : 0);
+                //markersArray[index].setOpacity(visible ? 1 : 0);
+
+                const marker = markersArray[index];
+
+                // Si le marqueur fait partie d'un cluster, on doit le retirer ou l'ajouter au groupe de clusters
+                if (visible) {
+                    markers.addLayer(marker);  // Ajouter le marqueur au groupe de clusters
+                } else {
+                    markers.removeLayer(marker);  // Retirer le marqueur du groupe de clusters
+                }
             }
         }
 
@@ -1579,21 +1580,41 @@ function tempsEcouleDepuisPublication($offre)
                     }
                 });
 
-                leafletItems.forEach(leaflet => {
-                    console.log(leaflet);
+                // leafletItems.forEach(leaflet => {
+                //     console.log(leaflet);
 
-                    let offerData = leaflet.getAttribute("data-offer");
+                //     let offerData = leaflet.getAttribute("data-offer");
 
+                //     if (offerData) {
+                //         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
+                //         let offer = JSON.parse(correctedJsonString); // Convertir en objet
+                //         let offerObject = leaflet.getAttribute("data-index");
+                //         let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
+
+                //         console.log(offerText);
+                //         console.log(query);
+                //         console.log("/////////////");
+
+                //         if (offerText.includes(query)) {
+                //             toggleMarkerVisibility(offerObject,1); // Rendre visible
+                //         } else {
+                //             toggleMarkerVisibility(offerObject,0); // Cacher le marqueur
+                //         }
+                //     }
+                // });
+
+                // Réinitialiser les marqueurs
+                markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
+                markersArray.forEach((marker, index) => {
+                    console.log(marker._icon);
+                    const offerData = marker.options.dataOffer;
+            
                     if (offerData) {
                         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
                         let offer = JSON.parse(correctedJsonString); // Convertir en objet
-                        let offerObject = leaflet.getAttribute("data-index");
                         let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
-
-                        console.log(offerText);
-                        console.log(query);
-                        console.log("/////////////");
-
+            
+                        // Si l'offre correspond à la recherche, on la montre
                         if (offerText.includes(query)) {
                             toggleMarkerVisibility(offerObject, 1); // Rendre visible
                         } else {
@@ -1601,6 +1622,9 @@ function tempsEcouleDepuisPublication($offre)
                         }
                     }
                 });
+            
+                // Recalculer les clusters
+                map.addLayer(markers); // Réajouter le groupe de clusters à la carte
 
             });
 
@@ -1849,7 +1873,7 @@ function tempsEcouleDepuisPublication($offre)
         function updateCategoryText() {
             let categoryOption = document.querySelector('.search-select option[value="all"]');
             if (window.innerWidth <= 429) {
-                categoryOption.textContent = "Catégo";
+                categoryOption.textContent = "Catégorie";
             } else {
                 categoryOption.textContent = "Catégories";
             }
