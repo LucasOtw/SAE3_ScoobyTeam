@@ -3722,7 +3722,6 @@ nom.avis {
     border-radius: 19px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     z-index: 1000; /* Plus élevé que l'overlay */
-    display: none;
 }
 
 .custom-confirm-content p {
