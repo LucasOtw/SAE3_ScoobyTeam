@@ -101,7 +101,6 @@ if (isset($_POST['vueDetails']) || isset($_SESSION['detail_offre'])) {
                     ':code_offre' => $code_offre
                 ]);
 
-                setcookie('consulte_recemment' + $code_offre, $code_offre, time() + (60 * 60 * 24 * $duréeCookie), "/");
             } catch (PDOException $e) {
                 $consulter = $dbh->prepare('
                     update tripenarvor._consulte set date_consultation = NOW() 
