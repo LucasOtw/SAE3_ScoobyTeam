@@ -3728,6 +3728,7 @@ nom.avis {
     font-size: 16px;
     font-weight: 600;
     color: #333;
+    text-align: center;
 }
 
 .custom-confirm-content button {
