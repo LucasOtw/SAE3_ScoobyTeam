@@ -1129,6 +1129,14 @@ function tempsEcouleDepuisPublication($offre)
     <script>
         let markersArray = [];
 
+         var markers = L.markerClusterGroup({
+                        zoomToBoundsOnClick: true,
+                        spiderfyOnMaxZoom: false,
+                        showCoverageOnHover: false,
+                        disableClusteringAtZoom: 35,
+                        removeOutsideVisibleBounds: false
+                    });
+
         document.addEventListener("DOMContentLoaded", function () {
             const mapElement = document.getElementById('map');
 
