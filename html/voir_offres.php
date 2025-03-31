@@ -1123,7 +1123,8 @@ function tempsEcouleDepuisPublication($offre)
                         zoomToBoundsOnClick: true,
                         spiderfyOnMaxZoom: false,
                         showCoverageOnHover: false,
-                        disableClusteringAtZoom: 35
+                        disableClusteringAtZoom: 35,
+                        removeOutsideVisibleBounds: false
                     });
                     <?php
                     $adresses = $dbh->query('SELECT o.*, a.*, 

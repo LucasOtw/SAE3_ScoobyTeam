@@ -33,6 +33,10 @@
         <div class="logo-tel">
             <img src="images/LogoCouleur.png" alt="PACT Logo">
             <a class="btn_plus_tard_crea" href="voir_offres.php">Plus tard</a>
+            <a href="compte_membre_tel.php">
+                <img src="images/Bouton_retour.png" alt="bouton retour">
+            </a>
+            
         </div>
         <style>
             .btn_plus_tard_crea{
