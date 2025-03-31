@@ -1492,35 +1492,12 @@ function tempsEcouleDepuisPublication($offre)
             const openingStartDate = document.getElementById('opening-start-date');
             const openingEndDate = document.getElementById('opening-end-date');
 
-            // Récupération des values des éléments
-            const query = searchInput.value.toLowerCase().trim();
-
             ///////////////////////////////////////////////////
             ///           Fonction filtre leaflet           ///
             ///////////////////////////////////////////////////
             function leafletFilters() {
+                const query = searchInput.value.toLowerCase().trim();
                 
-            }
-            
-            ///////////////////////////////////////////////////
-            ///            Barre de recherche               ///
-            ///////////////////////////////////////////////////
-            // Barre de recherche
-            searchInput.addEventListener('input', () => {
-
-                // Parcourir chaque offre et vérifier si elle correspond à la recherche
-                offerItems.forEach(offer => {
-                    const offerLoc = offer.getAttribute('location').toLowerCase();
-                    const offerText = offer.querySelector('h2').textContent.toLowerCase().trim();
-                    
-                    if (offerLoc.includes(query) || offerText.includes(query)) {
-                        offer.classList.remove('hidden');
-                    } else {
-                        offer.classList.add('hidden');
-                    }
-                });
-
-                // Réinitialiser les marqueurs
                 markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
                 markersArray.forEach((marker, index) => {
                     const offerData = marker.options.dataOffer;
@@ -1539,6 +1516,48 @@ function tempsEcouleDepuisPublication($offre)
                         }
                     }
                 });
+                
+            }
+            
+            ///////////////////////////////////////////////////
+            ///            Barre de recherche               ///
+            ///////////////////////////////////////////////////
+            // Barre de recherche
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.toLowerCase().trim();
+                
+                // Parcourir chaque offre et vérifier si elle correspond à la recherche
+                offerItems.forEach(offer => {
+                    const offerLoc = offer.getAttribute('location').toLowerCase();
+                    const offerText = offer.querySelector('h2').textContent.toLowerCase().trim();
+                    
+                    if (offerLoc.includes(query) || offerText.includes(query)) {
+                        offer.classList.remove('hidden');
+                    } else {
+                        offer.classList.add('hidden');
+                    }
+                });
+
+                // Réinitialiser les marqueurs
+                // markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
+                // markersArray.forEach((marker, index) => {
+                //     const offerData = marker.options.dataOffer;
+
+                //     if (offerData) {
+                //         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
+                //         let offer = JSON.parse(correctedJsonString); // Convertir en objet
+                //         let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
+                //         let offerCity = marker.options.dataCity.toLowerCase();
+
+                //         // Si l'offre correspond à la recherche, on la montre
+                //         if (offerText.includes(query) || offerCity.includes(query)) {
+                //             toggleMarkerVisibility(index, 1); // Rendre visible
+                //         } else {
+                //             toggleMarkerVisibility(index, 0); // Cacher le marqueur
+                //         }
+                //     }
+                // });
+                leafletFilters();
 
             });
 
