@@ -194,8 +194,8 @@ if (!empty($_POST['supprAvis'])){
             <!-- Boîte de dialogue personnalisée -->
             <div id="customConfirm" class="custom-confirm">
                 <div class="custom-confirm-content">
-                    <p>Êtes-vous sûr de vouloir supprimer cet avis ?</p>
-                    <button onclick="submitForm()">Oui</button>
+                    <p style="margin-bottom: 122px;">Êtes-vous sûr de vouloir supprimer cet avis ?</p>
+                    <button onclick="submitForm()" style="margin-left: 90px;">Oui</button>
                     <button onclick="closeConfirm()">Non</button>
                 </div>
             </div>            
