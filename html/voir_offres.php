@@ -1505,7 +1505,7 @@ function tempsEcouleDepuisPublication($offre)
                 // Parcourir chaque offre et vérifier si elle correspond à la recherche
                 offerItems.forEach(offer => {
                     const offerLoc = offer.getAttribute('location');
-                    const offerText = offer.querySelector('h2').text.toLowerCase().trim();
+                    const offerText = offer.querySelector('h2').textContent.toLowerCase().trim();
 
                     console.log(offerLoc);
                     console.log(offerText);
