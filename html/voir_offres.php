@@ -1509,6 +1509,7 @@ function tempsEcouleDepuisPublication($offre)
 
                     console.log(offerLoc);
                     console.log(offerText);
+                    console.log(offer);
                     
                     if (offerLoc.includes(query) || offerText.includes(query)) {
                         offer.classList.remove('hidden');
