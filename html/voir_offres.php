@@ -924,7 +924,7 @@ function tempsEcouleDepuisPublication($offre)
                                    echo $periode['date_fermeture'];
                                } else {
                                    echo "";
-                               } ?>" data-title="<?php echo $offre["titre_offre"]; ?>">
+                               } ?>" data-title="<?php echo trim($offre["titre_offre"]); ?>">
 
                         <img src="<?php echo "./" . $offre_image['url_image']; ?>" alt="aucune image">
 
@@ -1505,7 +1505,7 @@ function tempsEcouleDepuisPublication($offre)
                 // Parcourir chaque offre et vérifier si elle correspond à la recherche
                 offerItems.forEach(offer => {
                     const offerLoc = offer.getAttribute('location');
-                    const offerText = offer.getAttribute('data-title').trim();
+                    const offerText = offer.getAttribute('data-title');
 
                     console.log(offerLoc);
                     console.log(offerText);
