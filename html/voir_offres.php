@@ -1335,7 +1335,11 @@ function tempsEcouleDepuisPublication($offre)
                             $popupContent .= "</div>";
                             $popupContent .= "</div>";
 
-                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon, dataOffer: '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "', dataStatus: '" . json_encode($dataStatusEng) . "', dataCategory: '" . json_encode($type_offre) . "'});";
+                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon, 
+                                                                                    dataOffer: '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "',
+                                                                                    dataStatus: '" . json_encode($dataStatusEng) . "', 
+                                                                                    dataCategory: '" . json_encode($type_offre) . "',
+                                                                                    dataCity: '" . json_encode($villeOffre) . "'});";
                             echo "markersArray.push(marker);";
 
                             echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false, className: 'custom-popup'}).setContent(\"" . addslashes($popupContent) . "\");";
@@ -1522,9 +1526,10 @@ function tempsEcouleDepuisPublication($offre)
                         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
                         let offer = JSON.parse(correctedJsonString); // Convertir en objet
                         let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
+                        let offerCity = marker.options.dataCity;
 
                         // Si l'offre correspond à la recherche, on la montre
-                        if (offerText.includes(query)) {
+                        if (offerText.includes(query) || offerCity.includes(query)) {
                             toggleMarkerVisibility(index, 1); // Rendre visible
                         } else {
                             toggleMarkerVisibility(index, 0); // Cacher le marqueur
@@ -1582,7 +1587,9 @@ function tempsEcouleDepuisPublication($offre)
                             const offerStatus = marker.options.dataStatus;
     
                             // Si l'offre correspond à la recherche, on la montre
-                            if (offerText.includes(query)) {
+                            if ((category === 'all' || category === offerCategory) &&
+                                (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
+                                (!status || status === offerStatus)) {
                                 toggleMarkerVisibility(index, 1); // Rendre visible
                             } else {
                                 toggleMarkerVisibility(index, 0); // Cacher le marqueur
