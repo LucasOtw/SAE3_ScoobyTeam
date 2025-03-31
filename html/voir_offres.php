@@ -1498,18 +1498,44 @@ function tempsEcouleDepuisPublication($offre)
             function leafletFilters() {
                 const query = searchInput.value.toLowerCase().trim();
                 
+                const category = document.querySelector('.search-select:nth-of-type(1)').value;
+                const rate = document.querySelector('#select-rate').value;
+                const status = document.querySelector('#select-statut').value;
+                
                 markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
                 markersArray.forEach((marker, index) => {
                     const offerData = marker.options.dataOffer;
+                    let afficher = true;
 
                     if (offerData) {
                         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
                         let offer = JSON.parse(correctedJsonString); // Convertir en objet
+                        
                         let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
                         let offerCity = marker.options.dataCity.toLowerCase();
 
+                        let offerCategory = marker.options.dataCategory; // Prendre le titre de l’offre
+                        const offerRate = offerData.note_moyenne;
+                        const offerStatus = marker.options.dataStatus;
+
+                        
                         // Si l'offre correspond à la recherche, on la montre
                         if (offerText.includes(query) || offerCity.includes(query)) {
+                            continue;
+                        } else {
+                            afficher=false;
+                        }
+
+                        // Si l'offre correspond à la recherche, on la montre
+                        if ((category === 'all' || category === offerCategory) &&
+                            (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
+                            (!status || status === offerStatus)) {
+                            toggleMarkerVisibility(index, 1); // Rendre visible
+                        } else {
+                            toggleMarkerVisibility(index, 0); // Cacher le marqueur
+                        }
+
+                        if (afficher) {
                             toggleMarkerVisibility(index, 1); // Rendre visible
                         } else {
                             toggleMarkerVisibility(index, 0); // Cacher le marqueur
