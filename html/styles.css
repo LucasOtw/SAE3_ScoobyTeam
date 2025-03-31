@@ -11391,7 +11391,7 @@ main.main_repondre_avis .message-erreur {
 
 @media screen and (max-width: 429px) {
     .signalement-avis {
-        background-color: #e7f0ff;
+        background: linear-gradient(90deg, rgba(23, 111, 242, 0.1), rgba(25, 110, 238, 0.1));
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
