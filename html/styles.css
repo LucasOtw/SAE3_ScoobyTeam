@@ -4236,9 +4236,6 @@ main.creation_compte_membre form {
     flex-direction: column;
 }
 
-main.creation_compte_membre label {
-    font-weight: bold;
-}
 
 main.creation_compte_membre input[type="text"],
 input[type="email"],
