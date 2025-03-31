@@ -31,6 +31,9 @@
     </header>
     <header class="header-tel header_membre">
         <div class="logo-tel">
+            <a href="compte_membre_tel.php">
+                <img src="images/Bouton_retour.png" alt="bouton retour" class="bouton-retour-tel">
+            </a>
             <img src="images/LogoCouleur.png" alt="PACT Logo">          
         </div>
 
@@ -39,9 +42,7 @@
     <main class="creation_compte_membre">
         <div class="creation_compte_membre_container">
             <div class="creation_compte_membre_form-section">
-                <a href="compte_membre_tel.php">
-                    <img src="images/Bouton_retour.png" alt="bouton retour" class="bouton-retour-tel">
-                </a>
+                
                 <h1>S’inscrire</h1>
                 <p>
                     Créez un compte membre pour sauvegarder vos annonces favorites 
