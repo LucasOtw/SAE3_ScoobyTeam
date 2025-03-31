@@ -1042,7 +1042,14 @@ if($infos_offre !== null){
             </fieldset>
             <fieldset>
                 <legend>Option</legend>
-                
+                <input type="radio" id="no-opt" name="option_offre" value="">
+                <label for="no-opt">Aucune option</label>
+                <input type="radio" id="opt_relief" name="option_offre" value="relief"
+                <?php echo ($offre['option_en_relief']) ? "checked" : ""  ?>>
+                <label for="opt_relief">Option "en Relief"</label>
+                <input type="radio" id="opt_aLaUne" name="option_offre" value="aLaUne"
+                <?php echo ($offre['option_a_la_une']) ? "checked" : "" ?>>
+                <label for="opt_aLaUne">Option "à la Une"</label>
             </fieldset>
         </div>
 
