@@ -1607,6 +1607,7 @@ function tempsEcouleDepuisPublication($offre)
                 markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
                 markersArray.forEach((marker, index) => {
                     console.log(marker);
+                    const index = marker._icon.getAttribute("data-index");
                     const offerData = marker._icon.getAttribute("data-offer");
             
                     if (offerData) {
