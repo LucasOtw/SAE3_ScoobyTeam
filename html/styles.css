@@ -3729,7 +3729,6 @@ nom.avis {
     font-size: 16px;
     font-weight: 600;
     color: #333;
-    margin-bottom: 122px;
 }
 
 .custom-confirm-content button {
@@ -4431,7 +4430,7 @@ main.creation_compte_membre .creation_compte_membre_bienvenue {
         margin-left: 9.6vw;
     }
 
-    main.creation_compte_membre .btn_plus_tard_crea{
+    .logo-tel .btn_plus_tard_crea{
            display: none;
     }
 
