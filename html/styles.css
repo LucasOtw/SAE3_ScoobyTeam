@@ -3890,13 +3890,15 @@ nom.avis {
     .editer_profil_tel{
         margin-left: 0.6em;
     }
-    
+
 
     .avis-list {
         margin-bottom: 9vh;
     }
 
-    /* A corriger besoin de revoir la version*/
+    .mes_avis{
+        margin-left: 1.8em;
+    }
 
     @media screen and (max-width: 418px) {
         .custom-confirm-content {
