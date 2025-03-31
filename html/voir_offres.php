@@ -1115,6 +1115,8 @@ function tempsEcouleDepuisPublication($offre)
 
     </script>
     <script>
+        let markersArray = [];
+        
         document.addEventListener("DOMContentLoaded", function () {
             const mapElement = document.getElementById('map');
 
@@ -1141,7 +1143,6 @@ function tempsEcouleDepuisPublication($offre)
                         removeOutsideVisibleBounds: false
                     });
 
-                    var markersArray = [];
                     let index = 0;
                     <?php
                     $adresses = $dbh->query('SELECT o.*, a.*, 
