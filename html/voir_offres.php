@@ -1504,7 +1504,7 @@ function tempsEcouleDepuisPublication($offre)
 
                 // Parcourir chaque offre et vérifier si elle correspond à la recherche
                 offerItems.forEach(offer => {
-                    const offerLoc = offer.getAttribute('location');
+                    const offerLoc = offer.getAttribute('location').toLowerCase();
                     const offerText = offer.querySelector('h2').textContent.toLowerCase().trim();
 
                     console.log(offerLoc);
@@ -1527,7 +1527,7 @@ function tempsEcouleDepuisPublication($offre)
                         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
                         let offer = JSON.parse(correctedJsonString); // Convertir en objet
                         let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
-                        let offerCity = marker.options.dataCity;
+                        let offerCity = marker.options.dataCity.toLowerCase();
 
                         // Si l'offre correspond à la recherche, on la montre
                         if (offerText.includes(query) || offerCity.includes(query)) {
