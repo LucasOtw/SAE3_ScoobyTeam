@@ -13989,6 +13989,10 @@ ul.mentions_legales-sous-list {
     margin-top: 125px;
 }
 
+.custom-confirm-content-pro button:hover{
+    transform: translateY(-2px);
+}
+
 .back_button{
     margin-top:12.3em;
 }
