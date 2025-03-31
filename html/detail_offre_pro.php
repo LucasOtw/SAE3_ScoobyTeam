@@ -406,14 +406,14 @@ include("recupInfosCompte.php");
                         <?php if (!empty($details_offre["site_web"])) { ?> <a
                                 href="<?php echo $details_offre["site_web"]; ?>" target="_blank"><button
                                     class="visit-button_detailoffre_pro">Voir le site ➔</button></a> <?php } ?>
-                                    <form id="add-btn" action="modifier_offre.php" method="POST">
+                        <form id="add-btn" action="modifier_offre.php" method="POST">
                             <input type="hidden" name="uneOffre"
                                 value="<?php echo htmlspecialchars(serialize($details_offre)); ?>">
                             <input id="btn-voir-offre" class="button-text add-btn" type="submit" name="envoiOffre"
                                 value="Modifier votre offre">
                         </form>
-                        
-                                    <form id="del-offre" action="#" method="POST">
+
+                        <form id="del-offre" action="#" method="POST">
                             <input type="hidden" name="uneOffre"
                                 value="<?php echo htmlspecialchars(serialize($details_offre['code_offre'])); ?>">
                             <input type="submit" id="btn-voir-offre" class="button-text del-btn" name="supprOffre"
@@ -430,7 +430,7 @@ include("recupInfosCompte.php");
                         </div>
 
 
-                       
+
 
 
 
@@ -790,7 +790,7 @@ include("recupInfosCompte.php");
             return $reponses;
         }
 
-        
+
         // Fonction pour afficher les avis et les réponses récursivement
         function afficherAvis($avis, $niveau = 0)
         {
@@ -835,7 +835,9 @@ include("recupInfosCompte.php");
         
             ?>
             <div class="avis" style="margin-left:<?php echo $marge; ?>vw">
-                <div class="avis-content" style="<?php if ($avis["blacklister"]) { echo "opacity: 50%;"; }?>">
+                <div class="avis-content" style="<?php if ($avis["blacklister"]) {
+                    echo "opacity: 50%;";
+                } ?>">
                     <h3 class="avis">
                         <?php if ($niveau > 0): ?>
                             <div class="note_prenom">
@@ -850,12 +852,12 @@ include("recupInfosCompte.php");
                                 <span class="nom_avis"
                                     style="color:var(<?php echo $color; ?>)"><?php echo htmlspecialchars($prenom) . ' ' . htmlspecialchars($nom); ?>
                                 </span>
-                                <?php 
-                                if ($avis["blacklister"]) { 
-                                ?>
-                                    <img src="images/icones/jeton.png" alt="jeton" class="jeton" >
-                                    <em id="opacite100">(Cet avis est blacklisté)</em>
                                 <?php
+                                if ($avis["blacklister"]) {
+                                    ?>
+                                    <img src="images/icones/jeton.png" alt="jeton" class="jeton">
+                                    <em id="opacite100">(Cet avis est blacklisté)</em>
+                                    <?php
                                 }
                                 ?>
                             </div>
@@ -930,30 +932,33 @@ include("recupInfosCompte.php");
                                                     </li>
                                                     <?php
                                                 } else {
-                                                ?>
-                                                <li>
-                                                    <form action="poster_reponse_pro.php" method="POST">
-                                                        <input type="hidden" name="unAvis"
-                                                            value="<?php echo htmlspecialchars(serialize($avis)); ?>">
-                                                        <input id="btn-repondre-avis" type="submit" name="repondreAvis"
-                                                            value="Répondre à l'avis">
-                                                    </form>
-                                                </li>
-                                                
-                                                <li>
-                                                    <a id="btn-signaler-avis" href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
-                                                        title="Signaler cet avis"
-                                                        style="text-decoration: none; color: black;">
-                                                        Signaler l'avis
-                                                    </a>
-                                                </li>
-                                                
-                                                <li>
-                                                    <div class="blacklist-avis"
-                                                        data-avis="<?php echo htmlspecialchars($avis['code_avis']); ?>">
-                                                        <p id="btn-blacklist-avis">Blacklister l'avis</p>
-                                                    </div>
-                                                </li>
+                                                    ?>
+                                                    <li>
+                                                        <form action="poster_reponse_pro.php" method="POST">
+                                                            <input type="hidden" name="unAvis"
+                                                                value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                                                            <input id="btn-repondre-avis" type="submit" name="repondreAvis"
+                                                                value="Répondre à l'avis">
+                                                        </form>
+                                                    </li>
+
+                                                    <li>
+                                                        <a id="btn-signaler-avis"
+                                                            href="signalement_pro.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
+                                                            title="Signaler cet avis" style="text-decoration: none; color: black;">
+                                                            Signaler l'avis
+                                                        </a>
+                                                    </li>
+                                                    <?php
+                                                    if ($details_offre["nom_type"] == "Offre Premium") {
+                                                        ?>
+                                                        <li>
+                                                            <div class="blacklist-avis"
+                                                                data-avis="<?php echo htmlspecialchars($avis['code_avis']); ?>">
+                                                                <p id="btn-blacklist-avis">Blacklister l'avis</p>
+                                                            </div>
+                                                        </li>
+                                                    <?php } ?>
                                                 <?php } ?>
                                             </ul>
                                         </div>
@@ -1001,7 +1006,7 @@ include("recupInfosCompte.php");
                 <p class="texte-boite-perso">Voulez-vous vraiment blacklister l'avis ?</p>
 
                 <p class="texte-boite-perso">Après il vous restera
-                    <?php echo 3-(1+$details_offre["nb_blacklister"]); ?> jeton(s)
+                    <?php echo 3 - (1 + $details_offre["nb_blacklister"]); ?> jeton(s)
                 </p>
 
                 <button id="cancelBlacklist" class="cancel-btn">Non</button>
@@ -1012,10 +1017,10 @@ include("recupInfosCompte.php");
         <div id="customModalError" class="custom-modal">
             <div class="custom-modal-error-content">
                 <p class="texte-boite-perso">Vous n'avez plus de jetons pour blacklister l'avis</p>
-                    <button id="cancelBlacklistError" class="cancel-error-btn">Fermer</button>
+                <button id="cancelBlacklistError" class="cancel-error-btn">Fermer</button>
             </div>
         </div>
-        
+
         <?php
         // Récupérer tous les avis principaux (sans réponses déjà existantes)
         $tous_les_avis = $dbh->prepare('SELECT * 
@@ -1063,20 +1068,20 @@ WHERE code_offre = :code_offre
                         <h2>Blacklistage</h2>
                         <div class="jetons">
                             <?php
-                                for ($i = 1; $i <= 3; $i++) {
-                                    ?>
-                                    <img src="images/icones/jeton.png" alt="jeton" <?php echo ($i > $jetons_restants ? "class=\"jeton_grise\"" : "class=\"jeton\"") ?>>
-                                    <?php
-                                }
+                            for ($i = 1; $i <= 3; $i++) {
+                                ?>
+                                <img src="images/icones/jeton.png" alt="jeton" <?php echo ($i > $jetons_restants ? "class=\"jeton_grise\"" : "class=\"jeton\"") ?>>
+                                <?php
+                            }
                             ?>
                         </div>
-    
-                        <?php 
-                            echo "<p>Il vous reste $jetons_restants jeton(s).</p>"; 
+
+                        <?php
+                        echo "<p>Il vous reste $jetons_restants jeton(s).</p>";
                         ?>
                     </div>
                     <?php
-                    }
+                }
                 ?>
 
 

@@ -113,7 +113,7 @@ if (!empty($_POST['supprAvis'])){
             <a href="compte_membre_tel.php">
                 <img src="images/Bouton_retour.png" alt="bouton retour">
             </a>
-            <h1>Mes Avis</h1>
+            <h1 class ="mes_avis">Mes Avis</h1>
         </div> 
 
 

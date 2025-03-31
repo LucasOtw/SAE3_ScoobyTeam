@@ -3891,11 +3891,14 @@ nom.avis {
         margin-left: 0.6em;
     }
 
+
     .avis-list {
         margin-bottom: 9vh;
     }
 
-    /* A corriger besoin de revoir la version*/
+    .mes_avis{
+        margin-left: 1.8em;
+    }
 
     @media screen and (max-width: 418px) {
         .custom-confirm-content {
@@ -4223,7 +4226,8 @@ main.creation_compte_membre .crea_membre_mail_tel .creation_compte_membre_form-s
 
 main.creation_compte_membre .creation_compte_membre_form-section h1 {
     font-size: 28px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 30px;
 }
 
 main.creation_compte_membre .creation_compte_membre_form-section p {
@@ -4252,6 +4256,7 @@ main.creation_compte_membre .checkbox {
     align-items: center;
     gap: 10px;
     margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 main.creation_compte_membre .checkbox label a {
@@ -4430,7 +4435,7 @@ main.creation_compte_membre .creation_compte_membre_bienvenue {
     }
 
     main.creation_compte_membre label{
-           font-size: 12px;
+           font-size: 13px;
     }
 
     main.creation_compte_membre .input-icon-img {
