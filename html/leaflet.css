@@ -255,7 +255,7 @@
 /* Contrôles de zoom */
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out {
-    /*display: block;*/
+    display: block;
     width: 40px;
     height: 40px;
     margin: 5px auto;
