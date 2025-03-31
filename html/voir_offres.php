@@ -1423,15 +1423,15 @@ function tempsEcouleDepuisPublication($offre)
                             echo "    }, 50);";
                             echo "});";
 
-                            //echo "markers.addLayer(marker);";
-                            echo "map.addLayer(marker);";
+                            echo "markers.addLayer(marker);";
+                            //echo "map.addLayer(marker);";
                             echo "index++;";
 
                         }
                     }
                     ?>
 
-                    //map.addLayer(markers);
+                    map.addLayer(markers);
                     console.log("Carte Leaflet avec clusters initialisée avec succès");
 
                     // Ajouter des écouteurs d'événements aux popups après leur création
@@ -1488,7 +1488,16 @@ function tempsEcouleDepuisPublication($offre)
 
         toggleMarkerVisibility = (index, visible) => {
             if (markersArray[index]) {
-                markersArray[index].setOpacity(visible ? 1 : 0);
+                //markersArray[index].setOpacity(visible ? 1 : 0);
+
+                const marker = markersArray[index];
+
+                // Si le marqueur fait partie d'un cluster, on doit le retirer ou l'ajouter au groupe de clusters
+                if (visible) {
+                    markers.addLayer(marker);  // Ajouter le marqueur au groupe de clusters
+                } else {
+                    markers.removeLayer(marker);  // Retirer le marqueur du groupe de clusters
+                }
             }
         }
 
