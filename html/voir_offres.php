@@ -1577,6 +1577,7 @@ function tempsEcouleDepuisPublication($offre)
                     if (offerData) {
                         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
                         let offer = JSON.parse(correctedJsonString); // Convertir en objet
+                        let offerObject = markersArray[leaflet.getAttribute("data-index")];
                         let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
 
                         console.log(offerText);
@@ -1584,9 +1585,9 @@ function tempsEcouleDepuisPublication($offre)
                         console.log("/////////////");
 
                         if (offerText.includes(query)) {
-                            leaflet.marker.setOpacity(1); // Rendre visible
+                            offerObject.marker.setOpacity(1); // Rendre visible
                         } else {
-                            leaflet.marker.setOpacity(0); // Cacher le marqueur
+                            offerObject.marker.setOpacity(0); // Cacher le marqueur
                         }
                     }
                 });
