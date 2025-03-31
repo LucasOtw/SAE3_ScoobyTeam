@@ -39,10 +39,12 @@
     <main class="creation_compte_membre">
         <div class="creation_compte_membre_container">
             <div class="creation_compte_membre_form-section">
-                <a href="compte_membre_tel.php">
-                    <img src="images/Bouton_retour.png" alt="bouton retour" class="bouton-retour-tel">
-                </a>
-                <h1>S’inscrire</h1>
+                <div class="test">
+                    <a href="compte_membre_tel.php">
+                        <img src="images/Bouton_retour.png" alt="bouton retour" class="bouton-retour-tel">
+                    </a>
+                    <h1>S’inscrire</h1>
+                </div>
                 <p>
                     Créez un compte membre pour sauvegarder vos annonces favorites 
                     <br>partager vos avis sur les offres,  
