@@ -6301,14 +6301,6 @@ select.theme_contacter_plateforme {
     color: #333;
 }
 
-#modif_offre label {
-    font-size: 1.1rem;
-    color: #555;
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-
 #titre_modif_offre {
     font-size: 4rem;
     font-weight: bold;
@@ -6583,7 +6575,7 @@ select.theme_contacter_plateforme {
 #modif_offre label {
     font-size: 1rem;
     font-weight: 500;
-    color: #ffffff;
+    color: #555;
     margin-bottom: 8px;
     display: block;
 }
@@ -11312,7 +11304,9 @@ main.main_repondre_avis .message-erreur {
     width: 40vw;
     margin-bottom: 10vh;
 }
-
+.signalement-fom{
+    margin-left:-2.5em;
+}
 .signalement-avis h3 {
     font-size: 18px;
     margin-bottom: 10px;
@@ -11356,6 +11350,7 @@ main.main_repondre_avis .message-erreur {
     border-radius: 5px;
     border-color: var(--vert-clair);
     margin-top: 3vh;
+    margin-left:1em;
 
 }
 
@@ -11396,7 +11391,7 @@ main.main_repondre_avis .message-erreur {
 
 @media screen and (max-width: 429px) {
     .signalement-avis {
-        background-color: #fbfbfb;
+        background-color: #e7f0ff;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -11427,12 +11422,14 @@ main.main_repondre_avis .message-erreur {
         width: 95%;
         height: 18vh;
         padding: 15px;
-        margin: 4vh 16px;
+        margin-top:4vh;
+        margin-left:1em;
         border: 1px solid #f3f8ff;
         border-radius: 29px;
         resize: none;
-        background-color: #f3f8ff;
+        background-color: #e9e9e9;
         box-shadow: 2px 3px 29px rgba(0, 0, 0, 0.1);
+        border: 15px solid #dfeafb;
     }
 
     .signalement-container {
@@ -13360,9 +13357,7 @@ ul.mentions_legales-sous-list {
         margin: 0 auto 20px;
         line-height: 1.5;
     }
-
-    /* Image */
-    .error-image {
+    font-size
         max-width: 100%;
         margin: 20px auto;
     }

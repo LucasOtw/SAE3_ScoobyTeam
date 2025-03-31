@@ -7,6 +7,10 @@ if (headers_sent($file, $line)) {
 ob_start();
 session_start();
 
+
+setcookie('consulte_recemment' . $code_offre, $code_offre, time() + (60 * 60 * 24 * 1));
+
+
 function tempsEcouleDepuisPublication($offre)
 {
     // date d'aujourd'hui
