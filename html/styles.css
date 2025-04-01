@@ -2206,7 +2206,7 @@ main.main_poster_avis .back-button {
 
 main.main_poster_avis .poster_un_avis_container {
     padding: 5vh 9vw;
-    margin-top:7em;
+    margin-top: 7em;
 }
 
 /*Code pour le format responsive de poster un avis */
@@ -2926,6 +2926,7 @@ input[type="password"]::placeholder {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+
     @media (max-width: 429px) {
         background-color: #F3F8FF;
     }
@@ -3411,9 +3412,9 @@ nav.nav-bar {
         display: none;
     }
 
-    .main_consulter_compte_membre .checkbox {
-        display: none;
-    }
+    /* .main_consulter_compte_membre .checkbox {
+
+    } */
 
     .main_consulter_compte_membre .compte_membre_save_delete_remove {
         display: block;
@@ -3469,10 +3470,11 @@ nav.nav-bar {
 .main_consulter_compte_membre .profile {
     text-align: center;
     margin-bottom: 30px;
+
     @media (max-width: 429px) {
         width: 80%;
-        margin-left:2.7em;
-        
+        margin-left: 2.7em;
+
     }
 }
 
@@ -3709,7 +3711,8 @@ nom.avis {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(11px);
-    -webkit-backdrop-filter: blur(5px); /* Pour Safari */
+    -webkit-backdrop-filter: blur(5px);
+    /* Pour Safari */
     z-index: 999;
     display: none;
 }
@@ -3726,7 +3729,8 @@ nom.avis {
     padding: 20px;
     border-radius: 19px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    z-index: 1000; /* Plus élevé que l'overlay */
+    z-index: 1000;
+    /* Plus élevé que l'overlay */
 }
 
 .custom-confirm-content p {
@@ -3893,7 +3897,8 @@ nom.avis {
         margin-top: 1.5vh;
         height: 19px;
     }
-    .editer_profil_tel{
+
+    .editer_profil_tel {
         margin-left: 0.6em;
     }
 
@@ -3902,7 +3907,7 @@ nom.avis {
         margin-bottom: 9vh;
     }
 
-    .mes_avis{
+    .mes_avis {
         margin-left: 1.8em;
     }
 
@@ -4109,35 +4114,35 @@ div.creation-success .close-btn:hover {
     padding: 16px;
     animation: slideInRight 0.4s ease forwards, fadeOut 0.4s ease 4.5s forwards;
     overflow: hidden;
-    }
-    
-    /* Animation d'entrée et de sortie */
-    @keyframes slideInRight {
+}
+
+/* Animation d'entrée et de sortie */
+@keyframes slideInRight {
     0% {
-    transform: translateX(100%);
-    opacity: 0;
+        transform: translateX(100%);
+        opacity: 0;
     }
-    
+
     100% {
-    transform: translateX(0);
-    opacity: 1;
+        transform: translateX(0);
+        opacity: 1;
     }
-    }
-    
-    @keyframes fadeOut {
+}
+
+@keyframes fadeOut {
     0% {
-    opacity: 1;
-    transform: translateX(0);
+        opacity: 1;
+        transform: translateX(0);
     }
-    
+
     100% {
-    opacity: 0;
-    transform: translateX(100%);
+        opacity: 0;
+        transform: translateX(100%);
     }
-    }
-    
-    /* Ligne de progression */
-    .modif-mdp-success-pro ::after {
+}
+
+/* Ligne de progression */
+.modif-mdp-success-pro ::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -4147,20 +4152,20 @@ div.creation-success .close-btn:hover {
     background-color: var(--orange);
     animation: progressBar 4s linear forwards;
     transform-origin: left;
-    }
-    
-    @keyframes progressBar {
+}
+
+@keyframes progressBar {
     0% {
-    transform: scaleX(1);
+        transform: scaleX(1);
     }
-    
+
     100% {
-    transform: scaleX(0);
+        transform: scaleX(0);
     }
-    }
-    
-    /* Icône de succès */
-    .modif-mdp-success-pro >img {
+}
+
+/* Icône de succès */
+.modif-mdp-success-pro>img {
     width: 24px;
     height: 24px;
     padding: 8px;
@@ -4168,19 +4173,19 @@ div.creation-success .close-btn:hover {
     background-color: rgba(124, 179, 66, 0.15);
     margin-right: 16px;
     flex-shrink: 0;
-    }
-    
-    /* Texte du message */
-    .modif-mdp-success-pro h4 {
+}
+
+/* Texte du message */
+.modif-mdp-success-pro h4 {
     margin: 0;
     font-size: 16px;
     font-weight: 600;
     color: #333333;
     line-height: 1.4;
-    }
-    
-    /* Bouton de fermeture (optionnel) */
-    .modif-mdp-success-pro .close-btn {
+}
+
+/* Bouton de fermeture (optionnel) */
+.modif-mdp-success-pro .close-btn {
     position: absolute;
     top: 12px;
     right: 12px;
@@ -4191,12 +4196,12 @@ div.creation-success .close-btn:hover {
     cursor: pointer;
     padding: 0;
     transition: color 0.2s;
-    }
-    
-    .modif-mdp-success-pro .close-btn:hover {
+}
+
+.modif-mdp-success-pro .close-btn:hover {
     color: #555;
-    }
-    
+}
+
 
 main.creation_compte_membre .creation_compte_membre_container {
     display: flex;
@@ -4311,6 +4316,7 @@ main.creation_compte_membre .creation_compte_membre_other-links {
 
 main.creation_compte_membre .creation_compte_membre_other-links a.connexion_membre {
     color: var(--vert-clair);
+    text-decoration: none;
 }
 
 main.creation_compte_membre .creation_compte_membre_other-links a.inscription_pro {
@@ -4435,12 +4441,12 @@ main.creation_compte_membre .creation_compte_membre_bienvenue {
         margin-left: 9.6vw;
     }
 
-    .logo-tel .btn_plus_tard_crea{
-           display: none;
+    .logo-tel .btn_plus_tard_crea {
+        display: none;
     }
 
-    main.creation_compte_membre label{
-           font-size: 13px;
+    main.creation_compte_membre label {
+        font-size: 13px;
     }
 
     main.creation_compte_membre .input-icon-img {
@@ -4626,12 +4632,12 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
 
 
 
-#btn-api-pro{
-    cursor : pointer;
+#btn-api-pro {
+    cursor: pointer;
 }
 
-#btn-api{
-    cursor : pointer;
+#btn-api {
+    cursor: pointer;
 }
 
 .main_modif_mdp_membre form {
@@ -4664,6 +4670,7 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+
     @media (max-width: 429px) {
         background-color: #F3F8FF;
     }
@@ -4698,7 +4705,7 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
     /* Aligne les boutons au centre */
     gap: 20px;
     /* Espacement entre les boutons */
-    
+
 }
 
 /* Popup de succès de modification */
@@ -8718,7 +8725,12 @@ form .btn-link {
 }
 
 
-
+.avis .menu_avis .context-menu ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: normal;
+}
 
 
 
@@ -9819,7 +9831,7 @@ body {
     font-family: 'K2D', sans-serif;
     overflow-x: hidden;
     transition: transform 0.3s ease;
-    
+
 }
 
 .content {
@@ -10538,7 +10550,7 @@ body.menu-open #overlay {
 
     }
 
-    
+
 
     .search-bar {
         margin: 1em 0 20em 0;
@@ -11306,9 +11318,11 @@ main.main_repondre_avis .message-erreur {
     width: 40vw;
     margin-bottom: 10vh;
 }
-.signalement-fom{
-    margin-left:-2.5em;
+
+.signalement-fom {
+    margin-left: -2.5em;
 }
+
 .signalement-avis h3 {
     font-size: 18px;
     margin-bottom: 10px;
@@ -11352,7 +11366,7 @@ main.main_repondre_avis .message-erreur {
     border-radius: 5px;
     border-color: var(--vert-clair);
     margin-top: 3vh;
-    margin-left:1em;
+    margin-left: 1em;
 
 }
 
@@ -11424,9 +11438,9 @@ main.main_repondre_avis .message-erreur {
         width: 95%;
         height: 18vh;
         padding: 15px;
-        margin-top:4vh;
-        margin-left:1em;
-        border: 5px solid transparent; 
+        margin-top: 4vh;
+        margin-left: 1em;
+        border: 5px solid transparent;
         border-image: linear-gradient(90deg, #176FF2, #196EEE) 1;
         border-radius: 29px;
         resize: none;
@@ -12053,10 +12067,11 @@ ul.mentions_legales-sous-list {
     cursor: pointer;
     font-size: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
     @media (max-width: 429px) {
         bottom: 7.5em;
         left: 5.8em;
-        
+
     }
 }
 
@@ -13361,7 +13376,8 @@ ul.mentions_legales-sous-list {
         margin: 0 auto 20px;
         line-height: 1.5;
     }
-    font-size{
+
+    font-size {
         max-width: 100%;
         margin: 20px auto;
     }
@@ -13412,11 +13428,16 @@ ul.mentions_legales-sous-list {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
-    backdrop-filter: blur(5px); /* Effet de flou */
-    -webkit-backdrop-filter: blur(5px); /* Support pour Safari */
-    z-index: 999; /* S'assurer que c'est au-dessus de tout le contenu */
-    display: none; /* Caché par défaut */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fond semi-transparent */
+    backdrop-filter: blur(5px);
+    /* Effet de flou */
+    -webkit-backdrop-filter: blur(5px);
+    /* Support pour Safari */
+    z-index: 999;
+    /* S'assurer que c'est au-dessus de tout le contenu */
+    display: none;
+    /* Caché par défaut */
 }
 
 /* Overlay avec effet de flou pour la popup 2FA */
@@ -13428,7 +13449,8 @@ ul.mentions_legales-sous-list {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(11px);
-    -webkit-backdrop-filter: blur(5px); /* Pour Safari */
+    -webkit-backdrop-filter: blur(5px);
+    /* Pour Safari */
     z-index: 998;
     display: none;
 }
@@ -13503,8 +13525,10 @@ ul.mentions_legales-sous-list {
 
 /* Ajustement des popups existantes */
 .modal {
-    background-color: transparent; /* Rendre le fond transparent car on utilise l'overlay */
-    z-index: 1000; /* Plus élevé que l'overlay */
+    background-color: transparent;
+    /* Rendre le fond transparent car on utilise l'overlay */
+    z-index: 1000;
+    /* Plus élevé que l'overlay */
 }
 
 .otp-confirm-content,
@@ -13512,8 +13536,10 @@ ul.mentions_legales-sous-list {
 .custom-modal-error-content,
 #modal-otp {
     position: fixed;
-    z-index: 1000; /* Plus élevé que l'overlay */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée pour un meilleur effet */
+    z-index: 1000;
+    /* Plus élevé que l'overlay */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    /* Ombre plus prononcée pour un meilleur effet */
 }
 
 /* Contenu de la Popup */
@@ -13610,6 +13636,7 @@ ul.mentions_legales-sous-list {
     margin-left: 8px;
     cursor: pointer;
 }
+
 /* Style de la bulle */
 .tooltip {
     position: relative;
@@ -13737,31 +13764,32 @@ ul.mentions_legales-sous-list {
     margin-top: 20px;
 }
 
-.left-2fa, .right-2fa {
+.left-2fa,
+.right-2fa {
     min-width: 300px;
 }
 
-.g_auth_link{
+.g_auth_link {
     text-decoration: none;
 }
 
-.right-2fa{
+.right-2fa {
     margin-top: -4vh;
 }
 
-.tooltip-content{
+.tooltip-content {
     height: 13vh;
     margin-top: -19vh;
     margin-left: 0.7vh;
 }
 
-.info-icon2{
+.info-icon2 {
     height: 29px;
     width: 29px;
     margin-top: -1vh;
 }
 
-.connexion_membre_2fa{
+.connexion_membre_2fa {
     display: flex;
     text-align: center;
     flex-direction: row;
@@ -13795,8 +13823,8 @@ ul.mentions_legales-sous-list {
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.statut-non_pro{
-    color : var(--orange)
+.statut-non_pro {
+    color: var(--orange)
 }
 
 .btn-2fa_pro:hover {
@@ -13813,8 +13841,8 @@ ul.mentions_legales-sous-list {
     box-shadow: none;
 }
 
-.statut-non_pro{
-    color : var(--orange);
+.statut-non_pro {
+    color: var(--orange);
 }
 
 .btn-2fa_pro:disabled:hover {
@@ -13893,7 +13921,7 @@ ul.mentions_legales-sous-list {
     font-weight: 600;
 }
 
-#cle_api{
+#cle_api {
     margin-bottom: 7em;
 }
 
@@ -13902,7 +13930,7 @@ ul.mentions_legales-sous-list {
     margin-top: 10px;
     border: 1px solid #ccc;
     border-radius: 8px;
-   
+
 }
 
 /* === Responsive mobile === */
@@ -13924,7 +13952,7 @@ ul.mentions_legales-sous-list {
     padding: 20px;
     border-radius: 19px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    z-index: 1000; 
+    z-index: 1000;
     display: none;
 }
 
@@ -13933,7 +13961,8 @@ ul.mentions_legales-sous-list {
     font-size: 16px;
 }
 
-.otp-confirm-content button, .otp-confirm-content input[type="submit"] {
+.otp-confirm-content button,
+.otp-confirm-content input[type="submit"] {
     padding: 8px 20px;
     border-radius: 4px;
     border: none;
@@ -13951,13 +13980,14 @@ ul.mentions_legales-sous-list {
 }
 
 
-.otp-confirm-content button, .otp-confirm-content input[type="submit"]:hover {
+.otp-confirm-content button,
+.otp-confirm-content input[type="submit"]:hover {
     background-color: #FFF;
     transform: translateY(-2px);
     color: white;
 }
 
-.custom-confirm-content-pro{
+.custom-confirm-content-pro {
     position: fixed;
     top: 50%;
     height: 231px;
@@ -13971,7 +14001,7 @@ ul.mentions_legales-sous-list {
     z-index: 1000;
 }
 
-.main-consulter-compte-pro p{
+.main-consulter-compte-pro p {
     font-size: 16px;
     font-weight: 600;
     color: #333;
@@ -13994,33 +14024,34 @@ ul.mentions_legales-sous-list {
     margin-top: 125px;
 }
 
-.custom-confirm-content-pro button:hover{
+.custom-confirm-content-pro button:hover {
     transform: translateY(-2px);
 }
 
-.back_button{
-    margin-top:12.3em;
+.back_button {
+    margin-top: 12.3em;
 }
 
-#button_annuler{
+#button_annuler {
     background-color: white;
-    color : black;
+    color: black;
 }
+
 .header-tel svg {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; 
-    height: auto; 
-    z-index: -1; 
+    width: 100%;
+    height: auto;
+    z-index: -1;
 }
-.bouton-retour-tel{
-    display: block; 
+
+.bouton-retour-tel {
+    display: block;
     margin-left: -2em;
     margin-top: 1.5em;
 
     @media (min-width: 430px) {
-        display: none; 
-    }   
+        display: none;
+    }
 }
-  
