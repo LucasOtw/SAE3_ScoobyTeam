@@ -1408,11 +1408,13 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const champPaiement = document.getElementById('champ-paiement');
 
-        if(choix_optRelief.checked){
-            console.log("1");
-        } else if (choix_optAlaUne.checked){
-            console.log("2");
-        }
+        choix_optRelief.addEventListener('click', {
+            console.log(1);
+        });
+
+        choix_optAlaUne.addEventListener('click',{
+            console.log(2);
+        });
 
         if(isPaiement == null){
             /*
