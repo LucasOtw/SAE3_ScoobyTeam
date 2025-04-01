@@ -1519,6 +1519,10 @@ function tempsEcouleDepuisPublication($offre)
                         const offerRate = offerData.note_moyenne;
                         const offerStatus = marker.options.dataStatus;
 
+                        console.log("Category: " + category + ", Offer Category: " + offerCategory + ".");
+                        console.log("Rate: " + rate + ", Offer Rate: " + offerRate + ".");
+                        console.log("Status: " + status + ", Offer Status: " + offerStatus + ".");
+
 
                         // Si l'offre correspond à la recherche, on la montre
                         if (offerText.includes(query) || offerCity.includes(query)) {
