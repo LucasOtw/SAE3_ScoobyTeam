@@ -1415,7 +1415,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const sem1 = inputSemaines[0];
         const champPaiement = document.getElementById('champ-paiement');
 
-        if(champOffGrat){
+        if(!champOffGrat){
             champPaiement.style.display = "block";
         }
 
