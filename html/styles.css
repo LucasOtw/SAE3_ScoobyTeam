@@ -11433,6 +11433,7 @@ main.main_repondre_avis .message-erreur {
         margin-top: 1vh;
         margin-left: 21vw;
         align-items: center;
+        padding-bottom: 1em;
     }
 
     .signaler_un_avis_textarea {
