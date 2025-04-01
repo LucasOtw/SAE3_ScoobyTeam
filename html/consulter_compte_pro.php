@@ -111,10 +111,11 @@ if (isset($_POST['modif_infos'])) {
 
             }
         }
-        // echo "Les informations ont été mises à jour.";
+        // Ajoutez une variable de session pour indiquer que les modifications ont été effectuées
+        $_SESSION['modif_success'] = true;
         include("recupInfosCompte.php");
     } else {
-        echo "Aucune modification détectée.";
+        // echo "Aucune modification détectée.";
     }
 }
 
@@ -134,6 +135,34 @@ if (isset($_POST['modif_infos'])) {
     <link
         href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
+    <style>
+        .creation-success {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .creation-success img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .creation-success h4 {
+            margin: 0;
+            color: #4CAF50;
+        }
+    </style>
 </head>
 
 <body>
@@ -384,6 +413,10 @@ if (isset($_POST['modif_infos'])) {
                 </div>
             </div>
         </form>
+        <div class="creation-success" id="creation-success" style="display: none;">
+            <img src="images/verifier.png" alt="Succès">
+            <h4>Les informations ont été mises à jour avec succès !</h4>
+        </div>
     </main>
     <footer class="footer footer_pro">
         <div class="footer-links">
@@ -559,6 +592,29 @@ if (isset($_POST['modif_infos'])) {
 
         });
 
+    </script>
+    <script>
+        // Lorsque le message est envoyé avec succès, afficher le message de succès
+        function afficherMessageSucces() {
+            // Trouver l'élément qui contient le message de succès
+            const successMessage = document.getElementById('creation-success');
+            
+            <?php if(isset($_SESSION['modif_success']) && $_SESSION['modif_success'] === true): ?>
+            // Afficher le message
+            successMessage.style.display = 'block';
+            
+            // Le message disparaît après 5 secondes
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+            <?php 
+            // Supprimer la variable de session pour ne pas réafficher le message après rafraîchissement
+            unset($_SESSION['modif_success']);
+            endif; ?>
+        }
+
+        // Appel de la fonction au chargement de la page
+        document.addEventListener('DOMContentLoaded', afficherMessageSucces);
     </script>
 
 </body>
