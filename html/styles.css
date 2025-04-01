@@ -11476,6 +11476,7 @@ main.main_repondre_avis .message-erreur {
     display: flex;
     justify-content: center;
     padding: 20px;
+    flex-direction: column;
 }
 
 .mentions_legales-section {
@@ -11485,6 +11486,7 @@ main.main_repondre_avis .message-erreur {
     border-radius: 8px;
     max-width: 800px;
     width: 100%;
+    margin-top: 20px;
 }
                         
 
