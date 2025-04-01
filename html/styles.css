@@ -11465,20 +11465,20 @@ main.main_repondre_avis .message-erreur {
                           *****************************************************/
 
 .mentions_legales-main {
-    padding: 40px;
-    background: #fff;
-    border-radius: 10px;
-    margin: 50px auto 200px auto;
-    max-width: 800px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
-    flex-direction: column;
-    font-family: "K2D", sans-serif;
+    justify-content: center;
+    padding: 20px;
 }
 
 .mentions_legales-section {
-    margin-bottom: 20px;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    max-width: 800px;
+    width: 100%;
 }
+                        
 
 .mentions_legales-title {
     font-size: 1.5em;
