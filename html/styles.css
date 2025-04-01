@@ -3788,6 +3788,13 @@ nom.avis {
     transform: translateY(-2px);
 }
 
+.confirm-btn-avis{
+    margin-top: 4em; 
+    margin-left: 12em;
+    @media( max-width: 429px) {
+        margin-top: 4em; 
+    }
+}
 
 
 
