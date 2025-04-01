@@ -1421,7 +1421,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         choix_noOpt.addEventListener('click', function(){
             champPaiement.style.display = "none";
-            if(champOffGrat){
+            if(champOffGrat !== null){
                 champSemaines.style.display = "none";
             }
             sem1.checked = false;
