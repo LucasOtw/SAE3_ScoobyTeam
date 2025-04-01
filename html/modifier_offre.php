@@ -1415,6 +1415,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const champPaiement = document.getElementById('champ-paiement');
 
         choix_noOpt.addEventListener('click', function(){
+            champPaiement.style.display = "none";
             champSemaines.style.display = "none";
             sem1.checked = false;
         });
@@ -1425,6 +1426,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log(choixOpt);
                 champSemaines.style.display = "block";
                 sem1.checked = true;
+                champPaiement.style.display = "block";
             }
         });
 
@@ -1434,6 +1436,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log(choixOpt);
                 champSemaines.style.display = "block";
                 sem1.checked = true;
+                champPaiement.style.display = "block";
             }
         });
 
