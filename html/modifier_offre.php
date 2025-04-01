@@ -1011,7 +1011,7 @@ if($infos_offre !== null){
         <div class="drop-zone-prompt">Glissez et déposez vos images ici</div>
         <div>ou</div>
         <label class="button_import_image" for="file-input">Choisir des fichiers</label>
-        <input type="file" id="fiCOUCOU LES CONGOLAISle-input" name="offre_nouv_images[]" accept="image/*" multiple class="file-input">
+        <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple class="file-input">
     </div>
     <div class="selected-files-container" id="selected-files">
         <!-- Les fichiers sélectionnés s'afficheront ici -->
@@ -1198,24 +1198,21 @@ if($infos_offre !== null){
         </div>
            
     </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function(){
-
-            const form = document.getElementById('modif_offre');
-                    
-            // Au lieu de gérer chaque champ individuellement, récupère tous les éléments avec `data-sync`
-            form.addEventListener('submit', (event) => {
-                const elementsToSync = document.querySelectorAll('[data-sync]');
-                elementsToSync.forEach((element) => {
-                    // Récupère l'id du champ de destination
-                    const targetId = element.getAttribute('data-sync');
-                    const target = document.getElementById(targetId);
-            
-                    if (target) {
-                        // Utilise innerHTML pour les champs éditables ou value pour les inputs
-                        target.value = element.contentEditable === "true" ? element.innerHTML : element.value;
-                    }
-                });
+    <script defer>
+        const form = document.getElementById('modif_offre');
+        
+        // Au lieu de gérer chaque champ individuellement, récupère tous les éléments avec `data-sync`
+        form.addEventListener('submit', (event) => {
+            const elementsToSync = document.querySelectorAll('[data-sync]');
+            elementsToSync.forEach((element) => {
+                // Récupère l'id du champ de destination
+                const targetId = element.getAttribute('data-sync');
+                const target = document.getElementById(targetId);
+        
+                if (target) {
+                    // Utilise innerHTML pour les champs éditables ou value pour les inputs
+                    target.value = element.contentEditable === "true" ? element.innerHTML : element.value;
+                }
             });
         });
     </script>
@@ -1246,7 +1243,7 @@ if($infos_offre !== null){
             });
         });
     </script>
-    <script>
+    <script defer>
         document.addEventListener('DOMContentLoaded', () => {
 
             // IMAGES GÉNÉRALES
@@ -1408,14 +1405,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const choix_optRelief = document.getElementById('opt_relief');
         const choix_optAlaUne = document.getElementById('opt_aLaUne');
+        var choixOpt = "";
         
         const champPaiement = document.getElementById('champ-paiement');
 
-        if(choix_optRelief.checked){
-            console.log("1");
-        } else if (choix_optAlaUne.checked){
-            console.log("2");
-        }
+        choix_optRelief.addEventListener('click',function(){
+            if(choixOpt !== choix_optRelief.value){
+                choixOpt = choix_optRelief.value;
+                console.log(choixOpt);
+            }
+        });
+
+        choix_optAlaUne.addEventListener('click', function(){
+            if(choixOpt !== choix_optAlaUne.value){
+                choixOpt = choix_optAlaUne.value;
+                console.log(choixOpt);
+            }
+        })
+
+        choix_optAlaUne.addEventListener('click',function(){
+            console.log(2);
+        });
 
         if(isPaiement == null){
             /*
