@@ -917,11 +917,13 @@ function tempsEcouleDepuisPublication($offre)
                                echo $event['date_' . $type_offre];
                            } else {
                                echo "";
-                           } ?> data-period-o="<?php if (!empty($periode)) {
+                           } ?>" 
+                            data-period-o="<?php if (!empty($periode)) {
                                  echo $periode['date_ouverture'];
                              } else {
                                  echo "";
-                             } ?>" data-period-c="<?php if (!empty($periode)) {
+                             } ?>" 
+                                data-period-c="<?php if (!empty($periode)) {
                                    echo $periode['date_fermeture'];
                                } else {
                                    echo "";
