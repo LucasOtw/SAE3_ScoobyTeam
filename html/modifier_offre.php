@@ -1417,6 +1417,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const btnsPaiement = champPaiement.querySelectorAll('input[type=radio]');
 
+        console.log(btnsPaiement);
+
         if(champOffGrat == null){
             champPaiement.style.display = "block";
         }
