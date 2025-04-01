@@ -1776,6 +1776,9 @@ function tempsEcouleDepuisPublication($offre)
                         offer.style.display = "none"; // Masquer l'offre
                     }
                 });
+
+                leafletFilters();
+                
             }
 
             // Ajouter un écouteur d'événement sur les champs de date
