@@ -1337,7 +1337,7 @@ function tempsEcouleDepuisPublication($offre)
                             $popupContent .= "</div>";
                             $popupContent .= "</div>";
 
-                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon, dataOffer: '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "',dataStatus: '" . json_encode($dataStatusEng) . "', dataCategory: '" . json_encode($type_offre) . "', dataCity: '" . json_encode($villeOffre) . "', dataEvent: '" . json_encode($event) . "'});";
+                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon, dataOffer: '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "',dataStatus: '" . json_encode($dataStatusEng) . "', dataCategory: '" . json_encode($type_offre) . "', dataCity: '" . json_encode($villeOffre) . "', dataEvent: '" . json_encode($event) . "', dataPeriodO: '" . json_encode(!empty($periode) ? $periode['date_ouverture'] : '') . "', dataPeriodC: '" . json_encode(!empty($periode) ? $periode['date_fermeture'] : '') . "'});";
                             echo "markersArray.push(marker);";
 
                             echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false, className: 'custom-popup'}).setContent(\"" . addslashes($popupContent) . "\");";
@@ -1513,6 +1513,10 @@ function tempsEcouleDepuisPublication($offre)
                 // Date event
                 const date = eventDate.value;
 
+                // Period
+                const startDate = openingStartDate.value;
+                const endDate = openingEndDate.value;
+
                 
                 markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
                 markersArray.forEach((marker, index) => {
@@ -1538,8 +1542,10 @@ function tempsEcouleDepuisPublication($offre)
                         // Date event
                         const offerEvent = marker.options.dataEvent.replace(/["']/g, "");
 
-                        console.log("Date: "+date+", Date Offre: "+offerEvent+".");
-                    
+                        // Period
+                        const offerPeriodStart = marker.options.dataPeriodO.replace(/["']/g, "");
+                        const offerPeriodEnd = marker.options.dataPeriodC.replace(/["']/g, "");
+                        
                     
                         // Titre & Localisation
                         if (offerText.includes(query) || offerCity.includes(query)) {
@@ -1566,6 +1572,15 @@ function tempsEcouleDepuisPublication($offre)
 
                         // Date event
                         if (!date || date === offerEvent) {
+                            // Test valide
+                        } else {
+                            afficher=false;
+                        }
+
+                        // Period
+                        if (((!startDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite')) &&
+                        (!endDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite'))) ||
+                        ((startDate <= offerPeriodEnd && startDate >= offerPeriodStart) || (endDate >= offerPeriodStart && endDate <= offerPeriodEnd))) {
                             // Test valide
                         } else {
                             afficher=false;
@@ -1760,22 +1775,10 @@ function tempsEcouleDepuisPublication($offre)
                     } else {
                         offer.style.display = "none"; // Masquer l'offre
                     }
-                    if (offerCategory == 'parc_attractions') {
-                        console.log(offerCategory);
-                        if (!startDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite')) {
-                            console.log("Boucle n1 : ok\n");
-                        }
-                        if (!endDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite')) {
-                            console.log("Boucle n2 : ok\n");
-                        }
-                        if (startDate <= offerPeriodEnd && startDate >= offerPeriodStart) {
-                            console.log("Boucle n3 : ok\n");
-                        }
-                        if (endDate >= offerPeriodStart && endDate <= offerPeriodEnd) {
-                            console.log("Boucle n4 : ok\n");
-                        }
-                    }
                 });
+
+                leafletFilters();
+                
             }
 
             // Ajouter un écouteur d'événement sur les champs de date

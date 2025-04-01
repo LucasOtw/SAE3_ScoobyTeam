@@ -33,7 +33,7 @@
         </nav>
       </header> 
     <main class="mentions_legales-main">
-        <section id="cgu" class="mentions_legales-section">
+        <section class="mentions_legales-section">
             <h3 class="mentions_legales-title">CONDITIONS GÉNÉRALES D'UTILISATION (CGU) DE LA PLATEFORME PACT</h3>
 
             <h4>1. Objet</h4>
