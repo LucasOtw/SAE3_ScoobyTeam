@@ -1532,9 +1532,9 @@ function tempsEcouleDepuisPublication($offre)
                         }
 
                         // Si l'offre correspond à la recherche, on la montre
-                        if ((category === 'all' || category == offerCategory) &&
+                        if ((category === 'all' || category.trim() == offerCategory.trim()) &&
                             (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
-                            (!status || status == offerStatus)) {
+                            (!status || status.trim() == offerStatus.trim())) {
                             console.log("ok");
                         } else {
                             afficher = false;
