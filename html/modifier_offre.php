@@ -1098,16 +1098,16 @@ if($infos_offre !== null){
                 <fieldset id="champ-semaines" style="display: none;">
                     <legend>Durée</legend>
                     <input type="radio" id="sem1" name="nbSemaine" value="1"
-                    <?php echo ($nbSemaines && $nbSemaines == 1) ? "checked" : "" ?>>
+                    <?php echo (isset($nbSemaines) && $nbSemaines && $nbSemaines == 1) ? "checked" : "" ?>>
                     <label for="sem1">1 semaine</label>
                     <input type="radio" id="sem2" name="nbSemaine" value="2"
-                    <?php echo ($nbSemaines && $nbSemaines == 2) ? "checked" : "" ?>>
+                    <?php echo (isset($nbSemaines) && $nbSemaines && $nbSemaines == 2) ? "checked" : "" ?>>
                     <label for="sem2">2 semaines</label>
                     <input type="radio" id="sem3" name="nbSemaine" value="3"
-                    <?php echo ($nbSemaines && $nbSemaines == 3) ? "checked" : "" ?>>
+                    <?php echo (isset($nbSemaines) && $nbSemaines && $nbSemaines == 3) ? "checked" : "" ?>>
                     <label for="sem3">3 semaines</label>
                     <input type="radio" id="sem4" name="nbSemaine" value="4"
-                    <?php echo ($nbSemaines && $nbSemaines == 4)? "checked" : "" ?>>
+                    <?php echo (isset($nbSemaines) && $nbSemaines && $nbSemaines == 4) ? "checked" : "" ?>>
                     <label for="sem4">4 semaines</label>
                 </fieldset>
             </fieldset>
