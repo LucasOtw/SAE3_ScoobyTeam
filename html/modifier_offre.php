@@ -1053,6 +1053,17 @@ if($infos_offre !== null){
                 <input type="radio" id="opt_aLaUne" name="option_offre" value="aLaUne"
                 <?php echo ($offre['option_a_la_une']) ? "checked" : "" ?>>
                 <label for="opt_aLaUne">Option "à la Une"</label>
+                <fieldset>
+                    <legend>Durée</legend>
+                    <input type="radio" id="sem1" name="nbSemaine" value="1">
+                    <label for="sem1">1 semaine</label>
+                    <input type="radio" id="sem2" name="nbSemaine" value="1">
+                    <label for="sem2">2 semaines</label>
+                    <input type="radio" id="sem3" name="nbSemaine" value="1">
+                    <label for="sem3">3 semaines</label>
+                    <input type="radio" id="sem4" name="nbSemaine" value="1">
+                    <label for="sem4">4 semaines</label>
+                </fieldset>
             </fieldset>
         </div>
 
