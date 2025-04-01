@@ -247,7 +247,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script>
             document.addEventListener('DOMContentLoaded', function () {
             var formModif = document.getElementById('avisForm');
-            var modal = document.getElementById('customModal');
+            var modal = document.getElementById('reponse-pro');
             var btnModif = document.getElementById('confirmModif');
 
             formModif.addEventListener('submit', function (e) {
