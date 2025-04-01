@@ -1433,7 +1433,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 choixOpt = choix_optRelief.value;
                 console.log(choixOpt);
                 champSemaines.style.display = "block";
-                console.log(champSemaines.style.display);
                 sem1.checked = true;
                 champPaiement.style.display = "block";
             }
@@ -1449,11 +1448,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        if(isPaiement == null){
-            /*
-            * Si il n'y a aucun moyen de paiement enregistré,
-            * alors on ajoute des écouteurs qui afficheront le fieldset
-            */
+        if(champPaiement.style.display === "block"){
+            console.log(1);
         }
     });
 </script>
