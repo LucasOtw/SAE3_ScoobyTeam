@@ -11480,16 +11480,7 @@ main.main_repondre_avis .message-erreur {
     padding: 20px;
 }
 
-@media screen and (max-width: 429px) {
-    .mentions_legales-main{
-        flex-direction: column;
-    }
 
-    .btn-retour-cgu{
-        display: block;
-    }
-
-}
 
 .mentions_legales-section {
     background: white;
@@ -11504,7 +11495,17 @@ main.main_repondre_avis .message-erreur {
 .btn-retour-cgu{
     display: none;
 }
-                        
+
+@media screen and (max-width: 429px) {
+    .mentions_legales-main{
+        flex-direction: column;
+    }
+
+    .btn-retour-cgu{
+        display: block;
+    }
+
+}                 
 
 .mentions_legales-title {
     font-size: 1.5em;
