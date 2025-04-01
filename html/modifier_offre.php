@@ -1412,12 +1412,14 @@ document.addEventListener('DOMContentLoaded', function() {
         choix_optRelief.addEventListener('click',function(){
             if(choixOpt !== choix_optRelief.value){
                 choixOpt = choix_optRelief.value;
+                console.log(choixOpt);
             }
         });
 
         choix_optAlaUne.addEventListener('click', function(){
             if(choixOpt !== choix_optAlaUne.value){
                 choixOpt = choix_optAlaUne.value;
+                console.log(choixOpt);
             }
         })
 
