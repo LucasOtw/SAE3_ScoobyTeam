@@ -1429,7 +1429,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             sem1.checked = false;
             btnsPaiement.forEach(input => {
-                input.setAttribute("required",false);
+                input.required = false;
             })
         });
 
@@ -1443,7 +1443,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             btnsPaiement.forEach(input => {
-                input.setAttribute("required",true);
+                input.required = true;
             });
         });
 
@@ -1457,7 +1457,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             btnsPaiement.forEach(input => {
-                input.setAttribute("required",true);
+                input.required = true;
             });
         });
     });
