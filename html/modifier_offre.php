@@ -1420,6 +1420,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         choix_noOpt.addEventListener('click', function(){
+            choixOpt = "";
             champSemaines.style.display = "none";
             if(champOffGrat !== null){
                 champPaiement.style.display = "none";
@@ -1447,11 +1448,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        if(isPaiement == null){
-            /*
-            * Si il n'y a aucun moyen de paiement enregistré,
-            * alors on ajoute des écouteurs qui afficheront le fieldset
-            */
+        if(champPaiement.style.display === "block"){
+            console.log(1);
         }
     });
 </script>
