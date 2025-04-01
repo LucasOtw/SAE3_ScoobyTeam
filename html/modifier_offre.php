@@ -1402,8 +1402,17 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
     document.addEventListener('DOMContentLoaded',function(){
         var isPaiement = <?php echo json_encode($infosBancaires); ?>
+
+        const choix_optRelief = document.getElementById('opt_relief');
+        const choix_optAlaUne = document.getElementById('opt_aLaUne');
         
         const champPaiement = document.getElementById('champ-paiement');
+
+        if(choix_optRelief.checked){
+            console.log("1");
+        } else if (choix_optAlaUne.checked){
+            console.log("2");
+        }
 
         if(isPaiement == null){
             /*
