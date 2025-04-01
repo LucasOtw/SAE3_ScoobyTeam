@@ -1537,6 +1537,8 @@ function tempsEcouleDepuisPublication($offre)
 
                         // Date event
                         const offerEvent = marker.options.dataEvent.replace(/["']/g, "");
+
+                        console.log("Date: "+date+", Date Offre: "+offerEvent+".");
                     
                     
                         // Titre & Localisation
