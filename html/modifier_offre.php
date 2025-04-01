@@ -657,6 +657,43 @@ if (isset($_POST['envoi_modif'])){
 
         /* GESTION DE LA MISE A JOUR DE L'OFFRE ET DU PAIEMENT */
 
+        if(isset($_POST['type_offre']) && !empty($_POST['type_offre']) && $_POST['type_offre']){
+            $type_offre = trim($_POST['type_offre']);
+        }
+
+        if(isset($_POST['option_offre']) && !empty($_POST['option_offre']) && $_POST['option_offre']){
+            $option_offre = trim($_POST['option_offre']);
+        }
+
+        $tabModifs = array();
+
+        // Si le type de l'offre est différent du type précédent, on le met à jour
+
+        if($type_offre !== trim($offre['nom_type'])){
+            $tabModifs['nom_type'] = $type_offre;
+        }
+
+        // On vérifie maintenant si l'offre avait déjà une option.
+
+        $checkIfOption = $dbh->prepare("SELECT * FROM tripenarvor._option
+        WHERE code_offre = :code_offre");
+        $checkIfOption->bindValue(":code_offre",$offre['code_offre']);
+        
+        try{
+            $checkIfOption->execute();
+            $isOption = $checkIfOption->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e){
+            die("Erreur à l'exécution (SELECT) : ". $e->getMessage());
+        }
+
+        if($isOption !== null){
+            /*
+            * Si il y avait une option précédemment, on a maintenant 2 cas :
+            * 1 - On change d'option et / ou de durée pour l'option (UPDATE)
+            * 2 - On supprime l'option (DELETE)
+            */
+        }
+
         // à la fin, tout roule, on peut donc mettre à jour la date de la dernière modification :)
 
         $today = date("Y-m-d");
@@ -666,7 +703,7 @@ if (isset($_POST['envoi_modif'])){
         $update_modif_pub->bindValue(":code_offre",$offre['code_offre']);
         $update_modif_pub->execute();
 
-        header("location: detail_offre_pro.php");
+        // header("location: detail_offre_pro.php");
         exit;
         
     } else {
@@ -1061,7 +1098,8 @@ if($infos_offre !== null){
             </fieldset>
             <fieldset>
                 <legend>Option</legend>
-                <input type="radio" id="no-opt" name="option_offre" value="">
+                <input type="radio" id="no-opt" name="option_offre" value=""
+                <?php echo ($option_en_relief || $option_a_la_une) ? "checked" : "" ?>>
                 <label for="no-opt">Aucune option</label>
                 <input type="radio" id="opt_relief" name="option_offre" value="relief"
                 <?php echo ($offre['option_en_relief']) ? "checked" : ""  ?>>
