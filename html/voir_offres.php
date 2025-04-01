@@ -1519,6 +1519,8 @@ function tempsEcouleDepuisPublication($offre)
                         const offerRate = offerData.note_moyenne;
                         const offerStatus = marker.options.dataStatus;
 
+                        console.log(offerData);
+                    
                         console.log("Category: " + category + ", Offer Category: " + offerCategory + ".");
                         console.log("Rate: " + rate + ", Offer Rate: " + offerRate + ".");
                         console.log("Status: " + status + ", Offer Status: " + offerStatus + ".");
@@ -1532,9 +1534,9 @@ function tempsEcouleDepuisPublication($offre)
                         }
 
                         // Si l'offre correspond à la recherche, on la montre
-                        if ((category === 'all' || category === offerCategory) &&
+                        if ((category === 'all' || category == offerCategory) &&
                             (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
-                            (!status || status === offerStatus)) {
+                            (!status || status == offerStatus)) {
                             console.log("ok");
                         } else {
                             afficher = false;
