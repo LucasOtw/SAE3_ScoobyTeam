@@ -1410,7 +1410,7 @@ WHERE code_offre = :code_offre
             modal2.style.display = 'none';
 
             var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
-            var codeAvis = document.querySelector('.blacklist-avis').getAttribute('data-avis');
+            var codeAvis = this.getAttribute('data-avis');
 
             // Utilisation de fetch pour envoyer les données
             fetch("https://scooby-team.ventsdouest.dev/update_avis_status.php", {
