@@ -11478,7 +11478,12 @@ main.main_repondre_avis .message-erreur {
     display: flex;
     justify-content: center;
     padding: 20px;
-    flex-direction: column;
+}
+
+@media screen and (max-width: 429px) {
+    .mentions_legales-main{
+        flex-direction: column;
+    }
 }
 
 .mentions_legales-section {
