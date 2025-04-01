@@ -11433,7 +11433,7 @@ main.main_repondre_avis .message-erreur {
         margin-top: 1vh;
         margin-left: 17vw;
         align-items: center;
-        padding-bottom: 0em;
+        padding-bottom: 0.5em;
         width: 70%;
         height: 4em;
     }
