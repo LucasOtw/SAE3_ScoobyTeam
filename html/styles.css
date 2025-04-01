@@ -11431,9 +11431,11 @@ main.main_repondre_avis .message-erreur {
         box-shadow: 0px 6px 19px rgba(0, 56, 255, 0.24);
         transition: transform 0.2s ease;
         margin-top: 1vh;
-        margin-left: 21vw;
+        margin-left: 17vw;
         align-items: center;
         padding-bottom: 1em;
+        width: 70%;
+        height: 4em;
     }
 
     .signaler_un_avis_textarea {
