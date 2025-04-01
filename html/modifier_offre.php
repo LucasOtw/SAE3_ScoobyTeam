@@ -1408,6 +1408,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var choixOpt = "";
         
         const champSemaines = document.getElementById('champ-semaines');
+        console.log(champSemaines);
         const inputSemaines = champSemaines.querySelectorAll("input[type=radio]");
         const sem1 = inputSemaines[0];
         const champPaiement = document.getElementById('champ-paiement');
