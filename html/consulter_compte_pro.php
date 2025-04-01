@@ -113,7 +113,11 @@ if (isset($_POST['modif_infos'])) {
         }
         // Ajoutez une variable de session pour indiquer que les modifications ont été effectuées
         $_SESSION['modif_success'] = true;
-        include("recupInfosCompte.php");
+        // Ajoutez cette ligne pour vous assurer que la session est écrite
+        session_write_close();
+        // Forcez un rechargement de la page pour afficher le message
+        header('Location: ' . $_SERVER['PHP_SELF']);
+        exit;
     } else {
         // echo "Aucune modification détectée.";
     }
@@ -187,9 +191,9 @@ if (isset($_POST['modif_infos'])) {
                     <div id="notification-popup">
                         <ul>
                             <?php
-                            ///////////////////////////////////////////////////////////////////////////////
+                            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                             ///                            Contenu notif                                ///
-                            ///////////////////////////////////////////////////////////////////////////////
+                            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                             
                             require_once __DIR__ . ("/../.security/config.php");
 
@@ -426,7 +430,7 @@ if (isset($_POST['modif_infos'])) {
             <div class="link-group">
                 <ul>
                     <li><a href="mentions_legales.php">Mentions Légales</a></li>
-                    <li><a href="cgu.php">GGU</a></li>
+                    <li><a href="cgu.php">CGU</a></li>
                     <li><a href="cgv.php">CGV</a></li>
                 </ul>
             </div>
@@ -480,9 +484,9 @@ if (isset($_POST['modif_infos'])) {
 
     <script>
 
-        ////////////////////////////////////////////////////////////////////////////////////
-        ///                            Supprimer compte                                  ///
-        ////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////
+        ///                            Supprimer compte                                  /////
+        //////////////////////////////////////////////////////////////////////////////////////
 
         document.getElementById('btn-suppr-compte').addEventListener('click', function () {
             const confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce compte ?");
@@ -595,11 +599,12 @@ if (isset($_POST['modif_infos'])) {
     </script>
     <script>
         // Lorsque le message est envoyé avec succès, afficher le message de succès
-        function afficherMessageSucces() {
-            // Trouver l'élément qui contient le message de succès
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM chargé, vérification du message de succès");
             const successMessage = document.getElementById('creation-success');
             
             <?php if(isset($_SESSION['modif_success']) && $_SESSION['modif_success'] === true): ?>
+            console.log("Affichage du message de succès");
             // Afficher le message
             successMessage.style.display = 'block';
             
@@ -611,12 +616,8 @@ if (isset($_POST['modif_infos'])) {
             // Supprimer la variable de session pour ne pas réafficher le message après rafraîchissement
             unset($_SESSION['modif_success']);
             endif; ?>
-        }
-
-        // Appel de la fonction au chargement de la page
-        document.addEventListener('DOMContentLoaded', afficherMessageSucces);
+        });
     </script>
-
 </body>
 
 </html>
