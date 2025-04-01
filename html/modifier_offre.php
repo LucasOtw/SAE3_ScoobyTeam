@@ -1420,7 +1420,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         choix_noOpt.addEventListener('click', function(){
-            champPaiement.style.display = "none";
+            champSemaines.style.display = "none";
             if(champOffGrat !== null){
                 champPaiement.style.display = "none";
             }
