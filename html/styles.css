@@ -3785,8 +3785,6 @@ nom.avis {
     @media( max-width: 430px) {
         margin-top: 3em;
         margin-left: 5em;
-        background-color: var(--vert-clair);
-        color: white;
         font-size: 15px;
     }
 }
