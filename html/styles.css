@@ -11334,7 +11334,7 @@ main.main_repondre_avis .message-erreur {
 .signalement-avis h3::before {
     content: url('https://icon-library.com/images/icon-review/icon-review-9.jpg');
     /* Exemple d'icône */
-    width: 30px;
+    
     height: 30px;
     margin-right: 10px;
     display: inline-block;
