@@ -1547,8 +1547,6 @@ function tempsEcouleDepuisPublication($offre)
                         // Period
                         const offerPeriodStart = marker.options.dataPeriodO.replace(/["']/g, "");
                         const offerPeriodEnd = marker.options.dataPeriodC.replace(/["']/g, "");
-
-                        console.log("Offer S: "+offerPeriodStart+", Offer E: "+offerPeriodEnd+".");
                         
                     
                         // Titre & Localisation
