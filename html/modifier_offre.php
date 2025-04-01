@@ -1401,7 +1401,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <script>
     document.addEventListener('DOMContentLoaded',function(){
-        var isPaiement = <?php echo json_encode($infosBancaires); ?>
+        var isPaiement = <?php echo json_encode($infosBancaires); ?>;
         const champOffGrat = document.getElementById('off_grt');
 
         const choix_noOpt = document.getElementById('no-opt');
