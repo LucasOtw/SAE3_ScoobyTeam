@@ -1121,13 +1121,13 @@ if($infos_offre !== null){
             <fieldset id="champ-paiement" style="display: <?php echo $affichePaiement; ?>">
                 <legend>Informations de paiement</legend>
                 <label for="iban">IBAN*</label>
-                <input id="iban" name="_IBAN" value="<?php echo (isset($infosBancaires) && $infosBancaires) ? trim($infosBancaires['iban']) : ""; ?>" placeholder="IBAN">
+                <input id="iban" type="text" name="_IBAN" value="<?php echo (isset($infosBancaires) && $infosBancaires) ? trim($infosBancaires['iban']) : ""; ?>" placeholder="IBAN">
 
                 <label for="bic">BIC*</label>
-                <input id="bic" name="_BIC" value="<?php echo (isset($infosBancaires) && $infosBancaires) ? trim($infosBancaires['bic']) : ""; ?>" placeholder="BIC">
+                <input id="bic" type="text" name="_BIC" value="<?php echo (isset($infosBancaires) && $infosBancaires) ? trim($infosBancaires['bic']) : ""; ?>" placeholder="BIC">
 
                 <label for="nom_compte">Nom du compte</label>
-                <input id="nom_compte" name="_nomCompte" value="<?php echo (isset($infosBancaires) && $infosBancaires) ? trim($infosBancaires['nom_compte']) : ""; ?>" placeholder="Nom du compte bancaire">
+                <input id="nom_compte" type="text" name="_nomCompte" value="<?php echo (isset($infosBancaires) && $infosBancaires) ? trim($infosBancaires['nom_compte']) : ""; ?>" placeholder="Nom du compte bancaire">
 
             </fieldset>
         </div>
@@ -1415,7 +1415,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const sem1 = inputSemaines[0];
         const champPaiement = document.getElementById('champ-paiement');
 
-        const btnsPaiement = champPaiement.querySelectorAll('input[type=radio]');
+        const btnsPaiement = champPaiement.querySelectorAll('input[type=text]');
 
         console.log(btnsPaiement);
 
