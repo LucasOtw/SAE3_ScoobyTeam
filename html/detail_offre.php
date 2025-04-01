@@ -1214,10 +1214,10 @@ WHERE code_offre = :code_offre
         $note_moyenne = $moyenne_note->fetchColumn();
 
         // Récupérer le nombre d'avis
-        $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis WHERE code_offre = :code_offre and blacklister<>TRUE');
-        $nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
-        $nb_avis->execute();
-        $nombre_d_avis = $nb_avis->fetchColumn();
+        // $nb_avis = $dbh->prepare('SELECT count(*) FROM tripenarvor._avis WHERE code_offre = :code_offre and blacklister<>TRUE');
+        // $nb_avis->bindValue(':code_offre', intval($code_offre), PDO::PARAM_INT);
+        // $nb_avis->execute();
+        // $nombre_d_avis = $nb_avis->fetchColumn();
 
         $appreciationGenerale = "";
 

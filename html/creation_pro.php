@@ -10,6 +10,34 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Créer un compte</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+    .creation-success {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        z-index: 1000;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .creation-success img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .creation-success h4 {
+        margin: 0;
+        color: #4CAF50;
+    }
+    </style>
 </head>
 
 <body>
@@ -110,6 +138,10 @@ session_start();
 
                     <button type="submit" class="submit-btn">Créer mon compte</button>
                 </form>
+                <div class="creation-success" id="creation-success" style="display: none;">
+                    <img src="images/verifier.png" alt="Succès">
+                    <h4>Les informations ont été mises à jour avec succès !</h4>
+                </div>
                 <div class="creation_compte_pro_other-links">
                     <p>Déjà un compte ? <a href="connexion_pro.php">Connexion</a></p>
                     <p>S’inscrire avec un compte <a href="creation_compte_membre.php" class="lien-creation-compte-membre">Membre</a></p>
@@ -356,9 +388,44 @@ session_start();
             }
         }
 
+        // Modifiez cette partie dans votre traitement de formulaire (vers la ligne 80)
+        if (!empty($champsModifies)) {
+            foreach ($champsModifies as $champ => $valeur) {
+                // ... (votre code existant)
+            }
+            // Ajoutez une variable de session pour indiquer que les modifications ont été effectuées
+            $_SESSION['modif_success'] = true;
+            include("recupInfosCompte.php");
+        } else {
+            // echo "Aucune modification détectée.";
+        }
+
     ?>
 
     </main>
+    <script>
+    // Lorsque le message est envoyé avec succès, afficher le message de succès
+    function afficherMessageSucces() {
+        // Trouver l'élément qui contient le message de succès
+        const successMessage = document.getElementById('creation-success');
+        
+        <?php if(isset($_SESSION['modif_success']) && $_SESSION['modif_success'] === true): ?>
+        // Afficher le message
+        successMessage.style.display = 'block';
+        
+        // Le message disparaît après 5 secondes
+        setTimeout(() => {
+            successMessage.style.display = 'none';
+        }, 5000);
+        <?php 
+        // Supprimer la variable de session pour ne pas réafficher le message après rafraîchissement
+        unset($_SESSION['modif_success']);
+        endif; ?>
+    }
+
+    // Appel de la fonction au chargement de la page
+    document.addEventListener('DOMContentLoaded', afficherMessageSucces);
+    </script>
 </body>
 
 </html>
