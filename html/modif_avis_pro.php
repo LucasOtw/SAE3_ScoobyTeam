@@ -143,7 +143,7 @@ $isAnswer = $isAnswer->fetchColumn();
 <body>
     <header class="header-pc header_pro">
         <div class="logo-pc">
-           <a href="voir_offres.php">
+           <a href="mes_offres.php">
             <img src="images/logo_blanc_pro.png" alt="PACT Logo">
          </a>
 
