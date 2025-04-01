@@ -913,15 +913,15 @@ function tempsEcouleDepuisPublication($offre)
                         echo "en_relief";
                     } ?>" data-category="<?php echo $type_offre; ?>" data-price="<?php echo $offre["tarif"]; ?>"
                         data-rate="<?php echo $offre["note_moyenne"]; ?>" location="<?php echo $villeOffre["ville"]; ?>"
-                        data-status="<?php echo $dataStatusEng; ?>" data-event=<?php if (!empty($event)) {
+                        data-status="<?php echo $dataStatusEng; ?>" data-event="<?php if (!empty($event)) {
                                echo $event['date_' . $type_offre];
                            } else {
                                echo "";
-                           } ?> data-period-o=<?php if (!empty($periode)) {
+                           } ?> data-period-o="<?php if (!empty($periode)) {
                                  echo $periode['date_ouverture'];
                              } else {
                                  echo "";
-                             } ?> data-period-c=<?php if (!empty($periode)) {
+                             } ?>" data-period-c="<?php if (!empty($periode)) {
                                    echo $periode['date_fermeture'];
                                } else {
                                    echo "";
