@@ -878,23 +878,35 @@ if (isset($json['results'][0])) {
                                                             </li>
                                                             <?php
                                                         } else {
-                                                            ?>
-                                                            <li>
-                                                                <form action="poster_reponse_membre.php" method="POST">
-                                                                    <input type="hidden" name="unAvis"
-                                                                        value="<?php echo htmlspecialchars(serialize($avis)); ?>">
-                                                                    <input id="btn-repondre-avis" type="submit" name="repondreAvis"
-                                                                        value="Répondre à l'avis">
-                                                                </form>
-                                                            </li>
-                                                            <li>
-                                                                <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
-                                                                    title="Signaler cet avis"
-                                                                    style="text-decoration: none;margin-right: 2vw;color: black;font-size: 15px;font-weight: 400;">
-                                                                    Signaler l'avis
-                                                                </a>
-                                                            </li>
-                                                        <?php } ?>
+                                                            if (isset($_SESSION["membre"]) && !empty($_SESSION["membre"])) {
+                                                                ?>
+                                                                <li>
+                                                                    <form action="poster_reponse_membre.php" method="POST">
+                                                                        <input type="hidden" name="unAvis"
+                                                                            value="<?php echo htmlspecialchars(serialize($avis)); ?>">
+                                                                        <input id="btn-repondre-avis" type="submit" name="repondreAvis"
+                                                                            value="Répondre à l'avis">
+                                                                    </form>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="signalement_membre.php?id_avis=<?php echo htmlspecialchars($avis['code_avis']); ?>"
+                                                                        title="Signaler cet avis"
+                                                                        style="text-decoration: none;margin-right: 2vw;color: black;font-size: 15px;font-weight: 400;">
+                                                                        Signaler l'avis
+                                                                    </a>
+                                                                </li>
+                                                                <?php
+                                                            } else {
+                                                                ?>
+                                                                <li>
+                                                                    <a href="connexion_membre.php">Répondre à l'avis</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="connexion_membre.php">Signaler l'avis</a>
+                                                                </li>
+                                                                <?php
+                                                            }
+                                                        } ?>
                                                     </ul>
                                                 </div>
                                             <?php } ?>
