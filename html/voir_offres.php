@@ -1582,7 +1582,7 @@ function tempsEcouleDepuisPublication($offre)
                         }
 
                         // Period
-                        if (((!startDate || (offerPeriodEnd==null && offerCategory != 'spectacle' && offerCategory != 'visite')) && (!endDate || (offerPeriodEnd==null && offerCategory != 'spectacle' && offerCategory != 'visite'))) 
+                        if (((!startDate || (offerPeriodEnd=="null" && offerCategory != 'spectacle' && offerCategory != 'visite')) && (!endDate || (offerPeriodEnd=="null" && offerCategory != 'spectacle' && offerCategory != 'visite'))) 
                         ||
                         ((startDate <= offerPeriodEnd && startDate >= offerPeriodStart) && (endDate >= offerPeriodStart && endDate <= offerPeriodEnd))) {
                             // Test valide
