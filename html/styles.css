@@ -11484,6 +11484,11 @@ main.main_repondre_avis .message-erreur {
     .mentions_legales-main{
         flex-direction: column;
     }
+
+    .btn-retour-cgu{
+        display: block;
+    }
+
 }
 
 .mentions_legales-section {
