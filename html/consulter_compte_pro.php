@@ -2,6 +2,13 @@
 ob_start(); // bufferisation, ça devrait marcher ?
 session_start();
 
+// Au début de votre fichier, juste après session_start()
+$showSuccessMessage = false;
+if(isset($_SESSION['modif_success']) && $_SESSION['modif_success'] === true) {
+    $showSuccessMessage = true;
+    unset($_SESSION['modif_success']);
+}
+
 include("recupInfosCompte.php");
 
 if (!isset($_SESSION['pro'])) {
@@ -421,6 +428,19 @@ if (isset($_POST['modif_infos'])) {
             <img src="images/verifier.png" alt="Succès">
             <h4>Les informations ont été mises à jour avec succès !</h4>
         </div>
+        <?php if($showSuccessMessage): ?>
+        <script>
+            // Code pour afficher immédiatement la popup
+            document.addEventListener('DOMContentLoaded', function() {
+                const successMessage = document.getElementById('creation-success');
+                successMessage.style.display = 'block';
+                
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            });
+        </script>
+        <?php endif; ?>
     </main>
     <footer class="footer footer_pro">
         <div class="footer-links">
@@ -596,27 +616,6 @@ if (isset($_POST['modif_infos'])) {
 
         });
 
-    </script>
-    <script>
-        // Lorsque le message est envoyé avec succès, afficher le message de succès
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log("DOM chargé, vérification du message de succès");
-            const successMessage = document.getElementById('creation-success');
-            
-            <?php if(isset($_SESSION['modif_success']) && $_SESSION['modif_success'] === true): ?>
-            console.log("Affichage du message de succès");
-            // Afficher le message
-            successMessage.style.display = 'block';
-            
-            // Le message disparaît après 5 secondes
-            setTimeout(() => {
-                successMessage.style.display = 'none';
-            }, 5000);
-            <?php 
-            // Supprimer la variable de session pour ne pas réafficher le message après rafraîchissement
-            unset($_SESSION['modif_success']);
-            endif; ?>
-        });
     </script>
 </body>
 
