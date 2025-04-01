@@ -1515,9 +1515,9 @@ function tempsEcouleDepuisPublication($offre)
                         let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
                         let offerCity = marker.options.dataCity.toLowerCase();
 
-                        let offerCategory = marker.options.dataCategory; // Prendre le titre de l’offre
+                        let offerCategory = marker.options.dataCategory.replace(/["']/g, ""); // Prendre le titre de l’offre
                         const offerRate = offer.note_moyenne;
-                        const offerStatus = marker.options.dataStatus;
+                        const offerStatus = marker.options.dataStatus.replace(/["']/g, "");
                     
                         console.log("Category: " + category + ", Offer Category: " + offerCategory + ".");
                         console.log("Rate: " + rate + ", Offer Rate: " + offerRate + ".");
@@ -1532,9 +1532,9 @@ function tempsEcouleDepuisPublication($offre)
                         }
 
                         // Si l'offre correspond à la recherche, on la montre
-                        if ((category === 'all' || category.trim() == offerCategory.trim()) &&
+                        if ((category === 'all' || category == offerCategory.trim()) &&
                             (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
-                            (!status || status.trim() == offerStatus.trim())) {
+                            (!status || status == offerStatus.trim())) {
                             console.log("ok");
                         } else {
                             afficher = false;
