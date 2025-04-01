@@ -1432,6 +1432,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 choixOpt = choix_optRelief.value;
                 console.log(choixOpt);
                 champSemaines.style.display = "block";
+                console.log(champSemaines.style.display);
                 sem1.checked = true;
                 champPaiement.style.display = "block";
             }
