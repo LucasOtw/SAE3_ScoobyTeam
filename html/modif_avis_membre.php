@@ -250,7 +250,7 @@ $isAnswer = $isAnswer->fetchColumn();
         <div id="customModal" class="custom-modal">
             <div class="custom-confirm-content">
                 <p class="texte-boite-perso">Votre avis a été modifié avec succès !</p>
-                <button id="confirmModif" class="confirm-btn" style= "  margin-top: 4em; margin-left: 12em;@media( max-width: 429px) {margin-left: 5em;margin-top: 4em; background-color: var(--vert-clair); }">Ok</button>
+                <button id="confirmModif" class="confirm-btn" style= "  margin-top: 4em; margin-left: 12em;@media( max-width: 429px) {margin-left: 5em;margin-top: 4em; }">Ok</button>
             </div>
         </div>
 
