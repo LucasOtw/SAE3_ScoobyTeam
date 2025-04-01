@@ -1732,6 +1732,9 @@ function tempsEcouleDepuisPublication($offre)
                         offer.style.display = "none";
                     }
                 });
+
+                leafletFilters();
+                
             });
 
 
