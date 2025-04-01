@@ -235,7 +235,8 @@ function tempsEcouleDepuisPublication($offre)
             <div class="search-top">
                 <input type="text" class="search-input" placeholder="Rechercher parmi les offres">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: white;">
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    style="color: white;">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
@@ -624,16 +625,16 @@ function tempsEcouleDepuisPublication($offre)
 
             <?php
 
-            $AConsulterRecemment = false; 
-            
+            $AConsulterRecemment = false;
+
             foreach ($_COOKIE as $name => $value) {
                 if (strpos($name, 'consulte_recemment') === 0) {
                     $AConsulterRecemment = true;
-                    break; 
+                    break;
                 }
             }
 
-            if (isset($AConsulterRecemment)) {
+            if ($AConsulterRecemment) {
                 ?>
                 <div class="vu-recemment-carrousel">
                     <button class="card-scroll-btn card-scroll-btn-left" onclick="scrollcontentLeftR()">&#8249;</button>
@@ -1497,11 +1498,11 @@ function tempsEcouleDepuisPublication($offre)
             ///////////////////////////////////////////////////
             function leafletFilters() {
                 const query = searchInput.value.toLowerCase().trim();
-                
+
                 const category = document.querySelector('.search-select:nth-of-type(1)').value;
                 const rate = document.querySelector('#select-rate').value;
                 const status = document.querySelector('#select-statut').value;
-                
+
                 markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
                 markersArray.forEach((marker, index) => {
                     const offerData = marker.options.dataOffer;
@@ -1510,7 +1511,7 @@ function tempsEcouleDepuisPublication($offre)
                     if (offerData) {
                         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
                         let offer = JSON.parse(correctedJsonString); // Convertir en objet
-                        
+
                         let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
                         let offerCity = marker.options.dataCity.toLowerCase();
 
@@ -1518,12 +1519,12 @@ function tempsEcouleDepuisPublication($offre)
                         const offerRate = offerData.note_moyenne;
                         const offerStatus = marker.options.dataStatus;
 
-                        
+
                         // Si l'offre correspond à la recherche, on la montre
                         if (offerText.includes(query) || offerCity.includes(query)) {
-                            
+
                         } else {
-                            afficher=false;
+                            afficher = false;
                         }
 
                         // Si l'offre correspond à la recherche, on la montre
@@ -1532,7 +1533,7 @@ function tempsEcouleDepuisPublication($offre)
                             (!status || status === offerStatus)) {
                             console.log("ok");
                         } else {
-                            afficher=false;
+                            afficher = false;
                         }
 
                         if (afficher) {
@@ -1542,21 +1543,21 @@ function tempsEcouleDepuisPublication($offre)
                         }
                     }
                 });
-                
+
             }
-            
+
             ///////////////////////////////////////////////////
             ///            Barre de recherche               ///
             ///////////////////////////////////////////////////
             // Barre de recherche
             searchInput.addEventListener('input', () => {
                 const query = searchInput.value.toLowerCase().trim();
-                
+
                 // Parcourir chaque offre et vérifier si elle correspond à la recherche
                 offerItems.forEach(offer => {
                     const offerLoc = offer.getAttribute('location').toLowerCase();
                     const offerText = offer.querySelector('h2').textContent.toLowerCase().trim();
-                    
+
                     if (offerLoc.includes(query) || offerText.includes(query)) {
                         offer.classList.remove('hidden');
                     } else {
@@ -1619,14 +1620,14 @@ function tempsEcouleDepuisPublication($offre)
                     // markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
                     // markersArray.forEach((marker, index) => {
                     //     const offerData = marker.options.dataOffer;
-    
+
                     //     if (offerData) {
                     //         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
                     //         let offer = JSON.parse(correctedJsonString); // Convertir en objet
                     //         let offerCategory = marker.options.dataCategory; // Prendre le titre de l’offre
                     //         const offerRate = offerData.note_moyenne;
                     //         const offerStatus = marker.options.dataStatus;
-    
+
                     //         // Si l'offre correspond à la recherche, on la montre
                     //         if ((category === 'all' || category === offerCategory) &&
                     //             (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
