@@ -1412,6 +1412,9 @@ WHERE code_offre = :code_offre
             var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
             var codeAvis = this.getAttribute('data-avis');
 
+            console.log(this);
+            console.log(this.getAttribute('data-avis'));
+
             // Utilisation de fetch pour envoyer les données
             fetch("https://scooby-team.ventsdouest.dev/update_avis_status.php", {
                 method: "POST",  // Méthode POST
@@ -1427,7 +1430,7 @@ WHERE code_offre = :code_offre
                 .then(response => {
                     if (response.ok) {
                         console.log("L'avis a bien été blacklister.");
-                        window.location.href = "detail_offre_pro.php";
+                        //window.location.href = "detail_offre_pro.php";
                     } else {
                         console.error("Erreur lors de la mise à jour de l'état de l'avis et de l'offre : " + response.status);
                     }
