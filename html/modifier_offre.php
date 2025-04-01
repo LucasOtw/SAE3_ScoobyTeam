@@ -1458,6 +1458,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             btnsPaiement.forEach(input => {
                 input.required = true;
+                console.log(input);
             });
         });
     });
