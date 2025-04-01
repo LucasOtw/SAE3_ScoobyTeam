@@ -1580,7 +1580,7 @@ function tempsEcouleDepuisPublication($offre)
                         // Period
                         if (((!startDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite')) &&
                         (!endDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite'))) ||
-                        ((startDate <= offerPeriodEnd && startDate >= offerPeriodStart) || (endDate >= offerPeriodStart && endDate <= offerPeriodEnd))) {
+                        ((startDate <= offerPeriodEnd && startDate >= offerPeriodStart) && (endDate >= offerPeriodStart && endDate <= offerPeriodEnd))) {
                             // Test valide
                         } else {
                             afficher=false;
