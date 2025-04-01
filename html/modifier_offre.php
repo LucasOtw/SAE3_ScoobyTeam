@@ -1011,7 +1011,7 @@ if($infos_offre !== null){
         <div class="drop-zone-prompt">Glissez et déposez vos images ici</div>
         <div>ou</div>
         <label class="button_import_image" for="file-input">Choisir des fichiers</label>
-        <input type="file" id="fiCOUCOU LES CONGOLAISle-input" name="offre_nouv_images[]" accept="image/*" multiple class="file-input">
+        <input type="file" id="file-input" name="offre_nouv_images[]" accept="image/*" multiple class="file-input">
     </div>
     <div class="selected-files-container" id="selected-files">
         <!-- Les fichiers sélectionnés s'afficheront ici -->
