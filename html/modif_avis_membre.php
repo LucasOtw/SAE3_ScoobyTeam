@@ -248,7 +248,7 @@ $isAnswer = $isAnswer->fetchColumn();
         </div>
         </form>
         <div id="customModal" class="custom-modal">
-            <div class="custom-confirm-content">
+            <div class="custom-confirm-content" style="border: 5px solid var(--vert-clair);">
                 <p class="texte-boite-perso">Votre avis a été modifié avec succès !</p>
                 <button id="confirmModif" class="confirm-btn" style="background-color:var(--vert-clair)">Ok</button>
             </div>
