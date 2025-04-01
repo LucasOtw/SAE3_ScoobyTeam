@@ -2,13 +2,6 @@
 ob_start(); // bufferisation, ça devrait marcher ?
 session_start();
 
-// Au début de votre fichier, juste après session_start()
-$showSuccessMessage = false;
-if(isset($_SESSION['modif_success']) && $_SESSION['modif_success'] === true) {
-    $showSuccessMessage = true;
-    unset($_SESSION['modif_success']);
-}
-
 include("recupInfosCompte.php");
 
 if (!isset($_SESSION['pro'])) {
@@ -118,15 +111,10 @@ if (isset($_POST['modif_infos'])) {
 
             }
         }
-        // Ajoutez une variable de session pour indiquer que les modifications ont été effectuées
-        $_SESSION['modif_success'] = true;
-        // Ajoutez cette ligne pour vous assurer que la session est écrite
-        session_write_close();
-        // Forcez un rechargement de la page pour afficher le message
-        header('Location: ' . $_SERVER['PHP_SELF']);
-        exit;
+        // echo "Les informations ont été mises à jour.";
+        include("recupInfosCompte.php");
     } else {
-        // echo "Aucune modification détectée.";
+        echo "Aucune modification détectée.";
     }
 }
 
@@ -146,34 +134,6 @@ if (isset($_POST['modif_infos'])) {
     <link
         href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
-    <style>
-        .creation-success {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            z-index: 1000;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .creation-success img {
-            width: 40px;
-            height: 40px;
-        }
-
-        .creation-success h4 {
-            margin: 0;
-            color: #4CAF50;
-        }
-    </style>
 </head>
 
 <body>
@@ -198,9 +158,9 @@ if (isset($_POST['modif_infos'])) {
                     <div id="notification-popup">
                         <ul>
                             <?php
-                            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                            ///////////////////////////////////////////////////////////////////////////////
                             ///                            Contenu notif                                ///
-                            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                            ///////////////////////////////////////////////////////////////////////////////
                             
                             require_once __DIR__ . ("/../.security/config.php");
 
@@ -424,23 +384,6 @@ if (isset($_POST['modif_infos'])) {
                 </div>
             </div>
         </form>
-        <div class="creation-success" id="creation-success" style="display: none;">
-            <img src="images/verifier.png" alt="Succès">
-            <h4>Les informations ont été mises à jour avec succès !</h4>
-        </div>
-        <?php if($showSuccessMessage): ?>
-        <script>
-            // Code pour afficher immédiatement la popup
-            document.addEventListener('DOMContentLoaded', function() {
-                const successMessage = document.getElementById('creation-success');
-                successMessage.style.display = 'block';
-                
-                setTimeout(() => {
-                    successMessage.style.display = 'none';
-                }, 5000);
-            });
-        </script>
-        <?php endif; ?>
     </main>
     <footer class="footer footer_pro">
         <div class="footer-links">
@@ -450,7 +393,7 @@ if (isset($_POST['modif_infos'])) {
             <div class="link-group">
                 <ul>
                     <li><a href="mentions_legales.php">Mentions Légales</a></li>
-                    <li><a href="cgu.php">CGU</a></li>
+                    <li><a href="cgu.php">GGU</a></li>
                     <li><a href="cgv.php">CGV</a></li>
                 </ul>
             </div>
@@ -504,9 +447,9 @@ if (isset($_POST['modif_infos'])) {
 
     <script>
 
-        //////////////////////////////////////////////////////////////////////////////////////
-        ///                            Supprimer compte                                  /////
-        //////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////
+        ///                            Supprimer compte                                  ///
+        ////////////////////////////////////////////////////////////////////////////////////
 
         document.getElementById('btn-suppr-compte').addEventListener('click', function () {
             const confirmation = confirm("Êtes-vous sûr de vouloir supprimer ce compte ?");
@@ -617,6 +560,7 @@ if (isset($_POST['modif_infos'])) {
         });
 
     </script>
+
 </body>
 
 </html>
