@@ -1408,11 +1408,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const champPaiement = document.getElementById('champ-paiement');
 
-        choix_optRelief.addEventListener('click', {
+        choix_optRelief.addEventListener('click',function(){
             console.log(1);
-        });
+        })
 
-        choix_optAlaUne.addEventListener('click',{
+        choix_optAlaUne.addEventListener('click',function(){
             console.log(2);
         });
 
