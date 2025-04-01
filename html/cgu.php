@@ -33,7 +33,7 @@
         </nav>
       </header> 
     <main class="mentions_legales-main">
-        <a href="cobtenir_aide.php">
+        <a href="obtenir_aide.php">
             <img src="images/Bouton_retour.png" alt="bouton retour">
         </a>
         <section class="mentions_legales-section">

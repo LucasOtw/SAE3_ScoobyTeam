@@ -20,7 +20,6 @@ session_start();
                   <img src="images/logo_blanc_pro.png" alt="PACT Logo">
             </a>
         </div>
-        
         <nav>
             <ul>
                 <li><a href="voir_offres.php" >Accueil</a></li>
