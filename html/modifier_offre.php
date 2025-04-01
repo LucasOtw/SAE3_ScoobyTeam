@@ -657,7 +657,7 @@ if (isset($_POST['envoi_modif'])){
 
         /* GESTION DE LA MISE A JOUR DE L'OFFRE ET DU PAIEMENT */
 
-        if(isset($_POST['type_offre']) && !empty($_POST['type_offre']) && $_POST['type_offre']){
+/*         if(isset($_POST['type_offre']) && !empty($_POST['type_offre']) && $_POST['type_offre']){
             $type_offre = trim($_POST['type_offre']);
         }
 
@@ -687,12 +687,23 @@ if (isset($_POST['envoi_modif'])){
         }
 
         if($isOption !== null){
-            /*
-            * Si il y avait une option précédemment, on a maintenant 2 cas :
-            * 1 - On change d'option et / ou de durée pour l'option (UPDATE)
-            * 2 - On supprime l'option (DELETE)
-            */
-        }
+
+            // * Si il y avait une option précédemment, on a maintenant 2 cas :
+            // * 1 - On change d'option et / ou de durée pour l'option (UPDATE)
+            // * 2 - On supprime l'option (DELETE)
+            
+            switch($option_offre){
+                case "":
+                    break;
+                case "relief":
+                    if($offre['option_a_la_une']){
+                        // "A la une" => "En relief" : UPDATE
+                        
+                    }
+            }
+        } else {
+            // Sinon, on ajoute (INSERT)
+        } */
 
         // à la fin, tout roule, on peut donc mettre à jour la date de la dernière modification :)
 
@@ -1074,101 +1085,6 @@ if($infos_offre !== null){
     
    
         </div>
-        <div class="tab-content" id="payment">
-            <fieldset>
-                <legend>Type</legend>
-                <?php
-                    if(isset($monComptePro['num_siren']) && $monComptePro['num_siren']){
-                        ?>
-                        <input type="radio" id="off_std" name="type_offre" value="Offre Standard"
-                        <?php echo ($offre['nom_type'] == "Offre Standard") ? "checked" : "" ?>>
-                        <label for="off_std">Offre Standard</label>
-                        <input type="radio" id="off_pre" name="type_offre" value="Offre Premium"
-                        <?php echo ($offre['nom_type'] == "Offre Premium") ? "checked" : "" ?>>
-                        <label for="off_pre">Offre Premium</label>
-                        <?php
-                    } else {
-                        ?>
-                        <input type="radio" id="off_grt" name="type_offre" value="Offre Gratuite"
-                        <?php echo ($offre['nom_type'] == "Offre Gratuite") ? "checked" : "" ?>>
-                        <label for="off_grt">Offre Gratuite</label>
-                        <?php
-                    }
-                ?>
-            </fieldset>
-            <fieldset>
-                <legend>Option</legend>
-                <input type="radio" id="no-opt" name="option_offre" value=""
-                <?php echo ($offre['option_en_relief'] == null && $offre['option_a_la_une'] == null) ? "checked" : "" ?>>
-                <label for="no-opt">Aucune option</label>
-                <input type="radio" id="opt_relief" name="option_offre" value="relief"
-                <?php echo ($offre['option_en_relief']) ? "checked" : ""  ?>>
-                <label for="opt_relief">Option "en Relief"</label>
-                <input type="radio" id="opt_aLaUne" name="option_offre" value="aLaUne"
-                <?php echo ($offre['option_a_la_une']) ? "checked" : "" ?>>
-                <label for="opt_aLaUne">Option "à la Une"</label>
-                <?php
-                    if($offre['option_en_relief'] || $offre['option_a_la_une']){
-                        // on récupère le nb de semaines
-
-                        $getNbSemaines = $dbh->prepare("SELECT nb_semaines FROM tripenarvor._option
-                        WHERE code_option = :code_option");
-
-                        $nbSemaines = null;
-
-                        if($offre['option_en_relief']){
-                            $getNbSemaines->bindValue(":code_option",$offre['option_en_relief']);
-                        } else if ($offre['option_a_la_une']){
-                            $getNbSemaines->bindValue(":code_option",$offre['option_a_la_une']);
-                        }
-                        try{
-                            $getNbSemaines->execute();
-
-                            $nbSemaines = $getNbSemaines->fetchColumn();
-                        } catch (PDOException $e){
-                            die("Erreur d'exécution : ". $e->getMessage());
-                        }
-
-                        ?>
-                        <?php
-                    }
-                ?>
-                <fieldset id="champ-semaines" style="display: none;">
-                    <legend>Durée</legend>
-                    <input type="radio" id="sem1" name="nbSemaine" value="1"
-                    <?php echo (isset($nbSemaines) && $nbSemaines && $nbSemaines == 1) ? "checked" : "" ?>>
-                    <label for="sem1">1 semaine</label>
-                    <input type="radio" id="sem2" name="nbSemaine" value="2"
-                    <?php echo (isset($nbSemaines) && $nbSemaines && $nbSemaines == 2) ? "checked" : "" ?>>
-                    <label for="sem2">2 semaines</label>
-                    <input type="radio" id="sem3" name="nbSemaine" value="3"
-                    <?php echo (isset($nbSemaines) && $nbSemaines && $nbSemaines == 3) ? "checked" : "" ?>>
-                    <label for="sem3">3 semaines</label>
-                    <input type="radio" id="sem4" name="nbSemaine" value="4"
-                    <?php echo (isset($nbSemaines) && $nbSemaines && $nbSemaines == 4) ? "checked" : "" ?>>
-                    <label for="sem4">4 semaines</label>
-                </fieldset>
-            </fieldset>
-            <?php
-            $affichePaiement = "none";
-                if($infosBancaires){
-                    $affichePaiement = "block";
-                ?>
-                <?php
-            } ?>
-            <fieldset id="champ-paiement" style="display: <?php echo $affichePaiement; ?>">
-                <legend>Informations de paiement</legend>
-                <label for="iban">IBAN*</label>
-                <input id="iban" type="text" name="_IBAN" value="<?php echo (isset($infosBancaires) && $infosBancaires) ? trim($infosBancaires['iban']) : ""; ?>" placeholder="IBAN">
-
-                <label for="bic">BIC*</label>
-                <input id="bic" type="text" name="_BIC" value="<?php echo (isset($infosBancaires) && $infosBancaires) ? trim($infosBancaires['bic']) : ""; ?>" placeholder="BIC">
-
-                <label for="nom_compte">Nom du compte</label>
-                <input id="nom_compte" type="text" name="_nomCompte" value="<?php echo (isset($infosBancaires) && $infosBancaires) ? trim($infosBancaires['nom_compte']) : ""; ?>" placeholder="Nom du compte bancaire">
-
-            </fieldset>
-        </div>
 
             <div class="btn_modif_offre">
                 <input type="submit" name="envoi_modif" value="Valider">
@@ -1438,7 +1354,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <script>
-    document.addEventListener('DOMContentLoaded',function(){
+/*     document.addEventListener('DOMContentLoaded',function(){
         var isPaiement = <?php echo json_encode($infosBancaires); ?>;
         const champOffGrat = document.getElementById('off_grt');
 
@@ -1501,7 +1417,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log(input);
             });
         });
-    });
+    }); */
 </script>
 </body>
 </html>
