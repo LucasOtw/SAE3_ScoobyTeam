@@ -51,10 +51,6 @@ try{
     die("Erreur à l'exécution : ".$e->getMessage());
 }
 
-echo "<pre>";
-var_dump($offre);
-echo "</pre>";
-
 
 /* TABLEAU DES JOURS */
 
