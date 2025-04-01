@@ -1291,6 +1291,7 @@ function tempsEcouleDepuisPublication($offre)
                                 $eventOffre->execute();
 
                                 $event = ($eventOffre->fetch(PDO::FETCH_ASSOC));
+                                $event = $event["date_".$type_offre];
                             } else {
                                 $event = "";
                             }
@@ -1336,7 +1337,7 @@ function tempsEcouleDepuisPublication($offre)
                             $popupContent .= "</div>";
                             $popupContent .= "</div>";
 
-                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon, dataOffer: '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "',dataStatus: '" . json_encode($dataStatusEng) . "', dataCategory: '" . json_encode($type_offre) . "', dataCity: '" . json_encode($villeOffre) . "'});";
+                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon, dataOffer: '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "',dataStatus: '" . json_encode($dataStatusEng) . "', dataCategory: '" . json_encode($type_offre) . "', dataCity: '" . json_encode($villeOffre) . "', dataEvent: '" . json_encode($event) . "'});";
                             echo "markersArray.push(marker);";
 
                             echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false, className: 'custom-popup'}).setContent(\"" . addslashes($popupContent) . "\");";
@@ -1505,6 +1506,14 @@ function tempsEcouleDepuisPublication($offre)
                 const rate = document.querySelector('#select-rate').value;
                 const status = document.querySelector('#select-statut').value;
 
+                // Tarif
+                const minPrice = parseFloat(priceMinInput.value);
+                const maxPrice = parseFloat(priceMaxInput.value);
+
+                // Date event
+                const date = eventDate.value;
+
+                
                 markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
                 markersArray.forEach((marker, index) => {
                     const offerData = marker.options.dataOffer;
@@ -1523,22 +1532,43 @@ function tempsEcouleDepuisPublication($offre)
                         const offerRate = offer.note_moyenne;
                         const offerStatus = marker.options.dataStatus.replace(/["']/g, "");
 
-                        
+                        // Tarif
+                        const offerPrice = parseFloat(offer.tarif);
+
+                        // Date event
+                        const offerEvent = marker.options.dataEvent.replace(/["']/g, "");
+
+                        console.log("Date: "+date+", Date Offre: "+offerEvent+".");
+                    
+                    
                         // Titre & Localisation
                         if (offerText.includes(query) || offerCity.includes(query)) {
-
+                            // Test valide
                         } else {
                             afficher = false;
                         }
 
-                        
                         // Category, Rate & Status
                         if ((category === 'all' || category == offerCategory.trim()) &&
                             (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
                             (!status || status == offerStatus.trim())) {
-                            console.log("ok");
+                            // Test valide
                         } else {
                             afficher = false;
+                        }
+
+                        // Tarif
+                        if (offerPrice >= minPrice && offerPrice <= maxPrice) {
+                            // Test valide
+                        } else {
+                            afficher=false;
+                        }
+
+                        // Date event
+                        if (!date || date === offerEvent) {
+                            // Test valide
+                        } else {
+                            afficher=false;
                         }
 
                         
@@ -1668,6 +1698,9 @@ function tempsEcouleDepuisPublication($offre)
                         offer.style.display = "none"; // Cacher l'offre
                     }
                 });
+
+                leafletFilters();
+                
             }
 
             // Ajouter des événements sur les sliders
@@ -1692,12 +1725,16 @@ function tempsEcouleDepuisPublication($offre)
                 offerItems.forEach(offer => {
 
                     const offerEvent = offer.getAttribute('data-event');
+                    
                     if (!date || date === offerEvent) {
                         offer.style.removeProperty('display');
                     } else {
                         offer.style.display = "none";
                     }
                 });
+
+                leafletFilters();
+                
             });
 
 
