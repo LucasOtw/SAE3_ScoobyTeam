@@ -1415,6 +1415,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const sem1 = inputSemaines[0];
         const champPaiement = document.getElementById('champ-paiement');
 
+        const btnsPaiement = champPaiement.querySelectorAll('input[type=radio]');
+
         if(champOffGrat == null){
             champPaiement.style.display = "block";
         }
@@ -1426,6 +1428,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 champPaiement.style.display = "none";
             }
             sem1.checked = false;
+            btnsPaiement.forEach(input => {
+                input.required = false;
+            })
         });
 
         choix_optRelief.addEventListener('click',function(){
@@ -1436,6 +1441,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 sem1.checked = true;
                 champPaiement.style.display = "block";
             }
+
+            btnsPaiement.forEach(input => {
+                input.required = true;
+            });
         });
 
         choix_optAlaUne.addEventListener('click', function(){
@@ -1446,11 +1455,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 sem1.checked = true;
                 champPaiement.style.display = "block";
             }
-        });
 
-        if(champPaiement.style.display === "block"){
-            console.log(1);
-        }
+            btnsPaiement.forEach(input => {
+                input.required = true;
+                console.log(input);
+            });
+        });
     });
 </script>
 </body>
