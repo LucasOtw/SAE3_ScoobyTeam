@@ -13997,7 +13997,7 @@ ul.mentions_legales-sous-list {
 
 .otp-confirm-content button,
 .otp-confirm-content input[type="submit"]:hover {
-    background-color: #FFF;
+    background-color: var(--vert-clair);
     transform: translateY(-2px);
     color: white;
 }
