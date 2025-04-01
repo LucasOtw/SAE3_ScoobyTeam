@@ -1363,6 +1363,8 @@ WHERE code_offre = :code_offre
         var cancelBlacklist = document.getElementById('cancelBlacklist');
         var cancelBlacklistError = document.getElementById('cancelBlacklistError');
 
+        let selectedAvis = null;
+
         // Afficher la modale lors de la soumission du formulaire
         del_offre.addEventListener('submit', (e) => {
             e.preventDefault();  // Empêcher l'envoi immédiat du formulaire
@@ -1393,8 +1395,10 @@ WHERE code_offre = :code_offre
         // Afficher la modale lors de la soumission du formulaire
         blacklist_avis.forEach(element => {
             //console.log(element);
-            element.addEventListener('click', () => {
+            element.addEventListener('click', function() {
                 var jetons = <?php echo json_encode($details_offre['nb_blacklister']); ?>;
+                selectedAvis = this.getAttribute('data-avis');
+                
                 //console.log(jetons);
                 if (jetons + 1 <= 3) {
                     modal2.style.display = 'flex';
@@ -1410,10 +1414,6 @@ WHERE code_offre = :code_offre
             modal2.style.display = 'none';
 
             var codeOffre = <?php echo json_encode($details_offre['code_offre']); ?>;
-            var codeAvis = this.getAttribute('data-avis');
-
-            console.log(this);
-            console.log(this.getAttribute('data-avis'));
 
             // Utilisation de fetch pour envoyer les données
             fetch("https://scooby-team.ventsdouest.dev/update_avis_status.php", {
@@ -1422,7 +1422,7 @@ WHERE code_offre = :code_offre
                     "Content-Type": "application/x-www-form-urlencoded",  // Spécifie le type de contenu
                 },
                 body: new URLSearchParams({
-                    code_avis: codeAvis,         // Envoie le code de l'avis
+                    code_avis: selectedAvis,         // Envoie le code de l'avis
                     code_offre: codeOffre        // Envoie le code de l'offre
                 })
             })
