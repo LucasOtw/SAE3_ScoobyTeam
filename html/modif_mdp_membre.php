@@ -183,7 +183,7 @@ if (isset($_POST['modif_infos'])) {
             <p style="color:#d32f2f;">Cette action est irréversible !</p>
            <span style="margin-top: 82px;display: flex;">
                 <button id="confirm">Oui</button>
-                <button id="cancel">Annuler</button>
+                <button id="cancel" style = "margin-top:0em; margin-left:1em;">Annuler</button>
             </span>
         </div>
 
