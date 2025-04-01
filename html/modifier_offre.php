@@ -1098,16 +1098,16 @@ if($infos_offre !== null){
                 <fieldset id="champ-semaines" style="display: none;">
                     <legend>Durée</legend>
                     <input type="radio" id="sem1" name="nbSemaine" value="1"
-                    <?php echo ($nbSemaines && $nbSemaines == 1) ? "checked" : "" ?>>
+                    <?php echo (isset($nbSemaines) && $nbSemaines && $nbSemaines == 1) ? "checked" : "" ?>>
                     <label for="sem1">1 semaine</label>
                     <input type="radio" id="sem2" name="nbSemaine" value="2"
-                    <?php echo ($nbSemaines && $nbSemaines == 2) ? "checked" : "" ?>>
+                    <?php echo (isset($nbSemaines) && $nbSemaines && $nbSemaines == 2) ? "checked" : "" ?>>
                     <label for="sem2">2 semaines</label>
                     <input type="radio" id="sem3" name="nbSemaine" value="3"
-                    <?php echo ($nbSemaines && $nbSemaines == 3) ? "checked" : "" ?>>
+                    <?php echo (isset($nbSemaines) && $nbSemaines && $nbSemaines == 3) ? "checked" : "" ?>>
                     <label for="sem3">3 semaines</label>
                     <input type="radio" id="sem4" name="nbSemaine" value="4"
-                    <?php echo ($nbSemaines && $nbSemaines == 4)? "checked" : "" ?>>
+                    <?php echo (isset($nbSemaines) && $nbSemaines && $nbSemaines == 4) ? "checked" : "" ?>>
                     <label for="sem4">4 semaines</label>
                 </fieldset>
             </fieldset>
@@ -1121,13 +1121,13 @@ if($infos_offre !== null){
             <fieldset id="champ-paiement" style="display: <?php echo $affichePaiement; ?>">
                 <legend>Informations de paiement</legend>
                 <label for="iban">IBAN*</label>
-                <input id="iban" name="_IBAN" value="<?php echo trim($infosBancaires['iban']); ?>" placeholder="IBAN">
+                <input id="iban" name="_IBAN" value="<?php echo (isset($infosBancaires) && $infosBancaires) ? trim($infosBancaires['iban']) : ""; ?>" placeholder="IBAN">
 
                 <label for="bic">BIC*</label>
-                <input id="bic" name="_BIC" value="<?php echo trim($infosBancaires['bic']); ?>" placeholder="BIC">
+                <input id="bic" name="_BIC" value="<?php echo (isset($infosBancaires) && $infosBancaires) ? trim($infosBancaires['bic']) : ""; ?>" placeholder="BIC">
 
                 <label for="nom_compte">Nom du compte</label>
-                <input id="nom_compte" name="_nomCompte" value="<?php echo trim($infosBancaires['nom_compte']);?>" placeholder="Nom du compte bancaire">
+                <input id="nom_compte" name="_nomCompte" value="<?php echo (isset($infosBancaires) && $infosBancaires) ? trim($infosBancaires['nom_compte']) : ""; ?>" placeholder="Nom du compte bancaire">
 
             </fieldset>
         </div>
@@ -1401,8 +1401,10 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <script>
     document.addEventListener('DOMContentLoaded',function(){
-        var isPaiement = <?php echo json_encode($infosBancaires); ?>
+        var isPaiement = <?php echo json_encode($infosBancaires); ?>;
+        const champOffGrat = document.getElementById('off_grt');
 
+        const choix_noOpt = document.getElementById('no-opt');
         const choix_optRelief = document.getElementById('opt_relief');
         const choix_optAlaUne = document.getElementById('opt_aLaUne');
         var choixOpt = "";
@@ -1413,12 +1415,25 @@ document.addEventListener('DOMContentLoaded', function() {
         const sem1 = inputSemaines[0];
         const champPaiement = document.getElementById('champ-paiement');
 
+        if(champOffGrat == null){
+            champPaiement.style.display = "block";
+        }
+
+        choix_noOpt.addEventListener('click', function(){
+            champSemaines.style.display = "none";
+            if(champOffGrat !== null){
+                champPaiement.style.display = "none";
+            }
+            sem1.checked = false;
+        });
+
         choix_optRelief.addEventListener('click',function(){
             if(choixOpt !== choix_optRelief.value){
                 choixOpt = choix_optRelief.value;
                 console.log(choixOpt);
                 champSemaines.style.display = "block";
                 sem1.checked = true;
+                champPaiement.style.display = "block";
             }
         });
 
@@ -1428,6 +1443,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log(choixOpt);
                 champSemaines.style.display = "block";
                 sem1.checked = true;
+                champPaiement.style.display = "block";
             }
         });
 
