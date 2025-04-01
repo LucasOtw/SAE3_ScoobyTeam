@@ -714,7 +714,7 @@ if (isset($_POST['envoi_modif'])){
         $update_modif_pub->bindValue(":code_offre",$offre['code_offre']);
         $update_modif_pub->execute();
 
-        // header("location: detail_offre_pro.php");
+        header("location: detail_offre_pro.php");
         exit;
         
     } else {
@@ -766,7 +766,6 @@ if($infos_offre !== null){
                     <li><a href="#" class="active" data-tab="general">Informations générales</a></li>
                     <li><a href="#" data-tab="services">Services et horaires</a></li>
                     <li><a href="#" data-tab="photos">Photos</a></li>
-                    <li><a href="#" data-tab="payment">Paiement</a></li>
                 </ul>
             </section>
             <div class="tab-content active" id="general">
@@ -1355,7 +1354,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <script>
 /*     document.addEventListener('DOMContentLoaded',function(){
-        var isPaiement = <?php echo json_encode($infosBancaires); ?>;
+        var isPaiement = <?php // echo json_encode($infosBancaires); ?>;
         const champOffGrat = document.getElementById('off_grt');
 
         const choix_noOpt = document.getElementById('no-opt');
