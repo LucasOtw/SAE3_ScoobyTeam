@@ -134,7 +134,7 @@ $isAnswer = $isAnswer->fetchColumn();
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="images/logoPin_vert.png" width="16px" height="32px">
+    <link rel="icon" type="image/png" href="images/logoPin_orange.png" width="16px" height="32px">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier  un avis</title>
     <link rel="stylesheet" href="styles.css">
@@ -144,7 +144,7 @@ $isAnswer = $isAnswer->fetchColumn();
     <header class="header-pc header_pro">
         <div class="logo-pc">
            <a href="voir_offres.php">
-            <img src="images/logoBlanc.png" alt="PACT Logo">
+            <img src="images/logo_blanc_pro.png" alt="PACT Logo">
          </a>
 
         </div>
