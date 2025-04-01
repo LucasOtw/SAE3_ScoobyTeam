@@ -1198,24 +1198,21 @@ if($infos_offre !== null){
         </div>
            
     </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function(){
-
-            const form = document.getElementById('modif_offre');
-                    
-            // Au lieu de gérer chaque champ individuellement, récupère tous les éléments avec `data-sync`
-            form.addEventListener('submit', (event) => {
-                const elementsToSync = document.querySelectorAll('[data-sync]');
-                elementsToSync.forEach((element) => {
-                    // Récupère l'id du champ de destination
-                    const targetId = element.getAttribute('data-sync');
-                    const target = document.getElementById(targetId);
-            
-                    if (target) {
-                        // Utilise innerHTML pour les champs éditables ou value pour les inputs
-                        target.value = element.contentEditable === "true" ? element.innerHTML : element.value;
-                    }
-                });
+    <script defer>
+        const form = document.getElementById('modif_offre');
+        
+        // Au lieu de gérer chaque champ individuellement, récupère tous les éléments avec `data-sync`
+        form.addEventListener('submit', (event) => {
+            const elementsToSync = document.querySelectorAll('[data-sync]');
+            elementsToSync.forEach((element) => {
+                // Récupère l'id du champ de destination
+                const targetId = element.getAttribute('data-sync');
+                const target = document.getElementById(targetId);
+        
+                if (target) {
+                    // Utilise innerHTML pour les champs éditables ou value pour les inputs
+                    target.value = element.contentEditable === "true" ? element.innerHTML : element.value;
+                }
             });
         });
     </script>
@@ -1246,7 +1243,7 @@ if($infos_offre !== null){
             });
         });
     </script>
-    <script>
+    <script defer>
         document.addEventListener('DOMContentLoaded', () => {
 
             // IMAGES GÉNÉRALES
