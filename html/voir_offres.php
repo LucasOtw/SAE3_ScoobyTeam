@@ -236,7 +236,7 @@ function tempsEcouleDepuisPublication($offre)
                 <input type="text" class="search-input" placeholder="Rechercher parmi les offres">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    style="color: #898b8d;">
+                    style="color: #b9b9b9;">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
@@ -917,17 +917,15 @@ function tempsEcouleDepuisPublication($offre)
                                echo $event['date_' . $type_offre];
                            } else {
                                echo "";
-                           } ?>" 
-                            data-period-o="<?php if (!empty($periode)) {
-                                 echo $periode['date_ouverture'];
+                           } ?>" data-period-o="<?php if (!empty($periode)) {
+                                echo $periode['date_ouverture'];
+                            } else {
+                                echo "";
+                            } ?>" data-period-c="<?php if (!empty($periode)) {
+                                 echo $periode['date_fermeture'];
                              } else {
                                  echo "";
-                             } ?>" 
-                                data-period-c="<?php if (!empty($periode)) {
-                                   echo $periode['date_fermeture'];
-                               } else {
-                                   echo "";
-                               } ?>" data-title="<?php echo trim($offre["titre_offre"]); ?>">
+                             } ?>" data-title="<?php echo trim($offre["titre_offre"]); ?>">
 
                         <img src="<?php echo "./" . $offre_image['url_image']; ?>" alt="aucune image">
 
@@ -1293,7 +1291,7 @@ function tempsEcouleDepuisPublication($offre)
                                 $eventOffre->execute();
 
                                 $event = ($eventOffre->fetch(PDO::FETCH_ASSOC));
-                                $event = $event["date_".$type_offre];
+                                $event = $event["date_" . $type_offre];
                             } else {
                                 $event = "";
                             }
@@ -1519,7 +1517,7 @@ function tempsEcouleDepuisPublication($offre)
                 const startDate = openingStartDate.value;
                 const endDate = openingEndDate.value;
 
-                
+
                 markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
                 markersArray.forEach((marker, index) => {
                     const offerData = marker.options.dataOffer;
@@ -1547,8 +1545,8 @@ function tempsEcouleDepuisPublication($offre)
                         // Period
                         const offerPeriodStart = marker.options.dataPeriodO.replace(/["']/g, "");
                         const offerPeriodEnd = marker.options.dataPeriodC.replace(/["']/g, "");
-                        
-                    
+
+
                         // Titre & Localisation
                         if (offerText.includes(query) || offerCity.includes(query)) {
                             // Test valide
@@ -1569,26 +1567,26 @@ function tempsEcouleDepuisPublication($offre)
                         if (offerPrice >= minPrice && offerPrice <= maxPrice) {
                             // Test valide
                         } else {
-                            afficher=false;
+                            afficher = false;
                         }
 
                         // Date event
                         if (!date || date === offerEvent) {
                             // Test valide
                         } else {
-                            afficher=false;
+                            afficher = false;
                         }
 
                         // Period
-                        if (((!startDate || (offerPeriodEnd=="null" && offerCategory != 'spectacle' && offerCategory != 'visite')) && (!endDate || (offerPeriodEnd=="null" && offerCategory != 'spectacle' && offerCategory != 'visite'))) 
-                        ||
-                        ((startDate <= offerPeriodEnd && startDate >= offerPeriodStart) && (endDate >= offerPeriodStart && endDate <= offerPeriodEnd))) {
+                        if (((!startDate || (offerPeriodEnd == "null" && offerCategory != 'spectacle' && offerCategory != 'visite')) && (!endDate || (offerPeriodEnd == "null" && offerCategory != 'spectacle' && offerCategory != 'visite')))
+                            ||
+                            ((startDate <= offerPeriodEnd && startDate >= offerPeriodStart) && (endDate >= offerPeriodStart && endDate <= offerPeriodEnd))) {
                             // Test valide
                         } else {
-                            afficher=false;
+                            afficher = false;
                         }
 
-                        
+
                         // Affichage du marker ou non //
                         if (afficher) {
                             toggleMarkerVisibility(index, 1); // Rendre visible
@@ -1618,7 +1616,7 @@ function tempsEcouleDepuisPublication($offre)
                         offer.classList.add('hidden');
                     }
                 });
-                
+
                 leafletFilters();
 
             });
@@ -1650,7 +1648,7 @@ function tempsEcouleDepuisPublication($offre)
                             offer.style.display = "none";
                         }
                     });
-                    
+
                     leafletFilters();
 
                     // Trier les offres visibles
@@ -1717,7 +1715,7 @@ function tempsEcouleDepuisPublication($offre)
                 });
 
                 leafletFilters();
-                
+
             }
 
             // Ajouter des événements sur les sliders
@@ -1742,7 +1740,7 @@ function tempsEcouleDepuisPublication($offre)
                 offerItems.forEach(offer => {
 
                     const offerEvent = offer.getAttribute('data-event');
-                    
+
                     if (!date || date === offerEvent) {
                         offer.style.removeProperty('display');
                     } else {
@@ -1751,7 +1749,7 @@ function tempsEcouleDepuisPublication($offre)
                 });
 
                 leafletFilters();
-                
+
             });
 
 
@@ -1770,7 +1768,7 @@ function tempsEcouleDepuisPublication($offre)
                     const offerCategory = offer.getAttribute('data-category');
 
                     // Condition pour afficher l'offre
-                    if (((!startDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite')) && (!endDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite'))) 
+                    if (((!startDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite')) && (!endDate || (!offerPeriodEnd && offerCategory != 'spectacle' && offerCategory != 'visite')))
                         ||
                         ((startDate <= offerPeriodEnd && startDate >= offerPeriodStart) && (endDate >= offerPeriodStart && endDate <= offerPeriodEnd))) {
                         offer.style.removeProperty('display'); // Afficher l'offre
@@ -1780,7 +1778,7 @@ function tempsEcouleDepuisPublication($offre)
                 });
 
                 leafletFilters();
-                
+
             }
 
             // Ajouter un écouteur d'événement sur les champs de date
