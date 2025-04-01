@@ -149,7 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                <div class="repondre_avis_texte"><?php echo $avis["txt_avis"]; ?></div>
             </div>
 
-            <form action="poster_reponse_pro.php" method="POST">
+            <form id="avisForm" action="#" method="POST">
                <div class="repondre_avis_section">
                    <h2 class="repondre_avis_section_titre">Votre avis</h2>
 
