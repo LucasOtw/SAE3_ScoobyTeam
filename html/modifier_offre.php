@@ -1403,6 +1403,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('DOMContentLoaded',function(){
         var isPaiement = <?php echo json_encode($infosBancaires); ?>
 
+        const choix_noOpt = document.getElementById('no-opt');
         const choix_optRelief = document.getElementById('opt_relief');
         const choix_optAlaUne = document.getElementById('opt_aLaUne');
         var choixOpt = "";
@@ -1412,6 +1413,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const inputSemaines = champSemaines.querySelectorAll("input[type=radio]");
         const sem1 = inputSemaines[0];
         const champPaiement = document.getElementById('champ-paiement');
+
+        choix_noOpt.addEventListener('click', function(){
+            champSemaines.style.display = "none";
+            sem1.checked = false;
+        });
 
         choix_optRelief.addEventListener('click',function(){
             if(choixOpt !== choix_optRelief.value){
