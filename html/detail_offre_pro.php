@@ -1427,6 +1427,7 @@ WHERE code_offre = :code_offre
                 .then(response => {
                     if (response.ok) {
                         console.log("L'avis a bien été blacklister.");
+                        window.location.href = "detail_offre_pro.php";
                     } else {
                         console.error("Erreur lors de la mise à jour de l'état de l'avis et de l'offre : " + response.status);
                     }
