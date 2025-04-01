@@ -37,6 +37,20 @@ if (isset($_POST['envoiOffre'])) {
 
 $offre = $_SESSION['modif_offre'];
 
+// On récupère les infos bancaires si elles existent
+
+$getInfosBancaires = $dbh->prepare("SELECT * FROM tripenarvor._compte_bancaire
+WHERE code_compte_bancaire = :code_compte_bc");
+$getInfosBancaires->bindValue(":code_compte_bc",$monComptePro['code_compte_bancaire']);
+
+try{
+    $getInfosBancaires->execute();
+
+    $infosBancaires = $getInfosBancaires->fetch(PDO::FETCH_ASSOC);
+} catch (PDOException $e){
+    die("Erreur à l'exécution : ".$e->getMessage());
+}
+
 echo "<pre>";
 var_dump($offre);
 echo "</pre>";
@@ -641,6 +655,8 @@ if (isset($_POST['envoi_modif'])){
             }
         }
 
+        /* GESTION DE LA MISE A JOUR DE L'OFFRE ET DU PAIEMENT */
+
         // à la fin, tout roule, on peut donc mettre à jour la date de la dernière modification :)
 
         $today = date("Y-m-d");
@@ -1027,16 +1043,16 @@ if($infos_offre !== null){
                 <?php
                     if(isset($monComptePro['num_siren']) && $monComptePro['num_siren']){
                         ?>
-                        <input type="radio" id="off_std" name="type_offre" value="standard"
+                        <input type="radio" id="off_std" name="type_offre" value="Offre Standard"
                         <?php echo ($offre['nom_type'] == "Offre Standard") ? "checked" : "" ?>>
                         <label for="off_std">Offre Standard</label>
-                        <input type="radio" id="off_pre" name="type_offre" value="premium"
+                        <input type="radio" id="off_pre" name="type_offre" value="Offre Premium"
                         <?php echo ($offre['nom_type'] == "Offre Premium") ? "checked" : "" ?>>
                         <label for="off_pre">Offre Premium</label>
                         <?php
                     } else {
                         ?>
-                        <input type="radio" id="off_grt" name="type_offre" value="gratuite"
+                        <input type="radio" id="off_grt" name="type_offre" value="Offre Gratuite"
                         <?php echo ($offre['nom_type'] == "Offre Gratuite") ? "checked" : "" ?>>
                         <label for="off_grt">Offre Gratuite</label>
                         <?php
@@ -1092,6 +1108,22 @@ if($infos_offre !== null){
                     <label for="sem4">4 semaines</label>
                 </fieldset>
             </fieldset>
+            <?php if($infosBancaires){
+                ?>
+                <fieldset id="champ-paiement">
+                    <legend>Informations de paiement</legend>
+                    <label for="iban">IBAN*</label>
+                    <input id="iban" name="_IBAN" value="<?php echo trim($infosBancaires['iban']); ?>" placeholder="IBAN">
+
+                    <label for="bic">BIC*</label>
+                    <input id="bic" name="_BIC" value="<?php echo trim($infosBancaires['bic']); ?>" placeholder="BIC">
+
+                    <label for="nom_compte">Nom du compte</label>
+                    <input id="nom_compte" name="_nomCompte" value="<?php echo trim($infosBancaires['nom_compte']);?>" placeholder="Nom du compte bancaire">
+    
+                </fieldset>
+                <?php
+            } ?>
         </div>
 
             <div class="btn_modif_offre">
