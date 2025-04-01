@@ -32,10 +32,10 @@
             </ul>
         </nav>
       </header> 
-    <main class="mentions_legales-main">
-        <a href="obtenir_aide.php">
+      <a href="obtenir_aide.php">
             <img src="images/Bouton_retour.png" alt="bouton retour">
-        </a>
+      </a>
+    <main class="mentions_legales-main">
         <section class="mentions_legales-section">
             <h3 class="mentions_legales-title">CONDITIONS GÉNÉRALES D'UTILISATION (CGU) DE LA PLATEFORME PACT</h3>
 

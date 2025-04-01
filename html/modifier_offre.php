@@ -1108,9 +1108,12 @@ if($infos_offre !== null){
                     <label for="sem4">4 semaines</label>
                 </fieldset>
             </fieldset>
-            <?php if($infosBancaires){
+            <?php
+            $affichePaiement = "";
+                if($infosBancaires){
+                    $affichePaiement = "block";
                 ?>
-                <fieldset id="champ-paiement">
+                <fieldset id="champ-paiement" style="display: <?php echo $affichePaiement; ?>">
                     <legend>Informations de paiement</legend>
                     <label for="iban">IBAN*</label>
                     <input id="iban" name="_IBAN" value="<?php echo trim($infosBancaires['iban']); ?>" placeholder="IBAN">
@@ -1392,6 +1395,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+        var isPaiement = <?php echo json_encode($infosBancaires); ?>
+        
+        const champPaiement = document.getElementById('champ-paiement');
+
+        if(isPaiement == null){
+            /*
+            * Si il n'y a aucun moyen de paiement enregistré,
+            * alors on ajoute des écouteurs qui afficheront le fieldset
+            */
+        }
+    });
 </script>
 </body>
 </html>
