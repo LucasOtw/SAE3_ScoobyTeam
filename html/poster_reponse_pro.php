@@ -244,6 +244,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </footer>
+    <script>
+            document.addEventListener('DOMContentLoaded', function () {
+            var formModif = document.getElementById('avisForm');
+            var modal = document.getElementById('customModal');
+            var btnModif = document.getElementById('confirmModif');
+
+            formModif.addEventListener('submit', function (e) {
+                e.preventDefault();
+                modal.style.display = 'flex';
+            });
+
+            btnModif.addEventListener('click', () => {
+                modal.style.display = 'none';
+                avisForm.action = "modif_avis_pro.php";
+                avisForm.submit();
+            });
+
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            };
+        });
+    </script>
 </body>
 
 </html>
