@@ -11491,6 +11491,10 @@ main.main_repondre_avis .message-erreur {
     width: 100%;
     margin-top: 20px;
 }
+
+.btn-retour-cgu{
+    display: none;
+}
                         
 
 .mentions_legales-title {

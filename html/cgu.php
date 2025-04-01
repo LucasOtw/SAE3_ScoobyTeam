@@ -32,7 +32,7 @@
             </ul>
         </nav>
       </header> 
-      <a href="obtenir_aide.php">
+      <a href="obtenir_aide.php" class="btn-retour-cgu">
             <img src="images/Bouton_retour.png" alt="bouton retour">
       </a>
     <main class="mentions_legales-main">
