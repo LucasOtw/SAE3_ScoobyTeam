@@ -67,6 +67,12 @@
                 <span class="faq-arrow">›</span>
             </a>
         </li>
+        <li class="faq-item">
+            <a href="cgu.php">
+                <span>CGU</span>
+                <span class="faq-arrow">›</span>
+            </a>
+        </li>
     </ul>
 
     <h2 class="faq-subtitle">Nous contacter</h2>

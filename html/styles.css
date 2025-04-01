@@ -3730,7 +3730,9 @@ nom.avis {
     border-radius: 19px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    /* Plus élevé que l'overlay */
+    @media (max-width: 429px) {
+        width: 80%;  
+    }
 }
 
 .custom-confirm-content p {
@@ -11468,6 +11470,7 @@ main.main_repondre_avis .message-erreur {
     display: flex;
     justify-content: center;
     padding: 20px;
+    flex-direction: column;
 }
 
 .mentions_legales-section {
@@ -11477,6 +11480,7 @@ main.main_repondre_avis .message-erreur {
     border-radius: 8px;
     max-width: 800px;
     width: 100%;
+    margin-top: 20px;
 }
                         
 
