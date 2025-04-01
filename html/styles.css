@@ -3783,7 +3783,8 @@ nom.avis {
     margin-top: 4em; 
     margin-left: 12em;
     @media( max-width: 430px) {
-        margin-top: 4em; 
+        margin-top: 4em;
+        margin-left:6em; 
     }
 }
 
