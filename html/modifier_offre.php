@@ -1092,7 +1092,7 @@ if($infos_offre !== null){
                         }
 
                         ?>
-                        <fieldset>
+                        <fieldset id="champ-semaines">
                             <legend>Durée</legend>
                             <input type="radio" id="sem1" name="nbSemaine" value="1"
                             <?php echo ($nbSemaines && $nbSemaines == 1) ? "checked" : "" ?>>
@@ -1407,12 +1407,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const choix_optAlaUne = document.getElementById('opt_aLaUne');
         var choixOpt = "";
         
+        const champSemaines = document.getElementById('champ-semaines');
+        const inputSemaines = champSemaines.querySelectorAll("input[type=radio]");
+        const sem1 = inputSemaines[0];
         const champPaiement = document.getElementById('champ-paiement');
 
         choix_optRelief.addEventListener('click',function(){
             if(choixOpt !== choix_optRelief.value){
                 choixOpt = choix_optRelief.value;
                 console.log(choixOpt);
+                champSemaines.style.display = "block";
+                sem1.checked = true;
             }
         });
 
@@ -1420,11 +1425,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if(choixOpt !== choix_optAlaUne.value){
                 choixOpt = choix_optAlaUne.value;
                 console.log(choixOpt);
+                champSemaines.style.display = "block";
+                sem1.checked = true;
             }
-        })
-
-        choix_optAlaUne.addEventListener('click',function(){
-            console.log(2);
         });
 
         if(isPaiement == null){
