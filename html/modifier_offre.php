@@ -1053,6 +1053,28 @@ if($infos_offre !== null){
                 <input type="radio" id="opt_aLaUne" name="option_offre" value="aLaUne"
                 <?php echo ($offre['option_a_la_une']) ? "checked" : "" ?>>
                 <label for="opt_aLaUne">Option "à la Une"</label>
+                <?php
+                    if($offre['option_en_relief'] || $offre['option_a_la_une']){
+                        // on récupère le nb de semaines
+
+                        $getNbSemaines = $dbh->prepare("SELECT nb_semaines FROM tripenarvor._option
+                        WHERE code_option = :code_option");
+                        if($offre['option_en_relief']){
+                            $getNbSemaines->bindValue(":code_option",$offre['option_en_relief']);
+                        } else if ($offre['option_a_la_une']){
+                            $getNbSemaines->bindValue(":code_option",$offre['option_a_la_une']);
+                        }
+                        try{
+                            $getNbSemaines->execute();
+
+                            $nbSemaines = $getNbSemaines->fetchColumn();
+                        } catch (PDOException $e){
+                            die("Erreur d'exécution : ". $e->getMessage());
+                        }
+
+                        var_dump($nbSemaines);
+                    }
+                ?>
                 <fieldset>
                     <legend>Durée</legend>
                     <input type="radio" id="sem1" name="nbSemaine" value="1">
