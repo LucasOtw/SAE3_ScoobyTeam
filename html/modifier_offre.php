@@ -1092,24 +1092,24 @@ if($infos_offre !== null){
                         }
 
                         ?>
-                        <fieldset id="champ-semaines">
-                            <legend>Durée</legend>
-                            <input type="radio" id="sem1" name="nbSemaine" value="1"
-                            <?php echo ($nbSemaines && $nbSemaines == 1) ? "checked" : "" ?>>
-                            <label for="sem1">1 semaine</label>
-                            <input type="radio" id="sem2" name="nbSemaine" value="2"
-                            <?php echo ($nbSemaines && $nbSemaines == 2) ? "checked" : "" ?>>
-                            <label for="sem2">2 semaines</label>
-                            <input type="radio" id="sem3" name="nbSemaine" value="3"
-                            <?php echo ($nbSemaines && $nbSemaines == 3) ? "checked" : "" ?>>
-                            <label for="sem3">3 semaines</label>
-                            <input type="radio" id="sem4" name="nbSemaine" value="4"
-                            <?php echo ($nbSemaines && $nbSemaines == 4)? "checked" : "" ?>>
-                            <label for="sem4">4 semaines</label>
-                        </fieldset>
                         <?php
                     }
                 ?>
+                <fieldset id="champ-semaines" style="display: none;">
+                    <legend>Durée</legend>
+                    <input type="radio" id="sem1" name="nbSemaine" value="1"
+                    <?php echo ($nbSemaines && $nbSemaines == 1) ? "checked" : "" ?>>
+                    <label for="sem1">1 semaine</label>
+                    <input type="radio" id="sem2" name="nbSemaine" value="2"
+                    <?php echo ($nbSemaines && $nbSemaines == 2) ? "checked" : "" ?>>
+                    <label for="sem2">2 semaines</label>
+                    <input type="radio" id="sem3" name="nbSemaine" value="3"
+                    <?php echo ($nbSemaines && $nbSemaines == 3) ? "checked" : "" ?>>
+                    <label for="sem3">3 semaines</label>
+                    <input type="radio" id="sem4" name="nbSemaine" value="4"
+                    <?php echo ($nbSemaines && $nbSemaines == 4)? "checked" : "" ?>>
+                    <label for="sem4">4 semaines</label>
+                </fieldset>
             </fieldset>
             <?php
             $affichePaiement = "none";
@@ -1408,6 +1408,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var choixOpt = "";
         
         const champSemaines = document.getElementById('champ-semaines');
+        console.log(champSemaines);
         const inputSemaines = champSemaines.querySelectorAll("input[type=radio]");
         const sem1 = inputSemaines[0];
         const champPaiement = document.getElementById('champ-paiement');
