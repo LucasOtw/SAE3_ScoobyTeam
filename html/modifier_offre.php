@@ -1405,11 +1405,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const choix_optRelief = document.getElementById('opt_relief');
         const choix_optAlaUne = document.getElementById('opt_aLaUne');
+        var choixOpt = "";
         
         const champPaiement = document.getElementById('champ-paiement');
 
         choix_optRelief.addEventListener('click',function(){
-            console.log(1);
+            if(choixOpt !== choix_optRelief.value){
+                choixOpt = choix_optRelief.value;
+            }
+        });
+
+        choix_optAlaUne.addEventListener('click', function(){
+            if(choixOpt !== choix_optAlaUne.value){
+                choixOpt = choix_optAlaUne.value;
+            }
         })
 
         choix_optAlaUne.addEventListener('click',function(){
