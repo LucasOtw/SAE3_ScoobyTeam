@@ -1415,14 +1415,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const sem1 = inputSemaines[0];
         const champPaiement = document.getElementById('champ-paiement');
 
-        if(!champOffGrat){
+        if(champOffGrat == null){
             champPaiement.style.display = "block";
         }
 
         choix_noOpt.addEventListener('click', function(){
             champPaiement.style.display = "none";
             if(champOffGrat !== null){
-                champSemaines.style.display = "none";
+                champPaiement.style.display = "none";
             }
             sem1.checked = false;
         });
