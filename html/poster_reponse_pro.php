@@ -257,7 +257,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             btnModif.addEventListener('click', () => {
                 modal.style.display = 'none';
-                avisForm.action = "modif_avis_pro.php";
+                avisForm.action = "detail_offre_pro.php";
+
                 avisForm.submit();
             });
 
