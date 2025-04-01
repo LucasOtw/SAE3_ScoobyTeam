@@ -1,6 +1,12 @@
 <?php
 ob_start();
 session_start();
+
+if(isset($_SESSION['membre'])){
+    session_destroy();
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
