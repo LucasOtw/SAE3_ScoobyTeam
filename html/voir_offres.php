@@ -1291,6 +1291,7 @@ function tempsEcouleDepuisPublication($offre)
                                 $eventOffre->execute();
 
                                 $event = ($eventOffre->fetch(PDO::FETCH_ASSOC));
+                                $event = $event["date_".$type_offre];
                             } else {
                                 $event = "";
                             }
@@ -1336,7 +1337,7 @@ function tempsEcouleDepuisPublication($offre)
                             $popupContent .= "</div>";
                             $popupContent .= "</div>";
 
-                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon, dataOffer: '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "',dataStatus: '" . json_encode($dataStatusEng) . "', dataCategory: '" . json_encode($type_offre) . "', dataCity: '" . json_encode($villeOffre) . "'});";
+                            echo "var marker = L.marker([$latitude, $longitude], {icon: customIcon, dataOffer: '" . htmlspecialchars(json_encode($monOffre), ENT_QUOTES, 'UTF-8') . "',dataStatus: '" . json_encode($dataStatusEng) . "', dataCategory: '" . json_encode($type_offre) . "', dataCity: '" . json_encode($villeOffre) . "', dataEvent: '" . json_encode($event) . "'});";
                             echo "markersArray.push(marker);";
 
                             echo "var popup = L.popup({closeButton: false, autoClose: false, closeOnClick: false, className: 'custom-popup'}).setContent(\"" . addslashes($popupContent) . "\");";
@@ -1497,12 +1498,22 @@ function tempsEcouleDepuisPublication($offre)
             ///           Fonction filtre leaflet           ///
             ///////////////////////////////////////////////////
             function leafletFilters() {
+                // Titre & Localisation
                 const query = searchInput.value.toLowerCase().trim();
 
+                // Category, Rate & Status
                 const category = document.querySelector('.search-select:nth-of-type(1)').value;
                 const rate = document.querySelector('#select-rate').value;
                 const status = document.querySelector('#select-statut').value;
 
+                // Tarif
+                const minPrice = parseFloat(priceMinInput.value);
+                const maxPrice = parseFloat(priceMaxInput.value);
+
+                // Date event
+                const date = eventDate.value;
+
+                
                 markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
                 markersArray.forEach((marker, index) => {
                     const offerData = marker.options.dataOffer;
@@ -1512,34 +1523,56 @@ function tempsEcouleDepuisPublication($offre)
                         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
                         let offer = JSON.parse(correctedJsonString); // Convertir en objet
 
-                        let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
+                        // Titre & Localisation
+                        let offerText = offer.titre_offre.toLowerCase();
                         let offerCity = marker.options.dataCity.toLowerCase();
 
-                        let offerCategory = marker.options.dataCategory.replace(/["']/g, ""); // Prendre le titre de l’offre
+                        // Category, Rate & Status
+                        let offerCategory = marker.options.dataCategory.replace(/["']/g, "");
                         const offerRate = offer.note_moyenne;
                         const offerStatus = marker.options.dataStatus.replace(/["']/g, "");
+
+                        // Tarif
+                        const offerPrice = parseFloat(offer.tarif);
+
+                        // Date event
+                        const offerEvent = marker.options.dataEvent.replace(/["']/g, "");
+
+                        console.log("Date: "+date+", Date Offre: "+offerEvent+".");
                     
-                        console.log("Category: " + category + ", Offer Category: " + offerCategory + ".");
-                        console.log("Rate: " + rate + ", Offer Rate: " + offerRate + ".");
-                        console.log("Status: " + status + ", Offer Status: " + offerStatus + ".");
-
-
-                        // Si l'offre correspond à la recherche, on la montre
+                    
+                        // Titre & Localisation
                         if (offerText.includes(query) || offerCity.includes(query)) {
-
+                            // Test valide
                         } else {
                             afficher = false;
                         }
 
-                        // Si l'offre correspond à la recherche, on la montre
+                        // Category, Rate & Status
                         if ((category === 'all' || category == offerCategory.trim()) &&
                             (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
                             (!status || status == offerStatus.trim())) {
-                            console.log("ok");
+                            // Test valide
                         } else {
                             afficher = false;
                         }
 
+                        // Tarif
+                        if (offerPrice >= minPrice && offerPrice <= maxPrice) {
+                            // Test valide
+                        } else {
+                            afficher=false;
+                        }
+
+                        // Date event
+                        if (!date || date === offerEvent) {
+                            // Test valide
+                        } else {
+                            afficher=false;
+                        }
+
+                        
+                        // Affichage du marker ou non //
                         if (afficher) {
                             toggleMarkerVisibility(index, 1); // Rendre visible
                         } else {
@@ -1568,26 +1601,7 @@ function tempsEcouleDepuisPublication($offre)
                         offer.classList.add('hidden');
                     }
                 });
-
-                // Réinitialiser les marqueurs
-                // markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
-                // markersArray.forEach((marker, index) => {
-                //     const offerData = marker.options.dataOffer;
-
-                //     if (offerData) {
-                //         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
-                //         let offer = JSON.parse(correctedJsonString); // Convertir en objet
-                //         let offerText = offer.titre_offre.toLowerCase(); // Prendre le titre de l’offre
-                //         let offerCity = marker.options.dataCity.toLowerCase();
-
-                //         // Si l'offre correspond à la recherche, on la montre
-                //         if (offerText.includes(query) || offerCity.includes(query)) {
-                //             toggleMarkerVisibility(index, 1); // Rendre visible
-                //         } else {
-                //             toggleMarkerVisibility(index, 0); // Cacher le marqueur
-                //         }
-                //     }
-                // });
+                
                 leafletFilters();
 
             });
@@ -1619,29 +1633,7 @@ function tempsEcouleDepuisPublication($offre)
                             offer.style.display = "none";
                         }
                     });
-
-                    // Réinitialiser les marqueurs
-                    // markers.clearLayers();  // Effacer tous les marqueurs existants du groupe de clusters
-                    // markersArray.forEach((marker, index) => {
-                    //     const offerData = marker.options.dataOffer;
-
-                    //     if (offerData) {
-                    //         let correctedJsonString = offerData.replace(/&quot;/g, '"').replace(/&#039;/g, "'");
-                    //         let offer = JSON.parse(correctedJsonString); // Convertir en objet
-                    //         let offerCategory = marker.options.dataCategory; // Prendre le titre de l’offre
-                    //         const offerRate = offerData.note_moyenne;
-                    //         const offerStatus = marker.options.dataStatus;
-
-                    //         // Si l'offre correspond à la recherche, on la montre
-                    //         if ((category === 'all' || category === offerCategory) &&
-                    //             (!rate || rate === offerRate || (offerRate > rate && offerRate < rate + 1)) &&
-                    //             (!status || status === offerStatus)) {
-                    //             toggleMarkerVisibility(index, 1); // Rendre visible
-                    //         } else {
-                    //             toggleMarkerVisibility(index, 0); // Cacher le marqueur
-                    //         }
-                    //     }
-                    // });
+                    
                     leafletFilters();
 
                     // Trier les offres visibles
@@ -1706,6 +1698,9 @@ function tempsEcouleDepuisPublication($offre)
                         offer.style.display = "none"; // Cacher l'offre
                     }
                 });
+
+                leafletFilters();
+                
             }
 
             // Ajouter des événements sur les sliders
@@ -1730,12 +1725,16 @@ function tempsEcouleDepuisPublication($offre)
                 offerItems.forEach(offer => {
 
                     const offerEvent = offer.getAttribute('data-event');
+                    
                     if (!date || date === offerEvent) {
                         offer.style.removeProperty('display');
                     } else {
                         offer.style.display = "none";
                     }
                 });
+
+                leafletFilters();
+                
             });
 
 
