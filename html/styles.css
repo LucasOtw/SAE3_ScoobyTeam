@@ -3412,9 +3412,9 @@ nav.nav-bar {
         display: none;
     }
 
-    .main_consulter_compte_membre .checkbox {
-        display: none;
-    }
+    /* .main_consulter_compte_membre .checkbox {
+
+    } */
 
     .main_consulter_compte_membre .compte_membre_save_delete_remove {
         display: block;
@@ -4316,6 +4316,7 @@ main.creation_compte_membre .creation_compte_membre_other-links {
 
 main.creation_compte_membre .creation_compte_membre_other-links a.connexion_membre {
     color: var(--vert-clair);
+    text-decoration: none;
 }
 
 main.creation_compte_membre .creation_compte_membre_other-links a.inscription_pro {
