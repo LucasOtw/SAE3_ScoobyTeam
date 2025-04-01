@@ -3379,6 +3379,11 @@ nav.nav-bar {
 
     }
 
+    .main_consulter_compte_membre label {
+        margin-bottom: 0px;
+        font-size: 13px;
+    }
+
 
     nav.nav-bar {
         width: 84vw;
@@ -4306,7 +4311,6 @@ main.creation_compte_membre .creation_compte_membre_other-links {
 
 main.creation_compte_membre .creation_compte_membre_other-links a.connexion_membre {
     color: var(--vert-clair);
-    text-decoration: none;
 }
 
 main.creation_compte_membre .creation_compte_membre_other-links a.inscription_pro {
