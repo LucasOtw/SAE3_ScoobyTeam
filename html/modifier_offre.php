@@ -1121,13 +1121,13 @@ if($infos_offre !== null){
             <fieldset id="champ-paiement" style="display: <?php echo $affichePaiement; ?>">
                 <legend>Informations de paiement</legend>
                 <label for="iban">IBAN*</label>
-                <input id="iban" name="_IBAN" value="<?php echo trim($infosBancaires['iban']); ?>" placeholder="IBAN">
+                <input id="iban" name="_IBAN" value="<?php echo (isset($infosBancaires) && $infosBancaires) ? trim($infosBancaires['iban']) : ""; ?>" placeholder="IBAN">
 
                 <label for="bic">BIC*</label>
-                <input id="bic" name="_BIC" value="<?php echo trim($infosBancaires['bic']); ?>" placeholder="BIC">
+                <input id="bic" name="_BIC" value="<?php echo (isset($infosBancaires) && $infosBancaires) ? trim($infosBancaires['bic']) : ""; ?>" placeholder="BIC">
 
                 <label for="nom_compte">Nom du compte</label>
-                <input id="nom_compte" name="_nomCompte" value="<?php echo trim($infosBancaires['nom_compte']);?>" placeholder="Nom du compte bancaire">
+                <input id="nom_compte" name="_nomCompte" value="<?php echo (isset($infosBancaires) && $infosBancaires) ? trim($infosBancaires['nom_compte']) : ""; ?>" placeholder="Nom du compte bancaire">
 
             </fieldset>
         </div>
@@ -1402,6 +1402,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
     document.addEventListener('DOMContentLoaded',function(){
         var isPaiement = <?php echo json_encode($infosBancaires); ?>
+        const champOffGrat = document.getElementById('off_grt');
 
         const choix_noOpt = document.getElementById('no-opt');
         const choix_optRelief = document.getElementById('opt_relief');
@@ -1414,9 +1415,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const sem1 = inputSemaines[0];
         const champPaiement = document.getElementById('champ-paiement');
 
+        if(champOffGrat){
+            champPaiement.style.display = "block";
+        }
+
         choix_noOpt.addEventListener('click', function(){
             champPaiement.style.display = "none";
-            champSemaines.style.display = "none";
+            if(champOffGrat){
+                champSemaines.style.display = "none";
+            }
             sem1.checked = false;
         });
 
