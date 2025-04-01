@@ -163,6 +163,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                        </div>
                </div>
             </form>
+
+            <div id="reponse-pro" class="custom-modal">
+                <div class="custom-modal-content">
+                    <p class="texte-boite-perso">Votre réponse a été envoyé avec succès !</p>
+                    <button id="confirmModif" class="confirm-btn">Ok</button>
+                </div>
+            </div>
         <nav class="nav-bar">
             <a href="mes_offres.php"><img src="images/icones/House icon.png" alt="image de maison"></a>
             <a href="#"><img src="images/icones/Recent icon.png" alt="image d'horloge"></a>
