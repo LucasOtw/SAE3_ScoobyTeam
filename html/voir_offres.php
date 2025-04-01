@@ -633,7 +633,7 @@ function tempsEcouleDepuisPublication($offre)
                     break;
                 }
             }
-            echo "<script>console.log('consulter: " . $AConsulterRecemment . "' );</script>";
+
             if ($AConsulterRecemment) {
                 ?>
                 <div class="vu-recemment-carrousel">
