@@ -4877,12 +4877,18 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
 
 .main_modif_mdp_membre #form-verif-otp{
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 10px;
 }
 
 .main_modif_mdp_membre #form-verif-otp > input[type="submit"]{
     width: 10vw;
+    transform: scale(0.85);
+    transform-origin: center;
+}
+
+.main_modif_mdp_membre #form-verif-otp > input[type="text"]{
+    width: 100%;
 }
 
 
