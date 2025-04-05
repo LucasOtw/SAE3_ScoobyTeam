@@ -452,8 +452,10 @@ if (isset($_POST['modif_infos'])) {
                     errorMsg.innerHTML = data.message;
                 }
             })
-
-            console.log("huh ?");
+            .catch(error => {
+                console.error("Erreur dans le fetch :", error);
+                errorMsg.innerHTML = "Erreur de communication avec le serveur.";
+            });
         })
 
     </script>
