@@ -385,6 +385,7 @@ if (isset($_POST['modif_infos'])) {
         const formActiveOTP = document.getElementById('form-verif-otp');
         const btnOTP = document.getElementById('submit-otp');
         const codeCompte = <?php echo json_encode($_SESSION['membre']['code_compte']); ?>;
+        console.log(codeCompte);
         var errorMsg = document.getElementById('errorMsg');
 
         let formActive2FA = document.getElementById('form2FA');
