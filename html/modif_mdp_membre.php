@@ -446,10 +446,12 @@ if (isset($_POST['modif_infos'])) {
             .then(response => response.json())
             .then(data => {
                 if(data.success){
+                    errorMsg.style.display = "inline";
                     errorMsg.innerHTML = "";
                     errorMsg.textContent = data.message;
                 } else {
                     errorMsg.innerHTML = data.message;
+                    errorMsg.style.display = "inline";
                 }
             })
             .catch(error => {
