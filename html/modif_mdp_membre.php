@@ -235,7 +235,8 @@ if (isset($_POST['modif_infos'])) {
                         <img src="https://api.qrserver.com/v1/create-qr-code/?data=<?php echo urlencode($otp_uri) ?>&size=200x200" alt="QR Code OTP">
                     </div>
                 <?php endif; ?>
-                <?php
+            </div>
+            <?php
                     // On vérifie si le code OTP est actif ou non
                     $checkIsActiveOTP = $dbh->prepare("SELECT is_active FROM tripenarvor._compte_otp
                     WHERE code_compte = :code_compte");
@@ -255,7 +256,6 @@ if (isset($_POST['modif_infos'])) {
                         <?php
                     }
                 ?>
-            </div>
         </form>
 
        
