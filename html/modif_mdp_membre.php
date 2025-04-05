@@ -447,7 +447,6 @@ if (isset($_POST['modif_infos'])) {
                     if(data.success){
                         errorMsg.innerHTML = "";
                         errorMsg.textContent = data.message;
-                        window.location.href = "modif_mdp_membre.php";
                     } else {
                         errorMsg.innerHTML = data.message;
                     }
