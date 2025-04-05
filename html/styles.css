@@ -4887,7 +4887,7 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
     transform-origin: center;
 }
 
-.main_modif_mdp_membre #form-verif-otp > input[type="text"]{
+.main_modif_mdp_membre #form-verif-otp span > input[type="text"]{
     width: 100%;
 }
 
