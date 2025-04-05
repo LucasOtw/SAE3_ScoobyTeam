@@ -442,15 +442,15 @@ if (isset($_POST['modif_infos'])) {
                     codeOTP: document.getElementById('otpCode').value,
                     code_compte: codeCompte
                 })
-                .then(response => response.json())
-                .then(data => {
-                    if(data.success){
-                        errorMsg.innerHTML = "";
-                        errorMsg.textContent = data.message;
-                    } else {
-                        errorMsg.innerHTML = data.message;
-                    }
-                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success){
+                    errorMsg.innerHTML = "";
+                    errorMsg.textContent = data.message;
+                } else {
+                    errorMsg.innerHTML = data.message;
+                }
             })
         })
 
