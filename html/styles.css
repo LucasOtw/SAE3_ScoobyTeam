@@ -4877,10 +4877,11 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
 
 .main_modif_mdp_membre #form-verif-otp{
     display: flex;
+    align-items: center;
 }
 
 .main_modif_mdp_membre #form-verif-otp > input[type="submit"]{
-    width: 15vw;
+    width: 10vw;
 }
 
 
