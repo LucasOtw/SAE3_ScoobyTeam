@@ -424,7 +424,7 @@ if (isset($_POST['modif_infos'])) {
 
         /* FORMULAIRE DE VÉRIFICATION CODE OTP */
 
-        document.getElementById('codeOTP').addEventListener('input',function(){
+        document.getElementById('otpCode').addEventListener('input',function(){
             this.value = this.value.replace(/\D/g, "").slice(0, 6);
             errorMsg.style.display = (this.value.length === 6) ? "none" : "block";
             btnOTP.disabled = (this.value.length === 6) ? false : true;
@@ -439,7 +439,7 @@ if (isset($_POST['modif_infos'])) {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
                 body: new URLSearchParams({
-                    codeOTP: document.getElementById('codeOTP').value,
+                    codeOTP: document.getElementById('otpCode').value,
                     code_compte: codeCompte
                 })
                 .then(response => response.json())
