@@ -4879,6 +4879,10 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
     display: flex;
 }
 
+.main_modif_mdp_membre #form-verif-otp > input[type="submit"]{
+    width: 15vw;
+}
+
 
 
 /* Style général pour tous les fieldsets */
