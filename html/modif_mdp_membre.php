@@ -452,6 +452,8 @@ if (isset($_POST['modif_infos'])) {
                     errorMsg.innerHTML = data.message;
                 }
             })
+
+            console.log("huh ?");
         })
 
     </script>
