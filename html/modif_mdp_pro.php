@@ -381,7 +381,7 @@ if (isset($_POST['modif_infos'])) {
             // On vérifie si le code OTP est actif ou non
             $checkIsActiveOTP = $dbh->prepare("SELECT is_active FROM tripenarvor._compte_otp
             WHERE code_compte = :code_compte");
-            $checkIsActiveOTP->bindValue(":code_compte",$_SESSION['membre']['code_compte']);
+            $checkIsActiveOTP->bindValue(":code_compte",$_SESSION['pro']['code_compte']);
             $checkIsActiveOTP->execute();
 
             $isActiveOTP = $checkIsActiveOTP->fetchColumn();
