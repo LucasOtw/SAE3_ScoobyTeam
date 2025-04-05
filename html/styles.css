@@ -4878,6 +4878,7 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
 .main_modif_mdp_membre #form-verif-otp{
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 .main_modif_mdp_membre #form-verif-otp > input[type="submit"]{

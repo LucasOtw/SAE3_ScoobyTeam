@@ -250,8 +250,10 @@ if (isset($_POST['modif_infos'])) {
                 if(!$isActiveOTP){
                     ?>
                     <form id="form-verif-otp" action="#" method="POST">
-                        <label for="otpCode">Code OTP</label>
-                        <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
+                        <span>
+                            <label for="otpCode">Code OTP</label>
+                            <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
+                        </span>
                         <input id="submit-otp" class="submit-btn2" type="submit" value="Vérifier le code">
                         <p id="errorMsg" style="color: red; display: none;margin-top: 16px;">Le code doit contenir exactement 6 chiffres.</p>
                     </form>
