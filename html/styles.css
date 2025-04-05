@@ -4849,7 +4849,7 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
 }
 
 .main_modif_mdp_membre button.submit-btn1,
-.main_modif_mdp_membre button.submit-btn2 {
+.main_modif_mdp_membre .submit-btn2 {
     display: flex;
     align-items: center;
     justify-content: center;
