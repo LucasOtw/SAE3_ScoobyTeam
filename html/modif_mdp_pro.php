@@ -378,23 +378,25 @@ if (isset($_POST['modif_infos'])) {
             </div>
         </form>
         <?php
-            // On vérifie si le code OTP est actif ou non
-            $checkIsActiveOTP = $dbh->prepare("SELECT is_active FROM tripenarvor._compte_otp
-            WHERE code_compte = :code_compte");
-            $checkIsActiveOTP->bindValue(":code_compte",$_SESSION['pro']['code_compte']);
-            $checkIsActiveOTP->execute();
+            if(isset($isActivated2FA) && $isActivated2FA){
+                // On vérifie si le code OTP est actif ou non
+                $checkIsActiveOTP = $dbh->prepare("SELECT is_active FROM tripenarvor._compte_otp
+                WHERE code_compte = :code_compte");
+                $checkIsActiveOTP->bindValue(":code_compte",$_SESSION['pro']['code_compte']);
+                $checkIsActiveOTP->execute();
 
-            $isActiveOTP = $checkIsActiveOTP->fetchColumn();
+                $isActiveOTP = $checkIsActiveOTP->fetchColumn();
 
-            if(!$isActiveOTP){
-                ?>
-                <form id="form-verif-otp" action="#" method="POST">
-                    <label for="otpCode">Code OTP</label>
-                    <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
-                    <input id="submit-otp" type="submit" value="Vérifier le code">
-                    <p id="errorMsg" style="color: red; display: none;margin-top: 16px;">Le code doit contenir exactement 6 chiffres.</p>
-                </form>
-                <?php
+                if(!$isActiveOTP){
+                    ?>
+                    <form id="form-verif-otp" action="#" method="POST">
+                        <label for="otpCode">Code OTP</label>
+                        <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
+                        <input id="submit-otp" type="submit" value="Vérifier le code">
+                        <p id="errorMsg" style="color: red; display: none;margin-top: 16px;">Le code doit contenir exactement 6 chiffres.</p>
+                    </form>
+                    <?php
+                }
             }
         ?>
         <form action="#" method="POST">
