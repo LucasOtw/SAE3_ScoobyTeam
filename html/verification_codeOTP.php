@@ -41,6 +41,29 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     if ($otp->verify($codeOTP, null, 1)) { 
         logValidation("Code OTP correct pour le compte $codeCompte ");
+
+        // on vérifie si le code OTP est actif ou non (MODIF_MDP_MEMBRE / MODIF_MDP_PRO)
+
+        $isActiveOTP = $dbh->prepare('SELECT is_active FROM tripenarvor._compte_otp WHERE code_compte = :code_compte');
+        $isActiveOTP->bindValue(":code_compte", $codeCompte);
+        $isActiveOTP->execute();
+
+        $isActiveOTP = $isActiveOTP->fetchColumn();
+
+        if(!$isActiveOTP){
+            // si le code n'est pas actif, on l'active
+
+            $updateOTP = $dbh->prepare('UPDATE tripenarvor._compte_otp SET is_active = true
+            WHERE code_compte = :code_compte');
+            $updateOTP->bindValue(":code_compte",$codeCompte);
+            try{
+                $updateOTP->execute();
+            } catch (PDOException $e){
+                logError("Erreur à l'exécution : ".$e->getMessage());
+                echo json_encode(["success" => false, "message" => "Erreur à l'exécution"]);
+            }
+        }
+
         echo json_encode(["success" => true, "message" => "Code valide !"]);
     } else {
         logWarning("Échec de validation OTP pour le compte $codeCompte");

@@ -235,6 +235,26 @@ if (isset($_POST['modif_infos'])) {
                         <img src="https://api.qrserver.com/v1/create-qr-code/?data=<?php echo urlencode($otp_uri) ?>&size=200x200" alt="QR Code OTP">
                     </div>
                 <?php endif; ?>
+                <?php
+                    // On vérifie si le code OTP est actif ou non
+                    $checkIsActiveOTP = $dbh->prepare("SELECT is_active FROM tripenarvor._compte_otp
+                    WHERE code_compte = :code_compte");
+                    $checkIsActiveOTP->bindValue(":code_compte",$_SESSION['membre']['code_compte']);
+                    $checkIsActiveOTP->execute();
+
+                    $isActiveOTP = $checkIsActiveOTP->fetchColumn();
+
+                    if(!$isActiveOTP){
+                        ?>
+                        <form id="form-verif-otp" action="#" method="POST">
+                            <label for="otpCode">Code OTP</label>
+                            <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
+                            <input id="submit-otp" type="submit" value="Vérifier le code">
+                            <p id="errorMsg" style="color: red; display: none;margin-top: 16px;">Le code doit contenir exactement 6 chiffres.</p>
+                        </form>
+                        <?php
+                    }
+                ?>
             </div>
         </form>
 
@@ -362,6 +382,11 @@ if (isset($_POST['modif_infos'])) {
         /* CE SCRIPT SERT A LA GÉNÉRATION DU QR CODE
         ET À L'ACTIVATION DE L'AUTHENTIFICATION À DEUX FACTEURS */
 
+        const formActiveOTP = document.getElementById('form-verif-otp');
+        const btnOTP = document.getElementById('submit-otp');
+        const codeCompte = <?php echo json_encode($_SESSION['membre']['code_compte']); ?>;
+        var errorMsg = document.getElementById('errorMsg');
+
         let formActive2FA = document.getElementById('form2FA');
         let dialogue2FA = document.getElementsByClassName('custom-confirm-content')[0];
         let overlay = document.getElementById('popup-overlay');
@@ -396,6 +421,40 @@ if (isset($_POST['modif_infos'])) {
             dialogue2FA.style.display = "none";
             overlay.style.display = "none";
         });
+
+        /* FORMULAIRE DE VÉRIFICATION CODE OTP */
+
+        document.getElementById('codeOTP').addEventListener('input',function(){
+            this.value = this.value.replace(/\D/g, "").slice(0, 6);
+            errorMsg.style.display = (this.value.length === 6) ? "none" : "block";
+            btnOTP.disabled = (this.value.length === 6) ? false : true;
+        });
+
+        formActiveOTP.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            fetch('verification_codeOTP.php',{
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    codeOTP: document.getElementById('codeOTP').value,
+                    code_compte: codeCompte
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.success){
+                        errorMsg.innerHTML = "";
+                        errorMsg.textContent = data.message;
+                        window.location.href = "modif_mdp_membre.php";
+                    } else {
+                        errorMsg.innerHTML = data.message;
+                    }
+                })
+            })
+        })
+
     </script>
     <script>
         $(document).ready(function() {
