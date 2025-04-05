@@ -4875,6 +4875,10 @@ main.creation_compte_membre .creation_compte_membre_other-links a {
     color: black;
 }
 
+.main_modif_mdp_membre #form-verif-otp{
+    display: flex;
+}
+
 
 
 /* Style général pour tous les fieldsets */
