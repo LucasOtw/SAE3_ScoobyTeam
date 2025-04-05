@@ -48,7 +48,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     }
 
     $checkOTP = $dbh->prepare("SELECT COUNT(*) FROM tripenarvor._compte_otp
-    WHERE code_compte = :code_compte");
+    WHERE code_compte = :code_compte AND is_active = true");
     $checkOTP->bindValue(":code_compte",$user['code_compte']);
     $checkOTP->execute();
 

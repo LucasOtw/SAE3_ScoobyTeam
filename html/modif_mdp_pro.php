@@ -377,6 +377,26 @@ if (isset($_POST['modif_infos'])) {
                 <?php endif; ?>
             </div>
         </form>
+        <?php
+            // On vérifie si le code OTP est actif ou non
+            $checkIsActiveOTP = $dbh->prepare("SELECT is_active FROM tripenarvor._compte_otp
+            WHERE code_compte = :code_compte");
+            $checkIsActiveOTP->bindValue(":code_compte",$_SESSION['membre']['code_compte']);
+            $checkIsActiveOTP->execute();
+
+            $isActiveOTP = $checkIsActiveOTP->fetchColumn();
+
+            if(!$isActiveOTP){
+                ?>
+                <form id="form-verif-otp" action="#" method="POST">
+                    <label for="otpCode">Code OTP</label>
+                    <input type="text" name="code_otp" id="otpCode" placeholder="Code à 6 chiffres" maxlength="6">
+                    <input id="submit-otp" type="submit" value="Vérifier le code">
+                    <p id="errorMsg" style="color: red; display: none;margin-top: 16px;">Le code doit contenir exactement 6 chiffres.</p>
+                </form>
+                <?php
+            }
+        ?>
         <form action="#" method="POST">
             <fieldset id="api">
                 <p>Clé API</p>
@@ -553,6 +573,12 @@ if (isset($_POST['modif_infos'])) {
         /* CE SCRIPT SERT A LA GÉNÉRATION DU QR CODE
         ET À L'ACTIVATION DE L'AUTHENTIFICATION À DEUX FACTEURS */
         document.addEventListener('DOMContentLoaded', function(){
+
+            const formActiveOTP = document.getElementById('form-verif-otp');
+            const btnOTP = document.getElementById('submit-otp');
+            const codeCompte = <?php echo json_encode($_SESSION['pro']['code_compte']); ?>;
+            var errorMsg = document.getElementById('errorMsg');
+
             let formActive2FA = document.getElementById('form2FA');
             let dialogue2FA = document.getElementsByClassName('popup-2fa-validation')[0];
             let backdrop = document.getElementById('popup-backdrop');
@@ -582,6 +608,40 @@ if (isset($_POST['modif_infos'])) {
                 dialogue2FA.style.display = "none";
                 backdrop.style.display = "none"; // Masquer le backdrop
             });
+
+            formActiveOTP.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                fetch('verification_codeOTP.php',{
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({
+                        codeOTP: document.getElementById('otpCode').value,
+                        code_compte: codeCompte
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.success){
+                        errorMsg.style.display = "inline";
+                        errorMsg.innerHTML = "";
+                        errorMsg.style.color = "green";
+                        errorMsg.textContent = data.message;
+                        window.location.href = "modif_mdp_pro.php";
+                    } else {
+                        errorMsg.style.color = "red";
+                        errorMsg.innerHTML = data.message;
+                        errorMsg.style.display = "inline";
+                    }
+                })
+                .catch(error => {
+                    console.error("Erreur dans le fetch :", error);
+                    errorMsg.innerHTML = "Erreur de communication avec le serveur.";
+                });
+            })
+
         });
     </script>
     <script>
